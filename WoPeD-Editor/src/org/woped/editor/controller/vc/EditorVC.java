@@ -1,4 +1,4 @@
-﻿package org.woped.editor.controller.vc;
+package org.woped.editor.controller.vc;
 
 import java.awt.Cursor;
 import java.awt.Point;
@@ -127,73 +127,104 @@ import org.woped.gui.translations.Messages;
 public class EditorVC implements KeyListener, MouseWheelListener,
 		GraphModelListener, ClipboardOwner, GraphSelectionListener, IEditor,
 		InternalFrameListener {
-	// ModelID for DB
-	private int modelid = -1;
-	
-	private EditorPanel editorPanel;
-
-	private String id = null;
-	private BasicMarqueeHandler marqueehandler;
-
-	private boolean doConfirmation = true;
-
-	private boolean undoSupport;
-
 	public static final String ID_PREFIX = "EDITOR_VC_";
-
-	public ViewFactory viewFactory = new ViewFactory(this);
-
-	// GRAPHICAL Components
-	protected WoPeDJGraph m_graph = null;
-
-	// Petri net model
-	private PetriNetModelProcessor modelProcessor = null;
-
-	private String m_filepath = null;
-
-	private String m_pathname = null;
-
-	private int m_defaultFileType = -1;
-
 	// zoom
 	public static final double MIN_SCALE = 0.2;
-
 	public static final double MAX_SCALE = 5;
-
-	private boolean copyFlag = true;
-	// not needed private boolean m_keyPressed = false;
-	private int m_createElementType = -1;
-
-	private boolean m_saved = true;
-
-	// not needed private double m_zoomScale = 1;
-	private boolean m_drawingMode = false;
-
-	private boolean m_reachGraphEnabled = false;
-
-	private boolean tokenGameEnabled = false;
-
-	private Point2D m_lastMousePosition = null;
-
-	private PropertyChangeSupport m_propertyChangeSupport = null;
-
-	private EditorClipboard m_clipboard = null;
-
-	private boolean smartEditActive = true;
-
-	private IEditorProperties elementProperties = null;
-
-	// ViewControll
-	private Vector<IViewListener> viewListener = new Vector<IViewListener>(1, 3);
-
+	public ViewFactory viewFactory = new ViewFactory(this);
 	// ! Store a reference to the application mediator.
 	// ! It is used to create a new subprocess editor if required
 	public AbstractApplicationMediator m_mediator = null;
+	// GRAPHICAL Components
+	protected WoPeDJGraph m_graph = null;
+	ModelElementContainer tempContainer = null;
+	// ModelID for DB
+	private int modelid = -1;
+	private EditorPanel editorPanel;
+	private String id = null;
+	private BasicMarqueeHandler marqueehandler;
+	private boolean doConfirmation = true;
+	private boolean undoSupport;
+	// Petri net model
+	private PetriNetModelProcessor modelProcessor = null;
+	private String m_filepath = null;
+	private String m_pathname = null;
+	private int m_defaultFileType = -1;
+	private boolean copyFlag = true;
+	// not needed private boolean m_keyPressed = false;
+	private int m_createElementType = -1;
+	private boolean m_saved = true;
+	// not needed private double m_zoomScale = 1;
+	private boolean m_drawingMode = false;
+	private boolean m_reachGraphEnabled = false;
+	private boolean tokenGameEnabled = false;
+	private Point2D m_lastMousePosition = null;
+	private PropertyChangeSupport m_propertyChangeSupport = null;
+	private EditorClipboard m_clipboard = null;
+	private boolean smartEditActive = true;
+	private IEditorProperties elementProperties = null;
 	
 
 	// Metrics team variables
+	// ViewControll
+	private Vector<IViewListener> viewListener = new Vector<IViewListener>(1, 3);
+	private TokenGameController m_tokenGameController;
+	/**
+	 * Invoked after any changes in the net.
+	 *
+	 * @see GraphSelectionListener#valueChanged(org.jgraph.event.GraphSelectionEvent)
+	 */
+	private boolean valueChangedActive = false;
+	private QuantitativeSimulationDialog simDlg;
 
-	ModelElementContainer tempContainer = null;
+	public EditorVC(String id, EditorClipboard clipboard,
+			boolean undoSupport,
+			AbstractApplicationMediator mediator) {
+		this(id, clipboard, undoSupport, mediator, true);
+	}
+
+	/**
+	 * TODO: DOCUMENTATION (silenco)
+	 *
+	 * @param clipboard
+	 */
+	public EditorVC(String id, EditorClipboard clipboard,
+			boolean undoSupport,
+			AbstractApplicationMediator mediator, boolean loadUI) {
+		this.m_propertyChangeSupport = new PropertyChangeSupport(this);
+		this.m_propertyChangeSupport.addPropertyChangeListener(VisualController
+				.getInstance());
+		this.m_mediator = mediator;
+
+		this.undoSupport = undoSupport;
+		// initialize
+		this.m_clipboard = clipboard;
+
+		marqueehandler = new PetriNetMarqueeHandler(this, mediator);
+		this.modelProcessor = new PetriNetModelProcessor();
+		if (loadUI)
+			this.m_graph = new WoPeDJGraph(new WoPeDJGraphGraphModel(this),
+					marqueehandler,
+					undoSupport ? new WoPeDUndoManager(this) : null,
+							viewFactory);
+
+		editorPanel = new EditorPanel(this, mediator, m_propertyChangeSupport, loadUI);
+
+		this.viewListener = new Vector<IViewListener>();
+		this.id = id;
+		// Listener for the graph
+		if (loadUI) {
+			getGraph().getSelectionModel().addGraphSelectionListener(
+					VisualController.getInstance());
+			getGraph().getSelectionModel().addGraphSelectionListener(this);
+			getGraph().getModel().addGraphModelListener(this);
+			getGraph().addKeyListener(this);
+			getGraph().addMouseWheelListener(this);
+			this.m_tokenGameController = new TokenGameController(this, m_propertyChangeSupport);
+		}
+	}
+
+	/* ########## ELEMENT CREATION METHODS ########### */
 
 	public void closeEditor() {
 		if (getGraph() == null)
@@ -206,55 +237,6 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 		try {
 			Thread.sleep(1000);
 		} catch (Exception e) {
-		}
-	}
-
-	private TokenGameController m_tokenGameController;
-
-	public EditorVC(String id, EditorClipboard clipboard,
-			boolean undoSupport,
-			AbstractApplicationMediator mediator) {
-		this(id, clipboard, undoSupport, mediator, true);
-	}
-
-	/**
-	 * TODO: DOCUMENTATION (silenco)
-	 * 
-	 * @param clipboard
-	 */
-	public EditorVC(String id, EditorClipboard clipboard,
-			boolean undoSupport,
-			AbstractApplicationMediator mediator, boolean loadUI) {
-		this.m_propertyChangeSupport = new PropertyChangeSupport(this);
-		this.m_propertyChangeSupport.addPropertyChangeListener(VisualController
-				.getInstance());
-		this.m_mediator = mediator;
-		
-		this.undoSupport = undoSupport;
-		// initialize
-		this.m_clipboard = clipboard;
-	
-		marqueehandler = new PetriNetMarqueeHandler(this, mediator);
-		this.modelProcessor = new PetriNetModelProcessor();
-		if (loadUI)
-			this.m_graph = new WoPeDJGraph(new WoPeDJGraphGraphModel(this),
-					marqueehandler,
-					undoSupport ? new WoPeDUndoManager(this) : null,
-							viewFactory);
-
-		editorPanel = new EditorPanel(this, mediator, m_propertyChangeSupport, loadUI);
-		
-		this.viewListener = new Vector<IViewListener>();
-		this.id = id;
-		// Listener for the graph
-		if (loadUI) {
-			getGraph().getSelectionModel().addGraphSelectionListener(
-					VisualController.getInstance());
-			getGraph().getSelectionModel().addGraphSelectionListener(this);
-			getGraph().getModel().addGraphModelListener(this);
-			getGraph().addKeyListener(this);
-			getGraph().addMouseWheelListener((MouseWheelListener) this);
-			this.m_tokenGameController = new TokenGameController(this, m_propertyChangeSupport);
 		}
 	}
 
@@ -272,12 +254,10 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 						+ " ms)");
 	}
 
-	/* ########## ELEMENT CREATION METHODS ########### */
-
 	/**
 	 * Creates a Trigger. Needs the ID of the owner transition and the type of
 	 * the Trigger.
-	 * 
+	 *
 	 * @param transitionId
 	 * @param triggertype
 	 */
@@ -292,7 +272,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 
 			if (transition.getParent() instanceof GroupModel) {
 				GroupModel group = (GroupModel) transition.getParent();
-				TriggerModel triggerModel = ((PetriNetModelProcessor) getModelProcessor())
+				TriggerModel triggerModel = getModelProcessor()
 				.newTrigger(map);
 
 				if (map.getTriggerPosition() != null) {
@@ -325,14 +305,14 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 			TransitionModel transition) {
 
 		if (transition != null && transition instanceof TransitionModel) {
-			if (((TransitionModel) transition).hasTrigger()) {
-				deleteCell(((TransitionModel) transition).getToolSpecific()
+			if (transition.hasTrigger()) {
+				deleteCell(transition.getToolSpecific()
 						.getTrigger(), true);
 			}
 
 			if (transition.getParent() instanceof GroupModel) {
 				GroupModel group = (GroupModel) transition.getParent();
-				TriggerModel triggerModel = ((PetriNetModelProcessor) getModelProcessor())
+				TriggerModel triggerModel = getModelProcessor()
 						.newTrigger(map);
 
 				if (map.getTriggerPosition() != null) {
@@ -363,7 +343,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 
 	/**
 	 * /TODO: documentation
-	 * 
+	 *
 	 * @param transition
 	 * @param transResourceId
 	 * @return
@@ -379,7 +359,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 
 			if (transition.getParent() instanceof GroupModel) {
 				GroupModel group = (GroupModel) transition.getParent();
-				TransitionResourceModel transResourceModell = ((PetriNetModelProcessor) getModelProcessor())
+				TransitionResourceModel transResourceModell = getModelProcessor()
 						.newTransResource(map);
 
 				transResourceModell.setPosition(map.getResourcePosition().x,
@@ -423,7 +403,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 
 	/**
 	 * TODO: DOCUMENTATION (silenco)
-	 * 
+	 *
 	 * @param map
 	 * @return
 	 */
@@ -459,34 +439,34 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 				// Name position
 				if (map.getNamePosition() == null) {
 					if (isRotateSelected()) {
-						((AbstractPetriNetElementModel) element).getNameModel()
+						element.getNameModel()
 								.setPosition(
 										(element.getX() + element.getWidth()),
 										(element.getY()) + 1);
 					} else {
-						((AbstractPetriNetElementModel) element).getNameModel()
+						element.getNameModel()
 								.setPosition((element.getX() - 1),
 										(element.getY() + element.getHeight()));
 					}
 				} else {
-					((AbstractPetriNetElementModel) element).getNameModel()
+					element.getNameModel()
 							.setPosition(map.getNamePosition().x,
 									map.getNamePosition().y);
 				}
 				if (map.getName() == null) {
-					((AbstractPetriNetElementModel) element).setNameValue(element
+					element.setNameValue(element
 							.getId().toString());
 				} else {
-					((AbstractPetriNetElementModel) element)
+					element
 							.setNameValue(map.getName());
 				}
 				if (map.getReadOnly() != null) {
-					((AbstractPetriNetElementModel) element).setReadOnly(map
+					element.setReadOnly(map
 							.getReadOnly());
 				}
 				// Grouping
 				GroupModel group = getGraph().groupName(element,
-						((AbstractPetriNetElementModel) element).getNameModel());
+						element.getNameModel());
 				group.setUngroupable(false);
 				// System.err.println("In createElement Method - the created elemetn"
 				// + element.toString());
@@ -502,7 +482,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 								.isEditingOnCreation()
 						&& map.isEditOnCreation() && isSmartEditActive()) {
 					getGraph().startEditingAtCell(
-							((AbstractPetriNetElementModel) element).getNameModel());
+							element.getNameModel());
 				}
 				getEditorPanel().autoRefreshAnalysisBar();
 				return group;
@@ -520,7 +500,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 	/**
 	 * Creates an Arc. Checks if the requested Arc represents a valid Petri-Net
 	 * connection.
-	 * 
+	 *
 	 * @param source
 	 * @param target
 	 * @return ArcModel
@@ -536,7 +516,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 	/**
 	 * Creates an Arc. Checks if the requested Arc represents a valid Petri-Net
 	 * connection.
-	 * 
+	 *
 	 * @param sourceId
 	 * @param targetId
 	 * @return
@@ -552,7 +532,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 
 	/**
 	 * TODO: DOCUMENTATION (silenco, xraven)
-	 * 
+	 *
 	 * @param map
 	 * @return
 	 */
@@ -622,7 +602,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 
 	/**
 	 * TODO: DOCUMENTATION (xraven)
-	 * 
+	 *
 	 * @param toDelete
 	 * @param withGraph
 	 */
@@ -640,12 +620,12 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 
 		// Expand groups --> result will contain all the group elements themselves
 		// plus their content
-		
-		LinkedList<Object>  toBeProcessed = new LinkedList<Object>(Arrays.asList(toDelete));		
+
+		LinkedList<Object> toBeProcessed = new LinkedList<Object>(Arrays.asList(toDelete));
 		Vector<Object> result = new Vector<Object>();
-		
+
 		while (!toBeProcessed.isEmpty()) {
-			Object currentElement = toBeProcessed.poll();			
+			Object currentElement = toBeProcessed.poll();
 			if (currentElement instanceof GroupModel)
 			{
 				GroupModel tempGroup = (GroupModel) currentElement;
@@ -665,7 +645,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 					result.add(currentElement);
 					for (int j = 0; j < tempGroup.getChildCount(); j++)
 						toBeProcessed.offer(tempGroup.getChildAt(j));
-				}		
+				}
 			} else {
 				result.add(currentElement);
 			}
@@ -690,7 +670,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 
 	/**
 	 * TODO: DOCUMENTATION (xraven)
-	 * 
+	 *
 	 * @param toDelete
 	 */
 	public void deleteOnlyCells(Object[] toDelete, boolean withGraph) {
@@ -699,15 +679,15 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 		Vector<Object> allPorts = new Vector<Object>();
 		Vector<Object> allCells = new Vector<Object>();
 		copyFlag = false;
-		
+
 		if (doConfirmation){
 		// Check if SubProcessModell Shall be deleted. Ask for Confirmation!
 		for (int i = 0; i < toDelete.length; i++) {
 			if (toDelete[i] instanceof SubProcessModel) {
 				Object[] options = {
 						Messages.getString("Popup.Confirm.SubProcess.Ok"),
-						Messages.getString("Popup.Confirm.SubProcess.No") };
-				int j = 0; 
+						Messages.getString("Popup.Confirm.SubProcess.No")};
+				int j = 0;
 				j = JOptionPane.showOptionDialog(null,
 						Messages.getString("Popup.Confirm.SubProcess.Info"),
 						Messages.getString("Popup.Confirm.SubProcess.Warn"),
@@ -789,9 +769,11 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 		deleteCell(cell, true);
 	}
 
+	/* ########## ELEMENT MODIFICATION METHODS ########### */
+
 	/**
 	 * TODO: DOCUMENTATION (xraven)
-	 * 
+	 *
 	 * @param cell
 	 */
 	public void deleteCell(DefaultGraphCell cell, boolean withGraph) {
@@ -808,14 +790,13 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 		// Delete atomically
 		getGraph().getModel().beginUpdate();
 		deleteCells(getGraph().getSelectionCells(), true);
-		getGraph().getModel().endUpdate();		
+		getGraph().getModel().endUpdate();
 	}
 
-	/* ########## ELEMENT MODIFICATION METHODS ########### */
 	/**
 	 * Edits the given element. <br>
 	 * NOTE: Currently only the name of the Element is editable.
-	 * 
+	 *
 	 * @param cell
 	 */
 	public void edit(Object cell) {
@@ -864,7 +845,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 
 	/**
 	 * TODO: DOCUMENTATION (xraven)
-	 * 
+	 *
 	 */
 	public void undo() {
 		doConfirmation = false; // Confirmation is done in Undo Handling
@@ -875,7 +856,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 
 	/**
 	 * TODO: DOCUMENTATION (xraven)
-	 * 
+	 *
 	 */
 	public void redo() {
 		doConfirmation = false; // Confirmation is done in Redo Handling
@@ -896,10 +877,10 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 		// get the Selection
 		Object[] cells = getGraph().getSelectionCells();
 		// Fill processing queue with selected cells
-		LinkedList<Object> toBeProcessed = new LinkedList<Object>(Arrays.asList(cells));		
+		LinkedList<Object> toBeProcessed = new LinkedList<Object>(Arrays.asList(cells));
 		// Arcs to be added to the clipboard
 		LinkedList<ArcModel> clipboardArcs = new LinkedList<ArcModel>();
-		
+
 		while (!toBeProcessed.isEmpty()) {
 			Object currentElement = toBeProcessed.poll();
 			if (currentElement instanceof GroupModel) {
@@ -927,7 +908,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 			if (currentElement instanceof ArcModel) {
 				ArcModel tempArc = (ArcModel) currentElement;
 				clipboardArcs.add(tempArc);
-			}			
+			}
 			if (currentElement instanceof AbstractPetriNetElementModel) {
 				AbstractPetriNetElementModel tempElement = (AbstractPetriNetElementModel) currentElement;
 				// copy the element
@@ -951,7 +932,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 	 * calls the paste method with the last remembered mouse position
 	 */
 	public void pasteAtMousePosition() {
-		
+
 		copyFlag = true;
 		if (getLastMousePosition() != null)
 			paste(getLastMousePosition());
@@ -973,11 +954,11 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 		// get elements from clipboard
 		Map<String, CreationMap> pasteElements = m_clipboard
 				.getCopiedElementsList();
-		
-		// Start an atomic transaction on the graph (to make paste appear as a 
+
+		// Start an atomic transaction on the graph (to make paste appear as a
 		// single undoable operation
 		getGraph().getModel().beginUpdate();
-		
+
 		copyFlag = true;
 
 		Map<String, CreationMap> pasteArcs = m_clipboard.getCopiedArcsList();
@@ -1169,12 +1150,12 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 				cmap.setArcSourceId(currentArcMap.getArcSourceId());
 				cmap.setArcTargetId(currentArcMap.getArcTargetId());
 				tempArc = createArc(cmap, true);
-				
+
 				// It is possible that an arc could not be created, because either its source
 				// or target element are missing. Simply ignore the arc in this case
 				if (tempArc == null)
 					continue;
-				
+
 				for (short k = 0; k < currentArcMap.getArcPoints().size(); k++) {
 
 					IntPair ip = (IntPair) currentArcMap.getArcPoints().get(k);
@@ -1190,7 +1171,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 
 		// End of atomic graph update
 		getGraph().getModel().endUpdate();
-		
+
 		// select the new element
 		LoggerManager.debug(Constants.EDITOR_LOGGER, "Elements pasted. ("
 				+ (System.currentTimeMillis() - begin) + " ms)");
@@ -1201,8 +1182,8 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 		copySelection();
 		getGraph().setCursor(Cursor.getDefaultCursor());
 		getEditorPanel().m_understandColoring.update();
-		
-		
+
+
 	}
 
 	private Point getMiddleOfSelection(Map<String, CreationMap> maps) {
@@ -1240,7 +1221,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 	/**
 	 * Moves all Elementes in the Object-Array <code>toMove</code>
 	 * <code>dx</code> in x-direction and <code>dy</code> in y-direction.
-	 * 
+	 *
 	 * @param toMove
 	 * @param dx
 	 * @param dy
@@ -1248,7 +1229,9 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 	public void move(Object toMove[], int dx, int dy) {
 		move(toMove, dx, dy, null, false);
 	}
-
+	
+	/* ########## View and utils methods ########### */
+	
 	private void move(Object toMove[], int dx, int dy,
 			HashMap<GraphCell, AttributeMap> changes, boolean isrecursiv) {
 		if (changes == null) {
@@ -1316,13 +1299,15 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 			updateNet();
 		}
 	}
+	
+	/* ########## View and utils methods ########### */
 
 	/**
 	 * Method scaleNet changes the coordinates of all elements by multiplicating
 	 * with <code>factor</code>.<br>
 	 * The values will be converted to int. This method is usefull for nets
 	 * created with other tools using different cooridates.
-	 * 
+	 *
 	 * @param factor
 	 */
 	public void scaleNet(double factor) {
@@ -1331,7 +1316,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 				.getElementContainer().getRootElements().iterator();
 		AbstractPetriNetElementModel aModel;
 		while (iter.hasNext()) {
-			aModel = (AbstractPetriNetElementModel) iter.next();
+			aModel = iter.next();
 			aModel.setPosition((int) (aModel.getX() * factor),
 					(int) (aModel.getY() * factor));
 			aModel.getNameModel().setPosition(
@@ -1347,13 +1332,11 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 		}
 	}
 	
-	/* ########## View and utils methods ########### */
-	
 	/**
 	 * Enable TokenGame Mode for this net. <br>
 	 * In TokenGame-Mode the net is not editable, but you call pefrorm a simple
 	 * token movements.
-	 * 
+	 *
 	 * @see TokenGameController
 	 */
 	public void enableTokenGame() {
@@ -1361,21 +1344,22 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 			LoggerManager.error(Constants.EDITOR_LOGGER, "TokenGame already running");
 			return;
 		}
-		
-		LoggerManager.debug(Constants.EDITOR_LOGGER, "START TokenGame");		
+
+		LoggerManager.debug(Constants.EDITOR_LOGGER, "START TokenGame");
 		tokenGameEnabled = true;
 		setDrawingMode(false);
 		m_tokenGameController.start();
-		
+
 		m_propertyChangeSupport.firePropertyChange("TokenGameMode", null, null);
 	}
-	
+
 	/* ########## View and utils methods ########### */
+
 	/**
 	 * Disable TokenGame Mode for this net. <br>
 	 * In TokenGame-Mode the net is not editable, but you call pefrorm a simple
 	 * token movements.
-	 * 
+	 *
 	 * @see TokenGameController
 	 */
 	public void disableTokenGame() {
@@ -1383,20 +1367,19 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 			LoggerManager.error(Constants.EDITOR_LOGGER, "TokenGame not running");
 			return;
 		}
-		
+
 		LoggerManager.debug(Constants.EDITOR_LOGGER, "STOP TokenGame");
 		tokenGameEnabled = false;
 		m_tokenGameController.stop();
 		m_mediator.getUi().refreshFocusOnFrames();
-		
+
 		m_propertyChangeSupport.firePropertyChange("TokenGameMode", null, null);
-	}	
-	
-	
+	}
+
 	/**
 	 * Terminates a running token game session this net is part of.
 	 * A token game session spans across multiple nets if sub processes exist.
-	 * This method will close all sub processes and reset the token game to 
+	 * This method will close all sub processes and reset the token game to
 	 * it's initial state, then will disable the token game for the top net
 	 */
 	public void terminateTokenGameSession() {
@@ -1404,16 +1387,17 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 			LoggerManager.error(Constants.EDITOR_LOGGER, "TokenGame not running");
 			return;
 		}
-		
+
 		m_tokenGameController.getRemoteControl().terminateTokenGameSession();
 	}
 
-	/* ########## View and utils methods ########### */
+	/* ########## LISTENER METHODS ########## */
+
 	/**
 	 * Toggles the TokenGame Mode. <br>
 	 * In TokenGame-Mode the net is not editable, but you call pefrorm a simple
 	 * token movements.
-	 * 
+	 *
 	 * @see TokenGameController
 	 */
 	public void toggleTokenGame() {
@@ -1430,23 +1414,23 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 	 * <code>MAX_SCALE</code>. Multiplicate the factor with 100 to get the
 	 * percent value. Set <code>absolute</code>=<code>true</code> in order to
 	 * zoom the to the factor, not by the the factor.
-	 * 
+	 *
 	 * @param factor
 	 * @param absolute
 	 */
 	public void zoom(double factor, boolean absolute) {
 		/**
 		 * scale = Math.max(Math.min(scale, 16), .01);
-		 * 
-		 * 
+		 *
+		 *
 		 * if (graphpad.getCurrentGraph() .getScale() < 8) { //
 		 * "Zero Length String passed to TextLayout constructor"
 		 * graphpad.getCurrentDocument() . setScale(getGraph().getScale() * 2);
 		 * if (getGraph().getSelectionCell() != null)
 		 * getGraph().scrollCellToVisible
 		 * (graphpad.getCurrentGraph().getSelectionCell()); }
-		 * 
-		 * 
+		 *
+		 *
 		 */
 		getGraph().stopEditing();
 		Rectangle2D oldVisRect = getGraph().fromScreen(
@@ -1485,17 +1469,6 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 				new Double(scale * 100)));
 	}
 
-	/* ########## LISTENER METHODS ########## */
-
-	/**
-	 * Invoked after any changes in the net.
-	 * 
-	 * @see GraphSelectionListener#valueChanged(org.jgraph.event.GraphSelectionEvent)
-	 */
-	private boolean valueChangedActive = false;
-
-	private QuantitativeSimulationDialog simDlg;
-
 	public void valueChanged(GraphSelectionEvent arg0) {
 		if (valueChangedActive) {
 			// Do not call ourselves endlessly
@@ -1526,9 +1499,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 				}
 				addedCells.add(toBeAdded);
 			}
-			;
 		}
-		;
 		valueChangedActive = true;
 		getGraph().addSelectionCells(addedCells.toArray());
 		valueChangedActive = false;
@@ -1858,23 +1829,23 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 	}
 
 	/**
-	 * Returns the filepath if the net was saved before or was opened from a
-	 * file.
-	 * 
-	 * @return String
-	 */
-	public String getFilePath() {
-		return m_filepath;
-	}
-
-	/**
 	 * Sets the pathname. Should be called when the net was saved in a file.
-	 * 
+	 *
 	 * @param filePath
 	 *            The filePath to set
 	 */
 	public void setPathName(String pathname) {
 		this.m_pathname = pathname;
+	}
+
+	/**
+	 * Returns the filepath if the net was saved before or was opened from a
+	 * file.
+	 *
+	 * @return String
+	 */
+	public String getFilePath() {
+		return m_filepath;
 	}
 
 	/**
@@ -1925,16 +1896,24 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 		return m_reachGraphEnabled;
 	}
 
+	public void setReachabilityEnabled(boolean flag) {
+		m_reachGraphEnabled = flag;
+	}
+	
 	public void setDrawMode(int type, boolean active)
     {
         setDrawingMode(active);
         setCreateElementType(type);
-    }
-	
+	}
+
+	public boolean getDrawingMode() {
+		return m_drawingMode;
+	}
+
 	/**
 	 * Sets the drawing mode. If the net is in drawing mode, clicking the left
 	 * mouse button will draw the Element with the set creation type.
-	 * 
+	 *
 	 * @see getCreateElementType
 	 * @param flag
 	 */
@@ -1942,14 +1921,6 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 		m_drawingMode = flag;
 		if (flag == false)
 			setCreateElementType(-1);
-	}
-
-	public boolean getDrawingMode() {
-		return m_drawingMode;
-	}
-
-	public void setReachabilityEnabled(boolean flag) {
-		m_reachGraphEnabled = flag;
 	}
 
 	public boolean isSmartEditActive() {
@@ -2006,13 +1977,17 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 
 	public void internalFrameClosed(InternalFrameEvent e) {}
 
-	public void internalFrameClosing(InternalFrameEvent e) {}
+	public void internalFrameClosing(InternalFrameEvent e) {
+	}
 
-	public void internalFrameDeactivated(InternalFrameEvent e) {};
+	public void internalFrameDeactivated(InternalFrameEvent e) {
+	}
 
-	public void internalFrameDeiconified(InternalFrameEvent e) {};
+	public void internalFrameDeiconified(InternalFrameEvent e) {
+	}
 
-	public void internalFrameIconified(InternalFrameEvent e) {};
+	public void internalFrameIconified(InternalFrameEvent e) {
+	}
 
 	public void internalFrameOpened(InternalFrameEvent e) {}
 
@@ -2208,7 +2183,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 					SubProcessModel subprocess = (SubProcessModel) element
 							.getMainElement();
 					NetAlgorithms.getArcConfiguration(subprocess, arcConfig);
-					IEditor editor = (EditorVC) getMediator().getUi()
+					IEditor editor = getMediator().getUi()
 							.getEditorFocus();
 					if ((arcConfig.m_numIncoming != 0)
 							|| (arcConfig.m_numOutgoing != 0)) {
@@ -2248,12 +2223,12 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 		return editorPanel;
 	}
 	
-	public void setName(String name) {
-		getEditorPanel().setName(name);
-	}
-
 	public String getName() {
 		return getEditorPanel().getName();
+	}
+
+	public void setName(String name) {
+		getEditorPanel().setName(name);
 	}
 	
 	public void hideAnalysisBar() {
@@ -2273,13 +2248,13 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 		getGraph().repaint();
 	}
 
-	public void setPathname(String absolutePath) {
-		m_pathname = absolutePath;
-		
-	}
-
 	public String getPathname() {
 		return m_pathname;
+	}
+
+	public void setPathname(String absolutePath) {
+		m_pathname = absolutePath;
+
 	}
 
 	@Override
