@@ -262,8 +262,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
      * Creates a Trigger. Needs the ID of the owner transition and the type of
      * the Trigger.
      *
-     * @param transitionId
-     * @param triggertype
+     * @param map
      */
     public TriggerModel createTrigger(CreationMap map) {
         AbstractPetriNetElementModel transition = getModelProcessor()
@@ -345,8 +344,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
     /**
      * /TODO: documentation
      *
-     * @param transition
-     * @param transResourceId
+     * @param map
      * @return
      */
     public TransitionResourceModel createTransitionResource(CreationMap map) {
@@ -1823,7 +1821,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
     /**
      * Sets the pathname. Should be called when the net was saved in a file.
      *
-     * @param filePath The filePath to set
+     * @param pathname The filePath to set
      */
     public void setPathName(String pathname) {
         this.m_pathname = pathname;
@@ -1842,7 +1840,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
     /**
      * Sets the filepath. Should be called when the net was saved in a file.
      *
-     * @param filePath The filePath to set
+     * @param filepath The filePath to set
      */
     public void setFilePath(String filepath) {
         this.m_filepath = filepath;
@@ -1875,7 +1873,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
      * left mouse button will draw the Element with the set creation type.
      *
      * @return drawing mode
-     * @see getCreateElementType
+     * @see EditorVC#getCreateElementType()
      */
     public boolean isDrawingMode() {
         return m_drawingMode;
@@ -1903,7 +1901,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
      * mouse button will draw the Element with the set creation type.
      *
      * @param flag
-     * @see getCreateElementType
+     * @see EditorVC#getCreateElementType()
      */
     public void setDrawingMode(boolean flag) {
         m_drawingMode = flag;
