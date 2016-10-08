@@ -33,14 +33,10 @@ import org.woped.core.utilities.Utils;
 public class TStar {
 
     private static final Color T_STAR_COLOR = new Color(200, 200, 200);
-
-    private IEditor editor = null;
-
-    private Object[] tStarComponents = new Object[3];
-
-    private TransitionModel tStar = null;
-
     private static final String T_STAR = "t*";
+    private IEditor editor = null;
+    private Object[] tStarComponents = new Object[3];
+    private TransitionModel tStar = null;
 
     public TStar(IEditor editor) {
         this.editor = editor;
@@ -243,17 +239,9 @@ public class TStar {
         ArcModel arc = null;
         String sourceId = map.getArcSourceId();
         String targetId = map.getArcTargetId();
-        List<?> points = map.getArcPoints();
-        Point2D[] pointArray = new Point2D[points.size()];
-        for (int i = 0; i < points.size(); i++) {
-            if (points.get(i) instanceof Point2D) {
-                pointArray[i] = (Point2D) points.get(i);
-            } else
-                if (points.get(i) instanceof IntPair) {
-                    pointArray[i] = new Point2D.Double(((IntPair) points.get(i)).getX1(), ((IntPair) points.get(i))
-                            .getX2());
-                }
-        }
+
+        Point2D[] pointArray = map.getArcPoints().toArray(new Point2D[0]);
+
         AbstractPetriNetElementModel source = editor.getModelProcessor().getElementContainer().getElementById(sourceId);
         source = source != null ? source : tStar;
         AbstractPetriNetElementModel target = editor.getModelProcessor().getElementContainer().getElementById(targetId);
@@ -278,13 +266,13 @@ public class TStar {
                 if (source.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE) {
                     operatorModel = (OperatorTransitionModel) source;
                     operatorModel.addElement(target);
-                    operatorModel.registerOutgoingConnection((PetriNetModelProcessor) editor.getModelProcessor(),
+                    operatorModel.registerOutgoingConnection(editor.getModelProcessor(),
                             target);
                 } else
                     if (target.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE) {
                         operatorModel = (OperatorTransitionModel) target;
                         operatorModel.addElement(source);
-                        operatorModel.registerIncomingConnection((PetriNetModelProcessor) editor.getModelProcessor(),
+                        operatorModel.registerIncomingConnection(editor.getModelProcessor(),
                                 source);
 
                     }

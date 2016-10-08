@@ -443,6 +443,8 @@ public class ArcModel extends DefaultEdge implements Serializable {
         map.setArcDisplayProbability(isDisplayOn());
         map.setArcLabelPosition((int) this.getLabelPosition().getX(), (int) this.getLabelPosition().getY());
 
+        map.setArcWeight(getInscriptionValue());
+
         return map;
     }
 
