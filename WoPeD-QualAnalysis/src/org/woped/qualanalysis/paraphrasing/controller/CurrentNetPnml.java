@@ -59,12 +59,14 @@ public class CurrentNetPnml {
 	 */
 	public void setPnmlString() {
 		ModelElementContainer elementContainer = editor.getModelProcessor().getElementContainer();
-		PetriNetModelProcessor petrinetModel = (PetriNetModelProcessor) editor.getModelProcessor();
-		pnmlDoc = PnmlDocument.Factory.newInstance();
+        PetriNetModelProcessor petrinetModel = editor.getModelProcessor();
+        pnmlDoc = PnmlDocument.Factory.newInstance();
 		PnmlType iPnml = pnmlDoc.addNewPnml();
 		NetType iNet = iPnml.addNewNet();
 		iNet.setType(petrinetModel.getType());
 		iNet.setId(petrinetModel.getId());
+
+        // REVIEW: Why not use the PnmlExport.saveToStream method?
 
 		try {
 			saveModelElementContainer(iNet, elementContainer);
@@ -88,7 +90,7 @@ public class CurrentNetPnml {
 
 		Iterator<AbstractPetriNetElementModel> root2Iter = elementContainer.getRootElements().iterator();
 		while (root2Iter.hasNext()) {
-			AbstractPetriNetElementModel currentModel = (AbstractPetriNetElementModel) root2Iter.next();
+            AbstractPetriNetElementModel currentModel = root2Iter.next();
 
 			/* ##### PLACES ##### */
 			if (currentModel.getType() == AbstractPetriNetElementModel.PLACE_TYPE) {
@@ -109,8 +111,8 @@ public class CurrentNetPnml {
 				Iterator<AbstractPetriNetElementModel> simpleTransIter = operatorModel.getSimpleTransContainer()
 						.getElementsByType(AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE).values().iterator();
 				while (simpleTransIter.hasNext()) {
-					AbstractPetriNetElementModel simpleTransModel = (AbstractPetriNetElementModel) simpleTransIter
-							.next();
+                    AbstractPetriNetElementModel simpleTransModel = simpleTransIter
+                            .next();
 					if (simpleTransModel != null
 							&& operatorModel.getSimpleTransContainer().getElementById(simpleTransModel.getId())
 									.getType() == AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE) {
@@ -131,10 +133,10 @@ public class CurrentNetPnml {
 		Iterator<String> arcIter = elementContainer.getArcMap().keySet().iterator();
 		while (arcIter.hasNext()) {
 			ArcModel currentArc = elementContainer.getArcById(arcIter.next());
-			AbstractPetriNetElementModel currentTargetModel = (AbstractPetriNetElementModel) elementContainer
-					.getElementById(currentArc.getTargetId());
-			AbstractPetriNetElementModel currentSourceModel = (AbstractPetriNetElementModel) elementContainer
-					.getElementById(currentArc.getSourceId());
+            AbstractPetriNetElementModel currentTargetModel = elementContainer
+                    .getElementById(currentArc.getTargetId());
+            AbstractPetriNetElementModel currentSourceModel = elementContainer
+                    .getElementById(currentArc.getSourceId());
 
 			if (currentTargetModel.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE)
 				connectedTransitions.add(currentTargetModel);
@@ -151,8 +153,8 @@ public class CurrentNetPnml {
 			Iterator<String> innerArcIter = currentConnectedModel.getSimpleTransContainer().getArcMap().keySet()
 					.iterator();
 			while (innerArcIter.hasNext()) {
-				ArcModel currentInnerArc = (ArcModel) currentConnectedModel.getSimpleTransContainer().getArcMap()
-						.get(innerArcIter.next());
+                ArcModel currentInnerArc = currentConnectedModel.getSimpleTransContainer().getArcMap()
+                        .get(innerArcIter.next());
 
 				ArcModel currentOuterArc = null;
 				if (elementContainer.getElementById(currentInnerArc.getSourceId()) != null) {
@@ -171,12 +173,8 @@ public class CurrentNetPnml {
 
 		// Webservice can only process graphs that have one root and one sink
 		// element
-		if (this.root == 1 && this.sink == 1) {
-			this.isProcessable = true;
-		} else {
-			this.isProcessable = false;
-		}
-	}
+        this.isProcessable = this.root == 1 && this.sink == 1;
+    }
 
 	private PlaceType initPlace(PlaceType iPlace, PlaceModel currentModel) {
 		// Name
