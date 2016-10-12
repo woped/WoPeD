@@ -59,7 +59,6 @@ import org.jgraph.graph.DefaultGraphCell;
 import org.woped.core.controller.IDialog;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.CreationMap;
-import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.GroupModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
@@ -2071,6 +2070,6 @@ public class TransitionPropertyEditor extends JDialog implements
 		
 		// Refresh the net to display any copied triggers and resources...
 		editor.getGraph().drawNet(editor.getModelProcessor());
-		editor.getEditorPanel().getM_understandColoring().update();
-	}
+        editor.getEditorPanel().getUnderstandColoring().update();
+    }
 }

@@ -52,32 +52,11 @@ import org.woped.understandability.NetColorScheme;
 @SuppressWarnings("serial")
 public class EditorPanel extends JPanel {
 
-	private JComponent container = null;
-	private IEditor editor;
-	private AbstractApplicationMediator centralMediator;
-	private PropertyChangeSupport propertyChangeSupport;
-	private boolean metricsBarVisible = false;
-	private boolean analysisBarVisible = false;
-	private boolean p2TBarVisible = false;
-	private SideBar qualitativeAnalysisSideBar = null;
-	private P2TSideBar p2tSideBar = null;
-	private JLabel semanticLabel = null;
-	private JLabel p2tLabel = null;
-	private JPanel analysisSideBarPanel = new JPanel(new GridBagLayout());
-	private JPanel p2tSideBarPanel = new JPanel(new GridBagLayout());
-	private JCheckBox autoRefresh = null;
-	private JCheckBox tStarCheckBox = null;
-	private boolean tStarEnabled = false;
-	private boolean m_UnderstandabilityColoringEnabled = false;
-
 	// Headers of the different Panes
 	private static final Font HEADER_FONT = DefaultStaticConfiguration.DEFAULT_LABEL_BOLDFONT;
 	private static final int m_splitPosition = 600;
 	private static final int m_splitSize = 10;
 	private final int m_splitHeightOverviewPosition = 100;
-	private boolean automaticResize = false;
-	private org.woped.metrics.sidebar.SideBar metricsSideBar = null;
-
 	/**
 	 * TODO: These members are public for now while we are still in the process
 	 * or factoring out their uses from EditorVC
@@ -98,13 +77,30 @@ public class EditorPanel extends JPanel {
 	public JScrollPane m_scrollPane = null;
 	// rotate
 	public Orientation m_orientation = null;
-
 	public EditorSize editorSize = null;
-	// Metrics team variables
-
-	NetColorScheme m_understandColoring = null;
 	public GraphTreeModel m_treeModel = null;
 	public EditorLayoutInfo m_EditorLayoutInfo = null;
+    private JComponent container = null;
+    private IEditor editor;
+    private AbstractApplicationMediator centralMediator;
+    private PropertyChangeSupport propertyChangeSupport;
+    private boolean metricsBarVisible = false;
+    private boolean analysisBarVisible = false;
+    private boolean p2TBarVisible = false;
+    private SideBar qualitativeAnalysisSideBar = null;
+    private P2TSideBar p2tSideBar = null;
+    private JLabel semanticLabel = null;
+    private JLabel p2tLabel = null;
+    private JPanel analysisSideBarPanel = new JPanel(new GridBagLayout());
+    private JPanel p2tSideBarPanel = new JPanel(new GridBagLayout());
+    private JCheckBox autoRefresh = null;
+    private JCheckBox tStarCheckBox = null;
+    private boolean tStarEnabled = false;
+    private boolean m_UnderstandabilityColoringEnabled = false;
+    // Metrics team variables
+    private boolean automaticResize = false;
+    private org.woped.metrics.sidebar.SideBar metricsSideBar = null;
+    private NetColorScheme m_understandColoring = null;
 
 	public EditorPanel(IEditor editor, AbstractApplicationMediator centralMediator,
 			PropertyChangeSupport propertyChangeSupport, boolean loadUI) {
@@ -168,25 +164,6 @@ public class EditorPanel extends JPanel {
 		return super.getName() == null ? Messages.getString("Document.Title.Untitled") : super.getName();
 	}
 
-	@SuppressWarnings("all")
-	public JComponent getContainer() {
-		return container;
-	}
-
-	public void setContainer(JComponent container) {
-		this.container = container;
-	}
-
-	/**
-	 * @author Patrick Spies, Patrick Kirchgaessner, Joern Liebau, Enrico
-	 *         Moeller, Sebastian Fuss
-	 * @see java.awt.Component.getParent()
-	 */
-	@Override
-	public Container getParent() {
-		return super.getParent();
-	}
-
 	// ! Set the document name
 	// ! Overridden to also update the title bar of the editor window
 	// ! @param name specifies the name of the edited document
@@ -206,59 +183,33 @@ public class EditorPanel extends JPanel {
 		}
 	}
 
-	public void setSideTreeViewVisible(boolean showTreeView) {
-		m_mainSplitPane.setDividerLocation(
-				showTreeView ? m_mainSplitPane.getLastDividerLocation() : m_mainSplitPane.getMaximumDividerLocation());
-	}
+    @SuppressWarnings("all")
+    public JComponent getContainer() {
+        return container;
+    }
 
-	public boolean isSideTreeViewVisible() {
-		return (m_mainSplitPane.getDividerLocation() < m_mainSplitPane.getMaximumDividerLocation());
-	}
+    public void setContainer(JComponent container) {
+        this.container = container;
+    }
 
 	/**
-	 * @author Svenja label with mouse listener and icon to close the
-	 *         overviewpanel or the treeviewPanel
-	 */
-	public class HideLabel extends JLabel {
+     * @author Patrick Spies, Patrick Kirchgaessner, Joern Liebau, Enrico
+     *         Moeller, Sebastian Fuss
+     * @see java.awt.Component.getParent()
+     */
+    @Override
+    public Container getParent() {
+        return super.getParent();
+    }
 
-		private static final long serialVersionUID = 1L;
+    public boolean isSideTreeViewVisible() {
+        return (m_mainSplitPane.getDividerLocation() < m_mainSplitPane.getMaximumDividerLocation());
+    }
 
-		public HideLabel(Icon icon, final JPanel panel) {
-			super(icon);
-
-			this.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 0));
-
-			this.addMouseListener(new MouseListener() {
-
-				public void mouseReleased(MouseEvent e) {
-				}
-
-				public void mousePressed(MouseEvent e) {
-				}
-
-				public void mouseEntered(MouseEvent arg0) {
-					setCursor(new Cursor(Cursor.HAND_CURSOR));
-				}
-
-				public void mouseExited(MouseEvent arg0) {
-					setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-				}
-
-				public void mouseClicked(MouseEvent e) {
-					if (panel == overviewPanel) {
-						setOverviewPanelVisible(false);
-					} else if (panel == treeviewPanel) {
-						setTreeviewPanelVisible(false);
-					} else if (panel == analysisSideBarPanel) {
-						hideAnalysisBar();
-					} else if (panel == p2tSideBarPanel) {
-						hideP2TBar();
-					}
-					propertyChangeSupport.firePropertyChange("Sidebar", null, null);
-				}
-			});
-		}
-	}
+    public void setSideTreeViewVisible(boolean showTreeView) {
+        m_mainSplitPane.setDividerLocation(
+                showTreeView ? m_mainSplitPane.getLastDividerLocation() : m_mainSplitPane.getMaximumDividerLocation());
+    }
 
 	public JPanel getTreeviewPanel() {
 		if (treeviewPanel == null) {
@@ -317,6 +268,10 @@ public class EditorPanel extends JPanel {
 		return overviewPanel;
 	}
 
+    public boolean isOverviewPanelVisible() {
+        return overviewPanel.isVisible();
+    }
+
 	public void setOverviewPanelVisible(boolean show) {
 		if (!m_rightSideTreeView.isVisible()) {
 			m_rightSideTreeView.setVisible(true);
@@ -364,6 +319,10 @@ public class EditorPanel extends JPanel {
 			}
 		}
 	}
+
+    public boolean isTreeviewPanelVisible() {
+        return treeviewPanel.isVisible();
+    }
 
 	public void setTreeviewPanelVisible(boolean show) {
 		if (!m_rightSideTreeView.isVisible()) {
@@ -414,14 +373,6 @@ public class EditorPanel extends JPanel {
 		}
 	}
 
-	public boolean isOverviewPanelVisible() {
-		return overviewPanel.isVisible();
-	}
-
-	public boolean isTreeviewPanelVisible() {
-		return treeviewPanel.isVisible();
-	}
-
 	public boolean isMetricsBarVisible() {
 		return metricsBarVisible;
 	}
@@ -436,8 +387,8 @@ public class EditorPanel extends JPanel {
 
 	/**
 	 * Method removes analysis sidebar
-	 * 
-	 * @author Lennart Oess, Arthur Vetter, Jens Tessen, Heiko Herzog
+     *
+     * @author Lennart Oess, Arthur Vetter, Jens Tessen, Heiko Herzog
 	 * @editor Martin Meitz
 	 */
 	public void hideAnalysisBar() {
@@ -474,31 +425,6 @@ public class EditorPanel extends JPanel {
 		result.setSavedLocation(getLocation());
 
 		return result;
-	}
-
-	/**
-	 * 
-	 * @author Mathias Gruschinske, Stefan Hackenberg
-	 */
-	public void hideMetricsBar() {
-		if (metricsBarVisible) {
-			remove(mainsplitPaneWithAnalysisBar);
-			mainsplitPaneWithAnalysisBar = null;
-			metricsSideBar.clean();
-			m_mainSplitPane.setBottomComponent(m_rightSideTreeView);
-			metricsBarVisible = false;
-			if (!isAnalysisBarVisible() && !isMetricsBarVisible() && !isOverviewPanelVisible()
-					&& !isTreeviewPanelVisible()) {
-				m_mainSplitPane.setDividerLocation(m_mainSplitPane.getMaximumDividerLocation());
-				m_mainSplitPane.setOneTouchExpandable(false);
-				m_mainSplitPane.setEnabled(false);
-			} else {
-				m_mainSplitPane.setResizeWeight(0.85);
-			}
-			add(m_mainSplitPane);
-
-			revalidate();
-		}
 	}
 
 	public void setSavedLayoutInfo(EditorLayoutInfo layoutInfo) {
@@ -541,7 +467,7 @@ public class EditorPanel extends JPanel {
 			while ((currentParent != null) && (!(currentParent instanceof JInternalFrame))) {
 				currentParent = currentParent.getParent();
 			}
-			
+
 			if (currentParent != null) {
 				Dimension editorDim = new Dimension();
 				getSize(editorDim);
@@ -566,9 +492,34 @@ public class EditorPanel extends JPanel {
 	}
 
 	/**
-	 * initializes analysis sidebar
-	 * 
-	 * @author Martin Meitz
+	 *
+     * @author Mathias Gruschinske, Stefan Hackenberg
+     */
+    public void hideMetricsBar() {
+        if (metricsBarVisible) {
+            remove(mainsplitPaneWithAnalysisBar);
+            mainsplitPaneWithAnalysisBar = null;
+            metricsSideBar.clean();
+            m_mainSplitPane.setBottomComponent(m_rightSideTreeView);
+            metricsBarVisible = false;
+            if (!isAnalysisBarVisible() && !isMetricsBarVisible() && !isOverviewPanelVisible()
+                    && !isTreeviewPanelVisible()) {
+                m_mainSplitPane.setDividerLocation(m_mainSplitPane.getMaximumDividerLocation());
+                m_mainSplitPane.setOneTouchExpandable(false);
+                m_mainSplitPane.setEnabled(false);
+            } else {
+                m_mainSplitPane.setResizeWeight(0.85);
+            }
+            add(m_mainSplitPane);
+
+            revalidate();
+        }
+    }
+
+    /**
+     * initializes analysis sidebar
+     *
+     * @author Martin Meitz
 	 */
 	public void initializeAnalysisSideBar() {
 		semanticLabel = new JLabel(Messages.getString("Tools.semanticalAnalysis.text"));
@@ -615,8 +566,8 @@ public class EditorPanel extends JPanel {
 	}
 
 	/**
-	 * 
-	 * @author Lennart Oess, Arthur Vetter, Jens Tessen, Heiko Herzog
+     *
+     * @author Lennart Oess, Arthur Vetter, Jens Tessen, Heiko Herzog
 	 * @editor Martin Meitz
 	 */
 	public void showAnalysisBar() {
@@ -628,11 +579,11 @@ public class EditorPanel extends JPanel {
 			if (metricsBarVisible) {
 				hideMetricsBar();
 			}
-			
+
 			if (p2TBarVisible) {
 				hideP2TBar();
 			}
-			
+
 			remove(m_mainSplitPane);
 			getContainer();
 			qualitativeAnalysisSideBar.refresh();
@@ -662,8 +613,8 @@ public class EditorPanel extends JPanel {
 			analysisBarVisible = true;
 			revalidate();
 			editorSize.resize(false);
-			mainsplitPaneWithAnalysisBar.setDividerLocation((int) (getWidth() - editorSize.SIDEBAR_WIDTH));
-			mainsplitPaneWithAnalysisBar.setResizeWeight(1);
+            mainsplitPaneWithAnalysisBar.setDividerLocation(getWidth() - editorSize.SIDEBAR_WIDTH);
+            mainsplitPaneWithAnalysisBar.setResizeWeight(1);
 		}
 	}
 
@@ -671,8 +622,8 @@ public class EditorPanel extends JPanel {
 	 * Shows the metrics sidebar and resize the editor window. Replaces the
 	 * normal EditorSplitPane with another SplitPane with the MetricsSidebar on
 	 * the right side.
-	 * 
-	 * @author Mathias Gruschinske, Stefan Hackenberg
+     *
+     * @author Mathias Gruschinske, Stefan Hackenberg
 	 */
 	public void showMetricsBar() {
 		if (metricsBarVisible) {
@@ -680,11 +631,11 @@ public class EditorPanel extends JPanel {
 		}
 
 		if (!metricsBarVisible) {
-			
+
 			if (analysisBarVisible) {
 				hideAnalysisBar();
 			}
-			
+
 			if (p2TBarVisible) {
 				hideP2TBar();
 			}
@@ -729,21 +680,21 @@ public class EditorPanel extends JPanel {
 			// new calculation of the size from editor window (only width)
 			editorSize.resize(false);
 
-			mainsplitPaneWithAnalysisBar.setDividerLocation((int) (getWidth() - editorSize.SIDEBAR_WIDTH));
-			mainsplitPaneWithAnalysisBar.setResizeWeight(1);
+            mainsplitPaneWithAnalysisBar.setDividerLocation(getWidth() - editorSize.SIDEBAR_WIDTH);
+            mainsplitPaneWithAnalysisBar.setResizeWeight(1);
 
 			metricsSideBar.setKeyLabelWidth();
 		}
 	}
 
+    public boolean isRotateSelected() {
+        return m_orientation.isRotateSelected();
+    }
+
 	public void setRotateSelected(boolean rotateSelected) {
 		m_orientation.setRotateSelected(rotateSelected);
 		if (analysisBarVisible && !metricsBarVisible)
 			qualitativeAnalysisSideBar.showTStarIfPossible();
-	}
-
-	public boolean isRotateSelected() {
-		return m_orientation.isRotateSelected();
 	}
 
 	public void setTStarEnabled(boolean tStarEnabled) {
@@ -763,9 +714,13 @@ public class EditorPanel extends JPanel {
 		ConfigurationManager.getConfiguration().setColorOn(active);
 	}
 
-	public NetColorScheme getM_understandColoring() {
-		return m_understandColoring;
+    public NetColorScheme getUnderstandColoring() {
+        return m_understandColoring;
 	}
+
+    public void setUnderstandColoring(NetColorScheme newScheme) {
+        m_understandColoring = newScheme;
+    }
 
 	/**
 	 * @author Lennart Oess, Arthur Vetter, Jens Tessen, Heiko Herzog
@@ -781,13 +736,13 @@ public class EditorPanel extends JPanel {
 		return qualitativeAnalysisSideBar;
 	}
 
-	public void setAutomaticResize(boolean automaticresize) {
-		automaticResize = automaticresize;
-	}
-
 	public boolean isAutomaticResize() {
 		return automaticResize;
 	}
+
+    public void setAutomaticResize(boolean automaticresize) {
+        automaticResize = automaticresize;
+    }
 
 	public JSplitPane getMainSplitPane() {
 		return m_mainSplitPane;
@@ -826,13 +781,13 @@ public class EditorPanel extends JPanel {
 
 	/**
 	 * Calls the algorithms for rotating the view and the elements
-	 * 
-	 * @param editorVC
+     *
+     * @param editorVC
 	 */
 	public void rotateLayout(EditorVC editorVC) {
 		// Is necessary to switch off the undoManager
-		if (((WoPeDUndoManager) editorVC.getGraph().getUndoManager()) != null) {
-			((WoPeDUndoManager) editorVC.getGraph().getUndoManager()).setEnabled(false);
+        if (editorVC.getGraph().getUndoManager() != null) {
+            ((WoPeDUndoManager) editorVC.getGraph().getUndoManager()).setEnabled(false);
 		}
 		editorVC.getEditorPanel().m_orientation.rotateView(editorVC.getModelProcessor().getElementContainer());
 
@@ -896,8 +851,8 @@ public class EditorPanel extends JPanel {
 
 			remove(m_mainSplitPane);
 			getContainer();
-			
-			m_rightSideTreeViewWithAnalysisBar = new JSplitPane(JSplitPane.VERTICAL_SPLIT, m_rightSideTreeView,
+
+            m_rightSideTreeViewWithAnalysisBar = new JSplitPane(JSplitPane.VERTICAL_SPLIT, m_rightSideTreeView,
 					p2tSideBarPanel);
 			if (isOverviewPanelVisible() && isTreeviewPanelVisible()) {
 				m_rightSideTreeViewWithAnalysisBar.setDividerLocation(200);
@@ -922,8 +877,8 @@ public class EditorPanel extends JPanel {
 			p2TBarVisible = true;
 			revalidate();
 			editorSize.resize(false);
-			mainsplitPaneWithP2TBar.setDividerLocation((int) (getWidth() - editorSize.SIDEBAR_WIDTH));
-			mainsplitPaneWithP2TBar.setResizeWeight(1);
+            mainsplitPaneWithP2TBar.setDividerLocation(getWidth() - editorSize.SIDEBAR_WIDTH);
+            mainsplitPaneWithP2TBar.setResizeWeight(1);
 
 			// Trigger callback on P2T side bar.
 			p2tSideBar.onSideBarShown(true);
@@ -954,6 +909,51 @@ public class EditorPanel extends JPanel {
 
 			// Trigger callback on P2T side bar.
 			p2tSideBar.onSideBarShown(false);
-		}
+        }
+    }
+
+    /**
+     * @author Svenja label with mouse listener and icon to close the
+     *         overviewpanel or the treeviewPanel
+     */
+    public class HideLabel extends JLabel {
+
+        private static final long serialVersionUID = 1L;
+
+        public HideLabel(Icon icon, final JPanel panel) {
+            super(icon);
+
+            this.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 0));
+
+            this.addMouseListener(new MouseListener() {
+
+                public void mouseReleased(MouseEvent e) {
+                }
+
+                public void mousePressed(MouseEvent e) {
+                }
+
+                public void mouseEntered(MouseEvent arg0) {
+                    setCursor(new Cursor(Cursor.HAND_CURSOR));
+                }
+
+                public void mouseExited(MouseEvent arg0) {
+                    setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+                }
+
+                public void mouseClicked(MouseEvent e) {
+                    if (panel == overviewPanel) {
+                        setOverviewPanelVisible(false);
+                    } else if (panel == treeviewPanel) {
+                        setTreeviewPanelVisible(false);
+                    } else if (panel == analysisSideBarPanel) {
+                        hideAnalysisBar();
+                    } else if (panel == p2tSideBarPanel) {
+                        hideP2TBar();
+                    }
+                    propertyChangeSupport.firePropertyChange("Sidebar", null, null);
+                }
+            });
+        }
 	}
 }

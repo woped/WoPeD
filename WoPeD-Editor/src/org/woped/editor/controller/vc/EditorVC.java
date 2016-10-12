@@ -1,8 +1,41 @@
 package org.woped.editor.controller.vc;
 
-import java.awt.Cursor;
-import java.awt.Point;
-import java.awt.Rectangle;
+import org.jgraph.event.GraphModelEvent;
+import org.jgraph.event.GraphModelListener;
+import org.jgraph.event.GraphSelectionEvent;
+import org.jgraph.event.GraphSelectionListener;
+import org.jgraph.graph.*;
+import org.woped.core.config.ConfigurationManager;
+import org.woped.core.controller.*;
+import org.woped.core.controller.IViewListener;
+import org.woped.core.model.ArcModel;
+import org.woped.core.model.CreationMap;
+import org.woped.core.model.ModelElementContainer;
+import org.woped.core.model.PetriNetModelProcessor;
+import org.woped.core.model.petrinet.*;
+import org.woped.core.utilities.LoggerManager;
+import org.woped.core.utilities.Utils;
+import org.woped.editor.Constants;
+import org.woped.editor.controller.*;
+import org.woped.editor.controller.vep.ViewEvent;
+import org.woped.editor.graphbeautifier.AdvancedDialog;
+import org.woped.editor.graphbeautifier.SGYGraph;
+import org.woped.editor.gui.IEditorProperties;
+import org.woped.editor.view.ViewFactory;
+import org.woped.gui.translations.Messages;
+import org.woped.qualanalysis.service.IQualanalysisService;
+import org.woped.qualanalysis.service.QualAnalysisServiceFactory;
+import org.woped.qualanalysis.simulation.TokenGameController;
+import org.woped.qualanalysis.structure.NetAlgorithms;
+import org.woped.qualanalysis.structure.StructuralAnalysis;
+import org.woped.qualanalysis.structure.components.ArcConfiguration;
+import org.woped.quantana.gui.QuantitativeSimulationDialog;
+
+import javax.swing.*;
+import javax.swing.event.InternalFrameEvent;
+import javax.swing.event.InternalFrameListener;
+import javax.swing.tree.TreeNode;
+import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.ClipboardOwner;
 import java.awt.datatransfer.Transferable;
@@ -14,81 +47,8 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeSupport;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.LinkedList;
+import java.util.*;
 import java.util.List;
-import java.util.Map;
-import java.util.Vector;
-
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
-import javax.swing.event.InternalFrameEvent;
-import javax.swing.event.InternalFrameListener;
-import javax.swing.tree.TreeNode;
-
-import org.jgraph.event.GraphModelEvent;
-import org.jgraph.event.GraphModelListener;
-import org.jgraph.event.GraphSelectionEvent;
-import org.jgraph.event.GraphSelectionListener;
-import org.jgraph.graph.AttributeMap;
-import org.jgraph.graph.BasicMarqueeHandler;
-import org.jgraph.graph.DefaultGraphCell;
-import org.jgraph.graph.DefaultPort;
-import org.jgraph.graph.GraphCell;
-import org.jgraph.graph.GraphConstants;
-import org.jgraph.graph.ParentMap;
-import org.jgraph.graph.Port;
-import org.jgraph.graph.PortView;
-import org.woped.core.config.ConfigurationManager;
-import org.woped.core.controller.AbstractApplicationMediator;
-import org.woped.core.controller.AbstractGraph;
-import org.woped.core.controller.AbstractMarqueeHandler;
-import org.woped.core.controller.AbstractViewEvent;
-import org.woped.core.controller.IEditor;
-import org.woped.core.controller.IViewListener;
-import org.woped.core.model.ArcModel;
-import org.woped.core.model.CreationMap;
-import org.woped.core.model.IntPair;
-import org.woped.core.model.ModelElementContainer;
-import org.woped.core.model.PetriNetModelProcessor;
-import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
-import org.woped.core.model.petrinet.GroupModel;
-import org.woped.core.model.petrinet.NameModel;
-import org.woped.core.model.petrinet.OperatorTransitionModel;
-import org.woped.core.model.petrinet.PlaceModel;
-import org.woped.core.model.petrinet.SubProcessModel;
-import org.woped.core.model.petrinet.TransitionModel;
-import org.woped.core.model.petrinet.TransitionResourceModel;
-import org.woped.core.model.petrinet.TriggerModel;
-import org.woped.core.utilities.LoggerManager;
-import org.woped.core.utilities.Utils;
-import org.woped.editor.Constants;
-import org.woped.editor.controller.ApplicationMediator;
-import org.woped.editor.controller.EditorClipboard;
-import org.woped.editor.controller.EditorViewEvent;
-import org.woped.editor.controller.PetriNetMarqueeHandler;
-import org.woped.editor.controller.VisualController;
-import org.woped.editor.controller.WoPeDJGraph;
-import org.woped.editor.controller.WoPeDJGraphGraphModel;
-import org.woped.editor.controller.WoPeDUndoManager;
-import org.woped.editor.controller.vep.ViewEvent;
-import org.woped.editor.graphbeautifier.AdvancedDialog;
-import org.woped.editor.graphbeautifier.SGYGraph;
-import org.woped.editor.gui.IEditorProperties;
-import org.woped.editor.view.ViewFactory;
-import org.woped.qualanalysis.service.IQualanalysisService;
-import org.woped.qualanalysis.service.QualAnalysisServiceFactory;
-import org.woped.qualanalysis.simulation.TokenGameController;
-import org.woped.qualanalysis.structure.NetAlgorithms;
-import org.woped.qualanalysis.structure.StructuralAnalysis;
-import org.woped.qualanalysis.structure.components.ArcConfiguration;
-import org.woped.quantana.gui.QuantitativeSimulationDialog;
-import org.woped.gui.translations.Messages;
 
 /*
  * 
@@ -478,7 +438,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
                 return group;
             }
 
-            getEditorPanel().m_understandColoring.update();
+            getEditorPanel().getUnderstandColoring().update();
             return element;
         } else {
             LoggerManager.error(Constants.EDITOR_LOGGER,
@@ -527,9 +487,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
      * @return
      */
     public ArcModel createArc(CreationMap map, boolean insertIntoCache) {
-        ArcModel arc = null;
-        String sourceId = map.getArcSourceId();
-        String targetId = map.getArcTargetId();
+        ArcModel arc;
         Point2D[] pointArray = map.getArcPoints().toArray(new Point2D[0]);
 
         arc = createArc(map, pointArray);
@@ -540,7 +498,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 
         getGraph().connect(arc, insertIntoCache);
 
-        getEditorPanel().m_understandColoring.update();
+        getEditorPanel().getUnderstandColoring().update();
 
         if (arc != null) {
             // arc.setRoute(map.isArcRoute());
@@ -663,7 +621,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
             }
         }
         deleteOnlyCells(uniqueResult.toArray(), withGraph);
-        getEditorPanel().m_understandColoring.update();
+        getEditorPanel().getUnderstandColoring().update();
         getEditorPanel().autoRefreshAnalysisBar();
     }
 
@@ -1134,33 +1092,8 @@ public class EditorVC implements KeyListener, MouseWheelListener,
             toSelectElements.add(tempElement.getParent());
         }
 
-		/* insert arcs */
-        Iterator<String> arcIter = pasteArcs.keySet().iterator();
-        ArcModel tempArc;
-        Point2D point;
-        CreationMap cmap = CreationMap.createMap();
-        while (arcIter.hasNext()) {
-            currentArcMap = pasteArcs.get(arcIter.next());
-            if ((currentArcMap.getArcSourceId() != null)
-                    && (currentArcMap.getArcTargetId()) != null) {
+        pasteArcs(pasteArcs, deltaX, deltaY, toSelectElements);
 
-                cmap.setArcSourceId(currentArcMap.getArcSourceId());
-                cmap.setArcTargetId(currentArcMap.getArcTargetId());
-                tempArc = createArc(cmap, true);
-
-                // It is possible that an arc could not be created, because either its source
-                // or target element are missing. Simply ignore the arc in this case
-                if (tempArc == null)
-                    continue;
-
-                for (Point2D p : currentArcMap.getArcPoints()) {
-                    point = new Point2D.Double(p.getX() + deltaX, p.getY() + deltaY);
-                    tempArc.addPoint(point);
-                }
-
-                toSelectElements.add(tempArc);
-            }
-        }
 
         // End of atomic graph update
         getGraph().getModel().endUpdate();
@@ -1174,9 +1107,48 @@ public class EditorVC implements KeyListener, MouseWheelListener,
         getGraph().setSelectionCells(toSelectElements.toArray());
         copySelection();
         getGraph().setCursor(Cursor.getDefaultCursor());
-        getEditorPanel().m_understandColoring.update();
+        getEditorPanel().getUnderstandColoring().update();
 
 
+    }
+
+    void pasteArcs(Map<String, CreationMap> pasteArcs, int deltaX, int deltaY, Vector<Object> toSelectElements) {
+        CreationMap currentArcMap;/* insert arcs */
+        Iterator<String> arcIter = pasteArcs.keySet().iterator();
+        ArcModel tempArc = null;
+        Point2D point;
+
+        while (arcIter.hasNext()) {
+            currentArcMap = pasteArcs.get(arcIter.next());
+            tempArc = pasteArc(currentArcMap, deltaX, deltaY);
+
+            if (tempArc == null)
+                continue;
+
+            toSelectElements.add(tempArc);
+        }
+    }
+
+    ArcModel pasteArc(CreationMap arcMap, int deltaX, int deltaY) {
+
+        if ((arcMap.getArcSourceId() == null) || (arcMap.getArcTargetId()) == null) {
+            return null;
+        }
+
+        CreationMap map = (CreationMap) arcMap.clone();
+
+        // FIXME: Leaving the original points in the map leads to a different result.
+        // This is because of the 2 standard points added to each arc while drawing.
+        map.setArcPoints(new Vector<>());
+
+        ArcModel arc = createArc(map, true);
+
+        for (Point2D point : arcMap.getArcPoints()) {
+            point.setLocation(point.getX() + deltaX, point.getY() + deltaY);
+            arc.addPoint(point);
+        }
+
+        return arc;
     }
 
     private Point getMiddleOfSelection(Map<String, CreationMap> maps) {
@@ -1208,7 +1180,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
             copySelection();
             deleteSelection();
         }
-        getEditorPanel().m_understandColoring.update();
+        getEditorPanel().getUnderstandColoring().update();
     }
 
     /**
@@ -2069,7 +2041,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
                     "ACTIVATE Understandability ");
             getEditorPanel().setUnderstandabilityColoringEnabled(true);
         }
-        getEditorPanel().m_understandColoring.update();
+        getEditorPanel().getUnderstandColoring().update();
         // Update the UI representation
         getGraph().updateUI();
         m_propertyChangeSupport.firePropertyChange("Update", null, null);
@@ -2162,7 +2134,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
         getEditorPanel().m_treeModel = null;
         getEditorPanel().editorSize = null;
         m_mediator = null;
-        getEditorPanel().m_understandColoring = null;
+        getEditorPanel().setUnderstandColoring(null);
     }
 
     public void checkSubprocessEditors(Vector<Object> selectedElement) {
@@ -2216,6 +2188,17 @@ public class EditorVC implements KeyListener, MouseWheelListener,
         return editorPanel;
     }
 
+    /**
+     * Sets the editor panel.
+     * <p>
+     * Used for testing purposes
+     *
+     * @param panel the new panel to set.
+     */
+    void setEditorPanel(EditorPanel panel) {
+        this.editorPanel = panel;
+    }
+
     public String getName() {
         return getEditorPanel().getName();
     }
@@ -2254,5 +2237,4 @@ public class EditorVC implements KeyListener, MouseWheelListener,
     public void hideP2TBar() {
         editorPanel.hideP2TBar();
     }
-
 }

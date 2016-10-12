@@ -434,6 +434,8 @@ public class ArcModel extends DefaultEdge implements Serializable {
         map.setArcSourceId(getSourceId());
         map.setArcTargetId(getTargetId());
         List<Object> points = GraphConstants.getPoints(getAttributes());
+        points = points != null ? points : new Vector<>(); // ensure points not null
+
         Vector<Object> newPoints = new Vector<Object>();
         for (int i = 1; i < points.size() - 1; i++) {
             newPoints.add(new IntPair((int) ((Point2D) points.get(i)).getX(), (int) ((Point2D) points.get(i)).getY()));
