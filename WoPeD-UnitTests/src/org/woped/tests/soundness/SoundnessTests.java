@@ -1,8 +1,5 @@
 package org.woped.tests.soundness;
 
-import junit.framework.Test;
-import junit.framework.TestSuite;
-
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.woped.tests.qualanalysis.soundness.algorithms.basedonlowlevelpetrinet.sourcesink.SourceSinkTestTest;
@@ -20,12 +17,4 @@ import org.woped.tests.qualanalysis.soundness.marking.MarkingTest;
 		StronglyConnectedComponentTestGenTarjanTest.class, MarkingTest.class })
 
 public class SoundnessTests {
-
-	public static Test suite () {
-		TestSuite suite= new TestSuite("Test for the whole soundess stuff");
-		//$JUnit-BEGIN$
-		
-		//$JUnit-END$
-		return suite;
-	}
 }

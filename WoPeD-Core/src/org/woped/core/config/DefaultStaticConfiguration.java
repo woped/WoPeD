@@ -91,14 +91,18 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 	public static int DEFAULT_BUSINESSDASHBOARD_PORT = 2711;
 	public static int DEFAULT_BUSINESSDASHBOARD_MAXVALUES = 1000;
 	public static boolean DEFAULT_BUSINESSDASHBOARD_USEBYDEFAULT = false;
-	
-	// File
+    // Booleans for alpha-functions (TEST) later integration in configuration &
+    // GUI
+    public static boolean ACTIVATE_NET_ROUTING = false;
+    public static boolean ACTIVATE_ANNEALING_LAYOUT = false;
+    // Language
+    public Locale locale = Locale.getDefault();
+    // File
 	private String homedir = "";
 	private String logdir = "";
 	private String defaultHomedir = "";
 	private String currentWorkingdir = "";
 	private String userdir = "";
-
 	// Editor
 	private boolean insertCopy = false;
 	private boolean importToolspec = true;
@@ -114,8 +118,6 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 	private Color portColor = DEFAULT_PORT_COLOR;
 	// GUI
 	private String lnf = null;
-	// Language
-	public Locale locale = null;
 	private String language = DEFAULT_LANGUAGE;
 	private String country = DEFAULT_COUNTRY;
 	private String variant = DEFAULT_VARIANT;
@@ -135,21 +137,13 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 	// P2T
 	private String process2text_serverHost = DEFAULT_PROCESS2TEXT_HOST;
 	private int process2text_serverPort = DEFAULT_PROCESS2TEXT_PORT;
-	private String process2text_serverUri = DEFAULT_PROCESS2TEXT_URI;
-	private boolean process2text_use = DEFAULT_PROCESS2TEXT_USE;
 
 	//Dashboard
-	
-	private int businessdashboard_serverport = DEFAULT_BUSINESSDASHBOARD_PORT;
+    private String process2text_serverUri = DEFAULT_PROCESS2TEXT_URI;
+    private boolean process2text_use = DEFAULT_PROCESS2TEXT_USE;
+    private int businessdashboard_serverport = DEFAULT_BUSINESSDASHBOARD_PORT;
 	private int businessdashboard_maxvalues = DEFAULT_BUSINESSDASHBOARD_MAXVALUES;
 	private boolean businessdashboard_usebydefault = DEFAULT_BUSINESSDASHBOARD_USEBYDEFAULT;
-	
-	
-	// Booleans for alpha-functions (TEST) later integration in configuration &
-	// GUI
-	public static boolean ACTIVATE_NET_ROUTING = false;
-	public static boolean ACTIVATE_ANNEALING_LAYOUT = false;
-
 	// Understandability Coloring
 	private boolean colorOn = false;
 	private int coloringAlgorithmMode = 0;
@@ -220,9 +214,17 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 		return headsize;
 	}
 
+    public void setArrowheadSize(int headSize) {
+        this.headsize = headSize;
+    }
+
 	public int getArrowWidth() {
 		return arrowwidth;
 	}
+
+    public void setArrowWidth(int width) {
+        this.arrowwidth = width;
+    }
 
 	public Color getSelectionColor() {
 		return selectionColor;
@@ -236,17 +238,33 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 		return homedir;
 	}
 
+    public void setHomedir(String homedir) {
+        this.homedir = homedir;
+    }
+
 	public String getDefaultHomedir() {
 		return defaultHomedir;
 	}
+
+    public void setDefaultHomedir(String homedir) {
+        this.defaultHomedir = homedir;
+    }
 
 	public String getCurrentWorkingdir() {
 		return currentWorkingdir;
 	}
 
+    public void setCurrentWorkingdir(String homedir) {
+        this.defaultHomedir = homedir;
+    }
+
 	public String getLogdir() {
 		return logdir;
 	}
+
+    public void setLogdir(String logdir) {
+        this.logdir = logdir;
+    }
 
 	// Start Understandability Coloring
 	public boolean getColorOn() {
@@ -261,65 +279,129 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 		return color1;
 	}
 
+    public void setColor1(int rgb) {
+        color1 = rgb;
+    }
+
 	public int getColor2() {
 		return color2;
 	}
+
+    public void setColor2(int rgb) {
+        color2 = rgb;
+    }
 
 	public int getColor3() {
 		return color3;
 	}
 
+    public void setColor3(int rgb) {
+        color3 = rgb;
+    }
+
 	public int getColor4() {
 		return color4;
 	}
+
+    public void setColor4(int rgb) {
+        color4 = rgb;
+    }
 
 	public int getColor5() {
 		return color5;
 	}
 
+    public void setColor5(int rgb) {
+        color5 = rgb;
+    }
+
 	public int getColor6() {
 		return color6;
 	}
+
+    public void setColor6(int rgb) {
+        color6 = rgb;
+    }
 
 	public int getColor7() {
 		return color7;
 	}
 
+    public void setColor7(int rgb) {
+        color7 = rgb;
+    }
+
 	public int getColor8() {
 		return color8;
 	}
+
+    public void setColor8(int rgb) {
+        color8 = rgb;
+    }
 
 	public int getColor9() {
 		return color9;
 	}
 
+    public void setColor9(int rgb) {
+        color9 = rgb;
+    }
+
 	public int getColor10() {
 		return color10;
 	}
+
+    public void setColor10(int rgb) {
+        color10 = rgb;
+    }
 
 	public int getColor11() {
 		return color11;
 	}
 
+    public void setColor11(int rgb) {
+        color11 = rgb;
+    }
+
 	public int getColor12() {
 		return color12;
 	}
+
+    public void setColor12(int rgb) {
+        color12 = rgb;
+    }
 
 	public int getColor13() {
 		return color13;
 	}
 
+    public void setColor13(int rgb) {
+        color13 = rgb;
+    }
+
 	public int getColor14() {
 		return color14;
 	}
+
+    public void setColor14(int rgb) {
+        color14 = rgb;
+    }
 
 	public int getColor15() {
 		return color15;
 	}
 
+    public void setColor15(int rgb) {
+        color15 = rgb;
+    }
+
 	public int getColor16() {
 		return color16;
 	}
+
+    public void setColor16(int rgb) {
+        color16 = rgb;
+    }
 
 	public Color[] getUnderstandColors() {
 		return UnderstandColorArray;
@@ -377,6 +459,8 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 		return defaultcolor13;
 	}
 
+    // End Understandability Coloring
+
 	public int getDefaultColor14() {
 		return defaultcolor14;
 	}
@@ -393,70 +477,6 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 		return defaultUnderstandColorArray;
 	}
 
-	public void setColor1(int rgb) {
-		color1 = rgb;
-	}
-
-	public void setColor2(int rgb) {
-		color2 = rgb;
-	}
-
-	public void setColor3(int rgb) {
-		color3 = rgb;
-	}
-
-	public void setColor4(int rgb) {
-		color4 = rgb;
-	}
-
-	public void setColor5(int rgb) {
-		color5 = rgb;
-	}
-
-	public void setColor6(int rgb) {
-		color6 = rgb;
-	}
-
-	public void setColor7(int rgb) {
-		color7 = rgb;
-	}
-
-	public void setColor8(int rgb) {
-		color8 = rgb;
-	}
-
-	public void setColor9(int rgb) {
-		color9 = rgb;
-	}
-
-	public void setColor10(int rgb) {
-		color10 = rgb;
-	}
-
-	public void setColor11(int rgb) {
-		color11 = rgb;
-	}
-
-	public void setColor12(int rgb) {
-		color12 = rgb;
-	}
-
-	public void setColor13(int rgb) {
-		color13 = rgb;
-	}
-
-	public void setColor14(int rgb) {
-		color14 = rgb;
-	}
-
-	public void setColor15(int rgb) {
-		color15 = rgb;
-	}
-
-	public void setColor16(int rgb) {
-		color16 = rgb;
-	}
-
 	public int getAlgorithmMode() {
 		return coloringAlgorithmMode;
 	}
@@ -465,11 +485,13 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 		coloringAlgorithmMode = n;
 	}
 
-	// End Understandability Coloring
-
 	public String getLookAndFeel() {
 		return lnf;
 	}
+
+    public void setLookAndFeel(String className) {
+        lnf = className;
+    }
 
 	public Vector<?> getRecentFiles() {
 		return new Vector<Object>();
@@ -479,33 +501,60 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 		return new Dimension(800, 600);
 	}
 
+    public void setWindowSize(Dimension windowSize) {
+    }
+
 	public boolean isMaximizeWindow() {
 		return true;
 	}
+
+    public void setMaximizeWindow(boolean maximize) {
+    }
 
 	public int getWindowX() {
 		return 0;
 	}
 
+    public void setWindowX(int windowX) {
+    }
+
 	public int getWindowY() {
 		return 0;
 	}
+
+    public void setWindowY(int windowY) {
+    }
 
 	public String getWoflanPath() {
 		return "";
 	}
 
+    public void setWoflanPath(String woflanPath) {
+    }
+
 	public boolean isEditingOnCreation() {
 		return editoncreation;
 	}
+
+    public void setEditingOnCreation(boolean editingOnCreation) {
+        this.editoncreation = editingOnCreation;
+    }
 
 	public boolean isExportToolspecific() {
 		return exportToolspec;
 	}
 
+    public void setExportToolspecific(boolean exportToolspecific) {
+        this.exportToolspec = exportToolspecific;
+    }
+
 	public boolean isFillArrowHead() {
 		return fillArrow;
 	}
+
+    public void setFillArrowHead(boolean fill) {
+        this.fillArrow = fill;
+    }
 
 	public boolean isHomedirSet() {
 		return getHomedir() != null && !getHomedir().equals("");
@@ -524,126 +573,71 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 		return importToolspec;
 	}
 
+    public void setImportToolspecific(boolean importToolspecific) {
+        this.importToolspec = importToolspecific;
+    }
+
 	public boolean isInsertCOPYwhenCopied() {
 		return insertCopy;
 	}
+
+    public void setInsertCOPYwhenCopied(boolean insertCOPYwhenCopied) {
+        insertCopy = insertCOPYwhenCopied;
+    }
 
 	public boolean isRoundRouting() {
 		return roundRouting;
 	}
 
+    public void setRoundRouting(boolean round) {
+        this.roundRouting = round;
+    }
+
 	public boolean isShowGrid() {
 		return showgrid;
 	}
+
+    public void setShowGrid(boolean showGrid) {
+        this.showgrid = showGrid;
+    }
 
 	public boolean isSmartEditing() {
 		return smartediting;
 	}
 
+    public void setSmartEditing(boolean smartEditing) {
+        this.smartediting = smartEditing;
+    }
+
 	public boolean isTpnSaveElementAsName() {
 		return false;
 	}
 
-	public boolean isUseWoflan() {
-		return false;
+    public void setTpnSaveElementAsName(boolean b) {
+    }
+
+    public boolean isUseWoflan() {
+        return false;
 	}
 
-	public boolean isUseWoflanDLL() {
-		return false;
-	}
+    public void setUseWoflan(boolean useWoflan) {
+    }
 
-	public void removeAllRecentFiles() {
-	}
+    public boolean isUseWoflanDLL() {
+        return false;
+    }
 
-	public void removeRecentFile(String name, String path) {
-	}
+    public void setUseWoflanDLL(boolean useWoflanDLL) {
+    }
 
-	public void setArrowheadSize(int headSize) {
-		this.headsize = headSize;
-	}
+    public void removeAllRecentFiles() {
+    }
 
-	public void setArrowWidth(int width) {
-		this.arrowwidth = width;
-	}
-
-	public void setEditingOnCreation(boolean editingOnCreation) {
-		this.editoncreation = editingOnCreation;
-	}
-
-	public void setExportToolspecific(boolean exportToolspecific) {
-		this.exportToolspec = exportToolspecific;
-	}
-
-	public void setFillArrowHead(boolean fill) {
-		this.fillArrow = fill;
-	}
-
-	public void setHomedir(String homedir) {
-		this.homedir = homedir;
-	}
-
-	public void setDefaultHomedir(String homedir) {
-		this.defaultHomedir = homedir;
-	}
+    public void removeRecentFile(String name, String path) {
+    }
 
 	public String getUserdir() {
 		return this.userdir;
-	}
-
-	public void setCurrentWorkingdir(String homedir) {
-		this.defaultHomedir = homedir;
-	}
-
-	public void setLogdir(String logdir) {
-		this.logdir = logdir;
-	}
-
-	public void setImportToolspecific(boolean importToolspecific) {
-		this.importToolspec = importToolspecific;
-	}
-
-	public void setInsertCOPYwhenCopied(boolean insertCOPYwhenCopied) {
-		insertCopy = insertCOPYwhenCopied;
-	}
-
-	public void setLookAndFeel(String className) {
-		lnf = className;
-	}
-
-	public void setRoundRouting(boolean round) {
-		this.roundRouting = round;
-	}
-
-	public void setShowGrid(boolean showGrid) {
-		this.showgrid = showGrid;
-	}
-
-	public void setSmartEditing(boolean smartEditing) {
-		this.smartediting = smartEditing;
-	}
-
-	public void setTpnSaveElementAsName(boolean b) {
-	}
-
-	public void setUseWoflan(boolean useWoflan) {
-	}
-
-	public void setUseWoflanDLL(boolean useWoflanDLL) {
-	}
-
-	public void setWindowSize(Dimension windowSize) {
-	}
-
-	public void setMaximizeWindow(boolean maximize) {
-	}
-
-	public void setWindowX(int windowX) {
-	}
-
-	public void setWindowY(int windowY) {
-	}
-
-	public void setWoflanPath(String woflanPath) {
 	}
 
 	/**
@@ -732,11 +726,11 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 		return 2;
 	}
 
+    public void setAlgorithmDecimalPlaces(int n) {
+    }
+
 	public int getVariableDecimalPlaces() {
 		return 0;
-	}
-
-	public void setAlgorithmDecimalPlaces(int n) {
 	}
 
 	public void setVariableDecimalPlaces(int n) {
@@ -791,15 +785,15 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 	}
 
 	@Override
-	public void setApromoreUsername(String user) {
-		this.apromore_username = user;
+    public String getApromoreUsername() {
 
-	}
+        return apromore_username;
+    }
 
 	@Override
-	public String getApromoreUsername() {
+    public void setApromoreUsername(String user) {
+        this.apromore_username = user;
 
-		return apromore_username;
 	}
 
 	@Override
@@ -833,14 +827,14 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 	}
 
 	@Override
-	public boolean getApromoreUseProxy() {
+    public void setApromoreServerPort(int port) {
+        apromore_serverport = port;
+    }
+
+    @Override
+    public boolean getApromoreUseProxy() {
 
 		return apromore_useproxy;
-	}
-
-	@Override
-	public void setApromoreServerPort(int port) {
-		apromore_serverport = port;
 	}
 
 	@Override
@@ -850,14 +844,14 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 	}
 
 	@Override
-	public void setApromoreUse(boolean selected) {
-		apromore_use = selected;
-	}
+    public boolean getApromoreUse() {
+        return apromore_use;
+    }
 
 	@Override
-	public boolean getApromoreUse() {
-		return apromore_use;
-	}
+    public void setApromoreUse(boolean selected) {
+        apromore_use = selected;
+    }
 
 	@Override
 	public boolean isRegistered() {
