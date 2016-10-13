@@ -14,14 +14,11 @@ import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.core.model.petrinet.XORJoinSplitOperatorTransitionModel;
 import org.woped.core.utilities.ILogger;
 import org.woped.core.utilities.LoggerManager;
-import org.woped.file.yawl.wfnet.Place;
 import org.woped.qualanalysis.Constants;
 
 import java.beans.PropertyChangeSupport;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 import static org.mockito.internal.verification.VerificationModeFactory.times;
 import static org.woped.core.model.petrinet.AbstractPetriNetElementModel.PLACE_TYPE;
@@ -218,7 +215,7 @@ public class TokenGameControllerTest {
         PlaceModel centerPlace = transition.getCenterPlace();
         centerPlace.setVirtualTokens(1);
 
-        int expected = centerPlace.getVirtualTokenCount() - 1; // Indepentend of arc weight
+        int expected = centerPlace.getVirtualTokenCount() - 1; // Independent of arc weight
         sut.reverseOperatorTransition(reversedArc);
 
         int actual = centerPlace.getVirtualTokenCount();
@@ -584,8 +581,7 @@ public class TokenGameControllerTest {
         PlaceModel p1 = (PlaceModel) container.getElementById("p1");
         p1.setVirtualTokens(arc.getInscriptionValue());
 
-        boolean newState = true;
-        sut.setArcActiveState(arc, newState);
+        sut.setArcActiveState(arc, true);
 
         assertTrue(arc.isActivated());
     }
@@ -601,8 +597,7 @@ public class TokenGameControllerTest {
         PlaceModel p1 = (PlaceModel) container.getElementById("p1");
         p1.setVirtualTokens(arc.getInscriptionValue() - 1);
 
-        boolean newState = true;
-        sut.setArcActiveState(arc, newState);
+        sut.setArcActiveState(arc, true);
 
         assertFalse(arc.isActivated());
     }
@@ -612,9 +607,8 @@ public class TokenGameControllerTest {
         sut = createTestInstance(createSimpleNet());
         ModelElementContainer container = sut.getThisEditor().getModelProcessor().getElementContainer();
 
-        boolean previousState = true;
         ArcModel arc = container.findArc("p1", "t1");
-        arc.setActivated(previousState);
+        arc.setActivated(true);
 
         sut.setArcActiveState(arc, false);
 
