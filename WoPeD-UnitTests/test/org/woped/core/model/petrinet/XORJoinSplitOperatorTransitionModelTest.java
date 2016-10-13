@@ -10,7 +10,7 @@ import org.woped.core.model.PetriNetModelProcessor;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class XORSplitJoinOperatorTransitionModelTest {
+public class XORJoinSplitOperatorTransitionModelTest {
     @Before
     public void setUp() throws Exception {
 
@@ -25,7 +25,7 @@ public class XORSplitJoinOperatorTransitionModelTest {
     public void isActivated_noActiveInputPlaces_returnsFalse() throws Exception {
 
         PetriNetModelProcessor processor = createTestNet();
-        XORSplitJoinOperatorTransitionModel cut = (XORSplitJoinOperatorTransitionModel) processor.getElementContainer().getElementById("t1");
+        XORJoinSplitOperatorTransitionModel cut = (XORJoinSplitOperatorTransitionModel) processor.getElementContainer().getElementById("t1");
 
         assertFalse(cut.isActivated());
     }
@@ -33,7 +33,7 @@ public class XORSplitJoinOperatorTransitionModelTest {
     @Test
     public void isActivated_centerPlaceContainsToken_returnsTrue() throws Exception {
         PetriNetModelProcessor processor = createTestNet();
-        XORSplitJoinOperatorTransitionModel cut = (XORSplitJoinOperatorTransitionModel) processor.getElementContainer().getElementById("t1");
+        XORJoinSplitOperatorTransitionModel cut = (XORJoinSplitOperatorTransitionModel) processor.getElementContainer().getElementById("t1");
 
         PlaceModel centerPlace = cut.getCenterPlace();
         centerPlace.setVirtualTokens(1);
@@ -44,7 +44,7 @@ public class XORSplitJoinOperatorTransitionModelTest {
     @Test
     public void isActivated_hasIncomingActivePlaces_returnsTrue() throws Exception {
         PetriNetModelProcessor processor = createTestNet();
-        XORSplitJoinOperatorTransitionModel cut = (XORSplitJoinOperatorTransitionModel) processor.getElementContainer().getElementById("t1");
+        XORJoinSplitOperatorTransitionModel cut = (XORJoinSplitOperatorTransitionModel) processor.getElementContainer().getElementById("t1");
 
         PlaceModel p1 = (PlaceModel) processor.getElementContainer().getElementById("p1");
         p1.setVirtualTokens(1);
@@ -65,7 +65,7 @@ public class XORSplitJoinOperatorTransitionModelTest {
 
         CreationMap transitionMap = CreationMap.createMap();
         transitionMap.setType(AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE);
-        transitionMap.setOperatorType(OperatorTransitionModel.XOR_SPLITJOIN_TYPE);
+        transitionMap.setOperatorType(OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE);
         transitionMap.setId("t1");
         processor.createElement(transitionMap);
 
