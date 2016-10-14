@@ -15,6 +15,7 @@ import org.woped.core.model.petrinet.XORJoinSplitOperatorTransitionModel;
 import org.woped.core.utilities.ILogger;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.qualanalysis.Constants;
+import org.woped.tests.TestNetGenerator;
 
 import java.beans.PropertyChangeSupport;
 
@@ -28,12 +29,14 @@ public class TokenGameControllerTest {
 
     private TokenGameController sut;
     private ILogger mockLogger;
+    private TestNetGenerator netGenerator;
 
     @Before
     public void setUp() throws Exception {
         mockLogger = mock(ILogger.class);
         LoggerManager.resetForTesting();
         LoggerManager.register(mockLogger, Constants.QUALANALYSIS_LOGGER);
+        netGenerator = new TestNetGenerator();
     }
 
     @After
@@ -400,7 +403,7 @@ public class TokenGameControllerTest {
 
     @Test
     public void produceTokensBackward_arcFromPlaceToTransition_sourcePlaceReceivesToken() throws Exception {
-        sut = createTestInstance(createSimpleNet());
+        sut = createTestInstance(netGenerator.createSimpleNet());
         ModelElementContainer container = sut.getThisEditor().getModelProcessor().getElementContainer();
 
         PlaceModel p1 = (PlaceModel) container.getElementById("p1");
@@ -415,7 +418,7 @@ public class TokenGameControllerTest {
 
     @Test
     public void produceTokensBackward_arcFromTransitionToPlace_logsError() throws Exception {
-        sut = createTestInstance(createSimpleNet());
+        sut = createTestInstance(netGenerator.createSimpleNet());
         ModelElementContainer container = sut.getThisEditor().getModelProcessor().getElementContainer();
 
         ArcModel reversedArc = container.findArc("t1", "p2");
@@ -426,13 +429,13 @@ public class TokenGameControllerTest {
 
     @Test(expected = NullPointerException.class)
     public void produceTokensBackward_arcIsNull_throwsException() throws Exception {
-        sut = createTestInstance(createSimpleNet());
+        sut = createTestInstance(netGenerator.createSimpleNet());
         sut.produceTokensBackward(null);
     }
 
     @Test
     public void produceTokensBackward_arcFromNotExistingSource_doesNothing() throws Exception {
-        sut = createTestInstance(createSimpleNet());
+        sut = createTestInstance(netGenerator.createSimpleNet());
 
         ArcModel reversedArc = mock(ArcModel.class);
         when(reversedArc.getSourceId()).thenReturn("p6");
@@ -442,7 +445,7 @@ public class TokenGameControllerTest {
 
     @Test
     public void produceTokens_arcFromTransitionToPlace_placeReceivesToken() throws Exception {
-        sut = createTestInstance(createSimpleNet());
+        sut = createTestInstance(netGenerator.createSimpleNet());
         ModelElementContainer container = sut.getThisEditor().getModelProcessor().getElementContainer();
 
         PlaceModel p2 = (PlaceModel) container.getElementById("p2");
@@ -457,13 +460,13 @@ public class TokenGameControllerTest {
 
     @Test(expected = NullPointerException.class)
     public void produceTokens_arcIsNull_throwsException() throws Exception {
-        sut = createTestInstance(createSimpleNet());
+        sut = createTestInstance(netGenerator.createSimpleNet());
         sut.produceTokens(null);
     }
 
     @Test
     public void produceTokens_arcFromPlaceToTransition_logsError() throws Exception {
-        sut = createTestInstance(createSimpleNet());
+        sut = createTestInstance(netGenerator.createSimpleNet());
         ModelElementContainer container = sut.getThisEditor().getModelProcessor().getElementContainer();
 
         ArcModel arc = container.findArc("p1", "t1");
@@ -474,7 +477,7 @@ public class TokenGameControllerTest {
 
     @Test
     public void produceTokens_arcToNotExistingPlace_doesNothing() throws Exception {
-        sut = createTestInstance(createSimpleNet());
+        sut = createTestInstance(netGenerator.createSimpleNet());
 
         ArcModel arc = mock(ArcModel.class);
         when(arc.getTargetId()).thenReturn("p6");
@@ -484,7 +487,7 @@ public class TokenGameControllerTest {
 
     @Test
     public void consumeTokens_arcFromPlaceToTransition_placeReducesTokens() throws Exception {
-        sut = createTestInstance(createSimpleNet());
+        sut = createTestInstance(netGenerator.createSimpleNet());
         ModelElementContainer container = sut.getThisEditor().getModelProcessor().getElementContainer();
 
         PlaceModel source = (PlaceModel) container.getElementById("p1");
@@ -501,13 +504,13 @@ public class TokenGameControllerTest {
 
     @Test(expected = NullPointerException.class)
     public void consumeTokens_arcIsNull_throwsException() throws Exception {
-        sut = createTestInstance(createSimpleNet());
+        sut = createTestInstance(netGenerator.createSimpleNet());
         sut.produceTokens(null);
     }
 
     @Test
     public void consumeTokens_arcFromTransitionToPlace_logsWarning() throws Exception {
-        sut = createTestInstance(createSimpleNet());
+        sut = createTestInstance(netGenerator.createSimpleNet());
         ModelElementContainer container = sut.getThisEditor().getModelProcessor().getElementContainer();
 
         ArcModel arc = container.findArc("t1", "p2");
@@ -518,7 +521,7 @@ public class TokenGameControllerTest {
 
     @Test
     public void consumeTokens_arcToNotExistingPlace_doesNothing() throws Exception {
-        sut = createTestInstance(createSimpleNet());
+        sut = createTestInstance(netGenerator.createSimpleNet());
 
         ArcModel arc = mock(ArcModel.class);
         when(arc.getTargetId()).thenReturn("p7");
@@ -528,13 +531,13 @@ public class TokenGameControllerTest {
 
     @Test(expected = NullPointerException.class)
     public void consumeTokensBackward_arcIsNull_throwsException() throws Exception {
-        sut = createTestInstance(createSimpleNet());
+        sut = createTestInstance(netGenerator.createSimpleNet());
         sut.consumeTokensBackward(null);
     }
 
     @Test
     public void consumeTokensBackward_arcFromTransitionToPlace_placeReducesTokens() throws Exception {
-        sut = createTestInstance(createSimpleNet());
+        sut = createTestInstance(netGenerator.createSimpleNet());
         ModelElementContainer container = sut.getThisEditor().getModelProcessor().getElementContainer();
 
         PlaceModel p2 = (PlaceModel) container.getElementById("p2");
@@ -551,7 +554,7 @@ public class TokenGameControllerTest {
 
     @Test
     public void consumeTokensBackward_arcFromPlaceToTransition_logsWarning() throws Exception {
-        sut = createTestInstance(createSimpleNet());
+        sut = createTestInstance(netGenerator.createSimpleNet());
         ModelElementContainer container = sut.getThisEditor().getModelProcessor().getElementContainer();
 
         ArcModel reversedArc = container.findArc("p1", "t1");
@@ -562,7 +565,7 @@ public class TokenGameControllerTest {
 
     @Test
     public void consumeTokensBackward_arcToNotExistingPlace_doesNothing() throws Exception {
-        sut = createTestInstance(createSimpleNet());
+        sut = createTestInstance(netGenerator.createSimpleNet());
 
         ArcModel arc = mock(ArcModel.class);
         when(arc.getTargetId()).thenReturn("p7");
@@ -572,7 +575,7 @@ public class TokenGameControllerTest {
 
     @Test
     public void setArcActiveState_activateAndPlaceFulfillsRequirements_arcIsSetToTrue() throws Exception {
-        sut = createTestInstance(createSimpleNet());
+        sut = createTestInstance(netGenerator.createSimpleNet());
         ModelElementContainer container = sut.getThisEditor().getModelProcessor().getElementContainer();
 
         ArcModel arc = container.findArc("p1", "t1");
@@ -588,7 +591,7 @@ public class TokenGameControllerTest {
 
     @Test
     public void setArcActiveState_activateAndPlaceDoesNotFulfillsRequirements_arcStateIsFalse() throws Exception {
-        sut = createTestInstance(createSimpleNet());
+        sut = createTestInstance(netGenerator.createSimpleNet());
         ModelElementContainer container = sut.getThisEditor().getModelProcessor().getElementContainer();
 
         ArcModel arc = container.findArc("p1", "t1");
@@ -604,7 +607,7 @@ public class TokenGameControllerTest {
 
     @Test
     public void setArcActiveState_deactivateArcIsAlreadyActivated_arcIsNotActivated() throws Exception {
-        sut = createTestInstance(createSimpleNet());
+        sut = createTestInstance(netGenerator.createSimpleNet());
         ModelElementContainer container = sut.getThisEditor().getModelProcessor().getElementContainer();
 
         ArcModel arc = container.findArc("p1", "t1");
@@ -625,27 +628,6 @@ public class TokenGameControllerTest {
         return new TokenGameController(editor, propertyChangedSupport);
     }
 
-    private PetriNetModelProcessor createSimpleNet() {
-
-        PetriNetModelProcessor processor = new PetriNetModelProcessor();
-
-        CreationMap placeMap = CreationMap.createMap();
-        placeMap.setType(AbstractPetriNetElementModel.PLACE_TYPE);
-        for (int i = 1; i <= 2; i++) {
-            placeMap.setId("p" + i);
-            processor.createElement(placeMap);
-        }
-
-        CreationMap transitionMap = CreationMap.createMap();
-        transitionMap.setType(AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE);
-        transitionMap.setId("t1");
-        processor.createElement(transitionMap);
-
-        processor.createArc("p1", "t1");
-        processor.createArc("t1", "p2");
-
-        return processor;
-    }
 
     private PetriNetModelProcessor createXorJoinNet() {
         PetriNetModelProcessor processor = new PetriNetModelProcessor();
@@ -671,14 +653,7 @@ public class TokenGameControllerTest {
     }
 
     private PetriNetModelProcessor createXorJoinSplitNet() {
-        PetriNetModelProcessor processor = new PetriNetModelProcessor();
-
-        CreationMap placeMap = CreationMap.createMap();
-        placeMap.setType(PLACE_TYPE);
-        for (int i = 1; i <= 4; i++) {
-            placeMap.setId("p" + i);
-            processor.createElement(placeMap);
-        }
+        PetriNetModelProcessor processor = netGenerator.createNetWithoutArcs(4, 0);
 
         CreationMap transitionMap = CreationMap.createMap();
         transitionMap.setType(TRANS_OPERATOR_TYPE);
@@ -695,14 +670,7 @@ public class TokenGameControllerTest {
     }
 
     private PetriNetModelProcessor createXorSplitNet() {
-        PetriNetModelProcessor processor = new PetriNetModelProcessor();
-
-        CreationMap placeMap = CreationMap.createMap();
-        placeMap.setType(PLACE_TYPE);
-        for (int i = 1; i <= 3; i++) {
-            placeMap.setId("p" + i);
-            processor.createElement(placeMap);
-        }
+        PetriNetModelProcessor processor = netGenerator.createNetWithoutArcs(3, 0);
 
         CreationMap transitionMap = CreationMap.createMap();
         transitionMap.setType(TRANS_OPERATOR_TYPE);
