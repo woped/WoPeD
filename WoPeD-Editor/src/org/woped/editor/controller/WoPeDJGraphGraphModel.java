@@ -25,24 +25,57 @@ public class WoPeDJGraphGraphModel extends DefaultGraphModel {
 
 	private static final long serialVersionUID = -3150678294281824631L;
 	private EditorVC editor;
-	
-	@SuppressWarnings("serial")
+
+    public WoPeDJGraphGraphModel(EditorVC editor) {
+        super();
+        this.editor = editor;
+    }
+
+    /**
+     * createEdit(inserted, removed, attributes, cs, pm, edits)
+     * <p>
+     * This method is overwritten to supply a custom undoable edit object
+     * that will take care of the custom model (ModelElementContainer et al)
+     * while performing undo / redo
+     */
+    protected DefaultGraphModel.GraphModelEdit createEdit(Object[] inserted,
+                                                          Object[] removed,
+                                                          Map attributes,
+                                                          ConnectionSet cs,
+                                                          ParentMap pm,
+                                                          UndoableEdit[] edits) {
+
+        DefaultGraphModel.GraphModelEdit edit = new WoPeDUndoableEdit(inserted,
+                removed, attributes, cs, pm, editor);
+        if (edit != null) {
+            if (edits != null)
+                for (int i = 0; i < edits.length; i++)
+                    edit.addEdit(edits[i]);
+            edit.end();
+        }
+        return edit;
+    }
+
+    @SuppressWarnings("serial")
 	public class WoPeDUndoableEdit extends DefaultGraphModel.GraphModelEdit
 	{
-	    private EditorVC                         m_editor;
 	    Object[] inserted;
-	    Object[] removed;
+        Object[] removed;
+        private EditorVC m_editor;
 
 	    /**
 	     * TODO: DOCUMENTATION (xraven)
-	     * 
-	     * @param innerEdit
-	     * @param editor
-	     */
-	    WoPeDUndoableEdit(Object[] inserted, Object[] removed, 
-	    		Map<?, ?> attributes, ConnectionSet connectionSet, ParentMap parentMap,
-	    		EditorVC editor) 	    		
-	    {
+         *
+         * @param inserted
+         * @param removed
+         * @param attributes
+         * @param connectionSet
+         * @param parentMap
+         * @param editor
+         */
+        WoPeDUndoableEdit(Object[] inserted, Object[] removed,
+                          Map<?, ?> attributes, ConnectionSet connectionSet, ParentMap parentMap,
+                          EditorVC editor) {
 	    	super(inserted, removed, attributes, connectionSet, parentMap);
 	    	this.inserted = inserted;
 	    	this.removed = removed;
@@ -50,8 +83,8 @@ public class WoPeDJGraphGraphModel extends DefaultGraphModel {
 	    }
 
 	    /*
-	     * (non-Javadoc)
-	     * 
+         * (non-Javadoc)
+	     *
 	     * @see javax.swing.undo.UndoableEdit#die()
 	     */
 	    public void die()
@@ -61,8 +94,8 @@ public class WoPeDJGraphGraphModel extends DefaultGraphModel {
 	    }
 
 	    /*
-	     * (non-Javadoc)
-	     * 
+         * (non-Javadoc)
+	     *
 	     * @see javax.swing.undo.UndoableEdit#undo()
 	     */
 	    public void undo() throws CannotUndoException
@@ -70,20 +103,20 @@ public class WoPeDJGraphGraphModel extends DefaultGraphModel {
 	    	// @TODO: The order in which we update the model is determined by the fact that we are using the view
 	    	// to update the model here, e.g. we use the view's undo manager to restore information about deleted arcs.
 	    	// This is why we have to perform insert operations into the model after its view has been updated.
-	    	
+
 	    	// Perform insert undo for model
 	        deleteElements(inserted);
 	        // Perform undo for view
 	        super.undo();
 	        // Perform delete undo for model
 	        insertElements(removed);
-	        
+
 //	        LoggerManager.debug(Constants.EDITOR_LOGGER, "UNDO\n" + toString());
-	    }    
+        }
 
 	    /*
-	     * (non-Javadoc)
-	     * 
+         * (non-Javadoc)
+	     *
 	     * @see javax.swing.undo.UndoableEdit#redo()
 	     */
 	    public void redo() throws CannotRedoException
@@ -91,12 +124,12 @@ public class WoPeDJGraphGraphModel extends DefaultGraphModel {
 	    	// @TODO: The order in which we update the model is determined by the fact that we are using the view
 	    	// to update the model here, e.g. we use the view's undo manager to restore information about deleted arcs.
 	    	// This is why we have to perform insert operations into the model after its view has been updated
-	    	
+
 	    	// Perform delete redo for model
 	        deleteElements(removed);
 	        // Perform undo for view
-	        super.redo();    	
-	        // Perform insert redo for model
+            super.redo();
+            // Perform insert redo for model
 	        insertElements(inserted);
 
 	 //       LoggerManager.debug(Constants.EDITOR_LOGGER, "REDO\n" + toString());
@@ -104,7 +137,7 @@ public class WoPeDJGraphGraphModel extends DefaultGraphModel {
 
 	    /**
 	     * TODO: DOCUMENTATION (xraven)
-	     * 
+         *
 	     * @param removed
 	     */
 	    private void deleteElements(Object[] removed)
@@ -117,9 +150,9 @@ public class WoPeDJGraphGraphModel extends DefaultGraphModel {
 
 	    /**
 	     * TODO: DOCUMENTATION (xraven)
-	     * 
-	     * @param inserted
-	     */
+         *
+         * @param elementsInput
+         */
 	    private void insertElements(Object[] elementsInput)
 	    {
 	        Object[] elements = Utils.sortArcsLast(elementsInput);
@@ -135,8 +168,8 @@ public class WoPeDJGraphGraphModel extends DefaultGraphModel {
 	                {
 	                	m_editor.getGraph().connect(((ArcModel) elements[i]), false);
 	                    m_editor.getModelProcessor().getElementContainer().addReference((ArcModel) elements[i]);
-	                    ((PetriNetModelProcessor)m_editor.getModelProcessor()).insertArc(((ArcModel) elements[i]), true);
-	                } else if (elements[i] instanceof GroupModel)
+                        m_editor.getModelProcessor().insertArc(((ArcModel) elements[i]), true);
+                    } else if (elements[i] instanceof GroupModel)
 	                {
 	                    AbstractPetriNetElementModel mainModel = ((GroupModel)elements[i]).getMainElement();
 	                    if (!Arrays.asList(elements).contains(mainModel))
@@ -149,10 +182,10 @@ public class WoPeDJGraphGraphModel extends DefaultGraphModel {
 	                {
 	                    LoggerManager.debug(Constants.EDITOR_LOGGER, "Could not insert type:" + elements[i].getClass());
 	                }
-	            }
-	        }
-	        // Update the associated tree model for the side-bar view. 
-	        // @TODO: This is sort of hackish, but in fact the whole solution is:
+                }
+            }
+            // Update the associated tree model for the side-bar view.
+            // @TODO: This is sort of hackish, but in fact the whole solution is:
 	        //
 	        // The tree model is a model trying to follow another model (the one used for the jgraph based
 	        // views). The tree model is fed with content of the other model, but changes are triggered
@@ -208,37 +241,6 @@ public class WoPeDJGraphGraphModel extends DefaultGraphModel {
 	        }
 	        return out.toString();
 	    }
-	}	
-	
-	public WoPeDJGraphGraphModel(EditorVC editor) {
-		super();
-		this.editor = editor;
-	}
-	
-	/**
-	 * createEdit(inserted, removed, attributes, cs, pm, edits)
-	 * 
-	 * This method is overwritten to supply a custom undoable edit object
-	 * that will take care of the custom model (ModelElementContainer et al)
-	 * while performing undo / redo
-	 * 
-	 */	
-	protected DefaultGraphModel.GraphModelEdit createEdit(Object[] inserted,
-            Object[] removed,
-            Map attributes,
-            ConnectionSet cs,
-            ParentMap pm,
-            UndoableEdit[] edits) {
-		
-		DefaultGraphModel.GraphModelEdit edit = new WoPeDUndoableEdit(inserted, 
-						removed, attributes, cs, pm, editor);
-		if (edit != null) {
-			if (edits != null)
-				for (int i = 0; i < edits.length; i++)
-					edit.addEdit(edits[i]);
-			edit.end();
-		}
-		return edit;
 	}
 	
 }
