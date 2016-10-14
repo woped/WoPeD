@@ -58,6 +58,15 @@ public class TokenGameSession implements Runnable {
     private int occurtimes = 3;
     private int delaytime = 1;
 
+    /**
+     * Creates a new instance of a token game session without initializing.
+     * <p>
+     * Access package local for testing purposes.
+     */
+    TokenGameSession() {
+
+    }
+
     public TokenGameSession(TokenGameController tgController, PetriNetModelProcessor PetriNet) {
         this.PetriNet = PetriNet;
         this.tgController = tgController;
@@ -135,10 +144,10 @@ public class TokenGameSession implements Runnable {
 						tgController.getThisEditor().getModelProcessor().getElementContainer();
 				
 				boolean thisContainer =
-						(currentContainer.getElementById(TransitionToOccur.getId()) != null);
-				if (!thisContainer) {
-					// First check if we need to step upwards (after reaching
-					// the initial state of a sub process)
+                        isTransitionInThisContainer(currentContainer);
+                if (!thisContainer) {
+                    // First check if we need to step upwards (after reaching
+                    // the initial state of a sub process)
 					boolean foundStepUp = false;
 					if (TransitionToOccur instanceof SubProcessModel) {
 						SubProcessModel subProcessElement = 
@@ -181,6 +190,38 @@ public class TokenGameSession implements Runnable {
             			BackWard, stepInto);
             }
         }
+    }
+
+    /**
+     * Checks if the transition to occur is in this container or in a sub process.
+     * <p>
+     * There are two positive case to consider:
+     * <ol>
+     * <li>the transition exists in the current {@code ModelElementContainer}
+     * <li>the transition is a virtual transition representing an xor arc
+     * </ol>
+     * <p>
+     * Access is package local for testing purposes.
+     *
+     * @param currentContainer the current {@code ModelElementContainer}
+     * @return true if the transition exists in this container, otherwise false
+     */
+    boolean isTransitionInThisContainer(ModelElementContainer currentContainer) {
+
+        if (currentContainer.getElementById(TransitionToOccur.getId()) != null) return true;
+
+        return currentContainer.getArcById(TransitionToOccur.getId()) != null;
+    }
+
+    /**
+     * Sets the next transition to occur.
+     * <p>
+     * Access package local for testing purposes.
+     *
+     * @param transition the transition to set.
+     */
+    void setTransitionToOccur(TransitionModel transition) {
+        TransitionToOccur = transition;
     }
 
     /**
@@ -367,12 +408,12 @@ public class TokenGameSession implements Runnable {
         newHistory = false;
     }
 
-    public void setExpertViewStatus(boolean status) {
-        this.expertViewOnStage = status;
-    }
-
     public boolean getExpertViewStatus() {
         return expertViewOnStage;
+    }
+
+    public void setExpertViewStatus(boolean status) {
+        this.expertViewOnStage = status;
     }
 
     /**
@@ -385,25 +426,6 @@ public class TokenGameSession implements Runnable {
         if (!autoPlayBack)
             fillChoiceBox();
         tgController.checkNet();
-    }
-
-    /**
-     * Sets the EndOfAutoPlay flag and wait for the auto-play thread to exit if 
-     * parameter is set to true
-     * 
-     * @param end True if auto-play should end, false otherwise
-     */
-    public void setEndOfAutoPlay(boolean end) {
-        endofautoplay = end;
-        if ((end == true) && (autoPlayThread != null) && autoPlayThread.isAlive()) {
-        	try {        	
-        		autoPlayThread.join();
-        		autoPlayThread = null;
-        		tgController.checkNet();
-        	} 
-        	catch (InterruptedException e) {
-        	}
-        }
     }
 
     /**
@@ -434,20 +456,20 @@ public class TokenGameSession implements Runnable {
         delaytime = dt;
     }
 
-    /*
-     * Special Getters: Reference Providers IndexNumbers and so on
-     */
-
     /**
-     * 
+     *
      * @return Reference to TokenGameController
      */
     public TokenGameController getTokenGameController() {
         return tgController;
     }
 
+    /*
+     * Special Getters: Reference Providers IndexNumbers and so on
+     */
+
     /**
-     * 
+     *
      * @return Reference to the PetriNet
      */
     public PetriNetModelProcessor getPetriNet() {
@@ -456,7 +478,7 @@ public class TokenGameSession implements Runnable {
 
     /**
      * returns the ID of the transition which has to occur next
-     * 
+     *
      * @return
      */
     public int getSelectedChoiceID() {
@@ -465,11 +487,18 @@ public class TokenGameSession implements Runnable {
 
     /**
      * Determines if the AutoPlayback is switched on
-     * 
+     *
      * @return
      */
     public boolean getAutoPlayBack() {
         return autoPlayBack;
+    }
+
+    /**
+     * Returns the value for the endofautoplay variable
+     */
+    public boolean isEndOfAutoPlay() {
+        return endofautoplay;
     }
 
     /*
@@ -477,11 +506,21 @@ public class TokenGameSession implements Runnable {
      */
 
     /**
-     * Returns the value for the endofautoplay variable
-     * 
+     * Sets the EndOfAutoPlay flag and wait for the auto-play thread to exit if
+     * parameter is set to true
+     *
+     * @param end True if auto-play should end, false otherwise
      */
-    public boolean isEndOfAutoPlay() {
-        return endofautoplay;
+    public void setEndOfAutoPlay(boolean end) {
+        endofautoplay = end;
+        if ((end == true) && (autoPlayThread != null) && autoPlayThread.isAlive()) {
+            try {
+                autoPlayThread.join();
+                autoPlayThread = null;
+                tgController.checkNet();
+            } catch (InterruptedException e) {
+            }
+        }
     }
 
     /**
