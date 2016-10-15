@@ -1,17 +1,17 @@
 package org.woped.editor.orientation;
 
+import org.woped.core.model.ArcModel;
+import org.woped.core.model.ModelElementContainer;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
+import org.woped.core.model.petrinet.Toolspecific.OperatorPosition;
+import org.woped.core.model.petrinet.TransitionModel;
+import org.woped.core.model.petrinet.TransitionResourceModel;
+import org.woped.core.model.petrinet.TriggerModel;
+
 import java.awt.geom.Point2D;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-
-import org.woped.core.model.ArcModel;
-import org.woped.core.model.ModelElementContainer;
-import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
-import org.woped.core.model.petrinet.TransitionModel;
-import org.woped.core.model.petrinet.TransitionResourceModel;
-import org.woped.core.model.petrinet.TriggerModel;
-import org.woped.core.model.petrinet.Toolspecific.OperatorPosition;
 
 /**
  * 
@@ -22,29 +22,23 @@ import org.woped.core.model.petrinet.Toolspecific.OperatorPosition;
  */
 public class Orientation {
 
-	private boolean rotateSelected = false;
-	
 	private static final int TURN_LEFT = -1;
 	private static final int TURN_RIGHT = 1;
-	
-	private int triggerXOffset;
-	private static int triggerYOffset;
-	private static int resourceXOffset;
-	private static int resourceYOffset;
+    private boolean rotateSelected = false;
 
-	/**
-	 * rotates the elements including names (caption), arcs, resources, triggers
+    /**
+     * rotates the elements including names (caption), arcs, resources, triggers
 	 * for the whole view
 	 * 
 	 * @param mec the ModelElementContainer to rotate all elements of
 	 */
 	public void rotateView(ModelElementContainer mec) {
-		Map<String, AbstractPetriNetElementModel> elements = new HashMap<String, AbstractPetriNetElementModel>();
-		Iterator<String> elementsIter = mec.getIdMap().keySet().iterator();
-		AbstractPetriNetElementModel element;
-		int newX = 0, newY = 0, negX = 0, negY = 0;
-		
-		elements.putAll(mec.getElementsByType(AbstractPetriNetElementModel.PLACE_TYPE));
+        Map<String, AbstractPetriNetElementModel> elements = new HashMap<>();
+        Iterator<String> elementsIterator = mec.getIdMap().keySet().iterator();
+        AbstractPetriNetElementModel element;
+        int newX, newY, negX = 0, negY = 0;
+
+        elements.putAll(mec.getElementsByType(AbstractPetriNetElementModel.PLACE_TYPE));
 		elements.putAll(mec.getElementsByType(AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE));
 		elements.putAll(mec.getElementsByType(AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE));
 		elements.putAll(mec.getElementsByType(AbstractPetriNetElementModel.SUBP_TYPE));
@@ -52,9 +46,9 @@ public class Orientation {
 		elements.putAll(mec.getElementsByType(AbstractPetriNetElementModel.GROUP_TYPE));
 		elements.putAll(mec.getElementsByType(AbstractPetriNetElementModel.RESOURCE_TYPE));
 
-		while (elementsIter.hasNext()) {
-			element = elements.get(elementsIter.next());
-			if (element != null) {
+        while (elementsIterator.hasNext()) {
+            element = elements.get(elementsIterator.next());
+            if (element != null) {
 				// rotate elements
 				element.setPosition(element.getY(), element.getX());
 
@@ -65,8 +59,13 @@ public class Orientation {
 				if (element instanceof TransitionModel) {
 					TransitionModel tm = (TransitionModel) element;
 
-					if (!rotateSelected) {
-						rotateTransitionIcon(tm, TURN_RIGHT);
+                    int triggerYOffset;
+                    int resourceXOffset;
+                    int resourceYOffset;
+                    int triggerXOffset;
+
+                    if (!rotateSelected) {
+                        rotateTransitionIcon(tm, TURN_RIGHT);
 						triggerXOffset = -5;
 						triggerYOffset = 0;
 						resourceXOffset = -20;
@@ -100,40 +99,44 @@ public class Orientation {
 			}
 		}
 
-		// rotate arcpoints
-		Iterator<String> arcsIter = mec.getArcMap().keySet().iterator();
-		ArcModel arc;
-		while (arcsIter.hasNext()) {
-			arc = mec.getArcById(arcsIter.next());
-			if (arc != null) {
+        // rotate arc points
+        Iterator<String> arcIterator = mec.getArcMap().keySet().iterator();
+        ArcModel arc;
+        while (arcIterator.hasNext()) {
+            arc = mec.getArcById(arcIterator.next());
+            if (arc != null) {
 				for (Point2D p : arc.getPoints()) {
 					p.setLocation(p.getY(), p.getX());
 				}
 			}
-		}
+
+            // TODO: 15.10.2016 Rotate arc weight and probability
+        }
+
 		if (negX < 0 || negY < 0) {
 			moveAllElements(-negX, -negY, mec);
 		}
 	}
 
 	/**
-	 * moves all elements of the given ModelElementContainer by the given x- and y-value
-	 * @param moveX the value to move all elements right or left
-	 * @param moveY the value to move all elements up or down
-	 * @param mec the ModelElementContainer with all elements which have to been moved
-	 */
-	private void moveAllElements(int moveX, int moveY, ModelElementContainer mec) {
-		AbstractPetriNetElementModel element;
-		ArcModel arc;
+     * Moves all elements in the given ModelElementContainer by the given x- and y-value
+     *
+     * @param moveX the value to move all elements right or left(negative values)
+     * @param moveY the value to move all elements up (negative values) or down
+     * @param mec the ModelElementContainer with all elements which have to been moved
+     */
+    void moveAllElements(int moveX, int moveY, ModelElementContainer mec) {
+        AbstractPetriNetElementModel element;
+        ArcModel arc;
 		for (String elementId : mec.getIdMap().keySet()) {
 			element = mec.getElementById(elementId);
 			if (element != null) {
 				// move element
 				element.setPosition(element.getX() + moveX, element.getY() + moveY);
 
-				// move element´s name
-				element.getNameModel().setPosition(element.getNameModel().getX() + moveX,
-						element.getNameModel().getY() + moveY);
+                // move elementÂ´s name
+                element.getNameModel().setPosition(element.getNameModel().getX() + moveX,
+                        element.getNameModel().getY() + moveY);
 
 				// move triggers and resources (if existing)
 				if (element instanceof TransitionModel) {
@@ -158,8 +161,10 @@ public class Orientation {
 					p.setLocation(p.getX() + moveX, p.getY() + moveY);
 				}
 			}
-		}
-	}
+
+            // TODO: 15.10.2016 Move arc weight label and probability label
+        }
+    }
 
 	/**
 	 * 
