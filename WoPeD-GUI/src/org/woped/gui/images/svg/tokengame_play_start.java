@@ -1,7 +1,9 @@
 package org.woped.gui.images.svg;
 
 import java.awt.*;
-import java.awt.geom.*;
+import java.awt.geom.AffineTransform;
+import java.awt.geom.GeneralPath;
+import java.awt.geom.Point2D;
 
 /**
  * This class has been automatically generated using <a
@@ -9,11 +11,30 @@ import java.awt.geom.*;
  */
 public class tokengame_play_start implements
 		org.pushingpixels.flamingo.api.common.icon.ResizableIcon {
-	/**
-	 * Paints the transcoded SVG image on the specified graphics context. You
+
+    private static Color green = new Color(0, 128, 0, 255);
+    /**
+     * The current width of this resizable icon.
+     */
+    int width;
+    /**
+     * The current height of this resizable icon.
+     */
+    int height;
+
+    /**
+     * Creates a new transcoded SVG image.
+     */
+    public tokengame_play_start() {
+        this.width = getOrigWidth();
+        this.height = getOrigHeight();
+    }
+
+    /**
+     * Paints the transcoded SVG image on the specified graphics context. You
 	 * can install a custom transformation on the graphics context to scale the
-	 * image.
-	 * 
+     * image.
+     *
 	 * @param g
 	 *            Graphics context.
 	 */
@@ -21,19 +42,19 @@ public class tokengame_play_start implements
         Shape shape = null;
         Paint paint = null;
         Stroke stroke = null;
-         
+
         float origAlpha = 1.0f;
-        Composite origComposite = ((Graphics2D)g).getComposite();
+        Composite origComposite = g.getComposite();
         if (origComposite instanceof AlphaComposite) {
-            AlphaComposite origAlphaComposite = 
+            AlphaComposite origAlphaComposite =
                 (AlphaComposite)origComposite;
             if (origAlphaComposite.getRule() == AlphaComposite.SRC_OVER) {
                 origAlpha = origAlphaComposite.getAlpha();
             }
         }
-        
+
 	    AffineTransform defaultTransform_ = g.getTransform();
-// 
+//
 g.setComposite(AlphaComposite.getInstance(3, 1.0f * origAlpha));
 AffineTransform defaultTransform__0 = g.getTransform();
 g.transform(new AffineTransform(1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f));
@@ -80,7 +101,9 @@ g.setComposite(AlphaComposite.getInstance(3, 1.0f * origAlpha));
 AffineTransform defaultTransform__0_1_0_1_0_0 = g.getTransform();
 g.transform(new AffineTransform(1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f));
 // _0_1_0_1_0_0
-paint = new RadialGradientPaint(new Point2D.Double(110.35346221923828, 84.47499084472656), 12.551644f, new Point2D.Double(110.35346221923828, 84.47499084472656), new float[] {0.0f,1.0f}, new Color[] {new Color(255, 255, 255, 255),new Color(211, 215, 207, 255)}, MultipleGradientPaint.CycleMethod.NO_CYCLE, MultipleGradientPaint.ColorSpaceType.SRGB, new AffineTransform(0.053243398666381836f, -0.8362380266189575f, 2.019469976425171f, 0.12856799364089966f, -106.91899871826172f, 179.17100524902344f));
+        paint = new RadialGradientPaint(new Point2D.Double(110.35346221923828, 84.47499084472656), 12.551644f, new Point2D.Double(110.35346221923828, 84.47499084472656), new float[]{0.0f, 1.0f},
+                new Color[]{green, new Color(211, 215, 207, 255)}, MultipleGradientPaint.CycleMethod.NO_CYCLE,
+                MultipleGradientPaint.ColorSpaceType.SRGB, new AffineTransform(0.053243398666381836f, -0.8362380266189575f, 2.019469976425171f, 0.12856799364089966f, -106.91899871826172f, 179.17100524902344f));
 shape = new GeneralPath();
 ((GeneralPath)shape).moveTo(57.49988, 108.90574);
 ((GeneralPath)shape).lineTo(57.49988, 81.09425);
@@ -175,7 +198,9 @@ g.setComposite(AlphaComposite.getInstance(3, 1.0f * origAlpha));
 AffineTransform defaultTransform__0_1_0_1_0_3 = g.getTransform();
 g.transform(new AffineTransform(1.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f));
 // _0_1_0_1_0_3
-paint = new LinearGradientPaint(new Point2D.Double(13.375120162963867, 17.812509536743164), new Point2D.Double(13.500120162963867, 32.9375114440918), new float[] {0.0f,1.0f}, new Color[] {new Color(255, 255, 255, 255),new Color(255, 255, 255, 0)}, MultipleGradientPaint.CycleMethod.NO_CYCLE, MultipleGradientPaint.ColorSpaceType.SRGB, new AffineTransform(1.0f, 0.0f, 0.0f, 1.0f, 44.999900817871094f, 71.0f));
+        paint = new LinearGradientPaint(new Point2D.Double(13.375120162963867, 17.812509536743164), new Point2D.Double(13.500120162963867, 32.9375114440918), new float[]{0.0f, 1.0f},
+                new Color[]{green, new Color(255, 255, 255, 0)}, MultipleGradientPaint.CycleMethod.NO_CYCLE,
+                MultipleGradientPaint.ColorSpaceType.SRGB, new AffineTransform(1.0f, 0.0f, 0.0f, 1.0f, 44.999900817871094f, 71.0f));
 shape = new GeneralPath();
 ((GeneralPath)shape).moveTo(57.99988, 81.96874);
 ((GeneralPath)shape).lineTo(57.99988, 108.03124);
@@ -201,7 +226,7 @@ g.setTransform(defaultTransform_);
 
     /**
      * Returns the X of the bounding box of the original SVG image.
-     * 
+     *
      * @return The X of the bounding box of the original SVG image.
      */
     public static int getOrigX() {
@@ -210,7 +235,7 @@ g.setTransform(defaultTransform_);
 
     /**
      * Returns the Y of the bounding box of the original SVG image.
-     * 
+     *
      * @return The Y of the bounding box of the original SVG image.
      */
     public static int getOrigY() {
@@ -219,7 +244,7 @@ g.setTransform(defaultTransform_);
 
 	/**
 	 * Returns the width of the bounding box of the original SVG image.
-	 * 
+     *
 	 * @return The width of the bounding box of the original SVG image.
 	 */
 	public static int getOrigWidth() {
@@ -228,29 +253,11 @@ g.setTransform(defaultTransform_);
 
 	/**
 	 * Returns the height of the bounding box of the original SVG image.
-	 * 
+     *
 	 * @return The height of the bounding box of the original SVG image.
 	 */
 	public static int getOrigHeight() {
 		return 33;
-	}
-
-	/**
-	 * The current width of this resizable icon.
-	 */
-	int width;
-
-	/**
-	 * The current height of this resizable icon.
-	 */
-	int height;
-
-	/**
-	 * Creates a new transcoded SVG image.
-	 */
-	public tokengame_play_start() {
-        this.width = getOrigWidth();
-        this.height = getOrigHeight();
 	}
 
 	/*
