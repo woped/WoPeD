@@ -96,5 +96,31 @@ public class XORSplitJoinOperatorTransitionModel extends
     					.size() != 1)
 		getSimpleTransContainer()
 				.removeAllTargetElements(otherModel.getId());
-	}    
+    }
+
+    /**
+     * Checks if the transition can fire.
+     * <p>
+     * In contrast to the other transitions the XOR SPLIT JOIN Operator doesn't require that all of its source places
+     * contain at the necessary amount of tokens (according to the weight of the arc). It is activated if at least
+     * one of its source places does fulfill this demand.
+     * <p>
+     * In addition, to fire this transition is not atomic. It needs on two action to complete.
+     * <ol><li>Fire incoming arc
+     * <li>Fire outgoing arc
+     * </ol>
+     * Because of this the transition is also active, if the fire operation has not finished yet even if there are no
+     * source elements which fulfills the requirement. (The center place contains this tokens).
+     */
+    @Override
+    public boolean isActivated() {
+
+        // Check ongoing operations
+        int currentOperations = getCenterPlace().getVirtualTokenCount();
+        if (currentOperations > 0) return true;
+
+        // Check waiting operations
+        int waitingOperations = getNumIncomingActivePlaces();
+        return waitingOperations > 0;
+    }
 }
