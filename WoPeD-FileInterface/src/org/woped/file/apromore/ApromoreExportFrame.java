@@ -47,7 +47,6 @@ public class ApromoreExportFrame extends AbstractApromoreFrame {
 		super(mediator);
 		setTitle(Messages.getString("Apromore.UI.Export.Title"));
 		initialize();
-
 	}
 
 	private void initialize() {
@@ -104,11 +103,10 @@ public class ApromoreExportFrame extends AbstractApromoreFrame {
 		initDataFields();
 		loadProcessList();
 		setVisible(true);
-
 	}
 
 	/**
-	 * Aktuallisiert die Prozess-Datenfelder mit dem ausgew√§hlten
+	 * Aktuallisiert die Prozess-Datenfelder mit dem ausgew‰hlten
 	 * Tabellenelement
 	 */
 	private void updateDataFields() {
@@ -122,9 +120,7 @@ public class ApromoreExportFrame extends AbstractApromoreFrame {
 			getProcessOwnerText().setText(dataTable.getValueAt(ind, 2) + "");
 			getProcessTypeText().setText(dataTable.getValueAt(ind, 3) + "");
 			getProcessVersionText().setText(dataTable.getValueAt(ind, 5) + "");
-
 		}
-
 	}
 
 	private void initDataFields() {
@@ -145,16 +141,11 @@ public class ApromoreExportFrame extends AbstractApromoreFrame {
 	private JPanel getButtonPanel() {
 		if (buttonPanel == null) {
 			buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-//			buttonPanel.setBorder(BorderFactory.createCompoundBorder(
-//					BorderFactory.createTitledBorder(Messages
-//							.getString("Apromore.UI.ButoonPanelExport")),
-//					BorderFactory.createEmptyBorder(0, 2, 0, 2)));
 
 			buttonPanel.add(getExportButton());
 			buttonPanel.add(getUpdateButton());
 			buttonPanel.add(getCancelButton());
 			buttonPanel.add(getWopedProgressBar());
-
 		}
 
 		return buttonPanel;
@@ -266,7 +257,6 @@ public class ApromoreExportFrame extends AbstractApromoreFrame {
 		prepareExportFields();
 
 		return processDataPanel;
-
 	}
 
 	private GridBagConstraints getConstraits(GridBagConstraints c, int x,
@@ -483,7 +473,6 @@ public class ApromoreExportFrame extends AbstractApromoreFrame {
 					JOptionPane.ERROR_MESSAGE);
 			return null;
 		}
-
 	}
 
 	protected void exportToApromore(final String version, final boolean update) {
@@ -503,7 +492,6 @@ public class ApromoreExportFrame extends AbstractApromoreFrame {
 			}
 		};
 		queryThread.start();
-
 	}
 
 }

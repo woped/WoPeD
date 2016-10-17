@@ -145,12 +145,10 @@ public class ApromoreAccess {
 			if (e.getCause() instanceof ConnectTimeoutException) {
 				showDialog(Messages.getString("Apromore.UI.Validation.Error.Timeout"),
 						Messages.getString("Apromore.UI.Error.Title"), JOptionPane.ERROR_MESSAGE);
-			}
-			else if (e.getCause() instanceof UnknownHostException) {
+			} else if (e.getCause() instanceof UnknownHostException) {
 				showDialog(Messages.getString("Apromore.UI.Validation.Error.UnknownHost"),
 						Messages.getString("Apromore.UI.Error.Title"), JOptionPane.ERROR_MESSAGE);
-			}
-			else {
+			} else {
 				showDialog(Messages.getString("Apromore.UI.Validation.Error.Connection"),
 						Messages.getString("Apromore.UI.Error.Title"), JOptionPane.ERROR_MESSAGE);
 			}
@@ -362,14 +360,6 @@ public class ApromoreAccess {
 		return servers;
 	}
 
-	public void setApromoreServerByName(String serverName) {
-
-	}
-
-	// public ApromoreServer getCurrentServer() {
-	//
-	// }
-
 	public int getCurrentServerIndex() {
 		return ConfigurationManager.getConfiguration().getCurrentApromoreIndex();
 	}
@@ -395,7 +385,6 @@ public class ApromoreAccess {
 					Messages.getString("Apromore.UI.Error.Title"), JOptionPane.ERROR_MESSAGE);
 
 		}
-
 	}
 
 }

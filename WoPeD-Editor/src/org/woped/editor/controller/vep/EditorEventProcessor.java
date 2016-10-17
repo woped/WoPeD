@@ -159,7 +159,7 @@ public class EditorEventProcessor extends AbstractEventProcessor
 				{
 					cell = ((TriggerModel) cell).getParent();
 				}
-				if (cell instanceof GroupModel)
+				else if (cell instanceof GroupModel)
 				{
 					element = ((GroupModel) cell).getMainElement();
 				}
@@ -167,6 +167,7 @@ public class EditorEventProcessor extends AbstractEventProcessor
 				{
 					element = (AbstractPetriNetElementModel) cell;
 				}
+				
 				if (element != null)
 				{
 					if (element instanceof TransitionModel)
