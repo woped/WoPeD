@@ -3,14 +3,17 @@ package org.woped.core.model;
 import org.jgraph.graph.DefaultPort;
 import org.junit.Test;
 import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
+import org.woped.tests.TestNetGenerator;
 
 import java.awt.geom.Point2D;
+import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 
+@SuppressWarnings("ConstantConditions")
 public class ArcModelTest {
     @Test
     public void getInscriptionValue_newInstance_returnsOne() throws Exception {
@@ -46,6 +49,97 @@ public class ArcModelTest {
         assertEquals(arcWeight, actual);
     }
 
+    @Test
+    public void getCreationMap_arcHasId_mapContainsId() throws Exception {
+        ArcModel cut = createDemoArc();
+
+        String expected = cut.getId();
+        CreationMap map = cut.getCreationMap();
+
+        String actual = map.getId();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getCreationMap_arcIsRoute_mapContainsRouteState() throws Exception {
+        ArcModel cut = createDemoArc();
+        boolean expected = true;
+        cut.setRoute(expected);
+        CreationMap map = cut.getCreationMap();
+
+        boolean actual = map.isArcRoute();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getCreationMap_arcIsNotRoute_mapContainsRouteState() throws Exception {
+        ArcModel cut = createDemoArc();
+        boolean expected = false;
+        cut.setRoute(expected);
+        CreationMap map = cut.getCreationMap();
+
+        boolean actual = map.isArcRoute();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getCreationMap_arcHasSource_mapContainsSourceId() throws Exception {
+        ArcModel cut = createDemoArc();
+
+        String expected = cut.getSourceId();
+        CreationMap map = cut.getCreationMap();
+
+        String actual = map.getArcSourceId();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getCreationMap_arcHasTarget_mapContainsTargetId() throws Exception {
+        ArcModel cut = createDemoArc();
+
+        String expected = cut.getTargetId();
+        CreationMap map = cut.getCreationMap();
+
+        String actual = map.getArcTargetId();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getCreationMap_arcHasNoPoints_mapContainsEmptyPointsList() throws Exception {
+        ArcModel cut = createDemoArc();
+
+        cut.setPoints(new Point2D[0]);
+        CreationMap map = cut.getCreationMap();
+        assertTrue(map.getArcPoints().isEmpty());
+    }
+
+    @Test
+    public void getCreationMap_arcHasPoints_mapContainsPoints() throws Exception {
+        ArcModel cut = createArc();
+
+        Point2D.Double start = new Point2D.Double(10, 10);
+        Point2D.Double end = new Point2D.Double(20, 20);
+        Point2D.Double via = new Point2D.Double(30, 30);
+
+        cut.addPoint(start);
+        cut.addPoint(end);
+        cut.addPoint(via);
+
+        Point2D[] points = cut.getPoints();
+        List<Point2D> arcPoints = cut.getCreationMap().getArcPoints();
+
+        int expectedAmount = points.length - 2; //start and end does not count
+        assertEquals("Number of points must be the same", expectedAmount, arcPoints.size());
+
+        assertFalse("The start point should not be contained", arcPoints.contains(start));
+        assertFalse("The end point should not be contained", arcPoints.contains(end));
+        assertTrue("Point should be contained: " + via.toString(), arcPoints.contains(via));
+    }
+
+    private ArcModel createDemoArc() {
+        return createDemoArc(1);
+    }
+
     private ArcModel createDemoArc(int arcWeight) {
         ArcModel cut = new ArcModel();
         cut.setInscriptionValue(arcWeight);
@@ -66,6 +160,13 @@ public class ArcModelTest {
         cut.addPoint(new Point2D.Double(10, 10));
 
         return cut;
+    }
+
+    private ArcModel createArc() {
+        TestNetGenerator generator = new TestNetGenerator();
+        PetriNetModelProcessor processor = generator.createNetWithoutArcs(1, 1);
+
+        return processor.createArc("p1", "t1");
     }
 
 }
