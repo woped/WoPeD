@@ -350,10 +350,10 @@ public class ModelElementContainerTest {
         when(arc.getTargetId()).thenReturn(target.getId());
 
         sut.addReference(arc);
-        assertTrue(sut.containsArc(arc));
+        assertTrue(sut.hasReference(arc.getSourceId(), arc.getTargetId()));
 
         sut.removeArc(arc.getId());
-        assertFalse(sut.containsArc(arc));
+        assertFalse(sut.hasReference(arc.getSourceId(), arc.getTargetId()));
     }
 
     @Test

@@ -171,7 +171,7 @@ public class ModelElementContainer implements Serializable {
         }
 
         // Check if reference already exists
-        if (containsArc(arc)) {
+        if (hasReference(arc.getSourceId(), arc.getTargetId())) {
             LoggerManager.debug(Constants.CORE_LOGGER, "Arc already exists!");
             // MODIFY: Increase arc weight instead?
             return;
@@ -486,27 +486,6 @@ public class ModelElementContainer implements Serializable {
         }
     }
 
-    // REVIEW: Methods containsArc, findArc, hasReference have the semantically equivalent meaning
-
-    /**
-     * Checks if the given arc already exists in the net.
-     * <br>
-     * Arcs are considered equal if the have the same source and target.
-     *
-     * @param arc the arc to check.
-     * @return true if such an arc already exists, otherwise false
-     */
-    boolean containsArc(ArcModel arc) {
-
-        Iterator<String> arcIter = getSourceElements(arc.getTargetId()).keySet().iterator();
-        while (arcIter.hasNext()) {
-            if (arcIter.next().equals(arc.getSourceId())) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     /**
      * Checks if an arc with the given source and target exists in the net.
      *
@@ -515,13 +494,12 @@ public class ModelElementContainer implements Serializable {
      * @return the arc or null, if no such arc exists
      */
     public ArcModel findArc(String sourceId, String targetId) {
-        Iterator<String> iter = arcs.keySet().iterator();
-        while (iter.hasNext()) {
-            ArcModel arc = arcs.get(iter.next());
-            if (arc.getSourceId().equals(sourceId) && arc.getTargetId().equals(targetId)) {
+
+        for (ArcModel arc : arcs.values()) {
+            if (arc.getSourceId().equals(sourceId) && arc.getTargetId().equals(targetId))
                 return arc;
-            }
         }
+
         return null;
     }
 
