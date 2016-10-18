@@ -213,7 +213,7 @@ public class PlacePropertyEditor extends JDialog
     {
         if (idLabel == null)
         {
-            idLabel = new JLabel("Id#: ");
+            idLabel = new JLabel("ID#: ");
         }
 
         return idLabel;

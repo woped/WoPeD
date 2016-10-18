@@ -402,17 +402,17 @@ public class TransitionPropertyEditor extends JDialog implements
 			c1.gridx = 0;
 			c1.gridy = 3;
 			c1.insets = new Insets(0, 0, 0, 0);
-			contentPanel.add(getOrientationPanel(), c1);
+			contentPanel.add(getOrientationPanel(), c1);			
 
 			c1.gridx = 0;
 			c1.gridy = 4;
 			c1.insets = new Insets(0, 0, 0, 0);
-			contentPanel.add(getServicetimePanel(), c1);
-
+			contentPanel.add(getResourcePanel(), c1);
+			
 			c1.gridx = 0;
 			c1.gridy = 5;
 			c1.insets = new Insets(0, 0, 0, 0);
-			contentPanel.add(getResourcePanel(), c1);
+			contentPanel.add(getServicetimePanel(), c1);
 		}
 
 		return contentPanel;
@@ -503,7 +503,7 @@ public class TransitionPropertyEditor extends JDialog implements
 
 	private JLabel getIdLabel() {
 		if (idLabel == null) {
-			idLabel = new JLabel("Id#: ");
+			idLabel = new JLabel("ID#: ");
 		}
 
 		return idLabel;
@@ -1426,7 +1426,9 @@ public class TransitionPropertyEditor extends JDialog implements
 			serviceTimeTextField = new JTextField();
 			serviceTimeTextField.setText(Integer.toString(transition
 					.getToolSpecific().getTime()));
-			serviceTimeTextField.setMinimumSize(new Dimension(80, 5));
+			serviceTimeTextField.setMinimumSize(new Dimension(50, 25));
+			serviceTimeTextField.setMaximumSize(new Dimension(50, 25));
+			serviceTimeTextField.setPreferredSize(new Dimension(50, 25));
 			serviceTimeTextField.setEnabled(true);
 		}
 
@@ -1493,7 +1495,7 @@ public class TransitionPropertyEditor extends JDialog implements
 			c.insets = new Insets(5, 5, 5, 0);
 			resourcePanel.add(getNumResourcesTextField(), c);
 		}
-
+		
 		return resourcePanel;
 	}
 
@@ -1516,7 +1518,6 @@ public class TransitionPropertyEditor extends JDialog implements
 			numResourcesTextField.setMaximumSize(new Dimension(50, 25));
 			numResourcesTextField.setPreferredSize(new Dimension(50, 25));
 			updateNumResources();
-
 		}
 
 		return numResourcesTextField;
@@ -2060,31 +2061,51 @@ public class TransitionPropertyEditor extends JDialog implements
 	 * 
 	 */
 	public void actionPerformed(ActionEvent e) {
-		if (e.getActionCommand().equals(TRIGGER_MESSAGE)
-				|| e.getActionCommand().equals(TRIGGER_TIME)
-				|| e.getActionCommand().equals(TRIGGER_NONE)) {
+		if (e.getActionCommand().equals(TRIGGER_MESSAGE) || e.getActionCommand().equals(TRIGGER_NONE)) {			
+			// Disable all elements
 			getResourceRoleComboBox().setEnabled(false);
 			getResourceGroupComboBox().setEnabled(false);
 			getNumResourcesLabel().setEnabled(false);
 			getResourceRoleLabel().setEnabled(false);
 			getResourceGroupLabel().setEnabled(false);
 			getNumResourcesTextField().setEnabled(false);
-			
-			if (!transition.getToolSpecific().isSubprocess()) {
-				getserviceTimeLabel().setEnabled(false);
-				getserviceTimeTextfield().setEnabled(false);
-				getserviceTimeComboBox().setEnabled(false);
-			}
+			getserviceTimeLabel().setEnabled(false);
+			getserviceTimeTextfield().setEnabled(false);
+			getserviceTimeComboBox().setEnabled(false);
+
 		} else if (e.getActionCommand().equals(TRIGGER_RESOURCE)) {
+			// Enable resource elements
 			getResourceRoleComboBox().setEnabled(true);
 			getResourceGroupComboBox().setEnabled(true);
 			getResourceRoleLabel().setEnabled(true);
 			getResourceGroupLabel().setEnabled(true);
 			getNumResourcesLabel().setEnabled(true);
 			getNumResourcesTextField().setEnabled(true);
+			
+			// Disable time elements
+			getserviceTimeLabel().setEnabled(false);
+			getserviceTimeTextfield().setEnabled(false);
+			getserviceTimeComboBox().setEnabled(false);
+
+		} else if (e.getActionCommand().equals(TRIGGER_TIME)) {
+			// Disable resource elements
+			getResourceRoleComboBox().setEnabled(false);
+			getResourceGroupComboBox().setEnabled(false);
+			getResourceRoleLabel().setEnabled(false);
+			getResourceGroupLabel().setEnabled(false);
+			getNumResourcesLabel().setEnabled(false);
+			getNumResourcesTextField().setEnabled(false);
+			
+			// Enable time elements
 			getserviceTimeLabel().setEnabled(true);
 			getserviceTimeTextfield().setEnabled(true);
 			getserviceTimeComboBox().setEnabled(true);
+
+//			if (!transition.getToolSpecific().isSubprocess()) {
+//				getserviceTimeLabel().setEnabled(false);
+//				getserviceTimeTextfield().setEnabled(false);
+//				getserviceTimeComboBox().setEnabled(false);
+//			}
 		}
 		
 		if (transition.getToolSpecific().isSubprocess()
