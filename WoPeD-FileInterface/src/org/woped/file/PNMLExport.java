@@ -534,6 +534,11 @@ public class PNMLExport {
 
     /**
      * Gets the corresponding outer arc to the given inner arc.
+     * <p>
+     * The arc is pointing to or from an inner element, which does not exists in the outer container.
+     * The other element can exist in the outer container. If either the source or the target of the arc exists in
+     * the outer container, there should also exist a corresponding outer arc. If not, the arc is only a connection
+     * between 2 inner elements.
      *
      * @param container  the container which could contain the outer arc
      * @param operatorId the id of the operator which contains the inner arc.
