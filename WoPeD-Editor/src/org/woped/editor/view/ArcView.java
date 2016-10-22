@@ -22,20 +22,6 @@
  */
 package org.woped.editor.view;
 
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.GradientPaint;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Rectangle;
-import java.awt.Shape;
-import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.swing.ImageIcon;
-
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellViewRenderer;
 import org.jgraph.graph.EdgeRenderer;
@@ -46,36 +32,42 @@ import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.model.ArcModel;
 import org.woped.gui.translations.Messages;
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
  *         <br>
- * 
- * 
- * 29.04.2003
+ *         <p>
+ *         <p>
+ *         29.04.2003
  */
 
 @SuppressWarnings("serial")
-public class ArcView extends EdgeView
-{
-
+public class ArcView extends EdgeView {
+    private ArcModel arc;
     private ArcViewRenderer arcViewRenderer = new ArcViewRenderer();
     private ImageIcon activeIcon = Messages.getImageIcon("TokenGame.Active");
-    
+
     /**
      * Constructor for ArcView.
-     * 
+     *
      * @param cell
      * @param graph
      * @param mapper
      */
-    public ArcView(Object cell)
-    {
+    public ArcView(Object cell) {
         super(cell);
-        if (cell instanceof ArcModel){
-            setAttributes(((ArcModel)cell).getAttributes());
+        if ( cell instanceof ArcModel ) {
+            arc = (ArcModel) cell;
+            setAttributes(((ArcModel) cell).getAttributes());
         }
 //        setAttributes(new AttributeMap());
-        if (GraphConstants.getPoints(getAttributes()) == null ){
+        if ( GraphConstants.getPoints(getAttributes()) == null ) {
             List<Point2D> points = new ArrayList<Point2D>(2);
             points.add(getAttributes().createPoint(10, 10));
             points.add(getAttributes().createPoint(20, 20));
@@ -94,79 +86,69 @@ public class ArcView extends EdgeView
         return arcViewRenderer;
     }
 
-*/    
-    
-    
+*/
+
+
     /*
      * (non-Javadoc)
      * 
      * @see org.jgraph.graph.AbstractCellView#getRenderer()
      */
-    public CellViewRenderer getRenderer()
-    {
+    public CellViewRenderer getRenderer() {
         return arcViewRenderer;
     }
 
-    public boolean isActivated()
-    {
+    public boolean isActivated() {
         return ((ArcModel) cell).isActivated();
     }
 
-    public boolean intersects(JGraph graph,
-            Rectangle2D rect)
-    {
-    	boolean result = super.intersects(graph, rect); 
+    public boolean intersects(JGraph graph, Rectangle2D rect) {
+        boolean result = super.intersects(graph, rect);
 
-    	if ((result == false)&&isActivated())
-    	{
-    		int iconHeight = (activeIcon!=null)?activeIcon.getIconHeight():0;
-    		int iconWidth  = (activeIcon!=null)?activeIcon.getIconWidth():0;
-    		Rectangle2D labelPos = this.getBounds();
-    		
-    		double buttonX  = (int)(labelPos.getMinX()+labelPos.getWidth()/2)-(iconWidth/2);
-    		double buttonY  = (int)(labelPos.getMinY()+labelPos.getHeight()/2)-(iconHeight/2);
-    		
-    		result =  rect.intersects(buttonX, buttonY, iconWidth, iconHeight);
-    	}
-    	return result;
+        if ( (result == false) && isActivated() ) {
+            int iconHeight = (activeIcon != null) ? activeIcon.getIconHeight() : 0;
+            int iconWidth = (activeIcon != null) ? activeIcon.getIconWidth() : 0;
+            Rectangle2D labelPos = this.getBounds();
+
+            double buttonX = (int) (labelPos.getMinX() + labelPos.getWidth() / 2) - (iconWidth / 2);
+            double buttonY = (int) (labelPos.getMinY() + labelPos.getHeight() / 2) - (iconHeight / 2);
+
+            result = rect.intersects(buttonX, buttonY, iconWidth, iconHeight);
+        }
+        return result;
     }
-    
-    public Rectangle2D getBounds()
-    {
-    	Rectangle2D bounds = super.getBounds();
-    	double height = bounds.getHeight();
-    	double width = bounds.getWidth();
-    	int minHeight = (activeIcon!=null)?activeIcon.getIconHeight():0;
-    	int minWidth  = (activeIcon!=null)?activeIcon.getIconWidth():0;
-    	if (isActivated()&&((width<minWidth)||(height<minHeight)))
-    	{
-    		// Need to extend our bounds to be able to at least draw our icon
-    		bounds.add(bounds.getMinX()+minWidth, bounds.getMinY()+minHeight);
-    	}
-    	return bounds;
+
+    public Rectangle2D getBounds() {
+        Rectangle2D bounds = super.getBounds();
+        double height = bounds.getHeight();
+        double width = bounds.getWidth();
+        int minHeight = (activeIcon != null) ? activeIcon.getIconHeight() : 0;
+        int minWidth = (activeIcon != null) ? activeIcon.getIconWidth() : 0;
+        if ( isActivated() && ((width < minWidth) || (height < minHeight)) ) {
+            // Need to extend our bounds to be able to at least draw our icon
+            bounds.add(bounds.getMinX() + minWidth, bounds.getMinY() + minHeight);
+        }
+        return bounds;
     }
 
     /**
      * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
-     * 
-     * this inner class contains the Renderer information of an transition
-     * 
-     * 28.03.2003
+     *         <p>
+     *         this inner class contains the Renderer information of an transition
+     *         <p>
+     *         28.03.2003
      */
-    private class ArcViewRenderer extends EdgeRenderer
-    {
+    private class ArcViewRenderer extends EdgeRenderer {
 
         /*
          * (non-Javadoc)
          * 
          * @see java.awt.Component#paint(java.awt.Graphics)
          */
-        public void paint(Graphics g)
-        {
+        public void paint(Graphics g) {
             Shape edgeShape = view.getShape();
             // Sideeffect: beginShape, lineShape, endShape
-            if (edgeShape != null)
-            {
+            if ( edgeShape != null ) {
                 // super.paint(g);
                 Graphics2D g2 = (Graphics2D) g;
                 int c = BasicStroke.CAP_BUTT;
@@ -175,71 +157,65 @@ public class ArcView extends EdgeView
                 setOpaque(false);
                 translateGraphics(g);
                 g.setColor(getForeground());
-                if (getGradientColor() != null && !preview)
-                {
+                if ( getGradientColor() != null && !preview ) {
                     g2.setPaint(new GradientPaint(0, 0, getBackground(), getWidth(), getHeight(), getGradientColor(), true));
                 }
-                if (view.beginShape != null)
-                {
-                    if (beginFill) g2.fill(view.beginShape);
+                if ( view.beginShape != null ) {
+                    if ( beginFill ) g2.fill(view.beginShape);
                     g2.draw(view.beginShape);
                 }
-                if (view.endShape != null)
-                {
-                    if (endFill) g2.fill(view.endShape);
+                if ( view.endShape != null ) {
+                    if ( endFill ) g2.fill(view.endShape);
                     g2.draw(view.endShape);
                 }
-                if (lineDash != null) // Dash For Line Only
-                g2.setStroke(new BasicStroke(lineWidth, c, j, 10.0f, lineDash, dashOffset));
-                if (view.lineShape != null) g2.draw(view.lineShape);
+                if ( lineDash != null ) // Dash For Line Only
+                    g2.setStroke(new BasicStroke(lineWidth, c, j, 10.0f, lineDash, dashOffset));
+                if ( view.lineShape != null ) g2.draw(view.lineShape);
 
-				Object[] labels = GraphConstants.getExtraLabels(view
-						.getAllAttributes());
-				JGraph graph = (JGraph)this.graph.get();
-				g.setFont(DefaultStaticConfiguration.DEFAULT_TINYLABEL_FONT);
-				if (labels != null) {
-					for (int i = 0; i < labels.length; i++) {
-						paintLabel(g, graph.convertValueToString(labels[i]),
-								getExtraLabelPosition(view, i),
-								simpleExtraLabels);
-					}
-				}
+                JGraph graph = (JGraph) this.graph.get();
+                g.setFont(DefaultStaticConfiguration.DEFAULT_TINYLABEL_FONT);
 
-                
-                if (selected)
-                {
-                    g2.setColor(ConfigurationManager.getConfiguration().getSelectionColor());
-                    if (view.beginShape != null) g2.draw(view.beginShape);
-                    if (view.lineShape != null) g2.draw(view.lineShape);
-                    if (view.endShape != null) g2.draw(view.endShape);
+                if ( arc.displayWeight() ) {
+                    Point2D labelPosition = getLabelPosition(view);
+                    paintLabel(g, graph.convertValueToString(arc.getInscriptionValue()), labelPosition, simpleExtraLabels);
                 }
-                if (isActivated())
-                {
+
+                Object[] labels = GraphConstants.getExtraLabels(view.getAllAttributes());
+                if ( labels != null && arc.displayProbability() ) {
+                    Point2D labelPosition = getExtraLabelPosition(view, 0);
+                    paintLabel(g, graph.convertValueToString(labels[0]), labelPosition, simpleExtraLabels);
+                }
+
+                if ( selected ) {
+                    g2.setColor(ConfigurationManager.getConfiguration().getSelectionColor());
+                    if ( view.beginShape != null ) g2.draw(view.beginShape);
+                    if ( view.lineShape != null ) g2.draw(view.lineShape);
+                    if ( view.endShape != null ) g2.draw(view.endShape);
+                }
+                if ( isActivated() ) {
                     g2.setColor(Color.GREEN);
                     g.setColor(Color.GREEN);
                     g2.setStroke(new BasicStroke(1));
-                    if (view.beginShape != null) g2.draw(view.beginShape);
-                    if (view.lineShape != null) g2.draw(view.lineShape);
-                    if (view.endShape != null) g2.draw(view.endShape);
-                    
+                    if ( view.beginShape != null ) g2.draw(view.beginShape);
+                    if ( view.lineShape != null ) g2.draw(view.lineShape);
+                    if ( view.endShape != null ) g2.draw(view.endShape);
+
                     // Draw 'play' button to indicate that the
                     // arc is activated and can be clicked
                     Rectangle labelPos = this.getBounds();
-                    
-                	int iconHeight = (activeIcon!=null)?activeIcon.getIconHeight():0;
-                	int iconWidth  = (activeIcon!=null)?activeIcon.getIconWidth():0;
-                    
-                    int buttonX  = (int)(labelPos.x+labelPos.width/2)-(iconWidth/2);
-                    int buttonY  = (int)(labelPos.y+labelPos.height/2)-(iconHeight/2);
-                    g2.drawImage(activeIcon.getImage(), buttonX, buttonY , 
-                    		iconWidth, iconHeight, activeIcon != null ? activeIcon.getImageObserver() : null);
+
+                    int iconHeight = (activeIcon != null) ? activeIcon.getIconHeight() : 0;
+                    int iconWidth = (activeIcon != null) ? activeIcon.getIconWidth() : 0;
+
+                    int buttonX = labelPos.x + labelPos.width / 2 - (iconWidth / 2);
+                    int buttonY = labelPos.y + labelPos.height / 2 - (iconHeight / 2);
+                    g2.drawImage(activeIcon.getImage(), buttonX, buttonY, iconWidth, iconHeight, activeIcon != null ? activeIcon.getImageObserver() : null);
 
                 }
             }
         }
 
-        private boolean isActivated()
-        {
+        private boolean isActivated() {
             return ArcView.this.isActivated();
         }
     }

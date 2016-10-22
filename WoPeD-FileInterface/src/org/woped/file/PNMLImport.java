@@ -22,8 +22,24 @@
  */
 package org.woped.file;
 
-import java.awt.Dimension;
-import java.awt.Point;
+import org.apache.xmlbeans.XmlOptions;
+import org.woped.core.config.ConfigurationManager;
+import org.woped.core.controller.AbstractApplicationMediator;
+import org.woped.core.controller.IEditor;
+import org.woped.core.model.*;
+import org.woped.core.model.petrinet.*;
+import org.woped.core.utilities.LoggerManager;
+import org.woped.editor.controller.VisualController;
+import org.woped.editor.controller.WoPeDUndoManager;
+import org.woped.editor.controller.bpel.*;
+import org.woped.editor.controller.vc.EditorVC;
+import org.woped.gui.translations.Messages;
+import org.woped.pnml.*;
+import org.woped.pnml.NetType.Page;
+import org.woped.pnml.TextType.Phrase;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.geom.Point2D;
 import java.beans.PropertyChangeEvent;
 import java.io.FileInputStream;
@@ -34,41 +50,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Vector;
-
-import javax.swing.JOptionPane;
-
-import org.apache.xmlbeans.XmlOptions;
-import org.woped.core.config.ConfigurationManager;
-import org.woped.core.controller.AbstractApplicationMediator;
-import org.woped.core.controller.IEditor;
-import org.woped.core.model.ArcModel;
-import org.woped.core.model.CreationMap;
-import org.woped.core.model.IntPair;
-import org.woped.core.model.ModelElementContainer;
-import org.woped.core.model.ModelElementFactory;
-import org.woped.core.model.PetriNetModelProcessor;
-import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
-import org.woped.core.model.petrinet.EditorLayoutInfo;
-import org.woped.core.model.petrinet.OperatorTransitionModel;
-import org.woped.core.model.petrinet.ResourceClassModel;
-import org.woped.core.model.petrinet.ResourceModel;
-import org.woped.core.model.petrinet.SimulationModel;
-import org.woped.core.model.petrinet.SubProcessModel;
-import org.woped.core.model.petrinet.TransitionModel;
-import org.woped.core.utilities.LoggerManager;
-import org.woped.editor.controller.VisualController;
-import org.woped.editor.controller.WoPeDUndoManager;
-import org.woped.editor.controller.bpel.Assign;
-import org.woped.editor.controller.bpel.Empty;
-import org.woped.editor.controller.bpel.Invoke;
-import org.woped.editor.controller.bpel.Receive;
-import org.woped.editor.controller.bpel.Reply;
-import org.woped.editor.controller.bpel.Wait;
-import org.woped.editor.controller.vc.EditorVC;
-import org.woped.gui.translations.Messages;
-import org.woped.pnml.*;
-import org.woped.pnml.NetType.Page;
-import org.woped.pnml.TextType.Phrase;
 
 // REVIEW: Does this bug still exists? Could not be reproduced.
 // TODO: BUG in import. When import toolspec mit splitjoin. import ONLY one arc
@@ -975,10 +956,10 @@ public class PNMLImport {
                     if (arcBean.getToolspecificArray(j).isSetProbability())
                         arc.setProbability(arcBean.getToolspecificArray(j).getProbability());
                     if (arcBean.getToolspecificArray(j).isSetDisplayProbabilityOn())
-                        arc.setDisplayOn(arcBean.getToolspecificArray(j).getDisplayProbabilityOn());
+                        arc.displayProbability(arcBean.getToolspecificArray(j).getDisplayProbabilityOn());
                     if (arcBean.getToolspecificArray(j).isSetDisplayProbabilityPosition()) {
                         Point location = new Point(arcBean.getToolspecificArray(j).getDisplayProbabilityPosition().getX().intValue(), arcBean.getToolspecificArray(j).getDisplayProbabilityPosition().getY().intValue());
-                        arc.setLabelPosition(location);
+                        arc.setProbabilityLabelPosition(location);
                     }
                 } else {
                     arc.addUnknownToolSpecs(arcBean.getToolspecificArray(j));

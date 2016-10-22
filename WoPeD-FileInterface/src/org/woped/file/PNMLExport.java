@@ -791,10 +791,10 @@ public class PNMLExport {
             if (outerArc.isRoute()) iArcTool.setRoute(true);
 
             iArcTool.setProbability(outerArc.getProbability());
-            iArcTool.setDisplayProbabilityOn(outerArc.isDisplayOn());
+            iArcTool.setDisplayProbabilityOn(outerArc.displayProbability());
 
             PositionType probPos = iArcTool.addNewDisplayProbabilityPosition();
-            Point2D probPosPoint = outerArc.getLabelPosition();
+            Point2D probPosPoint = outerArc.getProbabilityLabelPosition();
             probPos.setX(BigDecimal.valueOf(probPosPoint.getX()));
             probPos.setY(BigDecimal.valueOf(probPosPoint.getY()));
 

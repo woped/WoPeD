@@ -1,30 +1,16 @@
 package org.woped.editor.controller;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Frame;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
-import java.awt.Point;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-
 import org.woped.core.model.ArcModel;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.gui.lookAndFeel.WopedButton;
 import org.woped.gui.translations.Messages;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 @SuppressWarnings("serial")
 public class ArcPropertyEditor extends JDialog {
@@ -244,7 +230,7 @@ public class ArcPropertyEditor extends JDialog {
     {
         if (displayToggle == null)
         {
-            displayToggle = new JCheckBox(Messages.getString("Arc.Properties.Display.Check"), arc.isDisplayOn());
+            displayToggle = new JCheckBox(Messages.getString("Arc.Properties.Display.Check"), arc.displayProbability());
         }
 
         return displayToggle;
@@ -313,8 +299,7 @@ public class ArcPropertyEditor extends JDialog {
     	if (oldValue != Integer.valueOf(valueTextField.getText()))
     		arc.setProbability(Double.valueOf(valueTextField.getText()) / 100);
     	
-    	if (oldDisplayOn != displayToggle.isSelected())
-    		arc.setDisplayOn(displayToggle.isSelected());
+    	if (oldDisplayOn != displayToggle.isSelected()) arc.displayProbability(displayToggle.isSelected());
 
         getEditor().setSaved(false);
         getEditor().updateNet();

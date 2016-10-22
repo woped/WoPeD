@@ -483,10 +483,10 @@ public class EditorVC implements KeyListener, MouseWheelListener, GraphModelList
                 }
                 // Copy probability state of the creation map
                 arc.setProbability(map.getArcProbability());
-                arc.setDisplayOn(map.getDisplayArcProbability());
+                arc.displayProbability(map.getDisplayArcProbability());
                 // If there is a label position, copy it
                 if ( map.getArcLabelPosition() != null ) {
-                    arc.setLabelPosition(new Point2D.Double(map.getArcLabelPosition().getX(), map.getArcLabelPosition().getY()));
+                    arc.setProbabilityLabelPosition(new Point2D.Double(map.getArcLabelPosition().getX(), map.getArcLabelPosition().getY()));
                 }
             }
         } else {

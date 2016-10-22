@@ -53,18 +53,7 @@ public class ArcModel extends DefaultEdge implements Serializable {
     private boolean activated = false;
     private Vector<Object> unknownToolSpecs = new Vector<Object>();
     private ElementContext elementContext = null;
-
-    // ! Stores the probability for this arc to be chosen
-    // ! Currently, this is a dummy value
-    // ! It is stored to the PNML file as a tool-specific extension
-    // ! and read back but not used for anything.
-    // ! It will, however, be used in the future for quantitative analysis of
-    // ! workflow nets. Time of this writing: 2006/12/18, A.Eckleder
-//	private double probability = 1.0;// 0.0d;
-//
-//	private boolean displayOn = false;
-
-    // private GraphLayoutCache graphLayoutCache = null;
+    private boolean defaultWeightVisible = false;
 
     /**
      * Constructor for ArcModel.
@@ -84,18 +73,9 @@ public class ArcModel extends DefaultEdge implements Serializable {
         initAttributes();
     }
 
-    public static double getHeightC(Point2D A, Point2D B, Point2D C) {
-        double distAC = Point2D.distance(A.getX(), A.getY(), C.getX(), C.getY());
-        double thetaAB = Math.atan2(B.getY() - A.getY(), B.getX() - A.getX());
-        double thetaAC = Math.atan2(C.getY() - A.getY(), C.getX() - A.getX());
-        double height = Math.sin(thetaAC - thetaAB) * distAC;
-
-        return height;
-    }
-
     public void setHighlighted(boolean highlighted) {
         AttributeMap map = getAttributes();
-        if (highlighted) GraphConstants.setLineColor(map, DEFAULT_HIGHLIGHTED_COLOR);
+        if ( highlighted ) GraphConstants.setLineColor(map, DEFAULT_HIGHLIGHTED_COLOR);
         else GraphConstants.setLineColor(map, DEFAULT_COLOR);
         updateLabel();
     }
@@ -105,72 +85,58 @@ public class ArcModel extends DefaultEdge implements Serializable {
         GraphConstants.setEditable(map, false);
         GraphConstants.setBendable(map, true);
         GraphConstants.setLineStyle(map, ConfigurationManager.getConfiguration().isRoundRouting() ? GraphConstants.STYLE_BEZIER : GraphConstants.STYLE_ORTHOGONAL);
-        GraphConstants.setEndFill(map, ConfigurationManager.getConfiguration().isFillArrowHead());
-        GraphConstants.setEndSize(map, ConfigurationManager.getConfiguration().getArrowheadSize() == 0 ? ConfigurationManager.getStandardConfiguration().getArrowheadSize() : ConfigurationManager.getConfiguration().getArrowheadSize());
-        GraphConstants.setLineWidth(map, ConfigurationManager.getConfiguration().getArrowWidth() == 0 ? ConfigurationManager.getStandardConfiguration().getArrowWidth() : ConfigurationManager.getConfiguration().getArrowWidth());
-        GraphConstants.setDisconnectable(map, false);
-        // GraphConstants.setRouting(map, Edge.)
-
-        // Add Probability
-        // GraphConstants.setValue(map,
-        // Integer.toString(Double.valueOf(probability * 100).intValue()));
-        GraphConstants.setForeground(map, new Color(255, 0, 0));
-        GraphConstants.setFont(map, DefaultStaticConfiguration.DEFAULT_SMALLLABEL_FONT);
-        // GraphConstants.setLabelPosition(map, new
-        // Point2D.Double(GraphConstants.PERMILLE/2, 0));
-        // GraphConstants.setSelectable(map, true);
-        Point2D[] pos = {getDefaultLabelPosition()};
-        GraphConstants.setExtraLabelPositions(map, pos);
         GraphConstants.setLineEnd(map, GraphConstants.ARROW_CLASSIC);
+        GraphConstants.setLineWidth(map, ConfigurationManager.getConfiguration().getArrowWidth() == 0 ? ConfigurationManager.getStandardConfiguration().getArrowWidth() : ConfigurationManager.getConfiguration().getArrowWidth());
+        GraphConstants.setEndSize(map, ConfigurationManager.getConfiguration().getArrowheadSize() == 0 ? ConfigurationManager.getStandardConfiguration().getArrowheadSize() : ConfigurationManager.getConfiguration().getArrowheadSize());
+        GraphConstants.setEndFill(map, ConfigurationManager.getConfiguration().isFillArrowHead());
+        GraphConstants.setDisconnectable(map, false);
 
-        getAttributes().applyMap(map);
+        GraphConstants.setFont(map, DefaultStaticConfiguration.DEFAULT_SMALLLABEL_FONT);
+
+        // Set arc weight label
+        Point2D defaultPos = getDefaultLabelPosition();
+        Point2D.Double weightLabelPosition = new Point2D.Double(defaultPos.getX(), defaultPos.getY() - 10);
+        GraphConstants.setLabelPosition(map, weightLabelPosition);
+
+        // Set probability label
+        GraphConstants.setExtraLabels(map, new String[]{getProbabilityLabelText()});
+        Point2D.Double probabilityLabelPosition = new Point2D.Double(defaultPos.getX(), defaultPos.getY() + 10);
+        GraphConstants.setExtraLabelPositions(map, new Point2D[]{probabilityLabelPosition});
     }
 
-    public Point2D getLabelPosition() {
+    public Point2D getProbabilityLabelPosition() {
         Point2D result = null;
         Point2D positions[] = GraphConstants.getExtraLabelPositions(getAttributes());
-        if (positions.length > 0) result = positions[0];
-        if (result == null) result = getDefaultLabelPosition();
+        if ( positions.length > 0 ) result = positions[0];
+        if ( result == null ) result = getDefaultLabelPosition();
         return result;
     }
 
-    public void setLabelPosition(Point2D newLabelPos) {
+    public void setProbabilityLabelPosition(Point2D newLabelPos) {
         AttributeMap map = getAttributes();
-        Point2D[] pos = {newLabelPos};
-        GraphConstants.setExtraLabelPositions(map, pos);
+        Point2D[] positions = GraphConstants.getExtraLabelPositions(map);
 
+        positions[0] = newLabelPos;
+        GraphConstants.setExtraLabelPositions(map, positions);
         getAttributes().applyMap(map);
-    }
-
-
-//	public int getWeight() {
-//		return Integer.parseInt((String) getUserObject());
-//	}
-//
-//	public void setWeight(int weight) {
-//		setUserObject(String.valueOf(weight));
-//	}
-
-    public Point2D getDefaultLabelPosition() {
-        return new Point2D.Double(GraphConstants.PERMILLE / 2, 0);
     }
 
     public boolean isXORsplit(PetriNetModelProcessor mp) {
         Object cell = ((DefaultPort) getSource()).getParent();
 
-        if (cell instanceof GroupModel) {
+        if ( cell instanceof GroupModel ) {
             cell = ((GroupModel) cell).getMainElement();
         }
 
-        if (cell instanceof TransitionModel) {
+        if ( cell instanceof TransitionModel ) {
             TransitionModel trans = (TransitionModel) cell;
             int opType = trans.getToolSpecific().getOperatorType();
-            if ((opType == OperatorTransitionModel.XOR_SPLIT_TYPE) || (opType == OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE) || (opType == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE)) {
+            if ( (opType == OperatorTransitionModel.XOR_SPLIT_TYPE) || (opType == OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE) || (opType == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE) ) {
                 return true;
             }
         }
 
-        if (cell instanceof PlaceModel) {
+        if ( cell instanceof PlaceModel ) {
             PlaceModel place = (PlaceModel) cell;
             int num = mp.getElementContainer().
                     getOutgoingArcs(place.getId()).size();
@@ -213,7 +179,6 @@ public class ArcModel extends DefaultEdge implements Serializable {
     public String getId() {
         return id;
     }
-
 
     /**
      * Sets the id.
@@ -258,7 +223,7 @@ public class ArcModel extends DefaultEdge implements Serializable {
      */
     public void setRoute(boolean route) {
 
-        if (route) {
+        if ( route ) {
             getAttributes().applyValue(GraphConstants.ROUTING, GraphConstants.ROUTING_SIMPLE);
             getAttributes().remove(GraphConstants.POINTS);
         } else {
@@ -275,7 +240,7 @@ public class ArcModel extends DefaultEdge implements Serializable {
      */
     public void addPoint(Point2D c, int index) {
         List<Object> points = GraphConstants.getPoints(getAttributes());
-        if (points == null) {
+        if ( points == null ) {
             points = new Vector<Object>();
         }
         points.add(index, c);
@@ -293,31 +258,31 @@ public class ArcModel extends DefaultEdge implements Serializable {
     public void addPoint(Point2D c) {
         AttributeMap map = getAttributes();
         List<Object> points = GraphConstants.getPoints(map);
-        if (points == null) {
+        if ( points == null ) {
             points = new Vector<Object>();
             Point2D[] currentPoints = getPoints();
-            for (int i = 0; i < currentPoints.length; i++) {
+            for ( int i = 0; i < currentPoints.length; i++ ) {
                 points.add(currentPoints[i]);
             }
         }
 
         int index = 0;
         double min = Double.MAX_VALUE, dist = 0;
-        for (int i = 0; i < points.size() - 1; i++) {
+        for ( int i = 0; i < points.size() - 1; i++ ) {
             Point2D p = null;
             Point2D p1 = null;
-            if (points.get(i) instanceof Point2D) {
+            if ( points.get(i) instanceof Point2D ) {
                 p = (Point2D) points.get(i);
-            } else if (points.get(i) instanceof PortView) {
+            } else if ( points.get(i) instanceof PortView ) {
                 p = ((PortView) points.get(i)).getLocation();
             }
-            if (points.get(i + 1) instanceof Point2D) {
+            if ( points.get(i + 1) instanceof Point2D ) {
                 p1 = (Point2D) points.get(i + 1);
-            } else if (points.get(i + 1) instanceof PortView) {
+            } else if ( points.get(i + 1) instanceof PortView ) {
                 p1 = ((PortView) points.get(i + 1)).getLocation();
             }
             dist = new Line2D.Double(p, p1).ptLineDistSq(c);
-            if (dist < min) {
+            if ( dist < min ) {
                 min = dist;
                 index = i + 1;
             }
@@ -329,10 +294,10 @@ public class ArcModel extends DefaultEdge implements Serializable {
         AttributeMap map = getAttributes();
         List<Object> points = GraphConstants.getPoints(map);
         Point2D[] result = new Point2D[]{};
-        if (points != null) {
+        if ( points != null ) {
             result = new Point2D[points.size()];
-            for (int i = 0; i < points.size(); i++) {
-                if (points.get(i) instanceof PortView) {
+            for ( int i = 0; i < points.size(); i++ ) {
+                if ( points.get(i) instanceof PortView ) {
                     result[i] = ((PortView) points.get(i)).getLocation();
                 } else {
                     result[i] = (Point2D) points.get(i);
@@ -345,9 +310,9 @@ public class ArcModel extends DefaultEdge implements Serializable {
     public void setPoints(Point2D[] points) {
         AttributeMap map = getAttributes();
         List<Object> pointList = GraphConstants.getPoints(map);
-        if (pointList != null) {
-            while (pointList.size() > 2) pointList.remove(1);
-            for (int i = points.length - 1; i >= 0; i--) {
+        if ( pointList != null ) {
+            while ( pointList.size() > 2 ) pointList.remove(1);
+            for ( int i = points.length - 1; i >= 0; i-- ) {
                 pointList.add(1, points[i]);
             }
             GraphConstants.setPoints(map, pointList);
@@ -372,27 +337,9 @@ public class ArcModel extends DefaultEdge implements Serializable {
         return (getPointPosition(p, tolerance)) != -1;
     }
 
-    private int getPointPosition(Point2D p, int tolerance) {
-        List<Object> points = GraphConstants.getPoints(getAttributes());
-        int pos = -1;
-        double dist = Double.MAX_VALUE;
-        for (int i = 1; i < points.size() - 1; i++) {
-            Point2D a = (Point2D) points.get(i);
-
-            double tp = Point2D.distance(a.getX(), a.getY(), p.getX(), p.getY());
-            if (tp < dist) {
-                dist = tp;
-                pos = i;
-            }
-        }
-        if (dist < tolerance) {
-            return pos;
-        }
-        return -1;
-    }
-
     /**
      * Checks if the arc is activated
+     *
      * @return Returns true if the arc is activated, otherwise false
      */
     public boolean isActivated() {
@@ -401,6 +348,7 @@ public class ArcModel extends DefaultEdge implements Serializable {
 
     /**
      * Sets the arc activation state to the provide value
+     *
      * @param newState the new activation state
      */
     public void setActivated(boolean newState) {
@@ -429,13 +377,13 @@ public class ArcModel extends DefaultEdge implements Serializable {
         points = points != null ? points : new Vector<>(); // ensure points not null
 
         Vector<Object> newPoints = new Vector<Object>();
-        for (int i = 1; i < points.size() - 1; i++) {
+        for ( int i = 1; i < points.size() - 1; i++ ) {
             newPoints.add(new IntPair((int) ((Point2D) points.get(i)).getX(), (int) ((Point2D) points.get(i)).getY()));
         }
         map.setArcPoints(newPoints);
         map.setArcProbability(getProbability());
-        map.setArcDisplayProbability(isDisplayOn());
-        map.setArcLabelPosition((int) this.getLabelPosition().getX(), (int) this.getLabelPosition().getY());
+        map.setArcDisplayProbability(displayProbability());
+        map.setArcLabelPosition((int) this.getProbabilityLabelPosition().getX(), (int) this.getProbabilityLabelPosition().getY());
 
         map.setArcWeight(getInscriptionValue());
 
@@ -452,8 +400,8 @@ public class ArcModel extends DefaultEdge implements Serializable {
 
     public double getProbability() {
         Object probability = getAttributes().get("Probability");
-        if (probability instanceof Double) {
-            return ((Double) probability).doubleValue();
+        if ( probability instanceof Double ) {
+            return (Double) probability;
         } else {
             return 1.0;
         }
@@ -464,33 +412,71 @@ public class ArcModel extends DefaultEdge implements Serializable {
         updateLabel();
     }
 
-    public boolean isDisplayOn() {
+    /**
+     * Determines, if the arc probability should be displayed, or not.
+     *
+     * @return true if the probability should be displayed, otherwise false
+     */
+    public boolean displayProbability() {
         Object probability = getAttributes().get("DisplayProbability");
-        if (probability instanceof Boolean) {
+        if ( probability instanceof Boolean ) {
             return ((Boolean) probability).booleanValue();
         } else {
             return false;
         }
     }
 
-    public void setDisplayOn(boolean displayOn) {
-        getAttributes().put("DisplayProbability", new Boolean(displayOn));
+    /**
+     * Sets the new state of the visibility of the arc probability label.
+     *
+     * @param display true if the label should be displayed, otherwise false.
+     */
+    public void displayProbability(boolean display) {
+        getAttributes().put("DisplayProbability", new Boolean(display));
         updateLabel();
     }
 
-    /*
-     * public GraphLayoutCache getGraphLayoutCache() { return graphLayoutCache; }
+    /**
+     * Determine if the arc weight should be displayed or not.
      *
-     * public void setGraphLayoutCache(GraphLayoutCache graphLayoutCache) {
-     * this.graphLayoutCache = graphLayoutCache; }
+     * @return true if the arc weight should be displayed, otherwise false
      */
-    private void updateLabel() {
-        Object[] labels = {};
-        if (isDisplayOn()) {
-            labels = new Object[]{Integer.toString(Double.valueOf(getProbability() * 100).intValue()) + "%"};
+    public boolean displayWeight() {
+        return this.getInscriptionValue() > 1 || defaultWeightVisible;
+    }
+
+    private int getPointPosition(Point2D p, int tolerance) {
+        List<Object> points = GraphConstants.getPoints(getAttributes());
+        int pos = -1;
+        double dist = Double.MAX_VALUE;
+        for ( int i = 1; i < points.size() - 1; i++ ) {
+            Point2D a = (Point2D) points.get(i);
+
+            double tp = Point2D.distance(a.getX(), a.getY(), p.getX(), p.getY());
+            if ( tp < dist ) {
+                dist = tp;
+                pos = i;
+            }
         }
-        HashMap<Object, Object> map = new HashMap<Object, Object>();
-        GraphConstants.setExtraLabels(map, labels);
-        getAttributes().applyMap(map);
+        if ( dist < tolerance ) {
+            return pos;
+        }
+        return -1;
+    }
+
+    private void updateLabel() {
+        AttributeMap attributes = getAttributes();
+        Object[] extraLabels = GraphConstants.getExtraLabels(attributes);
+        extraLabels[0] = getProbabilityLabelText();
+        GraphConstants.setExtraLabels(attributes, extraLabels);
+        attributes.applyMap(attributes);
+    }
+
+    private String getProbabilityLabelText() {
+        return Integer.toString(Double.valueOf(getProbability() * 100).intValue()) + "%";
+    }
+
+    private Point2D getDefaultLabelPosition() {
+        return new Point2D.Double(GraphConstants.PERMILLE / 2, 0);
     }
 }

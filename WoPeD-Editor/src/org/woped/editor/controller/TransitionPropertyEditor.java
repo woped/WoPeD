@@ -22,67 +22,27 @@
  */
 package org.woped.editor.controller;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Frame;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
-import java.awt.Point;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Vector;
-
-import javax.swing.BorderFactory;
-import javax.swing.ButtonGroup;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.JTabbedPane;
-import javax.swing.JTextField;
-import javax.swing.border.TitledBorder;
-
 import org.jgraph.graph.DefaultGraphCell;
 import org.woped.core.controller.IDialog;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.CreationMap;
-import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
-import org.woped.core.model.petrinet.GroupModel;
-import org.woped.core.model.petrinet.OperatorTransitionModel;
+import org.woped.core.model.petrinet.*;
 import org.woped.core.model.petrinet.Toolspecific.OperatorPosition;
-import org.woped.core.model.petrinet.TransitionModel;
-import org.woped.core.model.petrinet.TriggerModel;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.Constants;
-import org.woped.editor.controller.bpel.Assign;
-import org.woped.editor.controller.bpel.BPELadditionalPanel;
-import org.woped.editor.controller.bpel.BPELassignPanel;
-import org.woped.editor.controller.bpel.BPELemptyPanel;
-import org.woped.editor.controller.bpel.BPELinvokePanel;
-import org.woped.editor.controller.bpel.BPELreceivePanel;
-import org.woped.editor.controller.bpel.BPELreplyPanel;
-import org.woped.editor.controller.bpel.BPELwaitPanel;
-import org.woped.editor.controller.bpel.Empty;
-import org.woped.editor.controller.bpel.Invoke;
-import org.woped.editor.controller.bpel.Receive;
-import org.woped.editor.controller.bpel.Reply;
-import org.woped.editor.controller.bpel.Wait;
+import org.woped.editor.controller.bpel.*;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.gui.lookAndFeel.WopedButton;
 import org.woped.gui.translations.Messages;
+
+import javax.swing.*;
+import javax.swing.border.TitledBorder;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Vector;
 
 /**
  * @author waschtl
@@ -2056,12 +2016,11 @@ public class TransitionPropertyEditor extends JDialog implements
 			// displayed for the arc. Catch this and disable the display 
 			if (!am.isXORsplit(editor.getModelProcessor())) {
 				am.setProbability(1);
-				am.setDisplayOn(false);
-			}
+                am.displayProbability(false);
+            }
 			else {
-				if (am.getProbability() != 1)
-					am.setDisplayOn(true);
-			}
+				if (am.getProbability() != 1) am.displayProbability(true);
+            }
 					
 		}
 

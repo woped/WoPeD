@@ -296,7 +296,7 @@ public class PNMLExportTest {
             when(arc.getSourceId()).thenReturn(this.sourceId);
             when(arc.getTargetId()).thenReturn(this.targetId);
             when(arc.getPoints()).thenReturn(points);
-            when(arc.getLabelPosition()).thenReturn(labelPosition);
+            when(arc.getProbabilityLabelPosition()).thenReturn(labelPosition);
             when(arc.getUnknownToolSpecs()).thenReturn(new Vector<>(0));
         }
     }
