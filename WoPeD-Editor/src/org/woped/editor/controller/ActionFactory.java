@@ -1,17 +1,14 @@
 package org.woped.editor.controller;
 
-import java.awt.event.ActionEvent;
-import java.util.HashMap;
-
-import javax.swing.Action;
-import javax.swing.JComponent;
-import javax.swing.JInternalFrame;
-
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IEditor;
 import org.woped.editor.action.WoPeDAction;
 import org.woped.editor.controller.vc.EditorVC;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.util.HashMap;
 
 public class ActionFactory
 {
@@ -94,6 +91,8 @@ public class ActionFactory
     public final static String         ACTIONID_DEACTIVATE_ALL_ROUTING = "Popup.Unroute";
     public final static String         ACTIONID_ADD_POINT              = "Popup.AddPoint";
     public final static String         ACTIONID_REMOVE_POINT           = "Popup.RemovePoint";
+    public final static String ACTIONID_ARC_WEIGHT_INCREASE = "Popup.ArcWeightIncrease";
+    public final static String ACTIONID_ARC_WEIGHT_DECREASE = "Popup.ArcWeightDecrease";
     public final static String         ACTIONID_OPEN_PROPERTIES        = "Popup.Properties";
     public final static String         ACTIONID_ADD_RESOURCE_TRIGGER   = "Popup.Trigger.AddResource";
     public final static String         ACTIONID_ADD_TIME_TRIGGER       = "Popup.Trigger.AddTime";
@@ -493,7 +492,13 @@ public class ActionFactory
         
         STATIC_ACTION_MAP.put(ACTIONID_REMOVE_POINT, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.REMOVE_POINT, null, ACTIONID_REMOVE_POINT));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_REMOVE_POINT), VisualController.ARCPOINT_SELECTION, VisualController.ARCPOINT_SELECTION, VisualController.IGNORE);
-        
+
+        STATIC_ACTION_MAP.put(ACTIONID_ARC_WEIGHT_INCREASE, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.INCREASE_ARC_WEIGHT, null, ACTIONID_ARC_WEIGHT_INCREASE));
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ARC_WEIGHT_INCREASE), VisualController.ARC_SELECTION, VisualController.ARC_SELECTION, VisualController.IGNORE);
+
+        STATIC_ACTION_MAP.put(ACTIONID_ARC_WEIGHT_DECREASE, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.DECREASE_ARC_WEIGHT, null, ACTIONID_ARC_WEIGHT_DECREASE));
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ARC_WEIGHT_DECREASE), VisualController.CAN_DECREASE_ARC_WEIGHT, VisualController.CAN_DECREASE_ARC_WEIGHT, VisualController.IGNORE);
+
         STATIC_ACTION_MAP.put(ACTIONID_OPEN_PROPERTIES, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.OPEN_PROPERTIES, null, ACTIONID_OPEN_PROPERTIES));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_OPEN_PROPERTIES), VisualController.NODE_OR_XORARC_SELECTION, VisualController.NODE_OR_XORARC_SELECTION, VisualController.IGNORE);
         
@@ -599,7 +604,7 @@ public class ActionFactory
 
     public static WoPeDAction getStaticAction(String id)
     {
-        return (WoPeDAction) getStaticActionMap().get(id);
+        return getStaticActionMap().get(id);
     }
 
     public static void addTarget(AbstractApplicationMediator mediator, String id, JComponent target) 
@@ -614,7 +619,7 @@ public class ActionFactory
             Action result = new EditorSelectAction(editor);
             SELECT_EDITOR_SELECT_ACTION.put(editor, result);
         }
-        return (Action) SELECT_EDITOR_SELECT_ACTION.get(editor);
+        return SELECT_EDITOR_SELECT_ACTION.get(editor);
 
     }
 
@@ -631,8 +636,7 @@ public class ActionFactory
 
         public void actionPerformed(ActionEvent e) {
             if (((EditorVC)m_editor).getEditorPanel().getContainer() instanceof JInternalFrame 
-        	    && ((JInternalFrame) ((EditorVC)m_editor).getEditorPanel().getContainer()).isSelected() 
-        	    && ((JInternalFrame) ((EditorVC)m_editor).getEditorPanel().getContainer()).isVisible()) {
+        	    && ((JInternalFrame) ((EditorVC)m_editor).getEditorPanel().getContainer()).isSelected() && ((EditorVC) m_editor).getEditorPanel().getContainer().isVisible() ) {
                 AM.fireViewEvent(new EditorViewEvent(m_editor, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.INCONIFY_EDITOR));
             } else {
                 AM.fireViewEvent(new EditorViewEvent(m_editor, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.SELECT_EDITOR));

@@ -6,10 +6,6 @@ import java.awt.event.ActionEvent;
 public abstract class AbstractViewEvent extends ActionEvent
 {
 
-    private IViewListener   viewListener              = null;
-    private Object          data                      = null;
-    private int             type                      = -1;
-    private int             order                     = -1;
     // TYPES
     public static final int VIEWEVENTTYPE_EDIT        = 0;
     public static final int VIEWEVENTTYPE_APPLICATION = 1;
@@ -18,7 +14,6 @@ public abstract class AbstractViewEvent extends ActionEvent
     public static final int VIEWEVENTTYPE_REACHGRAPH  = 4;
     public static final int VIEWEVENTTYPE_IMPORTAPRO = 701;
     public static final int VIEWEVENTTYPE_EXPORTAPRO = 702;
-
     // General Orders
     public static final int VIEWEVENT_FIRST           = 0;
     public static final int OK                        = 0;
@@ -101,7 +96,6 @@ public abstract class AbstractViewEvent extends ActionEvent
     public static final int CUT                       = 308;
     public static final int PASTE                     = 309;
     public static final int PASTE_AT                  = 328;
-
     public static final int UNDO                      = 310;
     public static final int REMOVE                    = 311;
     public static final int PLUS                      = 312;
@@ -128,7 +122,6 @@ public abstract class AbstractViewEvent extends ActionEvent
     public static final int TEACH                     = 405;
     public static final int SUGGEST                   = 406;
     public static final int RENAME                    = 407;
-
     public static final int A                         = 500;
     public static final int B                         = 501;
     public static final int C                         = 502;
@@ -176,8 +169,7 @@ public abstract class AbstractViewEvent extends ActionEvent
     public static final int TEAM                      = 900;
     public static final int WIN                       = 901;
     public static final int EXECUTE                   = 902;
-    public static final int ACTION_EVENT              = 903;    
-    
+    public static final int ACTION_EVENT = 903;
     // WoPeD Orders
     public static final int SELECT_EDITOR             = 1000;
     public static final int OPEN_SAMPLE               = 1001;
@@ -189,13 +181,11 @@ public abstract class AbstractViewEvent extends ActionEvent
     public static final int STRETCH                   = 1007;
     public static final int PRESS                     = 1008;
     public static final int INCONIFY_EDITOR           = 1009;
-
     public static final int ZOOM_ABSOLUTE             = 1010;
     public static final int ZOOM_IN                   = 1011;
     public static final int ZOOM_OUT                  = 1012;
     public static final int ZOOMED                    = 1013;
     public static final int BUGREPORT                 = 1014;
-
     public static final int DRAWMODE_PLACE            = 1019;
     public static final int DRAWMODE_TRANSITION       = 1020;
     public static final int DRAWMODE_ANDSPLIT         = 1021;
@@ -205,7 +195,6 @@ public abstract class AbstractViewEvent extends ActionEvent
     public static final int DRAWMODE_XORJOIN          = 1025;
     public static final int DRAWMODE_SUB              = 1026;
     public static final int DRAWMODE_XORSPLITJOIN     = 1027;
-
     public static final int CHECK_SELECTION           = 1028;
     public static final int ARC_SELECTED              = 1029;
     public static final int REDO                      = 1030;
@@ -237,7 +226,6 @@ public abstract class AbstractViewEvent extends ActionEvent
     public static final int ADD_ANDSPLITJOIN		  = 1055;
     public static final int ADD_ANDJOINXORSPLIT       = 1056;
     public static final int ADD_XORJOINANDSPLIT		  = 1057;
-    
     public static final int OPEN_PROPERTIES           = 1060;
     public static final int ANALYSIS_WOPED			  = 1062;
     public static final int COLORING 		 		  = 1063;
@@ -249,18 +237,14 @@ public abstract class AbstractViewEvent extends ActionEvent
     public static final int ANALYSIS_METRICSBUILDER   = 1069;
     public static final int OPEN_TOKENGAME            = 1070;
     public static final int CLOSE_TOKENGAME           = 1071;
-
     //
     public static final int CASCADE                   = 1072;
     public static final int ARRANGE                   = 1073;
     public static final int SHOWSIDEBAR				  = 1074;
-    
     public static final int DRAWMODE_ANDJOIN_XORSPLIT = 1075;
     public static final int DRAWMODE_XORJOIN_ANDSPLIT = 1076;
-    
     public static final int SHOWOVERVIEW              = 1077;
     public static final int SHOWTREEVIEW			  = 1078;
-    
     public static final int TOKENGAME_BACKWARD		  = 1079;
     public static final int TOKENGAME_JUMPINTO		  = 1080;
     public static final int TOKENGAME_FORWARD		  = 1081;
@@ -270,27 +254,27 @@ public abstract class AbstractViewEvent extends ActionEvent
     public static final int TOKENGAME_LEAVE			  = 1085;
     public static final int TOKENGAME_STEP			  = 1086;
     public static final int TOKENGAME_AUTO			  = 1087;
-    
     public static final int QUANTCAP				  = 1088;
     public static final int QUANTSIM				  = 1089;
-    public static final int REACHGRAPH				  = 1090;    
+    public static final int REACHGRAPH = 1090;
     public static final int GRAPHBEAUTIFIER			  = 1091;
     public static final int IMPROVE_LAYOUT			  = 1092;
     public static final int GRAPHBEAUTIFIER_ADV		  = 1093;
-    
     public static final int VIEWEVENT_LAST            = 1094;
-    
     public static final int REGISTER				  = 1095;
     public static final int FACEBOOK     			  = 1096;
     public static final int GOOGLEPLUS  			  = 1097;
     public static final int TWITTER     			  = 1098;
     public static final int COMMUNITY     			  = 1099;
-    
     public static final int P2T						  = 1100;
-    
-    
+    public static final int INCREASE_ARC_WEIGHT = 1101;
+    public static final int DECREASE_ARC_WEIGHT = 1102;
     //variable to change toolbars and references
     public static final int CHANGEPANEL				  = 1999;
+    private IViewListener viewListener = null;
+    private Object data = null;
+    private int type = -1;
+    private int order = -1;
     
     public AbstractViewEvent(Object source, int type, int order, Object data)
     {

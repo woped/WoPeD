@@ -25,12 +25,6 @@
  */
 package org.woped.editor.gui;
 
-import java.awt.EventQueue;
-import java.beans.PropertyChangeEvent;
-
-import javax.swing.JMenuItem;
-import javax.swing.JPopupMenu;
-
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.AbstractGraph;
 import org.woped.core.model.ArcModel;
@@ -38,6 +32,10 @@ import org.woped.core.model.petrinet.GroupModel;
 import org.woped.editor.action.WoPeDAction;
 import org.woped.editor.controller.ActionFactory;
 import org.woped.editor.controller.VisualController;
+
+import javax.swing.*;
+import java.awt.*;
+import java.beans.PropertyChangeEvent;
 
 /**
  * Creates the Popupmenu and adds the MenuItems to the VisualController.
@@ -60,6 +58,8 @@ public class PopupMenuPetrinet extends JPopupMenu
 
     private JMenuItem                	m_addPointMenuItem        = null;
     private JMenuItem                	m_removePointMenuItem     = null;
+    private JMenuItem m_increaseArcWeight = null;
+    private JMenuItem m_decreaseArcWeight = null;
 
     private JMenuItem                	m_externalTriggerMenuItem = null;
     private JMenuItem                	m_resourceTriggerMenuItem = null;
@@ -125,6 +125,8 @@ public class PopupMenuPetrinet extends JPopupMenu
         add(getTimeTriggerMenuItem());
         add(getRemoveTriggerMenuItem());
         add(getAddPointMenuItem());
+        add(getIncreaseArcWeightMenuItem());
+        add(getDecreaseArcWeightMenuItem());
         add(getRemovePointMenuItem());
         add(getGroupMenuItem());
         add(getUngroupMenuItem());
@@ -132,8 +134,9 @@ public class PopupMenuPetrinet extends JPopupMenu
     }
 
     /**
-     * 
-     * @return
+     * Gets the current popup menu instance.
+     *
+     * @return the instance of the popup menu
      */
     public static PopupMenuPetrinet getInstance()
     {
@@ -164,11 +167,11 @@ public class PopupMenuPetrinet extends JPopupMenu
                     {
                     	pack();
                         PopupMenuPetrinet.super.show(graph, x, y);
-                    } 
-                    	
-              };
-    	};
-    	EventQueue.invokeLater(runner);
+                    }
+
+            }
+        };
+        EventQueue.invokeLater(runner);
     }
     
     public void show(final AbstractGraph graph, final int x, final int y)
@@ -548,5 +551,28 @@ public class PopupMenuPetrinet extends JPopupMenu
             ActionFactory.addTarget(c_mediator, action_id, m_ungroupMenuItem);            
         }
         return m_ungroupMenuItem;
+    }
+
+    private JMenuItem getIncreaseArcWeightMenuItem() {
+
+        if ( m_increaseArcWeight == null ) {
+            action_id = ActionFactory.ACTIONID_ARC_WEIGHT_INCREASE;
+            action = ActionFactory.getStaticAction(action_id);
+            m_increaseArcWeight = new JMenuItem(action);
+            ActionFactory.addTarget(c_mediator, action_id, m_increaseArcWeight);
+        }
+        return m_increaseArcWeight;
+    }
+
+    private JMenuItem getDecreaseArcWeightMenuItem() {
+
+        if ( m_decreaseArcWeight == null ) {
+            action_id = ActionFactory.ACTIONID_ARC_WEIGHT_DECREASE;
+            action = ActionFactory.getStaticAction(action_id);
+            m_decreaseArcWeight = new JMenuItem(action);
+            ActionFactory.addTarget(c_mediator, action_id, m_decreaseArcWeight);
+        }
+
+        return m_decreaseArcWeight;
     }
 }

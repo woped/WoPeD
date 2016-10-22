@@ -84,9 +84,7 @@ import java.util.List;
  *         Created on 29.04.2003
  */
 
-public class EditorVC implements KeyListener, MouseWheelListener,
-        GraphModelListener, ClipboardOwner, GraphSelectionListener, IEditor,
-        InternalFrameListener {
+public class EditorVC implements KeyListener, MouseWheelListener, GraphModelListener, ClipboardOwner, GraphSelectionListener, IEditor, InternalFrameListener {
     public static final String ID_PREFIX = "EDITOR_VC_";
     // zoom
     public static final double MIN_SCALE = 0.2;
@@ -137,9 +135,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
     private boolean valueChangedActive = false;
     private QuantitativeSimulationDialog simDlg;
 
-    public EditorVC(String id, EditorClipboard clipboard,
-                    boolean undoSupport,
-                    AbstractApplicationMediator mediator) {
+    public EditorVC(String id, EditorClipboard clipboard, boolean undoSupport, AbstractApplicationMediator mediator) {
         this(id, clipboard, undoSupport, mediator, true);
     }
 
@@ -148,12 +144,9 @@ public class EditorVC implements KeyListener, MouseWheelListener,
      *
      * @param clipboard
      */
-    public EditorVC(String id, EditorClipboard clipboard,
-                    boolean undoSupport,
-                    AbstractApplicationMediator mediator, boolean loadUI) {
+    public EditorVC(String id, EditorClipboard clipboard, boolean undoSupport, AbstractApplicationMediator mediator, boolean loadUI) {
         this.m_propertyChangeSupport = new PropertyChangeSupport(this);
-        this.m_propertyChangeSupport.addPropertyChangeListener(VisualController
-                .getInstance());
+        this.m_propertyChangeSupport.addPropertyChangeListener(VisualController.getInstance());
         this.m_mediator = mediator;
 
         this.undoSupport = undoSupport;
@@ -162,20 +155,16 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 
         marqueehandler = new PetriNetMarqueeHandler(this, mediator);
         this.modelProcessor = new PetriNetModelProcessor();
-        if (loadUI)
-            this.m_graph = new WoPeDJGraph(new WoPeDJGraphGraphModel(this),
-                    marqueehandler,
-                    undoSupport ? new WoPeDUndoManager(this) : null,
-                    viewFactory);
+        if ( loadUI )
+            this.m_graph = new WoPeDJGraph(new WoPeDJGraphGraphModel(this), marqueehandler, undoSupport ? new WoPeDUndoManager(this) : null, viewFactory);
 
         editorPanel = new EditorPanel(this, mediator, m_propertyChangeSupport, loadUI);
 
         this.viewListener = new Vector<IViewListener>();
         this.id = id;
         // Listener for the graph
-        if (loadUI) {
-            getGraph().getSelectionModel().addGraphSelectionListener(
-                    VisualController.getInstance());
+        if ( loadUI ) {
+            getGraph().getSelectionModel().addGraphSelectionListener(VisualController.getInstance());
             getGraph().getSelectionModel().addGraphSelectionListener(this);
             getGraph().getModel().addGraphModelListener(this);
             getGraph().addKeyListener(this);
@@ -194,7 +183,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 	/* ########## ELEMENT CREATION METHODS ########### */
 
     public void closeEditor() {
-        if (getGraph() == null) return;
+        if ( getGraph() == null ) return;
         this.fireViewEvent(new ViewEvent(this, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.CLOSE, null));
         clearYourself();
         System.gc();
@@ -213,9 +202,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
         getGraph().refreshNet();
         getGraph().repaint();
 
-        LoggerManager.debug(Constants.EDITOR_LOGGER,
-                "Net updated. (" + (System.currentTimeMillis() - begin)
-                        + " ms)");
+        LoggerManager.debug(Constants.EDITOR_LOGGER, "Net updated. (" + (System.currentTimeMillis() - begin) + " ms)");
     }
 
     /**
@@ -225,27 +212,23 @@ public class EditorVC implements KeyListener, MouseWheelListener,
      * @param map
      */
     public TriggerModel createTrigger(CreationMap map) {
-        AbstractPetriNetElementModel transition = getModelProcessor()
-                .getElementContainer().getElementById(map.getId());
-        if (transition != null && transition instanceof TransitionModel) {
-            if (((TransitionModel) transition).hasTrigger()) {
-                deleteCell(((TransitionModel) transition).getToolSpecific()
-                        .getTrigger(), true);
+        AbstractPetriNetElementModel transition = getModelProcessor().getElementContainer().getElementById(map.getId());
+        if ( transition != null && transition instanceof TransitionModel ) {
+            if ( ((TransitionModel) transition).hasTrigger() ) {
+                deleteCell(((TransitionModel) transition).getToolSpecific().getTrigger(), true);
             }
 
-            if (transition.getParent() instanceof GroupModel) {
+            if ( transition.getParent() instanceof GroupModel ) {
                 GroupModel group = (GroupModel) transition.getParent();
                 TriggerModel triggerModel = getModelProcessor().newTrigger(map);
 
-                if (map.getTriggerPosition() != null) {
+                if ( map.getTriggerPosition() != null ) {
                     triggerModel.setPosition(map.getTriggerPosition());
                 } else {
-                    if (isRotateSelected()) {
-                        triggerModel.setPosition(map.getPosition().x - 25,
-                                map.getPosition().y + 10);
+                    if ( isRotateSelected() ) {
+                        triggerModel.setPosition(map.getPosition().x - 25, map.getPosition().y + 10);
                     } else {
-                        triggerModel.setPosition(map.getPosition().x + 10,
-                                map.getPosition().y - 20);
+                        triggerModel.setPosition(map.getPosition().x + 10, map.getPosition().y - 20);
                     }
 
                 }
@@ -254,8 +237,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
                 HashMap<GroupModel, AttributeMap> hm = new HashMap<GroupModel, AttributeMap>();
                 hm.put(group, group.getAttributes());
 
-                getGraph().getModel().insert(new Object[]{triggerModel},
-                        hm, null, pm, null);
+                getGraph().getModel().insert(new Object[]{triggerModel}, hm, null, pm, null);
 
                 return triggerModel;
             }
@@ -263,27 +245,24 @@ public class EditorVC implements KeyListener, MouseWheelListener,
         return null;
     }
 
-    public TriggerModel createTriggerForPaste(CreationMap map,
-                                              TransitionModel transition) {
+    public TriggerModel createTriggerForPaste(CreationMap map, TransitionModel transition) {
 
-        if (transition != null && transition instanceof TransitionModel) {
-            if (transition.hasTrigger()) {
+        if ( transition != null && transition instanceof TransitionModel ) {
+            if ( transition.hasTrigger() ) {
                 deleteCell(transition.getToolSpecific().getTrigger(), true);
             }
 
-            if (transition.getParent() instanceof GroupModel) {
+            if ( transition.getParent() instanceof GroupModel ) {
                 GroupModel group = (GroupModel) transition.getParent();
                 TriggerModel triggerModel = getModelProcessor().newTrigger(map);
 
-                if (map.getTriggerPosition() != null) {
+                if ( map.getTriggerPosition() != null ) {
                     triggerModel.setPosition(map.getTriggerPosition());
                 } else {
-                    if (isRotateSelected()) {
-                        triggerModel.setPosition(map.getPosition().x - 25,
-                                map.getPosition().y + 10);
+                    if ( isRotateSelected() ) {
+                        triggerModel.setPosition(map.getPosition().x - 25, map.getPosition().y + 10);
                     } else {
-                        triggerModel.setPosition(map.getPosition().x + 10,
-                                map.getPosition().y - 20);
+                        triggerModel.setPosition(map.getPosition().x + 10, map.getPosition().y - 20);
                     }
 
                 }
@@ -292,8 +271,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
                 HashMap<GroupModel, AttributeMap> hm = new HashMap<GroupModel, AttributeMap>();
                 hm.put(group, group.getAttributes());
 
-                getGraph().getModel().insert(new Object[]{triggerModel}, hm,
-                        null, pm, null);
+                getGraph().getModel().insert(new Object[]{triggerModel}, hm, null, pm, null);
 
                 return triggerModel;
             }
@@ -308,28 +286,23 @@ public class EditorVC implements KeyListener, MouseWheelListener,
      * @return
      */
     public TransitionResourceModel createTransitionResource(CreationMap map) {
-        AbstractPetriNetElementModel transition = getModelProcessor()
-                .getElementContainer().getElementById(map.getId());
-        if (transition != null && transition instanceof TransitionModel) {
-            if (((TransitionModel) transition).hasResource()) {
-                deleteCell(((TransitionModel) transition).getToolSpecific()
-                        .getTransResource(), true);
+        AbstractPetriNetElementModel transition = getModelProcessor().getElementContainer().getElementById(map.getId());
+        if ( transition != null && transition instanceof TransitionModel ) {
+            if ( ((TransitionModel) transition).hasResource() ) {
+                deleteCell(((TransitionModel) transition).getToolSpecific().getTransResource(), true);
             }
 
-            if (transition.getParent() instanceof GroupModel) {
+            if ( transition.getParent() instanceof GroupModel ) {
                 GroupModel group = (GroupModel) transition.getParent();
                 TransitionResourceModel transResourceModell = getModelProcessor().newTransResource(map);
 
-                transResourceModell.setPosition(map.getResourcePosition().x,
-                        map.getResourcePosition().y);
+                transResourceModell.setPosition(map.getResourcePosition().x, map.getResourcePosition().y);
                 ParentMap pm = new ParentMap();
                 pm.addEntry(transResourceModell, group);
                 HashMap<GroupModel, AttributeMap> hm = new HashMap<GroupModel, AttributeMap>();
                 hm.put(group, group.getAttributes());
 
-                getGraph().getModel().insert(
-                        new Object[]{transResourceModell}, hm, null, pm,
-                        null);
+                getGraph().getModel().insert(new Object[]{transResourceModell}, hm, null, pm, null);
 
                 return transResourceModell;
             }
@@ -337,23 +310,20 @@ public class EditorVC implements KeyListener, MouseWheelListener,
         return null;
     }
 
-    public GraphCell createElement(int type, int additionalType, Point2D p,
-                                   boolean doNotEdit) {
-        return createElement(type, additionalType, (int) p.getX(),
-                (int) p.getY(), doNotEdit);
+    public GraphCell createElement(int type, int additionalType, Point2D p, boolean doNotEdit) {
+        return createElement(type, additionalType, (int) p.getX(), (int) p.getY(), doNotEdit);
     }
 
-    public GraphCell createElement(int type, int additionalType, int x, int y,
-                                   boolean doNotEdit) {
+    public GraphCell createElement(int type, int additionalType, int x, int y, boolean doNotEdit) {
         CreationMap map = CreationMap.createMap();
         map.setType(type);
-        if (doNotEdit) {
+        if ( doNotEdit ) {
             map.setEditOnCreation(false);
         }
-        if (type == OperatorTransitionModel.TRANS_OPERATOR_TYPE) {
+        if ( type == OperatorTransitionModel.TRANS_OPERATOR_TYPE ) {
             map.setOperatorType(additionalType);
         }
-        if (x != -1 && y != -1) {
+        if ( x != -1 && y != -1 ) {
             map.setPosition(x, y);
         }
         return createElement(map, true, doNotEdit);
@@ -365,55 +335,44 @@ public class EditorVC implements KeyListener, MouseWheelListener,
      * @param map
      * @return
      */
-    protected GraphCell createElement(CreationMap map, boolean insertIntoCache,
-                                      boolean editNameTag) {
-        if (map.isValid()) {
+    protected GraphCell createElement(CreationMap map, boolean insertIntoCache, boolean editNameTag) {
+        if ( map.isValid() ) {
             // Create Element, this will assign a new id if none has been
             // defined
             // This id will be unique even across sub-process borders by
             // prepending the
             // id of the sub-process
-            AbstractPetriNetElementModel element = getModelProcessor().createElement(
-                    map);
+            AbstractPetriNetElementModel element = getModelProcessor().createElement(map);
 
             // ensure that There is an Position
-            if (map.getPosition() != null) {
-                Point point = new Point(map.getPosition().x,
-                        map.getPosition().y);
+            if ( map.getPosition() != null ) {
+                Point point = new Point(map.getPosition().x, map.getPosition().y);
                 // map.setPosition(new IntPair());
                 element.setPosition(getGraph().snap(point));
-            } else if (getLastMousePosition() != null) {
-                Point point = new Point(
-                        (int) ((getLastMousePosition().getX()
-                                / getGraph().getScale() - element.getWidth() / 2)),
-                        (int) ((getLastMousePosition().getY()
-                                / getGraph().getScale() - element.getHeight() / 2)));
+            } else if ( getLastMousePosition() != null ) {
+                Point point = new Point((int) ((getLastMousePosition().getX() / getGraph().getScale() - element.getWidth() / 2)), (int) ((getLastMousePosition().getY() / getGraph().getScale() - element.getHeight() / 2)));
                 // map.setPosition(new IntPair((Point) getGraph().snap(point)));
                 element.setPosition(getGraph().snap(point));
             } else {
                 map.setPosition(30, 30);
             }
-            if (element instanceof AbstractPetriNetElementModel) {
+            if ( element instanceof AbstractPetriNetElementModel ) {
                 // Name position
-                if (map.getNamePosition() == null) {
-                    if (isRotateSelected()) {
-                        element.getNameModel().setPosition(
-                                (element.getX() + element.getWidth()),
-                                (element.getY()) + 1);
+                if ( map.getNamePosition() == null ) {
+                    if ( isRotateSelected() ) {
+                        element.getNameModel().setPosition((element.getX() + element.getWidth()), (element.getY()) + 1);
                     } else {
-                        element.getNameModel().setPosition((element.getX() - 1),
-                                (element.getY() + element.getHeight()));
+                        element.getNameModel().setPosition((element.getX() - 1), (element.getY() + element.getHeight()));
                     }
                 } else {
-                    element.getNameModel().setPosition(map.getNamePosition().x,
-                            map.getNamePosition().y);
+                    element.getNameModel().setPosition(map.getNamePosition().x, map.getNamePosition().y);
                 }
-                if (map.getName() == null) {
+                if ( map.getName() == null ) {
                     element.setNameValue(element.getId().toString());
                 } else {
                     element.setNameValue(map.getName());
                 }
-                if (map.getReadOnly() != null) {
+                if ( map.getReadOnly() != null ) {
                     element.setReadOnly(map.getReadOnly());
                 }
                 // Grouping
@@ -423,15 +382,12 @@ public class EditorVC implements KeyListener, MouseWheelListener,
                 // + element.toString());
                 group.add(element);
                 group.add(element.getNameModel());
-                if (insertIntoCache) {
+                if ( insertIntoCache ) {
                     getGraph().getGraphLayoutCache().insert(group);
                 }
 
                 // edit
-                if (editNameTag
-                        && ConfigurationManager.getConfiguration()
-                        .isEditingOnCreation()
-                        && map.isEditOnCreation() && isSmartEditActive()) {
+                if ( editNameTag && ConfigurationManager.getConfiguration().isEditingOnCreation() && map.isEditOnCreation() && isSmartEditActive() ) {
                     getGraph().startEditingAtCell(element.getNameModel());
                 }
                 getEditorPanel().autoRefreshAnalysisBar();
@@ -441,8 +397,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
             getEditorPanel().getUnderstandColoring().update();
             return element;
         } else {
-            LoggerManager.error(Constants.EDITOR_LOGGER,
-                    "Could not create Element. CreationMap is NOT VALID");
+            LoggerManager.error(Constants.EDITOR_LOGGER, "Could not create Element. CreationMap is NOT VALID");
             return null;
         }
     }
@@ -456,10 +411,8 @@ public class EditorVC implements KeyListener, MouseWheelListener,
      * @return ArcModel
      */
     public ArcModel createArc(Port source, Port target) {
-        String sourceId = ((AbstractPetriNetElementModel) ((DefaultPort) source)
-                .getParent()).getId();
-        String targetId = ((AbstractPetriNetElementModel) ((DefaultPort) target)
-                .getParent()).getId();
+        String sourceId = ((AbstractPetriNetElementModel) ((DefaultPort) source).getParent()).getId();
+        String targetId = ((AbstractPetriNetElementModel) ((DefaultPort) target).getParent()).getId();
         return createArc(sourceId, targetId);
     }
 
@@ -492,7 +445,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 
         arc = createArc(map, pointArray);
 
-        if (arc == null) {
+        if ( arc == null ) {
             return null;
         }
 
@@ -500,7 +453,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 
         getEditorPanel().getUnderstandColoring().update();
 
-        if (arc != null) {
+        if ( arc != null ) {
             // arc.setRoute(map.isArcRoute());
         }
         getEditorPanel().autoRefreshAnalysisBar();
@@ -516,8 +469,8 @@ public class EditorVC implements KeyListener, MouseWheelListener,
         String targetId = map.getArcTargetId();
 
         // CHECK if connection is valid
-        if (isValidConnection(sourceId, targetId)) {
-            if (connectionExists(sourceId, targetId)) {
+        if ( isValidConnection(sourceId, targetId) ) {
+            if ( connectionExists(sourceId, targetId) ) {
                 LoggerManager.debug(Constants.EDITOR_LOGGER, "Connection already exits. Discarded.");
             } else {
 
@@ -525,17 +478,15 @@ public class EditorVC implements KeyListener, MouseWheelListener,
                 arc.setInscriptionValue(map.getArcWeight());
 
                 // Manually copy arc points
-                for (int i = 0; i < pointArray.length; ++i) {
+                for ( int i = 0; i < pointArray.length; ++i ) {
                     addPointToArc(arc, pointArray[i]);
                 }
                 // Copy probability state of the creation map
                 arc.setProbability(map.getArcProbability());
                 arc.setDisplayOn(map.getDisplayArcProbability());
                 // If there is a label position, copy it
-                if (map.getArcLabelPosition() != null) {
-                    arc.setLabelPosition(new Point2D.Double(map
-                            .getArcLabelPosition().getX(), map
-                            .getArcLabelPosition().getY()));
+                if ( map.getArcLabelPosition() != null ) {
+                    arc.setLabelPosition(new Point2D.Double(map.getArcLabelPosition().getX(), map.getArcLabelPosition().getY()));
                 }
             }
         } else {
@@ -546,8 +497,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
     }
 
     private boolean connectionExists(String sourceId, String targetId) {
-        return getModelProcessor().getElementContainer().hasReference(
-                sourceId, targetId);
+        return getModelProcessor().getElementContainer().hasReference(sourceId, targetId);
     }
 
     private boolean isValidConnection(String sourceId, String targetId) {
@@ -566,11 +516,11 @@ public class EditorVC implements KeyListener, MouseWheelListener,
      */
     public void deleteCells(Object[] toDelete, boolean withGraph) {
         // A single NameModel can't be deleted
-        if (toDelete.length == 1) {
-            if (toDelete[0] instanceof GroupModel) {
+        if ( toDelete.length == 1 ) {
+            if ( toDelete[0] instanceof GroupModel ) {
 
             } else {
-                if (toDelete[0] instanceof NameModel) {
+                if ( toDelete[0] instanceof NameModel ) {
                     return;
                 }
             }
@@ -582,25 +532,24 @@ public class EditorVC implements KeyListener, MouseWheelListener,
         LinkedList<Object> toBeProcessed = new LinkedList<Object>(Arrays.asList(toDelete));
         Vector<Object> result = new Vector<Object>();
 
-        while (!toBeProcessed.isEmpty()) {
+        while ( !toBeProcessed.isEmpty() ) {
             Object currentElement = toBeProcessed.poll();
-            if (currentElement instanceof GroupModel) {
+            if ( currentElement instanceof GroupModel ) {
                 GroupModel tempGroup = (GroupModel) currentElement;
-                if (!tempGroup.isUngroupable()) {
+                if ( !tempGroup.isUngroupable() ) {
                     Object cell = tempGroup;
-                    while (cell instanceof GroupModel) {
+                    while ( cell instanceof GroupModel ) {
                         cell = ((GroupModel) cell).getMainElement();
                     }
-                    if (cell instanceof AbstractPetriNetElementModel
-                            && !((AbstractPetriNetElementModel) cell).isReadOnly()) {
+                    if ( cell instanceof AbstractPetriNetElementModel && !((AbstractPetriNetElementModel) cell).isReadOnly() ) {
                         result.add(tempGroup);
-                        for (int j = 0; j < tempGroup.getChildCount(); j++) {
+                        for ( int j = 0; j < tempGroup.getChildCount(); j++ ) {
                             result.add(tempGroup.getChildAt(j));
                         }
                     }
                 } else {
                     result.add(currentElement);
-                    for (int j = 0; j < tempGroup.getChildCount(); j++)
+                    for ( int j = 0; j < tempGroup.getChildCount(); j++ )
                         toBeProcessed.offer(tempGroup.getChildAt(j));
                 }
             } else {
@@ -609,13 +558,11 @@ public class EditorVC implements KeyListener, MouseWheelListener,
         }
 
         HashSet<Object> uniqueResult = new HashSet<Object>();
-        for (int i = 0; i < result.size(); i++) {
+        for ( int i = 0; i < result.size(); i++ ) {
             uniqueResult.add(result.get(i));
-            if (result.get(i) instanceof AbstractPetriNetElementModel
-                    && ((AbstractPetriNetElementModel) result.get(i)).getPort() != null) {
-                Iterator<?> edges = ((AbstractPetriNetElementModel) result.get(i))
-                        .getPort().edges();
-                while (edges.hasNext()) {
+            if ( result.get(i) instanceof AbstractPetriNetElementModel && ((AbstractPetriNetElementModel) result.get(i)).getPort() != null ) {
+                Iterator<?> edges = ((AbstractPetriNetElementModel) result.get(i)).getPort().edges();
+                while ( edges.hasNext() ) {
                     uniqueResult.add(edges.next());
                 }
             }
@@ -637,83 +584,62 @@ public class EditorVC implements KeyListener, MouseWheelListener,
         Vector<Object> allCells = new Vector<Object>();
         copyFlag = false;
 
-        if (doConfirmation) {
+        if ( doConfirmation ) {
             // Check if SubProcessModell Shall be deleted. Ask for Confirmation!
-            for (int i = 0; i < toDelete.length; i++) {
-                if (toDelete[i] instanceof SubProcessModel) {
-                    Object[] options = {
-                            Messages.getString("Popup.Confirm.SubProcess.Ok"),
-                            Messages.getString("Popup.Confirm.SubProcess.No")};
+            for ( int i = 0; i < toDelete.length; i++ ) {
+                if ( toDelete[i] instanceof SubProcessModel ) {
+                    Object[] options = {Messages.getString("Popup.Confirm.SubProcess.Ok"), Messages.getString("Popup.Confirm.SubProcess.No")};
                     int j = 0;
-                    j = JOptionPane.showOptionDialog(null,
-                            Messages.getString("Popup.Confirm.SubProcess.Info"),
-                            Messages.getString("Popup.Confirm.SubProcess.Warn"),
-                            JOptionPane.DEFAULT_OPTION,
-                            JOptionPane.WARNING_MESSAGE, null, options, options[0]);
-                    if (j == 0)
-                        break;
-                    else
-                        return;
+                    j = JOptionPane.showOptionDialog(null, Messages.getString("Popup.Confirm.SubProcess.Info"), Messages.getString("Popup.Confirm.SubProcess.Warn"), JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]);
+                    if ( j == 0 ) break;
+                    else return;
                 }
 
             }
         }
 
-        for (int i = 0; i < toDelete.length; i++) {
+        for ( int i = 0; i < toDelete.length; i++ ) {
 
-            if (toDelete[i] instanceof ArcModel) {
+            if ( toDelete[i] instanceof ArcModel ) {
                 allPorts.add(toDelete[i]);
                 getModelProcessor().removeArc(((ArcModel) toDelete[i]).getId());
-            } else if (toDelete[i] instanceof TriggerModel) {
-                TransitionModel owner = (TransitionModel) getModelProcessor()
-                        .getElementContainer().getElementById(
-                                ((TriggerModel) toDelete[i]).getOwnerId());
-                if (owner != null && owner.getToolSpecific().getTrigger() != null) {
-                    if (owner.getToolSpecific().getTrigger().getTriggertype() == TriggerModel.TRIGGER_RESOURCE
-                            && owner.getToolSpecific().getTransResource() != null) {
+            } else if ( toDelete[i] instanceof TriggerModel ) {
+                TransitionModel owner = (TransitionModel) getModelProcessor().getElementContainer().getElementById(((TriggerModel) toDelete[i]).getOwnerId());
+                if ( owner != null && owner.getToolSpecific().getTrigger() != null ) {
+                    if ( owner.getToolSpecific().getTrigger().getTriggertype() == TriggerModel.TRIGGER_RESOURCE && owner.getToolSpecific().getTransResource() != null ) {
                         owner.getToolSpecific().removeTransResource();
                     }
                     owner.getToolSpecific().removeTrigger();
                 }
                 allPorts.add(toDelete[i]);
-            } else if (toDelete[i] instanceof TransitionResourceModel) {
-                TransitionModel owner = (TransitionModel) getModelProcessor()
-                        .getElementContainer().getElementById(
-                                ((TransitionResourceModel) toDelete[i])
-                                        .getOwnerId());
-                if (owner != null) {
+            } else if ( toDelete[i] instanceof TransitionResourceModel ) {
+                TransitionModel owner = (TransitionModel) getModelProcessor().getElementContainer().getElementById(((TransitionResourceModel) toDelete[i]).getOwnerId());
+                if ( owner != null ) {
                     owner.getToolSpecific().removeTransResource();
                 }
                 allPorts.add(toDelete[i]);
-            } else if (toDelete[i] instanceof NameModel) {
+            } else if ( toDelete[i] instanceof NameModel ) {
                 allPorts.add(toDelete[i]);
-            } else if (toDelete[i] instanceof GroupModel) {
+            } else if ( toDelete[i] instanceof GroupModel ) {
                 allPorts.add(toDelete[i]);
-            } else if (toDelete[i] instanceof AbstractPetriNetElementModel) {
+            } else if ( toDelete[i] instanceof AbstractPetriNetElementModel ) {
 
                 AbstractPetriNetElementModel element = (AbstractPetriNetElementModel) toDelete[i];
                 // if there are trigger, delete their jgraph model
-                if (toDelete[i] instanceof TransitionModel) {
-                    if (((TransitionModel) toDelete[i]).getToolSpecific()
-                            .getTrigger() != null) {
-                        deleteCell(
-                                ((TransitionModel) getModelProcessor()
-                                        .getElementContainer().getElementById(
-                                                element.getId()))
-                                        .getToolSpecific().getTrigger(),
-                                withGraph);
+                if ( toDelete[i] instanceof TransitionModel ) {
+                    if ( ((TransitionModel) toDelete[i]).getToolSpecific().getTrigger() != null ) {
+                        deleteCell(((TransitionModel) getModelProcessor().getElementContainer().getElementById(element.getId())).getToolSpecific().getTrigger(), withGraph);
                     }
                 }
 
                 // if there are connected arcs delete their model
                 allPorts.add(element.getPort());
                 allPorts.add(toDelete[i]);
-                getModelProcessor().getElementContainer().removeOnlyElement(
-                        element.getId());
+                getModelProcessor().getElementContainer().removeOnlyElement(element.getId());
 
             }
         }
-        if (withGraph) {
+        if ( withGraph ) {
             Vector<Object> allDeletedObjects = new Vector<Object>();
             allDeletedObjects.addAll(allPorts);
             allDeletedObjects.addAll(allCells);
@@ -734,7 +660,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
      * @param cell
      */
     public void deleteCell(DefaultGraphCell cell, boolean withGraph) {
-        if (cell != null) {
+        if ( cell != null ) {
             deleteCells(new Object[]{cell}, withGraph);
         }
     }
@@ -757,11 +683,10 @@ public class EditorVC implements KeyListener, MouseWheelListener,
      * @param cell
      */
     public void edit(Object cell) {
-        if ((cell instanceof NameModel) || (cell instanceof ArcModel)) {
+        if ( (cell instanceof NameModel) || (cell instanceof ArcModel) ) {
             getGraph().startEditingAtCell(cell);
-        } else if (cell instanceof AbstractPetriNetElementModel) {
-            getGraph().startEditingAtCell(
-                    ((AbstractPetriNetElementModel) cell).getNameModel());
+        } else if ( cell instanceof AbstractPetriNetElementModel ) {
+            getGraph().startEditingAtCell(((AbstractPetriNetElementModel) cell).getNameModel());
         } else {
             LoggerManager.warn(Constants.EDITOR_LOGGER, "No editing possible.");
         }
@@ -772,18 +697,19 @@ public class EditorVC implements KeyListener, MouseWheelListener,
      */
     public void addPointToArc(ArcModel arc, Point2D point) {
         arc.addPoint(point);
+        updateArc(arc);
+    }
+
+    private void updateArc(ArcModel arc) {
         Map<ArcModel, AttributeMap> map = new HashMap<ArcModel, AttributeMap>();
         map.put(arc, arc.getAttributes());
         getGraph().getModel().edit(map, null, null, null);
     }
 
     public void addPointToSelectedArc() {
-        DefaultGraphCell cell = (DefaultGraphCell) getGraph()
-                .getNextCellForLocation(null, getLastMousePosition().getX(),
-                        getLastMousePosition().getY());
-        if (cell instanceof ArcModel) {
-            addPointToArc((ArcModel) cell,
-                    getGraph().fromScreen(getLastMousePosition()));
+        DefaultGraphCell cell = (DefaultGraphCell) getGraph().getNextCellForLocation(null, getLastMousePosition().getX(), getLastMousePosition().getY());
+        if ( cell instanceof ArcModel ) {
+            addPointToArc((ArcModel) cell, getGraph().fromScreen(getLastMousePosition()));
         }
     }
 
@@ -793,11 +719,37 @@ public class EditorVC implements KeyListener, MouseWheelListener,
      */
     public void removeSelectedPoint() {
         Point2D l = m_lastMousePosition;
-        ArcModel arc = (ArcModel) getGraph().getFirstCellForLocation(l.getX(),
-                l.getY());
+        ArcModel arc = (ArcModel) getGraph().getFirstCellForLocation(l.getX(), l.getY());
         arc.removePoint(l);
-        getGraph().getModel().insert(new Object[]{arc}, null, null, null,
-                null);
+        getGraph().getModel().insert(new Object[]{arc}, null, null, null, null);
+    }
+
+    public void increaseWeightOfSelectedArc() {
+        ArcModel arc = getSelectedArc();
+        if ( arc == null ) return;
+
+        arc.setInscriptionValue(arc.getInscriptionValue() + 1);
+        updateArc(arc);
+    }
+
+    public void decreaseWeightOfSelectedArc() {
+        ArcModel arc = getSelectedArc();
+        if ( arc == null ) return;
+
+        arc.setInscriptionValue(arc.getInscriptionValue() - 1);
+        updateArc(arc);
+    }
+
+    private ArcModel getSelectedArc() {
+
+        ArcModel selectedArc = null;
+        DefaultGraphCell cell = (DefaultGraphCell) getGraph().getNextCellForLocation(null, getLastMousePosition().getX(), getLastMousePosition().getY());
+
+        if ( cell instanceof ArcModel ) {
+            selectedArc = (ArcModel) cell;
+        }
+
+        return selectedArc;
     }
 
     /**
@@ -836,14 +788,14 @@ public class EditorVC implements KeyListener, MouseWheelListener,
         // Arcs to be added to the clipboard
         LinkedList<ArcModel> clipboardArcs = new LinkedList<ArcModel>();
 
-        while (!toBeProcessed.isEmpty()) {
+        while ( !toBeProcessed.isEmpty() ) {
             Object currentElement = toBeProcessed.poll();
-            if (currentElement instanceof GroupModel) {
+            if ( currentElement instanceof GroupModel ) {
                 GroupModel tempGroup = (GroupModel) currentElement;
-                if (tempGroup.isUngroupable()) {
+                if ( tempGroup.isUngroupable() ) {
                     // Regular group of multiple elements, add
                     // its elements instead of the group itself
-                    for (int j = 0; j < tempGroup.getChildCount(); j++)
+                    for ( int j = 0; j < tempGroup.getChildCount(); j++ )
                         toBeProcessed.offer(tempGroup.getChildAt(j));
                     // Do not process the group itself
                     currentElement = null;
@@ -852,19 +804,16 @@ public class EditorVC implements KeyListener, MouseWheelListener,
                     // We are only interested in the main model in this case
                     currentElement = ((GroupModel) currentElement).getMainElement();
                 }
-            } else if (currentElement instanceof NameModel) {
-                currentElement = getModelProcessor().getElementContainer()
-                        .getElementById(((NameModel) currentElement).getOwnerId());
-            } else if (currentElement instanceof TriggerModel) {
-                currentElement = getModelProcessor().getElementContainer()
-                        .getElementById(
-                                ((TriggerModel) currentElement).getOwnerId());
+            } else if ( currentElement instanceof NameModel ) {
+                currentElement = getModelProcessor().getElementContainer().getElementById(((NameModel) currentElement).getOwnerId());
+            } else if ( currentElement instanceof TriggerModel ) {
+                currentElement = getModelProcessor().getElementContainer().getElementById(((TriggerModel) currentElement).getOwnerId());
             }
-            if (currentElement instanceof ArcModel) {
+            if ( currentElement instanceof ArcModel ) {
                 ArcModel tempArc = (ArcModel) currentElement;
                 clipboardArcs.add(tempArc);
             }
-            if (currentElement instanceof AbstractPetriNetElementModel) {
+            if ( currentElement instanceof AbstractPetriNetElementModel ) {
                 AbstractPetriNetElementModel tempElement = (AbstractPetriNetElementModel) currentElement;
                 // copy the element
                 m_clipboard.putElement(tempElement);
@@ -872,14 +821,12 @@ public class EditorVC implements KeyListener, MouseWheelListener,
         }
         // Add all arcs after all other cells, because those cells need to exist in the clipboard
         // for a connecting arc to be added
-        for (ArcModel currentArc : clipboardArcs) {
-            if (m_clipboard.containsElement(currentArc.getSourceId())
-                    || m_clipboard.containsElement(currentArc.getTargetId())) {
+        for ( ArcModel currentArc : clipboardArcs ) {
+            if ( m_clipboard.containsElement(currentArc.getSourceId()) || m_clipboard.containsElement(currentArc.getTargetId()) ) {
                 m_clipboard.putArc(currentArc);
             }
         }
-        LoggerManager.debug(Constants.EDITOR_LOGGER, "Elements copied. ("
-                + (System.currentTimeMillis() - begin) + " ms)");
+        LoggerManager.debug(Constants.EDITOR_LOGGER, "Elements copied. (" + (System.currentTimeMillis() - begin) + " ms)");
         getGraph().setCursor(Cursor.getDefaultCursor());
     }
 
@@ -889,10 +836,8 @@ public class EditorVC implements KeyListener, MouseWheelListener,
     public void pasteAtMousePosition() {
 
         copyFlag = true;
-        if (getLastMousePosition() != null)
-            paste(getLastMousePosition());
-        else
-            paste();
+        if ( getLastMousePosition() != null ) paste(getLastMousePosition());
+        else paste();
     }
 
     /**
@@ -907,8 +852,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
         // get current time, why??
         long begin = System.currentTimeMillis();
         // get elements from clipboard
-        Map<String, CreationMap> pasteElements = m_clipboard
-                .getCopiedElementsList();
+        Map<String, CreationMap> pasteElements = m_clipboard.getCopiedElementsList();
 
         // Start an atomic transaction on the graph (to make paste appear as a
         // single undoable operation
@@ -936,78 +880,58 @@ public class EditorVC implements KeyListener, MouseWheelListener,
         boolean originalName = true;
         String originalNameStr = null;
 
-        while (eleIter.hasNext()) {
+        while ( eleIter.hasNext() ) {
             sourceMap = pasteElements.get(eleIter.next());
             tempMap = (CreationMap) sourceMap.clone();
             // position for element
             currentPosition = sourceMap.getPosition();
 
             // set new delta values if a mouse position is given
-            if (points.length > 0 && middleOfSelection == null) {
+            if ( points.length > 0 && middleOfSelection == null ) {
                 middleOfSelection = getMiddleOfSelection(pasteElements);
 
-                deltaX = (int) points[0].getX() - middleOfSelection.x
-                        - tempMap.getSize().getX1() / 2;
-                deltaY = (int) points[0].getY() - middleOfSelection.y
-                        - tempMap.getSize().getX2() / 2;
+                deltaX = (int) points[0].getX() - middleOfSelection.x - tempMap.getSize().getX1() / 2;
+                deltaY = (int) points[0].getY() - middleOfSelection.y - tempMap.getSize().getX2() / 2;
             }
 
             // set new position
-            tempMap.setPosition(currentPosition.x + deltaX, currentPosition.y
-                    + deltaY);
+            tempMap.setPosition(currentPosition.x + deltaX, currentPosition.y + deltaY);
             // position for name
             currentPosition = (Point) sourceMap.getNamePosition().clone();
-            tempMap.setNamePosition(currentPosition.x + deltaX,
-                    currentPosition.y + deltaY);
+            tempMap.setNamePosition(currentPosition.x + deltaX, currentPosition.y + deltaY);
 
             // position for trigger
-            if ((currentPosition = sourceMap.getTriggerPosition()) != null) {
-                tempMap.setTriggerPosition(currentPosition.x + deltaX,
-                        currentPosition.y + deltaY);
+            if ( (currentPosition = sourceMap.getTriggerPosition()) != null ) {
+                tempMap.setTriggerPosition(currentPosition.x + deltaX, currentPosition.y + deltaY);
             }
 
             // copy in another frame than the source frame
-            if (this != m_clipboard.getM_sourceEditor()) {
+            if ( this != m_clipboard.getM_sourceEditor() ) {
                 // determine middle of selected elements
-                if (middleOfSelection == null) {
+                if ( middleOfSelection == null ) {
                     middleOfSelection = getMiddleOfSelection(pasteElements);
                 }
 
                 // position for element
-                if (points.length > 0) {
-                    currentPosition = new Point(
-                            (int) (((int) points[0].getX() / 2)
-                                    - tempMap.getSize().getX1() / 2
-                                    + tempMap.getPosition().getX() - middleOfSelection.x),
-                            (int) (((int) points[0].getY() / 2)
-                                    - tempMap.getSize().getX2() / 2
-                                    + tempMap.getPosition().getY() - middleOfSelection.y));
+                if ( points.length > 0 ) {
+                    currentPosition = new Point((int) (((int) points[0].getX() / 2) - tempMap.getSize().getX1() / 2 + tempMap.getPosition().getX() - middleOfSelection.x), (int) (((int) points[0].getY() / 2) - tempMap.getSize().getX2() / 2 + tempMap.getPosition().getY() - middleOfSelection.y));
                 } else {
-                    currentPosition = new Point(
-                            (int) ((getEditorPanel().getWidth() / 2) - tempMap.getSize().getX1()
-                                    / 2 + tempMap.getPosition().getX() - middleOfSelection.x),
-                            (int) ((getEditorPanel().getHeight() / 2)
-                                    - tempMap.getSize().getX2() / 2
-                                    + tempMap.getPosition().getY() - middleOfSelection.y));
+                    currentPosition = new Point((int) ((getEditorPanel().getWidth() / 2) - tempMap.getSize().getX1() / 2 + tempMap.getPosition().getX() - middleOfSelection.x), (int) ((getEditorPanel().getHeight() / 2) - tempMap.getSize().getX2() / 2 + tempMap.getPosition().getY() - middleOfSelection.y));
 
                 }
                 tempMap.setPosition(currentPosition.x, currentPosition.y);
 
                 // position for name
-                if (isRotateSelected()) {
-                    tempMap.setNamePosition(currentPosition.x
-                            + tempMap.getSize().getX1(), currentPosition.y - 1);
+                if ( isRotateSelected() ) {
+                    tempMap.setNamePosition(currentPosition.x + tempMap.getSize().getX1(), currentPosition.y - 1);
                 } else {
-                    tempMap.setNamePosition(currentPosition.x - 1,
-                            currentPosition.y + tempMap.getSize().getX2());
+                    tempMap.setNamePosition(currentPosition.x - 1, currentPosition.y + tempMap.getSize().getX2());
                 }
 
-                if (isRotateSelected()) {
-                    tempMap.setTriggerPosition(currentPosition.x - 20,
-                            currentPosition.y + 7);
+                if ( isRotateSelected() ) {
+                    tempMap.setTriggerPosition(currentPosition.x - 20, currentPosition.y + 7);
                 } else {
-                    tempMap.setTriggerPosition(currentPosition.x + 7,
-                            currentPosition.y - 20);
+                    tempMap.setTriggerPosition(currentPosition.x + 7, currentPosition.y - 20);
 
                 }
 
@@ -1028,22 +952,19 @@ public class EditorVC implements KeyListener, MouseWheelListener,
             tempElement = tempGroupModel.getMainElement();
             // check if tempElement TransitionModel (PetriNetModelElement)
 
-            if (tempElement instanceof TransitionModel) {
+            if ( tempElement instanceof TransitionModel ) {
                 // GroupModel currentTrans = (GroupModel) (create(currentMap));
                 // new element exactly transitionModel
                 TransitionModel tempTrans = (TransitionModel) tempElement;
                 // copy time
-                if ((sourceMap.getTransitionTime() != -1)
-                        && (sourceMap.getTransitionTimeUnit() != -1)) {
-                    tempTrans.getToolSpecific().setTime(
-                            sourceMap.getTransitionTime());
-                    tempTrans.getToolSpecific().setTimeUnit(
-                            sourceMap.getTransitionTimeUnit());
+                if ( (sourceMap.getTransitionTime() != -1) && (sourceMap.getTransitionTimeUnit() != -1) ) {
+                    tempTrans.getToolSpecific().setTime(sourceMap.getTransitionTime());
+                    tempTrans.getToolSpecific().setTimeUnit(sourceMap.getTransitionTimeUnit());
                 }
                 // copy trigger model
                 CreationMap map = tempTrans.getCreationMap();
-                if (sourceMap.getTriggerType() != -1) {
-                    if (map != null) {
+                if ( sourceMap.getTriggerType() != -1 ) {
+                    if ( map != null ) {
 
                         map.setTriggerType(sourceMap.getTriggerType());
                         createTriggerForPaste(map, tempTrans);
@@ -1053,42 +974,31 @@ public class EditorVC implements KeyListener, MouseWheelListener,
                         // true);
                         map.setTriggerPosition(p.x, p.y);
                         // copy resource model
-                        if ((sourceMap.getResourceOrgUnit() != null)
-                                && sourceMap.getResourceRole() != null) {
-                            map.setResourceOrgUnit(sourceMap
-                                    .getResourceOrgUnit());
+                        if ( (sourceMap.getResourceOrgUnit() != null) && sourceMap.getResourceRole() != null ) {
+                            map.setResourceOrgUnit(sourceMap.getResourceOrgUnit());
                             map.setResourceRole(sourceMap.getResourceRole());
                         }
                     }
 
-                } else
-                    map.setType(1);
+                } else map.setType(1);
 
             }
             /* change arc source/target */
             Iterator<String> arcIter = pasteArcs.keySet().iterator();
-            while (arcIter.hasNext()) {
+            while ( arcIter.hasNext() ) {
                 currentArcMap = pasteArcs.get(arcIter.next());
-                if ((this.getEditorPanel().getContainer().getActionMap()
-                        .get(currentArcMap.getArcSourceId()) != null)
-                        || ((currentArcMap.getArcSourceId()
-                        .equals(oldElementId)) && (!correctedSourceId
-                        .containsKey(currentArcMap.getArcId())))) {
+                if ( (this.getEditorPanel().getContainer().getActionMap().get(currentArcMap.getArcSourceId()) != null) || ((currentArcMap.getArcSourceId().equals(oldElementId)) && (!correctedSourceId.containsKey(currentArcMap.getArcId()))) ) {
                     currentArcMap.setArcSourceId(tempElement.getId());
                     correctedSourceId.put(currentArcMap.getArcId(), null);
                 }
-                if ((currentArcMap.getArcTargetId().equals(oldElementId))
-                        && (!correctedTargetId.containsKey(currentArcMap
-                        .getArcId()))) {
+                if ( (currentArcMap.getArcTargetId().equals(oldElementId)) && (!correctedTargetId.containsKey(currentArcMap.getArcId())) ) {
                     currentArcMap.setArcTargetId(tempElement.getId());
                     correctedTargetId.put(currentArcMap.getArcId(), null);
                 }
             }
             /* */
-            if (originalName)
-                tempElement.setNameValue(tempElement.getId());
-            else
-                tempElement.setNameValue(originalNameStr);
+            if ( originalName ) tempElement.setNameValue(tempElement.getId());
+            else tempElement.setNameValue(originalNameStr);
             toSelectElements.add(tempElement.getParent());
         }
 
@@ -1099,8 +1009,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
         getGraph().getModel().endUpdate();
 
         // select the new element
-        LoggerManager.debug(Constants.EDITOR_LOGGER, "Elements pasted. ("
-                + (System.currentTimeMillis() - begin) + " ms)");
+        LoggerManager.debug(Constants.EDITOR_LOGGER, "Elements pasted. (" + (System.currentTimeMillis() - begin) + " ms)");
         checkSubprocessEditors(toSelectElements);
         updateNet();
 
@@ -1118,12 +1027,11 @@ public class EditorVC implements KeyListener, MouseWheelListener,
         ArcModel tempArc = null;
         Point2D point;
 
-        while (arcIter.hasNext()) {
+        while ( arcIter.hasNext() ) {
             currentArcMap = pasteArcs.get(arcIter.next());
             tempArc = pasteArc(currentArcMap, deltaX, deltaY);
 
-            if (tempArc == null)
-                continue;
+            if ( tempArc == null ) continue;
 
             toSelectElements.add(tempArc);
         }
@@ -1131,7 +1039,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 
     ArcModel pasteArc(CreationMap arcMap, int deltaX, int deltaY) {
 
-        if ((arcMap.getArcSourceId() == null) || (arcMap.getArcTargetId()) == null) {
+        if ( (arcMap.getArcSourceId() == null) || (arcMap.getArcTargetId()) == null ) {
             return null;
         }
 
@@ -1143,7 +1051,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 
         ArcModel arc = createArc(map, true);
 
-        for (Point2D point : arcMap.getArcPoints()) {
+        for ( Point2D point : arcMap.getArcPoints() ) {
             point.setLocation(point.getX() + deltaX, point.getY() + deltaY);
             arc.addPoint(point);
         }
@@ -1156,7 +1064,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 
         Iterator<String> eleIterTemp = maps.keySet().iterator();
         CreationMap iterMap;
-        while (eleIterTemp.hasNext()) {
+        while ( eleIterTemp.hasNext() ) {
             iterMap = maps.get(eleIterTemp.next());
 
             minX = Math.min(minX, iterMap.getPosition().x);
@@ -1173,8 +1081,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
      */
     public void cutSelection() {
         copyFlag = true;
-        if (getGraph().getSelectionCells().length == 1
-                && getGraph().getSelectionCell() instanceof ArcModel) {
+        if ( getGraph().getSelectionCells().length == 1 && getGraph().getSelectionCell() instanceof ArcModel ) {
             LoggerManager.debug(Constants.EDITOR_LOGGER, "cannot cut arc");
         } else {
             copySelection();
@@ -1197,32 +1104,27 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 
 	/* ########## View and utils methods ########### */
 
-    private void move(Object toMove[], int dx, int dy,
-                      HashMap<GraphCell, AttributeMap> changes, boolean isrecursiv) {
-        if (changes == null) {
+    private void move(Object toMove[], int dx, int dy, HashMap<GraphCell, AttributeMap> changes, boolean isrecursiv) {
+        if ( changes == null ) {
             changes = new HashMap<GraphCell, AttributeMap>();
         }
-        for (short i = 0; i < toMove.length; i++) {
-            if (toMove[i] instanceof DefaultGraphCell) {
+        for ( short i = 0; i < toMove.length; i++ ) {
+            if ( toMove[i] instanceof DefaultGraphCell ) {
                 DefaultGraphCell tempCell = (DefaultGraphCell) toMove[i];
-                if (tempCell.getChildCount() > 0) {
-                    move(tempCell.getChildren().toArray(), dx, dy, changes,
-                            true);
+                if ( tempCell.getChildCount() > 0 ) {
+                    move(tempCell.getChildren().toArray(), dx, dy, changes, true);
                 }
             }
-            if (toMove[i] instanceof GraphCell) {
+            if ( toMove[i] instanceof GraphCell ) {
                 GraphCell noGroupElement = (GraphCell) toMove[i];
-                AttributeMap tempMap = (AttributeMap) noGroupElement
-                        .getAttributes().clone();
+                AttributeMap tempMap = (AttributeMap) noGroupElement.getAttributes().clone();
                 AttributeMap newMap = new AttributeMap();
                 Rectangle2D bounds = GraphConstants.getBounds(tempMap);
                 List<?> points = GraphConstants.getPoints(tempMap);
-                if (bounds != null) {
-                    bounds = new Rectangle((int) bounds.getX() + dx,
-                            (int) bounds.getY() + dy, (int) bounds.getWidth(),
-                            (int) bounds.getHeight());
+                if ( bounds != null ) {
+                    bounds = new Rectangle((int) bounds.getX() + dx, (int) bounds.getY() + dy, (int) bounds.getWidth(), (int) bounds.getHeight());
                     AttributeMap changeMap = changes.get(noGroupElement);
-                    if (changeMap == null) {
+                    if ( changeMap == null ) {
                         changeMap = new AttributeMap();
                         changes.put(noGroupElement, changeMap);
                     }
@@ -1230,35 +1132,32 @@ public class EditorVC implements KeyListener, MouseWheelListener,
                     // tempMap.applyValue(GraphConstants.BOUNDS, bounds);
                     // noGroupElement.changeAttributes(tempMap);
                 }
-                if (points != null) {
+                if ( points != null ) {
                     Vector<Point2D> newPoints = new Vector<Point2D>();
                     Point2D tempPoint;
-                    for (short k = 0; k < points.size(); k++) {
-                        if (points.get(k) instanceof PortView) {
-                            tempPoint = ((PortView) points.get(k))
-                                    .getLocation();
+                    for ( short k = 0; k < points.size(); k++ ) {
+                        if ( points.get(k) instanceof PortView ) {
+                            tempPoint = ((PortView) points.get(k)).getLocation();
                         } else {
                             tempPoint = (Point2D) points.get(k);
                         }
-                        if (k == 0 || k == points.size() - 1) {
-                            newPoints.add(new Point2D.Double(tempPoint.getX(),
-                                    tempPoint.getY()));
+                        if ( k == 0 || k == points.size() - 1 ) {
+                            newPoints.add(new Point2D.Double(tempPoint.getX(), tempPoint.getY()));
                         } else {
-                            newPoints.add(new Point2D.Double(tempPoint.getX()
-                                    + dx, tempPoint.getY() + dy));
+                            newPoints.add(new Point2D.Double(tempPoint.getX() + dx, tempPoint.getY() + dy));
                         }
                     }
-                    if (newPoints.size() > 2) {
+                    if ( newPoints.size() > 2 ) {
                         GraphConstants.setPoints(newMap, newPoints);
                     }
                 }
-                if (newMap.size() > 0) {
+                if ( newMap.size() > 0 ) {
                     changes.put(noGroupElement, newMap);
                 }
 
             }
         }
-        if (!isrecursiv) {
+        if ( !isrecursiv ) {
             getGraph().getGraphLayoutCache().edit(changes, null, null, null);
             getGraph().setSelectionCells(toMove);
             updateNet();
@@ -1277,22 +1176,15 @@ public class EditorVC implements KeyListener, MouseWheelListener,
      */
     public void scaleNet(double factor) {
 
-        Iterator<AbstractPetriNetElementModel> iter = getModelProcessor()
-                .getElementContainer().getRootElements().iterator();
+        Iterator<AbstractPetriNetElementModel> iter = getModelProcessor().getElementContainer().getRootElements().iterator();
         AbstractPetriNetElementModel aModel;
-        while (iter.hasNext()) {
+        while ( iter.hasNext() ) {
             aModel = iter.next();
-            aModel.setPosition((int) (aModel.getX() * factor),
-                    (int) (aModel.getY() * factor));
-            aModel.getNameModel().setPosition(
-                    (int) (aModel.getNameModel().getX() * factor),
-                    (int) (aModel.getNameModel().getY() * factor));
-            if (aModel instanceof OperatorTransitionModel
-                    && ((OperatorTransitionModel) aModel).hasTrigger()) {
-                TriggerModel trigger = ((OperatorTransitionModel) aModel)
-                        .getToolSpecific().getTrigger();
-                trigger.setPosition((int) (trigger.getX() * factor),
-                        (int) (trigger.getY() * factor));
+            aModel.setPosition((int) (aModel.getX() * factor), (int) (aModel.getY() * factor));
+            aModel.getNameModel().setPosition((int) (aModel.getNameModel().getX() * factor), (int) (aModel.getNameModel().getY() * factor));
+            if ( aModel instanceof OperatorTransitionModel && ((OperatorTransitionModel) aModel).hasTrigger() ) {
+                TriggerModel trigger = ((OperatorTransitionModel) aModel).getToolSpecific().getTrigger();
+                trigger.setPosition((int) (trigger.getX() * factor), (int) (trigger.getY() * factor));
             }
         }
     }
@@ -1305,7 +1197,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
      * @see TokenGameController
      */
     public void enableTokenGame() {
-        if (isTokenGameEnabled()) {
+        if ( isTokenGameEnabled() ) {
             LoggerManager.error(Constants.EDITOR_LOGGER, "TokenGame already running");
             return;
         }
@@ -1328,7 +1220,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
      * @see TokenGameController
      */
     public void disableTokenGame() {
-        if (!isTokenGameEnabled()) {
+        if ( !isTokenGameEnabled() ) {
             LoggerManager.error(Constants.EDITOR_LOGGER, "TokenGame not running");
             return;
         }
@@ -1348,7 +1240,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
      * it's initial state, then will disable the token game for the top net
      */
     public void terminateTokenGameSession() {
-        if (!isTokenGameEnabled()) {
+        if ( !isTokenGameEnabled() ) {
             LoggerManager.error(Constants.EDITOR_LOGGER, "TokenGame not running");
             return;
         }
@@ -1366,7 +1258,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
      * @see TokenGameController
      */
     public void toggleTokenGame() {
-        if (isTokenGameEnabled()) {
+        if ( isTokenGameEnabled() ) {
             disableTokenGame();
         } else {
             enableTokenGame();
@@ -1398,20 +1290,19 @@ public class EditorVC implements KeyListener, MouseWheelListener,
          *
          */
         getGraph().stopEditing();
-        Rectangle2D oldVisRect = getGraph().fromScreen(
-                getEditorPanel().m_scrollPane.getViewport().getViewRect());
+        Rectangle2D oldVisRect = getGraph().fromScreen(getEditorPanel().m_scrollPane.getViewport().getViewRect());
         double scale;
         // Check if absolute
-        if (absolute) {
+        if ( absolute ) {
             scale = factor / 100;
         } else {
             scale = getGraph().getScale() + factor;
         }
         // ste to max resp. min if out of range
-        if (scale < MIN_SCALE) {
+        if ( scale < MIN_SCALE ) {
             scale = MIN_SCALE;
         }
-        if (scale > MAX_SCALE) {
+        if ( scale > MAX_SCALE ) {
             scale = MAX_SCALE;
         }
         // set scale and move to center of old visible rect
@@ -1419,23 +1310,17 @@ public class EditorVC implements KeyListener, MouseWheelListener,
         getGraph().setScale(scale);
         oldVisRect = getGraph().toScreen(oldVisRect);
         Rectangle2D visibleRect = getEditorPanel().m_scrollPane.getViewport().getViewRect();
-        Rectangle newVisRect = new Rectangle2D.Double(visibleRect.getX()
-                + oldVisRect.getCenterX() - visibleRect.getCenterX(),
-                visibleRect.getY() + oldVisRect.getCenterY()
-                        - visibleRect.getCenterY(), visibleRect.getWidth(),
-                visibleRect.getHeight()).getBounds();
+        Rectangle newVisRect = new Rectangle2D.Double(visibleRect.getX() + oldVisRect.getCenterX() - visibleRect.getCenterX(), visibleRect.getY() + oldVisRect.getCenterY() - visibleRect.getCenterY(), visibleRect.getWidth(), visibleRect.getHeight()).getBounds();
         getGraph().scrollRectToVisible(newVisRect);
-        if (getEditorPanel().m_statusbar != null) {
+        if ( getEditorPanel().m_statusbar != null ) {
             getEditorPanel().m_statusbar.updateStatus();
         }
 
-        fireViewEvent(new EditorViewEvent(this,
-                AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.ZOOMED,
-                new Double(scale * 100)));
+        fireViewEvent(new EditorViewEvent(this, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.ZOOMED, new Double(scale * 100)));
     }
 
     public void valueChanged(GraphSelectionEvent arg0) {
-        if (valueChangedActive) {
+        if ( valueChangedActive ) {
             // Do not call ourselves endlessly
             // We have to make a call to setSelectionCells()
             // which once again would trigger this method call
@@ -1452,13 +1337,12 @@ public class EditorVC implements KeyListener, MouseWheelListener,
         // parents get selected.
         // Elements can only be dragged together with their name.
         ArrayList<Object> addedCells = new ArrayList<Object>();
-        for (int i = 0; i < cells.length; ++i) {
-            if (arg0.isAddedCell(cells[i])) {
+        for ( int i = 0; i < cells.length; ++i ) {
+            if ( arg0.isAddedCell(cells[i]) ) {
                 Object toBeAdded = cells[i];
-                if (toBeAdded instanceof AbstractPetriNetElementModel) {
-                    TreeNode parent = ((DefaultGraphCell) toBeAdded)
-                            .getParent();
-                    if (parent != null) {
+                if ( toBeAdded instanceof AbstractPetriNetElementModel ) {
+                    TreeNode parent = ((DefaultGraphCell) toBeAdded).getParent();
+                    if ( parent != null ) {
                         toBeAdded = parent;
                     }
                 }
@@ -1487,11 +1371,10 @@ public class EditorVC implements KeyListener, MouseWheelListener,
         // to enable renaming of simpleTransitions in Operators we have to call
         // the method setNameValue() after changing the name with jgraph-method
         // startEditingAtCell()
-        if (getGraph().getLastEdited() != null) {
+        if ( getGraph().getLastEdited() != null ) {
             NameModel nM = getGraph().getLastEdited();
-            AbstractPetriNetElementModel aem = getModelProcessor()
-                    .getElementContainer().getElementById(nM.getOwnerId());
-            if (aem != null) {
+            AbstractPetriNetElementModel aem = getModelProcessor().getElementContainer().getElementById(nM.getOwnerId());
+            if ( aem != null ) {
                 aem.setNameValue(nM.getNameValue());
             }
             getGraph().setLastEditedNull();
@@ -1523,57 +1406,52 @@ public class EditorVC implements KeyListener, MouseWheelListener,
     public void keyPressed(KeyEvent e) {
         smartEditActive = false;
         // Listen for Delete Key Press
-        if (e.getKeyCode() == KeyEvent.VK_DELETE)
+        if ( e.getKeyCode() == KeyEvent.VK_DELETE )
         // Execute Remove Action on Delete Key Press
         {
             deleteSelection();
-        } else if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+        } else if ( e.getKeyCode() == KeyEvent.VK_ESCAPE ) {
             setDrawingMode(false);
             smartEditActive = false;
-            ((AbstractMarqueeHandler) getGraph().getMarqueeHandler())
-                    .cancelSmartArcDrawing();
-        } else if (getGraph().getSelectionCells() != null) {
+            ((AbstractMarqueeHandler) getGraph().getMarqueeHandler()).cancelSmartArcDrawing();
+        } else if ( getGraph().getSelectionCells() != null ) {
             // setKeyPressed(true);
             m_createElementType = 0;
             /* TODO: Arrow Key Move */
-            if (e.getKeyCode() == KeyEvent.VK_UP) {
-                move(getGraph().getSelectionCells(), 0, (int) -getGraph()
-                        .getGridSize());
-            } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-                move(getGraph().getSelectionCells(), 0, (int) +getGraph()
-                        .getGridSize());
-            } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-                move(getGraph().getSelectionCells(), (int) -getGraph()
-                        .getGridSize(), 0);
-            } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-                move(getGraph().getSelectionCells(), (int) getGraph()
-                        .getGridSize(), 0);
-            } else if (e.getKeyCode() == KeyEvent.VK_MINUS) {
+            if ( e.getKeyCode() == KeyEvent.VK_UP ) {
+                move(getGraph().getSelectionCells(), 0, (int) -getGraph().getGridSize());
+            } else if ( e.getKeyCode() == KeyEvent.VK_DOWN ) {
+                move(getGraph().getSelectionCells(), 0, (int) +getGraph().getGridSize());
+            } else if ( e.getKeyCode() == KeyEvent.VK_LEFT ) {
+                move(getGraph().getSelectionCells(), (int) -getGraph().getGridSize(), 0);
+            } else if ( e.getKeyCode() == KeyEvent.VK_RIGHT ) {
+                move(getGraph().getSelectionCells(), (int) getGraph().getGridSize(), 0);
+            } else if ( e.getKeyCode() == KeyEvent.VK_MINUS ) {
                 zoom(-0.5, false);
-            } else if (e.getKeyCode() == KeyEvent.VK_PLUS) {
+            } else if ( e.getKeyCode() == KeyEvent.VK_PLUS ) {
                 zoom(+0.5, false);
-            } else if (e.getKeyCode() == KeyEvent.VK_1) {
+            } else if ( e.getKeyCode() == KeyEvent.VK_1 ) {
                 setCreateElementType(AbstractPetriNetElementModel.PLACE_TYPE);
                 setDrawingMode(true);
-            } else if (e.getKeyCode() == KeyEvent.VK_2) {
+            } else if ( e.getKeyCode() == KeyEvent.VK_2 ) {
                 setCreateElementType(AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE);
                 setDrawingMode(true);
-            } else if (e.getKeyCode() == KeyEvent.VK_3) {
+            } else if ( e.getKeyCode() == KeyEvent.VK_3 ) {
                 setCreateElementType(OperatorTransitionModel.AND_SPLIT_TYPE);
                 setDrawingMode(true);
-            } else if (e.getKeyCode() == KeyEvent.VK_4) {
+            } else if ( e.getKeyCode() == KeyEvent.VK_4 ) {
                 setCreateElementType(OperatorTransitionModel.XOR_SPLIT_TYPE);
                 setDrawingMode(true);
-            } else if (e.getKeyCode() == KeyEvent.VK_5) {
+            } else if ( e.getKeyCode() == KeyEvent.VK_5 ) {
                 setCreateElementType(OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE);
                 setDrawingMode(true);
-            } else if (e.getKeyCode() == KeyEvent.VK_6) {
+            } else if ( e.getKeyCode() == KeyEvent.VK_6 ) {
                 setCreateElementType(OperatorTransitionModel.AND_JOIN_TYPE);
                 setDrawingMode(true);
-            } else if (e.getKeyCode() == KeyEvent.VK_7) {
+            } else if ( e.getKeyCode() == KeyEvent.VK_7 ) {
                 setCreateElementType(OperatorTransitionModel.XOR_JOIN_TYPE);
                 setDrawingMode(true);
-            } else if (e.getKeyCode() == KeyEvent.VK_8) {
+            } else if ( e.getKeyCode() == KeyEvent.VK_8 ) {
                 setCreateElementType(OperatorTransitionModel.SUBP_TYPE);
                 setDrawingMode(true);
             }
@@ -1582,7 +1460,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 
     public void mouseWheelMoved(MouseWheelEvent e) {
         int notches = e.getWheelRotation();
-        if (notches < 0) {
+        if ( notches < 0 ) {
             zoom(+0.1, false);
         } else {
             zoom(-0.1, false);
@@ -1610,18 +1488,18 @@ public class EditorVC implements KeyListener, MouseWheelListener,
      * The event is also set with a reference to the current listener.
      */
     public final void fireViewEvent(AbstractViewEvent viewevent) {
-        if (viewevent == null) {
+        if ( viewevent == null ) {
             return;
         }
         Vector<IViewListener> vector;
         synchronized (viewListener) {
             vector = (Vector<IViewListener>) viewListener.clone();
         }
-        if (vector == null) {
+        if ( vector == null ) {
             return;
         }
         int i = vector.size();
-        for (int j = 0; !viewevent.isConsumed() && j < i; j++) {
+        for ( int j = 0; !viewevent.isConsumed() && j < i; j++ ) {
             IViewListener viewlistener = vector.elementAt(j);
             viewevent.setViewListener(viewlistener);
             viewlistener.viewEventPerformed(viewevent);
@@ -1641,7 +1519,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
      * rotates the Transition
      */
     public void rotateTransLeft(Object cell) {
-        if (cell instanceof TransitionModel) {
+        if ( cell instanceof TransitionModel ) {
             getEditorPanel().m_orientation.rotateTransLeft((TransitionModel) cell);
 
             getGraph().drawNet(getModelProcessor());
@@ -1652,7 +1530,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
     }
 
     public void rotateTransRight(Object cell) {
-        if (cell instanceof TransitionModel) {
+        if ( cell instanceof TransitionModel ) {
             getEditorPanel().m_orientation.rotateTransRight((TransitionModel) cell);
 
             getGraph().drawNet(getModelProcessor());
@@ -1667,8 +1545,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
      */
     public void advancedBeautifyDialog() {
         JFrame frame = new JFrame();
-        @SuppressWarnings("unused")
-        AdvancedDialog dialog = new AdvancedDialog(frame, this);
+        @SuppressWarnings("unused") AdvancedDialog dialog = new AdvancedDialog(frame, this);
     }
 
     /**
@@ -1678,10 +1555,8 @@ public class EditorVC implements KeyListener, MouseWheelListener,
         // checking WF-Net-Conformity
         StructuralAnalysis sAnalysis = new StructuralAnalysis(this);
 
-        if (!sAnalysis.isWorkflowNet()) {
-            JOptionPane
-                    .showMessageDialog(this.getEditorPanel(), Messages
-                            .getString("File.Error.GraphBeautifier.NoNet.Text"));
+        if ( !sAnalysis.isWorkflowNet() ) {
+            JOptionPane.showMessageDialog(this.getEditorPanel(), Messages.getString("File.Error.GraphBeautifier.NoNet.Text"));
         } else {
             SGYGraph graph = new SGYGraph(this);
             graph.beautify(counter);
@@ -1689,7 +1564,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
         }
         // Check the orientation. If the orientation is 'vertical' rotate
         // the graph.
-        if (isRotateSelected()) {
+        if ( isRotateSelected() ) {
             getEditorPanel().rotateLayout(this);
             getEditorPanel().setRotateSelected(true);
             getEditorPanel().m_EditorLayoutInfo.setVerticalLayout(true);
@@ -1835,7 +1710,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
      */
     public void setSaved(boolean savedFlag) {
         this.m_saved = savedFlag;
-        if (getEditorPanel().m_statusbar != null) {
+        if ( getEditorPanel().m_statusbar != null ) {
             getEditorPanel().m_statusbar.updateStatus();
         }
     }
@@ -1877,8 +1752,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
      */
     public void setDrawingMode(boolean flag) {
         m_drawingMode = flag;
-        if (flag == false)
-            setCreateElementType(-1);
+        if ( flag == false ) setCreateElementType(-1);
     }
 
     public boolean isSmartEditActive() {
@@ -1957,15 +1831,12 @@ public class EditorVC implements KeyListener, MouseWheelListener,
     // ! The source of the sub-process will receive a virtual token for the game
     // ! @param subProcess specifies the sub-process to be opened
     public void openTokenGameSubProcess(SubProcessModel subProcess) {
-        EditorVC newEditorWindow = (EditorVC) m_mediator
-                .createSubprocessEditor(true, this, subProcess);
+        EditorVC newEditorWindow = (EditorVC) m_mediator.createSubprocessEditor(true, this, subProcess);
         newEditorWindow.getModelProcessor().getElementContainer();
-        IQualanalysisService qualanService = QualAnalysisServiceFactory
-                .createNewQualAnalysisService(newEditorWindow);
-        if (qualanService.getSourcePlaces().size() == 1) {
+        IQualanalysisService qualanService = QualAnalysisServiceFactory.createNewQualAnalysisService(newEditorWindow);
+        if ( qualanService.getSourcePlaces().size() == 1 ) {
             // Hand an initial token to the sub-process for the token game
-            ((PlaceModel) qualanService.getSourcePlaces().iterator().next())
-                    .receiveToken();
+            ((PlaceModel) qualanService.getSourcePlaces().iterator().next()).receiveToken();
         }
         // Enable token game mode
         newEditorWindow.toggleTokenGame();
@@ -1979,10 +1850,9 @@ public class EditorVC implements KeyListener, MouseWheelListener,
         return create(map, true, doNotEdit);
     }
 
-    public GraphCell create(CreationMap map, boolean insertIntoCache,
-                            boolean doNotEdit) {
+    public GraphCell create(CreationMap map, boolean insertIntoCache, boolean doNotEdit) {
 
-        if (map.getArcSourceId() != null) {// Maybe there should be a
+        if ( map.getArcSourceId() != null ) {// Maybe there should be a
             // ArcCreationMap
             return createArc(map, insertIntoCache);
         } else {
@@ -1993,8 +1863,8 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 
     public GraphCell[] createAll(CreationMap[] maps) {
         Vector<GraphCell> result = new Vector<GraphCell>();
-        for (int i = 0; i < maps.length; i++) {
-            if (maps[i] != null) {
+        for ( int i = 0; i < maps.length; i++ ) {
+            if ( maps[i] != null ) {
                 GraphCell element = create(maps[i], false, true);
                 result.add(element);
             }
@@ -2032,13 +1902,11 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 
     public void toggleUnderstandColoring() {
 
-        if (isUnderstandabilityColoringEnabled()) {
-            LoggerManager.debug(Constants.EDITOR_LOGGER,
-                    "DEACTIVATE Understandability ");
+        if ( isUnderstandabilityColoringEnabled() ) {
+            LoggerManager.debug(Constants.EDITOR_LOGGER, "DEACTIVATE Understandability ");
             getEditorPanel().setUnderstandabilityColoringEnabled(false);
         } else {
-            LoggerManager.debug(Constants.EDITOR_LOGGER,
-                    "ACTIVATE Understandability ");
+            LoggerManager.debug(Constants.EDITOR_LOGGER, "ACTIVATE Understandability ");
             getEditorPanel().setUnderstandabilityColoringEnabled(true);
         }
         getEditorPanel().getUnderstandColoring().update();
@@ -2142,25 +2010,16 @@ public class EditorVC implements KeyListener, MouseWheelListener,
         GroupModel element;
         ArcConfiguration arcConfig = new ArcConfiguration();
         IEditor subEditor;
-        while (iterator.hasNext()) {
+        while ( iterator.hasNext() ) {
             try {
                 element = (GroupModel) iterator.next();
-                if (element.getMainElement().getType() == AbstractPetriNetElementModel.SUBP_TYPE) {
-                    SubProcessModel subprocess = (SubProcessModel) element
-                            .getMainElement();
+                if ( element.getMainElement().getType() == AbstractPetriNetElementModel.SUBP_TYPE ) {
+                    SubProcessModel subprocess = (SubProcessModel) element.getMainElement();
                     NetAlgorithms.getArcConfiguration(subprocess, arcConfig);
                     IEditor editor = getMediator().getUi().getEditorFocus();
-                    if ((arcConfig.m_numIncoming != 0)
-                            || (arcConfig.m_numOutgoing != 0)) {
-                        subEditor = getMediator()
-                                .createSubprocessEditor(
-                                        true,
-                                        editor,
-                                        (SubProcessModel) element
-                                                .getMainElement());
-                        this.fireViewEvent(new ViewEvent(subEditor,
-                                AbstractViewEvent.VIEWEVENTTYPE_GUI,
-                                AbstractViewEvent.CLOSE, null));
+                    if ( (arcConfig.m_numIncoming != 0) || (arcConfig.m_numOutgoing != 0) ) {
+                        subEditor = getMediator().createSubprocessEditor(true, editor, (SubProcessModel) element.getMainElement());
+                        this.fireViewEvent(new ViewEvent(subEditor, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.CLOSE, null));
                     }
                 }
             } catch (Exception e) {
@@ -2171,8 +2030,7 @@ public class EditorVC implements KeyListener, MouseWheelListener,
 
     public boolean isOriginalName(String name, String id) {
         boolean result = false;
-        if (name.matches(id))
-            result = true;
+        if ( name.matches(id) ) result = true;
         return result;
     }
 

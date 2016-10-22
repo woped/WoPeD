@@ -25,22 +25,6 @@
  */
 package org.woped.editor.controller;
 
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-
-import javax.swing.JCheckBox;
-import javax.swing.JCheckBoxMenuItem;
-import javax.swing.JComponent;
-import javax.swing.JMenuItem;
-import javax.swing.JSplitPane;
-import javax.swing.undo.UndoManager;
-
 import org.jgraph.event.GraphSelectionEvent;
 import org.jgraph.event.GraphSelectionListener;
 import org.pushingpixels.flamingo.api.common.JCommandButton;
@@ -50,20 +34,23 @@ import org.woped.core.controller.AbstractGraph;
 import org.woped.core.controller.IEditor;
 import org.woped.core.gui.ITokenGameController;
 import org.woped.core.model.ArcModel;
-import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
-import org.woped.core.model.petrinet.EditorLayoutInfo;
-import org.woped.core.model.petrinet.GroupModel;
-import org.woped.core.model.petrinet.NameModel;
-import org.woped.core.model.petrinet.OperatorTransitionModel;
-import org.woped.core.model.petrinet.PlaceModel;
-import org.woped.core.model.petrinet.SubProcessModel;
-import org.woped.core.model.petrinet.TransitionModel;
-import org.woped.core.model.petrinet.TriggerModel;
+import org.woped.core.model.petrinet.*;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.Constants;
 import org.woped.editor.action.WoPeDAction;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.editor.controller.vc.SubprocessEditorVC;
+
+import javax.swing.*;
+import javax.swing.undo.UndoManager;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 /**
  * @author Thomas Pohl
@@ -144,8 +131,10 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
     // Auto play is running
     public static final int TOKENGAME_AUTOPLAY_PLAYING		= 57;
 	public static final int P2T	 							= 58;
-	private static final int MAX_ID 						= 59;
-    private static VisualController instance = null;
+	public static final int CAN_DECREASE_ARC_WEIGHT = 59;
+
+	private static final int MAX_ID = 60;
+	private static VisualController instance = null;
     private AbstractApplicationMediator am = null;
     private boolean active = true;
     // For each WoPeD action, we store a corresponding visibility configuration
@@ -467,8 +456,9 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
 			boolean tokenPlaceSelected = false;
 			boolean subprocessSelected = false;
 			boolean arcSelected = false;
+			boolean arcCanDecreaseWeight = false;
 			boolean nameSelected = false;
-            boolean operatorSelected = false;
+			boolean operatorSelected = false;
             boolean groupSelected = false;
 			boolean multipleSelected = false;
 			int triggerType = TriggerModel.TRIGGER_NONE;
@@ -491,14 +481,18 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
                 if (a.isXORsplit(editor.getModelProcessor())) {
                     xorArcSelected = true;
 				}
+
 				if (((ArcModel) selectedCell).isRoute())
 				{
 					routedArcSelected = true;
+				} else {
+					unroutedArcSelected = true;
                 }
-				else
-				{
-                    unroutedArcSelected = true;
-                }
+
+				if ( a.getInscriptionValue() > 1 ) {
+					arcCanDecreaseWeight = true;
+				}
+
 			}
 			else if (selectedCell instanceof SubProcessModel)
 			{
@@ -571,6 +565,7 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
 			setStatus(MESSAGE_TRIGGER_SELECTION, noMessageTriggerSelected);
 			setStatus(TRIGGERED_TRANSITION_SELECTION, triggeredTransitionSelected);
 			setStatus(ARC_SELECTION, arcSelected && !arcpointSelected);
+			setStatus(CAN_DECREASE_ARC_WEIGHT, arcSelected && arcCanDecreaseWeight);
 			setStatus(ARCPOINT_SELECTION, arcpointSelected);
 			setStatus(OPERATOR_SELECTION, operatorSelected);
 			setStatus(GROUP_SELECTION, groupSelected);
