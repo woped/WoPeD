@@ -48,7 +48,7 @@ import java.util.List;
  */
 
 @SuppressWarnings("serial")
-public class ArcView extends EdgeView {
+class ArcView extends EdgeView {
     private ArcModel arc;
     private ArcViewRenderer arcViewRenderer = new ArcViewRenderer();
     private ImageIcon activeIcon = Messages.getImageIcon("TokenGame.Active");
@@ -56,11 +56,9 @@ public class ArcView extends EdgeView {
     /**
      * Constructor for ArcView.
      *
-     * @param cell
-     * @param graph
-     * @param mapper
+     * @param cell the cell representing the arc
      */
-    public ArcView(Object cell) {
+    ArcView(Object cell) {
         super(cell);
         if ( cell instanceof ArcModel ) {
             arc = (ArcModel) cell;
@@ -68,26 +66,12 @@ public class ArcView extends EdgeView {
         }
 //        setAttributes(new AttributeMap());
         if ( GraphConstants.getPoints(getAttributes()) == null ) {
-            List<Point2D> points = new ArrayList<Point2D>(2);
+            List<Point2D> points = new ArrayList<>(2);
             points.add(getAttributes().createPoint(10, 10));
             points.add(getAttributes().createPoint(20, 20));
             GraphConstants.setPoints(getAttributes(), points);
         }
     }
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see org.jgraph.graph.EdgeView#getEdgeRenderer()
-     */
-/*    
-    EdgeRenderer getEdgeRenderer()
-    {
-        return arcViewRenderer;
-    }
-
-*/
-
 
     /*
      * (non-Javadoc)
@@ -103,9 +87,9 @@ public class ArcView extends EdgeView {
     }
 
     public boolean intersects(JGraph graph, Rectangle2D rect) {
-        boolean result = super.intersects(graph, rect);
+        boolean intersecting = super.intersects(graph, rect);
 
-        if ( (result == false) && isActivated() ) {
+        if ( (!intersecting) && isActivated() ) {
             int iconHeight = (activeIcon != null) ? activeIcon.getIconHeight() : 0;
             int iconWidth = (activeIcon != null) ? activeIcon.getIconWidth() : 0;
             Rectangle2D labelPos = this.getBounds();
@@ -113,9 +97,9 @@ public class ArcView extends EdgeView {
             double buttonX = (int) (labelPos.getMinX() + labelPos.getWidth() / 2) - (iconWidth / 2);
             double buttonY = (int) (labelPos.getMinY() + labelPos.getHeight() / 2) - (iconHeight / 2);
 
-            result = rect.intersects(buttonX, buttonY, iconWidth, iconHeight);
+            intersecting = rect.intersects(buttonX, buttonY, iconWidth, iconHeight);
         }
-        return result;
+        return intersecting;
     }
 
     public Rectangle2D getBounds() {
@@ -147,7 +131,7 @@ public class ArcView extends EdgeView {
          */
         public void paint(Graphics g) {
             Shape edgeShape = view.getShape();
-            // Sideeffect: beginShape, lineShape, endShape
+            // Side effect: beginShape, lineShape, endShape
             if ( edgeShape != null ) {
                 // super.paint(g);
                 Graphics2D g2 = (Graphics2D) g;
@@ -175,13 +159,13 @@ public class ArcView extends EdgeView {
                 JGraph graph = (JGraph) this.graph.get();
                 g.setFont(DefaultStaticConfiguration.DEFAULT_TINYLABEL_FONT);
 
-                if ( arc.displayWeight() ) {
+                if ( arc.displayWeight() && graph != null ) {
                     Point2D labelPosition = getLabelPosition(view);
                     paintLabel(g, graph.convertValueToString(arc.getInscriptionValue()), labelPosition, simpleExtraLabels);
                 }
 
                 Object[] labels = GraphConstants.getExtraLabels(view.getAllAttributes());
-                if ( labels != null && arc.displayProbability() ) {
+                if ( labels != null && arc.displayProbability() && graph != null ) {
                     Point2D labelPosition = getExtraLabelPosition(view, 0);
                     paintLabel(g, graph.convertValueToString(labels[0]), labelPosition, simpleExtraLabels);
                 }
@@ -192,7 +176,7 @@ public class ArcView extends EdgeView {
                     if ( view.lineShape != null ) g2.draw(view.lineShape);
                     if ( view.endShape != null ) g2.draw(view.endShape);
                 }
-                if ( isActivated() ) {
+                if ( arc.isActivated() ) {
                     g2.setColor(Color.GREEN);
                     g.setColor(Color.GREEN);
                     g2.setStroke(new BasicStroke(1));
@@ -209,15 +193,12 @@ public class ArcView extends EdgeView {
 
                     int buttonX = labelPos.x + labelPos.width / 2 - (iconWidth / 2);
                     int buttonY = labelPos.y + labelPos.height / 2 - (iconHeight / 2);
-                    g2.drawImage(activeIcon.getImage(), buttonX, buttonY, iconWidth, iconHeight, activeIcon != null ? activeIcon.getImageObserver() : null);
 
+                    if ( activeIcon != null ) {
+                        g2.drawImage(activeIcon.getImage(), buttonX, buttonY, iconWidth, iconHeight, activeIcon != null ? activeIcon.getImageObserver() : null);
+                    }
                 }
             }
         }
-
-        private boolean isActivated() {
-            return ArcView.this.isActivated();
-        }
     }
-
 }
