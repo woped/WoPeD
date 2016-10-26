@@ -500,7 +500,7 @@ public class ActionFactory
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ARC_WEIGHT_DECREASE), VisualController.CAN_DECREASE_ARC_WEIGHT, VisualController.CAN_DECREASE_ARC_WEIGHT, VisualController.IGNORE);
 
         STATIC_ACTION_MAP.put(ACTIONID_OPEN_PROPERTIES, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.OPEN_PROPERTIES, null, ACTIONID_OPEN_PROPERTIES));
-        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_OPEN_PROPERTIES), VisualController.NODE_OR_XORARC_SELECTION, VisualController.NODE_OR_XORARC_SELECTION, VisualController.IGNORE);
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_OPEN_PROPERTIES), VisualController.NODE_OR_ARC_SELECTION, VisualController.NODE_OR_ARC_SELECTION, VisualController.IGNORE);
         
         STATIC_ACTION_MAP.put(ACTIONID_ADD_MESSAGE_TRIGGER, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ADD_EXT_TRIGGER, null, ACTIONID_ADD_MESSAGE_TRIGGER));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ADD_MESSAGE_TRIGGER), VisualController.MESSAGE_TRIGGER_SELECTION, VisualController.MESSAGE_TRIGGER_SELECTION, VisualController.IGNORE);

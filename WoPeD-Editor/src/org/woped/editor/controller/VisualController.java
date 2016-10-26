@@ -83,6 +83,7 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
 	public static final int ROUTED_ARC_SELECTION 			= 17;
 	public static final int UNROUTED_ARC_SELECTION 			= 18;
 	public static final int NODE_OR_XORARC_SELECTION 		= 19;
+	public static final int NODE_OR_ARC_SELECTION = 60;
 	public static final int ARCPOINT_SELECTION				= 20;
 	public static final int MULTIPLE_SELECTION				= 21;
 	public static final int GROUP_SELECTION					= 22;
@@ -133,7 +134,7 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
 	public static final int P2T	 							= 58;
 	public static final int CAN_DECREASE_ARC_WEIGHT = 59;
 
-	private static final int MAX_ID = 60;
+	private static final int MAX_ID = 61;
 	private static VisualController instance = null;
     private AbstractApplicationMediator am = null;
     private boolean active = true;
@@ -556,6 +557,7 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
 			setStatus(TOKEN_PLACE_SELECTION, tokenPlaceSelected);
 			setStatus(ROUTED_ARC_SELECTION, routedArcSelected);
 			setStatus(NODE_OR_XORARC_SELECTION, (transitionSelected | placeSelected | xorArcSelected) && !arcpointSelected);
+			setStatus(NODE_OR_ARC_SELECTION, transitionSelected | placeSelected | arcSelected);
 			setStatus(UNROUTED_ARC_SELECTION, unroutedArcSelected);
 			setStatus(TRANSITION_SELECTION, transitionSelected);
 			setStatus(NODE_SELECTION, transitionSelected | placeSelected | subprocessSelected);

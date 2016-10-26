@@ -132,7 +132,7 @@ public class EditorEventProcessor extends AbstractEventProcessor {
                     cell = editor.getGraph().getSelectionCell();
                     AbstractPetriNetElementModel element = null;
 
-                    if ( cell instanceof ArcModel && ((ArcModel) cell).isXORsplit(editor.getModelProcessor()) ) {
+                    if ( cell instanceof ArcModel ) {
                         new ArcPropertyEditor((JFrame) getMediator().getUi(), (Point) editor.getLastMousePosition(), (ArcModel) cell, editor);
                     }
 
