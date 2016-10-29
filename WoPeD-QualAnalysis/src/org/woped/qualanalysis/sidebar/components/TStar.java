@@ -1,16 +1,5 @@
 package org.woped.qualanalysis.sidebar.components;
 
-import java.awt.Color;
-import java.awt.Point;
-import java.awt.geom.Point2D;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Vector;
-
 import org.jgraph.graph.AttributeMap;
 import org.jgraph.graph.DefaultGraphCell;
 import org.jgraph.graph.DefaultPort;
@@ -18,17 +7,14 @@ import org.jgraph.graph.GraphConstants;
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.CreationMap;
-import org.woped.core.model.IntPair;
 import org.woped.core.model.ModelElementFactory;
-import org.woped.core.model.PetriNetModelProcessor;
-import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
-import org.woped.core.model.petrinet.GroupModel;
-import org.woped.core.model.petrinet.NameModel;
-import org.woped.core.model.petrinet.OperatorTransitionModel;
-import org.woped.core.model.petrinet.TransitionModel;
-import org.woped.core.model.petrinet.TransitionResourceModel;
-import org.woped.core.model.petrinet.TriggerModel;
+import org.woped.core.model.petrinet.*;
 import org.woped.core.utilities.Utils;
+
+import java.awt.*;
+import java.awt.geom.Point2D;
+import java.util.*;
+import java.util.List;
 
 public class TStar {
 
@@ -286,9 +272,9 @@ public class TStar {
                     editor.getGraph().getModel().edit(arcMap, null, null, null);
                 }
                 arc.setProbability(map.getArcProbability());
-                arc.setDisplayOn(map.getDisplayArcProbability());
+                arc.displayProbability(map.getDisplayArcProbability());
                 if (map.getArcLabelPosition() != null) {
-                    arc.setLabelPosition(new Point2D.Double(map.getArcLabelPosition().getX(), map.getArcLabelPosition()
+                    arc.setProbabilityLabelPosition(new Point2D.Double(map.getArcLabelPosition().getX(), map.getArcLabelPosition()
                             .getY()));
                 }
             }
