@@ -1,5 +1,6 @@
 package org.woped.core.model;
 
+import org.jgraph.graph.AttributeMap;
 import org.jgraph.graph.DefaultPort;
 import org.junit.Test;
 import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
@@ -38,6 +39,53 @@ public class ArcModelTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void getCreationMap_validArc_containsArcWeightLabelPosition() throws Exception {
+        ArcModel cut = createDemoArc();
+
+        CreationMap creationMap = cut.getCreationMap();
+        Point2D arcWeightLabelPosition = creationMap.getArcWeightLabelPosition();
+
+        assertNotNull(arcWeightLabelPosition);
+    }
+
+    @Test
+    public void getWeightLabelPosition_validArc_positionNotNull() throws Exception {
+        ArcModel cut = createDemoArc();
+
+        Point2D weightLabelPosition = cut.getWeightLabelPosition();
+        assertNotNull(weightLabelPosition);
+    }
+
+    @Test
+    public void setWeightLabelPosition_validPosition_attributesContainsPosition() throws Exception {
+        ArcModel cut = createDemoArc();
+
+        AttributeMap attributes = cut.getAttributes();
+        Point2D newPosition = new Point2D.Double(10, 10);
+        Point2D currentPosition = (Point2D) attributes.get("labelposition");
+        assertNotEquals("Position should not match before update", newPosition, currentPosition);
+
+        cut.setWeightLablePosition(newPosition);
+        currentPosition = (Point2D) attributes.get("labelposition");
+        assertEquals("Positions should match after update", newPosition, currentPosition);
+
+        currentPosition = cut.getWeightLabelPosition();
+        assertEquals("New position should be accessable.", newPosition, currentPosition);
+    }
+
+    @Test
+    public void setWeightLabelPosition_newPosIsNull_ignoresUpdate() throws Exception {
+        ArcModel cut = createDemoArc();
+
+        Point2D postionBeforeUpdate = cut.getWeightLabelPosition();
+
+        cut.setWeightLablePosition(null);
+
+        Point2D positoinAfterUpdate = cut.getWeightLabelPosition();
+
+        assertEquals(postionBeforeUpdate, positoinAfterUpdate);
+    }
     @Test
     public void getCreationMap_validArc_containsArcWeight() throws Exception {
         int arcWeight = 2;

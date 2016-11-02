@@ -475,7 +475,9 @@ public class EditorVC implements KeyListener, MouseWheelListener, GraphModelList
             } else {
 
                 arc = getModelProcessor().createArc(map.getArcId(), sourceId, targetId, pointArray, true);
+
                 arc.setInscriptionValue(map.getArcWeight());
+                arc.setWeightLablePosition(map.getArcWeightLabelPosition());
 
                 // Manually copy arc points
                 for ( int i = 0; i < pointArray.length; ++i ) {

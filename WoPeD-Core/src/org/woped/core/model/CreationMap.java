@@ -22,18 +22,17 @@
  */
 package org.woped.core.model;
 
-import java.awt.Point;
-import java.awt.geom.Point2D;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Vector;
-
-import javax.swing.ImageIcon;
-
 import org.woped.core.Constants;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.utilities.LoggerManager;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.geom.Point2D;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Vector;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -68,6 +67,7 @@ public class CreationMap extends HashMap<String, Object> {
     private static final String ARC_DISPLAYPROB = "ARC_DISPLAYPROB";
     private static final String ARC_LABELPOSITION = "ARC_LABELPOSITION";
     private static final String ARC_WEIGHT = "ARC_WEIGHT";
+    private static final String ARC_WEIGHT_LABEL_POSITION = "ARC_WEIGHT_LABEL_POSITION";
     private static final String RESOURCE_POSITION = "RESOURCE_POSITION";
     private static final String RESOURCE_ROLE = "RESOURCE_ROLE";
     private static final String RESOURCE_ORGUNIT = "RESOURCE_ORGUNIT";
@@ -396,6 +396,28 @@ public class CreationMap extends HashMap<String, Object> {
         }
 
         put(ARC_POINTS, newPoints);
+    }
+
+    /**
+     * Gets the position of the arc weight label.
+     *
+     * @return the position of the arc weight label
+     */
+    public Point2D getArcWeightLabelPosition() {
+        if ( containsKey(ARC_WEIGHT_LABEL_POSITION) ) {
+            return (Point2D) get(ARC_WEIGHT_LABEL_POSITION);
+        }
+
+        return null;
+    }
+
+    /**
+     * Sets the positoin of the arc weight label.
+     *
+     * @param newPosition the new position of the label
+     */
+    public void setArcWeightLabelPosition(Point2D newPosition) {
+        put(ARC_WEIGHT_LABEL_POSITION, newPosition);
     }
 
     public double getArcProbability() {

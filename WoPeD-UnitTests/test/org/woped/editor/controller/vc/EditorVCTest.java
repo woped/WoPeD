@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.CreationMap;
 import org.woped.core.model.PetriNetModelProcessor;
-import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
+import org.woped.tests.TestNetGenerator;
 import org.woped.understandability.NetColorScheme;
 
 import java.awt.geom.Point2D;
@@ -135,22 +135,9 @@ public class EditorVCTest {
     }
 
     private PetriNetModelProcessor createDemoNet(int places, int transitions) {
-        PetriNetModelProcessor processor = new PetriNetModelProcessor();
 
-        CreationMap placeMap = CreationMap.createMap();
-        placeMap.setType(AbstractPetriNetElementModel.PLACE_TYPE);
-        for (int i = 1; i <= places; i++) {
-            placeMap.setId("p" + i);
-            processor.createElement(placeMap);
-        }
-
-        CreationMap transitionMap = CreationMap.createMap();
-        transitionMap.setType(AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE);
-        for (int i = 1; i <= transitions; i++) {
-            transitionMap.setId("t" + i);
-            processor.createElement(transitionMap);
-        }
-        return processor;
+        TestNetGenerator netGenerator = new TestNetGenerator();
+        return netGenerator.createNetWithoutArcs(places, transitions);
     }
 
 }

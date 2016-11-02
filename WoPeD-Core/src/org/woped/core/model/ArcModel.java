@@ -108,6 +108,12 @@ public class ArcModel extends DefaultEdge implements Serializable {
         Point2D result = null;
         Point2D positions[] = GraphConstants.getExtraLabelPositions(getAttributes());
         if ( positions.length > 0 ) result = positions[0];
+
+        Point2D offset = GraphConstants.getOffset(getAttributes());
+        if ( offset != null && result != null ) {
+            result = new Point2D.Double(result.getX(), result.getY() + offset.getY());
+        }
+
         if ( result == null ) result = getDefaultLabelPosition();
         return result;
     }
@@ -386,8 +392,33 @@ public class ArcModel extends DefaultEdge implements Serializable {
         map.setArcLabelPosition((int) this.getProbabilityLabelPosition().getX(), (int) this.getProbabilityLabelPosition().getY());
 
         map.setArcWeight(getInscriptionValue());
+        map.setArcWeightLabelPosition(calculateWeightLabelPosition());
 
         return map;
+    }
+
+
+    private Point2D calculateWeightLabelPosition() {
+
+        AttributeMap attributes = this.getAttributes();
+        Point2D weightPosition = GraphConstants.getLabelPosition(attributes);
+        Point2D offset = GraphConstants.getOffset(attributes);
+
+        if ( offset != null ) {
+            weightPosition = new Point2D.Double(weightPosition.getX(), offset.getY());
+        }
+
+        return weightPosition;
+    }
+
+    public Point2D getWeightLabelPosition() {
+        return calculateWeightLabelPosition();
+    }
+
+    public void setWeightLablePosition(Point2D newPosition) {
+        if ( newPosition == null ) return;
+
+        GraphConstants.setLabelPosition(this.getAttributes(), newPosition);
     }
 
     public ElementContext getElementContext() {
