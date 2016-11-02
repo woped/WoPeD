@@ -825,17 +825,13 @@ public class PNMLExport {
     ArcNameType initNodeName(ArcNameType nodeName, ArcModel element) {
         // name
         nodeName.setText(element.getInscriptionValue());
-        // TODO: Save position of inscripion value
-        // graphics
-        /*
-         * AnnotationGraphisType iGraphics = nodeName.addNewGraphics();
-         * PositionType pos = iGraphics.addNewOffset();
-         * pos.setX(BigDecimal.valueOf(element.getX()));
-         * pos.setY(BigDecimal.valueOf(element.getY())); pos =
-         * iGraphics.addNewOffset(); pos.setX(BigDecimal.valueOf(element.getX() +
-         * element.getWidth())); pos.setY(BigDecimal.valueOf(element.getY() +
-         * element.getHeight()));
-         */
+
+        // label position
+        Point2D weightLabelPosition = element.getWeightLabelPosition();
+        AnnotationGraphisType iGraphics = nodeName.addNewGraphics();
+        PositionType pos = iGraphics.addNewOffset();
+        pos.setX(BigDecimal.valueOf(weightLabelPosition.getX()));
+        pos.setY(BigDecimal.valueOf(weightLabelPosition.getY()));
 
         return nodeName;
     }

@@ -938,6 +938,16 @@ public class PNMLImport {
 
         // Import weight
         arc.setInscriptionValue(arcBean.getInscription().getText());
+        AnnotationGraphisType weightLabel = arcBean.getInscription().getGraphics();
+        if ( weightLabel != null ) {
+            PositionType[] offsets = weightLabel.getOffsetArray();
+            if ( offsets.length != 0 ) {
+                PositionType labelOffset = offsets[0];
+                Point2D labelPosition = new Point2D.Double(labelOffset.getX().doubleValue(), labelOffset.getY().doubleValue());
+                arc.setWeightLablePosition(labelPosition);
+            }
+
+        }
 
         if (arc != null && importToolSpecificAttributes) {
             // Check whether we actually have an arc. If not, it
