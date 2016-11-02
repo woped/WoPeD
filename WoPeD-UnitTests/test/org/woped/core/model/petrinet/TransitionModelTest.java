@@ -52,6 +52,21 @@ public class TransitionModelTest {
     }
 
     @Test
+    public void getNumIncomingActivePlaces_arc1HasWeightGreaterThenTokens_returns1() throws Exception {
+
+        ModelElementContainer container = createSimpleDemoData();
+        sut.addOwningContainer(container);
+
+        ArcModel a1 = container.findArc("p1", "sut");
+        a1.setInscriptionValue(2);
+
+        int expected = 1;
+        int actual = sut.getNumIncomingActivePlaces();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
     public void getNumIncomingPlaces_noRootOwningContainer_returnsZero() throws Exception {
 
         int expected = 0;
@@ -70,6 +85,7 @@ public class TransitionModelTest {
 
         assertEquals(expected, actual);
     }
+
 
     /**
      * Creates demo data with three incoming arcs, 2 active
