@@ -102,11 +102,11 @@ public class PNMLExportTest {
     public void initNodeName_validParameters_setInscriptionValueAsName() throws Exception {
 
         int arcWeight = 2;
+        DemoArcTypeData arcTypeData = new DemoArcTypeData();
+        ArcNameType exportArc = arcTypeData.arcName;
 
-        ArcNameType exportArc = mock(ArcNameType.class);
-
-        ArcModel arc = mock(ArcModel.class);
-        when(arc.getInscriptionValue()).thenReturn(arcWeight);
+        DemoArcModelData arcModelData = new DemoArcModelData();
+        ArcModel arc = arcModelData.arc;
 
         sut.initNodeName(exportArc, arc);
         verify(exportArc).setText(arcWeight);
@@ -247,15 +247,18 @@ public class PNMLExportTest {
 
         ArcType arc;
         ArcNameType arcName;
+        AnnotationGraphisType arcNameGraphics;
+
         GraphicsArcType graphics;
         ArcToolspecificType arcToolspecificType;
         PositionType labelPosition;
 
         DemoArcTypeData() {
-
             arc = mock(ArcType.class);
             arcName = mock(ArcNameType.class);
+            arcNameGraphics = mock(AnnotationGraphisType.class);
             graphics = mock(GraphicsArcType.class);
+
             arcToolspecificType = mock(ArcToolspecificType.class);
             labelPosition = mock(PositionType.class);
 
@@ -264,6 +267,9 @@ public class PNMLExportTest {
             when(arc.addNewInscription()).thenReturn(arcName);
             when(arc.addNewGraphics()).thenReturn(graphics);
             when(arc.addNewToolspecific()).thenReturn(arcToolspecificType);
+
+            when(arcName.addNewGraphics()).thenReturn(arcNameGraphics);
+            when(arcNameGraphics.addNewOffset()).thenReturn(mock(PositionType.class));
         }
     }
 
@@ -292,6 +298,7 @@ public class PNMLExportTest {
 
             arc = mock(ArcModel.class);
             when(arc.getInscriptionValue()).thenReturn(this.weight);
+            when(arc.getWeightLabelPosition()).thenReturn(new Point2D.Double(0, 0));
             when(arc.getId()).thenReturn(this.id);
             when(arc.getSourceId()).thenReturn(this.sourceId);
             when(arc.getTargetId()).thenReturn(this.targetId);
