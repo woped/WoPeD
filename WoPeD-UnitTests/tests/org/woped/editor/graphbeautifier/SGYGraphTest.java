@@ -5,16 +5,14 @@ import org.junit.Before;
 import org.junit.Test;
 import org.woped.core.controller.AbstractGraph;
 import org.woped.core.model.ArcModel;
-import org.woped.core.model.CreationMap;
 import org.woped.core.model.PetriNetModelProcessor;
-import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
-import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.tests.TestNetGenerator;
 
 import java.util.Map;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
