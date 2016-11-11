@@ -1,10 +1,10 @@
 package org.woped.qualanalysis.soundness.algorithms.generic.cc;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import org.woped.qualanalysis.soundness.algorithms.generic.INode;
 import org.woped.qualanalysis.soundness.algorithms.generic.INodeNet;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * 
@@ -60,14 +60,14 @@ public class ConnectedComponentTestGen<K extends INode<K>> implements IConnected
         visitedNodes.add(node);
 
         // visit successors
-        for (K postNode : node.getPostNodes()) {
+        for ( K postNode : node.getSuccessorNodes() ) {
             if (!visitedNodes.contains(postNode)) {
                 checkNodeConnection(cc, postNode);
             }
         }
 
         // visit predecessors
-        for (K preNode : node.getPreNodes()) {
+        for ( K preNode : node.getPredecessorNodes() ) {
             if (!visitedNodes.contains(preNode)) {
                 checkNodeConnection(cc, preNode);
             }

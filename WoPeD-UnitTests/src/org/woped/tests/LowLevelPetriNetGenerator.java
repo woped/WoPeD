@@ -40,26 +40,26 @@ public class LowLevelPetriNetGenerator {
         net.addNode(t3);
         net.addNode(t4);
 
-        p1.addPostNode(t1);
-        t1.addPreNode(p1);
-        t1.addPostNode(pC);
+        p1.addSuccessorNode(t1);
+        t1.addPredecessorNode(p1);
+        t1.addSuccessorNode(pC);
 
-        p2.addPostNode(t2);
-        t2.addPreNode(p2);
-        t2.addPostNode(pC);
+        p2.addSuccessorNode(t2);
+        t2.addPredecessorNode(p2);
+        t2.addSuccessorNode(pC);
 
-        pC.addPreNode(t1);
-        pC.addPreNode(t2);
-        pC.addPostNode(t3);
-        pC.addPostNode(t4);
+        pC.addPredecessorNode(t1);
+        pC.addPredecessorNode(t2);
+        pC.addSuccessorNode(t3);
+        pC.addSuccessorNode(t4);
 
-        t3.addPreNode(pC);
-        t3.addPostNode(p3);
-        p3.addPreNode(t3);
+        t3.addPredecessorNode(pC);
+        t3.addSuccessorNode(p3);
+        p3.addPredecessorNode(t3);
 
-        t4.addPreNode(pC);
-        t4.addPostNode(p4);
-        p4.addPreNode(t4);
+        t4.addPredecessorNode(pC);
+        t4.addSuccessorNode(p4);
+        p4.addPredecessorNode(t4);
 
         return net;
     }
@@ -88,15 +88,15 @@ public class LowLevelPetriNetGenerator {
         net.addNode(t1);
         net.addNode(t2);
 
-        p1.addPostNode(t1);
-        t1.addPreNode(p1);
-        t1.addPostNode(p3);
-        p3.addPreNode(t1);
+        p1.addSuccessorNode(t1);
+        t1.addPredecessorNode(p1);
+        t1.addSuccessorNode(p3);
+        p3.addPredecessorNode(t1);
 
-        p2.addPostNode(t2);
-        t2.addPreNode(p2);
-        t2.addPostNode(p3);
-        p3.addPreNode(t2);
+        p2.addSuccessorNode(t2);
+        t2.addPredecessorNode(p2);
+        t2.addSuccessorNode(p3);
+        p3.addPredecessorNode(t2);
 
         return net;
     }
@@ -125,15 +125,15 @@ public class LowLevelPetriNetGenerator {
         net.addNode(t1);
         net.addNode(t2);
 
-        p1.addPostNode(t1);
-        t1.addPreNode(p1);
-        t1.addPostNode(p2);
-        p2.addPreNode(t1);
+        p1.addSuccessorNode(t1);
+        t1.addPredecessorNode(p1);
+        t1.addSuccessorNode(p2);
+        p2.addPredecessorNode(t1);
 
-        p1.addPostNode(t2);
-        t2.addPreNode(p1);
-        t2.addPostNode(p3);
-        p3.addPreNode(t2);
+        p1.addSuccessorNode(t2);
+        t2.addPredecessorNode(p1);
+        t2.addSuccessorNode(p3);
+        p3.addPredecessorNode(t2);
 
         return net;
     }

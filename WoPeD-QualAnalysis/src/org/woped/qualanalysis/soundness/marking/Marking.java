@@ -1,15 +1,10 @@
 package org.woped.qualanalysis.soundness.marking;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
-
 import org.woped.qualanalysis.soundness.algorithms.generic.INode;
 import org.woped.qualanalysis.soundness.datamodel.PlaceNode;
 import org.woped.qualanalysis.soundness.datamodel.TransitionNode;
+
+import java.util.*;
 
 /**
  * @see IMarking
@@ -17,6 +12,7 @@ import org.woped.qualanalysis.soundness.datamodel.TransitionNode;
  * @author Patrick Spies, Patrick Kirchgaessner, Joern Liebau, Enrico Moeller, Sebastian Fuss
  */
 public class Marking implements IMarking, INode<Marking> {
+    private static int markingCounter = 0;
     // declaration
 	private final Map<PlaceNode, Integer> placeToIndexMap = new HashMap<PlaceNode, Integer>();
     private final PlaceNode[] places;
@@ -26,9 +22,6 @@ public class Marking implements IMarking, INode<Marking> {
     private Marking predecessor;
     private boolean isInitial = false;
     private int markingID;
-    
-    private static int markingCounter = 0;
-    
     // Cache the hash code unless something changes in our marking. -1 means the hash code
     // needs to be updated.
     private int cachedHashCode = -1;    
@@ -124,10 +117,29 @@ public class Marking implements IMarking, INode<Marking> {
     }
     
     /**
+     * @param position position of the place being unlimited
+     */
+    public void setPlaceUnlimited(Integer position) {
+        this.placeUnlimited[position] = true;
+        // Reset token count for the new unlimited place to ensure we generate
+        // the same hash for equivalent representations.
+        this.tokens[position] = 0;
+        // We need to recalculate the hash if we do this.
+        cachedHashCode = -1;
+    }
+
+    /**
      * @return the predecessor (marking)
      */
     public Marking getPredecessor() {
         return predecessor;
+    }
+
+    /**
+     * @param predecessor the predecessor to set
+     */
+    public void setPredecessor(Marking predecessor) {
+        this.predecessor = predecessor;
     }
 
     /**
@@ -158,7 +170,7 @@ public class Marking implements IMarking, INode<Marking> {
     }
     
     /**
-     * 
+     *
      * @param compareMarking marking to compare
      * @return true, if markings are comparable and the marking is smaller or equal than the provided marking.
      */
@@ -172,7 +184,7 @@ public class Marking implements IMarking, INode<Marking> {
         }
         return smallerEquals;
     }
-    
+
     /**
      * Returns the index of a given place or -1 if not found
      * @param place
@@ -186,7 +198,7 @@ public class Marking implements IMarking, INode<Marking> {
     		return index.intValue();
     	}
     }
-    
+
     /**
      * @return the isInitial
      */
@@ -195,9 +207,16 @@ public class Marking implements IMarking, INode<Marking> {
     }
 
     /**
-     * 
+     * @param isInitial the isInitial to set
+     */
+    public void setInitial(boolean isInitial) {
+        this.isInitial = isInitial;
+    }
+
+    /**
+     *
      * checks if the given transition is reachable from the current marking
-     * 
+     *
      * @param tn the transition to reach
      * @param markings a set of markings already checked
      * @return true if the Transition is reachable
@@ -230,32 +249,6 @@ public class Marking implements IMarking, INode<Marking> {
     }
 
     /**
-     * @param isInitial the isInitial to set
-     */
-    public void setInitial(boolean isInitial) {
-        this.isInitial = isInitial;
-    }
-
-    /**
-     * @param position position of the place being unlimited
-     */
-    public void setPlaceUnlimited(Integer position) {
-        this.placeUnlimited[position] = true;
-        // Reset token count for the new unlimited place to ensure we generate
-        // the same hash for equivalent representations.
-        this.tokens[position] = 0;
-        // We need to recalculate the hash if we do this.
-        cachedHashCode = -1; 
-    }
-
-    /**
-     * @param predecessor the predecessor to set
-     */
-    public void setPredecessor(Marking predecessor) {
-        this.predecessor = predecessor;
-    }
-
-    /**
      * @return the token-array as string
      */
     @Override
@@ -274,10 +267,9 @@ public class Marking implements IMarking, INode<Marking> {
     }
 
     /**
-     * @see INode#getPostNodes()
+     * @see INode#getSuccessorNodes()
      */
-    @Override
-    public Set<Marking> getPostNodes() {
+    public Set<Marking> getSuccessorNodes() {
         Set<Marking> set = new HashSet<Marking>();
         for (Arc arc : getSuccessors()) {
             set.add(arc.getTarget());
@@ -286,10 +278,9 @@ public class Marking implements IMarking, INode<Marking> {
     }
 
     /**
-     * @see INode#getPreNodes()
+     * @see INode#getPredecessorNodes()
      */
-    @Override
-    public Set<Marking> getPreNodes() {
+    public Set<Marking> getPredecessorNodes() {
         Set<Marking> set = new HashSet<Marking>();
         set.add(predecessor);
         return set;

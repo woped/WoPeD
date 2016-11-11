@@ -1,6 +1,6 @@
 package org.woped.qualanalysis.soundness.builder.markingnet;
 
-import org.woped.qualanalysis.soundness.datamodel.LowLevelPetriNet;
+import org.woped.qualanalysis.soundness.datamodel.ILowLevelPetriNet;
 import org.woped.qualanalysis.soundness.marking.IMarkingNet;
 import org.woped.qualanalysis.soundness.marking.MarkingNet;
 
@@ -11,14 +11,14 @@ import org.woped.qualanalysis.soundness.marking.MarkingNet;
  * 
  */
 public abstract class AbstractMarkingNetBuilder {
-    protected LowLevelPetriNet lolNet;
+    protected ILowLevelPetriNet lolNet;
     protected IMarkingNet mNet;
 
     /**
      * 
      * @param lolNet source low level petri net.
      */
-    public AbstractMarkingNetBuilder(LowLevelPetriNet lolNet) {
+    public AbstractMarkingNetBuilder(ILowLevelPetriNet lolNet) {
         this.lolNet = lolNet;
         initMarkingNet();
         createMarkingNet();

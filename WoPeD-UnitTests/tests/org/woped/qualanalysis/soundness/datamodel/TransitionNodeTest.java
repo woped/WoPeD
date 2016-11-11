@@ -7,7 +7,11 @@ import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.tests.LowLevelPetriNetGenerator;
 
+import java.util.Observer;
+
 import static junit.framework.Assert.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 
 public class TransitionNodeTest {
 
@@ -66,5 +70,82 @@ public class TransitionNodeTest {
         String actual = cut.toString();
 
         assertEquals(expected, actual);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void addPredecessorNode_negativeWeight_throwsException() throws Exception {
+        AbstractNode p1 = new PlaceNode(0, 0, "p1", "p1", "p1");
+        cut.addPredecessorNode(p1, -1);
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void addPredecessorNode_addTransition_throwsException() throws Exception {
+        TransitionNode t1 = new TransitionNode("t1", "t1", "t1", AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE);
+        cut.addPredecessorNode(t1);
+    }
+
+    @Test
+    public void addPredecessorNode_newNode_updatesObservers() throws Exception {
+
+        Observer connectionAddedListener = mock(Observer.class);
+        cut.nodeAdded().addObserver(connectionAddedListener);
+
+        PlaceNode p1 = new PlaceNode(0, 0, "p1", "p1", "p1");
+        NodeAddedArgs args = new NodeAddedArgs(cut, p1, ConnectionType.INCOMING, 1);
+
+        cut.addPredecessorNode(p1);
+        verify(connectionAddedListener).update(cut.nodeAdded(), args);
+    }
+
+    @Test
+
+    public void addPredecessorNode_newNodeWithWeight_updatesObservers() throws Exception {
+
+        Observer connectionAddedListener = mock(Observer.class);
+        cut.nodeAdded().addObserver(connectionAddedListener);
+
+        int weight = 3;
+        PlaceNode p1 = new PlaceNode(0, 0, "p1", "p1", "p1");
+        NodeAddedArgs args = new NodeAddedArgs(cut, p1, ConnectionType.INCOMING, weight);
+
+        cut.addPredecessorNode(p1, weight);
+        verify(connectionAddedListener).update(cut.nodeAdded(), args);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void addSuccessorNode_weightIs0_throwsException() throws Exception {
+        AbstractNode p1 = new PlaceNode(0, 0, "p1", "p1", "p1");
+        cut.addSuccessorNode(p1, 0);
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void addSuccessorNode_addTransition_throwsException() throws Exception {
+        TransitionNode t1 = new TransitionNode("t1", "t1", "t1", AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE);
+        cut.addSuccessorNode(t1);
+    }
+
+    @Test
+    public void addSuccessorNode_newNode_updatesObservers() throws Exception {
+        Observer nodeAddedListener = mock(Observer.class);
+        cut.nodeAdded().addObserver(nodeAddedListener);
+
+        PlaceNode p1 = new PlaceNode(0, 0, "p1", "p1", "p1");
+        NodeAddedArgs args = new NodeAddedArgs(cut, p1, ConnectionType.OUTGOING, 1);
+
+        cut.addSuccessorNode(p1);
+        verify(nodeAddedListener).update(cut.nodeAdded(), args);
+    }
+
+    @Test
+    public void addSuccessorNode_newNodeWithWeight_updatesObservers() throws Exception {
+        Observer nodeAddedListener = mock(Observer.class);
+        cut.nodeAdded().addObserver(nodeAddedListener);
+
+        int weight = 4;
+        PlaceNode p1 = new PlaceNode(0, 0, "p1", "p1", "p1");
+        NodeAddedArgs args = new NodeAddedArgs(cut, p1, ConnectionType.OUTGOING, weight);
+
+        cut.addSuccessorNode(p1, weight);
+        verify(nodeAddedListener).update(cut.nodeAdded(), args);
     }
 }

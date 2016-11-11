@@ -81,14 +81,14 @@ public class MarkingNetTest {
         net.addNode(t1);
         net.addNode(t2);
 
-        p1.addPostNode(t1);
-        t1.addPostNode(p2);
-        p2.addPostNode(t2);
-        t2.addPostNode(p3);
-        p3.addPreNode(t2);
-        t2.addPreNode(p2);
-        p2.addPreNode(t1);
-        t1.addPreNode(p1);
+        p1.addSuccessorNode(t1);
+        t1.addSuccessorNode(p2);
+        p2.addSuccessorNode(t2);
+        t2.addSuccessorNode(p3);
+        p3.addPredecessorNode(t2);
+        t2.addPredecessorNode(p2);
+        p2.addPredecessorNode(t1);
+        t1.addPredecessorNode(p1);
         return net;
     }
 }

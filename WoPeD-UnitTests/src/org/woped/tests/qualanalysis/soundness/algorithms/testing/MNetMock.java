@@ -1,14 +1,14 @@
 package org.woped.tests.qualanalysis.soundness.algorithms.testing;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.qualanalysis.soundness.datamodel.PlaceNode;
 import org.woped.qualanalysis.soundness.datamodel.TransitionNode;
 import org.woped.qualanalysis.soundness.marking.Arc;
 import org.woped.qualanalysis.soundness.marking.IMarkingNet;
 import org.woped.qualanalysis.soundness.marking.Marking;
+
+import java.util.HashSet;
+import java.util.Set;
 
 public class MNetMock implements IMarkingNet {
 	private TransitionNode[] transitions = new TransitionNode[4];
@@ -29,35 +29,35 @@ public class MNetMock implements IMarkingNet {
 		transitions[3] = new TransitionNode("t*", "t*", "t*", OperatorTransitionModel.TRANS_SIMPLE_TYPE);
 		
 //		Create post- and preNode entries
-		places[2].addPostNode(transitions[1]);
-		transitions[1].addPreNode(places[2]);
-		transitions[1].addPostNode(places[0]);
-		places[0].addPreNode(transitions[1]);
-		places[1].addPostNode(transitions[2]);
-		transitions[2].addPreNode(places[1]);
-		transitions[2].addPostNode(places[2]);
-		places[2].addPreNode(transitions[2]);
-		places[2].addPostNode(transitions[0]);
-		transitions[0].addPreNode(places[2]);
-		transitions[0].addPostNode(places[0]);
-		places[0].addPreNode(transitions[0]);
-		places[2].addPostNode(transitions[1]);
-		transitions[1].addPreNode(places[2]);
-		transitions[1].addPostNode(places[0]);
-		places[0].addPreNode(transitions[1]);
-		places[1].addPostNode(transitions[2]);
-		transitions[2].addPreNode(places[1]);
-		transitions[2].addPostNode(places[2]);
-		places[2].addPreNode(transitions[2]);
-		places[2].addPostNode(transitions[0]);
-		transitions[0].addPreNode(places[2]);
-		transitions[0].addPostNode(places[0]);
-		places[0].addPreNode(transitions[0]);
-		transitions[3].addPreNode(places[0]);
-		transitions[3].addPostNode(places[1]);
-		places[0].addPostNode(transitions[3]);
-		places[1].addPreNode(transitions[3]);
-		
+        places[2].addSuccessorNode(transitions[1]);
+        transitions[1].addPredecessorNode(places[2]);
+        transitions[1].addSuccessorNode(places[0]);
+        places[0].addPredecessorNode(transitions[1]);
+        places[1].addSuccessorNode(transitions[2]);
+        transitions[2].addPredecessorNode(places[1]);
+        transitions[2].addSuccessorNode(places[2]);
+        places[2].addPredecessorNode(transitions[2]);
+        places[2].addSuccessorNode(transitions[0]);
+        transitions[0].addPredecessorNode(places[2]);
+        transitions[0].addSuccessorNode(places[0]);
+        places[0].addPredecessorNode(transitions[0]);
+        places[2].addSuccessorNode(transitions[1]);
+        transitions[1].addPredecessorNode(places[2]);
+        transitions[1].addSuccessorNode(places[0]);
+        places[0].addPredecessorNode(transitions[1]);
+        places[1].addSuccessorNode(transitions[2]);
+        transitions[2].addPredecessorNode(places[1]);
+        transitions[2].addSuccessorNode(places[2]);
+        places[2].addPredecessorNode(transitions[2]);
+        places[2].addSuccessorNode(transitions[0]);
+        transitions[0].addPredecessorNode(places[2]);
+        transitions[0].addSuccessorNode(places[0]);
+        places[0].addPredecessorNode(transitions[0]);
+        transitions[3].addPredecessorNode(places[0]);
+        transitions[3].addSuccessorNode(places[1]);
+        places[0].addSuccessorNode(transitions[3]);
+        places[1].addPredecessorNode(transitions[3]);
+
 //		Create markings
 		int[][] tokens = { {1, 0, 0}, {0, 0, 1}, {0, 1, 0} };
 		boolean[] placeUnlimited = {false, false, false};

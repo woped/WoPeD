@@ -1,15 +1,15 @@
 package org.woped.qualanalysis.soundness.builder.currentmarking;
 
-import org.woped.qualanalysis.soundness.datamodel.LowLevelPetriNet;
+import org.woped.qualanalysis.soundness.datamodel.ILowLevelPetriNet;
 import org.woped.qualanalysis.soundness.datamodel.PlaceNode;
 import org.woped.qualanalysis.soundness.marking.Marking;
 
 public class CurrentMarking extends AbstractCurrentMarking{
 
-	public CurrentMarking(LowLevelPetriNet lolNet, Boolean useVirtualTokens){
-		super(lolNet, useVirtualTokens);
-		calcCurrentMarking();
-	}
+    public CurrentMarking(ILowLevelPetriNet lolNet, Boolean useVirtualTokens) {
+        super(lolNet, useVirtualTokens);
+        calcCurrentMarking();
+    }
 	
 	private void calcCurrentMarking(){
 		PlaceNode[] places = lolNet.getPlaces().toArray(new PlaceNode[lolNet.getPlaces().size()]);

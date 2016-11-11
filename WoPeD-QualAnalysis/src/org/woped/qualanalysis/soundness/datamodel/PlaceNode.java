@@ -1,13 +1,9 @@
 package org.woped.qualanalysis.soundness.datamodel;
 
 /**
- * this class represents a place in a low level petri net extends AbstractNode
- * 
- * @author Patrick Spies, Patrick Kirchgaessner, Joern Liebau, Enrico Moeller, Sebastian Fuss
- * 
- */ 
+ * This class represents a place in a low level petri net.
+ */
 public class PlaceNode extends AbstractNode {
-    // declaration
     private Integer tokenCount;
     private Integer virtualTokenCount;
 
@@ -15,46 +11,54 @@ public class PlaceNode extends AbstractNode {
      * default constructor.
      * 
      * @param tokenCount count of tokens
-     * @see AbstractNode#AbstractNode(String)
+     * @see AbstractNode#AbstractNode(String, String, String)
      */
     public PlaceNode(Integer tokenCount, Integer virtualTokenCount, String id, String name, String originId) {
-        super(id, name, originId, 0);
+        super(id, name, originId);
         this.tokenCount = tokenCount;
         this.virtualTokenCount = virtualTokenCount;
     }
 
-    /**
-     * @see AbstractNode#addPostNode(AbstractNode)
-     */
     @Override
-    public boolean addPostNode(AbstractNode postNode) {
-        if (postNode instanceof TransitionNode) {
-            return super.addPostNode(postNode);
+    public boolean addSuccessorNode(AbstractNode successor) {
+        return this.addSuccessorNode(successor, 1);
+    }
+
+    @Override
+    public boolean addSuccessorNode(AbstractNode successor, int weight) {
+        if ( successor instanceof TransitionNode ) {
+            return super.addSuccessorNode(successor, weight);
+        } else {
+            throw new RuntimeException("Invalid type of the provided node.");
+        }
+    }
+
+    @Override
+    public boolean addPredecessorNode(AbstractNode predecessor) {
+        return addPredecessorNode(predecessor, 1);
+    }
+
+    @Override
+    public boolean addPredecessorNode(AbstractNode predecessor, int weight) {
+        if ( predecessor instanceof TransitionNode ) {
+            return super.addPredecessorNode(predecessor, weight);
         } else {
             throw new RuntimeException("Invalid type of the provided node.");
         }
     }
 
     /**
-     * @see AbstractNode#addPreNode(AbstractNode)
-     */
-    @Override
-    public boolean addPreNode(AbstractNode preNode) {
-        if (preNode instanceof TransitionNode) {
-            return super.addPreNode(preNode);
-        } else {
-            throw new RuntimeException("Invalid type of the provided node.");
-        }
-    }
-
-    /**
-     * @return the tokenCount
+     * Gets the amount of tokens contained in this place.
+     *
+     * @return the count of tokens
      */
     public Integer getTokenCount() {
         return tokenCount;
     }
 
     /**
+     * Sets the amount of tokens contained in this place.
+     *
      * @param tokenCount the tokenCount to set
      */
     public void setTokenCount(Integer tokenCount) {
@@ -62,7 +66,9 @@ public class PlaceNode extends AbstractNode {
     }
 
     /**
-     * @return the virtualTokenCount
+     * Gets the virtual token count from this place.
+     *
+     * @return the virtual token count
      */
     public Integer getVirtualTokenCount() {
         return virtualTokenCount;

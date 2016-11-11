@@ -1,13 +1,13 @@
 package org.woped.qualanalysis.soundness.algorithms.basedonlowlevelpetrinet.scomponent;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import org.woped.qualanalysis.soundness.algorithms.basedonlowlevelpetrinet.AbstractLowLevelPetriNetTest;
 import org.woped.qualanalysis.soundness.datamodel.AbstractNode;
 import org.woped.qualanalysis.soundness.datamodel.LowLevelPetriNet;
 import org.woped.qualanalysis.soundness.datamodel.PlaceNode;
 import org.woped.qualanalysis.soundness.datamodel.TransitionNode;
+
+import java.util.HashSet;
+import java.util.Set;
 
 
 
@@ -92,21 +92,21 @@ import org.woped.qualanalysis.soundness.datamodel.TransitionNode;
         
         while (!uncheckedCompEntries.isEmpty()) {
             // 1.Schritt
-            AbstractNode node = (AbstractNode) uncheckedCompEntries.iterator().next();
+            AbstractNode node = uncheckedCompEntries.iterator().next();
             checkedCompEntries.add(node); 
             // 2.Schritt
             if (PlaceNode.class == node.getClass()) {
-                for (AbstractNode abstractNode : node.getPostNodes()) {
+                for ( AbstractNode abstractNode : node.getSuccessorNodes() ) {
                     component.add(abstractNode);
                 }
-                for (AbstractNode abstractNode : node.getPreNodes()) {
+                for ( AbstractNode abstractNode : node.getPredecessorNodes() ) {
                     component.add(abstractNode);
                 }
             }
             // 3.Schritt
             else
                 if (TransitionNode.class == node.getClass()) {
-                    Set<AbstractNode> postNodes = node.getPostNodes();
+                    Set<AbstractNode> postNodes = node.getSuccessorNodes();
                     if (postNodes.size() == 1) {
                         component.add(postNodes.iterator().next());
                     }
@@ -132,7 +132,7 @@ import org.woped.qualanalysis.soundness.datamodel.TransitionNode;
         for (AbstractNode abstractNode : component) {
             if (abstractNode.getClass() == TransitionNode.class) {
                 HashSet<AbstractNode> postNodesInComponent = new HashSet<AbstractNode>();
-                for (AbstractNode postNode : abstractNode.getPostNodes()) {
+                for ( AbstractNode postNode : abstractNode.getSuccessorNodes() ) {
                     if (component.contains(postNode)) {
                         postNodesInComponent.add(postNode);
                     }
@@ -141,9 +141,9 @@ import org.woped.qualanalysis.soundness.datamodel.TransitionNode;
                     componentValid = false;
                 } else {
 		            HashSet<AbstractNode> preNodesInComponent = new HashSet<AbstractNode>();
-		            for (AbstractNode preNode : abstractNode.getPreNodes()) {
-		                if (component.contains(preNode)) {
-		                    preNodesInComponent.add(preNode);
+                    for ( AbstractNode preNode : abstractNode.getPredecessorNodes() ) {
+                        if ( component.contains(preNode) ) {
+                            preNodesInComponent.add(preNode);
 		                }
 		            }
 		            if (preNodesInComponent.size() != 1) {

@@ -12,10 +12,21 @@ import org.woped.qualanalysis.soundness.marking.Marking;
 import org.woped.qualanalysis.soundness.marking.MarkingNet;
 
 /**
- * @author Sebastian Fuß
+ * @author Sebastian Fuï¿½
  * 
  */
 public class LowLevelNetTest {
+
+    public LowLevelNetTest() {
+        LowLevelPetriNet lolNet;
+        IMarkingNet markingNet;
+
+        lolNet = createNewLowLevelPetriNet();
+
+        markingNet = new MarkingNet(lolNet);
+
+        putOut(markingNet);
+    }
 
     /**
      * @param args
@@ -26,7 +37,7 @@ public class LowLevelNetTest {
 
     /**
      * prints predecessor and successors of each node in net.
-     * 
+     *
      * @param net
      */
     public static void printLowLevelNetInformation(LowLevelPetriNet net) {
@@ -47,17 +58,17 @@ public class LowLevelNetTest {
 
     /**
      * prints all predecessors and successors of node.
-     * 
+     *
      * @param node node.
      */
     public static void printNodeInformation(AbstractNode node) {
         System.out.println(node);
         System.out.println(" predecessors:");
-        for (AbstractNode preNode : node.getPreNodes()) {
+        for ( AbstractNode preNode : node.getPredecessorNodes() ) {
             System.out.println("  " + preNode);
         }
         System.out.println(" successors:");
-        for (AbstractNode postNode : node.getPostNodes()) {
+        for ( AbstractNode postNode : node.getSuccessorNodes() ) {
             System.out.println("  " + postNode);
         }
     }
@@ -67,17 +78,6 @@ public class LowLevelNetTest {
         for (Marking marking : markingNet.getMarkings()) {
             System.out.println(marking);
         }
-    }
-
-    public LowLevelNetTest() {
-        LowLevelPetriNet lolNet;
-        IMarkingNet markingNet;
-
-        lolNet = createNewLowLevelPetriNet();
-
-        markingNet = new MarkingNet(lolNet);
-
-        putOut(markingNet);
     }
 
     public LowLevelPetriNet createNewLowLevelPetriNet() {
@@ -93,14 +93,14 @@ public class LowLevelNetTest {
         TransitionNode t2 = lowlevelNet.getTransitionNode(new TransitionNode("t2", null, null,0));
         TransitionNode t3 = lowlevelNet.getTransitionNode(new TransitionNode("t3", null, null,0));
 
-        p1.addPostNode(t1);
-        t1.addPostNode(p2);
-        t1.addPostNode(p3);
-        p2.addPostNode(t2);
-        t2.addPostNode(p4);
-        p3.addPostNode(t3);
-        p4.addPostNode(t3);
-        t3.addPostNode(p5);
+        p1.addSuccessorNode(t1);
+        t1.addSuccessorNode(p2);
+        t1.addSuccessorNode(p3);
+        p2.addSuccessorNode(t2);
+        t2.addSuccessorNode(p4);
+        p3.addSuccessorNode(t3);
+        p4.addSuccessorNode(t3);
+        t3.addSuccessorNode(p5);
 
         return lowlevelNet;
 

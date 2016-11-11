@@ -14,11 +14,11 @@ public interface INode<K> {
      * 
      * @return all successors.
      */
-    public Set<K> getPostNodes();
+    Set<K> getSuccessorNodes();
 
     /**
      * 
      * @return all predecessors.
      */
-    public Set<K> getPreNodes();
+    Set<K> getPredecessorNodes();
 }

@@ -1,14 +1,12 @@
 package org.woped.qualanalysis.soundness.builder.markingnet;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-
-import org.woped.qualanalysis.soundness.datamodel.LowLevelPetriNet;
+import org.woped.qualanalysis.soundness.datamodel.ILowLevelPetriNet;
 import org.woped.qualanalysis.soundness.datamodel.TransitionNode;
 import org.woped.qualanalysis.soundness.marking.Arc;
 import org.woped.qualanalysis.soundness.marking.Marking;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * creates marking net based on algorithm page 121 "Business Process and WorkflowManagement" author Cornelia Richter von Hagen, Wolfried Stucky.
@@ -23,7 +21,7 @@ public class MarkingNetBuilderBook extends AbstractMarkingNetBuilder {
      * 
      * @param lolNet source low level petri net.
      */
-    public MarkingNetBuilderBook(LowLevelPetriNet lolNet) {
+    public MarkingNetBuilderBook(ILowLevelPetriNet lolNet) {
         super(lolNet);
     }
 

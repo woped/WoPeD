@@ -1,13 +1,9 @@
 package org.woped.qualanalysis.soundness.algorithms.generic.scc;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.Stack;
-
 import org.woped.qualanalysis.soundness.algorithms.generic.INode;
 import org.woped.qualanalysis.soundness.algorithms.generic.INodeNet;
+
+import java.util.*;
 
 /**
  * indicates strongly connected components in a generic net. uses the tarjan algorithm.
@@ -28,8 +24,8 @@ public class StronglyConnectedComponentTestGenTarjan<K extends INode<K>> impleme
     private Map<K, Integer> lowLink;
 
     /**
-     * 
-     * @param mNet MarkingNet the algorithm is based on
+     *
+     * @param nodeNet MarkingNet the algorithm is based on
      */
     public StronglyConnectedComponentTestGenTarjan(INodeNet<K> nodeNet) {
         this.nodeNet = nodeNet;
@@ -72,17 +68,13 @@ public class StronglyConnectedComponentTestGenTarjan<K extends INode<K>> impleme
     @Override
     public boolean isStronglyConnected() {
         init();
-        if (stronglyConnectedComponents.size() > 1) {
-            return false;
-        } else {
-            return true;
-        }
+        return stronglyConnectedComponents.size() <= 1;
     }
 
     /**
      * tarjan algorithm.
-     * 
-     * @param marking
+     *
+     * @param node the node to check
      * @return a set of strongly connected components. each strongly connected component set consists of markings, which are part of the scc.
      */
     private Set<Set<K>> tarjan(K node) {
@@ -92,7 +84,7 @@ public class StronglyConnectedComponentTestGenTarjan<K extends INode<K>> impleme
         visitedNodes.add(0, node);
         nodes.remove(node);
 
-        for (K nextNode : node.getPostNodes()) {
+        for ( K nextNode : node.getSuccessorNodes() ) {
             if (dfs.get(nextNode) == -1) {
                 tarjan(nextNode);
                 lowLink.put(node, Math.min(lowLink.get(node), lowLink.get(nextNode)));
