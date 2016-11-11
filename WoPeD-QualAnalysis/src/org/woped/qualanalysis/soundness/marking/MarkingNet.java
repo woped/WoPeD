@@ -1,15 +1,15 @@
 package org.woped.qualanalysis.soundness.marking;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 import org.woped.qualanalysis.soundness.builder.BuilderFactory;
 import org.woped.qualanalysis.soundness.datamodel.AbstractNode;
 import org.woped.qualanalysis.soundness.datamodel.LowLevelPetriNet;
 import org.woped.qualanalysis.soundness.datamodel.PlaceNode;
 import org.woped.qualanalysis.soundness.datamodel.TransitionNode;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * this class represents a marking net
@@ -143,8 +143,8 @@ public class MarkingNet implements IMarkingNet {
      * calculate the succeeding marking for a specified Transition Node switched with a specific marking
      * 
      * @param parentMarking
-     * @param transition the transition to switch
-     * @return a new Marking with the tokens after the transition is switched
+     * @param transition the transition to fire
+     * @return a new Marking with the tokens after the transition is fired
      */
     public Marking calculateSucceedingMarking(Marking parentMarking, TransitionNode transition) {
         int[] tokens = new int[parentMarking.getTokens().length];
