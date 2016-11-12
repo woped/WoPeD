@@ -1,23 +1,22 @@
 package org.woped.tests.qualanalysis.soundness.algorithms.testing;
 
-import java.util.HashSet;
-import java.util.Set;
-
-/**
- * LowLevelPetriNet without t*
- * 
- */
-
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.qualanalysis.soundness.datamodel.AbstractNode;
 import org.woped.qualanalysis.soundness.datamodel.ILowLevelPetriNet;
 import org.woped.qualanalysis.soundness.datamodel.PlaceNode;
 import org.woped.qualanalysis.soundness.datamodel.TransitionNode;
 
+import java.util.HashSet;
+import java.util.Set;
+
+/**
+ * LowLevelPetriNet without t*
+ */
+
 public class LowLevelPetriNetMock implements ILowLevelPetriNet {
 	private Set<TransitionNode> transitions = new HashSet<TransitionNode>();
 	private Set<PlaceNode> places = new HashSet<PlaceNode>();
-	
+
 	public LowLevelPetriNetMock() {
 		// Constructor needed to create mock data, transitions and markings	
 		TransitionNode[] transitions = new TransitionNode[3];
@@ -34,30 +33,30 @@ public class LowLevelPetriNetMock implements ILowLevelPetriNet {
 		transitions[2] = new TransitionNode("t1", "t1", "t1", OperatorTransitionModel.TRANS_SIMPLE_TYPE);
 		
 //		Create post- and preNode entries
-		places[2].addPostNode(transitions[1]);
-		transitions[1].addPreNode(places[2]);
-		transitions[1].addPostNode(places[0]);
-		places[0].addPreNode(transitions[1]);
-		places[1].addPostNode(transitions[2]);
-		transitions[2].addPreNode(places[1]);
-		transitions[2].addPostNode(places[2]);
-		places[2].addPreNode(transitions[2]);
-		places[2].addPostNode(transitions[0]);
-		transitions[0].addPreNode(places[2]);
-		transitions[0].addPostNode(places[0]);
-		places[0].addPreNode(transitions[0]);
-		places[2].addPostNode(transitions[1]);
-		transitions[1].addPreNode(places[2]);
-		transitions[1].addPostNode(places[0]);
-		places[0].addPreNode(transitions[1]);
-		places[1].addPostNode(transitions[2]);
-		transitions[2].addPreNode(places[1]);
-		transitions[2].addPostNode(places[2]);
-		places[2].addPreNode(transitions[2]);
-		places[2].addPostNode(transitions[0]);
-		transitions[0].addPreNode(places[2]);
-		transitions[0].addPostNode(places[0]);
-		places[0].addPreNode(transitions[0]);
+		places[2].addSuccessorNode(transitions[1]);
+		transitions[1].addPredecessorNode(places[2]);
+		transitions[1].addSuccessorNode(places[0]);
+		places[0].addPredecessorNode(transitions[1]);
+		places[1].addSuccessorNode(transitions[2]);
+		transitions[2].addPredecessorNode(places[1]);
+		transitions[2].addSuccessorNode(places[2]);
+		places[2].addPredecessorNode(transitions[2]);
+		places[2].addSuccessorNode(transitions[0]);
+		transitions[0].addPredecessorNode(places[2]);
+		transitions[0].addSuccessorNode(places[0]);
+		places[0].addPredecessorNode(transitions[0]);
+		places[2].addSuccessorNode(transitions[1]);
+		transitions[1].addPredecessorNode(places[2]);
+		transitions[1].addSuccessorNode(places[0]);
+		places[0].addPredecessorNode(transitions[1]);
+		places[1].addSuccessorNode(transitions[2]);
+		transitions[2].addPredecessorNode(places[1]);
+		transitions[2].addSuccessorNode(places[2]);
+		places[2].addPredecessorNode(transitions[2]);
+		places[2].addSuccessorNode(transitions[0]);
+		transitions[0].addPredecessorNode(places[2]);
+		transitions[0].addSuccessorNode(places[0]);
+		places[0].addPredecessorNode(transitions[0]);
 		
 		for(int i = 0; i < transitions.length; i++)
 			this.transitions.add(transitions[i]);
@@ -80,7 +79,8 @@ public class LowLevelPetriNetMock implements ILowLevelPetriNet {
 	public Set<TransitionNode> getTransitions() {
 		return this.transitions;
 	}
-	
+
+
 	@Override
 	public Set<PlaceNode> getPlaces() {
 		return this.places;
@@ -109,5 +109,4 @@ public class LowLevelPetriNetMock implements ILowLevelPetriNet {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 }

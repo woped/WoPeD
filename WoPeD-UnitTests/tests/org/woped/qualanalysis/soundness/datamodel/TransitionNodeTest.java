@@ -7,11 +7,8 @@ import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.tests.LowLevelPetriNetGenerator;
 
-import java.util.Observer;
+import static org.junit.Assert.assertEquals;
 
-import static junit.framework.Assert.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
 
 public class TransitionNodeTest {
 
@@ -84,34 +81,6 @@ public class TransitionNodeTest {
         cut.addPredecessorNode(t1);
     }
 
-    @Test
-    public void addPredecessorNode_newNode_updatesObservers() throws Exception {
-
-        Observer connectionAddedListener = mock(Observer.class);
-        cut.nodeAdded().addObserver(connectionAddedListener);
-
-        PlaceNode p1 = new PlaceNode(0, 0, "p1", "p1", "p1");
-        NodeAddedArgs args = new NodeAddedArgs(cut, p1, ConnectionType.INCOMING, 1);
-
-        cut.addPredecessorNode(p1);
-        verify(connectionAddedListener).update(cut.nodeAdded(), args);
-    }
-
-    @Test
-
-    public void addPredecessorNode_newNodeWithWeight_updatesObservers() throws Exception {
-
-        Observer connectionAddedListener = mock(Observer.class);
-        cut.nodeAdded().addObserver(connectionAddedListener);
-
-        int weight = 3;
-        PlaceNode p1 = new PlaceNode(0, 0, "p1", "p1", "p1");
-        NodeAddedArgs args = new NodeAddedArgs(cut, p1, ConnectionType.INCOMING, weight);
-
-        cut.addPredecessorNode(p1, weight);
-        verify(connectionAddedListener).update(cut.nodeAdded(), args);
-    }
-
     @Test(expected = IllegalArgumentException.class)
     public void addSuccessorNode_weightIs0_throwsException() throws Exception {
         AbstractNode p1 = new PlaceNode(0, 0, "p1", "p1", "p1");
@@ -125,27 +94,50 @@ public class TransitionNodeTest {
     }
 
     @Test
-    public void addSuccessorNode_newNode_updatesObservers() throws Exception {
-        Observer nodeAddedListener = mock(Observer.class);
-        cut.nodeAdded().addObserver(nodeAddedListener);
+    public void getWeightFrom_connectionExists_returnsWeight() throws Exception {
+        ILowLevelPetriNet net = netGenerator.createSimpleNet();
+        cut = net.getTransitionNode(new TransitionNode("t1", null, null, 0));
+        PlaceNode p1 = net.getPlaceNode(new PlaceNode(0, 0, "p1", null, null));
 
-        PlaceNode p1 = new PlaceNode(0, 0, "p1", "p1", "p1");
-        NodeAddedArgs args = new NodeAddedArgs(cut, p1, ConnectionType.OUTGOING, 1);
+        int expected = 1;
+        int actual = cut.getWeightFrom(p1);
 
-        cut.addSuccessorNode(p1);
-        verify(nodeAddedListener).update(cut.nodeAdded(), args);
+        assertEquals(expected, actual);
     }
 
     @Test
-    public void addSuccessorNode_newNodeWithWeight_updatesObservers() throws Exception {
-        Observer nodeAddedListener = mock(Observer.class);
-        cut.nodeAdded().addObserver(nodeAddedListener);
+    public void getWeightFrom_connectionNotExists_returnZero() throws Exception {
+        ILowLevelPetriNet net = netGenerator.createSimpleNet();
+        cut = net.getTransitionNode(new TransitionNode("t1", null, null, 0));
+        PlaceNode p2 = net.getPlaceNode(new PlaceNode(0, 0, "p2", null, null));
 
-        int weight = 4;
-        PlaceNode p1 = new PlaceNode(0, 0, "p1", "p1", "p1");
-        NodeAddedArgs args = new NodeAddedArgs(cut, p1, ConnectionType.OUTGOING, weight);
+        int expected = 0;
+        int actual = cut.getWeightFrom(p2);
 
-        cut.addSuccessorNode(p1, weight);
-        verify(nodeAddedListener).update(cut.nodeAdded(), args);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getWeightTo_connectionExists_returnsWeight() throws Exception {
+        ILowLevelPetriNet net = netGenerator.createSimpleNet();
+        cut = net.getTransitionNode(new TransitionNode("t1", null, null, 0));
+        PlaceNode p2 = net.getPlaceNode(new PlaceNode(0, 0, "p2", null, null));
+
+        int expected = 1;
+        int actual = cut.getWeightTo(p2);
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getWeightTo_connectionNotExists_returnsZero() throws Exception {
+        ILowLevelPetriNet net = netGenerator.createSimpleNet();
+        cut = net.getTransitionNode(new TransitionNode("t1", null, null, 0));
+        PlaceNode p1 = net.getPlaceNode(new PlaceNode(0, 0, "p1", null, null));
+
+        int expected = 0;
+        int actual = cut.getWeightTo(p1);
+
+        assertEquals(expected, actual);
     }
 }

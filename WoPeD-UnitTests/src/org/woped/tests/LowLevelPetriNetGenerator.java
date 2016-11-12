@@ -11,6 +11,34 @@ public class LowLevelPetriNetGenerator {
     /**
      * Creates a low level petri net for testing purposes.
      * <p>
+     * The generated net is the low level representation of a simple transition with 1 input and 1 output places.
+     * It consists of 2 places (p1, p2) and 1 transitions (t1) with the marking (1 0 ) (p1 p2)
+     *
+     * @return a low level petri net for testing
+     */
+    public ILowLevelPetriNet createSimpleNet() {
+        ILowLevelPetriNet net = new LowLevelPetriNet();
+
+        PlaceNode p1 = new PlaceNode(1, 0, "p1", "p1", "p1");
+        PlaceNode p2 = new PlaceNode(0, 0, "p2", "p2", "p2");
+
+        TransitionNode t1 = new TransitionNode("t1", "t1", "t1", OperatorTransitionModel.TRANS_SIMPLE_TYPE);
+
+        net.addNode(p1);
+        net.addNode(p2);
+        net.addNode(t1);
+
+        p1.addSuccessorNode(t1);
+        t1.addPredecessorNode(p1);
+        t1.addSuccessorNode(p2);
+        p2.addPredecessorNode(t1);
+
+        return net;
+    }
+
+    /**
+     * Creates a low level petri net for testing purposes.
+     * <p>
      * The generated net is the low level representation of a xor join split operator with 2 input and 2 output places.
      * It consists of 5 places (p1-p4, P_CENTER_t1) and 4 transitions (t1_op_1 - t1_op_4) with the marking (1 0 0 0 0) (p1 p2 pCenter p3 p4)
      *

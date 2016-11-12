@@ -1,25 +1,25 @@
 package org.woped.qualanalysis.soundness.builder.lowlevelpetrinet;
 
-import java.util.Iterator;
-import java.util.Set;
-
 import org.woped.core.controller.IEditor;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.core.model.petrinet.TransitionModel;
+import org.woped.qualanalysis.soundness.datamodel.AbstractNode;
 import org.woped.qualanalysis.soundness.datamodel.LowLevelPetriNet;
 import org.woped.qualanalysis.soundness.datamodel.PlaceNode;
 import org.woped.qualanalysis.soundness.datamodel.TransitionNode;
 import org.woped.qualanalysis.structure.NetAlgorithms;
 import org.woped.qualanalysis.structure.StructuralAnalysis;
 
+import java.util.Iterator;
+import java.util.Set;
+
 /**
  * creates an LowLevelPetriNet. uses logic from the {@link StructuralAnalysis}
- * 
+ *
  * @author Patrick Spies, Patrick Kirchgaessner, Joern Liebau, Enrico Moeller, Sebastian Fuss
- * 
  */
 public abstract class AbstractLowLevelPetriNetBuilderUsingSA extends AbstractLowLevelPetriNetBuilder {
 
@@ -27,7 +27,6 @@ public abstract class AbstractLowLevelPetriNetBuilderUsingSA extends AbstractLow
     protected Boolean isSubprocess;
 
     /**
-     * 
      * @param editor source object
      */
     public AbstractLowLevelPetriNetBuilderUsingSA(IEditor editor) {
@@ -37,106 +36,105 @@ public abstract class AbstractLowLevelPetriNetBuilderUsingSA extends AbstractLow
     }
 
     /**
-     * creates an lowlevelPetriNet from the provided editor using the Structural Analysis implementation. have to call from each specification!
-     * 
-     * @param editor source.
-     * @return new created lowlevelPetriNet
+     * Creates an lowlevelPetriNet from the provided editor using the Structural Analysis implementation. have to call from each specification!
      */
     protected void createLowLevelPetriNet() {
-        Iterator<AbstractPetriNetElementModel> iterTransition = sa.getTransitions().iterator();
-        Iterator<AbstractPetriNetElementModel> iterPlace = sa.getPlaces().iterator();
 
-        LowLevelPetriNet lNet = new LowLevelPetriNet();
-        Set<AbstractPetriNetElementModel> successors;
-        Set<AbstractPetriNetElementModel> predecessors;
-        TransitionModel tm;
-        PlaceModel pm;
+        lowLevelPetriNet = new LowLevelPetriNet();
+        addPlaces();
+        addTransitions();
 
-        // loop over all places
-        while (iterPlace.hasNext()) {
-            pm = (PlaceModel) iterPlace.next();
-            lNet.getPlaceNode(new PlaceNode(pm.getTokenCount(), pm.getVirtualTokenCount(), pm.getId(), pm
-                    .getNameValue(), makeOriginId(pm.getId())));
+        // if editor is subprocess-editor, ensure that source place contains a token
+        if ( isSubprocess ) {
+            verifyInitialMarking();
         }
+    }
 
+    private void addPlaces() {
+        // loop over all places
+        Iterator<AbstractPetriNetElementModel> iterPlace = sa.getPlaces().iterator();
+        while ( iterPlace.hasNext() ) {
+            PlaceModel placeModel = (PlaceModel) iterPlace.next();
+            lowLevelPetriNet.getPlaceNode(new PlaceNode(placeModel.getTokenCount(), placeModel.getVirtualTokenCount(), placeModel.getId(), placeModel.getNameValue(), extractOriginId(placeModel.getId())));
+        }
+    }
+
+    private void addTransitions() {
         // loops over all transitions and set predecessors and successors
-        while (iterTransition.hasNext()) {
-        	AbstractPetriNetElementModel trans = iterTransition.next();
-        	AbstractPetriNetElementModel opTrans = null; 
-        	tm = (TransitionModel) trans;
-            successors = NetAlgorithms.getDirectlyConnectedNodes(tm, NetAlgorithms.connectionTypeOUTBOUND);
-            predecessors = NetAlgorithms.getDirectlyConnectedNodes(tm, NetAlgorithms.connectionTypeINBOUND);
-            ModelElementContainer mec;
+        Iterator<AbstractPetriNetElementModel> iterTransition = sa.getTransitions().iterator();
+        while ( iterTransition.hasNext() ) {
+            OperatorTransitionModel opTrans = null;
+            ModelElementContainer mec = null;
+            TransitionModel transitionModel = (TransitionModel) iterTransition.next();
+
+            Iterator<ModelElementContainer> ownerIterator = transitionModel.getOwningContainersIterator();
             AbstractPetriNetElementModel elem = null;
-            Iterator<ModelElementContainer> ownerIterator = trans.getOwningContainersIterator();
-            while (ownerIterator.hasNext()) {
-            	mec = ownerIterator.next();
-            	elem = mec.getOwningElement();
-            	if (elem != null && elem.getType() == TransitionModel.TRANS_OPERATOR_TYPE) {
-            		opTrans = (TransitionModel)elem;
-            		break;
-            	}
+            while ( ownerIterator.hasNext() ) {
+                mec = ownerIterator.next();
+                elem = mec.getOwningElement();
+                if ( elem != null && elem.getType() == TransitionModel.TRANS_OPERATOR_TYPE ) {
+                    opTrans = (OperatorTransitionModel) elem;
+                    break;
+                }
             }
-         
+
             // add current transition node
-            TransitionNode tNode;
-            if (opTrans != null && opTrans.getType() == TransitionModel.TRANS_OPERATOR_TYPE) {
-            	tNode = lNet.getTransitionNode(new TransitionNode(tm.getId(), tm.getNameValue(),
-                    makeOriginId(tm.getId()), ((OperatorTransitionModel)opTrans).getOperatorType()));
-            }
-            else {
-            	tNode = lNet.getTransitionNode(new TransitionNode(tm.getId(), tm.getNameValue(),
-                    makeOriginId(tm.getId()), OperatorTransitionModel.TRANS_SIMPLE_TYPE));
+            TransitionNode transition;
+            if ( opTrans != null && opTrans.getType() == TransitionModel.TRANS_OPERATOR_TYPE ) {
+                transition = lowLevelPetriNet.getTransitionNode(new TransitionNode(transitionModel.getId(), transitionModel.getNameValue(), extractOriginId(transitionModel.getId()), opTrans.getOperatorType()));
+            } else {
+                transition = lowLevelPetriNet.getTransitionNode(new TransitionNode(transitionModel.getId(), transitionModel.getNameValue(), extractOriginId(transitionModel.getId()), OperatorTransitionModel.TRANS_SIMPLE_TYPE));
             }
 
             // add predecessor of current transition node
-            for (AbstractPetriNetElementModel predecessor : predecessors) {
-                lNet.getPlaceNode(
-                        new PlaceNode(((PlaceModel) predecessor).getTokenCount(), ((PlaceModel) predecessor)
-                                .getVirtualTokenCount(), predecessor.getId(), predecessor.getNameValue(),
-                                makeOriginId(predecessor.getId()))).addPostNode(tNode);
+            Set<AbstractPetriNetElementModel> predecessors = NetAlgorithms.getDirectlyConnectedNodes(transitionModel, NetAlgorithms.connectionTypeINBOUND);
+            for ( AbstractPetriNetElementModel predecessor : predecessors ) {
+                PlaceNode place = lowLevelPetriNet.getPlaceNode(new PlaceNode(((PlaceModel) predecessor).getTokenCount(), ((PlaceModel) predecessor).getVirtualTokenCount(), predecessor.getId(), predecessor.getNameValue(), extractOriginId(predecessor.getId())));
+                place.addSuccessorNode(transition, getWeight(mec, place, transition));
             }
 
             // add successor of current transition node
-            for (AbstractPetriNetElementModel successor : successors) {
-                tNode.addPostNode(lNet.getPlaceNode(new PlaceNode(((PlaceModel) successor).getTokenCount(),
-                        ((PlaceModel) successor).getVirtualTokenCount(), successor.getId(), successor.getNameValue(),
-                        makeOriginId(successor.getId()))));
+            Set<AbstractPetriNetElementModel> successors = NetAlgorithms.getDirectlyConnectedNodes(transitionModel, NetAlgorithms.connectionTypeOUTBOUND);
+            for ( AbstractPetriNetElementModel successor : successors ) {
+                PlaceNode place = lowLevelPetriNet.getPlaceNode(new PlaceNode(((PlaceModel) successor).getTokenCount(), ((PlaceModel) successor).getVirtualTokenCount(), successor.getId(), successor.getNameValue(), extractOriginId(successor.getId())));
+                transition.addSuccessorNode(place, getWeight(mec, transition, place));
             }
 
         }
-        // if editor is subprocess-editor, add a token to source-places
-        if (isSubprocess) {
-            Iterator<AbstractPetriNetElementModel> sourcePlacesIterator = sa.getSourcePlaces().iterator();
-            String sourcePlaceId;
-            while (sourcePlacesIterator.hasNext()) {
-                sourcePlaceId = sourcePlacesIterator.next().getId();
-                for (PlaceNode lNetPlace : lNet.getPlaces()) {
-                    if (lNetPlace.getOriginId().equals(sourcePlaceId) && lNetPlace.getTokenCount() == 0) {
-                        lNetPlace.setTokenCount(1);
-                        break;
-                    }
+    }
+
+    private void verifyInitialMarking() {
+        Iterator<AbstractPetriNetElementModel> sourcePlacesIterator = sa.getSourcePlaces().iterator();
+        String sourcePlaceId;
+        while ( sourcePlacesIterator.hasNext() ) {
+            sourcePlaceId = sourcePlacesIterator.next().getId();
+            for ( PlaceNode lNetPlace : lowLevelPetriNet.getPlaces() ) {
+                if ( lNetPlace.getOriginId().equals(sourcePlaceId) && lNetPlace.getTokenCount() == 0 ) {
+                    lNetPlace.setTokenCount(1);
+                    break;
                 }
             }
         }
-        lowLevelPetriNet = lNet;
+    }
+
+    private Integer getWeight(ModelElementContainer mec, AbstractNode source, AbstractNode target) {
+
+        return mec.findArc(source.getId(), target.getId()).getInscriptionValue();
     }
 
     /**
-     * 
-     * @param full id.
-     * @return origin id.
+     * @param id the full id of the element.
+     * @return the origin id of the element.
      */
-    private String makeOriginId(String id) {
+    private String extractOriginId(String id) {
         String originId = id;
         Integer index;
-        if ((index = id.indexOf(OperatorTransitionModel.OPERATOR_SEPERATOR_TRANSITION)) > 0) {
+        if ( (index = id.indexOf(OperatorTransitionModel.OPERATOR_SEPERATOR_TRANSITION)) > 0 ) {
             originId = id.substring(0, index);
         }
-        if (!((index = id.indexOf(OperatorTransitionModel.OPERATOR_SEPERATOR_PLACE)) < 0)) {
+        if ( !((index = id.indexOf(OperatorTransitionModel.OPERATOR_SEPERATOR_PLACE)) < 0) ) {
             originId = id.substring(index + OperatorTransitionModel.OPERATOR_SEPERATOR_PLACE.length());
         }
         return originId;
     }
-
 }

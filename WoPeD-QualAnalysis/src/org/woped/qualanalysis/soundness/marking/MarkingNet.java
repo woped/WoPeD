@@ -2,7 +2,7 @@ package org.woped.qualanalysis.soundness.marking;
 
 import org.woped.qualanalysis.soundness.builder.BuilderFactory;
 import org.woped.qualanalysis.soundness.datamodel.AbstractNode;
-import org.woped.qualanalysis.soundness.datamodel.LowLevelPetriNet;
+import org.woped.qualanalysis.soundness.datamodel.ILowLevelPetriNet;
 import org.woped.qualanalysis.soundness.datamodel.PlaceNode;
 import org.woped.qualanalysis.soundness.datamodel.TransitionNode;
 
@@ -13,30 +13,41 @@ import java.util.Set;
 
 /**
  * this class represents a marking net
- * 
+ *
  * @author Patrick Spies, Patrick Kirchgaessner, Joern Liebau, Enrico Moeller, Sebastian Fuss
  */
 
 public class MarkingNet implements IMarkingNet {
 
-    /** source lowLevel petri net. */
-    private final LowLevelPetriNet lolNet;
-    /** all places of the source lowLevel petri net. ->static order! */
-    private final PlaceNode[] places;
-    /** all transitions of the source lowLevel petri net. */
-    private final TransitionNode[] transitions;
-    /** set of all markings. */
-    private final Set<Marking> markings = new HashSet<Marking>();
-    /** initial marking. */
-    private Marking initialMarking;
-
-    private List<Marking> markingList = new ArrayList<Marking>();
+    /**
+     * source lowLevel petri net.
+     */
+    private final ILowLevelPetriNet lolNet;
 
     /**
-     * 
+     * all places of the source lowLevel petri net. ->static order!
+     */
+    private final PlaceNode[] places;
+
+    /**
+     * all transitions of the source lowLevel petri net.
+     */
+    private final TransitionNode[] transitions;
+
+    /**
+     * set of all markings.
+     */
+    private final Set<Marking> markings = new HashSet<>();
+
+    /**
+     * initial marking.
+     */
+    private Marking initialMarking;
+
+    /**
      * @param lolNet the LowLevelPetriNet on that this marking net is builded
      */
-    public MarkingNet(LowLevelPetriNet lolNet) {
+    public MarkingNet(ILowLevelPetriNet lolNet) {
 
         this.lolNet = lolNet;
         this.places = lolNet.getPlaces().toArray(new PlaceNode[lolNet.getPlaces().size()]);
@@ -44,7 +55,6 @@ public class MarkingNet implements IMarkingNet {
         initialMarking = (Marking) BuilderFactory.createCurrentMarking(this.lolNet, false);
         initialMarking.setInitial(true);
         markings.add(initialMarking);
-        markingList.add(initialMarking);
     }
 
     /**
@@ -52,30 +62,39 @@ public class MarkingNet implements IMarkingNet {
      * @return an array of transitions which are activated
      */
     public TransitionNode[] getActivatedTransitions(Marking marking) {
-        // declaration
-        List<TransitionNode> activatedTransitions = new ArrayList<TransitionNode>();
-        int[] tokens = marking.getTokens(); // tokens of the given marking
-        boolean[] placeUnlimited = marking.getPlaceUnlimited();
-        boolean activated; // flag if transition is activated or not
 
-        for (int i = 0; i < transitions.length; i++) {
-            // transition
-            activated = true; // initialize flag for current transition
-            for (AbstractNode preNode : transitions[i].getPreNodes()) {
-            	int k = marking.getIndexByPlace((PlaceNode)preNode);
-				if (tokens[k] <= 0 && !placeUnlimited[k]) { // current PrePlace
-															// without token?
-					activated = false;
-					break;
-				}
-            }
-            if (activated) {
-                activatedTransitions.add(transitions[i]); // add transition to
-                // set if activated
+        List<TransitionNode> activatedTransitions = new ArrayList<>();
+
+        for ( TransitionNode transition : transitions ) {
+
+            if ( transitionIsActivated(marking, transition) ) {
+                activatedTransitions.add(transition);
             }
         }
-        // return all activated transitions as an array
+
         return activatedTransitions.toArray(new TransitionNode[activatedTransitions.size()]);
+    }
+
+    private boolean transitionIsActivated(Marking marking, TransitionNode transition) {
+
+        boolean activated = true;
+        int[] tokens = marking.getTokens();
+        boolean[] placeUnlimited = marking.getPlaceUnlimited();
+
+        for ( AbstractNode preNode : transition.getPredecessorNodes() ) {
+            Integer weight = preNode.getWeightTo(transition);
+            int k = marking.getIndexByPlace((PlaceNode) preNode);
+            int tokenCount = tokens[k];
+
+            boolean notEnoughTokens = tokenCount < weight;
+            boolean placeNotUnlimited = !placeUnlimited[k];
+
+            if ( notEnoughTokens && placeNotUnlimited ) {
+                activated = false;
+                break;
+            }
+        }
+        return activated;
     }
 
     /**
@@ -111,8 +130,8 @@ public class MarkingNet implements IMarkingNet {
      */
     public String placesToString() {
         String line = "";
-        for (int i = 0; i < this.places.length; i++) {
-            line += this.places[i] + ",";
+        for ( PlaceNode place : this.places ) {
+            line += place + ",";
         }
         return line.substring(0, line.length() - 1);
     }
@@ -122,8 +141,8 @@ public class MarkingNet implements IMarkingNet {
      */
     public String placesToStringId() {
         String line = "";
-        for (int i = 0; i < this.places.length; i++) {
-            line += this.places[i].getId() + ",";
+        for ( PlaceNode place : this.places ) {
+            line += place.getId() + ",";
         }
         return line.substring(0, Math.max(line.length() - 1, 0));
     }
@@ -133,8 +152,8 @@ public class MarkingNet implements IMarkingNet {
      */
     public String placesToStringName() {
         String line = "";
-        for (int i = 0; i < this.places.length; i++) {
-            line += this.places[i].getName() + ",";
+        for ( PlaceNode place : this.places ) {
+            line += place.getName() + ",";
         }
         return line.substring(0, Math.max(line.length() - 1, 0));
     }
@@ -150,21 +169,19 @@ public class MarkingNet implements IMarkingNet {
         int[] tokens = new int[parentMarking.getTokens().length];
 
         // copy tokens from given marking (call by value)
-        for (int i = 0; i < tokens.length; i++) {
-            tokens[i] = parentMarking.getTokens()[i];
-        }
+        System.arraycopy(parentMarking.getTokens(), 0, tokens, 0, tokens.length);
 
         // decrease all tokenCounts for prePlaces of given transition
         // and increase all tokenCounts for postPlaces of given transition
-        for (int i = 0; i < places.length; i++) {
-            for (AbstractNode preNode : transition.getPreNodes()) {
-                if (preNode == places[i]) {
-                    tokens[i]--;
+        for ( int i = 0; i < places.length; i++ ) {
+            for ( AbstractNode preNode : transition.getPredecessorNodes() ) {
+                if ( preNode == places[i] ) {
+                    tokens[i] -= transition.getWeightFrom(preNode);
                 }
             }
-            for (AbstractNode postNode : transition.getPostNodes()) {
-                if (postNode == places[i]) {
-                    tokens[i]++;
+            for ( AbstractNode postNode : transition.getSuccessorNodes() ) {
+                if ( postNode == places[i] ) {
+                    tokens[i] += transition.getWeightTo(postNode);
                 }
             }
         }
@@ -173,7 +190,7 @@ public class MarkingNet implements IMarkingNet {
 
     @Override
     public Set<Marking> getAllContainedNodes() {
-        return new HashSet<Marking>(markings);
+        return new HashSet<>(markings);
     }
 
 }

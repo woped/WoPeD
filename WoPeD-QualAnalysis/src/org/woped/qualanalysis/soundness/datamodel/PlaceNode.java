@@ -19,7 +19,12 @@ public class PlaceNode extends AbstractNode {
         this.virtualTokenCount = virtualTokenCount;
     }
 
-    @Override
+    /**
+     * Adds a new successor to this node with the default weight 1.
+     *
+     * @param successor the successor to add
+     * @return true if the provided node has been added, otherwise false
+     */
     public boolean addSuccessorNode(AbstractNode successor) {
         return this.addSuccessorNode(successor, 1);
     }
@@ -33,7 +38,13 @@ public class PlaceNode extends AbstractNode {
         }
     }
 
-    @Override
+    /**
+     * Adds a new predecessor to this node with the default weight 1.
+     *
+     * @param predecessor the predecessor to add
+     * @return true if the provided node has been added, otherwise false
+     * @throws IllegalArgumentException if weight is less or equal zero
+     */
     public boolean addPredecessorNode(AbstractNode predecessor) {
         return addPredecessorNode(predecessor, 1);
     }

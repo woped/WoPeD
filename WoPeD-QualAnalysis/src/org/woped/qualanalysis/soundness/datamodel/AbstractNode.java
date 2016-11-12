@@ -2,8 +2,9 @@ package org.woped.qualanalysis.soundness.datamodel;
 
 import org.woped.qualanalysis.soundness.algorithms.generic.INode;
 
+import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Observable;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -12,14 +13,16 @@ import java.util.Set;
  * It is only possible to add elements of this class to a {@link ILowLevelPetriNet}.
  * That's why all nodes (places, transitions) have to extend this class.
  */
-public abstract class AbstractNode implements INode<AbstractNode>, INotifyNodeAdded {
+public abstract class AbstractNode implements INode<AbstractNode> {
 
     private final Set<AbstractNode> predecessorNodes = new HashSet<>();
     private final Set<AbstractNode> successorNodes = new HashSet<>();
+    private final Map<AbstractNode, Integer> incomingWeights = new HashMap<>();
+    private final Map<AbstractNode, Integer> outgoingWeights = new HashMap<>();
+
     private final String id;
     private final String originId;
     private final String name;
-    private NodeAddedObservable nodeAddedObservable;
 
     /**
      * Creates a new node which represents an {@link org.woped.core.model.petrinet.AbstractPetriNetElementModel}.
@@ -32,18 +35,6 @@ public abstract class AbstractNode implements INode<AbstractNode>, INotifyNodeAd
         this.id = id;
         this.name = name;
         this.originId = originId;
-
-        this.nodeAddedObservable = new NodeAddedObservable();
-    }
-
-    /**
-     * Adds a new successor to this node.
-     *
-     * @param successor the successor to add
-     * @return true if the provided node has been added, otherwise false
-     */
-    protected boolean addSuccessorNode(AbstractNode successor) {
-        return this.addSuccessorNode(successor, 1);
     }
 
     /**
@@ -57,22 +48,13 @@ public abstract class AbstractNode implements INode<AbstractNode>, INotifyNodeAd
 
         if ( weight <= 0 ) throw new IllegalArgumentException("Weight has to be larger than zero");
 
-        if ( !successor.addPredecessorNode(this) ) {
+        if ( !successor.addPredecessorNode(this, weight) ) {
             return false;
         }
 
-        nodeAddedObservable.onNodeAdded(successor, ConnectionType.OUTGOING, weight);
-        return successorNodes.add(successor);
-    }
+        outgoingWeights.put(successor, weight);
 
-    /**
-     * Adds a new predecessor to this node.
-     *
-     * @param predecessor the predecessor to add
-     * @return true if the provided node has been added, otherwise false
-     */
-    public boolean addPredecessorNode(AbstractNode predecessor) {
-        return this.addPredecessorNode(predecessor, 1);
+        return successorNodes.contains(successor) || successorNodes.add(successor);
     }
 
     /**
@@ -87,8 +69,9 @@ public abstract class AbstractNode implements INode<AbstractNode>, INotifyNodeAd
 
         if ( weight <= 0 ) throw new IllegalArgumentException("Weight has to be larger than zero");
 
-        this.nodeAddedObservable.onNodeAdded(preNode, ConnectionType.INCOMING, weight);
-        return predecessorNodes.add(preNode);
+        incomingWeights.put(preNode, weight);
+
+        return predecessorNodes.contains(preNode) || predecessorNodes.add(preNode);
     }
 
     /**
@@ -139,6 +122,28 @@ public abstract class AbstractNode implements INode<AbstractNode>, INotifyNodeAd
         return predecessorNodes;
     }
 
+    /**
+     * Gets the weight of the directed connection from the given node.
+     *
+     * @param source the source node of the connection
+     * @return the weight of the connection or zero, if no such connection exists
+     */
+    public int getWeightFrom(AbstractNode source) {
+        Integer weight = incomingWeights.get(source);
+        return weight == null ? 0 : weight;
+    }
+
+    /**
+     * Gets the weight of the directed connection to the given node.
+     *
+     * @param target the target node of the connection
+     * @return the weight of the connection or zero, if no such connection exists
+     */
+    public int getWeightTo(AbstractNode target) {
+        Integer weight = outgoingWeights.get(target);
+        return weight == null ? 0 : weight;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if ( this == obj ) {
@@ -180,20 +185,5 @@ public abstract class AbstractNode implements INode<AbstractNode>, INotifyNodeAd
     @Override
     public String toString() {
         return name;
-    }
-
-    @Override
-    public Observable nodeAdded() {
-        return nodeAddedObservable;
-    }
-
-    private class NodeAddedObservable extends Observable {
-
-        void onNodeAdded(AbstractNode node, ConnectionType direction, int weight) {
-
-            NodeAddedArgs args = new NodeAddedArgs(AbstractNode.this, node, direction, weight);
-            this.setChanged();
-            this.notifyObservers(args);
-        }
     }
 }

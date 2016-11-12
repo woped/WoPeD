@@ -6,65 +6,46 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * this class represents a low level petri net
- * 
- * @author Patrick Spies, Patrick Kirchgaessner, Joern Liebau, Enrico Moeller, Sebastian Fuss
- * 
+ * This class is the reference implementation of the {@code ILowLevelPetriNet} interface.
  */
 public class LowLevelPetriNet implements ILowLevelPetriNet {
-    // declaration
 
-    private Map<String, PlaceNode> places = new HashMap<String, PlaceNode>();
-    private Map<String, TransitionNode> transitions = new HashMap<String, TransitionNode>();
+    private Map<String, PlaceNode> places = new HashMap<>();
+    private Map<String, TransitionNode> transitions = new HashMap<>();
 
-    /**
-     * 
-     * @param node adds the provide node to this low level petri net
-     * @return true if node was added.
-     */
+    @Override
     public boolean addNode(AbstractNode node) {
         boolean result = false;
 
-        if (node instanceof TransitionNode) {
+        if ( node instanceof TransitionNode ) {
             // true if node does not exist in map
             result = !transitions.containsKey(node.getId());
             getTransitionNode((TransitionNode) node);
-        } else if (node instanceof PlaceNode) {
+        } else if ( node instanceof PlaceNode ) {
             // true if node does not exist in map
             result = !places.containsKey(node.getId());
             getPlaceNode((PlaceNode) node);
         }
-        return result;
 
+        return result;
     }
 
-    /**
-     * adds all nodes of the provided set of nodes.
-     * 
-     * @param nodes to be added.
-     * @return true if all nodes were added
-     */
+    @Override
     public boolean addNodes(Set<AbstractNode> nodes) {
         boolean result = true;
 
-        for (AbstractNode node : nodes) {
+        for ( AbstractNode node : nodes ) {
             result = result & addNode(node);
         }
         return result;
     }
 
-    /**
-     * if a node with the id of the provided node already exists the existing node will returned. if the provided node does not exist, the provided node will
-     * returned
-     * 
-     * @param node example.
-     * @return node from map.
-     */
+    @Override
     public PlaceNode getPlaceNode(PlaceNode node) {
         PlaceNode node2return;
         node2return = places.get(node.getId());
 
-        if (node2return == null) {
+        if ( node2return == null ) {
             // add the provided node to map
             node2return = node;
             places.put(node.getId(), node);
@@ -73,29 +54,21 @@ public class LowLevelPetriNet implements ILowLevelPetriNet {
         return node2return;
     }
 
-    /**
-     * @return the placeNodes
-     */
+    @Override
     public Set<PlaceNode> getPlaces() {
         Set<PlaceNode> places = new HashSet<PlaceNode>();
-        for (String key : this.places.keySet()) {
+        for ( String key : this.places.keySet() ) {
             places.add(this.places.get(key));
         }
         return places;
     }
 
-    /**
-     * if a node with the id of the provided node already exists the existing node will returned. if the provided node does not exist, the provided node will
-     * returned
-     * 
-     * @param node example.
-     * @return node from map.
-     */
+    @Override
     public TransitionNode getTransitionNode(TransitionNode node) {
         TransitionNode node2return;
         node2return = transitions.get(node.getId());
 
-        if (node2return == null) {
+        if ( node2return == null ) {
             // add the provided node to map
             node2return = node;
             transitions.put(node.getId(), node);
@@ -104,12 +77,10 @@ public class LowLevelPetriNet implements ILowLevelPetriNet {
         return node2return;
     }
 
-    /**
-     * @return the transitionNodes
-     */
+    @Override
     public Set<TransitionNode> getTransitions() {
         Set<TransitionNode> transitions = new HashSet<TransitionNode>();
-        for (String key : this.transitions.keySet()) {
+        for ( String key : this.transitions.keySet() ) {
             transitions.add(this.transitions.get(key));
         }
         return transitions;
