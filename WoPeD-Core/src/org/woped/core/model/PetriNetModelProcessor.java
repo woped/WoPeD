@@ -95,33 +95,33 @@ public class PetriNetModelProcessor implements Serializable {
      */
     public AbstractPetriNetElementModel createElement(CreationMap map) {
         // creating a new ModelElement through Factory
-        if (map.isValid()) {
-            if (map.getId() == null) {
+        if ( map.isValid() ) {
+            if ( map.getId() == null ) {
                 map.setId(getNewElementId(map.getType()));
             }
             AbstractPetriNetElementModel anElement = ModelElementFactory.createModelElement(map);
             getElementContainer().addElement(anElement);
 
-            if (map.getType() == AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE || map.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE || map.getType() == AbstractPetriNetElementModel.SUBP_TYPE) {
+            if ( map.getType() == AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE || map.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE || map.getType() == AbstractPetriNetElementModel.SUBP_TYPE ) {
                 // Trigger
-                if (map.getTriggerType() != -1) {
+                if ( map.getTriggerType() != -1 ) {
                     ((TransitionModel) anElement).getToolSpecific().setTrigger(newTrigger(map));
 
 
-                    if (map.getTriggerPosition() != null) {
+                    if ( map.getTriggerPosition() != null ) {
                         ((TransitionModel) anElement).getToolSpecific().getTrigger().setPosition(map.getTriggerPosition().x, map.getTriggerPosition().y);
                     }
                 }
-                if (map.getResourceOrgUnit() != null && map.getResourceRole() != null) {
+                if ( map.getResourceOrgUnit() != null && map.getResourceRole() != null ) {
                     newTransResource(map);
-                    if (map.getResourcePosition() != null) {
+                    if ( map.getResourcePosition() != null ) {
                         ((TransitionModel) anElement).getToolSpecific().getTransResource().setPosition(map.getResourcePosition().x, map.getResourcePosition().y);
                     }
                 }
-                if (map.getTransitionTime() != -1) {
+                if ( map.getTransitionTime() != -1 ) {
                     ((TransitionModel) anElement).getToolSpecific().setTime(map.getTransitionTime());
                 }
-                if (map.getTransitionTimeUnit() != -1) {
+                if ( map.getTransitionTimeUnit() != -1 ) {
                     ((TransitionModel) anElement).getToolSpecific().setTimeUnit(map.getTransitionTimeUnit());
                 }
             }
@@ -165,12 +165,12 @@ public class PetriNetModelProcessor implements Serializable {
         AbstractPetriNetElementModel targetModel = getElementContainer().getElementById(targetId);
 
         // Ensures that the connection is valid
-        if ((sourceModel == null) || (targetModel == null)) {
+        if ( (sourceModel == null) || (targetModel == null) ) {
             return null;
         }
 
         // Ensures that the id is fresh
-        if (id == null || this.getElementContainer().getArcById(id) != null) {
+        if ( id == null || this.getElementContainer().getArcById(id) != null ) {
             id = getNexArcId();
         }
 
@@ -189,7 +189,7 @@ public class PetriNetModelProcessor implements Serializable {
         AbstractPetriNetElementModel targetModel = getElementContainer().getElementById(arc.getTargetId());
         getElementContainer().addReference(arc);
 
-        if (transformOperators) {
+        if ( transformOperators ) {
             resolveInnerConnections(sourceModel, targetModel);
         }
     }
@@ -197,7 +197,7 @@ public class PetriNetModelProcessor implements Serializable {
     private void resolveInnerConnections(AbstractPetriNetElementModel sourceModel, AbstractPetriNetElementModel targetModel) {
         OperatorTransitionModel operatorModel;
             /* IF THE SOURCE IS AN OPERATOR */
-        if (sourceModel.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE) {
+        if ( sourceModel.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE ) {
 
             // storing the source as operator
             operatorModel = (OperatorTransitionModel) sourceModel;
@@ -213,7 +213,7 @@ public class PetriNetModelProcessor implements Serializable {
             LoggerManager.debug(Constants.CORE_LOGGER, "... Inner-Transition resolving completed");
         }
         /* IF OPERATOR IS TARGET */
-        else if (targetModel.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE) {
+        else if ( targetModel.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE ) {
 
             LoggerManager.debug(Constants.CORE_LOGGER, "Connection to Aalst Model detected... resolve Inner-Transitions ...");
             // store the target as operatorModel
@@ -240,14 +240,14 @@ public class PetriNetModelProcessor implements Serializable {
         ArcModel arcToDelete = getElementContainer().getArcById(arcId);
 
         // Ensure arc exists
-        if (null == arcToDelete) {
+        if ( null == arcToDelete ) {
             return;
         }
 
         AbstractPetriNetElementModel sourceElement = getElementContainer().getElementById(arcToDelete.getSourceId());
         AbstractPetriNetElementModel targetElement = getElementContainer().getElementById(arcToDelete.getTargetId());
 
-        if (sourceElement.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE) {
+        if ( sourceElement.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE ) {
             OperatorTransitionModel currentOperator = (OperatorTransitionModel) sourceElement;
             // Register the removal of an outgoing arc
             currentOperator.registerOutgoingConnectionRemoval(this, targetElement);
@@ -259,7 +259,7 @@ public class PetriNetModelProcessor implements Serializable {
             // We have to remove this local copy
             currentOperator.getSimpleTransContainer().removeElement(targetElement.getId());
 
-        } else if (targetElement.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE) {
+        } else if ( targetElement.getType() == AbstractPetriNetElementModel.TRANS_OPERATOR_TYPE ) {
             OperatorTransitionModel currentOperator = (OperatorTransitionModel) targetElement;
             // Register the removal of an incoming arc
             currentOperator.registerIncomingConnectionRemoval(this, sourceElement);
@@ -275,11 +275,11 @@ public class PetriNetModelProcessor implements Serializable {
         }
 
         // remove element from the subprocess model
-        if (targetElement.getType() == AbstractPetriNetElementModel.SUBP_TYPE) {
+        if ( targetElement.getType() == AbstractPetriNetElementModel.SUBP_TYPE ) {
             ((SubProcessModel) targetElement).getSimpleTransContainer().removeElement(sourceElement.getId());
         }
 
-        if (sourceElement.getType() == AbstractPetriNetElementModel.SUBP_TYPE) {
+        if ( sourceElement.getType() == AbstractPetriNetElementModel.SUBP_TYPE ) {
             ((SubProcessModel) sourceElement).getSimpleTransContainer().removeElement(targetElement.getId());
         }
 
@@ -292,7 +292,7 @@ public class PetriNetModelProcessor implements Serializable {
      */
     public TriggerModel newTrigger(CreationMap map) {
         TransitionModel transition = (TransitionModel) getElementContainer().getElementById(map.getId());
-        if (transition.getToolSpecific() == null) {
+        if ( transition.getToolSpecific() == null ) {
             transition.setToolSpecific(new Toolspecific(transition.getId()));
         }
         return transition.getToolSpecific().setTrigger(map);
@@ -302,7 +302,7 @@ public class PetriNetModelProcessor implements Serializable {
     // TODO: DOCUMentation
     public TransitionResourceModel newTransResource(CreationMap map) {
         TransitionModel transition = (TransitionModel) getElementContainer().getElementById(map.getId());
-        if (transition.getToolSpecific() == null) {
+        if ( transition.getToolSpecific() == null ) {
             transition.setToolSpecific(new Toolspecific(transition.getId()));
         }
         return transition.getToolSpecific().setTransResource(map);
@@ -313,7 +313,7 @@ public class PetriNetModelProcessor implements Serializable {
 
         String prefix = "";
         AbstractPetriNetElementModel owningElement = getElementContainer().getOwningElement();
-        if (owningElement != null) {
+        if ( owningElement != null ) {
             prefix = owningElement.getId() + OperatorTransitionModel.INNERID_SEPERATOR;
         }
 
@@ -332,13 +332,13 @@ public class PetriNetModelProcessor implements Serializable {
                 id = "s" + ++simulationCounter;
                 break;
         }
-        if (id != null) {
+        if ( id != null ) {
             // Prepend the prefix (used for sub-processes to make identifiers
             // unique)
             id = prefix + id;
             // Check whether an element with the same ID already exists.
             // If so, recursively call ourselves to obtain a new one
-            if (getElementContainer().getElementById(id) != null) {
+            if ( getElementContainer().getElementById(id) != null ) {
                 id = getNewElementId(elementType);
             }
         }
@@ -352,9 +352,9 @@ public class PetriNetModelProcessor implements Serializable {
 
     public void addResourceMapping(String resourceClass, String resourceId) {
         Vector<String> resourcesVector;
-        if (containsRole(resourceClass) != -1 || containsOrgunit(resourceClass) != -1) {
-            if (containsResource(resourceId) != -1) {
-                if (getResourceMapping().get(resourceClass) == null) {
+        if ( containsRole(resourceClass) != -1 || containsOrgunit(resourceClass) != -1 ) {
+            if ( containsResource(resourceId) != -1 ) {
+                if ( getResourceMapping().get(resourceClass) == null ) {
                     resourcesVector = new Vector<String>();
                     resourcesVector.add(resourceId);
                     getResourceMapping().put(resourceClass, resourcesVector);
@@ -384,10 +384,10 @@ public class PetriNetModelProcessor implements Serializable {
     public Vector<String> getResourceClassesResourceIsAssignedTo(String resourceId) {
         Vector<String> assignedVector = new Vector<String>();
         String resourceClassIdTemp;
-        for (Iterator<String> iter = getResourceMapping().keySet().iterator(); iter.hasNext(); ) {
+        for ( Iterator<String> iter = getResourceMapping().keySet().iterator(); iter.hasNext(); ) {
             resourceClassIdTemp = iter.next().toString();
             Vector<String> resourceVector = getResourceMapping().get(resourceClassIdTemp);
-            if (containsResource(resourceVector, resourceId) != -1) {
+            if ( containsResource(resourceVector, resourceId) != -1 ) {
                 assignedVector.add(resourceClassIdTemp);
             }
         }
@@ -450,7 +450,7 @@ public class PetriNetModelProcessor implements Serializable {
         sb.append(places.size());
 
         // Add place details
-        for (AbstractPetriNetElementModel place : places) {
+        for ( AbstractPetriNetElementModel place : places ) {
             PlaceModel p = (PlaceModel) place;
             sb.append(String.format("%s%d", p.getId(), p.getTokenCount()));
         }
@@ -465,8 +465,9 @@ public class PetriNetModelProcessor implements Serializable {
         sb.append(arcs.size());
 
         // Add arc details
-        for (ArcModel arc : arcs) {
-            sb.append(String.format("*%s%s", arc.getSourceId(), arc.getTargetId()));
+        for ( ArcModel arc : arcs ) {
+            String weight = arc.getInscriptionValue() == 1 ? "" : String.valueOf(arc.getInscriptionValue());
+            sb.append(String.format("*%s%s%s", weight, arc.getSourceId(), arc.getTargetId()));
         }
 
         return sb.toString();
@@ -485,7 +486,7 @@ public class PetriNetModelProcessor implements Serializable {
         String currFingerprint = this.getLogicalFingerprint();
 
         // Equal fingerprints are always logically equal
-        if (currFingerprint.equals(fingerprintToCheck)) {
+        if ( currFingerprint.equals(fingerprintToCheck) ) {
             return true;
         }
 
@@ -493,18 +494,18 @@ public class PetriNetModelProcessor implements Serializable {
         String otherLeadingPart = fingerprintToCheck.substring(0, fingerprintToCheck.indexOf('*'));
 
         // fingerprints are always different, if they have a different length.
-        if (currFingerprint.length() != fingerprintToCheck.length()) {
+        if ( currFingerprint.length() != fingerprintToCheck.length() ) {
             return false;
         }
 
         // fingerprints are not equal if the have a different leading part. (place ids + tokens)
-        if (!currLeadingPart.equals(otherLeadingPart)) {
+        if ( !currLeadingPart.equals(otherLeadingPart) ) {
             return false;
         }
 
         // extract the fingerprint specific arc ids from the current net
         Set<String> currentArcs = new HashSet<>();
-        for (ArcModel arc : this.getElementContainer().getArcMap().values()) {
+        for ( ArcModel arc : this.getElementContainer().getArcMap().values() ) {
             currentArcs.add(String.format("%s%s", arc.getSourceId(), arc.getTargetId()));
         }
 
@@ -513,9 +514,9 @@ public class PetriNetModelProcessor implements Serializable {
         String[] arcs = arcString.split("\\*");
 
         // Check each arc
-        for (String arc : arcs) {
+        for ( String arc : arcs ) {
             boolean arcContained = currentArcs.remove(arc);
-            if (!arcContained) {
+            if ( !arcContained ) {
                 return false;
             }
         }
@@ -536,7 +537,7 @@ public class PetriNetModelProcessor implements Serializable {
      * @return Returns the organizationUnits.
      */
     public Vector<ResourceClassModel> getOrganizationUnits() {
-        if (organizationUnits == null) {
+        if ( organizationUnits == null ) {
             organizationUnits = new Vector<ResourceClassModel>();
         }
         return organizationUnits;
@@ -553,7 +554,7 @@ public class PetriNetModelProcessor implements Serializable {
      * @return Returns the resourceMap.
      */
     public HashMap<String, Vector<String>> getResourceMapping() {
-        if (resourceMapping == null) {
+        if ( resourceMapping == null ) {
             resourceMapping = new HashMap<String, Vector<String>>();
         }
         return resourceMapping;
@@ -567,7 +568,7 @@ public class PetriNetModelProcessor implements Serializable {
      * @return Returns the roles.
      */
     public Vector<ResourceClassModel> getRoles() {
-        if (roles == null) {
+        if ( roles == null ) {
             roles = new Vector<ResourceClassModel>();
         }
         return roles;
@@ -584,7 +585,7 @@ public class PetriNetModelProcessor implements Serializable {
      * @return Returns the resources.
      */
     public Vector<ResourceModel> getResources() {
-        if (resources == null) {
+        if ( resources == null ) {
             resources = new Vector<ResourceModel>();
         }
         return resources;
@@ -598,7 +599,7 @@ public class PetriNetModelProcessor implements Serializable {
      * @return Returns the simulations.
      */
     public Vector<SimulationModel> getSimulations() {
-        if (simulations == null) {
+        if ( simulations == null ) {
             simulations = new Vector<SimulationModel>();
         }
         return simulations;
@@ -621,8 +622,8 @@ public class PetriNetModelProcessor implements Serializable {
     }
 
     public int containsRole(String name) {
-        for (int i = 0; i < getRoles().size(); i++) {
-            if ((getRoles().get(i)).getName().equals(name)) {
+        for ( int i = 0; i < getRoles().size(); i++ ) {
+            if ( (getRoles().get(i)).getName().equals(name) ) {
                 return i;
             }
 
@@ -631,8 +632,8 @@ public class PetriNetModelProcessor implements Serializable {
     }
 
     public int containsOrgunit(String name) {
-        for (int i = 0; i < getOrganizationUnits().size(); i++) {
-            if ((getOrganizationUnits().get(i)).getName().equals(name)) {
+        for ( int i = 0; i < getOrganizationUnits().size(); i++ ) {
+            if ( (getOrganizationUnits().get(i)).getName().equals(name) ) {
                 return i;
             }
 
@@ -641,8 +642,8 @@ public class PetriNetModelProcessor implements Serializable {
     }
 
     public int containsResource(String name) {
-        for (int i = 0; i < getResources().size(); i++) {
-            if ((getResources().get(i)).getName().equals(name)) {
+        for ( int i = 0; i < getResources().size(); i++ ) {
+            if ( (getResources().get(i)).getName().equals(name) ) {
                 return i;
             }
 
@@ -651,8 +652,8 @@ public class PetriNetModelProcessor implements Serializable {
     }
 
     public int containsResource(Vector<String> resourceVector, String name) {
-        for (int i = 0; i < resourceVector.size(); i++) {
-            if (resourceVector.get(i).equals(name)) {
+        for ( int i = 0; i < resourceVector.size(); i++ ) {
+            if ( resourceVector.get(i).equals(name) ) {
                 return i;
             }
 
@@ -661,10 +662,10 @@ public class PetriNetModelProcessor implements Serializable {
     }
 
     public void replaceResourceMapping(String oldName, String newName) {
-        for (Iterator<String> iter = getResourceMapping().keySet().iterator(); iter.hasNext(); ) {
+        for ( Iterator<String> iter = getResourceMapping().keySet().iterator(); iter.hasNext(); ) {
             Vector<String> resourcevalues = getResourceMapping().get(iter.next());
-            for (int i = 0; i < resourcevalues.size(); i++) {
-                if (resourcevalues.get(i).equals(oldName)) {
+            for ( int i = 0; i < resourcevalues.size(); i++ ) {
+                if ( resourcevalues.get(i).equals(oldName) ) {
                     resourcevalues.set(i, newName);
                 }
             }
@@ -672,7 +673,7 @@ public class PetriNetModelProcessor implements Serializable {
     }
 
     public void replaceResourceClassMapping(String oldName, String newName) {
-        if (getResourceMapping().containsKey(oldName)) {
+        if ( getResourceMapping().containsKey(oldName) ) {
             getResourceMapping().put(newName, getResourceMapping().get(oldName));
             getResourceMapping().remove(oldName);
         }
@@ -690,14 +691,13 @@ public class PetriNetModelProcessor implements Serializable {
      * Resets all virtual tokens an highlightings which were set from the
      * Reachability Graph
      *
-     * @author <a href="mailto:b.joerger@gmx.de">Benjamin Joerger</a>
      * @since 02.01.2009
      */
     public void resetRGHighlightAndVTokens() {
-        for (Iterator<AbstractPetriNetElementModel> iter = getElementContainer().getRootElements().iterator(); iter.hasNext(); ) {
+        for ( Iterator<AbstractPetriNetElementModel> iter = getElementContainer().getRootElements().iterator(); iter.hasNext(); ) {
             AbstractPetriNetElementModel current = iter.next();
             current.setRGHighlighted(false);
-            if (current instanceof PlaceModel) {
+            if ( current instanceof PlaceModel ) {
                 ((PlaceModel) current).resetVirtualTokens();
             }
         }

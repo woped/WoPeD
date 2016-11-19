@@ -96,6 +96,21 @@ public class PetriNetModelProcessorTest {
     }
 
     @Test
+    public void getLogicallyFingerpring_netWithWeight_resultContainsWeight() throws Exception {
+        PetriNetModelProcessor sut = new PetriNetModelProcessor();
+        SimpleDemoData demoData = new SimpleDemoData().invoke();
+        sut.setElementContainer(demoData.container);
+
+        int arcWeight = 2;
+        demoData.arc2.setInscriptionValue(arcWeight);
+
+        String expected = "2p10p20#2*p1t1*2t1p2";
+        String actual = sut.getLogicalFingerprint();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
     public void isLogicallyFingerprint_OwnFingerprint_returnsTrue() {
         PetriNetModelProcessor sut = new PetriNetModelProcessor();
         SimpleDemoData demoData = new SimpleDemoData().invoke();
@@ -150,12 +165,28 @@ public class PetriNetModelProcessorTest {
         assertFalse(sut.isLogicalFingerprintEqual(fingerprint));
     }
 
+    @Test
+    public void isLogicallyFingerprint_netsDifferInWeights_returnsFalse() throws Exception {
+        SimpleDemoData demoDataNet1 = new SimpleDemoData().invoke();
+        PetriNetModelProcessor net1 = new PetriNetModelProcessor("net1");
+        net1.setElementContainer(demoDataNet1.container);
+
+        SimpleDemoData demoDataNet2 = new SimpleDemoData().invoke();
+        demoDataNet2.arc1.setInscriptionValue(2);
+        PetriNetModelProcessor net2 = new PetriNetModelProcessor("net2");
+        net2.setElementContainer(demoDataNet2.container);
+
+        assertFalse(net1.isLogicalFingerprintEqual(net2.getLogicalFingerprint()));
+    }
+
     // Creates demo data with two places connected with one transition.
     private class SimpleDemoData {
         private String place1Id;
         private String place2Id;
         private String transition1Id;
         private ModelElementContainer container;
+        private ArcModel arc1;
+        private ArcModel arc2;
 
         SimpleDemoData invoke() {
             place1Id = "p1";
@@ -181,8 +212,8 @@ public class PetriNetModelProcessorTest {
             when(transition1.getId()).thenReturn(transition1Id);
             when(transition1.getChildAt(0)).thenReturn(transition1Port);
 
-            ArcModel arc1 = ModelElementFactory.createArcModel("a1", place1port, transition1Port);
-            ArcModel arc2 = ModelElementFactory.createArcModel("a2", transition1Port, place2port);
+            arc1 = ModelElementFactory.createArcModel("a1", place1port, transition1Port);
+            arc2 = ModelElementFactory.createArcModel("a2", transition1Port, place2port);
 
             container = new ModelElementContainer();
             container.addElement(place1);
