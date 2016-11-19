@@ -95,12 +95,12 @@ public class ArcModel extends DefaultEdge implements Serializable {
 
         // Set arc weight label
         Point2D defaultPos = getDefaultLabelPosition();
-        Point2D.Double weightLabelPosition = new Point2D.Double(defaultPos.getX(), defaultPos.getY() - 10);
+        Point2D.Double weightLabelPosition = new Point2D.Double(defaultPos.getX(), defaultPos.getY() - 12);
         GraphConstants.setLabelPosition(map, weightLabelPosition);
 
         // Set probability label
         GraphConstants.setExtraLabels(map, new String[]{getProbabilityLabelText()});
-        Point2D.Double probabilityLabelPosition = new Point2D.Double(defaultPos.getX(), defaultPos.getY() + 10);
+        Point2D.Double probabilityLabelPosition = new Point2D.Double(defaultPos.getX(), defaultPos.getY() + 12);
         GraphConstants.setExtraLabelPositions(map, new Point2D[]{probabilityLabelPosition});
     }
 

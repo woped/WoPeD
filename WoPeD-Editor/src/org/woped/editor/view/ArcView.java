@@ -160,6 +160,7 @@ class ArcView extends EdgeView {
                 g.setFont(DefaultStaticConfiguration.DEFAULT_TINYLABEL_FONT);
 
                 if ( arc.displayWeight() && graph != null ) {
+                    graph.setEdgeLabelsMovable(false);
                     Point2D labelPosition = getLabelPosition(view);
                     paintLabel(g, graph.convertValueToString(arc.getInscriptionValue()), labelPosition, simpleExtraLabels);
                 }
