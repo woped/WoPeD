@@ -18,6 +18,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import org.woped.core.controller.IEditor;
+import org.woped.core.utilities.Platform;
 import org.woped.gui.translations.Messages;
 
 @SuppressWarnings("serial")
@@ -80,10 +81,12 @@ public class EditorStatusBarVC extends JPanel implements Observer {
 				@Override
 				public void mouseWheelMoved(MouseWheelEvent e) {
 					int notches = e.getWheelRotation();
-					if (notches < 0) {
-						m_zoom.setValue(m_zoom.getValue() + 10);
-					} else if (notches > 0) {
-						m_zoom.setValue(m_zoom.getValue() - 10);
+					if (!Platform.isMac()) {
+						if (notches < 0) {
+							m_zoom.setValue(m_zoom.getValue() + 10);
+						} else if (notches > 0) {
+							m_zoom.setValue(m_zoom.getValue() - 10);
+						}
 					}
 				}
 			});
