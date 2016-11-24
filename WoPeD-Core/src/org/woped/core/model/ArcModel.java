@@ -33,6 +33,7 @@ import java.awt.*;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Vector;
@@ -102,6 +103,11 @@ public class ArcModel extends DefaultEdge implements Serializable {
         GraphConstants.setExtraLabels(map, new String[]{getProbabilityLabelText()});
         Point2D.Double probabilityLabelPosition = new Point2D.Double(defaultPos.getX(), defaultPos.getY() + 12);
         GraphConstants.setExtraLabelPositions(map, new Point2D[]{probabilityLabelPosition});
+
+        List<Point2D> points = new ArrayList<>(2);
+        points.add(getAttributes().createPoint(10, 10));
+        points.add(getAttributes().createPoint(20, 20));
+        GraphConstants.setPoints(map, points);
     }
 
     public Point2D getProbabilityLabelPosition() {

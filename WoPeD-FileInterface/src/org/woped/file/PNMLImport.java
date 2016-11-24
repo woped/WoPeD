@@ -928,8 +928,8 @@ public class PNMLImport {
             // by the view
             // but if we want to restore arc points from the PNML file
             // we have to add those points manually
-            arc.addPoint(arc.getAttributes().createPoint(10, 10));
-            arc.addPoint(arc.getAttributes().createPoint(20, 20));
+//            arc.addPoint(arc.getAttributes().createPoint(10, 10));
+//            arc.addPoint(arc.getAttributes().createPoint(20, 20));
 
             for (int j = 0; j < arcBean.getGraphics().getPositionArray().length; j++) {
                 arc.addPoint(new Point2D.Double(arcBean.getGraphics().getPositionArray(j).getX().doubleValue(), arcBean.getGraphics().getPositionArray(j).getY().doubleValue()), j + 1);

@@ -36,8 +36,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -65,12 +63,12 @@ class ArcView extends EdgeView {
             setAttributes(((ArcModel) cell).getAttributes());
         }
 //        setAttributes(new AttributeMap());
-        if ( GraphConstants.getPoints(getAttributes()) == null ) {
-            List<Point2D> points = new ArrayList<>(2);
-            points.add(getAttributes().createPoint(10, 10));
-            points.add(getAttributes().createPoint(20, 20));
-            GraphConstants.setPoints(getAttributes(), points);
-        }
+//        if ( GraphConstants.getPoints(getAttributes()) == null ) {
+//            List<Point2D> points = new ArrayList<>(2);
+//            points.add(getAttributes().createPoint(10, 10));
+//            points.add(getAttributes().createPoint(20, 20));
+//            GraphConstants.setPoints(getAttributes(), points);
+//        }
     }
 
     /*
