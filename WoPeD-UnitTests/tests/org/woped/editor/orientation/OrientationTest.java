@@ -58,7 +58,7 @@ public class OrientationTest {
 
         assertEquals("Place should have been moved", expectedPlaceLocation, p1.getPosition());
         assertEquals("Transition should have been moved", expectedTransitionLocation, t1.getPosition());
-        assertEquals("ArcPoint should have been moved", expectedArcPointLocation, arc.getPoints()[0]);
+        assertEquals("ArcPoint should have been moved", expectedArcPointLocation, arc.getPoints()[1]);
     }
 
     @Test
@@ -85,6 +85,6 @@ public class OrientationTest {
 
         assertEquals("Place should rotate", expectedPlacePosition, p1.getPosition());
         assertEquals("Transition should rotate", expectedTransitionPosition, t1.getPosition());
-        assertEquals("ArcPoint should rotate", expectedArcPointTransition, arc.getPoints()[0]);
+        assertEquals("ArcPoint should rotate", expectedArcPointTransition, arc.getPoints()[1]);
     }
 }

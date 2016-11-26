@@ -169,8 +169,6 @@ public class ArcModelTest {
         Point2D.Double end = new Point2D.Double(20, 20);
         Point2D.Double via = new Point2D.Double(30, 30);
 
-        cut.addPoint(start);
-        cut.addPoint(end);
         cut.addPoint(via);
 
         Point2D[] points = cut.getPoints();
