@@ -57,6 +57,23 @@ public class MarkingNetTest {
         assertTrue(succeedingMarking.toString().equals("(0 1 0)"));
     }
 
+    @Test
+    public void calculateSucceedingMarking_demoNetWithWeight_resultUsesWeight() throws Exception {
+        LowLevelPetriNet net = createDemoLowLevelNet();
+        MarkingNet cut = new MarkingNet(net);
+
+        PlaceNode p2 = net.getPlaceNode(new PlaceNode(0,0,"p2", "", ""));
+        TransitionNode t1 = net.getTransitionNode(new TransitionNode("t1", "t1", "t1", AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE));
+
+        int arcWeight = 2;
+        t1.addSuccessorNode(p2, arcWeight);
+        p2.addPredecessorNode(t1, arcWeight);
+
+        Marking succeedingMarking = cut.calculateSucceedingMarking(cut.getInitialMarking(), t1);
+        assertTrue(succeedingMarking.toString().equals("(0 2 0)"));
+    }
+
+
     /**
      * Creates a low level petri net for testing purposes.
      * <p>
