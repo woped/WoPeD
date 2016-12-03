@@ -206,6 +206,7 @@ public class AboutUI extends JDialog
   					int ff = path.indexOf("file:") + 5;
   	 				path = path.substring(ff);
  					path = path.substring(0, pos - ff);
+ 					path = path.replace("%20", " ");
  				}
  			}
  			else {
