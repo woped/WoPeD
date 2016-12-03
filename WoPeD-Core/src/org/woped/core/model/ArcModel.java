@@ -54,7 +54,7 @@ public class ArcModel extends DefaultEdge implements Serializable {
     private boolean activated = false;
     private Vector<Object> unknownToolSpecs = new Vector<Object>();
     private ElementContext elementContext = null;
-    private boolean defaultWeightVisible = false;
+    private boolean DEFAULT_WEIGHT_VISIBLE = false;
 
     /**
      * Constructor for ArcModel.
@@ -76,7 +76,7 @@ public class ArcModel extends DefaultEdge implements Serializable {
 
     public void setHighlighted(boolean highlighted) {
         AttributeMap map = getAttributes();
-        if ( highlighted ) GraphConstants.setLineColor(map, DEFAULT_HIGHLIGHTED_COLOR);
+        if (highlighted) GraphConstants.setLineColor(map, DEFAULT_HIGHLIGHTED_COLOR);
         else GraphConstants.setLineColor(map, DEFAULT_COLOR);
         updateLabel();
     }
@@ -113,14 +113,14 @@ public class ArcModel extends DefaultEdge implements Serializable {
     public Point2D getProbabilityLabelPosition() {
         Point2D result = null;
         Point2D positions[] = GraphConstants.getExtraLabelPositions(getAttributes());
-        if ( positions.length > 0 ) result = positions[0];
+        if (positions.length > 0) result = positions[0];
 
         Point2D offset = GraphConstants.getOffset(getAttributes());
-        if ( offset != null && result != null ) {
+        if (offset != null && result != null) {
             result = new Point2D.Double(result.getX(), result.getY() + offset.getY());
         }
 
-        if ( result == null ) result = getDefaultLabelPosition();
+        if (result == null) result = getDefaultLabelPosition();
         return result;
     }
 
@@ -136,19 +136,19 @@ public class ArcModel extends DefaultEdge implements Serializable {
     public boolean isXORsplit(PetriNetModelProcessor mp) {
         Object cell = ((DefaultPort) getSource()).getParent();
 
-        if ( cell instanceof GroupModel ) {
+        if (cell instanceof GroupModel) {
             cell = ((GroupModel) cell).getMainElement();
         }
 
-        if ( cell instanceof TransitionModel ) {
+        if (cell instanceof TransitionModel) {
             TransitionModel trans = (TransitionModel) cell;
             int opType = trans.getToolSpecific().getOperatorType();
-            if ( (opType == OperatorTransitionModel.XOR_SPLIT_TYPE) || (opType == OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE) || (opType == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE) ) {
+            if ((opType == OperatorTransitionModel.XOR_SPLIT_TYPE) || (opType == OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE) || (opType == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE)) {
                 return true;
             }
         }
 
-        if ( cell instanceof PlaceModel ) {
+        if (cell instanceof PlaceModel) {
             PlaceModel place = (PlaceModel) cell;
             int num = mp.getElementContainer().
                     getOutgoingArcs(place.getId()).size();
@@ -160,9 +160,12 @@ public class ArcModel extends DefaultEdge implements Serializable {
     }
 
     /**
-     * Returns the inscriptionValue.
+     * Returns the inscriptionValue of the arc.
+     * <p>
+     * The inscription value represents the amount of tokens that are transferred  from the source to the target
+     * of the arc on a single execution. It is also known as the weight of the arc.
      *
-     * @return String
+     * @return the inscription value of the arc
      */
     public int getInscriptionValue() {
         int i;
@@ -170,16 +173,26 @@ public class ArcModel extends DefaultEdge implements Serializable {
             i = (int) getUserObject();
         } catch (Exception e) {
             i = 1;
+
         }
         return i == -1 ? 1 : i;
     }
 
     /**
-     * Sets the inscriptionValue.
+     * Sets the inscriptionValue of the arc.
+     * <p>
+     * The inscription value represents the amount of tokens that are transferred  from the source to the target
+     * of the arc on a single execution. It is also known as the weight of the arc.
+     * <p>
+     * The valid range is form {@code 1} to {@link Integer#MAX_VALUE}.
      *
      * @param inscriptionValue The inscriptionValue to set
+     * @throws IllegalArgumentException if the value is less or equal {@code 0}
      */
     public void setInscriptionValue(int inscriptionValue) {
+
+        if (inscriptionValue <= 0) throw new IllegalArgumentException("The inscription value has to be positive");
+
         setUserObject(inscriptionValue);
     }
 
@@ -235,7 +248,7 @@ public class ArcModel extends DefaultEdge implements Serializable {
      */
     public void setRoute(boolean route) {
 
-        if ( route ) {
+        if (route) {
             getAttributes().applyValue(GraphConstants.ROUTING, GraphConstants.ROUTING_SIMPLE);
             getAttributes().remove(GraphConstants.POINTS);
         } else {
@@ -252,7 +265,7 @@ public class ArcModel extends DefaultEdge implements Serializable {
      */
     public void addPoint(Point2D c, int index) {
         List<Object> points = GraphConstants.getPoints(getAttributes());
-        if ( points == null ) {
+        if (points == null) {
             points = new Vector<Object>();
         }
         points.add(index, c);
@@ -270,31 +283,31 @@ public class ArcModel extends DefaultEdge implements Serializable {
     public void addPoint(Point2D c) {
         AttributeMap map = getAttributes();
         List<Object> points = GraphConstants.getPoints(map);
-        if ( points == null ) {
+        if (points == null) {
             points = new Vector<Object>();
             Point2D[] currentPoints = getPoints();
-            for ( int i = 0; i < currentPoints.length; i++ ) {
+            for (int i = 0; i < currentPoints.length; i++) {
                 points.add(currentPoints[i]);
             }
         }
 
         int index = 0;
         double min = Double.MAX_VALUE, dist = 0;
-        for ( int i = 0; i < points.size() - 1; i++ ) {
+        for (int i = 0; i < points.size() - 1; i++) {
             Point2D p = null;
             Point2D p1 = null;
-            if ( points.get(i) instanceof Point2D ) {
+            if (points.get(i) instanceof Point2D) {
                 p = (Point2D) points.get(i);
-            } else if ( points.get(i) instanceof PortView ) {
+            } else if (points.get(i) instanceof PortView) {
                 p = ((PortView) points.get(i)).getLocation();
             }
-            if ( points.get(i + 1) instanceof Point2D ) {
+            if (points.get(i + 1) instanceof Point2D) {
                 p1 = (Point2D) points.get(i + 1);
-            } else if ( points.get(i + 1) instanceof PortView ) {
+            } else if (points.get(i + 1) instanceof PortView) {
                 p1 = ((PortView) points.get(i + 1)).getLocation();
             }
             dist = new Line2D.Double(p, p1).ptLineDistSq(c);
-            if ( dist < min ) {
+            if (dist < min) {
                 min = dist;
                 index = i + 1;
             }
@@ -306,10 +319,10 @@ public class ArcModel extends DefaultEdge implements Serializable {
         AttributeMap map = getAttributes();
         List<Object> points = GraphConstants.getPoints(map);
         Point2D[] result = new Point2D[]{};
-        if ( points != null ) {
+        if (points != null) {
             result = new Point2D[points.size()];
-            for ( int i = 0; i < points.size(); i++ ) {
-                if ( points.get(i) instanceof PortView ) {
+            for (int i = 0; i < points.size(); i++) {
+                if (points.get(i) instanceof PortView) {
                     result[i] = ((PortView) points.get(i)).getLocation();
                 } else {
                     result[i] = (Point2D) points.get(i);
@@ -322,9 +335,9 @@ public class ArcModel extends DefaultEdge implements Serializable {
     public void setPoints(Point2D[] points) {
         AttributeMap map = getAttributes();
         List<Object> pointList = GraphConstants.getPoints(map);
-        if ( pointList != null ) {
-            while ( pointList.size() > 2 ) pointList.remove(1);
-            for ( int i = points.length - 1; i >= 0; i-- ) {
+        if (pointList != null) {
+            while (pointList.size() > 2) pointList.remove(1);
+            for (int i = points.length - 1; i >= 0; i--) {
                 pointList.add(1, points[i]);
             }
             GraphConstants.setPoints(map, pointList);
@@ -389,7 +402,7 @@ public class ArcModel extends DefaultEdge implements Serializable {
         points = points != null ? points : new Vector<>(); // ensure points not null
 
         Vector<Object> newPoints = new Vector<Object>();
-        for ( int i = 1; i < points.size() - 1; i++ ) {
+        for (int i = 1; i < points.size() - 1; i++) {
             newPoints.add(new IntPair((int) ((Point2D) points.get(i)).getX(), (int) ((Point2D) points.get(i)).getY()));
         }
         map.setArcPoints(newPoints);
@@ -410,7 +423,7 @@ public class ArcModel extends DefaultEdge implements Serializable {
         Point2D weightPosition = GraphConstants.getLabelPosition(attributes);
         Point2D offset = GraphConstants.getOffset(attributes);
 
-        if ( offset != null ) {
+        if (offset != null) {
             weightPosition = new Point2D.Double(weightPosition.getX(), offset.getY());
         }
 
@@ -422,7 +435,7 @@ public class ArcModel extends DefaultEdge implements Serializable {
     }
 
     public void setWeightLablePosition(Point2D newPosition) {
-        if ( newPosition == null ) return;
+        if (newPosition == null) return;
 
         GraphConstants.setLabelPosition(this.getAttributes(), newPosition);
     }
@@ -437,7 +450,7 @@ public class ArcModel extends DefaultEdge implements Serializable {
 
     public double getProbability() {
         Object probability = getAttributes().get("Probability");
-        if ( probability instanceof Double ) {
+        if (probability instanceof Double) {
             return (Double) probability;
         } else {
             return 1.0;
@@ -456,7 +469,7 @@ public class ArcModel extends DefaultEdge implements Serializable {
      */
     public boolean displayProbability() {
         Object probability = getAttributes().get("DisplayProbability");
-        if ( probability instanceof Boolean ) {
+        if (probability instanceof Boolean) {
             return ((Boolean) probability).booleanValue();
         } else {
             return false;
@@ -479,23 +492,23 @@ public class ArcModel extends DefaultEdge implements Serializable {
      * @return true if the arc weight should be displayed, otherwise false
      */
     public boolean displayWeight() {
-        return this.getInscriptionValue() > 1 || defaultWeightVisible;
+        return this.getInscriptionValue() > 1 || DEFAULT_WEIGHT_VISIBLE;
     }
 
     private int getPointPosition(Point2D p, int tolerance) {
         List<Object> points = GraphConstants.getPoints(getAttributes());
         int pos = -1;
         double dist = Double.MAX_VALUE;
-        for ( int i = 1; i < points.size() - 1; i++ ) {
+        for (int i = 1; i < points.size() - 1; i++) {
             Point2D a = (Point2D) points.get(i);
 
             double tp = Point2D.distance(a.getX(), a.getY(), p.getX(), p.getY());
-            if ( tp < dist ) {
+            if (tp < dist) {
                 dist = tp;
                 pos = i;
             }
         }
-        if ( dist < tolerance ) {
+        if (dist < tolerance) {
             return pos;
         }
         return -1;

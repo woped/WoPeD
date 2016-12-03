@@ -39,6 +39,21 @@ public class ArcModelTest {
         assertEquals(expected, actual);
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void setInscriptionValue_negativeWeight_throwsException() throws Exception {
+        ArcModel cut = new ArcModel();
+
+        int arcWeight = -1;
+        cut.setInscriptionValue(arcWeight);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void setInscriptionValue_weightIsZero_throwsException() throws Exception {
+        ArcModel cut = new ArcModel();
+
+        int arcWeight = 0;
+        cut.setInscriptionValue(arcWeight);
+    }
     @Test
     public void getCreationMap_validArc_containsArcWeightLabelPosition() throws Exception {
         ArcModel cut = createDemoArc();
