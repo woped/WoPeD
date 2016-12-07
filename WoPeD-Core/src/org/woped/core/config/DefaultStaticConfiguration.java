@@ -63,6 +63,7 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 	public static Font DEFAULT_RESOURCE_ORG_FONT = new Font("Verdana",
 			Font.ITALIC, 9);
 	public static Font DEFAULT_TOKEN_FONT = new Font("Verdana", Font.ITALIC, 20);
+	public static Font UNBOUND_TOKEN_FONT = new Font("Verdana", Font.PLAIN , 20);
 	public static Font DEFAULT_TABLE_FONT = new Font("Verdana", Font.PLAIN, 11);
 	public static Font DEFAULT_TABLE_BOLDFONT = new Font("Verdana", Font.BOLD,
 			11);

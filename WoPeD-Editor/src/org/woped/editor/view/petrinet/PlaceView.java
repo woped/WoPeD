@@ -160,7 +160,9 @@ public class PlaceView extends PetriNetElementView {
                     if ( relevantTokens > 3 && relevantTokens < 100 ) {
                         msg += relevantTokens;
                     } else if ( relevantTokens > 99 ) {
-                        msg += '\u221E';
+//                        msg += '\u221E';
+                        g.setFont(DefaultStaticConfiguration.UNBOUND_TOKEN_FONT);
+                        msg += '\u03c9';
                     }
 
                     int x = (int) (d.getWidth() - metrics.stringWidth(msg)) / 2;
