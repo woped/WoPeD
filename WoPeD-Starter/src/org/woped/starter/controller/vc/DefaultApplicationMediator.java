@@ -56,8 +56,8 @@ public class DefaultApplicationMediator extends ApplicationMediator
         super(ui, conf);
 		ReferenceProvider helper = new ReferenceProvider();
 		helper.setMediatorReference(this);
-        getVepController().register(ViewEvent.VIEWEVENTTYPE_GUI, new GUIViewEventProcessor(ViewEvent.VIEWEVENTTYPE_GUI, this));
-        getVepController().register(ViewEvent.VIEWEVENTTYPE_FILE, new FileEventProcessor(ViewEvent.VIEWEVENTTYPE_FILE, this));
+        getVepController().register(ViewEvent.VIEWEVENTTYPE_GUI, new GUIViewEventProcessor(this));
+        getVepController().register(ViewEvent.VIEWEVENTTYPE_FILE, new FileEventProcessor(this));
    	}
         
 	public void startUI(String[] filesToOpen) {

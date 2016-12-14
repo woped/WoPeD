@@ -22,8 +22,8 @@ public class ReachabilityGraphEventProcessor extends AbstractEventProcessor {
 	private AbstractApplicationMediator mediator = null;
 	private ReachabilityGraphVCListener rg_listener = null;
 
-	public ReachabilityGraphEventProcessor(int vepID, AbstractApplicationMediator mediator) {
-		super(vepID, mediator);
+	public ReachabilityGraphEventProcessor(AbstractApplicationMediator mediator) {
+		super(mediator);
 		this.mediator = mediator;
 	}
 

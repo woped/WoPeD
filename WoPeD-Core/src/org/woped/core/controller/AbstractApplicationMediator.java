@@ -23,11 +23,7 @@
 package org.woped.core.controller;
 
 import java.lang.reflect.Constructor;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import javax.swing.UIManager;
 
@@ -163,8 +159,10 @@ public abstract class AbstractApplicationMediator implements IViewListener
 
     public void processViewEvent(AbstractViewEvent viewevent)
     {
-        AbstractEventProcessor vep = null;
-        if ((vep = (AbstractEventProcessor) getVepController().lookup(viewevent.getType())) != null) vep.processViewEvent(viewevent);
+        Collection<AbstractEventProcessor> eventProcessors = getVepController().getViewEventProcessorsForType(viewevent.getType());
+        for(AbstractEventProcessor processor: eventProcessors){
+            processor.processViewEvent(viewevent);
+        }
     }
 
     public void addViewController(IViewController viewController)

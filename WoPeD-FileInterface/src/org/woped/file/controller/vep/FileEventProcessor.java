@@ -40,8 +40,8 @@ import java.util.Map;
 import java.util.Vector;
 
 public class FileEventProcessor extends AbstractEventProcessor {
-    public FileEventProcessor(int vepID, ApplicationMediator mediator) {
-        super(vepID, mediator);
+    public FileEventProcessor(ApplicationMediator mediator) {
+        super(mediator);
     }
 
     public static boolean isFileOverride(JFrame owner, String fileName) {

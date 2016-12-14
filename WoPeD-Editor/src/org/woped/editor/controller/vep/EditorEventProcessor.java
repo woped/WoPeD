@@ -20,8 +20,8 @@ import java.awt.*;
 import java.util.Iterator;
 
 public class EditorEventProcessor extends AbstractEventProcessor {
-    public EditorEventProcessor(int vepID, AbstractApplicationMediator mediator) {
-        super(vepID, mediator);
+    public EditorEventProcessor(AbstractApplicationMediator mediator) {
+        super(mediator);
     }
 
     public void processViewEvent(AbstractViewEvent event) {

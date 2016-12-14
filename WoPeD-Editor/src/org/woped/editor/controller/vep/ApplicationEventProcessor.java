@@ -24,9 +24,9 @@ public class ApplicationEventProcessor extends AbstractEventProcessor
 {
     private ApplicationMediator mediator = null;
 
-    public ApplicationEventProcessor(int vepID, ApplicationMediator mediator)
+    public ApplicationEventProcessor(ApplicationMediator mediator)
     {
-        super(vepID, mediator);
+        super(mediator);
         this.mediator = mediator;
     }
 

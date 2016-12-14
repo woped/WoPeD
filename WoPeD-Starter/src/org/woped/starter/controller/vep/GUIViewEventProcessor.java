@@ -63,9 +63,9 @@ import org.woped.gui.translations.Messages;
  */
 public class GUIViewEventProcessor extends AbstractEventProcessor
 {
-	public GUIViewEventProcessor(int vepID, DefaultApplicationMediator mediator)
+	public GUIViewEventProcessor(DefaultApplicationMediator mediator)
 	{
-		super(vepID, mediator);
+		super(mediator);
 	}
 
 	public void processViewEvent(AbstractViewEvent event)

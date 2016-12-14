@@ -91,14 +91,11 @@ public class ApplicationMediator extends AbstractApplicationMediator {
         visualController = new VisualController(this);
         ActionFactory.createStaticActions(this);
 
-        getVepController().register(AbstractViewEvent.VIEWEVENTTYPE_APPLICATION,
-                new ApplicationEventProcessor(AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, this));
-        getVepController().register(AbstractViewEvent.VIEWEVENTTYPE_EDIT,
-                new EditorEventProcessor(AbstractViewEvent.VIEWEVENTTYPE_EDIT, this));
-        getVepController().register(AbstractViewEvent.VIEWEVENTTYPE_REACHGRAPH,
-                new ReachabilityGraphEventProcessor(AbstractViewEvent.VIEWEVENTTYPE_REACHGRAPH, this));
-        clipboard.addClipboardListener(visualController);
+        getVepController().register(AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, new ApplicationEventProcessor(this));
+        getVepController().register(AbstractViewEvent.VIEWEVENTTYPE_EDIT,new EditorEventProcessor(this));
+        getVepController().register(AbstractViewEvent.VIEWEVENTTYPE_REACHGRAPH, new ReachabilityGraphEventProcessor(this));
 
+        clipboard.addClipboardListener(visualController);
     }
 
     @Override
