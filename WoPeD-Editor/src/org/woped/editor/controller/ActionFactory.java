@@ -255,7 +255,7 @@ public class ActionFactory
         STATIC_ACTION_MAP.put(ACTIONID_P2T, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.P2T, null, ACTIONID_P2T));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_P2T), VisualController.WITH_EDITOR, VisualController.WITH_EDITOR, VisualController.P2T);
         
-          STATIC_ACTION_MAP.put(ACTIONID_ROTATEVIEW, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ROTATEVIEW, null, ACTIONID_ROTATEVIEW));
+        STATIC_ACTION_MAP.put(ACTIONID_ROTATEVIEW, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ROTATEVIEW, null, ACTIONID_ROTATEVIEW));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ROTATEVIEW), VisualController.SUBPROCESS_EDITOR, VisualController.SUBPROCESS_EDITOR, VisualController.ROTATE);
         
         STATIC_ACTION_MAP.put(ACTIONID_ROTATE_TRANS_LEFT, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ROTATETRANSLEFT, null, ACTIONID_ROTATE_TRANS_LEFT));
@@ -600,6 +600,10 @@ public class ActionFactory
         	STATIC_ACTION_MAP = new HashMap<String, WoPeDAction>();
         }
         return STATIC_ACTION_MAP;
+    }
+
+    public static void registerAction(String actionId, WoPeDAction action){
+        STATIC_ACTION_MAP.put(actionId, action);
     }
 
     public static WoPeDAction getStaticAction(String id)

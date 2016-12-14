@@ -19,7 +19,7 @@ import org.woped.core.gui.IUserInterface;
 import org.woped.core.qualanalysis.IReachabilityGraph;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.core.utilities.Platform;
-import org.woped.editor.action.WoPeDAction;
+import org.woped.editor.action.ActionButtonListener;
 import org.woped.editor.controller.ActionFactory;
 import org.woped.editor.controller.VisualController;
 import org.woped.editor.controller.vep.ViewEvent;
@@ -2095,25 +2095,6 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
     @Override
     public void updateRecentMenu() {
         // TODO Auto-generated method stub
-    }
-
-    // ActionListener for Ribbon Components
-    class ActionButtonListener implements ActionListener {
-
-        private int event_id;
-        private WoPeDAction action;
-
-        public ActionButtonListener(AbstractApplicationMediator mediator, String action_id, int event_id, JComponent target) {
-
-            action = ActionFactory.getStaticAction(action_id);
-            ActionFactory.addTarget(mediator, action_id, target);
-            this.event_id = event_id;
-            target.setName(action_id);
-        }
-
-        public void actionPerformed(ActionEvent e) {
-            action.actionPerformed(new ViewEvent(this, AbstractViewEvent.VIEWEVENTTYPE_GUI, event_id));
-        }
     }
 
     class recentFileListener implements ActionListener {
