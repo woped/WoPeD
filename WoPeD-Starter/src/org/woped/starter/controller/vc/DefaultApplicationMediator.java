@@ -34,6 +34,7 @@ import org.woped.editor.controller.ApplicationMediator;
 import org.woped.editor.controller.vc.TaskBarVC;
 import org.woped.editor.controller.vep.ViewEvent;
 import org.woped.file.controller.vep.FileEventProcessor;
+import org.woped.qualanalysis.reachabilitygraph.controller.CoverabilityGraphEventProcessor;
 import org.woped.qualanalysis.simulation.ReferenceProvider;
 import org.woped.starter.DefaultUserInterface;
 import org.woped.starter.controller.vep.GUIViewEventProcessor;
@@ -58,6 +59,7 @@ public class DefaultApplicationMediator extends ApplicationMediator
 		helper.setMediatorReference(this);
         getVepController().register(ViewEvent.VIEWEVENTTYPE_GUI, new GUIViewEventProcessor(this));
         getVepController().register(ViewEvent.VIEWEVENTTYPE_FILE, new FileEventProcessor(this));
+        getVepController().register(ViewEvent.VIEWEVENTTYPE_COVERABILITY_GRAPH, new CoverabilityGraphEventProcessor(this));
    	}
         
 	public void startUI(String[] filesToOpen) {

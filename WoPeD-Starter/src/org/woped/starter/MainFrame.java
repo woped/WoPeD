@@ -11,10 +11,7 @@ import org.pushingpixels.flamingo.api.ribbon.resize.CoreRibbonResizePolicies;
 import org.pushingpixels.flamingo.api.ribbon.resize.CoreRibbonResizeSequencingPolicies;
 import org.woped.config.general.WoPeDRecentFile;
 import org.woped.core.config.ConfigurationManager;
-import org.woped.core.controller.AbstractApplicationMediator;
-import org.woped.core.controller.AbstractEventProcessor;
-import org.woped.core.controller.AbstractViewEvent;
-import org.woped.core.controller.IEditor;
+import org.woped.core.controller.*;
 import org.woped.core.gui.IUserInterface;
 import org.woped.core.qualanalysis.IReachabilityGraph;
 import org.woped.core.utilities.LoggerManager;
@@ -23,7 +20,9 @@ import org.woped.editor.action.ActionButtonListener;
 import org.woped.editor.controller.ActionFactory;
 import org.woped.editor.controller.VisualController;
 import org.woped.editor.controller.vep.ViewEvent;
+import org.woped.qualanalysis.reachabilitygraph.controller.CoverabilityGraphViewEvents;
 import org.woped.gui.images.svg.*;
+import org.woped.qualanalysis.reachabilitygraph.gui.CoverabilityGraphRibbonMenu;
 import org.woped.gui.translations.Messages;
 import org.woped.starter.osxMenu.OSXFullscreen;
 import org.woped.starter.osxMenu.OSXMenu;
@@ -52,6 +51,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
     private static final long serialVersionUID = 1L;
 
     private RibbonContextualTaskGroup tokengameGroup = null;
+    private CoverabilityGraphRibbonMenu coverabilityGraphExtension = null;
 
     private JCommandButton taskbarButtonNew = null;
     private JCommandButton taskbarButtonSave = null;
@@ -193,7 +193,6 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
     public void initialize(AbstractApplicationMediator mediator) {
 
         setMediator(mediator);
-        registerEventProcessor(mediator);
         /**
          * Creation of a new MacOSX MenuBar if on specific platform
          *
@@ -227,13 +226,20 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
         getRibbon().addTask(getCommunityTask());
         getRibbon().addContextualTaskGroup(getTokengameGroup());
 
+        //ribbon controls for coverability graph are outsourced in module CoverabilityGraph
+        coverabilityGraphExtension = new CoverabilityGraphRibbonMenu(mediator);
+        getRibbon().addContextualTaskGroup(coverabilityGraphExtension.getContextGroup());
+
+        registerEventProcessor(mediator);
         VisualController.getInstance().propertyChange(new PropertyChangeEvent(mediator, "InternalFrameCount", null, null));
     }
 
     private void registerEventProcessor(AbstractApplicationMediator mediator) {
         MenuViewEventProcessor menuViewEventProcessor = new MenuViewEventProcessor(mediator);
-        mediator.getVepController().register(AbstractViewEvent.VIEWEVENTTYPE_GUI, menuViewEventProcessor);
-        mediator.getVepController().register(AbstractViewEvent.VIEWEVENTTYPE_EDIT, menuViewEventProcessor);
+        VEPController vepController = mediator.getVepController();
+        vepController.register(AbstractViewEvent.VIEWEVENTTYPE_GUI, menuViewEventProcessor);
+        vepController.register(AbstractViewEvent.VIEWEVENTTYPE_EDIT, menuViewEventProcessor);
+        vepController.register(AbstractViewEvent.VIEWEVENTTYPE_COVERABILITY_GRAPH, menuViewEventProcessor);
     }
 
     private void setPopupTooltip(JCommandButton button, String prefix) {
@@ -2132,7 +2138,6 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
     private class MenuViewEventProcessor extends AbstractEventProcessor {
 
-
         /**
          * Constructor for the <code>AbstractVEP</code> stores the
          * <code>AtelosApplicationMediator</code>.
@@ -2159,6 +2164,12 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
                     // Check state when editor window is selected
                     checkTokenGameTaskVisibility(event.getSource());
                     break;
+                case CoverabilityGraphViewEvents.FRAME_ACTIVATED:
+                    setCoverabilityGraphTaskVisible(true);
+                    break;
+                case CoverabilityGraphViewEvents.FRAME_DEACTIVATED:
+                    setCoverabilityGraphTaskVisible(false);
+                    break;
             }
         }
 
@@ -2180,6 +2191,14 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
                     getRibbon().setVisible(getTokengameGroup(), false);
                     getRibbon().setSelectedTask(getAnalyzeTask());
                 }
+            }
+        }
+
+        private void setCoverabilityGraphTaskVisible(boolean visible) {
+            getRibbon().setVisible(coverabilityGraphExtension.getContextGroup(), visible);
+
+            if (visible) {
+                getRibbon().setSelectedTask(coverabilityGraphExtension.getDefaultTask());
             }
         }
     }

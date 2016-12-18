@@ -2,6 +2,8 @@ package org.woped.qualanalysis.reachabilitygraph.controller;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -15,6 +17,8 @@ import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.core.model.petrinet.TransitionModel;
+import org.woped.editor.action.WoPeDAction;
+import org.woped.editor.controller.ActionFactory;
 import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityEdgeModel;
 import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityPlaceModel;
 import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityPortModel;
@@ -34,7 +38,7 @@ import org.woped.qualanalysis.soundness.marking.IMarking;
  * 
  */
 
-public class ReachabilityCellListener implements MouseListener {
+public class ReachabilityCellListener implements MouseListener, MouseWheelListener {
 
     private ReachabilityJGraph graph = null;
     private ReachabilityPlaceModel lastHighlighted = null;
@@ -227,4 +231,16 @@ public class ReachabilityCellListener implements MouseListener {
         }
     }
 
+    /**
+     * Invoked when the mouse wheel is rotated.
+     *
+     * @param e
+     * @see MouseWheelEvent
+     */
+    @Override
+    public void mouseWheelMoved(MouseWheelEvent e) {
+        String actionId = e.getWheelRotation() <= 0 ? CoverabilityGraphActions.ZOOM_IN: CoverabilityGraphActions.ZOOM_OUT;
+        WoPeDAction zoomAction = ActionFactory.getStaticAction(actionId);
+        zoomAction.triggerAction(this);
+    }
 }

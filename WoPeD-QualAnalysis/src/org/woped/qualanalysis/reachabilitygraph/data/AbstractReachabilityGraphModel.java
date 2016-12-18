@@ -1,6 +1,8 @@
 package org.woped.qualanalysis.reachabilitygraph.data;
 
 import java.awt.Dimension;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseWheelListener;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -35,7 +37,10 @@ public abstract class AbstractReachabilityGraphModel implements IReachabilityGra
 		view.setAutoSizeOnValueChange(true);
 		view.setSelectsAllInsertedCells(false);
 		graph = new ReachabilityJGraph(model, view);
-		graph.addMouseListener(new ReachabilityCellListener(graph, editor));
+
+		ReachabilityCellListener mouseListener = new ReachabilityCellListener(graph, editor);
+		graph.addMouseListener(mouseListener);
+		graph.addMouseWheelListener(mouseListener);
 	}
 
 	public static ReachabilityJGraph layoutGraph(ReachabilityJGraph graph, int type, Dimension dim) {

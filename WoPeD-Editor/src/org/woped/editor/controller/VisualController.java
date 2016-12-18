@@ -138,6 +138,7 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
 	private static VisualController instance = null;
     private AbstractApplicationMediator am = null;
     private boolean active = true;
+
     // For each WoPeD action, we store a corresponding visibility configuration
 	private Map<WoPeDAction, IVisibility> actionVisibilityMap = new HashMap<WoPeDAction,IVisibility>();	
 	
@@ -169,7 +170,7 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
 	 * @param status	target enabling status
 	 * @return tells whether the status has been changed successfully.
 	 */
-	protected static boolean setEnabled(WoPeDAction action, boolean status)
+	public static boolean setEnabled(WoPeDAction action, boolean status)
 	{
 		if (action != null)
 		{
@@ -302,6 +303,15 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
         actionVisibilityMap.put(action, visibilityConfiguration);
         updateStatus(action);
     }
+
+	/**
+	 * Returns if the provided action is currently enabled.
+	 * @param action the action to get the current enabled state
+	 * @return {@code true} if the action is enabled, otherwise {@code false}
+	 */
+	public boolean isEnabled(WoPeDAction action){
+    	return actionVisibilityMap.get(action).getEnabled(m_status);
+	}
 
     /**
      * Changes the selected the selected, visible and enable status for all

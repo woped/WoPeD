@@ -8,6 +8,9 @@ import org.woped.core.controller.IEditor;
 import org.woped.core.gui.IEditorFrame;
 import org.woped.qualanalysis.reachabilitygraph.gui.ReachabilityGraphVC;
 
+/**
+ * This class observes the related editor frame and notifies the reachgraphVC on changes
+ */
 public class ReachabilityGraphVCListener implements InternalFrameListener {
 
     private ReachabilityGraphVC reachGraphVC = null;

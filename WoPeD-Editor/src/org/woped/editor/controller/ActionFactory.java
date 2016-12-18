@@ -91,8 +91,8 @@ public class ActionFactory
     public final static String         ACTIONID_DEACTIVATE_ALL_ROUTING = "Popup.Unroute";
     public final static String         ACTIONID_ADD_POINT              = "Popup.AddPoint";
     public final static String         ACTIONID_REMOVE_POINT           = "Popup.RemovePoint";
-    public final static String ACTIONID_ARC_WEIGHT_INCREASE = "Popup.ArcWeightIncrease";
-    public final static String ACTIONID_ARC_WEIGHT_DECREASE = "Popup.ArcWeightDecrease";
+    public final static String         ACTIONID_ARC_WEIGHT_INCREASE    = "Popup.ArcWeightIncrease";
+    public final static String         ACTIONID_ARC_WEIGHT_DECREASE    = "Popup.ArcWeightDecrease";
     public final static String         ACTIONID_OPEN_PROPERTIES        = "Popup.Properties";
     public final static String         ACTIONID_ADD_RESOURCE_TRIGGER   = "Popup.Trigger.AddResource";
     public final static String         ACTIONID_ADD_TIME_TRIGGER       = "Popup.Trigger.AddTime";
@@ -132,8 +132,7 @@ public class ActionFactory
     public final static String		   ACTIONID_GOOGLEPLUS			   = "Action.Googleplus";
     public final static String		   ACTIONID_TWITTER  			   = "Action.Twitter";
     public final static String		   ACTIONID_COMMUNITY  			   = "Action.Community";
-    
-    
+
     
     private static HashMap<String, WoPeDAction> STATIC_ACTION_MAP               = null;
     private static HashMap<IEditor, Action>     SELECT_EDITOR_SELECT_ACTION     = new HashMap<IEditor, Action>();
@@ -240,7 +239,7 @@ public class ActionFactory
         STATIC_ACTION_MAP.put(ACTIONID_QUANTSIM, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_FILE, AbstractViewEvent.QUANTSIM, null, ACTIONID_QUANTSIM));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_QUANTSIM), VisualController.WITH_EDITOR, VisualController.WITH_EDITOR, VisualController.IGNORE);   
         
-        STATIC_ACTION_MAP.put(ACTIONID_REACHGRAPH_START, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_REACHGRAPH, AbstractViewEvent.REACHGRAPH, null, ACTIONID_REACHGRAPH_START));
+        STATIC_ACTION_MAP.put(ACTIONID_REACHGRAPH_START, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_COVERABILITY_GRAPH, AbstractViewEvent.REACHGRAPH, null, ACTIONID_REACHGRAPH_START));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_REACHGRAPH_START), VisualController.WITH_EDITOR, VisualController.WITH_EDITOR, VisualController.REACH_GRAPH_START);
         
         STATIC_ACTION_MAP.put(ACTIONID_ZOOMIN, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ZOOM_IN, null, ACTIONID_ZOOMIN));

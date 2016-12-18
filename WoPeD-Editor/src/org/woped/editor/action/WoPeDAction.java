@@ -22,80 +22,66 @@
  */
 package org.woped.editor.action;
 
+import org.woped.core.controller.AbstractApplicationMediator;
+import org.woped.core.controller.AbstractViewEvent;
+import org.woped.editor.controller.EditorViewEvent;
+import org.woped.editor.controller.vep.ViewEvent;
+import org.woped.gui.translations.Messages;
+
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
-import javax.swing.AbstractAction;
-import javax.swing.Icon;
-import javax.swing.JComponent;
-
-import org.woped.core.controller.AbstractApplicationMediator;
-import org.woped.editor.controller.EditorViewEvent;
-import org.woped.gui.translations.Messages;
-
 /**
  * @author Thomas Pohl
- * 
- * 
- * 13.10.2003
+ *         <p>
+ *         <p>
+ *         13.10.2003
  */
 
 @SuppressWarnings("serial")
-public class WoPeDAction extends AbstractAction
-{
+public class WoPeDAction extends AbstractAction {
 
-    private boolean                    		m_selected = false;
-    private AbstractApplicationMediator 	am         = null;
-    private int                         	type       = -1;
-    private int                         	order      = -1;
-    private Object                      	data       = null;
-    private ArrayList<JComponent>			target	   = new ArrayList<JComponent>();
-         
-    public boolean isSelected()
-    {
-        return m_selected;
-    }
-    
-    public WoPeDAction(AbstractApplicationMediator am, int type, int order)
-    {
-        this(am, type, order, null, null);
-    }
+    private boolean m_selected = false;
+    private AbstractApplicationMediator am = null;
+    private int type = -1;
+    private int order = -1;
+    private Object data = null;
+    private ArrayList<JComponent> target = new ArrayList<JComponent>();
 
-    public WoPeDAction(AbstractApplicationMediator am, int type, int order, Object data)
-    {
-        this(am, type, order, data, null);
-    }
-
-    public WoPeDAction(String propertiesPrefix)
-    {
+    public WoPeDAction(String propertiesPrefix) {
         this(null, -1, -1, null, propertiesPrefix);
     }
 
-    public WoPeDAction(String propertiesPrefix, Object[] args)
-    {
+    public WoPeDAction(String propertiesPrefix, Object[] args) {
         this(null, -1, -1, null, propertiesPrefix, args);
     }
 
-    /**
-     * @param arg0
-     */
-    public WoPeDAction(AbstractApplicationMediator am, int type, int order, Object data, String propertiesPrefix)
-    {
+    public WoPeDAction(AbstractApplicationMediator am, String name, Icon icon) {
+        super(name, icon);
+        this.am = am;
+    }
+
+    public WoPeDAction(AbstractApplicationMediator am, int type, int order) {
+        this(am, type, order, null, null);
+    }
+
+    public WoPeDAction(AbstractApplicationMediator am, int type, int order, Object data) {
+        this(am, type, order, data, null);
+    }
+
+    public WoPeDAction(AbstractApplicationMediator am, int type, int order, Object data, String propertiesPrefix) {
         this(am, type, order, data, propertiesPrefix, null);
     }
 
-    /**
-     * @param arg0
-     */
-    public WoPeDAction(AbstractApplicationMediator am, int type, int order, Object data, String propertiesPrefix, Object[] args)
-    {
+    public WoPeDAction(AbstractApplicationMediator am, int type, int order, Object data, String propertiesPrefix, Object[] args) {
         super();
         this.type = type;
         this.order = order;
         this.am = am;
         this.data = data;
-        if (propertiesPrefix != null)
-        {
+
+        if (propertiesPrefix != null) {
             putValue(NAME, Messages.getTitle(propertiesPrefix, args));
             putValue(SMALL_ICON, Messages.getImageIcon(propertiesPrefix));
             putValue(MNEMONIC_KEY, new Integer(Messages.getMnemonic(propertiesPrefix)));
@@ -104,28 +90,46 @@ public class WoPeDAction extends AbstractAction
         }
     }
 
-    /**
-     * @param arg0
-     * @param arg1
-     */
-    public WoPeDAction(AbstractApplicationMediator am, String arg0, Icon icon)
-    {
-        super(arg0, icon);
+    public boolean isSelected() {
+        return m_selected;
     }
 
-    public void actionPerformed(final ActionEvent e)
-    {
-        if (am != null)
-        	am.viewEventPerformed(new EditorViewEvent(e.getSource(), type, order, data));
-        
+    public void actionPerformed(final ActionEvent e) {
+
+        if (am == null) return;
+
+        if (e instanceof AbstractViewEvent) {
+            AbstractViewEvent event = (AbstractViewEvent) e;
+            this.data = event.getData();
+        }
+
+        am.viewEventPerformed(new EditorViewEvent(e.getSource(), type, order, data));
     }
 
-	public void addTarget(JComponent target) {
-		this.target.add(target);
-		
-	}
-	
-	public ArrayList<JComponent>getTarget() {
-		return target;
-	}
+    public void triggerAction(Object source){
+        triggerAction(source, null);
+    }
+
+    public void triggerAction(Object source, Object data){
+        this.actionPerformed(new ViewEvent(source, type, order, data));
+    }
+
+    public Object getData() {
+        return data;
+    }
+
+    public void setData(Object newValue) {
+        data = newValue;
+    }
+
+    public void addTarget(JComponent target) {
+        this.target.add(target);
+
+    }
+
+    public ArrayList<JComponent> getTarget() {
+        return target;
+    }
+
+
 }

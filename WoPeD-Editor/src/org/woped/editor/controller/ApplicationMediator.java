@@ -22,16 +22,6 @@
  */
 package org.woped.editor.controller;
 
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeSupport;
-import java.util.Iterator;
-import java.util.List;
-
-import javax.swing.JComponent;
-import javax.swing.JFrame;
-import javax.swing.JInternalFrame;
-import javax.swing.JOptionPane;
-
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.IGeneralConfiguration;
 import org.woped.core.controller.AbstractApplicationMediator;
@@ -50,10 +40,15 @@ import org.woped.editor.controller.vc.TaskBarVC;
 import org.woped.editor.controller.vep.ApplicationEventProcessor;
 import org.woped.editor.controller.vep.EditorEventProcessor;
 import org.woped.gui.translations.Messages;
-import org.woped.qualanalysis.reachabilitygraph.controller.ReachabilityGraphEventProcessor;
 import org.woped.qualanalysis.structure.NetAlgorithms;
 import org.woped.qualanalysis.structure.components.ArcConfiguration;
 import org.woped.understandability.NetColorScheme;
+
+import javax.swing.*;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeSupport;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * This Class should be the Mediator for the Editor VC... It must be implemented (inherit) by each GUI. The Mediator must register each VC... Actionperformig is
@@ -93,7 +88,6 @@ public class ApplicationMediator extends AbstractApplicationMediator {
 
         getVepController().register(AbstractViewEvent.VIEWEVENTTYPE_APPLICATION, new ApplicationEventProcessor(this));
         getVepController().register(AbstractViewEvent.VIEWEVENTTYPE_EDIT,new EditorEventProcessor(this));
-        getVepController().register(AbstractViewEvent.VIEWEVENTTYPE_REACHGRAPH, new ReachabilityGraphEventProcessor(this));
 
         clipboard.addClipboardListener(visualController);
     }

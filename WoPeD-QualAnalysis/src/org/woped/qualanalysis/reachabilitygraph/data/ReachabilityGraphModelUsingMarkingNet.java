@@ -9,6 +9,7 @@ import org.jgraph.graph.DefaultGraphCell;
 import org.jgraph.graph.GraphConstants;
 import org.woped.core.controller.IEditor;
 import org.woped.qualanalysis.reachabilitygraph.controller.ParallelRouter;
+import org.woped.qualanalysis.reachabilitygraph.gui.ReachabilityGraphVC;
 import org.woped.qualanalysis.reachabilitygraph.gui.ReachabilityJGraph;
 import org.woped.qualanalysis.soundness.builder.BuilderFactory;
 import org.woped.qualanalysis.soundness.marking.Arc;
@@ -18,10 +19,8 @@ import org.woped.qualanalysis.soundness.marking.Marking;
 public class ReachabilityGraphModelUsingMarkingNet extends AbstractReachabilityGraphModel {
 	private IMarkingNet markingNet;
 	private HashSet<DefaultGraphCell> cellsList;
-
 	public ReachabilityGraphModelUsingMarkingNet(IEditor editor) {
 		super(editor);
-
 		computeReachabilityGraph();
 	}
 

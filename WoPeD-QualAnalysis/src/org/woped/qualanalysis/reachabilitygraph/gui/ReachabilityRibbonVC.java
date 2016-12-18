@@ -138,7 +138,6 @@ public class ReachabilityRibbonVC extends JRibbon {
     {
 
         listener = new TB_Listener(rgp);
-
         boxListener = new BoxItemListener(rgp);
         addZoomChooser();
 
@@ -146,9 +145,9 @@ public class ReachabilityRibbonVC extends JRibbon {
 
         setUnselectButtonEnabled(false);
     }
-	/*********/
+	/* ********/
 	/* BANDS */
-	/*********/
+	/* ********/
     private JRibbonBand getViewBand() {
     	if (viewBand == null) {
     		viewBand = new JRibbonBand(Messages.getString("View.textBandTitle"), null);
@@ -179,9 +178,9 @@ public class ReachabilityRibbonVC extends JRibbon {
 		return reachabilityBand;
 	}
 
-	/*********/
+	/* ******/
 	/* TASK */
-	/*********/
+	/* ******/
 	private RibbonTask getReachabilityTask() {
 
 		if (reachabilityTask == null) {
@@ -189,17 +188,10 @@ public class ReachabilityRibbonVC extends JRibbon {
 		}
 		return reachabilityTask;
 	}
-	/*********/
-	/* BUTTONS */
-	/*********/
-//	private JCommandButton getCloseButton() {
-//		if (pbnClose == null) {
-//			pbnClose	= new JCommandButton(Messages.getTitle("QuanlAna.ReachabilityGraph.CloseButton"), new file_close());
-//			pbnClose.addActionListener(listener);
-//		}
-//		return pbnClose;
-//	}
 
+	/* ******* */
+	/* BUTTONS */
+	/* ******* */
 	private JCommandButton getRefreshButton() {
 		if (pbnRefresh == null) {
 			pbnRefresh	= new JCommandButton(Messages.getTitle("QuanlAna.ReachabilityGraph.RefreshButton"), new refresh());
@@ -288,20 +280,12 @@ public class ReachabilityRibbonVC extends JRibbon {
 		}
 		return zoomChooserButton;
 	}
-	/*********/
+
 	protected int getSelectedType(){
 		return LayoutIndex;
 	}
 
-	public void setCloseButtonEnabled(boolean value){
-		pbnClose.setEnabled(value);
-	}
-
-	public boolean pbnCloseButtonEnabled(){
-		return pbnClose.isEnabled();
-	}
-
-	public void setRrefreshButtonEnabled(boolean value){
+	public void setRefreshButtonEnabled(boolean value){
 		pbnRefresh.setEnabled(value);
 	}
 

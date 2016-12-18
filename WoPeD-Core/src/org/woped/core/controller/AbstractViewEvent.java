@@ -11,9 +11,19 @@ public abstract class AbstractViewEvent extends ActionEvent
     public static final int VIEWEVENTTYPE_APPLICATION = 1;
     public static final int VIEWEVENTTYPE_FILE        = 2;
     public static final int VIEWEVENTTYPE_GUI         = 3;
-    public static final int VIEWEVENTTYPE_REACHGRAPH  = 4;
+
+
+    /**
+     * Type for coverability graph related events
+     * <p>
+     * The events from this group can be found in {@code CoverabilityGraphViewEvents}.
+     * They use the range from 10.000 to 10.100 for their events.
+     */
+    public static final int VIEWEVENTTYPE_COVERABILITY_GRAPH = 4;
     public static final int VIEWEVENTTYPE_IMPORTAPRO = 701;
     public static final int VIEWEVENTTYPE_EXPORTAPRO = 702;
+
+
     // General Orders
     public static final int VIEWEVENT_FIRST           = 0;
     public static final int OK                        = 0;
@@ -269,6 +279,10 @@ public abstract class AbstractViewEvent extends ActionEvent
     public static final int P2T						  = 1100;
     public static final int INCREASE_ARC_WEIGHT = 1101;
     public static final int DECREASE_ARC_WEIGHT = 1102;
+
+    // Keys for coverability graph events are in the range from 10.000 to 10.100;
+    // The can be found at CoverabilityGraphViewEvents in the coverability graph module
+
     //variable to change toolbars and references
     public static final int CHANGEPANEL				  = 1999;
     private IViewListener viewListener = null;
