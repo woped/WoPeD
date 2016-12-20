@@ -16,12 +16,12 @@ import org.pushingpixels.flamingo.api.ribbon.resize.CoreRibbonResizePolicies;
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.action.ActionButtonListener;
+import org.woped.gui.images.svg.*;
+import org.woped.gui.translations.Messages;
 import org.woped.qualanalysis.Constants;
 import org.woped.qualanalysis.reachabilitygraph.controller.CoverabilityGraphActions;
 import org.woped.qualanalysis.reachabilitygraph.controller.CoverabilityGraphViewEvents;
-import org.woped.gui.images.svg.*;
-import org.woped.gui.translations.Messages;
-import org.woped.qualanalysis.reachabilitygraph.data.IReachabilityGraphModel;
+import org.woped.qualanalysis.reachabilitygraph.gui.layout.CoverabilityGraphLayout;
 
 import javax.swing.*;
 import java.awt.*;
@@ -166,15 +166,20 @@ public class CoverabilityGraphRibbonMenu {
             public JPopupPanel getPopupPanel(JCommandButton commandButton) {
                 String resourceKey = "CoverabilityGraph.Ribbon.LayoutOption.Hierarchic";
                 JCommandMenuButton optionHierarchic = new JCommandMenuButton(Messages.getString(resourceKey), getResizableIcon(resourceKey));
-                addClickHandler(optionHierarchic, LAYOUT, CoverabilityGraphViewEvents.CHANGE_LAYOUT, IReachabilityGraphModel.HIERARCHIC);
+                addClickHandler(optionHierarchic, LAYOUT, CoverabilityGraphViewEvents.CHANGE_LAYOUT, CoverabilityGraphLayout.HIERARCHIC);
 
                 resourceKey = "CoverabilityGraph.Ribbon.LayoutOption.Circle";
                 JCommandMenuButton optionCircular = new JCommandMenuButton(Messages.getString(resourceKey), getResizableIcon(resourceKey));
-                addClickHandler(optionCircular, LAYOUT, CoverabilityGraphViewEvents.CHANGE_LAYOUT, IReachabilityGraphModel.CIRCLE);
+                addClickHandler(optionCircular, LAYOUT, CoverabilityGraphViewEvents.CHANGE_LAYOUT, CoverabilityGraphLayout.CIRCULAR);
+
+                resourceKey = "CoverabilityGraph.Ribbon.LayoutOption.Tree";
+                JCommandMenuButton optionTree = new JCommandMenuButton(Messages.getString(resourceKey), null);
+                addClickHandler(optionTree, LAYOUT, CoverabilityGraphViewEvents.CHANGE_LAYOUT, CoverabilityGraphLayout.TREE);
 
                 JCommandPopupMenu layoutOption = new JCommandPopupMenu();
                 layoutOption.addMenuButton(optionHierarchic);
                 layoutOption.addMenuButton(optionCircular);
+                layoutOption.addMenuButton(optionTree);
                 return layoutOption;
             }
         });

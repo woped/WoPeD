@@ -7,8 +7,9 @@
  * @author Benjamin Geiger
  */
 
-package org.woped.qualanalysis.reachabilitygraph.data;
+package org.woped.qualanalysis.reachabilitygraph.gui.layout;
 
+import java.awt.*;
 import java.awt.geom.Rectangle2D;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -20,19 +21,19 @@ import java.util.Set;
 import org.jgraph.graph.AttributeMap;
 import org.jgraph.graph.GraphConstants;
 import org.jgraph.graph.GraphModel;
+import org.woped.qualanalysis.reachabilitygraph.data.AbstractReachabilityGraphModel;
+import org.woped.qualanalysis.reachabilitygraph.data.model.ReachabilityEdgeModel;
+import org.woped.qualanalysis.reachabilitygraph.data.model.ReachabilityPlaceModel;
+import org.woped.qualanalysis.reachabilitygraph.data.model.ReachabilityPortModel;
 import org.woped.qualanalysis.reachabilitygraph.gui.ReachabilityJGraph;
 
-public class ReachabilityLayoutHierarchic {
+public class HierarchicLayout implements IReachabilityLayout {
 
-	private static Map<ReachabilityPlaceModel,AttributeMap> edit;
+	private  Map<ReachabilityPlaceModel,AttributeMap> edit;
 	
-	/**
-	 * takes a ReachabilityJGraph to layout it in a hierarchic way.
-	 * @param graph
-	 * @return
-	 */
-	public static ReachabilityJGraph layoutGraph(ReachabilityJGraph graph){
-		edit = new HashMap<ReachabilityPlaceModel,AttributeMap>();
+	@Override
+	public  ReachabilityJGraph layoutGraph(ReachabilityJGraph graph, Dimension dimension){
+		edit = new HashMap<>();
 		applyHierarchicLayout(graph);
 		graph.getGraphLayoutCache().edit(edit,null,null,null);
 		boolean colored = Boolean.parseBoolean(graph.getAttributeMap().get("reachabilityGraph.color"));
@@ -45,7 +46,7 @@ public class ReachabilityLayoutHierarchic {
 	 * 
 	 * @param graph
 	 */
- 	private static void applyHierarchicLayout(ReachabilityJGraph graph){
+ 	private  void applyHierarchicLayout(ReachabilityJGraph graph){
 		GraphModel model = graph.getModel();
 		LinkedList<ReachabilityPlaceModel> markings = new LinkedList<ReachabilityPlaceModel>();
 		// get all marking and reset them to not recursively touched
@@ -76,12 +77,12 @@ public class ReachabilityLayoutHierarchic {
 			}
 			// it gets interesting. the initial marking is put to the recursive function
 			if(width != 0 && height != 0){
-				ReachabilityLayoutHierarchic.hierarcher(initialPlace, new Rectangle2D.Double(10, 0, width, height), horizontalSpace, verticalSpace, toProof);
+				hierarcher(initialPlace, new Rectangle2D.Double(10, 0, width, height), horizontalSpace, verticalSpace, toProof);
 			} else {
-				ReachabilityLayoutHierarchic.hierarcher(initialPlace, new Rectangle2D.Double(10, 0, bounds.getWidth(), bounds.getHeight()), horizontalSpace, verticalSpace, toProof);	
+				hierarcher(initialPlace, new Rectangle2D.Double(10, 0, bounds.getWidth(), bounds.getHeight()), horizontalSpace, verticalSpace, toProof);
 			}
 			LinkedList<ReachabilityPlaceModel> toEdit = (LinkedList<ReachabilityPlaceModel>)toProof.clone();
-			ReachabilityLayoutHierarchic.hierarcherProofer(toProof, horizontalSpace, verticalSpace);
+			hierarcherProofer(toProof, horizontalSpace, verticalSpace);
 			Iterator<ReachabilityPlaceModel> iter = toEdit.iterator();
 			while(iter.hasNext()){
 				ReachabilityPlaceModel next = iter.next();
@@ -98,7 +99,7 @@ public class ReachabilityLayoutHierarchic {
 	 * @param places
 	 * @return
 	 */
-	private static LinkedList<ReachabilityPlaceModel> hierarcher(ReachabilityPlaceModel place, Rectangle2D bounds, int horizontalSpace, int verticalSpace ,LinkedList<ReachabilityPlaceModel> places){
+	private  LinkedList<ReachabilityPlaceModel> hierarcher(ReachabilityPlaceModel place, Rectangle2D bounds, int horizontalSpace, int verticalSpace ,LinkedList<ReachabilityPlaceModel> places){
 		// set bounds of given place and set it as drawn 
 		if(!place.isSetRecursiveBounds()){
 			GraphConstants.setBounds(place.getAttributes(), bounds);
@@ -159,7 +160,7 @@ public class ReachabilityLayoutHierarchic {
 	 * 
 	 * @param places
 	 */
-	private static void hierarcherProofer(LinkedList<ReachabilityPlaceModel> places, int horizontalSpace, int verticalSpace){
+	private  void hierarcherProofer(LinkedList<ReachabilityPlaceModel> places, int horizontalSpace, int verticalSpace){
 		if(places.size() > 0){
 			// take the first of all places
 			ReachabilityPlaceModel first = places.removeFirst();
@@ -194,7 +195,7 @@ public class ReachabilityLayoutHierarchic {
 	 * @param edge
 	 * @return
 	 */
-	private static ReachabilityPortModel getOtherPort(ReachabilityPlaceModel place, ReachabilityEdgeModel edge){
+	private  ReachabilityPortModel getOtherPort(ReachabilityPlaceModel place, ReachabilityEdgeModel edge){
 		List<?> ports = place.getChildren();
 		for(int portIndex = 0; portIndex < ports.size(); portIndex++){
 			if(edge.getSource() == place.getChildAt(portIndex)){

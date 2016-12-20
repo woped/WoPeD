@@ -9,9 +9,13 @@ import org.jgraph.graph.DefaultGraphCell;
 import org.jgraph.graph.GraphConstants;
 import org.woped.core.controller.IEditor;
 import org.woped.qualanalysis.reachabilitygraph.controller.ParallelRouter;
-import org.woped.qualanalysis.reachabilitygraph.gui.ReachabilityGraphVC;
+import org.woped.qualanalysis.reachabilitygraph.data.model.ReachabilityEdgeModel;
+import org.woped.qualanalysis.reachabilitygraph.data.model.ReachabilityPlaceModel;
+import org.woped.qualanalysis.reachabilitygraph.data.model.ReachabilityPortModel;
 import org.woped.qualanalysis.reachabilitygraph.gui.ReachabilityJGraph;
 import org.woped.qualanalysis.soundness.builder.BuilderFactory;
+import org.woped.qualanalysis.soundness.builder.lowlevelpetrinet.AbstractLowLevelPetriNetBuilder;
+import org.woped.qualanalysis.soundness.datamodel.LowLevelPetriNet;
 import org.woped.qualanalysis.soundness.marking.Arc;
 import org.woped.qualanalysis.soundness.marking.IMarkingNet;
 import org.woped.qualanalysis.soundness.marking.Marking;
@@ -19,6 +23,7 @@ import org.woped.qualanalysis.soundness.marking.Marking;
 public class ReachabilityGraphModelUsingMarkingNet extends AbstractReachabilityGraphModel {
 	private IMarkingNet markingNet;
 	private HashSet<DefaultGraphCell> cellsList;
+
 	public ReachabilityGraphModelUsingMarkingNet(IEditor editor) {
 		super(editor);
 		computeReachabilityGraph();
@@ -26,16 +31,21 @@ public class ReachabilityGraphModelUsingMarkingNet extends AbstractReachabilityG
 
 	public void computeReachabilityGraph() {
 		init();
-		markingNet = BuilderFactory.createMarkingNet(BuilderFactory.createLowLevelPetriNetWithoutTStarBuilder(editor)
-				.getLowLevelPetriNet());
+
+		AbstractLowLevelPetriNetBuilder builder = BuilderFactory.createLowLevelPetriNetWithoutTStarBuilder(editor);
+        LowLevelPetriNet lowLevelPetriNet = builder.getLowLevelPetriNet();
+        markingNet = BuilderFactory.createMarkingNet(lowLevelPetriNet);
 		transformMarkingNet2ReachabilityJGraph();
 	}
 
 	public ReachabilityJGraph transformMarkingNet2ReachabilityJGraph() {
-		cellsList = new HashSet<DefaultGraphCell>();
+		cellsList = new HashSet<>();
+
+
 		for (Marking marking : markingNet.getMarkings()) {
 			cellsList.add(getPlace(marking));
 		}
+
 		for (Marking marking : markingNet.getMarkings()) {
 			for (Arc arc : marking.getSuccessors()) {
 				getChildNode(arc, marking);
@@ -105,30 +115,17 @@ public class ReachabilityGraphModelUsingMarkingNet extends AbstractReachabilityG
 		return place;
 	}
 
+	@Override
 	public ReachabilityJGraph getGraph() {
 		computeReachabilityGraph();
 		return graph;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.woped.qualanalysis.reachabilitygraph.data.IReachabilityGraphModel
-	 * #getLegendByID()
-	 */
 	@Override
 	public String getLegendByID() {
 		return markingNet.placesToStringId();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.woped.qualanalysis.reachabilitygraph.data.IReachabilityGraphModel
-	 * #getLegendByName()
-	 */
 	@Override
 	public String getLegendByName() {
 		return markingNet.placesToStringName();

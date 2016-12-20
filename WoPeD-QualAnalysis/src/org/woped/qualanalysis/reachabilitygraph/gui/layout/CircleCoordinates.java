@@ -1,4 +1,4 @@
-package org.woped.qualanalysis.reachabilitygraph.data;
+package org.woped.qualanalysis.reachabilitygraph.gui.layout;
 
 import java.awt.Point;
 import java.util.LinkedList;

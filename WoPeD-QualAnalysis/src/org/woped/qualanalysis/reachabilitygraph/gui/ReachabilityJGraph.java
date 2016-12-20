@@ -2,30 +2,28 @@
  * ReachabilityGraph implementation was done by Manuel Fladt and Benjamin Geiger.
  * The code was written for a project at BA Karlsruhe in 2007/2008 under authority
  * of Prof. Dr. Thomas Freytag and Andreas Eckleder.
- * 
+ * <p>
  * This class was written by
+ *
  * @author Benjamin Geiger
  */
 
 package org.woped.qualanalysis.reachabilitygraph.gui;
-
-import java.awt.event.MouseEvent;
-import java.awt.geom.Rectangle2D;
-import java.util.HashMap;
-import java.util.Vector;
-
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
-import javax.swing.ToolTipManager;
 
 import org.jgraph.JGraph;
 import org.jgraph.graph.DefaultGraphModel;
 import org.jgraph.graph.GraphConstants;
 import org.jgraph.graph.GraphLayoutCache;
 import org.jgraph.graph.GraphModel;
-import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityEdgeModel;
-import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityPlaceModel;
+import org.woped.qualanalysis.reachabilitygraph.data.model.ReachabilityEdgeModel;
+import org.woped.qualanalysis.reachabilitygraph.data.model.ReachabilityPlaceModel;
 import org.woped.qualanalysis.soundness.marking.IMarking;
+
+import javax.swing.*;
+import java.awt.event.MouseEvent;
+import java.awt.geom.Rectangle2D;
+import java.util.HashMap;
+import java.util.Vector;
 
 public class ReachabilityJGraph extends JGraph {
 
@@ -34,16 +32,29 @@ public class ReachabilityJGraph extends JGraph {
     // AttributeMap of graph
     private HashMap<String, String> graphAttributes = null;
 
+    private ReachabilityGraphVC graphVC = null;
+
     public ReachabilityJGraph() {
         super(new DefaultGraphModel());
         initAttributeMap();
         ToolTipManager.sharedInstance().registerComponent(this);
     }
 
+
     public ReachabilityJGraph(GraphModel model, GraphLayoutCache view) {
+        this(model, view, null);
+    }
+
+    public ReachabilityJGraph(GraphModel model, GraphLayoutCache view, ReachabilityGraphVC controller) {
         super(model, view);
+        this.graphVC = controller;
         initAttributeMap();
+
         ToolTipManager.sharedInstance().registerComponent(this);
+    }
+
+    public ReachabilityGraphVC graphController(){
+        return graphVC;
     }
 
     /**
@@ -63,7 +74,7 @@ public class ReachabilityJGraph extends JGraph {
 
     /**
      * returns all cells, that are at position x,y.
-     * 
+     *
      * @param x
      * @param y
      * @return
@@ -94,21 +105,21 @@ public class ReachabilityJGraph extends JGraph {
     }
 
     /**
-     * sets a attributeMap
-     * 
-     * @param graphAttributes
-     */
-    public void setAttributeMap(HashMap<String, String> graphAttributes) {
-        this.graphAttributes = graphAttributes;
-    }
-
-    /**
      * returns the attributeMap
-     * 
+     *
      * @return
      */
     public HashMap<String, String> getAttributeMap() {
         return graphAttributes;
+    }
+
+    /**
+     * sets a attributeMap
+     *
+     * @param graphAttributes
+     */
+    public void setAttributeMap(HashMap<String, String> graphAttributes) {
+        this.graphAttributes = graphAttributes;
     }
 
     public void deHighlight() {
@@ -116,11 +127,10 @@ public class ReachabilityJGraph extends JGraph {
         for (int j = 0; j < model.getRootCount(); j++) {
             if (model.getRootAt(j) instanceof ReachabilityPlaceModel) {
                 ((ReachabilityPlaceModel) model.getRootAt(j)).setHighlight(false);
-            } else
-                if (model.getRootAt(j) instanceof ReachabilityEdgeModel) {
-                    ((ReachabilityEdgeModel) model.getRootAt(j)).setIngoing(false);
-                    ((ReachabilityEdgeModel) model.getRootAt(j)).setOutgoing(false);
-                }
+            } else if (model.getRootAt(j) instanceof ReachabilityEdgeModel) {
+                ((ReachabilityEdgeModel) model.getRootAt(j)).setIngoing(false);
+                ((ReachabilityEdgeModel) model.getRootAt(j)).setOutgoing(false);
+            }
         }
         getGraphLayoutCache().reload();
         clearSelection();
@@ -128,7 +138,7 @@ public class ReachabilityJGraph extends JGraph {
 
     /**
      * Highlights the in mark given marking(place) in the Reachabilty Graph. If the place is not in the visible range the graph will scroll automatically
-     * 
+     *
      * @author <a href="mailto:b.joerger@gmx.de">Benjamin Joerger</a>
      * @since 02.01.2009
      * @param mark
@@ -167,11 +177,10 @@ public class ReachabilityJGraph extends JGraph {
                         }
                     }
                 }
-            } else
-                if (model.getRootAt(j) instanceof ReachabilityEdgeModel) {
-                    // ((ReachabilityEdgeModel)model.getRootAt(j)).setIngoing(false);
-                    // ((ReachabilityEdgeModel)model.getRootAt(j)).setOutgoing(false);
-                }
+            } else if (model.getRootAt(j) instanceof ReachabilityEdgeModel) {
+                // ((ReachabilityEdgeModel)model.getRootAt(j)).setIngoing(false);
+                // ((ReachabilityEdgeModel)model.getRootAt(j)).setOutgoing(false);
+            }
         }
         getGraphLayoutCache().reload();
         clearSelection();

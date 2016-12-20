@@ -8,7 +8,8 @@ import org.woped.core.gui.IUserInterface;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.qualanalysis.Constants;
 import org.woped.qualanalysis.reachabilitygraph.gui.ReachabilityGraphVC;
-import org.woped.qualanalysis.reachabilitygraph.gui.ReachabilityWarning;
+import org.woped.qualanalysis.reachabilitygraph.gui.dialogs.ReachabilityWarning;
+import org.woped.qualanalysis.reachabilitygraph.gui.layout.CoverabilityGraphLayout;
 
 import javax.swing.*;
 import javax.swing.event.InternalFrameListener;
@@ -76,8 +77,8 @@ public class CoverabilityGraphEventProcessor extends AbstractEventProcessor {
     }
 
     private void switchLayout(AbstractViewEvent event){
-        int type = (int) event.getData();
-        graphVC.switchLayout(type);
+        CoverabilityGraphLayout layout = (CoverabilityGraphLayout) event.getData();
+        graphVC.switchLayout(layout);
     }
 
     private boolean createGraphFrame() {

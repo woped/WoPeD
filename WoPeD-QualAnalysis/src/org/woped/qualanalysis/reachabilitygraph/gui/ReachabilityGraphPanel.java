@@ -16,11 +16,17 @@ import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.action.WoPeDAction;
 import org.woped.editor.controller.ActionFactory;
 import org.woped.editor.controller.VisualController;
-import org.woped.qualanalysis.reachabilitygraph.controller.CoverabilityGraphActions;
 import org.woped.gui.translations.Messages;
 import org.woped.qualanalysis.Constants;
+import org.woped.qualanalysis.reachabilitygraph.controller.CoverabilityGraphActions;
 import org.woped.qualanalysis.reachabilitygraph.controller.SimulationRunningException;
-import org.woped.qualanalysis.reachabilitygraph.data.*;
+import org.woped.qualanalysis.reachabilitygraph.data.AbstractReachabilityGraphModel;
+import org.woped.qualanalysis.reachabilitygraph.data.IReachabilityGraphModel;
+import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityGraphModelUsingMarkingNet;
+import org.woped.qualanalysis.reachabilitygraph.data.model.ReachabilityEdgeModel;
+import org.woped.qualanalysis.reachabilitygraph.data.model.ReachabilityPlaceModel;
+import org.woped.qualanalysis.reachabilitygraph.gui.dialogs.ReachabilityWarning;
+import org.woped.qualanalysis.reachabilitygraph.gui.layout.CoverabilityGraphLayout;
 
 import javax.swing.*;
 import java.awt.*;
@@ -36,9 +42,7 @@ public class ReachabilityGraphPanel extends JPanel {
 
     // Panels
     private JScrollPane rgp_topPanel = null; // top SplitPane
-
-    //private ReachabilityToolbarVC toolbar = null;
-//    private ReachabilityRibbonVC ribbon = null;
+    private JPanel graphPanel = null;
 
     // jGraph related
     private ReachabilityJGraph rgp_jgraph = null; // the jGraph
@@ -69,20 +73,6 @@ public class ReachabilityGraphPanel extends JPanel {
         LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "-> init() " + this.getClass().getName());
         this.builder = new ReachabilityGraphModelUsingMarkingNet(editor);
         this.setLayout(new BorderLayout());
-        //
-        //Ribbon instead of Toolbar
-        //ribbon = new ReachabilityRibbonVC(this);
-        //hide taskbar
-//        JPanel containerPanel = new JPanel();
-//        containerPanel.setBorder(BorderFactory.createEmptyBorder(-25, 0, 0, 0));
-//        containerPanel.setLayout(new BorderLayout());
-////        containerPanel.add(ribbon, BorderLayout.CENTER);
-        // NORTH Components
-//        this.add(BorderLayout.NORTH, containerPanel);
-        //
-        //toolbar = new ReachabilityToolbarVC(this);
-        // NORTH Components
-        //this.add(BorderLayout.NORTH, toolbar);
 
         // SOUTH Components
         legendInfo = new JLabel(Messages.getString("QuanlAna.ReachabilityGraph.Legend") + ": ()");
@@ -101,9 +91,16 @@ public class ReachabilityGraphPanel extends JPanel {
         southPanel.add(outOfSyncInfo = new JLabel(Messages.getImageIcon("QuanlAna.ReachabilityGraph.GraphOutOfSync")));
         outOfSyncInfo.setToolTipText(Messages.getString("QuanlAna.ReachabilityGraph.GraphOutOfSync"));
 
+        JPanel infoPanel = new JPanel(new GridBagLayout());
+        JLabel title = new JLabel("Information");
+        infoPanel.add(title);
+        this.add(BorderLayout.EAST, infoPanel);
+
         rgp_jgraph = new ReachabilityJGraph();
-        rgp_topPanel = new JScrollPane();
+        rgp_topPanel = new JScrollPane(rgp_jgraph);
+
         this.add(BorderLayout.CENTER, rgp_topPanel);
+
         LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "<- init() " + this.getClass().getName());
     }
 
@@ -130,20 +127,20 @@ public class ReachabilityGraphPanel extends JPanel {
      *
      * @return
      */
-    protected int getSelectedType() {
+    public CoverabilityGraphLayout getSelectedType() {
         WoPeDAction staticAction = ActionFactory.getStaticAction(CoverabilityGraphActions.LAYOUT);
-        int selectedType = (int) staticAction.getData();
-        return selectedType; //this.ribbon.getSelectedType();
+        CoverabilityGraphLayout selectedType = (CoverabilityGraphLayout) staticAction.getData();
+        return selectedType;
     }
 
     /**
-     * layout a graph with given layout type. Layouting can be done without to recmpute the graph. In some cases it's needed to recompute e.g. the petri net has
+     * layout a graph with given layout layout. Layouting can be done without to recmpute the graph. In some cases it's needed to recompute e.g. the petri net has
      * changed.
      *
-     * @param type
+     * @param layout
      * @param computeNew
      */
-    public void layoutGraph(int type, boolean computeNew) throws SimulationRunningException {
+    public void layoutGraph(CoverabilityGraphLayout layout, boolean computeNew) throws SimulationRunningException {
         // Define the cursors
         Cursor crWait = Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR);
         Cursor crDefault = Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR);
@@ -160,12 +157,14 @@ public class ReachabilityGraphPanel extends JPanel {
 //                    ribbon.setCursor(crDefault);
                     throw new SimulationRunningException();
                 } else {
+
                     this.remove(rgp_topPanel);
-                    this.add(rgp_topPanel = new JScrollPane(this.rgp_jgraph = this.getDefaultGraph(type)));
+                    this.rgp_topPanel = new JScrollPane(this.rgp_jgraph = this.getDefaultGraph(layout));
+                    this.add(BorderLayout.CENTER, rgp_topPanel);
                     this.updateVisibility();
                 }
             } else {
-                AbstractReachabilityGraphModel.layoutGraph(this.rgp_jgraph, type, this.getSize());
+                AbstractReachabilityGraphModel.layoutGraph(this.rgp_jgraph, layout, this.getSize());
             }
             this.validate();
         }
@@ -177,20 +176,21 @@ public class ReachabilityGraphPanel extends JPanel {
     /**
      * is used to get a new computed {@link ReachabilityJGraph} instance. Layout in a given type.
      *
-     * @param type
+     * @param layout
      * @return
      */
-    private ReachabilityJGraph getDefaultGraph(int type) {
+    private ReachabilityJGraph getDefaultGraph(CoverabilityGraphLayout layout) {
         HashMap<String, String> old_attributes = null;
         if (rgp_jgraph != null) {
             old_attributes = rgp_jgraph.getAttributeMap();
         }
 
         ReachabilityJGraph new_graph = builder.getGraph();
+
         if (old_attributes != null) {
             new_graph.setAttributeMap(old_attributes);
         }
-        return AbstractReachabilityGraphModel.layoutGraph(new_graph, type, this.getSize());
+        return AbstractReachabilityGraphModel.layoutGraph(new_graph, layout, this.getSize());
     }
 
     /**
@@ -217,9 +217,7 @@ public class ReachabilityGraphPanel extends JPanel {
     public void updateVisibility() {
         LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "-> updateVisibility() " + this.getClass().getName());
         // is RG in sync ? And Token game not running...
-        if (((PetriNetModelProcessor) editor.getModelProcessor()).getLogicalFingerprint().equals(
-                this.logicalFingerprint)
-                && !editor.isTokenGameEnabled()) {
+        if (editor.getModelProcessor().getLogicalFingerprint().equals(this.logicalFingerprint) && !editor.isTokenGameEnabled()) {
             if (this.rgp_jgraph.getRoots().length == 0) {
                 setRefreshButtonEnabled(true);
                 setGraphOutOfSync(true);
@@ -260,6 +258,10 @@ public class ReachabilityGraphPanel extends JPanel {
      */
     protected void setGraphOutOfSync(boolean outOfSync) {
         this.outOfSyncInfo.setVisible(outOfSync);
+    }
+
+    protected boolean isGraphOutOfSync(){
+        return this.outOfSyncInfo.isVisible();
     }
 
     /**
@@ -339,7 +341,7 @@ public class ReachabilityGraphPanel extends JPanel {
      *
      * @param enabled
      */
-    protected void setParallelRouting(boolean enabled) {
+    public void setParallelRouting(boolean enabled) {
         AbstractReachabilityGraphModel.setParallelRouting(rgp_jgraph, enabled);
     }
 
@@ -348,7 +350,7 @@ public class ReachabilityGraphPanel extends JPanel {
      *
      * @param enabled
      */
-    protected void setGrayScale(boolean enabled) {
+    public void setGrayScale(boolean enabled) {
         AbstractReachabilityGraphModel.setGrayScale(rgp_jgraph, enabled);
     }
 
@@ -357,6 +359,7 @@ public class ReachabilityGraphPanel extends JPanel {
         WoPeDAction action = ActionFactory.getStaticAction(actionID);
         VisualController.getInstance().addElement(action, enabled, VisualController.ALWAYS, VisualController.IGNORE);
     }
+
 
     private class LegendListener implements ActionListener {
 

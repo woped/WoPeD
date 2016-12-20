@@ -22,25 +22,26 @@ import org.woped.core.utilities.Utils;
 import org.woped.editor.action.WoPeDAction;
 import org.woped.editor.controller.ActionFactory;
 import org.woped.editor.controller.vep.ViewEvent;
-import org.woped.qualanalysis.reachabilitygraph.controller.CoverabilityGraphActions;
 import org.woped.gui.translations.Messages;
 import org.woped.qualanalysis.Constants;
+import org.woped.qualanalysis.reachabilitygraph.controller.CoverabilityGraphActions;
 import org.woped.qualanalysis.reachabilitygraph.controller.SimulationRunningException;
-import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityEdgeModel;
-import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityPlaceModel;
+import org.woped.qualanalysis.reachabilitygraph.data.model.ReachabilityEdgeModel;
+import org.woped.qualanalysis.reachabilitygraph.data.model.ReachabilityPlaceModel;
+import org.woped.qualanalysis.reachabilitygraph.gui.dialogs.ReachabilitySettingsDialog;
+import org.woped.qualanalysis.reachabilitygraph.gui.dialogs.ReachabilityWarning;
+import org.woped.qualanalysis.reachabilitygraph.gui.layout.CoverabilityGraphLayout;
 
 import javax.swing.*;
 import javax.swing.event.InternalFrameEvent;
 import javax.swing.event.InternalFrameListener;
 import java.awt.*;
-import java.awt.event.MouseWheelEvent;
-import java.awt.event.MouseWheelListener;
 import java.io.File;
 import java.util.HashSet;
 import java.util.Vector;
 
 
-public class ReachabilityGraphVC extends JInternalFrame implements IReachabilityGraph, InternalFrameListener, MouseWheelListener {
+public class ReachabilityGraphVC extends JInternalFrame implements IReachabilityGraph, InternalFrameListener {
 
     private static final long serialVersionUID = 1L;
     private static final double ZOOM_STEP = 0.125;
@@ -207,14 +208,14 @@ public class ReachabilityGraphVC extends JInternalFrame implements IReachability
      * <p>
      * The layout id's are defined in {@link org.woped.qualanalysis.reachabilitygraph.data.IReachabilityGraphModel}.
      *
-     * @param layoutId the algorithm id of the noe layout
+     * @param layout the algorithm id of the noe layout
      */
-    public void switchLayout(int layoutId) {
+    public void switchLayout(CoverabilityGraphLayout layout) {
         ReachabilityGraphPanel activePanel = getActivePanel();
         if (activePanel == null) return;
 
         try {
-            activePanel.layoutGraph(layoutId, false);
+            activePanel.layoutGraph(layout, false);
         } catch (SimulationRunningException e) {
             ReachabilityWarning.showReachabilityWarning(activePanel, "QuanlAna.ReachabilityGraph.SimulationWarning");
         }
@@ -413,8 +414,12 @@ public class ReachabilityGraphVC extends JInternalFrame implements IReachability
     }
 
     public void internalFrameActivated(InternalFrameEvent e) {
-        this.updateShowingPanelVisibility();
         fireAction(CoverabilityGraphActions.FRAME_ACTIVATED);
+        this.updateShowingPanelVisibility();
+
+        ReachabilityGraphPanel activePanel = getActivePanel();
+        if (activePanel != null && activePanel.isGraphOutOfSync())
+            ReachabilityWarning.showReachabilityWarning(null, "QuanlAna.ReachabilityGraph.RefreshWarning");
     }
 
     public void internalFrameDeactivated(InternalFrameEvent e) {
@@ -460,18 +465,5 @@ public class ReachabilityGraphVC extends JInternalFrame implements IReachability
     }
 
     public void internalFrameOpened(InternalFrameEvent e) {
-    }
-
-    /**
-     * Invoked when the mouse wheel is rotated.
-     *
-     * @param e
-     * @see MouseWheelEvent
-     */
-    @Override
-    public void mouseWheelMoved(MouseWheelEvent e) {
-
-        if (e.getWheelRotation() > 0) zoomIn();
-        else zoomOut();
     }
 }
