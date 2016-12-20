@@ -1,4 +1,4 @@
-package org.woped.qualanalysis.reachabilitygraph.controller;
+package org.woped.qualanalysis.reachabilitygraph.gui.views;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -8,7 +8,7 @@ import org.jgraph.graph.CellViewRenderer;
 import org.jgraph.graph.EdgeRenderer;
 import org.jgraph.graph.EdgeView;
 import org.jgraph.graph.GraphConstants;
-import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityEdgeModel;
+import org.woped.qualanalysis.reachabilitygraph.data.model.ReachabilityEdgeModel;
 
 public class ReachabilityEdgeView extends EdgeView {
 	

@@ -1,4 +1,4 @@
-package org.woped.qualanalysis.reachabilitygraph.gui;
+package org.woped.qualanalysis.reachabilitygraph.gui.dialogs;
 
 import java.awt.Component;
 import javax.swing.JOptionPane;

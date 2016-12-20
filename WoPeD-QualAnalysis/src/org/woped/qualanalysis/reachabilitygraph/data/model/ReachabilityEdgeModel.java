@@ -1,17 +1,24 @@
-package org.woped.qualanalysis.reachabilitygraph.data;
-
-import java.awt.geom.Point2D;
+package org.woped.qualanalysis.reachabilitygraph.data.model;
 
 import org.jgraph.graph.AttributeMap;
 import org.jgraph.graph.DefaultEdge;
 import org.jgraph.graph.GraphConstants;
 import org.woped.gui.translations.Messages;
 
+import java.awt.geom.Point2D;
+
 public class ReachabilityEdgeModel extends DefaultEdge {
 
 	private static final long serialVersionUID = -6452423946402905220L;
 	private boolean Outgoing = false;
 	private boolean Ingoing = false;
+
+	public ReachabilityEdgeModel(ReachabilityPlaceModel from , ReachabilityPlaceModel to, Object trigger){
+	    super(trigger);
+
+	    this.setSource(from.getFirstChild());
+	    this.setTarget(to.getFirstChild());
+    }
 
 	public ReachabilityEdgeModel(Object to){
 		super(to);

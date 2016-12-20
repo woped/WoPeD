@@ -7,7 +7,7 @@
  * @author Benjamin Geiger
  */
 
-package org.woped.qualanalysis.reachabilitygraph.data;
+package org.woped.qualanalysis.reachabilitygraph.data.model;
 
 import org.jgraph.graph.DefaultPort;
 

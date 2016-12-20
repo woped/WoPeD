@@ -19,12 +19,12 @@ import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.core.model.petrinet.TransitionModel;
 import org.woped.editor.action.WoPeDAction;
 import org.woped.editor.controller.ActionFactory;
-import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityEdgeModel;
-import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityPlaceModel;
-import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityPortModel;
+import org.woped.qualanalysis.reachabilitygraph.data.model.ReachabilityEdgeModel;
+import org.woped.qualanalysis.reachabilitygraph.data.model.ReachabilityPlaceModel;
+import org.woped.qualanalysis.reachabilitygraph.data.model.ReachabilityPortModel;
 import org.woped.qualanalysis.reachabilitygraph.gui.ReachabilityGraphPanel;
 import org.woped.qualanalysis.reachabilitygraph.gui.ReachabilityJGraph;
-import org.woped.qualanalysis.reachabilitygraph.gui.ReachabilityWarning;
+import org.woped.qualanalysis.reachabilitygraph.gui.dialogs.ReachabilityWarning;
 import org.woped.qualanalysis.soundness.marking.IMarking;
 
 /**
@@ -55,8 +55,8 @@ public class ReachabilityCellListener implements MouseListener, MouseWheelListen
         if (this.editor.isTokenGameEnabled()) {
             graph.clearSelection();
             return;
-
         }
+
         DefaultGraphCell cell = (DefaultGraphCell) graph.getFirstCellForLocation(e.getPoint().x, e.getPoint().y);
         if ((cell == null) && (e.getClickCount() == 2)) {
             deHighlightModel(true);
@@ -64,10 +64,8 @@ public class ReachabilityCellListener implements MouseListener, MouseWheelListen
         } else {
             rgp = (ReachabilityGraphPanel) graph.getParent().getParent().getParent();
             if (rgp.getRefreshButtonEnabled()) {
-                ReachabilityWarning.showReachabilityWarning(null, "QuanlAna.ReachabilityGraph.RefreshWarning");
                 return;
             }
-            ;
             doSingleClick(cell);
         }
         e.consume();
@@ -86,6 +84,7 @@ public class ReachabilityCellListener implements MouseListener, MouseWheelListen
                 setTokens(place);
                 // highlight the transitions in the petrinet for the current marking
                 highlightTransitions(place);
+
                 // highlight the place/marking in the RG
                 place.setHighlight(true);
                 rgp.setUnselectButtonEnabled(true);
@@ -95,6 +94,7 @@ public class ReachabilityCellListener implements MouseListener, MouseWheelListen
                 // repaint the graph
                 graph.clearSelection();
                 graph.getGraphLayoutCache().reload();
+
             }
         } else
             if (cell != null && cell instanceof ReachabilityEdgeModel) {
@@ -197,15 +197,6 @@ public class ReachabilityCellListener implements MouseListener, MouseWheelListen
             graph.getGraphLayoutCache().edit(editMap, null, null, null);
         }
     }
-
-    /*private void highlightClickedEdge(ReachabilityEdgeModel edge) {
-        Map<ReachabilityEdgeModel, AttributeMap> editMap = new HashMap<ReachabilityEdgeModel, AttributeMap>();
-        GraphConstants.setLineColor(edge.getAttributes(), Color.magenta);
-        GraphConstants.setLineWidth(edge.getAttributes(), 2);
-        editMap.put(edge, edge.getAttributes());
-        graph.getGraphLayoutCache().edit(editMap);
-        this.lastHighlightedEdge = edge;
-    }*/
 
     private void highlightEdges(ReachabilityPlaceModel place) {
         ReachabilityPortModel port = (ReachabilityPortModel) place.getChildAt(0);

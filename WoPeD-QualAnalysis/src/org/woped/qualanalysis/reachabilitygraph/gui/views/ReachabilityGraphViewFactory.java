@@ -1,4 +1,4 @@
-package org.woped.qualanalysis.reachabilitygraph.controller;
+package org.woped.qualanalysis.reachabilitygraph.gui.views;
 
 import org.jgraph.graph.DefaultCellViewFactory;
 import org.jgraph.graph.EdgeView;

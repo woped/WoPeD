@@ -1,12 +1,12 @@
-package org.woped.qualanalysis.reachabilitygraph.controller;
+package org.woped.qualanalysis.reachabilitygraph.gui.views;
 
-import java.awt.Color;
+import java.awt.*;
 
 import org.jgraph.graph.CellViewRenderer;
 import org.jgraph.graph.GraphConstants;
 import org.jgraph.graph.VertexRenderer;
 import org.jgraph.graph.VertexView;
-import org.woped.qualanalysis.reachabilitygraph.data.ReachabilityPlaceModel;
+import org.woped.qualanalysis.reachabilitygraph.data.model.ReachabilityPlaceModel;
 import org.woped.qualanalysis.soundness.marking.IMarking;
 
 public class ReachabilityPlaceView extends VertexView {
@@ -62,9 +62,7 @@ public class ReachabilityPlaceView extends VertexView {
 			super();
 		}
 
-		// Elliptic
-		
-		/*public Dimension getPreferredSize() {
+		public Dimension getPreferredSize() {
 			Dimension d = super.getPreferredSize();
 			d.width += d.width / 8;
 			d.height += d.height / 2;
@@ -103,6 +101,6 @@ public class ReachabilityPlaceView extends VertexView {
 				g.setColor(highlightColor);
 				g.drawOval(b - 1, b - 1, d.width - b, d.height - b);
 			}
-		}*/
+		}
 	}
 }

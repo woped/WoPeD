@@ -7,7 +7,7 @@
  * @author Benjamin Geiger
  */
 
-package org.woped.qualanalysis.reachabilitygraph.gui;
+package org.woped.qualanalysis.reachabilitygraph.gui.dialogs;
 
 import java.awt.Dimension;
 import java.awt.Point;
@@ -33,6 +33,7 @@ import javax.swing.KeyStroke;
 
 import org.woped.qualanalysis.reachabilitygraph.controller.SimulationRunningException;
 import org.woped.gui.translations.Messages;
+import org.woped.qualanalysis.reachabilitygraph.gui.ReachabilityGraphPanel;
 
 public class ReachabilitySettingsDialog extends JDialog {
 
