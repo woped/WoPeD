@@ -12,7 +12,7 @@ import java.util.*;
  * @see IMarking
  */
 public class Marking implements IMarking, INode<Marking> {
-    static final String UNBOUND_SIGN = "\u03c9"; // small greek omega
+    public static final String UNBOUND_SIGN = "\u03c9"; // small greek omega
     private static int markingCounter = 0;
     // declaration
     private final Map<PlaceNode, Integer> placeToIndexMap = new HashMap<PlaceNode, Integer>();
@@ -125,6 +125,31 @@ public class Marking implements IMarking, INode<Marking> {
         this.tokens[position] = 0;
         // We need to recalculate the hash if we do this.
         cachedHashCode = -1;
+    }
+
+    /**
+     * Checks if the place with the given id is unbound.
+     *
+     * @param placeId the id of the place to check
+     * @return true if the place is unbound, otherwise false
+     */
+    public boolean isPlaceUnlimited(String placeId){
+        int pos = getIndexOfPlaceNode(placeId);
+
+        if(pos == -1) return false;
+
+        return placeUnlimited[pos];
+    }
+
+    private int getIndexOfPlaceNode(String placeId){
+
+        for(PlaceNode place : places){
+            if(place.getId().equals(placeId)){
+                return getIndexByPlace(place);
+            }
+        }
+
+        return -1;
     }
 
     /**

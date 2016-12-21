@@ -30,17 +30,16 @@ public class TreeLayout implements IReachabilityLayout {
 
         TreeNode root = new TreeNode(initialPlace);
 
-        HashMap<String, String> attributeMap = graph.getAttributeMap();
-        int horizontalSpace = Integer.parseInt(attributeMap.get("reachabilityGraph.hierarchic.horizontalSpace"));
-        int verticalSpace = Integer.parseInt(attributeMap.get("reachabilityGraph.hierarchic.verticalSpace"));
+        HashMap<String, String> graphAttributes = graph.getAttributeMap();
+        int horizontalSpace = Integer.parseInt(graphAttributes.get("reachabilityGraph.hierarchic.horizontalSpace"));
+        int verticalSpace = Integer.parseInt(graphAttributes.get("reachabilityGraph.hierarchic.verticalSpace"));
 
         Configuration<ReachabilityPlaceModel> config = new DefaultConfiguration<>(verticalSpace, horizontalSpace);
         org.abego.treelayout.TreeLayout<ReachabilityPlaceModel> tree = new org.abego.treelayout.TreeLayout<>(root, new NodeExtendProvider(), config);
         Map<ReachabilityPlaceModel, Rectangle2D.Double> nodeBounds = tree.getNodeBounds();
 
-
         Rectangle2D.Double rootBounds = nodeBounds.get(initialPlace);
-        Double offsetX = dimension.getWidth() / 2 - rootBounds.getWidth() / 2;
+        Double offsetX = dimension.getWidth() / 2 - rootBounds.getWidth() / 2 - rootBounds.getX();
         double offsetY = 10;
 
         Hashtable nested = new Hashtable();

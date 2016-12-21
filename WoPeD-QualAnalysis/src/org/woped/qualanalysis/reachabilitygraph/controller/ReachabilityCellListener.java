@@ -144,7 +144,7 @@ public class ReachabilityCellListener implements MouseListener, MouseWheelListen
     }
 
     private void highlightTransitions(ReachabilityPlaceModel place) {
-        IMarking ma = (IMarking) place.getUserObject();
+        IMarking ma = place.getMarking();
         Iterator<String> netIt = ma.getActivatedTransitions().iterator();
         while (netIt.hasNext()) {
             TransitionModel trans = (TransitionModel) getPetriNet().getElementContainer().getElementById(netIt.next());
@@ -153,8 +153,7 @@ public class ReachabilityCellListener implements MouseListener, MouseWheelListen
     }
 
     private void setTokens(ReachabilityPlaceModel place) {
-
-        IMarking marking = (IMarking) place.getUserObject();
+        IMarking marking = place.getMarking();
         SortedMap<String, Integer> map = marking.getMarking();
         for (Iterator<AbstractPetriNetElementModel> placeIter = getPetriNet().getElementContainer().getElementsByType(
                 AbstractPetriNetElementModel.PLACE_TYPE).values().iterator(); placeIter.hasNext();) {

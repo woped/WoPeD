@@ -53,7 +53,7 @@ public class ReachabilityJGraph extends JGraph {
         ToolTipManager.sharedInstance().registerComponent(this);
     }
 
-    public ReachabilityGraphVC graphController(){
+    public ReachabilityGraphVC graphController() {
         return graphVC;
     }
 
@@ -102,6 +102,9 @@ public class ReachabilityJGraph extends JGraph {
         graphAttributes.put("reachabilityGraph.parallel", "true");
         graphAttributes.put("reachabilityGraph.hierarchic.verticalSpace", "80");
         graphAttributes.put("reachabilityGraph.hierarchic.horizontalSpace", "25");
+        graphAttributes.put("coverabilityGraph.MarkingNotation", "MultiSet");
+
+        this.setAntiAliased(true);
     }
 
     /**
@@ -139,9 +142,9 @@ public class ReachabilityJGraph extends JGraph {
     /**
      * Highlights the in mark given marking(place) in the Reachabilty Graph. If the place is not in the visible range the graph will scroll automatically
      *
+     * @param mark
      * @author <a href="mailto:b.joerger@gmx.de">Benjamin Joerger</a>
      * @since 02.01.2009
-     * @param mark
      */
     public void highlightMarking(IMarking mark) {
         deHighlight();

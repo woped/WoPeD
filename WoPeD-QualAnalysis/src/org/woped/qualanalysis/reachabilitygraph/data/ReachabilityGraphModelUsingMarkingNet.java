@@ -102,7 +102,7 @@ public class ReachabilityGraphModelUsingMarkingNet extends AbstractReachabilityG
 		Iterator<DefaultGraphCell> iter = cellsList.iterator();
 		while (iter.hasNext()) {
 			DefaultGraphCell comp = iter.next();
-			if (comp.getUserObject() != null && comp.getUserObject().equals(marking)) {
+			if (comp instanceof ReachabilityPlaceModel && ((ReachabilityPlaceModel) comp).getMarking().equals(marking)) {
 				return (ReachabilityPlaceModel) comp;
 			}
 		}

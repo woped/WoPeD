@@ -13,9 +13,9 @@ import org.woped.qualanalysis.reachabilitygraph.gui.layout.CoverabilityGraphLayo
 import org.woped.qualanalysis.reachabilitygraph.gui.layout.HierarchicLayout;
 import org.woped.qualanalysis.reachabilitygraph.gui.layout.tree.TreeLayout;
 import org.woped.qualanalysis.reachabilitygraph.gui.views.ReachabilityGraphViewFactory;
-import org.woped.qualanalysis.soundness.marking.IMarking;
 
 import java.awt.*;
+import java.awt.geom.Rectangle2D;
 import java.util.*;
 import java.util.List;
 
@@ -31,6 +31,9 @@ public abstract class AbstractReachabilityGraphModel implements IReachabilityGra
     }
 
     public static ReachabilityJGraph layoutGraph(ReachabilityJGraph graph, CoverabilityGraphLayout layout, Dimension dim) {
+
+        resizeNodes(graph);
+
         switch (layout) {
             case HIERARCHIC:
                 return new HierarchicLayout().layoutGraph(graph, dim);
@@ -41,6 +44,48 @@ public abstract class AbstractReachabilityGraphModel implements IReachabilityGra
             default:
                 return null;
         }
+    }
+
+    private static void resizeNodes(ReachabilityJGraph graph) {
+
+        HashMap<String, String> graphAttributes = graph.getAttributeMap();
+        String markingNotation = graphAttributes.get("coverabilityGraph.MarkingNotation");
+        Hashtable nested = new Hashtable();
+        Hashtable transportMap;
+        GraphModel model = graph.getModel();
+        for (int i = 0; i < model.getRootCount(); i++) {
+
+            if (model.getRootAt(i) instanceof ReachabilityPlaceModel) {
+                ReachabilityPlaceModel place = (ReachabilityPlaceModel) model.getRootAt(i);
+                place.setMarkingNotation(markingNotation);
+                transportMap = new Hashtable();
+                GraphConstants.setResize(transportMap, true);
+                nested.put(place, transportMap);
+            }
+        }
+
+        graph.getGraphLayoutCache().edit(nested);
+        double minWidth = Integer.parseInt(graphAttributes.get("reachabilityGraph.place.width"));
+        double minHeight = Integer.parseInt(graphAttributes.get("reachabilityGraph.place.height"));
+        double minPadding = 2.0;
+
+        nested = new Hashtable();
+        for (int i = 0 ; i < model.getRootCount(); i++) {
+            if (!(model.getRootAt(i) instanceof ReachabilityPlaceModel)) continue;
+
+            ReachabilityPlaceModel place = (ReachabilityPlaceModel) model.getRootAt(i);
+            Rectangle2D bounds = GraphConstants.getBounds(place.getAttributes());
+
+            double width = Math.max(minWidth, bounds.getWidth() + 2 * minPadding);
+            double height = Math.max(minHeight, bounds.getHeight() + 2 * minPadding);
+
+            transportMap = new Hashtable();
+            GraphConstants.setBounds(transportMap, new Rectangle2D.Double(0, 0, width, height));
+
+            nested.put(place, transportMap);
+        }
+
+        graph.getGraphLayoutCache().edit(nested);
     }
 
     public static void setParallelRouting(ReachabilityJGraph graph, boolean enabled) {
@@ -101,7 +146,7 @@ public abstract class AbstractReachabilityGraphModel implements IReachabilityGra
         Iterator<ReachabilityPlaceModel> markingsIter = markings.iterator();
         while (markingsIter.hasNext()) {
             ReachabilityPlaceModel actPlaceModel = markingsIter.next();
-            if (((IMarking) actPlaceModel.getUserObject()).isInitial()) {
+            if (actPlaceModel.getMarking().isInitial()) {
                 return actPlaceModel;
             }
         }
