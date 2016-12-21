@@ -3,6 +3,8 @@ package org.woped.qualanalysis.soundness.marking;
 import org.junit.Test;
 import org.woped.qualanalysis.soundness.datamodel.PlaceNode;
 
+import java.util.TreeMap;
+
 import static org.junit.Assert.assertEquals;
 
 public class MarkingTest {
@@ -172,9 +174,23 @@ public class MarkingTest {
         PlaceNode place2 = new PlaceNode(0, 0, "p2", "Test2", "p2");
         Marking cut = new Marking(new int[]{1, 0}, new PlaceNode[]{place1, place2}, new boolean[]{false, true});
 
-        String expected = "( 1 " + Marking.UNBOUND_SIGN +" )";
+        String expected = "( 1 " + Marking.UNBOUND_SIGN + " )";
         String actual = cut.asTokenVectorString();
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void getMarking_unorderedPlaceArray_returnsShortLexOrderedMapByPlaceId() throws Exception {
+        PlaceNode place1 = new PlaceNode(0, 0, "p10", "Test", "p1");
+        PlaceNode place2 = new PlaceNode(0, 0, "p2", "Test2", "p2");
+        Marking cut = new Marking(new int[]{1, 2}, new PlaceNode[]{place1, place2}, new boolean[]{false, false});
+
+        TreeMap<String, Integer> marking = cut.getMarking();
+        String actual = marking.keySet().iterator().next();
+        String expected = "p2";
+
+        assertEquals(expected, actual);
+    }
+
 }

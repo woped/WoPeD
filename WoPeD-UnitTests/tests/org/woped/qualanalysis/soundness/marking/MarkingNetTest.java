@@ -54,7 +54,7 @@ public class MarkingNetTest {
         TransitionNode t1 = net.getTransitionNode(new TransitionNode("t1", "t1", "t1", AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE));
         Marking succeedingMarking = cut.calculateSucceedingMarking(cut.getInitialMarking(), t1);
 
-        assertTrue(succeedingMarking.toString().equals("(0 1 0)"));
+        assertTrue(succeedingMarking.toString().equals("( 0 1 0 )"));
     }
 
     @Test
@@ -70,7 +70,7 @@ public class MarkingNetTest {
         p2.addPredecessorNode(t1, arcWeight);
 
         Marking succeedingMarking = cut.calculateSucceedingMarking(cut.getInitialMarking(), t1);
-        assertTrue(succeedingMarking.toString().equals("(0 2 0)"));
+        assertTrue(succeedingMarking.toString().equals("( 0 2 0 )"));
     }
 
 

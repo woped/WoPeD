@@ -1,9 +1,8 @@
 package org.woped.qualanalysis.soundness.datamodel;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import org.woped.core.utilities.ShortLexStringComparator;
+
+import java.util.*;
 
 /**
  * This class is the reference implementation of the {@code ILowLevelPetriNet} interface.
@@ -55,8 +54,8 @@ public class LowLevelPetriNet implements ILowLevelPetriNet {
     }
 
     @Override
-    public Set<PlaceNode> getPlaces() {
-        Set<PlaceNode> places = new HashSet<PlaceNode>();
+    public SortedSet<PlaceNode> getPlaces() {
+        SortedSet<PlaceNode> places = new TreeSet<>(new PlaceNodeComparator());
         for ( String key : this.places.keySet() ) {
             places.add(this.places.get(key));
         }

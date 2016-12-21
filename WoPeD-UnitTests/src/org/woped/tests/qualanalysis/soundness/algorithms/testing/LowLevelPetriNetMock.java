@@ -1,13 +1,10 @@
 package org.woped.tests.qualanalysis.soundness.algorithms.testing;
 
 import org.woped.core.model.petrinet.OperatorTransitionModel;
-import org.woped.qualanalysis.soundness.datamodel.AbstractNode;
-import org.woped.qualanalysis.soundness.datamodel.ILowLevelPetriNet;
-import org.woped.qualanalysis.soundness.datamodel.PlaceNode;
-import org.woped.qualanalysis.soundness.datamodel.TransitionNode;
+import org.woped.core.utilities.ShortLexStringComparator;
+import org.woped.qualanalysis.soundness.datamodel.*;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 /**
  * LowLevelPetriNet without t*
@@ -82,8 +79,10 @@ public class LowLevelPetriNetMock implements ILowLevelPetriNet {
 
 
 	@Override
-	public Set<PlaceNode> getPlaces() {
-		return this.places;
+	public SortedSet<PlaceNode> getPlaces() {
+		SortedSet<PlaceNode> nodes = new TreeSet<>(new PlaceNodeComparator());
+        nodes.addAll(this.places);
+		return nodes;
 	}
 
 	@Override

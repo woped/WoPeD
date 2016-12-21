@@ -20,5 +20,4 @@ import org.woped.tests.soundness.SoundnessTests;
         AllTestsMetrics.class,
         AllTestsQualAnalysis.class})
 
-public class AllTests {
-}
+public class AllTests {}

@@ -3,6 +3,7 @@ package org.woped.qualanalysis.soundness.datamodel;
 import org.woped.qualanalysis.soundness.algorithms.generic.INodeNet;
 
 import java.util.Set;
+import java.util.SortedSet;
 
 /**
  * This interface represents a classic petri net.
@@ -41,9 +42,11 @@ public interface ILowLevelPetriNet extends INodeNet<AbstractNode> {
     PlaceNode getPlaceNode(PlaceNode node);
 
     /**
-     * @return the placeNodes
+     * Gets the set of places sorted by their id in short lex order.
+     *
+     * @return the set of places of the net.
      */
-    Set<PlaceNode> getPlaces();
+    SortedSet<PlaceNode> getPlaces();
 
     /**
      * if a node with the id of the provided node already exists the existing node will returned. if the provided node does not exist, the provided node will
