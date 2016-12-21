@@ -1,5 +1,6 @@
 package org.woped.qualanalysis.soundness.marking;
 
+import org.woped.core.utilities.ShortLexStringComparator;
 import org.woped.qualanalysis.soundness.algorithms.generic.INode;
 import org.woped.qualanalysis.soundness.datamodel.PlaceNode;
 import org.woped.qualanalysis.soundness.datamodel.TransitionNode;
@@ -7,14 +8,14 @@ import org.woped.qualanalysis.soundness.datamodel.TransitionNode;
 import java.util.*;
 
 /**
- * @see IMarking
- * 
  * @author Patrick Spies, Patrick Kirchgaessner, Joern Liebau, Enrico Moeller, Sebastian Fuss
+ * @see IMarking
  */
 public class Marking implements IMarking, INode<Marking> {
+    static final String UNBOUND_SIGN = "\u03c9"; // small greek omega
     private static int markingCounter = 0;
     // declaration
-	private final Map<PlaceNode, Integer> placeToIndexMap = new HashMap<PlaceNode, Integer>();
+    private final Map<PlaceNode, Integer> placeToIndexMap = new HashMap<PlaceNode, Integer>();
     private final PlaceNode[] places;
     private final int[] tokens;
     private final boolean[] placeUnlimited;
@@ -24,12 +25,11 @@ public class Marking implements IMarking, INode<Marking> {
     private int markingID;
     // Cache the hash code unless something changes in our marking. -1 means the hash code
     // needs to be updated.
-    private int cachedHashCode = -1;    
+    private int cachedHashCode = -1;
 
     /**
-     * 
-     * @param tokens an array with the number of tokens for each place in the same order as places
-     * @param places all Places in the right order
+     * @param tokens         an array with the number of tokens for each place in the same order as places
+     * @param places         all Places in the right order
      * @param placeUnlimited an array with true where the places are unlimited in the same order as places
      */
     public Marking(int[] tokens, PlaceNode[] places, boolean[] placeUnlimited) {
@@ -37,21 +37,21 @@ public class Marking implements IMarking, INode<Marking> {
         this.tokens = tokens.clone();
         this.placeUnlimited = placeUnlimited.clone();
         for (int i = 0; i < tokens.length; i++) {
-            placeToIndexMap.put(places[i], new Integer(i));            
+            placeToIndexMap.put(places[i], new Integer(i));
         }
         markingID = markingCounter;
         markingCounter++;
     }
-    
-    public String getID(){
-    	return ""+markingID;
+
+    public String getID() {
+        return "" + markingID;
     }
 
     @Override
     public int hashCode() {
-    	if (cachedHashCode != -1) {
-    		return cachedHashCode;
-    	}
+        if (cachedHashCode != -1) {
+            return cachedHashCode;
+        }
         final int prime = 31;
         int result = 1;
         result = prime * result + Arrays.hashCode(placeUnlimited);
@@ -76,14 +76,14 @@ public class Marking implements IMarking, INode<Marking> {
         if (!Arrays.equals(placeUnlimited, other.placeUnlimited)) {
             return false;
         }
-        
+
         for (int i = 0; i < tokens.length; i++) {
-        	// We only need to check one of the two unlimited arrays, the other one must be the same
-        	// due to the Arrays.equals() check above.
-			if (!placeUnlimited[i]
-					&& tokens[i] != other.tokens[i]) {
-				return false;
-			}
+            // We only need to check one of the two unlimited arrays, the other one must be the same
+            // due to the Arrays.equals() check above.
+            if (!placeUnlimited[i]
+                    && tokens[i] != other.tokens[i]) {
+                return false;
+            }
         }
         return true;
     }
@@ -93,14 +93,14 @@ public class Marking implements IMarking, INode<Marking> {
      * @return the success of adding the arc
      */
     public boolean addSuccessor(Arc successor) {
-    	return successors.add(successor);
+        return successors.add(successor);
     }
 
     /**
      * @return a TreeMap with the placeId as String and the number of tokens on the key Id as value
      */
     public TreeMap<String, Integer> getMarking() {
-        TreeMap<String, Integer> marking = new TreeMap<String, Integer>();
+        TreeMap<String, Integer> marking = new TreeMap<>(new ShortLexStringComparator());
         for (int i = 0; i < places.length; i++) {
             marking.put(places[i].getId(), tokens[i]);
         }
@@ -108,14 +108,13 @@ public class Marking implements IMarking, INode<Marking> {
     }
 
     /**
-     * 
-     * @return the array where UnlimitedPlaces are marked as true. 
+     * @return the array where UnlimitedPlaces are marked as true.
      * Do not manipulate the returned array!
      */
     public boolean[] getPlaceUnlimited() {
         return placeUnlimited;
     }
-    
+
     /**
      * @param position position of the place being unlimited
      */
@@ -168,35 +167,35 @@ public class Marking implements IMarking, INode<Marking> {
         }
         return transitions;
     }
-    
+
     /**
-     *
      * @param compareMarking marking to compare
      * @return true, if markings are comparable and the marking is smaller or equal than the provided marking.
      */
     public boolean smallerEquals(Marking compareMarking) {
         boolean smallerEquals = true;
         for (int i = 0; i < this.tokens.length && smallerEquals; i++) {
-			if (!compareMarking.placeUnlimited[i]
-					&& (this.placeUnlimited[i] || this.tokens[i] > compareMarking.tokens[i])) {
-				smallerEquals = false;
-			}
+            if (!compareMarking.placeUnlimited[i]
+                    && (this.placeUnlimited[i] || this.tokens[i] > compareMarking.tokens[i])) {
+                smallerEquals = false;
+            }
         }
         return smallerEquals;
     }
 
     /**
      * Returns the index of a given place or -1 if not found
+     *
      * @param place
      * @return
      */
     public int getIndexByPlace(PlaceNode place) {
-    	Integer index = placeToIndexMap.get(place);
-    	if (index == null) {
-    		return -1;
-    	} else {
-    		return index.intValue();
-    	}
+        Integer index = placeToIndexMap.get(place);
+        if (index == null) {
+            return -1;
+        } else {
+            return index.intValue();
+        }
     }
 
     /**
@@ -214,10 +213,9 @@ public class Marking implements IMarking, INode<Marking> {
     }
 
     /**
-     *
      * checks if the given transition is reachable from the current marking
      *
-     * @param tn the transition to reach
+     * @param tn       the transition to reach
      * @param markings a set of markings already checked
      * @return true if the Transition is reachable
      */
@@ -253,17 +251,7 @@ public class Marking implements IMarking, INode<Marking> {
      */
     @Override
     public String toString() {
-        String line = "(";
-        for (int i = 0; i < this.tokens.length; i++) {
-
-            if (this.placeUnlimited[i]) {
-                line += "\u221E";
-            } else {
-                line += this.tokens[i];
-            }
-            line += " ";
-        }
-        return line.substring(0, line.length() - 1) + ")";
+        return asTokenVectorString();
     }
 
     /**
@@ -284,5 +272,83 @@ public class Marking implements IMarking, INode<Marking> {
         Set<Marking> set = new HashSet<Marking>();
         set.add(predecessor);
         return set;
+    }
+
+    /**
+     * Gets a textual representation of the marking in the multi set notation.
+     * <p>
+     * The multi set notation is specified as follows:
+     * <ul>
+     * <li>Places with no tokens are not contained in the output
+     * <li>Places with one token contain only their place id
+     * <li>Places with more than one token are listed as combination of token count and place id
+     * </ul>
+     * for example: {@code ( p2 2p3 )}
+     * @return a textual representation of the marking in multi set notation
+     */
+    public String asMultiSetString() {
+        StringBuilder result = new StringBuilder();
+        result.append("(");
+
+        SortedMap<String, Integer> placeIds = getSortedIdIndexMap();
+        for(String id : placeIds.keySet()){
+
+            int pos = placeIds.get(id);
+            if (tokens[pos] == 0 && !placeUnlimited[pos]) continue;
+
+            if (result.length() == 1) result.append(" ");
+
+            if (placeUnlimited[pos]) {
+                result.append(UNBOUND_SIGN);
+            } else if (tokens[pos] > 1) {
+                result.append(tokens[pos]);
+            }
+
+            result.append(places[pos].getId() + " ");
+        }
+
+        result.append(")");
+        return result.toString();
+    }
+
+    /**
+     * Gets a textual representation of the marking in the token vector notation.
+     * <p>
+     * The token vector notation is specified as follows:
+     * <ul>
+     * <li>Places are ordered in the short lex order of their id's
+     * <li>For each place only the amount of tokens is contained
+     * </ul>
+     * for example: {@code ( 0 1 2 )}
+     * @return a textual representation of the marking in token vector notation
+     */
+    public String asTokenVectorString(){
+        StringBuilder result = new StringBuilder();
+        result.append("(");
+        SortedMap<String, Integer> idIndexMap = getSortedIdIndexMap();
+        for(String id: idIndexMap.keySet()){
+            int pos = idIndexMap.get(id);
+
+            if(result.length() == 1) result.append(" ");
+
+            if(placeUnlimited[pos]){
+                result.append(Marking.UNBOUND_SIGN);
+            }else {
+                result.append(tokens[pos]);
+            }
+
+            result.append(" ");
+        }
+
+        result.append(")");
+        return result.toString();
+    }
+
+    private SortedMap<String, Integer> getSortedIdIndexMap() {
+        SortedMap<String, Integer> placeIds = new TreeMap<>(new ShortLexStringComparator());
+        for (int i = 0; i < places.length; i++){
+            placeIds.put(places[i].getId(), i);
+        }
+        return placeIds;
     }
 }
