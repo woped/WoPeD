@@ -22,6 +22,14 @@ public interface IMarking {
     public SortedMap<String, Integer> getMarking();
 
     /**
+     * Checks if the place with the given id is unbound.
+     *
+     * @param placeId the id of the place to check
+     * @return true if the place is unbound, otherwise false
+     */
+    boolean isPlaceUnbound(String placeId);
+
+    /**
      * 
      * @return all activated transitions.
      */

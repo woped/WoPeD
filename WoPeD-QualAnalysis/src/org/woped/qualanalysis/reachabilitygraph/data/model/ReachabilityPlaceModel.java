@@ -14,7 +14,6 @@ import org.jgraph.graph.AttributeMap;
 import org.jgraph.graph.DefaultGraphCell;
 import org.jgraph.graph.GraphConstants;
 import org.woped.core.utilities.LoggerManager;
-import org.woped.gui.translations.Messages;
 import org.woped.qualanalysis.Constants;
 import org.woped.qualanalysis.soundness.marking.IMarking;
 import org.woped.qualanalysis.soundness.marking.Marking;
@@ -82,7 +81,7 @@ public class ReachabilityPlaceModel extends DefaultGraphCell {
 
         TreeMap<String, Integer> tokenMap = this.marking.getMarking();
         for(String id: tokenMap.keySet()){
-            String token = marking.isPlaceUnlimited(id) ? Marking.UNBOUND_SIGN : String.valueOf(tokenMap.get(id));
+            String token = marking.isPlaceUnbound(id) ? Marking.UNBOUND_SIGN : String.valueOf(tokenMap.get(id));
             sb.append(String.format("<tr><td>%s</td><td>%s</td></tr>", id, token));
         }
 

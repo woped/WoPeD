@@ -31,7 +31,9 @@ import org.woped.core.model.bpel.*;
 import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.EditorLayoutInfo;
 import org.woped.core.model.petrinet.ParaphrasingModel;
+import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.core.utilities.LoggerManager;
+import org.woped.core.utilities.ShortLexStringComparator;
 
 import java.io.Serializable;
 import java.util.*;
@@ -543,6 +545,33 @@ public class ModelElementContainer implements Serializable {
         }
 
         return elements;
+    }
+
+
+    /**
+     * Gets all places of the net except places from sub processes or operator transitions
+     *
+     * @return all places of the net
+     */
+    public Collection<PlaceModel> getPlaces(){
+        TreeSet<PlaceModel> places =  new TreeSet<>(new Comparator<PlaceModel>() {
+            Comparator<String> comparator = new ShortLexStringComparator();
+
+            @Override
+            public int compare(PlaceModel o1, PlaceModel o2) {
+                return comparator.compare(o1.getId(), o2.getId());
+            }
+        });
+
+        for(String elementId:this.idMap.keySet()){
+            AbstractPetriNetElementModel element = getElementById(elementId);
+
+            if(element instanceof PlaceModel){
+                places.add((PlaceModel) element);
+            }
+        }
+
+        return places;
     }
 
 	/* Bpel extension */

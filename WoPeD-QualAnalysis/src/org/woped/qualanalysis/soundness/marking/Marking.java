@@ -127,13 +127,8 @@ public class Marking implements IMarking, INode<Marking> {
         cachedHashCode = -1;
     }
 
-    /**
-     * Checks if the place with the given id is unbound.
-     *
-     * @param placeId the id of the place to check
-     * @return true if the place is unbound, otherwise false
-     */
-    public boolean isPlaceUnlimited(String placeId){
+    @Override
+    public boolean isPlaceUnbound(String placeId){
         int pos = getIndexOfPlaceNode(placeId);
 
         if(pos == -1) return false;
