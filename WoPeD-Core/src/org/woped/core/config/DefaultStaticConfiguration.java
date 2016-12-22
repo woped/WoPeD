@@ -52,12 +52,9 @@ public class DefaultStaticConfiguration implements IGeneralConfiguration {
 			Font.BOLD, 10);
 	public static Font DEFAULT_SMALLLABEL_ITALICFONT = new Font("Verdana",
 			Font.ITALIC, 10);
-	public static Font DEFAULT_TINYLABEL_FONT = new Font("Verdana", Font.PLAIN,
-			9);
-	public static Font DEFAULT_TINYLABEL_BOLDFONT = new Font("Verdana",
-			Font.PLAIN, 9);
-	public static Font DEFAULT_TINYLABEL_ITALICFONT = new Font("Verdana",
-			Font.ITALIC, 9);
+	public static Font DEFAULT_TINYLABEL_FONT = new Font("Verdana", Font.PLAIN,9);
+	public static Font DEFAULT_TINYLABEL_BOLDFONT = new Font("Verdana",Font.BOLD, 9);
+	public static Font DEFAULT_TINYLABEL_ITALICFONT = new Font("Verdana",	Font.ITALIC, 9);
 	public static Font DEFAULT_RESOURCE_ROLE_FONT = new Font("Verdana",
 			Font.PLAIN, 9);
 	public static Font DEFAULT_RESOURCE_ORG_FONT = new Font("Verdana",

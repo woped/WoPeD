@@ -58,7 +58,7 @@ class ArcView extends EdgeView {
      */
     ArcView(Object cell) {
         super(cell);
-        if ( cell instanceof ArcModel ) {
+        if (cell instanceof ArcModel) {
             arc = (ArcModel) cell;
             setAttributes(((ArcModel) cell).getAttributes());
         }
@@ -87,7 +87,7 @@ class ArcView extends EdgeView {
     public boolean intersects(JGraph graph, Rectangle2D rect) {
         boolean intersecting = super.intersects(graph, rect);
 
-        if ( (!intersecting) && isActivated() ) {
+        if ((!intersecting) && isActivated()) {
             int iconHeight = (activeIcon != null) ? activeIcon.getIconHeight() : 0;
             int iconWidth = (activeIcon != null) ? activeIcon.getIconWidth() : 0;
             Rectangle2D labelPos = this.getBounds();
@@ -106,7 +106,7 @@ class ArcView extends EdgeView {
         double width = bounds.getWidth();
         int minHeight = (activeIcon != null) ? activeIcon.getIconHeight() : 0;
         int minWidth = (activeIcon != null) ? activeIcon.getIconWidth() : 0;
-        if ( isActivated() && ((width < minWidth) || (height < minHeight)) ) {
+        if (isActivated() && ((width < minWidth) || (height < minHeight))) {
             // Need to extend our bounds to be able to at least draw our icon
             bounds.add(bounds.getMinX() + minWidth, bounds.getMinY() + minHeight);
         }
@@ -130,7 +130,7 @@ class ArcView extends EdgeView {
         public void paint(Graphics g) {
             Shape edgeShape = view.getShape();
             // Side effect: beginShape, lineShape, endShape
-            if ( edgeShape != null ) {
+            if (edgeShape != null) {
                 // super.paint(g);
                 Graphics2D g2 = (Graphics2D) g;
                 int c = BasicStroke.CAP_BUTT;
@@ -139,49 +139,51 @@ class ArcView extends EdgeView {
                 setOpaque(false);
                 translateGraphics(g);
                 g.setColor(getForeground());
-                if ( getGradientColor() != null && !preview ) {
+                if (getGradientColor() != null && !preview) {
                     g2.setPaint(new GradientPaint(0, 0, getBackground(), getWidth(), getHeight(), getGradientColor(), true));
                 }
-                if ( view.beginShape != null ) {
-                    if ( beginFill ) g2.fill(view.beginShape);
+                if (view.beginShape != null) {
+                    if (beginFill) g2.fill(view.beginShape);
                     g2.draw(view.beginShape);
                 }
-                if ( view.endShape != null ) {
-                    if ( endFill ) g2.fill(view.endShape);
+                if (view.endShape != null) {
+                    if (endFill) g2.fill(view.endShape);
                     g2.draw(view.endShape);
                 }
-                if ( lineDash != null ) // Dash For Line Only
+                if (lineDash != null) // Dash For Line Only
                     g2.setStroke(new BasicStroke(lineWidth, c, j, 10.0f, lineDash, dashOffset));
-                if ( view.lineShape != null ) g2.draw(view.lineShape);
+                if (view.lineShape != null) g2.draw(view.lineShape);
 
                 JGraph graph = (JGraph) this.graph.get();
                 g.setFont(DefaultStaticConfiguration.DEFAULT_TINYLABEL_FONT);
 
-                if ( arc.displayWeight() && graph != null ) {
+                if (arc.displayWeight() && graph != null) {
                     graph.setEdgeLabelsMovable(false);
                     Point2D labelPosition = getLabelPosition(view);
+                    if (selected) fontColor = ConfigurationManager.getConfiguration().getSelectionColor();
                     paintLabel(g, graph.convertValueToString(arc.getInscriptionValue()), labelPosition, simpleExtraLabels);
                 }
 
                 Object[] labels = GraphConstants.getExtraLabels(view.getAllAttributes());
-                if ( labels != null && arc.displayProbability() && graph != null ) {
+                if (labels != null && arc.displayProbability() && graph != null) {
                     Point2D labelPosition = getExtraLabelPosition(view, 0);
+                    if (selected) fontColor = ConfigurationManager.getConfiguration().getSelectionColor();
                     paintLabel(g, graph.convertValueToString(labels[0]), labelPosition, simpleExtraLabels);
                 }
 
-                if ( selected ) {
+                if (selected) {
                     g2.setColor(ConfigurationManager.getConfiguration().getSelectionColor());
-                    if ( view.beginShape != null ) g2.draw(view.beginShape);
-                    if ( view.lineShape != null ) g2.draw(view.lineShape);
-                    if ( view.endShape != null ) g2.draw(view.endShape);
+                    if (view.beginShape != null) g2.draw(view.beginShape);
+                    if (view.lineShape != null) g2.draw(view.lineShape);
+                    if (view.endShape != null) g2.draw(view.endShape);
                 }
-                if ( arc.isActivated() ) {
+                if (arc.isActivated()) {
                     g2.setColor(Color.GREEN);
                     g.setColor(Color.GREEN);
                     g2.setStroke(new BasicStroke(1));
-                    if ( view.beginShape != null ) g2.draw(view.beginShape);
-                    if ( view.lineShape != null ) g2.draw(view.lineShape);
-                    if ( view.endShape != null ) g2.draw(view.endShape);
+                    if (view.beginShape != null) g2.draw(view.beginShape);
+                    if (view.lineShape != null) g2.draw(view.lineShape);
+                    if (view.endShape != null) g2.draw(view.endShape);
 
                     // Draw 'play' button to indicate that the
                     // arc is activated and can be clicked
@@ -193,7 +195,7 @@ class ArcView extends EdgeView {
                     int buttonX = labelPos.x + labelPos.width / 2 - (iconWidth / 2);
                     int buttonY = labelPos.y + labelPos.height / 2 - (iconHeight / 2);
 
-                    if ( activeIcon != null ) {
+                    if (activeIcon != null) {
                         g2.drawImage(activeIcon.getImage(), buttonX, buttonY, iconWidth, iconHeight, activeIcon != null ? activeIcon.getImageObserver() : null);
                     }
                 }
