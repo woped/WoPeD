@@ -9,12 +9,13 @@ import java.util.Set;
 import org.junit.Before;
 import org.junit.Test;
 import org.woped.qualanalysis.soundness.algorithms.generic.scc.StronglyConnectedComponentTestGenTarjan;
+import org.woped.qualanalysis.soundness.marking.IMarking;
 import org.woped.qualanalysis.soundness.marking.Marking;
 import org.woped.tests.qualanalysis.soundness.algorithms.testing.MNetMock;
 
 public class StronglyConnectedComponentTestGenTarjanTest {
 	private MNetMock mNetMock;
-	private StronglyConnectedComponentTestGenTarjan<Marking> stronglyConnectedComponentTestGenTarjan;
+	private StronglyConnectedComponentTestGenTarjan<IMarking> stronglyConnectedComponentTestGenTarjan;
 
 	@Before
 	public void setUp() throws Exception {
@@ -24,7 +25,7 @@ public class StronglyConnectedComponentTestGenTarjanTest {
 
 	@Test
 	public void testGetStronglyConnectedComponents() {
-		Set<Set<Marking>> actual = stronglyConnectedComponentTestGenTarjan.getStronglyConnectedComponents();
+		Set<Set<IMarking>> actual = stronglyConnectedComponentTestGenTarjan.getStronglyConnectedComponents();
 
 		assertFalse(actual.isEmpty());
 	}

@@ -6,13 +6,13 @@ import org.woped.qualanalysis.soundness.algorithms.generic.INodeNet;
 import org.woped.qualanalysis.soundness.datamodel.PlaceNode;
 import org.woped.qualanalysis.soundness.datamodel.TransitionNode;
 
-public interface IMarkingNet extends INodeNet<Marking> {
+public interface IMarkingNet extends INodeNet<IMarking> {
 	
-	public TransitionNode[] getActivatedTransitions(Marking marking);
+	public TransitionNode[] getActivatedTransitions(IMarking marking);
 	
-	public Marking getInitialMarking();
+	public IMarking getInitialMarking();
 	
-	public Set<Marking> getMarkings();
+	public Set<IMarking> getMarkings();
 	
 	public PlaceNode[] getPlaces();
 	
@@ -24,5 +24,5 @@ public interface IMarkingNet extends INodeNet<Marking> {
 	
 	public String placesToStringName();
 	
-	public Marking calculateSucceedingMarking(Marking parentMarking, TransitionNode transition);
+	IMarking calculateSucceedingMarking(IMarking parentMarking, TransitionNode transition);
 }

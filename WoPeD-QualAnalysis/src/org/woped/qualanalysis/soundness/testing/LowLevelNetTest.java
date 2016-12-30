@@ -7,8 +7,8 @@ import org.woped.qualanalysis.soundness.datamodel.AbstractNode;
 import org.woped.qualanalysis.soundness.datamodel.LowLevelPetriNet;
 import org.woped.qualanalysis.soundness.datamodel.PlaceNode;
 import org.woped.qualanalysis.soundness.datamodel.TransitionNode;
+import org.woped.qualanalysis.soundness.marking.IMarking;
 import org.woped.qualanalysis.soundness.marking.IMarkingNet;
-import org.woped.qualanalysis.soundness.marking.Marking;
 import org.woped.qualanalysis.soundness.marking.MarkingNet;
 
 /**
@@ -75,7 +75,7 @@ public class LowLevelNetTest {
 
     public static void putOut(IMarkingNet markingNet) {
         System.out.println(markingNet.placesToString());
-        for (Marking marking : markingNet.getMarkings()) {
+        for (IMarking marking : markingNet.getMarkings()) {
             System.out.println(marking);
         }
     }

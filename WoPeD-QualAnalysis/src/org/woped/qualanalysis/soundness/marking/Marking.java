@@ -3,6 +3,7 @@ package org.woped.qualanalysis.soundness.marking;
 import org.woped.core.utilities.ShortLexStringComparator;
 import org.woped.qualanalysis.soundness.algorithms.generic.INode;
 import org.woped.qualanalysis.soundness.datamodel.PlaceNode;
+import org.woped.qualanalysis.soundness.datamodel.PlaceNodeComparator;
 import org.woped.qualanalysis.soundness.datamodel.TransitionNode;
 
 import java.util.*;
@@ -11,16 +12,17 @@ import java.util.*;
  * @author Patrick Spies, Patrick Kirchgaessner, Joern Liebau, Enrico Moeller, Sebastian Fuss
  * @see IMarking
  */
-public class Marking implements IMarking, INode<Marking> {
+public class Marking implements IMarking {
     public static final String UNBOUND_SIGN = "\u03c9"; // small greek omega
     private static int markingCounter = 0;
+
     // declaration
     private final Map<PlaceNode, Integer> placeToIndexMap = new HashMap<PlaceNode, Integer>();
     private final PlaceNode[] places;
     private final int[] tokens;
     private final boolean[] placeUnlimited;
     private final Set<Arc> successors = new HashSet<Arc>();
-    private Marking predecessor;
+    private IMarking predecessor;
     private boolean isInitial = false;
     private int markingID;
     // Cache the hash code unless something changes in our marking. -1 means the hash code
@@ -54,8 +56,15 @@ public class Marking implements IMarking, INode<Marking> {
         }
         final int prime = 31;
         int result = 1;
-        result = prime * result + Arrays.hashCode(placeUnlimited);
-        result = prime * result + Arrays.hashCode(tokens);
+
+        for (int i = 0; i < tokens.length; i++) {
+            if (placeUnlimited[i]) {
+                result = prime * result + prime;
+            } else {
+                result = prime * result + tokens[i];
+            }
+
+        }
         cachedHashCode = result;
         return result;
     }
@@ -92,6 +101,7 @@ public class Marking implements IMarking, INode<Marking> {
      * @param successor the succeeding arc
      * @return the success of adding the arc
      */
+    @Override
     public boolean addSuccessor(Arc successor) {
         return successors.add(successor);
     }
@@ -128,18 +138,18 @@ public class Marking implements IMarking, INode<Marking> {
     }
 
     @Override
-    public boolean isPlaceUnbound(String placeId){
+    public boolean isPlaceUnbound(String placeId) {
         int pos = getIndexOfPlaceNode(placeId);
 
-        if(pos == -1) return false;
+        if (pos == -1) return false;
 
         return placeUnlimited[pos];
     }
 
-    private int getIndexOfPlaceNode(String placeId){
+    private int getIndexOfPlaceNode(String placeId) {
 
-        for(PlaceNode place : places){
-            if(place.getId().equals(placeId)){
+        for (PlaceNode place : places) {
+            if (place.getId().equals(placeId)) {
                 return getIndexByPlace(place);
             }
         }
@@ -150,20 +160,23 @@ public class Marking implements IMarking, INode<Marking> {
     /**
      * @return the predecessor (marking)
      */
-    public Marking getPredecessor() {
+    @Override
+    public IMarking getPredecessor() {
         return predecessor;
     }
 
     /**
      * @param predecessor the predecessor to set
      */
-    public void setPredecessor(Marking predecessor) {
+    @Override
+    public void setPredecessor(IMarking predecessor) {
         this.predecessor = predecessor;
     }
 
     /**
      * @return the arcs that point to the successors (Set<Arc>)
      */
+    @Override
     public Set<Arc> getSuccessors() {
         return this.successors;
     }
@@ -189,18 +202,133 @@ public class Marking implements IMarking, INode<Marking> {
     }
 
     /**
-     * @param compareMarking marking to compare
-     * @return true, if markings are comparable and the marking is smaller or equal than the provided marking.
+     * Gets the set of places of the marking sorted by their id in short lex order.
+     *
+     * @return the set of places
      */
-    public boolean smallerEquals(Marking compareMarking) {
-        boolean smallerEquals = true;
-        for (int i = 0; i < this.tokens.length && smallerEquals; i++) {
-            if (!compareMarking.placeUnlimited[i]
-                    && (this.placeUnlimited[i] || this.tokens[i] > compareMarking.tokens[i])) {
-                smallerEquals = false;
+    @Override
+    public SortedSet<PlaceNode> getPlaces() {
+        TreeSet<PlaceNode> sortedPlaces = new TreeSet<>(new PlaceNodeComparator());
+        sortedPlaces.addAll(Arrays.asList(this.places));
+
+        return sortedPlaces;
+    }
+
+    /**
+     * Gets the amount of tokens stored in the provided place
+     *
+     * @param place the place to get the tokens for
+     * @return the amount of tokens stored in the provided place
+     */
+    @Override
+    public int getTokens(PlaceNode place) {
+
+        int index = getIndexByPlace(place);
+        return tokens[index];
+    }
+
+    /**
+     * Sets the amount of tokens of the given place to the provided value.
+     *
+     * @param place  the place to set the tokens
+     * @param amount the new amount of tokens
+     */
+    @Override
+    public void setTokens(PlaceNode place, int amount) {
+        int idx = getIndexByPlace(place);
+        tokens[idx] = amount;
+    }
+
+    /**
+     * Returns if the provided place is unbound.
+     *
+     * @param place the place to check
+     * @return true if the place is unbound, otherwise false
+     */
+    @Override
+    public boolean isPlaceUnbound(PlaceNode place) {
+        int idx = getIndexByPlace(place);
+
+        return placeUnlimited[idx];
+    }
+
+    /**
+     * Sets the unbound state of the provided place to the provided value.
+     *
+     * @param place   the place to set the unbound state
+     * @param unbound the new state
+     */
+    @Override
+    public void setPlaceUnbound(PlaceNode place, boolean unbound) {
+        int idx = getIndexByPlace(place);
+        placeUnlimited[idx] = unbound;
+    }
+
+    /**
+     * Creates a copy of the current marking.
+     * <p>
+     * Only the reference to the contained places is copied. (shallow copy)
+     *
+     * @return a copy of the current marking
+     */
+    @Override
+    public IMarking copy() {
+        int size = tokens.length;
+        int[] ctokens = new int[size];
+        boolean[] cplaceUnlimited = new boolean[size];
+        PlaceNode[] cplaces = new PlaceNode[size];
+
+        for (int i = 0; i < size; i++) {
+            cplaces[i] = this.places[i];
+            ctokens[i] = this.tokens[i];
+            cplaceUnlimited[i] = placeUnlimited[i];
+        }
+
+        return new Marking(ctokens, cplaces, cplaceUnlimited);
+    }
+
+    /**
+     * Returns if the current element is less or equal than the provided other element.
+     *
+     * @param other the element to compare against
+     * @return true if the current marking is less or equal than the other marking, otherwise false
+     */
+    @Override
+    public boolean lessOrEqual(IMarking other) {
+
+        SortedSet<PlaceNode> places = this.getPlaces();
+        SortedSet<PlaceNode> otherPlaces = other.getPlaces();
+        if (places.size() != otherPlaces.size()) return false;
+
+        for (PlaceNode place : places) {
+
+            if (!otherPlaces.contains(place)) return false;
+            if (this.isPlaceUnbound(place) && !other.isPlaceUnbound(place)) return false;
+            if (other.isPlaceUnbound(place)) continue;
+            if (this.getTokens(place) > other.getTokens(place)) return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Returns if the current element is less or equal than any element in the provided collection.
+     *
+     * @param markings the collection of markings to compare against
+     * @return true if the current element is less or equal than at least one element in the provided collection, otherwise false
+     */
+    @Override
+    public boolean lessOrEqual(Collection<IMarking> markings) {
+        boolean lessOrEqual = false;
+
+        for (IMarking other : markings) {
+            if (this.lessOrEqual(other)) {
+                lessOrEqual = true;
+                break;
             }
         }
-        return smallerEquals;
+
+        return lessOrEqual;
     }
 
     /**
@@ -228,6 +356,7 @@ public class Marking implements IMarking, INode<Marking> {
     /**
      * @param isInitial the isInitial to set
      */
+    @Override
     public void setInitial(boolean isInitial) {
         this.isInitial = isInitial;
     }
@@ -239,7 +368,8 @@ public class Marking implements IMarking, INode<Marking> {
      * @param markings a set of markings already checked
      * @return true if the Transition is reachable
      */
-    public boolean isTransitionReachable(TransitionNode tn, Set<Marking> markings) {
+    @Override
+    public boolean isTransitionReachable(TransitionNode tn, Set<IMarking> markings) {
         for (Arc arc : successors) {
             if (arc.getTrigger().equals(tn)) {
                 return true;
@@ -255,18 +385,6 @@ public class Marking implements IMarking, INode<Marking> {
     }
 
     /**
-     * @return the predecessor as string
-     */
-    public String predecessorToString() {
-        String line = "Predecessor:";
-        if (this.predecessor != null) {
-            line += "\r\n" + this.predecessor.toString();
-        }
-        return line;
-
-    }
-
-    /**
      * @return the token-array as string
      */
     @Override
@@ -277,8 +395,8 @@ public class Marking implements IMarking, INode<Marking> {
     /**
      * @see INode#getSuccessorNodes()
      */
-    public Set<Marking> getSuccessorNodes() {
-        Set<Marking> set = new HashSet<Marking>();
+    public Set<IMarking> getSuccessorNodes() {
+        Set<IMarking> set = new HashSet<>();
         for (Arc arc : getSuccessors()) {
             set.add(arc.getTarget());
         }
@@ -288,8 +406,8 @@ public class Marking implements IMarking, INode<Marking> {
     /**
      * @see INode#getPredecessorNodes()
      */
-    public Set<Marking> getPredecessorNodes() {
-        Set<Marking> set = new HashSet<Marking>();
+    public Set<IMarking> getPredecessorNodes() {
+        Set<IMarking> set = new HashSet<>();
         set.add(predecessor);
         return set;
     }
@@ -304,14 +422,16 @@ public class Marking implements IMarking, INode<Marking> {
      * <li>Places with more than one token are listed as combination of token count and place id
      * </ul>
      * for example: {@code ( p2 2p3 )}
+     *
      * @return a textual representation of the marking in multi set notation
      */
+    @Override
     public String asMultiSetString() {
         StringBuilder result = new StringBuilder();
         result.append("(");
 
         SortedMap<String, Integer> placeIds = getSortedIdIndexMap();
-        for(String id : placeIds.keySet()){
+        for (String id : placeIds.keySet()) {
 
             int pos = placeIds.get(id);
             if (tokens[pos] == 0 && !placeUnlimited[pos]) continue;
@@ -340,20 +460,22 @@ public class Marking implements IMarking, INode<Marking> {
      * <li>For each place only the amount of tokens is contained
      * </ul>
      * for example: {@code ( 0 1 2 )}
+     *
      * @return a textual representation of the marking in token vector notation
      */
-    public String asTokenVectorString(){
+    @Override
+    public String asTokenVectorString() {
         StringBuilder result = new StringBuilder();
         result.append("(");
         SortedMap<String, Integer> idIndexMap = getSortedIdIndexMap();
-        for(String id: idIndexMap.keySet()){
+        for (String id : idIndexMap.keySet()) {
             int pos = idIndexMap.get(id);
 
-            if(result.length() == 1) result.append(" ");
+            if (result.length() == 1) result.append(" ");
 
-            if(placeUnlimited[pos]){
+            if (placeUnlimited[pos]) {
                 result.append(Marking.UNBOUND_SIGN);
-            }else {
+            } else {
                 result.append(tokens[pos]);
             }
 
@@ -366,7 +488,7 @@ public class Marking implements IMarking, INode<Marking> {
 
     private SortedMap<String, Integer> getSortedIdIndexMap() {
         SortedMap<String, Integer> placeIds = new TreeMap<>(new ShortLexStringComparator());
-        for (int i = 0; i < places.length; i++){
+        for (int i = 0; i < places.length; i++) {
             placeIds.put(places[i].getId(), i);
         }
         return placeIds;

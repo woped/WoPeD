@@ -1,13 +1,13 @@
 package org.woped.qualanalysis.soundness.algorithms.basedonmarkingnet.deadtransition;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import org.woped.qualanalysis.soundness.algorithms.basedonmarkingnet.AbstractMarkingNetTest;
 import org.woped.qualanalysis.soundness.datamodel.TransitionNode;
 import org.woped.qualanalysis.soundness.marking.Arc;
+import org.woped.qualanalysis.soundness.marking.IMarking;
 import org.woped.qualanalysis.soundness.marking.IMarkingNet;
-import org.woped.qualanalysis.soundness.marking.Marking;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @see IDeadTransitionTest
@@ -18,7 +18,7 @@ public class DeadTransitionTest extends AbstractMarkingNetTest implements IDeadT
 
 	/**
 	 * 
-	 * @param iMarkingNet MarkingNet the algorithm is based on
+	 * @param markingNet MarkingNet the algorithm is based on
 	 */
     public DeadTransitionTest(IMarkingNet markingNet) {
         super(markingNet);
@@ -50,7 +50,7 @@ public class DeadTransitionTest extends AbstractMarkingNetTest implements IDeadT
         Set<TransitionNode> switchableTransitions = new HashSet<TransitionNode>();
         
 		// look for all switchable transitions
-        for (Marking marking : mNet.getMarkings()) {
+        for (IMarking marking : mNet.getMarkings()) {
             for (Arc arc : marking.getSuccessors()) {
             	switchableTransitions.add(arc.getTrigger());
             }

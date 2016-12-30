@@ -37,7 +37,7 @@ public class MarkingNet implements IMarkingNet {
     /**
      * set of all markings.
      */
-    private final Set<Marking> markings = new HashSet<>();
+    private final Set<IMarking> markings = new HashSet<>();
 
     /**
      * initial marking.
@@ -61,7 +61,7 @@ public class MarkingNet implements IMarkingNet {
      * @param marking the marking to check transitions with
      * @return an array of transitions which are activated
      */
-    public TransitionNode[] getActivatedTransitions(Marking marking) {
+    public TransitionNode[] getActivatedTransitions(IMarking marking) {
 
         List<TransitionNode> activatedTransitions = new ArrayList<>();
 
@@ -75,19 +75,19 @@ public class MarkingNet implements IMarkingNet {
         return activatedTransitions.toArray(new TransitionNode[activatedTransitions.size()]);
     }
 
-    private boolean transitionIsActivated(Marking marking, TransitionNode transition) {
+    private boolean transitionIsActivated(IMarking marking, TransitionNode transition) {
 
         boolean activated = true;
-        int[] tokens = marking.getTokens();
-        boolean[] placeUnlimited = marking.getPlaceUnlimited();
 
         for ( AbstractNode preNode : transition.getPredecessorNodes() ) {
+            if(!(preNode instanceof PlaceNode)) continue;
+            PlaceNode place = (PlaceNode) preNode;
+
             Integer weight = preNode.getWeightTo(transition);
-            int k = marking.getIndexByPlace((PlaceNode) preNode);
-            int tokenCount = tokens[k];
+            int tokenCount = marking.getTokens(place);
 
             boolean notEnoughTokens = tokenCount < weight;
-            boolean placeNotUnlimited = !placeUnlimited[k];
+            boolean placeNotUnlimited = !marking.isPlaceUnbound(place);
 
             if ( notEnoughTokens && placeNotUnlimited ) {
                 activated = false;
@@ -100,14 +100,14 @@ public class MarkingNet implements IMarkingNet {
     /**
      * @return the initialMarking
      */
-    public Marking getInitialMarking() {
+    public IMarking getInitialMarking() {
         return initialMarking;
     }
 
     /**
      * @return the set of markings
      */
-    public Set<Marking> getMarkings() {
+    public Set<IMarking> getMarkings() {
         return this.markings;
     }
 
@@ -165,31 +165,34 @@ public class MarkingNet implements IMarkingNet {
      * @param transition the transition to fire
      * @return a new Marking with the tokens after the transition is fired
      */
-    public Marking calculateSucceedingMarking(Marking parentMarking, TransitionNode transition) {
-        int[] tokens = new int[parentMarking.getTokens().length];
+    public IMarking calculateSucceedingMarking(IMarking parentMarking, TransitionNode transition) {
+        IMarking resultingMarking = parentMarking.copy();
 
-        // copy tokens from given marking (call by value)
-        System.arraycopy(parentMarking.getTokens(), 0, tokens, 0, tokens.length);
+        for(AbstractNode node: transition.getPredecessorNodes()) {
+            if(!(node instanceof PlaceNode)) continue;
 
-        // decrease all tokenCounts for prePlaces of given transition
-        // and increase all tokenCounts for postPlaces of given transition
-        for ( int i = 0; i < places.length; i++ ) {
-            for ( AbstractNode preNode : transition.getPredecessorNodes() ) {
-                if ( preNode == places[i] ) {
-                    tokens[i] -= transition.getWeightFrom(preNode);
-                }
-            }
-            for ( AbstractNode postNode : transition.getSuccessorNodes() ) {
-                if ( postNode == places[i] ) {
-                    tokens[i] += transition.getWeightTo(postNode);
-                }
-            }
+            PlaceNode place = (PlaceNode) node;
+
+            int tokens = parentMarking.getTokens(place);
+            int weight = transition.getWeightFrom(place);
+            resultingMarking.setTokens(place, tokens - weight);
         }
-        return new Marking(tokens, places, parentMarking.getPlaceUnlimited());
+
+        for(AbstractNode node: transition.getSuccessorNodes()){
+            if(!(node instanceof PlaceNode)) continue;
+
+            PlaceNode place = (PlaceNode) node;
+            int tokens = parentMarking.getTokens(place);
+            int weight = transition.getWeightTo(place);
+
+            resultingMarking.setTokens(place, tokens + weight);
+        }
+
+        return resultingMarking;
     }
 
     @Override
-    public Set<Marking> getAllContainedNodes() {
+    public Set<IMarking> getAllContainedNodes() {
         return new HashSet<>(markings);
     }
 

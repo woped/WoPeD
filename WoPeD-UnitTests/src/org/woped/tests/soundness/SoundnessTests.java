@@ -8,13 +8,12 @@ import org.woped.tests.qualanalysis.soundness.algorithms.basedonmarkingnet.nonli
 import org.woped.tests.qualanalysis.soundness.algorithms.basedonmarkingnet.unboundplaces.UnboundPlacesTestTest;
 import org.woped.tests.qualanalysis.soundness.algorithms.generic.cc.ConnectedComponentTestGenTest;
 import org.woped.tests.qualanalysis.soundness.algorithms.generic.scc.StronglyConnectedComponentTestGenTarjanTest;
-import org.woped.tests.qualanalysis.soundness.marking.MarkingTest;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({ SourceSinkTestTest.class, DeadTransitionTestTest.class,
 		NonLiveTransitionTestTest.class, UnboundPlacesTestTest.class,
 		ConnectedComponentTestGenTest.class,
-		StronglyConnectedComponentTestGenTarjanTest.class, MarkingTest.class })
+		StronglyConnectedComponentTestGenTarjanTest.class })
 
 public class SoundnessTests {
 }

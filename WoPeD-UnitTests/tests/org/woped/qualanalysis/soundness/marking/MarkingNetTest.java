@@ -33,7 +33,7 @@ public class MarkingNetTest {
     public void getActivatedTransitions_DemoNetP2IsUnlimited_transitionIsActivated() throws Exception {
         LowLevelPetriNet net = createDemoLowLevelNet();
         MarkingNet cut = new MarkingNet(net);
-        Marking marking = cut.getInitialMarking();
+        Marking marking = (Marking) cut.getInitialMarking();
 
         PlaceNode p2 = cut.getPlaces()[1];
         int ndxP2 = marking.getIndexByPlace(p2);
@@ -52,7 +52,7 @@ public class MarkingNetTest {
         MarkingNet cut = new MarkingNet(net);
 
         TransitionNode t1 = net.getTransitionNode(new TransitionNode("t1", "t1", "t1", AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE));
-        Marking succeedingMarking = cut.calculateSucceedingMarking(cut.getInitialMarking(), t1);
+        IMarking succeedingMarking = cut.calculateSucceedingMarking(cut.getInitialMarking(), t1);
 
         assertTrue(succeedingMarking.toString().equals("( 0 1 0 )"));
     }
@@ -69,7 +69,7 @@ public class MarkingNetTest {
         t1.addSuccessorNode(p2, arcWeight);
         p2.addPredecessorNode(t1, arcWeight);
 
-        Marking succeedingMarking = cut.calculateSucceedingMarking(cut.getInitialMarking(), t1);
+        IMarking succeedingMarking = cut.calculateSucceedingMarking(cut.getInitialMarking(), t1);
         assertTrue(succeedingMarking.toString().equals("( 0 2 0 )"));
     }
 

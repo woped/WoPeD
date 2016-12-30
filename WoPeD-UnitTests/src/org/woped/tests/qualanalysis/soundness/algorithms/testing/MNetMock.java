@@ -4,6 +4,7 @@ import org.woped.core.model.petrinet.OperatorTransitionModel;
 import org.woped.qualanalysis.soundness.datamodel.PlaceNode;
 import org.woped.qualanalysis.soundness.datamodel.TransitionNode;
 import org.woped.qualanalysis.soundness.marking.Arc;
+import org.woped.qualanalysis.soundness.marking.IMarking;
 import org.woped.qualanalysis.soundness.marking.IMarkingNet;
 import org.woped.qualanalysis.soundness.marking.Marking;
 
@@ -12,7 +13,7 @@ import java.util.Set;
 
 public class MNetMock implements IMarkingNet {
 	private TransitionNode[] transitions = new TransitionNode[4];
-	private Set<Marking> markings = new HashSet<Marking>();
+	private Set<IMarking> markings = new HashSet<>();
 	private PlaceNode[] places = new PlaceNode[3];
 	
 	public MNetMock() {
@@ -86,7 +87,7 @@ public class MNetMock implements IMarkingNet {
         return transitions;
     }
     
-    public Set<Marking> getMarkings() {
+    public Set<IMarking> getMarkings() {
         return markings;
     }
     
@@ -96,7 +97,7 @@ public class MNetMock implements IMarkingNet {
 	}
 
 	@Override
-	public TransitionNode[] getActivatedTransitions(Marking marking) {
+	public TransitionNode[] getActivatedTransitions(IMarking marking) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -126,14 +127,14 @@ public class MNetMock implements IMarkingNet {
 	}
 
 	@Override
-	public Marking calculateSucceedingMarking(Marking parentMarking,
+	public IMarking calculateSucceedingMarking(IMarking parentMarking,
 			TransitionNode transition) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Set<Marking> getAllContainedNodes() {
-		return new HashSet<Marking>(markings);
+	public Set<IMarking> getAllContainedNodes() {
+		return new HashSet<>(markings);
 	}
 }

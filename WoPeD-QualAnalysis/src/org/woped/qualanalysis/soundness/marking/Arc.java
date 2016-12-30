@@ -10,7 +10,7 @@ import org.woped.qualanalysis.soundness.datamodel.TransitionNode;
  */
 public class Arc {
 	// declaration
-	private Marking target;
+	private IMarking target;
 	private TransitionNode trigger;
 	
 	/**
@@ -18,7 +18,7 @@ public class Arc {
 	 * @param target the target of this Arc
 	 * @param trigger the transition that was switched to reach the target
 	 */
-	public Arc(Marking target, TransitionNode trigger){
+	public Arc(IMarking target, TransitionNode trigger){
 		this.target = target;
 		this.trigger = trigger;
 	}
@@ -33,7 +33,7 @@ public class Arc {
 	/**
 	 * @return the succeeding mark
 	 */
-	public Marking getTarget(){
+	public IMarking getTarget(){
 		return this.target;
 	}
 }

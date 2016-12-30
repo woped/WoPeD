@@ -5,6 +5,7 @@ import java.util.Set;
 
 import org.woped.qualanalysis.soundness.algorithms.basedonmarkingnet.AbstractMarkingNetTest;
 import org.woped.qualanalysis.soundness.datamodel.PlaceNode;
+import org.woped.qualanalysis.soundness.marking.IMarking;
 import org.woped.qualanalysis.soundness.marking.IMarkingNet;
 import org.woped.qualanalysis.soundness.marking.Marking;
 
@@ -19,7 +20,7 @@ public class UnboundPlacesTest extends AbstractMarkingNetTest implements IUnboun
 
 	/**
 	 * 
-	 * @param iMarkingNet MarkingNet the algorithm is based on
+	 * @param markingNet MarkingNet the algorithm is based on
 	 */
     public UnboundPlacesTest(IMarkingNet markingNet) {
         super(markingNet);
@@ -31,17 +32,22 @@ public class UnboundPlacesTest extends AbstractMarkingNetTest implements IUnboun
      */
     @Override
     public Set<PlaceNode> getUnboundedPlaces() {
-        Set<PlaceNode> unboundedPlaces = new HashSet<PlaceNode>();
+        Set<PlaceNode> unboundedPlaces = new HashSet<>();
         boolean[] unboundedPlacesArr;
 
-        for (Marking marking : mNet.getMarkings()) {
-            unboundedPlacesArr = marking.getPlaceUnlimited();
+        for (IMarking marking : mNet.getMarkings()) {
 
-            for (int i = 0; i < unboundedPlacesArr.length; i++) {
-                if (unboundedPlacesArr[i]) {
-                    unboundedPlaces.add(mNet.getPlaces()[i]);
-                }
+            for(PlaceNode place: marking.getPlaces()){
+                if(marking.isPlaceUnbound(place)) unboundedPlaces.add(place);
             }
+
+//            unboundedPlacesArr = marking.getPlaceUnlimited();
+//
+//            for (int i = 0; i < unboundedPlacesArr.length; i++) {
+//                if (unboundedPlacesArr[i]) {
+//                    unboundedPlaces.add(mNet.getPlaces()[i]);
+//                }
+//            }
         }
         return unboundedPlaces;
     }

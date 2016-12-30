@@ -1,24 +1,23 @@
 package org.woped.qualanalysis.soundness.builder.markingnet;
 
 import org.woped.qualanalysis.soundness.datamodel.ILowLevelPetriNet;
+import org.woped.qualanalysis.soundness.datamodel.PlaceNode;
 import org.woped.qualanalysis.soundness.datamodel.TransitionNode;
 import org.woped.qualanalysis.soundness.marking.Arc;
-import org.woped.qualanalysis.soundness.marking.Marking;
+import org.woped.qualanalysis.soundness.marking.IMarking;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * creates marking net based on algorithm page 121 "Business Process and WorkflowManagement" author Cornelia Richter von Hagen, Wolfried Stucky.
- * 
- * @see AbstractMarkingNetBuilder
+ *
  * @author Patrick Spies, Patrick Kirchgaessner, Joern Liebau, Enrico Moeller, Sebastian Fuss
- * 
+ * @see AbstractMarkingNetBuilder
  */
 public class MarkingNetBuilderBook extends AbstractMarkingNetBuilder {
 
     /**
-     * 
      * @param lolNet source low level petri net.
      */
     public MarkingNetBuilderBook(ILowLevelPetriNet lolNet) {
@@ -35,25 +34,25 @@ public class MarkingNetBuilderBook extends AbstractMarkingNetBuilder {
 
     /**
      * method for building the markingNet
-     * 
+     *
      * @param marking the marking to start calculating succeeding markings with
      */
-    private void calculateSucceedingMarkings(Marking marking) {
+    private void calculateSucceedingMarkings(IMarking marking) {
         // We use a map here to be able to find markings instances. Unfortunately, Set<> does not
         // allow us to access a matching object within the set, but this is exactly what we want
         // to do here, because a marking has additional properties that do not count into equality.
-        Map<Marking, Marking> markingsToCheck = new HashMap<Marking, Marking>();
-        Map<Marking, Marking> markings = new HashMap<Marking, Marking>();
+        Map<IMarking, IMarking> markingsToCheck = new HashMap<>();
+        Map<IMarking, IMarking> markings = new HashMap<>();
         TransitionNode[] transitions;
-        Marking currentMarking;
-        Marking newMarking;
-        Marking compareMarking;
-        Marking equalMarking = null;
+        IMarking currentMarking;
+        IMarking newMarking;
+        IMarking compareMarking;
+        IMarking equalMarking = null;
 
         markingsToCheck.put(marking, marking);
 
         while (!markingsToCheck.isEmpty()) {
-        	currentMarking = markingsToCheck.keySet().iterator().next();
+            currentMarking = markingsToCheck.keySet().iterator().next();
             markingsToCheck.remove(currentMarking);
             markings.put(currentMarking, currentMarking);
 
@@ -62,15 +61,15 @@ public class MarkingNetBuilderBook extends AbstractMarkingNetBuilder {
             for (int i = 0; i < transitions.length; i++) {
                 newMarking = mNet.calculateSucceedingMarking(currentMarking, transitions[i]);
                 compareMarking = currentMarking;
-                while (compareMarking != null && !compareMarking.smallerEquals(newMarking)) {
+                while (compareMarking != null && !compareMarking.lessOrEqual(newMarking)) {
                     compareMarking = compareMarking.getPredecessor();
                 }
                 if (compareMarking != null) {
-                	int[] newMarkingTokens = newMarking.getTokens();
-                	int[] compareMarkingTokens = compareMarking.getTokens();
-                    for (int position = 0; position < newMarkingTokens.length; position++) {
-                        if (newMarkingTokens[position] != compareMarkingTokens[position]) {
-                            newMarking.setPlaceUnlimited(position);
+
+                    for (PlaceNode place : newMarking.getPlaces()) {
+
+                        if (newMarking.getTokens(place) > compareMarking.getTokens(place)) {
+                            newMarking.setPlaceUnbound(place, true);
                         }
                     }
                 }
@@ -80,7 +79,7 @@ public class MarkingNetBuilderBook extends AbstractMarkingNetBuilder {
                 // discard the new one.
                 equalMarking = markingsToCheck.get(newMarking);
                 if (equalMarking == null) {
-                	equalMarking = markings.get(newMarking);
+                    equalMarking = markings.get(newMarking);
                 }
 
                 if (equalMarking == null) {

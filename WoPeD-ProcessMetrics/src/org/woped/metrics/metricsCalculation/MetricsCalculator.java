@@ -1,14 +1,5 @@
 package org.woped.metrics.metricsCalculation;
 
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 import org.antlr.runtime.RecognitionException;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.IMetricsConfiguration;
@@ -29,8 +20,12 @@ import org.woped.qualanalysis.reachabilitygraph.gui.ReachabilityJGraph;
 import org.woped.qualanalysis.service.IQualanalysisService;
 import org.woped.qualanalysis.service.QualAnalysisServiceFactory;
 import org.woped.qualanalysis.soundness.algorithms.AlgorithmFactory;
+import org.woped.qualanalysis.soundness.datamodel.PlaceNode;
+import org.woped.qualanalysis.soundness.marking.IMarking;
 import org.woped.qualanalysis.soundness.marking.IMarkingNet;
-import org.woped.qualanalysis.soundness.marking.Marking;
+
+import java.lang.reflect.InvocationTargetException;
+import java.util.*;
 
 /**
  * 
@@ -283,11 +278,12 @@ public class MetricsCalculator {
 		double max = 0;
 		ReachabilityGraphModelUsingMarkingNet reach = new ReachabilityGraphModelUsingMarkingNet(editor);
 		IMarkingNet net = reach.getMarkingNet();
-		Set<Marking> markings = net.getMarkings();
-		for (Marking mark : markings) {
+		Set<IMarking> markings = net.getMarkings();
+		for (IMarking mark : markings) {
+			for(PlaceNode place: mark.getPlaces()){
+				if(mark.isPlaceUnbound(place)) return Double.POSITIVE_INFINITY;
+			}
 			Map<String, Integer> markingMap = mark.getMarking();
-			for(boolean infinite: mark.getPlaceUnlimited())
-				if(infinite) return Double.POSITIVE_INFINITY;
 			for(String id:markingMap.keySet())
 				max = Math.max(max,markingMap.get(id));}
 
