@@ -20,11 +20,6 @@ import java.util.Set;
 public class MarkingNet implements IMarkingNet {
 
     /**
-     * source lowLevel petri net.
-     */
-    private final ILowLevelPetriNet lolNet;
-
-    /**
      * all places of the source lowLevel petri net. ->static order!
      */
     private final PlaceNode[] places;
@@ -45,14 +40,13 @@ public class MarkingNet implements IMarkingNet {
     private Marking initialMarking;
 
     /**
-     * @param lolNet the LowLevelPetriNet on that this marking net is builded
+     * @param lolNet the LowLevelPetriNet on that this marking net is built
      */
     public MarkingNet(ILowLevelPetriNet lolNet) {
 
-        this.lolNet = lolNet;
         this.places = lolNet.getPlaces().toArray(new PlaceNode[lolNet.getPlaces().size()]);
         this.transitions = lolNet.getTransitions().toArray(new TransitionNode[lolNet.getTransitions().size()]);
-        initialMarking = (Marking) BuilderFactory.createCurrentMarking(this.lolNet, false);
+        initialMarking = (Marking) BuilderFactory.createCurrentMarking(lolNet, false);
         initialMarking.setInitial(true);
         markings.add(initialMarking);
     }
@@ -161,9 +155,9 @@ public class MarkingNet implements IMarkingNet {
     /**
      * calculate the succeeding marking for a specified Transition Node switched with a specific marking
      * 
-     * @param parentMarking
+     * @param parentMarking the marking before the transition is fired
      * @param transition the transition to fire
-     * @return a new Marking with the tokens after the transition is fired
+     * @return the marking after the transition has fired
      */
     public IMarking calculateSucceedingMarking(IMarking parentMarking, TransitionNode transition) {
         IMarking resultingMarking = parentMarking.copy();
@@ -173,7 +167,7 @@ public class MarkingNet implements IMarkingNet {
 
             PlaceNode place = (PlaceNode) node;
 
-            int tokens = parentMarking.getTokens(place);
+            int tokens = resultingMarking.getTokens(place);
             int weight = transition.getWeightFrom(place);
             resultingMarking.setTokens(place, tokens - weight);
         }
@@ -182,7 +176,7 @@ public class MarkingNet implements IMarkingNet {
             if(!(node instanceof PlaceNode)) continue;
 
             PlaceNode place = (PlaceNode) node;
-            int tokens = parentMarking.getTokens(place);
+            int tokens = resultingMarking.getTokens(place);
             int weight = transition.getWeightTo(place);
 
             resultingMarking.setTokens(place, tokens + weight);

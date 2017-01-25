@@ -2,12 +2,11 @@ package org.woped.qualanalysis.soundness.marking;
 
 import org.junit.Test;
 import org.woped.qualanalysis.soundness.datamodel.PlaceNode;
+import org.woped.tests.MarkingGenerator;
 
 import java.util.TreeMap;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class MarkingTest {
 
@@ -197,8 +196,8 @@ public class MarkingTest {
 
     @Test
     public void lessOrEqual_markingsNotComparable_falseBothDirections() throws Exception {
-        IMarking m1 = createDemoMarking(new int[]{1,0,0}, new boolean[]{false, false, false});
-        IMarking m2 = createDemoMarking(new int[]{0,1,0}, new boolean[]{false, false, false});
+        IMarking m1 = createDemoMarking(new int[]{1, 0, 0}, new boolean[]{false, false, false});
+        IMarking m2 = createDemoMarking(new int[]{0, 1, 0}, new boolean[]{false, false, false});
 
         assertFalse(m1.lessOrEqual(m2));
         assertFalse(m2.lessOrEqual(m1));
@@ -206,8 +205,8 @@ public class MarkingTest {
 
     @Test
     public void lessOrEqual_m1IsLess_returnsExpectedResults() throws Exception {
-        IMarking m1 = createDemoMarking(new int[]{1,0,0}, new boolean[]{false, false, false});
-        IMarking m2 = createDemoMarking(new int[]{2,1,0}, new boolean[]{false, false, false});
+        IMarking m1 = createDemoMarking(new int[]{1, 0, 0}, new boolean[]{false, false, false});
+        IMarking m2 = createDemoMarking(new int[]{2, 1, 0}, new boolean[]{false, false, false});
 
         assertTrue(m1.lessOrEqual(m2));
         assertFalse(m2.lessOrEqual(m1));
@@ -215,8 +214,8 @@ public class MarkingTest {
 
     @Test
     public void lessOrEqual_m1IsLessButOneUnlimited_returnsExpectedResults() throws Exception {
-        IMarking m1 = createDemoMarking(new int[]{1,0,0}, new boolean[]{true, false, false});
-        IMarking m2 = createDemoMarking(new int[]{2,1,0}, new boolean[]{false, false, false});
+        IMarking m1 = createDemoMarking(new int[]{1, 0, 0}, new boolean[]{true, false, false});
+        IMarking m2 = createDemoMarking(new int[]{2, 1, 0}, new boolean[]{false, false, false});
 
         assertFalse(m1.lessOrEqual(m2));
         assertFalse(m2.lessOrEqual(m1));
@@ -224,32 +223,53 @@ public class MarkingTest {
 
     @Test
     public void lessOrEqual_m1IsLessButAllUnlimited_returnsExpectedResults() throws Exception {
-        IMarking m1 = createDemoMarking(new int[]{1,0,0}, new boolean[]{true, true, true});
-        IMarking m2 = createDemoMarking(new int[]{2,1,0}, new boolean[]{false, false, false});
+        IMarking m1 = createDemoMarking(new int[]{1, 0, 0}, new boolean[]{true, true, true});
+        IMarking m2 = createDemoMarking(new int[]{2, 1, 0}, new boolean[]{false, false, false});
 
         assertFalse(m1.lessOrEqual(m2));
         assertTrue(m2.lessOrEqual(m1));
     }
 
     @Test
+    public void less_otherIsLess_returnTrue() throws Exception {
+        IMarking cut = createDemoMarking(new int[]{1, 0, 0}, new boolean[]{false, false, false});
+        IMarking other = createDemoMarking(new int[]{2, 0, 0}, new boolean[]{false, false, false});
+
+        assertTrue(cut.less(other));
+    }
+
+    @Test
+    public void less_otherIsGreater_returnFalse() throws Exception {
+        IMarking cut = createDemoMarking(new int[]{2, 0, 0}, new boolean[]{false, false, false});
+        IMarking other = createDemoMarking(new int[]{1, 0, 0}, new boolean[]{false, false, false});
+
+        assertFalse(cut.less(other));
+    }
+
+    @Test
+    public void less_otherIsNotComparable_returnFalse() throws Exception {
+        IMarking cut = createDemoMarking(new int[]{0, 1, 0}, new boolean[]{false, false, false});
+        IMarking other = createDemoMarking(new int[]{1, 0, 0}, new boolean[]{false, false, false});
+
+        assertFalse(cut.less(other));
+    }
+
+    @Test
+    public void less_otherIsEqual_returnFalse() throws Exception {
+        IMarking cut = createDemoMarking(new int[]{1, 0, 0}, new boolean[]{false, false, false});
+        assertFalse(cut.less(cut));
+    }
+
+    @Test
     public void lessOrEqual_bothUnlimitedDifferentTokens_returnsTrueBothDirections() throws Exception {
-        IMarking m1 = createDemoMarking(new int[]{1,0,0}, new boolean[]{true, true, true});
-        IMarking m2 = createDemoMarking(new int[]{2,1,0}, new boolean[]{true, true, true});
+        IMarking m1 = createDemoMarking(new int[]{1, 0, 0}, new boolean[]{true, true, true});
+        IMarking m2 = createDemoMarking(new int[]{2, 1, 0}, new boolean[]{true, true, true});
 
         assertTrue(m1.lessOrEqual(m2));
         assertTrue(m2.lessOrEqual(m1));
     }
-    private IMarking createDemoMarking(int[] tokens, boolean[] unbound){
-        return new Marking(tokens, getDemoPlaces(), unbound);
+
+    private IMarking createDemoMarking(int[] tokens, boolean[] unbound) {
+        return new MarkingGenerator().createDemoMarking(tokens, unbound);
     }
-
-    private PlaceNode[] getDemoPlaces() {
-        PlaceNode places[] = new PlaceNode[3];
-        places[0] = new PlaceNode(0, 0, "p1", "p1", "p1");
-        places[1] = new PlaceNode(0, 0, "p2", "p2", "p2");
-        places[2] = new PlaceNode(0, 0, "p3", "p3", "p3");
-        return places;
-    }
-
-
 }

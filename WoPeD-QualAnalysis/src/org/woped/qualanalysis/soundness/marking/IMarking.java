@@ -4,7 +4,6 @@ import org.woped.qualanalysis.soundness.algorithms.generic.INode;
 import org.woped.qualanalysis.soundness.datamodel.PlaceNode;
 import org.woped.qualanalysis.soundness.datamodel.TransitionNode;
 
-import java.util.Collection;
 import java.util.Set;
 import java.util.SortedMap;
 import java.util.SortedSet;
@@ -117,12 +116,16 @@ public interface IMarking extends INode<IMarking> {
     boolean lessOrEqual(IMarking other);
 
     /**
-     * Returns if the current element is less or equal than any element is the provided collection.
+     * Returns if the element is less than the other element.
+     * <p>
+     * Caution: Markings are not totally ordered. If a element is not less than an other element does not imply
+     * that the element is greater than the other element.
      *
-     * @param markings the collection of markings to compare against
-     * @return true if the current element is less or equal than at least one element in the provided collection, otherwise false
+     * @param other the element to compare
+     * @return true if the element is less than the other element, otherwise false
      */
-    boolean lessOrEqual(Collection<IMarking> markings);
+    boolean less(IMarking other);
+
 
     /**
      * @param isInitial the isInitial to set

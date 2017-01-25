@@ -6,6 +6,7 @@ import org.woped.qualanalysis.soundness.datamodel.LowLevelPetriNet;
 import org.woped.qualanalysis.soundness.datamodel.PlaceNode;
 import org.woped.qualanalysis.soundness.datamodel.TransitionNode;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class MarkingNetTest {
@@ -71,6 +72,30 @@ public class MarkingNetTest {
 
         IMarking succeedingMarking = cut.calculateSucceedingMarking(cut.getInitialMarking(), t1);
         assertTrue(succeedingMarking.toString().equals("( 0 2 0 )"));
+    }
+
+    @Test
+    public void calculateSuccedingMarking_reverseArcExists_doNotChangeTokens() throws Exception {
+        LowLevelPetriNet net = new LowLevelPetriNet();
+
+        int initialTokens = 2;
+        PlaceNode p1 = new PlaceNode(initialTokens, 0,"p1", "p1", "p1");
+        TransitionNode t1 = new TransitionNode("t1", "t1", "t1", AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE);
+
+        net.addNode(p1);
+        net.addNode(t1);
+
+        p1.addSuccessorNode(t1);
+        p1.addPredecessorNode(t1);
+        t1.addPredecessorNode(p1);
+        t1.addSuccessorNode(p1);
+
+        MarkingNet cut = new MarkingNet(net);
+        IMarking succeedingMarking = cut.calculateSucceedingMarking(cut.getInitialMarking(), t1);
+
+        String expected = String.format("( %d )", initialTokens);
+        String actual = succeedingMarking.toString();
+        assertEquals(expected, actual);
     }
 
 

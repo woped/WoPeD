@@ -17,11 +17,11 @@ public class Marking implements IMarking {
     private static int markingCounter = 0;
 
     // declaration
-    private final Map<PlaceNode, Integer> placeToIndexMap = new HashMap<PlaceNode, Integer>();
+    private final Map<PlaceNode, Integer> placeToIndexMap = new HashMap<>();
     private final PlaceNode[] places;
     private final int[] tokens;
     private final boolean[] placeUnlimited;
-    private final Set<Arc> successors = new HashSet<Arc>();
+    private final Set<Arc> successors = new HashSet<>();
     private IMarking predecessor;
     private boolean isInitial = false;
     private int markingID;
@@ -39,7 +39,7 @@ public class Marking implements IMarking {
         this.tokens = tokens.clone();
         this.placeUnlimited = placeUnlimited.clone();
         for (int i = 0; i < tokens.length; i++) {
-            placeToIndexMap.put(places[i], new Integer(i));
+            placeToIndexMap.put(places[i], i);
         }
         markingID = markingCounter;
         markingCounter++;
@@ -118,14 +118,6 @@ public class Marking implements IMarking {
     }
 
     /**
-     * @return the array where UnlimitedPlaces are marked as true.
-     * Do not manipulate the returned array!
-     */
-    public boolean[] getPlaceUnlimited() {
-        return placeUnlimited;
-    }
-
-    /**
      * @param position position of the place being unlimited
      */
     public void setPlaceUnlimited(Integer position) {
@@ -140,10 +132,7 @@ public class Marking implements IMarking {
     @Override
     public boolean isPlaceUnbound(String placeId) {
         int pos = getIndexOfPlaceNode(placeId);
-
-        if (pos == -1) return false;
-
-        return placeUnlimited[pos];
+        return pos != -1 && placeUnlimited[pos];
     }
 
     private int getIndexOfPlaceNode(String placeId) {
@@ -194,7 +183,7 @@ public class Marking implements IMarking {
      */
     @Override
     public HashSet<String> getActivatedTransitions() {
-        HashSet<String> transitions = new HashSet<String>();
+        HashSet<String> transitions = new HashSet<>();
         for (Arc arc : getSuccessors()) {
             transitions.add(arc.getTrigger().getOriginId());
         }
@@ -312,23 +301,17 @@ public class Marking implements IMarking {
     }
 
     /**
-     * Returns if the current element is less or equal than any element in the provided collection.
+     * Returns if the element is less than the other element.
+     * <p>
+     * Caution: Markings are not totally ordered. If a element is not less than an other element does not imply
+     * that the element is greater than the other element.
      *
-     * @param markings the collection of markings to compare against
-     * @return true if the current element is less or equal than at least one element in the provided collection, otherwise false
+     * @param other the element to compare
+     * @return true if the element is less than the other element, otherwise false
      */
     @Override
-    public boolean lessOrEqual(Collection<IMarking> markings) {
-        boolean lessOrEqual = false;
-
-        for (IMarking other : markings) {
-            if (this.lessOrEqual(other)) {
-                lessOrEqual = true;
-                break;
-            }
-        }
-
-        return lessOrEqual;
+    public boolean less(IMarking other) {
+        return this.lessOrEqual(other) && !this.equals(other);
     }
 
     /**
@@ -342,7 +325,7 @@ public class Marking implements IMarking {
         if (index == null) {
             return -1;
         } else {
-            return index.intValue();
+            return index;
         }
     }
 
@@ -444,7 +427,7 @@ public class Marking implements IMarking {
                 result.append(tokens[pos]);
             }
 
-            result.append(places[pos].getId() + " ");
+            result.append(places[pos].getId()).append(" ");
         }
 
         result.append(")");
