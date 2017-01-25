@@ -2061,7 +2061,8 @@ public class TransitionPropertyEditor extends JDialog implements
 	 * 
 	 */
 	public void actionPerformed(ActionEvent e) {
-		if (e.getActionCommand().equals(TRIGGER_MESSAGE) || e.getActionCommand().equals(TRIGGER_NONE)) {			
+		if (e.getActionCommand().equals(TRIGGER_MESSAGE) || e.getActionCommand().equals(TRIGGER_NONE) || 
+				e.getActionCommand().equals(TRIGGER_TIME)) {			
 			// Disable all elements
 			getResourceRoleComboBox().setEnabled(false);
 			getResourceGroupComboBox().setEnabled(false);
@@ -2073,39 +2074,18 @@ public class TransitionPropertyEditor extends JDialog implements
 			getserviceTimeTextfield().setEnabled(false);
 			getserviceTimeComboBox().setEnabled(false);
 
-		} else if (e.getActionCommand().equals(TRIGGER_RESOURCE)) {
-			// Enable resource elements
+		} else {
+			// Enable all elements for resource triggered transition
 			getResourceRoleComboBox().setEnabled(true);
 			getResourceGroupComboBox().setEnabled(true);
 			getResourceRoleLabel().setEnabled(true);
 			getResourceGroupLabel().setEnabled(true);
 			getNumResourcesLabel().setEnabled(true);
 			getNumResourcesTextField().setEnabled(true);
-			
-			// Disable time elements
-			getserviceTimeLabel().setEnabled(false);
-			getserviceTimeTextfield().setEnabled(false);
-			getserviceTimeComboBox().setEnabled(false);
-
-		} else if (e.getActionCommand().equals(TRIGGER_TIME)) {
-			// Disable resource elements
-			getResourceRoleComboBox().setEnabled(false);
-			getResourceGroupComboBox().setEnabled(false);
-			getResourceRoleLabel().setEnabled(false);
-			getResourceGroupLabel().setEnabled(false);
-			getNumResourcesLabel().setEnabled(false);
-			getNumResourcesTextField().setEnabled(false);
-			
-			// Enable time elements
 			getserviceTimeLabel().setEnabled(true);
 			getserviceTimeTextfield().setEnabled(true);
 			getserviceTimeComboBox().setEnabled(true);
-
-//			if (!transition.getToolSpecific().isSubprocess()) {
-//				getserviceTimeLabel().setEnabled(false);
-//				getserviceTimeTextfield().setEnabled(false);
-//				getserviceTimeComboBox().setEnabled(false);
-//			}
+			
 		}
 		
 		if (transition.getToolSpecific().isSubprocess()
