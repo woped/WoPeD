@@ -6,8 +6,8 @@ import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IEditor;
+import org.woped.core.controller.ViewEvent;
 import org.woped.core.gui.IUserInterface;
-import org.woped.core.qualanalysis.IReachabilityGraph;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.core.utilities.Platform;
 import org.woped.editor.action.WoPeDAction;
@@ -17,7 +17,6 @@ import org.woped.editor.controller.VisualController;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.editor.controller.vc.SubprocessEditorVC;
 import org.woped.editor.controller.vc.TaskBarVC;
-import org.woped.editor.controller.vep.ViewEvent;
 import org.woped.gui.images.svg.woped;
 import org.woped.gui.translations.Messages;
 import org.woped.qualanalysis.simulation.ReferenceProvider;
@@ -138,6 +137,7 @@ public class DefaultUserInterface extends MainFrame implements IUserInterface, I
 
             editorList.add(frame.getEditor());
             ((EditorVC) frame.getEditor()).getEditorPanel().setContainer(frame);
+            frame.pack();
             frame.setVisible(true);
 
             // Notify MainFrame
@@ -212,14 +212,6 @@ public class DefaultUserInterface extends MainFrame implements IUserInterface, I
             if ( frames[i] instanceof DefaultEditorFrame ) {
                 result = ((DefaultEditorFrame) frames[i]).getEditor();
             }
-        return result;
-    }
-
-    public IReachabilityGraph getReachGraphFocus() {
-        JInternalFrame[] frames = desktop.getAllFrames();
-        IReachabilityGraph result = null;
-        for ( int i = 0; (result == null) && (i < frames.length); ++i )
-            if ( frames[i] instanceof IReachabilityGraph ) result = ((IReachabilityGraph) frames[i]);
         return result;
     }
 

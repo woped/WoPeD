@@ -36,6 +36,7 @@ import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractEventProcessor;
 import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IEditor;
+import org.woped.core.controller.ViewEvent;
 import org.woped.core.gui.IEditorAware;
 import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.GroupModel;
@@ -45,7 +46,6 @@ import org.woped.core.utilities.LoggerManager;
 import org.woped.editor.controller.VisualController;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.editor.controller.vc.SubprocessEditorVC;
-import org.woped.editor.controller.vep.ViewEvent;
 import org.woped.editor.help.HelpBrowser;
 import org.woped.editor.help.action.LaunchDefaultBrowserAction;
 import org.woped.qualanalysis.service.IQualanalysisService;
@@ -76,12 +76,12 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 			editor = (EditorVC) event.getSource();
 		} else
 		{
-			editor = (EditorVC) getMediator().getUi().getEditorFocus();
+			editor = getMediator().getUi().getEditorFocus();
 		}
 		switch (event.getOrder())
 		{
 		case AbstractViewEvent.NEW:
-			editor = getMediator().createEditor(true);
+			getMediator().createEditor(true);
 			break;
 		case AbstractViewEvent.OPEN_SUBPROCESS:
 			if (event.getSource() instanceof EditorVC)
@@ -89,7 +89,7 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 				editor = (EditorVC) event.getSource();
 			} else
 			{
-				editor = (EditorVC) getMediator().getUi().getEditorFocus();
+				editor = getMediator().getUi().getEditorFocus();
 			}
 			Object cell = editor.getGraph().getSelectionCell();
 			if (cell instanceof GroupModel)
@@ -102,15 +102,12 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 				
 					IEditor subEditor = getMediator().createSubprocessEditor(
 							true, editor, model);
-					//rotate of Subprocess like Mainprocess
+					//rotate of sub process like main process
 					if  (editor.isRotateSelected() != model.getDirection()){
 						subEditor.rotateLayout();
 						model.setDirection(editor.isRotateSelected());
 					}
 				}
-			} else
-			{
-				// error
 			}
 			break;
 
@@ -128,7 +125,7 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 			closeEditor(editor);
 			break;
 		case AbstractViewEvent.ABOUT:
-			AboutUI about = null;
+			AboutUI about;
 			if (getMediator().getUi() != null
 					&& getMediator().getUi().getComponent() instanceof JFrame)
 			{
@@ -141,16 +138,16 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 			break;
 
 		case AbstractViewEvent.BUGREPORT:
-			BugReportUI bugreport = null;
+			BugReportUI bugReport;
 			if (getMediator().getUi() != null
 					&& getMediator().getUi().getComponent() instanceof JFrame)
 			{
-				bugreport = new BugReportUI((JFrame) getMediator().getUi());
+				bugReport = new BugReportUI((JFrame) getMediator().getUi());
 			} else
 			{
-				bugreport = new BugReportUI();
+				bugReport = new BugReportUI();
 			}
-			bugreport.setVisible(true);
+			bugReport.setVisible(true);
 			break;
 
 		case AbstractViewEvent.HELP:
@@ -160,10 +157,10 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 			} catch (Exception e)
 			{
 				LoggerManager.error(Constants.GUI_LOGGER,
-						"Cannot find HTML manual files in " + (String)event.getData() + "." + e.getMessage());
+						"Cannot find HTML manual files in " + event.getData() + "." + e.getMessage());
 				JOptionPane.showMessageDialog(getMediator().getUi()
 						.getComponent(), Messages
-						.getString("Help.Message.HTMLManualFileNotFound") + " in " + (String)event.getData(),
+						.getString("Help.Message.HTMLManualFileNotFound") + " in " + event.getData(),
 						Messages.getString("Help.Message.notFound"),
 						JOptionPane.ERROR_MESSAGE);
 			}
@@ -198,7 +195,8 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
         	new LaunchDefaultBrowserAction(Messages.getString("Community.Twitter.link"), null).displayURL();
             break;
         case AbstractViewEvent.GOOGLEPLUS:
-        	new LaunchDefaultBrowserAction(Messages.getString("Community.Googleplus.link"), null).displayURL();
+			//noinspection SpellCheckingInspection
+			new LaunchDefaultBrowserAction(Messages.getString("Community.Googleplus.link"), null).displayURL();
             break;
         case AbstractViewEvent.COMMUNITY:
         	new LaunchDefaultBrowserAction(Messages.getString("Community.Community.link"), null).displayURL();
@@ -211,17 +209,14 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 
 	private void quit()
 	{
-		Vector<IEditor> editorList = new Vector<IEditor>(getMediator().getUi()
+		Vector<IEditor> editorList = new Vector<>(getMediator().getUi()
 				.getAllEditors());
 		boolean canceled = false;
-		for (Iterator<IEditor> iter = editorList.iterator(); iter.hasNext();)
-		{
-			IEditor editor = (IEditor) iter.next();
+		for (IEditor editor : editorList) {
 			processViewEvent(new ViewEvent(editor,
 					AbstractViewEvent.VIEWEVENTTYPE_GUI,
 					AbstractViewEvent.CLOSE));
-			if (getMediator().getUi().getAllEditors().contains(editor))
-			{
+			if (getMediator().getUi().getAllEditors().contains(editor)) {
 				canceled = true;
 				break;
 			}
@@ -230,7 +225,7 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 		if (!canceled)
 		{
 			// If window is maximized don't store the current size, since that
-			// would lead to strange results when later demaximizing the window
+			// would lead to strange results when later leaving the maximised state
 			// such as too large windows and negative positions
 			ConfigurationManager.getConfiguration().setMaximizeWindow(
 					getMediator().getUi().isMaximized());
@@ -268,6 +263,7 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 				((JInternalFrame) ((EditorVC)editor).getEditorPanel().getContainer()).setIcon(false);
 			} catch (PropertyVetoException e)
 			{
+				//noinspection SpellCheckingInspection
 				LoggerManager.warn(Constants.GUI_LOGGER,
 						"Could not deiconify the editor");
 			}
@@ -275,17 +271,15 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 		VisualController.getInstance().propertyChange(
 				new PropertyChangeEvent(this, "FrameSelection", null, editor));
 		// notify the editor aware vc
-		Iterator<?> editorIter = getMediator().getEditorAwareVCs().iterator();
-		while (editorIter.hasNext())
-		{
-			((IEditorAware) editorIter.next()).selectEditor(editor);
+		for (Object o : getMediator().getEditorAwareVCs()) {
+			((IEditorAware) o).selectEditor(editor);
 		}
 	}
 
 	/**
 	 * Close the Editor... will start the the save procedure if necessary.
 	 * 
-	 * @param editor
+	 * @param editor the editor to close
 	 * @return returns if editor could be close or not.
 	 */
 	private boolean closeEditor(IEditor editor)
@@ -297,10 +291,10 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 			if ((editor instanceof SubprocessEditorVC) && !editorVC.isTokenGameEnabled())
 			{
 
-				IQualanalysisService qualanService = QualAnalysisServiceFactory.createNewQualAnalysisService(editor);
+				@SuppressWarnings("SpellCheckingInspection") IQualanalysisService qualanService = QualAnalysisServiceFactory.createNewQualAnalysisService(editor);
                 
 				String inputID = ((SubprocessEditorVC)editor).getSubprocessInput().getId();
-				String outputID = ((SubprocessEditorVC)editor).getId();
+				String outputID = editor.getId();
 
 				// Try to get the first source place of the model as well as the 
 				// first sink place
@@ -309,11 +303,12 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 				String ainputID = null;
 				String aoutputID = null;
 				Iterator<AbstractPetriNetElementModel> i = qualanService.getSinkPlaces().iterator();
-				if (i.hasNext())
-					ainputID = ((AbstractPetriNetElementModel) i.next()).getId();
+				if (i.hasNext()) {
+					ainputID = i.next().getId();
+				}
 				i = qualanService.getSourcePlaces().iterator();
 				if (i.hasNext())
-					aoutputID = ((AbstractPetriNetElementModel) i.next()).getId();
+					aoutputID = i.next().getId();
 				
 				if (qualanService.getNotStronglyConnectedNodes().size() > 0
 						|| qualanService.getSinkPlaces().size() > 1
@@ -444,10 +439,8 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 		{
 			getMediator().removeViewController(editor);
 			// notify the editor aware vc
-			Iterator<?> editorIter = getMediator().getEditorAwareVCs().iterator();
-			while (editorIter.hasNext())
-			{
-				((IEditorAware) editorIter.next()).removeEditor(editor);
+			for (Object o : getMediator().getEditorAwareVCs()) {
+				((IEditorAware) o).removeEditor(editor);
 			}
 			VisualController.getInstance().propertyChange(
 					new PropertyChangeEvent(this, "InternalFrameCount", null,

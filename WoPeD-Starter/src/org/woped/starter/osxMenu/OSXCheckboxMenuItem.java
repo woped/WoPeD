@@ -3,18 +3,15 @@
  */
 package org.woped.starter.osxMenu;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JCheckBox;
-import javax.swing.JCheckBoxMenuItem;
-import javax.swing.JComponent;
-
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.AbstractViewEvent;
+import org.woped.core.controller.ViewEvent;
 import org.woped.editor.action.WoPeDAction;
 import org.woped.editor.controller.ActionFactory;
-import org.woped.editor.controller.vep.ViewEvent;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
 
@@ -36,8 +33,6 @@ public class OSXCheckboxMenuItem extends JCheckBoxMenuItem {
      * component's <code>addShortcutActionListener<code> method. When
      * the shortcutAction event occurs, that object's appropriate
      * method is invoked.
-     *
-     * @see ShortcutActionEvent
      */
     class ShortcutActionListener implements ActionListener {
 		
@@ -45,7 +40,7 @@ public class OSXCheckboxMenuItem extends JCheckBoxMenuItem {
 		private int			event_id;
 		
 		/** The action. */
-		private WoPeDAction	action;
+		private WoPeDAction action;
 				
 		/**
 		 * Instantiates a new shortcut action listener.
@@ -56,7 +51,7 @@ public class OSXCheckboxMenuItem extends JCheckBoxMenuItem {
 		 * @param target the target
 		 * @author <a href="mailto:lukas-riegel@freenet.de">Lukas Riegel</a> <br>
 		 */
-		public ShortcutActionListener(AbstractApplicationMediator mediator, String action_id, int event_id, JComponent target) {
+		ShortcutActionListener(AbstractApplicationMediator mediator, String action_id, int event_id, JComponent target) {
 			action = ActionFactory.getStaticAction(action_id);
 			//VisualController.getInstance().addElement(action, VisualController.WITH_EDITOR, VisualController.WITH_EDITOR, VisualController.IGNORE);
 			ActionFactory.addTarget(mediator, action_id, target);
@@ -79,7 +74,7 @@ public class OSXCheckboxMenuItem extends JCheckBoxMenuItem {
 	 * @param itemName the item name
 	 * @author <a href="mailto:lukas-riegel@freenet.de">Lukas Riegel</a> <br>
 	 */
-	public OSXCheckboxMenuItem(String itemName, final JCheckBox synchronizedItem) {
+	OSXCheckboxMenuItem(String itemName, final JCheckBox synchronizedItem) {
 		super(itemName);
 		final OSXCheckboxMenuItem currentItem = this;
 		this.addActionListener(new ActionListener() {

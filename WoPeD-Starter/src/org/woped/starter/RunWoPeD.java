@@ -22,25 +22,22 @@
  */
 package org.woped.starter;
 
+import org.apache.log4j.xml.DOMConfigurator;
+import org.woped.config.general.WoPeDGeneralConfiguration;
+import org.woped.core.config.DefaultStaticConfiguration;
+import org.woped.core.controller.AbstractViewEvent;
+import org.woped.core.controller.ViewEvent;
+import org.woped.core.utilities.LoggerManager;
+import org.woped.core.utilities.Platform;
+import org.woped.starter.controller.vc.DefaultApplicationMediator;
+import org.woped.starter.utilities.WopedLogger;
+
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Locale;
-
-import javax.swing.JFrame;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
-
-import org.apache.log4j.xml.DOMConfigurator;
-import org.woped.config.general.WoPeDGeneralConfiguration;
-import org.woped.core.config.DefaultStaticConfiguration;
-import org.woped.core.controller.AbstractViewEvent;
-import org.woped.core.utilities.LoggerManager;
-import org.woped.core.utilities.Platform;
-import org.woped.editor.controller.vep.ViewEvent;
-import org.woped.starter.controller.vc.DefaultApplicationMediator;
-import org.woped.starter.utilities.WopedLogger;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -69,16 +66,16 @@ public class RunWoPeD extends JFrame {
     	boolean startDelayed = false;
     	boolean forceGerman = false;
     	boolean forceEnglish = false;
-    	
- 		for (int i = 0; i < args.length; i++) {
- 			
-			if (args[i].equals("-delay")) {
+
+		for (String arg : args) {
+
+			if (arg.equals("-delay")) {
 				startDelayed = true;
 			}
-			if (args[i].equals("-german")) {
+			if (arg.equals("-german")) {
 				forceGerman = true;
 			}
-			if (args[i].equals("-english")) {
+			if (arg.equals("-english")) {
 				forceEnglish = true;
 			}
 		}
@@ -178,7 +175,7 @@ public class RunWoPeD extends JFrame {
 	/**
 	 * Init loggers for different WoPeD components
 	**/
-    void initLogging() {
+	private void initLogging() {
     	DOMConfigurator.configure(RunWoPeD.class.getResource("/org/woped/starter/utilities/log4j.xml"));
 	
     	LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(
@@ -244,7 +241,7 @@ public class RunWoPeD extends JFrame {
 				Thread.sleep(1000);
 			}
 		}
-		catch(InterruptedException e){ 
+		catch(InterruptedException ignored){
 		} 
 				
 		new AskToStartWoPeDUI(this).setVisible(true);	
