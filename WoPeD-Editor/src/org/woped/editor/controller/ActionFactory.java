@@ -1,5 +1,6 @@
 package org.woped.editor.controller;
 
+import org.woped.editor.action.EditorViewEvent;
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IEditor;

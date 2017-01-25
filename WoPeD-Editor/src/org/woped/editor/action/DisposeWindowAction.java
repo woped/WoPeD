@@ -26,6 +26,7 @@
  */
 package org.woped.editor.action;
 
+
 import java.awt.Component;
 import java.awt.Window;
 import java.awt.event.ActionEvent;

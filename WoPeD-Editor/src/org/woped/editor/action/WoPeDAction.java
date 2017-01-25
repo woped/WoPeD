@@ -24,8 +24,7 @@ package org.woped.editor.action;
 
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.AbstractViewEvent;
-import org.woped.editor.controller.EditorViewEvent;
-import org.woped.editor.controller.vep.ViewEvent;
+import org.woped.core.controller.ViewEvent;
 import org.woped.gui.translations.Messages;
 
 import javax.swing.*;

@@ -20,7 +20,7 @@
  * For contact information please visit http://woped.dhbw-karlsruhe.de
  *
  */
-package org.woped.editor.controller;
+package org.woped.editor.action;
 
 import org.woped.core.controller.AbstractViewEvent;
 

@@ -14,13 +14,11 @@ import javax.swing.JPopupMenu;
 import javax.swing.JToggleButton;
 import javax.swing.SwingUtilities;
 
-import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.IEditor;
 import org.woped.core.controller.IViewController;
 import org.woped.core.controller.IViewListener;
 import org.woped.core.gui.IEditorAware;
-import org.woped.core.utilities.SwingUtils;
 import org.woped.editor.action.WoPeDAction;
 import org.woped.editor.controller.ActionFactory;
 import org.woped.editor.controller.ApplicationMediator;

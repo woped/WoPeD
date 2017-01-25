@@ -2,8 +2,8 @@ package org.woped.editor.action;
 
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.AbstractViewEvent;
+import org.woped.core.controller.ViewEvent;
 import org.woped.editor.controller.ActionFactory;
-import org.woped.editor.controller.vep.ViewEvent;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

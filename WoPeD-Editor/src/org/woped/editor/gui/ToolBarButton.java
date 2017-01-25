@@ -126,7 +126,7 @@ public class ToolBarButton extends JToggleButton implements MouseListener
      * @deprecated
      * @param text
      * @param iconPath
-     * @param event
+     * @param action
      * @param enableing
      * @param visible
      * @param selected
@@ -164,7 +164,7 @@ public class ToolBarButton extends JToggleButton implements MouseListener
      * @deprecated
      * @param text
      * @param iconPath
-     * @param event
+     * @param action
      * @param enableing
      * @return
      */

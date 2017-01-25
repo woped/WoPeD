@@ -41,7 +41,6 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
-import javax.swing.event.*;
 
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractViewEvent;
@@ -50,7 +49,7 @@ import org.woped.core.controller.IViewListener;
 import org.woped.core.utilities.FileFilterImpl;
 import org.woped.core.utilities.Utils;
 import org.woped.editor.controller.ApplicationMediator;
-import org.woped.editor.controller.EditorViewEvent;
+import org.woped.editor.action.EditorViewEvent;
 import org.woped.editor.gui.config.AbstractConfPanel;
 import org.woped.editor.gui.config.ConfApromorePanel;
 import org.woped.editor.gui.config.ConfEditorPanel;
@@ -62,8 +61,6 @@ import org.woped.editor.gui.config.ConfBusinessDashboardPanel;
 import org.woped.editor.gui.config.ConfUnderstandabilityPanel;
 import org.woped.gui.lookAndFeel.WopedButton;
 import org.woped.gui.translations.Messages;
-
-import umontreal.iro.lecuyer.probdistmulti.BiStudentDist;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>

@@ -140,7 +140,7 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
     private boolean active = true;
 
     // For each WoPeD action, we store a corresponding visibility configuration
-	private Map<WoPeDAction, IVisibility> actionVisibilityMap = new HashMap<WoPeDAction,IVisibility>();	
+	private Map<WoPeDAction, IVisibility> actionVisibilityMap = new HashMap<WoPeDAction,IVisibility>();
 	
 	private boolean arcpointSelected   = false;
 	

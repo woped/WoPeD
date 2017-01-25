@@ -92,7 +92,7 @@ public class PopupMenuPetrinet extends JPopupMenu
     private JMenuItem					m_groupMenuItem	    		= null;
     private JMenuItem					m_ungroupMenuItem	    	= null;
 
-    private WoPeDAction 			 	action = null;
+    private WoPeDAction action = null;
     private String						action_id;
  
     private PopupMenuPetrinet()

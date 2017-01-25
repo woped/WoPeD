@@ -37,11 +37,9 @@ import org.jgraph.graph.DefaultPort;
 import org.jgraph.graph.GraphCell;
 import org.jgraph.graph.GraphConstants;
 import org.jgraph.graph.Port;
+import org.woped.core.controller.*;
+import org.woped.editor.action.EditorViewEvent;
 import org.woped.core.config.ConfigurationManager;
-import org.woped.core.controller.AbstractApplicationMediator;
-import org.woped.core.controller.AbstractMarqueeHandler;
-import org.woped.core.controller.AbstractViewEvent;
-import org.woped.core.controller.IEditor;
 import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.ArcModel;
 import org.woped.core.model.CreationMap;
@@ -50,7 +48,6 @@ import org.woped.core.model.petrinet.NameModel;
 import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.core.model.petrinet.SubProcessModel;
 import org.woped.core.model.petrinet.TransitionModel;
-import org.woped.editor.controller.vep.ViewEvent;
 import org.woped.editor.gui.PopupMenuPetrinet;
 import org.woped.editor.utilities.Cursors;
 
@@ -157,7 +154,7 @@ public class PetriNetMarqueeHandler extends AbstractMarqueeHandler {
      * If a valid source and target port exist, the connection is established using the
      * editor's connect method
      * 
-     * @see BasicMarqueeHandler#mouseReleased(java.awt.event.MouseEvent)s
+     * @see BasicMarqueeHandler#mouseReleased(java.awt.event.MouseEvent)
      */
 	@Override
 	public void mouseReleased(MouseEvent e) {
@@ -228,14 +225,14 @@ public class PetriNetMarqueeHandler extends AbstractMarqueeHandler {
 				// Double click on subprocess element opens subprocess editor
 				if (currentCell instanceof SubProcessModel) {
 					getEditor().fireViewEvent(
-						new ViewEvent(this, AbstractViewEvent.VIEWEVENTTYPE_GUI, 
+						new ViewEvent(this, AbstractViewEvent.VIEWEVENTTYPE_GUI,
 											AbstractViewEvent.OPEN_SUBPROCESS));
 				}
 				// Double click on normal element opens property dialog
 				else {
 					getEditor().setLastMousePosition(e.getPoint());
 					getEditor().fireViewEvent(
-						new EditorViewEvent(this, AbstractViewEvent.VIEWEVENTTYPE_EDIT, 
+						new EditorViewEvent(this, AbstractViewEvent.VIEWEVENTTYPE_EDIT,
 												  AbstractViewEvent.OPEN_PROPERTIES));
 
 				}
