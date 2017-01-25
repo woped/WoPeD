@@ -1,37 +1,34 @@
-package org.woped.qualanalysis.reachabilitygraph.gui;
+package org.woped.qualanalysis.coverabilitygraph.gui;
 
-import java.awt.Dimension;
-import java.awt.Graphics2D;
+import org.jgraph.JGraph;
+import org.woped.core.config.ConfigurationManager;
+import org.woped.core.utilities.LoggerManager;
+import org.woped.gui.translations.Messages;
+import org.woped.qualanalysis.Constants;
+
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.IOException;
 
-import javax.imageio.ImageIO;
-import javax.swing.JOptionPane;
-
-import org.jgraph.JGraph;
-import org.woped.core.config.ConfigurationManager;
-import org.woped.core.utilities.LoggerManager;
-import org.woped.qualanalysis.Constants;
-import org.woped.gui.translations.Messages;
-
-public class ImageExport {
+class ImageExport {
 	
-	private final static int 	MAX_WIDTH			= 2100;
-	private final static int	MAX_HEIGHT			= 2100;
+	private final static int 	MAX_WIDTH			= 10000;
+	private final static int	MAX_HEIGHT			= 10000;
 
-    public static RenderedImage getRenderedImage(ReachabilityGraphPanel editor) {
+    static RenderedImage getRenderedImage(CoverabilityGraphVC editor) {
 	JGraph graph = editor.getGraph();
-        graph.clearSelection();
         Object[] cells = graph.getRoots();
         BufferedImage image = null;
         
         if (cells.length > 0) {
+        	graph.validate();
             Rectangle2D rectangle = graph.getCellBounds(cells);
-
-            graph.setGridVisible(false);
+			graph.setGridVisible(false);
             graph.toScreen(rectangle);
 
             Dimension dimension = rectangle.getBounds().getSize();
@@ -54,10 +51,8 @@ public class ImageExport {
     					JOptionPane.ERROR_MESSAGE);
                 double g2dWidth = dimension.width;
                 double g2dHeight = dimension.height;
-                double pageWidth = MAX_WIDTH;
-                double pageHeight = MAX_HEIGHT;
-                double xScaleFactor = pageWidth / g2dWidth;
-                double yScaleFactor = pageHeight / g2dHeight;
+				double xScaleFactor = (double) MAX_WIDTH / g2dWidth;
+                double yScaleFactor = (double) MAX_HEIGHT / g2dHeight;
             	image = new BufferedImage(MAX_WIDTH, MAX_HEIGHT, BufferedImage.TYPE_INT_RGB);
                 Graphics2D graphics = image.createGraphics();
                 graphics.translate(-rectangle.getX(), -rectangle.getY());
@@ -72,11 +67,11 @@ public class ImageExport {
         return image;
     }
     
-    public static boolean saveJPG(RenderedImage image, File file) {
+    static boolean saveJPG(RenderedImage image, File file) {
     	if(image != null)
     	{
     		try {
-    			ImageIO.write((RenderedImage) image, "jpg", file);
+    			ImageIO.write(image, "jpg", file);
     			LoggerManager.info(Constants.QUALANALYSIS_LOGGER, "File saved to: " + file.getAbsolutePath());
     			return true;
     		} catch (IOException e) {
@@ -91,10 +86,10 @@ public class ImageExport {
     	}
     }
     
-    public static boolean savePNG(RenderedImage image, File file) {
+    static boolean savePNG(RenderedImage image, File file) {
 	if(image != null){
 		try {
-		    ImageIO.write((RenderedImage) image, "png", file);
+		    ImageIO.write(image, "png", file);
 		    LoggerManager.info(Constants.QUALANALYSIS_LOGGER, "File saved to: " + file.getAbsolutePath());
 		    return true;
 		} catch (IOException e) {
@@ -108,10 +103,10 @@ public class ImageExport {
 	}
     }
     
-    public static boolean saveBMP(RenderedImage image, File file) {
+    static boolean saveBMP(RenderedImage image, File file) {
 	if(image != null){
 		try {
-		    ImageIO.write((RenderedImage) image, "bmp", file);
+		    ImageIO.write(image, "bmp", file);
 		    LoggerManager.info(Constants.QUALANALYSIS_LOGGER, "File saved to: " + file.getAbsolutePath());
 		    return true;
 		} catch (IOException e) {

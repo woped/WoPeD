@@ -117,9 +117,6 @@ public class FileFilterImpl extends javax.swing.filechooser.FileFilter
 
     /**
      * Return the extension portion of the file's name .
-     * 
-     * @see #getExtension
-     * @see FileFilter#accept
      */
     public String getFileExtension(File f)
     {
@@ -145,17 +142,6 @@ public class FileFilterImpl extends javax.swing.filechooser.FileFilter
     }
 
     /**
-     * Return the extension Hashtable
-     * 
-     * @see #getExtension
-     * @see FileFilter#accept
-     */
-    public Hashtable<String, FileFilterImpl> getExtensions()
-    {
-        return exts;
-    }
-
-    /**
      * Adds a filetype "dot" extension to filter against.
      * 
      * For example: the following code will create a filter that filters out all
@@ -170,7 +156,7 @@ public class FileFilterImpl extends javax.swing.filechooser.FileFilter
     {
         if (exts == null)
         {
-            exts = new Hashtable<String, FileFilterImpl>(5);
+            exts = new Hashtable<>(5);
         }
         exts.put(extension.toLowerCase(), this);
         //fullDescription = null;
@@ -185,6 +171,18 @@ public class FileFilterImpl extends javax.swing.filechooser.FileFilter
 
         return type;
 
+    }
+
+    /**
+     * Returns the default file extensions.
+     *
+     * @return the default file extension
+     */
+    public String getDefaultExtension(){
+        if(exts.isEmpty()) throw new IllegalStateException("There is no file extension registered.");
+
+        // return any of the extensions
+        return exts.keySet().iterator().next();
     }
 
 }
