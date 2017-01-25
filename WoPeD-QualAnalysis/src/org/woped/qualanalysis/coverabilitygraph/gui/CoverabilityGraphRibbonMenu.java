@@ -1,4 +1,4 @@
-package org.woped.qualanalysis.reachabilitygraph.gui;
+package org.woped.qualanalysis.coverabilitygraph.gui;
 
 import org.pushingpixels.flamingo.api.common.JCommandButton;
 import org.pushingpixels.flamingo.api.common.JCommandMenuButton;
@@ -14,20 +14,25 @@ import org.pushingpixels.flamingo.api.ribbon.RibbonElementPriority;
 import org.pushingpixels.flamingo.api.ribbon.RibbonTask;
 import org.pushingpixels.flamingo.api.ribbon.resize.CoreRibbonResizePolicies;
 import org.woped.core.controller.AbstractApplicationMediator;
+import org.woped.core.controller.AbstractViewEvent;
+import org.woped.core.controller.ViewEvent;
 import org.woped.core.utilities.LoggerManager;
-import org.woped.editor.action.ActionButtonListener;
 import org.woped.gui.images.svg.*;
 import org.woped.gui.translations.Messages;
 import org.woped.qualanalysis.Constants;
-import org.woped.qualanalysis.reachabilitygraph.controller.CoverabilityGraphActions;
-import org.woped.qualanalysis.reachabilitygraph.controller.CoverabilityGraphViewEvents;
-import org.woped.qualanalysis.reachabilitygraph.gui.layout.CoverabilityGraphLayout;
+import org.woped.qualanalysis.coverabilitygraph.events.CoverabilityGraphEventListener;
+import org.woped.qualanalysis.coverabilitygraph.gui.layout.circular.CircularLayout;
+import org.woped.qualanalysis.coverabilitygraph.gui.layout.hierarchic.HierarchicLayout;
+import org.woped.qualanalysis.coverabilitygraph.gui.layout.tree.TreeLayout;
 
 import javax.swing.*;
+import javax.swing.event.InternalFrameAdapter;
+import javax.swing.event.InternalFrameEvent;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import static org.pushingpixels.flamingo.api.ribbon.RibbonElementPriority.TOP;
-import static org.woped.qualanalysis.reachabilitygraph.controller.CoverabilityGraphActions.*;
 
 /**
  * This class creates and operates the ribbon bar for the coverability graph
@@ -36,21 +41,22 @@ public class CoverabilityGraphRibbonMenu {
 
     private static final int ICON_WIDTH = 80;
     private static final int ICON_HEIGHT = 80;
+    private final AbstractApplicationMediator mediator;
+    private final RibbonContextualTaskGroup contextGroup;
+    private final RibbonTask graphTask;
+    private JCommandButton refreshButton;
+    private JCommandButton unselectButton;
 
     private static ResizableIcon getResizableIcon(String resource) {
 
         ImageIcon icon = Messages.getImageIcon(resource);
-        if(icon == null){
+        if (icon == null) {
             LoggerManager.warn(Constants.QUALANALYSIS_LOGGER, "Unable do load icon from resources: " + resource);
             return null;
         }
 
         return ImageWrapperResizableIcon.getIcon(icon.getImage(), new Dimension(ICON_WIDTH, ICON_HEIGHT));
     }
-
-    private final AbstractApplicationMediator mediator;
-    private final RibbonContextualTaskGroup contextGroup;
-    private final RibbonTask graphTask;
 
     /**
      * Creates a new instance of the coverability graph ribbon menu
@@ -61,7 +67,11 @@ public class CoverabilityGraphRibbonMenu {
 
         // Register module related view events
         this.mediator = mediator;
-        CoverabilityGraphViewEvents.registerEvents(this.mediator);
+
+        CoverabilityGraphFrameController graphFrameController = CoverabilityGraphFrameController.getInstance(mediator.getUi());
+        graphFrameController.addInternalFrameListener(new CoverabilityGraphFrameListener());
+        GraphListener graphListener = new GraphListener();
+        graphFrameController.addGraphEventListener(graphListener);
 
         graphTask = createCoverabilityGraphTask();
         contextGroup = createContextualGroup();
@@ -72,7 +82,7 @@ public class CoverabilityGraphRibbonMenu {
      *
      * @return the contextual group of the coverability graph
      */
-    public RibbonContextualTaskGroup getContextGroup(){
+    public RibbonContextualTaskGroup getContextGroup() {
         return contextGroup;
     }
 
@@ -83,16 +93,16 @@ public class CoverabilityGraphRibbonMenu {
      *
      * @return the default task of the coverability group.
      */
-    public RibbonTask getDefaultTask(){
+    public RibbonTask getDefaultTask() {
         return graphTask;
     }
 
-    private RibbonContextualTaskGroup createContextualGroup(){
+    private RibbonContextualTaskGroup createContextualGroup() {
         return new RibbonContextualTaskGroup("", Color.orange, graphTask);
     }
 
-    private RibbonTask createCoverabilityGraphTask(){
-        return  new RibbonTask(Messages.getString("CoverabilityGraph.Ribbon.Task.Title"), createMainBand(), createViewBand());
+    private RibbonTask createCoverabilityGraphTask() {
+        return new RibbonTask(Messages.getString("CoverabilityGraph.Ribbon.Task.Title"), createMainBand(), createViewBand(), createAssistantBand());
     }
 
     private JRibbonBand createMainBand() {
@@ -110,7 +120,7 @@ public class CoverabilityGraphRibbonMenu {
 
     private JRibbonBand createViewBand() {
         JRibbonBand viewBand;
-        viewBand = new JRibbonBand(Messages.getString("View.textBandTitle"), null);
+        viewBand = new JRibbonBand(Messages.getString("CoverabilityGraph.Ribbon.ViewBand.Title"), null);
         viewBand.setResizePolicies(CoreRibbonResizePolicies.getCorePoliciesSimple(viewBand));
 
         viewBand.addCommandButton(getLayoutButton(), RibbonElementPriority.MEDIUM);
@@ -121,37 +131,52 @@ public class CoverabilityGraphRibbonMenu {
         return viewBand;
     }
 
+    private JRibbonBand createAssistantBand() {
+        JRibbonBand assistantBand;
+        assistantBand = new JRibbonBand(Messages.getString("CoverabilityGraph.Ribbon.AssistantBand.Title"), null);
+        assistantBand.setResizePolicies(CoreRibbonResizePolicies.getCorePoliciesSimple(assistantBand));
+
+        assistantBand.addCommandButton(getCloseAssistantButton(), RibbonElementPriority.MEDIUM);
+        assistantBand.addCommandButton(getStartAssistantButton(), RibbonElementPriority.MEDIUM);
+        assistantBand.addCommandButton(getResetAssistantButton(), RibbonElementPriority.MEDIUM);
+
+        return assistantBand;
+    }
+
     private JCommandButton getCloseButton() {
         JCommandButton closeButton = createButton("CoverabilityGraph.Ribbon.CloseButton", new file_close());
-        addClickHandler(closeButton, CoverabilityGraphActions.CLOSE, CoverabilityGraphViewEvents.CLOSE_FRAME);
+        addClickHandler(closeButton, CoverabilityGraphViewEvents.CLOSE_FRAME);
 
         return closeButton;
     }
 
     private JCommandButton getRefreshButton() {
-        JCommandButton refreshButton = createButton("CoverabilityGraph.Ribbon.RefreshButton", new refresh());
-        addClickHandler(refreshButton, CoverabilityGraphActions.REFRESH, CoverabilityGraphViewEvents.REFRESH);
-
+        if (refreshButton == null) {
+            refreshButton = createButton("CoverabilityGraph.Ribbon.RefreshButton", new refresh());
+            addClickHandler(refreshButton, CoverabilityGraphViewEvents.REFRESH);
+        }
         return refreshButton;
     }
 
     private JCommandButton getUnselectButton() {
-        JCommandButton unselectButton = createButton("CoverabilityGraph.Ribbon.UnselectButton", new editor_undo());
-        addClickHandler(unselectButton, CoverabilityGraphActions.UNSELECT, CoverabilityGraphViewEvents.UNSELECT);
-
+        if (unselectButton == null) {
+            unselectButton = createButton("CoverabilityGraph.Ribbon.UnselectButton", new editor_undo());
+            addClickHandler(unselectButton, CoverabilityGraphViewEvents.UNSELECT);
+        }
         return unselectButton;
     }
 
     private JCommandButton getSettingsButton() {
         JCommandButton showSettingsButton = createButton("CoverabilityGraph.Ribbon.ShowSettingsButton", new help_configuration());
-        addClickHandler(showSettingsButton, CoverabilityGraphActions.SHOW_SETTINGS, CoverabilityGraphViewEvents.SHOW_SETTINGS);
+        addClickHandler(showSettingsButton, CoverabilityGraphViewEvents.SHOW_SETTINGS);
 
         return showSettingsButton;
     }
 
     private JCommandButton getExportButton() {
         JCommandButton exportButton = createButton("CoverabilityGraph.Ribbon.ExportButton", new file_exportas());
-        addClickHandler(exportButton, CoverabilityGraphActions.EXPORT, CoverabilityGraphViewEvents.EXPORT);
+
+        addClickHandler(exportButton, CoverabilityGraphViewEvents.EXPORT);
 
         return exportButton;
     }
@@ -166,15 +191,15 @@ public class CoverabilityGraphRibbonMenu {
             public JPopupPanel getPopupPanel(JCommandButton commandButton) {
                 String resourceKey = "CoverabilityGraph.Ribbon.LayoutOption.Hierarchic";
                 JCommandMenuButton optionHierarchic = new JCommandMenuButton(Messages.getString(resourceKey), getResizableIcon(resourceKey));
-                addClickHandler(optionHierarchic, LAYOUT, CoverabilityGraphViewEvents.CHANGE_LAYOUT, CoverabilityGraphLayout.HIERARCHIC);
+                addClickHandler(optionHierarchic, CoverabilityGraphViewEvents.CHANGE_LAYOUT, new HierarchicLayout());
 
                 resourceKey = "CoverabilityGraph.Ribbon.LayoutOption.Circle";
                 JCommandMenuButton optionCircular = new JCommandMenuButton(Messages.getString(resourceKey), getResizableIcon(resourceKey));
-                addClickHandler(optionCircular, LAYOUT, CoverabilityGraphViewEvents.CHANGE_LAYOUT, CoverabilityGraphLayout.CIRCULAR);
+                addClickHandler(optionCircular, CoverabilityGraphViewEvents.CHANGE_LAYOUT, new CircularLayout());
 
                 resourceKey = "CoverabilityGraph.Ribbon.LayoutOption.Tree";
-                JCommandMenuButton optionTree = new JCommandMenuButton(Messages.getString(resourceKey), null);
-                addClickHandler(optionTree, LAYOUT, CoverabilityGraphViewEvents.CHANGE_LAYOUT, CoverabilityGraphLayout.TREE);
+                JCommandMenuButton optionTree = new JCommandMenuButton(Messages.getString(resourceKey), getResizableIcon(resourceKey));
+                addClickHandler(optionTree, CoverabilityGraphViewEvents.CHANGE_LAYOUT, new TreeLayout());
 
                 JCommandPopupMenu layoutOption = new JCommandPopupMenu();
                 layoutOption.addMenuButton(optionHierarchic);
@@ -189,7 +214,7 @@ public class CoverabilityGraphRibbonMenu {
 
     private JCommandButton getZoomInButton() {
         JCommandButton zoomInButton = createButton("CoverabilityGraph.Ribbon.ZoomInButton", new zoom_in());
-        addClickHandler(zoomInButton, ZOOM_IN, CoverabilityGraphViewEvents.ZOOM_IN);
+        addClickHandler(zoomInButton, CoverabilityGraphViewEvents.ZOOM_IN);
 
         return zoomInButton;
     }
@@ -197,7 +222,7 @@ public class CoverabilityGraphRibbonMenu {
     private JCommandButton getZoomOutButton() {
 
         JCommandButton zoomOutButton = createButton("CoverabilityGraph.Ribbon.ZoomOutButton", new zoom_out());
-        addClickHandler(zoomOutButton, ZOOM_OUT, CoverabilityGraphViewEvents.ZOOM_OUT);
+        addClickHandler(zoomOutButton, CoverabilityGraphViewEvents.ZOOM_OUT);
 
         return zoomOutButton;
     }
@@ -209,26 +234,25 @@ public class CoverabilityGraphRibbonMenu {
         zoomChooserButton.setPopupCallback(new PopupPanelCallback() {
             @Override
             public JPopupPanel getPopupPanel(JCommandButton commandButton) {
-                String actionId = ZOOM_SET;
                 int eventId = CoverabilityGraphViewEvents.ZOOM_SET;
 
                 JCommandMenuButton zoomButton200 = new JCommandMenuButton("200 %", null);
-                addClickHandler(zoomButton200, actionId, eventId, 2.0);
+                addClickHandler(zoomButton200, eventId, 2.0);
 
                 JCommandMenuButton zoomButton150 = new JCommandMenuButton("150 %", null);
-                addClickHandler(zoomButton150, actionId, eventId, 1.5);
+                addClickHandler(zoomButton150, eventId, 1.5);
 
                 JCommandMenuButton zoomButton100 = new JCommandMenuButton("100 %", null);
-                addClickHandler(zoomButton100, actionId, eventId, 1.0);
+                addClickHandler(zoomButton100, eventId, 1.0);
 
                 JCommandMenuButton zoomButton75 = new JCommandMenuButton("75 %", null);
-                addClickHandler(zoomButton75, actionId, eventId, 0.75);
+                addClickHandler(zoomButton75, eventId, 0.75);
 
                 JCommandMenuButton zoomButton50 = new JCommandMenuButton("50 %", null);
-                addClickHandler(zoomButton50, actionId, eventId, 0.5);
+                addClickHandler(zoomButton50, eventId, 0.5);
 
                 JCommandMenuButton zoomButton25 = new JCommandMenuButton("25 %", null);
-                addClickHandler(zoomButton25, actionId, eventId, 0.25);
+                addClickHandler(zoomButton25, eventId, 0.25);
 
                 JCommandPopupMenu zoomOptions = new JCommandPopupMenu();
                 zoomOptions.addMenuButton(zoomButton200);
@@ -245,6 +269,24 @@ public class CoverabilityGraphRibbonMenu {
         return zoomChooserButton;
     }
 
+    private JCommandButton getCloseAssistantButton() {
+        JCommandButton closeAssistantButton = createButton("CoverabilityGraph.Ribbon.Assistant.Close", new tokengame_play_stop());
+        addClickHandler(closeAssistantButton, CoverabilityGraphViewEvents.ASSISTANT_CLOSE);
+        return closeAssistantButton;
+    }
+
+    private JCommandButton getStartAssistantButton() {
+        JCommandButton startAssistantButton = createButton("CoverabilityGraph.Ribbon.Assistant.Start", new tokengame_play_start());
+        addClickHandler(startAssistantButton, CoverabilityGraphViewEvents.ASSISTANT_START);
+        return startAssistantButton;
+    }
+
+    private JCommandButton getResetAssistantButton() {
+        JCommandButton resetAssistantButton = createButton("CoverabilityGraph.Ribbon.Assistant.Reset", new refresh());
+        addClickHandler(resetAssistantButton, CoverabilityGraphViewEvents.ASSISTANT_RESET);
+        return resetAssistantButton;
+    }
+
     private JCommandButton createButton(String prefix, ResizableIcon icon) {
         JCommandButton button = new JCommandButton(Messages.getTitle(prefix), icon);
 
@@ -255,11 +297,79 @@ public class CoverabilityGraphRibbonMenu {
         return button;
     }
 
-    private void addClickHandler(JCommandButton button, String actionId, int eventId) {
-        addClickHandler(button, actionId, eventId, null);
+    private void addClickHandler(JCommandButton button, int eventId) {
+        addClickHandler(button, eventId, null);
     }
 
-    private void addClickHandler(JCommandButton button, String actionId, int eventId, Object data) {
-        button.addActionListener(new ActionButtonListener(mediator, actionId, eventId, button, data));
+    private void addClickHandler(JCommandButton button, final int eventId, final Object data) {
+        button.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                mediator.fireViewEvent(new ViewEvent(CoverabilityGraphRibbonMenu.this, AbstractViewEvent.VIEWEVENTTYPE_COVERABILITY_GRAPH, eventId, data));
+            }
+        });
+    }
+
+    private void showContextGroup() {
+        mediator.fireViewEvent(new ViewEvent(this, AbstractViewEvent.VIEWEVENTTYPE_COVERABILITY_GRAPH, CoverabilityGraphViewEvents.FRAME_ACTIVATED));
+    }
+
+    private void hideContextGroup() {
+        mediator.fireViewEvent(new ViewEvent(this, AbstractViewEvent.VIEWEVENTTYPE_COVERABILITY_GRAPH, CoverabilityGraphViewEvents.FRAME_DEACTIVATED));
+    }
+
+    private class CoverabilityGraphFrameListener extends InternalFrameAdapter {
+
+        @Override
+        public void internalFrameClosing(InternalFrameEvent e) {
+            hideContextGroup();
+        }
+
+        @Override
+        public void internalFrameActivated(InternalFrameEvent e) {
+            showContextGroup();
+        }
+
+        @Override
+        public void internalFrameDeactivated(InternalFrameEvent e) {
+            hideContextGroup();
+        }
+    }
+
+    private class GraphListener implements CoverabilityGraphEventListener {
+
+        /**
+         * Invoked if the graph and the underlying petri net are out of sync.
+         */
+        @Override
+        public void editorSyncLost() {
+            refreshButton.setEnabled(true);
+        }
+
+        /**
+         * Invoked, when the synchronisation between the graph and the underlying petri net has been renewed.
+         */
+        @Override
+        public void editorSyncEstablished() {
+            refreshButton.setEnabled(false);
+        }
+
+        /**
+         * Invoked when a highlighting has been added to the graph.
+         */
+        @Override
+        public void graphHighlightingAdded() {
+            unselectButton.setEnabled(true);
+        }
+
+        /**
+         * Invoked when all highlighting has been removed from the graph.
+         */
+        @Override
+        public void graphHighlightingRemoved() {
+            unselectButton.setEnabled(false);
+        }
     }
 }

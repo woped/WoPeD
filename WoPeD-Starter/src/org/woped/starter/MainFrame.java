@@ -13,16 +13,14 @@ import org.woped.config.general.WoPeDRecentFile;
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.*;
 import org.woped.core.gui.IUserInterface;
-import org.woped.core.qualanalysis.IReachabilityGraph;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.core.utilities.Platform;
 import org.woped.editor.action.ActionButtonListener;
 import org.woped.editor.controller.ActionFactory;
 import org.woped.editor.controller.VisualController;
-import org.woped.editor.controller.vep.ViewEvent;
-import org.woped.qualanalysis.reachabilitygraph.controller.CoverabilityGraphViewEvents;
+import org.woped.qualanalysis.coverabilitygraph.gui.CoverabilityGraphViewEvents;
 import org.woped.gui.images.svg.*;
-import org.woped.qualanalysis.reachabilitygraph.gui.CoverabilityGraphRibbonMenu;
+import org.woped.qualanalysis.coverabilitygraph.gui.CoverabilityGraphRibbonMenu;
 import org.woped.gui.translations.Messages;
 import org.woped.starter.osxMenu.OSXFullscreen;
 import org.woped.starter.osxMenu.OSXMenu;
@@ -256,7 +254,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
      */
     private void getOSXMenu() {
 
-        menuAdapter = new OSXMenuAdapter((JFrame) SwingUtilities.getRoot((Component) this));
+        menuAdapter = new OSXMenuAdapter((JFrame) SwingUtilities.getRoot(this));
 
         getOSXFileMenu();
         getOSXEditMenu();
@@ -389,7 +387,6 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
         //Submenu
         OSXMenu tokengameAutomaticModeMenu = new OSXMenu(Messages.getString("Tokengame.AutoBand.title"));
         tokengameAutomaticModeMenu.addMenuItem(Messages.getString("Tokengame.AutoBand.AutoPlayButton.text")).addAction(m_mediator, ActionFactory.ACTIONID_TOKENGAME_AUTO, AbstractViewEvent.TOKENGAME_AUTO);
-        ;
         tokengameAutomaticModeMenu.addMenuItem(Messages.getString("Tokengame.AutoBand.StartButton.text")).addAction(m_mediator, ActionFactory.ACTIONID_TOKENGAME_START, AbstractViewEvent.TOKENGAME_START);
         tokengameAutomaticModeMenu.addMenuItem(Messages.getString("Tokengame.AutoBand.PauseButton.text")).addAction(m_mediator, ActionFactory.ACTIONID_TOKENGAME_PAUSE, AbstractViewEvent.TOKENGAME_PAUSE);
         tokengameMenu.addSubMenu(tokengameAutomaticModeMenu);
@@ -423,7 +420,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
     private void getOSXViewMenu() {
         AbstractApplicationMediator mediator = m_mediator;
 
-        final Window currentWindow = (Window) SwingUtilities.getRoot((Component) this);
+        final Window currentWindow = (Window) SwingUtilities.getRoot(this);
 
         osxViewMenu = new OSXMenu(Messages.getTitle("Menu.View"));
 
@@ -442,7 +439,6 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 //        });
 
         osxViewMenu.addMenuItem(Messages.getString("View.changeModellingDirection.text"), "View.changeModellingDirection").addAction(m_mediator, ActionFactory.ACTIONID_ROTATEVIEW, AbstractViewEvent.ROTATEVIEW);
-        ;
         osxViewMenu.addMenuItem(Messages.getString("View.optimizeLayout.text"), "View.optimizeLayout").addAction(m_mediator, ActionFactory.ACTIONID_GRAPHBEAUTIFIER_DEFAULT, AbstractViewEvent.GRAPHBEAUTIFIER);
         osxViewMenu.addSeparator();
         osxViewMenu.addMenuItem(Messages.getTitle("Action.Frames.Cascade")).addAction(m_mediator, ActionFactory.ACTIONID_CASCADE, AbstractViewEvent.CASCADE);
@@ -482,7 +478,6 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
         osxCommunityMenu.addSeparator();
         osxCommunityMenu.addMenuItem(Messages.getString("Community.Register.text")).addAction(m_mediator, ActionFactory.ACTIONID_REGISTER, AbstractViewEvent.REGISTER);
         osxCommunityMenu.addMenuItem(Messages.getString("Community.Community.text")).addAction(m_mediator, ActionFactory.ACTIONID_COMMUNITY, AbstractViewEvent.COMMUNITY);
-        ;
 
         menuAdapter.addMenu(osxCommunityMenu);
     }
@@ -546,8 +541,8 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
             setTooltip(button, prefix);
         } else {
             String shortcut = "";
-            KeyStroke shortcutKS = null;
-            int modifier = 0;
+            KeyStroke shortcutKS;
+            int modifier;
             try {
                 shortcutKS = button.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).allKeys()[0];
                 modifier = shortcutKS.getModifiers();
@@ -587,10 +582,9 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
         }
     }
 
-    /*************/
+    /* ************/
     /* TASKGROUP */
-
-    /***********/
+    /* **********/
     private JCommandButton getTaskbarButtonNew() {
 
         if (taskbarButtonNew == null) {
@@ -2045,12 +2039,6 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
     @Override
     public Component getPropertyChangeSupportBean() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public IReachabilityGraph getReachGraphFocus() {
         // TODO Auto-generated method stub
         return null;
     }
