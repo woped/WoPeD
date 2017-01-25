@@ -688,18 +688,12 @@ public class PetriNetModelProcessor implements Serializable {
     }
 
     /**
-     * Resets all virtual tokens an highlightings which were set from the
-     * Reachability Graph
-     *
-     * @since 02.01.2009
+     * Resets the virtual tokens in all places.
      */
-    public void resetRGHighlightAndVTokens() {
-        for ( Iterator<AbstractPetriNetElementModel> iter = getElementContainer().getRootElements().iterator(); iter.hasNext(); ) {
-            AbstractPetriNetElementModel current = iter.next();
-            current.setRGHighlighted(false);
-            if ( current instanceof PlaceModel ) {
-                ((PlaceModel) current).resetVirtualTokens();
-            }
+    public void resetVirtualTokens() {
+        Collection<PlaceModel> places = getElementContainer().getPlaces();
+        for (PlaceModel place: places){
+            place.resetVirtualTokens();
         }
     }
 
