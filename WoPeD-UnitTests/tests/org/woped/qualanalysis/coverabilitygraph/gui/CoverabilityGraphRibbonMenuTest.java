@@ -1,4 +1,4 @@
-package org.woped.qualanalysis.reachabilitygraph.gui;
+package org.woped.qualanalysis.coverabilitygraph.gui;
 
 import org.junit.Before;
 import org.junit.Test;
