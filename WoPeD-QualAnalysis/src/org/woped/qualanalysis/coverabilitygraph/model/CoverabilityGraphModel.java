@@ -2,7 +2,7 @@ package org.woped.qualanalysis.coverabilitygraph.model;
 
 import org.woped.qualanalysis.coverabilitygraph.gui.ReachabilityJGraph;
 import org.woped.qualanalysis.coverabilitygraph.gui.layout.CoverabilityGraphLayoutSettings;
-import org.woped.qualanalysis.coverabilitygraph.gui.views.ReachabilityGraphViewFactory;
+import org.woped.qualanalysis.coverabilitygraph.gui.views.CoverabilityGraphViewFactory;
 
 import java.util.Collection;
 
@@ -55,7 +55,7 @@ public interface CoverabilityGraphModel {
      *
      * @return the view factory for the graph
      */
-    ReachabilityGraphViewFactory getViewFactory();
+    CoverabilityGraphViewFactory getViewFactory();
 
     /**
      * Gets the layout settings from the graph.

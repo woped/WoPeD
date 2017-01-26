@@ -1,4 +1,4 @@
-package org.woped.qualanalysis.reachabilitygraph.gui.dialogs;
+package org.woped.qualanalysis.coverabilitygraph.gui.dialogs;
 
 import java.awt.Component;
 import javax.swing.JOptionPane;
@@ -12,15 +12,7 @@ import org.woped.gui.translations.Messages;
  * This class was written by
  * @author Benjamin Geiger
  */
-
-/**
- * New methods "showRefreshWarning" and "showUnselectWarning"
- * 
- * @author <a href="mailto:b.joerger@gmx.de">Benjamin Joerger</a>
- * @since 02.01.2009 
- */
-
-public class ReachabilityWarning {
+public class CoverabilityGraphWarning {
 
 	public static void showReachabilityWarning(Component parentComponent, String message){
 		JOptionPane.showMessageDialog(parentComponent,
@@ -28,5 +20,4 @@ public class ReachabilityWarning {
 				Messages.getString(message + ".Title"), // title
 			    JOptionPane.WARNING_MESSAGE); // type
 	}
-	
 }

@@ -3,7 +3,7 @@ package org.woped.qualanalysis.coverabilitygraph.model;
 import org.jgraph.graph.DefaultGraphCell;
 import org.jgraph.graph.GraphConstants;
 import org.woped.core.controller.IEditor;
-import org.woped.qualanalysis.coverabilitygraph.gui.views.ReachabilityGraphViewFactory;
+import org.woped.qualanalysis.coverabilitygraph.gui.views.CoverabilityGraphViewFactory;
 import org.woped.qualanalysis.soundness.builder.BuilderFactory;
 import org.woped.qualanalysis.soundness.builder.lowlevelpetrinet.AbstractLowLevelPetriNetBuilder;
 import org.woped.qualanalysis.soundness.datamodel.LowLevelPetriNet;
@@ -20,10 +20,10 @@ public class ReachabilityGraphModelUsingMarkingNet extends AbstractReachabilityG
     private HashSet<DefaultGraphCell> cellsList;
 
     public ReachabilityGraphModelUsingMarkingNet(IEditor editor) {
-        this(editor, new ReachabilityGraphViewFactory());
+        this(editor, new CoverabilityGraphViewFactory());
     }
 
-    public ReachabilityGraphModelUsingMarkingNet(IEditor editor, ReachabilityGraphViewFactory viewFactory) {
+    public ReachabilityGraphModelUsingMarkingNet(IEditor editor, CoverabilityGraphViewFactory viewFactory) {
         super(editor, viewFactory);
         initialize();
 

@@ -1,6 +1,6 @@
 package org.woped.qualanalysis.coverabilitygraph.gui.views.formatters;
 
-import org.woped.qualanalysis.coverabilitygraph.data.model.CoverabilityGraphNode;
+import org.woped.qualanalysis.coverabilitygraph.model.CoverabilityGraphNode;
 
 /**
  * This class contains the default settings for a node text formatter.

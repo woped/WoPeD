@@ -8,60 +8,62 @@
  * @author Benjamin Geiger
  */
 
-package org.woped.qualanalysis.reachabilitygraph.gui.dialogs;
+package org.woped.qualanalysis.coverabilitygraph.gui.dialogs;
 
+import org.jgraph.graph.DefaultEdge;
+import org.jgraph.graph.Edge;
 import org.woped.gui.translations.Messages;
-import org.woped.qualanalysis.reachabilitygraph.controller.SimulationRunningException;
-import org.woped.qualanalysis.reachabilitygraph.gui.ReachabilityGraphPanel;
+import org.woped.qualanalysis.coverabilitygraph.gui.CoverabilityGraphSettings;
+import org.woped.qualanalysis.coverabilitygraph.gui.CoverabilityGraphVC;
+import org.woped.qualanalysis.coverabilitygraph.gui.ParallelRouter;
+import org.woped.qualanalysis.coverabilitygraph.gui.views.CoverabilityGraphColorScheme;
+import org.woped.qualanalysis.coverabilitygraph.gui.views.formatters.MarkingFormatter;
+import org.woped.qualanalysis.coverabilitygraph.gui.views.formatters.MultiSetMarkingFormatter;
+import org.woped.qualanalysis.coverabilitygraph.gui.views.formatters.TokenVectorMarkingFormatter;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.util.HashMap;
 
-public class ReachabilitySettingsDialog extends JDialog {
+public class CoverabilityGraphSettingsDialog extends JDialog {
 
     private static final long serialVersionUID = -1141097444949417968L;
+    private final String NOTATION_MULITISET = "MultiSet";
+    private final String NOTATION_TOKENVECTOR = "TokenVector";
 
-    ReachabilityGraphPanel rgp = null;
-
+    CoverabilityGraphVC rgp = null;
     // Buttons
-    JButton saveButton = null;
-    JButton cancelButton = null;
-
-    // Labels
-    JLabel graphVisual = null;
-    JLabel hierarchicLabel = null;
-    JLabel placeWidthLabel = null;
-    JLabel placeHeightLabel = null;
-    JLabel hierarchicSpaceVerticalLabel = null;
-    JLabel hierarchicSpaceHorizontalLabel = null;
-
+    private JButton saveButton = null;
+    private JButton cancelButton = null;
+    private JLabel hierarchicLabel = null;
+    private JLabel placeWidthLabel = null;
+    private JLabel placeHeightLabel = null;
+    private JLabel hierarchicSpaceVerticalLabel = null;
+    private JLabel hierarchicSpaceHorizontalLabel = null;
     // Textfields
-    JTextField placeWidthTf = null;
-    JTextField placeHeightTf = null;
-    JTextField hierarchicSpaceHorizontalTf = null;
-    JTextField hierarchicSpaceVerticalTf = null;
-
+    private JTextField placeWidthTf = null;
+    private JTextField placeHeightTf = null;
+    private JTextField hierarchicSpaceHorizontalTf = null;
+    private JTextField hierarchicSpaceVerticalTf = null;
+    private JRadioButton grayGraphRb = null;
+    private JRadioButton colorGraphRb = null;
+    // Checkboxes
+    private JCheckBox parallelRoutingCb = null;
     // RadioButtons
     private ButtonGroup colorButtonGroup;
-    JRadioButton grayGraphRb = null;
-    JRadioButton colorGraphRb = null;
-
     private ButtonGroup placeStyleGroup;
     private JRadioButton tokenVectorOption;
-    private JRadioButton multiSetOption;
-
-    // Checkboxes
-    JCheckBox parallelRoutingCb = null;
     // GraphAttributes
-    HashMap<String, String> graphAttributes = null;
+    private JRadioButton multiSetOption;
+    private CoverabilityGraphSettings settings;
 
-    public ReachabilitySettingsDialog(ReachabilityGraphPanel rgp) {
-        this.rgp = rgp;
-        graphAttributes = rgp.getGraph().getAttributeMap();
+    public CoverabilityGraphSettingsDialog(CoverabilityGraphVC graphVC) {
+        super();
+        this.rgp = graphVC;
+        this.settings = rgp.getActiveView().getSettings();
+
         initComponents();
         this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         this.setTitle(Messages.getString("QuanlAna.ReachabilityGraph.Settings.Title"));
@@ -77,7 +79,9 @@ public class ReachabilitySettingsDialog extends JDialog {
     }
 
     private void initComponents() {
-        graphVisual = new JLabel("<html><b>" + Messages.getString("QuanlAna.ReachabilityGraph.Settings.GraphSection")
+
+        // TODO: 16.01.2017 convert into dynamic layout
+        JLabel graphVisual = new JLabel("<html><b>" + Messages.getString("QuanlAna.ReachabilityGraph.Settings.GraphSection")
                 + "</b></html>");
         graphVisual.setBounds(new Rectangle(20, 15, 220, 16));
 
@@ -86,12 +90,12 @@ public class ReachabilitySettingsDialog extends JDialog {
         placeStyleHeader.setBounds(new Rectangle(20, 40, 180, 16));
 
         multiSetOption = new JRadioButton(Messages.getString("CoverabilityGraph.SettingsDialog.MarkingNotation.MultiSet"));
-        multiSetOption.setActionCommand("MultiSet");
+        multiSetOption.setActionCommand(NOTATION_MULITISET);
         multiSetOption.setBounds(new Rectangle(30, 60, 90, 22));
         multiSetOption.setToolTipText("e.g. ( p2 2p3 )");
 
         tokenVectorOption = new JRadioButton(Messages.getString("CoverabilityGraph.SettingsDialog.MarkingNotation.TokenVector"));
-        tokenVectorOption.setActionCommand("TokenVector");
+        tokenVectorOption.setActionCommand(NOTATION_TOKENVECTOR);
         tokenVectorOption.setBounds(new Rectangle(130, 60, 90, 22));
         tokenVectorOption.setToolTipText("e.g. ( 0 1 2 )");
 
@@ -99,14 +103,15 @@ public class ReachabilitySettingsDialog extends JDialog {
         placeStyleGroup.add(multiSetOption);
         placeStyleGroup.add(tokenVectorOption);
 
-        if(getMarkingNotation().equals("MultiSet")){
+        if (getMarkingNotation().equals("MultiSet")) {
             multiSetOption.setSelected(true);
-        } else  if(getMarkingNotation().equals("TokenVector")){
+        } else if (getMarkingNotation().equals("TokenVector")) {
             tokenVectorOption.setSelected(true);
         }
 
         JLabel colorSchemeHeader = new JLabel(Messages.getString("CoverabilityGraph.SettingsDialog.ColorScheme.Header"));
         colorSchemeHeader.setBounds(new Rectangle(20, 90, 180, 16));
+
 
         grayGraphRb = new JRadioButton(Messages.getString("QuanlAna.ReachabilityGraph.Settings.Color.Grayscale"));
         grayGraphRb.setBounds(new Rectangle(30, 110, 90, 22));
@@ -123,6 +128,11 @@ public class ReachabilitySettingsDialog extends JDialog {
         } else {
             grayGraphRb.setSelected(true);
         }
+
+        String notSupportedText = Messages.getString("QuanlAna.ReachabilityGraph.Settings.Color.NotSupported");
+        JLabel colorSchemesNotSupportedLabel = new JLabel(String.format("<html><p><small>%s</small></p></html>", notSupportedText));
+        colorSchemesNotSupportedLabel.setBounds(20, 110, 180, 22);
+        colorSchemesNotSupportedLabel.setForeground(Color.DARK_GRAY);
 
         parallelRoutingCb = new JCheckBox(Messages.getString("QuanlAna.ReachabilityGraph.Settings.ParallelRouting"));
         parallelRoutingCb.setSelected(getParallelRoutingEnabled());
@@ -162,10 +172,10 @@ public class ReachabilitySettingsDialog extends JDialog {
         hierarchicSpaceVerticalTf.setText(Integer.toString(getHierarchicSpacingVertical()));
         hierarchicSpaceVerticalTf.setBounds(new Rectangle(160, 300, 50, 22));
 
-
+        // TODO: 16.01.2017 Create custom action instead of action listener
         saveButton = new JButton(Messages.getString("QuanlAna.ReachabilityGraph.Settings.Button.Save"));
         saveButton.setBounds(new Rectangle(20, 340, 90, 29));
-        saveButton.addActionListener(new SaveButtonListener(rgp));
+        saveButton.addActionListener(new SaveButtonListener());
         cancelButton = new JButton(Messages.getString("QuanlAna.ReachabilityGraph.Settings.Button.Cancel"));
         cancelButton.setBounds(new Rectangle(130, 340, 90, 29));
         cancelButton.addActionListener(new CancelButtonListener());
@@ -183,7 +193,7 @@ public class ReachabilitySettingsDialog extends JDialog {
             private static final long serialVersionUID = 1L;
 
             public void actionPerformed(ActionEvent e) {
-                ReachabilitySettingsDialog.this.saveButton.doClick();
+                CoverabilityGraphSettingsDialog.this.saveButton.doClick();
             }
         };
 
@@ -196,7 +206,7 @@ public class ReachabilitySettingsDialog extends JDialog {
             private static final long serialVersionUID = 1L;
 
             public void actionPerformed(ActionEvent e) {
-                ReachabilitySettingsDialog.this.cancelButton.doClick();
+                CoverabilityGraphSettingsDialog.this.cancelButton.doClick();
             }
         };
 
@@ -214,8 +224,12 @@ public class ReachabilitySettingsDialog extends JDialog {
         this.add(tokenVectorOption);
 
         this.add(colorSchemeHeader);
-        this.add(grayGraphRb);
-        this.add(colorGraphRb);
+        if (settings.colorSchemeSupported) {
+            this.add(grayGraphRb);
+            this.add(colorGraphRb);
+        } else {
+            this.add(colorSchemesNotSupportedLabel);
+        }
 
         this.add(parallelRoutingCb);
 
@@ -235,233 +249,145 @@ public class ReachabilitySettingsDialog extends JDialog {
     }
 
     private boolean getParallelRoutingEnabled() {
-        boolean enabled;
-
-        if (graphAttributes.containsKey("reachabilityGraph.parallel")) {
-            if (graphAttributes.get("reachabilityGraph.parallel").equals("true")) {
-                enabled = true;
-            } else if (graphAttributes.get("reachabilityGraph.parallel").equals("false")) {
-                enabled = false;
-            } else {
-                enabled = true;
-            }
-        } else {
-            return true;
-        }
-        return enabled;
+        Edge.Routing routing = rgp.getActiveView().getSettings().edgeRouting;
+        return routing instanceof ParallelRouter;
     }
 
     private void setParallelRoutingEnabled(boolean enabled) {
-        String enabledStr = "";
 
-        if (enabled) {
-            enabledStr = "true";
-        } else {
-            enabledStr = "false";
-        }
-
-        if (graphAttributes.containsKey("reachabilityGraph.parallel")) {
-            graphAttributes.put("reachabilityGraph.parallel", enabledStr);
-        } else {
-            graphAttributes.put("reachabilityGraph.parallel", enabledStr);
-        }
+        if (enabled)
+            settings.edgeRouting = ParallelRouter.getSharedInstance(rgp.getActiveView().getGraphModel().getGraph().getGraphLayoutCache());
+        else settings.edgeRouting = new DefaultEdge.LoopRouting();
     }
 
     private int getHierarchicSpacingVertical() {
-        if (graphAttributes.containsKey("reachabilityGraph.hierarchic.verticalSpace")) {
-            return Integer.parseInt(graphAttributes.get("reachabilityGraph.hierarchic.verticalSpace"));
-        } else {
-            return 60; // default
-        }
+        return settings.verticalGap;
     }
 
-    private void setHierarchicSpacingVertical(int vertical) {
-        if (vertical > 0 && vertical < 10000) {
-            graphAttributes.put("reachabilityGraph.hierarchic.verticalSpace", Integer.toString(vertical));
-        } else {
-            graphAttributes.put("reachabilityGraph.hierarchic.verticalSpace", "60");
-        }
+    private void setHierarchicSpacingVertical(int newValue) {
+        this.settings.verticalGap = newValue;
     }
 
     private int getHierarchicSpacingHorizontal() {
-        if (graphAttributes.containsKey("reachabilityGraph.hierarchic.horizontalSpace")) {
-            return Integer.parseInt(graphAttributes.get("reachabilityGraph.hierarchic.horizontalSpace"));
-        } else {
-            return 20; // default
-        }
+        return this.settings.horizontalGap;
     }
 
-    private void setHierarchicSpacingHorizontal(int horizontal) {
-        if (horizontal > 0 && horizontal < 10000) {
-            graphAttributes.put("reachabilityGraph.hierarchic.horizontalSpace", Integer.toString(horizontal));
-        } else {
-            graphAttributes.put("reachabilityGraph.hierarchic.horizontalSpace", "20");
-        }
+    private void setHierarchicSpacingHorizontal(int newValue) {
+        this.settings.horizontalGap = newValue;
     }
 
     private int getPlaceWidth() {
-        if (graphAttributes.containsKey("reachabilityGraph.place.width")) {
-            return Integer.parseInt(graphAttributes.get("reachabilityGraph.place.width"));
-        } else {
-            return 80; // default
-        }
+        return this.settings.minNodeSize.width;
     }
 
     private void setPlaceWidth(int width) {
-        if (width > 0 && width < 1000) {
-            graphAttributes.put("reachabilityGraph.place.width", Integer.toString(width));
-        } else {
-            graphAttributes.put("reachabilityGraph.place.width", "80"); // default
-        }
+        Dimension oldDimension = settings.minNodeSize;
+        this.settings.minNodeSize = new Dimension(width, oldDimension.height);
     }
 
     private int getPlaceHeight() {
-        if (graphAttributes.containsKey("reachabilityGraph.place.height")) {
-            return Integer.parseInt(graphAttributes.get("reachabilityGraph.place.height"));
-        } else {
-            return 20; // default
-        }
+        return this.settings.minNodeSize.height;
     }
 
     private void setPlaceHeight(int height) {
-        if (height > 0 && height < 200) {
-            graphAttributes.put("reachabilityGraph.place.height", Integer.toString(height));
-        } else {
-            graphAttributes.put("reachabilityGraph.place.height", "20"); // default
-        }
+        Dimension oldDimension = settings.minNodeSize;
+        this.settings.minNodeSize = new Dimension(oldDimension.width, height);
     }
 
     private boolean getColored() {
-        boolean isColored = false;
-
-        if (graphAttributes.containsKey("reachabilityGraph.color")) {
-            if (graphAttributes.get("reachabilityGraph.color").equals("true")) {
-                isColored = true;
-            } else if (graphAttributes.get("reachabilityGraph.color").equals("false")) {
-                isColored = false;
-            } else {
-                isColored = true;
-            }
-        } else {
-            return true;
-        }
-        return isColored;
+        return this.settings.colorSchemeSupported && this.settings.colorScheme.equals(CoverabilityGraphColorScheme.COLORED_SCHEME());
     }
 
     private void setColor(boolean isColored) {
-        String enabledStr = "";
+        if (isColored) this.settings.colorScheme = CoverabilityGraphColorScheme.COLORED_SCHEME();
+        else this.settings.colorScheme = CoverabilityGraphColorScheme.GRAY_SCALED_SCHEME();
+    }
 
-        if (isColored) {
-            enabledStr = "true";
-        } else {
-            enabledStr = "false";
+    private String getMarkingNotation() {
+        if (this.settings.markingFormatter instanceof MultiSetMarkingFormatter) return NOTATION_MULITISET;
+        else return NOTATION_TOKENVECTOR;
+    }
+
+    private void setMarkingNotation(String notation) {
+
+        MarkingFormatter newFormatter = null;
+        switch (notation) {
+            case NOTATION_TOKENVECTOR:
+                newFormatter = new TokenVectorMarkingFormatter();
+                break;
+            case NOTATION_MULITISET:
+                newFormatter = new MultiSetMarkingFormatter();
         }
 
-        graphAttributes.put("reachabilityGraph.color", enabledStr);
-
+        this.settings.markingFormatter = newFormatter;
     }
 
-    private String getMarkingNotation(){
-
-        String MarkingNotation = "MultiSet";
-
-        String key = "coverabilityGraph.MarkingNotation";
-        if(graphAttributes.containsKey(key)){
-            MarkingNotation = graphAttributes.get(key);
+    private class CancelButtonListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            CoverabilityGraphSettingsDialog.this.dispose();
         }
-
-        return MarkingNotation;
     }
 
-    private void setMarkingNotation(String notation){
-        String key = "coverabilityGraph.MarkingNotation";
-        graphAttributes.put(key, notation);
-    }
-
-    class CancelButtonListener implements ActionListener {
+    private class SaveButtonListener implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
-            ReachabilitySettingsDialog.this.dispose();
-        }
 
-    }
-
-    class SaveButtonListener implements ActionListener {
-
-        ReachabilityGraphPanel rgp = null;
-
-        public SaveButtonListener(ReachabilityGraphPanel rgp) {
-            this.rgp = rgp;
-        }
-
-        public void actionPerformed(ActionEvent e) {
-            int haveToDoLayout = 0;
-
-            if (integerValueChecker(ReachabilitySettingsDialog.this.hierarchicSpaceHorizontalTf.getText())) {
-                if (getHierarchicSpacingHorizontal() != Integer
-                        .parseInt(ReachabilitySettingsDialog.this.hierarchicSpaceHorizontalTf.getText())) {
-                    setHierarchicSpacingHorizontal(Integer
-                            .parseInt(ReachabilitySettingsDialog.this.hierarchicSpaceHorizontalTf.getText()));
-                    haveToDoLayout++;
+            if (integerValueChecker(CoverabilityGraphSettingsDialog.this.hierarchicSpaceHorizontalTf.getText())) {
+                int oldValue = getHierarchicSpacingHorizontal();
+                int newValue = Integer.parseInt(CoverabilityGraphSettingsDialog.this.hierarchicSpaceHorizontalTf.getText());
+                if (oldValue != newValue) {
+                    setHierarchicSpacingHorizontal(newValue);
                 }
             } else {
+                // TODO: 16.01.2017 show validation error
                 // do default
             }
 
-            if (integerValueChecker(ReachabilitySettingsDialog.this.hierarchicSpaceVerticalTf.getText())) {
-                if (getHierarchicSpacingVertical() != Integer
-                        .parseInt(ReachabilitySettingsDialog.this.hierarchicSpaceVerticalTf.getText())) {
-                    setHierarchicSpacingVertical(Integer
-                            .parseInt(ReachabilitySettingsDialog.this.hierarchicSpaceVerticalTf.getText()));
-                    haveToDoLayout++;
+            if (integerValueChecker(CoverabilityGraphSettingsDialog.this.hierarchicSpaceVerticalTf.getText())) {
+                int oldValue = getHierarchicSpacingVertical();
+                int newValue = Integer.parseInt(CoverabilityGraphSettingsDialog.this.hierarchicSpaceVerticalTf.getText());
+                if (oldValue != newValue) {
+                    setHierarchicSpacingVertical(newValue);
                 }
             } else {
+                // TODO: 16.01.2017 show validation error
                 // do default
             }
 
-            if (integerValueChecker(ReachabilitySettingsDialog.this.placeWidthTf.getText())) {
-                if (getPlaceWidth() != Integer.parseInt(ReachabilitySettingsDialog.this.placeWidthTf.getText())) {
-                    setPlaceWidth(Integer.parseInt(ReachabilitySettingsDialog.this.placeWidthTf.getText()));
-                    haveToDoLayout++;
+            if (integerValueChecker(CoverabilityGraphSettingsDialog.this.placeWidthTf.getText())) {
+                int oldValue = getPlaceWidth();
+                int newValue = Integer.parseInt(CoverabilityGraphSettingsDialog.this.placeWidthTf.getText());
+                if (oldValue != newValue) {
+                    setPlaceWidth(newValue);
                 }
             } else {
+                // TODO: 16.01.2017 show validation error
                 // do default
             }
 
-            if (integerValueChecker(ReachabilitySettingsDialog.this.placeHeightTf.getText())) {
-                if (getPlaceHeight() != Integer.parseInt(ReachabilitySettingsDialog.this.placeHeightTf.getText())) {
-                    setPlaceHeight(Integer.parseInt(ReachabilitySettingsDialog.this.placeHeightTf.getText()));
-                    haveToDoLayout++;
+            if (integerValueChecker(CoverabilityGraphSettingsDialog.this.placeHeightTf.getText())) {
+                if (getPlaceHeight() != Integer.parseInt(CoverabilityGraphSettingsDialog.this.placeHeightTf.getText())) {
+                    setPlaceHeight(Integer.parseInt(CoverabilityGraphSettingsDialog.this.placeHeightTf.getText()));
                 }
             } else {
+                // TODO: 16.01.2017 show validation error
                 // do default
             }
 
-            if (getParallelRoutingEnabled() != ReachabilitySettingsDialog.this.parallelRoutingCb.isSelected()) {
-                setParallelRoutingEnabled(ReachabilitySettingsDialog.this.parallelRoutingCb.isSelected());
-                rgp.setParallelRouting(getParallelRoutingEnabled());
+            if (getParallelRoutingEnabled() != CoverabilityGraphSettingsDialog.this.parallelRoutingCb.isSelected()) {
+                setParallelRoutingEnabled(CoverabilityGraphSettingsDialog.this.parallelRoutingCb.isSelected());
             }
 
-            if (getColored() != ReachabilitySettingsDialog.this.colorGraphRb.isSelected()) {
-                setColor(ReachabilitySettingsDialog.this.colorGraphRb.isSelected());
-                rgp.setGrayScale(!getColored());
+            if (getColored() != CoverabilityGraphSettingsDialog.this.colorGraphRb.isSelected()) {
+                setColor(CoverabilityGraphSettingsDialog.this.colorGraphRb.isSelected());
             }
 
-            if(!getMarkingNotation().equals(placeStyleGroup.getSelection().getActionCommand())){
+            if (!getMarkingNotation().equals(placeStyleGroup.getSelection().getActionCommand())) {
                 setMarkingNotation(placeStyleGroup.getSelection().getActionCommand());
-                haveToDoLayout++;
             }
 
-            // This must be last call !
-            if (haveToDoLayout > 0) {
-                try {
-                    rgp.layoutGraph(rgp.getSelectedType(), false);
-                } catch (SimulationRunningException e1) {
-                    ReachabilityWarning.showReachabilityWarning(this.rgp,
-                            "QuanlAna.ReachabilityGraph.SimulationWarning");
-                }
-            }
-            ReachabilitySettingsDialog.this.dispose();
+            rgp.getActiveView().applySettings(settings);
+            CoverabilityGraphSettingsDialog.this.dispose();
         }
 
         private boolean integerValueChecker(String integer) {

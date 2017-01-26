@@ -6,7 +6,7 @@ import org.jgraph.graph.GraphModel;
 import org.woped.core.controller.IEditor;
 import org.woped.qualanalysis.coverabilitygraph.gui.ReachabilityJGraph;
 import org.woped.qualanalysis.coverabilitygraph.gui.layout.CoverabilityGraphLayoutSettings;
-import org.woped.qualanalysis.coverabilitygraph.gui.views.ReachabilityGraphViewFactory;
+import org.woped.qualanalysis.coverabilitygraph.gui.views.CoverabilityGraphViewFactory;
 
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
@@ -23,7 +23,7 @@ public abstract class AbstractReachabilityGraphModel implements CoverabilityGrap
     private GraphLayoutCache view;
     private IEditor editor;
     private GraphModel model;
-    private ReachabilityGraphViewFactory viewFactory;
+    private CoverabilityGraphViewFactory viewFactory;
     private CoverabilityGraphLayoutSettings layoutSettings;
 
     /**
@@ -67,7 +67,7 @@ public abstract class AbstractReachabilityGraphModel implements CoverabilityGrap
      * @param editor      the editor containing the petri net
      * @param viewFactory the view factory to use
      */
-    protected AbstractReachabilityGraphModel(IEditor editor, ReachabilityGraphViewFactory viewFactory) {
+    protected AbstractReachabilityGraphModel(IEditor editor, CoverabilityGraphViewFactory viewFactory) {
         this.editor = editor;
         this.viewFactory = viewFactory;
         this.layoutSettings = CoverabilityGraphLayoutSettings.getDefaultSettings();
@@ -107,7 +107,7 @@ public abstract class AbstractReachabilityGraphModel implements CoverabilityGrap
     }
 
     @Override
-    public ReachabilityGraphViewFactory getViewFactory() {
+    public CoverabilityGraphViewFactory getViewFactory() {
         return viewFactory;
     }
 
