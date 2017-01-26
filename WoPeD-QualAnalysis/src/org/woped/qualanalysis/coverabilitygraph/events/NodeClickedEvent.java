@@ -1,6 +1,6 @@
 package org.woped.qualanalysis.coverabilitygraph.events;
 
-import org.woped.qualanalysis.coverabilitygraph.data.model.CoverabilityGraphNode;
+import org.woped.qualanalysis.coverabilitygraph.model.CoverabilityGraphNode;
 
 /**
  * An event which indicates that the user has clicked on a node.

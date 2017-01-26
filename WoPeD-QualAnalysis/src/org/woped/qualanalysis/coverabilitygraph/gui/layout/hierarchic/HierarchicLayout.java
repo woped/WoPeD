@@ -3,10 +3,10 @@ package org.woped.qualanalysis.coverabilitygraph.gui.layout.hierarchic;
 import org.jgraph.graph.AttributeMap;
 import org.jgraph.graph.GraphConstants;
 import org.jgraph.graph.GraphModel;
-import org.woped.qualanalysis.coverabilitygraph.data.AbstractReachabilityGraphModel;
-import org.woped.qualanalysis.coverabilitygraph.data.model.CoverabilityGraphEdge;
-import org.woped.qualanalysis.coverabilitygraph.data.model.CoverabilityGraphNode;
-import org.woped.qualanalysis.coverabilitygraph.data.model.CoverabilityGraphPort;
+import org.woped.qualanalysis.coverabilitygraph.model.AbstractReachabilityGraphModel;
+import org.woped.qualanalysis.coverabilitygraph.model.CoverabilityGraphEdge;
+import org.woped.qualanalysis.coverabilitygraph.model.CoverabilityGraphNode;
+import org.woped.qualanalysis.coverabilitygraph.model.CoverabilityGraphPort;
 import org.woped.qualanalysis.coverabilitygraph.gui.ReachabilityJGraph;
 import org.woped.qualanalysis.coverabilitygraph.gui.layout.CoverabilityGraphLayoutBase;
 

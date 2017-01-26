@@ -1,11 +1,9 @@
-package org.woped.qualanalysis.coverabilitygraph.data;
+package org.woped.qualanalysis.coverabilitygraph.model;
 
 import org.jgraph.graph.DefaultGraphModel;
 import org.jgraph.graph.GraphLayoutCache;
 import org.jgraph.graph.GraphModel;
 import org.woped.core.controller.IEditor;
-import org.woped.qualanalysis.coverabilitygraph.data.model.CoverabilityGraphEdge;
-import org.woped.qualanalysis.coverabilitygraph.data.model.CoverabilityGraphNode;
 import org.woped.qualanalysis.coverabilitygraph.gui.ReachabilityJGraph;
 import org.woped.qualanalysis.coverabilitygraph.gui.layout.CoverabilityGraphLayoutSettings;
 import org.woped.qualanalysis.coverabilitygraph.gui.views.ReachabilityGraphViewFactory;

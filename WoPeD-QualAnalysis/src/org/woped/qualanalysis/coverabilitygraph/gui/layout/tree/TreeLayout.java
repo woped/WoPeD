@@ -4,7 +4,7 @@ import org.abego.treelayout.Configuration;
 import org.abego.treelayout.util.DefaultConfiguration;
 import org.jgraph.graph.AttributeMap;
 import org.jgraph.graph.GraphConstants;
-import org.woped.qualanalysis.coverabilitygraph.data.model.CoverabilityGraphNode;
+import org.woped.qualanalysis.coverabilitygraph.model.CoverabilityGraphNode;
 import org.woped.qualanalysis.coverabilitygraph.gui.layout.CoverabilityGraphLayoutBase;
 import org.woped.qualanalysis.coverabilitygraph.gui.layout.CoverabilityGraphLayoutSettings;
 

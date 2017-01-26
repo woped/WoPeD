@@ -1,12 +1,8 @@
-package org.woped.qualanalysis.coverabilitygraph.data;
+package org.woped.qualanalysis.coverabilitygraph.model;
 
 import org.jgraph.graph.DefaultGraphCell;
 import org.jgraph.graph.GraphConstants;
 import org.woped.core.controller.IEditor;
-import org.woped.qualanalysis.coverabilitygraph.data.model.CoverabilityGraphEdge;
-import org.woped.qualanalysis.coverabilitygraph.data.model.CoverabilityGraphNode;
-import org.woped.qualanalysis.coverabilitygraph.data.model.CoverabilityGraphPort;
-import org.woped.qualanalysis.coverabilitygraph.gui.ParallelRouter;
 import org.woped.qualanalysis.coverabilitygraph.gui.views.ReachabilityGraphViewFactory;
 import org.woped.qualanalysis.soundness.builder.BuilderFactory;
 import org.woped.qualanalysis.soundness.builder.lowlevelpetrinet.AbstractLowLevelPetriNetBuilder;
@@ -89,9 +85,6 @@ public class ReachabilityGraphModelUsingMarkingNet extends AbstractReachabilityG
         edge.setSource(src.getChildAt(0));
         edge.setTarget(tar.getChildAt(0));
         cellsList.add(edge);
-
-        // activate parallel routing
-        GraphConstants.setRouting(edge.getAttributes(), ParallelRouter.getSharedInstance(getView()));
     }
 
     @SuppressWarnings("SpellCheckingInspection")

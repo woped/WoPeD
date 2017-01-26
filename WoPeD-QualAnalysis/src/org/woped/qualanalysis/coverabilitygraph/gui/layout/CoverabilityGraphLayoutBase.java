@@ -1,10 +1,12 @@
 package org.woped.qualanalysis.coverabilitygraph.gui.layout;
 
 import org.jgraph.graph.*;
-import org.woped.qualanalysis.coverabilitygraph.data.CoverabilityGraphModel;
-import org.woped.qualanalysis.coverabilitygraph.data.model.CoverabilityGraphNode;
+import org.woped.qualanalysis.coverabilitygraph.model.CoverabilityGraphModel;
+import org.woped.qualanalysis.coverabilitygraph.model.CoverabilityGraphEdge;
+import org.woped.qualanalysis.coverabilitygraph.model.CoverabilityGraphNode;
 import org.woped.qualanalysis.coverabilitygraph.gui.ReachabilityJGraph;
 
+import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.util.*;
 
@@ -25,6 +27,24 @@ public abstract class CoverabilityGraphLayoutBase implements CoverabilityGraphLa
         setNodeBounds();
 
         addOffset();
+
+        adjustSelfLoopEdgeLabels();
+    }
+
+    private void adjustSelfLoopEdgeLabels() {
+        Map<CoverabilityGraphEdge, AttributeMap> changeMap = new HashMap<>();
+
+        for(CoverabilityGraphEdge edge: getGraphModel().getEdges()){
+            if(edge.getSourceNode().equals(edge.getTargetNode())){
+                AttributeMap map = new AttributeMap();
+
+                GraphConstants.setLabelPosition(map, new Point2D.Double(GraphConstants.PERMILLE * 0.38, 20));
+                GraphConstants.setRouting(map, new CoverabilityGraphEdge.CgRouting());
+                changeMap.put(edge, map);
+            }
+        }
+
+        getLayoutCache().edit(changeMap);
     }
 
     /**

@@ -1,7 +1,7 @@
 package org.woped.qualanalysis.coverabilitygraph.gui.layout.tree;
 
 import org.jgraph.graph.GraphConstants;
-import org.woped.qualanalysis.coverabilitygraph.data.model.CoverabilityGraphNode;
+import org.woped.qualanalysis.coverabilitygraph.model.CoverabilityGraphNode;
 
 import java.awt.geom.Rectangle2D;
 

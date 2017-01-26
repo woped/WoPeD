@@ -1,7 +1,5 @@
-package org.woped.qualanalysis.coverabilitygraph.data;
+package org.woped.qualanalysis.coverabilitygraph.model;
 
-import org.woped.qualanalysis.coverabilitygraph.data.model.CoverabilityGraphEdge;
-import org.woped.qualanalysis.coverabilitygraph.data.model.CoverabilityGraphNode;
 import org.woped.qualanalysis.coverabilitygraph.gui.ReachabilityJGraph;
 import org.woped.qualanalysis.coverabilitygraph.gui.layout.CoverabilityGraphLayoutSettings;
 import org.woped.qualanalysis.coverabilitygraph.gui.views.ReachabilityGraphViewFactory;

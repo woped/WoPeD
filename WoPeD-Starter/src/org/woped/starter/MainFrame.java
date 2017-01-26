@@ -18,7 +18,7 @@ import org.woped.core.utilities.Platform;
 import org.woped.editor.action.ActionButtonListener;
 import org.woped.editor.controller.ActionFactory;
 import org.woped.editor.controller.VisualController;
-import org.woped.qualanalysis.coverabilitygraph.gui.CoverabilityGraphViewEvents;
+import org.woped.qualanalysis.coverabilitygraph.gui.views.CoverabilityGraphViewEvents;
 import org.woped.gui.images.svg.*;
 import org.woped.qualanalysis.coverabilitygraph.gui.CoverabilityGraphRibbonMenu;
 import org.woped.gui.translations.Messages;

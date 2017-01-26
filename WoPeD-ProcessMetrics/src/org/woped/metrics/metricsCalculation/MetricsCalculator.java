@@ -14,7 +14,7 @@ import org.woped.metrics.exceptions.NaNException;
 import org.woped.metrics.formulaEnhancement.EnhancementException;
 import org.woped.metrics.formulaEnhancement.FormulaEnhancementList;
 import org.woped.metrics.jbpt.RPSTHandler;
-import org.woped.qualanalysis.coverabilitygraph.data.ReachabilityGraphModelUsingMarkingNet;
+import org.woped.qualanalysis.coverabilitygraph.model.ReachabilityGraphModelUsingMarkingNet;
 import org.woped.qualanalysis.coverabilitygraph.gui.ReachabilityJGraph;
 import org.woped.qualanalysis.service.IQualanalysisService;
 import org.woped.qualanalysis.service.QualAnalysisServiceFactory;

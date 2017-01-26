@@ -1,7 +1,7 @@
 package org.woped.qualanalysis.coverabilitygraph.gui.layout.tree;
 
 import org.abego.treelayout.util.AbstractTreeForTreeLayout;
-import org.woped.qualanalysis.coverabilitygraph.data.model.CoverabilityGraphNode;
+import org.woped.qualanalysis.coverabilitygraph.model.CoverabilityGraphNode;
 
 import java.util.Collection;
 import java.util.List;

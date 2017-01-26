@@ -1,7 +1,7 @@
 package org.woped.qualanalysis.coverabilitygraph.gui.layout;
 
 import org.jgraph.graph.Edge;
-import org.woped.qualanalysis.coverabilitygraph.data.model.CoverabilityGraphEdge;
+import org.woped.qualanalysis.coverabilitygraph.model.CoverabilityGraphEdge;
 import org.woped.qualanalysis.coverabilitygraph.gui.layout.tree.TreeLayout;
 
 import java.awt.*;

@@ -1,9 +1,6 @@
 package org.woped.qualanalysis.coverabilitygraph.gui.layout;
 
-import org.woped.qualanalysis.coverabilitygraph.data.CoverabilityGraphModel;
-import org.woped.qualanalysis.coverabilitygraph.gui.ReachabilityJGraph;
-
-import java.awt.*;
+import org.woped.qualanalysis.coverabilitygraph.model.CoverabilityGraphModel;
 
 /**
  * Defines the basic methods for graph layout algorithms.
