@@ -1,10 +1,10 @@
 package org.woped.qualanalysis.coverabilitygraph.gui.layout;
 
 import org.jgraph.graph.*;
+import org.woped.qualanalysis.coverabilitygraph.gui.CoverabilityGraph;
 import org.woped.qualanalysis.coverabilitygraph.model.CoverabilityGraphModel;
 import org.woped.qualanalysis.coverabilitygraph.model.CoverabilityGraphEdge;
 import org.woped.qualanalysis.coverabilitygraph.model.CoverabilityGraphNode;
-import org.woped.qualanalysis.coverabilitygraph.gui.ReachabilityJGraph;
 
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
@@ -161,7 +161,7 @@ public abstract class CoverabilityGraphLayoutBase implements CoverabilityGraphLa
      */
     private void addOffset() {
 
-        ReachabilityJGraph graph = graphModel.getGraph();
+        CoverabilityGraph graph = graphModel.getGraph();
         Rectangle2D cellBounds = graph.getCellBounds(graph.getRoots());
 
         if(cellBounds.getHeight() >= 0 && cellBounds.getY() >= 0) return;

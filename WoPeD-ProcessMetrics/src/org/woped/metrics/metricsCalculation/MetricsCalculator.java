@@ -15,7 +15,7 @@ import org.woped.metrics.formulaEnhancement.EnhancementException;
 import org.woped.metrics.formulaEnhancement.FormulaEnhancementList;
 import org.woped.metrics.jbpt.RPSTHandler;
 import org.woped.qualanalysis.coverabilitygraph.model.ReachabilityGraphModelUsingMarkingNet;
-import org.woped.qualanalysis.coverabilitygraph.gui.ReachabilityJGraph;
+import org.woped.qualanalysis.coverabilitygraph.gui.CoverabilityGraph;
 import org.woped.qualanalysis.service.IQualanalysisService;
 import org.woped.qualanalysis.service.QualAnalysisServiceFactory;
 import org.woped.qualanalysis.soundness.algorithms.AlgorithmFactory;
@@ -342,7 +342,7 @@ public class MetricsCalculator {
 	private double calculateCM(){
 		ReachabilityGraphModelUsingMarkingNet reach = new ReachabilityGraphModelUsingMarkingNet(editor);
 		IMarkingNet net = reach.getMarkingNet();
-		ReachabilityJGraph graph = reach.getGraph();
+		CoverabilityGraph graph = reach.getGraph();
 		int edgeCount = reach.getEdges().size();
 		int verticesCount = reach.getNodes().size();
 		double strongReaches = calculateStrongReaches(net);

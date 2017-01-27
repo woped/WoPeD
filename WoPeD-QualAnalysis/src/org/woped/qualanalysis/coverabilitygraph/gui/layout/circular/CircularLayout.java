@@ -2,8 +2,8 @@ package org.woped.qualanalysis.coverabilitygraph.gui.layout.circular;
 
 import org.jgraph.graph.AttributeMap;
 import org.jgraph.graph.GraphConstants;
+import org.woped.qualanalysis.coverabilitygraph.gui.CoverabilityGraph;
 import org.woped.qualanalysis.coverabilitygraph.model.CoverabilityGraphNode;
-import org.woped.qualanalysis.coverabilitygraph.gui.ReachabilityJGraph;
 import org.woped.qualanalysis.coverabilitygraph.gui.layout.CoverabilityGraphLayoutBase;
 
 import java.awt.*;
@@ -20,7 +20,7 @@ public class CircularLayout extends CoverabilityGraphLayoutBase {
      */
     @Override
     protected void setNodeBounds() {
-        ReachabilityJGraph graph = getGraphModel().getGraph();
+        CoverabilityGraph graph = getGraphModel().getGraph();
 
         // Needs the size of the parent of the JScrollPane,
         // otherwise zooming creates an infinite loop with the component resize listener
@@ -29,7 +29,7 @@ public class CircularLayout extends CoverabilityGraphLayoutBase {
         layoutGraph(graph, size);
     }
 
-    private ReachabilityJGraph layoutGraph(ReachabilityJGraph graph, Dimension dimension) {
+    private CoverabilityGraph layoutGraph(CoverabilityGraph graph, Dimension dimension) {
         edit = new HashMap<>();
 
         Collection<CoverabilityGraphNode> places = getNodes();

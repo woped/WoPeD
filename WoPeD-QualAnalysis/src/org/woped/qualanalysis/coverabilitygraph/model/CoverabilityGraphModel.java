@@ -1,6 +1,6 @@
 package org.woped.qualanalysis.coverabilitygraph.model;
 
-import org.woped.qualanalysis.coverabilitygraph.gui.ReachabilityJGraph;
+import org.woped.qualanalysis.coverabilitygraph.gui.CoverabilityGraph;
 import org.woped.qualanalysis.coverabilitygraph.gui.layout.CoverabilityGraphLayoutSettings;
 import org.woped.qualanalysis.coverabilitygraph.gui.views.CoverabilityGraphViewFactory;
 
@@ -16,7 +16,7 @@ public interface CoverabilityGraphModel {
      *
      * @return the graph object to display
      */
-    ReachabilityJGraph getGraph();
+    CoverabilityGraph getGraph();
 
     /**
      * Gets a string describing the positions of the places in a marking.

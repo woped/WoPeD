@@ -3,7 +3,7 @@ package org.woped.qualanalysis.coverabilitygraph.model;
 import org.junit.Before;
 import org.junit.Test;
 import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
-import org.woped.qualanalysis.coverabilitygraph.gui.ReachabilityJGraph;
+import org.woped.qualanalysis.coverabilitygraph.gui.CoverabilityGraph;
 import org.woped.qualanalysis.soundness.datamodel.TransitionNode;
 import org.woped.qualanalysis.soundness.marking.IMarking;
 import org.woped.tests.DemoGraphGenerator;
@@ -37,7 +37,7 @@ public class CoverabilityGraphNodeTest {
         TransitionNode t1 = new TransitionNode("t1", "t1", "t1", AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE);
         CoverabilityGraphEdge edge = new CoverabilityGraphEdge(parent, cut, t1);
 
-        ReachabilityJGraph graph = createGraph();
+        CoverabilityGraph graph = createGraph();
         graph.getGraphLayoutCache().insert(new Object[]{parent, cut, edge});
 
         Collection<CoverabilityGraphNode> ancestors = cut.getDirectAncestors();
@@ -48,7 +48,7 @@ public class CoverabilityGraphNodeTest {
 
     @Test
     public void getDirectAncestors_twoParentsOne_containsBoth() throws Exception {
-        ReachabilityJGraph graph = createGraph();
+        CoverabilityGraph graph = createGraph();
 
         CoverabilityGraphNode parent1 = new CoverabilityGraphNode(marking);
         TransitionNode t1 = new TransitionNode("t1", "t1", "t1", AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE);
@@ -68,7 +68,7 @@ public class CoverabilityGraphNodeTest {
 
     @Test
     public void getDirectAncestors_oneParentOneChild_doesNotContainChild() throws Exception {
-        ReachabilityJGraph graph = createGraph();
+        CoverabilityGraph graph = createGraph();
 
         CoverabilityGraphNode parent = new CoverabilityGraphNode(marking);
         TransitionNode t1 = new TransitionNode("t1", "t1", "t1", AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE);
@@ -94,7 +94,7 @@ public class CoverabilityGraphNodeTest {
 
     @Test
     public void getDirectDescendants_oneParentOneChild_doesNotContainParent() throws Exception {
-        ReachabilityJGraph graph = createGraph();
+        CoverabilityGraph graph = createGraph();
 
         CoverabilityGraphNode parent = new CoverabilityGraphNode(marking);
         TransitionNode t1 = new TransitionNode("t1", "t1", "t1", AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE);
@@ -114,7 +114,7 @@ public class CoverabilityGraphNodeTest {
 
     @Test
     public void getDirectDescendants_twoChildren_bothContained() throws Exception {
-        ReachabilityJGraph graph = createGraph();
+        CoverabilityGraph graph = createGraph();
 
         CoverabilityGraphNode child1 = new CoverabilityGraphNode(marking);
         TransitionNode t1 = new TransitionNode("t1", "t1", "t1", AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE);
@@ -132,7 +132,7 @@ public class CoverabilityGraphNodeTest {
         assertTrue("Second child should be contained", childrenNodes.contains(child1));
     }
 
-    private ReachabilityJGraph createGraph() {
+    private CoverabilityGraph createGraph() {
         return new DemoGraphGenerator().createGraph();
     }
 }

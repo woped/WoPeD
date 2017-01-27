@@ -4,7 +4,7 @@ import org.jgraph.JGraph;
 import org.woped.qualanalysis.coverabilitygraph.model.CoverabilityGraphEdge;
 import org.woped.qualanalysis.coverabilitygraph.model.CoverabilityGraphNode;
 import org.woped.qualanalysis.coverabilitygraph.events.*;
-import org.woped.qualanalysis.coverabilitygraph.gui.ReachabilityJGraph;
+import org.woped.qualanalysis.coverabilitygraph.gui.CoverabilityGraph;
 import org.woped.qualanalysis.coverabilitygraph.gui.ZoomController;
 
 import javax.swing.*;
@@ -17,21 +17,21 @@ import java.util.Collection;
 import java.util.LinkedList;
 
 /**
- * This class wraps an {@link ReachabilityJGraph} and provides additional functionality like zooming or scrolling to it.
+ * This class wraps an {@link CoverabilityGraph} and provides additional functionality like zooming or scrolling to it.
  */
 public class CoverabilityGraphWrapper extends JScrollPane {
 
     private final GraphMouseEventTrigger mouseEventTrigger;
     private ZoomController zoom;
     private JPanel wrapper;
-    private ReachabilityJGraph graph;
+    private CoverabilityGraph graph;
 
     /**
      * Constructs a new coverability graph view.
      *
      * @param graph the graph to display
      */
-    public CoverabilityGraphWrapper(ReachabilityJGraph graph) {
+    public CoverabilityGraphWrapper(CoverabilityGraph graph) {
         super();
         this.graph = graph;
         createView();
@@ -104,16 +104,6 @@ public class CoverabilityGraphWrapper extends JScrollPane {
             this.graph = graph;
         }
 
-        /**
-         * Checks if it possible to zoom into the graph.
-         *
-         * @return true if it is possible to zoom into the graph, otherwise false
-         */
-        @Override
-        public boolean canZoomIn() {
-            return ZOOM_MIN.compareTo(graph.getScale()) < 0;
-        }
-
         @Override
         public void zoomIn() {
             zoomIn(1, getGraphCenter());
@@ -123,16 +113,6 @@ public class CoverabilityGraphWrapper extends JScrollPane {
         public void zoomIn(int steps, Point2D center) {
             double scale = graph.getScale();
             setZoom(scale + steps * ZOOM_STEP, center);
-        }
-
-        /**
-         * Checks if it possible to zoom out of the graph.
-         *
-         * @return true if it is possible to zoom out of the graph, otherwise false
-         */
-        @Override
-        public boolean canZoomOut() {
-            return ZOOM_MAX.compareTo(graph.getScale()) > 0;
         }
 
         @Override
@@ -228,7 +208,7 @@ public class CoverabilityGraphWrapper extends JScrollPane {
         public void mouseClicked(MouseEvent e) {
 
             // check if click was outside of graph in wrapper panel
-            if (!(e.getSource() instanceof ReachabilityJGraph)) fireEmptySpaceClickedEvent(e.getClickCount());
+            if (!(e.getSource() instanceof CoverabilityGraph)) fireEmptySpaceClickedEvent(e.getClickCount());
 
             Object cell = graph.getFirstCellForLocation(e.getX(), e.getY());
 

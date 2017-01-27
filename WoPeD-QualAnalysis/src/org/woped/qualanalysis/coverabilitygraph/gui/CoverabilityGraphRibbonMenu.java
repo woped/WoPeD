@@ -24,6 +24,7 @@ import org.woped.qualanalysis.coverabilitygraph.events.CoverabilityGraphEventLis
 import org.woped.qualanalysis.coverabilitygraph.gui.layout.circular.CircularLayout;
 import org.woped.qualanalysis.coverabilitygraph.gui.layout.hierarchic.HierarchicLayout;
 import org.woped.qualanalysis.coverabilitygraph.gui.layout.tree.TreeLayout;
+import org.woped.qualanalysis.coverabilitygraph.gui.views.CoverabilityGraphViewEvents;
 
 import javax.swing.*;
 import javax.swing.event.InternalFrameAdapter;
@@ -44,6 +45,8 @@ public class CoverabilityGraphRibbonMenu {
     private final AbstractApplicationMediator mediator;
     private final RibbonContextualTaskGroup contextGroup;
     private final RibbonTask graphTask;
+
+    // buttons with enable/disable support
     private JCommandButton refreshButton;
     private JCommandButton unselectButton;
 
@@ -270,7 +273,7 @@ public class CoverabilityGraphRibbonMenu {
     }
 
     private JCommandButton getCloseAssistantButton() {
-        JCommandButton closeAssistantButton = createButton("CoverabilityGraph.Ribbon.Assistant.Close", new tokengame_play_stop());
+        JCommandButton closeAssistantButton = createButton("CoverabilityGraph.Ribbon.Assistant.Close",new file_close());
         addClickHandler(closeAssistantButton, CoverabilityGraphViewEvents.ASSISTANT_CLOSE);
         return closeAssistantButton;
     }

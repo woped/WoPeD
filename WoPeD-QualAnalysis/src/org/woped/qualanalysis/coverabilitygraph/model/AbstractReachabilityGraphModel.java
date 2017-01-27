@@ -4,7 +4,7 @@ import org.jgraph.graph.DefaultGraphModel;
 import org.jgraph.graph.GraphLayoutCache;
 import org.jgraph.graph.GraphModel;
 import org.woped.core.controller.IEditor;
-import org.woped.qualanalysis.coverabilitygraph.gui.ReachabilityJGraph;
+import org.woped.qualanalysis.coverabilitygraph.gui.CoverabilityGraph;
 import org.woped.qualanalysis.coverabilitygraph.gui.layout.CoverabilityGraphLayoutSettings;
 import org.woped.qualanalysis.coverabilitygraph.gui.views.CoverabilityGraphViewFactory;
 
@@ -19,7 +19,7 @@ import java.util.List;
  */
 public abstract class AbstractReachabilityGraphModel implements CoverabilityGraphModel {
 
-    private ReachabilityJGraph graph;
+    private CoverabilityGraph graph;
     private GraphLayoutCache view;
     private IEditor editor;
     private GraphModel model;
@@ -49,7 +49,7 @@ public abstract class AbstractReachabilityGraphModel implements CoverabilityGrap
      * @param graph the graph that contains the nodes
      * @return the nodes of the graph or an empty list if there are no nodes contained
      */
-    public static Collection<CoverabilityGraphNode> getPlaces(ReachabilityJGraph graph) {
+    public static Collection<CoverabilityGraphNode> getPlaces(CoverabilityGraph graph) {
         List<CoverabilityGraphNode> places = new LinkedList<>();
 
         GraphModel model = graph.getModel();
@@ -74,7 +74,7 @@ public abstract class AbstractReachabilityGraphModel implements CoverabilityGrap
     }
 
     @Override
-    public ReachabilityJGraph getGraph() {
+    public CoverabilityGraph getGraph() {
         return graph;
     }
 
@@ -157,7 +157,7 @@ public abstract class AbstractReachabilityGraphModel implements CoverabilityGrap
         view = new GraphLayoutCache(model, viewFactory);
         view.setAutoSizeOnValueChange(true);
         view.setSelectsAllInsertedCells(false);
-        graph = new ReachabilityJGraph(model, view);
+        graph = new CoverabilityGraph(model, view);
 
         graph.addComponentListener(new ResizeListener());
     }

@@ -175,7 +175,7 @@ public class CoverabilityGraphResultView extends CoverabilityGraphView {
         graphView.addCoverabilityGraphMouseListener(edgeHighlighter);
 
         this.netHighlighter = new PetriNetHighlighter(editor);
-        graphView.addCoverabilityGraphMouseListener(netHighlighter);
+        graphView.addCoverabilityGraphMouseListener(netHighlighter.getMouseListener());
 
         refresh();
     }

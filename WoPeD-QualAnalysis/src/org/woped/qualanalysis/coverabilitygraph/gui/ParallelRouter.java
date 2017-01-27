@@ -4,7 +4,7 @@
  * Copyright (c) 2004-2007 David Benson
  *  
  */
-package org.woped.qualanalysis.reachabilitygraph.controller;
+package org.woped.qualanalysis.coverabilitygraph.gui;
 
 import java.awt.geom.Point2D;
 import java.util.ArrayList;

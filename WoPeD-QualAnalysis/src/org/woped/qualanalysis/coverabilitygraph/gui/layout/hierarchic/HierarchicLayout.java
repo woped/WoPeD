@@ -3,11 +3,11 @@ package org.woped.qualanalysis.coverabilitygraph.gui.layout.hierarchic;
 import org.jgraph.graph.AttributeMap;
 import org.jgraph.graph.GraphConstants;
 import org.jgraph.graph.GraphModel;
+import org.woped.qualanalysis.coverabilitygraph.gui.CoverabilityGraph;
 import org.woped.qualanalysis.coverabilitygraph.model.AbstractReachabilityGraphModel;
 import org.woped.qualanalysis.coverabilitygraph.model.CoverabilityGraphEdge;
 import org.woped.qualanalysis.coverabilitygraph.model.CoverabilityGraphNode;
 import org.woped.qualanalysis.coverabilitygraph.model.CoverabilityGraphPort;
-import org.woped.qualanalysis.coverabilitygraph.gui.ReachabilityJGraph;
 import org.woped.qualanalysis.coverabilitygraph.gui.layout.CoverabilityGraphLayoutBase;
 
 import java.awt.geom.Rectangle2D;
@@ -31,11 +31,11 @@ public class HierarchicLayout extends CoverabilityGraphLayoutBase {
      */
     @Override
     protected void setNodeBounds() {
-        ReachabilityJGraph graph = getGraphModel().getGraph();
+        CoverabilityGraph graph = getGraphModel().getGraph();
         layoutGraph(graph);
     }
 
-    private ReachabilityJGraph layoutGraph(ReachabilityJGraph graph) {
+    private CoverabilityGraph layoutGraph(CoverabilityGraph graph) {
         edit = new HashMap<>();
         applyHierarchicLayout(graph);
         graph.getGraphLayoutCache().edit(edit, null, null, null);
@@ -43,7 +43,7 @@ public class HierarchicLayout extends CoverabilityGraphLayoutBase {
     }
 
     @SuppressWarnings("unchecked")
-    private void applyHierarchicLayout(ReachabilityJGraph graph) {
+    private void applyHierarchicLayout(CoverabilityGraph graph) {
         GraphModel model = graph.getModel();
         LinkedList<CoverabilityGraphNode> markings = new LinkedList<>();
         // get all marking and reset them to not recursively touched
