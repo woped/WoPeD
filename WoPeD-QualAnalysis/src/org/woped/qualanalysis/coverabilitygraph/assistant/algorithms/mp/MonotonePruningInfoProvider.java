@@ -1,12 +1,12 @@
-package org.woped.qualanalysis.reachabilitygraph.assistant.algorithms.mp;
+package org.woped.qualanalysis.coverabilitygraph.assistant.algorithms.mp;
 
 import org.woped.gui.translations.Messages;
-import org.woped.qualanalysis.reachabilitygraph.assistant.event.CoverabilityGraphAdapter;
-import org.woped.qualanalysis.reachabilitygraph.assistant.event.NodeEvent;
-import org.woped.qualanalysis.reachabilitygraph.assistant.algorithms.mp.event.*;
-import org.woped.qualanalysis.reachabilitygraph.assistant.algorithms.mp.model.MpNode;
-import org.woped.qualanalysis.reachabilitygraph.assistant.algorithms.mp.model.MpNodeState;
-import org.woped.qualanalysis.reachabilitygraph.assistant.sidebar.*;
+import org.woped.qualanalysis.coverabilitygraph.assistant.event.CoverabilityGraphAdapter;
+import org.woped.qualanalysis.coverabilitygraph.events.NodeEvent;
+import org.woped.qualanalysis.coverabilitygraph.assistant.algorithms.mp.event.*;
+import org.woped.qualanalysis.coverabilitygraph.assistant.algorithms.mp.model.MpNode;
+import org.woped.qualanalysis.coverabilitygraph.assistant.algorithms.mp.model.MpNodeState;
+import org.woped.qualanalysis.coverabilitygraph.assistant.sidebar.*;
 import org.woped.qualanalysis.soundness.datamodel.TransitionNode;
 
 import javax.swing.*;
@@ -16,9 +16,9 @@ import java.util.Map;
 
 
 /**
- * This class creates the textual representation of the node analysis steps that are displayed in the infoPanel of the assistant view.
+ * This class creates the textual representation of the node analysis steps that are displayed in the sidebar of the assistant view.
  */
-public class MonotonePruningInfoProvider {
+class MonotonePruningInfoProvider {
 
     private static final String EMPTY_SET = "\u2205";
     private static final String IMPLIES = "\u21D2";
@@ -31,6 +31,12 @@ public class MonotonePruningInfoProvider {
     private Map<AnalysisState, MainTaskView> mainTasks;
     private Map<AnalysisState, ProgressDetailsView> instructions;
 
+    /**
+     * Constructs a new info provider.
+     *
+     * @param eventTrigger the event trigger to fire events
+     * @param sidebar the sidebar to display information
+     */
     MonotonePruningInfoProvider(MonotonePruningEventTrigger eventTrigger, SidebarVC sidebar) {
         this.eventTrigger = eventTrigger;
         this.sidebar = sidebar;
@@ -45,7 +51,10 @@ public class MonotonePruningInfoProvider {
         clear();
     }
 
-    public void clear() {
+    /**
+     * Clears the info view.
+     */
+    void clear() {
         sidebar.clear();
 
         if (mainTaskChanged) {
@@ -268,7 +277,7 @@ public class MonotonePruningInfoProvider {
             }
 
             if (event.getLargerNodes().isEmpty()) {
-                view.addDetail(EMPTY_SET, row++, 1);
+                view.addDetail(EMPTY_SET, row, 1);
             } else {
                 String action = Messages.getString("CoverabilityGraph.Assistant.MP.CoverCheck.Action");
                 view.addAction(action);
@@ -290,7 +299,7 @@ public class MonotonePruningInfoProvider {
 
             int row = 0;
             if (event.getDeactivatedNodes().isEmpty()) {
-                view.addDetail(EMPTY_SET, row++, 1);
+                view.addDetail(EMPTY_SET, row, 1);
             } else {
                 for (MpNode n : event.getDeactivatedNodes()) {
 
@@ -321,7 +330,7 @@ public class MonotonePruningInfoProvider {
 
             int row = 0;
             if (event.getActiveTransitions().isEmpty()) {
-                view.addDetail(EMPTY_SET, row++, 1);
+                view.addDetail(EMPTY_SET, row, 1);
             } else {
                 for (TransitionNode t : event.getActiveTransitions()) {
 
@@ -359,6 +368,7 @@ public class MonotonePruningInfoProvider {
         public void coverabilityGraphCompleted() {
             currentState = AnalysisState.FINISHED;
             mainTaskChanged = true;
+            clear();
         }
     }
 

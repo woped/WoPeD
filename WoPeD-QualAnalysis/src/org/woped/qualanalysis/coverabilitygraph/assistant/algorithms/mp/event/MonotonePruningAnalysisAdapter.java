@@ -1,7 +1,6 @@
-package org.woped.qualanalysis.reachabilitygraph.assistant.algorithms.mp.event;
+package org.woped.qualanalysis.coverabilitygraph.assistant.algorithms.mp.event;
 
-import org.woped.qualanalysis.reachabilitygraph.assistant.event.NodeEvent;
-import org.woped.qualanalysis.reachabilitygraph.assistant.algorithms.mp.MonotonePruningGraphBuilder;
+import org.woped.qualanalysis.coverabilitygraph.events.NodeEvent;
 
 /**
  * An abstract adapter for receiving analysis events. All methods in this class are empty.
@@ -11,7 +10,7 @@ import org.woped.qualanalysis.reachabilitygraph.assistant.algorithms.mp.Monotone
  * to create a textual description or to highlight the coverability graph.
  * <p>
  * Extend this class to create a {@link MonotonePruningAnalysisListener} and override the methods for the events of interest. Add an instance
- * of your class to the {@link MonotonePruningGraphBuilder#addAnalysisListener(MonotonePruningAnalysisListener)} method.
+ * of your class to the {@link org.woped.qualanalysis.coverabilitygraph.assistant.algorithms.mp.MonotonePruningEventTrigger#addAnalysisListener(MonotonePruningAnalysisListener)} method.
  * The relevant methods are invoked and the event object is passed to it when an event occurs.
  */
 public abstract class MonotonePruningAnalysisAdapter implements MonotonePruningAnalysisListener {
@@ -155,6 +154,9 @@ public abstract class MonotonePruningAnalysisAdapter implements MonotonePruningA
 
     }
 
+    /**
+     * Invoked when a random unprocessed node should be processed.
+     */
     @Override
     public void processRandomNodeRequest() {
 

@@ -1,13 +1,13 @@
-package org.woped.qualanalysis.reachabilitygraph.assistant.algorithms.mp.model;
+package org.woped.qualanalysis.coverabilitygraph.assistant.algorithms.mp.model;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
-import org.woped.qualanalysis.reachabilitygraph.assistant.algorithms.mp.event.NodeChangedEvent;
-import org.woped.qualanalysis.reachabilitygraph.assistant.algorithms.mp.event.NodeChangedEventListener;
-import org.woped.qualanalysis.reachabilitygraph.data.model.CoverabilityGraphEdge;
-import org.woped.qualanalysis.reachabilitygraph.gui.ReachabilityJGraph;
+import org.woped.qualanalysis.coverabilitygraph.assistant.algorithms.mp.event.NodeChangedEvent;
+import org.woped.qualanalysis.coverabilitygraph.assistant.algorithms.mp.event.NodeChangedEventListener;
+import org.woped.qualanalysis.coverabilitygraph.gui.CoverabilityGraph;
+import org.woped.qualanalysis.coverabilitygraph.model.CoverabilityGraphEdge;
 import org.woped.qualanalysis.soundness.datamodel.TransitionNode;
 import org.woped.qualanalysis.soundness.marking.IMarking;
 import org.woped.tests.DemoGraphGenerator;
@@ -67,7 +67,7 @@ public class MpNodeTest {
 
     @Test
     public void getParentNode_oneParent_returnsParent() throws Exception {
-        ReachabilityJGraph graph = new DemoGraphGenerator().createGraph();
+        CoverabilityGraph graph = new DemoGraphGenerator().createGraph();
 
         MpNode parent = new MpNode(marking);
         TransitionNode t1 = new TransitionNode("t1", "t1", "t1", AbstractPetriNetElementModel.TRANS_SIMPLE_TYPE);
@@ -80,7 +80,7 @@ public class MpNodeTest {
 
     @Test(expected = IllegalStateException.class)
     public void getParentNode_twoParents_throwsException() throws Exception {
-        ReachabilityJGraph graph = new DemoGraphGenerator().createGraph();
+        CoverabilityGraph graph = new DemoGraphGenerator().createGraph();
 
         MpNode parent1 = new MpNode(marking);
         MpNode parent2 = new MpNode(marking);
@@ -91,5 +91,33 @@ public class MpNodeTest {
         graph.getGraphLayoutCache().insert(new Object[]{parent1, parent2, cut, edge1, edge2});
 
         cut.getParentNode();
+    }
+
+    @Test
+    public void getProcessedInStep_processed_returnsStep() throws Exception {
+        int step = 1;
+        cut.setProcessedInStep(step);
+        int actual = cut.getProcessedInStep();
+
+        assertEquals(step, actual);
+    }
+
+    @Test(expected = IllegalStateException.class)
+    public void getProcessedStep_notProcessed_throwsException() throws Exception {
+        cut.getProcessedInStep();
+    }
+
+    @Test
+    public void getDeactivatedInStep_hasBeenDeactivated_returnsStep() throws Exception {
+        int step = 1;
+        cut.setDeactivatedInStep(step);
+        int actual = cut.getDeactivatedInStep();
+
+        assertEquals(step, actual);
+    }
+
+    @Test(expected = IllegalStateException.class)
+    public void getDeactivatedInStep_notDeactivated_throwsException() throws Exception {
+        cut.getDeactivatedInStep();
     }
 }

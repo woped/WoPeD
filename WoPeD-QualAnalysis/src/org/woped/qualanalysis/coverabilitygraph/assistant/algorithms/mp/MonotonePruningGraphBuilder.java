@@ -1,26 +1,36 @@
-package org.woped.qualanalysis.reachabilitygraph.assistant.algorithms.mp;
+package org.woped.qualanalysis.coverabilitygraph.assistant.algorithms.mp;
 
-import org.woped.qualanalysis.reachabilitygraph.assistant.event.CoverabilityGraphAdapter;
-import org.woped.qualanalysis.reachabilitygraph.assistant.event.CoverabilityGraphListener;
-import org.woped.qualanalysis.reachabilitygraph.assistant.event.NodeEvent;
-import org.woped.qualanalysis.reachabilitygraph.assistant.algorithms.mp.event.MonotonePruningAnalysisAdapter;
-import org.woped.qualanalysis.reachabilitygraph.assistant.algorithms.mp.event.NodeRelatedEvent;
-import org.woped.qualanalysis.reachabilitygraph.assistant.algorithms.mp.model.MpNode;
-import org.woped.qualanalysis.reachabilitygraph.assistant.algorithms.mp.model.MpNodeState;
-import org.woped.qualanalysis.reachabilitygraph.data.model.CoverabilityGraphEdge;
+import org.woped.core.controller.IEditor;
+import org.woped.qualanalysis.coverabilitygraph.assistant.event.CoverabilityGraphAdapter;
+import org.woped.qualanalysis.coverabilitygraph.assistant.event.CoverabilityGraphListener;
+import org.woped.qualanalysis.coverabilitygraph.events.NodeEvent;
+import org.woped.qualanalysis.coverabilitygraph.assistant.algorithms.mp.event.MonotonePruningAnalysisAdapter;
+import org.woped.qualanalysis.coverabilitygraph.assistant.algorithms.mp.event.NodeRelatedEvent;
+import org.woped.qualanalysis.coverabilitygraph.assistant.algorithms.mp.model.MpNode;
+import org.woped.qualanalysis.coverabilitygraph.assistant.algorithms.mp.model.MpNodeState;
+import org.woped.qualanalysis.coverabilitygraph.model.CoverabilityGraphEdge;
+import org.woped.qualanalysis.soundness.builder.BuilderFactory;
+import org.woped.qualanalysis.soundness.builder.lowlevelpetrinet.AbstractLowLevelPetriNetBuilder;
+import org.woped.qualanalysis.soundness.datamodel.ILowLevelPetriNet;
 import org.woped.qualanalysis.soundness.datamodel.PlaceNode;
 import org.woped.qualanalysis.soundness.datamodel.TransitionNode;
+import org.woped.qualanalysis.soundness.marking.Arc;
 import org.woped.qualanalysis.soundness.marking.IMarking;
 import org.woped.qualanalysis.soundness.marking.IMarkingNet;
+import org.woped.qualanalysis.soundness.marking.MarkingNet;
 
 import java.util.*;
 
-public class MonotonePruningGraphBuilder {
+/**
+ * This class implements the algorithm from the paper Minimal Coverability Set for Petri Nets: Karp and Miller Algorithm with Pruning
+ */
+class MonotonePruningGraphBuilder {
 
     private Set<MpNode> unprocessedNodes;
     private Set<MpNode> activeNodes;
     private Set<MpNode> inactiveNodes;
 
+    private IEditor editor;
     private MonotonePruningEventTrigger eventTrigger;
 
     private IMarkingNet markingNet;
@@ -28,7 +38,8 @@ public class MonotonePruningGraphBuilder {
     private MpNode currentNode;
     private boolean analysisFinished;
 
-    MonotonePruningGraphBuilder(MonotonePruningEventTrigger eventTrigger) {
+    MonotonePruningGraphBuilder(IEditor editor, MonotonePruningEventTrigger eventTrigger) {
+        this.editor = editor;
         this.eventTrigger = eventTrigger;
 
         CoverabilityGraphListener graphListener = new GraphListener();
@@ -38,8 +49,8 @@ public class MonotonePruningGraphBuilder {
         eventTrigger.addAnalysisListener(analysisListener);
     }
 
-    public void initialize(IMarkingNet markingNet) {
-        this.markingNet = markingNet;
+    public void initialize() {
+        createMarkingNet();
 
         this.unprocessedNodes = new HashSet<>();
         this.activeNodes = new HashSet<>();
@@ -47,6 +58,12 @@ public class MonotonePruningGraphBuilder {
         this.steps = 0;
 
         addRootNode();
+    }
+
+    private void createMarkingNet() {
+        AbstractLowLevelPetriNetBuilder converter = BuilderFactory.createLowLevelPetriNetWithoutTStarBuilder(editor);
+        ILowLevelPetriNet lowLevelPetriNet = converter.getLowLevelPetriNet();
+        this.markingNet = new MarkingNet(lowLevelPetriNet);
     }
 
     private void addRootNode() {
@@ -60,7 +77,7 @@ public class MonotonePruningGraphBuilder {
     }
 
     private void reset() {
-        initialize(markingNet);
+        initialize();
         eventTrigger.fireRefreshRequest();
     }
 
@@ -79,10 +96,10 @@ public class MonotonePruningGraphBuilder {
     }
 
     private void convert2Graph() {
-
+        if(!unprocessedNodes.isEmpty()) return;
         for (MpNode n : inactiveNodes) {
 
-            MpNode parentNode = (MpNode) n.getParentNode();
+            MpNode parentNode = n.getParentNode();
             MpNode coveringNode = null;
 
             if (parentNode == null || parentNode.getState() == MpNodeState.ACTIVE) {
@@ -96,7 +113,7 @@ public class MonotonePruningGraphBuilder {
 
                 Collection<CoverabilityGraphEdge> incomingEdges = n.getIncomingEdges();
                 for (CoverabilityGraphEdge e : incomingEdges) {
-                    eventTrigger.fireEdgeReconnectedEvent(e, n, coveringNode, false);
+                    eventTrigger.fireEdgeReconnectedEvent(e, n, coveringNode);
                 }
 
                 if (coveringNode != null && n.getMarking().isInitial()) {
@@ -171,7 +188,7 @@ public class MonotonePruningGraphBuilder {
     }
 
     private void doParentActiveCheck() {
-        MpNode parentNode = (MpNode) currentNode.getParentNode();
+        MpNode parentNode = currentNode.getParentNode();
         boolean parentActive = (parentNode == null) || activeNodes.contains(parentNode);
 
         eventTrigger.fireParentCheckCompletedEvent(parentNode, parentActive);
@@ -261,6 +278,7 @@ public class MonotonePruningGraphBuilder {
         TransitionNode[] activatedTransitions = markingNet.getActivatedTransitions(marking);
         for (TransitionNode transition : activatedTransitions) {
             IMarking m = markingNet.calculateSucceedingMarking(marking, transition);
+            marking.addSuccessor(new Arc(m, transition));
             MpNode n = new MpNode(m);
             this.unprocessedNodes.add(n);
             CoverabilityGraphEdge edge = new CoverabilityGraphEdge(currentNode, n, transition);

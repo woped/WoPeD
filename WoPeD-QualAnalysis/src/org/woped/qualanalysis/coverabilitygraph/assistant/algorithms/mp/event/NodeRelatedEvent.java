@@ -1,7 +1,7 @@
-package org.woped.qualanalysis.reachabilitygraph.assistant.algorithms.mp.event;
+package org.woped.qualanalysis.coverabilitygraph.assistant.algorithms.mp.event;
 
-import org.woped.qualanalysis.reachabilitygraph.assistant.event.NodeEvent;
-import org.woped.qualanalysis.reachabilitygraph.assistant.algorithms.mp.model.MpNode;
+import org.woped.qualanalysis.coverabilitygraph.events.NodeEvent;
+import org.woped.qualanalysis.coverabilitygraph.assistant.algorithms.mp.model.MpNode;
 
 /**
  * This event occurs if a node is related to the node currently processed.
@@ -14,7 +14,7 @@ public class NodeRelatedEvent extends NodeEvent {
      * Creates a new event.
      *
      * @param node     the node related to the current processed node
-     * @param relation the realation between the node and the currently processed node
+     * @param relation the relation between the node and the currently processed node
      */
     public NodeRelatedEvent(Object source, MpNode node, Relation relation) {
         super(source, node);

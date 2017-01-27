@@ -1,7 +1,10 @@
-package org.woped.qualanalysis.reachabilitygraph.assistant.algorithms.mp.event;
+package org.woped.qualanalysis.coverabilitygraph.assistant.algorithms.mp.event;
 
-import org.woped.qualanalysis.reachabilitygraph.assistant.event.NodeEvent;
+import org.woped.qualanalysis.coverabilitygraph.events.NodeEvent;
 
+/**
+ * This class defines the basic events that can occur while building the coverability graph with the monotone pruning algorithm.
+ */
 public interface MonotonePruningAnalysisListener {
 
     /**
@@ -108,6 +111,4 @@ public interface MonotonePruningAnalysisListener {
      * Invoked when the algorithm should choose the next node to process.
      */
     void processRandomNodeRequest();
-
-
 }

@@ -1,22 +1,22 @@
-package org.woped.qualanalysis.reachabilitygraph.assistant.algorithms.mp;
+package org.woped.qualanalysis.coverabilitygraph.assistant.algorithms.mp;
 
 import org.jgraph.graph.AttributeMap;
 import org.jgraph.graph.GraphConstants;
-import org.woped.qualanalysis.reachabilitygraph.assistant.algorithms.mp.model.MpNodeTextFormatter;
-import org.woped.qualanalysis.reachabilitygraph.assistant.event.CoverabilityGraphAdapter;
-import org.woped.qualanalysis.reachabilitygraph.assistant.event.EdgeEvent;
-import org.woped.qualanalysis.reachabilitygraph.assistant.event.NodeEvent;
-import org.woped.qualanalysis.reachabilitygraph.assistant.algorithms.mp.event.MonotonePruningAnalysisAdapter;
-import org.woped.qualanalysis.reachabilitygraph.assistant.algorithms.mp.event.NodeChangedEvent;
-import org.woped.qualanalysis.reachabilitygraph.assistant.algorithms.mp.event.NodeChangedEventListener;
-import org.woped.qualanalysis.reachabilitygraph.assistant.algorithms.mp.event.NodeRelatedEvent;
-import org.woped.qualanalysis.reachabilitygraph.assistant.algorithms.mp.model.MpNode;
-import org.woped.qualanalysis.reachabilitygraph.assistant.algorithms.mp.model.MpNodeState;
-import org.woped.qualanalysis.reachabilitygraph.data.model.CoverabilityGraphEdge;
-import org.woped.qualanalysis.reachabilitygraph.data.model.CoverabilityGraphNode;
-import org.woped.qualanalysis.reachabilitygraph.data.model.CoverabilityGraphPort;
-import org.woped.qualanalysis.reachabilitygraph.gui.views.formatters.DefaultNodeTextFormatter;
-import org.woped.qualanalysis.reachabilitygraph.gui.views.formatters.NodeFormatter;
+import org.woped.qualanalysis.coverabilitygraph.assistant.algorithms.mp.event.MonotonePruningAnalysisAdapter;
+import org.woped.qualanalysis.coverabilitygraph.assistant.algorithms.mp.event.NodeChangedEvent;
+import org.woped.qualanalysis.coverabilitygraph.assistant.algorithms.mp.event.NodeChangedEventListener;
+import org.woped.qualanalysis.coverabilitygraph.assistant.algorithms.mp.event.NodeRelatedEvent;
+import org.woped.qualanalysis.coverabilitygraph.assistant.algorithms.mp.model.MpNode;
+import org.woped.qualanalysis.coverabilitygraph.assistant.algorithms.mp.model.MpNodeState;
+import org.woped.qualanalysis.coverabilitygraph.assistant.algorithms.mp.model.MpNodeTextFormatter;
+import org.woped.qualanalysis.coverabilitygraph.assistant.event.CoverabilityGraphAdapter;
+import org.woped.qualanalysis.coverabilitygraph.model.CoverabilityGraphEdge;
+import org.woped.qualanalysis.coverabilitygraph.model.CoverabilityGraphNode;
+import org.woped.qualanalysis.coverabilitygraph.model.CoverabilityGraphPort;
+import org.woped.qualanalysis.coverabilitygraph.events.EdgeEvent;
+import org.woped.qualanalysis.coverabilitygraph.events.NodeEvent;
+import org.woped.qualanalysis.coverabilitygraph.gui.views.formatters.DefaultNodeTextFormatter;
+import org.woped.qualanalysis.coverabilitygraph.gui.views.formatters.NodeFormatter;
 
 import java.awt.*;
 import java.util.LinkedList;
@@ -24,9 +24,9 @@ import java.util.List;
 
 
 /**
- * This class is responsible to set the visual appearance of the coverability graph. *
+ * This class is responsible to set the visual appearance of the elements of the coverability graph.
  */
-public class MonotonePruningVisualStateManager implements NodeChangedEventListener{
+class MonotonePruningVisualStateManager {
 
     private static Color LIGHT_GRAY = new Color(245, 245, 245);
     private static Color GRAY = new Color(150, 150, 150);
@@ -39,12 +39,21 @@ public class MonotonePruningVisualStateManager implements NodeChangedEventListen
 
     private MonotonePruningEventTrigger eventTrigger;
     private NodeFormatter nodeFormatter;
+    private NodeStateListener nodeStateListener;
 
     private List<MpNode> highlightedNodes;
+    private boolean treeCompleted;
 
+    /**
+     * Constructs a new visual state manager.
+     *
+     * @param eventTrigger the object to fire events
+     * @param formatter the default formatter for the coverability graph nodes
+     */
     MonotonePruningVisualStateManager(MonotonePruningEventTrigger eventTrigger, NodeFormatter formatter) {
         this.eventTrigger = eventTrigger;
-        this.highlightedNodes  = new LinkedList<>();
+        this.highlightedNodes = new LinkedList<>();
+        this.treeCompleted = false;
 
         this.nodeFormatter = formatter;
         nodeFormatter.setNodeTextFormatter(new MpNodeTextFormatter());
@@ -54,11 +63,16 @@ public class MonotonePruningVisualStateManager implements NodeChangedEventListen
 
         AnalysisListener analysisListener = new AnalysisListener();
         eventTrigger.addAnalysisListener(analysisListener);
+
+        nodeStateListener = new NodeStateListener();
     }
 
-    void removeHighlighting(){
+    /**
+     * Removes all applied highlighting from the graph.
+     */
+    void removeHighlighting() {
 
-        for(MpNode n : highlightedNodes){
+        for (MpNode n : highlightedNodes) {
             n.setHighlighted(false);
             applyStyle(n);
         }
@@ -67,7 +81,7 @@ public class MonotonePruningVisualStateManager implements NodeChangedEventListen
         eventTrigger.fireRefreshRequest();
     }
 
-    private void addHighlighting(MpNode n, AttributeMap style){
+    private void addHighlighting(MpNode n, AttributeMap style) {
         n.setHighlighted(true);
         highlightedNodes.add(n);
 
@@ -75,7 +89,7 @@ public class MonotonePruningVisualStateManager implements NodeChangedEventListen
     }
 
     private void registerNode(MpNode node) {
-        node.addNodeChangedListener(this);
+        node.addNodeChangedListener(this.nodeStateListener);
         applyStyle(node);
     }
 
@@ -111,65 +125,6 @@ public class MonotonePruningVisualStateManager implements NodeChangedEventListen
     private void setIncomingEdgeStyle(CoverabilityGraphNode node, AttributeMap style) {
         for (CoverabilityGraphEdge edge : node.getIncomingEdges()) {
             eventTrigger.fireEdgeModifiedEvent(edge, style);
-        }
-    }
-
-
-    @Override
-    public void NodeChanged(NodeChangedEvent event) {
-        System.out.println(event.getNode().toString() + ":" + event.getPreviousState() + "->" + event.getNewState());
-        applyStyle(event.getNode());
-    }
-
-    private class GraphListener extends CoverabilityGraphAdapter {
-
-        @Override
-        public void nodeAdded(NodeEvent event) {
-            registerNode((MpNode) event.getNode());
-        }
-
-        @Override
-        public void edgeAdded(EdgeEvent event) {
-            CoverabilityGraphPort port = (CoverabilityGraphPort) event.getEdge().getTarget();
-            MpNode target = (MpNode) port.getParent();
-
-            if (target.getState() == MpNodeState.UNPROCESSED) {
-                eventTrigger.fireEdgeModifiedEvent(event.getEdge(), EdgeStyle.UNPROCESSED);
-            }
-        }
-    }
-
-    private class AnalysisListener extends MonotonePruningAnalysisAdapter{
-
-        @Override
-        public void nodeSelected(NodeEvent event) {
-            addHighlighting((MpNode) event.getNode(), NodeStyle.SELECTED);
-        }
-
-        @Override
-        public void nodeRelated(NodeRelatedEvent event) {
-            switch (event.getRelation()) {
-                case CURRENTLY_PROCESSED:
-                    addHighlighting((MpNode) event.getNode(), NodeStyle.PROCESSING);
-                    break;
-                case DEACTIVATED:
-                    addHighlighting((MpNode) event.getNode(), NodeStyle.DEACTIVATED);
-                    break;
-                case LESS_THAN_CURRENT:
-                    addHighlighting((MpNode) event.getNode(), NodeStyle.LESS_OR_EQUAL);
-                    break;
-                case LARGER_THAN_CURRENT:
-                    addHighlighting((MpNode) event.getNode(), NodeStyle.LARGER_OR_EQUAL);
-                    break;
-                case NONE:
-                    applyStyle((MpNode) event.getNode());
-                    break;
-            }
-        }
-
-        @Override
-        public void convert2GraphRequest() {
-            nodeFormatter.setNodeTextFormatter(new DefaultNodeTextFormatter());
         }
     }
 
@@ -276,7 +231,7 @@ public class MonotonePruningVisualStateManager implements NodeChangedEventListen
             GraphConstants.setRemoveAttributes(map, new Object[]{GraphConstants.DASHPATTERN});
             GraphConstants.setLineWidth(map, 2);
             GraphConstants.setForeground(map, Color.BLACK);
-            GraphConstants.setLineColor(map, DARK_GREEN );
+            GraphConstants.setLineColor(map, DARK_GREEN);
             GraphConstants.setBackground(map, LIGHT_GREEN);
             GraphConstants.setOpaque(map, true);
 
@@ -326,6 +281,86 @@ public class MonotonePruningVisualStateManager implements NodeChangedEventListen
             GraphConstants.setRemoveAttributes(map, new Object[]{GraphConstants.DASHPATTERN});
 
             return map;
+        }
+    }
+
+    /**
+     * Listens for state changes of registered nodes
+     */
+    private class NodeStateListener implements NodeChangedEventListener{
+
+        @Override
+        public void NodeChanged(NodeChangedEvent event) {
+            applyStyle(event.getNode());
+        }
+    }
+
+    /**
+     * Listens for graph events.
+     */
+    private class GraphListener extends CoverabilityGraphAdapter {
+
+        @Override
+        public void nodeAdded(NodeEvent event) {
+            registerNode((MpNode) event.getNode());
+        }
+
+        @Override
+        public void edgeAdded(EdgeEvent event) {
+            CoverabilityGraphPort port = (CoverabilityGraphPort) event.getEdge().getTarget();
+            MpNode target = (MpNode) port.getParent();
+
+            if (target.getState() == MpNodeState.UNPROCESSED) {
+                eventTrigger.fireEdgeModifiedEvent(event.getEdge(), EdgeStyle.UNPROCESSED);
+            }
+        }
+
+        @Override
+        public void restartRequested() {
+            treeCompleted = false;
+            nodeFormatter.setNodeTextFormatter(new MpNodeTextFormatter());
+        }
+    }
+
+    /**
+     * Listens for analysis events.
+     */
+    private class AnalysisListener extends MonotonePruningAnalysisAdapter {
+
+        @Override
+        public void nodeSelected(NodeEvent event) {
+            addHighlighting((MpNode) event.getNode(), NodeStyle.SELECTED);
+        }
+
+        @Override
+        public void nodeRelated(NodeRelatedEvent event) {
+            switch (event.getRelation()) {
+                case CURRENTLY_PROCESSED:
+                    addHighlighting((MpNode) event.getNode(), NodeStyle.PROCESSING);
+                    break;
+                case DEACTIVATED:
+                    addHighlighting((MpNode) event.getNode(), NodeStyle.DEACTIVATED);
+                    break;
+                case LESS_THAN_CURRENT:
+                    addHighlighting((MpNode) event.getNode(), NodeStyle.LESS_OR_EQUAL);
+                    break;
+                case LARGER_THAN_CURRENT:
+                    addHighlighting((MpNode) event.getNode(), NodeStyle.LARGER_OR_EQUAL);
+                    break;
+                case NONE:
+                    applyStyle((MpNode) event.getNode());
+                    break;
+            }
+        }
+
+        @Override
+        public void convert2GraphRequest() {
+            if (treeCompleted) nodeFormatter.setNodeTextFormatter(new DefaultNodeTextFormatter());
+        }
+
+        @Override
+        public void coverabilityGraphCompleted() {
+            treeCompleted = true;
         }
     }
 }

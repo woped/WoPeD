@@ -1,10 +1,10 @@
-package org.woped.qualanalysis.reachabilitygraph.assistant.algorithms.mp.model;
+package org.woped.qualanalysis.coverabilitygraph.assistant.algorithms.mp.model;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.woped.qualanalysis.reachabilitygraph.data.model.CoverabilityGraphNode;
-import org.woped.qualanalysis.reachabilitygraph.gui.views.formatters.MarkingFormatter;
-import org.woped.qualanalysis.reachabilitygraph.gui.views.formatters.MultiSetMarkingFormatter;
+import org.woped.qualanalysis.coverabilitygraph.model.CoverabilityGraphNode;
+import org.woped.qualanalysis.coverabilitygraph.gui.views.formatters.MarkingFormatter;
+import org.woped.qualanalysis.coverabilitygraph.gui.views.formatters.MultiSetMarkingFormatter;
 import org.woped.qualanalysis.soundness.marking.IMarking;
 import org.woped.tests.MarkingGenerator;
 
@@ -61,6 +61,7 @@ public class MpNodeTextFormatterTest {
     public void getText_nodeInactive_hasProcessStepPrefix() throws Exception {
         MpNode node = new MpNode(demoMarking, MpNodeState.INACTIVE);
         node.setProcessedInStep(1);
+        node.setDeactivatedInStep(2);
 
         String text = cut.getText(node);
         assertTrue(text.startsWith("1 : "));

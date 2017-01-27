@@ -1,8 +1,11 @@
-package org.woped.qualanalysis.reachabilitygraph.assistant.algorithms.mp.model;
+package org.woped.qualanalysis.coverabilitygraph.assistant.algorithms.mp.model;
 
-import org.woped.qualanalysis.reachabilitygraph.data.model.CoverabilityGraphNode;
-import org.woped.qualanalysis.reachabilitygraph.gui.views.formatters.DefaultNodeTextFormatter;
+import org.woped.qualanalysis.coverabilitygraph.model.CoverabilityGraphNode;
+import org.woped.qualanalysis.coverabilitygraph.gui.views.formatters.DefaultNodeTextFormatter;
 
+/**
+ * Decorates the textual representation of a {@link MpNode} with additional information about its analysis.
+ */
 public class MpNodeTextFormatter extends DefaultNodeTextFormatter{
 
     @Override
