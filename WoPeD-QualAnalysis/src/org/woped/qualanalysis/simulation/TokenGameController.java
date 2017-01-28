@@ -33,8 +33,6 @@ import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.petrinet.*;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.qualanalysis.Constants;
-import org.woped.qualanalysis.reachabilitygraph.gui.ReachabilityGraphVC;
-import org.woped.qualanalysis.reachabilitygraph.gui.ReachabilityJGraph;
 import org.woped.qualanalysis.service.IQualanalysisService;
 import org.woped.qualanalysis.service.QualAnalysisServiceFactory;
 import org.woped.qualanalysis.soundness.builder.BuilderFactory;
@@ -142,7 +140,7 @@ public class TokenGameController implements ITokenGameController {
             checkNet();
         } else {
             // remove highlighting from RG in Editor
-            petrinet.resetRGHighlightAndVTokens();
+            petrinet.resetVirtualTokens();
             // displays the TokenGame Remote-Control if it already exist, if not create
             if ( RemoteControl != null ) {
                 RemoteControl.addControlElements();
@@ -183,19 +181,19 @@ public class TokenGameController implements ITokenGameController {
     }
 
     private void deHighlightRG() {
-        ReferenceProvider refer = new ReferenceProvider();
-        Object[] a = refer.getDesktopReference().getComponents();
-        for ( int i = 0; i < refer.getDesktopReference().getComponentCount(); i++ ) {
-            if ( a[i] instanceof ReachabilityGraphVC ) {
-                ReachabilityGraphVC rvc = (ReachabilityGraphVC) a[i];
-
-                if ( rvc.hasEditor(thisEditor) ) {
-                    rvc.setUnselectButtonEnabled(thisEditor, false);
-                    ((ReachabilityJGraph) rvc.getJGraph(thisEditor)).deHighlight();
-                }
-                break;
-            }
-        }
+//        ReferenceProvider refer = new ReferenceProvider();
+//        Object[] a = refer.getDesktopReference().getComponents();
+//        for ( int i = 0; i < refer.getDesktopReference().getComponentCount(); i++ ) {
+//            if ( a[i] instanceof CoverabilityGraphFrameController) {
+//                CoverabilityGraphFrameController rvc = (CoverabilityGraphFrameController) a[i];
+//
+//                if ( rvc.hasEditor(thisEditor) ) {
+//                    rvc.setUnselectButtonEnabled(thisEditor, false);
+//                    ((ReachabilityJGraph) rvc.getJGraph(thisEditor)).deHighlight();
+//                }
+//                break;
+//            }
+//        }
     }
 
     // ! Reset the virtual token count for the specified element container
@@ -293,19 +291,20 @@ public class TokenGameController implements ITokenGameController {
     }
 
     private void setMarkingInRG(IMarking mark) {
-        if ( ParentControl == null ) {
-            ParentControl = new ReferenceProvider();
-        }
-        Object[] a = ParentControl.getDesktopReference().getComponents();
-        for ( int i = 0; i < ParentControl.getDesktopReference().getComponentCount(); i++ ) {
-            if ( a[i] instanceof ReachabilityGraphVC ) {
-                ReachabilityGraphVC rvc = (ReachabilityGraphVC) a[i];
-                if ( rvc.hasEditor(thisEditor) ) {
-                    ((ReachabilityJGraph) rvc.getJGraph(thisEditor)).highlightMarking(mark);
-                }
-                break;
-            }
-        }
+//        if ( ParentControl == null ) {
+//            ParentControl = new ReferenceProvider();
+//        }
+//        Object[] a = ParentControl.getDesktopReference().getComponents();
+//        for ( int i = 0; i < ParentControl.getDesktopReference().getComponentCount(); i++ ) {
+//            if ( a[i] instanceof CoverabilityGraphFrameController) {
+//                CoverabilityGraphFrameController rvc = (CoverabilityGraphFrameController) a[i];
+//                if ( rvc.hasEditor(thisEditor) ) {
+//                    ((ReachabilityJGraph) rvc.getJGraph(thisEditor)).highlightMarking(mark);
+//
+//                }
+//                break;
+//            }
+//        }
     }
 
     /*
