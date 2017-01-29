@@ -152,27 +152,31 @@ class MonotonePruningInfoProvider {
             ProgressDetailsView view = new ProgressDetailsView();
             MpNode node = (MpNode) event.getNode();
 
-            header.setTitle("Node details:");
+            String headerText = Messages.getString("CoverabilityGraph.Assistant.MP.NodeInfo.Header");
+            header.setTitle(headerText);
 
             if (node.getState() == MpNodeState.UNPROCESSED) {
-                String msg = "Dieser Knoten wurde noch nicht analysiert. Ein Doppelklick auf den Knoten startet die Anlayse.";
+                String msg = Messages.getString("CoverabilityGraph.Assistant.MP.NodeInfo.Unprocessed");
                 view.addDetail(msg, 0, 0);
 
                 view.addAction(new AnalyseNodeAction(node));
             } else {
-                String active = "State:";
+                String active = Messages.getString("CoverabilityGraph.Assistant.MP.NodeInfo.State");
                 view.addDetail(active, 0, 0);
                 view.addDetail(String.format("<code>%s</code>", node.getState()), 0, 1);
 
-                String processed = "Processed in step:";
+                String processed = Messages.getString("CoverabilityGraph.Assistant.MP.NodeInfo.ProcessStep");
                 view.addDetail(processed, 1, 0);
                 view.addDetail(String.valueOf(node.getProcessedInStep()), 1, 1);
 
                 if (node.getState() == MpNodeState.INACTIVE) {
-                    view.addDetail("Deactivated in step", 2, 0);
+
+                    String deactivationStep =Messages.getString("CoverabilityGraph.Assistant.MP.NodeInfo.DeactivationStep");
+                    view.addDetail(deactivationStep, 2, 0);
                     view.addDetail(String.valueOf(node.getDeactivatedInStep()), 2, 1);
 
-                    view.addDetail("Deactivated by", 3, 0);
+                    String deactivationNode = Messages.getString("CoverabilityGraph.Assistant.MP.NodeInfo.DeactivationNode");
+                    view.addDetail(deactivationNode, 3, 0);
                     view.addDetail(node.getDeactivationNode().getMarking().asMultiSetString(), 3, 1);
                 }
             }
