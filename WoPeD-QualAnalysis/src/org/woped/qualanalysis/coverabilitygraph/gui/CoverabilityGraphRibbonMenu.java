@@ -273,19 +273,22 @@ public class CoverabilityGraphRibbonMenu {
     }
 
     private JCommandButton getCloseAssistantButton() {
-        JCommandButton closeAssistantButton = createButton("CoverabilityGraph.Ribbon.Assistant.Close",new file_close());
+        String prefix = "CoverabilityGraph.Ribbon.Assistant.Close";
+        JCommandButton closeAssistantButton = createButton(prefix, getResizableIcon(prefix));
         addClickHandler(closeAssistantButton, CoverabilityGraphViewEvents.ASSISTANT_CLOSE);
         return closeAssistantButton;
     }
 
     private JCommandButton getStartAssistantButton() {
-        JCommandButton startAssistantButton = createButton("CoverabilityGraph.Ribbon.Assistant.Start", new tokengame_play_start());
+        String prefix = "CoverabilityGraph.Ribbon.Assistant.Start";
+        JCommandButton startAssistantButton = createButton(prefix, getResizableIcon(prefix));
         addClickHandler(startAssistantButton, CoverabilityGraphViewEvents.ASSISTANT_START);
         return startAssistantButton;
     }
 
     private JCommandButton getResetAssistantButton() {
-        JCommandButton resetAssistantButton = createButton("CoverabilityGraph.Ribbon.Assistant.Reset", new refresh());
+        String prefix = "CoverabilityGraph.Ribbon.Assistant.Reset";
+        JCommandButton resetAssistantButton = createButton(prefix, getResizableIcon(prefix));
         addClickHandler(resetAssistantButton, CoverabilityGraphViewEvents.ASSISTANT_RESET);
         return resetAssistantButton;
     }
