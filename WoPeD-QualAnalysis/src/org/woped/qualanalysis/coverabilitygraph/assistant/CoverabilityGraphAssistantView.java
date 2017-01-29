@@ -2,15 +2,20 @@ package org.woped.qualanalysis.coverabilitygraph.assistant;
 
 import org.woped.core.controller.IEditor;
 import org.woped.qualanalysis.coverabilitygraph.assistant.algorithms.mp.CoverabilityGraphAssistantUsingMonotonePruning;
+import org.woped.qualanalysis.coverabilitygraph.assistant.event.CoverabilityGraphAdapter;
 import org.woped.qualanalysis.coverabilitygraph.assistant.sidebar.SidebarVC;
-import org.woped.qualanalysis.coverabilitygraph.model.CoverabilityGraphModel;
 import org.woped.qualanalysis.coverabilitygraph.events.CoverabilityGraphMouseListener;
-import org.woped.qualanalysis.coverabilitygraph.gui.*;
+import org.woped.qualanalysis.coverabilitygraph.gui.CoverabilityGraphSettings;
+import org.woped.qualanalysis.coverabilitygraph.gui.CoverabilityGraphVC;
+import org.woped.qualanalysis.coverabilitygraph.gui.PetriNetHighlighter;
+import org.woped.qualanalysis.coverabilitygraph.gui.ZoomController;
 import org.woped.qualanalysis.coverabilitygraph.gui.layout.CoverabilityGraphLayoutSettings;
 import org.woped.qualanalysis.coverabilitygraph.gui.views.CoverabilityGraphView;
-import org.woped.qualanalysis.coverabilitygraph.gui.views.CoverabilityGraphWrapper;
 import org.woped.qualanalysis.coverabilitygraph.gui.views.CoverabilityGraphViewFactory;
+import org.woped.qualanalysis.coverabilitygraph.gui.views.CoverabilityGraphWrapper;
+import org.woped.qualanalysis.coverabilitygraph.gui.views.StatusBarView;
 import org.woped.qualanalysis.coverabilitygraph.gui.views.formatters.NodeFormatter;
+import org.woped.qualanalysis.coverabilitygraph.model.CoverabilityGraphModel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -29,6 +34,7 @@ public class CoverabilityGraphAssistantView extends CoverabilityGraphView {
     private CoverabilityGraphWrapper graphView;
     private NodeFormatter nodeFormatter;
     private CoverabilityGraphAssistant assistant;
+    private StatusBarView statusBar;
 
     /**
      * Constructs a new coverability graph assistant view for the petri net designed in the provided editor.
@@ -49,6 +55,7 @@ public class CoverabilityGraphAssistantView extends CoverabilityGraphView {
     public void refresh() {
         graphModel.refresh();
         graphView.refresh();
+        statusBar.refresh();
 
         validate();
         repaint();
@@ -60,6 +67,7 @@ public class CoverabilityGraphAssistantView extends CoverabilityGraphView {
     @Override
     public void reset() {
         assistant.reset();
+        statusBar.setOutOfSync(false);
         refresh();
     }
 
@@ -68,7 +76,8 @@ public class CoverabilityGraphAssistantView extends CoverabilityGraphView {
      */
     @Override
     public void setOutOfSync() {
-
+        statusBar.setOutOfSync(true);
+        refresh();
     }
 
     /**
@@ -169,12 +178,14 @@ public class CoverabilityGraphAssistantView extends CoverabilityGraphView {
     }
 
     private void initialize() {
-        sidebarVC = new SidebarVC();
 
         CoverabilityGraphViewFactory viewFactory = new CoverabilityGraphViewFactory();
         nodeFormatter = viewFactory.getNodeFormatter();
         graphModel = new CoverabilityGraphAssistantModel(editor, viewFactory);
+        sidebarVC = new SidebarVC();
         assistant = new CoverabilityGraphAssistantUsingMonotonePruning(editor, sidebarVC, graphModel);
+        assistant.addCoverabilityGraphListener(new GraphListener());
+        statusBar = new StatusBarView(graphModel);
 
         createView();
 
@@ -189,13 +200,30 @@ public class CoverabilityGraphAssistantView extends CoverabilityGraphView {
         splitter.setOneTouchExpandable(true);
         splitter.setResizeWeight(1);
 
+
         graphView = new CoverabilityGraphWrapper(graphModel.getGraph());
-        splitter.setLeftComponent(graphView);
+
+        JPanel mainPanel = new JPanel(new BorderLayout());
+        mainPanel.add(statusBar, BorderLayout.SOUTH);
+        mainPanel.add(graphView, BorderLayout.CENTER);
+
+        splitter.setLeftComponent(mainPanel);
         splitter.setRightComponent(sidebarVC.getView());
 
         this.setMinimumSize(new Dimension(640, 480));
         this.setLayout(new BorderLayout());
         this.add(splitter, BorderLayout.CENTER);
+    }
+
+    /**
+     * Listens for refresh requests
+     */
+    private class GraphListener extends CoverabilityGraphAdapter{
+
+        @Override
+        public void refreshRequested() {
+            refresh();
+        }
     }
 
 }

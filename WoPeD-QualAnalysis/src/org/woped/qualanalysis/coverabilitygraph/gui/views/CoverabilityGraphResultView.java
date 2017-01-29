@@ -3,22 +3,21 @@ package org.woped.qualanalysis.coverabilitygraph.gui.views;
 import org.jgraph.graph.AttributeMap;
 import org.jgraph.graph.GraphConstants;
 import org.woped.core.controller.IEditor;
-import org.woped.gui.translations.Messages;
-import org.woped.qualanalysis.coverabilitygraph.model.CoverabilityGraphModel;
-import org.woped.qualanalysis.coverabilitygraph.model.ReachabilityGraphModelUsingMarkingNet;
-import org.woped.qualanalysis.coverabilitygraph.model.CoverabilityGraphEdge;
-import org.woped.qualanalysis.coverabilitygraph.model.CoverabilityGraphNode;
 import org.woped.qualanalysis.coverabilitygraph.events.CoverabilityGraphMouseAdapter;
 import org.woped.qualanalysis.coverabilitygraph.events.CoverabilityGraphMouseListener;
 import org.woped.qualanalysis.coverabilitygraph.events.EmptySpaceClickedEvent;
 import org.woped.qualanalysis.coverabilitygraph.events.NodeClickedEvent;
-import org.woped.qualanalysis.coverabilitygraph.gui.*;
+import org.woped.qualanalysis.coverabilitygraph.gui.CoverabilityGraphSettings;
+import org.woped.qualanalysis.coverabilitygraph.gui.PetriNetHighlighter;
+import org.woped.qualanalysis.coverabilitygraph.gui.ZoomController;
 import org.woped.qualanalysis.coverabilitygraph.gui.layout.CoverabilityGraphLayoutSettings;
 import org.woped.qualanalysis.coverabilitygraph.gui.views.formatters.NodeFormatter;
+import org.woped.qualanalysis.coverabilitygraph.model.CoverabilityGraphEdge;
+import org.woped.qualanalysis.coverabilitygraph.model.CoverabilityGraphModel;
+import org.woped.qualanalysis.coverabilitygraph.model.CoverabilityGraphNode;
+import org.woped.qualanalysis.coverabilitygraph.model.ReachabilityGraphModelUsingMarkingNet;
 
-import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -32,10 +31,9 @@ public class CoverabilityGraphResultView extends CoverabilityGraphView {
 
     private IEditor editor;
     private CoverabilityGraphModel graphModel;
-    private StatusBar statusBar;
+    private StatusBarView statusBar;
     private CoverabilityGraphWrapper graphView;
 
-    private boolean outOfSync;
     private NodeFormatter nodeFormatter;
     private PetriNetHighlighter netHighlighter;
     private EdgeHighlighter edgeHighlighter;
@@ -47,7 +45,6 @@ public class CoverabilityGraphResultView extends CoverabilityGraphView {
      */
     public CoverabilityGraphResultView(IEditor editor) {
         this.editor = editor;
-        outOfSync = false;
         initialize();
     }
 
@@ -67,7 +64,7 @@ public class CoverabilityGraphResultView extends CoverabilityGraphView {
     @Override
     public void reset() {
         graphModel.reset();
-        outOfSync = false;
+        statusBar.setOutOfSync(false);
         refresh();
     }
 
@@ -76,7 +73,7 @@ public class CoverabilityGraphResultView extends CoverabilityGraphView {
      */
     @Override
     public void setOutOfSync() {
-        outOfSync = true;
+        statusBar.setOutOfSync(true);
         refresh();
     }
 
@@ -182,159 +179,12 @@ public class CoverabilityGraphResultView extends CoverabilityGraphView {
 
     private void createView() {
 
-        this.statusBar = new StatusBar();
+        this.statusBar = new StatusBarView(this.graphModel);
         this.graphView = new CoverabilityGraphWrapper(graphModel.getGraph());
 
         this.setLayout(new BorderLayout());
         this.add(statusBar, BorderLayout.SOUTH);
         this.add(graphView, BorderLayout.CENTER);
-    }
-
-    private class StatusBar extends JPanel {
-
-        private MarkingLegend markingLegend;
-        private GraphInfo graphInfo;
-        private OutOfSyncWarning outOfSyncWarning;
-
-        StatusBar() {
-            initialize();
-        }
-
-        public void refresh() {
-
-            markingLegend.refresh();
-            graphInfo.refresh();
-            outOfSyncWarning.refresh();
-        }
-
-        private void initialize() {
-            this.setLayout(new FlowLayout(FlowLayout.RIGHT, 20, 0));
-
-            markingLegend = new MarkingLegend();
-            graphInfo = new GraphInfo();
-            outOfSyncWarning = new OutOfSyncWarning();
-
-            this.add(markingLegend);
-            this.add(graphInfo);
-            this.add(outOfSyncWarning);
-        }
-
-        private class MarkingLegend extends JPanel {
-
-            private boolean useId;
-            private JLabel legend;
-
-            MarkingLegend() {
-                useId = false;
-
-                initialize();
-            }
-
-            private void refresh() {
-                setLegendText();
-            }
-
-            private void initialize() {
-                this.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 0));
-
-                String legendLabelText = Messages.getString("QuanlAna.ReachabilityGraph.Legend");
-                JLabel legendLabel = new JLabel(legendLabelText);
-
-                legend = new JLabel("");
-                setLegendText();
-
-                JButton toggleLegendButton = new JButton(new ToggleLegendAction());
-                toggleLegendButton.setBorder(BorderFactory.createEmptyBorder());
-
-                this.add(legendLabel);
-                this.add(legend);
-                this.add(toggleLegendButton);
-            }
-
-            private void setLegendText() {
-                String text = useId ? graphModel.getLegendByID() : graphModel.getLegendByName();
-                legend.setText(String.format("( %s )", text));
-            }
-
-            private void toggleLegend() {
-                useId = !useId;
-                setLegendText();
-                repaint();
-            }
-
-            private class ToggleLegendAction extends AbstractAction {
-
-                ToggleLegendAction() {
-                    ImageIcon icon = Messages.getImageIcon("Action.Browser.Refresh");
-                    this.putValue(Action.SMALL_ICON, icon);
-
-                    String tooltip = Messages.getString("QuanlAna.ReachabilityGraph.Legend.Toggle");
-                    this.putValue(Action.SHORT_DESCRIPTION, tooltip);
-                }
-
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    toggleLegend();
-                }
-            }
-        }
-
-        private class GraphInfo extends JPanel {
-
-            private JLabel nodes;
-            private JLabel edges;
-
-            GraphInfo() {
-                initialize();
-            }
-
-            private void initialize() {
-
-                this.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 0));
-
-                String nodesLabelText = Messages.getString("QuanlAna.ReachabilityGraph.Vertices");
-                JLabel nodesLabel = new JLabel(nodesLabelText);
-                nodes = new JLabel("");
-
-                String edgesLabelText = Messages.getString("QuanlAna.ReachabilityGraph.Edges");
-                JLabel edgesLabel = new JLabel(edgesLabelText);
-                edges = new JLabel("");
-
-                this.add(nodesLabel);
-                this.add(nodes);
-                this.add(edgesLabel);
-                this.add(edges);
-
-                refresh();
-            }
-
-            public void refresh() {
-                nodes.setText(String.valueOf(graphModel.getNodes().size()));
-                edges.setText(String.valueOf(graphModel.getEdges().size()));
-            }
-        }
-
-        private class OutOfSyncWarning extends JLabel {
-
-            OutOfSyncWarning() {
-                super(null, null, CENTER);
-                initialize();
-            }
-
-            public void refresh() {
-                this.setVisible(outOfSync);
-            }
-
-            private void initialize() {
-                ImageIcon icon = Messages.getImageIcon("QuanlAna.ReachabilityGraph.GraphOutOfSync");
-                setIcon(icon);
-
-                String tooltipText = Messages.getString("QuanlAna.ReachabilityGraph.GraphOutOfSync");
-                this.setToolTipText(tooltipText);
-
-                updateUI();
-            }
-        }
     }
 
     /**
@@ -352,13 +202,13 @@ public class CoverabilityGraphResultView extends CoverabilityGraphView {
         }
 
         @Override
-        public void emptySpaceClicked(EmptySpaceClickedEvent event) {
-            removeHighlighting();
+        public void nodeClicked(NodeClickedEvent event) {
+            highlightEdges(event.getNode());
         }
 
         @Override
-        public void nodeClicked(NodeClickedEvent event) {
-            highlightEdges(event.getNode());
+        public void emptySpaceClicked(EmptySpaceClickedEvent event) {
+            removeHighlighting();
         }
 
         /**
