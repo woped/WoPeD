@@ -82,14 +82,14 @@ public class CoverabilityGraphFrameController extends JInternalFrame {
      */
     void showGraph(IEditor editor) {
 
-        if (editor == null) return;
+        if (editor == null || activatedNet == editor) return;
 
         if (editor.isTokenGameEnabled()) {
             showTokenGameRunningWarning();
             return;
         }
 
-         if (!viewController.containsKey(editor)) createViewController(editor);
+        if (!viewController.containsKey(editor)) createViewController(editor);
 
         CoverabilityGraphVC activeGraph = getActiveGraph();
         if (activeGraph != null) {
@@ -101,8 +101,6 @@ public class CoverabilityGraphFrameController extends JInternalFrame {
 
         activeGraph = getActiveGraph();
         this.add(activeGraph, BorderLayout.CENTER);
-
-        enableResultView();
         this.setTitle(Messages.getString("ToolBar.ReachabilityGraph.Title") + " - " + editor.getName());
 
         refresh();
@@ -155,15 +153,7 @@ public class CoverabilityGraphFrameController extends JInternalFrame {
      * Enables the coverability graph result view for the current petri net
      */
     void enableResultView() {
-        CoverabilityGraphVC activeGraph = getActiveGraph();
-        if (activeGraph == null) return;
-
-        if (!activeGraph.containsView(CoverabilityGraphResultView.VIEW_NAME)) {
-            CoverabilityGraphResultView assistantView = new CoverabilityGraphResultView(activatedNet);
-            activeGraph.registerView(CoverabilityGraphResultView.VIEW_NAME, assistantView);
-        }
-
-        activeGraph.activateView(CoverabilityGraphResultView.VIEW_NAME);
+        enableResultView(activatedNet);
     }
 
     /**
@@ -276,8 +266,22 @@ public class CoverabilityGraphFrameController extends JInternalFrame {
             editorFrame.addInternalFrameListener(new EditorFrameListener(editor));
 
         cgvc.addGraphHighlightListener(this.highlightListener);
+
+        enableResultView(editor);
         eventTrigger.fireEditorSyncEstablishedEvent();
         eventTrigger.fireGraphHighlightingRemovedEvent();
+    }
+
+    private void enableResultView(IEditor editor) {
+        CoverabilityGraphVC graphVC = viewController.get(editor);
+        if (graphVC == null) return;
+
+        if (!graphVC.containsView(CoverabilityGraphResultView.VIEW_NAME)) {
+            CoverabilityGraphResultView resultView = new CoverabilityGraphResultView(editor);
+            graphVC.registerView(CoverabilityGraphResultView.VIEW_NAME, resultView);
+        }
+
+        graphVC.activateView(CoverabilityGraphResultView.VIEW_NAME);
     }
 
     private IEditorFrame getEditorFrame(IEditor editor) {
@@ -385,6 +389,7 @@ public class CoverabilityGraphFrameController extends JInternalFrame {
             FileFilterImpl BMPFilter = new FileFilterImpl(FileFilterImpl.BMPFilter, "BMP (*.bmp)", bmpExtensions);
             this.setFileFilter(BMPFilter);
         }
+
         private void addPngFilter() {
             Vector<String> pngExtensions = new Vector<>();
             pngExtensions.add("png");
@@ -409,6 +414,7 @@ public class CoverabilityGraphFrameController extends JInternalFrame {
         public void internalFrameActivated(InternalFrameEvent e) {
             updateSyncState();
         }
+
         @Override
         public void internalFrameDeactivated(InternalFrameEvent e) {
             removeHighlightingFromActiveGraph();
