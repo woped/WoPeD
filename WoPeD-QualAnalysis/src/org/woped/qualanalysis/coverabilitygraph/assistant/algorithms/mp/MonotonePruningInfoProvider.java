@@ -7,6 +7,7 @@ import org.woped.qualanalysis.coverabilitygraph.assistant.algorithms.mp.event.*;
 import org.woped.qualanalysis.coverabilitygraph.assistant.algorithms.mp.model.MpNode;
 import org.woped.qualanalysis.coverabilitygraph.assistant.algorithms.mp.model.MpNodeState;
 import org.woped.qualanalysis.coverabilitygraph.assistant.sidebar.*;
+import org.woped.qualanalysis.coverabilitygraph.gui.views.formatters.NodeFormatter;
 import org.woped.qualanalysis.soundness.datamodel.TransitionNode;
 
 import javax.swing.*;
@@ -22,6 +23,7 @@ class MonotonePruningInfoProvider {
 
     private static final String EMPTY_SET = "\u2205";
     private static final String IMPLIES = "\u21D2";
+    private final NodeFormatter nodeFormatter;
 
     private MonotonePruningEventTrigger eventTrigger;
     private SidebarVC sidebar;
@@ -37,9 +39,10 @@ class MonotonePruningInfoProvider {
      * @param eventTrigger the event trigger to fire events
      * @param sidebar the sidebar to display information
      */
-    MonotonePruningInfoProvider(MonotonePruningEventTrigger eventTrigger, SidebarVC sidebar) {
+    MonotonePruningInfoProvider(MonotonePruningEventTrigger eventTrigger, SidebarVC sidebar, NodeFormatter nodeFormatter) {
         this.eventTrigger = eventTrigger;
         this.sidebar = sidebar;
+        this.nodeFormatter = nodeFormatter;
 
         createMainTasks();
         createInstructions();
@@ -177,7 +180,8 @@ class MonotonePruningInfoProvider {
 
                     String deactivationNode = Messages.getString("CoverabilityGraph.Assistant.MP.NodeInfo.DeactivationNode");
                     view.addDetail(deactivationNode, 3, 0);
-                    view.addDetail(node.getDeactivationNode().getMarking().asMultiSetString(), 3, 1);
+                    String marking = nodeFormatter.getNodeTextFormatter().getText(node.getDeactivationNode());
+                    view.addDetail(marking, 3, 1);
                 }
             }
 
@@ -211,8 +215,8 @@ class MonotonePruningInfoProvider {
             } else {
                 String neg = event.isParentActive() ? "" : Messages.getString("CoverabilityGraph.Assistant.MP.ParentCheck.Neg");
                 String format = Messages.getString("CoverabilityGraph.Assistant.MP.ParentCheck.MsgFormat");
-                String parent = event.getParent().getMarking().asMultiSetString();
-                msg = String.format(format, parent, neg);
+                String marking = nodeFormatter.getNodeTextFormatter().getMarkingFormatter().getText(event.getParent().getMarking());
+                msg = String.format(format, marking, neg);
             }
             view.addDetail(msg, 0, 0);
 
@@ -232,7 +236,7 @@ class MonotonePruningInfoProvider {
             String prevMarkingLabel = Messages.getString("CoverabilityGraph.Assistant.MP.OmegaCheck.CalculatedMarking");
             view.addDetail(prevMarkingLabel, 0, 0);
 
-            String prevMarkingValue = event.getPreviousMarking().asMultiSetString();
+            String prevMarkingValue = nodeFormatter.getNodeTextFormatter().getMarkingFormatter().getText(event.getPreviousMarking());
             view.addDetail(prevMarkingValue, 0, 1);
 
             String smallerMarkingsLabel = Messages.getString("CoverabilityGraph.Assistant.MP.OmegaCheck.SmallerMarkings");
@@ -240,7 +244,7 @@ class MonotonePruningInfoProvider {
 
             int row = 1;
             for (MpNode n : event.getSmallerNodes()) {
-                String marking = n.getMarking().asMultiSetString();
+                String marking = nodeFormatter.getNodeTextFormatter().getMarkingFormatter().getText(n.getMarking());
                 view.addDetail(marking, row++, 1);
             }
 
@@ -257,7 +261,7 @@ class MonotonePruningInfoProvider {
             }
 
 
-            String resultingMarkingValue = event.getResultingMarking().asMultiSetString();
+            String resultingMarkingValue =  nodeFormatter.getNodeTextFormatter().getMarkingFormatter().getText(event.getResultingMarking());
             view.addDetail(resultingMarkingValue, row, 1);
 
             sidebar.addComponent(view);
@@ -276,7 +280,7 @@ class MonotonePruningInfoProvider {
 
             int row = 0;
             for (MpNode n : event.getLargerNodes()) {
-                String node = n.getMarking().asMultiSetString();
+                String node = nodeFormatter.getNodeTextFormatter().getMarkingFormatter().getText(n.getMarking());
                 view.addDetail(node, row++, 1);
             }
 
@@ -313,7 +317,7 @@ class MonotonePruningInfoProvider {
                     String arrow = "&nbsp;" + IMPLIES + "&nbsp;";
                     view.addDetail(arrow, row, 2);
 
-                    String deactivatedNode = n.getMarking().asMultiSetString();
+                    String deactivatedNode = nodeFormatter.getNodeTextFormatter().getMarkingFormatter().getText(n.getMarking());
                     view.addDetail(deactivatedNode, row++, 3);
                 }
             }

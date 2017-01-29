@@ -37,7 +37,7 @@ public class CoverabilityGraphAssistantUsingMonotonePruning implements Coverabil
         eventTrigger = new MonotonePruningEventTrigger(this);
         builder = new MonotonePruningGraphBuilder(editor, eventTrigger);
         stateManager = new MonotonePruningVisualStateManager(eventTrigger, graphModel.getViewFactory().getNodeFormatter());
-        infoProvider = new MonotonePruningInfoProvider(eventTrigger, sidebarVC);
+        infoProvider = new MonotonePruningInfoProvider(eventTrigger, sidebarVC, graphModel.getViewFactory().getNodeFormatter());
 
         graphMouseListener = new GraphMouseListener();
 
