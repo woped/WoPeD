@@ -46,7 +46,7 @@ public class CoverabilityGraphEventProcessor extends AbstractEventProcessor {
                 addCoverabilityGraph();
                 break;
             case CoverabilityGraphViewEvents.CLOSE_FRAME:
-                graphVC.close();
+                removeCoverabilityGraph();
                 break;
             case CoverabilityGraphViewEvents.REFRESH:
                 graphVC.synchronizeEditor();
@@ -87,6 +87,11 @@ public class CoverabilityGraphEventProcessor extends AbstractEventProcessor {
     private void addCoverabilityGraph() {
         IEditor editor = getMediator().getUi().getEditorFocus();
         graphVC.showGraph(editor);
+    }
+
+    private void removeCoverabilityGraph(){
+        IEditor editor = getMediator().getUi().getEditorFocus();
+        graphVC.removeGraph(editor);
     }
 
     private void initializeGraphFrame() {

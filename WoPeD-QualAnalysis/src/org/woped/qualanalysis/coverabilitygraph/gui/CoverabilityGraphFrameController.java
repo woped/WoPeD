@@ -118,7 +118,7 @@ public class CoverabilityGraphFrameController extends JInternalFrame {
      */
     void showGraph(IEditor editor) {
 
-        if (editor == null || activatedNet == editor) return;
+        if (editor == null) return;
 
         if (editor.isTokenGameEnabled()) {
             showTokenGameRunningWarning();
@@ -163,16 +163,12 @@ public class CoverabilityGraphFrameController extends JInternalFrame {
     }
 
     /**
-     * Closes the coverability graph frame
+     * Closes the coverability graph for the provided petri net.
+     *
+     * @param editor the edition of the petri net
      */
-    void close() {
-
-        try {
-            this.setSelected(false);
-            this.hide();
-        } catch (PropertyVetoException e) {
-            e.printStackTrace();
-        }
+    void removeGraph(IEditor editor){
+        removeViewController(editor);
     }
 
     /**
@@ -292,6 +288,16 @@ public class CoverabilityGraphFrameController extends JInternalFrame {
         LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "<- init() " + this.getClass().getName());
     }
 
+    private void close() {
+
+        try {
+            this.setSelected(false);
+            this.hide();
+        } catch (PropertyVetoException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void refresh() {
         if (!isVisible())
             setVisible(true);
@@ -354,6 +360,10 @@ public class CoverabilityGraphFrameController extends JInternalFrame {
         if (controller != null && activeGraph.equals(controller)) {
             controller.removeHighlighting();
             this.remove(controller);
+        }
+
+        if(activatedNet.equals(editor)){
+            activatedNet = null;
         }
 
         if (viewController.isEmpty()) {
