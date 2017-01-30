@@ -16,6 +16,7 @@ import org.woped.qualanalysis.coverabilitygraph.gui.views.CoverabilityGraphWrapp
 import org.woped.qualanalysis.coverabilitygraph.gui.views.StatusBarView;
 import org.woped.qualanalysis.coverabilitygraph.gui.views.formatters.NodeFormatter;
 import org.woped.qualanalysis.coverabilitygraph.model.CoverabilityGraphModel;
+import org.woped.qualanalysis.soundness.marking.IMarking;
 
 import javax.swing.*;
 import java.awt.*;
@@ -147,6 +148,7 @@ public class CoverabilityGraphAssistantView extends CoverabilityGraphView {
      */
     @Override
     public void removeHighlighting() {
+        super.removeHighlighting();
         netHighlighter.removeHighlighting();
         assistant.deselect();
     }

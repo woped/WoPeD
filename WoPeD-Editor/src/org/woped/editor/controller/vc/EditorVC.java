@@ -176,7 +176,7 @@ public class EditorVC implements KeyListener, MouseWheelListener, GraphModelList
     /**
      * Empty constructor only for testing purposes.
      */
-    EditorVC() {
+    public EditorVC() {
         this.m_graph = new WoPeDJGraph(new WoPeDJGraphGraphModel(this), null, null, viewFactory);
     }
 
@@ -2055,7 +2055,7 @@ public class EditorVC implements KeyListener, MouseWheelListener, GraphModelList
      *
      * @param panel the new panel to set.
      */
-    void setEditorPanel(EditorPanel panel) {
+    public void setEditorPanel(EditorPanel panel) {
         this.editorPanel = panel;
     }
 

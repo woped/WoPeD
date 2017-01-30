@@ -33,6 +33,7 @@ import org.woped.core.model.PetriNetModelProcessor;
 import org.woped.core.model.petrinet.*;
 import org.woped.core.utilities.LoggerManager;
 import org.woped.qualanalysis.Constants;
+import org.woped.qualanalysis.coverabilitygraph.gui.CoverabilityGraphFrameController;
 import org.woped.qualanalysis.service.IQualanalysisService;
 import org.woped.qualanalysis.service.QualAnalysisServiceFactory;
 import org.woped.qualanalysis.soundness.builder.BuilderFactory;
@@ -180,21 +181,7 @@ public class TokenGameController implements ITokenGameController {
         // animator.stop();
     }
 
-    private void deHighlightRG() {
-//        ReferenceProvider refer = new ReferenceProvider();
-//        Object[] a = refer.getDesktopReference().getComponents();
-//        for ( int i = 0; i < refer.getDesktopReference().getComponentCount(); i++ ) {
-//            if ( a[i] instanceof CoverabilityGraphFrameController) {
-//                CoverabilityGraphFrameController rvc = (CoverabilityGraphFrameController) a[i];
-//
-//                if ( rvc.hasEditor(thisEditor) ) {
-//                    rvc.setUnselectButtonEnabled(thisEditor, false);
-//                    ((ReachabilityJGraph) rvc.getJGraph(thisEditor)).deHighlight();
-//                }
-//                break;
-//            }
-//        }
-    }
+
 
     // ! Reset the virtual token count for the specified element container
     // ! If the element container contains subprocess elements,
@@ -287,24 +274,26 @@ public class TokenGameController implements ITokenGameController {
         // Check if there is a transition to choose in SlimChoiceBox
         LoggerManager.debug(Constants.QUALANALYSIS_LOGGER, "           ... DONE (" + (System.currentTimeMillis() - begin) + " ms)");
         setMarkingInRG((BuilderFactory.createCurrentMarking(BuilderFactory.createLowLevelPetriNetWithoutTStarBuilder(thisEditor).getLowLevelPetriNet(), true)));
-        // FIXME highlighting does not work properly for markings with unbounded places
+    }
+
+    private void deHighlightRG() {
+        CoverabilityGraphFrameController cgfc = getCoverabilityGraphController();
+        if(!cgfc.containsGraphForNet(thisEditor)) return;
+        cgfc.removeHighlightingFromGraph(thisEditor);
     }
 
     private void setMarkingInRG(IMarking mark) {
-//        if ( ParentControl == null ) {
-//            ParentControl = new ReferenceProvider();
-//        }
-//        Object[] a = ParentControl.getDesktopReference().getComponents();
-//        for ( int i = 0; i < ParentControl.getDesktopReference().getComponentCount(); i++ ) {
-//            if ( a[i] instanceof CoverabilityGraphFrameController) {
-//                CoverabilityGraphFrameController rvc = (CoverabilityGraphFrameController) a[i];
-//                if ( rvc.hasEditor(thisEditor) ) {
-//                    ((ReachabilityJGraph) rvc.getJGraph(thisEditor)).highlightMarking(mark);
-//
-//                }
-//                break;
-//            }
-//        }
+        CoverabilityGraphFrameController cgfc = getCoverabilityGraphController();
+        if(!cgfc.containsGraphForNet(thisEditor)) return;
+        cgfc.highlightMarking(thisEditor, mark);
+    }
+
+    private CoverabilityGraphFrameController getCoverabilityGraphController() {
+        if ( ParentControl == null ) {
+            ParentControl = new ReferenceProvider();
+        }
+
+        return CoverabilityGraphFrameController.getInstance(ParentControl.getUIReference());
     }
 
     /*

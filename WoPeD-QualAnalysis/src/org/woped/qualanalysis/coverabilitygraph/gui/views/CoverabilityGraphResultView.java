@@ -44,6 +44,7 @@ public class CoverabilityGraphResultView extends CoverabilityGraphView {
      * @param editor the editor of the petri net
      */
     public CoverabilityGraphResultView(IEditor editor) {
+        super();
         this.editor = editor;
         initialize();
     }
@@ -145,6 +146,7 @@ public class CoverabilityGraphResultView extends CoverabilityGraphView {
      */
     @Override
     public void removeHighlighting() {
+        super.removeHighlighting();
         getGraphModel().getGraph().clearSelection();
         netHighlighter.removeHighlighting();
         edgeHighlighter.removeHighlighting();

@@ -9,6 +9,7 @@ import org.woped.qualanalysis.coverabilitygraph.events.EmptySpaceClickedEvent;
 import org.woped.qualanalysis.coverabilitygraph.events.NodeClickedEvent;
 import org.woped.qualanalysis.coverabilitygraph.gui.views.CoverabilityGraphResultView;
 import org.woped.qualanalysis.coverabilitygraph.gui.views.CoverabilityGraphView;
+import org.woped.qualanalysis.soundness.marking.IMarking;
 
 import javax.swing.*;
 import java.awt.*;
@@ -109,6 +110,15 @@ public class CoverabilityGraphVC extends JPanel {
     }
 
     /**
+     * Highlight all markings which covers the provide marking.
+     *
+     * @param marking the marking to highlight
+     */
+    void highlightMarking(IMarking marking) {
+        activeView.highlightMarking(marking);
+    }
+
+    /**
      * Removes all highlighting form the active view.
      */
     void removeHighlighting() {
@@ -142,6 +152,7 @@ public class CoverabilityGraphVC extends JPanel {
 
     /**
      * Adds the specified highlight listener to receive highlight events to this class.
+     *
      * @param listener the highlight listener
      */
     void addGraphHighlightListener(HighlightListener listener) {

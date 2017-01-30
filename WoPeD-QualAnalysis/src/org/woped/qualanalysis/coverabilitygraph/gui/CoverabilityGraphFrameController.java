@@ -13,6 +13,7 @@ import org.woped.qualanalysis.coverabilitygraph.events.CoverabilityGraphEventLis
 import org.woped.qualanalysis.coverabilitygraph.gui.dialogs.CoverabilityGraphSettingsDialog;
 import org.woped.qualanalysis.coverabilitygraph.gui.dialogs.CoverabilityGraphWarning;
 import org.woped.qualanalysis.coverabilitygraph.gui.views.CoverabilityGraphResultView;
+import org.woped.qualanalysis.soundness.marking.IMarking;
 
 import javax.swing.*;
 import javax.swing.event.InternalFrameAdapter;
@@ -64,6 +65,41 @@ public class CoverabilityGraphFrameController extends JInternalFrame {
         this.userInterface = userInterface;
 
         initialize();
+    }
+
+    /**
+     * Returns if the coverability graph for the petri net in the provided editor has been generated.
+     *
+     * @param editor the editor of the petri net to check
+     * @return true if the graph has been generated, otherwise false
+     */
+    public boolean containsGraphForNet(IEditor editor){
+        return viewController.keySet().contains(editor);
+    }
+
+    /**
+     * Removes all highlighting from the graph for the provided petri net.
+     *
+     * @param editor the editor of the petri net
+     */
+    public void removeHighlightingFromGraph(IEditor editor){
+        CoverabilityGraphVC graphVC = viewController.get(editor);
+
+        if(graphVC == null) return;
+        graphVC.removeHighlighting();
+    }
+
+    /**
+     * Highlight all markings which covers the provide marking in the coverability graph
+     * of the provided petri net.
+     *
+     * @param editor the editor of the petri net
+     * @param marking the marking to highlight
+     */
+    public void highlightMarking(IEditor editor, IMarking marking){
+        CoverabilityGraphVC graphVC = viewController.get(editor);
+        if(graphVC == null) return;
+        graphVC.highlightMarking(marking);
     }
 
     /**
@@ -219,6 +255,15 @@ public class CoverabilityGraphFrameController extends JInternalFrame {
         }
 
         graph.setScale(previousScale);
+    }
+
+    /**
+     * Sets the view controller mapping for testing purposes.
+     *
+     * @param testViewController the view controller mapping
+     */
+    void setViewControllerForTesting(Map<IEditor, CoverabilityGraphVC> testViewController){
+        this.viewController = testViewController;
     }
 
     private void initialize() {
