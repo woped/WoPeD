@@ -204,8 +204,9 @@ class MonotonePruningInfoProvider {
             if(currentState == AnalysisState.START){
                 currentState = AnalysisState.BUILD_TREE;
                 mainTaskChanged = true;
+                clear();
             }
-            clear();
+            sidebar.clear();
 
             MpNode node = (MpNode) event.getNode();
             String headerText = Messages.getString("CoverabilityGraph.Assistant.MP.NodeAnalysis.Header");
