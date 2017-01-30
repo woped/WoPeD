@@ -13,6 +13,8 @@ import org.woped.qualanalysis.soundness.marking.IMarkingNet;
 
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 
 public class ReachabilityGraphModelUsingMarkingNet extends AbstractReachabilityGraphModel {
@@ -69,7 +71,31 @@ public class ReachabilityGraphModelUsingMarkingNet extends AbstractReachabilityG
                 getChildNode(arc, marking);
             }
         }
+
+        combineParallelEdges();
         getView().insert(cellsList.toArray());
+    }
+
+    private void combineParallelEdges() {
+        Collection<CoverabilityGraphEdge> edges = new ArrayList<>();
+        for (DefaultGraphCell cell : cellsList) {
+            if (cell instanceof CoverabilityGraphEdge) edges.add((CoverabilityGraphEdge) cell);
+        }
+
+        CoverabilityGraphEdge[] graphEdges = edges.toArray(new CoverabilityGraphEdge[0]);
+        for (int i = 0; i < edges.size() - 1; i++) {
+            CoverabilityGraphEdge current = graphEdges[i];
+            boolean combined = false;
+            for (int j = i + 1; j < graphEdges.length && !combined; j++) {
+                CoverabilityGraphEdge other = graphEdges[j];
+
+                if (current.getSourceNode().equals(other.getSourceNode()) && current.getTargetNode().equals(other.getTargetNode())) {
+                    other.addTriggers(current.getTriggers());
+                    combined = true;
+                    cellsList.remove(current);
+                }
+            }
+        }
     }
 
     private void getChildNode(Arc arc, IMarking parentMarking) {

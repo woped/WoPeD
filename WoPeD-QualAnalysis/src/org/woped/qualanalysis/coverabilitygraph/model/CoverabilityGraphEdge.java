@@ -119,6 +119,17 @@ public class CoverabilityGraphEdge extends DefaultEdge {
     }
 
     /**
+     * Adds all triggers to the edge.
+     * <p>
+     * Duplicates will be ignored.
+     *
+     * @param triggers the triggers to add.
+     */
+    public void addTriggers(Collection<TransitionNode> triggers){
+        this.triggers.addAll(triggers);
+    }
+
+    /**
      * Gets the transitions that triggers the edge.
      *
      * @return the transitions that triggers the edge
