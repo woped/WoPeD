@@ -346,6 +346,21 @@ public class CoverabilityGraphFrameController extends JInternalFrame {
         }
     }
 
+    private void ensureTokenGameNotRunning() {
+        CoverabilityGraph graph = getActiveGraph().getGraph();
+
+        if (activatedNet.isTokenGameEnabled()) {
+            graph.setEnabled(false);
+            this.getActiveGraph().setBorder(BorderFactory.createLineBorder(Color.red, 3));
+            showTokenGameRunningWarning();
+        }
+
+        else if(!graph.isEnabled()){
+            graph.setEnabled(true);
+            this.getActiveGraph().setBorder(BorderFactory.createEmptyBorder());
+        }
+    }
+
     /**
      * A file chooser dialog with set file filters.
      */
@@ -413,6 +428,8 @@ public class CoverabilityGraphFrameController extends JInternalFrame {
         @Override
         public void internalFrameActivated(InternalFrameEvent e) {
             updateSyncState();
+
+            ensureTokenGameNotRunning();
         }
 
         @Override

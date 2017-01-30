@@ -210,6 +210,9 @@ public class CoverabilityGraphWrapper extends JScrollPane {
             // check if click was outside of graph in wrapper panel
             if (!(e.getSource() instanceof CoverabilityGraph)) fireEmptySpaceClickedEvent(e.getClickCount());
 
+            // do not send events if graph is disabled
+            if(!graph.isEnabled()) return;
+
             Object cell = graph.getFirstCellForLocation(e.getX(), e.getY());
 
             if (cell == null)

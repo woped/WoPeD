@@ -142,7 +142,8 @@ public class CoverabilityGraphEdge extends DefaultEdge {
         GraphConstants.setConnectable(attributes, false);
         GraphConstants.setDisconnectable(attributes, false);
         GraphConstants.setLabelPosition(attributes, new Point2D.Double(GraphConstants.PERMILLE * 0.33, 0));
-        GraphConstants.setLineEnd(attributes, GraphConstants.ARROW_SIMPLE);
+        GraphConstants.setLineEnd(attributes, GraphConstants.ARROW_CLASSIC);
+        GraphConstants.setEndFill(attributes, true);
         GraphConstants.setOpaque(attributes, true);
 
         GraphConstants.setForeground(attributes, Color.DARK_GRAY);
