@@ -70,7 +70,7 @@ class MonotonePruningInfoProvider {
     }
 
     private void reset() {
-        currentState = AnalysisState.BUILD_TREE;
+        currentState = AnalysisState.START;
         mainTaskChanged = true;
 
         clear();
@@ -81,7 +81,10 @@ class MonotonePruningInfoProvider {
         mainTasks = new HashMap<>();
         String prefix = "CoverabilityGraph.Assistant.MP.Tasks.";
 
-        AnalysisState state = AnalysisState.BUILD_TREE;
+        AnalysisState state = AnalysisState.START;
+        registerMainTask(state, prefix + state);
+
+        state = AnalysisState.BUILD_TREE;
         registerMainTask(state, prefix + state);
 
         state = AnalysisState.CONVERT_TO_GRAPH;
@@ -107,8 +110,13 @@ class MonotonePruningInfoProvider {
         instructions = new HashMap<>();
         String prefix = "CoverabilityGraph.Assistant.MP.Tasks.";
 
-        AnalysisState state = AnalysisState.BUILD_TREE;
-        registerInstruction(state, prefix + state, new SelectRandomNodeAction());
+        AnalysisState state = AnalysisState.START;
+        String buttonText = "CoverabilityGraph.Assistant.Sidebar.MP.Buttons.StartAssistant";
+        registerInstruction(state, prefix + state, new SelectRandomNodeAction(buttonText));
+
+        state = AnalysisState.BUILD_TREE;
+        buttonText = "CoverabilityGraph.Assistant.Sidebar.MP.Buttons.SelectRandomNode";
+        registerInstruction(state, prefix + state, new SelectRandomNodeAction(buttonText));
 
         state = AnalysisState.CONVERT_TO_GRAPH;
         registerInstruction(state, prefix + state, new Convert2GraphAction());
@@ -133,6 +141,7 @@ class MonotonePruningInfoProvider {
     }
 
     private enum AnalysisState {
+        START,
         BUILD_TREE,
         CONVERT_TO_GRAPH,
         FINISHED
@@ -192,9 +201,13 @@ class MonotonePruningInfoProvider {
         @Override
         public void nodeProcessingStarted(NodeEvent event) {
 
-            MpNode node = (MpNode) event.getNode();
-            sidebar.clear();
+            if(currentState == AnalysisState.START){
+                currentState = AnalysisState.BUILD_TREE;
+                mainTaskChanged = true;
+            }
+            clear();
 
+            MpNode node = (MpNode) event.getNode();
             String headerText = Messages.getString("CoverabilityGraph.Assistant.MP.NodeAnalysis.Header");
             ProgressDescriptionView header = new ProgressDescriptionView();
             header.setTitle(String.format(headerText, node.getProcessedInStep()));
@@ -398,8 +411,8 @@ class MonotonePruningInfoProvider {
 
     private class SelectRandomNodeAction extends SidebarAction {
 
-        SelectRandomNodeAction() {
-            super("CoverabilityGraph.Assistant.Sidebar.MP.Buttons.SelectRandomNode");
+        SelectRandomNodeAction(String resourcePrefix) {
+            super(resourcePrefix);
         }
 
         @Override

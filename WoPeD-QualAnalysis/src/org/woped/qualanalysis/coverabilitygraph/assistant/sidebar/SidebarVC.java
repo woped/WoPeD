@@ -82,6 +82,7 @@ public class SidebarVC {
 
         sidebar.setBorder(new EmptyBorder(10, 10, 10, 10));
         sidebar.setLayout(new BorderLayout(0, 10));
+        sidebar.setPreferredSize(new Dimension(280, Short.MAX_VALUE));
 
         header = new JPanel(new BorderLayout());
         header.setAlignmentX(Component.CENTER_ALIGNMENT);

@@ -170,7 +170,7 @@ class MonotonePruningVisualStateManager {
             GraphConstants.setLineWidth(map, 2);
             GraphConstants.setForeground(map, Color.black);
             GraphConstants.setLineColor(map, DARK_BLUE);
-            GraphConstants.setBackground(map, Color.WHITE);
+            GraphConstants.setBackground(map, LIGHT_BLUE);
             GraphConstants.setOpaque(map, true);
 
             return map;
