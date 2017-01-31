@@ -1,25 +1,22 @@
 package org.woped.qualanalysis.sidebar.expert.components;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map;
+import org.jgraph.event.GraphSelectionEvent;
+import org.jgraph.event.GraphSelectionListener;
+import org.jgraph.graph.DefaultGraphCell;
+import org.woped.core.controller.AbstractApplicationMediator;
+import org.woped.core.controller.AbstractGraph;
+import org.woped.core.controller.IEditor;
+import org.woped.core.model.ArcModel;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
+import org.woped.core.model.petrinet.GroupModel;
+import org.woped.core.model.petrinet.SubProcessModel;
 
-import javax.swing.JTree;
+import javax.swing.*;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreePath;
-
-import org.jgraph.event.GraphSelectionEvent;
-import org.jgraph.event.GraphSelectionListener;
-import org.woped.core.controller.AbstractApplicationMediator;
-import org.woped.core.controller.AbstractGraph;
-import org.woped.core.controller.IEditor;
-import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
-import org.woped.core.model.petrinet.GroupModel;
-import org.woped.core.model.petrinet.SubProcessModel;
+import java.util.*;
 
 public class GraphTreeModelSelector implements TreeSelectionListener, GraphSelectionListener {
 
@@ -56,30 +53,40 @@ public class GraphTreeModelSelector implements TreeSelectionListener, GraphSelec
 		AbstractGraph currentGraph = m_currentEditor.getGraph();
 
 		// Finally, select all elements selected in the tree view
-		ArrayList<AbstractPetriNetElementModel> newSelection = new ArrayList<AbstractPetriNetElementModel>();
+		ArrayList<DefaultGraphCell> newSelection = new ArrayList<>();
 		for (Iterator<Object> i = processedSelection.iterator(); i.hasNext();) {
-			AbstractPetriNetElementModel currentObject = (AbstractPetriNetElementModel) i.next();
-			// Comparing only the IDs is too risky because we may crash in this
-			// case if by
-			// accident an id name is not unique.
-			// Rather, look up by ID and see if the references match. This if
-			// proof
-			// that we're actually talking about the same element
-			if (m_currentEditor.getModelProcessor().getElementContainer().getElementById(((currentObject).getId())) == currentObject)
-				// The selected element is part of the currently edited net
-				newSelection.add(currentObject);
-			else {
-				// The selected element is not part of the currently edited net
-				// We will try to open a corresponding sub-net and
-				// see if we can select it there
-				AbstractPetriNetElementModel parent = currentObject.getRootOwningContainer().getOwningElement();
-				if (parent instanceof SubProcessModel) {
-					IEditor newEditor = m_mediator.createSubprocessEditor(true, m_currentEditor, (SubProcessModel) parent);
-					// Select in the new editor
-					newEditor.getGraph().addSelectionCell(currentObject);
+
+			Object element = i.next();
+			if(!(element instanceof DefaultGraphCell)) continue;
+
+			if(element instanceof AbstractPetriNetElementModel) {
+
+				AbstractPetriNetElementModel currentObject = (AbstractPetriNetElementModel) element;
+				// Comparing only the IDs is too risky because we may crash in this
+				// case if by
+				// accident an id name is not unique.
+				// Rather, look up by ID and see if the references match. This if
+				// proof
+				// that we're actually talking about the same element
+				if (m_currentEditor.getModelProcessor().getElementContainer().getElementById(((currentObject).getId())) == currentObject)
+					// The selected element is part of the currently edited net
+					newSelection.add(currentObject);
+				else {
+					// The selected element is not part of the currently edited net
+					// We will try to open a corresponding sub-net and
+					// see if we can select it there
+					AbstractPetriNetElementModel parent = currentObject.getRootOwningContainer().getOwningElement();
+					if (parent instanceof SubProcessModel) {
+						IEditor newEditor = m_mediator.createSubprocessEditor(true, m_currentEditor, (SubProcessModel) parent);
+						// Select in the new editor
+						newEditor.getGraph().addSelectionCell(currentObject);
+					}
 				}
+			} else {
+				newSelection.add((DefaultGraphCell) element);
 			}
 		}
+
 		if (highlightOnly == false) {
 			valueChangedActive = true;
 			// Need to have an intermediary for our new selection
@@ -88,7 +95,7 @@ public class GraphTreeModelSelector implements TreeSelectionListener, GraphSelec
 			currentGraph.setSelectionCells(newSelection.toArray());
 			valueChangedActive = false;
 		} else {
-			highlightElements(newSelection.iterator());
+			highlightElements(newSelection);
 		}
 	}
 
@@ -158,18 +165,18 @@ public class GraphTreeModelSelector implements TreeSelectionListener, GraphSelec
 		valueChangedActive = false;
 	}
 
-	public void highlightElements(Iterator<AbstractPetriNetElementModel> j) {
-		// First, de-highlight all elements
-		Iterator<AbstractPetriNetElementModel> i = m_currentEditor.getModelProcessor().getElementContainer().getRootElements().iterator();
-		while (i.hasNext()) {
-			AbstractPetriNetElementModel current = (AbstractPetriNetElementModel) i.next();
-			current.setHighlighted(false);
+	public void highlightElements(Collection<DefaultGraphCell> selectedCells) {
+		m_currentEditor.getModelProcessor().removeHighlighting();
+
+		for(DefaultGraphCell cell: selectedCells){
+			if(cell instanceof ArcModel){
+				((ArcModel)cell).setHighlighted(true);
+			}
+			else if(cell instanceof AbstractPetriNetElementModel){
+				((AbstractPetriNetElementModel)cell).setHighlighted(true);
+			}
 		}
-		// Then, highlight the selected one
-		while (j.hasNext()) {
-			AbstractPetriNetElementModel currentHigh = j.next();
-			currentHigh.setHighlighted(true);
-		}
+
 		m_currentEditor.repaint();
 	}
 

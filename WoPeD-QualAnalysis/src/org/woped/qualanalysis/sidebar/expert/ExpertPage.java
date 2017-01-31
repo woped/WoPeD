@@ -25,7 +25,6 @@ public class ExpertPage extends JPanel {
 
     /**
      * 
-     * @param parent the container to add expertPage to
      * @param editor to reference objects to
      * @param mediator
      * @param qualanService to get information from
@@ -81,6 +80,7 @@ public class ExpertPage extends JPanel {
         // DefaultMutableTreeNode unconnectedNodesInfo = ExpertFactory.getUnconnectedNodesInfo(qualanService);
         // DefaultMutableTreeNode notStronglyConnectedInfo = ExpertFactory.getNotStronglyConnectedInfo(qualanService);
         DefaultMutableTreeNode sccsInfo = ExpertFactory.getStronglyConnectedComponentsInfo(qualanService);
+        DefaultMutableTreeNode arcWeightInfo = ExpertFactory.getArcWeightViolationInfo(qualanService);
         DefaultMutableTreeNode initialMarkingInfo = ExpertFactory.getInitialMarkingInfo();
         DefaultMutableTreeNode wronglyMarkedPlacesInfo = ExpertFactory.getWronglyMarkedPlacesInfo(qualanService);
         DefaultMutableTreeNode boundednessInfo = ExpertFactory.getBoundednessInfo();
@@ -110,6 +110,7 @@ public class ExpertPage extends JPanel {
         soundnessInfo.add(workflowInfo);
         workflowInfo.add(sourcePlacesInfo);
         workflowInfo.add(sinkPlacesInfo);
+        workflowInfo.add(arcWeightInfo);
         workflowInfo.add(sourceTransitionsInfo);
         workflowInfo.add(sinkTransitionsInfo);
         // workflowInfo.add(unconnectedNodesInfo);
