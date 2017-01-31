@@ -1,9 +1,6 @@
 package org.woped.qualanalysis.p2t;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -323,6 +320,13 @@ public class P2TSideBar extends JPanel implements ActionListener {
 		this.textpane.setText(Messages.getString("P2T.loading"));
 		clean();
 
+		// Ensure their are no arc weights
+		if(editor.getModelProcessor().usesArcWeights()){
+			this.textpane.setText(Messages.getString("P2T.Error.ArcWeights.title"));
+			showErrorMessage("P2T.Error.ArcWeights");
+			return;
+		}
+
 		this.setThreadInProgress(true);
 		webService = new WebServiceThread(this);
 		webService.start();
@@ -342,11 +346,17 @@ public class P2TSideBar extends JPanel implements ActionListener {
 		webService = null;
 	}
 
+	private void showErrorMessage(String resourceKey) {
+		Component parent = editor.getMediator().getUi().getComponent();
+		String message = Messages.getString(resourceKey + ".message");
+		String title = Messages.getString(resourceKey + ".title");
+		JOptionPane.showMessageDialog(parent, message, title, JOptionPane.ERROR_MESSAGE);
+	}
+
 	/**
 	 * Setter of the thread-in-progress flag
 	 * 
-	 * @param boolen
-	 *            b; sets the in-progress-state-flag of the webservice
+	 * @param b sets the in-progress-state-flag of the webservice
 	 */
 	public void setThreadInProgress(boolean b) {
 		threadInProgress = b;
