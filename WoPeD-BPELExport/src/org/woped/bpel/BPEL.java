@@ -128,6 +128,10 @@ public class BPEL
 		PetriNetModelProcessor pnp = (PetriNetModelProcessor) editor
 				.getModelProcessor();
 
+		if(pnp.usesArcWeights()){
+			return Messages.getString("BPEL.genPreview.Error.ArcWeight");
+		}
+
 		// Generate BPEL Model
 		BpelParserModel m = new BpelParserModel();
 		if(!m.createModel(pnp.getElementContainer()))

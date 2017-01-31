@@ -4,6 +4,7 @@ import org.jgraph.graph.DefaultPort;
 import org.junit.Test;
 import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.PlaceModel;
+import org.woped.tests.TestNetGenerator;
 
 import java.awt.geom.Point2D;
 
@@ -224,5 +225,21 @@ public class PetriNetModelProcessorTest {
 
             return this;
         }
+    }
+
+    @Test
+    public void usesArcWeights_noWeights_returnsFalse() throws Exception {
+        PetriNetModelProcessor cut = new TestNetGenerator().createSimpleNet();
+
+        assertFalse(cut.usesArcWeights());
+    }
+
+    @Test
+    public void usesArcWeights_hasArcWeights_retunrsTrue() throws Exception {
+        PetriNetModelProcessor cut = new TestNetGenerator().createSimpleNet();
+        ArcModel arc = cut.getElementContainer().findArc("p1", "t1");
+        arc.setInscriptionValue(2);
+
+        assertTrue(cut.usesArcWeights());
     }
 }

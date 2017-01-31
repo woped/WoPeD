@@ -721,4 +721,18 @@ public class PetriNetModelProcessor implements Serializable {
         this.name = name;
     }
 
+    /**
+     * Returns if the petri net contains arc weight larger than 1.
+     *
+     * @return true if the net contains arc weights, otherwise false
+     */
+    public boolean usesArcWeights(){
+        Collection<ArcModel> arcs = getElementContainer().getArcMap().values();
+        for(ArcModel arc : arcs){
+            if(arc.getInscriptionValue() > 1) return true;
+        }
+
+        return false;
+    }
+
 }

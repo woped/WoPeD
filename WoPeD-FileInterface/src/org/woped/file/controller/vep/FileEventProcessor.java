@@ -334,14 +334,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
      * @return true if the net uses arc weights, otherwise false
      */
      boolean containsArcWeights(EditorVC editor) {
-
-        Collection<ArcModel> arcs = editor.getModelProcessor().getElementContainer().getArcMap().values();
-
-        for(ArcModel arc : arcs){
-            if(arc.getInscriptionValue() > 1) return true;
-        }
-
-        return false;
+        return editor.getModelProcessor().usesArcWeights();
     }
 
     /**
