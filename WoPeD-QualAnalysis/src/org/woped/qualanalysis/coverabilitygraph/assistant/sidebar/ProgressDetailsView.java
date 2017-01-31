@@ -13,13 +13,23 @@ public class ProgressDetailsView extends JPanel {
     private JPanel detailsPanel;
     private JPanel actionsPanel;
 
+    private GridBagConstraints c;
+
     public ProgressDetailsView() {
-        this.setOpaque(false);
-        this.setLayout(new BorderLayout());
+        this.setOpaque(true);
+        this.setBackground(Color.pink);
+        this.setLayout(new GridBagLayout());
+
+        c = new GridBagConstraints();
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.anchor = GridBagConstraints.FIRST_LINE_START;
+        c.weightx = 1;
+        c.weighty = 0;
+        c.gridx = 0;
 
         createHeader();
-        createActionsPanel();
         createDetailPanel();
+        createActionsPanel();
     }
 
     /**
@@ -42,8 +52,8 @@ public class ProgressDetailsView extends JPanel {
      * The rows and columns are added as needed.
      *
      * @param content the text to display
-     * @param row the desired row
-     * @param column the desired column
+     * @param row     the desired row
+     * @param column  the desired column
      */
     public void addDetail(String content, int row, int column) {
         JLabel detailLabel = new JLabel(String.format("<html><p>%s</p></html>", content));
@@ -59,6 +69,14 @@ public class ProgressDetailsView extends JPanel {
         updateSize();
     }
 
+    private void updateSize() {
+        this.validate();
+        this.repaint();
+        Dimension preferredSize = this.getPreferredSize();
+
+        this.setMaximumSize(new Dimension(248, preferredSize.height));
+    }
+
     /**
      * Adds an text to the actions section of the view.
      * <p>
@@ -69,44 +87,47 @@ public class ProgressDetailsView extends JPanel {
      *
      * @param action the textual description of the action
      */
-    public void addAction(String action){
+    public void addAction(String action) {
         JLabel actionLabel = new JLabel(String.format("<html><strong>\u21D2&nbsp;%s</strong></html>", action));
-        actionLabel.setForeground(new Color(0,0,200));
+        actionLabel.setForeground(new Color(0, 0, 200));
         actionsPanel.add(actionLabel);
         updateSize();
+
     }
 
-    public void addAction(Action action){
+    public void addAction(Action action) {
         JButton trigger = new JButton(action);
-        Dimension size = trigger.getPreferredSize();
-        trigger.setPreferredSize(new Dimension(this.getPreferredSize().width, size.height));
-
         actionsPanel.add(trigger);
         updateSize();
     }
 
     private void createHeader() {
         header = new JLabel();
-        this.add(header, BorderLayout.NORTH);
-    }
+        header.setBackground(Color.GREEN);
+        header.setOpaque(true);
 
-    private void createActionsPanel() {
-        actionsPanel = new JPanel();
-        actionsPanel.setBorder(new EmptyBorder(10,0,0,0));
-        actionsPanel.setOpaque(false);
-        actionsPanel.setLayout(new BoxLayout(actionsPanel, BoxLayout.PAGE_AXIS));
-        this.add(actionsPanel, BorderLayout.SOUTH);
+        c.gridy = 0;
+        this.add(header, c);
     }
 
     private void createDetailPanel() {
         detailsPanel = new JPanel(new GridBagLayout());
-        detailsPanel.setOpaque(false);
-        this.add(detailsPanel, BorderLayout.CENTER);
+        detailsPanel.setOpaque(true);
+        detailsPanel.setBackground(Color.RED);
+
+        c.gridy = 1;
+        this.add(detailsPanel, c);
     }
 
-    private void updateSize(){
-        this.validate();
-        this.repaint();
-        this.setMaximumSize(new Dimension(Short.MAX_VALUE, getPreferredSize().height));
+    private void createActionsPanel() {
+        actionsPanel = new JPanel();
+        actionsPanel.setBackground(Color.blue);
+        actionsPanel.setBorder(new EmptyBorder(10, 0, 0, 0));
+        actionsPanel.setOpaque(true);
+        actionsPanel.setLayout(new BoxLayout(actionsPanel, BoxLayout.PAGE_AXIS));
+
+        c.gridy = 2;
+        c.weighty = 1;
+        this.add(actionsPanel, c);
     }
 }

@@ -42,8 +42,9 @@ public class SidebarVC {
     public void addComponent(JComponent component) {
 
         this.components.add(component);
-
-        component.setAlignmentX(Component.CENTER_ALIGNMENT);
+//        component.setMaximumSize(new Dimension(248, Short.MAX_VALUE));
+        component.validate();
+        component.setAlignmentX(Component.LEFT_ALIGNMENT);
         component.setAlignmentY(Component.TOP_ALIGNMENT);
         int ndx = content.getComponentCount() - 1;
         this.content.add(component, ndx);
@@ -82,20 +83,18 @@ public class SidebarVC {
 
         sidebar.setBorder(new EmptyBorder(10, 10, 10, 10));
         sidebar.setLayout(new BorderLayout(0, 10));
-        sidebar.setPreferredSize(new Dimension(280, Short.MAX_VALUE));
 
         header = new JPanel(new BorderLayout());
         header.setAlignmentX(Component.CENTER_ALIGNMENT);
         header.setAlignmentY(Component.TOP_ALIGNMENT);
 
         content = new JPanel();
-        content.setBackground(Color.white);
-        content.setBorder(new EmptyBorder(10,10,10,10));
-        content.setLayout(new BoxLayout(content, BoxLayout.PAGE_AXIS));
+        JScrollPane contentScroller = new JScrollPane(content);
+        contentScroller.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
-        Dimension minSize = new Dimension(220, 0);
-        Dimension maxSize = new Dimension( Short.MAX_VALUE, 0);
-        content.add(new Box.Filler(minSize, minSize, maxSize));
+        content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
+        content.setBackground(Color.yellow);
+        content.setBorder(new EmptyBorder(10,10,10,10));
 
         content.add(Box.createVerticalGlue());
 
@@ -103,7 +102,7 @@ public class SidebarVC {
         content.setAlignmentY(Component.TOP_ALIGNMENT);
 
         sidebar.add(header, BorderLayout.NORTH);
-        sidebar.add(content, BorderLayout.CENTER);
+        sidebar.add(contentScroller, BorderLayout.CENTER);
     }
 
     private void removeComponents() {

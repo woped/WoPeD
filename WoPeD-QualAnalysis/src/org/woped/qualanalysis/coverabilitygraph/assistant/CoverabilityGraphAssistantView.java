@@ -16,7 +16,6 @@ import org.woped.qualanalysis.coverabilitygraph.gui.views.CoverabilityGraphWrapp
 import org.woped.qualanalysis.coverabilitygraph.gui.views.StatusBarView;
 import org.woped.qualanalysis.coverabilitygraph.gui.views.formatters.NodeFormatter;
 import org.woped.qualanalysis.coverabilitygraph.model.CoverabilityGraphModel;
-import org.woped.qualanalysis.soundness.marking.IMarking;
 
 import javax.swing.*;
 import java.awt.*;
@@ -199,8 +198,9 @@ public class CoverabilityGraphAssistantView extends CoverabilityGraphView {
     private void createView(){
 
         JSplitPane splitter = new JSplitPane();
-        splitter.setOneTouchExpandable(true);
+        splitter.setOneTouchExpandable(false);
         splitter.setResizeWeight(1);
+        splitter.setEnabled(false);
 
 
         graphView = new CoverabilityGraphWrapper(graphModel.getGraph());
