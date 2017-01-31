@@ -66,8 +66,6 @@ public class CurrentNetPnml {
 		iNet.setType(petrinetModel.getType());
 		iNet.setId(petrinetModel.getId());
 
-        // REVIEW: Why not use the PnmlExport.saveToStream method?
-
 		try {
 			saveModelElementContainer(iNet, elementContainer);
 

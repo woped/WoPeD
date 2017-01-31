@@ -221,7 +221,6 @@ public class ArcModel extends DefaultEdge implements Serializable {
      */
     public String getSourceId() {
 
-        // REVIEW: Why not just hold a ref to the source?
         DefaultPort port = ((DefaultPort) getSource());
         AbstractPetriNetElementModel pnme = ((AbstractPetriNetElementModel) port.getParent());
         return pnme.getId();

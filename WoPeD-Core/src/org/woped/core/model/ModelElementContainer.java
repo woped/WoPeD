@@ -109,8 +109,6 @@ public class ModelElementContainer implements Serializable {
         return idMap;
     }
 
-    // REVIEW: Is this the expected behaviour when adding an existing element?
-
     /**
      * Adds an <code>PetriNetModelElement</code> to the container.
      * <p>
@@ -159,15 +157,12 @@ public class ModelElementContainer implements Serializable {
 
         // validate source
         if (getElementById(arc.getSourceId()) == null) {
-            // REVIEW: Why not throw an IllegalArgumentException?
-            // For now, there is no indicator that something went wrong.
             LoggerManager.warn(Constants.CORE_LOGGER, String.format("Source (ID: %s) doesn't exist", arc.getSourceId()));
             return;
         }
 
         // validate target
         if (getElementById(arc.getTargetId()) == null) {
-            // REVIEW: Why not throw an IllegalArgumentException?
             LoggerManager.warn(Constants.CORE_LOGGER, "Target (ID:" + arc.getTargetId() + ") does not exist");
             return;
         }
@@ -175,7 +170,6 @@ public class ModelElementContainer implements Serializable {
         // Check if reference already exists
         if (hasReference(arc.getSourceId(), arc.getTargetId())) {
             LoggerManager.debug(Constants.CORE_LOGGER, "Arc already exists!");
-            // MODIFY: Increase arc weight instead?
             return;
         }
 
@@ -198,7 +192,6 @@ public class ModelElementContainer implements Serializable {
      * @return true if an reference exits, otherwise false
      */
     public boolean hasReference(Object sourceId, Object targetId) {
-        // REVIEW: Any reason for not using string instead of object?
         return (findArc(sourceId.toString(), targetId.toString()) != null);
     }
 
@@ -209,18 +202,12 @@ public class ModelElementContainer implements Serializable {
      * @param id the id of the element to remove
      */
     public void removeElement(Object id) {
-        // REVIEW: Why not use type String?
-
         // AT FIRST delete element's connections
         removeArcsFromElement(id);
 
         // AND THEN remove the element, and all its target information
         removeOnlyElement(id);
     }
-
-    // REVIEW: Accessed from outside, references will consist in the net
-    // And if there are any references to the element it will not be removed by the
-    // garbage collector. This could produce wrong analysis results.
 
     /**
      * Removes an element from the net.
@@ -319,10 +306,6 @@ public class ModelElementContainer implements Serializable {
             removeElement(transIter.next());
         }
     }
-
-    // REVIEW: Inconsistent behaviour if id doesn't exist.
-    // getSourceElements returns empty map
-    // getTargetElements returns null
 
     /**
      * Gets all {@code PetriNetModelElement} which has an outgoing arc to the {@code PetriNetModelElement}
@@ -575,7 +558,6 @@ public class ModelElementContainer implements Serializable {
     }
 
 	/* Bpel extension */
-    // REVIEW: Shouldn't this extension be a class on its own?
 
     /**
      * @return

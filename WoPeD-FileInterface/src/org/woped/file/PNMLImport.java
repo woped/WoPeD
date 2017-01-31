@@ -51,7 +51,6 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Vector;
 
-// REVIEW: Does this bug still exists? Could not be reproduced.
 // TODO: BUG in import. When import toolspec mit splitjoin. import ONLY one arc
 // !!!
 
