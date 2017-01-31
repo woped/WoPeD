@@ -42,8 +42,6 @@ public class SidebarVC {
     public void addComponent(JComponent component) {
 
         this.components.add(component);
-//        component.setMaximumSize(new Dimension(248, Short.MAX_VALUE));
-        component.validate();
         component.setAlignmentX(Component.LEFT_ALIGNMENT);
         component.setAlignmentY(Component.TOP_ALIGNMENT);
         int ndx = content.getComponentCount() - 1;
@@ -80,7 +78,7 @@ public class SidebarVC {
     private void createInfoPanel() {
 
         sidebar = new JPanel();
-
+        sidebar.setMinimumSize(new Dimension(300, 0));
         sidebar.setBorder(new EmptyBorder(10, 10, 10, 10));
         sidebar.setLayout(new BorderLayout(0, 10));
 
@@ -93,7 +91,7 @@ public class SidebarVC {
         contentScroller.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
         content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
-        content.setBackground(Color.yellow);
+        content.setBackground(Color.white);
         content.setBorder(new EmptyBorder(10,10,10,10));
 
         content.add(Box.createVerticalGlue());

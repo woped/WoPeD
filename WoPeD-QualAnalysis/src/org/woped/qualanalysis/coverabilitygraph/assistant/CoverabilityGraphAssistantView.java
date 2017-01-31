@@ -202,7 +202,6 @@ public class CoverabilityGraphAssistantView extends CoverabilityGraphView {
         splitter.setResizeWeight(1);
         splitter.setEnabled(false);
 
-
         graphView = new CoverabilityGraphWrapper(graphModel.getGraph());
 
         JPanel mainPanel = new JPanel(new BorderLayout());
