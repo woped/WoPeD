@@ -1,13 +1,16 @@
 package org.woped.qualanalysis.sidebar.assistant.components;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Cursor;
-import java.awt.Font;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.GridLayout;
+import org.woped.core.config.DefaultStaticConfiguration;
+import org.woped.core.controller.IEditor;
+import org.woped.core.model.ArcModel;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
+import org.woped.gui.translations.Messages;
+import org.woped.qualanalysis.service.IQualanalysisService;
+import org.woped.qualanalysis.sidebar.SideBar;
+
+import javax.swing.*;
+import javax.swing.border.Border;
+import java.awt.*;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
@@ -16,22 +19,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Set;
-
-import javax.swing.BorderFactory;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JToggleButton;
-import javax.swing.ScrollPaneConstants;
-import javax.swing.border.Border;
-
-import org.woped.core.config.DefaultStaticConfiguration;
-import org.woped.core.controller.IEditor;
-import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
-import org.woped.qualanalysis.service.IQualanalysisService;
-import org.woped.qualanalysis.sidebar.SideBar;
-import org.woped.gui.translations.Messages;
 
 @SuppressWarnings("serial")
 public abstract class BeginnerPanel extends JPanel implements MouseListener {
@@ -252,7 +239,7 @@ public abstract class BeginnerPanel extends JPanel implements MouseListener {
 				beginnerContainer.removeAll();
 				beginnerContainer.add(helpPanel);
 				sideBar.repaint();
-				cleanHiglights();
+				cleanHighlights();
 				setCursor(DEFAULT_CURSOR);
 			}
 
@@ -355,11 +342,9 @@ public abstract class BeginnerPanel extends JPanel implements MouseListener {
 				else if (aem instanceof Set<?>) {
 					Collection<AbstractPetriNetElementModel> nodeSet = (Collection<AbstractPetriNetElementModel>) aem;
 					secCounter++;
-					String groupOrPair = Messages.getString(PREFIX_BEGINNER
-							+ "Pair");
+					String groupOrPair = Messages.getString(PREFIX_BEGINNER	 + "Pair");
 					if (nodeSet.size() > 2) {
-						groupOrPair = Messages.getString(PREFIX_BEGINNER
-								+ "Group");
+						groupOrPair = Messages.getString(PREFIX_BEGINNER + "Group");
 					}
 					ClickLabel cLabel = new ClickLabel(SUB_POINT + groupOrPair
 							+ " # " + secCounter, nodeSet.iterator(), editor);
@@ -370,22 +355,7 @@ public abstract class BeginnerPanel extends JPanel implements MouseListener {
 			} while (nodeIterator.hasNext());
 		}
 
-		JLabel clickLabel;
-		if (labelSet.isEmpty())
-			clickLabel = new ClickLabel(Messages.getString(headerString)
-					+ COLON, elements, editor);
-		else
-			clickLabel = new JLabel(Messages.getString(headerString) + COLON);
-		clickLabel.setFont(ITEMS_FONT);
-		clickLabel.setForeground(Color.RED);
-		JLabel numberLabel = new JLabel(String.valueOf(number));
-		numberLabel.setFont(ITEMS_FONT);
-		numberLabel.setForeground(Color.RED);
-		numberLabel.setBorder(border5pix);
-		addComponent(clickLabel, 0, counter, 2, 1, 1, 0);
-		addComponent(numberLabel, 2, counter, 1, 1, 0, 0);
-
-		counter++;
+		addClickLabel(headerString, number, labelSet, elements);
 
 		if (!labelSet.isEmpty()) {
 			Iterator<ClickLabel> iter = labelSet.iterator();
@@ -395,6 +365,48 @@ public abstract class BeginnerPanel extends JPanel implements MouseListener {
 			}
 		}
 
+		JTextArea helpText = addHelpText(helpString);
+
+		if (imageIcon != null && !("".equals(imageIcon))) {
+			JLabel helpImage = new JLabel(Messages.getImageIcon(imageIcon));
+			helpImage.setBorder(BOTTOM_BORDER);
+			addComponent(helpImage, 0, counter, 2, 1, 1, 0);
+
+			counter++;
+		} else {
+			helpText.setBorder(BOTTOM_BORDER);
+		}
+	}
+
+	private void addClickLabel(String headerString, int number, ArrayList<ClickLabel> labelSet, ArrayList<AbstractPetriNetElementModel> elements) {
+		JLabel clickLabel;
+		if (labelSet.isEmpty())
+			clickLabel = new ClickLabel(Messages.getString(headerString) + COLON, elements, editor);
+		else
+			clickLabel = new JLabel(Messages.getString(headerString) + COLON);
+
+        addLabel(number, clickLabel);
+	}
+
+	private void addClickLabel(String header, Collection<ArcModel> arcs){
+	    JLabel label = new ClickLabel(header, editor, arcs);
+	    addLabel(arcs.size(), label);
+    }
+
+    private void addLabel(int number, JLabel clickLabel) {
+        clickLabel.setFont(ITEMS_FONT);
+        clickLabel.setForeground(Color.RED);
+        JLabel numberLabel = new JLabel(String.valueOf(number));
+        numberLabel.setFont(ITEMS_FONT);
+        numberLabel.setForeground(Color.RED);
+        numberLabel.setBorder(border5pix);
+        addComponent(clickLabel, 0, counter, 2, 1, 1, 0);
+        addComponent(numberLabel, 2, counter, 1, 1, 0, 0);
+
+        counter++;
+    }
+
+    private JTextArea addHelpText(String helpString) {
 		JLabel helpIcon = new JLabel(Messages.getImageIcon(HELP_ICON));
 		helpIcon.setBorder(border5pix);
 		JTextArea helpText = new JTextArea();
@@ -407,16 +419,14 @@ public abstract class BeginnerPanel extends JPanel implements MouseListener {
 		addComponent(helpText, 1, counter, 1, 1, 1, 0);
 
 		counter++;
+		return helpText;
+	}
 
-		if (imageIcon != null && !("".equals(imageIcon))) {
-			JLabel helpImage = new JLabel(Messages.getImageIcon(imageIcon));
-			helpImage.setBorder(BOTTOM_BORDER);
-			addComponent(helpImage, 0, counter, 2, 1, 1, 0);
+	protected void createEntry(String headerString, Collection<ArcModel> arcs, String helpString){
 
-			counter++;
-		} else {
-			helpText.setBorder(BOTTOM_BORDER);
-		}
+	    addClickLabel(Messages.getString(headerString), arcs);
+		JTextArea helpText = addHelpText(helpString);
+		helpText.setBorder(BOTTOM_BORDER);
 	}
 
 	/**
@@ -463,18 +473,14 @@ public abstract class BeginnerPanel extends JPanel implements MouseListener {
 	/**
 	 * method to clean all highlights in the net
 	 */
-	public void cleanHiglights() {
+	public void cleanHighlights() {
 		IEditor editor = sideBar.getEditor();
-		Iterator<AbstractPetriNetElementModel> i = editor.getModelProcessor()
-				.getElementContainer().getRootElements().iterator();
-		while (i.hasNext()) {
-			AbstractPetriNetElementModel current = (AbstractPetriNetElementModel) i.next();
-			current.setHighlighted(false);
-		}
+
+		editor.getModelProcessor().removeHighlighting();
 		editor.getGraph().repaint();
 	}
 
-	public boolean getStatus() {
+    public boolean getStatus() {
 		return status;
 	}
 
@@ -503,11 +509,9 @@ public abstract class BeginnerPanel extends JPanel implements MouseListener {
 		beginnerContainer.removeAll();
 		beginnerContainer.add(helpPanel);
 		sideBar.repaint();
-		cleanHiglights();
+		cleanHighlights();
 		setCursor(DEFAULT_CURSOR);
 	}
-
-	
 
 	@Override
 	public void mouseEntered(MouseEvent e) {

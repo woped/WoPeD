@@ -48,10 +48,9 @@ import java.util.Vector;
 @SuppressWarnings("serial")
 public class ArcModel extends DefaultEdge implements Serializable {
 
-    private static final Color DEFAULT_COLOR = Color.BLACK;
-    private static final Color DEFAULT_HIGHLIGHTED_COLOR = Color.RED;
     private String id;
     private boolean activated = false;
+    private boolean highlighted = false;
     private Vector<Object> unknownToolSpecs = new Vector<Object>();
     private ElementContext elementContext = null;
     private boolean DEFAULT_WEIGHT_VISIBLE = false;
@@ -75,10 +74,11 @@ public class ArcModel extends DefaultEdge implements Serializable {
     }
 
     public void setHighlighted(boolean highlighted) {
-        AttributeMap map = getAttributes();
-        if (highlighted) GraphConstants.setLineColor(map, DEFAULT_HIGHLIGHTED_COLOR);
-        else GraphConstants.setLineColor(map, DEFAULT_COLOR);
-        updateLabel();
+        this.highlighted = highlighted;
+    }
+
+    public boolean isHighlighted() {
+        return highlighted;
     }
 
     public void initAttributes() {

@@ -1,119 +1,145 @@
 package org.woped.qualanalysis.sidebar.assistant.components;
 
-import java.awt.Cursor;
+import org.woped.core.controller.IEditor;
+import org.woped.core.model.ArcModel;
+import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
-import javax.swing.JLabel;
-
-import org.woped.core.controller.IEditor;
-import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
-
 /**
  * Class for the clickable Labels which highlight elements in the net
- * 
+ *
  * @author Lennart Oess, Arthur Vetter, Jens Tessen, Heiko Herzog
- * 
  */
 @SuppressWarnings("serial")
-public class ClickLabel extends JLabel implements MouseListener {
+public class ClickLabel extends JLabel {
 
-	private static final Cursor HAND_CURSOR = new Cursor(Cursor.HAND_CURSOR);
+    private static final Cursor HAND_CURSOR = new Cursor(Cursor.HAND_CURSOR);
+    private static final Cursor DEFAULT_CURSOR = new Cursor(Cursor.DEFAULT_CURSOR);
 
-	private static final Cursor DEFAULT_CURSOR = new Cursor(
-			Cursor.DEFAULT_CURSOR);
+    private Collection<AbstractPetriNetElementModel> elements;
+    private Collection<ArcModel> arcs;
+    private IEditor editor = null;
 
-	private Collection<AbstractPetriNetElementModel> elements;
+    /**
+     * Constructs a new label that highlights the provided elements on mouse click.
+     *
+     * @param string          label text
+     * @param elementIterator iterator of the elements to highlight
+     * @param editor          reference to the editor
+     */
+    public ClickLabel(String string, Iterator<AbstractPetriNetElementModel> elementIterator, IEditor editor) {
+        super(string);
+        initialize(editor, elementIterator, null);
+    }
 
-	private IEditor editor = null;
+    /**
+     * Constructs a new label that highlights the provided elements on mouse click.
+     *
+     * @param string   label text
+     * @param elements collection of the elements to highlight
+     * @param editor   reference to the editor
+     */
+    ClickLabel(String string, Collection<AbstractPetriNetElementModel> elements, IEditor editor) {
+        super(string);
+        initialize(editor, elements.iterator(), null);
+    }
 
-	/**
-	 * adds all elements in the iterator to a local collection
-	 * 
-	 * @param string
-	 *            - label text
-	 * @param iter
-	 *            - iterator of the elements to highlight
-	 * @param editor
-	 *            - reference to the editor
-	 */
-	public ClickLabel(String string, Iterator<AbstractPetriNetElementModel> iter,
-			IEditor editor) {
-		super(string);
-		elements = new ArrayList<AbstractPetriNetElementModel>();
-		if (iter != null && iter.hasNext()) {
-			do {
-				this.addMouseListener(this);
-				Object aem = iter.next();
-				if (aem instanceof AbstractPetriNetElementModel)
-					if (((AbstractPetriNetElementModel) aem).getHierarchyLevel() == 0) {
-						elements.add(((AbstractPetriNetElementModel) aem));
-					} else {
-						elements.add(((AbstractPetriNetElementModel) aem)
-								.getRootOwningContainer().getOwningElement());
-					}
-			} while (iter.hasNext());
-		}
-		this.editor = editor;
-	}
+    /**
+     * Constructs a new label that highlights the provided arcs in the provided petri net on mouse click.
+     *
+     * @param title  the text of the label
+     * @param editor the editor of the petri net
+     * @param arcs   the arcs to highlight
+     */
+    ClickLabel(String title, IEditor editor, Collection<ArcModel> arcs) {
+        super(title);
+        initialize(editor, null, arcs.iterator());
+    }
 
-	/**
-	 * 
-	 * @param string
-	 *            - label text
-	 * @param elements
-	 *            - collection of the elements to higlight
-	 * @param editor
-	 *            - reference to the editor
-	 */
-	public ClickLabel(String string, Collection<AbstractPetriNetElementModel> elements,
-			IEditor editor) {
-		super(string);
-		this.elements = elements;
-		this.editor = editor;
-		if (!elements.isEmpty())
-			this.addMouseListener(this);
-	}
+    private void initialize(IEditor editor, Iterator<AbstractPetriNetElementModel> elementIterator, Iterator<ArcModel> arcIterator) {
+        elements = new ArrayList<>();
+        arcs = new ArrayList<>();
+        this.editor = editor;
+        registerElements(elementIterator);
+        registerArcs(arcIterator);
 
-	@Override
-	public void mouseClicked(MouseEvent arg0) {
-		// First, dehighlight all elements in the net
-		Iterator<AbstractPetriNetElementModel> i = editor.getModelProcessor()
-				.getElementContainer().getRootElements().iterator();
-		while (i.hasNext()) {
-			AbstractPetriNetElementModel current = (AbstractPetriNetElementModel) i.next();
-			current.setHighlighted(false);
-		}
-		// Then, highlight all elements in the collection
-		if (!elements.isEmpty()) {
-			Iterator<AbstractPetriNetElementModel> iterCopy = elements.iterator();
-			while (iterCopy.hasNext()) {
-				AbstractPetriNetElementModel currentHigh = (AbstractPetriNetElementModel) iterCopy
-						.next();
-				currentHigh.setHighlighted(true);
-			}
-		}
-		editor.getGraph().repaint();
-	}
+        addClickSupport();
+    }
 
-	@Override
-	public void mouseEntered(MouseEvent arg0) {
-		setCursor(HAND_CURSOR);
-	}
+    private void registerElements(Iterator<AbstractPetriNetElementModel> elementIterator) {
+        if (elementIterator == null || !elementIterator.hasNext()) return;
 
-	@Override
-	public void mouseExited(MouseEvent arg0) {
-		setCursor(DEFAULT_CURSOR);
-	}
+        while (elementIterator.hasNext()) {
+            AbstractPetriNetElementModel element = elementIterator.next();
 
-	@Override
-	public void mousePressed(MouseEvent arg0) {
-	}
+            if (element == null) continue;
 
-	@Override
-	public void mouseReleased(MouseEvent arg0) {
-	}
+            if (element.getHierarchyLevel() == 0) elements.add(element);
+            else elements.add(element.getRootOwningContainer().getOwningElement());
+        }
+    }
+
+    private void registerArcs(Iterator<ArcModel> arcIterator) {
+        if (arcIterator == null || !arcIterator.hasNext()) return;
+
+        while (arcIterator.hasNext()) {
+            ArcModel arc = arcIterator.next();
+            arcs.add(arc);
+        }
+    }
+
+    private void addClickSupport() {
+        if (elements.isEmpty() && arcs.isEmpty()) return;
+        addMouseListener(new LabelClickListener());
+    }
+
+    private void removeHighlighting() {
+        editor.getModelProcessor().removeHighlighting();
+    }
+
+    private void addHighlighting() {
+        highlightElements();
+        highlightArcs();
+        editor.getGraph().repaint();
+    }
+
+    private void highlightElements() {
+        for (AbstractPetriNetElementModel element : elements) {
+            element.setHighlighted(true);
+        }
+    }
+
+    private void highlightArcs() {
+        for (ArcModel arc : arcs) {
+            arc.setHighlighted(true);
+        }
+    }
+
+    /**
+     * Handles the mouse events related to the label
+     */
+    private class LabelClickListener extends MouseAdapter {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            removeHighlighting();
+            addHighlighting();
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent arg0) {
+            setCursor(HAND_CURSOR);
+        }
+
+        @Override
+        public void mouseExited(MouseEvent arg0) {
+            setCursor(DEFAULT_CURSOR);
+        }
+    }
 }

@@ -10,6 +10,7 @@ import java.util.TreeSet;
 
 import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.IEditor;
+import org.woped.core.model.ArcModel;
 import org.woped.core.model.CreationMap;
 import org.woped.core.model.ModelElementContainer;
 import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
@@ -193,6 +194,23 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics, IWell
     public Set<AbstractPetriNetElementModel> getNotStronglyConnectedNodes() {
         calculateConnections();
         return m_notStronglyConnectedNodes;
+    }
+
+    /**
+     * Gets the arcs of the petri net whose weight is larger than 1.
+     *
+     * @return the arcs that violate the weight condition
+     */
+    @Override
+    public Set<ArcModel> getArcWeightViolations() {
+        HashSet<ArcModel> weightViolations = new HashSet<>();
+
+        ModelElementContainer container = m_currentEditor.getModelProcessor().getElementContainer();
+        for(ArcModel arc : container.getArcMap().values()){
+            if(arc.getInscriptionValue() > 1) weightViolations.add(arc);
+        }
+
+        return weightViolations;
     }
 
     // ! Return a list of free-choice violations
@@ -885,7 +903,7 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics, IWell
     }
 
     /**
-     * @see IWorkflowCheck#getStronglyConnectedNodes()
+     * @see IWorkflowCheck#getStronglyConnectedComponents()
      */
     @Override
     public Set<Set<AbstractPetriNetElementModel>> getStronglyConnectedComponents() {
@@ -916,7 +934,11 @@ public class StructuralAnalysis implements IWorkflowCheck, INetStatistics, IWell
         if (getNotConnectedNodes().size() != 0) {
             return false;
         }
-        return getNotStronglyConnectedNodes().size() == 0;
+        if( getNotStronglyConnectedNodes().size() != 0){
+            return false;
+        }
+
+        return getArcWeightViolations().size() == 0;
     }
 
 }

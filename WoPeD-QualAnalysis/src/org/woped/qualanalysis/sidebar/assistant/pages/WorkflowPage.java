@@ -1,8 +1,8 @@
 package org.woped.qualanalysis.sidebar.assistant.pages;
 
+import org.woped.gui.translations.Messages;
 import org.woped.qualanalysis.sidebar.SideBar;
 import org.woped.qualanalysis.sidebar.assistant.components.BeginnerPanel;
-import org.woped.gui.translations.Messages;
 
 /**
  * shows workflow details
@@ -14,7 +14,7 @@ import org.woped.gui.translations.Messages;
 public class WorkflowPage extends BeginnerPanel {
 
 	private int numSourcePlaces, numSinkPlaces, numSourceTransitions, numSinkTransitions,
-			numNotConnectedNodes, numNotStronglyConnectedNodes;
+			numNotConnectedNodes, numNotStronglyConnectedNodes, numArcViolations;
 
 	public WorkflowPage(BeginnerPanel previous, SideBar sideBar) {
 		super(previous, sideBar, Messages
@@ -30,6 +30,8 @@ public class WorkflowPage extends BeginnerPanel {
 		numNotConnectedNodes = qualanalysisService.getNotConnectedNodes().size();
 
 		numNotStronglyConnectedNodes = qualanalysisService.getNotStronglyConnectedNodes().size();
+
+		numArcViolations = qualanalysisService.getArcWeightViolations().size();
 
 		if (!qualanalysisService.isWorkflowNet()) {
 			status = false;
@@ -86,6 +88,13 @@ public class WorkflowPage extends BeginnerPanel {
 					PREFIX_HELP + "NotStronglyConnectedNodes");
 		}
 
+		if(numArcViolations != 0){
+			createEntry(PREFIX + "NumArcWeightViolations", qualanalysisService.getArcWeightViolations()
+					, PREFIX_HELP +"NumArcWeightViolations");
+		}
+
 		createEmptyEntry();
 	}
+
+
 }

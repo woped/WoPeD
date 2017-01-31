@@ -735,4 +735,23 @@ public class PetriNetModelProcessor implements Serializable {
         return false;
     }
 
+    /**
+     * Removes the highlighting from all elements and all arcs.
+     */
+    public void removeHighlighting(){
+        removeHighlightingFromElements();
+        removeHighlightingFromArcs();
+    }
+
+    private void removeHighlightingFromElements() {
+        for(AbstractPetriNetElementModel element : elementContainer.getRootElements()){
+            element.setHighlighted(false);
+        }
+    }
+
+    private void removeHighlightingFromArcs() {
+        for(ArcModel arc : elementContainer.getArcMap().values()){
+            arc.setHighlighted(false);
+        }
+    }
 }

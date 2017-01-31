@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.woped.core.controller.IEditor;
+import org.woped.core.model.ArcModel;
 import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.core.model.petrinet.PlaceModel;
 import org.woped.qualanalysis.service.interfaces.INetStatistics;
@@ -58,6 +59,8 @@ public abstract class AbstractQualanalysisService implements IQualanalysisServic
     private Set<AbstractPetriNetElementModel> unboundedPlaces = null;
     private Set<AbstractPetriNetElementModel> deadTransitions = null;
     private Set<AbstractPetriNetElementModel> nonLiveTransitions = null;
+    private Set<ArcModel> arcWeightViolations;
+
 
     public AbstractQualanalysisService(IEditor editor) {
         this.editor = editor;
@@ -163,6 +166,15 @@ public abstract class AbstractQualanalysisService implements IQualanalysisServic
             notStronglyConnectedNodes = workflowCheck.getNotStronglyConnectedNodes();
         }
         return notStronglyConnectedNodes;
+    }
+
+    @Override
+    public Set<ArcModel> getArcWeightViolations() {
+        if(arcWeightViolations == null){
+            arcWeightViolations = workflowCheck.getArcWeightViolations();
+        }
+
+        return arcWeightViolations;
     }
 
     public Set<Set<AbstractPetriNetElementModel>> getStronglyConnectedComponents() {

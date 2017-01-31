@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.woped.core.controller.IEditor;
+import org.woped.core.model.ArcModel;
 import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.qualanalysis.service.interfaces.IWorkflowCheck;
 import org.woped.qualanalysis.soundness.algorithms.AlgorithmFactory;
@@ -124,6 +125,16 @@ public class WorkflowCheckImplement implements IWorkflowCheck {
         return new StructuralAnalysis(editor).getNotStronglyConnectedNodes();
     }
 
+    /**
+     * Gets the arcs of the petri net whose weight is larger than 1.
+     *
+     * @return the arcs that violate the weight condition
+     */
+    @Override
+    public Set<ArcModel> getArcWeightViolations() {
+        return new StructuralAnalysis(editor).getArcWeightViolations();
+    }
+
     @Override
     public Set<Set<AbstractPetriNetElementModel>> getStronglyConnectedComponents() {
         if (stronglyConnectedComponents == null) {
@@ -148,25 +159,7 @@ public class WorkflowCheckImplement implements IWorkflowCheck {
 
     @Override
     public boolean isWorkflowNet() {
-        if (getSourcePlaces().size() != 1) {
-            return false;
-        }
-        if (getSinkPlaces().size() != 1) {
-            return false;
-        }
-        if (getSourceTransitions().size() != 0) {
-            return false;
-        }
-        if (getSinkTransitions().size() != 0) {
-            return false;
-        }
-        if (getNotConnectedNodes().size() != 0) {
-            return false;
-        }
-        if (getNotStronglyConnectedNodes().size() != 0) {
-            return false;
-        }
-        return true;
+        return new StructuralAnalysis(editor).isWorkflowNet();
     }
 
     /**
@@ -181,7 +174,7 @@ public class WorkflowCheckImplement implements IWorkflowCheck {
     /**
      * set transformation.
      * 
-     * @author Sebastian Fuß
+     * @author Sebastian Fuï¿½
      * @param abstractNodeSet set of AbstractNode objects
      * @return set of AbstractElementModel objects
      */
@@ -201,7 +194,7 @@ public class WorkflowCheckImplement implements IWorkflowCheck {
     /**
      * double set transformation.
      * 
-     * @author Sebastian Fuß
+     * @author Sebastian Fuï¿½
      * @param abstractNodeSetSet set of an set of AbstractNode objects
      * @return set of an set of AbstractElementModel-Objects
      */

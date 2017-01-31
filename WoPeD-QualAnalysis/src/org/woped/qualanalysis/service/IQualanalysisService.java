@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.woped.core.model.ArcModel;
 import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 import org.woped.qualanalysis.structure.components.ClusterElement;
 
@@ -74,6 +75,13 @@ public interface IQualanalysisService {
      * @return a set of all not-strongly-connected nodes
      */
     public Set<AbstractPetriNetElementModel> getNotStronglyConnectedNodes();
+
+    /**
+     * Gets the arcs of the petri net whose weight is larger than 1.
+     *
+     * @return the arcs that violate the weight condition
+     */
+    Set<ArcModel> getArcWeightViolations();
 
     /**
      * 

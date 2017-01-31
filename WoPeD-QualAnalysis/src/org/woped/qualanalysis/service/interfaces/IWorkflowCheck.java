@@ -2,6 +2,7 @@ package org.woped.qualanalysis.service.interfaces;
 
 import java.util.Set;
 
+import org.woped.core.model.ArcModel;
 import org.woped.core.model.petrinet.AbstractPetriNetElementModel;
 
 /**
@@ -47,6 +48,13 @@ public interface IWorkflowCheck {
      * @return a set with all nodes not being strongly connected
      */
     public Set<AbstractPetriNetElementModel> getNotStronglyConnectedNodes();
+
+    /**
+     * Gets the arcs of the petri net whose weight is larger than 1.
+     *
+     * @return the arcs that violate the weight condition
+     */
+    Set<ArcModel> getArcWeightViolations();
 
     /**
      * 

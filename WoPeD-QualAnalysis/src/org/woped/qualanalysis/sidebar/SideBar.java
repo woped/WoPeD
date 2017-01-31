@@ -1,7 +1,6 @@
 package org.woped.qualanalysis.sidebar;
 
 import java.awt.BorderLayout;
-import java.util.Iterator;
 
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
@@ -46,8 +45,6 @@ public class SideBar extends PermanentTabbedPane {
 
 	/**
 	 * 
-	 * @param temporaryFile
-	 *            - for Woflan Analysis
 	 * @param editor
 	 *            - reference to the current editor to analyis the net in it
 	 * @param mediator
@@ -55,6 +52,7 @@ public class SideBar extends PermanentTabbedPane {
 	 * @param autoRefreshStatus
 	 *            - if true analyissidebar refresh if you change something in
 	 *            the net
+	 * @param tStarCheckBox
 	 */
 	public SideBar(IEditor editor, AbstractApplicationMediator mediator,
 			boolean autoRefreshStatus, JCheckBox tStarCheckBox) {
@@ -134,13 +132,7 @@ public class SideBar extends PermanentTabbedPane {
 	private void cleanUp() {
 		qualanService.cleanup();
 		qualanService = null;
-		// clear the selection
-		Iterator<AbstractPetriNetElementModel> i = editor.getModelProcessor()
-				.getElementContainer().getRootElements().iterator();
-		while (i.hasNext()) {
-			AbstractPetriNetElementModel current = (AbstractPetriNetElementModel) i.next();
-			current.setHighlighted(false);
-		}
+		editor.getModelProcessor().removeHighlighting();
 	}
 
 	/**

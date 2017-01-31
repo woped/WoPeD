@@ -122,6 +122,7 @@ class ArcView extends EdgeView {
      */
     private class ArcViewRenderer extends EdgeRenderer {
 
+        private Color HIGHLIGHT_COLOR = Color.red;
         /*
          * (non-Javadoc)
          * 
@@ -161,6 +162,7 @@ class ArcView extends EdgeView {
                     graph.setEdgeLabelsMovable(false);
                     Point2D labelPosition = getLabelPosition(view);
                     if (selected) fontColor = ConfigurationManager.getConfiguration().getSelectionColor();
+                    if( arc.isHighlighted()) fontColor = HIGHLIGHT_COLOR;
                     paintLabel(g, graph.convertValueToString(arc.getInscriptionValue()), labelPosition, simpleExtraLabels);
                 }
 
@@ -177,6 +179,15 @@ class ArcView extends EdgeView {
                     if (view.lineShape != null) g2.draw(view.lineShape);
                     if (view.endShape != null) g2.draw(view.endShape);
                 }
+
+                if(arc.isHighlighted()){
+                    g2.setColor(HIGHLIGHT_COLOR);
+                    g2.setStroke(new BasicStroke(2.0f));
+                    if (view.beginShape != null) g2.draw(view.beginShape);
+                    if (view.lineShape != null) g2.draw(view.lineShape);
+                    if (view.endShape != null) g2.draw(view.endShape);
+                }
+
                 if (arc.isActivated()) {
                     g2.setColor(Color.GREEN);
                     g.setColor(Color.GREEN);

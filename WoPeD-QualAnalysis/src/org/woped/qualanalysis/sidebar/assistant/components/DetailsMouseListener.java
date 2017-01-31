@@ -94,7 +94,7 @@ public class DetailsMouseListener implements MouseListener {
 		beginnerContainer.removeAll();
 		beginnerContainer.add(beginnerPanel);
 		beginnerContainer.updateUI();
-		beginnerPanel.cleanHiglights();
+		beginnerPanel.cleanHighlights();
 
 		((JLabel) e.getSource()).setCursor(DEFAULT_CURSOR);
 
