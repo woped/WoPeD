@@ -35,20 +35,21 @@ import java.awt.*;
 import java.io.*;
 import java.nio.charset.Charset;
 import java.security.AccessControlException;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Vector;
 
 public class FileEventProcessor extends AbstractEventProcessor {
-    public FileEventProcessor(ApplicationMediator mediator) {
-        super(mediator);
-    }
-
     public static boolean isFileOverride(JFrame owner, String fileName) {
         String textMessages[] = {Messages.getString("Dialog.Yes"), Messages.getString("Dialog.No")};
         String[] args = {fileName};
 
         return JOptionPane.showOptionDialog(owner, Messages.getStringReplaced("Action.Confirm.File.Overwrite.Text", args), Messages.getString("Action.Confirm.File.Overwrite.Title"), JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, textMessages, textMessages[1]) == JOptionPane.YES_OPTION;
+    }
+
+    public FileEventProcessor(ApplicationMediator mediator) {
+        super(mediator);
     }
 
     @Override
@@ -57,7 +58,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
 
         switch (event.getOrder()) {
             case AbstractViewEvent.OPEN:
-                if ( event.getData() != null && event.getData() instanceof File ) {
+                if (event.getData() != null && event.getData() instanceof File) {
                     openFile((File) event.getData(), FileFilterImpl.PNMLFilter);
                 } else {
                     openEditor();
@@ -82,7 +83,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
                 export((EditorVC) getMediator().getUi().getEditorFocus());
                 break;
             case AbstractViewEvent.ANALYSIS_WOPED:
-                if ( editor != null ) {
+                if (editor != null) {
                     editor.getEditorPanel().showAnalysisBar();
                     LoggerManager.info(Constants.FILE_LOGGER, "Local WoPeD analysis started.");
                 }
@@ -90,7 +91,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
 
             case AbstractViewEvent.ANALYSIS_METRIC:
                 // calls the new metrics sidebar
-                if ( !editor.getEditorPanel().isMetricsBarVisible() ) {
+                if (!editor.getEditorPanel().isMetricsBarVisible()) {
                     editor.getEditorPanel().showMetricsBar();
 
                 } else {
@@ -109,7 +110,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
                 cFolder.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
                 cFolder.setDialogTitle(Messages.getString("Metrics.Mass.OpenDialog"));
                 int cont = cFolder.showOpenDialog((JFrame) getMediator().getUi());
-                if ( cont != JFileChooser.APPROVE_OPTION ) return;
+                if (cont != JFileChooser.APPROVE_OPTION) return;
                 File folder = cFolder.getSelectedFile();
                 cFolder.setFileSelectionMode(JFileChooser.FILES_ONLY);
                 FileFilter filter = new LabeledFileFilter() {
@@ -131,9 +132,9 @@ public class FileEventProcessor extends AbstractEventProcessor {
                 cFolder.addChoosableFileFilter(filter);
                 cFolder.setDialogTitle(Messages.getString("Metrics.Mass.SaveDialog"));
                 cont = cFolder.showSaveDialog((JFrame) getMediator().getUi());
-                if ( cont != JFileChooser.APPROVE_OPTION ) return;
+                if (cont != JFileChooser.APPROVE_OPTION) return;
                 File saveTo = new File(cFolder.getSelectedFile().getAbsolutePath());
-                if ( !saveTo.getName().endsWith(((LabeledFileFilter) cFolder.getFileFilter()).getExtension()) )
+                if (!saveTo.getName().endsWith(((LabeledFileFilter) cFolder.getFileFilter()).getExtension()))
                     saveTo = new File(saveTo.getAbsolutePath() + ((LabeledFileFilter) cFolder.getFileFilter()).getExtension());
 
                 saveTo.delete();
@@ -147,14 +148,24 @@ public class FileEventProcessor extends AbstractEventProcessor {
                 break;
 
             case AbstractViewEvent.QUANTCAP:
-                if ( !usesArcWeight(editor) && isSound(editor) && isBranchingOk(editor) ) {
+                if(containsArcWeights(editor)){
+                    showWarning("QuantAna.Message.QUANTCAP.ArcWeightViolation");
+                    return;
+                }
+
+                if (isSound(editor) && isBranchingOk(editor)) {
                     new CapacityAnalysisDialog((JFrame) getMediator().getUi(), editor);
                 }
                 break;
 
             case AbstractViewEvent.QUANTSIM:
-                if ( !usesArcWeight(editor) && isSound(editor) & isBranchingOk(editor) ) {
-                    if ( (editor).getSimDlg() == null ) {
+                if(containsArcWeights(editor)){
+                    showWarning("QuantAna.Message.QUANTSIM.ArcWeightViolation");
+                    return;
+                }
+
+                if (isSound(editor) & isBranchingOk(editor)) {
+                    if ((editor).getSimDlg() == null) {
                         (editor).setSimDlg(new QuantitativeSimulationDialog((JFrame) getMediator().getUi(), editor));
                     } else {
                         (editor).getSimDlg().showdlg();
@@ -169,28 +180,11 @@ public class FileEventProcessor extends AbstractEventProcessor {
      *
      * @param editor
      */
-
-    private boolean usesArcWeight(IEditor editor) {
-        ModelElementContainer container = editor.getModelProcessor().getElementContainer();
-        boolean usesArcWeight = false;
-        Map<String, ArcModel> arcs = container.getArcMap();
-
-        for ( ArcModel arc : arcs.values() ) {
-            if ( arc.getInscriptionValue() > 1 ) usesArcWeight = true;
-        }
-
-        if ( usesArcWeight ) {
-            JOptionPane.showMessageDialog(null, Messages.getString("QuantAna.Message.ArcWeightViolation"));
-        }
-
-        return usesArcWeight;
-    }
-
     private boolean isSound(IEditor editor) {
 
         IQualanalysisService qualanService = QualAnalysisServiceFactory.createNewQualAnalysisService(editor);
 
-        if ( qualanService.isSound() ) {
+        if (qualanService.isSound()) {
             return true;
         } else {
             JOptionPane.showMessageDialog(null, Messages.getString("QuantAna.Message.SoundnessViolation"));
@@ -207,17 +201,17 @@ public class FileEventProcessor extends AbstractEventProcessor {
         Iterator<AbstractPetriNetElementModel> places = qualanService.getPlaces().iterator();
         AbstractPetriNetElementModel end = qualanService.getSinkPlaces().iterator().next();
 
-        while ( transes.hasNext() ) {
+        while (transes.hasNext()) {
             AbstractPetriNetElementModel trans = transes.next();
             Map<String, Object> outArcs = mec.getOutgoingArcs(trans.getId());
             int sum = 0;
-            for ( Object v : outArcs.values() ) {
+            for (Object v : outArcs.values()) {
                 double p = ((ArcModel) v).getProbability();
                 sum += (Double.valueOf(p * 100)).intValue();
             }
 
             int type = ((OperatorTransitionModel) trans).getOperatorType();
-            if ( (type == OperatorTransitionModel.XOR_SPLIT_TYPE || type == OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE || type == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE) & sum != 100 ) {
+            if ((type == OperatorTransitionModel.XOR_SPLIT_TYPE || type == OperatorTransitionModel.XORJOIN_XORSPLIT_TYPE || type == OperatorTransitionModel.ANDJOIN_XORSPLIT_TYPE) & sum != 100) {
                 branchingOk = false;
                 param[0] = Messages.getString("QuantAna.Transition");
                 param[1] = trans.getNameValue();
@@ -225,17 +219,17 @@ public class FileEventProcessor extends AbstractEventProcessor {
             }
         }
 
-        while ( places.hasNext() ) {
+        while (places.hasNext()) {
             AbstractPetriNetElementModel place = places.next();
-            if ( !place.equals(end) ) {
+            if (!place.equals(end)) {
                 Map<String, Object> outArcs = mec.getOutgoingArcs(place.getId());
                 int sum = 0;
-                for ( Object v : outArcs.values() ) {
+                for (Object v : outArcs.values()) {
                     double p = ((ArcModel) v).getProbability();
                     sum += (Double.valueOf(p * 100)).intValue();
                 }
 
-                if ( outArcs.size() > 1 && sum != 100 ) {
+                if (outArcs.size() > 1 && sum != 100) {
                     branchingOk = false;
                     param[0] = Messages.getString("QuantAna.Place");
                     param[1] = place.getNameValue();
@@ -243,7 +237,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
                 }
             }
         }
-        if ( branchingOk ) {
+        if (branchingOk) {
             return true;
         } else {
             JOptionPane.showMessageDialog(null, Messages.getString("QuantAna.Message.BranchingProbabilityViolation", param));
@@ -253,11 +247,11 @@ public class FileEventProcessor extends AbstractEventProcessor {
 
     public void export(EditorVC editor) {
         getMediator().getUi().getComponent().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        if ( editor != null ) {
+        if (editor != null) {
             // Open save as Dialog
             JFileChooser jfc;
             String hd = ConfigurationManager.getConfiguration().getCurrentWorkingdir();
-            if ( hd != null ) {
+            if (hd != null) {
                 jfc = new JFileChooser(new File(hd));
             } else {
                 jfc = new JFileChooser();
@@ -292,18 +286,24 @@ public class FileEventProcessor extends AbstractEventProcessor {
 
             jfc.setDialogTitle(Messages.getString("Action.Export.Title"));
             jfc.showSaveDialog(null);
-            if ( jfc.getSelectedFile() != null && editor != null ) {
+            if (jfc.getSelectedFile() != null && editor != null) {
 
                 String savePath = jfc.getSelectedFile().getAbsolutePath().substring(0, jfc.getSelectedFile().getAbsolutePath().length() - jfc.getSelectedFile().getName().length());
-                if ( ((FileFilterImpl) jfc.getFileFilter()).getFilterType() == FileFilterImpl.TPNFilter ) {
+                if (((FileFilterImpl) jfc.getFileFilter()).getFilterType() == FileFilterImpl.TPNFilter) {
+
+                    if (containsArcWeights(editor)) { // arc weights not supported in tpn
+                        showWarning("QuantAna.Message.TPN.ArcWeightViolation");
+                        getMediator().getUi().getComponent().setCursor(Cursor.getDefaultCursor());
+                        return;
+                    }
                     savePath = savePath + Utils.getQualifiedFileName(jfc.getSelectedFile().getName(), tpnExtensions);
-                } else if ( ((FileFilterImpl) jfc.getFileFilter()).getFilterType() == FileFilterImpl.JPGFilter ) {
+                } else if (((FileFilterImpl) jfc.getFileFilter()).getFilterType() == FileFilterImpl.JPGFilter) {
                     savePath = savePath + Utils.getQualifiedFileName(jfc.getSelectedFile().getName(), jpgExtensions);
-                } else if ( ((FileFilterImpl) jfc.getFileFilter()).getFilterType() == FileFilterImpl.PNGFilter ) {
+                } else if (((FileFilterImpl) jfc.getFileFilter()).getFilterType() == FileFilterImpl.PNGFilter) {
                     savePath = savePath + Utils.getQualifiedFileName(jfc.getSelectedFile().getName(), pngExtensions);
-                } else if ( ((FileFilterImpl) jfc.getFileFilter()).getFilterType() == FileFilterImpl.BMPFilter ) {
+                } else if (((FileFilterImpl) jfc.getFileFilter()).getFilterType() == FileFilterImpl.BMPFilter) {
                     savePath = savePath + Utils.getQualifiedFileName(jfc.getSelectedFile().getName(), bmpExtensions);
-                } else if ( BPEL.getBPELMainClass().checkFileExtension(jfc) ) {
+                } else if (BPEL.getBPELMainClass().checkFileExtension(jfc)) {
                     savePath = BPEL.getBPELMainClass().getSavePath(savePath, jfc);
                 } else {
                     LoggerManager.error(Constants.FILE_LOGGER, "\"Export\" NOT SUPPORTED FILE TYPE.");
@@ -321,6 +321,29 @@ public class FileEventProcessor extends AbstractEventProcessor {
         getMediator().getUi().getComponent().setCursor(Cursor.getDefaultCursor());
     }
 
+    private void showWarning(String resourceKey) {
+        JOptionPane.showMessageDialog(getMediator().getUi().getComponent(), Messages.getString(resourceKey));
+    }
+
+    /**
+     * Checks if the petri net uses arc weights different to one.
+     * <p>
+     * Access package private for testing purposes.
+     *
+     * @param editor the editor of the petri net
+     * @return true if the net uses arc weights, otherwise false
+     */
+     boolean containsArcWeights(EditorVC editor) {
+
+        Collection<ArcModel> arcs = editor.getModelProcessor().getElementContainer().getArcMap().values();
+
+        for(ArcModel arc : arcs){
+            if(arc.getInscriptionValue() > 1) return true;
+        }
+
+        return false;
+    }
+
     /**
      * TODO: DOCUMENTATION (silenco)
      *
@@ -333,22 +356,22 @@ public class FileEventProcessor extends AbstractEventProcessor {
         getMediator().getUi().getComponent().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try {
             // Open save dialog
-            if ( editor != null ) {
-                if ( editor.getFilePath() == null ) {
+            if (editor != null) {
+                if (editor.getFilePath() == null) {
                     LoggerManager.debug(Constants.FILE_LOGGER, "File was not saved before. Call \"Save as\" instead.");
                     saveAs(editor);
                 } else {
 
-                    if ( editor.getDefaultFileType() == FileFilterImpl.JPGFilter ) {
+                    if (editor.getDefaultFileType() == FileFilterImpl.JPGFilter) {
                         succeed = ImageExport.saveJPG(ImageExport.getRenderedImage(editor), new File(editor.getFilePath()));
                         // TODO: !!! Working dir
-                    } else if ( editor.getDefaultFileType() == FileFilterImpl.PNGFilter ) {
+                    } else if (editor.getDefaultFileType() == FileFilterImpl.PNGFilter) {
                         succeed = ImageExport.savePNG(ImageExport.getRenderedImage(editor), new File(editor.getFilePath()));
-                    } else if ( editor.getDefaultFileType() == FileFilterImpl.BMPFilter ) {
+                    } else if (editor.getDefaultFileType() == FileFilterImpl.BMPFilter) {
                         succeed = ImageExport.saveBMP(ImageExport.getRenderedImage(editor), new File(editor.getFilePath()));
                     }
                     /* Tool for PNML Export */
-                    else if ( editor.getDefaultFileType() == FileFilterImpl.PNMLFilter ) {
+                    else if (editor.getDefaultFileType() == FileFilterImpl.PNMLFilter) {
                         PNMLExport pe = new PNMLExport(getMediator());
                         pe.saveToFile(editor, editor.getFilePath());
                         LoggerManager.info(Constants.FILE_LOGGER, "Petrinet saved in file: " + editor.getFilePath());
@@ -360,12 +383,12 @@ public class FileEventProcessor extends AbstractEventProcessor {
                         succeed = true;
                     }
                     // BPEL-Export
-                    else if ( editor.getDefaultFileType() == FileFilterImpl.BPELFilter && this.isSound(editor) ) {
+                    else if (editor.getDefaultFileType() == FileFilterImpl.BPELFilter && this.isSound(editor)) {
                         IQualanalysisService qualanService = QualAnalysisServiceFactory.createNewQualAnalysisService(editor);
                         int wellStruct = qualanService.getPTHandles().size() + qualanService.getTPHandles().size();
                         int freeChoice = qualanService.getFreeChoiceViolations().size();
                         int sound = wellStruct + freeChoice;
-                        if ( sound == 0 ) {
+                        if (sound == 0) {
                             succeed = BPEL.getBPELMainClass().saveFile(editor.getFilePath(), editor);
                             ConfigurationManager.getConfiguration().setCurrentWorkingdir(editor.getPathName());
                         } else {
@@ -374,11 +397,11 @@ public class FileEventProcessor extends AbstractEventProcessor {
 
                     }
                     /* Tool for TPN Export */
-                    else if ( editor.getDefaultFileType() == FileFilterImpl.TPNFilter ) {
+                    else if (editor.getDefaultFileType() == FileFilterImpl.TPNFilter) {
                         succeed = TPNExport.save(editor.getFilePath(), editor.getModelProcessor());
                         ConfigurationManager.getConfiguration().setCurrentWorkingdir(editor.getPathName());
 
-                    } else if ( editor.getDefaultFileType() == FileFilterImpl.SAMPLEFilter ) {
+                    } else if (editor.getDefaultFileType() == FileFilterImpl.SAMPLEFilter) {
                         String arg[] = {editor.getName()};
                         JOptionPane.showMessageDialog(null, Messages.getString("File.Error.SampleSave.Text", arg), Messages.getString("File.Error.SampleSave.Title"), JOptionPane.ERROR_MESSAGE);
                         succeed = false;
@@ -402,13 +425,13 @@ public class FileEventProcessor extends AbstractEventProcessor {
         boolean succeed = false;
         FileDialog fileDialog;
         JFrame frame = null;
-        if ( editor != null ) {
+        if (editor != null) {
             // Open save as Dialog
 
-            if ( ConfigurationManager.getConfiguration().isCurrentWorkingdirSet() ) {
+            if (ConfigurationManager.getConfiguration().isCurrentWorkingdirSet()) {
                 fileDialog = new FileDialog(frame, Messages.getString("Action.EditorSaveAs.Title"), FileDialog.SAVE);
                 fileDialog.setDirectory(ConfigurationManager.getConfiguration().getCurrentWorkingdir());
-            } else if ( ConfigurationManager.getConfiguration().isHomedirSet() ) {
+            } else if (ConfigurationManager.getConfiguration().isHomedirSet()) {
                 fileDialog = new FileDialog(frame, Messages.getString("Action.EditorSaveAs.Title"), FileDialog.SAVE);
                 fileDialog.setDirectory(ConfigurationManager.getConfiguration().getHomedir());
 
@@ -430,12 +453,12 @@ public class FileEventProcessor extends AbstractEventProcessor {
                 }
             });
 
-            if ( fileDialog.getFile() != null ) {
+            if (fileDialog.getFile() != null) {
                 String savePath = fileDialog.getDirectory();
                 String fileName = Utils.getQualifiedFileName(fileDialog.getFile(), extensions);
 
-                if ( !new File(savePath.concat(fileName)).exists() || (isFileOverride(null, fileDialog.getDirectory())) ) {
-                    if ( editor != null && new File(savePath).exists() ) {
+                if (!new File(savePath.concat(fileName)).exists() || (isFileOverride(null, fileDialog.getDirectory()))) {
+                    if (editor != null && new File(savePath).exists()) {
                         editor.setName(fileName);
                         editor.setPathName(savePath);
                         editor.setFilePath(savePath.concat(fileName));
@@ -471,13 +494,13 @@ public class FileEventProcessor extends AbstractEventProcessor {
         boolean succeed = false;
 
         getMediator().getUi().getComponent().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        if ( !Platform.isMac() ) {
-            if ( editor != null ) {
+        if (!Platform.isMac()) {
+            if (editor != null) {
                 // Open save as Dialog
                 JFileChooser jfc;
-                if ( ConfigurationManager.getConfiguration().isCurrentWorkingdirSet() ) {
+                if (ConfigurationManager.getConfiguration().isCurrentWorkingdirSet()) {
                     jfc = new JFileChooser(new File(ConfigurationManager.getConfiguration().getCurrentWorkingdir()));
-                } else if ( ConfigurationManager.getConfiguration().isHomedirSet() ) {
+                } else if (ConfigurationManager.getConfiguration().isHomedirSet()) {
                     jfc = new JFileChooser(new File(ConfigurationManager.getConfiguration().getHomedir()));
 
                 } else {
@@ -495,12 +518,12 @@ public class FileEventProcessor extends AbstractEventProcessor {
 
                 int returnVal = jfc.showSaveDialog(null);
 
-                if ( jfc.getSelectedFile() != null && returnVal == JFileChooser.APPROVE_OPTION ) {
+                if (jfc.getSelectedFile() != null && returnVal == JFileChooser.APPROVE_OPTION) {
                     String savePath = jfc.getSelectedFile().getAbsolutePath().substring(0, jfc.getSelectedFile().getAbsolutePath().length() - jfc.getSelectedFile().getName().length());
                     String fileName = Utils.getQualifiedFileName(jfc.getSelectedFile().getName(), extensions);
 
-                    if ( !new File(savePath.concat(fileName)).exists() || (isFileOverride(null, jfc.getSelectedFile().getPath())) ) {
-                        if ( editor != null && new File(savePath).exists() ) {
+                    if (!new File(savePath.concat(fileName)).exists() || (isFileOverride(null, jfc.getSelectedFile().getPath()))) {
+                        if (editor != null && new File(savePath).exists()) {
                             // setting the Default File Type
                             editor.setDefaultFileType(((FileFilterImpl) jfc.getFileFilter()).getFilterType());
                             // setting the new filename to editor, and Title to
@@ -535,12 +558,12 @@ public class FileEventProcessor extends AbstractEventProcessor {
         FileDialog fileDialog;
         String fn;
 
-        if ( !Platform.isMac() ) {
+        if (!Platform.isMac()) {
 
-            if ( ConfigurationManager.getConfiguration().isCurrentWorkingdirSet() ) {
+            if (ConfigurationManager.getConfiguration().isCurrentWorkingdirSet()) {
                 fn = ConfigurationManager.getConfiguration().getCurrentWorkingdir();
                 fileChooser = new JFileChooser(new File(fn));
-            } else if ( ConfigurationManager.getConfiguration().isHomedirSet() ) {
+            } else if (ConfigurationManager.getConfiguration().isHomedirSet()) {
                 fn = ConfigurationManager.getConfiguration().getHomedir();
                 fileChooser = new JFileChooser(new File(fn));
             } else {
@@ -564,7 +587,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
             fileChooser.setFileFilter(new FileFilterImpl(FileFilterImpl.PNMLFilter, "Petri Net Markup Language (1.3.2) (*.pnml)", "pnml"));
             fileChooser.showOpenDialog(null);
 
-            if ( fileChooser.getSelectedFile() != null ) {
+            if (fileChooser.getSelectedFile() != null) {
                 String abspath = fileChooser.getSelectedFile().getAbsolutePath();
                 ConfigurationManager.getConfiguration().setCurrentWorkingdir(abspath.substring(0, abspath.lastIndexOf(File.separator)));
                 return openFile(fileChooser.getSelectedFile(), ((FileFilterImpl) fileChooser.getFileFilter()).getFilterType());
@@ -572,11 +595,11 @@ public class FileEventProcessor extends AbstractEventProcessor {
         } else {
             JFrame frame = null;
             // Mac part, let's do the same with the awt.FileDialog
-            if ( ConfigurationManager.getConfiguration().isCurrentWorkingdirSet() ) {
+            if (ConfigurationManager.getConfiguration().isCurrentWorkingdirSet()) {
                 fn = ConfigurationManager.getConfiguration().getCurrentWorkingdir();
                 fileDialog = new FileDialog(frame, "Choose a file", FileDialog.LOAD);
                 fileDialog.setDirectory(fn);
-            } else if ( ConfigurationManager.getConfiguration().isHomedirSet() ) {
+            } else if (ConfigurationManager.getConfiguration().isHomedirSet()) {
                 fn = ConfigurationManager.getConfiguration().getHomedir();
                 fileDialog = new FileDialog(frame, "Choose a file", FileDialog.LOAD);
                 fileDialog.setDirectory(fn);
@@ -592,7 +615,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
             });
 
             fileDialog.setVisible(true);
-            if ( fileDialog.getFile() != null ) {
+            if (fileDialog.getFile() != null) {
                 String abspath = fileDialog.getDirectory() + fileDialog.getFile();
                 ConfigurationManager.getConfiguration().setCurrentWorkingdir(abspath.substring(0, abspath.lastIndexOf(File.separator)));
                 // set new file object and pass it to the open file method.
@@ -616,11 +639,11 @@ public class FileEventProcessor extends AbstractEventProcessor {
         final PNMLImport pnmlImport;
 
         getMediator().getUi().getComponent().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        if ( filter == FileFilterImpl.PNMLFilter || filter == FileFilterImpl.SAMPLEFilter || filter == FileFilterImpl.YAWLFilter ) {
+        if (filter == FileFilterImpl.PNMLFilter || filter == FileFilterImpl.SAMPLEFilter || filter == FileFilterImpl.YAWLFilter) {
 
             IViewController[] iVC = getMediator().findViewController(IStatusBar.TYPE);
             IStatusBar[] iSB = new IStatusBar[iVC.length];
-            for ( int i = 0; i < iSB.length; i++ ) {
+            for (int i = 0; i < iSB.length; i++) {
                 iSB[i] = (IStatusBar) iVC[i];
             }
 
@@ -635,7 +658,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
             pnmlImport = null;
         }
 
-        if ( pnmlImport != null ) {
+        if (pnmlImport != null) {
             boolean loadSuccess = false;
             InputStream inputStream;
 
@@ -654,7 +677,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
                         loadSuccess = pnmlImport.run(inputStream, null);
 
 					/*
-					 * if (!loadSuccess)
+                     * if (!loadSuccess)
 					 * LoggerManager.error(Constants.FILE_LOGGER,
 					 * "Could not open InputStream. " + file.getAbsolutePath());
 					 */
@@ -690,21 +713,21 @@ public class FileEventProcessor extends AbstractEventProcessor {
                     break;
             } // end switch(filter) {...}
 
-            if ( loadSuccess ) {
+            if (loadSuccess) {
                 editor = pnmlImport.getEditor()[pnmlImport.getEditor().length - 1];
-                for ( int i = 0; i < pnmlImport.getEditor().length; i++ ) {
-                    if ( editor instanceof EditorVC ) {
+                for (int i = 0; i < pnmlImport.getEditor().length; i++) {
+                    if (editor instanceof EditorVC) {
                         ((EditorVC) pnmlImport.getEditor()[i]).setDefaultFileType(filter);
                         pnmlImport.getEditor()[i].setName(file.getName());
                         ((EditorVC) pnmlImport.getEditor()[i]).setFilePath(file.getAbsolutePath());
                     }
                     // add recent
                     String abspath = file.getAbsolutePath();
-                    if ( filter == FileFilterImpl.PNMLFilter ) {
+                    if (filter == FileFilterImpl.PNMLFilter) {
                         ConfigurationManager.getConfiguration().addRecentFile(file.getName(), file.getAbsolutePath());
                         ConfigurationManager.getConfiguration().setCurrentWorkingdir(abspath.substring(0, abspath.lastIndexOf(File.separator)));
                     }
-                    if ( filter != FileFilterImpl.SAMPLEFilter ) {
+                    if (filter != FileFilterImpl.SAMPLEFilter) {
                         // ConfigurationManager.getConfiguration().setCurrentWorkingdir(abspath.substring(0,abspath.lastIndexOf(File.separator)));
                     }
                     // add Editor
