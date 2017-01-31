@@ -16,8 +16,7 @@ public class ProgressDetailsView extends JPanel {
     private GridBagConstraints c;
 
     public ProgressDetailsView() {
-        this.setOpaque(true);
-        this.setBackground(Color.pink);
+        this.setOpaque(false);
         this.setLayout(new GridBagLayout());
 
         c = new GridBagConstraints();
@@ -69,14 +68,6 @@ public class ProgressDetailsView extends JPanel {
         updateSize();
     }
 
-    private void updateSize() {
-        this.validate();
-        this.repaint();
-        Dimension preferredSize = this.getPreferredSize();
-
-        this.setMaximumSize(new Dimension(248, preferredSize.height));
-    }
-
     /**
      * Adds an text to the actions section of the view.
      * <p>
@@ -103,8 +94,6 @@ public class ProgressDetailsView extends JPanel {
 
     private void createHeader() {
         header = new JLabel();
-        header.setBackground(Color.GREEN);
-        header.setOpaque(true);
 
         c.gridy = 0;
         this.add(header, c);
@@ -112,8 +101,7 @@ public class ProgressDetailsView extends JPanel {
 
     private void createDetailPanel() {
         detailsPanel = new JPanel(new GridBagLayout());
-        detailsPanel.setOpaque(true);
-        detailsPanel.setBackground(Color.RED);
+        detailsPanel.setOpaque(false);
 
         c.gridy = 1;
         this.add(detailsPanel, c);
@@ -121,13 +109,21 @@ public class ProgressDetailsView extends JPanel {
 
     private void createActionsPanel() {
         actionsPanel = new JPanel();
-        actionsPanel.setBackground(Color.blue);
+        actionsPanel.setOpaque(false);
         actionsPanel.setBorder(new EmptyBorder(10, 0, 0, 0));
-        actionsPanel.setOpaque(true);
         actionsPanel.setLayout(new BoxLayout(actionsPanel, BoxLayout.PAGE_AXIS));
 
         c.gridy = 2;
         c.weighty = 1;
         this.add(actionsPanel, c);
+    }
+
+    private void updateSize() {
+        this.validate();
+        this.repaint();
+
+        Dimension preferredSize = this.getPreferredSize();
+        int MAX_WIDTH = 248; // Available width with active scrollbar if the sidebar has a width of 300
+        this.setMaximumSize(new Dimension(MAX_WIDTH, preferredSize.height));
     }
 }
