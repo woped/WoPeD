@@ -59,7 +59,7 @@ public class TransitionPropertyEditor extends JDialog implements
     private static final String COMBOBOX_HOURS_TEXT = Messages.getString("Transition.Properties.Hours");
     private static final String COMBOBOX_MINUTES_TEXT = Messages.getString("Transition.Properties.Minutes");
     private static final String COMBOBOX_SECONDS_TEXT = Messages.getString("Transition.Properties.Seconds");
-    private static final Object[] serviceTimeValues = {COMBOBOX_SECONDS_TEXT, COMBOBOX_MINUTES_TEXT, COMBOBOX_HOURS_TEXT, COMBOBOX_DAYS_TEXT, COMBOBOX_WEEKS_TEXT, COMBOBOX_MONTHS_TEXT, COMBOBOX_YEARS_TEXT};
+    private static final String[] serviceTimeValues = {COMBOBOX_SECONDS_TEXT, COMBOBOX_MINUTES_TEXT, COMBOBOX_HOURS_TEXT, COMBOBOX_DAYS_TEXT, COMBOBOX_WEEKS_TEXT, COMBOBOX_MONTHS_TEXT, COMBOBOX_YEARS_TEXT};
     private static final String TRIGGER_NONE = Messages.getString("Transition.Properties.Trigger.None");
     private static final String TRIGGER_MESSAGE = Messages.getString("Transition.Properties.Trigger.Message");
     private static final String TRIGGER_RESOURCE = Messages.getString("Transition.Properties.Trigger.Resource");
@@ -134,15 +134,6 @@ public class TransitionPropertyEditor extends JDialog implements
 
 	private JComboBox<String> serviceTimeComboBox = null;
 
-	private static final String COMBOBOX_YEARS_TEXT = Messages.getString("Transition.Properties.Years");
-	private static final String COMBOBOX_MONTHS_TEXT = Messages.getString("Transition.Properties.Months");
-	private static final String COMBOBOX_WEEKS_TEXT = Messages.getString("Transition.Properties.Weeks");
-	private static final String COMBOBOX_DAYS_TEXT = Messages.getString("Transition.Properties.Days");
-	private static final String COMBOBOX_HOURS_TEXT = Messages.getString("Transition.Properties.Hours");
-	private static final String COMBOBOX_MINUTES_TEXT = Messages.getString("Transition.Properties.Minutes");
-    private static final String COMBOBOX_SECONDS_TEXT = Messages.getString("Transition.Properties.Seconds");
-	private static final String[] serviceTimeValues = { COMBOBOX_SECONDS_TEXT, COMBOBOX_MINUTES_TEXT, COMBOBOX_HOURS_TEXT, COMBOBOX_DAYS_TEXT, COMBOBOX_WEEKS_TEXT, COMBOBOX_MONTHS_TEXT, COMBOBOX_YEARS_TEXT };
-	private JComboBox serviceTimeComboBox = null;
 	private String oldTime;
 	private String oldTimeUnit;
 	// Trigger

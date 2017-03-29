@@ -174,22 +174,6 @@ private TokenGameController m_tokenGameController;
         }
     }
 
-    /* ########## ELEMENT CREATION METHODS ########### */
-
-	public void closeEditor() {
-		if (getGraph() == null)
-			return;
-		this.fireViewEvent(new ViewEvent(this,
-				AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.CLOSE,
-				null));
-		clearYourself();
-		System.gc();
-		try {
-			Thread.sleep(1000);
-		} catch (Exception e) {
-		}
-	}
-
 	/**
      * Empty constructor only for testing purposes.
      */
@@ -424,23 +408,13 @@ private TokenGameController m_tokenGameController;
 				}
 
                 // edit
-                if ( editNameTag && ConfigurationManager.getConfiguration().isEditingOnCreation() && map.isEditOnCreation() && isSmartEditActive() ) {
+                if ( editNameTag && ConfigurationManager.getConfiguration().isEditingOnCreation()
+                        && map.isEditOnCreation() && isSmartEditActive() ) {
                     getGraph().startEditingAtCell(element.getNameModel());
                 }
                 getEditorPanel().autoRefreshAnalysisBar();
                 return group;
             }
-				// edit
-				if (editNameTag
-						&& ConfigurationManager.getConfiguration()
-								.isEditingOnCreation()
-						&& map.isEditOnCreation() && isSmartEditActive()) {
-					getGraph().startEditingAtCell(
-							element.getNameModel());
-				}
-				getEditorPanel().autoRefreshAnalysisBar();
-				return group;
-			}
 
             getEditorPanel().getUnderstandColoring().update();
             return element;
@@ -804,7 +778,7 @@ private TokenGameController m_tokenGameController;
 
 	/**
 	 * TODO: DOCUMENTATION (xraven)
-	 * /
+	 */
 
 	public void undo() {
 		doConfirmation = false; // Confirmation is done in Undo Handling
@@ -815,7 +789,7 @@ private TokenGameController m_tokenGameController;
 
 	/**
 	 * TODO: DOCUMENTATION (xraven)
-	 * /
+	 */
 
 	public void redo() {
 		doConfirmation = false; // Confirmation is done in Redo Handling
@@ -1737,16 +1711,6 @@ private TokenGameController m_tokenGameController;
         this.m_pathname = pathname;
 	}
 
-	/**
-	 * Returns the filepath if the net was saved before or was opened from a
-	 * file.
-	 *
-	 * @return String
-	 */
-	public String getFilePath() {
-		return m_filepath;
-    }
-
     /**
      * Returns the filepath if the net was saved before or was opened from a
      * file.
@@ -1809,8 +1773,6 @@ private TokenGameController m_tokenGameController;
     {
         setDrawingMode(active);
         setCreateElementType(type);
-    }public boolean getDrawingMode() {
-        return m_drawingMode;
     }
 
 	/**
