@@ -236,7 +236,7 @@
 				<arg line="/c java -jar launch4j.jar buildexe.xml" />
 			</exec>
 			<exec dir="dist" executable="cmd">
-				<arg line="/c java -jar ../WoPeD-CommonLibs/lib/compiler.jar install.xml -o launch/WoPeD-install-windows.jar" />
+				<arg line="/c java -jar ../../WoPeD-IZPack/lib/compiler.jar install.xml -o launch/WoPeD-install-windows.jar" />
 			</exec>
 
 			<exec dir="dist/launch" executable="cmd">
@@ -281,7 +281,7 @@
         		icon="dist/WoPeD.icns"
  		        applicationCategory="public.app-category.developer-tools"
 		        mainclassname="org.woped.starter.RunWoPeD"
-       	 		copyright="WoPeD copyright 2014">
+       	 		copyright="WoPeD copyright 2017">
  	            <option value="-Dapple.laf.useScreenMenuBar=true"/>
 		</bundleapp>
 

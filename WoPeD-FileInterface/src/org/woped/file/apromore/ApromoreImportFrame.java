@@ -34,7 +34,6 @@ public class ApromoreImportFrame extends AbstractApromoreFrame {
 		this.setModal(true);
 		loadProcessList();
 		this.setVisible(true);
-
 	}
 
 	private void initialize() {
@@ -64,7 +63,6 @@ public class ApromoreImportFrame extends AbstractApromoreFrame {
 					importing = true;
 
 					loadImport();
-
 				}
 			}
 		});
@@ -78,16 +76,11 @@ public class ApromoreImportFrame extends AbstractApromoreFrame {
 		if (buttonPanel == null) {
 
 			buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-//			buttonPanel.setBorder(BorderFactory.createCompoundBorder(
-//					BorderFactory.createTitledBorder(Messages
-//							.getString("Apromore.UI.ButoonPanelImport")),
-//					BorderFactory.createEmptyBorder(0, 2, 0, 2)));
 
 			buttonPanel.add(getImportButton());
 			buttonPanel.add(getUpdateButton());
 			buttonPanel.add(getCancelButton());
 			buttonPanel.add(getWopedProgressBar());
-
 		}
 
 		return buttonPanel;
@@ -106,9 +99,7 @@ public class ApromoreImportFrame extends AbstractApromoreFrame {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-
 					loadImport();
-
 				}
 			});
 		}
@@ -125,7 +116,6 @@ public class ApromoreImportFrame extends AbstractApromoreFrame {
 
 				if (importWorker != null) {
 					importWorker.cancel(true);
-
 				}
 
 				importWorker = new ImportWorker(ApromoreImportFrame.this);

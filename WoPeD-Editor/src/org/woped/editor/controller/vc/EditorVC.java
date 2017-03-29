@@ -122,18 +122,19 @@ public class EditorVC implements KeyListener, MouseWheelListener, GraphModelList
     private boolean smartEditActive = true;
     private IEditorProperties elementProperties = null;
 
-
-    // Metrics team variables
-    // ViewControll
-    private Vector<IViewListener> viewListener = new Vector<IViewListener>(1, 3);
-    private TokenGameController m_tokenGameController;
-    /**
+	// Metrics team variables// Metrics team variables
+	//ViewControll
+	private Vector<IViewListener> viewListener = new Vector<IViewListener>(1, 3);
+private TokenGameController m_tokenGameController;
+	/**
      * Invoked after any changes in the net.
-     *
-     * @see GraphSelectionListener#valueChanged(org.jgraph.event.GraphSelectionEvent)
-     */
-    private boolean valueChangedActive = false;
-    private QuantitativeSimulationDialog simDlg;
+	*
+	* @see GraphSelectionListener#valueChanged(org.jgraph.event.GraphSelectionEvent)
+	*/
+
+	private boolean valueChangedActive = false;
+
+	private QuantitativeSimulationDialog simDlg;
 
     public EditorVC(String id, EditorClipboard clipboard, boolean undoSupport, AbstractApplicationMediator mediator) {
         this(id, clipboard, undoSupport, mediator, true);
@@ -173,7 +174,23 @@ public class EditorVC implements KeyListener, MouseWheelListener, GraphModelList
         }
     }
 
-    /**
+    /* ########## ELEMENT CREATION METHODS ########### */
+
+	public void closeEditor() {
+		if (getGraph() == null)
+			return;
+		this.fireViewEvent(new ViewEvent(this,
+				AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.CLOSE,
+				null));
+		clearYourself();
+		System.gc();
+		try {
+			Thread.sleep(1000);
+		} catch (Exception e) {
+		}
+	}
+
+	/**
      * Empty constructor only for testing purposes.
      */
     public EditorVC() {
@@ -218,9 +235,10 @@ public class EditorVC implements KeyListener, MouseWheelListener, GraphModelList
                 deleteCell(((TransitionModel) transition).getToolSpecific().getTrigger(), true);
             }
 
-            if ( transition.getParent() instanceof GroupModel ) {
-                GroupModel group = (GroupModel) transition.getParent();
-                TriggerModel triggerModel = getModelProcessor().newTrigger(map);
+			if (transition.getParent() instanceof GroupModel) {
+				GroupModel group = (GroupModel) transition.getParent();
+				TriggerModel triggerModel =  getModelProcessor()
+				.newTrigger(map);
 
                 if ( map.getTriggerPosition() != null ) {
                     triggerModel.setPosition(map.getTriggerPosition());
@@ -247,14 +265,16 @@ public class EditorVC implements KeyListener, MouseWheelListener, GraphModelList
 
     public TriggerModel createTriggerForPaste(CreationMap map, TransitionModel transition) {
 
-        if ( transition != null && transition instanceof TransitionModel ) {
-            if ( transition.hasTrigger() ) {
-                deleteCell(transition.getToolSpecific().getTrigger(), true);
-            }
+		if (transition != null && transition instanceof TransitionModel) {
+			if ( transition.hasTrigger()) {
+				deleteCell( transition.getToolSpecific()
+						.getTrigger(), true);
+			}
 
-            if ( transition.getParent() instanceof GroupModel ) {
-                GroupModel group = (GroupModel) transition.getParent();
-                TriggerModel triggerModel = getModelProcessor().newTrigger(map);
+			if (transition.getParent() instanceof GroupModel) {
+				GroupModel group = (GroupModel) transition.getParent();
+				TriggerModel triggerModel =  getModelProcessor()
+						.newTrigger(map);
 
                 if ( map.getTriggerPosition() != null ) {
                     triggerModel.setPosition(map.getTriggerPosition());
@@ -292,9 +312,10 @@ public class EditorVC implements KeyListener, MouseWheelListener, GraphModelList
                 deleteCell(((TransitionModel) transition).getToolSpecific().getTransResource(), true);
             }
 
-            if ( transition.getParent() instanceof GroupModel ) {
-                GroupModel group = (GroupModel) transition.getParent();
-                TransitionResourceModel transResourceModell = getModelProcessor().newTransResource(map);
+			if (transition.getParent() instanceof GroupModel) {
+				GroupModel group = (GroupModel) transition.getParent();
+				TransitionResourceModel transResourceModell =  getModelProcessor()
+						.newTransResource(map);
 
                 transResourceModell.setPosition(map.getResourcePosition().x, map.getResourcePosition().y);
                 ParentMap pm = new ParentMap();
@@ -344,47 +365,63 @@ public class EditorVC implements KeyListener, MouseWheelListener, GraphModelList
             // id of the sub-process
             AbstractPetriNetElementModel element = getModelProcessor().createElement(map);
 
-            // ensure that There is an Position
-            if ( map.getPosition() != null ) {
-                Point point = new Point(map.getPosition().x, map.getPosition().y);
-                // map.setPosition(new IntPair());
-                element.setPosition(getGraph().snap(point));
-            } else if ( getLastMousePosition() != null ) {
-                Point point = new Point((int) ((getLastMousePosition().getX() / getGraph().getScale() - element.getWidth() / 2)), (int) ((getLastMousePosition().getY() / getGraph().getScale() - element.getHeight() / 2)));
-                // map.setPosition(new IntPair((Point) getGraph().snap(point)));
-                element.setPosition(getGraph().snap(point));
-            } else {
-                map.setPosition(30, 30);
-            }
-            if ( element instanceof AbstractPetriNetElementModel ) {
-                // Name position
-                if ( map.getNamePosition() == null ) {
-                    if ( isRotateSelected() ) {
-                        element.getNameModel().setPosition((element.getX() + element.getWidth()), (element.getY()) + 1);
-                    } else {
-                        element.getNameModel().setPosition((element.getX() - 1), (element.getY() + element.getHeight()));
-                    }
-                } else {
-                    element.getNameModel().setPosition(map.getNamePosition().x, map.getNamePosition().y);
-                }
-                if ( map.getName() == null ) {
-                    element.setNameValue(element.getId().toString());
-                } else {
-                    element.setNameValue(map.getName());
-                }
-                if ( map.getReadOnly() != null ) {
-                    element.setReadOnly(map.getReadOnly());
-                }
-                // Grouping
-                GroupModel group = getGraph().groupName(element, element.getNameModel());
-                group.setUngroupable(false);
-                // System.err.println("In createElement Method - the created elemetn"
-                // + element.toString());
-                group.add(element);
-                group.add(element.getNameModel());
-                if ( insertIntoCache ) {
-                    getGraph().getGraphLayoutCache().insert(group);
-                }
+			// ensure that There is an Position
+			if (map.getPosition() != null) {
+				Point point = new Point(map.getPosition().x,
+						map.getPosition().y);
+				// map.setPosition(new IntPair());
+				element.setPosition(getGraph().snap(point));
+			} else if (getLastMousePosition() != null) {
+				Point point = new Point(
+						(int) ((getLastMousePosition().getX()
+								/ getGraph().getScale() - element.getWidth() / 2)),
+						(int) ((getLastMousePosition().getY()
+								/ getGraph().getScale() - element.getHeight() / 2)));
+				// map.setPosition(new IntPair((Point) getGraph().snap(point)));
+				element.setPosition(getGraph().snap(point));
+			} else {
+				map.setPosition(30, 30);
+			}
+			if (element instanceof AbstractPetriNetElementModel) {
+				// Name position
+				if (map.getNamePosition() == null) {
+					if (isRotateSelected()) {
+						 element.getNameModel()
+								.setPosition(
+										(element.getX() + element.getWidth()),
+										(element.getY()) + 1);
+					} else {
+						 element.getNameModel()
+								.setPosition((element.getX() - 1),
+										(element.getY() + element.getHeight()));
+					}
+				} else {
+					 element.getNameModel()
+							.setPosition(map.getNamePosition().x,
+									map.getNamePosition().y);
+				}
+				if (map.getName() == null) {
+					 element.setNameValue(element
+							.getId().toString());
+				} else {
+					 element
+							.setNameValue(map.getName());
+				}
+				if (map.getReadOnly() != null) {
+					 element.setReadOnly(map
+							.getReadOnly());
+				}
+				// Grouping
+				GroupModel group = getGraph().groupName(element,
+						 element.getNameModel());
+				group.setUngroupable(false);
+				// System.err.println("In createElement Method - the created elemetn"
+				// + element.toString());
+				group.add(element);
+				group.add(element.getNameModel());
+				if (insertIntoCache) {
+					getGraph().getGraphLayoutCache().insert(group);
+				}
 
                 // edit
                 if ( editNameTag && ConfigurationManager.getConfiguration().isEditingOnCreation() && map.isEditOnCreation() && isSmartEditActive() ) {
@@ -393,6 +430,17 @@ public class EditorVC implements KeyListener, MouseWheelListener, GraphModelList
                 getEditorPanel().autoRefreshAnalysisBar();
                 return group;
             }
+				// edit
+				if (editNameTag
+						&& ConfigurationManager.getConfiguration()
+								.isEditingOnCreation()
+						&& map.isEditOnCreation() && isSmartEditActive()) {
+					getGraph().startEditingAtCell(
+							element.getNameModel());
+				}
+				getEditorPanel().autoRefreshAnalysisBar();
+				return group;
+			}
 
             getEditorPanel().getUnderstandColoring().update();
             return element;
@@ -654,18 +702,18 @@ public class EditorVC implements KeyListener, MouseWheelListener, GraphModelList
         deleteCell(cell, true);
     }
 
-	/* ########## ELEMENT MODIFICATION METHODS ########### */
+	/*########## ELEMENT MODIFICATION METHODS ########### */
 
     /**
-     * TODO: DOCUMENTATION (xraven)
-     *
-     * @param cell
-     */
-    public void deleteCell(DefaultGraphCell cell, boolean withGraph) {
-        if ( cell != null ) {
-            deleteCells(new Object[]{cell}, withGraph);
-        }
-    }
+	 * TODO: DOCUMENTATION (xraven)
+	 * 
+	 * @param cell
+	 */
+	public void deleteCell(DefaultGraphCell cell, boolean withGraph) {
+		if (cell != null) {
+			deleteCells(new Object[] { cell }, withGraph);
+		}
+	}
 
     /**
      * Deletes all selected Elements. All connected Arc of selected Elements
@@ -754,25 +802,27 @@ public class EditorVC implements KeyListener, MouseWheelListener, GraphModelList
         return selectedArc;
     }
 
-    /**
-     * TODO: DOCUMENTATION (xraven)
-     */
-    public void undo() {
-        doConfirmation = false; // Confirmation is done in Undo Handling
-        copyFlag = false;
-        getGraph().undo();
-        doConfirmation = true; // Enable Confirmation again
-    }
+	/**
+	 * TODO: DOCUMENTATION (xraven)
+	 * /
 
-    /**
-     * TODO: DOCUMENTATION (xraven)
-     */
-    public void redo() {
-        doConfirmation = false; // Confirmation is done in Redo Handling
-        copyFlag = false;
-        getGraph().redo();
-        doConfirmation = true; // Enable Confirmation again
-    }
+	public void undo() {
+		doConfirmation = false; // Confirmation is done in Undo Handling
+		copyFlag = false;
+		getGraph().undo();
+		doConfirmation = true; // Enable Confirmation again
+	}
+
+	/**
+	 * TODO: DOCUMENTATION (xraven)
+	 * /
+
+	public void redo() {
+		doConfirmation = false; // Confirmation is done in Redo Handling
+		copyFlag = false;
+		getGraph().redo();
+		doConfirmation = true; // Enable Confirmation again
+	}
 
     /**
      * TODO: DOCUMENTATION (silenco)
@@ -1092,70 +1142,76 @@ public class EditorVC implements KeyListener, MouseWheelListener, GraphModelList
         getEditorPanel().getUnderstandColoring().update();
     }
 
-    /**
-     * Moves all Elementes in the Object-Array <code>toMove</code>
-     * <code>dx</code> in x-direction and <code>dy</code> in y-direction.
-     *
-     * @param toMove
-     * @param dx
-     * @param dy
-     */
-    public void move(Object toMove[], int dx, int dy) {
-        move(toMove, dx, dy, null, false);
-    }
+	/**
+	 * Moves all Elementes in the Object-Array <code>toMove</code>
+	 * <code>dx</code> in x-direction and <code>dy</code> in y-direction.
+	 * 
+	 * @param toMove
+	 * @param dx
+	 * @param dy
+	 */
+	public void move(Object toMove[], int dx, int dy) {
+		move(toMove, dx, dy, null, false);
+	}
 
-	/* ########## View and utils methods ########### */
-
-    private void move(Object toMove[], int dx, int dy, HashMap<GraphCell, AttributeMap> changes, boolean isrecursiv) {
-        if ( changes == null ) {
-            changes = new HashMap<GraphCell, AttributeMap>();
-        }
-        for ( short i = 0; i < toMove.length; i++ ) {
-            if ( toMove[i] instanceof DefaultGraphCell ) {
-                DefaultGraphCell tempCell = (DefaultGraphCell) toMove[i];
-                if ( tempCell.getChildCount() > 0 ) {
-                    move(tempCell.getChildren().toArray(), dx, dy, changes, true);
-                }
-            }
-            if ( toMove[i] instanceof GraphCell ) {
-                GraphCell noGroupElement = (GraphCell) toMove[i];
-                AttributeMap tempMap = (AttributeMap) noGroupElement.getAttributes().clone();
-                AttributeMap newMap = new AttributeMap();
-                Rectangle2D bounds = GraphConstants.getBounds(tempMap);
-                List<?> points = GraphConstants.getPoints(tempMap);
-                if ( bounds != null ) {
-                    bounds = new Rectangle((int) bounds.getX() + dx, (int) bounds.getY() + dy, (int) bounds.getWidth(), (int) bounds.getHeight());
-                    AttributeMap changeMap = changes.get(noGroupElement);
-                    if ( changeMap == null ) {
-                        changeMap = new AttributeMap();
-                        changes.put(noGroupElement, changeMap);
-                    }
-                    changeMap.applyValue(GraphConstants.BOUNDS, bounds);
-                    // tempMap.applyValue(GraphConstants.BOUNDS, bounds);
-                    // noGroupElement.changeAttributes(tempMap);
-                }
-                if ( points != null ) {
-                    Vector<Point2D> newPoints = new Vector<Point2D>();
-                    Point2D tempPoint;
-                    for ( short k = 0; k < points.size(); k++ ) {
-                        if ( points.get(k) instanceof PortView ) {
-                            tempPoint = ((PortView) points.get(k)).getLocation();
-                        } else {
-                            tempPoint = (Point2D) points.get(k);
-                        }
-                        if ( k == 0 || k == points.size() - 1 ) {
-                            newPoints.add(new Point2D.Double(tempPoint.getX(), tempPoint.getY()));
-                        } else {
-                            newPoints.add(new Point2D.Double(tempPoint.getX() + dx, tempPoint.getY() + dy));
-                        }
-                    }
-                    if ( newPoints.size() > 2 ) {
-                        GraphConstants.setPoints(newMap, newPoints);
-                    }
-                }
-                if ( newMap.size() > 0 ) {
-                    changes.put(noGroupElement, newMap);
-                }
+	/* ########## View and utils methods ########### */private void move(Object toMove[], int dx, int dy,
+			HashMap<GraphCell, AttributeMap> changes, boolean isrecursiv) {
+		if (changes == null) {
+			changes = new HashMap<GraphCell, AttributeMap>();
+		}
+		for (short i = 0; i < toMove.length; i++) {
+			if (toMove[i] instanceof DefaultGraphCell) {
+				DefaultGraphCell tempCell = (DefaultGraphCell) toMove[i];
+				if (tempCell.getChildCount() > 0) {
+					move(tempCell.getChildren().toArray(), dx, dy, changes,
+							true);
+				}
+			}
+			if (toMove[i] instanceof GraphCell) {
+				GraphCell noGroupElement = (GraphCell) toMove[i];
+				AttributeMap tempMap = (AttributeMap) noGroupElement
+						.getAttributes().clone();
+				AttributeMap newMap = new AttributeMap();
+				Rectangle2D bounds = GraphConstants.getBounds(tempMap);
+				List<?> points = GraphConstants.getPoints(tempMap);
+				if (bounds != null) {
+					bounds = new Rectangle((int) bounds.getX() + dx,
+							(int) bounds.getY() + dy, (int) bounds.getWidth(),
+							(int) bounds.getHeight());
+					AttributeMap changeMap = changes.get(noGroupElement);
+					if (changeMap == null) {
+						changeMap = new AttributeMap();
+						changes.put(noGroupElement, changeMap);
+					}
+					changeMap.applyValue(GraphConstants.BOUNDS, bounds);
+					// tempMap.applyValue(GraphConstants.BOUNDS, bounds);
+					// noGroupElement.changeAttributes(tempMap);
+				}
+				if (points != null) {
+					Vector<Point2D> newPoints = new Vector<Point2D>();
+					Point2D tempPoint;
+					for (short k = 0; k < points.size(); k++) {
+						if (points.get(k) instanceof PortView) {
+							tempPoint = ((PortView) points.get(k))
+									.getLocation();
+						} else {
+							tempPoint = (Point2D) points.get(k);
+						}
+						if (k == 0 || k == points.size() - 1) {
+							newPoints.add(new Point2D.Double(tempPoint.getX(),
+									tempPoint.getY()));
+						} else {
+							newPoints.add(new Point2D.Double(tempPoint.getX()
+									+ dx, tempPoint.getY() + dy));
+						}
+					}
+					if (newPoints.size() > 2) {
+						GraphConstants.setPoints(newMap, newPoints);
+					}
+				}
+				if (newMap.size() > 0) {
+					changes.put(noGroupElement, newMap);
+				}
 
             }
         }
@@ -1165,6 +1221,8 @@ public class EditorVC implements KeyListener, MouseWheelListener, GraphModelList
             updateNet();
         }
     }
+
+	/* ########## View and utils methods ########### */
 
 	/* ########## View and utils methods ########### */
 
@@ -1211,44 +1269,43 @@ public class EditorVC implements KeyListener, MouseWheelListener, GraphModelList
 
         m_propertyChangeSupport.firePropertyChange("TokenGameMode", null, null);
     }
-
 	/* ########## View and utils methods ########### */
+	/**
+	 * Disable TokenGame Mode for this net. <br>
+	 * In TokenGame-Mode the net is not editable, but you call pefrorm a simple
+	 * token movements.
+	 * 
+	 * @see TokenGameController
+	 */
+	public void disableTokenGame() {
+		if (!isTokenGameEnabled()) {
+			LoggerManager.error(Constants.EDITOR_LOGGER, "TokenGame not running");
+			return;
+		}
+		
+		LoggerManager.debug(Constants.EDITOR_LOGGER, "STOP TokenGame");
+		tokenGameEnabled = false;
+		m_tokenGameController.stop();
+		m_mediator.getUi().refreshFocusOnFrames();
+		
+		m_propertyChangeSupport.firePropertyChange("TokenGameMode", null, null);
 
-    /**
-     * Disable TokenGame Mode for this net. <br>
-     * In TokenGame-Mode the net is not editable, but you call pefrorm a simple
-     * token movements.
-     *
-     * @see TokenGameController
-     */
-    public void disableTokenGame() {
-        if ( !isTokenGameEnabled() ) {
-            LoggerManager.error(Constants.EDITOR_LOGGER, "TokenGame not running");
-            return;
-        }
-
-        LoggerManager.debug(Constants.EDITOR_LOGGER, "STOP TokenGame");
-        tokenGameEnabled = false;
-        m_tokenGameController.stop();
-        m_mediator.getUi().refreshFocusOnFrames();
-
-        m_propertyChangeSupport.firePropertyChange("TokenGameMode", null, null);
-    }
-
-    /**
-     * Terminates a running token game session this net is part of.
-     * A token game session spans across multiple nets if sub processes exist.
-     * This method will close all sub processes and reset the token game to
-     * it's initial state, then will disable the token game for the top net
-     */
-    public void terminateTokenGameSession() {
-        if ( !isTokenGameEnabled() ) {
-            LoggerManager.error(Constants.EDITOR_LOGGER, "TokenGame not running");
-            return;
-        }
-
-        m_tokenGameController.getRemoteControl().terminateTokenGameSession();
-    }
+	}
+	
+	/**
+	 * Terminates a running token game session this net is part of.
+	 * A token game session spans across multiple nets if sub processes exist.
+	 * This method will close all sub processes and reset the token game to 
+	 * it's initial state, then will disable the token game for the top net
+	 */
+	public void terminateTokenGameSession() {
+		if (!isTokenGameEnabled()) {
+			LoggerManager.error(Constants.EDITOR_LOGGER, "TokenGame not running");
+			return;
+		}
+		
+		m_tokenGameController.getRemoteControl().terminateTokenGameSession();
+	}
 
 	/* ########## LISTENER METHODS ########## */
 
@@ -1318,17 +1375,21 @@ public class EditorVC implements KeyListener, MouseWheelListener, GraphModelList
             getEditorPanel().m_statusbar.updateStatus();
         }
 
-        fireViewEvent(new EditorViewEvent(this, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.ZOOMED, new Double(scale * 100)));
-    }
+		fireViewEvent(new EditorViewEvent(this,
+				AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.ZOOMED,
+				new Double(scale * 100)));
+	}
 
-    public void valueChanged(GraphSelectionEvent arg0) {
-        if ( valueChangedActive ) {
-            // Do not call ourselves endlessly
-            // We have to make a call to setSelectionCells()
-            // which once again would trigger this method call
-            // This is by design.
-            return;
-        }
+
+
+	public void valueChanged(GraphSelectionEvent arg0) {
+		if (valueChangedActive) {
+			// Do not call ourselves endlessly
+			// We have to make a call to setSelectionCells()
+			// which once again would trigger this method call
+			// This is by design.
+			return;
+		}
 
         // Before doing anything else,
         // select all PetriNetModelElement objects
@@ -1674,6 +1735,16 @@ public class EditorVC implements KeyListener, MouseWheelListener, GraphModelList
      */
     public void setPathName(String pathname) {
         this.m_pathname = pathname;
+	}
+
+	/**
+	 * Returns the filepath if the net was saved before or was opened from a
+	 * file.
+	 *
+	 * @return String
+	 */
+	public String getFilePath() {
+		return m_filepath;
     }
 
     /**
@@ -1732,34 +1803,33 @@ public class EditorVC implements KeyListener, MouseWheelListener, GraphModelList
         return m_reachGraphEnabled;
     }
 
-    public void setReachabilityEnabled(boolean flag) {
+	public void setReachabilityEnabled(boolean flag) {
         m_reachGraphEnabled = flag;
-    }
-
-    public void setDrawMode(int type, boolean active) {
+    }public void setDrawMode(int type, boolean active)
+    {
         setDrawingMode(active);
         setCreateElementType(type);
-    }
-
-    public boolean getDrawingMode() {
+    }public boolean getDrawingMode() {
         return m_drawingMode;
     }
 
-    /**
-     * Sets the drawing mode. If the net is in drawing mode, clicking the left
-     * mouse button will draw the Element with the set creation type.
-     *
-     * @param flag
-     * @see EditorVC#getCreateElementType()
+	/**
+	 * Sets the drawing mode. If the net is in drawing mode, clicking the left
+	 * mouse button will draw the Element with the set creation type.
+	 *
+	 * @param flag
+	 *@see EditorVC#getCreateElementType()
      */
-    public void setDrawingMode(boolean flag) {
-        m_drawingMode = flag;
-        if ( flag == false ) setCreateElementType(-1);
-    }
+	public void setDrawingMode(boolean flag) {
+		m_drawingMode = flag;
+		if (flag == false)
+			setCreateElementType(-1);
 
-    public boolean isSmartEditActive() {
-        return smartEditActive;
-    }
+	}
+
+	public boolean isSmartEditActive() {
+		return smartEditActive;
+	}
 
     public void setSmartEditActive(boolean smartEditActive) {
         this.smartEditActive = smartEditActive;
@@ -1812,17 +1882,13 @@ public class EditorVC implements KeyListener, MouseWheelListener, GraphModelList
     public void internalFrameClosed(InternalFrameEvent e) {
     }
 
-    public void internalFrameClosing(InternalFrameEvent e) {
-    }
+	public void internalFrameClosing(InternalFrameEvent e) {}
 
-    public void internalFrameDeactivated(InternalFrameEvent e) {
-    }
+	public void internalFrameDeactivated(InternalFrameEvent e) {}
 
-    public void internalFrameDeiconified(InternalFrameEvent e) {
-    }
+	public void internalFrameDeiconified(InternalFrameEvent e) {}
 
-    public void internalFrameIconified(InternalFrameEvent e) {
-    }
+	public void internalFrameIconified(InternalFrameEvent e) {}
 
     public void internalFrameOpened(InternalFrameEvent e) {
     }
@@ -2084,17 +2150,18 @@ public class EditorVC implements KeyListener, MouseWheelListener, GraphModelList
         getGraph().repaint();
     }
 
-    public String getPathname() {
-        return m_pathname;
-    }
 
-    public void setPathname(String absolutePath) {
+
+	public String getPathname() {
+		return m_pathname;
+	}
+
+	public void setPathname(String absolutePath) {
         m_pathname = absolutePath;
 
-    }
-
-    @Override
-    public void hideP2TBar() {
-        editorPanel.hideP2TBar();
-    }
+    }@Override
+	public void hideP2TBar() {
+		editorPanel.hideP2TBar();
+	}
+	
 }

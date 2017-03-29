@@ -63,7 +63,6 @@ public class ArcPropertyEditor extends JDialog {
 
     public ArcPropertyEditor(Frame owner, Point position, ArcModel arc, EditorVC editor) {
         super(owner, true);
-
         this.arc = arc;
         this.editor = editor;
 

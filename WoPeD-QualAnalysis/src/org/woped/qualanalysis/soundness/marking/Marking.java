@@ -107,7 +107,7 @@ public class Marking implements IMarking {
     }
 
     /**
-     * @return a TreeMap with the placeId as String and the number of tokens on the key Id as value
+     * @return a TreeMap with the placeId as String and the number of tokens on the key ID as value
      */
     public TreeMap<String, Integer> getMarking() {
         TreeMap<String, Integer> marking = new TreeMap<>(new ShortLexStringComparator());

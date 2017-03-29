@@ -108,7 +108,6 @@ public abstract class AbstractApromoreFrame extends JDialog {
 		c.anchor = GridBagConstraints.CENTER;
 		this.processListPanel = getProcessListPanel(false);
 		getContentPane().add(processListPanel, c);
-
 	}
 
 	protected JPanel getCreateFolderPanel() {
@@ -133,9 +132,7 @@ public abstract class AbstractApromoreFrame extends JDialog {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-
 					// aproAccess.createNewFolder(textInput.getText());
-
 				}
 			});
 			c.gridx = 1;
@@ -192,7 +189,6 @@ public abstract class AbstractApromoreFrame extends JDialog {
 	}
 
 	protected JPanel getServerSelectionPane() {
-
 		if (serverSelectionPane == null) {
 			serverSelectionPane = new JPanel();
 			serverSelectionPane.setBorder(BorderFactory.createCompoundBorder(
@@ -216,7 +212,6 @@ public abstract class AbstractApromoreFrame extends JDialog {
 						serverDropdown.addItem(servers[i]
 								.getApromoreServerName());
 					}
-
 				}
 			}
 
@@ -238,18 +233,15 @@ public abstract class AbstractApromoreFrame extends JDialog {
 
 			});
 			serverSelectionPane.add(serverDropdown);
-
 		}
 
 		return serverSelectionPane;
 	}
 
 	protected WopedProgressBar getWopedProgressBar() {
-
 		wopedPorgressBar = new WopedProgressBar();
 		wopedPorgressBar.connectToServerLoading();
 		return wopedPorgressBar;
-
 	}
 
 	public WopedButton getUpdateButton() {
@@ -261,12 +253,11 @@ public abstract class AbstractApromoreFrame extends JDialog {
 			updateButton.setMnemonic(Messages.getMnemonic("Button.Update"));
 			updateButton.setPreferredSize(new Dimension(130, 25));
 			updateButton.addActionListener(new ActionListener() {
-
+				
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					loadProcessList();
 				}
-
 			});
 		}
 
@@ -282,6 +273,7 @@ public abstract class AbstractApromoreFrame extends JDialog {
 			cancelButton.setMnemonic(Messages.getMnemonic("Button.Cancel"));
 			cancelButton.setPreferredSize(new Dimension(130, 25));
 			cancelButton.addActionListener(new ActionListener() {
+				
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					processList.cancelAction();
@@ -299,7 +291,6 @@ public abstract class AbstractApromoreFrame extends JDialog {
 	/**
 	 * Methode zur Apromore Anbindung
 	 */
-
 	@Override
 	public void dispose() {
 
@@ -308,7 +299,6 @@ public abstract class AbstractApromoreFrame extends JDialog {
 		progressBarWorker.cancel(true);
 		progressBarWorker = null;
 		super.dispose();
-
 	}
 
 	protected void loadProcessList() {
@@ -326,21 +316,19 @@ public abstract class AbstractApromoreFrame extends JDialog {
 								.setIndeterminate(true);
 
 						AbstractApromoreFrame.this.setButtons(false);
-
 					}
 				});
 
 				if (progressBarWorker != null) {
 					progressBarWorker.cancel(true);
-
 				}
+				
 				progressBarWorker = new ProcessListWorker(
 						AbstractApromoreFrame.this);
 				progressBarWorker.execute();
 			}
 		};
 		queryThread.start();
-
 	}
 
 	public void setButtons(boolean b) {
@@ -361,17 +349,15 @@ public abstract class AbstractApromoreFrame extends JDialog {
 			aproAccess.setCurrentServer(serverDropdown.getSelectedIndex());
 
 		}
+		
 		if (createFolderButton != null) {
 			createFolderButton.setEnabled(false);
 			// createFolderButton.setEnabled(b);
 		}
-
 	}
 
 	public void setListFilter(String[] filters) {
-
 		processList.setFilter(filters);
-
 	}
 
 	public WopedButton getImportButton() {
