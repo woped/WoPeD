@@ -694,7 +694,7 @@ public class QuantitativeSimulationDialog extends JDialog implements
 					hasFocus, row, column);
 			setBackground(DefaultStaticConfiguration.DEFAULT_CELL_BACKGROUND_COLOR);
 			if (row == 0) {
-				setFont(DefaultStaticConfiguration.DEFAULT_TABLE_BOLDFONT);
+//				setFont(DefaultStaticConfiguration.DEFAULT_TABLE_BOLDFONT);
 			} else {
 				setFont(DefaultStaticConfiguration.DEFAULT_TABLE_FONT);
 			}
