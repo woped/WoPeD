@@ -171,7 +171,7 @@ public class CoverabilityGraphEdge extends DefaultEdge {
 
         int added = 0;
         for (TransitionNode t : triggers) {
-            sb.append(t.getId());
+            sb.append(t.getName());
             added++;
 
             if (added < triggers.size()) {
