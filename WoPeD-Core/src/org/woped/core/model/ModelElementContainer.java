@@ -542,7 +542,7 @@ public class ModelElementContainer implements Serializable {
 
             @Override
             public int compare(PlaceModel o1, PlaceModel o2) {
-                return comparator.compare(o1.getId(), o2.getId());
+                return comparator.compare(o1.getNameValue(), o2.getNameValue());
             }
         });
 

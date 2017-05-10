@@ -42,7 +42,7 @@ public class PlaceNodeComparatorTest {
     @Test
     public void compare_nodeIdsDifferentLength_returnsShorterIsGreater() throws Exception {
 
-        PlaceNode node1 = new PlaceNode(0,0,"p10", "test1", "p10");
+        PlaceNode node1 = new PlaceNode(0,0,"p10", "test10", "p10");
         PlaceNode node2 = new PlaceNode(0,0,"p2", "test2", "p2");
 
         int expected = -1;

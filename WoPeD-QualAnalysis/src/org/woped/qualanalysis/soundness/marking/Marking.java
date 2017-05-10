@@ -472,7 +472,7 @@ public class Marking implements IMarking {
     private SortedMap<String, Integer> getSortedIdIndexMap() {
         SortedMap<String, Integer> placeIds = new TreeMap<>(new ShortLexStringComparator());
         for (int i = 0; i < places.length; i++) {
-            placeIds.put(places[i].getId(), i);
+            placeIds.put(places[i].getName(), i);
         }
         return placeIds;
     }

@@ -15,6 +15,7 @@ public class TestNetGenerator {
         placeMap.setType(AbstractPetriNetElementModel.PLACE_TYPE);
         for (int i = 1; i <= places; i++) {
             placeMap.setId("p" + i);
+            placeMap.setName("test+i");
             processor.createElement(placeMap);
         }
 
