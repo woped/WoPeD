@@ -25,7 +25,7 @@ public class CoverabilityGraphEdgeTest {
 
         CoverabilityGraphEdge cut = new CoverabilityGraphEdge(t1);
 
-        String expected = "t1";
+        String expected = "create Something";
         String actual = cut.toString();
 
         assertEquals(expected, actual);
@@ -39,7 +39,7 @@ public class CoverabilityGraphEdgeTest {
         CoverabilityGraphEdge cut = new CoverabilityGraphEdge(t1);
         cut.addTrigger(t2);
 
-        String expected = "t2 " + CoverabilityGraphEdge.TRANSITION_DELIMITER + " t10";
+        String expected = "create Something " + CoverabilityGraphEdge.TRANSITION_DELIMITER + " create Something else";
         String actual = cut.toString();
 
         assertEquals(expected, actual);
