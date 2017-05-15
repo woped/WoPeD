@@ -336,7 +336,10 @@ public class EditorEventProcessor extends AbstractEventProcessor {
                     } else {
                         editor.getEditorPanel().hideP2TBar();
                     }
-
+                	break;
+    			case AbstractViewEvent.T2P:				
+    				System.out.println("HEllo");
+    				
                     break;
                 default:
                     break;
