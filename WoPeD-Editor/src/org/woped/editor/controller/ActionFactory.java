@@ -256,7 +256,7 @@ public class ActionFactory
         STATIC_ACTION_MAP.put(ACTIONID_P2T, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.P2T, null, ACTIONID_P2T));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_P2T), VisualController.WITH_EDITOR, VisualController.WITH_EDITOR, VisualController.P2T);
         
-        STATIC_ACTION_MAP.put(ACTIONID_T2P, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.T2P, null, ACTIONID_T2P));
+        STATIC_ACTION_MAP.put(ACTIONID_T2P, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.T2P, null, ACTIONID_T2P));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_T2P), VisualController.ALWAYS, VisualController.ALWAYS, VisualController.T2P);
         
         

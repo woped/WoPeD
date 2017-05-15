@@ -80,6 +80,10 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 		}
 		switch (event.getOrder())
 		{
+		case AbstractViewEvent.T2P:				
+			System.out.println("HEllo");
+			
+            break;
 		case AbstractViewEvent.NEW:
 			getMediator().createEditor(true);
 			break;
