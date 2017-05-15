@@ -412,7 +412,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
         osxAnalyzeMenu.addSubMenu(p2tMenu);
         
         OSXMenu t2pMenu = new OSXMenu(Messages.getString("T2P.openT2P.text"));
-		p2tMenu.addMenuItem(Messages.getString("T2P.text")).addAction(m_mediator, ActionFactory.ACTIONID_T2P, AbstractViewEvent.T2P);
+		t2pMenu.addMenuItem(Messages.getString("T2P.text")).addAction(m_mediator, ActionFactory.ACTIONID_T2P, AbstractViewEvent.T2P);
 		osxAnalyzeMenu.addSubMenu(t2pMenu);
         
         
