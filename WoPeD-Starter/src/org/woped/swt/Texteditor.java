@@ -36,19 +36,27 @@ public class Texteditor extends JInternalFrame {
 		JButton btnGenerate = new JButton("Generate");
 		btnGenerate.setBounds(10, 324, 99, 29);
 		
-		JButton btnErase = new JButton("Delete");
-		btnErase.setBounds(121, 324, 84, 29);
-		btnErase.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+
 		getContentPane().setLayout(null);
 		getContentPane().add(btnGenerate);
-		getContentPane().add(btnErase);
+		
 		
 		TextArea textArea_1 = new TextArea();
 		textArea_1.setBounds(10, 10, 517, 296);
 		getContentPane().add(textArea_1);
+
+		JButton btnErase = new JButton("Delete");
+		btnErase.setBounds(121, 324, 84, 29);
+		btnErase.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+		if(textArea_1.getText() != null){
+			textArea_1.setText(null);
+		}
+				
+			}
+		});
+		getContentPane().add(btnErase);
 		
 		JButton btnUpload = new JButton("Upload");
 		btnUpload.addActionListener(new ActionListener() {
