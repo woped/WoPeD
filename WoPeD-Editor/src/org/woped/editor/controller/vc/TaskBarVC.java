@@ -197,5 +197,11 @@ public class TaskBarVC extends JPanel implements IViewController, IEditorAware {
 	public IEditor getSelectedEditor() {
 		return selectedEditor;
 	}
+
+	@Override
+	public void addTextEditor(IEditor editor) {
+		// TODO Auto-generated method stub
+		
+	}
 }
 

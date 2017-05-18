@@ -2082,6 +2082,14 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
     public void addEditor(IEditor editor) {
         getRibbon().setSelectedTask(getEditTask());
     }
+    
+    @Override
+    public void addTextEditor(IEditor editor) {
+       // getRibbon().setSelectedTask(getEditTask());
+    }
+    
+    
+    
 
     @Override
     public void removeEditor(IEditor editor) {

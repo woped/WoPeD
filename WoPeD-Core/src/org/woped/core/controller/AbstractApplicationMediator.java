@@ -242,4 +242,10 @@ public abstract class AbstractApplicationMediator implements IViewListener
     {
         return (List<IEditor>) editorLists.clone();
     }
+
+    public abstract IEditor createTextEditor(boolean undoSupport, boolean loadUI);
+
+	
+    public abstract IEditor createTextEditor(boolean undoSupport);
+
 }

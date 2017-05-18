@@ -30,6 +30,7 @@ import java.util.Vector;
 
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import org.woped.core.config.ConfigurationManager;
@@ -48,6 +49,7 @@ import org.woped.editor.controller.vc.EditorVC;
 import org.woped.editor.controller.vc.SubprocessEditorVC;
 import org.woped.editor.help.HelpBrowser;
 import org.woped.editor.help.action.LaunchDefaultBrowserAction;
+import org.woped.gui.translations.Messages;
 import org.woped.qualanalysis.service.IQualanalysisService;
 import org.woped.qualanalysis.service.QualAnalysisServiceFactory;
 import org.woped.starter.AboutUI;
@@ -55,7 +57,6 @@ import org.woped.starter.BugReportUI;
 import org.woped.starter.Constants;
 import org.woped.starter.RegistrationUI;
 import org.woped.starter.controller.vc.DefaultApplicationMediator;
-import org.woped.gui.translations.Messages;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -82,6 +83,8 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 		{
 		case AbstractViewEvent.T2P:				
 			System.out.println("HEllo");
+			getMediator().createTextEditor(true);
+			
 			
             break;
 		case AbstractViewEvent.NEW:
