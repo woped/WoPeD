@@ -1,13 +1,18 @@
 package org.woped.swt;
 
 
+import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.GridLayout;
 import java.awt.TextArea;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
 public class Texteditor extends JInternalFrame {
 
@@ -31,32 +36,31 @@ public class Texteditor extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public Texteditor() {
-		setBounds(100, 100, 561, 416);
+setBounds(100, 100, 450, 300);
+		
+		JTextArea textArea = new JTextArea();
+		getContentPane().add(textArea, BorderLayout.CENTER);
+		
+		JPanel panel = new JPanel();
+		getContentPane().add(panel, BorderLayout.SOUTH);
+		panel.setLayout(new GridLayout(1, 0, 0, 0));
 		
 		JButton btnGenerate = new JButton("Generate");
-		btnGenerate.setBounds(10, 324, 99, 29);
+		panel.add(btnGenerate);
 		
-
-		getContentPane().setLayout(null);
-		getContentPane().add(btnGenerate);
-		
-		
-		TextArea textArea_1 = new TextArea();
-		textArea_1.setBounds(10, 10, 517, 296);
-		getContentPane().add(textArea_1);
-
 		JButton btnErase = new JButton("Delete");
-		btnErase.setBounds(121, 324, 84, 29);
 		btnErase.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-		if(textArea_1.getText() != null){
-			textArea_1.setText(null);
+		if(textArea.getText() != null){
+			textArea.setText(null);
 		}
 				
 			}
 		});
-		getContentPane().add(btnErase);
+		panel.add(btnErase);
+		
+	
 		
 		JButton btnUpload = new JButton("Upload");
 		btnUpload.addActionListener(new ActionListener() {
@@ -70,11 +74,15 @@ public class Texteditor extends JInternalFrame {
 			} catch (Exception e){
 				e.getStackTrace();
 		}
-			textArea_1.setText(of.sb.toString());
+			textArea.setText(of.sb.toString());
 			}
 		});
-		btnUpload.setBounds(410, 324, 117, 29);
-		getContentPane().add(btnUpload);
+		panel.add(btnUpload);
 
+		
+		
+		
+		
+		
 	}
 }
