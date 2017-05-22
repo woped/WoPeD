@@ -1,7 +1,9 @@
 package org.woped.swt;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Frame;
 import java.awt.GridBagConstraints;
@@ -23,6 +25,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+import org.junit.experimental.max.MaxCore;
 import org.woped.editor.action.DisposeWindowAction;
 import org.woped.gui.lookAndFeel.WopedButton;
 import org.woped.gui.translations.Messages;
@@ -65,37 +68,36 @@ public class T2PUI extends JDialog {
 		this.getContentPane().setLayout(new BorderLayout());
 		this.setUndecorated(false);
 		this.setResizable(true);
-		this.getContentPane().add(getAboutPanel(), BorderLayout.NORTH);
+		this.getContentPane().add(getT2PPanel(), BorderLayout.CENTER);
 		this.getContentPane().add(getButtonPanel(), BorderLayout.SOUTH);
-		this.setTitle(Messages.getTitle("Action.ShowAbout"));
+		this.setTitle(Messages.getString("T2P.textBandTitle"));
 		this.pack();
 
 		if (getOwner() != null) {
-			this.setLocation(getOwner().getX() + ((getOwner().getWidth() - this.getWidth()) / 2),
-					getOwner().getY() + ((getOwner().getHeight() - this.getHeight()) / 2));
+			this.setLocation(getOwner().getX() + ((getOwner().getWidth() - this.getWidth()) * 3),
+					getOwner().getY() + ((getOwner().getHeight() - this.getHeight()) / 3));
 		} else {
 			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-			this.setLocation((screenSize.width - this.getWidth()) / 2, (screenSize.height - this.getHeight()) / 2);
+			this.setLocation((screenSize.width - this.getWidth()), (screenSize.height - this.getHeight()));
 		}
 
-		this.setSize(this.getWidth(), this.getHeight());
+		this.setSize(800,500);
 	}
 
-	private JScrollPane getAboutPanel() {
+	private JScrollPane getT2PPanel() {
 		
-		if (aboutPanel == null) {
 			JPanel panel = new JPanel();
-			panel.setLayout(new GridBagLayout());
-			GridBagConstraints c = new GridBagConstraints();
-			c.gridy = 1;
-			//c.insets = new Insets(0, 10, 0, 10);
-
+			panel.setLayout(new GridLayout());
+	//		GridBagConstraints c = new GridBagConstraints();
+			
+			panel.setBackground(Color.white);
 			textArea = new JTextArea();
 			textArea.setFont(new Font("Lucia Grande", Font.PLAIN, 13));
-			panel.add(textArea, c);
+			
+			panel.add(textArea);
 			
 			aboutPanel = new JScrollPane(panel);
-		}
+		
 		return aboutPanel;
 	}
 
@@ -103,12 +105,12 @@ public class T2PUI extends JDialog {
 		if (buttonPanel == null) {
 
 			buttonPanel = new JPanel();
-			buttonPanel.setLayout(new GridBagLayout());
-			GridBagConstraints c1 = new GridBagConstraints();
+			buttonPanel.setLayout(new GridLayout(1, 3));
+//			GridBagConstraints c1 = new GridBagConstraints();
 
 			WopedButton btnGenerate = new WopedButton("Generate");
 			btnGenerate.setIcon(new ImageIcon(getClass().getResource(Messages.getString("Action.ShowAbout.Icon"))));
-			buttonPanel.add(btnGenerate,c1);
+			buttonPanel.add(btnGenerate);
 
 			WopedButton btnErase = new WopedButton("Delete");
 			btnErase.setIcon(new ImageIcon(getClass().getResource(Messages.getString("T2P.Icon.Delete"))));
@@ -122,7 +124,7 @@ public class T2PUI extends JDialog {
 
 				}
 			});
-			buttonPanel.add(btnErase,c1);
+			buttonPanel.add(btnErase);
 
 			WopedButton btnUpload = new WopedButton("Upload");
 			btnUpload.setIcon(new ImageIcon(getClass().getResource(Messages.getString("Button.Import.Icon"))));
@@ -141,7 +143,7 @@ public class T2PUI extends JDialog {
 					textArea.setText(of.sb.toString());
 				}
 			});
-			buttonPanel.add(btnUpload,c1);
+			buttonPanel.add(btnUpload);
 			
 			
 			/*
