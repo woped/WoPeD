@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="N" name="term.n" ID="11230" frame="Simple_name" frameID="1260" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="ent" name="Entity"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="spe" name="Speaker"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="ter" name="Term"/>
+        </frame>
+    </header>
+    <definition>COD: a word or phrase used to describe a thing or to express a concept</definition>
+    <lexeme POS="N" name="term"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Entity"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Entity"/>
+                <annoSet ID="2581542"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Term"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Term"/>
+                <annoSet ID="2581542"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Entity"/>
+            <FE name="Term"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Entity"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Term"/>
+                <annoSet ID="2581542"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-Wbe-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="7" paragNo="83" aPos="111332978" ID="1573464">
+            <text>LOCKJAW is actually another term for the extremely serious condition of Tetanus , and so I think what you are describing is recurrent dislocation of the tempero-mandibular joints , which link the jaw to the skull .</text>
+            <annotationSet cDate="07/14/2010 05:12:13 PDT Wed" status="UNANN" ID="2581541">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="0" name="nn"/>
+                    <label end="9" start="8" name="VBZ"/>
+                    <label end="18" start="11" name="rb"/>
+                    <label end="26" start="20" name="dt"/>
+                    <label end="31" start="28" name="nn"/>
+                    <label end="35" start="33" name="in"/>
+                    <label end="39" start="37" name="dt"/>
+                    <label end="49" start="41" name="rb"/>
+                    <label end="57" start="51" name="jj"/>
+                    <label end="67" start="59" name="nn"/>
+                    <label end="70" start="69" name="in"/>
+                    <label end="78" start="72" name="nn"/>
+                    <label end="80" start="80" name=","/>
+                    <label end="84" start="82" name="cc"/>
+                    <label end="87" start="86" name="rb"/>
+                    <label end="89" start="89" name="PP"/>
+                    <label end="95" start="91" name="VVP"/>
+                    <label end="100" start="97" name="wp"/>
+                    <label end="104" start="102" name="PP"/>
+                    <label end="108" start="106" name="vbp"/>
+                    <label end="119" start="110" name="VVG"/>
+                    <label end="122" start="121" name="VBZ"/>
+                    <label end="132" start="124" name="jj"/>
+                    <label end="144" start="134" name="nn"/>
+                    <label end="147" start="146" name="in"/>
+                    <label end="151" start="149" name="dt"/>
+                    <label end="170" start="153" name="jj"/>
+                    <label end="177" start="172" name="nns"/>
+                    <label end="179" start="179" name=","/>
+                    <label end="185" start="181" name="wdt"/>
+                    <label end="190" start="187" name="VVP"/>
+                    <label end="194" start="192" name="dt"/>
+                    <label end="198" start="196" name="nn"/>
+                    <label end="201" start="200" name="to"/>
+                    <label end="205" start="203" name="dt"/>
+                    <label end="211" start="207" name="nn"/>
+                    <label end="213" start="213" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/14/2010 05:12:14 PDT Wed" status="MANUAL" ID="2581542">
+                <layer rank="1" name="Target">
+                    <label cBy="773" end="31" start="28" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="773" feID="7271" end="6" start="0" name="Term"/>
+                    <label cBy="773" feID="7272" end="78" start="33" name="Entity"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="6" start="0" name="Ext"/>
+                    <label end="78" start="33" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="6" start="0" name="NP"/>
+                    <label end="78" start="33" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="9" start="8" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

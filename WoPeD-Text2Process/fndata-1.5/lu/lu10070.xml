@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" POS="N" name="wall.n" ID="10070" frame="Architectural_part" frameID="971" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="Orwell" ID="3">
+            <document description="Orwell_1984_p1" ID="7"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="" name="Creator"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Dsc" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="" name="Material"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Orientation" name="Orientation"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="" name="Part"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="" name="Whole"/>
+        </frame>
+    </header>
+    <definition>COD: a side of a building or room</definition>
+    <lexeme POS="N" name="wall"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Part"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Part"/>
+                <annoSet ID="2599866"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Part"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Part"/>
+                <annoSet ID="2599866"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="manually-added">
+        <sentence corpID="3" docID="7" sentNo="9" paragNo="2" aPos="0" ID="312911">
+            <text>On each landing , opposite the lift-shaft , the poster with the enormous face gazed from the wall .</text>
+            <annotationSet cDate="01/06/2003 10:55:07 PST Mon" status="UNANN" ID="269187">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PRP"/>
+                    <label end="6" start="3" name="DT0"/>
+                    <label end="14" start="8" name="NN1"/>
+                    <label end="16" start="16" name="PUN"/>
+                    <label end="25" start="18" name="PRP"/>
+                    <label end="29" start="27" name="AT0"/>
+                    <label end="40" start="31" name="NN1"/>
+                    <label end="42" start="42" name="PUN"/>
+                    <label end="46" start="44" name="AT0"/>
+                    <label end="53" start="48" name="NN1"/>
+                    <label end="58" start="55" name="PRP"/>
+                    <label end="62" start="60" name="AT0"/>
+                    <label end="71" start="64" name="AJ0"/>
+                    <label end="76" start="73" name="NN1"/>
+                    <label end="82" start="78" name="VVD"/>
+                    <label end="87" start="84" name="PRP"/>
+                    <label end="91" start="89" name="AT0"/>
+                    <label end="96" start="93" name="NN1"/>
+                    <label end="98" start="98" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/27/2010 03:56:33 PDT Tue" status="MANUAL" ID="2599866">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="96" start="93" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="5924" end="96" start="93" name="Part"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

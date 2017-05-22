@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="V" name="e-mail.v" ID="5262" frame="Contacting" frameID="286" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Core" abbrev="Address" name="Address"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Add" name="Addressee"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Communication" name="Communication"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Com" name="Communicator"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="" name="Depictive"/>
+            <FE fgColor="000000" bgColor="7FFF00" type="Extra-Thematic" abbrev="" name="Frequency"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Intm" name="Intermediary"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Extra-Thematic" abbrev="Src" name="Location_of_communicator"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Medium" name="Medium"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Reas" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Core" abbrev="Topic" name="Topic"/>
+        </frame>
+    </header>
+    <definition>COD: mail or send using email. </definition>
+    <lexeme POS="V" name="e-mail"/>
+    <valences>
+        <FERealization total="2">
+            <FE name="Addressee"/>
+            <pattern total="2">
+                <valenceUnit GF="Obj" PT="NP" FE="Addressee"/>
+                <annoSet ID="1286572"/>
+                <annoSet ID="1286576"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Communicator"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="CNI" FE="Communicator"/>
+                <annoSet ID="1286572"/>
+                <annoSet ID="1286576"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Reason"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="Sub" FE="Reason"/>
+                <annoSet ID="1286572"/>
+                <annoSet ID="1286576"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Addressee"/>
+            <FE name="Communicator"/>
+            <FE name="Reason"/>
+            <pattern total="2">
+                <valenceUnit GF="Obj" PT="NP" FE="Addressee"/>
+                <valenceUnit GF="" PT="CNI" FE="Communicator"/>
+                <valenceUnit GF="Dep" PT="Sub" FE="Reason"/>
+                <annoSet ID="1286572"/>
+                <annoSet ID="1286576"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="mail-V-001-all">
+        <sentence sentNo="0" aPos="95970027" ID="916252">
+            <text>Ok , post and/or email me direct if you are or might be interested . </text>
+            <annotationSet cDate="01/07/2003 07:23:08 PST Tue" status="UNANN" ID="1286571">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="AV0"/>
+                    <label end="3" start="3" name="PUN"/>
+                    <label end="8" start="5" name="NN1"/>
+                    <label end="15" start="10" name="CJC"/>
+                    <label end="21" start="17" name="VVB"/>
+                    <label end="24" start="23" name="PNP"/>
+                    <label end="31" start="26" name="AV0"/>
+                    <label end="34" start="33" name="CJS"/>
+                    <label end="38" start="36" name="PNP"/>
+                    <label end="42" start="40" name="VBB"/>
+                    <label end="45" start="44" name="CJC"/>
+                    <label end="51" start="47" name="VM0"/>
+                    <label end="54" start="53" name="VBI"/>
+                    <label end="65" start="56" name="AJ0-VVN"/>
+                    <label end="67" start="67" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 07:23:08 PST Tue" status="MANUAL" ID="1286572">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2483" end="24" start="23" name="Addressee"/>
+                    <label cBy="618" feID="2487" end="65" start="33" name="Reason"/>
+                    <label cBy="618" feID="2481" itype="CNI" name="Communicator"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="24" start="23" name="Obj"/>
+                    <label end="65" start="33" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="24" start="23" name="NP"/>
+                    <label end="65" start="33" name="Sub"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="21" start="17" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="96062126" ID="916254">
+            <text>If you ( or anyone else ) wants a run-down of the whole squad with their squad numbers , email me and I ll see if I ve still got it . </text>
+            <annotationSet cDate="01/07/2003 07:23:08 PST Tue" status="UNANN" ID="1286575">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="CJS"/>
+                    <label end="5" start="3" name="PNP"/>
+                    <label end="7" start="7" name="PUL"/>
+                    <label end="10" start="9" name="CJC"/>
+                    <label end="17" start="12" name="PNI"/>
+                    <label end="22" start="19" name="AV0"/>
+                    <label end="24" start="24" name="PUR"/>
+                    <label end="30" start="26" name="VVZ"/>
+                    <label end="32" start="32" name="AT0"/>
+                    <label end="41" start="34" name="NN1"/>
+                    <label end="44" start="43" name="PRF"/>
+                    <label end="48" start="46" name="AT0"/>
+                    <label end="54" start="50" name="AJ0"/>
+                    <label end="60" start="56" name="NN1"/>
+                    <label end="65" start="62" name="PRP"/>
+                    <label end="71" start="67" name="DPS"/>
+                    <label end="77" start="73" name="NN1"/>
+                    <label end="85" start="79" name="NN2"/>
+                    <label end="87" start="87" name="PUN"/>
+                    <label end="93" start="89" name="VVB"/>
+                    <label end="96" start="95" name="PNP"/>
+                    <label end="100" start="98" name="CJC"/>
+                    <label end="102" start="102" name="PNP"/>
+                    <label end="105" start="104" name="VM0"/>
+                    <label end="109" start="107" name="VVI"/>
+                    <label end="112" start="111" name="CJS"/>
+                    <label end="114" start="114" name="PNP"/>
+                    <label end="117" start="116" name="VHB"/>
+                    <label end="123" start="119" name="AV0"/>
+                    <label end="127" start="125" name="VVN"/>
+                    <label end="130" start="129" name="PNP"/>
+                    <label end="132" start="132" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 07:23:08 PST Tue" status="MANUAL" ID="1286576">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2487" end="85" start="0" name="Reason"/>
+                    <label cBy="618" feID="2483" end="96" start="95" name="Addressee"/>
+                    <label cBy="618" feID="2481" itype="CNI" name="Communicator"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="85" start="0" name="Dep"/>
+                    <label end="96" start="95" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="85" start="0" name="Sub"/>
+                    <label end="96" start="95" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="93" start="89" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

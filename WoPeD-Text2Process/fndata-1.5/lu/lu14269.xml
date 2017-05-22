@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="A" name="present.a" ID="14269" frame="Presence" frameID="1922" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Extra-Thematic" abbrev="dep" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Peripheral" abbrev="dur" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="ent" name="Entity"/>
+            <FE fgColor="FFFFFF" bgColor="A9A9A9" type="Core" abbrev="loc" name="Location"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="pur" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: being or occurring in a particular place.</definition>
+    <lexeme POS="A" name="present"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Entity"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Entity"/>
+                <annoSet ID="2586355"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Location"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Location"/>
+                <annoSet ID="2586355"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Entity"/>
+            <FE name="Location"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Entity"/>
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Location"/>
+                <annoSet ID="2586355"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-PPon-(1)">
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="133" aPos="873914" ID="1575868">
+            <text>By 1875 , the Liverpool physiologist Richard Caton had detected tiny fluctuations in voltages present on the surface of the brains or scalps of monkeys , cats and rabbits .</text>
+            <annotationSet cDate="07/15/2010 02:07:17 PDT Thu" status="UNANN" ID="2586354">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="in"/>
+                    <label end="6" start="3" name="cd"/>
+                    <label end="8" start="8" name=","/>
+                    <label end="12" start="10" name="dt"/>
+                    <label end="22" start="14" name="NP"/>
+                    <label end="35" start="24" name="nn"/>
+                    <label end="43" start="37" name="NP"/>
+                    <label end="49" start="45" name="NP"/>
+                    <label end="53" start="51" name="VHD"/>
+                    <label end="62" start="55" name="VVN"/>
+                    <label end="67" start="64" name="jj"/>
+                    <label end="80" start="69" name="nns"/>
+                    <label end="83" start="82" name="in"/>
+                    <label end="92" start="85" name="nns"/>
+                    <label end="100" start="94" name="jj"/>
+                    <label end="103" start="102" name="in"/>
+                    <label end="107" start="105" name="dt"/>
+                    <label end="115" start="109" name="nn"/>
+                    <label end="118" start="117" name="in"/>
+                    <label end="122" start="120" name="dt"/>
+                    <label end="129" start="124" name="nns"/>
+                    <label end="132" start="131" name="cc"/>
+                    <label end="139" start="134" name="nns"/>
+                    <label end="142" start="141" name="in"/>
+                    <label end="150" start="144" name="nns"/>
+                    <label end="152" start="152" name=","/>
+                    <label end="157" start="154" name="nns"/>
+                    <label end="161" start="159" name="cc"/>
+                    <label end="169" start="163" name="nns"/>
+                    <label end="171" start="171" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/15/2010 02:07:17 PDT Thu" status="MANUAL" ID="2586355">
+                <layer rank="1" name="Target">
+                    <label cBy="571" end="100" start="94" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="571" feID="11562" end="92" start="85" name="Entity"/>
+                    <label cBy="571" feID="11563" end="169" start="102" name="Location"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="92" start="85" name="Ext"/>
+                    <label end="169" start="102" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="92" start="85" name="NP"/>
+                    <label end="169" start="102" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-T-PPduring-(1)"/>
+    <subCorpus name="03-T-PPat-(1)"/>
+    <subCorpus name="04-T-PPin-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

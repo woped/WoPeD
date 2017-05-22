@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="bayou.n" ID="3628" frame="Natural_features" frameID="191" totalAnnotated="6" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="AP" ID="113">
+            <document description="apwsE950809.0028" ID="9950"/>
+            <document description="apwsE951009.0129" ID="9951"/>
+            <document description="apwsE970222.0281" ID="9952"/>
+            <document description="apwsE950509.0491" ID="9954"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="Cnst" name="Constituent_parts"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Extra-Thematic" abbrev="ContP" name="Container_possessor"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Extra-Thematic" abbrev="des" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Extra-Thematic" abbrev="FormC" name="Formational_cause"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Lcl" name="Locale"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="Name" name="Name"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="RelLoc" name="Relative_location"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="Type" name="Type"/>
+        </frame>
+    </header>
+    <definition>COD: (in the southern US) a marshy outlet of a lake or river. </definition>
+    <lexeme POS="N" name="bayou"/>
+    <semType name="Body_of_water" ID="2"/>
+    <valences>
+        <governor type="Gov" lemma="from">
+            <annoSet ID="2073677"/>
+        </governor>
+        <governor type="Gov" lemma="into">
+            <annoSet ID="2073685"/>
+        </governor>
+        <FERealization total="2">
+            <FE name="Container_possessor"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Container_possessor"/>
+                <annoSet ID="2073687"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Container_possessor"/>
+                <annoSet ID="2073677"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Descriptor"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Descriptor"/>
+                <annoSet ID="2073691"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="6">
+            <FE name="Locale"/>
+            <pattern total="6">
+                <valenceUnit GF="" PT="DEN" FE="Locale"/>
+                <annoSet ID="575843"/>
+                <annoSet ID="575845"/>
+                <annoSet ID="2073677"/>
+                <annoSet ID="2073685"/>
+                <annoSet ID="2073687"/>
+                <annoSet ID="2073691"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Name"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Name"/>
+                <annoSet ID="575845"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Relative_location"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[near]" FE="Relative_location"/>
+                <annoSet ID="2073691"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Relative_location"/>
+                <annoSet ID="575845"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Container_possessor"/>
+            <FE name="Locale"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Container_possessor"/>
+                <valenceUnit GF="" PT="DEN" FE="Locale"/>
+                <annoSet ID="2073687"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Container_possessor"/>
+                <valenceUnit GF="" PT="DEN" FE="Locale"/>
+                <annoSet ID="2073677"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Descriptor"/>
+            <FE name="Locale"/>
+            <FE name="Relative_location"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Descriptor"/>
+                <valenceUnit GF="" PT="DEN" FE="Locale"/>
+                <valenceUnit GF="Dep" PT="PP[near]" FE="Relative_location"/>
+                <annoSet ID="2073691"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Locale"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="DEN" FE="Locale"/>
+                <annoSet ID="575843"/>
+                <annoSet ID="2073685"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Locale"/>
+            <FE name="Name"/>
+            <FE name="Relative_location"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Locale"/>
+                <valenceUnit GF="Dep" PT="N" FE="Name"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Relative_location"/>
+                <annoSet ID="575845"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-001-all">
+        <sentence sentNo="0" aPos="65618875" ID="468477">
+            <text>Despite its name , this is a meat stew popular in bayou country . </text>
+            <annotationSet cDate="01/07/2003 05:08:11 PST Tue" status="UNANN" ID="575842">
+                <layer rank="1" name="BNC">
+                    <label end="6" start="0" name="PRP"/>
+                    <label end="10" start="8" name="DPS"/>
+                    <label end="15" start="12" name="NN1"/>
+                    <label end="17" start="17" name="PUN"/>
+                    <label end="22" start="19" name="DT0"/>
+                    <label end="25" start="24" name="VBZ"/>
+                    <label end="27" start="27" name="AT0"/>
+                    <label end="32" start="29" name="NN1"/>
+                    <label end="37" start="34" name="NN1-VVB"/>
+                    <label end="45" start="39" name="AJ0"/>
+                    <label end="48" start="47" name="PRP"/>
+                    <label end="54" start="50" name="NN1"/>
+                    <label end="62" start="56" name="NN1"/>
+                    <label end="64" start="64" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:08:11 PST Tue" status="MANUAL" ID="575843">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="1573" end="54" start="50" name="Locale"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="54" start="50" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="87539449" ID="468478">
+            <text>This technology has proven successful in our licence to Chevron at Cedar Bayou in the USA . </text>
+            <annotationSet cDate="01/07/2003 05:08:11 PST Tue" status="UNANN" ID="575844">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="DT0"/>
+                    <label end="14" start="5" name="NN1"/>
+                    <label end="18" start="16" name="VHZ"/>
+                    <label end="25" start="20" name="VVN"/>
+                    <label end="36" start="27" name="AJ0"/>
+                    <label end="39" start="38" name="PRP"/>
+                    <label end="43" start="41" name="DPS"/>
+                    <label end="51" start="45" name="NN1"/>
+                    <label end="54" start="53" name="PRP"/>
+                    <label end="62" start="56" name="NN1-NP0"/>
+                    <label end="65" start="64" name="PRP"/>
+                    <label end="71" start="67" name="NN1-NP0"/>
+                    <label end="77" start="73" name="NN1-NP0"/>
+                    <label end="80" start="79" name="PRP"/>
+                    <label end="84" start="82" name="AT0"/>
+                    <label end="88" start="86" name="NP0"/>
+                    <label end="90" start="90" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:08:11 PST Tue" status="MANUAL" ID="575845">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="1596" end="71" start="67" name="Name"/>
+                    <label cBy="296" feID="1573" end="77" start="73" name="Locale"/>
+                    <label cBy="296" feID="1601" end="88" start="79" name="Relative_location"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="71" start="67" name="Dep"/>
+                    <label end="88" start="79" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="71" start="67" name="N"/>
+                    <label end="88" start="79" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="77" start="73" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="01-T-(1)">
+        <sentence corpID="113" docID="9950" sentNo="1" paragNo="2" aPos="81063060" ID="1312768">
+            <text>CANBERRA , Australia ( AP ) --- The U.S. Air Force flew two B-52 bombers from the bayous of Louisiana to red sands of the Australian Outback to demonstrate a new missile Wednesday .</text>
+            <annotationSet cDate="02/16/2005 04:00:16 PST Wed" status="UNANN" ID="2073676">
+                <layer rank="1" name="PENN">
+                    <label end="7" start="0" name="NP"/>
+                    <label end="9" start="9" name=","/>
+                    <label end="19" start="11" name="NP"/>
+                    <label end="21" start="21" name="("/>
+                    <label end="24" start="23" name="NP"/>
+                    <label end="26" start="26" name=")"/>
+                    <label end="30" start="28" name=":"/>
+                    <label end="34" start="32" name="dt"/>
+                    <label end="39" start="36" name="NP"/>
+                    <label end="43" start="41" name="NP"/>
+                    <label end="49" start="45" name="NP"/>
+                    <label end="54" start="51" name="VVD"/>
+                    <label end="58" start="56" name="cd"/>
+                    <label end="63" start="60" name="cd"/>
+                    <label end="71" start="65" name="nns"/>
+                    <label end="76" start="73" name="in"/>
+                    <label end="80" start="78" name="dt"/>
+                    <label end="87" start="82" name="nns"/>
+                    <label end="90" start="89" name="in"/>
+                    <label end="100" start="92" name="NP"/>
+                    <label end="103" start="102" name="to"/>
+                    <label end="107" start="105" name="jj"/>
+                    <label end="113" start="109" name="nns"/>
+                    <label end="116" start="115" name="in"/>
+                    <label end="120" start="118" name="dt"/>
+                    <label end="131" start="122" name="jj"/>
+                    <label end="139" start="133" name="nn"/>
+                    <label end="142" start="141" name="to"/>
+                    <label end="154" start="144" name="VV"/>
+                    <label end="156" start="156" name="dt"/>
+                    <label end="160" start="158" name="jj"/>
+                    <label end="168" start="162" name="nn"/>
+                    <label end="178" start="170" name="NP"/>
+                    <label end="180" start="180" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+            </annotationSet>
+            <annotationSet cDate="02/16/2005 04:00:16 PST Wed" status="MANUAL" ID="2073677">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="87" start="82" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="1571" end="100" start="89" name="Container_possessor"/>
+                    <label cBy="395" feID="1573" end="87" start="82" name="Locale"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="100" start="89" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="100" start="89" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="76" start="73" name="Gov"/>
+                    <label end="100" start="78" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="9951" sentNo="1" paragNo="13" aPos="13108835" ID="1312772">
+            <text>Two years ago , Sept. 22 , 1993 , an eastbound Sunset Limited train derailed into a bayou near Saraland , Alabama , killing 47 people .</text>
+            <annotationSet cDate="02/16/2005 04:00:17 PST Wed" status="UNANN" ID="2073684">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="cd"/>
+                    <label end="8" start="4" name="nns"/>
+                    <label end="12" start="10" name="rb"/>
+                    <label end="14" start="14" name=","/>
+                    <label end="20" start="16" name="NP"/>
+                    <label end="23" start="22" name="cd"/>
+                    <label end="25" start="25" name=","/>
+                    <label end="30" start="27" name="cd"/>
+                    <label end="32" start="32" name=","/>
+                    <label end="35" start="34" name="dt"/>
+                    <label end="45" start="37" name="jj"/>
+                    <label end="52" start="47" name="nn"/>
+                    <label end="60" start="54" name="jj"/>
+                    <label end="66" start="62" name="nn"/>
+                    <label end="75" start="68" name="VVN"/>
+                    <label end="80" start="77" name="in"/>
+                    <label end="82" start="82" name="dt"/>
+                    <label end="88" start="84" name="nn"/>
+                    <label end="93" start="90" name="in"/>
+                    <label end="102" start="95" name="NP"/>
+                    <label end="104" start="104" name=","/>
+                    <label end="112" start="106" name="NP"/>
+                    <label end="114" start="114" name=","/>
+                    <label end="122" start="116" name="VVG"/>
+                    <label end="125" start="124" name="cd"/>
+                    <label end="132" start="127" name="nns"/>
+                    <label end="134" start="134" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+            </annotationSet>
+            <annotationSet cDate="02/16/2005 04:00:18 PST Wed" status="MANUAL" ID="2073685">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="88" start="84" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="1573" end="88" start="84" name="Locale"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="80" start="77" name="Gov"/>
+                    <label end="88" start="82" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="9952" sentNo="1" paragNo="14" aPos="115743483" ID="1312773">
+            <text>The production , which reportedly cost dlrs 10 million , looked terrific though , with the rural settings by Andrew Jackness evoking the sugar cane and sunsets of the Louisiana bayou .</text>
+            <annotationSet cDate="02/16/2005 04:00:18 PST Wed" status="UNANN" ID="2073686">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="13" start="4" name="nn"/>
+                    <label end="15" start="15" name=","/>
+                    <label end="21" start="17" name="wdt"/>
+                    <label end="32" start="23" name="rb"/>
+                    <label end="37" start="34" name="VVD"/>
+                    <label end="42" start="39" name="nns"/>
+                    <label end="45" start="44" name="cd"/>
+                    <label end="53" start="47" name="cd"/>
+                    <label end="55" start="55" name=","/>
+                    <label end="62" start="57" name="VVD"/>
+                    <label end="71" start="64" name="jj"/>
+                    <label end="78" start="73" name="in"/>
+                    <label end="80" start="80" name=","/>
+                    <label end="85" start="82" name="in"/>
+                    <label end="89" start="87" name="dt"/>
+                    <label end="95" start="91" name="jj"/>
+                    <label end="104" start="97" name="nns"/>
+                    <label end="107" start="106" name="in"/>
+                    <label end="114" start="109" name="NP"/>
+                    <label end="123" start="116" name="NP"/>
+                    <label end="131" start="125" name="VVG"/>
+                    <label end="135" start="133" name="dt"/>
+                    <label end="141" start="137" name="nn"/>
+                    <label end="146" start="143" name="nn"/>
+                    <label end="150" start="148" name="cc"/>
+                    <label end="158" start="152" name="nns"/>
+                    <label end="161" start="160" name="in"/>
+                    <label end="165" start="163" name="dt"/>
+                    <label end="175" start="167" name="NP"/>
+                    <label end="181" start="177" name="nn"/>
+                    <label end="183" start="183" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+            </annotationSet>
+            <annotationSet cDate="02/16/2005 04:00:18 PST Wed" status="MANUAL" ID="2073687">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="181" start="177" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="1571" end="175" start="167" name="Container_possessor"/>
+                    <label cBy="395" feID="1573" end="181" start="177" name="Locale"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="175" start="167" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="175" start="167" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="9954" sentNo="1" paragNo="15" aPos="57768251" ID="1312775">
+            <text>Marks paid dlrs 5,000 to an undercover FBI agent he met on a remote bayou near Baton Rouge , La. , in 1985 for what he thought was 37 pounds of plastic explosives .</text>
+            <annotationSet cDate="02/16/2005 04:00:18 PST Wed" status="UNANN" ID="2073690">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="nns"/>
+                    <label end="9" start="6" name="VVD"/>
+                    <label end="14" start="11" name="nns"/>
+                    <label end="20" start="16" name="cd"/>
+                    <label end="23" start="22" name="to"/>
+                    <label end="26" start="25" name="dt"/>
+                    <label end="37" start="28" name="jj"/>
+                    <label end="41" start="39" name="NP"/>
+                    <label end="47" start="43" name="nn"/>
+                    <label end="50" start="49" name="PP"/>
+                    <label end="54" start="52" name="VVD"/>
+                    <label end="57" start="56" name="in"/>
+                    <label end="59" start="59" name="dt"/>
+                    <label end="66" start="61" name="jj"/>
+                    <label end="72" start="68" name="nn"/>
+                    <label end="77" start="74" name="in"/>
+                    <label end="83" start="79" name="NP"/>
+                    <label end="89" start="85" name="NP"/>
+                    <label end="91" start="91" name=","/>
+                    <label end="95" start="93" name="NP"/>
+                    <label end="97" start="97" name=","/>
+                    <label end="100" start="99" name="in"/>
+                    <label end="105" start="102" name="cd"/>
+                    <label end="109" start="107" name="in"/>
+                    <label end="114" start="111" name="wp"/>
+                    <label end="117" start="116" name="PP"/>
+                    <label end="125" start="119" name="VVD"/>
+                    <label end="129" start="127" name="VBD"/>
+                    <label end="132" start="131" name="cd"/>
+                    <label end="139" start="134" name="nns"/>
+                    <label end="142" start="141" name="in"/>
+                    <label end="150" start="144" name="jj"/>
+                    <label end="161" start="152" name="nns"/>
+                    <label end="163" start="163" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+            </annotationSet>
+            <annotationSet cDate="02/16/2005 04:00:19 PST Wed" status="MANUAL" ID="2073691">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="72" start="68" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="7153" end="66" start="61" name="Descriptor"/>
+                    <label cBy="395" feID="1573" end="72" start="68" name="Locale"/>
+                    <label cBy="395" feID="1601" end="95" start="74" name="Relative_location"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="66" start="61" name="Dep"/>
+                    <label end="95" start="74" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="66" start="61" name="AJP"/>
+                    <label end="95" start="74" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

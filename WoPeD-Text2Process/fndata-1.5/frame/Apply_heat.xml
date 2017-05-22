@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="669" cDate="10/03/2001 05:32:57 PDT Wed" name="Apply_heat" ID="236" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A &lt;fen&gt;Cook&lt;/fen&gt; applies heat to &lt;fen&gt;Food&lt;/fen&gt;, where the &lt;fen&gt;Temperature_setting&lt;/fen&gt; of the heat and &lt;fen&gt;Duration&lt;/fen&gt; of application may be specified.  A &lt;fen&gt;Heating_instrument&lt;/fen&gt;, generally indicated by a locative phrase, may also be expressed. Some cooking methods involve the use of a &lt;fen&gt;Medium&lt;/fen&gt; (e.g. milk or water) by which heat is transferred to the &lt;fen&gt;Food&lt;/fen&gt;.  A less semantically prominent &lt;fen&gt;Food&lt;/fen&gt; or &lt;fen&gt;Cook&lt;/fen&gt; is marked &lt;fen&gt;Co_participant&lt;/fen&gt;. 
+
+&lt;ex&gt;&lt;fex name="Cook"&gt;Sally&lt;/fex&gt; &lt;t&gt;fried&lt;/t&gt; &lt;fex name="Food"&gt;an egg&lt;/fex&gt; &lt;fex name="Medium"&gt;in butter&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Cook"&gt;Sally&lt;/fex&gt; &lt;t&gt;fried&lt;/t&gt; &lt;fex name="Food"&gt;an egg&lt;/fex&gt; &lt;fex name="Heating_instrument"&gt;in a teflon pan&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Cook"&gt;Ellen&lt;/fex&gt; &lt;t&gt;fried&lt;/t&gt; &lt;fex name="Food"&gt;the eggs&lt;/fex&gt; &lt;fex name="Co_participant"&gt;with chopped tomatoes and garlic&lt;/fex&gt;.&lt;/ex&gt;
+
+This frame differs from Cooking_creation in focusing on the process of handling the ingredients, rather than the edible entity that results from the process.&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="669" cDate="10/03/2001 05:37:25 PDT Wed" abbrev="Cook" name="Cook" ID="2027">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Cook&lt;/fen&gt; applies heat to the &lt;fen&gt;Food&lt;/fen&gt;.&lt;ex&gt;&lt;fex name="Cook"&gt;Drew&lt;/fex&gt; &lt;t&gt;sauteed&lt;/t&gt; the garlic in butter.&lt;/ex&gt; &lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Core" cBy="669" cDate="10/03/2001 05:37:28 PDT Wed" abbrev="Heat_instr" name="Heating_instrument" ID="2028">
+        <definition>&lt;def-root&gt;This FE identifes the entity that  directly supplies heat to the &lt;fen&gt;Food&lt;/fen&gt;. 
+&lt;ex&gt;Jim &lt;t&gt;browned&lt;/t&gt; the roast &lt;fex name="Heat_instr"&gt;in the oven&lt;/fex&gt;.&lt;/ex&gt;
+
+This FE will take precedence over &lt;fen&gt;Container&lt;/fen&gt; when both are expressed in the same constituent.  For example:
+
+&lt;ex&gt;Kate &lt;t&gt;cooked&lt;/t&gt; the rice &lt;fex name="Heat_instr"&gt;in a rice-cooker&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Physical_entity" ID="70"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="669" cDate="10/03/2001 05:37:44 PDT Wed" abbrev="Place" name="Place" ID="2029">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Place&lt;/fen&gt; where the heat application  occurs.
+&lt;ex&gt;We &lt;t&gt;baked&lt;/t&gt; the cake &lt;fex name="Place"&gt;in the kitchen&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="669" cDate="10/03/2001 05:37:44 PDT Wed" abbrev="Food" name="Food" ID="2030">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Food&lt;/fen&gt; is the entity to which heat is applied by the &lt;fen&gt;Cook&lt;/fen&gt;.&lt;ex&gt;Suzy usually &lt;t&gt;steams&lt;/t&gt; &lt;fex name="Food"&gt;the broccoli&lt;/fex&gt;.&lt;/ex&gt;In instructional imperatives, this FE, which would be used for the (missing) object, is tagged CNI:&lt;ex&gt;&lt;t&gt;Cook&lt;/t&gt; on low heat for two hours.&lt;fex name="Food"&gt;CNI&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="669" cDate="10/03/2001 05:38:28 PDT Wed" abbrev="Time" name="Time" ID="2032">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Time&lt;/fen&gt; at which the heat application occurs.
+&lt;ex&gt;Jim &lt;t&gt;roasted&lt;/t&gt; the chestnuts &lt;fex name="Time"&gt;in the evening&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="669" cDate="10/03/2001 05:38:31 PDT Wed" abbrev="Mns" name="Means" ID="2033">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Means&lt;/fen&gt; by which heat is applied to &lt;fen&gt;Food&lt;/fen&gt;.
+&lt;ex&gt;Kate &lt;t&gt;blanched&lt;/t&gt;the broccoli &lt;fex name="Means"&gt;by throwing it into a pot of boiling water&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="669" cDate="10/03/2001 05:38:34 PDT Wed" abbrev="Purp" name="Purpose" ID="2034">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Purpose&lt;/fen&gt; for which an intentional act is performed.&lt;ex&gt;John &lt;t&gt;baked&lt;/t&gt; cookies &lt;fex name="Purp"&gt;to show Patti that he was sorry&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="7FFF00" fgColor="000000" coreType="Peripheral" cBy="669" cDate="10/03/2001 05:45:32 PDT Wed" abbrev="Dur" name="Duration" ID="2035">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Duration&lt;/fen&gt; is the amount of &lt;fen&gt;Time&lt;/fen&gt; heat is applied to the &lt;fen&gt;Food&lt;/fen&gt;.&lt;ex&gt;Jim &lt;t&gt;boiled&lt;/t&gt; the egg &lt;fex name="Duration"&gt;for three minutes&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="669" cDate="10/03/2001 05:56:03 PDT Wed" abbrev="Med" name="Medium" ID="2037">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Medium&lt;/fen&gt; is the substance through which heat is applied to the &lt;fen&gt;Food&lt;/fen&gt;.
+&lt;ex&gt;Bobby &lt;t&gt;fried&lt;/t&gt; the potatoes &lt;fex name="Medium"&gt;in oil&lt;/fex&gt;.&lt;/ex&gt; &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="669" cDate="10/04/2001 01:00:37 PDT Thu" abbrev="" name="Co_participant" ID="2039">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Co_participant&lt;/fen&gt; is the gramatically less prominent of two foods to which heat is applied by the &lt;fen&gt;Cook&lt;/fen&gt;.&lt;ex&gt; Kate &lt;t&gt;baked&lt;/t&gt; the apples &lt;fex name="Co_participant"&gt;with cinnamon&lt;/fex&gt;.&lt;/ex&gt;&lt;ex&gt;Joe &lt;t&gt;roasted&lt;/t&gt; potatoes &lt;fex name="Co_participant"&gt;with the chicken&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <requiresFE name="Food" ID="2030"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core" cBy="669" cDate="10/04/2001 01:09:32 PDT Thu" abbrev="Temp" name="Temperature_setting" ID="2040">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Temperature_setting&lt;/fen&gt; of the &lt;fen&gt;Heating_instrument&lt;/fen&gt; for the &lt;fen&gt;Food&lt;/fen&gt;.
+
+&lt;ex&gt;He &lt;t&gt;baked&lt;/t&gt; the cookies &lt;fex name="Temp"&gt;at 350 degrees&lt;/fex&gt; for 11 minutes.&lt;/ex&gt;
+&lt;ex&gt;She &lt;t&gt;microwaved&lt;/t&gt; the popcorn &lt;fex name="Temp"&gt;on high&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;You can't &lt;t&gt;cook&lt;/t&gt; popcorn &lt;fex name="Temp"&gt;on low heat&lt;/fex&gt;!&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Temperature" ID="233"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="669" cDate="10/04/2001 01:47:33 PDT Thu" abbrev="Degr" name="Degree" ID="2041">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Degree&lt;/fen&gt; to which heat application occurs.&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="669" cDate="10/04/2001 01:47:38 PDT Thu" abbrev="Manr" name="Manner" ID="2042">
+        <definition>&lt;def-root&gt;Any description of the cooking event which is not covered by more specific FEs, including secondary effects (&lt;ment&gt;quietly, loudly&lt;/ment&gt;), and general descriptions comparing events (&lt;ment&gt;the same way&lt;/ment&gt;). In addition, it may indicate salient characteristics of an &lt;fen&gt;Cook&lt;/fen&gt; that also affect the action (&lt;ment&gt;presumptuously, coldly, deliberately, eagerly, carefully&lt;/ment&gt;). 
+&lt;ex&gt;&lt;t&gt;Saute&lt;/t&gt; the onions &lt;fex name="Manner"&gt;gently&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="10/05/2001 11:17:54 PDT Fri" abbrev="Container" name="Container" ID="2063">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Container&lt;/fen&gt; holds the &lt;fen&gt;Food&lt;/fen&gt; to which heat is applied.&lt;ex&gt;&lt;t&gt;Boil&lt;/t&gt; the potatoes &lt;fex name="Container"&gt;in a medium-sized pan&lt;/fex&gt;.&lt;/ex&gt;Things that apply the heat directly are &lt;fen&gt;Heating_Instrument&lt;/fen&gt;s, e.g. crock-pot, electric skillet.&lt;/def-root&gt;</definition>
+        <semType name="Container" ID="15"/>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Heating_instrument" ID="2028"/>
+        <memberFE name="Container" ID="2063"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Intentionally_affect</relatedFrame>
+        <relatedFrame>Activity</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Cooking_creation</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of">
+        <relatedFrame>Absorb_heat</relatedFrame>
+    </frameRelation>
+    <frameRelation type="See also"/>
+    <lexUnit status="Insufficient_Attestations" POS="V" name="braise.v" ID="4169" lemmaID="4425" cBy="669" cDate="10/03/2001 06:39:35 PDT Wed">
+        <definition>COD: fry lightly and then stew slowly in a closed container</definition>
+        <sentenceCount annotated="3" total="23"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="braise"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="blanch.v" ID="4170" lemmaID="3756" cBy="669" cDate="10/03/2001 06:45:30 PDT Wed">
+        <definition>COD: prepare vegetables for freezing or further cooking by immersing briefly in boiling water</definition>
+        <sentenceCount annotated="6" total="48"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="blanch"/>
+        <semType name="Activity" ID="8"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="V" name="brown.v" ID="4171" lemmaID="4730" cBy="669" cDate="10/03/2001 06:47:27 PDT Wed">
+        <definition>COD: make or become brown by cooking</definition>
+        <sentenceCount annotated="3" total="87"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="brown"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="V" name="broil.v" ID="4172" lemmaID="4680" cBy="669" cDate="10/03/2001 07:05:51 PDT Wed">
+        <definition>COD: cook by exposure to direct heat</definition>
+        <sentenceCount annotated="1" total="5"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="broil"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="V" name="parboil.v" ID="4173" lemmaID="27809" cBy="669" cDate="10/03/2001 07:10:09 PDT Wed">
+        <definition>COD: partly cook by boiling</definition>
+        <sentenceCount annotated="2" total="6"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="parboil"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="V" name="coddle.v" ID="4174" lemmaID="7040" cBy="669" cDate="10/03/2001 07:14:46 PDT Wed">
+        <definition>COD: cook an egg in water below boiling point</definition>
+        <sentenceCount annotated="0" total="11"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="coddle"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="scald.v" ID="4175" lemmaID="34294" cBy="669" cDate="10/03/2001 07:18:24 PDT Wed">
+        <definition>COD:  heat milk or other liquid to near boiling point</definition>
+        <sentenceCount annotated="4" total="73"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="scald"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="stew.v" ID="4176" lemmaID="38017" cBy="669" cDate="10/03/2001 07:28:10 PDT Wed">
+        <definition>COD: cook or be cooked slowly in liquid in a closed dish or pan</definition>
+        <sentenceCount annotated="5" total="72"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="stew"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="V" name="char.v" ID="4177" lemmaID="6074" cBy="296" cDate="10/05/2001 12:10:20 PDT Fri">
+        <definition>COD:  partially burn so as to blacken the surface</definition>
+        <sentenceCount annotated="1" total="60"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="char"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="poach.v" ID="4178" lemmaID="29498" cBy="296" cDate="10/05/2001 12:13:09 PDT Fri">
+        <definition>COD:  cook by simmering in a small amount of liquid</definition>
+        <sentenceCount annotated="13" total="104"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="poach"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="steep.v" ID="4179" lemmaID="37944" cBy="296" cDate="10/05/2001 12:21:16 PDT Fri">
+        <definition>COD: soak or be soaked in water or other liquid</definition>
+        <sentenceCount annotated="4" total="82"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="steep"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="toast.v" ID="4180" lemmaID="40579" cBy="296" cDate="10/05/2001 12:26:03 PDT Fri">
+        <definition>COD: cook or brown by exposure to radiant heat</definition>
+        <sentenceCount annotated="8" total="161"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="toast"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="saute.v" ID="4181" lemmaID="34229" cBy="296" cDate="10/05/2001 12:33:19 PDT Fri">
+        <definition>FN: to fry food in a fatty substance</definition>
+        <sentenceCount annotated="4" total="15"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="saute"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Heating_instrument" POS="V" name="microwave.v" ID="4182" lemmaID="45240" cBy="669" cDate="10/05/2001 04:03:05 PDT Fri">
+        <definition>COD: cook in a microwave oven</definition>
+        <sentenceCount annotated="6" total="112"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="microwave"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="steam.v" ID="4183" lemmaID="37922" cBy="669" cDate="10/05/2001 04:22:11 PDT Fri">
+        <definition>COD: cook by heating in steam from boiling water</definition>
+        <sentenceCount annotated="8" total="119"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="steam"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="fry.v" ID="4255" lemmaID="15599" cBy="296" cDate="10/12/2001 11:23:08 PDT Fri">
+        <definition>COD: cook or be cooked in hot fat or oil</definition>
+        <sentenceCount annotated="25" total="208"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="fry"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="grill.v" ID="4256" lemmaID="16837" cBy="296" cDate="10/12/2001 11:39:03 PDT Fri">
+        <definition>COD: cook with a grill</definition>
+        <sentenceCount annotated="17" total="106"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="grill"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="roast.v" ID="4257" lemmaID="33402" cBy="296" cDate="10/12/2001 11:44:49 PDT Fri">
+        <definition>COD: cook or be cooked by prolonged exposure to heat in an oven or over a fire. </definition>
+        <sentenceCount annotated="11" total="149"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="roast"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="boil.v" ID="4258" lemmaID="4063" cBy="296" cDate="10/12/2001 11:49:32 PDT Fri">
+        <definition>FN: cook by immersing in boiling water </definition>
+        <sentenceCount annotated="13" total="273"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="boil"/>
+        <semType name="Activity" ID="8"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="simmer.v" ID="4259" lemmaID="35940" cBy="296" cDate="10/12/2001 12:13:09 PDT Fri">
+        <definition>COD: stay or cause to stay just below boiling point while bubbling gently</definition>
+        <sentenceCount annotated="13" total="174"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="simmer"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="cook.v" ID="4727" lemmaID="8245" cBy="296" cDate="01/17/2002 02:44:27 PST Thu">
+        <definition>FN: to prepare food by applying heat</definition>
+        <sentenceCount annotated="24" total="360"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="cook"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="bake.v" ID="4971" lemmaID="2710" cBy="296" cDate="02/21/2002 10:46:36 PST Thu">
+        <definition>COD:  cook by dry heat without direct exposure to a flame, typically in an oven</definition>
+        <sentenceCount annotated="10" total="220"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="bake"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" incorporatedFE="Heating_instrument" POS="V" name="barbecue.v" ID="11861" lemmaID="2874" cBy="303" cDate="04/18/2005 03:45:55 PDT Mon">
+        <definition>COD: cook (food) on a barbecue.</definition>
+        <sentenceCount annotated="2" total="10"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="barbecue"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="deep fry.v" ID="11862" lemmaID="49940" cBy="303" cDate="04/18/2005 04:10:17 PDT Mon">
+        <definition>FN: to cook by immersion in heated fat or oil</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="deep"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="V" name="fry"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="singe.v" ID="11877" lemmaID="35988" cBy="303" cDate="04/18/2005 05:56:56 PDT Mon">
+        <definition>FN: burn superficially</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="singe"/>
+    </lexUnit>
+    <lexUnit status="Rules_Defined" POS="V" name="sear.v" ID="11885" lemmaID="34705" cBy="303" cDate="04/20/2005 05:48:18 PDT Wed">
+        <definition>COD: burn or scorch with a sudden intense heat.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="sear"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Container" POS="V" name="plank.v" ID="15776" lemmaID="29255" cBy="618" cDate="04/19/2010 10:27:38 PDT Mon">
+        <definition>FN: cook on a plank over heat.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="plank"/>
+    </lexUnit>
+</frame>

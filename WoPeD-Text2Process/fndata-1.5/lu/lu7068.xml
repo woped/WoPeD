@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="acid.n" ID="7068" frame="Intoxicants" frameID="390" totalAnnotated="5" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Co" name="Country_of_origin"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Desc" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Int" name="Intoxicant"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Peripheral" abbrev="Type" name="Type"/>
+        </frame>
+    </header>
+    <definition>COD: the drug LSD</definition>
+    <lexeme POS="N" name="acid"/>
+    <valences>
+        <governor type="Gov" lemma="do">
+            <annoSet ID="1564157"/>
+        </governor>
+        <governor type="Gov" lemma="drop">
+            <annoSet ID="1564177"/>
+        </governor>
+        <governor type="Gov" lemma="take">
+            <annoSet ID="1564249"/>
+            <annoSet ID="1564255"/>
+        </governor>
+        <FERealization total="2">
+            <FE name="Descriptor"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Descriptor"/>
+                <annoSet ID="1564249"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Descriptor"/>
+                <annoSet ID="1564003"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Intoxicant"/>
+            <pattern total="5">
+                <valenceUnit GF="" PT="DEN" FE="Intoxicant"/>
+                <annoSet ID="1564003"/>
+                <annoSet ID="1564157"/>
+                <annoSet ID="1564177"/>
+                <annoSet ID="1564249"/>
+                <annoSet ID="1564255"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Descriptor"/>
+            <FE name="Intoxicant"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Descriptor"/>
+                <valenceUnit GF="" PT="DEN" FE="Intoxicant"/>
+                <annoSet ID="1564249"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Descriptor"/>
+                <valenceUnit GF="" PT="DEN" FE="Intoxicant"/>
+                <annoSet ID="1564003"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="3">
+            <FE name="Intoxicant"/>
+            <pattern total="3">
+                <valenceUnit GF="" PT="DEN" FE="Intoxicant"/>
+                <annoSet ID="1564157"/>
+                <annoSet ID="1564177"/>
+                <annoSet ID="1564255"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-280-s20-poss">
+        <sentence sentNo="0" aPos="29950609" ID="1056299">
+            <text>DMT existed in the streets in the Sixties where it gained a reputation as the businessman 's acid , because it could be smoked and did n't last too long . </text>
+            <annotationSet cDate="01/08/2003 12:39:22 PST Wed" status="UNANN" ID="1564002">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="NP0"/>
+                    <label end="10" start="4" name="VVD"/>
+                    <label end="13" start="12" name="PRP"/>
+                    <label end="17" start="15" name="AT0"/>
+                    <label end="25" start="19" name="NN2"/>
+                    <label end="28" start="27" name="PRP"/>
+                    <label end="32" start="30" name="AT0"/>
+                    <label end="40" start="34" name="CRD"/>
+                    <label end="46" start="42" name="AVQ"/>
+                    <label end="49" start="48" name="PNP"/>
+                    <label end="56" start="51" name="VVD"/>
+                    <label end="58" start="58" name="AT0"/>
+                    <label end="69" start="60" name="NN1"/>
+                    <label end="72" start="71" name="PRP"/>
+                    <label end="76" start="74" name="AT0"/>
+                    <label end="88" start="78" name="NN1"/>
+                    <label end="91" start="90" name="POS"/>
+                    <label end="96" start="93" name="NN1"/>
+                    <label end="98" start="98" name="PUN"/>
+                    <label end="106" start="100" name="CJS"/>
+                    <label end="109" start="108" name="PNP"/>
+                    <label end="115" start="111" name="VM0"/>
+                    <label end="118" start="117" name="VBI"/>
+                    <label end="125" start="120" name="AJ0-VVN"/>
+                    <label end="129" start="127" name="CJC"/>
+                    <label end="133" start="131" name="VDD"/>
+                    <label end="137" start="135" name="XX0"/>
+                    <label end="142" start="139" name="VVI"/>
+                    <label end="146" start="144" name="AV0"/>
+                    <label end="151" start="148" name="AJ0-AV0"/>
+                    <label end="153" start="153" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:39:22 PST Wed" status="MANUAL" ID="1564003">
+                <layer rank="1" name="FE">
+                    <label cBy="865" feID="3497" end="91" start="74" name="Descriptor"/>
+                    <label cBy="865" feID="3495" end="96" start="93" name="Intoxicant"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="91" start="74" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="91" start="74" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="96" start="93" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-290-s20-posscmpd"/>
+    <subCorpus name="N-300-s20-cmpd"/>
+    <subCorpus name="N-330-s20-period"/>
+    <subCorpus name="N-380-s20-other"/>
+    <subCorpus name="N-429-s20-lgov-do">
+        <sentence sentNo="0" aPos="10469104" ID="1056376">
+            <text>She had done acid once , at college , and it had not been anything like this evening 's entertainment . </text>
+            <annotationSet cDate="01/08/2003 12:39:31 PST Wed" status="UNANN" ID="1564156">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="PNP"/>
+                    <label end="6" start="4" name="VHD"/>
+                    <label end="11" start="8" name="VDN"/>
+                    <label end="16" start="13" name="NN1"/>
+                    <label end="21" start="18" name="AV0"/>
+                    <label end="23" start="23" name="PUN"/>
+                    <label end="26" start="25" name="PRP"/>
+                    <label end="34" start="28" name="NN1"/>
+                    <label end="36" start="36" name="PUN"/>
+                    <label end="40" start="38" name="CJC"/>
+                    <label end="43" start="42" name="PNP"/>
+                    <label end="47" start="45" name="VHD"/>
+                    <label end="51" start="49" name="XX0"/>
+                    <label end="56" start="53" name="VBN"/>
+                    <label end="65" start="58" name="PNI"/>
+                    <label end="70" start="67" name="PRP"/>
+                    <label end="75" start="72" name="DT0"/>
+                    <label end="83" start="77" name="NN1"/>
+                    <label end="86" start="85" name="POS"/>
+                    <label end="100" start="88" name="NN1"/>
+                    <label end="102" start="102" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:39:31 PST Wed" status="MANUAL" ID="1564157">
+                <layer rank="1" name="FE">
+                    <label cBy="865" feID="3495" end="16" start="13" name="Intoxicant"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="16" start="13" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="11" start="8" name="Gov"/>
+                    <label end="16" start="13" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-429-s20-lgov-drop">
+        <sentence sentNo="0" aPos="12735261" ID="1056386">
+            <text>On this particular day , they had been shooting at Taos and at the end of it they dropped some acid and took off with two other friends to visit the nearby tomb of D.H. Lawrence . </text>
+            <annotationSet cDate="01/08/2003 12:39:32 PST Wed" status="UNANN" ID="1564176">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PRP"/>
+                    <label end="6" start="3" name="DT0"/>
+                    <label end="17" start="8" name="AJ0"/>
+                    <label end="21" start="19" name="NN1"/>
+                    <label end="23" start="23" name="PUN"/>
+                    <label end="28" start="25" name="PNP"/>
+                    <label end="32" start="30" name="VHD"/>
+                    <label end="37" start="34" name="VBN"/>
+                    <label end="46" start="39" name="VVG"/>
+                    <label end="49" start="48" name="PRP"/>
+                    <label end="54" start="51" name="NP0"/>
+                    <label end="58" start="56" name="CJC"/>
+                    <label end="61" start="60" name="PRP"/>
+                    <label end="65" start="63" name="AT0"/>
+                    <label end="69" start="67" name="NN1"/>
+                    <label end="72" start="71" name="PRF"/>
+                    <label end="75" start="74" name="PNP"/>
+                    <label end="80" start="77" name="PNP"/>
+                    <label end="88" start="82" name="VVD"/>
+                    <label end="93" start="90" name="DT0"/>
+                    <label end="98" start="95" name="NN1"/>
+                    <label end="102" start="100" name="CJC"/>
+                    <label end="107" start="104" name="VVD"/>
+                    <label end="111" start="109" name="AVP"/>
+                    <label end="116" start="113" name="PRP"/>
+                    <label end="120" start="118" name="CRD"/>
+                    <label end="126" start="122" name="AJ0"/>
+                    <label end="134" start="128" name="NN2"/>
+                    <label end="137" start="136" name="TO0"/>
+                    <label end="143" start="139" name="VVI"/>
+                    <label end="147" start="145" name="AT0"/>
+                    <label end="154" start="149" name="AJ0"/>
+                    <label end="159" start="156" name="NN1"/>
+                    <label end="162" start="161" name="PRF"/>
+                    <label end="167" start="164" name="NN0"/>
+                    <label end="176" start="169" name="NP0"/>
+                    <label end="178" start="178" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:39:32 PST Wed" status="MANUAL" ID="1564177">
+                <layer rank="1" name="FE">
+                    <label cBy="865" feID="3495" end="98" start="95" name="Intoxicant"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="98" start="95" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="88" start="82" name="Gov"/>
+                    <label end="98" start="90" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-429-s20-lgov-have"/>
+    <subCorpus name="N-429-s20-lgov-take">
+        <sentence sentNo="0" aPos="35095292" ID="1056422">
+            <text>Force all staff to take good acid every Friday </text>
+            <annotationSet cDate="01/08/2003 12:39:38 PST Wed" status="UNANN" ID="1564248">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="VVB"/>
+                    <label end="8" start="6" name="DT0"/>
+                    <label end="14" start="10" name="NN0"/>
+                    <label end="17" start="16" name="TO0"/>
+                    <label end="22" start="19" name="VVI"/>
+                    <label end="27" start="24" name="AJ0"/>
+                    <label end="32" start="29" name="NN1"/>
+                    <label end="38" start="34" name="AT0"/>
+                    <label end="45" start="40" name="NP0"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:39:38 PST Wed" status="MANUAL" ID="1564249">
+                <layer rank="1" name="FE">
+                    <label cBy="865" feID="3497" end="27" start="24" name="Descriptor"/>
+                    <label cBy="865" feID="3495" end="32" start="29" name="Intoxicant"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="27" start="24" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="27" start="24" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="32" start="29" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="22" start="19" name="Gov"/>
+                    <label end="32" start="24" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="58463041" ID="1056425">
+            <text>I was getting through by starting to smoke dope and take acid . </text>
+            <annotationSet cDate="01/08/2003 12:39:39 PST Wed" status="UNANN" ID="1564254">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PNP"/>
+                    <label end="4" start="2" name="VBD"/>
+                    <label end="12" start="6" name="VVG"/>
+                    <label end="20" start="14" name="AVP"/>
+                    <label end="23" start="22" name="PRP"/>
+                    <label end="32" start="25" name="VVG"/>
+                    <label end="35" start="34" name="TO0"/>
+                    <label end="41" start="37" name="VVI"/>
+                    <label end="46" start="43" name="NN1"/>
+                    <label end="50" start="48" name="CJC"/>
+                    <label end="55" start="52" name="VVB"/>
+                    <label end="60" start="57" name="NN1"/>
+                    <label end="62" start="62" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:39:39 PST Wed" status="MANUAL" ID="1564255">
+                <layer rank="1" name="FE">
+                    <label cBy="865" feID="3495" end="60" start="57" name="Intoxicant"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="60" start="57" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="55" start="52" name="Gov"/>
+                    <label end="60" start="57" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-429-s20-lgov-use"/>
+</lexUnit>

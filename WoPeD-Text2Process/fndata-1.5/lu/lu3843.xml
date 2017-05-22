@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" POS="NUM" name="one.num" ID="3843" frame="Cardinal_numbers" frameID="218" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="Orwell" ID="3">
+            <document description="Orwell_1984_p1" ID="7"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Core" abbrev="Entity" name="Entity"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="mul" name="Multiplier"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Core" abbrev="Num" name="Number"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="deg" name="Precision"/>
+        </frame>
+    </header>
+    <definition>COD: the lowest cardinal number; half of two.</definition>
+    <lexeme POS="NUM" name="one"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Entity"/>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="N" FE="Entity"/>
+                <annoSet ID="2598424"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Number"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="--" FE="Number"/>
+                <annoSet ID="2598424"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Entity"/>
+            <FE name="Number"/>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="N" FE="Entity"/>
+                <valenceUnit GF="" PT="--" FE="Number"/>
+                <annoSet ID="2598424"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="manually-added">
+        <sentence corpID="3" docID="7" sentNo="2" paragNo="2" aPos="0" ID="312904">
+            <text>At one end of it a coloured poster , too large for indoor display , had been tacked to the wall .</text>
+            <annotationSet cDate="01/06/2003 10:55:06 PST Mon" status="UNANN" ID="269180">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PRP"/>
+                    <label end="5" start="3" name="CRD"/>
+                    <label end="9" start="7" name="NN1"/>
+                    <label end="12" start="11" name="PRF"/>
+                    <label end="15" start="14" name="PNP"/>
+                    <label end="17" start="17" name="AT0"/>
+                    <label end="26" start="19" name="AJ0"/>
+                    <label end="33" start="28" name="NN1"/>
+                    <label end="35" start="35" name="PUN"/>
+                    <label end="39" start="37" name="AV0"/>
+                    <label end="45" start="41" name="AJ0"/>
+                    <label end="49" start="47" name="PRP"/>
+                    <label end="56" start="51" name="AJ0"/>
+                    <label end="64" start="58" name="NN1"/>
+                    <label end="66" start="66" name="PUN"/>
+                    <label end="70" start="68" name="VHD"/>
+                    <label end="75" start="72" name="VBN"/>
+                    <label end="82" start="77" name="VVN"/>
+                    <label end="85" start="84" name="PRP"/>
+                    <label end="89" start="87" name="AT0"/>
+                    <label end="94" start="91" name="NN1"/>
+                    <label end="96" start="96" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/23/2010 06:19:09 PDT Fri" status="MANUAL" ID="2598424">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="5" start="3" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="3623" end="9" start="7" name="Entity"/>
+                    <label cBy="664" feID="3622" end="5" start="3" name="Number"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="9" start="7" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="9" start="7" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" POS="A" name="splendid.a" ID="9288" frame="Usefulness" frameID="726" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="dom" name="Domain"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Ent" name="Entity"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: excellent.</definition>
+    <lexeme POS="A" name="splendid"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Entity"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Entity"/>
+                <annoSet ID="1371177"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Purpose"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PPing[for]" FE="Purpose"/>
+                <annoSet ID="1371177"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Entity"/>
+            <FE name="Purpose"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Entity"/>
+                <valenceUnit GF="Dep" PT="PPing[for]" FE="Purpose"/>
+                <annoSet ID="1371177"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="A-100-s20-ppin">
+        <sentence sentNo="0" aPos="58226319" ID="958998">
+            <text>For reproducing or doubling alto and tenor lines the French horn is splendid in its ability to sustain a velvet tone . </text>
+            <annotationSet cDate="01/07/2003 08:59:57 PST Tue" status="UNANN" ID="1371176">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="PRP"/>
+                    <label end="14" start="4" name="NN1-VVG"/>
+                    <label end="17" start="16" name="CJC"/>
+                    <label end="26" start="19" name="AJ0-VVG"/>
+                    <label end="31" start="28" name="NN1"/>
+                    <label end="35" start="33" name="CJC"/>
+                    <label end="41" start="37" name="NN1"/>
+                    <label end="47" start="43" name="NN2-VVZ"/>
+                    <label end="51" start="49" name="AT0"/>
+                    <label end="58" start="53" name="AJ0"/>
+                    <label end="63" start="60" name="NN1"/>
+                    <label end="66" start="65" name="VBZ"/>
+                    <label end="75" start="68" name="AJ0"/>
+                    <label end="78" start="77" name="PRP"/>
+                    <label end="82" start="80" name="DPS"/>
+                    <label end="90" start="84" name="NN1"/>
+                    <label end="93" start="92" name="TO0"/>
+                    <label end="101" start="95" name="VVI"/>
+                    <label end="103" start="103" name="AT0"/>
+                    <label end="110" start="105" name="NN1"/>
+                    <label end="115" start="112" name="NN1"/>
+                    <label end="117" start="117" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 08:59:57 PST Tue" status="MANUAL" ID="1371177">
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="4783" end="63" start="49" name="Entity"/>
+                    <label cBy="664" feID="4784" end="47" start="0" name="Purpose"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="63" start="49" name="Ext"/>
+                    <label end="47" start="0" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="63" start="49" name="NP"/>
+                    <label end="47" start="0" name="PPing"/>
+                </layer>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="reexamine"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="75" start="68" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj">
+                    <label end="66" start="65" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

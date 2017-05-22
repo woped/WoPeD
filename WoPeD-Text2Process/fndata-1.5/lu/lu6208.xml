@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="PREP" name="without compare.prep" ID="6208" frame="Beyond_compare" frameID="356" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Compet" name="Competitors"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="dom" name="Domain"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Stndrd" name="Standard"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Vrble" name="Variable"/>
+        </frame>
+    </header>
+    <definition>FN: unmatched</definition>
+    <lexeme order="1" headword="true" breakBefore="false" POS="PREP" name="without"/>
+    <lexeme order="2" headword="false" breakBefore="false" POS="N" name="compare"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Standard"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Standard"/>
+                <annoSet ID="1966252"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Standard"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Standard"/>
+                <annoSet ID="1966252"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="221" aPos="0" ID="1259633">
+            <text>To me the grenadilla is without compare ; its flowers are sweet like the flowers of roses , but its fruit is like no other fruit and I would choose it before the nectar of the gods .</text>
+            <annotationSet cDate="05/25/2004 10:57:29 PDT Tue" status="UNANN" ID="1966251">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="to"/>
+                    <label end="4" start="3" name="PP"/>
+                    <label end="8" start="6" name="dt"/>
+                    <label end="19" start="10" name="nn"/>
+                    <label end="22" start="21" name="VBZ"/>
+                    <label end="30" start="24" name="in"/>
+                    <label end="38" start="32" name="VVP"/>
+                    <label end="40" start="40" name=":"/>
+                    <label end="44" start="42" name="PP$"/>
+                    <label end="52" start="46" name="nns"/>
+                    <label end="56" start="54" name="vbp"/>
+                    <label end="62" start="58" name="jj"/>
+                    <label end="67" start="64" name="in"/>
+                    <label end="71" start="69" name="dt"/>
+                    <label end="79" start="73" name="nns"/>
+                    <label end="82" start="81" name="in"/>
+                    <label end="88" start="84" name="nns"/>
+                    <label end="90" start="90" name=","/>
+                    <label end="94" start="92" name="cc"/>
+                    <label end="98" start="96" name="PP$"/>
+                    <label end="104" start="100" name="nn"/>
+                    <label end="107" start="106" name="VBZ"/>
+                    <label end="112" start="109" name="in"/>
+                    <label end="115" start="114" name="dt"/>
+                    <label end="121" start="117" name="jj"/>
+                    <label end="127" start="123" name="nn"/>
+                    <label end="131" start="129" name="cc"/>
+                    <label end="133" start="133" name="PP"/>
+                    <label end="139" start="135" name="md"/>
+                    <label end="146" start="141" name="VV"/>
+                    <label end="149" start="148" name="PP"/>
+                    <label end="156" start="151" name="in"/>
+                    <label end="160" start="158" name="dt"/>
+                    <label end="167" start="162" name="nn"/>
+                    <label end="170" start="169" name="in"/>
+                    <label end="174" start="172" name="dt"/>
+                    <label end="179" start="176" name="nns"/>
+                    <label end="181" start="181" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="05/25/2004 10:57:30 PDT Tue" status="MANUAL" ID="1966252">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="38" start="24" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="3088" end="19" start="6" name="Standard"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="19" start="6" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="19" start="6" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Prep">
+                    <label end="22" start="21" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

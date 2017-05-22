@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="spittoon.n" ID="4290" frame="Containers" frameID="78" totalAnnotated="4" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="AP" ID="113">
+            <document description="apwsE950318.0071" ID="4765"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="Cons" name="Construction"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Container" name="Container"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="Cont" name="Contents"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Peripheral" abbrev="" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Mat" name="Material"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Own" name="Owner"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="Part" name="Part"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Rel_loc" name="Relative_location"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Peripheral" abbrev="Type" name="Type"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Use" name="Use"/>
+        </frame>
+    </header>
+    <definition>COD:  a container for spitting into</definition>
+    <lexeme POS="N" name="spittoon"/>
+    <semType name="Container" ID="15"/>
+    <valences>
+        <governor type="Gov" lemma="provide">
+            <annoSet ID="856929"/>
+        </governor>
+        <governor type="Gov" lemma="spang">
+            <annoSet ID="856931"/>
+        </governor>
+        <governor type="Gov" lemma="spit">
+            <annoSet ID="2007601"/>
+        </governor>
+        <FERealization total="4">
+            <FE name="Container"/>
+            <pattern total="4">
+                <valenceUnit GF="" PT="DEN" FE="Container"/>
+                <annoSet ID="856929"/>
+                <annoSet ID="856931"/>
+                <annoSet ID="856933"/>
+                <annoSet ID="2007601"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Material"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Material"/>
+                <annoSet ID="856933"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="3">
+            <FE name="Container"/>
+            <pattern total="3">
+                <valenceUnit GF="" PT="DEN" FE="Container"/>
+                <annoSet ID="856929"/>
+                <annoSet ID="856931"/>
+                <annoSet ID="2007601"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Container"/>
+            <FE name="Material"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Container"/>
+                <valenceUnit GF="Dep" PT="N" FE="Material"/>
+                <annoSet ID="856933"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-001-all">
+        <sentence sentNo="0" aPos="29936185" ID="689821">
+            <text>Yemeni homes and cafés provide a spittoon for this purpose . </text>
+            <annotationSet cDate="01/07/2003 10:56:26 PST Tue" status="UNANN" ID="856928">
+                <layer rank="1" name="BNC">
+                    <label end="5" start="0" name="AJ0"/>
+                    <label end="11" start="7" name="NN2"/>
+                    <label end="15" start="13" name="CJC"/>
+                    <label end="21" start="17" name="NN2"/>
+                    <label end="29" start="23" name="VVB"/>
+                    <label end="31" start="31" name="AT0"/>
+                    <label end="40" start="33" name="NN1"/>
+                    <label end="44" start="42" name="PRP"/>
+                    <label end="49" start="46" name="DT0"/>
+                    <label end="57" start="51" name="NN1"/>
+                    <label end="59" start="59" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:56:27 PST Tue" status="MANUAL" ID="856929">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="367" end="40" start="33" name="Container"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="40" start="33" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="29" start="23" name="Gov"/>
+                    <label end="57" start="31" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="34102378" ID="689822">
+            <text>He looked up at Gretchen , and spanged the spittoon with a jet of brown filth . </text>
+            <annotationSet cDate="01/07/2003 10:56:27 PST Tue" status="UNANN" ID="856930">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="8" start="3" name="VVD"/>
+                    <label end="11" start="10" name="AVP"/>
+                    <label end="14" start="13" name="PRP"/>
+                    <label end="23" start="16" name="NP0"/>
+                    <label end="25" start="25" name="PUN"/>
+                    <label end="29" start="27" name="CJC"/>
+                    <label end="37" start="31" name="VVD"/>
+                    <label end="41" start="39" name="AT0"/>
+                    <label end="50" start="43" name="NN1"/>
+                    <label end="55" start="52" name="PRP"/>
+                    <label end="57" start="57" name="AT0"/>
+                    <label end="61" start="59" name="NN1"/>
+                    <label end="64" start="63" name="PRF"/>
+                    <label end="70" start="66" name="AJ0"/>
+                    <label end="76" start="72" name="NN1"/>
+                    <label end="78" start="78" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:56:27 PST Tue" status="MANUAL" ID="856931">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="367" end="50" start="43" name="Container"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="50" start="43" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="37" start="31" name="Gov"/>
+                    <label end="76" start="39" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="58375640" ID="689823">
+            <text>This last noise occasioned by a solid pellet of his spittle hitting a brass spittoon . ) </text>
+            <annotationSet cDate="01/07/2003 10:56:27 PST Tue" status="UNANN" ID="856932">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="DT0"/>
+                    <label end="8" start="5" name="ORD"/>
+                    <label end="14" start="10" name="NN1"/>
+                    <label end="25" start="16" name="VVN"/>
+                    <label end="28" start="27" name="PRP"/>
+                    <label end="30" start="30" name="AT0"/>
+                    <label end="36" start="32" name="AJ0"/>
+                    <label end="43" start="38" name="NN1"/>
+                    <label end="46" start="45" name="PRF"/>
+                    <label end="50" start="48" name="DPS"/>
+                    <label end="58" start="52" name="NN1"/>
+                    <label end="66" start="60" name="VVG"/>
+                    <label end="68" start="68" name="AT0"/>
+                    <label end="74" start="70" name="NN1"/>
+                    <label end="83" start="76" name="NN1"/>
+                    <label end="85" start="85" name="PUN"/>
+                    <label end="87" start="87" name="PUR"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:56:27 PST Tue" status="MANUAL" ID="856933">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="2011" end="74" start="70" name="Material"/>
+                    <label cBy="669" feID="367" end="83" start="76" name="Container"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="74" start="70" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="74" start="70" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="83" start="76" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="01-T-(1)">
+        <sentence corpID="113" docID="4765" sentNo="1" paragNo="7" aPos="45567973" ID="1279695">
+            <text>The government urged betel chewers throughout the country to spit the red juice in spittoons .</text>
+            <annotationSet cDate="10/02/2004 05:20:01 PDT Sat" status="UNANN" ID="2007600">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="13" start="4" name="nn"/>
+                    <label end="19" start="15" name="VVD"/>
+                    <label end="25" start="21" name="nn"/>
+                    <label end="33" start="27" name="nns"/>
+                    <label end="44" start="35" name="in"/>
+                    <label end="48" start="46" name="dt"/>
+                    <label end="56" start="50" name="nn"/>
+                    <label end="59" start="58" name="to"/>
+                    <label end="64" start="61" name="VV"/>
+                    <label end="68" start="66" name="dt"/>
+                    <label end="72" start="70" name="jj"/>
+                    <label end="78" start="74" name="nn"/>
+                    <label end="81" start="80" name="in"/>
+                    <label end="91" start="83" name="nns"/>
+                    <label end="93" start="93" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/02/2004 05:20:01 PDT Sat" status="MANUAL" ID="2007601">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="91" start="83" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="367" end="91" start="83" name="Container"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="64" start="61" name="Gov"/>
+                    <label end="91" start="80" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

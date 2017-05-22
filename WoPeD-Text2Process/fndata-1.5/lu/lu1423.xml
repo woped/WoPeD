@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" incorporatedFE="Sound" POS="V" name="keen.v" ID="1423" frame="Make_noise" frameID="69" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="AP" ID="113">
+            <document description="apwsE950812.0236" ID="8212"/>
+            <document description="apwsE950205.0141" ID="8213"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="" name="Addressee"/>
+            <FE fgColor="00008B" bgColor="d0d0d0" type="Extra-Thematic" abbrev="cir" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Extra-Thematic" abbrev="ICause" name="Internal_cause"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Extra-Thematic" abbrev="ite" name="Iterations"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Extra-Thematic" abbrev="Loc-Src" name="Location_of_source"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="" name="Noisy_event"/>
+            <FE fgColor="000000" bgColor="FFD700" type="Extra-Thematic" abbrev="par" name="Particular_iteration"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Extra-Thematic" abbrev="" name="Path"/>
+            <FE fgColor="000000" bgColor="FFA500" type="Peripheral" abbrev="" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="Rsn" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Sound" name="Sound"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="Src-p" name="Sound_source"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Extra-Thematic" abbrev="Sub" name="Subregion"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Peripheral" abbrev="" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: wail in grief for a dead person or make an eerie wailing sound. </definition>
+    <lexeme POS="V" name="keen"/>
+    <valences>
+        <FERealization total="2">
+            <FE name="Sound"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="INC" FE="Sound"/>
+                <annoSet ID="2056710"/>
+                <annoSet ID="2056712"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Sound_source"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Sound_source"/>
+                <annoSet ID="2056710"/>
+                <annoSet ID="2056712"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Sound"/>
+            <FE name="Sound_source"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="INC" FE="Sound"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Sound_source"/>
+                <annoSet ID="2056710"/>
+                <annoSet ID="2056712"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-001-all"/>
+    <subCorpus name="01-T-(1)">
+        <sentence corpID="113" docID="8212" sentNo="1" paragNo="15" aPos="82017836" ID="1304274">
+            <text>It was a Balkan wake , with black-scarved women keening and strapping soldiers in uniform weeping openly .</text>
+            <annotationSet cDate="01/15/2005 02:33:17 PST Sat" status="UNANN" ID="2056709">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="5" start="3" name="VBD"/>
+                    <label end="7" start="7" name="dt"/>
+                    <label end="14" start="9" name="jj"/>
+                    <label end="19" start="16" name="nn"/>
+                    <label end="21" start="21" name=","/>
+                    <label end="26" start="23" name="in"/>
+                    <label end="40" start="28" name="jj"/>
+                    <label end="46" start="42" name="nns"/>
+                    <label end="54" start="48" name="VVG"/>
+                    <label end="58" start="56" name="cc"/>
+                    <label end="68" start="60" name="VVG"/>
+                    <label end="77" start="70" name="nns"/>
+                    <label end="80" start="79" name="in"/>
+                    <label end="88" start="82" name="nn"/>
+                    <label end="96" start="90" name="VVG"/>
+                    <label end="103" start="98" name="rb"/>
+                    <label end="105" start="105" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/15/2005 02:33:18 PST Sat" status="MANUAL" ID="2056710">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="54" start="48" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="323" end="46" start="28" name="Sound_source"/>
+                    <label cBy="589" feID="328" end="54" start="48" name="Sound"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="46" start="28" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="46" start="28" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="8213" sentNo="3" paragNo="4" aPos="36253534" ID="1304275">
+            <text>Others wailed and keened , as friends and relatives propped them up .</text>
+            <annotationSet cDate="01/15/2005 02:33:18 PST Sat" status="UNANN" ID="2056711">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="0" name="nns"/>
+                    <label end="12" start="7" name="VVD"/>
+                    <label end="16" start="14" name="cc"/>
+                    <label end="23" start="18" name="VVD"/>
+                    <label end="25" start="25" name=","/>
+                    <label end="28" start="27" name="in"/>
+                    <label end="36" start="30" name="nns"/>
+                    <label end="40" start="38" name="cc"/>
+                    <label end="50" start="42" name="nns"/>
+                    <label end="58" start="52" name="VVD"/>
+                    <label end="63" start="60" name="PP"/>
+                    <label end="66" start="65" name="rp"/>
+                    <label end="68" start="68" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/15/2005 02:33:19 PST Sat" status="MANUAL" ID="2056712">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="23" start="18" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="323" end="5" start="0" name="Sound_source"/>
+                    <label cBy="589" feID="328" end="23" start="18" name="Sound"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="5" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="5" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

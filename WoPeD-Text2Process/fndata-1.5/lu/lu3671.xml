@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="pallium.n" ID="3671" frame="Clothing" frameID="134" totalAnnotated="4" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Body_loc" name="Body_location"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="cre" name="Creator"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="Desc" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Gar" name="Garment"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="Mat" name="Material"/>
+            <FE fgColor="000000" bgColor="d0d0d0" type="Peripheral" abbrev="nam" name="Name"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Sty" name="Style"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Subr" name="Subregion"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="tim" name="Time_of_creation"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Use" name="Use"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Peripheral" abbrev="Wear" name="Wearer"/>
+        </frame>
+    </header>
+    <definition>COD: a woollen vestment conferred by the Pope on an archbishop, consisting of a narrow circular band placed round the shoulders with a short lappet hanging from front and back</definition>
+    <lexeme POS="N" name="pallium"/>
+    <valences>
+        <governor type="Gov" lemma="receive">
+            <annoSet ID="585016"/>
+            <annoSet ID="585032"/>
+        </governor>
+        <FERealization total="1">
+            <FE name="Descriptor"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Descriptor"/>
+                <annoSet ID="585024"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Garment"/>
+            <pattern total="4">
+                <valenceUnit GF="" PT="DEN" FE="Garment"/>
+                <annoSet ID="585016"/>
+                <annoSet ID="585024"/>
+                <annoSet ID="585032"/>
+                <annoSet ID="585034"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Wearer"/>
+            <pattern total="2">
+                <valenceUnit GF="Gen" PT="Poss" FE="Wearer"/>
+                <annoSet ID="585024"/>
+                <annoSet ID="585034"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Descriptor"/>
+            <FE name="Garment"/>
+            <FE name="Wearer"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Descriptor"/>
+                <valenceUnit GF="" PT="DEN" FE="Garment"/>
+                <valenceUnit GF="Gen" PT="Poss" FE="Wearer"/>
+                <annoSet ID="585024"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Garment"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="DEN" FE="Garment"/>
+                <annoSet ID="585016"/>
+                <annoSet ID="585032"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Garment"/>
+            <FE name="Wearer"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Garment"/>
+                <valenceUnit GF="Gen" PT="Poss" FE="Wearer"/>
+                <annoSet ID="585034"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-001-all">
+        <sentence sentNo="0" aPos="37465814" ID="473063">
+            <text>On Sunday 27 May 1095 Anselm received the pallium from the papal legate at Canterbury . </text>
+            <annotationSet cDate="01/07/2003 05:19:22 PST Tue" status="UNANN" ID="585015">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PRP"/>
+                    <label end="8" start="3" name="NP0"/>
+                    <label end="11" start="10" name="CRD"/>
+                    <label end="15" start="13" name="NP0"/>
+                    <label end="20" start="17" name="CRD"/>
+                    <label end="27" start="22" name="NN1-NP0"/>
+                    <label end="36" start="29" name="VVD"/>
+                    <label end="40" start="38" name="AT0"/>
+                    <label end="48" start="42" name="NN1"/>
+                    <label end="53" start="50" name="PRP"/>
+                    <label end="57" start="55" name="AT0"/>
+                    <label end="63" start="59" name="AJ0"/>
+                    <label end="70" start="65" name="NN1"/>
+                    <label end="73" start="72" name="PRP"/>
+                    <label end="84" start="75" name="NP0"/>
+                    <label end="86" start="86" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:19:22 PST Tue" status="MANUAL" ID="585016">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="869" end="48" start="42" name="Garment"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="48" start="42" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="36" start="29" name="Gov"/>
+                    <label end="48" start="38" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="37499503" ID="473067">
+            <text>In 1071 , Lanfranc had gone to Rome for his archiepiscopal pallium . </text>
+            <annotationSet cDate="01/07/2003 05:19:23 PST Tue" status="UNANN" ID="585023">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PRP"/>
+                    <label end="6" start="3" name="CRD"/>
+                    <label end="8" start="8" name="PUN"/>
+                    <label end="17" start="10" name="NP0"/>
+                    <label end="21" start="19" name="VHD"/>
+                    <label end="26" start="23" name="VVN"/>
+                    <label end="29" start="28" name="PRP"/>
+                    <label end="34" start="31" name="NP0"/>
+                    <label end="38" start="36" name="PRP"/>
+                    <label end="42" start="40" name="DPS"/>
+                    <label end="57" start="44" name="AJ0"/>
+                    <label end="65" start="59" name="NN1"/>
+                    <label end="67" start="67" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:19:23 PST Tue" status="MANUAL" ID="585024">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="870" end="42" start="40" name="Wearer"/>
+                    <label cBy="669" feID="873" end="57" start="44" name="Descriptor"/>
+                    <label cBy="669" feID="869" end="65" start="59" name="Garment"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="42" start="40" name="Gen"/>
+                    <label end="57" start="44" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="42" start="40" name="Poss"/>
+                    <label end="57" start="44" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="65" start="59" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="63258831" ID="473071">
+            <text>Even though Hygeberht received the pallium from Pope Hadrian , his status as archbishop was not willingly recognized by the community at Canterbury ( CS 254 : S 128 ) . </text>
+            <annotationSet cDate="01/07/2003 05:19:23 PST Tue" status="UNANN" ID="585031">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="CJS"/>
+                    <label end="10" start="5" name="CJS"/>
+                    <label end="20" start="12" name="NP0"/>
+                    <label end="29" start="22" name="VVD"/>
+                    <label end="33" start="31" name="AT0"/>
+                    <label end="41" start="35" name="NN1"/>
+                    <label end="46" start="43" name="PRP"/>
+                    <label end="51" start="48" name="NP0"/>
+                    <label end="59" start="53" name="NP0"/>
+                    <label end="61" start="61" name="PUN"/>
+                    <label end="65" start="63" name="DPS"/>
+                    <label end="72" start="67" name="NN1"/>
+                    <label end="75" start="74" name="CJS-PRP"/>
+                    <label end="86" start="77" name="NN1"/>
+                    <label end="90" start="88" name="VBD"/>
+                    <label end="94" start="92" name="XX0"/>
+                    <label end="104" start="96" name="AV0"/>
+                    <label end="115" start="106" name="VVN"/>
+                    <label end="118" start="117" name="PRP"/>
+                    <label end="122" start="120" name="AT0"/>
+                    <label end="132" start="124" name="NN0"/>
+                    <label end="135" start="134" name="PRP"/>
+                    <label end="146" start="137" name="NP0"/>
+                    <label end="148" start="148" name="PUL"/>
+                    <label end="151" start="150" name="NP0"/>
+                    <label end="155" start="153" name="CRD"/>
+                    <label end="157" start="157" name="PUN"/>
+                    <label end="159" start="159" name="ZZ0"/>
+                    <label end="163" start="161" name="CRD"/>
+                    <label end="165" start="165" name="PUR"/>
+                    <label end="167" start="167" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:19:23 PST Tue" status="MANUAL" ID="585032">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="869" end="41" start="35" name="Garment"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="41" start="35" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="29" start="22" name="Gov"/>
+                    <label end="41" start="31" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="67897974" ID="473072">
+            <text>With the bishop of Winchester he presented Kilwardby with his pallium in May 1273 and immediately set out for Burgundy to meet Edward I on his return from crusade . </text>
+            <annotationSet cDate="01/07/2003 05:19:23 PST Tue" status="UNANN" ID="585033">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="PRP"/>
+                    <label end="7" start="5" name="AT0"/>
+                    <label end="14" start="9" name="NN1"/>
+                    <label end="17" start="16" name="PRF"/>
+                    <label end="28" start="19" name="NP0"/>
+                    <label end="31" start="30" name="PNP"/>
+                    <label end="41" start="33" name="VVD"/>
+                    <label end="51" start="43" name="NN1-NP0"/>
+                    <label end="56" start="53" name="PRP"/>
+                    <label end="60" start="58" name="DPS"/>
+                    <label end="68" start="62" name="NN1"/>
+                    <label end="71" start="70" name="PRP"/>
+                    <label end="75" start="73" name="NP0"/>
+                    <label end="80" start="77" name="CRD"/>
+                    <label end="84" start="82" name="CJC"/>
+                    <label end="96" start="86" name="AV0"/>
+                    <label end="100" start="98" name="VVD-VVN"/>
+                    <label end="104" start="102" name="AVP"/>
+                    <label end="108" start="106" name="PRP"/>
+                    <label end="117" start="110" name="AJ0"/>
+                    <label end="120" start="119" name="TO0"/>
+                    <label end="125" start="122" name="VVI"/>
+                    <label end="132" start="127" name="NP0"/>
+                    <label end="134" start="134" name="CRD"/>
+                    <label end="137" start="136" name="PRP"/>
+                    <label end="141" start="139" name="DPS"/>
+                    <label end="148" start="143" name="NN1"/>
+                    <label end="153" start="150" name="PRP"/>
+                    <label end="161" start="155" name="NN1"/>
+                    <label end="163" start="163" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:19:24 PST Tue" status="MANUAL" ID="585034">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="869" end="68" start="62" name="Garment"/>
+                    <label cBy="605" feID="870" end="60" start="58" name="Wearer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="60" start="58" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="60" start="58" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="68" start="62" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" incorporatedFE="Weapon" POS="N" name="gunman.n" ID="13130" frame="Bearing_arms" frameID="470" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="Pickett" ID="2">
+            <document description="cjf001" ID="6"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="pla" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="" name="Protagonist"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="tim" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="" name="Weapon"/>
+        </frame>
+    </header>
+    <definition>COD: a man who uses a gun to commit a crime or terrorist act.</definition>
+    <lexeme POS="N" name="gunman"/>
+    <semType name="Agentive_noun" ID="102"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Place"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Place"/>
+                <annoSet ID="2600216"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Protagonist"/>
+            <pattern total="1">
+                <valenceUnit GF="Appositive" PT="NP" FE="Protagonist"/>
+                <annoSet ID="2600216"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Weapon"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INC" FE="Weapon"/>
+                <annoSet ID="2600216"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Place"/>
+            <FE name="Protagonist"/>
+            <FE name="Weapon"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Place"/>
+                <valenceUnit GF="Appositive" PT="NP" FE="Protagonist"/>
+                <valenceUnit GF="" PT="INC" FE="Weapon"/>
+                <annoSet ID="2600216"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="manually-added">
+        <sentence corpID="2" docID="6" sentNo="1" paragNo="1" aPos="0" ID="239738">
+            <text>Alleged White House gunman Robert Pickett was arraigned Wednesday at a federal court in Washington and ordered held without bond .</text>
+            <annotationSet cDate="01/06/2003 08:08:38 PST Mon" status="UNANN" ID="125957">
+                <layer rank="1" name="BNC">
+                    <label end="6" start="0" name="AJ0"/>
+                    <label end="12" start="8" name="NP0"/>
+                    <label end="18" start="14" name="NN1"/>
+                    <label end="25" start="20" name="NN1"/>
+                    <label end="32" start="27" name="NP0"/>
+                    <label end="40" start="34" name="NP0"/>
+                    <label end="44" start="42" name="VBD"/>
+                    <label end="54" start="46" name="AJ0"/>
+                    <label end="64" start="56" name="NP0"/>
+                    <label end="67" start="66" name="PRP"/>
+                    <label end="69" start="69" name="AT0"/>
+                    <label end="77" start="71" name="AJ0"/>
+                    <label end="83" start="79" name="NN1"/>
+                    <label end="86" start="85" name="PRP"/>
+                    <label end="97" start="88" name="NP0"/>
+                    <label end="101" start="99" name="CJC"/>
+                    <label end="109" start="103" name="VVD"/>
+                    <label end="114" start="111" name="VVN"/>
+                    <label end="122" start="116" name="PRP"/>
+                    <label end="127" start="124" name="NN1"/>
+                    <label end="129" start="129" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/30/2010 07:07:46 PDT Fri" status="MANUAL" ID="2600216">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="25" start="20" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="4001" itype="INC" name="Weapon"/>
+                    <label cBy="664" feID="4002" end="40" start="27" name="Protagonist"/>
+                    <label cBy="664" feID="14102" end="18" start="8" name="Place"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="40" start="27" name="Appositive"/>
+                    <label end="18" start="8" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="40" start="27" name="NP"/>
+                    <label end="18" start="8" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

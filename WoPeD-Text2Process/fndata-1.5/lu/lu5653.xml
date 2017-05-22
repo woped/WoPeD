@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" POS="A" name="flat-footed.a" ID="5653" frame="Body_description_part" frameID="235" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Core" abbrev="Fig" name="Figure"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Ind" name="Individual"/>
+        </frame>
+    </header>
+    <definition>COD: having flat feet</definition>
+    <lexeme POS="A" name="flat-footed"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Individual"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Individual"/>
+                <annoSet ID="1202177"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Individual"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Individual"/>
+                <annoSet ID="1202177"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="footed-A-001-all">
+        <sentence sentNo="0" aPos="58620805" ID="873647">
+            <text>Even dynamic centre-forward Kenny Mentle was found to be flat-footed and short-sighted . </text>
+            <annotationSet cDate="01/07/2003 05:47:04 PST Tue" status="UNANN" ID="1202176">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="AV0"/>
+                    <label end="11" start="5" name="AJ0"/>
+                    <label end="26" start="13" name="NN1"/>
+                    <label end="32" start="28" name="NP0"/>
+                    <label end="39" start="34" name="NP0"/>
+                    <label end="43" start="41" name="VBD"/>
+                    <label end="49" start="45" name="VVN"/>
+                    <label end="52" start="51" name="TO0"/>
+                    <label end="55" start="54" name="VBI"/>
+                    <label end="67" start="57" name="AJ0"/>
+                    <label end="71" start="69" name="CJC"/>
+                    <label end="85" start="73" name="AJ0"/>
+                    <label end="87" start="87" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:47:04 PST Tue" status="MANUAL" ID="1202177">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="2675" end="39" start="5" name="Individual"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="39" start="5" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="39" start="5" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="67" start="57" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj">
+                    <label end="55" start="54" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="N" name="a breeze.n" ID="6574" frame="Difficulty" frameID="375" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Activity" name="Activity"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Extra-Thematic" abbrev="Circumstances" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degree" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Experiencer" name="Experiencer"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Peripheral" abbrev="Parameter" name="Parameter"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="sta" name="Standard"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: very easy</definition>
+    <lexeme order="1" headword="false" breakBefore="false" POS="ART" name="a"/>
+    <lexeme order="2" headword="true" breakBefore="false" POS="N" name="breeze"/>
+    <valences>
+        <FERealization total="2">
+            <FE name="Activity"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Activity"/>
+                <annoSet ID="1896787"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="VPto" FE="Activity"/>
+                <annoSet ID="1896801"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Degree"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="Poss" FE="Degree"/>
+                <annoSet ID="1896801"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Experiencer"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Experiencer"/>
+                <annoSet ID="1896787"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Experiencer"/>
+                <annoSet ID="1896801"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Activity"/>
+            <FE name="Degree"/>
+            <FE name="Experiencer"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="VPto" FE="Activity"/>
+                <valenceUnit GF="Dep" PT="Poss" FE="Degree"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Experiencer"/>
+                <annoSet ID="1896801"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Activity"/>
+            <FE name="Experiencer"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Activity"/>
+                <valenceUnit GF="" PT="INI" FE="Experiencer"/>
+                <annoSet ID="1896787"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-Wa-T-(2)"/>
+    <subCorpus name="02-Wa-Wreal-T-(2)"/>
+    <subCorpus name="03-Wit-T-XPinfp-(2)"/>
+    <subCorpus name="04-T-PPfor-(2)"/>
+    <subCorpus name="05-NP-T-(2)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="405" aPos="0" ID="1224863">
+            <text>That made Jay nervous again but Peter assured him they would manage , it was dead easy , a breeze .</text>
+            <annotationSet cDate="06/10/2003 06:07:55 PDT Tue" status="UNANN" ID="1896786">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="dt"/>
+                    <label end="8" start="5" name="VVN"/>
+                    <label end="12" start="10" name="NP"/>
+                    <label end="20" start="14" name="jj"/>
+                    <label end="26" start="22" name="rb"/>
+                    <label end="30" start="28" name="cc"/>
+                    <label end="36" start="32" name="NP"/>
+                    <label end="44" start="38" name="VVD"/>
+                    <label end="48" start="46" name="PP"/>
+                    <label end="53" start="50" name="PP"/>
+                    <label end="59" start="55" name="md"/>
+                    <label end="66" start="61" name="VV"/>
+                    <label end="68" start="68" name=","/>
+                    <label end="71" start="70" name="PP"/>
+                    <label end="75" start="73" name="VBD"/>
+                    <label end="80" start="77" name="rb"/>
+                    <label end="85" start="82" name="jj"/>
+                    <label end="87" start="87" name=","/>
+                    <label end="89" start="89" name="dt"/>
+                    <label end="96" start="91" name="nn"/>
+                    <label end="98" start="98" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/10/2003 06:07:55 PDT Tue" status="AUTO_EDITED" ID="1896787">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="96" start="91" name="Target"/>
+                    <label cBy="618" end="89" start="89" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3360" end="71" start="70" name="Activity"/>
+                    <label cBy="664" feID="3365" itype="INI" name="Experiencer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="71" start="70" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="71" start="70" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="75" start="73" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="06-T-Wto-Wuse,fit-(2)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="2028" aPos="0" ID="1224870">
+            <text>Such a breeze to fit , they 've caused a storm :</text>
+            <annotationSet cDate="06/10/2003 06:07:58 PDT Tue" status="UNANN" ID="1896800">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="pdt"/>
+                    <label end="5" start="5" name="dt"/>
+                    <label end="12" start="7" name="nn"/>
+                    <label end="15" start="14" name="to"/>
+                    <label end="19" start="17" name="VV"/>
+                    <label end="21" start="21" name=","/>
+                    <label end="26" start="23" name="PP"/>
+                    <label end="30" start="28" name="VHP"/>
+                    <label end="37" start="32" name="VVN"/>
+                    <label end="39" start="39" name="dt"/>
+                    <label end="45" start="41" name="nn"/>
+                    <label end="47" start="47" name=":"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/10/2003 06:07:59 PDT Tue" status="AUTO_EDITED" ID="1896801">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="12" start="7" name="Target"/>
+                    <label cBy="618" end="5" start="5" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3360" end="19" start="14" name="Activity"/>
+                    <label cBy="664" feID="3362" end="3" start="0" name="Degree"/>
+                    <label cBy="664" feID="3365" end="26" start="23" name="Experiencer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="19" start="14" name="Dep"/>
+                    <label end="3" start="0" name="Dep"/>
+                    <label end="26" start="23" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="19" start="14" name="VPto"/>
+                    <label end="3" start="0" name="Poss"/>
+                    <label end="26" start="23" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(2)"/>
+    <subCorpus name="other-unmatched-(2)"/>
+</lexUnit>

@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Add_Annotation" POS="N" name="temperature.n" ID="10344" frame="Temperature" frameID="1050" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp=2135" ID="19989"/>
+            <document description="bncp=1997" ID="20483"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Core" abbrev="att" name="Attribute"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="cir" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Core" abbrev="deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="ent" name="Entity"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Extra-Thematic" abbrev="sub" name="Subregion"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="tem" name="Temperature"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Extra-Thematic" abbrev="tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: the degree or intensity of heat present in a substance or object</definition>
+    <lexeme POS="N" name="temperature"/>
+    <valences>
+        <governor type="Sup" lemma="at">
+            <annoSet ID="2559741"/>
+        </governor>
+        <governor type="Sup" lemma="have">
+            <annoSet ID="2559719"/>
+        </governor>
+        <governor type="Ctrlr" lemma="work">
+            <annoSet ID="2559741"/>
+        </governor>
+        <FERealization total="2">
+            <FE name="Entity"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Entity"/>
+                <annoSet ID="2559719"/>
+                <annoSet ID="2559741"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Temperature"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Temperature"/>
+                <annoSet ID="2559719"/>
+                <annoSet ID="2559741"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Entity"/>
+            <FE name="Temperature"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Entity"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Temperature"/>
+                <annoSet ID="2559719"/>
+                <annoSet ID="2559741"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-pp_above-p-(1)"/>
+    <subCorpus name="02-pp_below-p-(1)"/>
+    <subCorpus name="03-pp_of-p-(1)">
+        <sentence corpID="111" docID="20483" sentNo="6" paragNo="210" aPos="0" ID="1558479">
+            <text>On the other hand , a black hole with a mass of only a billion tons -- that is , a primordial black hole , roughly the size of a proton -- would have a temperature of some 120 billion degrees Kelvin , which corresponds to an energy of some ten million electron volts .</text>
+            <annotationSet cDate="05/24/2010 12:51:39 PDT Mon" status="UNANN" ID="2559718">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="in"/>
+                    <label end="5" start="3" name="dt"/>
+                    <label end="11" start="7" name="jj"/>
+                    <label end="16" start="13" name="nn"/>
+                    <label end="18" start="18" name=","/>
+                    <label end="20" start="20" name="dt"/>
+                    <label end="26" start="22" name="jj"/>
+                    <label end="31" start="28" name="nn"/>
+                    <label end="36" start="33" name="in"/>
+                    <label end="38" start="38" name="dt"/>
+                    <label end="43" start="40" name="nn"/>
+                    <label end="46" start="45" name="in"/>
+                    <label end="51" start="48" name="rb"/>
+                    <label end="53" start="53" name="dt"/>
+                    <label end="61" start="55" name="cd"/>
+                    <label end="66" start="63" name="nns"/>
+                    <label end="69" start="68" name=":"/>
+                    <label end="74" start="71" name="wdt"/>
+                    <label end="77" start="76" name="VBZ"/>
+                    <label end="79" start="79" name=","/>
+                    <label end="81" start="81" name="dt"/>
+                    <label end="92" start="83" name="jj"/>
+                    <label end="98" start="94" name="jj"/>
+                    <label end="103" start="100" name="nn"/>
+                    <label end="105" start="105" name=","/>
+                    <label end="113" start="107" name="rb"/>
+                    <label end="117" start="115" name="dt"/>
+                    <label end="122" start="119" name="nn"/>
+                    <label end="125" start="124" name="in"/>
+                    <label end="127" start="127" name="dt"/>
+                    <label end="134" start="129" name="nn"/>
+                    <label end="137" start="136" name=":"/>
+                    <label end="143" start="139" name="md"/>
+                    <label end="148" start="145" name="VH"/>
+                    <label end="150" start="150" name="dt"/>
+                    <label end="162" start="152" name="nn"/>
+                    <label end="165" start="164" name="in"/>
+                    <label end="170" start="167" name="dt"/>
+                    <label end="174" start="172" name="cd"/>
+                    <label end="182" start="176" name="cd"/>
+                    <label end="190" start="184" name="nns"/>
+                    <label end="197" start="192" name="NP"/>
+                    <label end="199" start="199" name=","/>
+                    <label end="205" start="201" name="wdt"/>
+                    <label end="217" start="207" name="VVZ"/>
+                    <label end="220" start="219" name="to"/>
+                    <label end="223" start="222" name="dt"/>
+                    <label end="230" start="225" name="nn"/>
+                    <label end="233" start="232" name="in"/>
+                    <label end="238" start="235" name="dt"/>
+                    <label end="242" start="240" name="cd"/>
+                    <label end="250" start="244" name="cd"/>
+                    <label end="259" start="252" name="nn"/>
+                    <label end="265" start="261" name="nns"/>
+                    <label end="267" start="267" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/24/2010 12:51:39 PDT Mon" status="MANUAL" ID="2559719">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="162" start="152" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="6180" end="66" start="20" name="Entity"/>
+                    <label cBy="589" feID="6182" end="197" start="164" name="Temperature"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="66" start="20" name="Ext"/>
+                    <label end="197" start="164" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="66" start="20" name="NP"/>
+                    <label end="197" start="164" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="148" start="145" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="19989" sentNo="4" paragNo="12" aPos="0" ID="1558490">
+            <text>He published several papers in the Proceedings of the Institution of Mechanical Engineers , including ` An Inverted Arch Suspension Bridge '' ( 1847 , p. 1 ) , ` Blast Engines for the East Indian Iron Company '' ( 1855 , p. 154 ) , and ` Regenerative Hot-Blast Stoves working at a Temperature of 1,300° F '' ( 1860 , p. 54 ) .</text>
+            <annotationSet cDate="05/24/2010 12:51:42 PDT Mon" status="UNANN" ID="2559740">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="11" start="3" name="VVD"/>
+                    <label end="19" start="13" name="jj"/>
+                    <label end="26" start="21" name="nns"/>
+                    <label end="29" start="28" name="in"/>
+                    <label end="33" start="31" name="dt"/>
+                    <label end="45" start="35" name="nns"/>
+                    <label end="48" start="47" name="in"/>
+                    <label end="52" start="50" name="dt"/>
+                    <label end="64" start="54" name="NP"/>
+                    <label end="67" start="66" name="in"/>
+                    <label end="78" start="69" name="NP"/>
+                    <label end="88" start="80" name="NPS"/>
+                    <label end="90" start="90" name=","/>
+                    <label end="100" start="92" name="VVG"/>
+                    <label end="105" start="104" name="dt"/>
+                    <label end="114" start="107" name="jj"/>
+                    <label end="119" start="116" name="NP"/>
+                    <label end="130" start="121" name="nn"/>
+                    <label end="137" start="132" name="NP"/>
+                    <label end="142" start="142" name="("/>
+                    <label end="147" start="144" name="cd"/>
+                    <label end="149" start="149" name=","/>
+                    <label end="152" start="151" name="NP"/>
+                    <label end="154" start="154" name="cd"/>
+                    <label end="156" start="156" name=")"/>
+                    <label end="158" start="158" name=","/>
+                    <label end="166" start="162" name="nn"/>
+                    <label end="174" start="168" name="nns"/>
+                    <label end="178" start="176" name="in"/>
+                    <label end="182" start="180" name="dt"/>
+                    <label end="187" start="184" name="NP"/>
+                    <label end="194" start="189" name="NP"/>
+                    <label end="199" start="196" name="NP"/>
+                    <label end="207" start="201" name="NP"/>
+                    <label end="212" start="212" name="("/>
+                    <label end="217" start="214" name="cd"/>
+                    <label end="219" start="219" name=","/>
+                    <label end="222" start="221" name="NP"/>
+                    <label end="226" start="224" name="cd"/>
+                    <label end="228" start="228" name=")"/>
+                    <label end="230" start="230" name=","/>
+                    <label end="234" start="232" name="cc"/>
+                    <label end="249" start="238" name="jj"/>
+                    <label end="259" start="251" name="jj"/>
+                    <label end="266" start="261" name="nns"/>
+                    <label end="274" start="268" name="VVG"/>
+                    <label end="277" start="276" name="in"/>
+                    <label end="279" start="279" name="dt"/>
+                    <label end="291" start="281" name="nn"/>
+                    <label end="294" start="293" name="in"/>
+                    <label end="301" start="296" name="cd"/>
+                    <label end="303" start="303" name="nn"/>
+                    <label end="308" start="308" name="("/>
+                    <label end="313" start="310" name="cd"/>
+                    <label end="315" start="315" name=","/>
+                    <label end="318" start="317" name="NP"/>
+                    <label end="321" start="320" name="cd"/>
+                    <label end="323" start="323" name=")"/>
+                    <label end="325" start="325" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/24/2010 12:51:42 PDT Mon" status="MANUAL" ID="2559741">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="291" start="281" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="6180" end="266" start="238" name="Entity"/>
+                    <label cBy="589" feID="6182" end="303" start="293" name="Temperature"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="266" start="238" name="Ext"/>
+                    <label end="303" start="293" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="266" start="238" name="NP"/>
+                    <label end="303" start="293" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="274" start="268" name="Ctrlr"/>
+                    <label end="277" start="276" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="04-pp_around-p-(1)"/>
+    <subCorpus name="05-object_of-(1)"/>
+    <subCorpus name="06-subject_of-(1)"/>
+    <subCorpus name="07-a_modifier-(1)"/>
+    <subCorpus name="08-n_modifier-(1)"/>
+    <subCorpus name="09-pp_inside-p-(1)"/>
+    <subCorpus name="10-pp_during-p-(1)"/>
+    <subCorpus name="11-other-matched-(1)"/>
+    <subCorpus name="12-other-unmatched-(1)"/>
+</lexUnit>

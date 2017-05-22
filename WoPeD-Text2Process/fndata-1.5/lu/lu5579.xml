@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="V" name="agglutinate.v" ID="5579" frame="Inchoative_attaching" frameID="306" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="7CCD73" type="Core" abbrev="Conn" name="Connector"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="Goal" name="Goal"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="Handle" name="Handle"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Item" name="Item"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Items" name="Items"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Mnr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Result" name="Result"/>
+        </frame>
+    </header>
+    <definition>COD: firmly stick or be stuck together to form a mass</definition>
+    <lexeme POS="V" name="agglutinate"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Connector"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Connector"/>
+                <annoSet ID="1048908"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Goal"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Goal"/>
+                <annoSet ID="1048908"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Item"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Item"/>
+                <annoSet ID="1048908"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Connector"/>
+            <FE name="Goal"/>
+            <FE name="Item"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Connector"/>
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Goal"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Item"/>
+                <annoSet ID="1048908"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="FromSplitter">
+        <sentence sentNo="0" aPos="61340781" ID="795121">
+            <text>The nurse eggs agglutinate to a mass in the centre of the capsular space . </text>
+            <annotationSet cDate="01/07/2003 02:51:20 PST Tue" status="UNANN" ID="1048907">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="8" start="4" name="NN1"/>
+                    <label end="13" start="10" name="NN2"/>
+                    <label end="25" start="15" name="VVB"/>
+                    <label end="28" start="27" name="PRP"/>
+                    <label end="30" start="30" name="AT0"/>
+                    <label end="35" start="32" name="AJ0-NN1"/>
+                    <label end="38" start="37" name="PRP"/>
+                    <label end="42" start="40" name="AT0"/>
+                    <label end="49" start="44" name="NN1"/>
+                    <label end="52" start="51" name="PRF"/>
+                    <label end="56" start="54" name="AT0"/>
+                    <label end="65" start="58" name="AJ0"/>
+                    <label end="71" start="67" name="NN1"/>
+                    <label end="73" start="73" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:51:20 PST Tue" status="MANUAL" ID="1048908">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="2625" end="13" start="0" name="Item"/>
+                    <label cBy="296" feID="2627" end="71" start="27" name="Goal"/>
+                    <label cBy="296" feID="2623" itype="INI" name="Connector"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="13" start="0" name="Ext"/>
+                    <label end="71" start="27" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="13" start="0" name="NP"/>
+                    <label end="71" start="27" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="sense2"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="25" start="15" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

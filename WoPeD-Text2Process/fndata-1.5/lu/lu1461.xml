@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Add_Annotation" incorporatedFE="Sound" POS="V" name="scrape.v" ID="1461" frame="Make_noise" frameID="69" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="" name="Addressee"/>
+            <FE fgColor="00008B" bgColor="d0d0d0" type="Extra-Thematic" abbrev="cir" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Extra-Thematic" abbrev="ICause" name="Internal_cause"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Extra-Thematic" abbrev="ite" name="Iterations"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Extra-Thematic" abbrev="Loc-Src" name="Location_of_source"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="" name="Noisy_event"/>
+            <FE fgColor="000000" bgColor="FFD700" type="Extra-Thematic" abbrev="par" name="Particular_iteration"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Extra-Thematic" abbrev="" name="Path"/>
+            <FE fgColor="000000" bgColor="FFA500" type="Peripheral" abbrev="" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="Rsn" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Sound" name="Sound"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="Src-p" name="Sound_source"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Extra-Thematic" abbrev="Sub" name="Subregion"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Peripheral" abbrev="" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: make a sound as if rubbing against a rough surface.</definition>
+    <lexeme POS="V" name="scrape"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Sound"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INC" FE="Sound"/>
+                <annoSet ID="1709723"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Sound_source"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Sound_source"/>
+                <annoSet ID="1709723"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Sound"/>
+            <FE name="Sound_source"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INC" FE="Sound"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Sound_source"/>
+                <annoSet ID="1709723"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="NoPattern">
+        <sentence sentNo="0" aPos="62661526" ID="1129308">
+            <text>The speaker scraped and clicked a few more times , but after half a minute of no reply the phone was rehooked . </text>
+            <annotationSet cDate="01/08/2003 03:37:33 PST Wed" status="UNANN" ID="1709722">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="10" start="4" name="NN1"/>
+                    <label end="18" start="12" name="VVD-VVN"/>
+                    <label end="22" start="20" name="CJC"/>
+                    <label end="30" start="24" name="VVD"/>
+                    <label end="32" start="32" name="DT0"/>
+                    <label end="36" start="34" name="DT0"/>
+                    <label end="41" start="38" name="DT0"/>
+                    <label end="47" start="43" name="NN2"/>
+                    <label end="49" start="49" name="PUN"/>
+                    <label end="53" start="51" name="CJC"/>
+                    <label end="59" start="55" name="CJS-PRP"/>
+                    <label end="64" start="61" name="DT0"/>
+                    <label end="66" start="66" name="AT0"/>
+                    <label end="73" start="68" name="NN1"/>
+                    <label end="76" start="75" name="PRF"/>
+                    <label end="79" start="78" name="AT0"/>
+                    <label end="85" start="81" name="NN1"/>
+                    <label end="89" start="87" name="AT0"/>
+                    <label end="95" start="91" name="NN1"/>
+                    <label end="99" start="97" name="VBD"/>
+                    <label end="108" start="101" name="VVN"/>
+                    <label end="110" start="110" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 03:37:33 PST Wed" status="MANUAL" ID="1709723">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="323" end="10" start="0" name="Sound_source"/>
+                    <label cBy="309" feID="328" end="18" start="12" name="Sound"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="10" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="10" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="18" start="12" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

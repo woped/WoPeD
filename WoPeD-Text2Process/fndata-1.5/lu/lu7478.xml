@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="A" name="also_known_as.a" ID="7478" frame="Being_named" frameID="228" totalAnnotated="7" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Core" abbrev="Entity" name="Entity"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Name" name="Name"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Name_source" name="Name_source"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Peripheral" abbrev="Spkr" name="Speaker"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Type" name="Type"/>
+        </frame>
+    </header>
+    <definition>FN: used to introduce an alternative name for an entity</definition>
+    <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="also"/>
+    <lexeme order="2" headword="true" breakBefore="false" POS="A" name="known"/>
+    <lexeme order="3" headword="false" breakBefore="false" POS="C" name="as"/>
+    <valences>
+        <FERealization total="7">
+            <FE name="Entity"/>
+            <pattern total="7">
+                <valenceUnit GF="Ext" PT="NP" FE="Entity"/>
+                <annoSet ID="1891905"/>
+                <annoSet ID="1891915"/>
+                <annoSet ID="1891919"/>
+                <annoSet ID="1891927"/>
+                <annoSet ID="1891929"/>
+                <annoSet ID="1891939"/>
+                <annoSet ID="1891983"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="7">
+            <FE name="Name"/>
+            <pattern total="7">
+                <valenceUnit GF="Dep" PT="NP" FE="Name"/>
+                <annoSet ID="1891905"/>
+                <annoSet ID="1891915"/>
+                <annoSet ID="1891919"/>
+                <annoSet ID="1891927"/>
+                <annoSet ID="1891929"/>
+                <annoSet ID="1891939"/>
+                <annoSet ID="1891983"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="7">
+            <FE name="Entity"/>
+            <FE name="Name"/>
+            <pattern total="7">
+                <valenceUnit GF="Ext" PT="NP" FE="Entity"/>
+                <valenceUnit GF="Dep" PT="NP" FE="Name"/>
+                <annoSet ID="1891905"/>
+                <annoSet ID="1891915"/>
+                <annoSet ID="1891919"/>
+                <annoSet ID="1891927"/>
+                <annoSet ID="1891929"/>
+                <annoSet ID="1891939"/>
+                <annoSet ID="1891983"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-NP-Wcma,(-T-NP-(1)"/>
+    <subCorpus name="02-NP-Wbe-T-NP-(1)"/>
+    <subCorpus name="03-T-NP-PPafter-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="138" aPos="0" ID="1222422">
+            <text>Also known as the Camel Leopardel , or the lybbarde , this beast was believed to be the offspring of a panther or leopard and a camel .</text>
+            <annotationSet cDate="06/05/2003 10:59:04 PDT Thu" status="UNANN" ID="1891904">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="rb"/>
+                    <label end="9" start="5" name="VVN"/>
+                    <label end="12" start="11" name="in"/>
+                    <label end="16" start="14" name="dt"/>
+                    <label end="22" start="18" name="NP"/>
+                    <label end="32" start="24" name="NP"/>
+                    <label end="34" start="34" name=","/>
+                    <label end="37" start="36" name="cc"/>
+                    <label end="41" start="39" name="dt"/>
+                    <label end="50" start="43" name="nn"/>
+                    <label end="52" start="52" name=","/>
+                    <label end="57" start="54" name="dt"/>
+                    <label end="63" start="59" name="nn"/>
+                    <label end="67" start="65" name="VBD"/>
+                    <label end="76" start="69" name="VVN"/>
+                    <label end="79" start="78" name="to"/>
+                    <label end="82" start="81" name="vb"/>
+                    <label end="86" start="84" name="dt"/>
+                    <label end="96" start="88" name="nn"/>
+                    <label end="99" start="98" name="in"/>
+                    <label end="101" start="101" name="dt"/>
+                    <label end="109" start="103" name="nn"/>
+                    <label end="112" start="111" name="cc"/>
+                    <label end="120" start="114" name="nn"/>
+                    <label end="124" start="122" name="cc"/>
+                    <label end="126" start="126" name="dt"/>
+                    <label end="132" start="128" name="nn"/>
+                    <label end="134" start="134" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/05/2003 10:59:04 PDT Thu" status="MANUAL" ID="1891905">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="12" start="0" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="1858" end="52" start="14" name="Name"/>
+                    <label cBy="618" feID="1859" end="63" start="54" name="Entity"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="52" start="14" name="Dep"/>
+                    <label end="63" start="54" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="52" start="14" name="NP"/>
+                    <label end="63" start="54" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="6805" aPos="0" ID="1222427">
+            <text>Mrs Sandra Lamb , also known as Sandi Baxter or Sandi Lamb , slumped to the floor in the dock as a jury was selected for the trial at Edinburgh Sheriff Court .</text>
+            <annotationSet cDate="06/05/2003 10:59:06 PDT Thu" status="UNANN" ID="1891914">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="nn"/>
+                    <label end="9" start="4" name="NP"/>
+                    <label end="14" start="11" name="NP"/>
+                    <label end="16" start="16" name=","/>
+                    <label end="21" start="18" name="rb"/>
+                    <label end="27" start="23" name="VVN"/>
+                    <label end="30" start="29" name="in"/>
+                    <label end="36" start="32" name="NP"/>
+                    <label end="43" start="38" name="NP"/>
+                    <label end="46" start="45" name="cc"/>
+                    <label end="52" start="48" name="NP"/>
+                    <label end="57" start="54" name="NP"/>
+                    <label end="59" start="59" name=","/>
+                    <label end="67" start="61" name="VVD"/>
+                    <label end="70" start="69" name="to"/>
+                    <label end="74" start="72" name="dt"/>
+                    <label end="80" start="76" name="nn"/>
+                    <label end="83" start="82" name="in"/>
+                    <label end="87" start="85" name="dt"/>
+                    <label end="92" start="89" name="nn"/>
+                    <label end="95" start="94" name="in"/>
+                    <label end="97" start="97" name="dt"/>
+                    <label end="102" start="99" name="nn"/>
+                    <label end="106" start="104" name="VBD"/>
+                    <label end="115" start="108" name="VVN"/>
+                    <label end="119" start="117" name="in"/>
+                    <label end="123" start="121" name="dt"/>
+                    <label end="129" start="125" name="nn"/>
+                    <label end="132" start="131" name="in"/>
+                    <label end="142" start="134" name="NP"/>
+                    <label end="150" start="144" name="NP"/>
+                    <label end="156" start="152" name="NP"/>
+                    <label end="158" start="158" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/05/2003 10:59:06 PDT Thu" status="MANUAL" ID="1891915">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="30" start="18" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="1859" end="14" start="0" name="Entity"/>
+                    <label cBy="618" feID="1858" end="57" start="32" name="Name"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="14" start="0" name="Ext"/>
+                    <label end="57" start="32" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="14" start="0" name="NP"/>
+                    <label end="57" start="32" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="618" aPos="0" ID="1222429">
+            <text>Ethanol ( also known as ethyl alcohol ) has a boiling point of 78°C and is harmless if consumed in small quantities ( see introductory reading at start of this chapter ) .</text>
+            <annotationSet cDate="06/05/2003 10:59:07 PDT Thu" status="UNANN" ID="1891918">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="0" name="nn"/>
+                    <label end="8" start="8" name="("/>
+                    <label end="13" start="10" name="rb"/>
+                    <label end="19" start="15" name="VVN"/>
+                    <label end="22" start="21" name="in"/>
+                    <label end="28" start="24" name="nn"/>
+                    <label end="36" start="30" name="nn"/>
+                    <label end="38" start="38" name=")"/>
+                    <label end="42" start="40" name="VHZ"/>
+                    <label end="44" start="44" name="dt"/>
+                    <label end="52" start="46" name="VVG"/>
+                    <label end="58" start="54" name="nn"/>
+                    <label end="61" start="60" name="in"/>
+                    <label end="66" start="63" name="jj"/>
+                    <label end="70" start="68" name="cc"/>
+                    <label end="73" start="72" name="VBZ"/>
+                    <label end="82" start="75" name="jj"/>
+                    <label end="85" start="84" name="in"/>
+                    <label end="94" start="87" name="VVN"/>
+                    <label end="97" start="96" name="in"/>
+                    <label end="103" start="99" name="jj"/>
+                    <label end="114" start="105" name="nns"/>
+                    <label end="116" start="116" name="("/>
+                    <label end="120" start="118" name="VV"/>
+                    <label end="133" start="122" name="jj"/>
+                    <label end="141" start="135" name="nn"/>
+                    <label end="144" start="143" name="in"/>
+                    <label end="150" start="146" name="nn"/>
+                    <label end="153" start="152" name="in"/>
+                    <label end="158" start="155" name="dt"/>
+                    <label end="166" start="160" name="nn"/>
+                    <label end="168" start="168" name=")"/>
+                    <label end="170" start="170" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/05/2003 10:59:07 PDT Thu" status="MANUAL" ID="1891919">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="22" start="10" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="1859" end="6" start="0" name="Entity"/>
+                    <label cBy="618" feID="1858" end="36" start="24" name="Name"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="36" start="24" name="Dep"/>
+                    <label end="6" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="6" start="0" name="NP"/>
+                    <label end="36" start="24" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="540" aPos="0" ID="1222433">
+            <text>Also known as Mound-folk , the Hillmen are Scandinavian in origin and refer to a class of beings between ELF and human .</text>
+            <annotationSet cDate="06/05/2003 10:59:08 PDT Thu" status="UNANN" ID="1891926">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="rb"/>
+                    <label end="9" start="5" name="VVN"/>
+                    <label end="12" start="11" name="in"/>
+                    <label end="23" start="14" name="nn"/>
+                    <label end="25" start="25" name=","/>
+                    <label end="29" start="27" name="dt"/>
+                    <label end="37" start="31" name="nns"/>
+                    <label end="41" start="39" name="vbp"/>
+                    <label end="54" start="43" name="jj"/>
+                    <label end="57" start="56" name="in"/>
+                    <label end="64" start="59" name="nn"/>
+                    <label end="68" start="66" name="cc"/>
+                    <label end="74" start="70" name="VV"/>
+                    <label end="77" start="76" name="to"/>
+                    <label end="79" start="79" name="dt"/>
+                    <label end="85" start="81" name="nn"/>
+                    <label end="88" start="87" name="in"/>
+                    <label end="95" start="90" name="nns"/>
+                    <label end="103" start="97" name="in"/>
+                    <label end="107" start="105" name="nn"/>
+                    <label end="111" start="109" name="cc"/>
+                    <label end="117" start="113" name="jj"/>
+                    <label end="119" start="119" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/05/2003 10:59:09 PDT Thu" status="MANUAL" ID="1891927">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="12" start="0" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="1858" end="23" start="14" name="Name"/>
+                    <label cBy="618" feID="1859" end="37" start="27" name="Entity"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="23" start="14" name="Dep"/>
+                    <label end="37" start="27" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="23" start="14" name="NP"/>
+                    <label end="37" start="27" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="9" paragNo="265" aPos="0" ID="1222434">
+            <text>This black and white Oriental tree snake is also known as a flying snake and can ` fly &quot; considerable distances .</text>
+            <annotationSet cDate="06/05/2003 10:59:09 PDT Thu" status="UNANN" ID="1891928">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="dt"/>
+                    <label end="9" start="5" name="jj"/>
+                    <label end="13" start="11" name="cc"/>
+                    <label end="19" start="15" name="jj"/>
+                    <label end="28" start="21" name="jj"/>
+                    <label end="33" start="30" name="nn"/>
+                    <label end="39" start="35" name="nn"/>
+                    <label end="42" start="41" name="VBZ"/>
+                    <label end="47" start="44" name="rb"/>
+                    <label end="53" start="49" name="VVN"/>
+                    <label end="56" start="55" name="in"/>
+                    <label end="58" start="58" name="dt"/>
+                    <label end="65" start="60" name="VVG"/>
+                    <label end="71" start="67" name="nn"/>
+                    <label end="75" start="73" name="cc"/>
+                    <label end="79" start="77" name="md"/>
+                    <label end="85" start="83" name="VV"/>
+                    <label end="100" start="89" name="jj"/>
+                    <label end="110" start="102" name="nns"/>
+                    <label end="112" start="112" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/05/2003 10:59:09 PDT Thu" status="MANUAL" ID="1891929">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="56" start="44" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="1859" end="39" start="0" name="Entity"/>
+                    <label cBy="618" feID="1858" end="71" start="58" name="Name"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="39" start="0" name="Ext"/>
+                    <label end="71" start="58" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="39" start="0" name="NP"/>
+                    <label end="71" start="58" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj">
+                    <label end="42" start="41" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="702" aPos="0" ID="1222439">
+            <text>Pontormo is also known as Jacopo de Carucci and the picture has also been called Portrait of a Halberdier which somehow sounds less expensive .</text>
+            <annotationSet cDate="06/05/2003 10:59:11 PDT Thu" status="UNANN" ID="1891938">
+                <layer rank="1" name="PENN">
+                    <label end="7" start="0" name="NP"/>
+                    <label end="10" start="9" name="VBZ"/>
+                    <label end="15" start="12" name="rb"/>
+                    <label end="21" start="17" name="VVN"/>
+                    <label end="24" start="23" name="in"/>
+                    <label end="31" start="26" name="NP"/>
+                    <label end="34" start="33" name="fw"/>
+                    <label end="42" start="36" name="NP"/>
+                    <label end="46" start="44" name="cc"/>
+                    <label end="50" start="48" name="dt"/>
+                    <label end="58" start="52" name="nn"/>
+                    <label end="62" start="60" name="VHZ"/>
+                    <label end="67" start="64" name="rb"/>
+                    <label end="72" start="69" name="VBN"/>
+                    <label end="79" start="74" name="VVN"/>
+                    <label end="88" start="81" name="nn"/>
+                    <label end="91" start="90" name="in"/>
+                    <label end="93" start="93" name="dt"/>
+                    <label end="104" start="95" name="nn"/>
+                    <label end="110" start="106" name="wdt"/>
+                    <label end="118" start="112" name="rb"/>
+                    <label end="125" start="120" name="VVZ"/>
+                    <label end="130" start="127" name="rbr"/>
+                    <label end="140" start="132" name="jj"/>
+                    <label end="142" start="142" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/05/2003 10:59:11 PDT Thu" status="MANUAL" ID="1891939">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="24" start="12" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="1859" end="7" start="0" name="Entity"/>
+                    <label cBy="618" feID="1858" end="42" start="26" name="Name"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="7" start="0" name="Ext"/>
+                    <label end="42" start="26" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="7" start="0" name="NP"/>
+                    <label end="42" start="26" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj">
+                    <label end="10" start="9" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="284" aPos="0" ID="1222461">
+            <text>These warts , also known as condylomata acuminata , are , like common skin warts , caused by a virus .</text>
+            <annotationSet cDate="06/05/2003 10:59:20 PDT Thu" status="UNANN" ID="1891982">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="dt"/>
+                    <label end="10" start="6" name="nns"/>
+                    <label end="12" start="12" name=","/>
+                    <label end="17" start="14" name="rb"/>
+                    <label end="23" start="19" name="VVN"/>
+                    <label end="26" start="25" name="in"/>
+                    <label end="38" start="28" name="NP"/>
+                    <label end="48" start="40" name="NP"/>
+                    <label end="50" start="50" name=","/>
+                    <label end="54" start="52" name="vbp"/>
+                    <label end="56" start="56" name=","/>
+                    <label end="61" start="58" name="in"/>
+                    <label end="68" start="63" name="jj"/>
+                    <label end="73" start="70" name="nn"/>
+                    <label end="79" start="75" name="nns"/>
+                    <label end="81" start="81" name=","/>
+                    <label end="88" start="83" name="VVN"/>
+                    <label end="91" start="90" name="in"/>
+                    <label end="93" start="93" name="dt"/>
+                    <label end="99" start="95" name="nn"/>
+                    <label end="101" start="101" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/05/2003 10:59:20 PDT Thu" status="MANUAL" ID="1891983">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="26" start="14" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="1859" end="10" start="0" name="Entity"/>
+                    <label cBy="618" feID="1858" end="48" start="28" name="Name"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="10" start="0" name="Ext"/>
+                    <label end="48" start="28" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="10" start="0" name="NP"/>
+                    <label end="48" start="28" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

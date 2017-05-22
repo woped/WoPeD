@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="A" name="closed.a" ID="13723" frame="Openness" frameID="1872" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Core" abbrev="" name="Barrier"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Ent" name="Theme"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="loc" name="Useful_location"/>
+        </frame>
+    </header>
+    <definition>COD: not open or allowing access.</definition>
+    <lexeme POS="A" name="closed"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Barrier"/>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="N" FE="Barrier"/>
+                <annoSet ID="2590739"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Theme"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Theme"/>
+                <annoSet ID="2590739"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Barrier"/>
+            <FE name="Theme"/>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="N" FE="Barrier"/>
+                <valenceUnit GF="" PT="DNI" FE="Theme"/>
+                <annoSet ID="2590739"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-Wstore-T-(1)"/>
+    <subCorpus name="02-Woffice-T-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="343" aPos="107717958" ID="1578060">
+            <text>Leonora stared at the closed door forlornly , certain she 'd lie awake for what was left of the night .</text>
+            <annotationSet cDate="07/15/2010 04:42:53 PDT Thu" status="UNANN" ID="2590738">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="0" name="NP"/>
+                    <label end="13" start="8" name="VVD"/>
+                    <label end="16" start="15" name="in"/>
+                    <label end="20" start="18" name="dt"/>
+                    <label end="27" start="22" name="jj"/>
+                    <label end="32" start="29" name="nn"/>
+                    <label end="42" start="34" name="rb"/>
+                    <label end="44" start="44" name=","/>
+                    <label end="52" start="46" name="jj"/>
+                    <label end="56" start="54" name="PP"/>
+                    <label end="59" start="58" name="md"/>
+                    <label end="63" start="61" name="VV"/>
+                    <label end="69" start="65" name="rb"/>
+                    <label end="73" start="71" name="in"/>
+                    <label end="78" start="75" name="wp"/>
+                    <label end="82" start="80" name="VBD"/>
+                    <label end="87" start="84" name="VVN"/>
+                    <label end="90" start="89" name="in"/>
+                    <label end="94" start="92" name="dt"/>
+                    <label end="100" start="96" name="nn"/>
+                    <label end="102" start="102" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/15/2010 04:42:53 PDT Thu" status="MANUAL" ID="2590739">
+                <layer rank="1" name="Target">
+                    <label cBy="571" end="27" start="22" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="571" feID="11031" end="32" start="29" name="Barrier"/>
+                    <label cBy="571" feID="11029" itype="DNI" name="Theme"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="32" start="29" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="32" start="29" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

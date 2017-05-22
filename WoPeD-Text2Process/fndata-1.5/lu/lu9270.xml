@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="convert.v" ID="9270" frame="Cause_change" frameID="683" totalAnnotated="4" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="age" name="Agent"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core-Unexpressed" abbrev="att" name="Attribute"/>
+            <FE fgColor="00008B" bgColor="d0d0d0" type="Core-Unexpressed" abbrev="cau" name="Cause"/>
+            <FE fgColor="000000" bgColor="EEE8AA" type="Extra-Thematic" abbrev="" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="" name="Containing_event"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Extra-Thematic" abbrev="deg" name="Degree"/>
+            <FE fgColor="000000" bgColor="7FFF00" type="Extra-Thematic" abbrev="" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD7C" type="Core" abbrev="ent" name="Entity"/>
+            <FE fgColor="000000" bgColor="2E8B57" type="Extra-Thematic" abbrev="" name="Event_description"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="finc" name="Final_category"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="finv" name="Final_value"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="inic" name="Initial_category"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Core" abbrev="iniv" name="Initial_value"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="man" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="mea" name="Means"/>
+            <FE fgColor="000000" bgColor="1E90FF" type="Extra-Thematic" abbrev="" name="Period_of_iterations"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="pla" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="90876C" type="Peripheral" abbrev="pur" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Extra-Thematic" abbrev="rea" name="Reason"/>
+            <FE fgColor="000000" bgColor="d0d0d0" type="Extra-Thematic" abbrev="" name="Re_encoding"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Extra-Thematic" abbrev="" name="Role"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: modify to become.</definition>
+    <lexeme POS="V" name="convert"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Agent"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <annoSet ID="2208739"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Cause"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Cause"/>
+                <annoSet ID="2208629"/>
+                <annoSet ID="2208645"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Cause"/>
+                <annoSet ID="2208643"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Circumstances"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Circumstances"/>
+                <annoSet ID="2208645"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Entity"/>
+            <pattern total="3">
+                <valenceUnit GF="Obj" PT="NP" FE="Entity"/>
+                <annoSet ID="2208629"/>
+                <annoSet ID="2208645"/>
+                <annoSet ID="2208739"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Entity"/>
+                <annoSet ID="2208643"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Final_category"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[into]" FE="Final_category"/>
+                <annoSet ID="2208739"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Final_category"/>
+                <annoSet ID="2208629"/>
+                <annoSet ID="2208645"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="VPto" FE="Final_category"/>
+                <annoSet ID="2208643"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Initial_category"/>
+            <pattern total="4">
+                <valenceUnit GF="" PT="2nd" FE="Initial_category"/>
+                <annoSet ID="2208629"/>
+                <annoSet ID="2208643"/>
+                <annoSet ID="2208645"/>
+                <annoSet ID="2208739"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Manner"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <annoSet ID="2208645"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Agent"/>
+            <FE name="Entity"/>
+            <FE name="Final_category"/>
+            <FE name="Initial_category"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Entity"/>
+                <valenceUnit GF="Dep" PT="PP[into]" FE="Final_category"/>
+                <valenceUnit GF="" PT="2nd" FE="Initial_category"/>
+                <annoSet ID="2208739"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Cause"/>
+            <FE name="Cause"/>
+            <FE name="Circumstances"/>
+            <FE name="Entity"/>
+            <FE name="Final_category"/>
+            <FE name="Initial_category"/>
+            <FE name="Manner"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Cause"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Cause"/>
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Circumstances"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Entity"/>
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Final_category"/>
+                <valenceUnit GF="" PT="2nd" FE="Initial_category"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <annoSet ID="2208645"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Cause"/>
+            <FE name="Entity"/>
+            <FE name="Final_category"/>
+            <FE name="Initial_category"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Cause"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Entity"/>
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Final_category"/>
+                <valenceUnit GF="" PT="2nd" FE="Initial_category"/>
+                <annoSet ID="2208629"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Cause"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Entity"/>
+                <valenceUnit GF="Dep" PT="VPto" FE="Final_category"/>
+                <valenceUnit GF="" PT="2nd" FE="Initial_category"/>
+                <annoSet ID="2208643"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-NP-PPto,into-(1)">
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="351" aPos="97731381" ID="1380384">
+            <text>The Church of S. Luke has a central dome carried on 12 piers with squinches to transform the square into an octagon while higher up are small pendentives which convert the octagon to a circle .</text>
+            <annotationSet cDate="07/12/2006 05:04:18 PDT Wed" status="UNANN" ID="2208628">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="9" start="4" name="NP"/>
+                    <label end="12" start="11" name="in"/>
+                    <label end="15" start="14" name="NP"/>
+                    <label end="20" start="17" name="NP"/>
+                    <label end="24" start="22" name="VHZ"/>
+                    <label end="26" start="26" name="dt"/>
+                    <label end="34" start="28" name="jj"/>
+                    <label end="39" start="36" name="nn"/>
+                    <label end="47" start="41" name="VVN"/>
+                    <label end="50" start="49" name="in"/>
+                    <label end="53" start="52" name="cd"/>
+                    <label end="59" start="55" name="nns"/>
+                    <label end="64" start="61" name="in"/>
+                    <label end="74" start="66" name="nns"/>
+                    <label end="77" start="76" name="to"/>
+                    <label end="87" start="79" name="VV"/>
+                    <label end="91" start="89" name="dt"/>
+                    <label end="98" start="93" name="nn"/>
+                    <label end="103" start="100" name="in"/>
+                    <label end="106" start="105" name="dt"/>
+                    <label end="114" start="108" name="nn"/>
+                    <label end="120" start="116" name="in"/>
+                    <label end="127" start="122" name="jjr"/>
+                    <label end="130" start="129" name="in"/>
+                    <label end="134" start="132" name="vbp"/>
+                    <label end="140" start="136" name="jj"/>
+                    <label end="152" start="142" name="nns"/>
+                    <label end="158" start="154" name="wdt"/>
+                    <label end="166" start="160" name="VVP"/>
+                    <label end="170" start="168" name="dt"/>
+                    <label end="178" start="172" name="nn"/>
+                    <label end="181" start="180" name="to"/>
+                    <label end="183" start="183" name="dt"/>
+                    <label end="190" start="185" name="nn"/>
+                    <label end="192" start="192" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/12/2006 05:04:18 PDT Wed" status="MANUAL" ID="2208629">
+                <layer rank="1" name="Target">
+                    <label cBy="303" end="166" start="160" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="6856" end="152" start="136" name="Cause"/>
+                    <label cBy="361" feID="6855" end="178" start="168" name="Entity"/>
+                    <label cBy="361" feID="4504" end="190" start="180" name="Final_category"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="152" start="136" name="Ext"/>
+                    <label end="178" start="168" name="Obj"/>
+                    <label end="190" start="180" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="152" start="136" name="NP"/>
+                    <label end="178" start="168" name="NP"/>
+                    <label end="190" start="180" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+                <layer rank="2" name="FE">
+                    <label cBy="361" feID="4503" end="178" start="168" name="Initial_category"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="394" aPos="20791984" ID="1380391">
+            <text>Hot water is converted to electricity , by a turbine ( 3 ) made in Israel by the Ormat Company .</text>
+            <annotationSet cDate="07/12/2006 05:04:20 PDT Wed" status="UNANN" ID="2208642">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="jj"/>
+                    <label end="8" start="4" name="nn"/>
+                    <label end="11" start="10" name="VBZ"/>
+                    <label end="21" start="13" name="VVN"/>
+                    <label end="24" start="23" name="to"/>
+                    <label end="36" start="26" name="nn"/>
+                    <label end="38" start="38" name=","/>
+                    <label end="41" start="40" name="in"/>
+                    <label end="43" start="43" name="dt"/>
+                    <label end="51" start="45" name="nn"/>
+                    <label end="53" start="53" name="("/>
+                    <label end="55" start="55" name="ls"/>
+                    <label end="57" start="57" name=")"/>
+                    <label end="62" start="59" name="VVN"/>
+                    <label end="65" start="64" name="in"/>
+                    <label end="72" start="67" name="NP"/>
+                    <label end="75" start="74" name="in"/>
+                    <label end="79" start="77" name="dt"/>
+                    <label end="85" start="81" name="NP"/>
+                    <label end="93" start="87" name="NP"/>
+                    <label end="95" start="95" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/12/2006 05:04:21 PDT Wed" status="MANUAL" ID="2208643">
+                <layer rank="1" name="Target">
+                    <label cBy="303" end="21" start="13" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="6855" end="8" start="0" name="Entity"/>
+                    <label cBy="361" feID="4504" end="36" start="23" name="Final_category"/>
+                    <label cBy="361" feID="6856" end="93" start="40" name="Cause"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="8" start="0" name="Ext"/>
+                    <label end="36" start="23" name="Dep"/>
+                    <label end="93" start="40" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="8" start="0" name="NP"/>
+                    <label end="36" start="23" name="VPto"/>
+                    <label end="93" start="40" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+                <layer rank="2" name="FE">
+                    <label cBy="361" feID="4503" end="8" start="0" name="Initial_category"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="5" paragNo="295" aPos="20881959" ID="1380392">
+            <text>A catalyst that could convert methane to methanol or larger unsaturated hydrocarbons directly and at low temperatures would be of enormous commercial interest .</text>
+            <annotationSet cDate="07/12/2006 05:04:21 PDT Wed" status="UNANN" ID="2208644">
+                <layer rank="1" name="PENN">
+                    <label end="0" start="0" name="dt"/>
+                    <label end="9" start="2" name="nn"/>
+                    <label end="14" start="11" name="wdt"/>
+                    <label end="20" start="16" name="md"/>
+                    <label end="28" start="22" name="VV"/>
+                    <label end="36" start="30" name="nn"/>
+                    <label end="39" start="38" name="to"/>
+                    <label end="48" start="41" name="nn"/>
+                    <label end="51" start="50" name="cc"/>
+                    <label end="58" start="53" name="jjr"/>
+                    <label end="70" start="60" name="jj"/>
+                    <label end="83" start="72" name="nns"/>
+                    <label end="92" start="85" name="rb"/>
+                    <label end="96" start="94" name="cc"/>
+                    <label end="99" start="98" name="in"/>
+                    <label end="103" start="101" name="jj"/>
+                    <label end="116" start="105" name="nns"/>
+                    <label end="122" start="118" name="md"/>
+                    <label end="125" start="124" name="vb"/>
+                    <label end="128" start="127" name="in"/>
+                    <label end="137" start="130" name="jj"/>
+                    <label end="148" start="139" name="jj"/>
+                    <label end="157" start="150" name="nn"/>
+                    <label end="159" start="159" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/12/2006 05:04:21 PDT Wed" status="MANUAL" ID="2208645">
+                <layer rank="1" name="Target">
+                    <label cBy="303" end="28" start="22" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="6856" end="9" start="0" name="Cause"/>
+                    <label cBy="361" feID="6856" end="14" start="11" name="Cause"/>
+                    <label cBy="361" feID="6855" end="36" start="30" name="Entity"/>
+                    <label cBy="361" feID="4504" end="83" start="38" name="Final_category"/>
+                    <label cBy="361" feID="6852" end="92" start="85" name="Manner"/>
+                    <label cBy="361" feID="10570" end="116" start="98" name="Circumstances"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="9" start="0" name="Ext"/>
+                    <label end="14" start="11" name="Ext"/>
+                    <label end="36" start="30" name="Obj"/>
+                    <label end="83" start="38" name="Dep"/>
+                    <label end="92" start="85" name="Dep"/>
+                    <label end="116" start="98" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="9" start="0" name="NP"/>
+                    <label end="14" start="11" name="NP"/>
+                    <label end="36" start="30" name="NP"/>
+                    <label end="83" start="38" name="PP"/>
+                    <label end="92" start="85" name="AVP"/>
+                    <label end="116" start="98" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other">
+                    <label end="9" start="0" name="Ant"/>
+                    <label end="14" start="11" name="Rel"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+                <layer rank="2" name="FE">
+                    <label cBy="361" feID="4503" end="36" start="30" name="Initial_category"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-T-NPenergy,house,debt-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="372" aPos="35335539" ID="1380439">
+            <text>Have you converted a barn into a comfortable home ?</text>
+            <annotationSet cDate="07/12/2006 05:04:39 PDT Wed" status="UNANN" ID="2208738">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="VHP"/>
+                    <label end="7" start="5" name="PP"/>
+                    <label end="17" start="9" name="VVN"/>
+                    <label end="19" start="19" name="dt"/>
+                    <label end="24" start="21" name="nn"/>
+                    <label end="29" start="26" name="in"/>
+                    <label end="31" start="31" name="dt"/>
+                    <label end="43" start="33" name="jj"/>
+                    <label end="48" start="45" name="nn"/>
+                    <label end="50" start="50" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/12/2006 05:04:39 PDT Wed" status="AUTO_EDITED" ID="2208739">
+                <layer rank="1" name="Target">
+                    <label cBy="303" end="17" start="9" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="4502" end="7" start="5" name="Agent"/>
+                    <label cBy="361" feID="6855" end="24" start="19" name="Entity"/>
+                    <label cBy="361" feID="4504" end="48" start="26" name="Final_category"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="7" start="5" name="Ext"/>
+                    <label end="24" start="19" name="Obj"/>
+                    <label end="48" start="26" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="7" start="5" name="NP"/>
+                    <label end="24" start="19" name="NP"/>
+                    <label end="48" start="26" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+                <layer rank="2" name="FE">
+                    <label cBy="361" feID="4503" end="24" start="19" name="Initial_category"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="03-Wangiotensin,program,function-T-(1)"/>
+    <subCorpus name="04-T-Wfor-(1)"/>
+    <subCorpus name="05-Wsuccessfully,beautifully,simply-T-(1)"/>
+    <subCorpus name="06-T-Wsuccessfully,beautifully,simply-(1)"/>
+    <subCorpus name="07-T-Wby-Wvvg-(1)"/>
+    <subCorpus name="08-T-Wvvg-(1)"/>
+    <subCorpus name="09-T-NP-VP-AP-NP-(1)"/>
+    <subCorpus name="10-T-NP-(1)"/>
+    <subCorpus name="11-T-PP-(1)"/>
+    <subCorpus name="12-T-NP-PP-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+    <subCorpus name="manually-added"/>
+</lexUnit>

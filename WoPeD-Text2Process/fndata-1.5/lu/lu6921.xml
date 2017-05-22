@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" POS="V" name="birth.v" ID="6921" frame="Birth" frameID="281" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Child" name="Child"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Extra-Thematic" abbrev="cir" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Depict" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Core" abbrev="Egg" name="Egg"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Pop" name="Father"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Peripheral" abbrev="man" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Mom" name="Mother"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Core" abbrev="Par" name="Parents"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Extra-Thematic" abbrev="" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: give birth to</definition>
+    <lexeme POS="V" name="birth"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Child"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Child"/>
+                <annoSet ID="1530819"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Mother"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Mother"/>
+                <annoSet ID="1530819"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Child"/>
+            <FE name="Mother"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Child"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Mother"/>
+                <annoSet ID="1530819"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-001-all">
+        <sentence sentNo="0" aPos="13393362" ID="1039662">
+            <text>As soon as you 've birthed your child -- ` </text>
+            <annotationSet cDate="01/08/2003 12:01:14 PST Wed" status="UNANN" ID="1530818">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="CJS"/>
+                    <label end="6" start="3" name="CJS"/>
+                    <label end="9" start="8" name="CJS"/>
+                    <label end="13" start="11" name="PNP"/>
+                    <label end="17" start="15" name="VHB"/>
+                    <label end="25" start="19" name="VVN"/>
+                    <label end="30" start="27" name="DPS"/>
+                    <label end="36" start="32" name="NN1"/>
+                    <label end="39" start="38" name="PUN"/>
+                    <label end="41" start="41" name="PUQ"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:01:15 PST Wed" status="MANUAL" ID="1530819">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2439" end="13" start="11" name="Mother"/>
+                    <label cBy="618" feID="2440" end="36" start="27" name="Child"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="13" start="11" name="Ext"/>
+                    <label end="36" start="27" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="13" start="11" name="NP"/>
+                    <label end="36" start="27" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="25" start="19" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" POS="V" name="glister.v" ID="3283" frame="Location_of_light" frameID="105" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Extra-Thematic" abbrev="Shine" name="Cause_of_shine"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Peripheral" abbrev="Dur" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Fig" name="Figure"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Core" abbrev="Grnd" name="Ground"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="Lit" name="Light"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="Result" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: sparkle; glitter. </definition>
+    <lexeme POS="V" name="glister"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Figure"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Figure"/>
+                <annoSet ID="523121"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Ground"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Ground"/>
+                <annoSet ID="523121"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Manner"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <annoSet ID="523121"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Figure"/>
+            <FE name="Ground"/>
+            <FE name="Manner"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Figure"/>
+                <valenceUnit GF="" PT="INI" FE="Ground"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <annoSet ID="523121"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-001-all">
+        <sentence sentNo="0" aPos="29096944" ID="441916">
+            <text>It seemed to Joan that the wedding-ring was burning her finger ; it caught the light , glistering brightly as if wishing to draw attention to the fact that it was embellishing an alien hand . </text>
+            <annotationSet cDate="01/07/2003 04:03:57 PST Tue" status="UNANN" ID="523120">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="8" start="3" name="VVD"/>
+                    <label end="11" start="10" name="PRP"/>
+                    <label end="16" start="13" name="NP0"/>
+                    <label end="21" start="18" name="CJT"/>
+                    <label end="25" start="23" name="AT0"/>
+                    <label end="38" start="27" name="NN1"/>
+                    <label end="42" start="40" name="VBD"/>
+                    <label end="50" start="44" name="VVG"/>
+                    <label end="54" start="52" name="DPS"/>
+                    <label end="61" start="56" name="NN1"/>
+                    <label end="63" start="63" name="PUN"/>
+                    <label end="66" start="65" name="PNP"/>
+                    <label end="73" start="68" name="VVD"/>
+                    <label end="77" start="75" name="AT0"/>
+                    <label end="83" start="79" name="AJ0-NN1"/>
+                    <label end="85" start="85" name="PUN"/>
+                    <label end="96" start="87" name="VVG"/>
+                    <label end="105" start="98" name="AV0"/>
+                    <label end="108" start="107" name="CJS"/>
+                    <label end="111" start="110" name="CJS"/>
+                    <label end="119" start="113" name="VVG"/>
+                    <label end="122" start="121" name="TO0"/>
+                    <label end="127" start="124" name="VVI"/>
+                    <label end="137" start="129" name="NN1"/>
+                    <label end="140" start="139" name="PRP"/>
+                    <label end="144" start="142" name="AT0"/>
+                    <label end="149" start="146" name="NN1"/>
+                    <label end="154" start="151" name="CJT"/>
+                    <label end="157" start="156" name="PNP"/>
+                    <label end="161" start="159" name="VBD"/>
+                    <label end="174" start="163" name="VVG"/>
+                    <label end="177" start="176" name="AT0"/>
+                    <label end="183" start="179" name="AJ0"/>
+                    <label end="188" start="185" name="NN1"/>
+                    <label end="190" start="190" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 04:03:57 PST Tue" status="MANUAL" ID="523121">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="821" end="66" start="65" name="Figure"/>
+                    <label cBy="669" feID="807" end="105" start="98" name="Manner"/>
+                    <label cBy="153" feID="822" itype="INI" name="Ground"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="66" start="65" name="Ext"/>
+                    <label end="105" start="98" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="66" start="65" name="NP"/>
+                    <label end="105" start="98" name="AVP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="96" start="87" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

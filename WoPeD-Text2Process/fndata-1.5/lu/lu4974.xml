@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="A" name="flavourless.a" ID="4974" frame="Chemical-sense_description" frameID="271" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Source" name="Perceptual_source"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Percept" name="Sensory_attribute"/>
+        </frame>
+    </header>
+    <definition>FN: without flavour</definition>
+    <lexeme POS="A" name="flavorless"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Perceptual_source"/>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="N" FE="Perceptual_source"/>
+                <annoSet ID="1073152"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Perceptual_source"/>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="N" FE="Perceptual_source"/>
+                <annoSet ID="1073152"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="A-001-all">
+        <sentence sentNo="0" aPos="10441995" ID="807893">
+            <text>She could feel nothing , as if her entire body were mummified in thick wads of flavourless chewing gum . </text>
+            <annotationSet cDate="01/07/2003 03:18:27 PST Tue" status="UNANN" ID="1073151">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="PNP"/>
+                    <label end="8" start="4" name="VM0"/>
+                    <label end="13" start="10" name="VVI"/>
+                    <label end="21" start="15" name="PNI"/>
+                    <label end="23" start="23" name="PUN"/>
+                    <label end="26" start="25" name="CJS"/>
+                    <label end="29" start="28" name="CJS"/>
+                    <label end="33" start="31" name="DPS"/>
+                    <label end="40" start="35" name="AJ0"/>
+                    <label end="45" start="42" name="NN1"/>
+                    <label end="50" start="47" name="VBD"/>
+                    <label end="60" start="52" name="VVN"/>
+                    <label end="63" start="62" name="PRP"/>
+                    <label end="69" start="65" name="AJ0"/>
+                    <label end="74" start="71" name="NN2"/>
+                    <label end="77" start="76" name="PRF"/>
+                    <label end="89" start="79" name="AJ0"/>
+                    <label end="97" start="91" name="AJ0-NN1"/>
+                    <label end="101" start="99" name="NN1"/>
+                    <label end="103" start="103" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:18:28 PST Tue" status="MANUAL" ID="1073152">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="2324" end="101" start="91" name="Perceptual_source"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="101" start="91" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="101" start="91" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="89" start="79" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

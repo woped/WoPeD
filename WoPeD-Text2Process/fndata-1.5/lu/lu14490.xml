@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" POS="N" name="dissimilarity_((mass)).n" ID="14490" frame="Similarity" frameID="481" totalAnnotated="6" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="000000" bgColor="EEE8AA" type="Extra-Thematic" abbrev="" name="Cause"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Extra-Thematic" abbrev="cir" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="" name="Degree"/>
+            <FE fgColor="000000" bgColor="FFA500" type="Extra-Thematic" abbrev="" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="" name="Differentiating_fact"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Core" abbrev="" name="Dimension"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="" name="Entities"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="ent1" name="Entity_1"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="ent2" name="Entity_2"/>
+            <FE fgColor="000000" bgColor="FF00FF" type="Peripheral" abbrev="" name="Manner"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Peripheral" abbrev="" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="90876C" type="Peripheral" abbrev="" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: the fact that (entities) are dissimilar.</definition>
+    <lexeme POS="N" name="dissimilarity"/>
+    <valences>
+        <governor type="Sup" lemma="show">
+            <annoSet ID="1861104"/>
+        </governor>
+        <FERealization total="1">
+            <FE name="Circumstances"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Circumstances"/>
+                <annoSet ID="1877011"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Degree"/>
+            <pattern total="3">
+                <valenceUnit GF="Dep" PT="A" FE="Degree"/>
+                <annoSet ID="1861094"/>
+                <annoSet ID="1861104"/>
+                <annoSet ID="1877011"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Dimension"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Dimension"/>
+                <annoSet ID="1861104"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="A" FE="Dimension"/>
+                <annoSet ID="1861120"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Entities"/>
+            <pattern total="4">
+                <valenceUnit GF="Dep" PT="PP[between]" FE="Entities"/>
+                <annoSet ID="1861088"/>
+                <annoSet ID="1861094"/>
+                <annoSet ID="1876995"/>
+                <annoSet ID="1877011"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Entity_1"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Entity_1"/>
+                <annoSet ID="1861104"/>
+                <annoSet ID="1861120"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Entity_2"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[than]" FE="Entity_2"/>
+                <annoSet ID="1861104"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Entity_2"/>
+                <annoSet ID="1861120"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Circumstances"/>
+            <FE name="Circumstances"/>
+            <FE name="Degree"/>
+            <FE name="Entities"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Circumstances"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Circumstances"/>
+                <valenceUnit GF="Dep" PT="A" FE="Degree"/>
+                <valenceUnit GF="Dep" PT="PP[between]" FE="Entities"/>
+                <annoSet ID="1877011"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Degree"/>
+            <FE name="Dimension"/>
+            <FE name="Entity_1"/>
+            <FE name="Entity_2"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="A" FE="Degree"/>
+                <valenceUnit GF="Dep" PT="N" FE="Dimension"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Entity_1"/>
+                <valenceUnit GF="Dep" PT="PP[than]" FE="Entity_2"/>
+                <annoSet ID="1861104"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Degree"/>
+            <FE name="Entities"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="A" FE="Degree"/>
+                <valenceUnit GF="Dep" PT="PP[between]" FE="Entities"/>
+                <annoSet ID="1861094"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Dimension"/>
+            <FE name="Entity_1"/>
+            <FE name="Entity_2"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="A" FE="Dimension"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Entity_1"/>
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Entity_2"/>
+                <annoSet ID="1861120"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Entities"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[between]" FE="Entities"/>
+                <annoSet ID="1861088"/>
+                <annoSet ID="1876995"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="7" paragNo="292" aPos="0" ID="1206993">
+            <text>These scores are then combined to give overall measures of dissimilarity between each possible pairing of artefacts -- exactly the form of information required for multi-dimensional scaling .</text>
+            <annotationSet cDate="04/28/2003 03:49:00 PDT Mon" status="UNANN" ID="1861087">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="dt"/>
+                    <label end="11" start="6" name="nns"/>
+                    <label end="15" start="13" name="vbp"/>
+                    <label end="20" start="17" name="rb"/>
+                    <label end="29" start="22" name="VVN"/>
+                    <label end="32" start="31" name="to"/>
+                    <label end="37" start="34" name="VV"/>
+                    <label end="45" start="39" name="jj"/>
+                    <label end="54" start="47" name="nns"/>
+                    <label end="57" start="56" name="in"/>
+                    <label end="71" start="59" name="nn"/>
+                    <label end="79" start="73" name="in"/>
+                    <label end="84" start="81" name="dt"/>
+                    <label end="93" start="86" name="jj"/>
+                    <label end="101" start="95" name="VVG"/>
+                    <label end="104" start="103" name="in"/>
+                    <label end="114" start="106" name="nns"/>
+                    <label end="117" start="116" name=":"/>
+                    <label end="125" start="119" name="rb"/>
+                    <label end="129" start="127" name="dt"/>
+                    <label end="134" start="131" name="nn"/>
+                    <label end="137" start="136" name="in"/>
+                    <label end="149" start="139" name="nn"/>
+                    <label end="158" start="151" name="VVN"/>
+                    <label end="162" start="160" name="in"/>
+                    <label end="180" start="164" name="jj"/>
+                    <label end="188" start="182" name="nn"/>
+                    <label end="190" start="190" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/28/2003 03:49:03 PDT Mon" status="MANUAL" ID="1861088">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="71" start="59" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="4019" end="114" start="73" name="Entities"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="114" start="73" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="114" start="73" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="145" aPos="0" ID="1206996">
+            <text>Any dissimilarity between the dots suggests weighting and they will cease to be dimensionless .</text>
+            <annotationSet cDate="04/28/2003 03:49:11 PDT Mon" status="UNANN" ID="1861093">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="16" start="4" name="nn"/>
+                    <label end="24" start="18" name="in"/>
+                    <label end="28" start="26" name="dt"/>
+                    <label end="33" start="30" name="nns"/>
+                    <label end="42" start="35" name="VVZ"/>
+                    <label end="52" start="44" name="nn"/>
+                    <label end="56" start="54" name="cc"/>
+                    <label end="61" start="58" name="PP"/>
+                    <label end="66" start="63" name="md"/>
+                    <label end="72" start="68" name="VV"/>
+                    <label end="75" start="74" name="to"/>
+                    <label end="78" start="77" name="vb"/>
+                    <label end="92" start="80" name="jj"/>
+                    <label end="94" start="94" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/28/2003 03:49:13 PDT Mon" status="MANUAL" ID="1861094">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="16" start="4" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="4230" end="2" start="0" name="Degree"/>
+                    <label cBy="268" feID="4019" end="33" start="18" name="Entities"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="2" start="0" name="Dep"/>
+                    <label end="33" start="18" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="2" start="0" name="A"/>
+                    <label end="33" start="18" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="7" paragNo="482" aPos="0" ID="1207001">
+            <text>He and Macdonald also contend that as monozygous twin pairs show greater birthweight dissimilarity than dizygous twin pairs , this would tend to lead to disease discordance and underestimation of the genetic contribution .</text>
+            <annotationSet cDate="04/28/2003 03:49:31 PDT Mon" status="UNANN" ID="1861103">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="5" start="3" name="cc"/>
+                    <label end="15" start="7" name="NP"/>
+                    <label end="20" start="17" name="rb"/>
+                    <label end="28" start="22" name="VVP"/>
+                    <label end="33" start="30" name="in"/>
+                    <label end="36" start="35" name="in"/>
+                    <label end="47" start="38" name="jj"/>
+                    <label end="52" start="49" name="jj"/>
+                    <label end="58" start="54" name="nns"/>
+                    <label end="63" start="60" name="VVP"/>
+                    <label end="71" start="65" name="jjr"/>
+                    <label end="83" start="73" name="nn"/>
+                    <label end="97" start="85" name="nn"/>
+                    <label end="102" start="99" name="in"/>
+                    <label end="111" start="104" name="jj"/>
+                    <label end="116" start="113" name="jj"/>
+                    <label end="122" start="118" name="nns"/>
+                    <label end="124" start="124" name=","/>
+                    <label end="129" start="126" name="dt"/>
+                    <label end="135" start="131" name="md"/>
+                    <label end="140" start="137" name="VV"/>
+                    <label end="143" start="142" name="to"/>
+                    <label end="148" start="145" name="VV"/>
+                    <label end="151" start="150" name="to"/>
+                    <label end="159" start="153" name="nn"/>
+                    <label end="171" start="161" name="nn"/>
+                    <label end="175" start="173" name="cc"/>
+                    <label end="191" start="177" name="nn"/>
+                    <label end="194" start="193" name="in"/>
+                    <label end="198" start="196" name="dt"/>
+                    <label end="206" start="200" name="jj"/>
+                    <label end="219" start="208" name="nn"/>
+                    <label end="221" start="221" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/28/2003 03:49:33 PDT Mon" status="MANUAL" ID="1861104">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="97" start="85" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="4027" end="58" start="38" name="Entity_1"/>
+                    <label cBy="268" feID="4230" end="71" start="65" name="Degree"/>
+                    <label cBy="268" feID="4029" end="83" start="73" name="Dimension"/>
+                    <label cBy="268" feID="4028" end="122" start="99" name="Entity_2"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="58" start="38" name="Ext"/>
+                    <label end="71" start="65" name="Dep"/>
+                    <label end="83" start="73" name="Dep"/>
+                    <label end="122" start="99" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="58" start="38" name="NP"/>
+                    <label end="71" start="65" name="A"/>
+                    <label end="83" start="73" name="N"/>
+                    <label end="122" start="99" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="63" start="60" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)">
+        <sentence corpID="111" docID="421" sentNo="5" paragNo="115" aPos="0" ID="1207009">
+            <text>Indeed one might contend that , were a woman to celebrate , it would , through her very physical dissimilarity to Jesus of Nazareth , be the more apparent what was intended .</text>
+            <annotationSet cDate="04/28/2003 03:49:51 PDT Mon" status="UNANN" ID="1861119">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="0" name="rb"/>
+                    <label end="9" start="7" name="PP"/>
+                    <label end="15" start="11" name="md"/>
+                    <label end="23" start="17" name="VV"/>
+                    <label end="28" start="25" name="in"/>
+                    <label end="30" start="30" name=","/>
+                    <label end="35" start="32" name="VBD"/>
+                    <label end="37" start="37" name="dt"/>
+                    <label end="43" start="39" name="nn"/>
+                    <label end="46" start="45" name="to"/>
+                    <label end="56" start="48" name="VV"/>
+                    <label end="58" start="58" name=","/>
+                    <label end="61" start="60" name="PP"/>
+                    <label end="67" start="63" name="md"/>
+                    <label end="69" start="69" name=","/>
+                    <label end="77" start="71" name="in"/>
+                    <label end="81" start="79" name="PP$"/>
+                    <label end="86" start="83" name="rb"/>
+                    <label end="95" start="88" name="jj"/>
+                    <label end="109" start="97" name="nn"/>
+                    <label end="112" start="111" name="to"/>
+                    <label end="118" start="114" name="NP"/>
+                    <label end="121" start="120" name="in"/>
+                    <label end="130" start="123" name="NP"/>
+                    <label end="132" start="132" name=","/>
+                    <label end="135" start="134" name="vb"/>
+                    <label end="139" start="137" name="dt"/>
+                    <label end="144" start="141" name="rbr"/>
+                    <label end="153" start="146" name="jj"/>
+                    <label end="158" start="155" name="wp"/>
+                    <label end="162" start="160" name="VBD"/>
+                    <label end="171" start="164" name="VVN"/>
+                    <label end="173" start="173" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/28/2003 03:49:54 PDT Mon" status="MANUAL" ID="1861120">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="109" start="97" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="4027" end="81" start="79" name="Entity_1"/>
+                    <label cBy="268" feID="4029" end="95" start="88" name="Dimension"/>
+                    <label cBy="268" feID="4028" end="130" start="111" name="Entity_2"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="81" start="79" name="Ext"/>
+                    <label end="95" start="88" name="Dep"/>
+                    <label end="130" start="111" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="81" start="79" name="NP"/>
+                    <label end="95" start="88" name="A"/>
+                    <label end="130" start="111" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-unmatched-(2)">
+        <sentence corpID="111" docID="421" sentNo="7" paragNo="292" aPos="0" ID="1214947">
+            <text>These scores are then combined to give overall measures of dissimilarity between each possible pairing of artefacts -- exactly the form of information required for multi-dimensional scaling .</text>
+            <annotationSet cDate="05/02/2003 11:10:45 PDT Fri" status="UNANN" ID="1876994">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="dt"/>
+                    <label end="11" start="6" name="nns"/>
+                    <label end="15" start="13" name="vbp"/>
+                    <label end="20" start="17" name="rb"/>
+                    <label end="29" start="22" name="VVN"/>
+                    <label end="32" start="31" name="to"/>
+                    <label end="37" start="34" name="VV"/>
+                    <label end="45" start="39" name="jj"/>
+                    <label end="54" start="47" name="nns"/>
+                    <label end="57" start="56" name="in"/>
+                    <label end="71" start="59" name="nn"/>
+                    <label end="79" start="73" name="in"/>
+                    <label end="84" start="81" name="dt"/>
+                    <label end="93" start="86" name="jj"/>
+                    <label end="101" start="95" name="VVG"/>
+                    <label end="104" start="103" name="in"/>
+                    <label end="114" start="106" name="nns"/>
+                    <label end="117" start="116" name=":"/>
+                    <label end="125" start="119" name="rb"/>
+                    <label end="129" start="127" name="dt"/>
+                    <label end="134" start="131" name="nn"/>
+                    <label end="137" start="136" name="in"/>
+                    <label end="149" start="139" name="nn"/>
+                    <label end="158" start="151" name="VVN"/>
+                    <label end="162" start="160" name="in"/>
+                    <label end="180" start="164" name="jj"/>
+                    <label end="188" start="182" name="nn"/>
+                    <label end="190" start="190" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="05/02/2003 11:10:45 PDT Fri" status="MANUAL" ID="1876995">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="71" start="59" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="4019" end="114" start="73" name="Entities"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="114" start="73" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="114" start="73" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="206" aPos="0" ID="1214955">
+            <text>In a between-species cross , in which there is even greater dissimilarity between the antigens , one would expect the rejection to be even more axiomatic , but the immunological evidence is difficult to interpret .</text>
+            <annotationSet cDate="05/02/2003 11:10:48 PDT Fri" status="UNANN" ID="1877010">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="in"/>
+                    <label end="3" start="3" name="dt"/>
+                    <label end="19" start="5" name="nns"/>
+                    <label end="25" start="21" name="VVP"/>
+                    <label end="27" start="27" name=","/>
+                    <label end="30" start="29" name="in"/>
+                    <label end="36" start="32" name="wdt"/>
+                    <label end="42" start="38" name="ex"/>
+                    <label end="45" start="44" name="VBZ"/>
+                    <label end="50" start="47" name="rb"/>
+                    <label end="58" start="52" name="jjr"/>
+                    <label end="72" start="60" name="nn"/>
+                    <label end="80" start="74" name="in"/>
+                    <label end="84" start="82" name="dt"/>
+                    <label end="93" start="86" name="nns"/>
+                    <label end="95" start="95" name=","/>
+                    <label end="99" start="97" name="PP"/>
+                    <label end="105" start="101" name="md"/>
+                    <label end="112" start="107" name="VV"/>
+                    <label end="116" start="114" name="dt"/>
+                    <label end="126" start="118" name="nn"/>
+                    <label end="129" start="128" name="to"/>
+                    <label end="132" start="131" name="vb"/>
+                    <label end="137" start="134" name="rb"/>
+                    <label end="142" start="139" name="rbr"/>
+                    <label end="152" start="144" name="jj"/>
+                    <label end="154" start="154" name=","/>
+                    <label end="158" start="156" name="cc"/>
+                    <label end="162" start="160" name="dt"/>
+                    <label end="176" start="164" name="jj"/>
+                    <label end="185" start="178" name="nn"/>
+                    <label end="188" start="187" name="VBZ"/>
+                    <label end="198" start="190" name="jj"/>
+                    <label end="201" start="200" name="to"/>
+                    <label end="211" start="203" name="VV"/>
+                    <label end="213" start="213" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="05/02/2003 11:10:49 PDT Fri" status="MANUAL" ID="1877011">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="72" start="60" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="4230" end="58" start="52" name="Degree"/>
+                    <label cBy="268" feID="4019" end="93" start="74" name="Entities"/>
+                    <label cBy="664" feID="11647" end="25" start="0" name="Circumstances"/>
+                    <label cBy="664" feID="11647" end="36" start="29" name="Circumstances"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="58" start="52" name="Dep"/>
+                    <label end="93" start="74" name="Dep"/>
+                    <label end="25" start="0" name="Dep"/>
+                    <label end="36" start="29" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="58" start="52" name="A"/>
+                    <label end="93" start="74" name="PP"/>
+                    <label end="25" start="0" name="PP"/>
+                    <label end="36" start="29" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other">
+                    <label end="36" start="32" name="Rel"/>
+                    <label end="25" start="0" name="Ant"/>
+                    <label end="42" start="38" name="Null"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="45" start="44" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

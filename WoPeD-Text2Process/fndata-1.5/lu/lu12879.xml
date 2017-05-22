@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="V" name="reach.v" ID="12879" frame="Change_position_on_a_scale" frameID="91" totalAnnotated="4" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="att" name="Attribute"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Extra-Thematic" abbrev="cir" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Peripheral" abbrev="cor" name="Correlate"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="006400" bgColor="FFFF00" type="Core" abbrev="Diff" name="Difference"/>
+            <FE fgColor="000000" bgColor="d0d0d0" type="Peripheral" abbrev="Dur" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="cor2" name="Final_correlate"/>
+            <FE fgColor="00008B" bgColor="7CCD73" type="Core" abbrev="finis" name="Final_state"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="val2" name="Final_value"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Grp" name="Group"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Peripheral" abbrev="cor1" name="Initial_correlate"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD7C" type="Core" abbrev="inis" name="Initial_state"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="val1" name="Initial_value"/>
+            <FE fgColor="000000" bgColor="FFA500" type="Core" abbrev="ite" name="Item"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="00008B" bgColor="7FFF00" type="Extra-Thematic" abbrev="" name="Particular_iteration"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Path" name="Path"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Extra-Thematic" abbrev="" name="Period_of_iterations"/>
+            <FE fgColor="000000" bgColor="FFD700" type="Peripheral" abbrev="" name="Place"/>
+            <FE fgColor="0000FF" bgColor="EEE8AA" type="Extra-Thematic" abbrev="Result" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="90876C" type="Peripheral" abbrev="Speed" name="Speed"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Peripheral" abbrev="" name="Time"/>
+            <FE fgColor="0000FF" bgColor="d0d0d0" type="Core" abbrev="" name="Value_range"/>
+        </frame>
+    </header>
+    <definition>FN: arrive at</definition>
+    <lexeme POS="V" name="reach"/>
+    <valences>
+        <FERealization total="4">
+            <FE name="Attribute"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="2nd" FE="Attribute"/>
+                <annoSet ID="725272"/>
+            </pattern>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="NP" FE="Attribute"/>
+                <annoSet ID="725364"/>
+                <annoSet ID="725394"/>
+                <annoSet ID="726326"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Final_value"/>
+            <pattern total="3">
+                <valenceUnit GF="Obj" PT="NP" FE="Final_value"/>
+                <annoSet ID="725272"/>
+                <annoSet ID="725364"/>
+                <annoSet ID="725394"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[between]" FE="Final_value"/>
+                <annoSet ID="726326"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Item"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Item"/>
+                <annoSet ID="725272"/>
+            </pattern>
+            <pattern total="3">
+                <valenceUnit GF="" PT="DNI" FE="Item"/>
+                <annoSet ID="725364"/>
+                <annoSet ID="725394"/>
+                <annoSet ID="726326"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Time"/>
+                <annoSet ID="725394"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="NP" FE="Time"/>
+                <annoSet ID="726326"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Attribute"/>
+            <FE name="Attribute"/>
+            <FE name="Final_value"/>
+            <FE name="Item"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Attribute"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Attribute"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Final_value"/>
+                <valenceUnit GF="" PT="DNI" FE="Item"/>
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Time"/>
+                <annoSet ID="725394"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Attribute"/>
+            <FE name="Final_value"/>
+            <FE name="Item"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="2nd" FE="Attribute"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Final_value"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Item"/>
+                <annoSet ID="725272"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Attribute"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Final_value"/>
+                <valenceUnit GF="" PT="DNI" FE="Item"/>
+                <annoSet ID="725364"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Attribute"/>
+            <FE name="Final_value"/>
+            <FE name="Item"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Attribute"/>
+                <valenceUnit GF="Dep" PT="PP[between]" FE="Final_value"/>
+                <valenceUnit GF="" PT="DNI" FE="Item"/>
+                <valenceUnit GF="Dep" PT="NP" FE="Time"/>
+                <annoSet ID="726326"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-570-np-ppbeyond">
+        <sentence sentNo="0" aPos="86160904" ID="622037">
+            <text>Inflation reached levels beyond the control of the authorities , and mines and bakeries were among the few concerns continuing to operate , as workers did not arrive to work or raw materials were lacking . </text>
+            <annotationSet cDate="01/07/2003 08:16:22 PST Tue" status="UNANN" ID="725363">
+                <layer rank="1" name="BNC">
+                    <label end="8" start="0" name="NN1-NP0"/>
+                    <label end="16" start="10" name="VVD"/>
+                    <label end="23" start="18" name="NN2"/>
+                    <label end="30" start="25" name="PRP"/>
+                    <label end="34" start="32" name="AT0"/>
+                    <label end="42" start="36" name="NN1"/>
+                    <label end="45" start="44" name="PRF"/>
+                    <label end="49" start="47" name="AT0"/>
+                    <label end="61" start="51" name="NN2"/>
+                    <label end="63" start="63" name="PUN"/>
+                    <label end="67" start="65" name="CJC"/>
+                    <label end="73" start="69" name="NN2"/>
+                    <label end="77" start="75" name="CJC"/>
+                    <label end="86" start="79" name="NN2"/>
+                    <label end="91" start="88" name="VBD"/>
+                    <label end="97" start="93" name="PRP"/>
+                    <label end="101" start="99" name="AT0"/>
+                    <label end="105" start="103" name="DT0"/>
+                    <label end="114" start="107" name="NN2"/>
+                    <label end="125" start="116" name="VVG"/>
+                    <label end="128" start="127" name="TO0"/>
+                    <label end="136" start="130" name="VVI"/>
+                    <label end="138" start="138" name="PUN"/>
+                    <label end="141" start="140" name="CJS"/>
+                    <label end="149" start="143" name="NN2"/>
+                    <label end="153" start="151" name="VDD"/>
+                    <label end="157" start="155" name="XX0"/>
+                    <label end="164" start="159" name="VVI"/>
+                    <label end="167" start="166" name="TO0"/>
+                    <label end="172" start="169" name="VVI"/>
+                    <label end="175" start="174" name="CJC"/>
+                    <label end="179" start="177" name="AJ0"/>
+                    <label end="189" start="181" name="NN2"/>
+                    <label end="194" start="191" name="VBD"/>
+                    <label end="202" start="196" name="AJ0"/>
+                    <label end="204" start="204" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 08:16:22 PST Tue" status="MANUAL" ID="725364">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="418" end="8" start="0" name="Attribute"/>
+                    <label cBy="103" feID="422" end="61" start="18" name="Final_value"/>
+                    <label cBy="303" feID="419" itype="DNI" name="Item"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="8" start="0" name="Ext"/>
+                    <label end="61" start="18" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="8" start="0" name="NP"/>
+                    <label end="61" start="18" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="Metaphor"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="16" start="10" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-570-np-ppabove">
+        <sentence sentNo="0" aPos="69190339" ID="621991">
+            <text>Pamela 's mother and father were , however , the thrifty rich : the preprandial glass of sherry was never refilled and the radiators never reached a temperature above luke-warm . </text>
+            <annotationSet cDate="01/07/2003 08:16:14 PST Tue" status="UNANN" ID="725271">
+                <layer rank="1" name="BNC">
+                    <label end="5" start="0" name="NP0"/>
+                    <label end="8" start="7" name="POS"/>
+                    <label end="15" start="10" name="NN1"/>
+                    <label end="19" start="17" name="CJC"/>
+                    <label end="26" start="21" name="NN1"/>
+                    <label end="31" start="28" name="VBD"/>
+                    <label end="33" start="33" name="PUN"/>
+                    <label end="41" start="35" name="AV0"/>
+                    <label end="43" start="43" name="PUN"/>
+                    <label end="47" start="45" name="AT0"/>
+                    <label end="55" start="49" name="AJ0"/>
+                    <label end="60" start="57" name="AJ0"/>
+                    <label end="62" start="62" name="PUN"/>
+                    <label end="66" start="64" name="AT0"/>
+                    <label end="78" start="68" name="AJ0"/>
+                    <label end="84" start="80" name="NN1"/>
+                    <label end="87" start="86" name="PRF"/>
+                    <label end="94" start="89" name="NN1"/>
+                    <label end="98" start="96" name="VBD"/>
+                    <label end="104" start="100" name="AV0"/>
+                    <label end="113" start="106" name="VVN"/>
+                    <label end="117" start="115" name="CJC"/>
+                    <label end="121" start="119" name="AT0"/>
+                    <label end="131" start="123" name="NN2"/>
+                    <label end="137" start="133" name="AV0"/>
+                    <label end="145" start="139" name="VVD-VVN"/>
+                    <label end="147" start="147" name="AT0"/>
+                    <label end="159" start="149" name="NN1"/>
+                    <label end="165" start="161" name="PRP"/>
+                    <label end="175" start="167" name="AJ0"/>
+                    <label end="177" start="177" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 08:16:14 PST Tue" status="MANUAL" ID="725272">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="419" end="131" start="119" name="Item"/>
+                    <label cBy="103" feID="422" end="175" start="147" name="Final_value"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="131" start="119" name="Ext"/>
+                    <label end="175" start="147" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="131" start="119" name="NP"/>
+                    <label end="175" start="147" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="Metaphor"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="145" start="139" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+                <layer rank="2" name="FE">
+                    <label cBy="303" feID="418" end="159" start="147" name="Attribute"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-570-np-ppby">
+        <sentence sentNo="0" aPos="85698724" ID="622052">
+            <text>The federal government 's main economic priority was to reduce inflation , which had reached 2,600 per cent by the end of 1989 . </text>
+            <annotationSet cDate="01/07/2003 08:16:24 PST Tue" status="UNANN" ID="725393">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="10" start="4" name="AJ0"/>
+                    <label end="21" start="12" name="NN0"/>
+                    <label end="24" start="23" name="POS"/>
+                    <label end="29" start="26" name="AJ0"/>
+                    <label end="38" start="31" name="AJ0"/>
+                    <label end="47" start="40" name="NN1"/>
+                    <label end="51" start="49" name="VBD"/>
+                    <label end="54" start="53" name="TO0"/>
+                    <label end="61" start="56" name="VVI"/>
+                    <label end="71" start="63" name="NN1"/>
+                    <label end="73" start="73" name="PUN"/>
+                    <label end="79" start="75" name="DTQ"/>
+                    <label end="83" start="81" name="VHD"/>
+                    <label end="91" start="85" name="VVN"/>
+                    <label end="97" start="93" name="CRD"/>
+                    <label end="101" start="99" name="NN0"/>
+                    <label end="106" start="103" name="NN0"/>
+                    <label end="109" start="108" name="PRP"/>
+                    <label end="113" start="111" name="AT0"/>
+                    <label end="117" start="115" name="NN1"/>
+                    <label end="120" start="119" name="PRF"/>
+                    <label end="125" start="122" name="CRD"/>
+                    <label end="127" start="127" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 08:16:24 PST Tue" status="MANUAL" ID="725394">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="418" end="71" start="63" name="Attribute"/>
+                    <label cBy="103" feID="422" end="106" start="93" name="Final_value"/>
+                    <label cBy="664" feID="4547" end="125" start="108" name="Time"/>
+                    <label cBy="309" feID="418" end="79" start="75" name="Attribute"/>
+                    <label cBy="303" feID="419" itype="DNI" name="Item"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="71" start="63" name="Ext"/>
+                    <label end="106" start="93" name="Obj"/>
+                    <label end="125" start="108" name="Dep"/>
+                    <label end="79" start="75" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="71" start="63" name="NP"/>
+                    <label end="106" start="93" name="NP"/>
+                    <label end="125" start="108" name="PP"/>
+                    <label end="79" start="75" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="Metaphor"/>
+                </layer>
+                <layer rank="1" name="Other">
+                    <label end="71" start="63" name="Ant"/>
+                    <label end="79" start="75" name="Rel"/>
+                </layer>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="91" start="85" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-730-ppbetween">
+        <sentence sentNo="0" aPos="81121891" ID="622518">
+            <text>The actual figure for applications in October was 4,400 and the number is likely to reach between 45,000 and 50,000 this year , whereas we used to receive 2,000 or 3,000 applications . </text>
+            <annotationSet cDate="01/07/2003 08:17:28 PST Tue" status="UNANN" ID="726325">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="9" start="4" name="AJ0"/>
+                    <label end="16" start="11" name="NN1"/>
+                    <label end="20" start="18" name="PRP"/>
+                    <label end="33" start="22" name="NN2"/>
+                    <label end="36" start="35" name="PRP"/>
+                    <label end="44" start="38" name="NP0"/>
+                    <label end="48" start="46" name="VBD"/>
+                    <label end="54" start="50" name="CRD"/>
+                    <label end="58" start="56" name="CJC"/>
+                    <label end="62" start="60" name="AT0"/>
+                    <label end="69" start="64" name="NN1"/>
+                    <label end="72" start="71" name="VBZ"/>
+                    <label end="79" start="74" name="AJ0"/>
+                    <label end="82" start="81" name="TO0"/>
+                    <label end="88" start="84" name="VVI"/>
+                    <label end="96" start="90" name="PRP"/>
+                    <label end="103" start="98" name="CRD"/>
+                    <label end="107" start="105" name="CJC"/>
+                    <label end="114" start="109" name="CRD"/>
+                    <label end="119" start="116" name="DT0"/>
+                    <label end="124" start="121" name="NN1"/>
+                    <label end="126" start="126" name="PUN"/>
+                    <label end="134" start="128" name="CJS"/>
+                    <label end="137" start="136" name="PNP"/>
+                    <label end="142" start="139" name="VM0"/>
+                    <label end="145" start="144" name="TO0"/>
+                    <label end="153" start="147" name="VVI"/>
+                    <label end="159" start="155" name="CRD"/>
+                    <label end="162" start="161" name="CJC"/>
+                    <label end="168" start="164" name="CRD"/>
+                    <label end="181" start="170" name="NN2"/>
+                    <label end="183" start="183" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 08:17:28 PST Tue" status="MANUAL" ID="726326">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="418" end="69" start="60" name="Attribute"/>
+                    <label cBy="103" feID="422" end="114" start="90" name="Final_value"/>
+                    <label cBy="664" feID="4547" end="124" start="116" name="Time"/>
+                    <label cBy="303" feID="419" itype="DNI" name="Item"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="69" start="60" name="Ext"/>
+                    <label end="114" start="90" name="Dep"/>
+                    <label end="124" start="116" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="69" start="60" name="NP"/>
+                    <label end="114" start="90" name="PP"/>
+                    <label end="124" start="116" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="Metaphor"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="88" start="84" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="V" name="grope.v" ID="4882" frame="Manipulation" frameID="17" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Agt" name="Agent"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="AgBP" name="Bodypart_of_agent"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Extra-Thematic" abbrev="" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Dur" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Enty" name="Entity"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Ins" name="Instrument"/>
+            <FE fgColor="000000" bgColor="008000" type="Extra-Thematic" abbrev="Locus" name="Locus"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="" name="Particular_iteration"/>
+            <FE fgColor="000000" bgColor="7FFF00" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="000000" bgColor="90876C" type="Extra-Thematic" abbrev="" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="Result" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: feel or fondle (someone) for sexual pleasure, especially against their will. </definition>
+    <lexeme POS="V" name="grope"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Agent"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <annoSet ID="1051086"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Entity"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Entity"/>
+                <annoSet ID="1051086"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Agent"/>
+            <FE name="Entity"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Entity"/>
+                <annoSet ID="1051086"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-670-s20-pass-by"/>
+    <subCorpus name="V-680-s20-pass"/>
+    <subCorpus name="V-730-s20-ppat">
+        <sentence sentNo="0" aPos="66747820" ID="796327">
+            <text>” I mean you , curb ! sitting there grinning while he groped at you …</text>
+            <annotationSet cDate="01/07/2003 02:53:55 PST Tue" status="UNANN" ID="1051085">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PUQ"/>
+                    <label end="2" start="2" name="PNP"/>
+                    <label end="7" start="4" name="VVB"/>
+                    <label end="11" start="9" name="PNP"/>
+                    <label end="13" start="13" name="PUN"/>
+                    <label end="18" start="15" name="NN1"/>
+                    <label end="20" start="20" name="PUN"/>
+                    <label end="28" start="22" name="VVG"/>
+                    <label end="34" start="30" name="AV0"/>
+                    <label end="43" start="36" name="VVG"/>
+                    <label end="49" start="45" name="CJS"/>
+                    <label end="52" start="51" name="PNP"/>
+                    <label end="59" start="54" name="VVD"/>
+                    <label end="62" start="61" name="PRP"/>
+                    <label end="66" start="64" name="PNP"/>
+                    <label end="68" start="68" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:53:55 PST Tue" status="MANUAL" ID="1051086">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="77" end="52" start="51" name="Agent"/>
+                    <label cBy="669" feID="78" end="66" start="61" name="Entity"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="52" start="51" name="Ext"/>
+                    <label end="66" start="61" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="52" start="51" name="NP"/>
+                    <label end="66" start="61" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="59" start="54" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-780-s20-ppother"/>
+    <subCorpus name="V-810-s20-pother"/>
+    <subCorpus name="V-880-s20-intrans-simple"/>
+    <subCorpus name="V-890-s20-intrans-adverb"/>
+    <subCorpus name="V-900-s20-other"/>
+</lexUnit>

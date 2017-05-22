@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="07/08/2004 03:25:17 PDT Thu" name="Toxic_substance" ID="1163" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A &lt;fen&gt;Toxic_substance&lt;/fen&gt; causes death or harm when introduced into or absorbed by a living organism, the &lt;fen&gt;Victim&lt;/fen&gt;. The &lt;fen&gt;Toxic_substance&lt;/fen&gt; may be specified to be produced by or contained in a &lt;fen&gt;Toxin_source&lt;/fen&gt;. The &lt;fen&gt;Toxic_substance&lt;/fen&gt; may affect the &lt;fen&gt;Victim&lt;/fen&gt; as a whole or a particular &lt;fen&gt;Body_part&lt;/fen&gt; (understood here to include organs and other sub-systems). A &lt;fen&gt;Degree&lt;/fen&gt; of harmfulness  can be specified  and the &lt;fen&gt;Toxic_substance&lt;/fen&gt;  may develop  its effect only under particular &lt;fen&gt;Circumstances&lt;/fen&gt;.
+
+&lt;ex&gt;&lt;fex name="Toxic_substance"&gt;The  main product , sulphide ,&lt;/fex&gt; &lt;m&gt;is&lt;/m&gt; &lt;t&gt;toxic&lt;/t&gt; &lt;fex name="Body_part"&gt;to cells&lt;/fex&gt; &lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="Toxic_substance"&gt;They&lt;/fex&gt; are better tolerated and  &lt;m&gt;are&lt;/m&gt; &lt;fex name="Degree"&gt;less&lt;/fex&gt; &lt;t&gt;toxic&lt;/t&gt; &lt;fex name="con"&gt;in overdose&lt;/fex&gt;&lt;/ex&gt;
+
+&lt;ex&gt;The reason he was close to danger was because an extremely &lt;t&gt;poisonous&lt;/t&gt; &lt;fex name="toxs"&gt;beetle&lt;/fex&gt; was crawling down his shoulder.&lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="tox"&gt;Ingested gliadin and PT-gliadin&lt;/fex&gt; &lt;m&gt;are&lt;/m&gt; &lt;t&gt;toxic&lt;/t&gt; &lt;fex name="vic"&gt;to coeliac patients&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="07/08/2004 03:25:17 PDT Thu" abbrev="vic" name="Victim" ID="6750">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Victim&lt;/fen&gt; is the being or entity that is capable of being harmed by the &lt;fen&gt;Toxic_substance&lt;/fen&gt;.
+
+&lt;ex&gt;Chocolate can be &lt;t&gt;poisonous&lt;/t&gt; &lt;fex name="vic"&gt;for some types of pets&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="07/08/2004 03:25:17 PDT Thu" abbrev="Degr" name="Degree" ID="6752">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Degree&lt;/fen&gt; is the degree to which the &lt;fen&gt;Toxic_substance&lt;/fen&gt; is harmful to the &lt;fen&gt;Victim&lt;/fen&gt;.
+&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="07/08/2004 03:25:17 PDT Thu" abbrev="bod" name="Body_part" ID="6757">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Body_part&lt;/fen&gt; defines the part of the &lt;fen&gt;Victim&lt;/fen&gt;'s body that is harmed.
+
+&lt;ex&gt;This vitamin taken in excess could &lt;m&gt;be&lt;/m&gt; &lt;t&gt;poisonous&lt;/t&gt; &lt;fex name="bod"&gt;for the liver&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Body_part" ID="10"/>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="07/08/2004 03:25:17 PDT Thu" abbrev="Reas" name="Reason" ID="6762">
+        <definition>&lt;def-root&gt;A fact or action that explains why the &lt;fen&gt;Toxic_substance&lt;/fen&gt; has a harmful effect on the &lt;fen&gt;Victim&lt;/fen&gt; .&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="07/08/2004 03:25:17 PDT Thu" abbrev="tox" name="Toxic_substance" ID="6764">
+        <definition>&lt;def-root&gt;This FE marks expressions that indicate the substance which potentially causes harm to a &lt;fen&gt;Victim&lt;/fen&gt;.
+
+
+&lt;ex&gt;Highly &lt;t&gt;toxic&lt;/t&gt; &lt;fex name="tox"&gt;pollutants&lt;/fex&gt; could be safely disposed of by burning them&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="07/08/2004 04:06:56 PDT Thu" abbrev="con" name="Circumstances" ID="6769">
+        <definition>&lt;def-root&gt;A set of circumstances, often the relative amount of the &lt;fen&gt;Toxic_substance&lt;/fen&gt; that is present, under which the &lt;fen&gt;Toxic_substance&lt;/fen&gt; is specified to have or lack a toxic effect.
+
+&lt;ex&gt;Some metals, such as copper and selenium, are essential to normal metabolic function as trace elements but are &lt;t&gt;toxic&lt;/t&gt; &lt;fex name="con"&gt;at high levels of exposure&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="07/08/2004 04:19:21 PDT Thu" abbrev="toxs" name="Toxin_source" ID="6770">
+        <definition>&lt;def-root&gt;A living organism, object or process that produces a &lt;fen&gt;Toxic_substance&lt;/fen&gt;.
+
+&lt;ex&gt;A young man was bitten by a &lt;t&gt;poisonous&lt;/t&gt; &lt;fex name="toxs"&gt;snake&lt;/fex&gt; and lives to tell about it.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Peripheral" cBy="361" cDate="02/14/2007 05:06:17 PST Wed" abbrev="typ" name="Type" ID="11052">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Type&lt;/fen&gt; identifies the kind or sort of &lt;fen&gt;Toxic_substance&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="976" cDate="10/14/2008 04:06:44 PDT Tue" abbrev="" name="Duration" ID="13081">
+        <definition>&lt;def-root&gt;Temporal period for which the substance or source remains toxic to the victim.&lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Toxin_source" ID="6770"/>
+        <memberFE name="Toxic_substance" ID="6764"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Cause_harm</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="A" name="toxic.a" ID="10751" lemmaID="40882" cBy="605" cDate="07/08/2004 04:09:38 PDT Thu">
+        <definition>COD: poisonous</definition>
+        <sentenceCount annotated="26" total="180"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="toxic"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="toxin.n" ID="10752" lemmaID="40886" cBy="605" cDate="07/08/2004 04:10:14 PDT Thu">
+        <definition>FN: a poisonous substance</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="toxin"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="poison.n" ID="10753" lemmaID="29553" cBy="605" cDate="07/08/2004 04:11:34 PDT Thu">
+        <definition>COD: a substance that causes death or harm when introduced into or absorbed by a living organism. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="poison"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="poisonous.a" ID="10754" lemmaID="29556" cBy="605" cDate="07/08/2004 04:12:12 PDT Thu">
+        <definition>COD: producing or of the nature of poison</definition>
+        <sentenceCount annotated="19" total="69"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="poisonous"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="venom.n" ID="10755" lemmaID="42827" cBy="605" cDate="07/08/2004 04:38:10 PDT Thu">
+        <definition>COD: poisonous fluid secreted by animals such as snakes and scorpions and typically injected into prey or aggressors by biting or stinging</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="venom"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="venomous.a" ID="10756" lemmaID="42829" cBy="605" cDate="07/08/2004 04:38:27 PDT Thu">
+        <definition>COD: secreting or capable of injecting venom.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="venomous"/>
+    </lexUnit>
+</frame>

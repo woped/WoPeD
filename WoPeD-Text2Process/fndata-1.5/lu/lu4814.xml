@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="nap.v" ID="4814" frame="Sleep" frameID="264" totalAnnotated="4" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Extra-Thematic" abbrev="Deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Dur" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Slp" name="Sleeper"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: Sleep lightly or briefly, especially during the day. </definition>
+    <lexeme POS="V" name="nap"/>
+    <valences>
+        <FERealization total="3">
+            <FE name="Place"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Place"/>
+                <annoSet ID="1045154"/>
+                <annoSet ID="1045186"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Place"/>
+                <annoSet ID="1045204"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Sleeper"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Sleeper"/>
+                <annoSet ID="1045154"/>
+            </pattern>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="NP" FE="Sleeper"/>
+                <annoSet ID="1045148"/>
+                <annoSet ID="1045186"/>
+                <annoSet ID="1045204"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Time"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Time"/>
+                <annoSet ID="1045148"/>
+                <annoSet ID="1045204"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Place"/>
+            <FE name="Sleeper"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Place"/>
+                <valenceUnit GF="" PT="CNI" FE="Sleeper"/>
+                <annoSet ID="1045154"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Place"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Sleeper"/>
+                <annoSet ID="1045186"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Place"/>
+            <FE name="Sleeper"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Place"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Sleeper"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Time"/>
+                <annoSet ID="1045204"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Sleeper"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Sleeper"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Time"/>
+                <annoSet ID="1045148"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-001-all">
+        <sentence sentNo="0" aPos="3935740" ID="793241">
+            <text>If you resist any temptation to nap in the daytime you will be more able to get to sleep at your next bedtime . </text>
+            <annotationSet cDate="01/07/2003 02:47:04 PST Tue" status="UNANN" ID="1045147">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="CJS"/>
+                    <label end="5" start="3" name="PNP"/>
+                    <label end="12" start="7" name="VVB"/>
+                    <label end="16" start="14" name="DT0"/>
+                    <label end="27" start="18" name="NN1"/>
+                    <label end="30" start="29" name="TO0"/>
+                    <label end="34" start="32" name="VVI"/>
+                    <label end="37" start="36" name="PRP"/>
+                    <label end="41" start="39" name="AT0"/>
+                    <label end="49" start="43" name="NN1"/>
+                    <label end="53" start="51" name="PNP"/>
+                    <label end="58" start="55" name="VM0"/>
+                    <label end="61" start="60" name="VBI"/>
+                    <label end="66" start="63" name="AV0"/>
+                    <label end="71" start="68" name="AJ0"/>
+                    <label end="74" start="73" name="TO0"/>
+                    <label end="78" start="76" name="VVI"/>
+                    <label end="81" start="80" name="TO0"/>
+                    <label end="87" start="83" name="VVI"/>
+                    <label end="90" start="89" name="PRP"/>
+                    <label end="95" start="92" name="DPS"/>
+                    <label end="100" start="97" name="ORD"/>
+                    <label end="108" start="102" name="NN1"/>
+                    <label end="110" start="110" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:47:04 PST Tue" status="MANUAL" ID="1045148">
+                <layer rank="1" name="FE">
+                    <label cBy="900" feID="2282" end="5" start="3" name="Sleeper"/>
+                    <label cBy="900" feID="2284" end="49" start="36" name="Time"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="5" start="3" name="Ext"/>
+                    <label end="49" start="36" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="5" start="3" name="NP"/>
+                    <label end="49" start="36" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="34" start="32" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="3962144" ID="793244">
+            <text>If required , the facility to take a good sleep can be a great advantage over having to try to nap in your seat . </text>
+            <annotationSet cDate="01/07/2003 02:47:04 PST Tue" status="UNANN" ID="1045153">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="CJS"/>
+                    <label end="10" start="3" name="VVN"/>
+                    <label end="12" start="12" name="PUN"/>
+                    <label end="16" start="14" name="AT0"/>
+                    <label end="25" start="18" name="NN1"/>
+                    <label end="28" start="27" name="TO0"/>
+                    <label end="33" start="30" name="VVI"/>
+                    <label end="35" start="35" name="AT0"/>
+                    <label end="40" start="37" name="AJ0"/>
+                    <label end="46" start="42" name="NN1"/>
+                    <label end="50" start="48" name="VM0"/>
+                    <label end="53" start="52" name="VBI"/>
+                    <label end="55" start="55" name="AT0"/>
+                    <label end="61" start="57" name="AJ0"/>
+                    <label end="71" start="63" name="NN1"/>
+                    <label end="76" start="73" name="PRP"/>
+                    <label end="83" start="78" name="VHG"/>
+                    <label end="86" start="85" name="TO0"/>
+                    <label end="90" start="88" name="VVI"/>
+                    <label end="93" start="92" name="TO0"/>
+                    <label end="97" start="95" name="VVI"/>
+                    <label end="100" start="99" name="PRP"/>
+                    <label end="105" start="102" name="DPS"/>
+                    <label end="110" start="107" name="NN1"/>
+                    <label end="112" start="112" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:47:04 PST Tue" status="MANUAL" ID="1045154">
+                <layer rank="1" name="FE">
+                    <label cBy="900" feID="2285" end="110" start="99" name="Place"/>
+                    <label cBy="900" feID="2282" itype="CNI" name="Sleeper"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="110" start="99" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="110" start="99" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="97" start="95" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="58794875" ID="793260">
+            <text>Victoria napped in her cage beside the blossoming geranium . </text>
+            <annotationSet cDate="01/07/2003 02:47:06 PST Tue" status="UNANN" ID="1045185">
+                <layer rank="1" name="BNC">
+                    <label end="7" start="0" name="NP0"/>
+                    <label end="14" start="9" name="VVD"/>
+                    <label end="17" start="16" name="PRP"/>
+                    <label end="21" start="19" name="DPS"/>
+                    <label end="26" start="23" name="NN1"/>
+                    <label end="33" start="28" name="PRP"/>
+                    <label end="37" start="35" name="AT0"/>
+                    <label end="48" start="39" name="AJ0"/>
+                    <label end="57" start="50" name="NN1"/>
+                    <label end="59" start="59" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:47:06 PST Tue" status="MANUAL" ID="1045186">
+                <layer rank="1" name="FE">
+                    <label cBy="900" feID="2282" end="7" start="0" name="Sleeper"/>
+                    <label cBy="900" feID="2285" end="57" start="16" name="Place"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="7" start="0" name="Ext"/>
+                    <label end="57" start="16" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="7" start="0" name="NP"/>
+                    <label end="57" start="16" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="14" start="9" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="101235895" ID="793269">
+            <text>Still trying to make reality match with her fantasy , she took to napping on the beach in the afternoons . </text>
+            <annotationSet cDate="01/07/2003 02:47:07 PST Tue" status="UNANN" ID="1045203">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="AV0"/>
+                    <label end="11" start="6" name="VVG"/>
+                    <label end="14" start="13" name="TO0"/>
+                    <label end="19" start="16" name="VVI"/>
+                    <label end="27" start="21" name="NN1"/>
+                    <label end="33" start="29" name="NN1-VVB"/>
+                    <label end="38" start="35" name="PRP"/>
+                    <label end="42" start="40" name="DPS"/>
+                    <label end="50" start="44" name="NN1"/>
+                    <label end="52" start="52" name="PUN"/>
+                    <label end="56" start="54" name="PNP"/>
+                    <label end="61" start="58" name="VVD"/>
+                    <label end="64" start="63" name="PRP"/>
+                    <label end="72" start="66" name="VVG"/>
+                    <label end="75" start="74" name="PRP"/>
+                    <label end="79" start="77" name="AT0"/>
+                    <label end="85" start="81" name="NN1"/>
+                    <label end="88" start="87" name="PRP"/>
+                    <label end="92" start="90" name="AT0"/>
+                    <label end="103" start="94" name="NN2"/>
+                    <label end="105" start="105" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:47:07 PST Tue" status="MANUAL" ID="1045204">
+                <layer rank="1" name="FE">
+                    <label cBy="900" feID="2282" end="56" start="54" name="Sleeper"/>
+                    <label cBy="900" feID="2285" end="85" start="74" name="Place"/>
+                    <label cBy="900" feID="2284" end="103" start="87" name="Time"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="56" start="54" name="Ext"/>
+                    <label end="85" start="74" name="Dep"/>
+                    <label end="103" start="87" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="56" start="54" name="NP"/>
+                    <label end="85" start="74" name="PP"/>
+                    <label end="103" start="87" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="72" start="66" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

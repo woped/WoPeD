@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<epml:epml xmlns:epml="http://www.epml.de">
+<directory name="Root">
+<epc epcId="1" name="generated Model">
+<function id="1852871400">
+<name>build a house</name>
+</function>
+<function id="1137429959">
+<name>destroy it</name>
+</function>
+<event id="1706129640">
+<name>start</name>
+</event>
+<event id="1939758064">
+<name>build a house is done</name>
+</event>
+<event id="377785626">
+<name>end</name>
+</event>
+<arc id="1908308033">
+<flow source="1939758064" target="1137429959"/>
+</arc>
+<arc id="170292687">
+<flow source="1706129640" target="1852871400"/>
+</arc>
+<arc id="2015157449">
+<flow source="1852871400" target="1939758064"/>
+</arc>
+<arc id="800393736">
+<flow source="1137429959" target="377785626"/>
+</arc>
+</epc>
+</directory>
+</epml:epml>

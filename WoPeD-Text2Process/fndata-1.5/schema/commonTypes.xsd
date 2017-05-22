@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!--
+    Document   : commonTypes.xsd
+    Created on : June 4, 2008, 3:00 PM
+    Author     : jhong
+    Description:
+        File containing types used in multiple XML formats.  Only simple types
+        or complex types containing only attributes are stored in this file.
+        Complex types containing elements should have files of their own.
+-->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:fn="http://framenet.icsi.berkeley.edu"
+            targetNamespace="http://framenet.icsi.berkeley.edu"
+            xmlns="http://framenet.icsi.berkeley.edu"
+            elementFormDefault="qualified">
+                
+  <!-- *********************** SIMPLE TYPES ************************** -->
+    
+  <!-- a date/time expression in the format %c as defined in the man
+       pages of the UNIX command 'date' -->
+    <xsd:simpleType name="dateTimeType">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="\d{2}/\d{2}/\d{4} \d{2}:\d{2}:\d{2} [A-Z]{3} (Sun|Mon|Tue|Wed|Thu|Fri|Sat)"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+  
+  <!-- a default definition type: LUs, FEs -->
+    <xsd:simpleType name="defType">
+        <xsd:restriction base="xsd:string"/>
+    </xsd:simpleType>
+  
+  <!-- a numeric type to use for ID fields -->
+    <xsd:simpleType name="IDType">
+        <xsd:restriction base="xsd:int">
+            <xsd:minInclusive value="0"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+  
+  <!-- a numeric type to use for Label spans -->
+    <xsd:simpleType name="labelSpanType">
+        <xsd:restriction base="xsd:int">
+            <xsd:minInclusive value="0"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+  
+  <!-- a numeric type to use for order specification (rank, paragraph order, etc.) -->
+    <xsd:simpleType name="orderType">
+        <xsd:restriction base="xsd:int">
+            <xsd:minInclusive value="0"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+  
+  <!-- a numeric type to use for external references to sentences (aPos) -->
+    <xsd:simpleType name="extSentRefType">
+        <xsd:restriction base="xsd:int">
+            <xsd:minInclusive value="0"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+  
+  <!-- a numeric type to use for pattern counts -->
+    <xsd:simpleType name="countType">
+        <xsd:restriction base="xsd:int">
+            <xsd:minInclusive value="0"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+  
+  <!-- a string type for RGB color values -->
+    <xsd:simpleType name="RGBColorType">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[0-9A-Fa-f]{6}"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+  <!-- a string type for POS values, usu. lexunit or lexeme -->
+    <xsd:simpleType name="POSType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="N"/>
+            <xsd:enumeration value="V"/>
+            <xsd:enumeration value="A"/>
+            <xsd:enumeration value="ADV"/>
+            <xsd:enumeration value="PRON"/>
+            <xsd:enumeration value="PREP"/>
+            <xsd:enumeration value="NUM"/>
+            <xsd:enumeration value="C"/>
+            <xsd:enumeration value="INTJ"/>
+            <xsd:enumeration value="ART"/>
+            <xsd:enumeration value="SCON"/>
+            <xsd:enumeration value="CCON"/>
+            <xsd:enumeration value="AVP"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+  <!-- a string type for FE core types -->
+    <xsd:simpleType name="coreType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Core"/>
+            <xsd:enumeration value="Peripheral"/>
+            <xsd:enumeration value="Extra-Thematic"/>
+            <xsd:enumeration value="Core-Unexpressed"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    
+  <!-- a string type for LU Names -->
+    <xsd:simpleType name="LUNameType">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value=".+\..+"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+  <!-- frame / FE name type -->
+    <xsd:simpleType name="frameNameType">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[A-Z].*"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+  <!-- **************** ATTRIBUTE-ONLY COMPLEX TYPES **************** -->
+    
+  <!-- an attributes-only lexeme element -->
+    <xsd:complexType name="lexemeType">
+        <xsd:attribute name="name" type="xsd:string" use="required"/>
+        <xsd:attribute name="POS" type="fn:POSType" use="required"/>
+        <xsd:attribute name="breakBefore" type="xsd:boolean"/>
+        <xsd:attribute name="headword" type="xsd:boolean"/>
+        <xsd:attribute name="order" type="fn:orderType"/>
+    </xsd:complexType>
+    
+ <!-- an attributes-only semType element -->
+    <xsd:complexType name="semTypeRefType">
+        <xsd:attribute name="ID" type="fn:IDType" use="required"/>
+        <xsd:attribute name="name" type="xsd:string" use="required"/>
+    </xsd:complexType>
+ 
+ <!-- ********************** ATTRIBUTE GROUPS ********************** -->
+ 
+ <!-- an attribute group for frame references -->
+    <xsd:attributeGroup name="frameReference">
+        <xsd:attribute name="frameID" type="fn:IDType"/>
+        <xsd:attribute name="frame" type="fn:frameNameType"/>
+    </xsd:attributeGroup>
+    
+ <!-- an attribute group for basic lexunit attributes -->
+    <xsd:attributeGroup name="basicLUAttributes">
+        <xsd:attribute name="ID" type="fn:IDType" use="required"/>
+        <xsd:attribute name="name" type="fn:LUNameType" use="required"/>
+        <xsd:attribute name="POS" type="fn:POSType" use="required"/>
+        <xsd:attribute name="incorporatedFE" type="xsd:string"/>
+        <xsd:attribute name="status" type="xsd:string"/>
+    </xsd:attributeGroup>
+</xsd:schema>

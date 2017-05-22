@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="A" name="fissile.a" ID="14316" frame="Nuclear_process" frameID="1926" totalAnnotated="5" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="cau" name="Cause"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Extra-Thematic" abbrev="cir" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="ent" name="Element"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="finc" name="Final_element"/>
+            <FE fgColor="FFFFFF" bgColor="90876C" type="Extra-Thematic" abbrev="fre" name="Frequency"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="inic" name="Initial_element"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="man" name="Manner"/>
+            <FE fgColor="000000" bgColor="7CCD73" type="Extra-Thematic" abbrev="" name="Period_of_iterations"/>
+            <FE fgColor="006400" bgColor="FFFF00" type="Peripheral" abbrev="" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Peripheral" abbrev="tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: (of an atom or element) able to undergo nuclear fission.</definition>
+    <lexeme POS="A" name="fissile"/>
+    <semType name="Tendency_grading_LU" ID="91"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Degree"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Degree"/>
+                <annoSet ID="2318033"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Element"/>
+            <pattern total="5">
+                <valenceUnit GF="Head" PT="N" FE="Element"/>
+                <annoSet ID="2318015"/>
+                <annoSet ID="2318021"/>
+                <annoSet ID="2318029"/>
+                <annoSet ID="2318033"/>
+                <annoSet ID="2318039"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Degree"/>
+            <FE name="Element"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Degree"/>
+                <valenceUnit GF="Head" PT="N" FE="Element"/>
+                <annoSet ID="2318033"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="4">
+            <FE name="Element"/>
+            <pattern total="4">
+                <valenceUnit GF="Head" PT="N" FE="Element"/>
+                <annoSet ID="2318015"/>
+                <annoSet ID="2318021"/>
+                <annoSet ID="2318029"/>
+                <annoSet ID="2318039"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="02-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="6" aPos="20862651" ID="1435129">
+            <text>It wo n't need anything as big and expensive as a nuclear power station to provide the fissile material .</text>
+            <annotationSet cDate="07/13/2007 12:58:27 PDT Fri" status="UNANN" ID="2318014">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="4" start="3" name="md"/>
+                    <label end="8" start="6" name="rb"/>
+                    <label end="13" start="10" name="VV"/>
+                    <label end="22" start="15" name="nn"/>
+                    <label end="25" start="24" name="in"/>
+                    <label end="29" start="27" name="jj"/>
+                    <label end="33" start="31" name="cc"/>
+                    <label end="43" start="35" name="jj"/>
+                    <label end="46" start="45" name="in"/>
+                    <label end="48" start="48" name="dt"/>
+                    <label end="56" start="50" name="jj"/>
+                    <label end="62" start="58" name="nn"/>
+                    <label end="70" start="64" name="nn"/>
+                    <label end="73" start="72" name="to"/>
+                    <label end="81" start="75" name="VV"/>
+                    <label end="85" start="83" name="dt"/>
+                    <label end="93" start="87" name="jj"/>
+                    <label end="102" start="95" name="nn"/>
+                    <label end="104" start="104" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/13/2007 12:58:27 PDT Fri" status="MANUAL" ID="2318015">
+                <layer rank="1" name="Target">
+                    <label cBy="361" end="93" start="87" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="11597" end="102" start="95" name="Element"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="102" start="95" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="102" start="95" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="5" aPos="20862556" ID="1435132">
+            <text>A British atom does not wave a union jack as its explodes in a mixture of fissile atoms .</text>
+            <annotationSet cDate="07/13/2007 12:58:28 PDT Fri" status="UNANN" ID="2318020">
+                <layer rank="1" name="PENN">
+                    <label end="0" start="0" name="dt"/>
+                    <label end="8" start="2" name="jj"/>
+                    <label end="13" start="10" name="nn"/>
+                    <label end="18" start="15" name="VVZ"/>
+                    <label end="22" start="20" name="rb"/>
+                    <label end="27" start="24" name="nn"/>
+                    <label end="29" start="29" name="dt"/>
+                    <label end="35" start="31" name="nn"/>
+                    <label end="40" start="37" name="nn"/>
+                    <label end="43" start="42" name="in"/>
+                    <label end="47" start="45" name="PP$"/>
+                    <label end="56" start="49" name="VVZ"/>
+                    <label end="59" start="58" name="in"/>
+                    <label end="61" start="61" name="dt"/>
+                    <label end="69" start="63" name="nn"/>
+                    <label end="72" start="71" name="in"/>
+                    <label end="80" start="74" name="jj"/>
+                    <label end="86" start="82" name="nns"/>
+                    <label end="88" start="88" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/13/2007 12:58:28 PDT Fri" status="MANUAL" ID="2318021">
+                <layer rank="1" name="Target">
+                    <label cBy="361" end="80" start="74" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="11597" end="86" start="82" name="Element"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="86" start="82" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="86" start="82" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="112" aPos="5915650" ID="1435136">
+            <text>The expensive ( and dangerous ) charm of the FBR derives from its ability to breed fissile plutonium 239 for use as its fuel from uranium 's most common isotope , non-fissionable U238 .</text>
+            <annotationSet cDate="07/13/2007 12:58:29 PDT Fri" status="UNANN" ID="2318028">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="12" start="4" name="jj"/>
+                    <label end="14" start="14" name="("/>
+                    <label end="18" start="16" name="cc"/>
+                    <label end="28" start="20" name="jj"/>
+                    <label end="30" start="30" name=")"/>
+                    <label end="36" start="32" name="nn"/>
+                    <label end="39" start="38" name="in"/>
+                    <label end="43" start="41" name="dt"/>
+                    <label end="47" start="45" name="NP"/>
+                    <label end="55" start="49" name="VVZ"/>
+                    <label end="60" start="57" name="in"/>
+                    <label end="64" start="62" name="PP$"/>
+                    <label end="72" start="66" name="nn"/>
+                    <label end="75" start="74" name="to"/>
+                    <label end="81" start="77" name="VV"/>
+                    <label end="89" start="83" name="jj"/>
+                    <label end="99" start="91" name="nn"/>
+                    <label end="103" start="101" name="cd"/>
+                    <label end="107" start="105" name="in"/>
+                    <label end="111" start="109" name="nn"/>
+                    <label end="114" start="113" name="in"/>
+                    <label end="118" start="116" name="PP$"/>
+                    <label end="123" start="120" name="nn"/>
+                    <label end="128" start="125" name="in"/>
+                    <label end="136" start="130" name="nn"/>
+                    <label end="139" start="138" name="POS"/>
+                    <label end="144" start="141" name="rbs"/>
+                    <label end="151" start="146" name="jj"/>
+                    <label end="159" start="153" name="nn"/>
+                    <label end="161" start="161" name=","/>
+                    <label end="177" start="163" name="jj"/>
+                    <label end="182" start="179" name="nn"/>
+                    <label end="184" start="184" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/13/2007 12:58:29 PDT Fri" status="MANUAL" ID="2318029">
+                <layer rank="1" name="Target">
+                    <label cBy="361" end="89" start="83" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="11597" end="103" start="91" name="Element"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="103" start="91" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="103" start="91" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="10" paragNo="166" aPos="12100097" ID="1435138">
+            <text>These leaves are beautifully preserved in a flat-bedded and very highly fissile shale , laid down at the bottom of a fresh water lake .</text>
+            <annotationSet cDate="07/13/2007 12:58:29 PDT Fri" status="UNANN" ID="2318032">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="dt"/>
+                    <label end="11" start="6" name="nns"/>
+                    <label end="15" start="13" name="vbp"/>
+                    <label end="27" start="17" name="rb"/>
+                    <label end="37" start="29" name="VVN"/>
+                    <label end="40" start="39" name="in"/>
+                    <label end="42" start="42" name="dt"/>
+                    <label end="54" start="44" name="VVN"/>
+                    <label end="58" start="56" name="cc"/>
+                    <label end="63" start="60" name="rb"/>
+                    <label end="70" start="65" name="rb"/>
+                    <label end="78" start="72" name="jj"/>
+                    <label end="84" start="80" name="nn"/>
+                    <label end="86" start="86" name=","/>
+                    <label end="91" start="88" name="VVD"/>
+                    <label end="96" start="93" name="rp"/>
+                    <label end="99" start="98" name="in"/>
+                    <label end="103" start="101" name="dt"/>
+                    <label end="110" start="105" name="nn"/>
+                    <label end="113" start="112" name="in"/>
+                    <label end="115" start="115" name="dt"/>
+                    <label end="121" start="117" name="jj"/>
+                    <label end="127" start="123" name="nn"/>
+                    <label end="132" start="129" name="nn"/>
+                    <label end="134" start="134" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/13/2007 12:58:30 PDT Fri" status="MANUAL" ID="2318033">
+                <layer rank="1" name="Target">
+                    <label cBy="361" end="78" start="72" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="11605" end="70" start="60" name="Degree"/>
+                    <label cBy="361" feID="11597" end="84" start="80" name="Element"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="70" start="60" name="Dep"/>
+                    <label end="84" start="80" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="70" start="60" name="AVP"/>
+                    <label end="84" start="80" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="6" paragNo="106" aPos="20929235" ID="1435141">
+            <text>This was done because in theory fusion neutrons could be an alternative to fission reactors for making fissile elements for weapons .</text>
+            <annotationSet cDate="07/13/2007 12:58:30 PDT Fri" status="UNANN" ID="2318038">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="dt"/>
+                    <label end="7" start="5" name="VBD"/>
+                    <label end="12" start="9" name="VVN"/>
+                    <label end="20" start="14" name="in"/>
+                    <label end="23" start="22" name="in"/>
+                    <label end="30" start="25" name="nn"/>
+                    <label end="37" start="32" name="nn"/>
+                    <label end="46" start="39" name="nns"/>
+                    <label end="52" start="48" name="md"/>
+                    <label end="55" start="54" name="vb"/>
+                    <label end="58" start="57" name="dt"/>
+                    <label end="70" start="60" name="nn"/>
+                    <label end="73" start="72" name="to"/>
+                    <label end="81" start="75" name="nn"/>
+                    <label end="90" start="83" name="nns"/>
+                    <label end="94" start="92" name="in"/>
+                    <label end="101" start="96" name="VVG"/>
+                    <label end="109" start="103" name="jj"/>
+                    <label end="118" start="111" name="nns"/>
+                    <label end="122" start="120" name="in"/>
+                    <label end="130" start="124" name="nns"/>
+                    <label end="132" start="132" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/13/2007 12:58:31 PDT Fri" status="MANUAL" ID="2318039">
+                <layer rank="1" name="Target">
+                    <label cBy="361" end="109" start="103" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="11597" end="118" start="111" name="Element"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="118" start="111" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="118" start="111" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

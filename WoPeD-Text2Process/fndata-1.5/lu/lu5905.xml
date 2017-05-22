@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" incorporatedFE="Knot" POS="V" name="braid.v" ID="5905" frame="Rope_manipulation" frameID="246" totalAnnotated="4" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Agt" name="Agent"/>
+            <FE fgColor="FFFFFF" bgColor="A9A9A9" type="Peripheral" abbrev="Ins" name="Instrument"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Core" abbrev="Knot" name="Knot"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Extra-Thematic" abbrev="Loc" name="Location"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Extra-Thematic" abbrev="Reason" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Core" abbrev="Rope" name="Rope"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: form a braid with three or more strands</definition>
+    <lexeme POS="V" name="braid"/>
+    <valences>
+        <FERealization total="4">
+            <FE name="Agent"/>
+            <pattern total="3">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <annoSet ID="1265666"/>
+                <annoSet ID="1265680"/>
+                <annoSet ID="1265682"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <annoSet ID="1265658"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Knot"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="INC" FE="Knot"/>
+                <annoSet ID="1265658"/>
+                <annoSet ID="1265682"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[into]" FE="Knot"/>
+                <annoSet ID="1265666"/>
+                <annoSet ID="1265680"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Manner"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <annoSet ID="1265666"/>
+                <annoSet ID="1265682"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Rope"/>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="NP" FE="Rope"/>
+                <annoSet ID="1265666"/>
+                <annoSet ID="1265680"/>
+                <annoSet ID="1265682"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Rope"/>
+                <annoSet ID="1265658"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Agent"/>
+            <FE name="Knot"/>
+            <FE name="Manner"/>
+            <FE name="Rope"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <valenceUnit GF="" PT="INC" FE="Knot"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Rope"/>
+                <annoSet ID="1265682"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <valenceUnit GF="Dep" PT="PP[into]" FE="Knot"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Rope"/>
+                <annoSet ID="1265666"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Agent"/>
+            <FE name="Knot"/>
+            <FE name="Rope"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <valenceUnit GF="Dep" PT="PP[into]" FE="Knot"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Rope"/>
+                <annoSet ID="1265680"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <valenceUnit GF="" PT="INC" FE="Knot"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Rope"/>
+                <annoSet ID="1265658"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-001-all">
+        <sentence sentNo="0" aPos="37763620" ID="905629">
+            <text>Another late Degas , a pastel entitled ` Girl braiding her hair &quot; also went to an American collector , within estimates at $2.97 million . </text>
+            <annotationSet cDate="01/07/2003 06:59:28 PST Tue" status="UNANN" ID="1265657">
+                <layer rank="1" name="BNC">
+                    <label end="6" start="0" name="DT0"/>
+                    <label end="11" start="8" name="AJ0"/>
+                    <label end="17" start="13" name="NP0"/>
+                    <label end="19" start="19" name="PUN"/>
+                    <label end="21" start="21" name="AT0"/>
+                    <label end="28" start="23" name="AJ0-NN1"/>
+                    <label end="37" start="30" name="AJ0-VVD"/>
+                    <label end="39" start="39" name="PUQ"/>
+                    <label end="44" start="41" name="NN1"/>
+                    <label end="53" start="46" name="VVG"/>
+                    <label end="57" start="55" name="DPS"/>
+                    <label end="62" start="59" name="NN1"/>
+                    <label end="64" start="64" name="PUQ"/>
+                    <label end="69" start="66" name="AV0"/>
+                    <label end="74" start="71" name="VVD"/>
+                    <label end="77" start="76" name="PRP"/>
+                    <label end="80" start="79" name="AT0"/>
+                    <label end="89" start="82" name="AJ0"/>
+                    <label end="99" start="91" name="NN1"/>
+                    <label end="101" start="101" name="PUN"/>
+                    <label end="108" start="103" name="PRP"/>
+                    <label end="118" start="110" name="NN2-VVZ"/>
+                    <label end="121" start="120" name="PRP"/>
+                    <label end="127" start="123" name="NN0"/>
+                    <label end="135" start="129" name="CRD"/>
+                    <label end="137" start="137" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 06:59:28 PST Tue" status="MANUAL" ID="1265658">
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="2152" end="44" start="41" name="Agent"/>
+                    <label cBy="268" feID="2160" end="62" start="55" name="Rope"/>
+                    <label cBy="309" feID="2161" end="53" start="46" name="Knot"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="44" start="41" name="Ext"/>
+                    <label end="62" start="55" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="44" start="41" name="NP"/>
+                    <label end="62" start="55" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="53" start="46" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="52840939" ID="905633">
+            <text>Her hair , that beautiful hair that was a shade somewhere between chestnut and chocolate , was braided tightly into two pig-tails . </text>
+            <annotationSet cDate="01/07/2003 06:59:29 PST Tue" status="UNANN" ID="1265665">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="DPS"/>
+                    <label end="7" start="4" name="NN1"/>
+                    <label end="9" start="9" name="PUN"/>
+                    <label end="14" start="11" name="CJT-DT0"/>
+                    <label end="24" start="16" name="AJ0"/>
+                    <label end="29" start="26" name="NN1"/>
+                    <label end="34" start="31" name="CJT"/>
+                    <label end="38" start="36" name="VBD"/>
+                    <label end="40" start="40" name="AT0"/>
+                    <label end="46" start="42" name="NN1"/>
+                    <label end="56" start="48" name="AV0"/>
+                    <label end="64" start="58" name="PRP"/>
+                    <label end="73" start="66" name="NN1"/>
+                    <label end="77" start="75" name="CJC"/>
+                    <label end="87" start="79" name="NN1"/>
+                    <label end="89" start="89" name="PUN"/>
+                    <label end="93" start="91" name="VBD"/>
+                    <label end="101" start="95" name="VVN"/>
+                    <label end="109" start="103" name="AV0"/>
+                    <label end="114" start="111" name="PRP"/>
+                    <label end="118" start="116" name="CRD"/>
+                    <label end="128" start="120" name="NN2"/>
+                    <label end="130" start="130" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 06:59:29 PST Tue" status="MANUAL" ID="1265666">
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="2160" end="7" start="0" name="Rope"/>
+                    <label cBy="268" feID="2162" end="109" start="103" name="Manner"/>
+                    <label cBy="268" feID="2161" end="128" start="111" name="Knot"/>
+                    <label cBy="268" feID="2152" itype="CNI" name="Agent"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="7" start="0" name="Ext"/>
+                    <label end="109" start="103" name="Dep"/>
+                    <label end="128" start="111" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="7" start="0" name="NP"/>
+                    <label end="109" start="103" name="AVP"/>
+                    <label end="128" start="111" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="101" start="95" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="70849304" ID="905640">
+            <text>Her hair , braided into a long plait which fell over one shoulder , looked dusty and lustreless . </text>
+            <annotationSet cDate="01/07/2003 06:59:29 PST Tue" status="UNANN" ID="1265679">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="DPS"/>
+                    <label end="7" start="4" name="NN1"/>
+                    <label end="9" start="9" name="PUN"/>
+                    <label end="17" start="11" name="VVD-VVN"/>
+                    <label end="22" start="19" name="PRP"/>
+                    <label end="24" start="24" name="AT0"/>
+                    <label end="29" start="26" name="AJ0"/>
+                    <label end="35" start="31" name="NN1"/>
+                    <label end="41" start="37" name="DTQ"/>
+                    <label end="46" start="43" name="VVD"/>
+                    <label end="51" start="48" name="AV0"/>
+                    <label end="55" start="53" name="CRD"/>
+                    <label end="64" start="57" name="NN1"/>
+                    <label end="66" start="66" name="PUN"/>
+                    <label end="73" start="68" name="VVD-VVN"/>
+                    <label end="79" start="75" name="AJ0"/>
+                    <label end="83" start="81" name="CJC"/>
+                    <label end="94" start="85" name="AJ0"/>
+                    <label end="96" start="96" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 06:59:29 PST Tue" status="MANUAL" ID="1265680">
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="2160" end="7" start="0" name="Rope"/>
+                    <label cBy="268" feID="2161" end="64" start="19" name="Knot"/>
+                    <label cBy="268" feID="2152" itype="CNI" name="Agent"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="7" start="0" name="Ext"/>
+                    <label end="64" start="19" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="7" start="0" name="NP"/>
+                    <label end="64" start="19" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="17" start="11" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="79424847" ID="905641">
+            <text>Dressed in black with a white shirt , her blue-black hair severely braided under a black Córdoba hat , she was the very image of the brother whom Maggie had seen and dreamed of so long ago . </text>
+            <annotationSet cDate="01/07/2003 06:59:30 PST Tue" status="UNANN" ID="1265681">
+                <layer rank="1" name="BNC">
+                    <label end="6" start="0" name="VVN"/>
+                    <label end="9" start="8" name="PRP"/>
+                    <label end="15" start="11" name="AJ0-NN1"/>
+                    <label end="20" start="17" name="PRP"/>
+                    <label end="22" start="22" name="AT0"/>
+                    <label end="28" start="24" name="AJ0"/>
+                    <label end="34" start="30" name="NN1"/>
+                    <label end="36" start="36" name="PUN"/>
+                    <label end="40" start="38" name="DPS"/>
+                    <label end="51" start="42" name="AJ0"/>
+                    <label end="56" start="53" name="NN1"/>
+                    <label end="65" start="58" name="AV0"/>
+                    <label end="73" start="67" name="VVD-VVN"/>
+                    <label end="79" start="75" name="PRP"/>
+                    <label end="81" start="81" name="AT0"/>
+                    <label end="87" start="83" name="AJ0"/>
+                    <label end="95" start="89" name="NP0"/>
+                    <label end="99" start="97" name="NN1"/>
+                    <label end="101" start="101" name="PUN"/>
+                    <label end="105" start="103" name="PNP"/>
+                    <label end="109" start="107" name="VBD"/>
+                    <label end="113" start="111" name="AT0"/>
+                    <label end="118" start="115" name="AJ0"/>
+                    <label end="124" start="120" name="NN1"/>
+                    <label end="127" start="126" name="PRF"/>
+                    <label end="131" start="129" name="AT0"/>
+                    <label end="139" start="133" name="NN1"/>
+                    <label end="144" start="141" name="PNQ"/>
+                    <label end="151" start="146" name="NP0"/>
+                    <label end="155" start="153" name="VHD"/>
+                    <label end="160" start="157" name="VVN"/>
+                    <label end="164" start="162" name="CJC"/>
+                    <label end="172" start="166" name="VVD"/>
+                    <label end="175" start="174" name="PRF"/>
+                    <label end="178" start="177" name="AV0"/>
+                    <label end="183" start="180" name="AV0"/>
+                    <label end="187" start="185" name="AV0"/>
+                    <label end="189" start="189" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 06:59:30 PST Tue" status="MANUAL" ID="1265682">
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="2160" end="56" start="38" name="Rope"/>
+                    <label cBy="268" feID="2162" end="65" start="58" name="Manner"/>
+                    <label cBy="268" feID="2152" itype="CNI" name="Agent"/>
+                    <label cBy="309" feID="2161" end="73" start="67" name="Knot"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="56" start="38" name="Ext"/>
+                    <label end="65" start="58" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="56" start="38" name="NP"/>
+                    <label end="65" start="58" name="AVP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="73" start="67" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="N" name="Boxing Day.n" ID="4994" frame="Commemorative" frameID="261" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="ded" name="Dedicated_entity"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Core" abbrev="Ded_typ" name="Dedicated_type"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Hon" name="Honored_entity"/>
+        </frame>
+    </header>
+    <definition>COD: a public holiday on the first day (or first weekday) after Christmas Day. </definition>
+    <lexeme order="1" headword="false" breakBefore="false" POS="N" name="Boxing"/>
+    <lexeme order="2" headword="true" breakBefore="false" POS="N" name="Day"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Dedicated_entity"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Dedicated_entity"/>
+                <annoSet ID="1079516"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Dedicated_type"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="2nd" FE="Dedicated_type"/>
+                <annoSet ID="1079516"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Honored_entity"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="2nd" FE="Honored_entity"/>
+                <annoSet ID="1079516"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Dedicated_entity"/>
+            <FE name="Dedicated_type"/>
+            <FE name="Honored_entity"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Dedicated_entity"/>
+                <valenceUnit GF="" PT="2nd" FE="Dedicated_type"/>
+                <valenceUnit GF="" PT="2nd" FE="Honored_entity"/>
+                <annoSet ID="1079516"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-other">
+        <sentence sentNo="0" aPos="103299052" ID="811423">
+            <text>Boxing Day brought a bumper crowd to Edgar Street . </text>
+            <annotationSet cDate="01/07/2003 03:25:58 PST Tue" status="UNANN" ID="1079514">
+                <layer rank="1" name="BNC">
+                    <label end="5" start="0" name="NN1"/>
+                    <label end="9" start="7" name="NN1"/>
+                    <label end="17" start="11" name="VVD-VVN"/>
+                    <label end="19" start="19" name="AT0"/>
+                    <label end="26" start="21" name="NN1"/>
+                    <label end="32" start="28" name="NN0"/>
+                    <label end="35" start="34" name="PRP"/>
+                    <label end="41" start="37" name="NP0"/>
+                    <label end="48" start="43" name="NP0"/>
+                    <label end="50" start="50" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:25:58 PST Tue" status="MANUAL" ID="1079516">
+                <layer rank="1" name="Target">
+                    <label cBy="243" end="9" start="0" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="9896" end="9" start="0" name="Dedicated_entity"/>
+                </layer>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Noun"/>
+                <layer rank="2" name="FE">
+                    <label cBy="664" feID="2256" end="5" start="0" name="Honored_entity"/>
+                    <label cBy="664" feID="2257" end="9" start="7" name="Dedicated_type"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

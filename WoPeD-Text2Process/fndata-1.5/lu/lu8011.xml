@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="V" name="snitch.v" ID="8011" frame="Reporting" frameID="483" totalAnnotated="3" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <corpus name="AP" ID="113">
+            <document description="apwsE950116.0163" ID="1391"/>
+            <document description="apwsE980205.0547" ID="1392"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Core" abbrev="Aut" name="Authorities"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="" name="Behavior"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Inf" name="Informer"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Peripheral" abbrev="Time" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Wd" name="Wrongdoer"/>
+        </frame>
+    </header>
+    <definition>COD: inform on someone. </definition>
+    <lexeme POS="V" name="snitch"/>
+    <valences>
+        <FERealization total="3">
+            <FE name="Authorities"/>
+            <pattern total="3">
+                <valenceUnit GF="" PT="INI" FE="Authorities"/>
+                <annoSet ID="1872595"/>
+                <annoSet ID="1872597"/>
+                <annoSet ID="1878835"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Behavior"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="2nd" FE="Behavior"/>
+                <annoSet ID="1872597"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="" PT="DNI" FE="Behavior"/>
+                <annoSet ID="1872595"/>
+                <annoSet ID="1878835"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Informer"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Informer"/>
+                <annoSet ID="1872597"/>
+                <annoSet ID="1878835"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Informer"/>
+                <annoSet ID="1872595"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Wrongdoer"/>
+            <pattern total="3">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Wrongdoer"/>
+                <annoSet ID="1872595"/>
+                <annoSet ID="1872597"/>
+                <annoSet ID="1878835"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="3">
+            <FE name="Authorities"/>
+            <FE name="Behavior"/>
+            <FE name="Informer"/>
+            <FE name="Wrongdoer"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Authorities"/>
+                <valenceUnit GF="" PT="2nd" FE="Behavior"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Informer"/>
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Wrongdoer"/>
+                <annoSet ID="1872597"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Authorities"/>
+                <valenceUnit GF="" PT="DNI" FE="Behavior"/>
+                <valenceUnit GF="" PT="CNI" FE="Informer"/>
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Wrongdoer"/>
+                <annoSet ID="1872595"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Authorities"/>
+                <valenceUnit GF="" PT="DNI" FE="Behavior"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Informer"/>
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Wrongdoer"/>
+                <annoSet ID="1878835"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-(1)">
+        <sentence corpID="113" docID="1391" sentNo="1" paragNo="11" aPos="0" ID="1212747">
+            <text>Bonanno , who turns 90 on Wednesday , served nearly two years in prison for obstruction of justice and refusing to snitch on reputed leaders of New York 's mob .</text>
+            <annotationSet cDate="04/30/2003 06:33:13 PDT Wed" status="UNANN" ID="1872594">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="0" name="NP"/>
+                    <label end="8" start="8" name=","/>
+                    <label end="12" start="10" name="wp"/>
+                    <label end="18" start="14" name="VVZ"/>
+                    <label end="21" start="20" name="cd"/>
+                    <label end="24" start="23" name="in"/>
+                    <label end="34" start="26" name="NP"/>
+                    <label end="36" start="36" name=","/>
+                    <label end="43" start="38" name="VVD"/>
+                    <label end="50" start="45" name="rb"/>
+                    <label end="54" start="52" name="cd"/>
+                    <label end="60" start="56" name="nns"/>
+                    <label end="63" start="62" name="in"/>
+                    <label end="70" start="65" name="nn"/>
+                    <label end="74" start="72" name="in"/>
+                    <label end="86" start="76" name="nn"/>
+                    <label end="89" start="88" name="in"/>
+                    <label end="97" start="91" name="nn"/>
+                    <label end="101" start="99" name="cc"/>
+                    <label end="110" start="103" name="VVG"/>
+                    <label end="113" start="112" name="to"/>
+                    <label end="120" start="115" name="VV"/>
+                    <label end="123" start="122" name="in"/>
+                    <label end="131" start="125" name="jj"/>
+                    <label end="139" start="133" name="nns"/>
+                    <label end="142" start="141" name="in"/>
+                    <label end="146" start="144" name="NP"/>
+                    <label end="151" start="148" name="NP"/>
+                    <label end="154" start="153" name="POS"/>
+                    <label end="158" start="156" name="nn"/>
+                    <label end="160" start="160" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 06:33:14 PDT Wed" status="MANUAL" ID="1872595">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="120" start="115" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4020" itype="CNI" name="Informer"/>
+                    <label cBy="618" feID="4021" end="158" start="122" name="Wrongdoer"/>
+                    <label cBy="296" feID="4023" itype="DNI" name="Behavior"/>
+                    <label cBy="296" feID="4022" itype="INI" name="Authorities"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="158" start="122" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="158" start="122" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="1392" sentNo="1" paragNo="2" aPos="0" ID="1212748">
+            <text>HARARE , Zimbabwe ( AP ) --- A top government official in Zimbabwe wants citizens to snitch on white farmers who use racist epithets and said the government will seize their farms .</text>
+            <annotationSet cDate="04/30/2003 06:33:14 PDT Wed" status="UNANN" ID="1872596">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="0" name="NP"/>
+                    <label end="7" start="7" name=","/>
+                    <label end="16" start="9" name="NP"/>
+                    <label end="18" start="18" name="("/>
+                    <label end="21" start="20" name="NP"/>
+                    <label end="23" start="23" name=")"/>
+                    <label end="27" start="25" name=":"/>
+                    <label end="29" start="29" name="dt"/>
+                    <label end="33" start="31" name="jj"/>
+                    <label end="44" start="35" name="nn"/>
+                    <label end="53" start="46" name="nn"/>
+                    <label end="56" start="55" name="in"/>
+                    <label end="65" start="58" name="NP"/>
+                    <label end="71" start="67" name="VVZ"/>
+                    <label end="80" start="73" name="nns"/>
+                    <label end="83" start="82" name="to"/>
+                    <label end="90" start="85" name="VV"/>
+                    <label end="93" start="92" name="in"/>
+                    <label end="99" start="95" name="jj"/>
+                    <label end="107" start="101" name="nns"/>
+                    <label end="111" start="109" name="wp"/>
+                    <label end="115" start="113" name="VVP"/>
+                    <label end="122" start="117" name="jj"/>
+                    <label end="131" start="124" name="nns"/>
+                    <label end="135" start="133" name="cc"/>
+                    <label end="140" start="137" name="VVD"/>
+                    <label end="144" start="142" name="dt"/>
+                    <label end="155" start="146" name="nn"/>
+                    <label end="160" start="157" name="md"/>
+                    <label end="166" start="162" name="VV"/>
+                    <label end="172" start="168" name="PP$"/>
+                    <label end="178" start="174" name="nns"/>
+                    <label end="180" start="180" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 06:33:14 PDT Wed" status="MANUAL" ID="1872597">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="90" start="85" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4020" end="80" start="73" name="Informer"/>
+                    <label cBy="296" feID="4021" end="131" start="92" name="Wrongdoer"/>
+                    <label cBy="309" feID="4022" itype="INI" name="Authorities"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="80" start="73" name="Ext"/>
+                    <label end="131" start="92" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="80" start="73" name="NP"/>
+                    <label end="131" start="92" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+                <layer rank="2" name="FE">
+                    <label cBy="296" feID="4023" end="131" start="113" name="Behavior"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+    <subCorpus name="manually-added">
+        <sentence corpID="111" docID="421" sentNo="16" paragNo="197" aPos="0" ID="1214349">
+            <text>As to snitching on the donor , he excused himself to the others later , in my earshot , by saying his loyalties really were to his hosts .</text>
+            <annotationSet cDate="04/30/2003 09:32:23 PDT Wed" status="UNANN" ID="1875798">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="rb"/>
+                    <label end="4" start="3" name="to"/>
+                    <label end="14" start="6" name="VVG"/>
+                    <label end="17" start="16" name="in"/>
+                    <label end="21" start="19" name="dt"/>
+                    <label end="27" start="23" name="nn"/>
+                    <label end="29" start="29" name=","/>
+                    <label end="32" start="31" name="PP"/>
+                    <label end="40" start="34" name="VVD"/>
+                    <label end="48" start="42" name="PP"/>
+                    <label end="51" start="50" name="to"/>
+                    <label end="55" start="53" name="dt"/>
+                    <label end="62" start="57" name="nns"/>
+                    <label end="68" start="64" name="rb"/>
+                    <label end="70" start="70" name=","/>
+                    <label end="73" start="72" name="in"/>
+                    <label end="76" start="75" name="PP$"/>
+                    <label end="84" start="78" name="nn"/>
+                    <label end="86" start="86" name=","/>
+                    <label end="89" start="88" name="in"/>
+                    <label end="96" start="91" name="VVG"/>
+                    <label end="100" start="98" name="PP$"/>
+                    <label end="110" start="102" name="nns"/>
+                    <label end="117" start="112" name="rb"/>
+                    <label end="122" start="119" name="VBD"/>
+                    <label end="125" start="124" name="to"/>
+                    <label end="129" start="127" name="PP$"/>
+                    <label end="135" start="131" name="nns"/>
+                    <label end="137" start="137" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="05/07/2003 10:40:55 PDT Wed" status="MANUAL" ID="1878835">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="14" start="6" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4021" end="27" start="16" name="Wrongdoer"/>
+                    <label cBy="296" feID="4020" end="32" start="31" name="Informer"/>
+                    <label cBy="296" feID="4023" itype="DNI" name="Behavior"/>
+                    <label cBy="296" feID="4022" itype="INI" name="Authorities"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="27" start="16" name="Dep"/>
+                    <label end="32" start="31" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="27" start="16" name="PP"/>
+                    <label end="32" start="31" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" POS="V" name="nosh.v" ID="4790" frame="Ingestion" frameID="263" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="000000" bgColor="d0d0d0" type="Peripheral" abbrev="Dur" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Ingible" name="Ingestibles"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Ing" name="Ingestor"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Ins" name="Instrument"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="pur" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Src" name="Source"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: have a snack</definition>
+    <lexeme POS="V" name="nosh"/>
+    <valences>
+        <FERealization total="2">
+            <FE name="Ingestibles"/>
+            <pattern total="2">
+                <valenceUnit GF="Obj" PT="NP" FE="Ingestibles"/>
+                <annoSet ID="1036013"/>
+                <annoSet ID="1036015"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Ingestor"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Ingestor"/>
+                <annoSet ID="1036015"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Ingestor"/>
+                <annoSet ID="1036013"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Ingestibles"/>
+            <FE name="Ingestor"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Ingestibles"/>
+                <valenceUnit GF="" PT="CNI" FE="Ingestor"/>
+                <annoSet ID="1036015"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Ingestibles"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Ingestor"/>
+                <annoSet ID="1036013"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-001-all">
+        <sentence sentNo="0" aPos="19063895" ID="788545">
+            <text>I 'll nosh your sausages And snap </text>
+            <annotationSet cDate="01/07/2003 02:36:15 PST Tue" status="UNANN" ID="1036012">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PNP"/>
+                    <label end="4" start="2" name="VM0"/>
+                    <label end="9" start="6" name="VVI"/>
+                    <label end="14" start="11" name="DPS"/>
+                    <label end="23" start="16" name="NN2"/>
+                    <label end="27" start="25" name="CJC"/>
+                    <label end="32" start="29" name="VVI"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:36:15 PST Tue" status="MANUAL" ID="1036013">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="2263" end="0" start="0" name="Ingestor"/>
+                    <label cBy="669" feID="2266" end="23" start="11" name="Ingestibles"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="0" start="0" name="Ext"/>
+                    <label end="23" start="11" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="0" start="0" name="NP"/>
+                    <label end="23" start="11" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="9" start="6" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="21409028" ID="788546">
+            <text>But no , there were n't any cafés here , only kiosks to buy drinks and snacks , and you had to prop yourself up somewhere to nosh them . </text>
+            <annotationSet cDate="01/07/2003 02:36:15 PST Tue" status="UNANN" ID="1036014">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="CJC"/>
+                    <label end="5" start="4" name="ITJ"/>
+                    <label end="7" start="7" name="PUN"/>
+                    <label end="13" start="9" name="EX0"/>
+                    <label end="18" start="15" name="VBD"/>
+                    <label end="22" start="20" name="XX0"/>
+                    <label end="26" start="24" name="DT0"/>
+                    <label end="32" start="28" name="NN2"/>
+                    <label end="37" start="34" name="AV0"/>
+                    <label end="39" start="39" name="PUN"/>
+                    <label end="44" start="41" name="AV0"/>
+                    <label end="51" start="46" name="VVZ"/>
+                    <label end="54" start="53" name="TO0"/>
+                    <label end="58" start="56" name="VVI"/>
+                    <label end="65" start="60" name="NN2"/>
+                    <label end="69" start="67" name="CJC"/>
+                    <label end="76" start="71" name="NN2-VVZ"/>
+                    <label end="78" start="78" name="PUN"/>
+                    <label end="82" start="80" name="CJC"/>
+                    <label end="86" start="84" name="PNP"/>
+                    <label end="90" start="88" name="VHD"/>
+                    <label end="93" start="92" name="TO0"/>
+                    <label end="98" start="95" name="VVI"/>
+                    <label end="107" start="100" name="PNX"/>
+                    <label end="110" start="109" name="AVP"/>
+                    <label end="120" start="112" name="AV0"/>
+                    <label end="123" start="122" name="TO0"/>
+                    <label end="128" start="125" name="VVI"/>
+                    <label end="133" start="130" name="PNP"/>
+                    <label end="135" start="135" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:36:15 PST Tue" status="MANUAL" ID="1036015">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="2266" end="133" start="130" name="Ingestibles"/>
+                    <label cBy="669" feID="2263" itype="CNI" name="Ingestor"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="133" start="130" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="133" start="130" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="128" start="125" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

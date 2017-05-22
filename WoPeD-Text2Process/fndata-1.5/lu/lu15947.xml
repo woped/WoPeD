@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" POS="V" name="have_to_do_(with).v" ID="15947" frame="Cognitive_connection" frameID="720" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="Orwell" ID="3">
+            <document description="Orwell_1984_p1" ID="7"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Extra-Thematic" abbrev="cir" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Cs" name="Concepts"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="C1" name="Concept_1"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="C2" name="Concept_2"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="POV" name="Point_of_view"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Spec" name="Specification"/>
+        </frame>
+    </header>
+    <definition>FN: be related (to).</definition>
+    <lexeme order="1" headword="true" breakBefore="false" POS="V" name="have"/>
+    <lexeme order="2" headword="false" breakBefore="true" POS="PREP" name="to"/>
+    <lexeme order="3" headword="false" breakBefore="false" POS="V" name="do"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Concept_1"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Concept_1"/>
+                <annoSet ID="2599884"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Concept_2"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Concept_2"/>
+                <annoSet ID="2599884"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Degree"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="NP" FE="Degree"/>
+                <annoSet ID="2599884"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Concept_1"/>
+            <FE name="Concept_1"/>
+            <FE name="Concept_2"/>
+            <FE name="Degree"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Concept_1"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Concept_1"/>
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Concept_2"/>
+                <valenceUnit GF="Dep" PT="NP" FE="Degree"/>
+                <annoSet ID="2599884"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="manually-added">
+        <sentence corpID="3" docID="7" sentNo="1" paragNo="3" aPos="0" ID="312914">
+            <text>Inside the flat a fruity voice was reading out a list of figures which had something to do with the production of pig-iron .</text>
+            <annotationSet cDate="01/06/2003 10:55:07 PST Mon" status="UNANN" ID="269190">
+                <layer rank="1" name="BNC">
+                    <label end="5" start="0" name="PRP"/>
+                    <label end="9" start="7" name="AT0"/>
+                    <label end="14" start="11" name="NN1"/>
+                    <label end="16" start="16" name="AT0"/>
+                    <label end="23" start="18" name="AJ0"/>
+                    <label end="29" start="25" name="NN1"/>
+                    <label end="33" start="31" name="VBD"/>
+                    <label end="41" start="35" name="VVG"/>
+                    <label end="45" start="43" name="AVP"/>
+                    <label end="47" start="47" name="AT0"/>
+                    <label end="52" start="49" name="NN1"/>
+                    <label end="55" start="54" name="PRF"/>
+                    <label end="63" start="57" name="NN2"/>
+                    <label end="69" start="65" name="DTQ"/>
+                    <label end="73" start="71" name="VHD"/>
+                    <label end="83" start="75" name="PNI"/>
+                    <label end="86" start="85" name="TO0"/>
+                    <label end="89" start="88" name="VDI"/>
+                    <label end="94" start="91" name="PRP"/>
+                    <label end="98" start="96" name="AT0"/>
+                    <label end="109" start="100" name="NN1"/>
+                    <label end="112" start="111" name="PRF"/>
+                    <label end="121" start="114" name="NN1"/>
+                    <label end="123" start="123" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/27/2010 05:46:46 PDT Tue" status="MANUAL" ID="2599884">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="73" start="71" name="Target"/>
+                    <label cBy="664" end="89" start="85" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="4749" end="83" start="75" name="Degree"/>
+                    <label cBy="664" feID="4711" end="69" start="65" name="Concept_1"/>
+                    <label cBy="664" feID="4711" end="63" start="57" name="Concept_1"/>
+                    <label cBy="664" feID="4712" end="121" start="91" name="Concept_2"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="83" start="75" name="Dep"/>
+                    <label end="69" start="65" name="Ext"/>
+                    <label end="63" start="57" name="Ext"/>
+                    <label end="121" start="91" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="83" start="75" name="NP"/>
+                    <label end="69" start="65" name="NP"/>
+                    <label end="63" start="57" name="NP"/>
+                    <label end="121" start="91" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other">
+                    <label end="69" start="65" name="Rel"/>
+                    <label end="63" start="57" name="Ant"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

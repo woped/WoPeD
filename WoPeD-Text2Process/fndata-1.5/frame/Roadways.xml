@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="599" cDate="08/17/2001 04:40:52 PDT Fri" name="Roadways" ID="203" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;This frame involves stable &lt;fen&gt;Roadway&lt;/fen&gt;s which connect two stable &lt;fen&gt;Endpoints&lt;/fen&gt;, the &lt;fen&gt;Source&lt;/fen&gt; and the &lt;fen&gt;Goal&lt;/fen&gt;.  Being physical objects, these &lt;fen&gt;Roadway&lt;/fen&gt;s may have &lt;fen&gt;Name&lt;/fen&gt;s and &lt;fen&gt;Characteristic&lt;/fen&gt;s; they are also made of a &lt;fen&gt;Material&lt;/fen&gt;.  They also cover ground, so they may have a &lt;fen&gt;Path&lt;/fen&gt; or a &lt;fen&gt;Relative_location&lt;/fen&gt; that the travel occurs in.
+
+&lt;ex&gt; We crossed the &lt;fex name="Material"&gt;brick&lt;/fex&gt; &lt;fex name="Roadway"&gt;road&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt; I prefer to travel on &lt;fex name="Roadway"&gt;highway&lt;/fex&gt; &lt;fex name="Name"&gt;I-80&lt;/fex&gt;.&lt;/ex&gt; 
+&lt;ex&gt;This is the only &lt;fex name="Roadway"&gt;highway&lt;/fex&gt; &lt;fex name="Endpoints"&gt;between Lodi and Sonoma&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt; She dreaded turning onto the &lt;fex name="Frequency_of_use"&gt;busy&lt;/fex&gt; &lt;fex name="Roadway"&gt;street&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core" cBy="599" cDate="08/17/2001 04:44:26 PDT Fri" abbrev="Road" name="Roadway" ID="1657">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Roadway&lt;/fen&gt; is the roadway that connects locations.
+
+&lt;ex&gt;The &lt;fex name="Road"&gt;&lt;t&gt;road&lt;/t&gt;&lt;/fex&gt; runs between London and Manchester.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="EEE8AA" coreType="Peripheral" cBy="599" cDate="08/17/2001 04:46:59 PDT Fri" abbrev="Src" name="Source" ID="1658">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Source&lt;/fen&gt; is one of the &lt;fen&gt;Endpoints&lt;/fen&gt; treated as a source.
+
+&lt;ex&gt;The &lt;t&gt;road&lt;/t&gt; &lt;fex name="Src"&gt;from london&lt;/fex&gt; to Glastonberry...&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Source" ID="151"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Peripheral" cBy="599" cDate="08/17/2001 04:48:04 PDT Fri" abbrev="Goal" name="Goal" ID="1659">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Goal&lt;/fen&gt; is one of the &lt;fen&gt;Endpoints&lt;/fen&gt; of the &lt;fen&gt;Roadway&lt;/fen&gt; treated as a goal.
+
+&lt;ex&gt;The &lt;t&gt;road&lt;/t&gt; from London &lt;fex name="Goal"&gt;to Glastonberry&lt;/fex&gt;...&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Goal" ID="153"/>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Peripheral" cBy="599" cDate="08/17/2001 04:49:24 PDT Fri" abbrev="EPs" name="Endpoints" ID="1660">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Endpoints&lt;/fen&gt; are two (or more) named endpoints of the &lt;fen&gt;Roadway&lt;/fen&gt;.
+
+&lt;ex&gt;The &lt;t&gt;road&lt;/t&gt; &lt;fex name="EPs"&gt;between London and Glastonberry&lt;/fex&gt;...&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="599" cDate="08/17/2001 04:53:39 PDT Fri" abbrev="Char" name="Characteristic" ID="1661">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Characteristic&lt;/fen&gt; is a characteristic(s) of the &lt;fen&gt;Roadway&lt;/fen&gt;.
+
+&lt;ex&gt;It was a &lt;fex name="Char"&gt;long&lt;/fex&gt;, &lt;fex name="Char"&gt;winding&lt;/fex&gt;, &lt;fex name="Char"&gt;bumpy&lt;/fex&gt; &lt;t&gt;road&lt;/t&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Peripheral" cBy="599" cDate="08/17/2001 04:57:03 PDT Fri" abbrev="Name" name="Name" ID="1662">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Name&lt;/fen&gt; is the name of the &lt;fen&gt;Roadway&lt;/fen&gt;.
+
+&lt;ex&gt;We went down &lt;fex name="Name"&gt;Abbey&lt;/fex&gt; &lt;t&gt;road&lt;/t&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="599" cDate="08/17/2001 07:49:08 PDT Fri" abbrev="Pat" name="Path" ID="1667">
+        <definition>&lt;def-root&gt;This is the setting through which the &lt;fen&gt;Roadway&lt;/fen&gt; goes.
+
+&lt;ex&gt;The &lt;t&gt;tunnel&lt;/t&gt; &lt;fex name="Pat"&gt;through the mountains&lt;/fex&gt;...&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="08/24/2001 12:46:56 PDT Fri" abbrev="Use" name="Use" ID="1753">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Use&lt;/fen&gt; is the purpose of the &lt;fen&gt;Roadway&lt;/fen&gt;.
+
+&lt;ex&gt;This is the main &lt;fex name="Use"&gt;traffic&lt;/fex&gt; &lt;t&gt;artery&lt;/t&gt; out of Berkeley.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="08/07/2002 03:08:11 PDT Wed" abbrev="Dir" name="Direction" ID="3514">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Direction&lt;/fen&gt; is the direction or directions the &lt;fen&gt;Roadway&lt;/fen&gt; runs.
+
+&lt;ex&gt; I-80 is an &lt;fex name = "Direction"&gt;east-west&lt;/fex&gt; &lt;t&gt;highway&lt;/t&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="08/07/2002 03:28:21 PDT Wed" abbrev="rel" name="Relative_location" ID="3515">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Relative_location&lt;/fen&gt; is where the &lt;fen&gt;Roadway&lt;/fen&gt; is located.
+
+&lt;ex&gt; The &lt;t&gt;highways&lt;/t&gt; &lt;fex name="rel"&gt;in California&lt;/fex&gt; are the second-worst in the nation.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="08/08/2002 11:17:40 PDT Thu" abbrev="Mat" name="Material" ID="3516">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Material&lt;/fen&gt; is what the &lt;fen&gt;Roadway&lt;/fen&gt; is constructed from.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="08/08/2002 12:04:54 PDT Thu" abbrev="F_use" name="Frequency_of_use" ID="3517">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Frequency_of_use&lt;/fen&gt; is the state of the &lt;fen&gt;Roadway&lt;/fen&gt; with regard to the number of people who are using the &lt;fen&gt;Roadway&lt;/fen&gt; or typically use it.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="08/08/2002 02:13:39 PDT Thu" abbrev="A_e" name="Abundant_entities" ID="3518">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Abundant_entities&lt;/fen&gt; are the entities which occupy the space denoted by the &lt;fen&gt;Roadway&lt;/fen&gt;.
+
+&lt;ex&gt; We passed an &lt;fex name="Roadway"&gt;avenue&lt;/fex&gt; &lt;fex name="Abundant_entities"&gt;of boutiques and restaurants&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="08/09/2002 10:32:52 PDT Fri" abbrev="Length" name="Length" ID="3525">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Length&lt;/fen&gt; is the distance the &lt;fen&gt;Roadway&lt;/fen&gt; extends.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="7CCD73" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="01/13/2006 04:55:48 PST Fri" abbrev="par" name="Part" ID="9844">
+        <definition>&lt;def-root&gt;A subpart of the &lt;fen&gt;Roadway&lt;/fen&gt;.
+
+&lt;ex&gt;It was a &lt;t&gt;road&lt;/t&gt; &lt;fex name="Part"&gt;with too many twists and turns to count&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Locale_by_use</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Motion</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="N" name="road.n" ID="3772" lemmaID="33377" cBy="599" cDate="08/17/2001 04:53:59 PDT Fri">
+        <definition>COD: a wide way between places, especially one surfaced for use by vehicles. </definition>
+        <sentenceCount annotated="74" total="527"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="road"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="path.n" ID="3773" lemmaID="28045" cBy="599" cDate="08/17/2001 04:54:11 PDT Fri">
+        <definition>COD: a way or track laid down for walking or made by continual treading. </definition>
+        <sentenceCount annotated="45" total="497"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="path"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="way.n" ID="3774" lemmaID="43603" cBy="599" cDate="08/17/2001 04:54:27 PDT Fri">
+        <definition>COD: in place names a road, track, path, or street. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="way"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="street.n" ID="3775" lemmaID="38308" cBy="599" cDate="08/17/2001 04:54:47 PDT Fri">
+        <definition>COD: a public road in a city, town, or village, typically with buildings on one or both sides. </definition>
+        <sentenceCount annotated="68" total="500"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="street"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="avenue.n" ID="3776" lemmaID="2475" cBy="599" cDate="08/17/2001 04:55:01 PDT Fri">
+        <definition>COD: a broad road or path, especially one lined with trees. </definition>
+        <sentenceCount annotated="44" total="264"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="avenue"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="artery.n" ID="3777" lemmaID="2002" cBy="599" cDate="08/17/2001 04:55:15 PDT Fri">
+        <definition>COD: an important route in a traffic or transport system. </definition>
+        <sentenceCount annotated="9" total="121"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="artery"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="highway.n" ID="3778" lemmaID="18081" cBy="599" cDate="08/17/2001 04:57:23 PDT Fri">
+        <definition>COD: .chiefly N. Amer. a main road. </definition>
+        <sentenceCount annotated="19" total="292"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="highway"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="expressway.n" ID="3779" lemmaID="13611" cBy="599" cDate="08/17/2001 04:57:36 PDT Fri">
+        <definition>COD: chiefly N. Amer. an urban motorway</definition>
+        <sentenceCount annotated="5" total="24"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="expressway"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="motorway.n" ID="3780" lemmaID="25046" cBy="599" cDate="08/17/2001 04:57:47 PDT Fri">
+        <definition>COD: Brit. a road designed for fast traffic, consisting of two or more lanes in each direction and with restricted access and exits. </definition>
+        <sentenceCount annotated="42" total="267"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="motorway"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="sidewalk.n" ID="3781" lemmaID="35835" cBy="599" cDate="08/17/2001 04:58:31 PDT Fri">
+        <definition>COD: N. Amer. a pavement. </definition>
+        <sentenceCount annotated="7" total="81"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="sidewalk"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="pavement.n" ID="3782" lemmaID="28110" cBy="599" cDate="08/17/2001 05:03:22 PDT Fri">
+        <definition>COD: Brit. a raised paved or asphalted path for pedestrians at the side of a road. [Building] </definition>
+        <sentenceCount annotated="39" total="292"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="pavement"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="underpass.n" ID="3783" lemmaID="41980" cBy="599" cDate="08/17/2001 07:41:04 PDT Fri">
+        <definition>COD: a road or pedestrian tunnel passing under another road or a railway. </definition>
+        <sentenceCount annotated="8" total="35"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="underpass"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="overpass.n" ID="3784" lemmaID="27327" cBy="599" cDate="08/17/2001 07:41:16 PDT Fri">
+        <definition>COD: a bridge by which a road or railway line passes over another. [Engin] </definition>
+        <sentenceCount annotated="9" total="72"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="overpass"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="railway.n" ID="3785" lemmaID="31719" cBy="599" cDate="08/17/2001 07:42:05 PDT Fri">
+        <definition>COD: a track made of rails along which trains run. </definition>
+        <sentenceCount annotated="48" total="416"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="railway"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="railroad.n" ID="3786" lemmaID="31716" cBy="599" cDate="08/17/2001 07:42:20 PDT Fri">
+        <definition>COD: North American term for railway.</definition>
+        <sentenceCount annotated="7" total="78"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="railroad"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="route.n" ID="3787" lemmaID="33641" cBy="599" cDate="08/17/2001 07:43:59 PDT Fri">
+        <definition>COD: the line of a road, path, railway, etc. </definition>
+        <sentenceCount annotated="12" total="165"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="route"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="line.n" ID="3788" lemmaID="22407" cBy="599" cDate="08/17/2001 07:44:11 PDT Fri">
+        <definition>COD: a railway track or route. [Railways] </definition>
+        <sentenceCount annotated="30" total="460"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="line"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="crosswalk.n" ID="3789" lemmaID="9073" cBy="599" cDate="08/17/2001 07:44:30 PDT Fri">
+        <definition>COD: a pedestrian crossing</definition>
+        <sentenceCount annotated="1" total="1"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="crosswalk"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="bridge.n" ID="3790" lemmaID="4585" cBy="599" cDate="08/17/2001 07:45:06 PDT Fri">
+        <definition>COD: a structure carrying a road, path, or railway across a river, road, etc. </definition>
+        <sentenceCount annotated="49" total="452"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="bridge"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="tunnel.n" ID="3791" lemmaID="41494" cBy="599" cDate="08/17/2001 07:45:29 PDT Fri">
+        <definition>COD: an artificial underground passage, as built through a hill or under a building or by a burrowing animal. </definition>
+        <sentenceCount annotated="11" total="116"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="tunnel"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="autobahn.n" ID="3793" lemmaID="2419" cBy="599" cDate="08/17/2001 07:51:26 PDT Fri">
+        <definition>COD: a German, Austrian, or Swiss motorway. </definition>
+        <sentenceCount annotated="15" total="54"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="autobahn"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="lane.n" ID="3794" lemmaID="21676" cBy="599" cDate="08/17/2001 07:57:15 PDT Fri">
+        <definition>COD: a narrow road, especially in a rural area. </definition>
+        <sentenceCount annotated="44" total="407"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="lane"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="track.n" ID="3795" lemmaID="40897" cBy="599" cDate="08/17/2001 07:57:37 PDT Fri">
+        <definition>COD: a rough path or minor road. </definition>
+        <sentenceCount annotated="55" total="438"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="track"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="trail.n" ID="3796" lemmaID="40938" cBy="599" cDate="08/17/2001 07:57:48 PDT Fri">
+        <definition>COD: a beaten path through rough country. </definition>
+        <sentenceCount annotated="27" total="287"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="trail"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="boulevard.n" ID="3797" lemmaID="4294" cBy="599" cDate="08/17/2001 07:58:12 PDT Fri">
+        <definition>COD: a wide street, typically one lined with trees.</definition>
+        <sentenceCount annotated="16" total="140"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="boulevard"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="course.n" ID="3798" lemmaID="8646" cBy="599" cDate="08/17/2001 07:58:25 PDT Fri">
+        <definition>COD: n sing. the route or direction followed by a ship, aircraft, road, or river. </definition>
+        <sentenceCount annotated="5" total="150"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="course"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="freeway.n" ID="3799" lemmaID="15409" cBy="599" cDate="08/17/2001 07:59:00 PDT Fri">
+        <definition>COD: a toll-free highway</definition>
+        <sentenceCount annotated="8" total="40"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="freeway"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="pathway.n" ID="3800" lemmaID="28056" cBy="599" cDate="08/17/2001 07:59:17 PDT Fri">
+        <definition>COD: a path or its course. </definition>
+        <sentenceCount annotated="25" total="233"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="pathway"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="roadway.n" ID="3801" lemmaID="33389" cBy="599" cDate="08/17/2001 07:59:47 PDT Fri">
+        <definition>COD:  the part of a road intended for vehicles, in contrast to the pavement or verge. </definition>
+        <sentenceCount annotated="11" total="145"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="roadway"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="thoroughfare.n" ID="3802" lemmaID="40202" cBy="599" cDate="08/17/2001 08:00:06 PDT Fri">
+        <definition>COD: a road or path forming a route between two places. </definition>
+        <sentenceCount annotated="23" total="103"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="thoroughfare"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="byway.n" ID="7133" lemmaID="46062" cBy="296" cDate="08/08/2002 11:28:17 PDT Thu">
+        <definition>COD: a minor road or path. </definition>
+        <sentenceCount annotated="9" total="37"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="byway"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="cul-de-sac.n" ID="7134" lemmaID="9204" cBy="296" cDate="08/08/2002 11:31:28 PDT Thu">
+        <definition>COD: a street or passage closed at one end. </definition>
+        <sentenceCount annotated="15" total="107"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="cul-de-sac"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="driveway.n" ID="7135" lemmaID="11802" cBy="296" cDate="08/08/2002 11:35:06 PDT Thu">
+        <definition>COD: a short private road leading to a house. </definition>
+        <sentenceCount annotated="28" total="157"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="driveway"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="parkway.n" ID="7136" lemmaID="46063" cBy="296" cDate="08/08/2002 11:37:21 PDT Thu">
+        <definition>COD: an open landscaped highway. </definition>
+        <sentenceCount annotated="7" total="23"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="parkway"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="runway.n" ID="7137" lemmaID="33799" cBy="296" cDate="08/08/2002 11:40:36 PDT Thu">
+        <definition>COD: strip of hard ground along which aircraft take off and land or a raised gangway extending into an auditorium, especially as used for fashion shows.</definition>
+        <sentenceCount annotated="36" total="220"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="runway"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="bypass.n" ID="7168" lemmaID="46074" cBy="296" cDate="08/09/2002 10:48:57 PDT Fri">
+        <definition>COD: a road passing round a town to provide an alternative route for through traffic. </definition>
+        <sentenceCount annotated="42" total="192"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="bypass"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="flyover.n" ID="7169" lemmaID="14871" cBy="296" cDate="08/09/2002 10:57:28 PDT Fri">
+        <definition>COD: a bridge carrying one road or railway line over another. </definition>
+        <sentenceCount annotated="15" total="48"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="flyover"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="rail.n" ID="14493" lemmaID="50711" cBy="361" cDate="07/30/2007 01:31:48 PDT Mon">
+        <definition>FN: the railroad; train</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="rail"/>
+    </lexUnit>
+</frame>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="N" name="difference.n" ID="15690" frame="Non-commutative_statement" frameID="2247" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="res" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="t1" name="Term_1"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="t2" name="Term_2"/>
+        </frame>
+    </header>
+    <definition>COD: the remainder left after subtraction of one value from another</definition>
+    <lexeme POS="N" name="difference"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Result"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Result"/>
+                <annoSet ID="2591425"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Term_1"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Term_1"/>
+                <annoSet ID="2591425"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Term_2"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Term_2"/>
+                <annoSet ID="2591425"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Result"/>
+            <FE name="Term_1"/>
+            <FE name="Term_2"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Result"/>
+                <valenceUnit GF="" PT="INI" FE="Term_1"/>
+                <valenceUnit GF="" PT="INI" FE="Term_2"/>
+                <annoSet ID="2591425"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-PPbetween-(1)">
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="84" aPos="92468742" ID="1578403">
+            <text>The last term is the difference between the first two columns , not the more complex statistical measure .</text>
+            <annotationSet cDate="07/16/2010 12:10:28 PDT Fri" status="UNANN" ID="2591424">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="7" start="4" name="jj"/>
+                    <label end="12" start="9" name="nn"/>
+                    <label end="15" start="14" name="VBZ"/>
+                    <label end="19" start="17" name="dt"/>
+                    <label end="30" start="21" name="nn"/>
+                    <label end="38" start="32" name="in"/>
+                    <label end="42" start="40" name="dt"/>
+                    <label end="48" start="44" name="jj"/>
+                    <label end="52" start="50" name="cd"/>
+                    <label end="60" start="54" name="nns"/>
+                    <label end="62" start="62" name=","/>
+                    <label end="66" start="64" name="rb"/>
+                    <label end="70" start="68" name="dt"/>
+                    <label end="75" start="72" name="rbr"/>
+                    <label end="83" start="77" name="jj"/>
+                    <label end="95" start="85" name="jj"/>
+                    <label end="103" start="97" name="nn"/>
+                    <label end="105" start="105" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/16/2010 12:10:28 PDT Fri" status="MANUAL" ID="2591425">
+                <layer rank="1" name="Target">
+                    <label cBy="571" end="30" start="21" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="571" feID="13713" end="12" start="0" name="Result"/>
+                    <label cBy="571" feID="13711" itype="INI" name="Term_1"/>
+                    <label cBy="571" feID="13712" itype="INI" name="Term_2"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="12" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="12" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="15" start="14" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-T-PPOF-(1)"/>
+    <subCorpus name="03-T-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

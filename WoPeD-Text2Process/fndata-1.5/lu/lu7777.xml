@@ -1,0 +1,918 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="firearm.n" ID="7777" frame="Weapon" frameID="426" totalAnnotated="16" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Peripheral" abbrev="cre" name="Creator"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="dep" name="Descriptor"/>
+            <FE fgColor="000000" bgColor="A9A9A9" type="Peripheral" abbrev="Mat" name="Material"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="nam" name="Name"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Peripheral" abbrev="Part" name="Part"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="tim" name="Time_of_creation"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Peripheral" abbrev="Typ" name="Type"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="Use" name="Use"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Core" abbrev="Wep" name="Weapon"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Peripheral" abbrev="Wld" name="Wielder"/>
+        </frame>
+    </header>
+    <definition>COD: a rifle, pistol, or other portable gun.</definition>
+    <lexeme POS="N" name="firearm"/>
+    <valences>
+        <governor type="Gov" lemma="carry">
+            <annoSet ID="1823460"/>
+            <annoSet ID="1823466"/>
+        </governor>
+        <governor type="Gov" lemma="certificate">
+            <annoSet ID="1823600"/>
+        </governor>
+        <governor type="Gov" lemma="discharge">
+            <annoSet ID="1823444"/>
+        </governor>
+        <governor type="Gov" lemma="manufacturer">
+            <annoSet ID="1823360"/>
+        </governor>
+        <governor type="Gov" lemma="offence">
+            <annoSet ID="1823590"/>
+        </governor>
+        <governor type="Gov" lemma="possess">
+            <annoSet ID="1823482"/>
+            <annoSet ID="1823498"/>
+        </governor>
+        <governor type="Gov" lemma="possession">
+            <annoSet ID="1823512"/>
+        </governor>
+        <governor type="Gov" lemma="purchase">
+            <annoSet ID="1823384"/>
+        </governor>
+        <governor type="Gov" lemma="threaten">
+            <annoSet ID="1823562"/>
+        </governor>
+        <governor type="Gov" lemma="use">
+            <annoSet ID="1823530"/>
+            <annoSet ID="1823540"/>
+            <annoSet ID="1823554"/>
+        </governor>
+        <FERealization total="1">
+            <FE name="Material"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Material"/>
+                <annoSet ID="1823360"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Type"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="N" FE="Type"/>
+                <annoSet ID="1823450"/>
+                <annoSet ID="1823540"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="16">
+            <FE name="Weapon"/>
+            <pattern total="16">
+                <valenceUnit GF="" PT="DEN" FE="Weapon"/>
+                <annoSet ID="1823350"/>
+                <annoSet ID="1823360"/>
+                <annoSet ID="1823384"/>
+                <annoSet ID="1823444"/>
+                <annoSet ID="1823450"/>
+                <annoSet ID="1823460"/>
+                <annoSet ID="1823466"/>
+                <annoSet ID="1823482"/>
+                <annoSet ID="1823498"/>
+                <annoSet ID="1823512"/>
+                <annoSet ID="1823530"/>
+                <annoSet ID="1823540"/>
+                <annoSet ID="1823554"/>
+                <annoSet ID="1823562"/>
+                <annoSet ID="1823590"/>
+                <annoSet ID="1823600"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Wielder"/>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Wielder"/>
+                <annoSet ID="1823350"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Material"/>
+            <FE name="Weapon"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Material"/>
+                <valenceUnit GF="" PT="DEN" FE="Weapon"/>
+                <annoSet ID="1823360"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Type"/>
+            <FE name="Weapon"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="N" FE="Type"/>
+                <valenceUnit GF="" PT="DEN" FE="Weapon"/>
+                <annoSet ID="1823450"/>
+                <annoSet ID="1823540"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="12">
+            <FE name="Weapon"/>
+            <pattern total="12">
+                <valenceUnit GF="" PT="DEN" FE="Weapon"/>
+                <annoSet ID="1823384"/>
+                <annoSet ID="1823444"/>
+                <annoSet ID="1823460"/>
+                <annoSet ID="1823466"/>
+                <annoSet ID="1823482"/>
+                <annoSet ID="1823498"/>
+                <annoSet ID="1823512"/>
+                <annoSet ID="1823530"/>
+                <annoSet ID="1823554"/>
+                <annoSet ID="1823562"/>
+                <annoSet ID="1823590"/>
+                <annoSet ID="1823600"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Weapon"/>
+            <FE name="Wielder"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Weapon"/>
+                <valenceUnit GF="Gen" PT="Poss" FE="Wielder"/>
+                <annoSet ID="1823350"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-280-s20-poss">
+        <sentence sentNo="0" aPos="12590303" ID="1188073">
+            <text>When his election was disputed by the speaker of the parliament , Franjieh 's gunmen brought their firearms into the chamber . </text>
+            <annotationSet cDate="01/08/2003 05:58:37 PST Wed" status="UNANN" ID="1823349">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="AVQ-CJS"/>
+                    <label end="7" start="5" name="DPS"/>
+                    <label end="16" start="9" name="NN1"/>
+                    <label end="20" start="18" name="VBD"/>
+                    <label end="29" start="22" name="VVN"/>
+                    <label end="32" start="31" name="PRP"/>
+                    <label end="36" start="34" name="AT0"/>
+                    <label end="44" start="38" name="NN1"/>
+                    <label end="47" start="46" name="PRF"/>
+                    <label end="51" start="49" name="AT0"/>
+                    <label end="62" start="53" name="NN1"/>
+                    <label end="64" start="64" name="PUN"/>
+                    <label end="73" start="66" name="NP0"/>
+                    <label end="76" start="75" name="POS"/>
+                    <label end="83" start="78" name="NN2"/>
+                    <label end="91" start="85" name="VVD-VVN"/>
+                    <label end="97" start="93" name="DPS"/>
+                    <label end="106" start="99" name="NN2"/>
+                    <label end="111" start="108" name="PRP"/>
+                    <label end="115" start="113" name="AT0"/>
+                    <label end="123" start="117" name="NN1"/>
+                    <label end="125" start="125" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:58:37 PST Wed" status="MANUAL" ID="1823350">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3963" end="97" start="93" name="Wielder"/>
+                    <label cBy="618" feID="3919" end="106" start="99" name="Weapon"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="97" start="93" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="97" start="93" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="Canonical"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="106" start="99" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-300-s20-cmpd">
+        <sentence sentNo="0" aPos="22514938" ID="1188078">
+            <text>Our client is an international gun collector and specialist precious metal firearm manufacturer . </text>
+            <annotationSet cDate="01/08/2003 05:58:37 PST Wed" status="UNANN" ID="1823359">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="DPS"/>
+                    <label end="9" start="4" name="NN1"/>
+                    <label end="12" start="11" name="VBZ"/>
+                    <label end="15" start="14" name="AT0"/>
+                    <label end="29" start="17" name="AJ0"/>
+                    <label end="33" start="31" name="NN1"/>
+                    <label end="43" start="35" name="NN1"/>
+                    <label end="47" start="45" name="CJC"/>
+                    <label end="58" start="49" name="AJ0"/>
+                    <label end="67" start="60" name="AJ0"/>
+                    <label end="73" start="69" name="NN1"/>
+                    <label end="81" start="75" name="NN1-VVB"/>
+                    <label end="94" start="83" name="NN1"/>
+                    <label end="96" start="96" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:58:37 PST Wed" status="MANUAL" ID="1823360">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3956" end="73" start="60" name="Material"/>
+                    <label cBy="618" feID="3919" end="81" start="75" name="Weapon"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="73" start="60" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="73" start="60" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="81" start="75" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="94" start="83" name="Gov"/>
+                    <label end="81" start="60" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-320-s20-ingcmpd"/>
+    <subCorpus name="N-330-s20-period">
+        <sentence sentNo="0" aPos="77725542" ID="1188090">
+            <text>` It is a police requirement that you have to be an active member of a club before you can be recommended to apply to purchase a firearm . &quot; </text>
+            <annotationSet cDate="01/08/2003 05:58:38 PST Wed" status="UNANN" ID="1823383">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PUQ"/>
+                    <label end="3" start="2" name="PNP"/>
+                    <label end="6" start="5" name="VBZ"/>
+                    <label end="8" start="8" name="AT0"/>
+                    <label end="15" start="10" name="NN2"/>
+                    <label end="27" start="17" name="NN1"/>
+                    <label end="32" start="29" name="CJT"/>
+                    <label end="36" start="34" name="PNP"/>
+                    <label end="41" start="38" name="VHB"/>
+                    <label end="44" start="43" name="TO0"/>
+                    <label end="47" start="46" name="VBI"/>
+                    <label end="50" start="49" name="AT0"/>
+                    <label end="57" start="52" name="AJ0"/>
+                    <label end="64" start="59" name="NN1"/>
+                    <label end="67" start="66" name="PRF"/>
+                    <label end="69" start="69" name="AT0"/>
+                    <label end="74" start="71" name="NN0"/>
+                    <label end="81" start="76" name="CJS-PRP"/>
+                    <label end="85" start="83" name="PNP"/>
+                    <label end="89" start="87" name="VM0"/>
+                    <label end="92" start="91" name="VBI"/>
+                    <label end="104" start="94" name="VVN"/>
+                    <label end="107" start="106" name="TO0"/>
+                    <label end="113" start="109" name="VVI"/>
+                    <label end="116" start="115" name="TO0"/>
+                    <label end="125" start="118" name="VVI"/>
+                    <label end="127" start="127" name="AT0"/>
+                    <label end="135" start="129" name="NN1"/>
+                    <label end="137" start="137" name="PUN"/>
+                    <label end="139" start="139" name="PUQ"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:58:39 PST Wed" status="MANUAL" ID="1823384">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3919" end="135" start="129" name="Weapon"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="135" start="129" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="125" start="118" name="Gov"/>
+                    <label end="135" start="127" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-380-s20-other">
+        <sentence sentNo="0" aPos="108441385" ID="1188120">
+            <text>` A firearm was discharged and people cowered behind walls , under tables and in the toilets . </text>
+            <annotationSet cDate="01/08/2003 05:58:42 PST Wed" status="UNANN" ID="1823443">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PUQ"/>
+                    <label end="2" start="2" name="AT0"/>
+                    <label end="10" start="4" name="NN1"/>
+                    <label end="14" start="12" name="VBD"/>
+                    <label end="25" start="16" name="AJ0-VVN"/>
+                    <label end="29" start="27" name="CJC"/>
+                    <label end="36" start="31" name="NN0"/>
+                    <label end="44" start="38" name="VVD"/>
+                    <label end="51" start="46" name="PRP"/>
+                    <label end="57" start="53" name="NN2"/>
+                    <label end="59" start="59" name="PUN"/>
+                    <label end="65" start="61" name="PRP"/>
+                    <label end="72" start="67" name="NN2"/>
+                    <label end="76" start="74" name="CJC"/>
+                    <label end="79" start="78" name="PRP"/>
+                    <label end="83" start="81" name="AT0"/>
+                    <label end="91" start="85" name="NN2"/>
+                    <label end="93" start="93" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:58:42 PST Wed" status="MANUAL" ID="1823444">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3919" end="10" start="4" name="Weapon"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="Canonical"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="10" start="4" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="10" start="2" name="X"/>
+                    <label end="25" start="16" name="Gov"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-429-s20-lcoll-imitation">
+        <sentence sentNo="0" aPos="43561753" ID="1188123">
+            <text>Police at first declined to comment on the nature of the inquiry , but at the weekend a spokesman confirmed that an imitation firearm had been recovered . </text>
+            <annotationSet cDate="01/08/2003 05:58:42 PST Wed" status="UNANN" ID="1823449">
+                <layer rank="1" name="BNC">
+                    <label end="5" start="0" name="NN2"/>
+                    <label end="8" start="7" name="AV0"/>
+                    <label end="14" start="10" name="AV0"/>
+                    <label end="23" start="16" name="VVD-VVN"/>
+                    <label end="26" start="25" name="TO0"/>
+                    <label end="34" start="28" name="VVI"/>
+                    <label end="37" start="36" name="PRP"/>
+                    <label end="41" start="39" name="AT0"/>
+                    <label end="48" start="43" name="NN1"/>
+                    <label end="51" start="50" name="PRF"/>
+                    <label end="55" start="53" name="AT0"/>
+                    <label end="63" start="57" name="NN1"/>
+                    <label end="65" start="65" name="PUN"/>
+                    <label end="69" start="67" name="CJC"/>
+                    <label end="72" start="71" name="PRP"/>
+                    <label end="76" start="74" name="AT0"/>
+                    <label end="84" start="78" name="NN1"/>
+                    <label end="86" start="86" name="AT0"/>
+                    <label end="96" start="88" name="NN1"/>
+                    <label end="106" start="98" name="VVD"/>
+                    <label end="111" start="108" name="CJT"/>
+                    <label end="114" start="113" name="AT0"/>
+                    <label end="124" start="116" name="NN1"/>
+                    <label end="132" start="126" name="NN1"/>
+                    <label end="136" start="134" name="VHD"/>
+                    <label end="141" start="138" name="VBN"/>
+                    <label end="151" start="143" name="VVN"/>
+                    <label end="153" start="153" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:58:42 PST Wed" status="MANUAL" ID="1823450">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3921" end="124" start="116" name="Type"/>
+                    <label cBy="618" feID="3919" end="132" start="126" name="Weapon"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="124" start="116" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="124" start="116" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="132" start="126" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-429-s20-lgov-carry">
+        <sentence sentNo="0" aPos="46853336" ID="1188128">
+            <text>What does seem more difficult to believe , however , is that the practice of carrying firearms was habitual among Hooligans . </text>
+            <annotationSet cDate="01/08/2003 05:58:43 PST Wed" status="UNANN" ID="1823459">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="DTQ"/>
+                    <label end="8" start="5" name="VDZ"/>
+                    <label end="13" start="10" name="VVI"/>
+                    <label end="18" start="15" name="DT0"/>
+                    <label end="28" start="20" name="AJ0"/>
+                    <label end="31" start="30" name="TO0"/>
+                    <label end="39" start="33" name="VVI"/>
+                    <label end="41" start="41" name="PUN"/>
+                    <label end="49" start="43" name="AV0"/>
+                    <label end="51" start="51" name="PUN"/>
+                    <label end="54" start="53" name="VBZ"/>
+                    <label end="59" start="56" name="CJT"/>
+                    <label end="63" start="61" name="AT0"/>
+                    <label end="72" start="65" name="NN1"/>
+                    <label end="75" start="74" name="PRF"/>
+                    <label end="84" start="77" name="VVG"/>
+                    <label end="93" start="86" name="NN2"/>
+                    <label end="97" start="95" name="VBD"/>
+                    <label end="106" start="99" name="AJ0"/>
+                    <label end="112" start="108" name="PRP"/>
+                    <label end="122" start="114" name="NN2"/>
+                    <label end="124" start="124" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:58:43 PST Wed" status="MANUAL" ID="1823460">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3919" end="93" start="86" name="Weapon"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="93" start="86" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="93" start="86" name="X"/>
+                    <label end="84" start="77" name="Gov"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="101926436" ID="1188131">
+            <text>Senior officers say more and more criminals are prepared to carry firearms in cash raids . </text>
+            <annotationSet cDate="01/08/2003 05:58:43 PST Wed" status="UNANN" ID="1823465">
+                <layer rank="1" name="BNC">
+                    <label end="5" start="0" name="AJ0"/>
+                    <label end="14" start="7" name="NN2"/>
+                    <label end="18" start="16" name="VVB"/>
+                    <label end="23" start="20" name="AV0"/>
+                    <label end="27" start="25" name="CJC"/>
+                    <label end="32" start="29" name="DT0"/>
+                    <label end="42" start="34" name="NN2"/>
+                    <label end="46" start="44" name="VBB"/>
+                    <label end="55" start="48" name="AJ0-VVN"/>
+                    <label end="58" start="57" name="TO0"/>
+                    <label end="64" start="60" name="VVI"/>
+                    <label end="73" start="66" name="NN2"/>
+                    <label end="76" start="75" name="PRP"/>
+                    <label end="81" start="78" name="NN1"/>
+                    <label end="87" start="83" name="NN2"/>
+                    <label end="89" start="89" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:58:43 PST Wed" status="MANUAL" ID="1823466">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3919" end="73" start="66" name="Weapon"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="Canonical"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="73" start="66" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="73" start="66" name="X"/>
+                    <label end="64" start="60" name="Gov"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-429-s20-lgov-involve"/>
+    <subCorpus name="N-429-s20-lgov-possess">
+        <sentence sentNo="0" aPos="7237713" ID="1188139">
+            <text>Section 16 contains an offence of possessing a firearm with intent to endanger life , which corresponds to the offence under section 3 of the Explosives Act . </text>
+            <annotationSet cDate="01/08/2003 05:58:44 PST Wed" status="UNANN" ID="1823481">
+                <layer rank="1" name="BNC">
+                    <label end="6" start="0" name="NN1"/>
+                    <label end="9" start="8" name="CRD"/>
+                    <label end="18" start="11" name="VVZ"/>
+                    <label end="21" start="20" name="AT0"/>
+                    <label end="29" start="23" name="NN1"/>
+                    <label end="32" start="31" name="PRF"/>
+                    <label end="43" start="34" name="VVG"/>
+                    <label end="45" start="45" name="AT0"/>
+                    <label end="53" start="47" name="NN1"/>
+                    <label end="58" start="55" name="PRP"/>
+                    <label end="65" start="60" name="AJ0-NN1"/>
+                    <label end="68" start="67" name="TO0"/>
+                    <label end="77" start="70" name="VVI"/>
+                    <label end="82" start="79" name="NN1"/>
+                    <label end="84" start="84" name="PUN"/>
+                    <label end="90" start="86" name="DTQ"/>
+                    <label end="102" start="92" name="VVZ"/>
+                    <label end="105" start="104" name="PRP"/>
+                    <label end="109" start="107" name="AT0"/>
+                    <label end="117" start="111" name="NN1"/>
+                    <label end="123" start="119" name="PRP"/>
+                    <label end="131" start="125" name="NN1"/>
+                    <label end="133" start="133" name="CRD"/>
+                    <label end="136" start="135" name="PRF"/>
+                    <label end="140" start="138" name="AT0"/>
+                    <label end="151" start="142" name="NN2"/>
+                    <label end="155" start="153" name="NN1-VVB"/>
+                    <label end="157" start="157" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:58:44 PST Wed" status="MANUAL" ID="1823482">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3919" end="53" start="47" name="Weapon"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="53" start="47" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="53" start="45" name="X"/>
+                    <label end="43" start="34" name="Gov"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="102835045" ID="1188147">
+            <text>Mr Jones pleaded guilty to possessing a firearm with criminal intent and affray . </text>
+            <annotationSet cDate="01/08/2003 05:58:45 PST Wed" status="UNANN" ID="1823497">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="NP0"/>
+                    <label end="7" start="3" name="NP0"/>
+                    <label end="15" start="9" name="VVD"/>
+                    <label end="22" start="17" name="AJ0"/>
+                    <label end="25" start="24" name="PRP"/>
+                    <label end="36" start="27" name="VVG"/>
+                    <label end="38" start="38" name="AT0"/>
+                    <label end="46" start="40" name="NN1"/>
+                    <label end="51" start="48" name="PRP"/>
+                    <label end="60" start="53" name="AJ0"/>
+                    <label end="67" start="62" name="NN1"/>
+                    <label end="71" start="69" name="CJC"/>
+                    <label end="78" start="73" name="NN1-VVB"/>
+                    <label end="80" start="80" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:58:45 PST Wed" status="MANUAL" ID="1823498">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3919" end="46" start="40" name="Weapon"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="46" start="40" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="46" start="38" name="X"/>
+                    <label end="36" start="27" name="Gov"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-429-s20-lgov-possession">
+        <sentence sentNo="0" aPos="102505665" ID="1188154">
+            <text>He 's due to be questioned by officers from the Thames Valley region and may be charged with kidnapping and possession of firearms . </text>
+            <annotationSet cDate="01/08/2003 05:58:46 PST Wed" status="UNANN" ID="1823511">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="4" start="3" name="VBZ"/>
+                    <label end="8" start="6" name="AJ0"/>
+                    <label end="11" start="10" name="TO0"/>
+                    <label end="14" start="13" name="VBI"/>
+                    <label end="25" start="16" name="VVN"/>
+                    <label end="28" start="27" name="PRP"/>
+                    <label end="37" start="30" name="NN2"/>
+                    <label end="42" start="39" name="PRP"/>
+                    <label end="46" start="44" name="AT0"/>
+                    <label end="53" start="48" name="NP0"/>
+                    <label end="60" start="55" name="NP0"/>
+                    <label end="67" start="62" name="NN1"/>
+                    <label end="71" start="69" name="CJC"/>
+                    <label end="75" start="73" name="VM0"/>
+                    <label end="78" start="77" name="VBI"/>
+                    <label end="86" start="80" name="VVN"/>
+                    <label end="91" start="88" name="PRP"/>
+                    <label end="102" start="93" name="NN1-VVG"/>
+                    <label end="106" start="104" name="CJC"/>
+                    <label end="117" start="108" name="NN1"/>
+                    <label end="120" start="119" name="PRF"/>
+                    <label end="129" start="122" name="NN2"/>
+                    <label end="131" start="131" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:58:46 PST Wed" status="MANUAL" ID="1823512">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3919" end="129" start="122" name="Weapon"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="129" start="122" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="117" start="108" name="Gov"/>
+                    <label end="129" start="119" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-429-s20-lgov-use">
+        <sentence sentNo="0" aPos="43968306" ID="1188163">
+            <text>Muscovy 's major European rivals were investing in full-time professional infantry and modernized cavalry using firearms . </text>
+            <annotationSet cDate="01/08/2003 05:58:47 PST Wed" status="UNANN" ID="1823529">
+                <layer rank="1" name="BNC">
+                    <label end="6" start="0" name="NP0"/>
+                    <label end="9" start="8" name="POS"/>
+                    <label end="15" start="11" name="AJ0"/>
+                    <label end="24" start="17" name="AJ0"/>
+                    <label end="31" start="26" name="NN2"/>
+                    <label end="36" start="33" name="VBD"/>
+                    <label end="46" start="38" name="VVG"/>
+                    <label end="49" start="48" name="PRP"/>
+                    <label end="59" start="51" name="AJ0-AV0"/>
+                    <label end="72" start="61" name="AJ0"/>
+                    <label end="81" start="74" name="NN0"/>
+                    <label end="85" start="83" name="CJC"/>
+                    <label end="96" start="87" name="AJ0"/>
+                    <label end="104" start="98" name="NN0"/>
+                    <label end="110" start="106" name="VVG"/>
+                    <label end="119" start="112" name="NN2"/>
+                    <label end="121" start="121" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:58:47 PST Wed" status="MANUAL" ID="1823530">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3919" end="119" start="112" name="Weapon"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="Canonical"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="119" start="112" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="110" start="106" name="Gov"/>
+                    <label end="119" start="112" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="83118206" ID="1188168">
+            <text>TWO men who used an imitation firearm to carry out a robbery were sent to a young offenders centre at Belfast Crown Court yesterday . </text>
+            <annotationSet cDate="01/08/2003 05:58:48 PST Wed" status="UNANN" ID="1823539">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="CRD"/>
+                    <label end="6" start="4" name="NN2"/>
+                    <label end="10" start="8" name="PNQ"/>
+                    <label end="15" start="12" name="VVD"/>
+                    <label end="18" start="17" name="AT0"/>
+                    <label end="28" start="20" name="NN1"/>
+                    <label end="36" start="30" name="NN1-VVB"/>
+                    <label end="39" start="38" name="TO0"/>
+                    <label end="45" start="41" name="VVI"/>
+                    <label end="49" start="47" name="AVP"/>
+                    <label end="51" start="51" name="AT0"/>
+                    <label end="59" start="53" name="NN1"/>
+                    <label end="64" start="61" name="VBD"/>
+                    <label end="69" start="66" name="VVN"/>
+                    <label end="72" start="71" name="PRP"/>
+                    <label end="74" start="74" name="AT0"/>
+                    <label end="80" start="76" name="AJ0"/>
+                    <label end="90" start="82" name="NN2"/>
+                    <label end="97" start="92" name="NN1-VVB"/>
+                    <label end="100" start="99" name="PRP"/>
+                    <label end="108" start="102" name="NP0"/>
+                    <label end="114" start="110" name="NP0"/>
+                    <label end="120" start="116" name="NP0"/>
+                    <label end="130" start="122" name="AV0"/>
+                    <label end="132" start="132" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:58:48 PST Wed" status="MANUAL" ID="1823540">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3919" end="36" start="30" name="Weapon"/>
+                    <label cBy="618" feID="3921" end="28" start="20" name="Type"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="28" start="20" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="28" start="20" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="Metaphor"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="36" start="30" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="15" start="12" name="Gov"/>
+                    <label end="36" start="17" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="99248481" ID="1188175">
+            <text>There 's a very , very good chance that the person using a firearm will , will suffer injury because the barrel could well explode . </text>
+            <annotationSet cDate="01/08/2003 05:58:51 PST Wed" status="UNANN" ID="1823553">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="EX0"/>
+                    <label end="7" start="6" name="VBZ"/>
+                    <label end="9" start="9" name="AT0"/>
+                    <label end="14" start="11" name="AV0"/>
+                    <label end="16" start="16" name="PUN"/>
+                    <label end="21" start="18" name="AV0"/>
+                    <label end="26" start="23" name="AJ0"/>
+                    <label end="33" start="28" name="NN1"/>
+                    <label end="38" start="35" name="CJT"/>
+                    <label end="42" start="40" name="AT0"/>
+                    <label end="49" start="44" name="NN1"/>
+                    <label end="55" start="51" name="VVG"/>
+                    <label end="57" start="57" name="AT0"/>
+                    <label end="65" start="59" name="NN1"/>
+                    <label end="70" start="67" name="VM0"/>
+                    <label end="72" start="72" name="PUN"/>
+                    <label end="77" start="74" name="VM0"/>
+                    <label end="84" start="79" name="VVI"/>
+                    <label end="91" start="86" name="NN1"/>
+                    <label end="99" start="93" name="CJS"/>
+                    <label end="103" start="101" name="AT0"/>
+                    <label end="110" start="105" name="NN1"/>
+                    <label end="116" start="112" name="VM0"/>
+                    <label end="121" start="118" name="AV0"/>
+                    <label end="129" start="123" name="VVI"/>
+                    <label end="131" start="131" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:58:51 PST Wed" status="MANUAL" ID="1823554">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3919" end="65" start="59" name="Weapon"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="65" start="59" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="55" start="51" name="Gov"/>
+                    <label end="65" start="57" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-429-s20-lgov-with">
+        <sentence sentNo="0" aPos="13688236" ID="1188179">
+            <text>However , if the landowner threatens you with a firearm , it is comforting to know that he or she would be committing a criminal offence . </text>
+            <annotationSet cDate="01/08/2003 05:58:52 PST Wed" status="UNANN" ID="1823561">
+                <layer rank="1" name="BNC">
+                    <label end="6" start="0" name="AV0"/>
+                    <label end="8" start="8" name="PUN"/>
+                    <label end="11" start="10" name="CJS"/>
+                    <label end="15" start="13" name="AT0"/>
+                    <label end="25" start="17" name="NN1"/>
+                    <label end="35" start="27" name="VVZ"/>
+                    <label end="39" start="37" name="PNP"/>
+                    <label end="44" start="41" name="PRP"/>
+                    <label end="46" start="46" name="AT0"/>
+                    <label end="54" start="48" name="NN1"/>
+                    <label end="56" start="56" name="PUN"/>
+                    <label end="59" start="58" name="PNP"/>
+                    <label end="62" start="61" name="VBZ"/>
+                    <label end="73" start="64" name="VVG"/>
+                    <label end="76" start="75" name="TO0"/>
+                    <label end="81" start="78" name="VVI"/>
+                    <label end="86" start="83" name="CJT"/>
+                    <label end="89" start="88" name="PNP"/>
+                    <label end="92" start="91" name="CJC"/>
+                    <label end="96" start="94" name="PNP"/>
+                    <label end="102" start="98" name="VM0"/>
+                    <label end="105" start="104" name="VBI"/>
+                    <label end="116" start="107" name="VVG"/>
+                    <label end="118" start="118" name="AT0"/>
+                    <label end="127" start="120" name="AJ0"/>
+                    <label end="135" start="129" name="NN1"/>
+                    <label end="137" start="137" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:58:52 PST Wed" status="MANUAL" ID="1823562">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3919" end="54" start="48" name="Weapon"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="Canonical"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="54" start="48" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="35" start="27" name="Gov"/>
+                    <label end="54" start="41" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="104741150" ID="1188193">
+            <text>The three , who have not been named , have been charged with robbery and firearms offences . </text>
+            <annotationSet cDate="01/08/2003 05:58:53 PST Wed" status="UNANN" ID="1823589">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="8" start="4" name="CRD"/>
+                    <label end="10" start="10" name="PUN"/>
+                    <label end="14" start="12" name="PNQ"/>
+                    <label end="19" start="16" name="VHB"/>
+                    <label end="23" start="21" name="XX0"/>
+                    <label end="28" start="25" name="VBN"/>
+                    <label end="34" start="30" name="VVN"/>
+                    <label end="36" start="36" name="PUN"/>
+                    <label end="41" start="38" name="VHB"/>
+                    <label end="46" start="43" name="VBN"/>
+                    <label end="54" start="48" name="VVN"/>
+                    <label end="59" start="56" name="PRP"/>
+                    <label end="67" start="61" name="NN1"/>
+                    <label end="71" start="69" name="CJC"/>
+                    <label end="80" start="73" name="NN2-VVZ"/>
+                    <label end="89" start="82" name="NN2"/>
+                    <label end="91" start="91" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:58:53 PST Wed" status="MANUAL" ID="1823590">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3919" end="80" start="73" name="Weapon"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="80" start="73" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="89" start="82" name="Gov"/>
+                    <label end="80" start="73" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-429-s20-rgov-certificate">
+        <sentence sentNo="0" aPos="105542132" ID="1188198">
+            <text>Yesterday , Chief Insp Fordy said Mr Jackson was accused of not having a firearms certificate for a shotgun and a rifle . </text>
+            <annotationSet cDate="01/08/2003 05:58:54 PST Wed" status="UNANN" ID="1823599">
+                <layer rank="1" name="BNC">
+                    <label end="8" start="0" name="AV0"/>
+                    <label end="10" start="10" name="PUN"/>
+                    <label end="16" start="12" name="NP0"/>
+                    <label end="21" start="18" name="NP0"/>
+                    <label end="27" start="23" name="NN1-NP0"/>
+                    <label end="32" start="29" name="VVD"/>
+                    <label end="35" start="34" name="NP0"/>
+                    <label end="43" start="37" name="NP0"/>
+                    <label end="47" start="45" name="VBD"/>
+                    <label end="55" start="49" name="AJ0-VVN"/>
+                    <label end="58" start="57" name="PRF"/>
+                    <label end="62" start="60" name="XX0"/>
+                    <label end="69" start="64" name="VHG"/>
+                    <label end="71" start="71" name="AT0"/>
+                    <label end="80" start="73" name="NN2"/>
+                    <label end="92" start="82" name="NN1"/>
+                    <label end="96" start="94" name="PRP"/>
+                    <label end="98" start="98" name="AT0"/>
+                    <label end="106" start="100" name="NN1"/>
+                    <label end="110" start="108" name="CJC"/>
+                    <label end="112" start="112" name="AT0"/>
+                    <label end="118" start="114" name="NN1"/>
+                    <label end="120" start="120" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:58:54 PST Wed" status="MANUAL" ID="1823600">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3919" end="80" start="73" name="Weapon"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="80" start="73" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="92" start="82" name="Gov"/>
+                    <label end="80" start="73" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-429-s20-rgov-offence"/>
+    <subCorpus name="N-429-s20-rgov-unit"/>
+</lexUnit>

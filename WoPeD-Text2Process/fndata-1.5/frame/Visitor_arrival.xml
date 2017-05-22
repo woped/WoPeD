@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="03/28/2007 05:05:46 PDT Wed" name="Visitor_arrival" ID="1913" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Agent&lt;/fen&gt; arrives at a &lt;fen&gt;Goal&lt;/fen&gt; that should enable their &lt;fen&gt;Purpose&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    <semType name="Non-Lexical Frame" ID="16"/>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="03/28/2007 05:05:46 PDT Wed" abbrev="Thm" name="Agent" ID="11445">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Agent&lt;/fen&gt; is the object that moves under its own power. &lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="03/28/2007 05:05:47 PDT Wed" abbrev="Src" name="Normal_location" ID="11446">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Normal_location&lt;/fen&gt; is any expression which implies a definite starting-point of motion. While &lt;fen&gt;Normal_location&lt;/fen&gt; expressions are possible in this frame, they are relatively infrequent.  If present, they often express a general direction from which a &lt;fen&gt;Agent&lt;/fen&gt; moves, rather than a landmark away from which it moves.&lt;/def-root&gt;</definition>
+        <semType name="Source" ID="151"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="03/28/2007 05:05:47 PDT Wed" abbrev="Path" name="Path" ID="11447">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Path&lt;/fen&gt; is any description of a trajectory of motion which is neither a &lt;fen&gt;Normal_location&lt;/fen&gt; nor a &lt;fen&gt;Goal&lt;/fen&gt;.  In this frame, &lt;fen&gt;Path&lt;/fen&gt; expressions almost always have a via-sense.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="03/28/2007 05:05:47 PDT Wed" abbrev="Goal" name="Goal" ID="11448">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Goal&lt;/fen&gt; is any expression that tells where the &lt;fen&gt;Agent&lt;/fen&gt; ends up, or would end up, as a result of the motion.  Although always conceptually present and specific, &lt;fen&gt;Goal&lt;/fen&gt;may sometimes be understood from context, rather than expressed by any separate constituent.
+&lt;ex&gt;Our visitors &lt;t&gt;arrived&lt;/t&gt; yesterday.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Location" ID="54"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="03/28/2007 05:05:47 PDT Wed" abbrev="Manr" name="Manner" ID="11449">
+        <definition>&lt;def-root&gt;A &lt;fen&gt;Manner&lt;/fen&gt; expression  describes a property of motion which is not directly related to the trajectory of motion.  Descriptions of speed, steadiness, grace, means of motion, and other things count as &lt;fen&gt;Manner&lt;/fen&gt; expressions.&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="03/28/2007 05:05:53 PDT Wed" abbrev="Mns" name="Means" ID="11450">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Means&lt;/fen&gt; by which an &lt;fen&gt;Agent&lt;/fen&gt; arrives.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="03/28/2007 05:05:53 PDT Wed" abbrev="MoT" name="Mode_of_transportation" ID="11451">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Mode_of_transportation&lt;/fen&gt; expresses how the motion of the &lt;fen&gt;Agent&lt;/fen&gt; is effected, by its body or by a vehicle which holds and conveys the &lt;fen&gt;Agent&lt;/fen&gt;.   Vehicles can move in any way and in any medium. They are usually expressed obliquely with 'in' or 'by'.
+
+&lt;ex&gt;I &lt;t&gt;reached&lt;/t&gt; Canada &lt;fex name="Mode_of_transportation"&gt;by car&lt;/fex&gt;.&lt;/ex&gt; 
+&lt;ex&gt;I &lt;t&gt;reached&lt;/t&gt; Mexico &lt;fex name="Mode_of_transportation"&gt;on foot&lt;/fex&gt;.&lt;/ex&gt; &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="03/28/2007 05:05:53 PDT Wed" abbrev="Time" name="Time" ID="11453">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Time&lt;/fen&gt; when arriving occurs.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="03/28/2007 05:05:54 PDT Wed" abbrev="" name="Purpose" ID="11458">
+        <definition>&lt;def-root&gt;This FE identifies the purpose for which the &lt;fen&gt;Agent&lt;/fen&gt; arrives at the &lt;fen&gt;Goal&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="597" cDate="07/28/2008 02:55:17 PDT Mon" abbrev="" name="Place" ID="13042">
+        <definition>&lt;def-root&gt;The place where the arrival occurs.&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Arriving</relatedFrame>
+        <relatedFrame>Visiting_scenario_arrival</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Drop_in_on</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of">
+        <relatedFrame>Visitor_scenario</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes">
+        <relatedFrame>Visiting</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+</frame>

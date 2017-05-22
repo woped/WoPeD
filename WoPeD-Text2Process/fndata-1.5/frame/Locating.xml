@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="08/15/2003 07:28:07 PDT Fri" name="Locating" ID="792" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A &lt;fen&gt;Perceiver&lt;/fen&gt; determines the &lt;fen&gt;Location&lt;/fen&gt; of a &lt;fen&gt;Sought_entity&lt;/fen&gt; within a &lt;fen&gt;Ground&lt;/fen&gt;.
+
+&lt;ex&gt;&lt;fex name="Perceiver"&gt;Kim&lt;/fex&gt; &lt;t&gt;found&lt;/t&gt; &lt;fex name="Sought_entity"&gt;his hat&lt;/fex&gt; &lt;fex name="Location"&gt;on the far side&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="08/18/2003 03:45:05 PDT Mon" abbrev="" name="Perceiver" ID="4933">
+        <definition>&lt;def-root&gt;The individual that determines the &lt;fen&gt;Location&lt;/fen&gt; of the &lt;fen&gt;Sought_entity&lt;/fen&gt;.
+
+&lt;ex&gt;&lt;fex name="Perceiver"&gt;I&lt;/fex&gt; finally &lt;t&gt;found&lt;/t&gt; the peanut underneath the couch cusion.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="08/18/2003 03:55:56 PDT Mon" abbrev="" name="Sought_entity" ID="4934">
+        <definition>&lt;def-root&gt;The entity that the &lt;fen&gt;Perceiver&lt;/fen&gt; succeeds in finding.&lt;/def-root&gt;</definition>
+        <semType name="Physical_entity" ID="70"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="08/18/2003 03:57:55 PDT Mon" abbrev="Loc" name="Location" ID="4935">
+        <definition>&lt;def-root&gt;The position of the &lt;fen&gt;Sought_entity&lt;/fen&gt;.
+
+&lt;ex&gt;I &lt;t&gt;found&lt;/t&gt; him &lt;fex name="Loc"&gt;under the bed&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Location" ID="54"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="08/18/2003 04:07:06 PDT Mon" abbrev="" name="Ground" ID="4936">
+        <definition>&lt;def-root&gt;The general set of entities that the &lt;fen&gt;Perceiver&lt;/fen&gt; examined in order to find the &lt;fen&gt;Sought_entity&lt;/fen&gt;.
+
+&lt;ex&gt;Sam &lt;t&gt;located&lt;/t&gt; the Imperial regal &lt;fex name="Ground"&gt;among the coins in his pocket&lt;/fex&gt; and passed it to the boy.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Location" ID="4935"/>
+        <memberFE name="Ground" ID="4936"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Seeking</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Created" POS="V" name="locate.v" ID="11226" lemmaID="22617" cBy="303" cDate="11/19/2004 01:49:51 PST Fri">
+        <definition>COD: discover the exact place or position of.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="locate"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="V" name="find.v" ID="11227" lemmaID="14391" cBy="303" cDate="11/19/2004 01:50:22 PST Fri">
+        <definition>COD: discover by chance or deliberately.</definition>
+        <sentenceCount annotated="1" total="122"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="find"/>
+    </lexUnit>
+</frame>

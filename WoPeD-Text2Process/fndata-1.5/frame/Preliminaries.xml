@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="618" cDate="04/03/2007 05:01:38 PDT Tue" name="Preliminaries" ID="1928" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;This frame describes means actions (&lt;fen&gt;Preparatory_act&lt;/fen&gt;s) that are taken by an &lt;fen&gt;Agent&lt;/fen&gt; for the purpose of preparing for a later act.
+
+Contrast this frame with a scenario involving earlier versions of some entity being superseded by later versions (e.g., &lt;ment&gt;preliminary results, advance copy&lt;/ment&gt;).&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="04/03/2007 05:01:38 PDT Tue" abbrev="age" name="Agent" ID="11619">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Agent&lt;/fen&gt; uses the &lt;fen&gt;Preparatory_act&lt;/fen&gt; to acheive a &lt;fen&gt;Purpose&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Human" ID="80"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="04/03/2007 05:01:38 PDT Tue" abbrev="pre" name="Preparatory_act" ID="11620">
+        <definition>&lt;def-root&gt;The action performed by the Agent that is a preliminary to the achievement of the &lt;fen&gt;Purpose&lt;/fen&gt;. The &lt;fen&gt;Preparatory_act&lt;/fen&gt; may also be expressed by a result of such an act.
+
+&lt;ex&gt;&lt;fex name="pre"&gt;The company's actions at that stage&lt;/fex&gt; &lt;m&gt;were&lt;/m&gt; simply &lt;t&gt;preliminary&lt;/t&gt; to the takeover.&lt;/ex&gt;
+&lt;ex&gt;Nothing remarkable could be found, as it was almost certainly a &lt;t&gt;preliminary&lt;/t&gt; &lt;fex name="pre"&gt;book&lt;/fex&gt; to the final publication of results.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Preparatory_phase" ID="11859"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="04/03/2007 05:01:38 PDT Tue" abbrev="pur" name="Purpose" ID="11621">
+        <definition>&lt;def-root&gt;The ultimate goal or purpose of the &lt;fen&gt;Agent&lt;/fen&gt;, which the Preparatory_act enables.&lt;/def-root&gt;</definition>
+        <semType name="Goal" ID="153"/>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="618" cDate="04/03/2007 05:01:38 PDT Tue" abbrev="" name="Descriptor" ID="11622">
+        <definition>&lt;def-root&gt;A characteristic of the &lt;fen&gt;Preparatory_act&lt;/fen&gt;, &lt;fen&gt;Agent&lt;/fen&gt;, or other participant.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="06/01/2007 10:49:11 PDT Fri" abbrev="deg" name="Degree" ID="11850">
+        <definition>&lt;def-root&gt;The extent to which the &lt;fen&gt;Preparatory_act&lt;/fen&gt; is distant from the achievement of the &lt;fen&gt;Purpose&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="618" cDate="06/01/2007 03:35:01 PDT Fri" abbrev="dom" name="Domain_of_relevance" ID="11853">
+        <definition>&lt;def-root&gt;The area, field, or domain for which the preliminary action is relevant.
+
+&lt;ex&gt;This laid the &lt;fex name="dom"&gt;political&lt;/fex&gt; &lt;t&gt;groundwork&lt;/t&gt; for his victory in May.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="06/01/2007 03:36:21 PDT Fri" abbrev="tim" name="Time" ID="11854">
+        <definition>&lt;def-root&gt;The time at which the &lt;fen&gt;Preparatory_act&lt;/fen&gt; takes place.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="06/01/2007 03:36:46 PDT Fri" abbrev="pla" name="Place" ID="11855">
+        <definition>&lt;def-root&gt;The place where the &lt;fen&gt;Preparatory_act&lt;/fen&gt; takes place.&lt;/def-root&gt;</definition>
+        <semType name="Location" ID="54"/>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="06/04/2007 02:41:12 PDT Mon" abbrev="pre_pha" name="Preparatory_phase" ID="11859">
+        <definition>&lt;def-root&gt;The part of the larger process that is preliminary to the achievement of the &lt;fen&gt;Purpose&lt;/fen&gt;.
+
+&lt;ex&gt;We are still in the &lt;t&gt;preliminary&lt;/t&gt; &lt;fex name="pre_pha"&gt;phases&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Preparatory_act" ID="11620"/>
+        <memberFE name="Agent" ID="11619"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Means</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on">
+        <relatedFrame>Activity_prepare</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="A" name="preliminary.a" ID="14346" lemmaID="30201" cBy="618" cDate="04/03/2007 05:04:30 PDT Tue">
+        <definition>COD: preceding or done in preparation for something fuller or more important.</definition>
+        <sentenceCount annotated="17" total="323"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="preliminary"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="preliminary.n" ID="14347" lemmaID="30200" cBy="618" cDate="04/03/2007 05:06:19 PDT Tue">
+        <definition>COD: a preliminary action or event.</definition>
+        <sentenceCount annotated="16" total="302"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="preliminary"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="exploratory.a" ID="14348" lemmaID="13574" cBy="618" cDate="04/03/2007 05:06:40 PDT Tue">
+        <definition>FN: done for the purpose of discovering facts in order to proceed in a course of action.</definition>
+        <sentenceCount annotated="19" total="142"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="exploratory"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="groundwork.n" ID="14349" lemmaID="16928" cBy="618" cDate="04/03/2007 05:07:21 PDT Tue">
+        <definition>COD: preliminary or basic work.</definition>
+        <sentenceCount annotated="19" total="88"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="groundwork"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="prefatory.a" ID="14350" lemmaID="30166" cBy="618" cDate="04/03/2007 05:07:47 PDT Tue">
+        <definition>FN: (especially of speech) done initially, as preparation for later exposition.</definition>
+        <sentenceCount annotated="5" total="6"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="prefatory"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="preparatory.a" ID="14351" lemmaID="30238" cBy="618" cDate="04/03/2007 05:08:42 PDT Tue">
+        <definition>COD: serving as or carrying out preparation.</definition>
+        <sentenceCount annotated="12" total="175"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="preparatory"/>
+    </lexUnit>
+</frame>

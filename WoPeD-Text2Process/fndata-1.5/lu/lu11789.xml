@@ -1,0 +1,1455 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="treaty.n" ID="11789" frame="Make_agreement_on_action" frameID="1342" totalAnnotated="18" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Extra-Thematic" abbrev="" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="man" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="med" name="Medium"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="obl" name="Obligation"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Core" abbrev="pars" name="Parties"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="par1" name="Party_1"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="par2" name="Party_2"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="P" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="T" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Core" abbrev="top" name="Topic"/>
+        </frame>
+    </header>
+    <definition>FN: A formal agreement between two or more nations governed by international law.</definition>
+    <lexeme POS="N" name="treaty"/>
+    <valences>
+        <governor type="Sup" lemma="enter">
+            <annoSet ID="2084719"/>
+        </governor>
+        <governor type="Sup" lemma="make">
+            <annoSet ID="2084777"/>
+            <annoSet ID="2084795"/>
+            <annoSet ID="2084797"/>
+            <annoSet ID="2084803"/>
+            <annoSet ID="2084815"/>
+            <annoSet ID="2084831"/>
+        </governor>
+        <governor type="Sup" lemma="sign">
+            <annoSet ID="2084707"/>
+            <annoSet ID="2084835"/>
+            <annoSet ID="2084849"/>
+            <annoSet ID="2084863"/>
+            <annoSet ID="2084865"/>
+            <annoSet ID="2084881"/>
+        </governor>
+        <governor type="Gov" lemma="oppose">
+            <annoSet ID="2085223"/>
+        </governor>
+        <governor type="Gov" lemma="renounce">
+            <annoSet ID="2085199"/>
+        </governor>
+        <FERealization total="1">
+            <FE name="Manner"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Manner"/>
+                <annoSet ID="2084803"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="16">
+            <FE name="Obligation"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="VPto" FE="Obligation"/>
+                <annoSet ID="2084803"/>
+                <annoSet ID="2084865"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Obligation"/>
+                <annoSet ID="2084835"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="" PT="DNI" FE="Obligation"/>
+                <annoSet ID="2084797"/>
+                <annoSet ID="2085193"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Obligation"/>
+                <annoSet ID="2084719"/>
+            </pattern>
+            <pattern total="4">
+                <valenceUnit GF="Dep" PT="N" FE="Obligation"/>
+                <annoSet ID="2084707"/>
+                <annoSet ID="2084773"/>
+                <annoSet ID="2084849"/>
+                <annoSet ID="2085197"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="NP" FE="Obligation"/>
+                <annoSet ID="2084881"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="NP" FE="Obligation"/>
+                <annoSet ID="2084777"/>
+            </pattern>
+            <pattern total="3">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Obligation"/>
+                <annoSet ID="2084795"/>
+                <annoSet ID="2084815"/>
+                <annoSet ID="2084863"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="Sfin" FE="Obligation"/>
+                <annoSet ID="2084831"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="11">
+            <FE name="Parties"/>
+            <pattern total="7">
+                <valenceUnit GF="Ext" PT="NP" FE="Parties"/>
+                <annoSet ID="2084797"/>
+                <annoSet ID="2084815"/>
+                <annoSet ID="2084831"/>
+                <annoSet ID="2084835"/>
+                <annoSet ID="2084863"/>
+                <annoSet ID="2084865"/>
+                <annoSet ID="2084881"/>
+            </pattern>
+            <pattern total="4">
+                <valenceUnit GF="Dep" PT="PP[between]" FE="Parties"/>
+                <annoSet ID="2085193"/>
+                <annoSet ID="2085197"/>
+                <annoSet ID="2085199"/>
+                <annoSet ID="2085223"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="7">
+            <FE name="Party_1"/>
+            <pattern total="6">
+                <valenceUnit GF="Ext" PT="NP" FE="Party_1"/>
+                <annoSet ID="2084707"/>
+                <annoSet ID="2084719"/>
+                <annoSet ID="2084777"/>
+                <annoSet ID="2084795"/>
+                <annoSet ID="2084803"/>
+                <annoSet ID="2084849"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Party_1"/>
+                <annoSet ID="2084773"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="7">
+            <FE name="Party_2"/>
+            <pattern total="5">
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Party_2"/>
+                <annoSet ID="2084773"/>
+                <annoSet ID="2084777"/>
+                <annoSet ID="2084795"/>
+                <annoSet ID="2084803"/>
+                <annoSet ID="2084849"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Party_2"/>
+                <annoSet ID="2084719"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="NP" FE="Party_2"/>
+                <annoSet ID="2084707"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Place"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Place"/>
+                <annoSet ID="2084863"/>
+                <annoSet ID="2084865"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="6">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Time"/>
+                <annoSet ID="2084803"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Time"/>
+                <annoSet ID="2084835"/>
+                <annoSet ID="2084863"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Time"/>
+                <annoSet ID="2085193"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[about]" FE="Time"/>
+                <annoSet ID="2084777"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[during]" FE="Time"/>
+                <annoSet ID="2084777"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="NP" FE="Time"/>
+                <annoSet ID="2084865"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Topic"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Topic"/>
+                <annoSet ID="2085199"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Manner"/>
+            <FE name="Obligation"/>
+            <FE name="Party_1"/>
+            <FE name="Party_2"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Manner"/>
+                <valenceUnit GF="Dep" PT="VPto" FE="Obligation"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Party_1"/>
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Party_2"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Time"/>
+                <annoSet ID="2084803"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="4">
+            <FE name="Obligation"/>
+            <FE name="Parties"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Obligation"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Parties"/>
+                <annoSet ID="2084797"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Obligation"/>
+                <valenceUnit GF="Dep" PT="PP[between]" FE="Parties"/>
+                <annoSet ID="2085197"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Obligation"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Parties"/>
+                <annoSet ID="2084815"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="Sfin" FE="Obligation"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Parties"/>
+                <annoSet ID="2084831"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Obligation"/>
+            <FE name="Parties"/>
+            <FE name="Parties"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="NP" FE="Obligation"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Parties"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Parties"/>
+                <annoSet ID="2084881"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Obligation"/>
+            <FE name="Parties"/>
+            <FE name="Place"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Obligation"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Parties"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Place"/>
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Time"/>
+                <annoSet ID="2084863"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="VPto" FE="Obligation"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Parties"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Place"/>
+                <valenceUnit GF="Dep" PT="NP" FE="Time"/>
+                <annoSet ID="2084865"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Obligation"/>
+            <FE name="Parties"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Obligation"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Parties"/>
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Time"/>
+                <annoSet ID="2084835"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Obligation"/>
+                <valenceUnit GF="Dep" PT="PP[between]" FE="Parties"/>
+                <valenceUnit GF="Dep" PT="N" FE="Time"/>
+                <annoSet ID="2085193"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="5">
+            <FE name="Obligation"/>
+            <FE name="Party_1"/>
+            <FE name="Party_2"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Obligation"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Party_1"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Party_2"/>
+                <annoSet ID="2084719"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Obligation"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Party_1"/>
+                <valenceUnit GF="Dep" PT="NP" FE="Party_2"/>
+                <annoSet ID="2084707"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Obligation"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Party_1"/>
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Party_2"/>
+                <annoSet ID="2084849"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Obligation"/>
+                <valenceUnit GF="Gen" PT="Poss" FE="Party_1"/>
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Party_2"/>
+                <annoSet ID="2084773"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Obligation"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Party_1"/>
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Party_2"/>
+                <annoSet ID="2084795"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Obligation"/>
+            <FE name="Party_1"/>
+            <FE name="Party_2"/>
+            <FE name="Time"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="NP" FE="Obligation"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Party_1"/>
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Party_2"/>
+                <valenceUnit GF="Dep" PT="PP[about]" FE="Time"/>
+                <valenceUnit GF="Dep" PT="PP[during]" FE="Time"/>
+                <annoSet ID="2084777"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Parties"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[between]" FE="Parties"/>
+                <annoSet ID="2085223"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Parties"/>
+            <FE name="Topic"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[between]" FE="Parties"/>
+                <valenceUnit GF="Dep" PT="N" FE="Topic"/>
+                <annoSet ID="2085199"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-NPpeace-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="516" aPos="90974000" ID="1318293">
+            <text>North Korea had proposed signing a &quot; peace and good neighbourliness treaty &quot; with Japan , with which it was technically still at war , to include an apology from Japan for its colonial rule .</text>
+            <annotationSet cDate="04/11/2005 10:35:19 PDT Mon" status="UNANN" ID="2084706">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="NP"/>
+                    <label end="10" start="6" name="NP"/>
+                    <label end="14" start="12" name="VHD"/>
+                    <label end="23" start="16" name="VVN"/>
+                    <label end="31" start="25" name="VVG"/>
+                    <label end="33" start="33" name="dt"/>
+                    <label end="41" start="37" name="nn"/>
+                    <label end="45" start="43" name="cc"/>
+                    <label end="50" start="47" name="jj"/>
+                    <label end="66" start="52" name="nn"/>
+                    <label end="73" start="68" name="nn"/>
+                    <label end="80" start="77" name="in"/>
+                    <label end="86" start="82" name="NP"/>
+                    <label end="88" start="88" name=","/>
+                    <label end="93" start="90" name="in"/>
+                    <label end="99" start="95" name="wdt"/>
+                    <label end="102" start="101" name="PP"/>
+                    <label end="106" start="104" name="VBD"/>
+                    <label end="118" start="108" name="rb"/>
+                    <label end="124" start="120" name="rb"/>
+                    <label end="127" start="126" name="in"/>
+                    <label end="131" start="129" name="nn"/>
+                    <label end="133" start="133" name=","/>
+                    <label end="136" start="135" name="to"/>
+                    <label end="144" start="138" name="VV"/>
+                    <label end="147" start="146" name="dt"/>
+                    <label end="155" start="149" name="nn"/>
+                    <label end="160" start="157" name="in"/>
+                    <label end="166" start="162" name="NP"/>
+                    <label end="170" start="168" name="in"/>
+                    <label end="174" start="172" name="PP$"/>
+                    <label end="183" start="176" name="jj"/>
+                    <label end="188" start="185" name="nn"/>
+                    <label end="190" start="190" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="04/11/2005 10:35:19 PDT Mon" status="AUTO_EDITED" ID="2084707">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="73" start="68" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="7579" end="10" start="0" name="Party_1"/>
+                    <label cBy="395" feID="7581" end="66" start="37" name="Obligation"/>
+                    <label cBy="395" feID="7580" end="131" start="77" name="Party_2"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="10" start="0" name="Ext"/>
+                    <label end="66" start="37" name="Dep"/>
+                    <label end="131" start="77" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="10" start="0" name="NP"/>
+                    <label end="66" start="37" name="N"/>
+                    <label end="131" start="77" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="31" start="25" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="01-NPnon-proliferation-T-(1)"/>
+    <subCorpus name="01-NPparty-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="7" paragNo="195" aPos="51239439" ID="1318299">
+            <text>The judgment effectively imposed an obligation upon the United States ( a third party to the 1858 Treaty and the proceedings ) not to enter into a treaty with Nicaragua without respecting Costa Rica 's rights .</text>
+            <annotationSet cDate="04/11/2005 10:35:25 PDT Mon" status="UNANN" ID="2084718">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="11" start="4" name="nn"/>
+                    <label end="23" start="13" name="rb"/>
+                    <label end="31" start="25" name="VVD"/>
+                    <label end="34" start="33" name="dt"/>
+                    <label end="45" start="36" name="nn"/>
+                    <label end="50" start="47" name="in"/>
+                    <label end="54" start="52" name="dt"/>
+                    <label end="61" start="56" name="NP"/>
+                    <label end="68" start="63" name="NPS"/>
+                    <label end="70" start="70" name="("/>
+                    <label end="72" start="72" name="dt"/>
+                    <label end="78" start="74" name="jj"/>
+                    <label end="84" start="80" name="nn"/>
+                    <label end="87" start="86" name="to"/>
+                    <label end="91" start="89" name="dt"/>
+                    <label end="96" start="93" name="cd"/>
+                    <label end="103" start="98" name="NP"/>
+                    <label end="107" start="105" name="cc"/>
+                    <label end="111" start="109" name="dt"/>
+                    <label end="123" start="113" name="nns"/>
+                    <label end="125" start="125" name=")"/>
+                    <label end="129" start="127" name="rb"/>
+                    <label end="132" start="131" name="to"/>
+                    <label end="138" start="134" name="VV"/>
+                    <label end="143" start="140" name="in"/>
+                    <label end="145" start="145" name="dt"/>
+                    <label end="152" start="147" name="nn"/>
+                    <label end="157" start="154" name="in"/>
+                    <label end="167" start="159" name="NP"/>
+                    <label end="175" start="169" name="in"/>
+                    <label end="186" start="177" name="VVG"/>
+                    <label end="192" start="188" name="NP"/>
+                    <label end="197" start="194" name="NP"/>
+                    <label end="200" start="199" name="POS"/>
+                    <label end="207" start="202" name="nns"/>
+                    <label end="209" start="209" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="04/11/2005 10:35:25 PDT Mon" status="MANUAL" ID="2084719">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="152" start="147" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="7579" end="125" start="52" name="Party_1"/>
+                    <label cBy="395" feID="7580" end="167" start="154" name="Party_2"/>
+                    <label cBy="395" feID="7581" itype="INI" name="Obligation"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="125" start="52" name="Ext"/>
+                    <label end="167" start="154" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="125" start="52" name="NP"/>
+                    <label end="167" start="154" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="138" start="134" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-Wmake-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="7" paragNo="207" aPos="51241543" ID="1318326">
+            <text>States which retain the death penalty may find it difficult to make effective their extradition treaties with parties to the European Convention or other human rights treaties with similar prohibitions of inhuman or degrading treatment .</text>
+            <annotationSet cDate="04/11/2005 10:35:35 PDT Mon" status="UNANN" ID="2084772">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="0" name="nns"/>
+                    <label end="11" start="7" name="wdt"/>
+                    <label end="18" start="13" name="VVP"/>
+                    <label end="22" start="20" name="dt"/>
+                    <label end="28" start="24" name="nn"/>
+                    <label end="36" start="30" name="nn"/>
+                    <label end="40" start="38" name="md"/>
+                    <label end="45" start="42" name="VV"/>
+                    <label end="48" start="47" name="PP"/>
+                    <label end="58" start="50" name="jj"/>
+                    <label end="61" start="60" name="to"/>
+                    <label end="66" start="63" name="VV"/>
+                    <label end="76" start="68" name="jj"/>
+                    <label end="82" start="78" name="PP$"/>
+                    <label end="94" start="84" name="nn"/>
+                    <label end="103" start="96" name="nns"/>
+                    <label end="108" start="105" name="in"/>
+                    <label end="116" start="110" name="nns"/>
+                    <label end="119" start="118" name="to"/>
+                    <label end="123" start="121" name="dt"/>
+                    <label end="132" start="125" name="jj"/>
+                    <label end="143" start="134" name="nn"/>
+                    <label end="146" start="145" name="cc"/>
+                    <label end="152" start="148" name="jj"/>
+                    <label end="158" start="154" name="jj"/>
+                    <label end="165" start="160" name="nns"/>
+                    <label end="174" start="167" name="nns"/>
+                    <label end="179" start="176" name="in"/>
+                    <label end="187" start="181" name="jj"/>
+                    <label end="200" start="189" name="nns"/>
+                    <label end="203" start="202" name="in"/>
+                    <label end="211" start="205" name="jj"/>
+                    <label end="214" start="213" name="cc"/>
+                    <label end="224" start="216" name="jj"/>
+                    <label end="234" start="226" name="nn"/>
+                    <label end="236" start="236" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="04/11/2005 10:35:35 PDT Mon" status="AUTO_EDITED" ID="2084773">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="103" start="96" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="7580" end="234" start="105" name="Party_2"/>
+                    <label cBy="395" feID="7579" end="82" start="78" name="Party_1"/>
+                    <label cBy="395" feID="7581" end="94" start="84" name="Obligation"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="234" start="105" name="Dep"/>
+                    <label end="82" start="78" name="Gen"/>
+                    <label end="94" start="84" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="234" start="105" name="PP"/>
+                    <label end="82" start="78" name="Poss"/>
+                    <label end="94" start="84" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="11" paragNo="19" aPos="76884218" ID="1318328">
+            <text>About 333 Rome made some sort of treaty with Alexander the Molossian during his Italian campaign ; his sudden disappearance deprived the event of its potential importance .</text>
+            <annotationSet cDate="04/11/2005 10:35:35 PDT Mon" status="UNANN" ID="2084776">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="in"/>
+                    <label end="8" start="6" name="cd"/>
+                    <label end="13" start="10" name="NP"/>
+                    <label end="18" start="15" name="VVD"/>
+                    <label end="23" start="20" name="dt"/>
+                    <label end="28" start="25" name="nn"/>
+                    <label end="31" start="30" name="in"/>
+                    <label end="38" start="33" name="nn"/>
+                    <label end="43" start="40" name="in"/>
+                    <label end="53" start="45" name="NP"/>
+                    <label end="57" start="55" name="dt"/>
+                    <label end="67" start="59" name="NP"/>
+                    <label end="74" start="69" name="in"/>
+                    <label end="78" start="76" name="PP$"/>
+                    <label end="86" start="80" name="jj"/>
+                    <label end="95" start="88" name="nn"/>
+                    <label end="97" start="97" name=":"/>
+                    <label end="101" start="99" name="PP$"/>
+                    <label end="108" start="103" name="jj"/>
+                    <label end="122" start="110" name="nn"/>
+                    <label end="131" start="124" name="VVD"/>
+                    <label end="135" start="133" name="dt"/>
+                    <label end="141" start="137" name="nn"/>
+                    <label end="144" start="143" name="in"/>
+                    <label end="148" start="146" name="PP$"/>
+                    <label end="158" start="150" name="jj"/>
+                    <label end="169" start="160" name="nn"/>
+                    <label end="171" start="171" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="04/11/2005 10:35:35 PDT Mon" status="AUTO_EDITED" ID="2084777">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="38" start="33" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="7735" end="8" start="0" name="Time"/>
+                    <label cBy="395" feID="7579" end="13" start="10" name="Party_1"/>
+                    <label cBy="395" feID="7580" end="67" start="40" name="Party_2"/>
+                    <label cBy="395" feID="7735" end="95" start="69" name="Time"/>
+                    <label cBy="395" feID="7581" end="28" start="20" name="Obligation"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="8" start="0" name="Dep"/>
+                    <label end="13" start="10" name="Ext"/>
+                    <label end="67" start="40" name="Dep"/>
+                    <label end="95" start="69" name="Dep"/>
+                    <label end="28" start="20" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="8" start="0" name="PP"/>
+                    <label end="13" start="10" name="NP"/>
+                    <label end="67" start="40" name="PP"/>
+                    <label end="95" start="69" name="PP"/>
+                    <label end="28" start="20" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="18" start="15" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="11" paragNo="131" aPos="76918834" ID="1318337">
+            <text>The first step in that direction was taken by Judas in 161 B.C. , when he made his treaty of alliance with the Romans .</text>
+            <annotationSet cDate="04/11/2005 10:35:39 PDT Mon" status="UNANN" ID="2084794">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="8" start="4" name="jj"/>
+                    <label end="13" start="10" name="nn"/>
+                    <label end="16" start="15" name="in"/>
+                    <label end="21" start="18" name="dt"/>
+                    <label end="31" start="23" name="nn"/>
+                    <label end="35" start="33" name="VBD"/>
+                    <label end="41" start="37" name="VVN"/>
+                    <label end="44" start="43" name="in"/>
+                    <label end="50" start="46" name="NP"/>
+                    <label end="53" start="52" name="in"/>
+                    <label end="57" start="55" name="cd"/>
+                    <label end="62" start="59" name="NP"/>
+                    <label end="64" start="64" name=","/>
+                    <label end="69" start="66" name="wrb"/>
+                    <label end="72" start="71" name="PP"/>
+                    <label end="77" start="74" name="VVD"/>
+                    <label end="81" start="79" name="PP$"/>
+                    <label end="88" start="83" name="nn"/>
+                    <label end="91" start="90" name="in"/>
+                    <label end="100" start="93" name="nn"/>
+                    <label end="105" start="102" name="in"/>
+                    <label end="109" start="107" name="dt"/>
+                    <label end="116" start="111" name="nns"/>
+                    <label end="118" start="118" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="04/11/2005 10:35:39 PDT Mon" status="AUTO_EDITED" ID="2084795">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="88" start="83" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="7579" end="72" start="71" name="Party_1"/>
+                    <label cBy="395" feID="7581" end="100" start="90" name="Obligation"/>
+                    <label cBy="395" feID="7580" end="116" start="102" name="Party_2"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="72" start="71" name="Ext"/>
+                    <label end="100" start="90" name="Dep"/>
+                    <label end="116" start="102" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="72" start="71" name="NP"/>
+                    <label end="100" start="90" name="PP"/>
+                    <label end="116" start="102" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="77" start="74" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="12" paragNo="78" aPos="100023582" ID="1318338">
+            <text>Then Odovacer and Childeric made a treaty , and turned against the Alamans who had invaded Italy .</text>
+            <annotationSet cDate="04/11/2005 10:35:39 PDT Mon" status="UNANN" ID="2084796">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="rb"/>
+                    <label end="12" start="5" name="NP"/>
+                    <label end="16" start="14" name="cc"/>
+                    <label end="26" start="18" name="NP"/>
+                    <label end="31" start="28" name="VVD"/>
+                    <label end="33" start="33" name="dt"/>
+                    <label end="40" start="35" name="nn"/>
+                    <label end="42" start="42" name=","/>
+                    <label end="46" start="44" name="cc"/>
+                    <label end="53" start="48" name="VVD"/>
+                    <label end="61" start="55" name="in"/>
+                    <label end="65" start="63" name="dt"/>
+                    <label end="73" start="67" name="nns"/>
+                    <label end="77" start="75" name="wp"/>
+                    <label end="81" start="79" name="VHD"/>
+                    <label end="89" start="83" name="VVD"/>
+                    <label end="95" start="91" name="NP"/>
+                    <label end="97" start="97" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="04/11/2005 10:35:39 PDT Mon" status="AUTO_EDITED" ID="2084797">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="40" start="35" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="7585" end="26" start="5" name="Parties"/>
+                    <label cBy="395" feID="7581" itype="DNI" name="Obligation"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="26" start="5" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="26" start="5" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="31" start="28" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="184" aPos="53749795" ID="1318341">
+            <text>Besides the commitment in Korea , the United States made a firm treaty with Japan in 1951 to ensure that she remained in the Western camp .</text>
+            <annotationSet cDate="04/11/2005 10:35:40 PDT Mon" status="UNANN" ID="2084802">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="0" name="in"/>
+                    <label end="10" start="8" name="dt"/>
+                    <label end="21" start="12" name="nn"/>
+                    <label end="24" start="23" name="in"/>
+                    <label end="30" start="26" name="NP"/>
+                    <label end="32" start="32" name=","/>
+                    <label end="36" start="34" name="dt"/>
+                    <label end="43" start="38" name="NP"/>
+                    <label end="50" start="45" name="NPS"/>
+                    <label end="55" start="52" name="VVD"/>
+                    <label end="57" start="57" name="dt"/>
+                    <label end="62" start="59" name="nn"/>
+                    <label end="69" start="64" name="nn"/>
+                    <label end="74" start="71" name="in"/>
+                    <label end="80" start="76" name="NP"/>
+                    <label end="83" start="82" name="in"/>
+                    <label end="88" start="85" name="cd"/>
+                    <label end="91" start="90" name="to"/>
+                    <label end="98" start="93" name="VV"/>
+                    <label end="103" start="100" name="in"/>
+                    <label end="107" start="105" name="PP"/>
+                    <label end="116" start="109" name="VVD"/>
+                    <label end="119" start="118" name="in"/>
+                    <label end="123" start="121" name="dt"/>
+                    <label end="131" start="125" name="jj"/>
+                    <label end="136" start="133" name="nn"/>
+                    <label end="138" start="138" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="04/11/2005 10:35:41 PDT Mon" status="AUTO_EDITED" ID="2084803">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="69" start="64" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="7579" end="50" start="34" name="Party_1"/>
+                    <label cBy="395" feID="7584" end="62" start="59" name="Manner"/>
+                    <label cBy="395" feID="7580" end="80" start="71" name="Party_2"/>
+                    <label cBy="395" feID="7735" end="88" start="82" name="Time"/>
+                    <label cBy="395" feID="7581" end="136" start="90" name="Obligation"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="50" start="34" name="Ext"/>
+                    <label end="62" start="59" name="Dep"/>
+                    <label end="80" start="71" name="Dep"/>
+                    <label end="88" start="82" name="Dep"/>
+                    <label end="136" start="90" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="50" start="34" name="NP"/>
+                    <label end="62" start="59" name="AJP"/>
+                    <label end="80" start="71" name="PP"/>
+                    <label end="88" start="82" name="PP"/>
+                    <label end="136" start="90" name="VPto"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="55" start="52" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="5" paragNo="23" aPos="52059396" ID="1318347">
+            <text>Henry and he made a treaty of alliance , agreeing that Richard should be betrothed to one of the Count 's daughters and that , when married , they should be granted the duchy of Aquitaine .</text>
+            <annotationSet cDate="04/11/2005 10:35:42 PDT Mon" status="UNANN" ID="2084814">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="NP"/>
+                    <label end="8" start="6" name="cc"/>
+                    <label end="11" start="10" name="PP"/>
+                    <label end="16" start="13" name="VVD"/>
+                    <label end="18" start="18" name="dt"/>
+                    <label end="25" start="20" name="nn"/>
+                    <label end="28" start="27" name="in"/>
+                    <label end="37" start="30" name="nn"/>
+                    <label end="39" start="39" name=","/>
+                    <label end="48" start="41" name="VVG"/>
+                    <label end="53" start="50" name="in"/>
+                    <label end="61" start="55" name="NP"/>
+                    <label end="68" start="63" name="md"/>
+                    <label end="71" start="70" name="vb"/>
+                    <label end="81" start="73" name="VVN"/>
+                    <label end="84" start="83" name="to"/>
+                    <label end="88" start="86" name="cd"/>
+                    <label end="91" start="90" name="in"/>
+                    <label end="95" start="93" name="dt"/>
+                    <label end="101" start="97" name="NP"/>
+                    <label end="104" start="103" name="POS"/>
+                    <label end="114" start="106" name="nns"/>
+                    <label end="118" start="116" name="cc"/>
+                    <label end="123" start="120" name="in"/>
+                    <label end="125" start="125" name=","/>
+                    <label end="130" start="127" name="wrb"/>
+                    <label end="138" start="132" name="VVN"/>
+                    <label end="140" start="140" name=","/>
+                    <label end="145" start="142" name="PP"/>
+                    <label end="152" start="147" name="md"/>
+                    <label end="155" start="154" name="vb"/>
+                    <label end="163" start="157" name="VVN"/>
+                    <label end="167" start="165" name="dt"/>
+                    <label end="173" start="169" name="nn"/>
+                    <label end="176" start="175" name="in"/>
+                    <label end="186" start="178" name="NP"/>
+                    <label end="188" start="188" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="04/11/2005 10:35:43 PDT Mon" status="AUTO_EDITED" ID="2084815">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="25" start="20" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="7585" end="11" start="0" name="Parties"/>
+                    <label cBy="395" feID="7581" end="37" start="27" name="Obligation"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="11" start="0" name="Ext"/>
+                    <label end="37" start="27" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="11" start="0" name="NP"/>
+                    <label end="37" start="27" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="16" start="13" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="586" aPos="85607235" ID="1318355">
+            <text>When light dawned , both sides looked very foolish , and made a treaty that everything should be put back exactly as it had been . &quot;</text>
+            <annotationSet cDate="04/11/2005 10:35:45 PDT Mon" status="UNANN" ID="2084830">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="wrb"/>
+                    <label end="9" start="5" name="nn"/>
+                    <label end="16" start="11" name="VVD"/>
+                    <label end="18" start="18" name=","/>
+                    <label end="23" start="20" name="dt"/>
+                    <label end="29" start="25" name="nns"/>
+                    <label end="36" start="31" name="VVD"/>
+                    <label end="41" start="38" name="rb"/>
+                    <label end="49" start="43" name="jj"/>
+                    <label end="51" start="51" name=","/>
+                    <label end="55" start="53" name="cc"/>
+                    <label end="60" start="57" name="VVD"/>
+                    <label end="62" start="62" name="dt"/>
+                    <label end="69" start="64" name="nn"/>
+                    <label end="74" start="71" name="in"/>
+                    <label end="85" start="76" name="nn"/>
+                    <label end="92" start="87" name="md"/>
+                    <label end="95" start="94" name="vb"/>
+                    <label end="99" start="97" name="VVN"/>
+                    <label end="104" start="101" name="rb"/>
+                    <label end="112" start="106" name="rb"/>
+                    <label end="115" start="114" name="in"/>
+                    <label end="118" start="117" name="PP"/>
+                    <label end="122" start="120" name="VHD"/>
+                    <label end="127" start="124" name="VBN"/>
+                    <label end="129" start="129" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="04/11/2005 10:35:45 PDT Mon" status="AUTO_EDITED" ID="2084831">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="69" start="64" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="7585" end="29" start="20" name="Parties"/>
+                    <label cBy="395" feID="7581" end="127" start="71" name="Obligation"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="29" start="20" name="Ext"/>
+                    <label end="127" start="71" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="29" start="20" name="NP"/>
+                    <label end="127" start="71" name="Sfin"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="60" start="57" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-Wsign-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="883" aPos="91143927" ID="1318357">
+            <text>Hungary and Russia signed a similar treaty on the same day and also established diplomatic relations .</text>
+            <annotationSet cDate="04/11/2005 10:35:46 PDT Mon" status="UNANN" ID="2084834">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="0" name="NP"/>
+                    <label end="10" start="8" name="cc"/>
+                    <label end="17" start="12" name="NP"/>
+                    <label end="24" start="19" name="VVD"/>
+                    <label end="26" start="26" name="dt"/>
+                    <label end="34" start="28" name="jj"/>
+                    <label end="41" start="36" name="nn"/>
+                    <label end="44" start="43" name="in"/>
+                    <label end="48" start="46" name="dt"/>
+                    <label end="53" start="50" name="jj"/>
+                    <label end="57" start="55" name="nn"/>
+                    <label end="61" start="59" name="cc"/>
+                    <label end="66" start="63" name="rb"/>
+                    <label end="78" start="68" name="VVN"/>
+                    <label end="89" start="80" name="jj"/>
+                    <label end="99" start="91" name="nns"/>
+                    <label end="101" start="101" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="04/11/2005 10:35:46 PDT Mon" status="AUTO_EDITED" ID="2084835">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="41" start="36" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="7585" end="17" start="0" name="Parties"/>
+                    <label cBy="395" feID="7581" end="34" start="28" name="Obligation"/>
+                    <label cBy="395" feID="7735" end="57" start="43" name="Time"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="17" start="0" name="Ext"/>
+                    <label end="34" start="28" name="Dep"/>
+                    <label end="57" start="43" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="17" start="0" name="NP"/>
+                    <label end="34" start="28" name="AJP"/>
+                    <label end="57" start="43" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="24" start="19" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="8" paragNo="34" aPos="55235762" ID="1318364">
+            <text>But there were important differences between America and Russia in the Middle East and other areas of the Third World in 1970 , the year in which Brandt signed non-aggression treaties with the USSR and Poland .</text>
+            <annotationSet cDate="04/11/2005 10:35:48 PDT Mon" status="UNANN" ID="2084848">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="cc"/>
+                    <label end="8" start="4" name="ex"/>
+                    <label end="13" start="10" name="VBD"/>
+                    <label end="23" start="15" name="jj"/>
+                    <label end="35" start="25" name="nns"/>
+                    <label end="43" start="37" name="in"/>
+                    <label end="51" start="45" name="NP"/>
+                    <label end="55" start="53" name="cc"/>
+                    <label end="62" start="57" name="NP"/>
+                    <label end="65" start="64" name="in"/>
+                    <label end="69" start="67" name="dt"/>
+                    <label end="76" start="71" name="NP"/>
+                    <label end="81" start="78" name="NP"/>
+                    <label end="85" start="83" name="cc"/>
+                    <label end="91" start="87" name="jj"/>
+                    <label end="97" start="93" name="nns"/>
+                    <label end="100" start="99" name="in"/>
+                    <label end="104" start="102" name="dt"/>
+                    <label end="110" start="106" name="NP"/>
+                    <label end="116" start="112" name="NP"/>
+                    <label end="119" start="118" name="in"/>
+                    <label end="124" start="121" name="cd"/>
+                    <label end="126" start="126" name=","/>
+                    <label end="130" start="128" name="dt"/>
+                    <label end="135" start="132" name="nn"/>
+                    <label end="138" start="137" name="in"/>
+                    <label end="144" start="140" name="wdt"/>
+                    <label end="151" start="146" name="NP"/>
+                    <label end="158" start="153" name="VVD"/>
+                    <label end="173" start="160" name="nn"/>
+                    <label end="182" start="175" name="nns"/>
+                    <label end="187" start="184" name="in"/>
+                    <label end="191" start="189" name="dt"/>
+                    <label end="196" start="193" name="NP"/>
+                    <label end="200" start="198" name="cc"/>
+                    <label end="207" start="202" name="NP"/>
+                    <label end="209" start="209" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="04/11/2005 10:35:48 PDT Mon" status="AUTO_EDITED" ID="2084849">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="182" start="175" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="7579" end="151" start="146" name="Party_1"/>
+                    <label cBy="395" feID="7581" end="173" start="160" name="Obligation"/>
+                    <label cBy="395" feID="7580" end="207" start="184" name="Party_2"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="151" start="146" name="Ext"/>
+                    <label end="173" start="160" name="Dep"/>
+                    <label end="207" start="184" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="151" start="146" name="NP"/>
+                    <label end="173" start="160" name="N"/>
+                    <label end="207" start="184" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="158" start="153" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="839" aPos="91819205" ID="1318371">
+            <text>On Oct. 12 Russian President Boris Yeltsin and his Azerbaijani counterpart Abulfaz Elchibey signed a treaty of &quot; friendship , co-operation and mutual security &quot; in Moscow .</text>
+            <annotationSet cDate="04/11/2005 10:35:50 PDT Mon" status="UNANN" ID="2084862">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="in"/>
+                    <label end="6" start="3" name="NP"/>
+                    <label end="9" start="8" name="cd"/>
+                    <label end="17" start="11" name="NP"/>
+                    <label end="27" start="19" name="NP"/>
+                    <label end="33" start="29" name="NP"/>
+                    <label end="41" start="35" name="NP"/>
+                    <label end="45" start="43" name="cc"/>
+                    <label end="49" start="47" name="PP$"/>
+                    <label end="61" start="51" name="NP"/>
+                    <label end="73" start="63" name="nn"/>
+                    <label end="81" start="75" name="NP"/>
+                    <label end="90" start="83" name="NP"/>
+                    <label end="97" start="92" name="VVD"/>
+                    <label end="99" start="99" name="dt"/>
+                    <label end="106" start="101" name="nn"/>
+                    <label end="109" start="108" name="in"/>
+                    <label end="122" start="113" name="nn"/>
+                    <label end="124" start="124" name=","/>
+                    <label end="137" start="126" name="nn"/>
+                    <label end="141" start="139" name="cc"/>
+                    <label end="148" start="143" name="jj"/>
+                    <label end="157" start="150" name="nn"/>
+                    <label end="162" start="161" name="in"/>
+                    <label end="169" start="164" name="NP"/>
+                    <label end="171" start="171" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="04/11/2005 10:35:51 PDT Mon" status="AUTO_EDITED" ID="2084863">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="106" start="101" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="7735" end="9" start="0" name="Time"/>
+                    <label cBy="395" feID="7585" end="90" start="11" name="Parties"/>
+                    <label cBy="395" feID="7581" end="157" start="108" name="Obligation"/>
+                    <label cBy="395" feID="7734" end="169" start="161" name="Place"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="9" start="0" name="Dep"/>
+                    <label end="90" start="11" name="Ext"/>
+                    <label end="157" start="108" name="Dep"/>
+                    <label end="169" start="161" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="9" start="0" name="PP"/>
+                    <label end="90" start="11" name="NP"/>
+                    <label end="157" start="108" name="PP"/>
+                    <label end="169" start="161" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="97" start="92" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="106" aPos="20617888" ID="1318372">
+            <text>IN COLOMBIA next week , 27 nations will sign a treaty to protect and develop the waters of the Caribbean .</text>
+            <annotationSet cDate="04/11/2005 10:35:51 PDT Mon" status="UNANN" ID="2084864">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="in"/>
+                    <label end="10" start="3" name="NP"/>
+                    <label end="15" start="12" name="jj"/>
+                    <label end="20" start="17" name="nn"/>
+                    <label end="22" start="22" name=","/>
+                    <label end="25" start="24" name="cd"/>
+                    <label end="33" start="27" name="nns"/>
+                    <label end="38" start="35" name="md"/>
+                    <label end="43" start="40" name="VV"/>
+                    <label end="45" start="45" name="dt"/>
+                    <label end="52" start="47" name="nn"/>
+                    <label end="55" start="54" name="to"/>
+                    <label end="63" start="57" name="VV"/>
+                    <label end="67" start="65" name="cc"/>
+                    <label end="75" start="69" name="VV"/>
+                    <label end="79" start="77" name="dt"/>
+                    <label end="86" start="81" name="nns"/>
+                    <label end="89" start="88" name="in"/>
+                    <label end="93" start="91" name="dt"/>
+                    <label end="103" start="95" name="NP"/>
+                    <label end="105" start="105" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="04/11/2005 10:35:51 PDT Mon" status="AUTO_EDITED" ID="2084865">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="52" start="47" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="7734" end="10" start="0" name="Place"/>
+                    <label cBy="395" feID="7735" end="20" start="12" name="Time"/>
+                    <label cBy="395" feID="7585" end="33" start="24" name="Parties"/>
+                    <label cBy="395" feID="7581" end="103" start="54" name="Obligation"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="103" start="54" name="Dep"/>
+                    <label end="10" start="0" name="Dep"/>
+                    <label end="20" start="12" name="Dep"/>
+                    <label end="33" start="24" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="103" start="54" name="VPto"/>
+                    <label end="10" start="0" name="PP"/>
+                    <label end="20" start="12" name="NP"/>
+                    <label end="33" start="24" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="43" start="40" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="5874" aPos="86307202" ID="1318380">
+            <text>Instead of indulging in childish comments about the number of nuclear weapons , what does he say to the 140 non-nuclear nations who signed the nuclear non-proliferation treaty ?</text>
+            <annotationSet cDate="04/11/2005 10:35:53 PDT Mon" status="UNANN" ID="2084880">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="0" name="rb"/>
+                    <label end="9" start="8" name="in"/>
+                    <label end="19" start="11" name="VVG"/>
+                    <label end="22" start="21" name="in"/>
+                    <label end="31" start="24" name="jj"/>
+                    <label end="40" start="33" name="nns"/>
+                    <label end="46" start="42" name="in"/>
+                    <label end="50" start="48" name="dt"/>
+                    <label end="57" start="52" name="nn"/>
+                    <label end="60" start="59" name="in"/>
+                    <label end="68" start="62" name="jj"/>
+                    <label end="76" start="70" name="nns"/>
+                    <label end="78" start="78" name=","/>
+                    <label end="83" start="80" name="wp"/>
+                    <label end="88" start="85" name="VVZ"/>
+                    <label end="91" start="90" name="PP"/>
+                    <label end="95" start="93" name="VVP"/>
+                    <label end="98" start="97" name="to"/>
+                    <label end="102" start="100" name="dt"/>
+                    <label end="106" start="104" name="cd"/>
+                    <label end="118" start="108" name="jj"/>
+                    <label end="126" start="120" name="nns"/>
+                    <label end="130" start="128" name="wp"/>
+                    <label end="137" start="132" name="VVD"/>
+                    <label end="141" start="139" name="dt"/>
+                    <label end="149" start="143" name="jj"/>
+                    <label end="167" start="151" name="nn"/>
+                    <label end="174" start="169" name="nn"/>
+                    <label end="176" start="176" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="04/11/2005 10:35:54 PDT Mon" status="AUTO_EDITED" ID="2084881">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="174" start="169" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="7585" end="126" start="100" name="Parties"/>
+                    <label cBy="395" feID="7581" end="167" start="143" name="Obligation"/>
+                    <label cBy="309" feID="7585" end="130" start="128" name="Parties"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="126" start="100" name="Ext"/>
+                    <label end="167" start="143" name="Dep"/>
+                    <label end="130" start="128" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="126" start="100" name="NP"/>
+                    <label end="167" start="143" name="NP"/>
+                    <label end="130" start="128" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other">
+                    <label end="126" start="100" name="Ant"/>
+                    <label end="130" start="128" name="Rel"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="137" start="132" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+    <subCorpus name="01-T-PPbetwen-(2)"/>
+    <subCorpus name="other-matched-(2)"/>
+    <subCorpus name="other-unmatched-(2)"/>
+    <subCorpus name="01-T-PPbetween-(3)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="282" aPos="5532396" ID="1318536">
+            <text>A 1903 treaty between the US and Panama gave the US the right to build and open a waterway .</text>
+            <annotationSet cDate="04/11/2005 11:30:46 PDT Mon" status="UNANN" ID="2085192">
+                <layer rank="1" name="PENN">
+                    <label end="0" start="0" name="dt"/>
+                    <label end="5" start="2" name="cd"/>
+                    <label end="12" start="7" name="nn"/>
+                    <label end="20" start="14" name="in"/>
+                    <label end="24" start="22" name="dt"/>
+                    <label end="27" start="26" name="NP"/>
+                    <label end="31" start="29" name="cc"/>
+                    <label end="38" start="33" name="NP"/>
+                    <label end="43" start="40" name="VVD"/>
+                    <label end="47" start="45" name="dt"/>
+                    <label end="50" start="49" name="NP"/>
+                    <label end="54" start="52" name="dt"/>
+                    <label end="60" start="56" name="nn"/>
+                    <label end="63" start="62" name="to"/>
+                    <label end="69" start="65" name="VV"/>
+                    <label end="73" start="71" name="cc"/>
+                    <label end="78" start="75" name="VV"/>
+                    <label end="80" start="80" name="dt"/>
+                    <label end="89" start="82" name="nn"/>
+                    <label end="91" start="91" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="04/11/2005 11:30:46 PDT Mon" status="MANUAL" ID="2085193">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="12" start="7" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="7735" end="5" start="2" name="Time"/>
+                    <label cBy="395" feID="7585" end="38" start="14" name="Parties"/>
+                    <label cBy="395" feID="7581" itype="DNI" name="Obligation"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="5" start="2" name="Dep"/>
+                    <label end="38" start="14" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="5" start="2" name="N"/>
+                    <label end="38" start="14" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="188" aPos="27702994" ID="1318538">
+            <text>There is no extradition treaty between the United States and Libya .</text>
+            <annotationSet cDate="04/11/2005 11:30:47 PDT Mon" status="UNANN" ID="2085196">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="ex"/>
+                    <label end="7" start="6" name="VBZ"/>
+                    <label end="10" start="9" name="dt"/>
+                    <label end="22" start="12" name="nn"/>
+                    <label end="29" start="24" name="nn"/>
+                    <label end="37" start="31" name="in"/>
+                    <label end="41" start="39" name="dt"/>
+                    <label end="48" start="43" name="NP"/>
+                    <label end="55" start="50" name="NPS"/>
+                    <label end="59" start="57" name="cc"/>
+                    <label end="65" start="61" name="NP"/>
+                    <label end="67" start="67" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="04/11/2005 11:30:47 PDT Mon" status="MANUAL" ID="2085197">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="29" start="24" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="7581" end="22" start="12" name="Obligation"/>
+                    <label cBy="395" feID="7585" end="65" start="31" name="Parties"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="22" start="12" name="Dep"/>
+                    <label end="65" start="31" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="22" start="12" name="N"/>
+                    <label end="65" start="31" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="568" aPos="112829532" ID="1318539">
+            <text>Blocking the BA/USAir deal would have required him to renounce the current aviation treaty between the two countries which would have been “ a very dramatic step ” .</text>
+            <annotationSet cDate="04/11/2005 11:30:47 PDT Mon" status="UNANN" ID="2085198">
+                <layer rank="1" name="PENN">
+                    <label end="7" start="0" name="VVG"/>
+                    <label end="11" start="9" name="dt"/>
+                    <label end="20" start="13" name="NP"/>
+                    <label end="25" start="22" name="nn"/>
+                    <label end="31" start="27" name="md"/>
+                    <label end="36" start="33" name="VH"/>
+                    <label end="45" start="38" name="VVN"/>
+                    <label end="49" start="47" name="PP"/>
+                    <label end="52" start="51" name="to"/>
+                    <label end="61" start="54" name="VV"/>
+                    <label end="65" start="63" name="dt"/>
+                    <label end="73" start="67" name="jj"/>
+                    <label end="82" start="75" name="nn"/>
+                    <label end="89" start="84" name="nn"/>
+                    <label end="97" start="91" name="in"/>
+                    <label end="101" start="99" name="dt"/>
+                    <label end="105" start="103" name="cd"/>
+                    <label end="115" start="107" name="nns"/>
+                    <label end="121" start="117" name="wdt"/>
+                    <label end="127" start="123" name="md"/>
+                    <label end="132" start="129" name="VH"/>
+                    <label end="137" start="134" name="VBN"/>
+                    <label end="141" start="141" name="dt"/>
+                    <label end="146" start="143" name="rb"/>
+                    <label end="155" start="148" name="jj"/>
+                    <label end="160" start="157" name="nn"/>
+                    <label end="164" start="164" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="04/11/2005 11:30:47 PDT Mon" status="MANUAL" ID="2085199">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="89" start="84" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="7582" end="82" start="75" name="Topic"/>
+                    <label cBy="395" feID="7585" end="115" start="91" name="Parties"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="82" start="75" name="Dep"/>
+                    <label end="115" start="91" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="82" start="75" name="N"/>
+                    <label end="115" start="91" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="61" start="54" name="Gov"/>
+                    <label end="115" start="63" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="68" aPos="71646668" ID="1318551">
+            <text>She opposed the treaty between Britain and Ireland , although involved in attempts to negotiate a truce at the start of civil war .</text>
+            <annotationSet cDate="04/11/2005 11:30:51 PDT Mon" status="UNANN" ID="2085222">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="PP"/>
+                    <label end="10" start="4" name="VVD"/>
+                    <label end="14" start="12" name="dt"/>
+                    <label end="21" start="16" name="nn"/>
+                    <label end="29" start="23" name="in"/>
+                    <label end="37" start="31" name="NP"/>
+                    <label end="41" start="39" name="cc"/>
+                    <label end="49" start="43" name="NP"/>
+                    <label end="51" start="51" name=","/>
+                    <label end="60" start="53" name="in"/>
+                    <label end="69" start="62" name="VVN"/>
+                    <label end="72" start="71" name="in"/>
+                    <label end="81" start="74" name="nns"/>
+                    <label end="84" start="83" name="to"/>
+                    <label end="94" start="86" name="VV"/>
+                    <label end="96" start="96" name="dt"/>
+                    <label end="102" start="98" name="nn"/>
+                    <label end="105" start="104" name="in"/>
+                    <label end="109" start="107" name="dt"/>
+                    <label end="115" start="111" name="nn"/>
+                    <label end="118" start="117" name="in"/>
+                    <label end="124" start="120" name="jj"/>
+                    <label end="128" start="126" name="nn"/>
+                    <label end="130" start="130" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="04/11/2005 11:30:51 PDT Mon" status="MANUAL" ID="2085223">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="21" start="16" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="7585" end="49" start="23" name="Parties"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="49" start="23" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="49" start="23" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="10" start="4" name="Gov"/>
+                    <label end="49" start="12" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(3)"/>
+    <subCorpus name="other-unmatched-(3)"/>
+</lexUnit>

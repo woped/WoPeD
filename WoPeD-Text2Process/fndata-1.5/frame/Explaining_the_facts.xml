@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="05/24/2005 10:51:05 PDT Tue" name="Explaining_the_facts" ID="1462" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A &lt;fen&gt;Question&lt;/fen&gt; about the reason or cause of a known &lt;fen&gt;State_of_affairs&lt;/fen&gt; is presented as being answered by the existence of a particular &lt;fen&gt;Fact&lt;/fen&gt;.  The exact chain of reasoning, including the answer itself, of which the &lt;fen&gt;Fact&lt;/fen&gt; is a part is not specified.
+
+Contrast this frame with the Evidence frame which casts a Support (a fact) as providing Evidence for, or conclusively proving, the Proposition (another proposed fact). Thus, there is no open question in the Evidence frame.
+
+
+&lt;ex&gt;&lt;fex name="fac"&gt;Ruby's orange vest marked with the words "service dog"&lt;/fex&gt; &lt;t&gt;accounts&lt;/t&gt; &lt;fex name="que"&gt;for why the 3-year-old goes along&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="fac"&gt;The nation's history&lt;/fex&gt; &lt;t&gt;explains&lt;/t&gt; &lt;fex name="que"&gt;why the current conflict succumbs to, and yet simultaneously transcends, the stereotype&lt;/fex&gt;.&lt;/ex&gt;
+
+
+&lt;ex&gt;Then &lt;fex name="sta"&gt;that I exist&lt;/fex&gt; is &lt;t&gt;explained&lt;/t&gt; &lt;fex name="fac"&gt;by A and B having come together&lt;/fex&gt;.&lt;/ex&gt;
+
+
+&lt;ex&gt; &lt;fex name="fac"&gt;Lack of potential for improvement in the immediate future&lt;/fex&gt; &lt;t&gt;accounts&lt;/t&gt; &lt;fex name="sta"&gt;for the low number of returnees into South Ossetia, even for the Ossetian ethnic group&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="fac"&gt;That&lt;/fex&gt; &lt;t&gt;explains&lt;/t&gt; &lt;fex name="sta"&gt;it&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="mea"&gt;Somehow&lt;/fex&gt;  &lt;fex name="fac"&gt;this&lt;/fex&gt; &lt;t&gt;explains&lt;/t&gt; &lt;fex name="que"&gt;why Apple is always  the last man to get the technology&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="05/24/2005 10:51:06 PDT Tue" abbrev="fac" name="Fact" ID="8025">
+        <definition>&lt;def-root&gt;A fact which can be connected by a chain of reasoning to the State_of_affairs.
+
+&lt;ex&gt;&lt;fex name="fac"&gt;This fact&lt;/fex&gt; alone &lt;t&gt;explains&lt;/t&gt; the Sun/climate anomaly.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="05/24/2005 10:51:10 PDT Tue" abbrev="sta" name="State_of_affairs" ID="8026">
+        <definition>&lt;def-root&gt;A fact whose cause is under consideration.
+
+&lt;ex&gt;Do increased proinsulin concentrations &lt;t&gt;explain&lt;/t&gt; &lt;fex name="sta"&gt;the excess risk of coronary heart disease in diabetic and prediabetic subjects&lt;/fex&gt;?&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Question" ID="8034"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="05/24/2005 10:51:11 PDT Tue" abbrev="deg" name="Degree" ID="8027">
+        <definition>&lt;def-root&gt;This FE identifies how much of the &lt;fen&gt;State_of_affairs&lt;/fen&gt; is explained by the &lt;fen&gt;Fact&lt;/fen&gt;.
+
+&lt;ex&gt;This, in my opinion, &lt;fex name="deg"&gt;partially&lt;/fex&gt; &lt;t&gt;accounts&lt;/t&gt; for  why Anakin became a ghost.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="05/24/2005 10:51:11 PDT Tue" abbrev="man" name="Manner" ID="8028">
+        <definition>&lt;def-root&gt;This FE indicates salient characteristics of the &lt;fen&gt;Fact&lt;/fen&gt; considered as an explanation.
+
+&lt;ex&gt;Current life-history theory would &lt;fex name="man"&gt;readily&lt;/fex&gt; &lt;t&gt;explain&lt;/t&gt; the small males in B if juvenile male mortality were higher than that of females , but adult mortality should not affect the timing of maturity or adult size .&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="05/24/2005 10:51:11 PDT Tue" abbrev="mea" name="Means" ID="8029">
+        <definition>&lt;def-root&gt;An intermediate logical step that justifies the relationship between  the &lt;fen&gt;Fact&lt;/fen&gt; and the &lt;fen&gt;State_of_affairs&lt;/fen&gt;.
+
+
+&lt;ex&gt;This gives an &lt;t&gt;explanation&lt;/t&gt; for the observation &lt;fex name="mea"&gt;by identifying it as an instance of general pattern&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="05/24/2005 10:51:11 PDT Tue" abbrev="poi" name="Point_of_view" ID="8033">
+        <definition>&lt;def-root&gt;The perspective of an individual who judges whether they consider the Fact an explanation for the State_of_affairs.
+
+&lt;ex&gt;&lt;fex name="poi"&gt;To her&lt;/fex&gt;, this &lt;t&gt;explains&lt;/t&gt; things, and we therefore need not discuss it any longer. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="05/24/2005 11:50:07 PDT Tue" abbrev="que" name="Question" ID="8034">
+        <definition>&lt;def-root&gt;An open proposition concerning the cause of the &lt;fen&gt;State_of_affairs&lt;/fen&gt;.
+
+&lt;ex&gt;The fact that this remained in Pandora's box &lt;t&gt;explains&lt;/t&gt; &lt;fex name="que"&gt;why men have hope&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="05/24/2005 02:57:05 PDT Tue" abbrev="con" name="Concessive" ID="8036">
+        <definition>&lt;def-root&gt; The state of affairs expressed by the main clause (containing the target) occurs or holds, and something other than that state of affairs would be expected given the state of affairs in the &lt;fen&gt;Concessive&lt;/fen&gt;. &lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Evidence</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="explain.v" ID="12139" lemmaID="13555" cBy="605" cDate="05/24/2005 12:43:46 PDT Tue">
+        <definition>FN: to make the existence of a state of affairs plain or understandable </definition>
+        <sentenceCount annotated="25" total="264"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="explain"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="account.v" ID="12140" lemmaID="302" cBy="605" cDate="05/24/2005 12:43:53 PDT Tue">
+        <definition>COD: give a satisfactory record or explanation of.</definition>
+        <sentenceCount annotated="42" total="277"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="account"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="explanation.n" ID="12141" lemmaID="13557" cBy="605" cDate="05/24/2005 12:44:04 PDT Tue">
+        <definition>FN: a fact that makes a state of affairs understandable</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="explanation"/>
+    </lexUnit>
+</frame>

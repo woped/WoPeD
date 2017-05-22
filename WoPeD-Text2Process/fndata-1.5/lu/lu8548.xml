@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="A" name="masked.a" ID="8548" frame="Eclipse" frameID="652" totalAnnotated="5" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degree" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Eclipsed" name="Eclipsed"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Obstruction" name="Obstruction"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD7C" type="Extra-Thematic" abbrev="sub" name="Subregion"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Extra-Thematic" abbrev="VP" name="Vantage_point"/>
+        </frame>
+    </header>
+    <definition>FN: being blocked from view by another entity</definition>
+    <lexeme POS="A" name="masked"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Degree"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Degree"/>
+                <annoSet ID="1857831"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Eclipsed"/>
+            <pattern total="5">
+                <valenceUnit GF="Ext" PT="NP" FE="Eclipsed"/>
+                <annoSet ID="1857829"/>
+                <annoSet ID="1857831"/>
+                <annoSet ID="1857833"/>
+                <annoSet ID="1857835"/>
+                <annoSet ID="1857837"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Obstruction"/>
+            <pattern total="5">
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Obstruction"/>
+                <annoSet ID="1857829"/>
+                <annoSet ID="1857831"/>
+                <annoSet ID="1857833"/>
+                <annoSet ID="1857835"/>
+                <annoSet ID="1857837"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Degree"/>
+            <FE name="Eclipsed"/>
+            <FE name="Obstruction"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Degree"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Eclipsed"/>
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Obstruction"/>
+                <annoSet ID="1857831"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="4">
+            <FE name="Eclipsed"/>
+            <FE name="Obstruction"/>
+            <pattern total="4">
+                <valenceUnit GF="Ext" PT="NP" FE="Eclipsed"/>
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Obstruction"/>
+                <annoSet ID="1857829"/>
+                <annoSet ID="1857833"/>
+                <annoSet ID="1857835"/>
+                <annoSet ID="1857837"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-PPwith-(1)">
+        <sentence corpID="111" docID="421" sentNo="5" paragNo="46" aPos="0" ID="1205354">
+            <text>This block is made out of a steel structure covered with concrete slabs and masked with a red brick shell .</text>
+            <annotationSet cDate="04/21/2003 06:10:21 PDT Mon" status="UNANN" ID="1857828">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="dt"/>
+                    <label end="9" start="5" name="nn"/>
+                    <label end="12" start="11" name="VBZ"/>
+                    <label end="17" start="14" name="VVN"/>
+                    <label end="21" start="19" name="rp"/>
+                    <label end="24" start="23" name="in"/>
+                    <label end="26" start="26" name="dt"/>
+                    <label end="32" start="28" name="nn"/>
+                    <label end="42" start="34" name="nn"/>
+                    <label end="50" start="44" name="VVN"/>
+                    <label end="55" start="52" name="in"/>
+                    <label end="64" start="57" name="jj"/>
+                    <label end="70" start="66" name="nns"/>
+                    <label end="74" start="72" name="cc"/>
+                    <label end="81" start="76" name="VVN"/>
+                    <label end="86" start="83" name="in"/>
+                    <label end="88" start="88" name="dt"/>
+                    <label end="92" start="90" name="jj"/>
+                    <label end="98" start="94" name="nn"/>
+                    <label end="104" start="100" name="nn"/>
+                    <label end="106" start="106" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/21/2003 06:10:21 PDT Mon" status="MANUAL" ID="1857829">
+                <layer rank="1" name="Target">
+                    <label cBy="351" end="81" start="76" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="351" feID="4362" end="42" start="26" name="Eclipsed"/>
+                    <label cBy="351" feID="4361" end="104" start="83" name="Obstruction"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="42" start="26" name="Ext"/>
+                    <label end="104" start="83" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="42" start="26" name="NP"/>
+                    <label end="104" start="83" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="270" aPos="0" ID="1205355">
+            <text>This experiment was carried out in a dedicated growth room with walls well masked with charcoal-grey cartridge paper .</text>
+            <annotationSet cDate="04/21/2003 06:10:21 PDT Mon" status="UNANN" ID="1857830">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="dt"/>
+                    <label end="14" start="5" name="nn"/>
+                    <label end="18" start="16" name="VBD"/>
+                    <label end="26" start="20" name="VVN"/>
+                    <label end="30" start="28" name="rp"/>
+                    <label end="33" start="32" name="in"/>
+                    <label end="35" start="35" name="dt"/>
+                    <label end="45" start="37" name="jj"/>
+                    <label end="52" start="47" name="nn"/>
+                    <label end="57" start="54" name="nn"/>
+                    <label end="62" start="59" name="in"/>
+                    <label end="68" start="64" name="nns"/>
+                    <label end="73" start="70" name="rb"/>
+                    <label end="80" start="75" name="VVN"/>
+                    <label end="85" start="82" name="in"/>
+                    <label end="99" start="87" name="jj"/>
+                    <label end="109" start="101" name="nn"/>
+                    <label end="115" start="111" name="nn"/>
+                    <label end="117" start="117" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/21/2003 06:10:22 PDT Mon" status="MANUAL" ID="1857831">
+                <layer rank="1" name="Target">
+                    <label cBy="351" end="80" start="75" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="351" feID="4362" end="68" start="64" name="Eclipsed"/>
+                    <label cBy="351" feID="4361" end="115" start="82" name="Obstruction"/>
+                    <label cBy="351" feID="4364" end="73" start="70" name="Degree"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="68" start="64" name="Ext"/>
+                    <label end="115" start="82" name="Dep"/>
+                    <label end="73" start="70" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="68" start="64" name="NP"/>
+                    <label end="115" start="82" name="PP"/>
+                    <label end="73" start="70" name="AVP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="5" paragNo="115" aPos="0" ID="1205356">
+            <text>Choice pears masked with chocolate sauce and cream , beautiful fresh peaches smothered in raspberry purée and set around with vanilla ice seem to me offences to nature , let alone to art or basic principles .</text>
+            <annotationSet cDate="04/21/2003 06:10:22 PDT Mon" status="UNANN" ID="1857832">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="0" name="nn"/>
+                    <label end="11" start="7" name="nns"/>
+                    <label end="18" start="13" name="VVN"/>
+                    <label end="23" start="20" name="in"/>
+                    <label end="33" start="25" name="jj"/>
+                    <label end="39" start="35" name="nn"/>
+                    <label end="43" start="41" name="cc"/>
+                    <label end="49" start="45" name="nn"/>
+                    <label end="51" start="51" name=","/>
+                    <label end="61" start="53" name="jj"/>
+                    <label end="67" start="63" name="jj"/>
+                    <label end="75" start="69" name="nns"/>
+                    <label end="85" start="77" name="VVN"/>
+                    <label end="88" start="87" name="in"/>
+                    <label end="98" start="90" name="nn"/>
+                    <label end="104" start="100" name="nn"/>
+                    <label end="108" start="106" name="cc"/>
+                    <label end="112" start="110" name="VVD"/>
+                    <label end="119" start="114" name="rp"/>
+                    <label end="124" start="121" name="in"/>
+                    <label end="132" start="126" name="nn"/>
+                    <label end="136" start="134" name="nn"/>
+                    <label end="141" start="138" name="VVP"/>
+                    <label end="144" start="143" name="to"/>
+                    <label end="147" start="146" name="PP"/>
+                    <label end="156" start="149" name="nns"/>
+                    <label end="159" start="158" name="to"/>
+                    <label end="166" start="161" name="nn"/>
+                    <label end="168" start="168" name=","/>
+                    <label end="172" start="170" name="VVD"/>
+                    <label end="178" start="174" name="rb"/>
+                    <label end="181" start="180" name="to"/>
+                    <label end="185" start="183" name="nn"/>
+                    <label end="188" start="187" name="cc"/>
+                    <label end="194" start="190" name="jj"/>
+                    <label end="205" start="196" name="nns"/>
+                    <label end="207" start="207" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/21/2003 06:10:24 PDT Mon" status="MANUAL" ID="1857833">
+                <layer rank="1" name="Target">
+                    <label cBy="351" end="18" start="13" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4362" end="11" start="0" name="Eclipsed"/>
+                    <label cBy="618" feID="4361" end="49" start="20" name="Obstruction"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="11" start="0" name="Ext"/>
+                    <label end="49" start="20" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="11" start="0" name="NP"/>
+                    <label end="49" start="20" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="504" aPos="0" ID="1205357">
+            <text>It was hard to tell because his face was masked with ribbons of caked blood , and his eyes were just slits in a puffy mess of red and black bruises .</text>
+            <annotationSet cDate="04/21/2003 06:10:24 PDT Mon" status="UNANN" ID="1857834">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="5" start="3" name="VBD"/>
+                    <label end="10" start="7" name="jj"/>
+                    <label end="13" start="12" name="to"/>
+                    <label end="18" start="15" name="VV"/>
+                    <label end="26" start="20" name="in"/>
+                    <label end="30" start="28" name="PP$"/>
+                    <label end="35" start="32" name="nn"/>
+                    <label end="39" start="37" name="VBD"/>
+                    <label end="46" start="41" name="VVN"/>
+                    <label end="51" start="48" name="in"/>
+                    <label end="59" start="53" name="nns"/>
+                    <label end="62" start="61" name="in"/>
+                    <label end="68" start="64" name="VVD"/>
+                    <label end="74" start="70" name="nn"/>
+                    <label end="76" start="76" name=","/>
+                    <label end="80" start="78" name="cc"/>
+                    <label end="84" start="82" name="PP$"/>
+                    <label end="89" start="86" name="nns"/>
+                    <label end="94" start="91" name="VBD"/>
+                    <label end="99" start="96" name="rb"/>
+                    <label end="105" start="101" name="nns"/>
+                    <label end="108" start="107" name="in"/>
+                    <label end="110" start="110" name="dt"/>
+                    <label end="116" start="112" name="jj"/>
+                    <label end="121" start="118" name="nn"/>
+                    <label end="124" start="123" name="in"/>
+                    <label end="128" start="126" name="jj"/>
+                    <label end="132" start="130" name="cc"/>
+                    <label end="138" start="134" name="jj"/>
+                    <label end="146" start="140" name="nns"/>
+                    <label end="148" start="148" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/21/2003 06:10:24 PDT Mon" status="MANUAL" ID="1857835">
+                <layer rank="1" name="Target">
+                    <label cBy="351" end="46" start="41" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4362" end="35" start="28" name="Eclipsed"/>
+                    <label cBy="618" feID="4361" end="74" start="48" name="Obstruction"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="35" start="28" name="Ext"/>
+                    <label end="74" start="48" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="35" start="28" name="NP"/>
+                    <label end="74" start="48" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj">
+                    <label end="39" start="37" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="135" aPos="0" ID="1205358">
+            <text>For safety 's sake , make sure the points on the ends of the sticks are blunted or masked with tape .</text>
+            <annotationSet cDate="04/21/2003 06:10:24 PDT Mon" status="UNANN" ID="1857836">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="in"/>
+                    <label end="9" start="4" name="nn"/>
+                    <label end="12" start="11" name="POS"/>
+                    <label end="17" start="14" name="nn"/>
+                    <label end="19" start="19" name=","/>
+                    <label end="24" start="21" name="VV"/>
+                    <label end="29" start="26" name="rb"/>
+                    <label end="33" start="31" name="dt"/>
+                    <label end="40" start="35" name="nns"/>
+                    <label end="43" start="42" name="in"/>
+                    <label end="47" start="45" name="dt"/>
+                    <label end="52" start="49" name="nns"/>
+                    <label end="55" start="54" name="in"/>
+                    <label end="59" start="57" name="dt"/>
+                    <label end="66" start="61" name="nns"/>
+                    <label end="70" start="68" name="vbp"/>
+                    <label end="78" start="72" name="VVN"/>
+                    <label end="81" start="80" name="cc"/>
+                    <label end="88" start="83" name="VVN"/>
+                    <label end="93" start="90" name="in"/>
+                    <label end="98" start="95" name="nn"/>
+                    <label end="100" start="100" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/21/2003 06:10:25 PDT Mon" status="MANUAL" ID="1857837">
+                <layer rank="1" name="Target">
+                    <label cBy="351" end="88" start="83" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="351" feID="4362" end="66" start="31" name="Eclipsed"/>
+                    <label cBy="351" feID="4361" end="98" start="90" name="Obstruction"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="66" start="31" name="Ext"/>
+                    <label end="98" start="90" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="66" start="31" name="NP"/>
+                    <label end="98" start="90" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj">
+                    <label end="70" start="68" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

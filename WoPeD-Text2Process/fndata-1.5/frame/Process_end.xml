@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="09/27/2001 06:11:22 PDT Thu" name="Process_end" ID="232" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A &lt;fen&gt;Process&lt;/fen&gt; comes to an end.&lt;/def-root&gt;</definition>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="11/07/2001 01:27:51 PST Wed" abbrev="Process" name="Process" ID="2104">
+        <definition>&lt;def-root&gt;Name of the event which occurs.&lt;ex&gt;Let &lt;fex name="Process"&gt;the carnage&lt;/fex&gt; &lt;t&gt;end&lt;/t&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="11/07/2001 01:27:51 PST Wed" abbrev="Last" name="Last_subevent" ID="2105">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Last_subevent&lt;/fen&gt; of an event.&lt;ex&gt;The peace march  &lt;t&gt;ended&lt;/t&gt; &lt;fex name="Last"&gt;with a prayer&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="11/07/2001 01:27:51 PST Wed" abbrev="Place" name="Place" ID="2106">
+        <definition>&lt;def-root&gt;Where the event takes place.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="11/07/2001 01:27:52 PST Wed" abbrev="Reas" name="Reason" ID="2107">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Reason&lt;/fen&gt; for which the event ends.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="11/07/2001 01:27:52 PST Wed" abbrev="Time" name="Time" ID="2108">
+        <definition>&lt;def-root&gt;When the event ends.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="11/07/2001 01:27:52 PST Wed" abbrev="Degr" name="Degree" ID="2109">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Degree&lt;/fen&gt; to which the event occurs.&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="11/07/2001 01:27:52 PST Wed" abbrev="Depict" name="Depictive" ID="2110">
+        <definition>&lt;def-root&gt;Depictive phrase describing the actor of the event.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="11/07/2001 01:27:52 PST Wed" abbrev="Manr" name="Manner" ID="2111">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Manner&lt;/fen&gt; of performing the event.&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="11/07/2001 01:27:52 PST Wed" abbrev="Result" name="Result" ID="2112">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Result&lt;/fen&gt; for the event.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A9A9A9" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="309" cDate="10/02/2003 11:36:53 PDT Thu" abbrev="Freq" name="Frequency" ID="5359">
+        <definition>&lt;def-root&gt;The number of times that the event is repeated.
+
+&lt;ex&gt;&lt;fex name="Frequency"&gt;Twice&lt;/fex&gt; the peace march &lt;t&gt;ended&lt;/t&gt; with a prayer.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="618" cDate="12/15/2005 05:01:38 PST Thu" abbrev="dur" name="Duration" ID="9784">
+        <definition>&lt;def-root&gt;The amount of time it takes for the &lt;fen&gt;Process&lt;/fen&gt; to end.&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Event</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Activity_finish</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of">
+        <relatedFrame>Process</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes">
+        <relatedFrame>Process_completed_state</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Preceded by">
+        <relatedFrame>Process_continue</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="end.v" ID="4426" lemmaID="12713" cBy="664" cDate="11/07/2001 05:35:38 PST Wed">
+        <definition>FN: come to an end.</definition>
+        <sentenceCount annotated="31" total="428"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="end"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="come to a end.v" ID="4427" lemmaID="45281" cBy="664" cDate="11/07/2001 06:06:05 PST Wed">
+        <definition>FN: to reach the conclusion of (as of a process, project, meeting)</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="come"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="to"/>
+        <lexeme order="3" headword="false" breakBefore="false" POS="ART" name="a"/>
+        <lexeme order="4" headword="false" breakBefore="false" POS="N" name="end"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="come to a close.v" ID="4428" lemmaID="45282" cBy="664" cDate="11/08/2001 03:39:54 PST Thu">
+        <definition>FN: to reach the end of (as a process, project, meeting)</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="come"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="to"/>
+        <lexeme order="3" headword="false" breakBefore="false" POS="ART" name="a"/>
+        <lexeme order="4" headword="false" breakBefore="false" POS="N" name="close"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="conclude.v" ID="4429" lemmaID="7629" cBy="664" cDate="11/08/2001 06:01:09 PST Thu">
+        <definition>FN: come to an end.</definition>
+        <sentenceCount annotated="17" total="225"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="conclude"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="draw to a close.v" ID="4430" lemmaID="45283" cBy="664" cDate="11/08/2001 06:12:30 PST Thu">
+        <definition>FN: to bring to the final stage, as of a meeting or project</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="draw"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="to"/>
+        <lexeme order="3" headword="false" breakBefore="false" POS="ART" name="a"/>
+        <lexeme order="4" headword="false" breakBefore="false" POS="N" name="close"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="draw to a end.v" ID="4431" lemmaID="45284" cBy="664" cDate="11/08/2001 06:17:04 PST Thu">
+        <definition>FN: to bring to the final stage, as of an ongoing process</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="4" headword="false" breakBefore="false" POS="N" name="end"/>
+        <lexeme order="3" headword="false" breakBefore="false" POS="ART" name="a"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="to"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="draw"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="end_cessation.n" ID="4432" lemmaID="12712" cBy="664" cDate="11/08/2001 06:24:46 PST Thu">
+        <definition>COD: a termination of a state or situation. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="end"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="end_final-subevent.n" ID="4433" lemmaID="12712" cBy="664" cDate="11/08/2001 08:49:46 PST Thu">
+        <definition>COD: a final part of something. NB: especially of events. "the end of the year" "Mario led the race from beginning to end."</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="end"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="final.a" ID="4438" lemmaID="14377" cBy="664" cDate="11/12/2001 05:22:05 PST Mon">
+        <definition>COD: coming at the end of a series.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="final"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="finale.n" ID="4439" lemmaID="14378" cBy="664" cDate="11/12/2001 06:06:48 PST Mon">
+        <definition>COD: the last part of a piece of music, an entertainment, or a public event. </definition>
+        <sentenceCount annotated="18" total="167"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="finale"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="pass.v" ID="10865" lemmaID="27946" cBy="203" cDate="08/18/2004 05:14:59 PDT Wed">
+        <definition>COD: come to an end</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="pass"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="end.n" ID="13280" lemmaID="50282" cBy="303" cDate="06/20/2006 10:54:32 PDT Tue">
+        <definition>FN: The final point in a process.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="end"/>
+    </lexUnit>
+</frame>

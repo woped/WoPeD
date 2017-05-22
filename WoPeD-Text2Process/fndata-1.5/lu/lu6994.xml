@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" POS="A" name="injected.a" ID="6994" frame="Abounding_with" frameID="262" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Loc" name="Location"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="Thm" name="Theme"/>
+            <FE fgColor="FFFF00" bgColor="FFA500" type="Peripheral" abbrev="" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: filled by means of injection</definition>
+    <lexeme POS="A" name="injected"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Location"/>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="N" FE="Location"/>
+                <annoSet ID="1553526"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Theme"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Theme"/>
+                <annoSet ID="1553526"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Location"/>
+            <FE name="Theme"/>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="N" FE="Location"/>
+                <valenceUnit GF="Dep" PT="N" FE="Theme"/>
+                <annoSet ID="1553526"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="A-100-s50-ppwith"/>
+    <subCorpus name="A-110-s20-ppother"/>
+    <subCorpus name="A-160-s20-pother"/>
+    <subCorpus name="A-170-s20-prenom">
+        <sentence sentNo="0" aPos="15949001" ID="1051040">
+            <text>The current resurgence of local music has produced some great songs and Overspill , another group from Alton , continue the good work on their latest grunge injected collection . </text>
+            <annotationSet cDate="01/08/2003 12:27:19 PST Wed" status="UNANN" ID="1553525">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="10" start="4" name="AJ0"/>
+                    <label end="21" start="12" name="NN1"/>
+                    <label end="24" start="23" name="PRF"/>
+                    <label end="30" start="26" name="AJ0"/>
+                    <label end="36" start="32" name="NN1"/>
+                    <label end="40" start="38" name="VHZ"/>
+                    <label end="49" start="42" name="VVN"/>
+                    <label end="54" start="51" name="DT0"/>
+                    <label end="60" start="56" name="AJ0"/>
+                    <label end="66" start="62" name="NN2"/>
+                    <label end="70" start="68" name="CJC"/>
+                    <label end="80" start="72" name="NP0"/>
+                    <label end="82" start="82" name="PUN"/>
+                    <label end="90" start="84" name="DT0"/>
+                    <label end="96" start="92" name="NN0"/>
+                    <label end="101" start="98" name="PRP"/>
+                    <label end="107" start="103" name="NP0"/>
+                    <label end="109" start="109" name="PUN"/>
+                    <label end="118" start="111" name="VVB"/>
+                    <label end="122" start="120" name="AT0"/>
+                    <label end="127" start="124" name="AJ0"/>
+                    <label end="132" start="129" name="NN1"/>
+                    <label end="135" start="134" name="PRP"/>
+                    <label end="141" start="137" name="DPS"/>
+                    <label end="148" start="143" name="AJS"/>
+                    <label end="155" start="150" name="NN1"/>
+                    <label end="164" start="157" name="AJ0-VVD"/>
+                    <label end="175" start="166" name="NN1"/>
+                    <label end="177" start="177" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:27:19 PST Wed" status="MANUAL" ID="1553526">
+                <layer rank="1" name="FE">
+                    <label cBy="285" feID="2260" end="155" start="150" name="Theme"/>
+                    <label cBy="285" feID="2261" end="175" start="166" name="Location"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="155" start="150" name="Dep"/>
+                    <label end="175" start="166" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="155" start="150" name="N"/>
+                    <label end="175" start="166" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="164" start="157" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="A-180-s20-punct"/>
+    <subCorpus name="A-190-s20-other"/>
+</lexUnit>

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="731" cDate="02/07/2001 04:11:47 PST Wed" name="Separating" ID="15" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;These words refer to separating a &lt;fen&gt;Whole&lt;/fen&gt; into &lt;fen&gt;Parts&lt;/fen&gt;, or separating one part from another.  The separation is made by an &lt;fen&gt;Agent&lt;/fen&gt; or &lt;fen&gt;Cause&lt;/fen&gt; and may be made on the basis of some &lt;fen&gt;Criterion&lt;/fen&gt;. 
+
+&lt;ex&gt;&lt;fex name="Agent"&gt;I&lt;/fex&gt; &lt;t&gt;divided&lt;/t&gt; &lt;fex name="Whole"&gt;the class&lt;/fex&gt; &lt;fex name="Parts"&gt;into groups&lt;/fex&gt; &lt;fex name="Criterion"&gt;in alphabetical order&lt;/fex&gt; .&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:11:47 PST Wed" abbrev="Whole" name="Whole" ID="62">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Whole&lt;/fen&gt; is a single entity or an aggregate of entities which is separated into &lt;fen&gt;Parts&lt;/fen&gt;.  It is usually the NP Object of a target verb. 
+&lt;ex&gt;The directors &lt;t&gt;split&lt;/t&gt; &lt;fex name="Whole"&gt;the company&lt;/fex&gt; in two.&lt;/ex&gt;
+&lt;ex&gt; The teacher &lt;t&gt;divided&lt;/t&gt; &lt;fex name="Whole"&gt;the children&lt;/fex&gt; into groups. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <requiresFE name="Parts" ID="63"/>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:11:48 PST Wed" abbrev="Parts" name="Parts" ID="63">
+        <definition>&lt;def-root&gt;This refers collectively to the Parts resulting from separation of a Whole:
+&lt;ex&gt;The directors &lt;t&gt;split&lt;/t&gt; the company &lt;fex name="Parts"&gt;in two&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;The teacher &lt;t&gt;divided&lt;/t&gt; the children &lt;fex name="Parts"&gt;into groups&lt;/fex&gt;.&lt;/ex&gt;
+ &lt;ex&gt;The teacher &lt;t&gt;separated&lt;/t&gt; the children &lt;fex name="Parts"&gt;from each other&lt;/fex&gt;. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <requiresFE name="Whole" ID="62"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:11:48 PST Wed" abbrev="Part-1" name="Part_1" ID="64">
+        <definition>&lt;def-root&gt;Part-1 is the first of two Parts mentioned. This is most often the Object of a verb. 
+&lt;ex&gt;First, &lt;t&gt;separate&lt;/t&gt; &lt;fex name="Part_1"&gt;the yolks&lt;/fex&gt; from the whites. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <requiresFE name="Part_2" ID="65"/>
+        <excludesFE name="Parts" ID="63"/>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:11:48 PST Wed" abbrev="Part-2" name="Part_2" ID="65">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Part_2&lt;/fen&gt; is the second of two &lt;fen&gt;Parts&lt;/fen&gt; mentioned. This is usually a PP Complement. First, &lt;ex&gt;&lt;t&gt;separate&lt;/t&gt; the yolks &lt;fex name="Part_2"&gt;from the whites&lt;/fex&gt;. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <requiresFE name="Part_1" ID="64"/>
+        <excludesFE name="Parts" ID="63"/>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:11:48 PST Wed" abbrev="Agt" name="Agent" ID="66">
+        <definition>&lt;def-root&gt;With causative uses of these verbs, an Agent separates or divides something.  The Agent is usually expressed as the External Argument: 
+&lt;ex&gt;&lt;fex name="Agent"&gt;The researcher&lt;/fex&gt; &lt;t&gt;divided&lt;/t&gt; subjects into groups. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Peripheral" cBy="731" cDate="02/07/2001 04:11:48 PST Wed" abbrev="Crit" name="Criterion" ID="67">
+        <definition>&lt;def-root&gt;This frame element expresses a property of the Parts or components of the Whole which is used as the basis for separation. Criterion is typically expressed as a PP headed by &lt;ment&gt;by&lt;/ment&gt;, or as a complex PP of the form &lt;ment&gt;on the basis of&lt;/ment&gt;.... 
+&lt;ex&gt;The researcher &lt;t&gt;divided&lt;/t&gt; subjects into groups &lt;fex name="Criterion"&gt;on the basis of eye color&lt;/fex&gt;.&lt;/ex&gt;
+As with the frame General.Joining (above), words in this frame can be used statively, as in &lt;ment&gt;The rooms are separated by a partition&lt;/ment&gt;, inchoatively, as in &lt;ment&gt;The group separated&lt;/ment&gt; or causatively, as in &lt;ment&gt;I separated the laundry&lt;/ment&gt;. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="296" cDate="07/17/2001 02:55:29 PDT Tue" abbrev="Dep" name="Depictive" ID="1509">
+        <definition>&lt;def-root&gt;This FE identifies any &lt;fen&gt;Depictive&lt;/fen&gt; phrase describing the &lt;fen&gt;Agent&lt;/fen&gt; who separates or the undergoers of the separation.
+&lt;ex&gt;&lt;fex name="Depictive"&gt;Naked&lt;/fex&gt;, &lt;fex name="Agent"&gt;Selma Bouvier&lt;/fex&gt; &lt;t&gt;separated&lt;/t&gt; &lt;fex name="Part_1"&gt;the yolks&lt;/fex&gt; &lt;fex name="Part_2"&gt;from the whites&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="07/17/2001 02:55:30 PDT Tue" abbrev="Manr" name="Manner" ID="1510">
+        <definition>&lt;def-root&gt;Manner of performing an action&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="07/17/2001 02:55:32 PDT Tue" abbrev="Degr" name="Degree" ID="1511">
+        <definition>&lt;def-root&gt;Degree to which event occurs&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="07/17/2001 02:55:33 PDT Tue" abbrev="Mns" name="Means" ID="1512">
+        <definition>&lt;def-root&gt;An act of the &lt;fen&gt;Agent&lt;/fen&gt; that accomplishes the separation.
+&lt;ex&gt;You can &lt;t&gt;bisect&lt;/t&gt; an angle &lt;fex name="Mns"&gt;by drawing three circles&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="296" cDate="07/17/2001 02:55:37 PDT Tue" abbrev="Result" name="Result" ID="1513">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Result&lt;/fen&gt; of an event.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="07/30/2002 08:40:22 PDT Tue" abbrev="Cause" name="Cause" ID="3448">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Cause&lt;/fen&gt; is the non-agent that brings about the separation.&lt;/def-root&gt;</definition>
+        <excludesFE name="Agent" ID="66"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="296" cDate="08/21/2002 10:22:02 PDT Wed" abbrev="Recs" name="Recipients" ID="3595">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Recipients&lt;/fen&gt; are the groups who come into possession of the &lt;fen&gt;Parts&lt;/fen&gt; of the &lt;fen&gt;Whole&lt;/fen&gt;. 
+&lt;ex&gt;&lt;fex name="Agent"&gt;Mrs. Simpson&lt;/fex&gt; &lt;t&gt;divided&lt;/t&gt; &lt;fex name="Whole"&gt;the candy&lt;/fex&gt; &lt;fex name="Recipients"&gt;between her children&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="07/01/2003 09:52:07 PDT Tue" abbrev="" name="Time" ID="4705">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Time&lt;/fen&gt; when the separation occurs.
+&lt;ex&gt;I &lt;t&gt;divided&lt;/t&gt; the prize money among the winners &lt;fex name="Time"&gt;that night&lt;/fex&gt;.&lt;/ex&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="07/01/2003 09:53:16 PDT Tue" abbrev="" name="Place" ID="4706">
+        <definition>&lt;def-root&gt;Where the separation occurs.
+&lt;ex&gt;You should &lt;t&gt;separate&lt;/t&gt; the yolks from the whites &lt;fex name="Place"&gt;over the sink&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="07/01/2003 11:16:15 PDT Tue" abbrev="Inst" name="Instrument" ID="4709">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Instrument&lt;/fen&gt; used to cause the separation.
+&lt;ex&gt;I &lt;t&gt;sectioned&lt;/t&gt; the block &lt;fex name="Inst"&gt;with a knife&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Physical_entity" ID="70"/>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Part_1" ID="64"/>
+        <memberFE name="Part_2" ID="65"/>
+        <memberFE name="Whole" ID="62"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Transitive_action</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of">
+        <relatedFrame>Becoming_separated</relatedFrame>
+    </frameRelation>
+    <frameRelation type="See also"/>
+    <lexUnit status="FN1_Sent" POS="V" name="bisect.v" ID="56" lemmaID="3667" cBy="731" cDate="02/08/2001 01:27:30 PST Thu">
+        <definition>FN: cut in two</definition>
+        <sentenceCount annotated="8" total="39"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="bisect"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="divide.v" ID="57" lemmaID="11302" cBy="731" cDate="02/08/2001 01:27:31 PST Thu">
+        <definition>FN: separate into parts or groups</definition>
+        <sentenceCount annotated="18" total="198"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="divide"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="part.v" ID="58" lemmaID="27892" cBy="731" cDate="02/08/2001 01:27:31 PST Thu">
+        <definition>COD: move apart or divide to leave a central space. </definition>
+        <sentenceCount annotated="10" total="210"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="part"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="partition.v" ID="59" lemmaID="27924" cBy="731" cDate="02/08/2001 01:27:31 PST Thu">
+        <definition>COD: divide into parts. </definition>
+        <sentenceCount annotated="20" total="94"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="partition"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="section.v" ID="60" lemmaID="34796" cBy="731" cDate="02/08/2001 01:27:31 PST Thu">
+        <definition>COD: divide into sections. </definition>
+        <sentenceCount annotated="4" total="75"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="section"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="segment.v" ID="61" lemmaID="34869" cBy="731" cDate="02/08/2001 01:27:31 PST Thu">
+        <definition>COD: divide into segments. </definition>
+        <sentenceCount annotated="14" total="57"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="segment"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="segregate.v" ID="62" lemmaID="34871" cBy="731" cDate="02/08/2001 01:27:31 PST Thu">
+        <definition>COD: set apart from the rest or from each other. </definition>
+        <sentenceCount annotated="16" total="87"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="segregate"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="separate.v" ID="63" lemmaID="35117" cBy="731" cDate="02/08/2001 01:27:31 PST Thu">
+        <definition>COD: divide into constituent or distinct elements.</definition>
+        <sentenceCount annotated="14" total="297"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="separate"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="split.v" ID="64" lemmaID="37416" cBy="731" cDate="02/08/2001 01:27:31 PST Thu">
+        <definition>COD: divide or cause to divide into parts or groups.</definition>
+        <sentenceCount annotated="25" total="476"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="split"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="partition.n" ID="13640" lemmaID="27923" cBy="618" cDate="10/26/2006 03:33:05 PDT Thu">
+        <definition>COD: the action or state of dividing or being divided into parts.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="partition"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="sever.v" ID="15617" lemmaID="35256" cBy="618" cDate="02/08/2010 01:45:09 PST Mon">
+        <definition>FN: separate one part from another by cutting.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="sever"/>
+    </lexUnit>
+</frame>

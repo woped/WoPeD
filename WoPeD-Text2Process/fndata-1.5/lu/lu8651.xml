@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="euthanasia.n" ID="8651" frame="Killing" frameID="590" totalAnnotated="7" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Extra-Thematic" abbrev="ben" name="Beneficiary"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Core" abbrev="" name="Cause"/>
+            <FE fgColor="000000" bgColor="90876C" type="Extra-Thematic" abbrev="" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Extra-Thematic" abbrev="" name="Explanation"/>
+            <FE fgColor="000000" bgColor="FFA500" type="Extra-Thematic" abbrev="" name="Frequency"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Instr" name="Instrument"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Kill" name="Killer"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="Man" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Core" abbrev="" name="Means"/>
+            <FE fgColor="000000" bgColor="7CCD73" type="Extra-Thematic" abbrev="" name="Period_of_iterations"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Loc" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Extra-Thematic" abbrev="" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="" name="Victim"/>
+        </frame>
+    </header>
+    <definition>FN: the killing of a person performed with the intention of helping them avoid a more unpleasant or painful manner of death</definition>
+    <lexeme POS="N" name="euthanasia"/>
+    <valences>
+        <governor type="Sup" lemma="perform">
+            <annoSet ID="860377"/>
+        </governor>
+        <governor type="Gov" lemma="allow">
+            <annoSet ID="860241"/>
+            <annoSet ID="860259"/>
+        </governor>
+        <governor type="Gov" lemma="oppose">
+            <annoSet ID="860325"/>
+        </governor>
+        <governor type="Gov" lemma="practice">
+            <annoSet ID="860361"/>
+        </governor>
+        <FERealization total="1">
+            <FE name="Killer"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Killer"/>
+                <annoSet ID="860377"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Manner"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="AJP" FE="Manner"/>
+                <annoSet ID="860287"/>
+                <annoSet ID="860315"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Killer"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Killer"/>
+                <annoSet ID="860377"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Manner"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="AJP" FE="Manner"/>
+                <annoSet ID="860287"/>
+                <annoSet ID="860315"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-001-all">
+        <sentence sentNo="0" aPos="7243814" ID="691477">
+            <text>That argument is not watertight , however , because existing law does not allow euthanasia . </text>
+            <annotationSet cDate="01/07/2003 11:00:25 PST Tue" status="UNANN" ID="860240">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="DT0"/>
+                    <label end="12" start="5" name="NN1"/>
+                    <label end="15" start="14" name="VBZ"/>
+                    <label end="19" start="17" name="XX0"/>
+                    <label end="30" start="21" name="AJ0"/>
+                    <label end="32" start="32" name="PUN"/>
+                    <label end="40" start="34" name="AV0"/>
+                    <label end="42" start="42" name="PUN"/>
+                    <label end="50" start="44" name="CJS"/>
+                    <label end="59" start="52" name="AJ0"/>
+                    <label end="63" start="61" name="NN1"/>
+                    <label end="68" start="65" name="VDZ"/>
+                    <label end="72" start="70" name="XX0"/>
+                    <label end="78" start="74" name="VVI"/>
+                    <label end="89" start="80" name="NN1"/>
+                    <label end="91" start="91" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 11:00:26 PST Tue" status="MANUAL" ID="860241">
+                <layer rank="1" name="FE"/>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="89" start="80" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="78" start="74" name="Gov"/>
+                    <label end="89" start="80" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="14954253" ID="691486">
+            <text>The appropriate response , however , is not to alter the law so as to allow euthanasia , and thereby arguably undermine the respect for life enshrined both in the law and medical training . </text>
+            <annotationSet cDate="01/07/2003 11:00:27 PST Tue" status="UNANN" ID="860258">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="14" start="4" name="AJ0"/>
+                    <label end="23" start="16" name="NN1"/>
+                    <label end="25" start="25" name="PUN"/>
+                    <label end="33" start="27" name="AV0"/>
+                    <label end="35" start="35" name="PUN"/>
+                    <label end="38" start="37" name="VBZ"/>
+                    <label end="42" start="40" name="XX0"/>
+                    <label end="45" start="44" name="TO0"/>
+                    <label end="51" start="47" name="VVI"/>
+                    <label end="55" start="53" name="AT0"/>
+                    <label end="59" start="57" name="NN1"/>
+                    <label end="62" start="61" name="AV0"/>
+                    <label end="65" start="64" name="AV0"/>
+                    <label end="68" start="67" name="TO0"/>
+                    <label end="74" start="70" name="VVB"/>
+                    <label end="85" start="76" name="NN1"/>
+                    <label end="87" start="87" name="PUN"/>
+                    <label end="91" start="89" name="CJC"/>
+                    <label end="99" start="93" name="AV0"/>
+                    <label end="108" start="101" name="AV0"/>
+                    <label end="118" start="110" name="VVB"/>
+                    <label end="122" start="120" name="AT0"/>
+                    <label end="130" start="124" name="NN1"/>
+                    <label end="134" start="132" name="PRP"/>
+                    <label end="139" start="136" name="NN1"/>
+                    <label end="149" start="141" name="VVD"/>
+                    <label end="154" start="151" name="AV0"/>
+                    <label end="157" start="156" name="PRP"/>
+                    <label end="161" start="159" name="AT0"/>
+                    <label end="165" start="163" name="NN1"/>
+                    <label end="169" start="167" name="CJC"/>
+                    <label end="177" start="171" name="AJ0"/>
+                    <label end="186" start="179" name="NN1"/>
+                    <label end="188" start="188" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 11:00:27 PST Tue" status="MANUAL" ID="860259">
+                <layer rank="1" name="FE"/>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="85" start="76" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="74" start="70" name="Gov"/>
+                    <label end="85" start="76" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="34205479" ID="691500">
+            <text>Active euthanasia , where intent to kill can be shown , still remains strictly illegal , whatever the wishes of the patient , and that is the cause of the fiercest debate . </text>
+            <annotationSet cDate="01/07/2003 11:00:29 PST Tue" status="UNANN" ID="860286">
+                <layer rank="1" name="BNC">
+                    <label end="5" start="0" name="AJ0"/>
+                    <label end="16" start="7" name="NN1"/>
+                    <label end="18" start="18" name="PUN"/>
+                    <label end="24" start="20" name="AVQ-CJS"/>
+                    <label end="31" start="26" name="AJ0"/>
+                    <label end="34" start="33" name="TO0"/>
+                    <label end="39" start="36" name="VVI"/>
+                    <label end="43" start="41" name="VM0"/>
+                    <label end="46" start="45" name="VBI"/>
+                    <label end="52" start="48" name="VVN"/>
+                    <label end="54" start="54" name="PUN"/>
+                    <label end="60" start="56" name="AV0"/>
+                    <label end="68" start="62" name="VVZ"/>
+                    <label end="77" start="70" name="AV0"/>
+                    <label end="85" start="79" name="AJ0"/>
+                    <label end="87" start="87" name="PUN"/>
+                    <label end="96" start="89" name="DTQ"/>
+                    <label end="100" start="98" name="AT0"/>
+                    <label end="107" start="102" name="NN2"/>
+                    <label end="110" start="109" name="PRF"/>
+                    <label end="114" start="112" name="AT0"/>
+                    <label end="122" start="116" name="AJ0-NN1"/>
+                    <label end="124" start="124" name="PUN"/>
+                    <label end="128" start="126" name="CJC"/>
+                    <label end="133" start="130" name="CJT-DT0"/>
+                    <label end="136" start="135" name="VBZ"/>
+                    <label end="140" start="138" name="AT0"/>
+                    <label end="146" start="142" name="NN1"/>
+                    <label end="149" start="148" name="PRF"/>
+                    <label end="153" start="151" name="AT0"/>
+                    <label end="162" start="155" name="AJS"/>
+                    <label end="169" start="164" name="NN1"/>
+                    <label end="171" start="171" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 11:00:29 PST Tue" status="MANUAL" ID="860287">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4482" end="5" start="0" name="Manner"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="5" start="0" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="5" start="0" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="16" start="7" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="60799385" ID="691514">
+            <text>In other words , almost 90% of this proposed reduction in the true incidence of congenital abnormality at birth is to be achieved by destroying affected fetuses through selective , prenatal , non-voluntary euthanasia . </text>
+            <annotationSet cDate="01/07/2003 11:00:30 PST Tue" status="UNANN" ID="860314">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PRP"/>
+                    <label end="7" start="3" name="AJ0"/>
+                    <label end="13" start="9" name="NN2"/>
+                    <label end="15" start="15" name="PUN"/>
+                    <label end="22" start="17" name="AV0"/>
+                    <label end="26" start="24" name="NN0"/>
+                    <label end="29" start="28" name="PRF"/>
+                    <label end="34" start="31" name="DT0"/>
+                    <label end="43" start="36" name="AJ0"/>
+                    <label end="53" start="45" name="NN1"/>
+                    <label end="56" start="55" name="PRP"/>
+                    <label end="60" start="58" name="AT0"/>
+                    <label end="65" start="62" name="AJ0"/>
+                    <label end="75" start="67" name="NN1"/>
+                    <label end="78" start="77" name="PRF"/>
+                    <label end="89" start="80" name="AJ0"/>
+                    <label end="101" start="91" name="NN1"/>
+                    <label end="104" start="103" name="PRP"/>
+                    <label end="110" start="106" name="NN1"/>
+                    <label end="113" start="112" name="VBZ"/>
+                    <label end="116" start="115" name="TO0"/>
+                    <label end="119" start="118" name="VBI"/>
+                    <label end="128" start="121" name="VVN"/>
+                    <label end="131" start="130" name="PRP"/>
+                    <label end="142" start="133" name="VVG"/>
+                    <label end="151" start="144" name="AJ0"/>
+                    <label end="159" start="153" name="NN2"/>
+                    <label end="167" start="161" name="PRP"/>
+                    <label end="177" start="169" name="AJ0"/>
+                    <label end="179" start="179" name="PUN"/>
+                    <label end="188" start="181" name="AJ0"/>
+                    <label end="190" start="190" name="PUN"/>
+                    <label end="204" start="192" name="AJ0"/>
+                    <label end="215" start="206" name="NN1"/>
+                    <label end="217" start="217" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 11:00:30 PST Tue" status="MANUAL" ID="860315">
+                <layer rank="1" name="FE">
+                    <label cBy="893" feID="4482" end="204" start="169" name="Manner"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="204" start="169" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="204" start="169" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="215" start="206" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="83313792" ID="691519">
+            <text>EIGHT hundred doctors have pledged to oppose euthanasia in the wake of the Tony Bland case , it was disclosed today . </text>
+            <annotationSet cDate="01/07/2003 11:00:31 PST Tue" status="UNANN" ID="860324">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="CRD"/>
+                    <label end="12" start="6" name="CRD"/>
+                    <label end="20" start="14" name="NN2"/>
+                    <label end="25" start="22" name="VHB"/>
+                    <label end="33" start="27" name="VVN"/>
+                    <label end="36" start="35" name="TO0"/>
+                    <label end="43" start="38" name="VVI"/>
+                    <label end="54" start="45" name="NN1"/>
+                    <label end="57" start="56" name="PRP"/>
+                    <label end="61" start="59" name="AT0"/>
+                    <label end="66" start="63" name="NN1"/>
+                    <label end="69" start="68" name="PRF"/>
+                    <label end="73" start="71" name="AT0"/>
+                    <label end="78" start="75" name="NP0"/>
+                    <label end="84" start="80" name="NP0"/>
+                    <label end="89" start="86" name="NN1"/>
+                    <label end="91" start="91" name="PUN"/>
+                    <label end="94" start="93" name="PNP"/>
+                    <label end="98" start="96" name="VBD"/>
+                    <label end="108" start="100" name="VVN"/>
+                    <label end="114" start="110" name="AV0"/>
+                    <label end="116" start="116" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 11:00:31 PST Tue" status="MANUAL" ID="860325">
+                <layer rank="1" name="FE"/>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="54" start="45" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="43" start="38" name="Gov"/>
+                    <label end="54" start="45" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="93240248" ID="691537">
+            <text>Interviews with doctors who practise euthanasia have shown that they resort to LAWER when they have neither the courage nor cruelty to talk openly with patients , relatives , or colleagues . </text>
+            <annotationSet cDate="01/07/2003 11:00:33 PST Tue" status="UNANN" ID="860360">
+                <layer rank="1" name="BNC">
+                    <label end="9" start="0" name="NN2"/>
+                    <label end="14" start="11" name="PRP"/>
+                    <label end="22" start="16" name="NN2"/>
+                    <label end="26" start="24" name="PNQ"/>
+                    <label end="35" start="28" name="VVB"/>
+                    <label end="46" start="37" name="NN1"/>
+                    <label end="51" start="48" name="VHB"/>
+                    <label end="57" start="53" name="VVN"/>
+                    <label end="62" start="59" name="CJT"/>
+                    <label end="67" start="64" name="PNP"/>
+                    <label end="74" start="69" name="NN1-VVB"/>
+                    <label end="77" start="76" name="PRP"/>
+                    <label end="83" start="79" name="NN1"/>
+                    <label end="88" start="85" name="AVQ-CJS"/>
+                    <label end="93" start="90" name="PNP"/>
+                    <label end="98" start="95" name="VHB"/>
+                    <label end="106" start="100" name="AV0"/>
+                    <label end="110" start="108" name="AT0"/>
+                    <label end="118" start="112" name="NN1"/>
+                    <label end="122" start="120" name="CJC"/>
+                    <label end="130" start="124" name="NN1"/>
+                    <label end="133" start="132" name="TO0"/>
+                    <label end="138" start="135" name="VVI"/>
+                    <label end="145" start="140" name="AV0"/>
+                    <label end="150" start="147" name="PRP"/>
+                    <label end="159" start="152" name="NN2"/>
+                    <label end="161" start="161" name="PUN"/>
+                    <label end="171" start="163" name="NN2"/>
+                    <label end="173" start="173" name="PUN"/>
+                    <label end="176" start="175" name="CJC"/>
+                    <label end="187" start="178" name="NN2"/>
+                    <label end="189" start="189" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 11:00:33 PST Tue" status="MANUAL" ID="860361">
+                <layer rank="1" name="FE"/>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="46" start="37" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="35" start="28" name="Gov"/>
+                    <label end="46" start="37" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="106205542" ID="691545">
+            <text>The law , approved by parliament earlier this month , allows doctors to perform euthanasia at the explicit request of their patients under tightly controlled conditions . </text>
+            <annotationSet cDate="01/07/2003 11:00:34 PST Tue" status="UNANN" ID="860376">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="6" start="4" name="NN1"/>
+                    <label end="8" start="8" name="PUN"/>
+                    <label end="17" start="10" name="VVN"/>
+                    <label end="20" start="19" name="PRP"/>
+                    <label end="31" start="22" name="NN1"/>
+                    <label end="39" start="33" name="AV0"/>
+                    <label end="44" start="41" name="DT0"/>
+                    <label end="50" start="46" name="NN1"/>
+                    <label end="52" start="52" name="PUN"/>
+                    <label end="59" start="54" name="VVZ"/>
+                    <label end="67" start="61" name="NN2"/>
+                    <label end="70" start="69" name="TO0"/>
+                    <label end="78" start="72" name="VVI"/>
+                    <label end="89" start="80" name="NN1"/>
+                    <label end="92" start="91" name="PRP"/>
+                    <label end="96" start="94" name="AT0"/>
+                    <label end="105" start="98" name="AJ0"/>
+                    <label end="113" start="107" name="NN1"/>
+                    <label end="116" start="115" name="PRF"/>
+                    <label end="122" start="118" name="DPS"/>
+                    <label end="131" start="124" name="NN2"/>
+                    <label end="137" start="133" name="PRP"/>
+                    <label end="145" start="139" name="AJ0-AV0"/>
+                    <label end="156" start="147" name="AJ0-VVN"/>
+                    <label end="167" start="158" name="NN2"/>
+                    <label end="169" start="169" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 11:00:34 PST Tue" status="MANUAL" ID="860377">
+                <layer rank="1" name="FE">
+                    <label cBy="893" feID="4450" end="67" start="61" name="Killer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="67" start="61" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="67" start="61" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="89" start="80" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="78" start="72" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

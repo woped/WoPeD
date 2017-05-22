@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="V" name="suspect.v" ID="7975" frame="Suspicion" frameID="503" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Aut" name="Authority"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Core" abbrev="Inc" name="Incident"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Sus" name="Suspect"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: believe (someone) to be guilty of a crime or offence, without certain proof.</definition>
+    <lexeme POS="V" name="suspect"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Authority"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Authority"/>
+                <annoSet ID="2578415"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Incident"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Incident"/>
+                <annoSet ID="2578415"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Suspect"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Suspect"/>
+                <annoSet ID="2578415"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Authority"/>
+            <FE name="Incident"/>
+            <FE name="Suspect"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Authority"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Incident"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Suspect"/>
+                <annoSet ID="2578415"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="302" aPos="67974483" ID="1571897">
+            <text>Mills was suspected of having worked for the KGB .</text>
+            <annotationSet cDate="07/13/2010 04:28:05 PDT Tue" status="UNANN" ID="2578414">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="nns"/>
+                    <label end="8" start="6" name="VBD"/>
+                    <label end="18" start="10" name="VVN"/>
+                    <label end="21" start="20" name="in"/>
+                    <label end="28" start="23" name="VHG"/>
+                    <label end="35" start="30" name="VVN"/>
+                    <label end="39" start="37" name="in"/>
+                    <label end="43" start="41" name="dt"/>
+                    <label end="47" start="45" name="NP"/>
+                    <label end="49" start="49" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/13/2010 04:28:05 PDT Tue" status="MANUAL" ID="2578415">
+                <layer rank="1" name="Target">
+                    <label cBy="773" end="18" start="10" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="773" feID="4049" itype="CNI" name="Authority"/>
+                    <label cBy="773" feID="4050" end="4" start="0" name="Suspect"/>
+                    <label cBy="773" feID="4051" end="47" start="20" name="Incident"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="4" start="0" name="Ext"/>
+                    <label end="47" start="20" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="4" start="0" name="NP"/>
+                    <label end="47" start="20" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-T-NP-(1)"/>
+    <subCorpus name="03-T-Wcriminal-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

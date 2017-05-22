@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="FN1_Sent" POS="N" name="aroma.n" ID="1539" frame="Sensation" frameID="71" totalAnnotated="7" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Core" abbrev="BodP" name="Body_part"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD7C" type="Core" abbrev="Ground" name="Ground"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Core" abbrev="Perc-Pass" name="Perceiver_passive"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Pcpt" name="Percept"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="Src" name="Source"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: a pleasant and distinctive smell.</definition>
+    <lexeme POS="N" name="aroma"/>
+    <valences>
+        <governor type="Sup" lemma="smell">
+            <annoSet ID="820123"/>
+        </governor>
+        <FERealization total="1">
+            <FE name="Descriptor"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Descriptor"/>
+                <annoSet ID="820127"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Perceiver_passive"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Perceiver_passive"/>
+                <annoSet ID="820123"/>
+                <annoSet ID="820127"/>
+            </pattern>
+            <pattern total="3">
+                <valenceUnit GF="" PT="CNI" FE="Perceiver_passive"/>
+                <annoSet ID="820129"/>
+                <annoSet ID="820169"/>
+                <annoSet ID="820185"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Percept"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Percept"/>
+                <annoSet ID="820127"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PPing[of]" FE="Percept"/>
+                <annoSet ID="820123"/>
+                <annoSet ID="820129"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Percept"/>
+                <annoSet ID="820195"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Source"/>
+            <pattern total="2">
+                <valenceUnit GF="Gen" PT="Poss" FE="Source"/>
+                <annoSet ID="820169"/>
+                <annoSet ID="820185"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Source"/>
+                <annoSet ID="820131"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Descriptor"/>
+            <FE name="Perceiver_passive"/>
+            <FE name="Percept"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Descriptor"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Perceiver_passive"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Percept"/>
+                <annoSet ID="820127"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Perceiver_passive"/>
+            <FE name="Percept"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Perceiver_passive"/>
+                <valenceUnit GF="Dep" PT="PPing[of]" FE="Percept"/>
+                <annoSet ID="820129"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Perceiver_passive"/>
+                <valenceUnit GF="Dep" PT="PPing[of]" FE="Percept"/>
+                <annoSet ID="820123"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Perceiver_passive"/>
+            <FE name="Source"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="CNI" FE="Perceiver_passive"/>
+                <valenceUnit GF="Gen" PT="Poss" FE="Source"/>
+                <annoSet ID="820169"/>
+                <annoSet ID="820185"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Percept"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Percept"/>
+                <annoSet ID="820195"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Source"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Source"/>
+                <annoSet ID="820131"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-240-of-ing"/>
+    <subCorpus name="N-250-ppof">
+        <sentence sentNo="0" aPos="2692974" ID="671307">
+            <text>I could now smell the very strong aroma of frying onions as we entered the cottage . </text>
+            <annotationSet cDate="01/07/2003 10:12:43 PST Tue" status="UNANN" ID="820122">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PNP"/>
+                    <label end="6" start="2" name="VM0"/>
+                    <label end="10" start="8" name="AV0"/>
+                    <label end="16" start="12" name="VVI"/>
+                    <label end="20" start="18" name="AT0"/>
+                    <label end="25" start="22" name="AJ0-AV0"/>
+                    <label end="32" start="27" name="AJ0"/>
+                    <label end="38" start="34" name="NN1"/>
+                    <label end="41" start="40" name="PRF"/>
+                    <label end="48" start="43" name="AJ0-VVG"/>
+                    <label end="55" start="50" name="NN2"/>
+                    <label end="58" start="57" name="CJS"/>
+                    <label end="61" start="60" name="PNP"/>
+                    <label end="69" start="63" name="VVD"/>
+                    <label end="73" start="71" name="AT0"/>
+                    <label end="81" start="75" name="NN1"/>
+                    <label end="83" start="83" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:12:43 PST Tue" status="MANUAL" ID="820123">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="339" end="0" start="0" name="Perceiver_passive"/>
+                    <label cBy="103" feID="341" end="55" start="40" name="Percept"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="0" start="0" name="Ext"/>
+                    <label end="55" start="40" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="0" start="0" name="NP"/>
+                    <label end="55" start="40" name="PPing"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="38" start="34" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="16" start="12" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="13327634" ID="671309">
+            <text>Martha scented a fresh aroma of cleanliness and toiletries as her mother kissed her . </text>
+            <annotationSet cDate="01/07/2003 10:12:43 PST Tue" status="UNANN" ID="820126">
+                <layer rank="1" name="BNC">
+                    <label end="5" start="0" name="NN1-NP0"/>
+                    <label end="13" start="7" name="VVD"/>
+                    <label end="15" start="15" name="AT0"/>
+                    <label end="21" start="17" name="AJ0"/>
+                    <label end="27" start="23" name="NN1"/>
+                    <label end="30" start="29" name="PRF"/>
+                    <label end="42" start="32" name="NN1"/>
+                    <label end="46" start="44" name="CJC"/>
+                    <label end="57" start="48" name="NN2"/>
+                    <label end="60" start="59" name="CJS-PRP"/>
+                    <label end="64" start="62" name="DPS"/>
+                    <label end="71" start="66" name="NN1"/>
+                    <label end="78" start="73" name="VVD"/>
+                    <label end="82" start="80" name="PNP"/>
+                    <label end="84" start="84" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:12:43 PST Tue" status="MANUAL" ID="820127">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="339" end="5" start="0" name="Perceiver_passive"/>
+                    <label cBy="103" feID="1504" end="21" start="17" name="Descriptor"/>
+                    <label cBy="103" feID="341" end="57" start="29" name="Percept"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="5" start="0" name="Ext"/>
+                    <label end="21" start="17" name="Dep"/>
+                    <label end="57" start="29" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="5" start="0" name="NP"/>
+                    <label end="21" start="17" name="AJP"/>
+                    <label end="57" start="29" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="27" start="23" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="13844620" ID="671310">
+            <text>The aroma of drying fish hangs heavily and it is stifling . </text>
+            <annotationSet cDate="01/07/2003 10:12:43 PST Tue" status="UNANN" ID="820128">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="8" start="4" name="NN1"/>
+                    <label end="11" start="10" name="PRF"/>
+                    <label end="18" start="13" name="AJ0-VVG"/>
+                    <label end="23" start="20" name="NN0"/>
+                    <label end="29" start="25" name="NN2-VVZ"/>
+                    <label end="37" start="31" name="AV0"/>
+                    <label end="41" start="39" name="CJC"/>
+                    <label end="44" start="43" name="PNP"/>
+                    <label end="47" start="46" name="VBZ"/>
+                    <label end="56" start="49" name="VVG"/>
+                    <label end="58" start="58" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:12:43 PST Tue" status="MANUAL" ID="820129">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="341" end="23" start="10" name="Percept"/>
+                    <label cBy="103" feID="339" itype="CNI" name="Perceiver_passive"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="23" start="10" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="23" start="10" name="PPing"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="8" start="4" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="16063492" ID="671311">
+            <text>The music , combined with the aroma of the oils , began to lull me ( I am not sure about Charlotte ! ) into a meditative state . </text>
+            <annotationSet cDate="01/07/2003 10:12:43 PST Tue" status="UNANN" ID="820130">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="8" start="4" name="NN1"/>
+                    <label end="10" start="10" name="PUN"/>
+                    <label end="19" start="12" name="VVD-VVN"/>
+                    <label end="24" start="21" name="PRP"/>
+                    <label end="28" start="26" name="AT0"/>
+                    <label end="34" start="30" name="NN1"/>
+                    <label end="37" start="36" name="PRF"/>
+                    <label end="41" start="39" name="AT0"/>
+                    <label end="46" start="43" name="NN2"/>
+                    <label end="48" start="48" name="PUN"/>
+                    <label end="54" start="50" name="VVD"/>
+                    <label end="57" start="56" name="TO0"/>
+                    <label end="62" start="59" name="VVI"/>
+                    <label end="65" start="64" name="PNP"/>
+                    <label end="67" start="67" name="PUL"/>
+                    <label end="69" start="69" name="PNP"/>
+                    <label end="72" start="71" name="VBB"/>
+                    <label end="76" start="74" name="XX0"/>
+                    <label end="81" start="78" name="AJ0"/>
+                    <label end="87" start="83" name="PRP"/>
+                    <label end="97" start="89" name="NP0"/>
+                    <label end="99" start="99" name="PUN"/>
+                    <label end="101" start="101" name="PUR"/>
+                    <label end="106" start="103" name="PRP"/>
+                    <label end="108" start="108" name="AT0"/>
+                    <label end="119" start="110" name="AJ0"/>
+                    <label end="125" start="121" name="NN1"/>
+                    <label end="127" start="127" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:12:43 PST Tue" status="MANUAL" ID="820131">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="340" end="46" start="36" name="Source"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="46" start="36" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="46" start="36" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="34" start="30" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-280-poss">
+        <sentence sentNo="0" aPos="16067738" ID="671330">
+            <text>Furthermore , as in the pheromone experiment , either sex may respond favourably to sandalwood 's seductive aroma ; or conversely , respond with an ` ugh ! &quot; </text>
+            <annotationSet cDate="01/07/2003 10:12:49 PST Tue" status="UNANN" ID="820168">
+                <layer rank="1" name="BNC">
+                    <label end="10" start="0" name="AV0"/>
+                    <label end="12" start="12" name="PUN"/>
+                    <label end="15" start="14" name="CJS"/>
+                    <label end="18" start="17" name="PRP"/>
+                    <label end="22" start="20" name="AT0"/>
+                    <label end="32" start="24" name="NN1"/>
+                    <label end="43" start="34" name="NN1"/>
+                    <label end="45" start="45" name="PUN"/>
+                    <label end="52" start="47" name="DT0"/>
+                    <label end="56" start="54" name="NN1"/>
+                    <label end="60" start="58" name="VM0"/>
+                    <label end="68" start="62" name="VVI"/>
+                    <label end="79" start="70" name="AV0"/>
+                    <label end="82" start="81" name="PRP"/>
+                    <label end="93" start="84" name="NN1"/>
+                    <label end="96" start="95" name="POS"/>
+                    <label end="106" start="98" name="AJ0"/>
+                    <label end="112" start="108" name="NN1"/>
+                    <label end="114" start="114" name="PUN"/>
+                    <label end="117" start="116" name="CJC"/>
+                    <label end="128" start="119" name="AV0"/>
+                    <label end="130" start="130" name="PUN"/>
+                    <label end="138" start="132" name="VVB"/>
+                    <label end="143" start="140" name="PRP"/>
+                    <label end="146" start="145" name="AT0"/>
+                    <label end="148" start="148" name="PUQ"/>
+                    <label end="152" start="150" name="ITJ"/>
+                    <label end="154" start="154" name="PUN"/>
+                    <label end="156" start="156" name="PUQ"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:12:49 PST Tue" status="MANUAL" ID="820169">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="340" end="96" start="84" name="Source"/>
+                    <label cBy="103" feID="339" itype="CNI" name="Perceiver_passive"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="96" start="84" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="96" start="84" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="112" start="108" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="66208941" ID="671338">
+            <text>The tree has fruited quite well again , though it is too early for the fruits to have taken on their heady aroma . </text>
+            <annotationSet cDate="01/07/2003 10:12:50 PST Tue" status="UNANN" ID="820184">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="7" start="4" name="NN1"/>
+                    <label end="11" start="9" name="VHZ"/>
+                    <label end="19" start="13" name="VVN"/>
+                    <label end="25" start="21" name="AV0"/>
+                    <label end="30" start="27" name="AV0"/>
+                    <label end="36" start="32" name="AV0"/>
+                    <label end="38" start="38" name="PUN"/>
+                    <label end="45" start="40" name="CJS"/>
+                    <label end="48" start="47" name="PNP"/>
+                    <label end="51" start="50" name="VBZ"/>
+                    <label end="55" start="53" name="AV0"/>
+                    <label end="61" start="57" name="AJ0"/>
+                    <label end="65" start="63" name="PRP"/>
+                    <label end="69" start="67" name="AT0"/>
+                    <label end="76" start="71" name="NN2"/>
+                    <label end="79" start="78" name="TO0"/>
+                    <label end="84" start="81" name="VHI"/>
+                    <label end="90" start="86" name="VVN"/>
+                    <label end="93" start="92" name="AVP"/>
+                    <label end="99" start="95" name="DPS"/>
+                    <label end="105" start="101" name="AJ0"/>
+                    <label end="111" start="107" name="NN1"/>
+                    <label end="113" start="113" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:12:50 PST Tue" status="MANUAL" ID="820185">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="340" end="99" start="95" name="Source"/>
+                    <label cBy="103" feID="339" itype="CNI" name="Perceiver_passive"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="99" start="95" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="99" start="95" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="111" start="107" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-290-posscmpd"/>
+    <subCorpus name="N-300-cmpd">
+        <sentence sentNo="0" aPos="78322000" ID="671343">
+            <text>The wine is deep red in colour , with an intense mint and blackcurrant aroma and rich , spicy fruit flavours on the palate , given added complexity by the use of French oak . </text>
+            <annotationSet cDate="01/07/2003 10:12:50 PST Tue" status="UNANN" ID="820194">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="7" start="4" name="NN1"/>
+                    <label end="10" start="9" name="VBZ"/>
+                    <label end="15" start="12" name="AJ0"/>
+                    <label end="19" start="17" name="AJ0-NN1"/>
+                    <label end="22" start="21" name="PRP"/>
+                    <label end="29" start="24" name="NN1"/>
+                    <label end="31" start="31" name="PUN"/>
+                    <label end="36" start="33" name="PRP"/>
+                    <label end="39" start="38" name="AT0"/>
+                    <label end="47" start="41" name="AJ0"/>
+                    <label end="52" start="49" name="NN1"/>
+                    <label end="56" start="54" name="CJC"/>
+                    <label end="69" start="58" name="NN1"/>
+                    <label end="75" start="71" name="NN1"/>
+                    <label end="79" start="77" name="CJC"/>
+                    <label end="84" start="81" name="AJ0"/>
+                    <label end="86" start="86" name="PUN"/>
+                    <label end="92" start="88" name="AJ0"/>
+                    <label end="98" start="94" name="NN0"/>
+                    <label end="107" start="100" name="NN2-VVZ"/>
+                    <label end="110" start="109" name="PRP"/>
+                    <label end="114" start="112" name="AT0"/>
+                    <label end="121" start="116" name="NN1"/>
+                    <label end="123" start="123" name="PUN"/>
+                    <label end="129" start="125" name="AJ0-VVN"/>
+                    <label end="135" start="131" name="AJ0"/>
+                    <label end="146" start="137" name="NN1"/>
+                    <label end="149" start="148" name="PRP"/>
+                    <label end="153" start="151" name="AT0"/>
+                    <label end="157" start="155" name="NN1"/>
+                    <label end="160" start="159" name="PRF"/>
+                    <label end="167" start="162" name="AJ0"/>
+                    <label end="171" start="169" name="NN1"/>
+                    <label end="173" start="173" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:12:51 PST Tue" status="MANUAL" ID="820195">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="341" end="69" start="49" name="Percept"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="69" start="49" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="69" start="49" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="75" start="71" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-320-ingcmpd"/>
+    <subCorpus name="N-340-ppother"/>
+    <subCorpus name="N-370-pother"/>
+    <subCorpus name="N-380-other"/>
+</lexUnit>

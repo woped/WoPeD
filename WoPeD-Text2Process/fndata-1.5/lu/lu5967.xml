@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="deform.v" ID="5967" frame="Reshaping" frameID="344" totalAnnotated="5" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Core" abbrev="Cause" name="Cause"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Def" name="Deformer"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Ins" name="Instrument"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Extra-Thematic" abbrev="Iter" name="Iterations"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Loc" name="Locus"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Mnr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="Reason" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Peripheral" abbrev="Res_surf" name="Resistant_surface"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Result" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Extra-Thematic" abbrev="Subr" name="Subregion"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Und" name="Undergoer"/>
+        </frame>
+    </header>
+    <definition>COD: distort the shape or form of</definition>
+    <lexeme POS="V" name="deform"/>
+    <semType name="Negative_judgment" ID="14"/>
+    <valences>
+        <FERealization total="2">
+            <FE name="Cause"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Cause"/>
+                <annoSet ID="1282542"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Cause"/>
+                <annoSet ID="1282584"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Deformer"/>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="NP" FE="Deformer"/>
+                <annoSet ID="1282538"/>
+                <annoSet ID="1282570"/>
+                <annoSet ID="1282576"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Purpose"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="VPto" FE="Purpose"/>
+                <annoSet ID="1282576"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Result"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[into]" FE="Result"/>
+                <annoSet ID="1282538"/>
+                <annoSet ID="1282542"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[during]" FE="Time"/>
+                <annoSet ID="1282584"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Undergoer"/>
+            <pattern total="4">
+                <valenceUnit GF="Obj" PT="NP" FE="Undergoer"/>
+                <annoSet ID="1282538"/>
+                <annoSet ID="1282542"/>
+                <annoSet ID="1282570"/>
+                <annoSet ID="1282576"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Undergoer"/>
+                <annoSet ID="1282584"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Cause"/>
+            <FE name="Cause"/>
+            <FE name="Result"/>
+            <FE name="Undergoer"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Cause"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Cause"/>
+                <valenceUnit GF="Dep" PT="PP[into]" FE="Result"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Undergoer"/>
+                <annoSet ID="1282542"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Cause"/>
+            <FE name="Time"/>
+            <FE name="Undergoer"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Cause"/>
+                <valenceUnit GF="Dep" PT="PP[during]" FE="Time"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Undergoer"/>
+                <annoSet ID="1282584"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Deformer"/>
+            <FE name="Purpose"/>
+            <FE name="Undergoer"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Deformer"/>
+                <valenceUnit GF="Dep" PT="VPto" FE="Purpose"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Undergoer"/>
+                <annoSet ID="1282576"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Deformer"/>
+            <FE name="Result"/>
+            <FE name="Undergoer"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Deformer"/>
+                <valenceUnit GF="Dep" PT="PP[into]" FE="Result"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Undergoer"/>
+                <annoSet ID="1282538"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Deformer"/>
+            <FE name="Undergoer"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Deformer"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Undergoer"/>
+                <annoSet ID="1282570"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-001-all">
+        <sentence sentNo="0" aPos="14220758" ID="914235">
+            <text>But they do n't literally try to deform the old physical object into the new one . </text>
+            <annotationSet cDate="01/07/2003 07:18:47 PST Tue" status="UNANN" ID="1282537">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="CJC"/>
+                    <label end="7" start="4" name="PNP"/>
+                    <label end="10" start="9" name="VDB"/>
+                    <label end="14" start="12" name="XX0"/>
+                    <label end="24" start="16" name="AV0"/>
+                    <label end="28" start="26" name="VVI"/>
+                    <label end="31" start="30" name="TO0"/>
+                    <label end="38" start="33" name="VVI"/>
+                    <label end="42" start="40" name="AT0"/>
+                    <label end="46" start="44" name="AJ0"/>
+                    <label end="55" start="48" name="AJ0"/>
+                    <label end="62" start="57" name="NN1"/>
+                    <label end="67" start="64" name="PRP"/>
+                    <label end="71" start="69" name="AT0"/>
+                    <label end="75" start="73" name="AJ0"/>
+                    <label end="79" start="77" name="PNI"/>
+                    <label end="81" start="81" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 07:18:47 PST Tue" status="MANUAL" ID="1282538">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2957" end="7" start="4" name="Deformer"/>
+                    <label cBy="618" feID="2961" end="62" start="40" name="Undergoer"/>
+                    <label cBy="618" feID="2965" end="79" start="64" name="Result"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="7" start="4" name="Ext"/>
+                    <label end="62" start="40" name="Obj"/>
+                    <label end="79" start="64" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="7" start="4" name="NP"/>
+                    <label end="62" start="40" name="NP"/>
+                    <label end="79" start="64" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="38" start="33" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="14995036" ID="914237">
+            <text>They now spontaneously assemble into rods which press against the membrane of the red blood cell deforming it from a rounded into a sickle shape . </text>
+            <annotationSet cDate="01/07/2003 07:18:47 PST Tue" status="UNANN" ID="1282541">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="PNP"/>
+                    <label end="7" start="5" name="AV0"/>
+                    <label end="21" start="9" name="AV0"/>
+                    <label end="30" start="23" name="VVB"/>
+                    <label end="35" start="32" name="PRP"/>
+                    <label end="40" start="37" name="NN2"/>
+                    <label end="46" start="42" name="DTQ"/>
+                    <label end="52" start="48" name="VVB"/>
+                    <label end="60" start="54" name="PRP"/>
+                    <label end="64" start="62" name="AT0"/>
+                    <label end="73" start="66" name="NN1"/>
+                    <label end="76" start="75" name="PRF"/>
+                    <label end="80" start="78" name="AT0"/>
+                    <label end="84" start="82" name="AJ0"/>
+                    <label end="90" start="86" name="NN1"/>
+                    <label end="95" start="92" name="NN1"/>
+                    <label end="105" start="97" name="VVG"/>
+                    <label end="108" start="107" name="PNP"/>
+                    <label end="113" start="110" name="PRP"/>
+                    <label end="115" start="115" name="AT0"/>
+                    <label end="123" start="117" name="AJ0"/>
+                    <label end="128" start="125" name="PRP"/>
+                    <label end="130" start="130" name="AT0"/>
+                    <label end="137" start="132" name="NN1"/>
+                    <label end="143" start="139" name="NN1"/>
+                    <label end="145" start="145" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 07:18:47 PST Tue" status="MANUAL" ID="1282542">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3024" end="40" start="37" name="Cause"/>
+                    <label cBy="618" feID="2961" end="108" start="107" name="Undergoer"/>
+                    <label cBy="618" feID="2965" end="143" start="125" name="Result"/>
+                    <label cBy="309" feID="3024" end="46" start="42" name="Cause"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="40" start="37" name="Ext"/>
+                    <label end="108" start="107" name="Obj"/>
+                    <label end="143" start="125" name="Dep"/>
+                    <label end="46" start="42" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="40" start="37" name="NP"/>
+                    <label end="108" start="107" name="NP"/>
+                    <label end="143" start="125" name="PP"/>
+                    <label end="46" start="42" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other">
+                    <label end="40" start="37" name="Ant"/>
+                    <label end="46" start="42" name="Rel"/>
+                </layer>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="105" start="97" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="31471136" ID="914251">
+            <text>The result is that after a period of free movement the material begins to harden and if one goes on deforming it it will become brittle . </text>
+            <annotationSet cDate="01/07/2003 07:18:49 PST Tue" status="UNANN" ID="1282569">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="9" start="4" name="NN1"/>
+                    <label end="12" start="11" name="VBZ"/>
+                    <label end="17" start="14" name="CJT"/>
+                    <label end="23" start="19" name="CJS-PRP"/>
+                    <label end="25" start="25" name="AT0"/>
+                    <label end="32" start="27" name="NN1"/>
+                    <label end="35" start="34" name="PRF"/>
+                    <label end="40" start="37" name="AJ0"/>
+                    <label end="49" start="42" name="NN1"/>
+                    <label end="53" start="51" name="AT0"/>
+                    <label end="62" start="55" name="NN1"/>
+                    <label end="69" start="64" name="VVZ"/>
+                    <label end="72" start="71" name="TO0"/>
+                    <label end="79" start="74" name="VVI"/>
+                    <label end="83" start="81" name="CJC"/>
+                    <label end="86" start="85" name="CJS"/>
+                    <label end="90" start="88" name="PNI"/>
+                    <label end="95" start="92" name="VVZ"/>
+                    <label end="98" start="97" name="PRP"/>
+                    <label end="108" start="100" name="VVG"/>
+                    <label end="111" start="110" name="PNP"/>
+                    <label end="114" start="113" name="PNP"/>
+                    <label end="119" start="116" name="VM0"/>
+                    <label end="126" start="121" name="VVI"/>
+                    <label end="134" start="128" name="AJ0"/>
+                    <label end="136" start="136" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 07:18:49 PST Tue" status="MANUAL" ID="1282570">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2957" end="90" start="88" name="Deformer"/>
+                    <label cBy="618" feID="2961" end="111" start="110" name="Undergoer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="90" start="88" name="Ext"/>
+                    <label end="111" start="110" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="90" start="88" name="NP"/>
+                    <label end="111" start="110" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="108" start="100" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="35170973" ID="914254">
+            <text>THE OTHER reason for tuning into Moran 's Manson opera is to hear how he has deformed the music of The Beatles to fit inside the mad brain of Charlie . </text>
+            <annotationSet cDate="01/07/2003 07:18:49 PST Tue" status="UNANN" ID="1282575">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="8" start="4" name="AJ0"/>
+                    <label end="15" start="10" name="NN1"/>
+                    <label end="19" start="17" name="PRP"/>
+                    <label end="26" start="21" name="VVG"/>
+                    <label end="31" start="28" name="PRP"/>
+                    <label end="37" start="33" name="NP0"/>
+                    <label end="40" start="39" name="POS"/>
+                    <label end="47" start="42" name="NN1-NP0"/>
+                    <label end="53" start="49" name="NN1"/>
+                    <label end="56" start="55" name="VBZ"/>
+                    <label end="59" start="58" name="TO0"/>
+                    <label end="64" start="61" name="VVI"/>
+                    <label end="68" start="66" name="AVQ"/>
+                    <label end="71" start="70" name="PNP"/>
+                    <label end="75" start="73" name="VHZ"/>
+                    <label end="84" start="77" name="VVN"/>
+                    <label end="88" start="86" name="AT0"/>
+                    <label end="94" start="90" name="NN1"/>
+                    <label end="97" start="96" name="PRF"/>
+                    <label end="101" start="99" name="AT0"/>
+                    <label end="109" start="103" name="NN2"/>
+                    <label end="112" start="111" name="TO0"/>
+                    <label end="116" start="114" name="VVI"/>
+                    <label end="123" start="118" name="PRP"/>
+                    <label end="127" start="125" name="AT0"/>
+                    <label end="131" start="129" name="AJ0"/>
+                    <label end="137" start="133" name="NN1"/>
+                    <label end="140" start="139" name="PRF"/>
+                    <label end="148" start="142" name="NP0"/>
+                    <label end="150" start="150" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 07:18:49 PST Tue" status="MANUAL" ID="1282576">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2957" end="71" start="70" name="Deformer"/>
+                    <label cBy="618" feID="2961" end="109" start="86" name="Undergoer"/>
+                    <label cBy="618" feID="2963" end="148" start="111" name="Purpose"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="71" start="70" name="Ext"/>
+                    <label end="109" start="86" name="Obj"/>
+                    <label end="148" start="111" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="71" start="70" name="NP"/>
+                    <label end="109" start="86" name="NP"/>
+                    <label end="148" start="111" name="VPto"/>
+                </layer>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="Metaphor"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="84" start="77" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="39483814" ID="914258">
+            <text>Trees and hedges have been deformed by the fierce salt spray and strong sea winds during winter . </text>
+            <annotationSet cDate="01/07/2003 07:18:50 PST Tue" status="UNANN" ID="1282583">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="NN2"/>
+                    <label end="8" start="6" name="CJC"/>
+                    <label end="15" start="10" name="NN2"/>
+                    <label end="20" start="17" name="VHB"/>
+                    <label end="25" start="22" name="VBN"/>
+                    <label end="34" start="27" name="VVN"/>
+                    <label end="37" start="36" name="PRP"/>
+                    <label end="41" start="39" name="AT0"/>
+                    <label end="48" start="43" name="AJ0"/>
+                    <label end="53" start="50" name="NN1"/>
+                    <label end="59" start="55" name="NN1"/>
+                    <label end="63" start="61" name="CJC"/>
+                    <label end="70" start="65" name="AJ0"/>
+                    <label end="74" start="72" name="NN1"/>
+                    <label end="80" start="76" name="NN2"/>
+                    <label end="87" start="82" name="PRP"/>
+                    <label end="94" start="89" name="NN1"/>
+                    <label end="96" start="96" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 07:18:50 PST Tue" status="MANUAL" ID="1282584">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2961" end="15" start="0" name="Undergoer"/>
+                    <label cBy="618" feID="3024" end="80" start="36" name="Cause"/>
+                    <label cBy="618" feID="2964" end="94" start="82" name="Time"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="15" start="0" name="Ext"/>
+                    <label end="80" start="36" name="Dep"/>
+                    <label end="94" start="82" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="15" start="0" name="NP"/>
+                    <label end="80" start="36" name="PP"/>
+                    <label end="94" start="82" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="34" start="27" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

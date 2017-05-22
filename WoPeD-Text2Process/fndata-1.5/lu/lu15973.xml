@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" POS="N" name="magistrate.n" ID="15973" frame="People_by_vocation" frameID="1071" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="Pickett" ID="2">
+            <document description="cjf001" ID="6"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Peripheral" abbrev="Age" name="Age"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="com" name="Compensation"/>
+            <FE fgColor="000000" bgColor="FFA500" type="Extra-Thematic" abbrev="coa" name="Context_of_acquaintance"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="cb" name="Contract_basis"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Extra-Thematic" abbrev="Desc" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="" name="Employer"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Eth" name="Ethnicity"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="Ori" name="Origin"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Extra-Thematic" abbrev="Pers_char" name="Persistent_characteristic"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Person" name="Person"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="poe" name="Place_of_employment"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD7C" type="Peripheral" abbrev="rnk" name="Rank"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="typ" name="Type"/>
+        </frame>
+    </header>
+    <definition>FN: an official who presides of court proceedings and, in many cases, decides them.</definition>
+    <lexeme POS="N" name="magistrate"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Employer"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="A" FE="Employer"/>
+                <annoSet ID="2600222"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Person"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Person"/>
+                <annoSet ID="2600222"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Employer"/>
+            <FE name="Person"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="A" FE="Employer"/>
+                <valenceUnit GF="" PT="DEN" FE="Person"/>
+                <annoSet ID="2600222"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="manually-added">
+        <sentence corpID="2" docID="6" sentNo="1" paragNo="2" aPos="0" ID="239739">
+            <text>A federal magistrate informed Pickett of the charges against him --assaulting a federal officer with a deadly weapon , which carries a maximum 10 years in prison .</text>
+            <annotationSet cDate="01/06/2003 08:08:39 PST Mon" status="UNANN" ID="125958">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="AT0"/>
+                    <label end="8" start="2" name="AJ0"/>
+                    <label end="19" start="10" name="NN1"/>
+                    <label end="28" start="21" name="VVD"/>
+                    <label end="36" start="30" name="NP0"/>
+                    <label end="39" start="38" name="PRF"/>
+                    <label end="43" start="41" name="AT0"/>
+                    <label end="51" start="45" name="NN2"/>
+                    <label end="59" start="53" name="PRP"/>
+                    <label end="63" start="61" name="PNP"/>
+                    <label end="76" start="65" name="AJ0"/>
+                    <label end="78" start="78" name="AT0"/>
+                    <label end="86" start="80" name="AJ0"/>
+                    <label end="94" start="88" name="NN1"/>
+                    <label end="99" start="96" name="PRP"/>
+                    <label end="101" start="101" name="AT0"/>
+                    <label end="108" start="103" name="AJ0"/>
+                    <label end="115" start="110" name="NN1"/>
+                    <label end="117" start="117" name="PUN"/>
+                    <label end="123" start="119" name="DTQ"/>
+                    <label end="131" start="125" name="VVZ"/>
+                    <label end="133" start="133" name="AT0"/>
+                    <label end="141" start="135" name="NN1"/>
+                    <label end="144" start="143" name="CRD"/>
+                    <label end="150" start="146" name="NN2"/>
+                    <label end="153" start="152" name="PRP"/>
+                    <label end="160" start="155" name="NN1"/>
+                    <label end="162" start="162" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/30/2010 07:25:12 PDT Fri" status="MANUAL" ID="2600222">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="19" start="10" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="6263" end="19" start="10" name="Person"/>
+                    <label cBy="664" feID="6273" end="8" start="2" name="Employer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="8" start="2" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="8" start="2" name="A"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

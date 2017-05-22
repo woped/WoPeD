@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" POS="V" name="put.v" ID="13387" frame="Causation" frameID="5" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Core" abbrev="act" name="Actor"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Affected" name="Affected"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Cause" name="Cause"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Extra-Thematic" abbrev="cir" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="90876C" type="Extra-Thematic" abbrev="con" name="Concessive"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core-Unexpressed" abbrev="Effect" name="Effect"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD73" type="Extra-Thematic" abbrev="exp" name="Explanation"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Extra-Thematic" abbrev="fre" name="Frequency"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="man" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="mea" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Reas" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: bring into a particular state or condition.</definition>
+    <lexeme POS="V" name="put"/>
+    <semType name="Support" ID="111"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Actor"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Actor"/>
+                <annoSet ID="2221284"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Cause"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Cause"/>
+                <annoSet ID="2221285"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Effect"/>
+            <pattern total="2">
+                <valenceUnit GF="Obj" PT="NP" FE="Effect"/>
+                <annoSet ID="2221284"/>
+                <annoSet ID="2221285"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Effect"/>
+                <annoSet ID="2221284"/>
+                <annoSet ID="2221285"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Actor"/>
+            <FE name="Effect"/>
+            <FE name="Effect"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Actor"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Effect"/>
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Effect"/>
+                <annoSet ID="2221284"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Cause"/>
+            <FE name="Effect"/>
+            <FE name="Effect"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Cause"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Effect"/>
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Effect"/>
+                <annoSet ID="2221285"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="manually-added">
+        <sentence corpID="111" docID="421" sentNo="5" paragNo="970" aPos="0" ID="1236038">
+            <text>Yet those people , the fellow countrymen of Jan Mayen 's crew , would put their lives at risk to give help and shelter to British airmen .</text>
+            <annotationSet cDate="07/02/2003 04:39:54 PDT Wed" status="UNANN" ID="1919108">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="cc"/>
+                    <label end="8" start="4" name="dt"/>
+                    <label end="15" start="10" name="nns"/>
+                    <label end="17" start="17" name=","/>
+                    <label end="21" start="19" name="dt"/>
+                    <label end="28" start="23" name="jj"/>
+                    <label end="39" start="30" name="nns"/>
+                    <label end="42" start="41" name="in"/>
+                    <label end="46" start="44" name="NP"/>
+                    <label end="52" start="48" name="NP"/>
+                    <label end="55" start="54" name="POS"/>
+                    <label end="60" start="57" name="nn"/>
+                    <label end="62" start="62" name=","/>
+                    <label end="68" start="64" name="md"/>
+                    <label end="72" start="70" name="VV"/>
+                    <label end="78" start="74" name="PP$"/>
+                    <label end="84" start="80" name="nns"/>
+                    <label end="87" start="86" name="in"/>
+                    <label end="92" start="89" name="nn"/>
+                    <label end="95" start="94" name="to"/>
+                    <label end="100" start="97" name="VV"/>
+                    <label end="105" start="102" name="nn"/>
+                    <label end="109" start="107" name="cc"/>
+                    <label end="117" start="111" name="nn"/>
+                    <label end="120" start="119" name="to"/>
+                    <label end="128" start="122" name="jj"/>
+                    <label end="135" start="130" name="nns"/>
+                    <label end="137" start="137" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/25/2006 02:39:23 PDT Tue" status="MANUAL" ID="2221284">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="72" start="70" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="7200" end="62" start="4" name="Actor"/>
+                    <label cBy="618" feID="20" end="84" start="74" name="Effect"/>
+                    <label cBy="618" feID="20" end="92" start="86" name="Effect"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="62" start="4" name="Ext"/>
+                    <label end="84" start="74" name="Obj"/>
+                    <label end="92" start="86" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="62" start="4" name="NP"/>
+                    <label end="84" start="74" name="NP"/>
+                    <label end="92" start="86" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="297" aPos="0" ID="1233205">
+            <text>This could put you at risk .</text>
+            <annotationSet cDate="06/24/2003 09:56:29 PDT Tue" status="UNANN" ID="1913440">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="dt"/>
+                    <label end="9" start="5" name="md"/>
+                    <label end="13" start="11" name="VV"/>
+                    <label end="17" start="15" name="PP"/>
+                    <label end="20" start="19" name="in"/>
+                    <label end="25" start="22" name="nn"/>
+                    <label end="27" start="27" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/25/2006 02:42:26 PDT Tue" status="MANUAL" ID="2221285">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="13" start="11" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="18" end="3" start="0" name="Cause"/>
+                    <label cBy="618" feID="20" end="17" start="15" name="Effect"/>
+                    <label cBy="618" feID="20" end="25" start="19" name="Effect"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="3" start="0" name="Ext"/>
+                    <label end="17" start="15" name="Obj"/>
+                    <label end="25" start="19" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="3" start="0" name="NP"/>
+                    <label end="17" start="15" name="NP"/>
+                    <label end="25" start="19" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

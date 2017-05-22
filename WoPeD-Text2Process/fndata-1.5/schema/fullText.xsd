@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : fullText.xsd
+    Created on : July 18, 2007, 11:55 AM
+    Author     : jhong
+    Description:
+        Purpose of XML Schema document follows.
+-->
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:fn="http://framenet.icsi.berkeley.edu"
+            targetNamespace="http://framenet.icsi.berkeley.edu"
+            xmlns="http://framenet.icsi.berkeley.edu"
+            elementFormDefault="qualified">
+    
+    <!-- 
+        XML Schema for FrameNet Full-Text XML format
+        Under the root (<fulltext-annotation>), there is a <header> element
+        followed by any number of <sentence> elements.  The <sentence>
+        element has the same structure as the lexicographic annotation
+        XML format.
+    -->
+    
+    <xsd:include schemaLocation="header.xsd"/>
+    <xsd:include schemaLocation="sentence.xsd"/>
+    
+    <xsd:element name="fullTextAnnotation">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="header" type="fn:headerType"/>
+                <xsd:element name="sentence" type="fn:sentenceType"
+                             maxOccurs="unbounded" minOccurs="0"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+        
+</xsd:schema>

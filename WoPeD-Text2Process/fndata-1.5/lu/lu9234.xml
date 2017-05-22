@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" POS="V" name="glisten.v" ID="9234" frame="Light_movement" frameID="131" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="" name="Beam"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Emit" name="Emitter"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="" name="Goal"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="" name="Path"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="Result" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="Src" name="Source"/>
+        </frame>
+    </header>
+    <definition>COD: shine or sparkle (as on something wet or moist)</definition>
+    <lexeme POS="V" name="glisten"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Emitter"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Emitter"/>
+                <annoSet ID="509735"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Goal"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Goal"/>
+                <annoSet ID="509735"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Emitter"/>
+            <FE name="Goal"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Emitter"/>
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Goal"/>
+                <annoSet ID="509735"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-730-s20-ppon">
+        <sentence sentNo="0" aPos="59515753" ID="435084">
+            <text>Harry could see the sun glistening on the naked patches of her body although she had not yet removed her undergarments . </text>
+            <annotationSet cDate="01/07/2003 03:47:59 PST Tue" status="UNANN" ID="509734">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="NP0"/>
+                    <label end="10" start="6" name="VM0"/>
+                    <label end="14" start="12" name="VVI"/>
+                    <label end="18" start="16" name="AT0"/>
+                    <label end="22" start="20" name="NN1"/>
+                    <label end="33" start="24" name="VVG"/>
+                    <label end="36" start="35" name="PRP"/>
+                    <label end="40" start="38" name="AT0"/>
+                    <label end="46" start="42" name="AJ0"/>
+                    <label end="54" start="48" name="NN2"/>
+                    <label end="57" start="56" name="PRF"/>
+                    <label end="61" start="59" name="DPS"/>
+                    <label end="66" start="63" name="NN1"/>
+                    <label end="75" start="68" name="CJS"/>
+                    <label end="79" start="77" name="PNP"/>
+                    <label end="83" start="81" name="VHD"/>
+                    <label end="87" start="85" name="XX0"/>
+                    <label end="91" start="89" name="AV0"/>
+                    <label end="99" start="93" name="VVN"/>
+                    <label end="103" start="101" name="DPS"/>
+                    <label end="117" start="105" name="NN2"/>
+                    <label end="119" start="119" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:47:59 PST Tue" status="MANUAL" ID="509735">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="839" end="22" start="16" name="Emitter"/>
+                    <label cBy="296" feID="4527" end="66" start="35" name="Goal"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="22" start="16" name="Ext"/>
+                    <label end="66" start="35" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="22" start="16" name="NP"/>
+                    <label end="66" start="35" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="sense2"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="33" start="24" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

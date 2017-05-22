@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" incorporatedFE="Unit" POS="N" name="hour.n" ID="5142" frame="Calendric_unit" frameID="229" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="Orwell" ID="3">
+            <document description="Orwell_1984_p1" ID="7"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="cou" name="Count"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="Name" name="Name"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Core" abbrev="RelT" name="Relative_time"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Extra-Thematic" abbrev="sal_eve" name="Salient_event"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="uni" name="Unit"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Core" abbrev="Whole" name="Whole"/>
+        </frame>
+    </header>
+    <definition>COD: a period of time equal to a twenty-fourth part of a day and night and divided into 60 minutes</definition>
+    <lexeme POS="N" name="hour"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Unit"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Unit"/>
+                <annoSet ID="2599825"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Whole"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Whole"/>
+                <annoSet ID="2599825"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Unit"/>
+            <FE name="Whole"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Unit"/>
+                <valenceUnit GF="Dep" PT="N" FE="Whole"/>
+                <annoSet ID="2599825"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="manually-added">
+        <sentence corpID="3" docID="7" sentNo="6" paragNo="2" aPos="0" ID="312908">
+            <text>Even at the best of times it was seldom working , and at present the electric current was cut off during daylight hours .</text>
+            <annotationSet cDate="01/06/2003 10:55:06 PST Mon" status="UNANN" ID="269184">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="AV0"/>
+                    <label end="6" start="5" name="PRP"/>
+                    <label end="10" start="8" name="AT0"/>
+                    <label end="15" start="12" name="AJS"/>
+                    <label end="18" start="17" name="PRF"/>
+                    <label end="24" start="20" name="NN2"/>
+                    <label end="27" start="26" name="PNP"/>
+                    <label end="31" start="29" name="VBD"/>
+                    <label end="38" start="33" name="AV0"/>
+                    <label end="46" start="40" name="VVG"/>
+                    <label end="48" start="48" name="PUN"/>
+                    <label end="52" start="50" name="CJC"/>
+                    <label end="67" start="65" name="AT0"/>
+                    <label end="76" start="69" name="AJ0"/>
+                    <label end="84" start="78" name="NN1"/>
+                    <label end="88" start="86" name="VBD"/>
+                    <label end="92" start="90" name="VVN"/>
+                    <label end="96" start="94" name="AVP"/>
+                    <label end="103" start="98" name="PRP"/>
+                    <label end="112" start="105" name="NN1"/>
+                    <label end="118" start="114" name="NN2"/>
+                    <label end="120" start="120" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/27/2010 11:32:54 PDT Tue" status="MANUAL" ID="2599825">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="118" start="114" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="10331" end="118" start="114" name="Unit"/>
+                    <label cBy="664" feID="2016" end="112" start="105" name="Whole"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="112" start="105" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="112" start="105" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

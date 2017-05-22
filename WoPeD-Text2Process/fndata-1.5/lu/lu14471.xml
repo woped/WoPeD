@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="A" name="hospitable.a" ID="14471" frame="Hospitality" frameID="1970" totalAnnotated="3" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp=1056" ID="17723"/>
+            <document description="bncp=1580" ID="18635"/>
+            <document description="bncp=1057" ID="18671"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="Beh" name="Behavior"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Core" abbrev="Exp" name="Expressor"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="gue" name="Guest"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="hos" name="Host"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core-Unexpressed" abbrev="jud" name="Judge"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manner" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Gr" name="Topic"/>
+        </frame>
+    </header>
+    <definition>FN: welcoming of guests.</definition>
+    <lexeme POS="A" name="hospitable"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Behavior"/>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="N" FE="Behavior"/>
+                <annoSet ID="2584029"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Degree"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="AVP" FE="Degree"/>
+                <annoSet ID="2583939"/>
+                <annoSet ID="2583943"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Guest"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Guest"/>
+                <annoSet ID="2583939"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Guest"/>
+                <annoSet ID="2583943"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Host"/>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Host"/>
+                <annoSet ID="2584029"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Host"/>
+                <annoSet ID="2583939"/>
+                <annoSet ID="2583943"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Manner"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <annoSet ID="2584029"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Behavior"/>
+            <FE name="Host"/>
+            <FE name="Manner"/>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="N" FE="Behavior"/>
+                <valenceUnit GF="Gen" PT="Poss" FE="Host"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <annoSet ID="2584029"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Degree"/>
+            <FE name="Guest"/>
+            <FE name="Host"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Degree"/>
+                <valenceUnit GF="" PT="DNI" FE="Guest"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Host"/>
+                <annoSet ID="2583939"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Degree"/>
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Guest"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Host"/>
+                <annoSet ID="2583943"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-modifier-(1)">
+        <sentence corpID="111" docID="17723" sentNo="4" paragNo="203" aPos="0" ID="1574661">
+            <text>They were a happy family and very hospitable , but Mary told me I was not to call too often or I would wear out my welcome .</text>
+            <annotationSet cDate="07/15/2010 11:27:11 PDT Thu" status="UNANN" ID="2583938">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="PP"/>
+                    <label end="8" start="5" name="VBD"/>
+                    <label end="10" start="10" name="dt"/>
+                    <label end="16" start="12" name="jj"/>
+                    <label end="23" start="18" name="nn"/>
+                    <label end="27" start="25" name="cc"/>
+                    <label end="32" start="29" name="rb"/>
+                    <label end="43" start="34" name="jj"/>
+                    <label end="45" start="45" name=","/>
+                    <label end="49" start="47" name="cc"/>
+                    <label end="54" start="51" name="NP"/>
+                    <label end="59" start="56" name="VVD"/>
+                    <label end="62" start="61" name="PP"/>
+                    <label end="64" start="64" name="PP"/>
+                    <label end="68" start="66" name="VBD"/>
+                    <label end="72" start="70" name="rb"/>
+                    <label end="75" start="74" name="to"/>
+                    <label end="80" start="77" name="VV"/>
+                    <label end="84" start="82" name="rb"/>
+                    <label end="90" start="86" name="rb"/>
+                    <label end="93" start="92" name="cc"/>
+                    <label end="95" start="95" name="PP"/>
+                    <label end="101" start="97" name="md"/>
+                    <label end="106" start="103" name="VV"/>
+                    <label end="110" start="108" name="rp"/>
+                    <label end="113" start="112" name="PP$"/>
+                    <label end="121" start="115" name="nn"/>
+                    <label end="123" start="123" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/15/2010 11:27:11 PDT Thu" status="MANUAL" ID="2583939">
+                <layer rank="1" name="Target">
+                    <label cBy="976" end="43" start="34" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="976" feID="11875" end="3" start="0" name="Host"/>
+                    <label cBy="976" feID="11878" end="32" start="29" name="Degree"/>
+                    <label cBy="976" feID="11876" itype="DNI" name="Guest"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="3" start="0" name="Ext"/>
+                    <label end="32" start="29" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="3" start="0" name="NP"/>
+                    <label end="32" start="29" name="AVP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj">
+                    <label end="8" start="5" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="18635" sentNo="4" paragNo="105" aPos="0" ID="1574663">
+            <text>I found the Board very hospitable to Russian graduates .</text>
+            <annotationSet cDate="07/15/2010 11:27:11 PDT Thu" status="UNANN" ID="2583942">
+                <layer rank="1" name="PENN">
+                    <label end="0" start="0" name="PP"/>
+                    <label end="6" start="2" name="VVD"/>
+                    <label end="10" start="8" name="dt"/>
+                    <label end="16" start="12" name="NP"/>
+                    <label end="21" start="18" name="rb"/>
+                    <label end="32" start="23" name="jj"/>
+                    <label end="35" start="34" name="to"/>
+                    <label end="43" start="37" name="jj"/>
+                    <label end="53" start="45" name="nns"/>
+                    <label end="55" start="55" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/15/2010 11:27:11 PDT Thu" status="MANUAL" ID="2583943">
+                <layer rank="1" name="Target">
+                    <label cBy="976" end="32" start="23" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="976" feID="11875" end="16" start="8" name="Host"/>
+                    <label cBy="976" feID="11878" end="21" start="18" name="Degree"/>
+                    <label cBy="976" feID="11876" end="53" start="34" name="Guest"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="16" start="8" name="Ext"/>
+                    <label end="21" start="18" name="Dep"/>
+                    <label end="53" start="34" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="16" start="8" name="NP"/>
+                    <label end="21" start="18" name="AVP"/>
+                    <label end="53" start="34" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-and/or-(1)"/>
+    <subCorpus name="03-other-matched-(1)"/>
+    <subCorpus name="04-other-unmatched-(1)">
+        <sentence corpID="111" docID="18671" sentNo="4" paragNo="722" aPos="0" ID="1574706">
+            <text>She need not have worried , however , for her good nature and naturally hospitable manner covered up any small deficiencies in deportment .</text>
+            <annotationSet cDate="07/15/2010 11:27:22 PDT Thu" status="UNANN" ID="2584028">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="PP"/>
+                    <label end="7" start="4" name="VVP"/>
+                    <label end="11" start="9" name="rb"/>
+                    <label end="16" start="13" name="VH"/>
+                    <label end="24" start="18" name="VVN"/>
+                    <label end="26" start="26" name=","/>
+                    <label end="34" start="28" name="rb"/>
+                    <label end="36" start="36" name=","/>
+                    <label end="40" start="38" name="in"/>
+                    <label end="44" start="42" name="PP$"/>
+                    <label end="49" start="46" name="jj"/>
+                    <label end="56" start="51" name="nn"/>
+                    <label end="60" start="58" name="cc"/>
+                    <label end="70" start="62" name="rb"/>
+                    <label end="81" start="72" name="jj"/>
+                    <label end="88" start="83" name="nn"/>
+                    <label end="96" start="90" name="VVN"/>
+                    <label end="99" start="98" name="in"/>
+                    <label end="103" start="101" name="dt"/>
+                    <label end="109" start="105" name="jj"/>
+                    <label end="122" start="111" name="nns"/>
+                    <label end="125" start="124" name="in"/>
+                    <label end="136" start="127" name="nn"/>
+                    <label end="138" start="138" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/15/2010 11:27:22 PDT Thu" status="MANUAL" ID="2584029">
+                <layer rank="1" name="Target">
+                    <label cBy="976" end="81" start="72" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="976" feID="11875" end="44" start="42" name="Host"/>
+                    <label cBy="976" feID="11881" end="70" start="62" name="Manner"/>
+                    <label cBy="976" feID="11877" end="88" start="83" name="Behavior"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="44" start="42" name="Gen"/>
+                    <label end="70" start="62" name="Dep"/>
+                    <label end="88" start="83" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="44" start="42" name="Poss"/>
+                    <label end="70" start="62" name="AVP"/>
+                    <label end="88" start="83" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

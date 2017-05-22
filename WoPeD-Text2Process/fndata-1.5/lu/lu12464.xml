@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="importation.n" ID="12464" frame="Importing" frameID="1567" totalAnnotated="4" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="000000" bgColor="EEE8AA" type="Extra-Thematic" abbrev="" name="Beneficiary"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="Src" name="Exporting_area"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Extra-Thematic" abbrev="" name="Frequency"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Goods" name="Goods"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Agt" name="Importer"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Goal" name="Importing_area"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Mnr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="000000" bgColor="7FFF00" type="Extra-Thematic" abbrev="part" name="Particular_iteration"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Peripheral" abbrev="Path" name="Path"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="Reason" name="Reason"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Extra-Thematic" abbrev="" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Veh" name="Vehicle"/>
+        </frame>
+    </header>
+    <definition>FN: the action of moving goods into an area.</definition>
+    <lexeme POS="N" name="importation"/>
+    <valences>
+        <FERealization total="4">
+            <FE name="Goods"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Goods"/>
+                <annoSet ID="1811851"/>
+            </pattern>
+            <pattern total="3">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Goods"/>
+                <annoSet ID="1811857"/>
+                <annoSet ID="1811859"/>
+                <annoSet ID="1811861"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="4">
+            <FE name="Goods"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Goods"/>
+                <annoSet ID="1811851"/>
+            </pattern>
+            <pattern total="3">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Goods"/>
+                <annoSet ID="1811857"/>
+                <annoSet ID="1811859"/>
+                <annoSet ID="1811861"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-001-all">
+        <sentence sentNo="0" aPos="1121805" ID="1180851">
+            <text>Rex was employed as a toy importer but had also been in wine importation before he joined Khai Eng full-time towards the end of the first year . </text>
+            <annotationSet cDate="01/08/2003 05:44:07 PST Wed" status="UNANN" ID="1811850">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="NP0"/>
+                    <label end="6" start="4" name="VBD"/>
+                    <label end="15" start="8" name="VVN"/>
+                    <label end="18" start="17" name="PRP"/>
+                    <label end="20" start="20" name="AT0"/>
+                    <label end="24" start="22" name="AJ0-NN1"/>
+                    <label end="33" start="26" name="NN1"/>
+                    <label end="37" start="35" name="CJC"/>
+                    <label end="41" start="39" name="VHD"/>
+                    <label end="46" start="43" name="AV0"/>
+                    <label end="51" start="48" name="VBN"/>
+                    <label end="54" start="53" name="PRP"/>
+                    <label end="59" start="56" name="NN1"/>
+                    <label end="71" start="61" name="NN1"/>
+                    <label end="78" start="73" name="CJS-PRP"/>
+                    <label end="81" start="80" name="PNP"/>
+                    <label end="88" start="83" name="VVD"/>
+                    <label end="93" start="90" name="NP0"/>
+                    <label end="97" start="95" name="NN1-NP0"/>
+                    <label end="107" start="99" name="AJ0-AV0"/>
+                    <label end="115" start="109" name="PRP"/>
+                    <label end="119" start="117" name="AT0"/>
+                    <label end="123" start="121" name="NN1"/>
+                    <label end="126" start="125" name="PRF"/>
+                    <label end="130" start="128" name="AT0"/>
+                    <label end="136" start="132" name="ORD"/>
+                    <label end="141" start="138" name="NN1"/>
+                    <label end="143" start="143" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:44:07 PST Wed" status="MANUAL" ID="1811851">
+                <layer rank="1" name="FE">
+                    <label cBy="351" feID="8544" end="59" start="56" name="Goods"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="59" start="56" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="59" start="56" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="71" start="61" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="5240871" ID="1180854">
+            <text>Existing powers over importation , use and supply of hazardous chemicals will be extended . </text>
+            <annotationSet cDate="01/08/2003 05:44:07 PST Wed" status="UNANN" ID="1811856">
+                <layer rank="1" name="BNC">
+                    <label end="7" start="0" name="AJ0"/>
+                    <label end="14" start="9" name="NN2"/>
+                    <label end="19" start="16" name="PRP"/>
+                    <label end="31" start="21" name="NN1"/>
+                    <label end="33" start="33" name="PUN"/>
+                    <label end="37" start="35" name="NN1-VVB"/>
+                    <label end="41" start="39" name="CJC"/>
+                    <label end="48" start="43" name="NN1"/>
+                    <label end="51" start="50" name="PRF"/>
+                    <label end="61" start="53" name="AJ0"/>
+                    <label end="71" start="63" name="NN2"/>
+                    <label end="76" start="73" name="VM0"/>
+                    <label end="79" start="78" name="VBI"/>
+                    <label end="88" start="81" name="VVN"/>
+                    <label end="90" start="90" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:44:07 PST Wed" status="MANUAL" ID="1811857">
+                <layer rank="1" name="FE">
+                    <label cBy="351" feID="8544" end="71" start="50" name="Goods"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="71" start="50" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="71" start="50" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="31" start="21" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="5588323" ID="1180855">
+            <text>The Trades Union Congress weighed in with a Green Charter , which included the right to hold ` green strikes &quot; over issues like the importation of toxic wastes . </text>
+            <annotationSet cDate="01/08/2003 05:44:07 PST Wed" status="UNANN" ID="1811858">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="9" start="4" name="NN2"/>
+                    <label end="15" start="11" name="NN0"/>
+                    <label end="24" start="17" name="NN0"/>
+                    <label end="32" start="26" name="VVD"/>
+                    <label end="35" start="34" name="AVP"/>
+                    <label end="40" start="37" name="PRP"/>
+                    <label end="42" start="42" name="AT0"/>
+                    <label end="48" start="44" name="AJ0"/>
+                    <label end="56" start="50" name="NN1"/>
+                    <label end="58" start="58" name="PUN"/>
+                    <label end="64" start="60" name="DTQ"/>
+                    <label end="73" start="66" name="VVD"/>
+                    <label end="77" start="75" name="AT0"/>
+                    <label end="83" start="79" name="AJ0-NN1"/>
+                    <label end="86" start="85" name="TO0"/>
+                    <label end="91" start="88" name="VVI"/>
+                    <label end="93" start="93" name="PUQ"/>
+                    <label end="99" start="95" name="AJ0-NN1"/>
+                    <label end="107" start="101" name="NN2"/>
+                    <label end="109" start="109" name="PUQ"/>
+                    <label end="114" start="111" name="PRP"/>
+                    <label end="121" start="116" name="NN2"/>
+                    <label end="126" start="123" name="PRP"/>
+                    <label end="130" start="128" name="AT0"/>
+                    <label end="142" start="132" name="NN1"/>
+                    <label end="145" start="144" name="PRF"/>
+                    <label end="151" start="147" name="AJ0"/>
+                    <label end="158" start="153" name="NN2"/>
+                    <label end="160" start="160" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:44:07 PST Wed" status="MANUAL" ID="1811859">
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="8544" end="158" start="144" name="Goods"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="158" start="144" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="158" start="144" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="142" start="132" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="5797938" ID="1180856">
+            <text>Many governments are very strict about imposing restrictions on the importation of foodstuffs which contain excessive concentrations of heavy metals . </text>
+            <annotationSet cDate="01/08/2003 05:44:07 PST Wed" status="UNANN" ID="1811860">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="DT0"/>
+                    <label end="15" start="5" name="NN2"/>
+                    <label end="19" start="17" name="VBB"/>
+                    <label end="24" start="21" name="AV0"/>
+                    <label end="31" start="26" name="AJ0"/>
+                    <label end="37" start="33" name="PRP"/>
+                    <label end="46" start="39" name="AJ0-VVG"/>
+                    <label end="59" start="48" name="NN2"/>
+                    <label end="62" start="61" name="PRP"/>
+                    <label end="66" start="64" name="AT0"/>
+                    <label end="78" start="68" name="NN1"/>
+                    <label end="81" start="80" name="PRF"/>
+                    <label end="92" start="83" name="NN2"/>
+                    <label end="98" start="94" name="DTQ"/>
+                    <label end="106" start="100" name="VVB"/>
+                    <label end="116" start="108" name="AJ0"/>
+                    <label end="131" start="118" name="NN2"/>
+                    <label end="134" start="133" name="PRF"/>
+                    <label end="140" start="136" name="AJ0"/>
+                    <label end="147" start="142" name="NN2"/>
+                    <label end="149" start="149" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:44:07 PST Wed" status="MANUAL" ID="1811861">
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="8544" end="147" start="80" name="Goods"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="147" start="80" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="147" start="80" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="78" start="68" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

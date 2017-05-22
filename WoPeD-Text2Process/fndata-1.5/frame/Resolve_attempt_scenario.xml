@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="12/07/2005 05:01:11 PST Wed" name="Resolve_attempt_scenario" ID="1682" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Agent&lt;/fen&gt; and their &lt;fen&gt;Action&lt;/fen&gt; succeed or fail inasmuch as the result of an &lt;fen&gt;Action&lt;/fen&gt; matches the &lt;fen&gt;Goal&lt;/fen&gt; that they hope to bring about by the &lt;fen&gt;Action&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    <semType name="Non-Lexical Frame" ID="16"/>
+    <semType name="Non-perspectivalized_frame" ID="52"/>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="12/07/2005 05:01:11 PST Wed" abbrev="age" name="Agent" ID="9596">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Agent&lt;/fen&gt; makes an attempt to achieve a &lt;fen&gt;Goal&lt;/fen&gt;.
+&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="12/07/2005 05:01:11 PST Wed" abbrev="goa" name="Goal" ID="9597">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Goal&lt;/fen&gt; is what the &lt;fen&gt;Agent&lt;/fen&gt; attempts to achieve.&lt;/def-root&gt;</definition>
+        <semType name="Goal" ID="153"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/07/2005 05:01:11 PST Wed" abbrev="mea" name="Action" ID="9598">
+        <definition>&lt;def-root&gt;This FE identifies the means by which the &lt;fen&gt;Goal&lt;/fen&gt; is achieved (or not).&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/07/2005 05:01:11 PST Wed" abbrev="Time" name="Time" ID="9600">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Time&lt;/fen&gt; when the attempt succeeds or fails.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="12/07/2005 05:01:11 PST Wed" abbrev="Dep" name="Depictive" ID="9601">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Depictive&lt;/fen&gt; is a phrase which describes the &lt;fen&gt;Agent&lt;/fen&gt; during the &lt;fen&gt;Action&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/07/2005 05:01:11 PST Wed" abbrev="Place" name="Place" ID="9602">
+        <definition>&lt;def-root&gt;The place where an attempt succeeds or fails..&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="12/07/2005 05:01:11 PST Wed" abbrev="rol" name="Role" ID="9603">
+        <definition>&lt;def-root&gt;A participant function in a particular event or in events of a particular kind.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/07/2005 05:01:11 PST Wed" abbrev="cir" name="Circumstances" ID="9604">
+        <definition>&lt;def-root&gt;This FE is applied to expressions which indicate the prevailing physical conditions for the event, or some concurrent states of affairs.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="12/07/2005 05:01:11 PST Wed" abbrev="exp" name="Explanation" ID="9605">
+        <definition>&lt;def-root&gt; The &lt;fen&gt;Explanation&lt;/fen&gt; denotes a proposition from which the success or failure logically follows. This often means that the &lt;fen&gt;Explanation&lt;/fen&gt; causes the success or  failure, but not in all cases.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="12/07/2005 05:01:11 PST Wed" abbrev="con" name="Containing_event" ID="9606">
+        <definition>&lt;def-root&gt;This FE denotes an event or state of affairs that occurs or holds at a time that includes the time during which the success or failure reported by the target occurs and of which the success or failure is taken to be a part.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/07/2005 05:11:49 PST Wed" abbrev="deg" name="Degree" ID="9607">
+        <definition>&lt;def-root&gt;The extent to which the &lt;fen&gt;Action&lt;/fen&gt; succeeds or fails.&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in">
+        <relatedFrame>Success_or_failure</relatedFrame>
+        <relatedFrame>Successful_action</relatedFrame>
+        <relatedFrame>Thwarting</relatedFrame>
+        <relatedFrame>Elusive_goal</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Expertise</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+</frame>

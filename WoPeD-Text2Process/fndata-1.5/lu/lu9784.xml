@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="V" name="bake.v" ID="9784" frame="Absorb_heat" frameID="830" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="Cau" name="Cause"/>
+            <FE fgColor="000000" bgColor="7CCD73" type="Extra-Thematic" abbrev="Cir" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="" name="Container"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Extra-Thematic" abbrev="" name="Depictive"/>
+            <FE fgColor="000000" bgColor="d0d0d0" type="Peripheral" abbrev="Dur" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="ent" name="Entity"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core" abbrev="" name="Heat_source"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="" name="Medium"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="" name="Place"/>
+            <FE fgColor="000000" bgColor="FF69B4" type="Extra-Thematic" abbrev="Pur" name="Purpose"/>
+            <FE fgColor="000000" bgColor="9F79EE" type="Extra-Thematic" abbrev="Res" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="tem" name="Temperature"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: to be cooked by dry heat, especially in an oven and as food</definition>
+    <lexeme POS="V" name="bake"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Entity"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Entity"/>
+                <annoSet ID="2147704"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Heat_source"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Heat_source"/>
+                <annoSet ID="2147704"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Result"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Result"/>
+                <annoSet ID="2147704"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Entity"/>
+            <FE name="Heat_source"/>
+            <FE name="Result"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Entity"/>
+                <valenceUnit GF="" PT="DNI" FE="Heat_source"/>
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Result"/>
+                <annoSet ID="2147704"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-PPto,with,from-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="253" aPos="38656767" ID="1349862">
+            <text>The king himself sent word that since the day was hot , the roads baked to ruts , he had ordered out the royal barge to convey them hence .</text>
+            <annotationSet cDate="04/21/2006 01:01:13 PDT Fri" status="UNANN" ID="2147703">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="7" start="4" name="nn"/>
+                    <label end="15" start="9" name="PP"/>
+                    <label end="20" start="17" name="VVD"/>
+                    <label end="25" start="22" name="nn"/>
+                    <label end="30" start="27" name="in"/>
+                    <label end="36" start="32" name="in"/>
+                    <label end="40" start="38" name="dt"/>
+                    <label end="44" start="42" name="nn"/>
+                    <label end="48" start="46" name="VBD"/>
+                    <label end="52" start="50" name="jj"/>
+                    <label end="54" start="54" name=","/>
+                    <label end="58" start="56" name="dt"/>
+                    <label end="64" start="60" name="nns"/>
+                    <label end="70" start="66" name="VVN"/>
+                    <label end="73" start="72" name="to"/>
+                    <label end="78" start="75" name="nns"/>
+                    <label end="80" start="80" name=","/>
+                    <label end="83" start="82" name="PP"/>
+                    <label end="87" start="85" name="VHD"/>
+                    <label end="95" start="89" name="VVN"/>
+                    <label end="99" start="97" name="rp"/>
+                    <label end="103" start="101" name="dt"/>
+                    <label end="109" start="105" name="jj"/>
+                    <label end="115" start="111" name="nn"/>
+                    <label end="118" start="117" name="to"/>
+                    <label end="125" start="120" name="VV"/>
+                    <label end="130" start="127" name="PP"/>
+                    <label end="136" start="132" name="rb"/>
+                    <label end="138" start="138" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="04/21/2006 01:01:14 PDT Fri" status="MANUAL" ID="2147704">
+                <layer rank="1" name="Target">
+                    <label cBy="303" end="70" start="66" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="5611" end="64" start="56" name="Entity"/>
+                    <label cBy="361" feID="10053" end="78" start="72" name="Result"/>
+                    <label cBy="361" feID="5613" itype="DNI" name="Heat_source"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="64" start="56" name="Ext"/>
+                    <label end="78" start="72" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="64" start="56" name="NP"/>
+                    <label end="78" start="72" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-T-PP-(1)"/>
+    <subCorpus name="03-AVP-T-(1)"/>
+    <subCorpus name="05-T-(1)"/>
+    <subCorpus name="other-unmatched-(2)"/>
+</lexUnit>

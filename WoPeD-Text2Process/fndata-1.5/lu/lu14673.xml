@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" POS="PREP" name="during.prep" ID="14673" frame="Temporal_collocation" frameID="1895" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="Orwell" ID="3">
+            <document description="Orwell_1984_p1" ID="7"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="Eve" name="Event_description"/>
+            <FE fgColor="FFFFFF" bgColor="90876C" type="Core" abbrev="LEn" name="Landmark_entity"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="LEv" name="Landmark_event"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Core" abbrev="LPe" name="Landmark_period"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="TEn" name="Trajector_entity"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Core" abbrev="TEv" name="Trajector_event"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="TPe" name="Trajector_period"/>
+        </frame>
+    </header>
+    <definition>FN: happening at the same time as some other event or stretch of tim</definition>
+    <lexeme POS="PREP" name="during"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Landmark_period"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Landmark_period"/>
+                <annoSet ID="2598445"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Trajector_event"/>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="Sfin" FE="Trajector_event"/>
+                <annoSet ID="2598445"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Landmark_period"/>
+            <FE name="Trajector_event"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Landmark_period"/>
+                <valenceUnit GF="Head" PT="Sfin" FE="Trajector_event"/>
+                <annoSet ID="2598445"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="other-unmatched-(1)"/>
+    <subCorpus name="manually-added">
+        <sentence corpID="3" docID="7" sentNo="6" paragNo="2" aPos="0" ID="312908">
+            <text>Even at the best of times it was seldom working , and at present the electric current was cut off during daylight hours .</text>
+            <annotationSet cDate="01/06/2003 10:55:06 PST Mon" status="UNANN" ID="269184">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="AV0"/>
+                    <label end="6" start="5" name="PRP"/>
+                    <label end="10" start="8" name="AT0"/>
+                    <label end="15" start="12" name="AJS"/>
+                    <label end="18" start="17" name="PRF"/>
+                    <label end="24" start="20" name="NN2"/>
+                    <label end="27" start="26" name="PNP"/>
+                    <label end="31" start="29" name="VBD"/>
+                    <label end="38" start="33" name="AV0"/>
+                    <label end="46" start="40" name="VVG"/>
+                    <label end="48" start="48" name="PUN"/>
+                    <label end="52" start="50" name="CJC"/>
+                    <label end="67" start="65" name="AT0"/>
+                    <label end="76" start="69" name="AJ0"/>
+                    <label end="84" start="78" name="NN1"/>
+                    <label end="88" start="86" name="VBD"/>
+                    <label end="92" start="90" name="VVN"/>
+                    <label end="96" start="94" name="AVP"/>
+                    <label end="103" start="98" name="PRP"/>
+                    <label end="112" start="105" name="NN1"/>
+                    <label end="118" start="114" name="NN2"/>
+                    <label end="120" start="120" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/23/2010 06:59:44 PDT Fri" status="MANUAL" ID="2598445">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="103" start="98" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="12063" end="118" start="105" name="Landmark_period"/>
+                    <label cBy="664" feID="12064" end="96" start="65" name="Trajector_event"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="118" start="105" name="Obj"/>
+                    <label end="96" start="65" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="118" start="105" name="NP"/>
+                    <label end="96" start="65" name="Sfin"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Prep"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

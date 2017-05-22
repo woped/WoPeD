@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" POS="A" name="gloveless.a" ID="3974" frame="Wearing" frameID="160" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Core" abbrev="BP" name="Body_part"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Clo" name="Clothing"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Extra-Thematic" abbrev="goa" name="Goal"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="man" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="pur" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="rel" name="Relative_location"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Extra-Thematic" abbrev="sou" name="Source"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="tim" name="Time"/>
+            <FE fgColor="000000" bgColor="d0d0d0" type="Core" abbrev="Wearer" name="Wearer"/>
+        </frame>
+    </header>
+    <definition>FN: without a glove/gloves.</definition>
+    <lexeme POS="A" name="gloveless"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Body_part"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="NP" FE="Body_part"/>
+                <annoSet ID="642116"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Wearer"/>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Wearer"/>
+                <annoSet ID="642116"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Body_part"/>
+            <FE name="Wearer"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="NP" FE="Body_part"/>
+                <valenceUnit GF="Gen" PT="Poss" FE="Wearer"/>
+                <annoSet ID="642116"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="A-001-all">
+        <sentence sentNo="0" aPos="90421232" ID="580133">
+            <text>` The train had no heating , &quot; he said , blowing on his gloveless hands . </text>
+            <annotationSet cDate="01/07/2003 06:30:33 PST Tue" status="UNANN" ID="642115">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PUQ"/>
+                    <label end="4" start="2" name="AT0"/>
+                    <label end="10" start="6" name="NN1"/>
+                    <label end="14" start="12" name="VHD"/>
+                    <label end="17" start="16" name="AT0"/>
+                    <label end="25" start="19" name="NN1"/>
+                    <label end="27" start="27" name="PUN"/>
+                    <label end="29" start="29" name="PUQ"/>
+                    <label end="32" start="31" name="PNP"/>
+                    <label end="37" start="34" name="VVD"/>
+                    <label end="39" start="39" name="PUN"/>
+                    <label end="47" start="41" name="VVG"/>
+                    <label end="50" start="49" name="PRP"/>
+                    <label end="54" start="52" name="DPS"/>
+                    <label end="64" start="56" name="AJ0"/>
+                    <label end="70" start="66" name="NN2"/>
+                    <label end="72" start="72" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 06:30:33 PST Tue" status="MANUAL" ID="642116">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="1294" end="54" start="52" name="Wearer"/>
+                    <label cBy="669" feID="1623" end="70" start="66" name="Body_part"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="54" start="52" name="Gen"/>
+                    <label end="70" start="66" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="54" start="52" name="Poss"/>
+                    <label end="70" start="66" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="64" start="56" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

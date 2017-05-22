@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" POS="V" name="sprawl out.v" ID="9387" frame="Change_posture" frameID="770" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="" name="Direction"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="" name="Distance"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Peripheral" abbrev="" name="Goal"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Peripheral" abbrev="" name="Location"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="mea" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="" name="Path"/>
+            <FE fgColor="0000FF" bgColor="d0d0d0" type="Extra-Thematic" abbrev="poc" name="Point_of_contact"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Prot" name="Protagonist"/>
+            <FE fgColor="000000" bgColor="9F79EE" type="Peripheral" abbrev="" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Extra-Thematic" abbrev="" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Peripheral" abbrev="" name="Source"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: lie, or fall down with arms and legs spread out in an ungainly way</definition>
+    <lexeme order="1" headword="true" breakBefore="false" POS="V" name="sprawl"/>
+    <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="out"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Depictive"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Depictive"/>
+                <annoSet ID="1750817"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Protagonist"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Protagonist"/>
+                <annoSet ID="1750817"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Depictive"/>
+            <FE name="Protagonist"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Depictive"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Protagonist"/>
+                <annoSet ID="1750817"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-860-avpout-p">
+        <sentence sentNo="0" aPos="101112967" ID="1149855">
+            <text>He sprawled out in his shorts and drank thirstily before fervently putting down her suggestion . </text>
+            <annotationSet cDate="01/08/2003 04:28:45 PST Wed" status="UNANN" ID="1750816">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="10" start="3" name="VVD"/>
+                    <label end="14" start="12" name="AVP"/>
+                    <label end="17" start="16" name="PRP"/>
+                    <label end="21" start="19" name="DPS"/>
+                    <label end="28" start="23" name="NN2"/>
+                    <label end="32" start="30" name="CJC"/>
+                    <label end="38" start="34" name="VVD"/>
+                    <label end="48" start="40" name="AV0"/>
+                    <label end="55" start="50" name="CJS"/>
+                    <label end="65" start="57" name="AV0"/>
+                    <label end="73" start="67" name="VVG"/>
+                    <label end="78" start="75" name="AVP"/>
+                    <label end="82" start="80" name="DPS"/>
+                    <label end="93" start="84" name="NN1"/>
+                    <label end="95" start="95" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 04:28:46 PST Wed" status="MANUAL" ID="1750817">
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="5003" end="28" start="16" name="Depictive"/>
+                    <label cBy="605" feID="5002" end="1" start="0" name="Protagonist"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="28" start="16" name="Dep"/>
+                    <label end="1" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="28" start="16" name="PP"/>
+                    <label end="1" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="10" start="3" name="Target"/>
+                    <label cBy="605" end="14" start="12" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="01-T-PP-(2)"/>
+    <subCorpus name="02-NP-(2)"/>
+</lexUnit>

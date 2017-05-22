@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="618" cDate="07/19/2006 02:46:33 PDT Wed" name="Risky_situation" ID="1762" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A particular &lt;fen&gt;Situation&lt;/fen&gt; is likely (or unlikely) to result in a harmful event befalling an &lt;fen&gt;Asset&lt;/fen&gt;. The &lt;fen&gt;Situation&lt;/fen&gt; may be a state, an activity, or some focal entity that must be inferred to be part of some larger Situation involving both it and the &lt;fen&gt;Asset&lt;/fen&gt;. Although the idea of a harmful event is crucial to the understanding of this frame, it is not expressible as an argument of the LUs in this frame.
+
+&lt;ex&gt;&lt;m&gt;Is&lt;/m&gt; &lt;fex name="Situation"&gt;climate change&lt;/fex&gt; &lt;t&gt;dangerous&lt;/t&gt; &lt;fex name="Asset"&gt;for mankind&lt;/fex&gt;?&lt;/ex&gt;
+&lt;ex&gt;Customers can make complaints about &lt;t&gt;unsafe&lt;/t&gt; &lt;fex name="dan_ent"&gt;products&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;The primary &lt;t&gt;risk&lt;/t&gt; &lt;m&gt;is&lt;/m&gt; &lt;fex name="Asset"&gt;to our infrastructure&lt;/fex&gt;.&lt;/ex&gt;
+
+
+See the Run_risk frame for discussion on differentiation regarding the noun &lt;ment&gt;risk&lt;/ment&gt;.&lt;/def-root&gt;</definition>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="07/19/2006 02:55:57 PDT Wed" abbrev="sit" name="Situation" ID="10370">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Situation&lt;/fen&gt; which may lead to a harmful event.
+
+&lt;ex&gt;Most people agree, &lt;fex name="Situation"&gt;going over 100mph&lt;/fex&gt; &lt;m&gt;is&lt;/m&gt; &lt;t&gt;unsafe&lt;/t&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="07/19/2006 02:56:45 PDT Wed" abbrev="ass" name="Asset" ID="10371">
+        <definition>&lt;def-root&gt;Something judged to be desirable or valuable which might be lost or damaged.
+
+&lt;ex&gt;Honey is not &lt;t&gt;safe&lt;/t&gt; &lt;fex name="Asset"&gt;for babies&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="07/19/2006 02:57:27 PDT Wed" abbrev="deg" name="Degree" ID="10372">
+        <definition>&lt;def-root&gt;A modifier expressing the deviation of the actual level of security from the expected value given the &lt;fen&gt;Situation&lt;/fen&gt; and the state indicated by the target itself.
+
+&lt;ex&gt;Rogue nations &lt;m&gt;are&lt;/m&gt; our &lt;fex name="Degree"&gt;greatest&lt;/fex&gt; &lt;t&gt;threat&lt;/t&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="07/19/2006 02:58:20 PDT Wed" abbrev="pla" name="Place" ID="10373">
+        <definition>&lt;def-root&gt;A particular location for which the &lt;fen&gt;Situation&lt;/fen&gt; is safe. Frequently, it is to be inferred that the characteristics of the location make various &lt;fen&gt;Situation&lt;/fen&gt;s safe or unsafe.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="07/19/2006 02:59:17 PDT Wed" abbrev="tim" name="Time" ID="10374">
+        <definition>&lt;def-root&gt;The time period during which the &lt;fen&gt;Situation&lt;/fen&gt; has the specified level of safety.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="618" cDate="07/28/2006 08:41:32 PDT Fri" abbrev="dom" name="Domain" ID="10421">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Domain&lt;/fen&gt; in which the &lt;fen&gt;Situation&lt;/fen&gt; is safe.
+
+&lt;ex&gt;All of our websites &lt;m&gt;are&lt;/m&gt; &lt;fex name="dom"&gt;educationally&lt;/fex&gt; &lt;t&gt;safe&lt;/t&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="05/25/2007 03:36:50 PDT Fri" abbrev="dan_ent" name="Dangerous_entity" ID="11847">
+        <definition>&lt;def-root&gt;A concrete or abstract entity which may come to cause the loss of, or damage to the Asset.
+
+&lt;ex&gt;&lt;fex name="Dangerous_entity"&gt;That man&lt;/fex&gt; is a &lt;t&gt;risk&lt;/t&gt;!&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Situation" ID="10370"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="361" cDate="10/16/2007 12:59:22 PDT Tue" abbrev="" name="Frequency" ID="11996">
+        <definition>&lt;def-root&gt;How often the &lt;fen&gt;Asset&lt;/fen&gt; encounters the Risky_situation.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Peripheral" cBy="976" cDate="04/09/2010 01:08:09 PDT Fri" abbrev="" name="Circumstances" ID="13793">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Circumstances&lt;/fen&gt; in which an &lt;fen&gt;Asset&lt;/fen&gt; is at risk.&lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Situation" ID="10370"/>
+        <memberFE name="Dangerous_entity" ID="11847"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Gradable_attributes</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on">
+        <relatedFrame>Risk_scenario</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also">
+        <relatedFrame>Run_risk</relatedFrame>
+    </frameRelation>
+    <lexUnit status="Created" POS="A" name="safe.a" ID="13377" lemmaID="33924" cBy="618" cDate="07/19/2006 03:11:36 PDT Wed">
+        <definition>FN: not likely to lead to harm or injury.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="safe"/>
+        <semType name="Negative" ID="99"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="unsafe.a" ID="13378" lemmaID="50407" cBy="618" cDate="07/19/2006 03:20:53 PDT Wed">
+        <definition>COD: not safe; dangerous.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="unsafe"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="dangerous.a" ID="13379" lemmaID="9549" cBy="618" cDate="07/19/2006 03:21:47 PDT Wed">
+        <definition>COD: able or likely to cause harm or injury.</definition>
+        <sentenceCount annotated="20" total="160"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="dangerous"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="risky.a" ID="13380" lemmaID="33345" cBy="618" cDate="07/20/2006 04:55:05 PDT Thu">
+        <definition>FN: involving the chance of a negative outcome.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="risky"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="risk.n" ID="13381" lemmaID="33341" cBy="618" cDate="07/20/2006 05:21:33 PDT Thu">
+        <definition>COD: a situation involving exposure to danger. </definition>
+        <sentenceCount annotated="1" total="1"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="risk"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="threat.n" ID="13400" lemmaID="40233" cBy="618" cDate="07/26/2006 02:35:23 PDT Wed">
+        <definition>COD: the possibility of trouble or danger.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="threat"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="danger.n" ID="13401" lemmaID="9548" cBy="618" cDate="07/26/2006 02:37:53 PDT Wed">
+        <definition>COD: a cause of harm or injury.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="danger"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="ADV" name="riskily.adv" ID="13452" lemmaID="33343" cBy="618" cDate="08/14/2006 02:23:37 PDT Mon">
+        <definition>FN: incurring risk; exhibiting risky behavior.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="riskily"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="ADV" name="safely.adv" ID="13453" lemmaID="33932" cBy="618" cDate="08/14/2006 02:24:09 PDT Mon">
+        <definition>FN: without incurring any risk.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="safely"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="warm.a" ID="15763" lemmaID="43448" cBy="976" cDate="04/09/2010 11:53:16 PDT Fri">
+        <definition>FN: uncomfortable due to potential danger</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="warm"/>
+    </lexUnit>
+</frame>

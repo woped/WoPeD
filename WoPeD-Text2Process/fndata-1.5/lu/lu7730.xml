@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" incorporatedFE="Attribute" POS="A" name="blue.a" ID="7730" frame="Color" frameID="423" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="Orwell" ID="3">
+            <document description="Orwell_1984_p1" ID="7"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core" abbrev="att" name="Attribute"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Cause" name="Cause"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Core" abbrev="Col" name="Color"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Qual" name="Color_qualifier"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="Comp" name="Comparand"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="Desc" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Entity" name="Entity"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="" name="Sub-region"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Peripheral" abbrev="Typ" name="Type"/>
+        </frame>
+    </header>
+    <definition>COD: of a colour intermediate between green and violet, as of the sky or sea on a sunny day. </definition>
+    <lexeme POS="A" name="blue"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Color"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="--" FE="Color"/>
+                <annoSet ID="2600189"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Entity"/>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="N" FE="Entity"/>
+                <annoSet ID="2600189"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Color"/>
+            <FE name="Entity"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="--" FE="Color"/>
+                <valenceUnit GF="Head" PT="N" FE="Entity"/>
+                <annoSet ID="2600189"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="manually-added">
+        <sentence corpID="3" docID="7" sentNo="5" paragNo="3" aPos="0" ID="312918">
+            <text>He moved over to the window : a smallish , frail figure , the meagreness of his body merely emphasized by the blue overalls which were the uniform of the Party .</text>
+            <annotationSet cDate="01/06/2003 10:55:07 PST Mon" status="UNANN" ID="269194">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="7" start="3" name="VVD"/>
+                    <label end="12" start="9" name="AVP"/>
+                    <label end="15" start="14" name="PRP"/>
+                    <label end="19" start="17" name="AT0"/>
+                    <label end="26" start="21" name="NN1"/>
+                    <label end="28" start="28" name="PUN"/>
+                    <label end="30" start="30" name="AT0"/>
+                    <label end="39" start="32" name="AJ0"/>
+                    <label end="41" start="41" name="PUN"/>
+                    <label end="47" start="43" name="AJ0"/>
+                    <label end="54" start="49" name="NN1"/>
+                    <label end="56" start="56" name="PUN"/>
+                    <label end="60" start="58" name="AT0"/>
+                    <label end="71" start="62" name="NN1"/>
+                    <label end="74" start="73" name="PRF"/>
+                    <label end="78" start="76" name="DPS"/>
+                    <label end="83" start="80" name="NN1"/>
+                    <label end="90" start="85" name="AV0"/>
+                    <label end="101" start="92" name="VVN"/>
+                    <label end="104" start="103" name="PRP"/>
+                    <label end="108" start="106" name="AT0"/>
+                    <label end="113" start="110" name="AJ0"/>
+                    <label end="122" start="115" name="NN2"/>
+                    <label end="128" start="124" name="DTQ"/>
+                    <label end="133" start="130" name="VBD"/>
+                    <label end="137" start="135" name="AT0"/>
+                    <label end="145" start="139" name="NN1"/>
+                    <label end="148" start="147" name="PRF"/>
+                    <label end="152" start="150" name="AT0"/>
+                    <label end="158" start="154" name="NN1"/>
+                    <label end="160" start="160" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/30/2010 02:30:55 PDT Fri" status="MANUAL" ID="2600189">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="113" start="110" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="3900" end="113" start="110" name="Color"/>
+                    <label cBy="664" feID="3899" end="122" start="115" name="Entity"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="122" start="115" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="122" start="115" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

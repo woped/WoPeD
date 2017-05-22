@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="197" cDate="04/13/2001 02:46:44 PDT Fri" name="Robbery" ID="99" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;These are words describing situations in which a &lt;fen&gt;Perpetrator&lt;/fen&gt; wrongs a &lt;fen&gt;Victim&lt;/fen&gt; by taking something (&lt;fen&gt;Goods&lt;/fen&gt;) from them.  In some cases, the &lt;fen&gt;Source&lt;/fen&gt; location from which the &lt;fen&gt;Goods&lt;/fen&gt; were taken is used to metonymically refer to the &lt;fen&gt;Victim&lt;/fen&gt;.  The robbery can be done in a particular &lt;fen&gt;Manner&lt;/fen&gt; (for example, forcefully) and via a specific &lt;fen&gt;Means&lt;/fen&gt; (for example, by threatening the &lt;fen&gt;Victim&lt;/fen&gt;).
+
+&lt;ex&gt;&lt;fex name="Perpetrator"&gt;Half of the team&lt;/fex&gt; &lt;t&gt;held&lt;/t&gt; &lt;t&gt;up&lt;/t&gt; &lt;fex name="Victim"&gt;the tellers&lt;/fex&gt; while the others were stationed to report the arrival of police.&lt;/ex&gt;
+
+As opposed to Theft, Robbery focuses on the harm to the &lt;fen&gt;Victim&lt;/fen&gt; and on the &lt;fen&gt;Source&lt;/fen&gt; location from which the &lt;fen&gt;Goods&lt;/fen&gt; have been removed, rather than the &lt;fen&gt;Goods&lt;/fen&gt; themselves.&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="197" cDate="04/13/2001 02:49:00 PDT Fri" abbrev="Perp" name="Perpetrator" ID="474">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Perpetrator&lt;/fen&gt;is the person (or other agent) that takes the &lt;fen&gt;Goods&lt;/fen&gt; away by force or threats.
+
+&lt;ex&gt;&lt;fex name="Perpetrator"&gt;Leslie&lt;/fex&gt; &lt;t&gt;robbed&lt;/t&gt; Kim of her watch.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Core" cBy="197" cDate="04/13/2001 02:52:56 PDT Fri" abbrev="Vict" name="Victim" ID="475">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Victim&lt;/fen&gt; is the person (or other sentient being or group) that owns the &lt;fen&gt;Goods&lt;/fen&gt; before they are taken away by the &lt;fen&gt;Perpetrator&lt;/fen&gt;.
+
+&lt;ex&gt;Leslie &lt;t&gt;robbed&lt;/t&gt; &lt;fex name="Victim"&gt;Kim&lt;/fex&gt; of her watch.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="197" cDate="04/13/2001 02:54:49 PDT Fri" abbrev="Goods" name="Goods" ID="476">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Goods&lt;/fen&gt; are anything (including labor, time, or legal rights) that can be taken away.
+
+&lt;ex&gt;Leslie &lt;t&gt;robbed&lt;/t&gt; John &lt;fex name="Goods"&gt;of his watch&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="197" cDate="04/13/2001 02:57:02 PDT Fri" abbrev="Src" name="Source" ID="477">
+        <definition>&lt;def-root&gt;Source is the initial location of the goods, before they change location.
+&lt;ex&gt;Leslie and Kim &lt;t&gt;robbed&lt;/t&gt; &lt;fex name="Source"&gt;a bank&lt;/fex&gt;&lt;/ex&gt;
+This FE is realized in compound nouns as follows:
+&lt;ex&gt;&lt;fex name="Source"&gt;bank&lt;/fex&gt; &lt;t&gt;robbery&lt;/t&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Source" ID="151"/>
+    </FE>
+    <FE bgColor="d0d0d0" fgColor="00008B" coreType="Peripheral" cBy="197" cDate="04/13/2001 02:58:39 PDT Fri" abbrev="Mns" name="Means" ID="478">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Means&lt;/fen&gt; indicates the means by which the Robbery takes place.
+
+&lt;ex&gt;John &lt;t&gt;mugged&lt;/t&gt; his victim &lt;fex name="Means"&gt;by holding a toy gun to his head&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="197" cDate="04/13/2001 03:00:11 PDT Fri" abbrev="Mnr" name="Manner" ID="479">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Manner&lt;/fen&gt; describes the way in which the Robbery took place.
+
+&lt;ex&gt;He was known for committing &lt;fex name="Manner"&gt;violent&lt;/fex&gt; &lt;t&gt;muggings&lt;/t&gt; on schoolchildren&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="05/23/2001 04:06:45 PDT Wed" abbrev="Place" name="Place" ID="560">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Place&lt;/fen&gt; is where the Robbery occurs.
+
+&lt;ex&gt;They &lt;t&gt;robbed&lt;/t&gt; a bank &lt;fex name="Place"&gt;in North Berkeley&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="05/23/2001 04:06:45 PDT Wed" abbrev="Time" name="Time" ID="561">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Time&lt;/fen&gt; indicates when the Robbery occurs.
+
+&lt;ex&gt;They &lt;t&gt;ROBBED&lt;/t&gt; a bank in North Berkeley &lt;fex name="Time"&gt;last May&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/11/2003 02:20:01 PDT Wed" abbrev="Purp" name="Purpose" ID="4618">
+        <definition>&lt;def-root&gt;The action that the &lt;fen&gt;Perpetrator&lt;/fen&gt; is trying to accomplish by the robbery.
+
+&lt;ex&gt;They used to &lt;t&gt;rob&lt;/t&gt; folks &lt;fex name="Purp"&gt;just to see the expression on their faces&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/11/2003 02:25:36 PDT Wed" abbrev="Rsn" name="Reason" ID="4619">
+        <definition>&lt;def-root&gt;The state of affairs that the &lt;fen&gt;Perpetrator&lt;/fen&gt; has in mind which leads to the decision to commit the robbery.
+
+&lt;ex&gt;Listen, I just &lt;t&gt;mug&lt;/t&gt; people &lt;fex name="Reason"&gt;'cause I got mouths to feed&lt;/fex&gt; -- nothing personal.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="000000" coreType="Extra-Thematic" cBy="309" cDate="10/02/2003 11:37:02 PDT Thu" abbrev="Freq" name="Frequency" ID="5434">
+        <definition>&lt;def-root&gt;The number of times a robbery event occurs.
+
+&lt;ex&gt; An Agoura Jills cigar store was &lt;t&gt;robbed&lt;/t&gt; &lt;fex name="Frequency"&gt;twice&lt;/fex&gt; last week&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="90876C" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="09/30/2005 03:06:32 PDT Fri" abbrev="cop" name="Co_participant" ID="9082">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Co_participant&lt;/fen&gt; denotes a person that participates in a coordinated way in robbery event as the primary protagonist, the &lt;fen&gt;Perpetrator&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Source" ID="477"/>
+        <memberFE name="Victim" ID="475"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Committing_crime</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Theft</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="rob.v" ID="1999" lemmaID="33408" cBy="197" cDate="04/16/2001 12:46:14 PDT Mon">
+        <definition>FN: take away from by force or threats</definition>
+        <sentenceCount annotated="35" total="153"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="rob"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="robber.n" ID="2000" lemmaID="33409" cBy="197" cDate="04/16/2001 01:20:37 PDT Mon">
+        <definition>FN: A person who robs.</definition>
+        <sentenceCount annotated="16" total="111"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="robber"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="mug.v" ID="2001" lemmaID="25162" cBy="197" cDate="04/16/2001 01:35:41 PDT Mon">
+        <definition>FN: an act of robbing</definition>
+        <sentenceCount annotated="15" total="111"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="mug"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="robbery.n" ID="2002" lemmaID="33410" cBy="197" cDate="04/16/2001 01:36:31 PDT Mon">
+        <definition>FN: An act of robbing</definition>
+        <sentenceCount annotated="33" total="213"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="robbery"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="mugger.n" ID="2003" lemmaID="25163" cBy="197" cDate="04/16/2001 01:39:01 PDT Mon">
+        <definition>COD: A person who attacks and robs another in a public place.</definition>
+        <sentenceCount annotated="4" total="25"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="mugger"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="mugging.n" ID="2004" lemmaID="25165" cBy="197" cDate="04/16/2001 01:40:31 PDT Mon">
+        <definition>FN: An instance of attacking and robbing.</definition>
+        <sentenceCount annotated="6" total="30"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="mugging"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="stick-up.n" ID="2005" lemmaID="38035" cBy="197" cDate="04/16/2001 01:42:03 PDT Mon">
+        <definition>FN: Robbery (slang).</definition>
+        <sentenceCount annotated="1" total="5"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="stick-up"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="hold-up.n" ID="2006" lemmaID="18218" cBy="197" cDate="04/16/2001 01:43:20 PDT Mon">
+        <definition>FN: The act or an instance of forcibly stopping and robbing.</definition>
+        <sentenceCount annotated="4" total="60"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="hold-up"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="hold_up.v" ID="11570" lemmaID="49850" cBy="664" cDate="02/10/2005 11:28:28 PST Thu">
+        <definition>COD: rob someone using the threat of violence.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="hold"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="up"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="rob blind.v" ID="12742" lemmaID="50247" cBy="605" cDate="08/29/2005 02:35:43 PDT Mon">
+        <definition>FN: to rob very thoroughly</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="rob"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="A" name="blind"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="V" name="stick up.v" ID="12772" lemmaID="50260" cBy="605" cDate="09/30/2005 05:42:44 PDT Fri">
+        <definition>COD: rob someone or something at gunpoint.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="stick"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="up"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="ransack.v" ID="15122" lemmaID="31804" cBy="597" cDate="06/16/2008 01:51:02 PDT Mon">
+        <definition>FN: rob everything of value from a source</definition>
+        <sentenceCount annotated="23" total="97"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="ransack"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="rifle.v" ID="15670" lemmaID="33239" cBy="618" cDate="03/08/2010 03:11:12 PST Mon">
+        <definition>FN: rob.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="rifle"/>
+    </lexUnit>
+</frame>

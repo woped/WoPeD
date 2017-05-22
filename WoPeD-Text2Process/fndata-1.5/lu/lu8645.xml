@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="asphyxiate.v" ID="8645" frame="Killing" frameID="590" totalAnnotated="8" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Extra-Thematic" abbrev="ben" name="Beneficiary"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Core" abbrev="" name="Cause"/>
+            <FE fgColor="000000" bgColor="90876C" type="Extra-Thematic" abbrev="" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Extra-Thematic" abbrev="" name="Explanation"/>
+            <FE fgColor="000000" bgColor="FFA500" type="Extra-Thematic" abbrev="" name="Frequency"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Instr" name="Instrument"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Kill" name="Killer"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="Man" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Core" abbrev="" name="Means"/>
+            <FE fgColor="000000" bgColor="7CCD73" type="Extra-Thematic" abbrev="" name="Period_of_iterations"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Loc" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Extra-Thematic" abbrev="" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="" name="Victim"/>
+        </frame>
+    </header>
+    <definition>FN: to cause to die due to a lowered level of oxygen in the body</definition>
+    <lexeme POS="V" name="asphyxiate"/>
+    <valences>
+        <FERealization total="6">
+            <FE name="Cause"/>
+            <pattern total="5">
+                <valenceUnit GF="Ext" PT="NP" FE="Cause"/>
+                <annoSet ID="2475958"/>
+                <annoSet ID="2475960"/>
+                <annoSet ID="2475970"/>
+                <annoSet ID="2475984"/>
+                <annoSet ID="2475988"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[from]" FE="Cause"/>
+                <annoSet ID="2475964"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Frequency"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Frequency"/>
+                <annoSet ID="2475960"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Instrument"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Instrument"/>
+                <annoSet ID="2475982"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Killer"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Killer"/>
+                <annoSet ID="2475956"/>
+                <annoSet ID="2475982"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Manner"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <annoSet ID="2475984"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Place"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Place"/>
+                <annoSet ID="2475956"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="8">
+            <FE name="Victim"/>
+            <pattern total="7">
+                <valenceUnit GF="Obj" PT="NP" FE="Victim"/>
+                <annoSet ID="2475956"/>
+                <annoSet ID="2475958"/>
+                <annoSet ID="2475960"/>
+                <annoSet ID="2475970"/>
+                <annoSet ID="2475982"/>
+                <annoSet ID="2475984"/>
+                <annoSet ID="2475988"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Victim"/>
+                <annoSet ID="2475964"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Cause"/>
+            <FE name="Frequency"/>
+            <FE name="Victim"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Cause"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Frequency"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Victim"/>
+                <annoSet ID="2475960"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Cause"/>
+            <FE name="Manner"/>
+            <FE name="Victim"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Cause"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Victim"/>
+                <annoSet ID="2475984"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="4">
+            <FE name="Cause"/>
+            <FE name="Victim"/>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="NP" FE="Cause"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Victim"/>
+                <annoSet ID="2475958"/>
+                <annoSet ID="2475970"/>
+                <annoSet ID="2475988"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[from]" FE="Cause"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Victim"/>
+                <annoSet ID="2475964"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Instrument"/>
+            <FE name="Killer"/>
+            <FE name="Victim"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Instrument"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Killer"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Victim"/>
+                <annoSet ID="2475982"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Killer"/>
+            <FE name="Place"/>
+            <FE name="Victim"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Killer"/>
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Place"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Victim"/>
+                <annoSet ID="2475956"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="5" paragNo="460" aPos="107113002" ID="1514901">
+            <text>And I suppose we 'd better go and asphyxiate ourselves up at the sulphur springs .</text>
+            <annotationSet cDate="05/25/2009 10:45:31 PDT Mon" status="UNANN" ID="2475955">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="cc"/>
+                    <label end="4" start="4" name="PP"/>
+                    <label end="12" start="6" name="VVP"/>
+                    <label end="15" start="14" name="PP"/>
+                    <label end="18" start="17" name="md"/>
+                    <label end="25" start="20" name="rb"/>
+                    <label end="28" start="27" name="VV"/>
+                    <label end="32" start="30" name="cc"/>
+                    <label end="43" start="34" name="VV"/>
+                    <label end="53" start="45" name="PP"/>
+                    <label end="56" start="55" name="rp"/>
+                    <label end="59" start="58" name="in"/>
+                    <label end="63" start="61" name="dt"/>
+                    <label end="71" start="65" name="nn"/>
+                    <label end="79" start="73" name="VVZ"/>
+                    <label end="81" start="81" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/25/2009 10:45:31 PDT Mon" status="MANUAL" ID="2475956">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="43" start="34" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="225" feID="4450" end="4" start="4" name="Killer"/>
+                    <label cBy="225" feID="4451" end="53" start="45" name="Victim"/>
+                    <label cBy="225" feID="4456" end="79" start="55" name="Place"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="4" start="4" name="Ext"/>
+                    <label end="53" start="45" name="Obj"/>
+                    <label end="79" start="55" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="4" start="4" name="NP"/>
+                    <label end="53" start="45" name="NP"/>
+                    <label end="79" start="55" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="154" aPos="73729895" ID="1514902">
+            <text>In the latter case it is important to remove the dead algae as this will deoxygenate the water during its decomposition and may asphyxiate the fish .</text>
+            <annotationSet cDate="05/25/2009 10:45:31 PDT Mon" status="UNANN" ID="2475957">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="in"/>
+                    <label end="5" start="3" name="dt"/>
+                    <label end="12" start="7" name="jj"/>
+                    <label end="17" start="14" name="nn"/>
+                    <label end="20" start="19" name="PP"/>
+                    <label end="23" start="22" name="VBZ"/>
+                    <label end="33" start="25" name="jj"/>
+                    <label end="36" start="35" name="to"/>
+                    <label end="43" start="38" name="VV"/>
+                    <label end="47" start="45" name="dt"/>
+                    <label end="52" start="49" name="jj"/>
+                    <label end="58" start="54" name="nn"/>
+                    <label end="61" start="60" name="in"/>
+                    <label end="66" start="63" name="dt"/>
+                    <label end="71" start="68" name="md"/>
+                    <label end="83" start="73" name="VV"/>
+                    <label end="87" start="85" name="dt"/>
+                    <label end="93" start="89" name="nn"/>
+                    <label end="100" start="95" name="in"/>
+                    <label end="104" start="102" name="PP$"/>
+                    <label end="118" start="106" name="nn"/>
+                    <label end="122" start="120" name="cc"/>
+                    <label end="126" start="124" name="md"/>
+                    <label end="137" start="128" name="VV"/>
+                    <label end="141" start="139" name="dt"/>
+                    <label end="146" start="143" name="nn"/>
+                    <label end="148" start="148" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/25/2009 10:45:31 PDT Mon" status="MANUAL" ID="2475958">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="137" start="128" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="225" feID="4451" end="146" start="139" name="Victim"/>
+                    <label cBy="225" feID="4452" end="66" start="63" name="Cause"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="146" start="139" name="Obj"/>
+                    <label end="66" start="63" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="146" start="139" name="NP"/>
+                    <label end="66" start="63" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="7" paragNo="671" aPos="43569449" ID="1514903">
+            <text>Every so often , the fumes from an unpredictable cocktail of effluents asphyxiates a luckless sewer worker .</text>
+            <annotationSet cDate="05/25/2009 10:45:32 PDT Mon" status="UNANN" ID="2475959">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="dt"/>
+                    <label end="7" start="6" name="rb"/>
+                    <label end="13" start="9" name="rb"/>
+                    <label end="15" start="15" name=","/>
+                    <label end="19" start="17" name="dt"/>
+                    <label end="25" start="21" name="nns"/>
+                    <label end="30" start="27" name="in"/>
+                    <label end="33" start="32" name="dt"/>
+                    <label end="47" start="35" name="jj"/>
+                    <label end="56" start="49" name="nn"/>
+                    <label end="59" start="58" name="in"/>
+                    <label end="69" start="61" name="nns"/>
+                    <label end="81" start="71" name="VVZ"/>
+                    <label end="83" start="83" name="dt"/>
+                    <label end="92" start="85" name="jj"/>
+                    <label end="98" start="94" name="nn"/>
+                    <label end="105" start="100" name="nn"/>
+                    <label end="107" start="107" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/25/2009 10:45:32 PDT Mon" status="MANUAL" ID="2475960">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="81" start="71" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="225" feID="4452" end="69" start="17" name="Cause"/>
+                    <label cBy="225" feID="4451" end="105" start="83" name="Victim"/>
+                    <label cBy="225" feID="13175" end="13" start="0" name="Frequency"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="69" start="17" name="Ext"/>
+                    <label end="105" start="83" name="Obj"/>
+                    <label end="13" start="0" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="69" start="17" name="NP"/>
+                    <label end="105" start="83" name="NP"/>
+                    <label end="13" start="0" name="AVP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="643" aPos="84314538" ID="1514905">
+            <text>We 'll get asphyxiated from the diesel fumes . &quot;</text>
+            <annotationSet cDate="05/25/2009 10:45:32 PDT Mon" status="UNANN" ID="2475963">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="5" start="3" name="md"/>
+                    <label end="9" start="7" name="VV"/>
+                    <label end="21" start="11" name="VVN"/>
+                    <label end="26" start="23" name="in"/>
+                    <label end="30" start="28" name="dt"/>
+                    <label end="37" start="32" name="nn"/>
+                    <label end="43" start="39" name="VVZ"/>
+                    <label end="45" start="45" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/25/2009 10:45:32 PDT Mon" status="MANUAL" ID="2475964">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="21" start="11" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="225" feID="4451" end="1" start="0" name="Victim"/>
+                    <label cBy="225" feID="4452" end="43" start="23" name="Cause"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="1" start="0" name="Ext"/>
+                    <label end="43" start="23" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="1" start="0" name="NP"/>
+                    <label end="43" start="23" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="189" aPos="13328930" ID="1514908">
+            <text>Sulphur hexafluoride itself is harmless except in a confined space , where it displaces oxygen and can asphyxiate people .</text>
+            <annotationSet cDate="05/25/2009 10:45:32 PDT Mon" status="UNANN" ID="2475969">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="0" name="nn"/>
+                    <label end="19" start="8" name="nns"/>
+                    <label end="26" start="21" name="PP"/>
+                    <label end="29" start="28" name="VBZ"/>
+                    <label end="38" start="31" name="jj"/>
+                    <label end="45" start="40" name="in"/>
+                    <label end="48" start="47" name="in"/>
+                    <label end="50" start="50" name="dt"/>
+                    <label end="59" start="52" name="VVN"/>
+                    <label end="65" start="61" name="nn"/>
+                    <label end="67" start="67" name=","/>
+                    <label end="73" start="69" name="wrb"/>
+                    <label end="76" start="75" name="PP"/>
+                    <label end="86" start="78" name="VVZ"/>
+                    <label end="93" start="88" name="nn"/>
+                    <label end="97" start="95" name="cc"/>
+                    <label end="101" start="99" name="md"/>
+                    <label end="112" start="103" name="VV"/>
+                    <label end="119" start="114" name="nns"/>
+                    <label end="121" start="121" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/25/2009 10:45:32 PDT Mon" status="MANUAL" ID="2475970">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="112" start="103" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="225" feID="4452" end="76" start="75" name="Cause"/>
+                    <label cBy="225" feID="4451" end="119" start="114" name="Victim"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="76" start="75" name="Ext"/>
+                    <label end="119" start="114" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="76" start="75" name="NP"/>
+                    <label end="119" start="114" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="1440" aPos="73956346" ID="1514914">
+            <text>Maybe she was hoping to asphyxiate him with carbon monoxide fumes .</text>
+            <annotationSet cDate="05/25/2009 10:45:34 PDT Mon" status="UNANN" ID="2475981">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="rb"/>
+                    <label end="8" start="6" name="PP"/>
+                    <label end="12" start="10" name="VBD"/>
+                    <label end="19" start="14" name="VVG"/>
+                    <label end="22" start="21" name="to"/>
+                    <label end="33" start="24" name="VV"/>
+                    <label end="37" start="35" name="PP"/>
+                    <label end="42" start="39" name="in"/>
+                    <label end="49" start="44" name="nn"/>
+                    <label end="58" start="51" name="nn"/>
+                    <label end="64" start="60" name="nns"/>
+                    <label end="66" start="66" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/25/2009 10:45:34 PDT Mon" status="MANUAL" ID="2475982">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="33" start="24" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="225" feID="4450" end="8" start="6" name="Killer"/>
+                    <label cBy="225" feID="4451" end="37" start="35" name="Victim"/>
+                    <label cBy="225" feID="4480" end="64" start="39" name="Instrument"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="8" start="6" name="Ext"/>
+                    <label end="37" start="35" name="Obj"/>
+                    <label end="64" start="39" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="8" start="6" name="NP"/>
+                    <label end="37" start="35" name="NP"/>
+                    <label end="64" start="39" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="395" aPos="64846117" ID="1514915">
+            <text>The relentless , time-consuming nature of his work literally asphyxiates the self-reflective side of his personality .</text>
+            <annotationSet cDate="05/25/2009 10:45:34 PDT Mon" status="UNANN" ID="2475983">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="13" start="4" name="jj"/>
+                    <label end="15" start="15" name=","/>
+                    <label end="30" start="17" name="jj"/>
+                    <label end="37" start="32" name="nn"/>
+                    <label end="40" start="39" name="in"/>
+                    <label end="44" start="42" name="PP$"/>
+                    <label end="49" start="46" name="nn"/>
+                    <label end="59" start="51" name="rb"/>
+                    <label end="71" start="61" name="VVZ"/>
+                    <label end="75" start="73" name="dt"/>
+                    <label end="91" start="77" name="jj"/>
+                    <label end="96" start="93" name="nn"/>
+                    <label end="99" start="98" name="in"/>
+                    <label end="103" start="101" name="PP$"/>
+                    <label end="115" start="105" name="nn"/>
+                    <label end="117" start="117" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/25/2009 10:45:34 PDT Mon" status="MANUAL" ID="2475984">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="71" start="61" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="225" feID="4452" end="49" start="0" name="Cause"/>
+                    <label cBy="225" feID="4451" end="115" start="73" name="Victim"/>
+                    <label cBy="225" feID="4482" end="59" start="51" name="Manner"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="49" start="0" name="Ext"/>
+                    <label end="115" start="73" name="Obj"/>
+                    <label end="59" start="51" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="49" start="0" name="NP"/>
+                    <label end="115" start="73" name="NP"/>
+                    <label end="59" start="51" name="AVP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="5" paragNo="243" aPos="21330918" ID="1514917">
+            <text>Most obviously , low levels of oxygen asphyxiate fish .</text>
+            <annotationSet cDate="05/25/2009 10:45:34 PDT Mon" status="UNANN" ID="2475987">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="rbs"/>
+                    <label end="13" start="5" name="rb"/>
+                    <label end="15" start="15" name=","/>
+                    <label end="19" start="17" name="jj"/>
+                    <label end="26" start="21" name="nns"/>
+                    <label end="29" start="28" name="in"/>
+                    <label end="36" start="31" name="nn"/>
+                    <label end="47" start="38" name="VV"/>
+                    <label end="52" start="49" name="nn"/>
+                    <label end="54" start="54" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/25/2009 10:45:34 PDT Mon" status="MANUAL" ID="2475988">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="47" start="38" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="225" feID="4452" end="36" start="17" name="Cause"/>
+                    <label cBy="225" feID="4451" end="52" start="49" name="Victim"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="36" start="17" name="Ext"/>
+                    <label end="52" start="49" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="36" start="17" name="NP"/>
+                    <label end="52" start="49" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

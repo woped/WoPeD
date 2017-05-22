@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" POS="V" name="greenlight.v" ID="8604" frame="Grant_permission" frameID="506" totalAnnotated="3" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <corpus name="AP" ID="113">
+            <document description="apwsE951111.0346" ID="1670"/>
+            <document description="apwsE950121.0334" ID="1671"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Core-Unexpressed" abbrev="Act" name="Action"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Extra-Thematic" abbrev="all" name="Allowed_category"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="cir" name="Circumstances"/>
+            <FE fgColor="000000" bgColor="EEE8AA" type="Extra-Thematic" abbrev="" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="" name="Frequency"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Gre" name="Grantee"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Gro" name="Grantor"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="mea" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD73" type="Extra-Thematic" abbrev="" name="Period_of_iterations"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Extra-Thematic" abbrev="Reason" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: give permission to go ahead with. </definition>
+    <lexeme POS="V" name="greenlight"/>
+    <valences>
+        <FERealization total="3">
+            <FE name="Action"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Action"/>
+                <annoSet ID="1870647"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Obj" PT="NP" FE="Action"/>
+                <annoSet ID="1886337"/>
+                <annoSet ID="1886339"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Grantee"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Grantee"/>
+                <annoSet ID="1870647"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="" PT="INI" FE="Grantee"/>
+                <annoSet ID="1886337"/>
+                <annoSet ID="1886339"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Grantor"/>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="NP" FE="Grantor"/>
+                <annoSet ID="1870647"/>
+                <annoSet ID="1886337"/>
+                <annoSet ID="1886339"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="Sub" FE="Time"/>
+                <annoSet ID="1870647"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Action"/>
+            <FE name="Grantee"/>
+            <FE name="Grantor"/>
+            <pattern total="2">
+                <valenceUnit GF="Obj" PT="NP" FE="Action"/>
+                <valenceUnit GF="" PT="INI" FE="Grantee"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Grantor"/>
+                <annoSet ID="1886337"/>
+                <annoSet ID="1886339"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Action"/>
+            <FE name="Grantee"/>
+            <FE name="Grantor"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Action"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Grantee"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Grantor"/>
+                <valenceUnit GF="Dep" PT="Sub" FE="Time"/>
+                <annoSet ID="1870647"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+    <subCorpus name="other-matched-(2)">
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="538" aPos="0" ID="1211773">
+            <text>The tape controlled the entire show , including all lighting cues , and the stage manager would have little more to do than read his newspaper and greenlight the girls as they waited in the wings .</text>
+            <annotationSet cDate="04/30/2003 05:38:49 PDT Wed" status="UNANN" ID="1870646">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="7" start="4" name="nn"/>
+                    <label end="18" start="9" name="VVD"/>
+                    <label end="22" start="20" name="dt"/>
+                    <label end="29" start="24" name="jj"/>
+                    <label end="34" start="31" name="nn"/>
+                    <label end="36" start="36" name=","/>
+                    <label end="46" start="38" name="VVG"/>
+                    <label end="50" start="48" name="dt"/>
+                    <label end="59" start="52" name="nn"/>
+                    <label end="64" start="61" name="nns"/>
+                    <label end="66" start="66" name=","/>
+                    <label end="70" start="68" name="cc"/>
+                    <label end="74" start="72" name="dt"/>
+                    <label end="80" start="76" name="nn"/>
+                    <label end="88" start="82" name="nn"/>
+                    <label end="94" start="90" name="md"/>
+                    <label end="99" start="96" name="VH"/>
+                    <label end="106" start="101" name="rb"/>
+                    <label end="111" start="108" name="jjr"/>
+                    <label end="114" start="113" name="to"/>
+                    <label end="117" start="116" name="VV"/>
+                    <label end="122" start="119" name="in"/>
+                    <label end="127" start="124" name="VV"/>
+                    <label end="131" start="129" name="PP$"/>
+                    <label end="141" start="133" name="nn"/>
+                    <label end="145" start="143" name="cc"/>
+                    <label end="156" start="147" name="nn"/>
+                    <label end="160" start="158" name="dt"/>
+                    <label end="166" start="162" name="nns"/>
+                    <label end="169" start="168" name="in"/>
+                    <label end="174" start="171" name="PP"/>
+                    <label end="181" start="176" name="VVD"/>
+                    <label end="184" start="183" name="in"/>
+                    <label end="188" start="186" name="dt"/>
+                    <label end="194" start="190" name="nns"/>
+                    <label end="196" start="196" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 05:38:50 PDT Wed" status="MANUAL" ID="1870647">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="156" start="147" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4076" end="88" start="72" name="Grantor"/>
+                    <label cBy="618" feID="4077" end="166" start="158" name="Grantee"/>
+                    <label cBy="618" feID="4081" end="194" start="168" name="Time"/>
+                    <label cBy="618" feID="4078" itype="DNI" name="Action"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="88" start="72" name="Ext"/>
+                    <label end="166" start="158" name="Obj"/>
+                    <label end="194" start="168" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="88" start="72" name="NP"/>
+                    <label end="166" start="158" name="NP"/>
+                    <label end="194" start="168" name="Sub"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-unmatched-(2)"/>
+    <subCorpus name="04-T-NP-(3)">
+        <sentence corpID="113" docID="1670" sentNo="1" paragNo="11" aPos="0" ID="1219633">
+            <text>With the Egg deal , Foster became one of the few women in Hollywood with the power to green-light her own projects .</text>
+            <annotationSet cDate="05/21/2003 02:50:42 PDT Wed" status="UNANN" ID="1886336">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="in"/>
+                    <label end="7" start="5" name="dt"/>
+                    <label end="11" start="9" name="NP"/>
+                    <label end="16" start="13" name="nn"/>
+                    <label end="18" start="18" name=","/>
+                    <label end="25" start="20" name="NP"/>
+                    <label end="32" start="27" name="VVD"/>
+                    <label end="36" start="34" name="cd"/>
+                    <label end="39" start="38" name="in"/>
+                    <label end="43" start="41" name="dt"/>
+                    <label end="47" start="45" name="jj"/>
+                    <label end="53" start="49" name="nns"/>
+                    <label end="56" start="55" name="in"/>
+                    <label end="66" start="58" name="NP"/>
+                    <label end="71" start="68" name="in"/>
+                    <label end="75" start="73" name="dt"/>
+                    <label end="81" start="77" name="nn"/>
+                    <label end="84" start="83" name="to"/>
+                    <label end="96" start="86" name="VV"/>
+                    <label end="100" start="98" name="PP$"/>
+                    <label end="104" start="102" name="jj"/>
+                    <label end="113" start="106" name="nns"/>
+                    <label end="115" start="115" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="05/21/2003 02:50:42 PDT Wed" status="AUTO_EDITED" ID="1886337">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="96" start="86" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4078" end="113" start="98" name="Action"/>
+                    <label cBy="296" feID="4076" end="66" start="41" name="Grantor"/>
+                    <label cBy="296" feID="4077" itype="INI" name="Grantee"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="113" start="98" name="Obj"/>
+                    <label end="66" start="41" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="113" start="98" name="NP"/>
+                    <label end="66" start="41" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="1671" sentNo="1" paragNo="8" aPos="0" ID="1219634">
+            <text>Almost every studio executive with the power to `` green-light '' or authorize a movie 's production is male .</text>
+            <annotationSet cDate="05/21/2003 02:50:43 PDT Wed" status="UNANN" ID="1886338">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="0" name="rb"/>
+                    <label end="11" start="7" name="dt"/>
+                    <label end="18" start="13" name="nn"/>
+                    <label end="28" start="20" name="nn"/>
+                    <label end="33" start="30" name="in"/>
+                    <label end="37" start="35" name="dt"/>
+                    <label end="43" start="39" name="nn"/>
+                    <label end="46" start="45" name="to"/>
+                    <label end="49" start="48" name="``"/>
+                    <label end="61" start="51" name="jj"/>
+                    <label end="64" start="63" name="''"/>
+                    <label end="67" start="66" name="cc"/>
+                    <label end="77" start="69" name="VV"/>
+                    <label end="79" start="79" name="dt"/>
+                    <label end="85" start="81" name="nn"/>
+                    <label end="88" start="87" name="POS"/>
+                    <label end="99" start="90" name="nn"/>
+                    <label end="102" start="101" name="VBZ"/>
+                    <label end="107" start="104" name="jj"/>
+                    <label end="109" start="109" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="05/21/2003 02:50:44 PDT Wed" status="AUTO_EDITED" ID="1886339">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="61" start="51" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="4076" end="28" start="0" name="Grantor"/>
+                    <label cBy="296" feID="4078" end="99" start="79" name="Action"/>
+                    <label cBy="296" feID="4077" itype="INI" name="Grantee"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="28" start="0" name="Ext"/>
+                    <label end="99" start="79" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="28" start="0" name="NP"/>
+                    <label end="99" start="79" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(3)"/>
+    <subCorpus name="other-unmatched-(3)"/>
+</lexUnit>

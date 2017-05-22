@@ -1,0 +1,984 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="gunfight.n" ID="3803" frame="Hostile_encounter" frameID="93" totalAnnotated="14" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="AP" ID="113">
+            <document description="apwsE941130.0239" ID="1620"/>
+            <document description="apwsE941227.0191" ID="5015"/>
+            <document description="apwsE950112.0018" ID="5020"/>
+            <document description="apwsE951002.0133" ID="5025"/>
+            <document description="apwsE941112.0096" ID="5031"/>
+            <document description="apwsE950214.0103" ID="5038"/>
+            <document description="apwsE950926.0193" ID="5041"/>
+            <document description="apwsE980217.0346" ID="5055"/>
+            <document description="apwsE960216.0082" ID="5057"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD73" type="Peripheral" abbrev="Dur" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Ins" name="Instrument"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Extra-Thematic" abbrev="ICause" name="Internal_cause"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Core" abbrev="Iss" name="Issue"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="000000" bgColor="FFD700" type="Extra-Thematic" abbrev="" name="Particular_iteration"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="pla" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Purpose" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="Reas" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="Result" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core" abbrev="Sides" name="Sides"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Side-1" name="Side_1"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="Side-2" name="Side_2"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: a fight involving an exchange of fire with guns. </definition>
+    <lexeme POS="N" name="gunfight"/>
+    <valences>
+        <governor type="Gov" lemma="die">
+            <annoSet ID="2008967"/>
+        </governor>
+        <governor type="Gov" lemma="kill">
+            <annoSet ID="2008933"/>
+            <annoSet ID="2008945"/>
+        </governor>
+        <governor type="Gov" lemma="wound">
+            <annoSet ID="2008995"/>
+        </governor>
+        <FERealization total="2">
+            <FE name="Duration"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="AJP" FE="Duration"/>
+                <annoSet ID="839446"/>
+                <annoSet ID="2008967"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Issue"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="DNI" FE="Issue"/>
+                <annoSet ID="2008913"/>
+                <annoSet ID="2008923"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[between]" FE="Issue"/>
+                <annoSet ID="2008933"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Manner"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Manner"/>
+                <annoSet ID="2008999"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Place"/>
+            <pattern total="3">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Place"/>
+                <annoSet ID="839444"/>
+                <annoSet ID="2008955"/>
+                <annoSet ID="2008967"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[near]" FE="Place"/>
+                <annoSet ID="2008999"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Place"/>
+                <annoSet ID="2008995"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Side_1"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Side_1"/>
+                <annoSet ID="2008955"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="" PT="DNI" FE="Side_1"/>
+                <annoSet ID="839430"/>
+                <annoSet ID="2008961"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Side_2"/>
+            <pattern total="3">
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Side_2"/>
+                <annoSet ID="839430"/>
+                <annoSet ID="2008955"/>
+                <annoSet ID="2008967"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="VPing" FE="Side_2"/>
+                <annoSet ID="839438"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="6">
+            <FE name="Sides"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Sides"/>
+                <annoSet ID="839446"/>
+            </pattern>
+            <pattern total="3">
+                <valenceUnit GF="Dep" PT="PP[between]" FE="Sides"/>
+                <annoSet ID="2008913"/>
+                <annoSet ID="2008923"/>
+                <annoSet ID="2008945"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Sides"/>
+                <annoSet ID="839436"/>
+                <annoSet ID="2008961"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="NP" FE="Time"/>
+                <annoSet ID="2008955"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Time"/>
+                <annoSet ID="839438"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Duration"/>
+            <FE name="Place"/>
+            <FE name="Side_2"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Duration"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Place"/>
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Side_2"/>
+                <annoSet ID="2008967"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Duration"/>
+            <FE name="Sides"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Duration"/>
+                <valenceUnit GF="" PT="INI" FE="Sides"/>
+                <annoSet ID="839446"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Issue"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[between]" FE="Issue"/>
+                <annoSet ID="2008933"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Issue"/>
+            <FE name="Sides"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="DNI" FE="Issue"/>
+                <valenceUnit GF="Dep" PT="PP[between]" FE="Sides"/>
+                <annoSet ID="2008913"/>
+                <annoSet ID="2008923"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Manner"/>
+            <FE name="Place"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Manner"/>
+                <valenceUnit GF="Dep" PT="PP[near]" FE="Place"/>
+                <annoSet ID="2008999"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Place"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Place"/>
+                <annoSet ID="2008995"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Place"/>
+                <annoSet ID="839444"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Place"/>
+            <FE name="Side_1"/>
+            <FE name="Side_2"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Place"/>
+                <valenceUnit GF="" PT="INI" FE="Side_1"/>
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Side_2"/>
+                <valenceUnit GF="Dep" PT="NP" FE="Time"/>
+                <annoSet ID="2008955"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Side_1"/>
+            <FE name="Side_2"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Side_1"/>
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Side_2"/>
+                <annoSet ID="839430"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Side_1"/>
+            <FE name="Sides"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Side_1"/>
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Sides"/>
+                <annoSet ID="2008961"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Side_2"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="VPing" FE="Side_2"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Time"/>
+                <annoSet ID="839438"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Sides"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[between]" FE="Sides"/>
+                <annoSet ID="2008945"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Sides"/>
+                <annoSet ID="839436"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-001-all">
+        <sentence sentNo="0" aPos="53596906" ID="680960">
+            <text>` Machine-gun carrying hoodlums were shot and killed early this morning in a car chase gunfight with police . </text>
+            <annotationSet cDate="01/07/2003 10:36:37 PST Tue" status="UNANN" ID="839429">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PUQ"/>
+                    <label end="12" start="2" name="NP0"/>
+                    <label end="21" start="14" name="VVG"/>
+                    <label end="30" start="23" name="NN2"/>
+                    <label end="35" start="32" name="VBD"/>
+                    <label end="40" start="37" name="VVN"/>
+                    <label end="44" start="42" name="CJC"/>
+                    <label end="51" start="46" name="VVN"/>
+                    <label end="57" start="53" name="AV0"/>
+                    <label end="62" start="59" name="DT0"/>
+                    <label end="70" start="64" name="NN1"/>
+                    <label end="73" start="72" name="PRP"/>
+                    <label end="75" start="75" name="AT0"/>
+                    <label end="79" start="77" name="NN1"/>
+                    <label end="85" start="81" name="NN1-VVB"/>
+                    <label end="94" start="87" name="NN1-VVB"/>
+                    <label end="99" start="96" name="PRP"/>
+                    <label end="106" start="101" name="NN2"/>
+                    <label end="108" start="108" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:36:37 PST Tue" status="MANUAL" ID="839430">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="440" end="106" start="96" name="Side_2"/>
+                    <label cBy="618" feID="439" itype="DNI" name="Side_1"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="106" start="96" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="106" start="96" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="94" start="87" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="78836410" ID="680963">
+            <text>One television news cameraman got lost near here and asked a postman for directions adding , there 's going to be a big gunfight with those religious nuts over there . </text>
+            <annotationSet cDate="01/07/2003 10:36:37 PST Tue" status="UNANN" ID="839435">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="CRD"/>
+                    <label end="13" start="4" name="NN1"/>
+                    <label end="18" start="15" name="NN1"/>
+                    <label end="28" start="20" name="NN1"/>
+                    <label end="32" start="30" name="VVD-VVN"/>
+                    <label end="37" start="34" name="AJ0"/>
+                    <label end="42" start="39" name="AV0"/>
+                    <label end="47" start="44" name="AV0"/>
+                    <label end="51" start="49" name="CJC"/>
+                    <label end="57" start="53" name="VVD-VVN"/>
+                    <label end="59" start="59" name="AT0"/>
+                    <label end="67" start="61" name="NN1"/>
+                    <label end="71" start="69" name="PRP"/>
+                    <label end="82" start="73" name="NN2"/>
+                    <label end="89" start="84" name="VVG"/>
+                    <label end="91" start="91" name="PUN"/>
+                    <label end="97" start="93" name="EX0"/>
+                    <label end="100" start="99" name="VBZ"/>
+                    <label end="106" start="102" name="VVG"/>
+                    <label end="109" start="108" name="TO0"/>
+                    <label end="112" start="111" name="VBI"/>
+                    <label end="114" start="114" name="AT0"/>
+                    <label end="118" start="116" name="AJ0"/>
+                    <label end="127" start="120" name="NN1"/>
+                    <label end="132" start="129" name="PRP"/>
+                    <label end="138" start="134" name="DT0"/>
+                    <label end="148" start="140" name="AJ0"/>
+                    <label end="153" start="150" name="NN2"/>
+                    <label end="158" start="155" name="AV0"/>
+                    <label end="164" start="160" name="AV0"/>
+                    <label end="166" start="166" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:36:37 PST Tue" status="MANUAL" ID="839436">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="441" end="164" start="129" name="Sides"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="164" start="129" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="164" start="129" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="127" start="120" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="86326157" ID="680964">
+            <text>Three Senegalese soldiers ( initially reported by an NPFL spokesman as having been killed ) had been wounded on May 28 in a 10-hour gunfight involving NPFL men at Vahun , close to the Sierra Leone border . </text>
+            <annotationSet cDate="01/07/2003 10:36:38 PST Tue" status="UNANN" ID="839437">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="CRD"/>
+                    <label end="15" start="6" name="NN0"/>
+                    <label end="24" start="17" name="NN2"/>
+                    <label end="26" start="26" name="PUL"/>
+                    <label end="36" start="28" name="AV0"/>
+                    <label end="45" start="38" name="VVN"/>
+                    <label end="48" start="47" name="PRP"/>
+                    <label end="51" start="50" name="AT0"/>
+                    <label end="56" start="53" name="NP0"/>
+                    <label end="66" start="58" name="NN1"/>
+                    <label end="69" start="68" name="CJS"/>
+                    <label end="76" start="71" name="VHG"/>
+                    <label end="81" start="78" name="VBN"/>
+                    <label end="88" start="83" name="VVN"/>
+                    <label end="90" start="90" name="PUR"/>
+                    <label end="94" start="92" name="VHD"/>
+                    <label end="99" start="96" name="VBN"/>
+                    <label end="107" start="101" name="VVN"/>
+                    <label end="110" start="109" name="PRP"/>
+                    <label end="114" start="112" name="NP0"/>
+                    <label end="117" start="116" name="CRD"/>
+                    <label end="120" start="119" name="PRP"/>
+                    <label end="122" start="122" name="AT0"/>
+                    <label end="130" start="124" name="AJ0"/>
+                    <label end="139" start="132" name="NN1"/>
+                    <label end="149" start="141" name="VVG"/>
+                    <label end="154" start="151" name="NP0"/>
+                    <label end="158" start="156" name="NN2"/>
+                    <label end="161" start="160" name="PRP"/>
+                    <label end="167" start="163" name="NN1-NP0"/>
+                    <label end="169" start="169" name="PUN"/>
+                    <label end="175" start="171" name="AV0"/>
+                    <label end="178" start="177" name="PRP"/>
+                    <label end="182" start="180" name="AT0"/>
+                    <label end="189" start="184" name="NP0"/>
+                    <label end="195" start="191" name="NP0"/>
+                    <label end="202" start="197" name="NN1"/>
+                    <label end="204" start="204" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:36:38 PST Tue" status="MANUAL" ID="839438">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="447" end="130" start="124" name="Time"/>
+                    <label cBy="669" feID="440" end="158" start="141" name="Side_2"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="130" start="124" name="Dep"/>
+                    <label end="158" start="141" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="130" start="124" name="AJP"/>
+                    <label end="158" start="141" name="VPing"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="139" start="132" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="92050774" ID="680967">
+            <text>Why should we have assumed that a little thing like a gunfight in the street would attract attention ? </text>
+            <annotationSet cDate="01/07/2003 10:36:38 PST Tue" status="UNANN" ID="839443">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AVQ"/>
+                    <label end="9" start="4" name="VM0"/>
+                    <label end="12" start="11" name="PNP"/>
+                    <label end="17" start="14" name="VHI"/>
+                    <label end="25" start="19" name="VVN"/>
+                    <label end="30" start="27" name="CJT"/>
+                    <label end="32" start="32" name="AT0"/>
+                    <label end="39" start="34" name="AJ0"/>
+                    <label end="45" start="41" name="NN1"/>
+                    <label end="50" start="47" name="PRP"/>
+                    <label end="52" start="52" name="AT0"/>
+                    <label end="61" start="54" name="NN1"/>
+                    <label end="64" start="63" name="PRP"/>
+                    <label end="68" start="66" name="AT0"/>
+                    <label end="75" start="70" name="NN1"/>
+                    <label end="81" start="77" name="VM0"/>
+                    <label end="89" start="83" name="VVI"/>
+                    <label end="99" start="91" name="NN1"/>
+                    <label end="101" start="101" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:36:38 PST Tue" status="MANUAL" ID="839444">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="446" end="75" start="63" name="Place"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="75" start="63" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="75" start="63" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="61" start="54" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="103585590" ID="680968">
+            <text>ELITE United States troops backed up by a dozen helicopters stormed a building in south Mogadishu today and arrested 17 Somali militiamen after a brief gunfight , a United Nations military spokesman said . </text>
+            <annotationSet cDate="01/07/2003 10:36:38 PST Tue" status="UNANN" ID="839445">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="NN0"/>
+                    <label end="11" start="6" name="NP0"/>
+                    <label end="18" start="13" name="NP0"/>
+                    <label end="25" start="20" name="NN2"/>
+                    <label end="32" start="27" name="VVD-VVN"/>
+                    <label end="35" start="34" name="AVP"/>
+                    <label end="38" start="37" name="PRP"/>
+                    <label end="40" start="40" name="AT0"/>
+                    <label end="46" start="42" name="CRD"/>
+                    <label end="58" start="48" name="NN2"/>
+                    <label end="66" start="60" name="VVD"/>
+                    <label end="68" start="68" name="AT0"/>
+                    <label end="77" start="70" name="NN1"/>
+                    <label end="80" start="79" name="PRP"/>
+                    <label end="86" start="82" name="NN1"/>
+                    <label end="96" start="88" name="NP0"/>
+                    <label end="102" start="98" name="AV0"/>
+                    <label end="106" start="104" name="CJC"/>
+                    <label end="115" start="108" name="VVD"/>
+                    <label end="118" start="117" name="CRD"/>
+                    <label end="125" start="120" name="AJ0"/>
+                    <label end="136" start="127" name="NN2"/>
+                    <label end="142" start="138" name="PRP"/>
+                    <label end="144" start="144" name="AT0"/>
+                    <label end="150" start="146" name="AJ0"/>
+                    <label end="159" start="152" name="NN1"/>
+                    <label end="161" start="161" name="PUN"/>
+                    <label end="163" start="163" name="AT0"/>
+                    <label end="170" start="165" name="AJ0"/>
+                    <label end="178" start="172" name="NN2"/>
+                    <label end="187" start="180" name="AJ0"/>
+                    <label end="197" start="189" name="NN1"/>
+                    <label end="202" start="199" name="VVD"/>
+                    <label end="204" start="204" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:36:38 PST Tue" status="MANUAL" ID="839446">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="718" end="150" start="146" name="Duration"/>
+                    <label cBy="618" feID="441" itype="INI" name="Sides"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="150" start="146" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="150" start="146" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="159" start="152" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="01-T-PPbetween-(1)">
+        <sentence corpID="113" docID="5015" sentNo="1" paragNo="7" aPos="10376528" ID="1280356">
+            <text>Police said they found the bodies of seven drug traffickers killed in the gunfight between rival gangs .</text>
+            <annotationSet cDate="10/12/2004 04:08:24 PDT Tue" status="UNANN" ID="2008912">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="0" name="nns"/>
+                    <label end="10" start="7" name="VVD"/>
+                    <label end="15" start="12" name="PP"/>
+                    <label end="21" start="17" name="VVD"/>
+                    <label end="25" start="23" name="dt"/>
+                    <label end="32" start="27" name="nns"/>
+                    <label end="35" start="34" name="in"/>
+                    <label end="41" start="37" name="cd"/>
+                    <label end="46" start="43" name="nn"/>
+                    <label end="58" start="48" name="nns"/>
+                    <label end="65" start="60" name="VVN"/>
+                    <label end="68" start="67" name="in"/>
+                    <label end="72" start="70" name="dt"/>
+                    <label end="81" start="74" name="nn"/>
+                    <label end="89" start="83" name="in"/>
+                    <label end="95" start="91" name="jj"/>
+                    <label end="101" start="97" name="nns"/>
+                    <label end="103" start="103" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/12/2004 04:08:25 PDT Tue" status="MANUAL" ID="2008913">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="81" start="74" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="441" end="101" start="83" name="Sides"/>
+                    <label cBy="618" feID="442" itype="DNI" name="Issue"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="101" start="83" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="101" start="83" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="5020" sentNo="1" paragNo="3" aPos="30690123" ID="1280361">
+            <text>A Russian officer recounts a gunfight between a Russian tank regiment and a Russian motorized division --- and how it took generals six hours to realize they were n't shooting at the enemy .</text>
+            <annotationSet cDate="10/12/2004 04:08:30 PDT Tue" status="UNANN" ID="2008922">
+                <layer rank="1" name="PENN">
+                    <label end="0" start="0" name="dt"/>
+                    <label end="8" start="2" name="jj"/>
+                    <label end="16" start="10" name="nn"/>
+                    <label end="25" start="18" name="VVZ"/>
+                    <label end="27" start="27" name="dt"/>
+                    <label end="36" start="29" name="nn"/>
+                    <label end="44" start="38" name="in"/>
+                    <label end="46" start="46" name="dt"/>
+                    <label end="54" start="48" name="jj"/>
+                    <label end="59" start="56" name="nn"/>
+                    <label end="68" start="61" name="nn"/>
+                    <label end="72" start="70" name="cc"/>
+                    <label end="74" start="74" name="dt"/>
+                    <label end="82" start="76" name="jj"/>
+                    <label end="92" start="84" name="VVN"/>
+                    <label end="101" start="94" name="nn"/>
+                    <label end="105" start="103" name=":"/>
+                    <label end="109" start="107" name="cc"/>
+                    <label end="113" start="111" name="wrb"/>
+                    <label end="116" start="115" name="PP"/>
+                    <label end="121" start="118" name="VVD"/>
+                    <label end="130" start="123" name="nns"/>
+                    <label end="134" start="132" name="cd"/>
+                    <label end="140" start="136" name="nns"/>
+                    <label end="143" start="142" name="to"/>
+                    <label end="151" start="145" name="VV"/>
+                    <label end="156" start="153" name="PP"/>
+                    <label end="161" start="158" name="VBD"/>
+                    <label end="165" start="163" name="rb"/>
+                    <label end="174" start="167" name="VVG"/>
+                    <label end="177" start="176" name="in"/>
+                    <label end="181" start="179" name="dt"/>
+                    <label end="187" start="183" name="nn"/>
+                    <label end="189" start="189" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/12/2004 04:08:31 PDT Tue" status="MANUAL" ID="2008923">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="36" start="29" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="441" end="101" start="38" name="Sides"/>
+                    <label cBy="618" feID="442" itype="DNI" name="Issue"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="101" start="38" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="101" start="38" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="5025" sentNo="1" paragNo="7" aPos="11560400" ID="1280366">
+            <text>The government-owned daily Al-Gomhuriya said the two men were probably killed in a gunfight between police and the militants .</text>
+            <annotationSet cDate="10/12/2004 04:08:33 PDT Tue" status="UNANN" ID="2008932">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="19" start="4" name="jj"/>
+                    <label end="25" start="21" name="jj"/>
+                    <label end="38" start="27" name="NP"/>
+                    <label end="43" start="40" name="VVD"/>
+                    <label end="47" start="45" name="dt"/>
+                    <label end="51" start="49" name="cd"/>
+                    <label end="55" start="53" name="nns"/>
+                    <label end="60" start="57" name="VBD"/>
+                    <label end="69" start="62" name="rb"/>
+                    <label end="76" start="71" name="VVN"/>
+                    <label end="79" start="78" name="in"/>
+                    <label end="81" start="81" name="dt"/>
+                    <label end="90" start="83" name="nn"/>
+                    <label end="98" start="92" name="in"/>
+                    <label end="105" start="100" name="nns"/>
+                    <label end="109" start="107" name="cc"/>
+                    <label end="113" start="111" name="dt"/>
+                    <label end="123" start="115" name="nns"/>
+                    <label end="125" start="125" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/12/2004 04:08:34 PDT Tue" status="MANUAL" ID="2008933">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="90" start="83" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="442" end="123" start="92" name="Issue"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="123" start="92" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="123" start="92" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="76" start="71" name="Gov"/>
+                    <label end="123" start="78" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="5031" sentNo="2" paragNo="2" aPos="268167" ID="1280372">
+            <text>One person was killed in a gunfight between opposition and government activists , police said .</text>
+            <annotationSet cDate="10/12/2004 04:08:37 PDT Tue" status="UNANN" ID="2008944">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="cd"/>
+                    <label end="9" start="4" name="nn"/>
+                    <label end="13" start="11" name="VBD"/>
+                    <label end="20" start="15" name="VVN"/>
+                    <label end="23" start="22" name="in"/>
+                    <label end="25" start="25" name="dt"/>
+                    <label end="34" start="27" name="nn"/>
+                    <label end="42" start="36" name="in"/>
+                    <label end="53" start="44" name="nn"/>
+                    <label end="57" start="55" name="cc"/>
+                    <label end="68" start="59" name="nn"/>
+                    <label end="78" start="70" name="nns"/>
+                    <label end="80" start="80" name=","/>
+                    <label end="87" start="82" name="nns"/>
+                    <label end="92" start="89" name="VVD"/>
+                    <label end="94" start="94" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/12/2004 04:08:37 PDT Tue" status="MANUAL" ID="2008945">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="34" start="27" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="441" end="78" start="36" name="Sides"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="78" start="36" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="78" start="36" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="20" start="15" name="Gov"/>
+                    <label end="78" start="22" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-T-PPwith-(1)">
+        <sentence corpID="113" docID="1620" sentNo="1" paragNo="17" aPos="4448050" ID="1280377">
+            <text>Charges stemming from a 1993 gunfight with two off-duty police officers in Atlanta were dropped .</text>
+            <annotationSet cDate="10/12/2004 04:08:39 PDT Tue" status="UNANN" ID="2008954">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="0" name="nns"/>
+                    <label end="15" start="8" name="VVG"/>
+                    <label end="20" start="17" name="in"/>
+                    <label end="22" start="22" name="dt"/>
+                    <label end="27" start="24" name="cd"/>
+                    <label end="36" start="29" name="nn"/>
+                    <label end="41" start="38" name="in"/>
+                    <label end="45" start="43" name="cd"/>
+                    <label end="54" start="47" name="nn"/>
+                    <label end="61" start="56" name="nn"/>
+                    <label end="70" start="63" name="nns"/>
+                    <label end="73" start="72" name="in"/>
+                    <label end="81" start="75" name="NP"/>
+                    <label end="86" start="83" name="VBD"/>
+                    <label end="94" start="88" name="VVN"/>
+                    <label end="96" start="96" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/12/2004 04:08:40 PDT Tue" status="MANUAL" ID="2008955">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="36" start="29" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="447" end="27" start="24" name="Time"/>
+                    <label cBy="618" feID="440" end="70" start="38" name="Side_2"/>
+                    <label cBy="618" feID="439" itype="INI" name="Side_1"/>
+                    <label cBy="618" feID="446" end="81" start="72" name="Place"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="27" start="24" name="Dep"/>
+                    <label end="70" start="38" name="Dep"/>
+                    <label end="81" start="72" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="27" start="24" name="NP"/>
+                    <label end="70" start="38" name="PP"/>
+                    <label end="81" start="72" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="5038" sentNo="2" paragNo="5" aPos="38251216" ID="1280380">
+            <text>They were protesting against the deaths of their colleagues during a gunfight with the supporters of Prime Minister Khaleda Zia .</text>
+            <annotationSet cDate="10/12/2004 04:08:42 PDT Tue" status="UNANN" ID="2008960">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="PP"/>
+                    <label end="8" start="5" name="VBD"/>
+                    <label end="19" start="10" name="VVG"/>
+                    <label end="27" start="21" name="in"/>
+                    <label end="31" start="29" name="dt"/>
+                    <label end="38" start="33" name="nns"/>
+                    <label end="41" start="40" name="in"/>
+                    <label end="47" start="43" name="PP$"/>
+                    <label end="58" start="49" name="nns"/>
+                    <label end="65" start="60" name="in"/>
+                    <label end="67" start="67" name="dt"/>
+                    <label end="76" start="69" name="nn"/>
+                    <label end="81" start="78" name="in"/>
+                    <label end="85" start="83" name="dt"/>
+                    <label end="96" start="87" name="nns"/>
+                    <label end="99" start="98" name="in"/>
+                    <label end="105" start="101" name="NP"/>
+                    <label end="114" start="107" name="NP"/>
+                    <label end="122" start="116" name="NP"/>
+                    <label end="126" start="124" name="NP"/>
+                    <label end="128" start="128" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/12/2004 04:08:42 PDT Tue" status="MANUAL" ID="2008961">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="76" start="69" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="439" itype="DNI" name="Side_1"/>
+                    <label cBy="618" feID="441" end="126" start="78" name="Sides"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="126" start="78" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="126" start="78" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="5041" sentNo="1" paragNo="4" aPos="93562735" ID="1280383">
+            <text>Police said the three activists , all in their mid 20s , died in an hour-long gunfight with police in the violence prone Orangi neighborhood in west Karachi .</text>
+            <annotationSet cDate="10/12/2004 04:08:44 PDT Tue" status="UNANN" ID="2008966">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="0" name="nns"/>
+                    <label end="10" start="7" name="VVD"/>
+                    <label end="14" start="12" name="dt"/>
+                    <label end="20" start="16" name="cd"/>
+                    <label end="30" start="22" name="nns"/>
+                    <label end="32" start="32" name=","/>
+                    <label end="36" start="34" name="dt"/>
+                    <label end="39" start="38" name="in"/>
+                    <label end="45" start="41" name="PP$"/>
+                    <label end="49" start="47" name="jj"/>
+                    <label end="53" start="51" name="nns"/>
+                    <label end="55" start="55" name=","/>
+                    <label end="60" start="57" name="VVN"/>
+                    <label end="63" start="62" name="in"/>
+                    <label end="66" start="65" name="dt"/>
+                    <label end="76" start="68" name="jj"/>
+                    <label end="85" start="78" name="nn"/>
+                    <label end="90" start="87" name="in"/>
+                    <label end="97" start="92" name="nns"/>
+                    <label end="100" start="99" name="in"/>
+                    <label end="104" start="102" name="dt"/>
+                    <label end="113" start="106" name="nn"/>
+                    <label end="119" start="115" name="jj"/>
+                    <label end="126" start="121" name="NP"/>
+                    <label end="139" start="128" name="nn"/>
+                    <label end="142" start="141" name="in"/>
+                    <label end="147" start="144" name="jj"/>
+                    <label end="155" start="149" name="NP"/>
+                    <label end="157" start="157" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/12/2004 04:08:44 PDT Tue" status="MANUAL" ID="2008967">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="85" start="78" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="718" end="76" start="68" name="Duration"/>
+                    <label cBy="618" feID="440" end="97" start="87" name="Side_2"/>
+                    <label cBy="618" feID="446" end="155" start="99" name="Place"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="76" start="68" name="Dep"/>
+                    <label end="97" start="87" name="Dep"/>
+                    <label end="155" start="99" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="76" start="68" name="AJP"/>
+                    <label end="97" start="87" name="PP"/>
+                    <label end="155" start="99" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="60" start="57" name="Gov"/>
+                    <label end="155" start="62" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="03-T-PP-(1)">
+        <sentence corpID="113" docID="5055" sentNo="2" paragNo="25" aPos="123300414" ID="1280397">
+            <text>Still , in 1995 a native man was shot to death by police in a stand-off near Sarnia , Ontario and two officers were wounded by natives in a gunfight at Gustavson Lake in British Columbia .</text>
+            <annotationSet cDate="10/12/2004 04:08:52 PDT Tue" status="UNANN" ID="2008994">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="rb"/>
+                    <label end="6" start="6" name=","/>
+                    <label end="9" start="8" name="in"/>
+                    <label end="14" start="11" name="cd"/>
+                    <label end="16" start="16" name="dt"/>
+                    <label end="23" start="18" name="nn"/>
+                    <label end="27" start="25" name="nn"/>
+                    <label end="31" start="29" name="VBD"/>
+                    <label end="36" start="33" name="VVN"/>
+                    <label end="39" start="38" name="to"/>
+                    <label end="45" start="41" name="nn"/>
+                    <label end="48" start="47" name="in"/>
+                    <label end="55" start="50" name="nns"/>
+                    <label end="58" start="57" name="in"/>
+                    <label end="60" start="60" name="dt"/>
+                    <label end="70" start="62" name="nn"/>
+                    <label end="75" start="72" name="in"/>
+                    <label end="82" start="77" name="NP"/>
+                    <label end="84" start="84" name=","/>
+                    <label end="92" start="86" name="NP"/>
+                    <label end="96" start="94" name="cc"/>
+                    <label end="100" start="98" name="cd"/>
+                    <label end="109" start="102" name="nns"/>
+                    <label end="114" start="111" name="VBD"/>
+                    <label end="122" start="116" name="VVN"/>
+                    <label end="125" start="124" name="in"/>
+                    <label end="133" start="127" name="nns"/>
+                    <label end="136" start="135" name="in"/>
+                    <label end="138" start="138" name="dt"/>
+                    <label end="147" start="140" name="nn"/>
+                    <label end="150" start="149" name="in"/>
+                    <label end="160" start="152" name="NP"/>
+                    <label end="165" start="162" name="NP"/>
+                    <label end="168" start="167" name="in"/>
+                    <label end="176" start="170" name="NP"/>
+                    <label end="185" start="178" name="NP"/>
+                    <label end="187" start="187" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/12/2004 04:08:53 PDT Tue" status="MANUAL" ID="2008995">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="147" start="140" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="446" end="185" start="149" name="Place"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="185" start="149" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="185" start="149" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="122" start="116" name="Gov"/>
+                    <label end="185" start="135" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="5057" sentNo="1" paragNo="5" aPos="103499644" ID="1280399">
+            <text>Last May , Santoni lost another bodyguard in a deadly gunfight near Ajaccio .</text>
+            <annotationSet cDate="10/12/2004 04:08:54 PDT Tue" status="UNANN" ID="2008998">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="jj"/>
+                    <label end="7" start="5" name="NP"/>
+                    <label end="9" start="9" name=","/>
+                    <label end="17" start="11" name="NP"/>
+                    <label end="22" start="19" name="VVD"/>
+                    <label end="30" start="24" name="dt"/>
+                    <label end="40" start="32" name="nn"/>
+                    <label end="43" start="42" name="in"/>
+                    <label end="45" start="45" name="dt"/>
+                    <label end="52" start="47" name="jj"/>
+                    <label end="61" start="54" name="nn"/>
+                    <label end="66" start="63" name="in"/>
+                    <label end="74" start="68" name="NP"/>
+                    <label end="76" start="76" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/12/2004 04:08:54 PDT Tue" status="MANUAL" ID="2008999">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="61" start="54" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="445" end="52" start="47" name="Manner"/>
+                    <label cBy="618" feID="446" end="74" start="63" name="Place"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="52" start="47" name="Dep"/>
+                    <label end="74" start="63" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="52" start="47" name="AJP"/>
+                    <label end="74" start="63" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://framenet.icsi.berkeley.edu"
+    elementFormDefault="qualified" xmlns:tns="http://framenet.icsi.berkeley.edu">
+
+    <xsd:include schemaLocation="header.xsd" />
+    
+    <xsd:element name="fulltextIndex">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="corpus" type="tns:corpDocType" minOccurs="0" maxOccurs="unbounded" />
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>

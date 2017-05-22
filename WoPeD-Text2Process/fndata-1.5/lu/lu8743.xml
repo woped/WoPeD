@@ -1,0 +1,701 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="disburse.v" ID="8743" frame="Commerce_pay" frameID="180" totalAnnotated="8" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core" abbrev="Byr" name="Buyer"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Extra-Thematic" abbrev="Cir" name="Circumstances"/>
+            <FE fgColor="000000" bgColor="FF69B4" type="Extra-Thematic" abbrev="Fre" name="Frequency"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="Gds" name="Goods"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Mny" name="Money"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Rate" name="Rate"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Extra-Thematic" abbrev="Reas" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Slr" name="Seller"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Unit" name="Unit"/>
+        </frame>
+    </header>
+    <definition>COD: pay out (money from a fund). </definition>
+    <lexeme POS="V" name="disburse"/>
+    <valences>
+        <FERealization total="8">
+            <FE name="Buyer"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="CNI" FE="Buyer"/>
+                <annoSet ID="1942561"/>
+                <annoSet ID="1942587"/>
+            </pattern>
+            <pattern total="4">
+                <valenceUnit GF="Ext" PT="NP" FE="Buyer"/>
+                <annoSet ID="1942541"/>
+                <annoSet ID="1942543"/>
+                <annoSet ID="1942545"/>
+                <annoSet ID="1942601"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Buyer"/>
+                <annoSet ID="1942555"/>
+                <annoSet ID="1942557"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="8">
+            <FE name="Goods"/>
+            <pattern total="6">
+                <valenceUnit GF="" PT="DNI" FE="Goods"/>
+                <annoSet ID="1942541"/>
+                <annoSet ID="1942555"/>
+                <annoSet ID="1942557"/>
+                <annoSet ID="1942561"/>
+                <annoSet ID="1942587"/>
+                <annoSet ID="1942601"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="" PT="INI" FE="Goods"/>
+                <annoSet ID="1942543"/>
+                <annoSet ID="1942545"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="8">
+            <FE name="Money"/>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="NP" FE="Money"/>
+                <annoSet ID="1942555"/>
+                <annoSet ID="1942557"/>
+                <annoSet ID="1942587"/>
+            </pattern>
+            <pattern total="5">
+                <valenceUnit GF="Obj" PT="NP" FE="Money"/>
+                <annoSet ID="1942541"/>
+                <annoSet ID="1942543"/>
+                <annoSet ID="1942545"/>
+                <annoSet ID="1942561"/>
+                <annoSet ID="1942601"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Rate"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Rate"/>
+                <annoSet ID="1942541"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Reason"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Reason"/>
+                <annoSet ID="1942545"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="8">
+            <FE name="Seller"/>
+            <pattern total="7">
+                <valenceUnit GF="" PT="INI" FE="Seller"/>
+                <annoSet ID="1942541"/>
+                <annoSet ID="1942545"/>
+                <annoSet ID="1942555"/>
+                <annoSet ID="1942557"/>
+                <annoSet ID="1942561"/>
+                <annoSet ID="1942587"/>
+                <annoSet ID="1942601"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Seller"/>
+                <annoSet ID="1942543"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[during]" FE="Time"/>
+                <annoSet ID="1942541"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Time"/>
+                <annoSet ID="1942601"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Buyer"/>
+            <FE name="Goods"/>
+            <FE name="Money"/>
+            <FE name="Rate"/>
+            <FE name="Seller"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Buyer"/>
+                <valenceUnit GF="" PT="DNI" FE="Goods"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Money"/>
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Rate"/>
+                <valenceUnit GF="" PT="INI" FE="Seller"/>
+                <valenceUnit GF="Dep" PT="PP[during]" FE="Time"/>
+                <annoSet ID="1942541"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Buyer"/>
+            <FE name="Goods"/>
+            <FE name="Money"/>
+            <FE name="Reason"/>
+            <FE name="Seller"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Buyer"/>
+                <valenceUnit GF="" PT="INI" FE="Goods"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Money"/>
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Reason"/>
+                <valenceUnit GF="" PT="INI" FE="Seller"/>
+                <annoSet ID="1942545"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="5">
+            <FE name="Buyer"/>
+            <FE name="Goods"/>
+            <FE name="Money"/>
+            <FE name="Seller"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Buyer"/>
+                <valenceUnit GF="" PT="DNI" FE="Goods"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Money"/>
+                <valenceUnit GF="" PT="INI" FE="Seller"/>
+                <annoSet ID="1942587"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Buyer"/>
+                <valenceUnit GF="" PT="DNI" FE="Goods"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Money"/>
+                <valenceUnit GF="" PT="INI" FE="Seller"/>
+                <annoSet ID="1942561"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Buyer"/>
+                <valenceUnit GF="" PT="INI" FE="Goods"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Money"/>
+                <valenceUnit GF="" PT="DNI" FE="Seller"/>
+                <annoSet ID="1942543"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Buyer"/>
+                <valenceUnit GF="" PT="DNI" FE="Goods"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Money"/>
+                <valenceUnit GF="" PT="INI" FE="Seller"/>
+                <annoSet ID="1942555"/>
+                <annoSet ID="1942557"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Buyer"/>
+            <FE name="Goods"/>
+            <FE name="Money"/>
+            <FE name="Seller"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Buyer"/>
+                <valenceUnit GF="" PT="DNI" FE="Goods"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Money"/>
+                <valenceUnit GF="" PT="INI" FE="Seller"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Time"/>
+                <annoSet ID="1942601"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-XPmoney,fund,grand-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="621" aPos="0" ID="1247765">
+            <text>During the period 1983-84 to 1989-90 , the scheme assisted 902 projects , disbursed £31.6 million of board funds at constant 1990 prices , and produced total tourism investment of £197.2 million at 1990 prices .</text>
+            <annotationSet cDate="08/29/2003 10:31:50 PDT Fri" status="UNANN" ID="1942540">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="0" name="in"/>
+                    <label end="9" start="7" name="dt"/>
+                    <label end="16" start="11" name="nn"/>
+                    <label end="24" start="18" name="cd"/>
+                    <label end="27" start="26" name="to"/>
+                    <label end="35" start="29" name="cd"/>
+                    <label end="37" start="37" name=","/>
+                    <label end="41" start="39" name="dt"/>
+                    <label end="48" start="43" name="nn"/>
+                    <label end="57" start="50" name="VVN"/>
+                    <label end="61" start="59" name="cd"/>
+                    <label end="70" start="63" name="nns"/>
+                    <label end="72" start="72" name=","/>
+                    <label end="82" start="74" name="VVN"/>
+                    <label end="89" start="84" name="rb"/>
+                    <label end="97" start="91" name="cd"/>
+                    <label end="99" start="98" name="in"/>
+                    <label end="105" start="101" name="nn"/>
+                    <label end="111" start="107" name="nns"/>
+                    <label end="114" start="113" name="in"/>
+                    <label end="123" start="116" name="jj"/>
+                    <label end="128" start="125" name="cd"/>
+                    <label end="135" start="130" name="nns"/>
+                    <label end="137" start="137" name=","/>
+                    <label end="141" start="139" name="cc"/>
+                    <label end="150" start="143" name="VVD"/>
+                    <label end="156" start="152" name="jj"/>
+                    <label end="164" start="158" name="nn"/>
+                    <label end="175" start="166" name="nn"/>
+                    <label end="178" start="177" name="in"/>
+                    <label end="186" start="180" name="jj"/>
+                    <label end="194" start="188" name="cd"/>
+                    <label end="196" start="195" name="in"/>
+                    <label end="201" start="198" name="cd"/>
+                    <label end="208" start="203" name="nns"/>
+                    <label end="210" start="210" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="08/29/2003 10:31:51 PDT Fri" status="MANUAL" ID="1942541">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="82" start="74" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="1731" end="35" start="0" name="Time"/>
+                    <label cBy="618" feID="1409" end="48" start="39" name="Buyer"/>
+                    <label cBy="618" feID="1412" end="111" start="84" name="Money"/>
+                    <label cBy="618" feID="1413" end="135" start="113" name="Rate"/>
+                    <label cBy="618" feID="1410" itype="DNI" name="Goods"/>
+                    <label cBy="618" feID="1414" itype="INI" name="Seller"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="35" start="0" name="Dep"/>
+                    <label end="48" start="39" name="Ext"/>
+                    <label end="111" start="84" name="Obj"/>
+                    <label end="135" start="113" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="35" start="0" name="PP"/>
+                    <label end="48" start="39" name="NP"/>
+                    <label end="111" start="84" name="NP"/>
+                    <label end="135" start="113" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="151" aPos="0" ID="1247766">
+            <text>The Community would monitor Hungary 's programme to restructure its economy on more market-oriented lines , and disburse the second and third tranches of the money only if satisfied about progress .</text>
+            <annotationSet cDate="08/29/2003 10:31:51 PDT Fri" status="UNANN" ID="1942542">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="12" start="4" name="NP"/>
+                    <label end="18" start="14" name="md"/>
+                    <label end="26" start="20" name="VV"/>
+                    <label end="34" start="28" name="NP"/>
+                    <label end="37" start="36" name="POS"/>
+                    <label end="47" start="39" name="nn"/>
+                    <label end="50" start="49" name="to"/>
+                    <label end="62" start="52" name="VV"/>
+                    <label end="66" start="64" name="PP$"/>
+                    <label end="74" start="68" name="nn"/>
+                    <label end="77" start="76" name="in"/>
+                    <label end="82" start="79" name="jjr"/>
+                    <label end="98" start="84" name="jj"/>
+                    <label end="104" start="100" name="nns"/>
+                    <label end="106" start="106" name=","/>
+                    <label end="110" start="108" name="cc"/>
+                    <label end="119" start="112" name="VV"/>
+                    <label end="123" start="121" name="dt"/>
+                    <label end="130" start="125" name="jj"/>
+                    <label end="134" start="132" name="cc"/>
+                    <label end="140" start="136" name="jj"/>
+                    <label end="149" start="142" name="nns"/>
+                    <label end="152" start="151" name="in"/>
+                    <label end="156" start="154" name="dt"/>
+                    <label end="162" start="158" name="nn"/>
+                    <label end="167" start="164" name="rb"/>
+                    <label end="170" start="169" name="in"/>
+                    <label end="180" start="172" name="VVN"/>
+                    <label end="186" start="182" name="in"/>
+                    <label end="195" start="188" name="nn"/>
+                    <label end="197" start="197" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="08/29/2003 10:31:51 PDT Fri" status="MANUAL" ID="1942543">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="119" start="112" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="1409" end="12" start="0" name="Buyer"/>
+                    <label cBy="618" feID="1410" itype="INI" name="Goods"/>
+                    <label cBy="153" feID="1414" itype="DNI" name="Seller"/>
+                    <label cBy="605" feID="1412" end="162" start="121" name="Money"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="12" start="0" name="Ext"/>
+                    <label end="162" start="121" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="12" start="0" name="NP"/>
+                    <label end="162" start="121" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="10" paragNo="45" aPos="0" ID="1247767">
+            <text>In contrast to the Court which was a public affair , the Civil Cabinet functioned privately and discreetly , disbursing sums of money from the Emperor 's private purse , often for very private reasons .</text>
+            <annotationSet cDate="08/29/2003 10:31:51 PDT Fri" status="UNANN" ID="1942544">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="in"/>
+                    <label end="10" start="3" name="nn"/>
+                    <label end="13" start="12" name="to"/>
+                    <label end="17" start="15" name="dt"/>
+                    <label end="23" start="19" name="NP"/>
+                    <label end="29" start="25" name="wdt"/>
+                    <label end="33" start="31" name="VBD"/>
+                    <label end="35" start="35" name="dt"/>
+                    <label end="42" start="37" name="jj"/>
+                    <label end="49" start="44" name="nn"/>
+                    <label end="51" start="51" name=","/>
+                    <label end="55" start="53" name="dt"/>
+                    <label end="61" start="57" name="NP"/>
+                    <label end="69" start="63" name="NP"/>
+                    <label end="80" start="71" name="VVD"/>
+                    <label end="90" start="82" name="rb"/>
+                    <label end="94" start="92" name="cc"/>
+                    <label end="105" start="96" name="rb"/>
+                    <label end="107" start="107" name=","/>
+                    <label end="118" start="109" name="VVG"/>
+                    <label end="123" start="120" name="nns"/>
+                    <label end="126" start="125" name="in"/>
+                    <label end="132" start="128" name="nn"/>
+                    <label end="137" start="134" name="in"/>
+                    <label end="141" start="139" name="dt"/>
+                    <label end="149" start="143" name="nn"/>
+                    <label end="152" start="151" name="POS"/>
+                    <label end="160" start="154" name="jj"/>
+                    <label end="166" start="162" name="nn"/>
+                    <label end="168" start="168" name=","/>
+                    <label end="174" start="170" name="rb"/>
+                    <label end="178" start="176" name="in"/>
+                    <label end="183" start="180" name="rb"/>
+                    <label end="191" start="185" name="jj"/>
+                    <label end="199" start="193" name="nns"/>
+                    <label end="201" start="201" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="08/29/2003 10:31:52 PDT Fri" status="MANUAL" ID="1942545">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="118" start="109" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="1409" end="69" start="53" name="Buyer"/>
+                    <label cBy="618" feID="1410" itype="INI" name="Goods"/>
+                    <label cBy="618" feID="1412" end="166" start="120" name="Money"/>
+                    <label cBy="618" feID="1730" end="199" start="170" name="Reason"/>
+                    <label cBy="153" feID="1414" itype="INI" name="Seller"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="69" start="53" name="Ext"/>
+                    <label end="166" start="120" name="Obj"/>
+                    <label end="199" start="170" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="69" start="53" name="NP"/>
+                    <label end="166" start="120" name="NP"/>
+                    <label end="199" start="170" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-T-Wover-(1)"/>
+    <subCorpus name="03-T-PPby-(1)">
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="28" aPos="0" ID="1247772">
+            <text>These institutions would henceforward all be financed directly from Exchequer funds disbursed by a central body , appointed by the Secretary of State .</text>
+            <annotationSet cDate="08/29/2003 10:31:54 PDT Fri" status="UNANN" ID="1942554">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="dt"/>
+                    <label end="17" start="6" name="nns"/>
+                    <label end="23" start="19" name="md"/>
+                    <label end="36" start="25" name="rb"/>
+                    <label end="40" start="38" name="rb"/>
+                    <label end="43" start="42" name="vb"/>
+                    <label end="52" start="45" name="VVN"/>
+                    <label end="61" start="54" name="rb"/>
+                    <label end="66" start="63" name="in"/>
+                    <label end="76" start="68" name="NP"/>
+                    <label end="82" start="78" name="nns"/>
+                    <label end="92" start="84" name="VVN"/>
+                    <label end="95" start="94" name="in"/>
+                    <label end="97" start="97" name="dt"/>
+                    <label end="105" start="99" name="jj"/>
+                    <label end="110" start="107" name="nn"/>
+                    <label end="112" start="112" name=","/>
+                    <label end="122" start="114" name="VVN"/>
+                    <label end="125" start="124" name="in"/>
+                    <label end="129" start="127" name="dt"/>
+                    <label end="139" start="131" name="NP"/>
+                    <label end="142" start="141" name="in"/>
+                    <label end="148" start="144" name="NP"/>
+                    <label end="150" start="150" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="08/29/2003 10:31:54 PDT Fri" status="MANUAL" ID="1942555">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="92" start="84" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="1412" end="82" start="68" name="Money"/>
+                    <label cBy="618" feID="1409" end="148" start="94" name="Buyer"/>
+                    <label cBy="618" feID="1410" itype="DNI" name="Goods"/>
+                    <label cBy="153" feID="1414" itype="INI" name="Seller"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="82" start="68" name="Ext"/>
+                    <label end="148" start="94" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="82" start="68" name="NP"/>
+                    <label end="148" start="94" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="97" aPos="0" ID="1247773">
+            <text>There has , to date , been no readily available published accounts of the amounts received and disbursed by the various victim compensation boards , but it would be surprising if it amounted to many millions .</text>
+            <annotationSet cDate="08/29/2003 10:31:55 PDT Fri" status="UNANN" ID="1942556">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="ex"/>
+                    <label end="8" start="6" name="VHZ"/>
+                    <label end="10" start="10" name=","/>
+                    <label end="13" start="12" name="to"/>
+                    <label end="18" start="15" name="VV"/>
+                    <label end="20" start="20" name=","/>
+                    <label end="25" start="22" name="VBN"/>
+                    <label end="28" start="27" name="dt"/>
+                    <label end="36" start="30" name="rb"/>
+                    <label end="46" start="38" name="jj"/>
+                    <label end="56" start="48" name="VVN"/>
+                    <label end="65" start="58" name="nns"/>
+                    <label end="68" start="67" name="in"/>
+                    <label end="72" start="70" name="dt"/>
+                    <label end="80" start="74" name="nns"/>
+                    <label end="89" start="82" name="VVN"/>
+                    <label end="93" start="91" name="cc"/>
+                    <label end="103" start="95" name="VVN"/>
+                    <label end="106" start="105" name="in"/>
+                    <label end="110" start="108" name="dt"/>
+                    <label end="118" start="112" name="jj"/>
+                    <label end="125" start="120" name="nn"/>
+                    <label end="138" start="127" name="nn"/>
+                    <label end="145" start="140" name="nns"/>
+                    <label end="147" start="147" name=","/>
+                    <label end="151" start="149" name="cc"/>
+                    <label end="154" start="153" name="PP"/>
+                    <label end="160" start="156" name="md"/>
+                    <label end="163" start="162" name="vb"/>
+                    <label end="174" start="165" name="jj"/>
+                    <label end="177" start="176" name="in"/>
+                    <label end="180" start="179" name="PP"/>
+                    <label end="189" start="182" name="VVD"/>
+                    <label end="192" start="191" name="to"/>
+                    <label end="197" start="194" name="jj"/>
+                    <label end="206" start="199" name="nns"/>
+                    <label end="208" start="208" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="08/29/2003 10:31:55 PDT Fri" status="MANUAL" ID="1942557">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="103" start="95" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="1412" end="80" start="70" name="Money"/>
+                    <label cBy="618" feID="1409" end="145" start="105" name="Buyer"/>
+                    <label cBy="618" feID="1410" itype="DNI" name="Goods"/>
+                    <label cBy="153" feID="1414" itype="INI" name="Seller"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="80" start="70" name="Ext"/>
+                    <label end="145" start="105" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="80" start="70" name="NP"/>
+                    <label end="145" start="105" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)">
+        <sentence corpID="111" docID="421" sentNo="8" paragNo="231" aPos="0" ID="1247775">
+            <text>Using cash and bank accounts to collect and disburse contributions for welfare , was easier than collecting animals on the hoof , grains or sugar in sacks , and it was much easier to transfer the payments .</text>
+            <annotationSet cDate="08/29/2003 10:31:56 PDT Fri" status="UNANN" ID="1942560">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="VVG"/>
+                    <label end="9" start="6" name="nn"/>
+                    <label end="13" start="11" name="cc"/>
+                    <label end="18" start="15" name="nn"/>
+                    <label end="27" start="20" name="nns"/>
+                    <label end="30" start="29" name="to"/>
+                    <label end="38" start="32" name="VV"/>
+                    <label end="42" start="40" name="cc"/>
+                    <label end="51" start="44" name="VV"/>
+                    <label end="65" start="53" name="nns"/>
+                    <label end="69" start="67" name="in"/>
+                    <label end="77" start="71" name="nn"/>
+                    <label end="79" start="79" name=","/>
+                    <label end="83" start="81" name="VBD"/>
+                    <label end="90" start="85" name="jjr"/>
+                    <label end="95" start="92" name="in"/>
+                    <label end="106" start="97" name="VVG"/>
+                    <label end="114" start="108" name="nns"/>
+                    <label end="117" start="116" name="in"/>
+                    <label end="121" start="119" name="dt"/>
+                    <label end="126" start="123" name="nn"/>
+                    <label end="128" start="128" name=","/>
+                    <label end="135" start="130" name="nns"/>
+                    <label end="138" start="137" name="cc"/>
+                    <label end="144" start="140" name="nn"/>
+                    <label end="147" start="146" name="in"/>
+                    <label end="153" start="149" name="nns"/>
+                    <label end="155" start="155" name=","/>
+                    <label end="159" start="157" name="cc"/>
+                    <label end="162" start="161" name="PP"/>
+                    <label end="166" start="164" name="VBD"/>
+                    <label end="171" start="168" name="rb"/>
+                    <label end="178" start="173" name="jjr"/>
+                    <label end="181" start="180" name="to"/>
+                    <label end="190" start="183" name="VV"/>
+                    <label end="194" start="192" name="dt"/>
+                    <label end="203" start="196" name="nns"/>
+                    <label end="205" start="205" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="08/29/2003 10:31:56 PDT Fri" status="MANUAL" ID="1942561">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="51" start="44" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="1412" end="77" start="53" name="Money"/>
+                    <label cBy="618" feID="1409" itype="CNI" name="Buyer"/>
+                    <label cBy="618" feID="1410" itype="DNI" name="Goods"/>
+                    <label cBy="618" feID="1414" itype="INI" name="Seller"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="77" start="53" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="77" start="53" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="5" paragNo="896" aPos="0" ID="1247788">
+            <text>But once the money is disbursed , only anecdotal evidence offers much of a clue whether the city is getting value for money or not .</text>
+            <annotationSet cDate="08/29/2003 10:32:03 PDT Fri" status="UNANN" ID="1942586">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="cc"/>
+                    <label end="7" start="4" name="rb"/>
+                    <label end="11" start="9" name="dt"/>
+                    <label end="17" start="13" name="nn"/>
+                    <label end="20" start="19" name="VBZ"/>
+                    <label end="30" start="22" name="VVN"/>
+                    <label end="32" start="32" name=","/>
+                    <label end="37" start="34" name="rb"/>
+                    <label end="47" start="39" name="jj"/>
+                    <label end="56" start="49" name="nn"/>
+                    <label end="63" start="58" name="VVZ"/>
+                    <label end="68" start="65" name="rb"/>
+                    <label end="71" start="70" name="in"/>
+                    <label end="73" start="73" name="dt"/>
+                    <label end="78" start="75" name="nn"/>
+                    <label end="86" start="80" name="in"/>
+                    <label end="90" start="88" name="dt"/>
+                    <label end="95" start="92" name="nn"/>
+                    <label end="98" start="97" name="VBZ"/>
+                    <label end="106" start="100" name="VVG"/>
+                    <label end="112" start="108" name="nn"/>
+                    <label end="116" start="114" name="in"/>
+                    <label end="122" start="118" name="nn"/>
+                    <label end="125" start="124" name="cc"/>
+                    <label end="129" start="127" name="rb"/>
+                    <label end="131" start="131" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="08/29/2003 10:32:04 PDT Fri" status="MANUAL" ID="1942587">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="30" start="22" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="1412" end="17" start="9" name="Money"/>
+                    <label cBy="618" feID="1409" itype="CNI" name="Buyer"/>
+                    <label cBy="618" feID="1410" itype="DNI" name="Goods"/>
+                    <label cBy="153" feID="1414" itype="INI" name="Seller"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="17" start="9" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="17" start="9" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="19" aPos="0" ID="1247795">
+            <text>The Association 's Honorary Welfare Officers disbursed some £1.8m in 1990 on behalf of the Fund .</text>
+            <annotationSet cDate="08/29/2003 10:32:06 PDT Fri" status="UNANN" ID="1942600">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="14" start="4" name="NP"/>
+                    <label end="17" start="16" name="POS"/>
+                    <label end="26" start="19" name="jj"/>
+                    <label end="34" start="28" name="NP"/>
+                    <label end="43" start="36" name="nns"/>
+                    <label end="53" start="45" name="VVN"/>
+                    <label end="58" start="55" name="dt"/>
+                    <label end="64" start="60" name="nn"/>
+                    <label end="67" start="66" name="in"/>
+                    <label end="72" start="69" name="cd"/>
+                    <label end="75" start="74" name="in"/>
+                    <label end="82" start="77" name="nn"/>
+                    <label end="85" start="84" name="in"/>
+                    <label end="89" start="87" name="dt"/>
+                    <label end="94" start="91" name="NP"/>
+                    <label end="96" start="96" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="08/29/2003 10:32:07 PDT Fri" status="MANUAL" ID="1942601">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="53" start="45" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="1409" end="43" start="0" name="Buyer"/>
+                    <label cBy="618" feID="1412" end="64" start="55" name="Money"/>
+                    <label cBy="618" feID="1731" end="72" start="66" name="Time"/>
+                    <label cBy="618" feID="1410" itype="DNI" name="Goods"/>
+                    <label cBy="153" feID="1414" itype="INI" name="Seller"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="43" start="0" name="Ext"/>
+                    <label end="64" start="55" name="Obj"/>
+                    <label end="72" start="66" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="43" start="0" name="NP"/>
+                    <label end="64" start="55" name="NP"/>
+                    <label end="72" start="66" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

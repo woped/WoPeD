@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="trivial_name.n" ID="7470" frame="Being_named" frameID="228" totalAnnotated="4" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Core" abbrev="Entity" name="Entity"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Name" name="Name"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Name_source" name="Name_source"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Peripheral" abbrev="Spkr" name="Speaker"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Type" name="Type"/>
+        </frame>
+    </header>
+    <definition>FN: the name of something in popular rather than technical or scientific speech</definition>
+    <lexeme order="1" headword="false" breakBefore="false" POS="A" name="trivial"/>
+    <lexeme order="2" headword="true" breakBefore="false" POS="N" name="name"/>
+    <valences>
+        <governor type="Sup" lemma="have">
+            <annoSet ID="1776463"/>
+            <annoSet ID="1776469"/>
+        </governor>
+        <FERealization total="3">
+            <FE name="Entity"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Entity"/>
+                <annoSet ID="1776463"/>
+                <annoSet ID="1776469"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Entity"/>
+                <annoSet ID="1776435"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Name"/>
+            <pattern total="3">
+                <valenceUnit GF="" PT="DEN" FE="Name"/>
+                <annoSet ID="1776461"/>
+                <annoSet ID="1776463"/>
+                <annoSet ID="1776469"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Appositive" PT="NP" FE="Name"/>
+                <annoSet ID="1776435"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="3">
+            <FE name="Entity"/>
+            <FE name="Name"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Entity"/>
+                <valenceUnit GF="" PT="DEN" FE="Name"/>
+                <annoSet ID="1776463"/>
+                <annoSet ID="1776469"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Entity"/>
+                <valenceUnit GF="Appositive" PT="NP" FE="Name"/>
+                <annoSet ID="1776435"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Name"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Name"/>
+                <annoSet ID="1776461"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-001-all">
+        <sentence sentNo="0" aPos="10735794" ID="1163050">
+            <text>If I use its other trivial name , eugenol , most people will understand . </text>
+            <annotationSet cDate="01/08/2003 05:01:26 PST Wed" status="UNANN" ID="1776434">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="CJS"/>
+                    <label end="3" start="3" name="PNP"/>
+                    <label end="7" start="5" name="VVB"/>
+                    <label end="11" start="9" name="DPS"/>
+                    <label end="17" start="13" name="AJ0"/>
+                    <label end="25" start="19" name="AJ0"/>
+                    <label end="30" start="27" name="NN1"/>
+                    <label end="32" start="32" name="PUN"/>
+                    <label end="40" start="34" name="NN1"/>
+                    <label end="42" start="42" name="PUN"/>
+                    <label end="47" start="44" name="DT0"/>
+                    <label end="54" start="49" name="NN0"/>
+                    <label end="59" start="56" name="VM0"/>
+                    <label end="70" start="61" name="VVI"/>
+                    <label end="72" start="72" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:01:26 PST Wed" status="MANUAL" ID="1776435">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="1859" end="11" start="9" name="Entity"/>
+                    <label cBy="618" feID="1858" end="40" start="34" name="Name"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="11" start="9" name="Gen"/>
+                    <label end="40" start="34" name="Appositive"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="11" start="9" name="Poss"/>
+                    <label end="40" start="34" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="30" start="19" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="89563683" ID="1163063">
+            <text>However , the IUPAC system relies more heavily on the use of trivial names . </text>
+            <annotationSet cDate="01/08/2003 05:01:28 PST Wed" status="UNANN" ID="1776460">
+                <layer rank="1" name="BNC">
+                    <label end="6" start="0" name="AV0"/>
+                    <label end="8" start="8" name="PUN"/>
+                    <label end="12" start="10" name="AT0"/>
+                    <label end="18" start="14" name="NP0"/>
+                    <label end="25" start="20" name="NN1"/>
+                    <label end="32" start="27" name="VVZ"/>
+                    <label end="37" start="34" name="AV0"/>
+                    <label end="45" start="39" name="AV0"/>
+                    <label end="48" start="47" name="PRP"/>
+                    <label end="52" start="50" name="AT0"/>
+                    <label end="56" start="54" name="NN1"/>
+                    <label end="59" start="58" name="PRF"/>
+                    <label end="67" start="61" name="AJ0"/>
+                    <label end="73" start="69" name="NN2"/>
+                    <label end="75" start="75" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:01:28 PST Wed" status="MANUAL" ID="1776461">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="1858" end="73" start="61" name="Name"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="73" start="61" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="89563689" ID="1163064">
+            <text>Many substances have trivial names . </text>
+            <annotationSet cDate="01/08/2003 05:01:28 PST Wed" status="UNANN" ID="1776462">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="DT0"/>
+                    <label end="14" start="5" name="NN2"/>
+                    <label end="19" start="16" name="VHB"/>
+                    <label end="27" start="21" name="AJ0"/>
+                    <label end="33" start="29" name="NN2"/>
+                    <label end="35" start="35" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:01:28 PST Wed" status="MANUAL" ID="1776463">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="1859" end="14" start="0" name="Entity"/>
+                    <label cBy="618" feID="1858" end="33" start="21" name="Name"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="14" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="14" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="33" start="21" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="19" start="16" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="89564361" ID="1163067">
+            <text>The hydrides , particularly those of non-metals , tend to have trivial names ( see table 4.8 ) </text>
+            <annotationSet cDate="01/08/2003 05:01:28 PST Wed" status="UNANN" ID="1776468">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="11" start="4" name="NN2"/>
+                    <label end="13" start="13" name="PUN"/>
+                    <label end="26" start="15" name="AV0"/>
+                    <label end="32" start="28" name="DT0"/>
+                    <label end="35" start="34" name="PRF"/>
+                    <label end="46" start="37" name="NN2"/>
+                    <label end="48" start="48" name="PUN"/>
+                    <label end="53" start="50" name="VVB"/>
+                    <label end="56" start="55" name="TO0"/>
+                    <label end="61" start="58" name="VHI"/>
+                    <label end="69" start="63" name="AJ0"/>
+                    <label end="75" start="71" name="NN2"/>
+                    <label end="77" start="77" name="PUL"/>
+                    <label end="81" start="79" name="VVB"/>
+                    <label end="87" start="83" name="NN1"/>
+                    <label end="91" start="89" name="CRD"/>
+                    <label end="93" start="93" name="PUR"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:01:28 PST Wed" status="MANUAL" ID="1776469">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="1859" end="48" start="0" name="Entity"/>
+                    <label cBy="618" feID="1858" end="75" start="63" name="Name"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="48" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="48" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="75" start="63" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="61" start="58" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

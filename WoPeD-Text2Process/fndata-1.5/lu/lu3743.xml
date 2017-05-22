@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" POS="A" name="sockless.a" ID="3743" frame="Wearing" frameID="160" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Core" abbrev="BP" name="Body_part"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Clo" name="Clothing"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Extra-Thematic" abbrev="goa" name="Goal"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="man" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="pur" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="rel" name="Relative_location"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Extra-Thematic" abbrev="sou" name="Source"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="tim" name="Time"/>
+            <FE fgColor="000000" bgColor="d0d0d0" type="Core" abbrev="Wearer" name="Wearer"/>
+        </frame>
+    </header>
+    <definition>FN: wearing no socks.</definition>
+    <lexeme POS="A" name="sockless"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Body_part"/>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="N" FE="Body_part"/>
+                <annoSet ID="600470"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Body_part"/>
+                <annoSet ID="600470"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Wearer"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="2nd" FE="Wearer"/>
+                <annoSet ID="600470"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Wearer"/>
+                <annoSet ID="600472"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Body_part"/>
+            <FE name="Body_part"/>
+            <FE name="Wearer"/>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="N" FE="Body_part"/>
+                <valenceUnit GF="Gen" PT="Poss" FE="Body_part"/>
+                <valenceUnit GF="" PT="2nd" FE="Wearer"/>
+                <annoSet ID="600470"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Wearer"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Wearer"/>
+                <annoSet ID="600472"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="A-001-all">
+        <sentence sentNo="0" aPos="7605782" ID="480790">
+            <text>On his sockless feet were soiled gym shoes . </text>
+            <annotationSet cDate="01/07/2003 05:37:57 PST Tue" status="UNANN" ID="600469">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PRP"/>
+                    <label end="5" start="3" name="DPS"/>
+                    <label end="14" start="7" name="AJ0"/>
+                    <label end="19" start="16" name="NN2"/>
+                    <label end="24" start="21" name="VBD"/>
+                    <label end="31" start="26" name="AJ0"/>
+                    <label end="35" start="33" name="NN1"/>
+                    <label end="41" start="37" name="NN2"/>
+                    <label end="43" start="43" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:37:57 PST Tue" status="MANUAL" ID="600470">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="1623" end="5" start="3" name="Body_part"/>
+                    <label cBy="296" feID="1623" end="19" start="16" name="Body_part"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="5" start="3" name="Gen"/>
+                    <label end="19" start="16" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="5" start="3" name="Poss"/>
+                    <label end="19" start="16" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="14" start="7" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj"/>
+                <layer rank="2" name="FE">
+                    <label cBy="296" feID="1294" end="5" start="3" name="Wearer"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="53639060" ID="480791">
+            <text>He was wearing a shiny black suit and white-and-black golfing shoes , but he was shirtless and sockless . </text>
+            <annotationSet cDate="01/07/2003 05:37:57 PST Tue" status="UNANN" ID="600471">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="5" start="3" name="VBD"/>
+                    <label end="13" start="7" name="VVG"/>
+                    <label end="15" start="15" name="AT0"/>
+                    <label end="21" start="17" name="AJ0"/>
+                    <label end="27" start="23" name="AJ0"/>
+                    <label end="32" start="29" name="NN1"/>
+                    <label end="36" start="34" name="CJC"/>
+                    <label end="52" start="38" name="AJ0"/>
+                    <label end="60" start="54" name="AJ0-NN1"/>
+                    <label end="66" start="62" name="NN2"/>
+                    <label end="68" start="68" name="PUN"/>
+                    <label end="72" start="70" name="CJC"/>
+                    <label end="75" start="74" name="PNP"/>
+                    <label end="79" start="77" name="VBD"/>
+                    <label end="89" start="81" name="AJ0"/>
+                    <label end="93" start="91" name="CJC"/>
+                    <label end="102" start="95" name="AJ0"/>
+                    <label end="104" start="104" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:37:57 PST Tue" status="MANUAL" ID="600472">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="1294" end="75" start="74" name="Wearer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="75" start="74" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="75" start="74" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="102" start="95" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj">
+                    <label end="79" start="77" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

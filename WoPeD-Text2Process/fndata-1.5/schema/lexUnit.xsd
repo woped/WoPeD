@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : lexUnit.xsd
+    Created on : July 25, 2007, 11:30 PM
+    Author     : jhong
+    Description:
+        FrameNet LexUnit XML format which incorporates both valence information
+        and annotation.  This format was adopted as of R1.4.
+-->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:fn="http://framenet.icsi.berkeley.edu"
+            targetNamespace="http://framenet.icsi.berkeley.edu"
+            xmlns="http://framenet.icsi.berkeley.edu"
+            elementFormDefault="qualified">
+    
+    <!-- 
+       A sketch of the XML under the root is as follows:
+       
+       <lexUnit ...>
+         <header> ... </header>
+         <definition> ... </definition>
+         <lexeme />+
+         <semType />+
+         <valences> ... </valences>
+         <subCorpus> ... </subCorpus>*
+       </lexUnit>
+
+    -->
+    <xsd:include schemaLocation="commonTypes.xsd"/>
+    <xsd:include schemaLocation="header.xsd"/>
+    <xsd:include schemaLocation="sentence.xsd"/>
+
+    <!-- ***************  Schema for the root node  ****************** -->
+    <xsd:element name="lexUnit">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="header" type="fn:headerType"
+                        minOccurs="1" maxOccurs="1"/>
+                <xsd:element name="definition" type="fn:defType"
+                        maxOccurs="1"/>
+                <xsd:element name="lexeme" type="fn:lexemeType"
+                        minOccurs="1" maxOccurs="unbounded"/>
+                <xsd:element name="semType" type="fn:semTypeRefType"
+                        minOccurs="0" maxOccurs="unbounded"/>
+                <xsd:element name="valences" type="fn:valencesType"
+                        minOccurs="0" maxOccurs="1"/>
+                <xsd:element name="subCorpus" type="fn:subCorpusType"
+                         minOccurs="0" maxOccurs="unbounded"/>
+            </xsd:sequence>
+            <xsd:attributeGroup ref="fn:basicLUAttributes"/>
+            <xsd:attributeGroup ref="fn:frameReference"/>
+            <xsd:attribute name="totalAnnotated" type="fn:countType"/>
+        </xsd:complexType>
+    </xsd:element>
+    
+    <!-- ************* Types Contained in the Root Node **************  -->
+    
+    <!-- valences type -->
+    <xsd:complexType name="valencesType">
+        <xsd:sequence>
+            <xsd:element name="governor" type="fn:governorType"
+                minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="FERealization" type="fn:FERealizationType"
+                minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="FEGroupRealization" type="fn:FEGroupRealizationType"
+                minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    
+    <!-- subCorpus element type -->
+    <xsd:complexType name="subCorpusType">
+        <xsd:sequence>
+            <xsd:element name="sentence" type="fn:sentenceType"
+                         minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+        <xsd:attribute name="name" type="xsd:string"/>
+    </xsd:complexType>
+    
+    <!-- ************* Types contains in the valences type ************** -->
+    
+    <!-- governor type -->
+    <xsd:complexType name="governorType">
+        <xsd:sequence>
+            <xsd:element name="annoSet" type="fn:annoSetType" maxOccurs="unbounded"/>
+        </xsd:sequence>
+        <xsd:attribute name="lemma" type="xsd:string" use="required"/>
+        <xsd:attribute name="type" type="xsd:string" use="required"/> <!-- more strict type? -->
+    </xsd:complexType>
+    
+    <!-- FERealization Type -->
+    <xsd:complexType name="FERealizationType">
+        <xsd:sequence>
+            <xsd:element name="FE" type="fn:FEValenceType" maxOccurs="1"/>
+            <xsd:element name="pattern" maxOccurs="unbounded">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="valenceUnit" type="fn:valenceUnitType"/>
+                        <xsd:element name="annoSet" type="fn:annoSetType" maxOccurs="unbounded"/>
+                    </xsd:sequence>
+                    <xsd:attribute name="total" type="fn:countType" use="required"/>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+        <xsd:attribute name="total" type="fn:countType" use="required"/>
+    </xsd:complexType>
+  
+    <!-- FEGRoupRealization type -->
+    <xsd:complexType name="FEGroupRealizationType">
+        <xsd:sequence>
+            <xsd:element name="FE" type="fn:FEValenceType" maxOccurs="unbounded"/>
+            <xsd:element name="pattern" maxOccurs="unbounded">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="valenceUnit" type="fn:valenceUnitType" maxOccurs="unbounded"/>
+                        <xsd:element name="annoSet" type="fn:annoSetType" maxOccurs="unbounded"/>
+                    </xsd:sequence>
+                    <xsd:attribute name="total" type="fn:countType" use="required"/>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+        <xsd:attribute name="total" type="fn:countType" use="required"/>
+    </xsd:complexType>
+    
+
+    <!-- Attributes-only Complex Types used in valences -->
+    <xsd:complexType name="annoSetType">
+        <xsd:attribute name="ID" type="fn:IDType" use="required"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="FEValenceType">
+        <xsd:attribute name="name" type="xsd:string" use="required"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="valenceUnitType">
+        <xsd:attribute name="FE" type="xsd:string" use="required"/>
+        <xsd:attribute name="PT" type="xsd:string" use="required"/>
+        <xsd:attribute name="GF" type="xsd:string" use="required"/>
+    </xsd:complexType>
+</xsd:schema>

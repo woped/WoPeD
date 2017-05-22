@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" POS="A" name="fantastic.a" ID="9279" frame="Usefulness" frameID="726" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="dom" name="Domain"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Ent" name="Entity"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: extraordinarily good or attractive</definition>
+    <lexeme POS="A" name="fantastic"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Entity"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Entity"/>
+                <annoSet ID="1370345"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Purpose"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PPing[for]" FE="Purpose"/>
+                <annoSet ID="1370345"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Entity"/>
+            <FE name="Purpose"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Entity"/>
+                <valenceUnit GF="Dep" PT="PPing[for]" FE="Purpose"/>
+                <annoSet ID="1370345"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="A-120-s20-pingfor">
+        <sentence sentNo="0" aPos="11241901" ID="958582">
+            <text>Towering mountains surround the village and the area around St Anton is fantastic for walking . </text>
+            <annotationSet cDate="01/07/2003 08:59:05 PST Tue" status="UNANN" ID="1370344">
+                <layer rank="1" name="BNC">
+                    <label end="7" start="0" name="AJ0"/>
+                    <label end="17" start="9" name="NN2"/>
+                    <label end="26" start="19" name="VVB"/>
+                    <label end="30" start="28" name="AT0"/>
+                    <label end="38" start="32" name="NN1"/>
+                    <label end="42" start="40" name="CJC"/>
+                    <label end="46" start="44" name="AT0"/>
+                    <label end="51" start="48" name="NN1"/>
+                    <label end="58" start="53" name="PRP"/>
+                    <label end="61" start="60" name="NP0"/>
+                    <label end="67" start="63" name="NP0"/>
+                    <label end="70" start="69" name="VBZ"/>
+                    <label end="80" start="72" name="AJ0"/>
+                    <label end="84" start="82" name="PRP"/>
+                    <label end="92" start="86" name="VVG"/>
+                    <label end="94" start="94" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 08:59:05 PST Tue" status="MANUAL" ID="1370345">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4783" end="67" start="44" name="Entity"/>
+                    <label cBy="618" feID="4784" end="92" start="82" name="Purpose"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="67" start="44" name="Ext"/>
+                    <label end="92" start="82" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="67" start="44" name="NP"/>
+                    <label end="92" start="82" name="PPing"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="80" start="72" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj">
+                    <label end="70" start="69" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

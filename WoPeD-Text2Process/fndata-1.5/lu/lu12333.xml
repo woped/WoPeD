@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Add_Annotation" POS="V" name="divert.v" ID="12333" frame="Redirecting" frameID="1530" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="age" name="Agent"/>
+            <FE fgColor="FFFFFF" bgColor="90876C" type="Core" abbrev="cau" name="Cause"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="A9A9A9" type="Core" abbrev="dir" name="Direction"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Goal" name="Goal"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="mea" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Core" abbrev="ori" name="Original_path"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Path" name="Path"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD7C" type="Peripheral" abbrev="pur" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Thm" name="Theme"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: cause to change course or take a different route.</definition>
+    <lexeme POS="V" name="divert"/>
+    <valences>
+        <FERealization total="2">
+            <FE name="Agent"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <annoSet ID="2565279"/>
+                <annoSet ID="2565521"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Direction"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[towards]" FE="Direction"/>
+                <annoSet ID="2565521"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Means"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[via]" FE="Means"/>
+                <annoSet ID="2565279"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Original_path"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[from]" FE="Original_path"/>
+                <annoSet ID="2565279"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Path"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Path"/>
+                <annoSet ID="2565279"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Theme"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Theme"/>
+                <annoSet ID="2565279"/>
+                <annoSet ID="2565521"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Agent"/>
+            <FE name="Direction"/>
+            <FE name="Theme"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <valenceUnit GF="Dep" PT="PP[towards]" FE="Direction"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Theme"/>
+                <annoSet ID="2565521"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Agent"/>
+            <FE name="Means"/>
+            <FE name="Original_path"/>
+            <FE name="Path"/>
+            <FE name="Theme"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <valenceUnit GF="Dep" PT="PP[via]" FE="Means"/>
+                <valenceUnit GF="Dep" PT="PP[from]" FE="Original_path"/>
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Path"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Theme"/>
+                <annoSet ID="2565279"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-PPfrom-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="312" aPos="38002693" ID="1561259">
+            <text>Trains were either diverted from Worcester to New Street via Bromsgrove , or terminated at Stourbridge Junction .</text>
+            <annotationSet cDate="05/26/2010 02:55:34 PDT Wed" status="UNANN" ID="2565278">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="0" name="nns"/>
+                    <label end="10" start="7" name="VBD"/>
+                    <label end="17" start="12" name="rb"/>
+                    <label end="26" start="19" name="VVN"/>
+                    <label end="31" start="28" name="in"/>
+                    <label end="41" start="33" name="NP"/>
+                    <label end="44" start="43" name="to"/>
+                    <label end="48" start="46" name="NP"/>
+                    <label end="55" start="50" name="NP"/>
+                    <label end="59" start="57" name="in"/>
+                    <label end="70" start="61" name="NP"/>
+                    <label end="72" start="72" name=","/>
+                    <label end="75" start="74" name="cc"/>
+                    <label end="86" start="77" name="VVD"/>
+                    <label end="89" start="88" name="in"/>
+                    <label end="101" start="91" name="NP"/>
+                    <label end="110" start="103" name="nn"/>
+                    <label end="112" start="112" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/26/2010 02:55:34 PDT Wed" status="MANUAL" ID="2565279">
+                <layer rank="1" name="Target">
+                    <label cBy="571" end="26" start="19" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="571" feID="8320" end="5" start="0" name="Theme"/>
+                    <label cBy="571" feID="8321" end="41" start="28" name="Original_path"/>
+                    <label cBy="571" feID="8322" end="55" start="43" name="Path"/>
+                    <label cBy="571" feID="11618" end="70" start="57" name="Means"/>
+                    <label cBy="571" feID="8337" itype="CNI" name="Agent"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="5" start="0" name="Ext"/>
+                    <label end="41" start="28" name="Dep"/>
+                    <label end="55" start="43" name="Dep"/>
+                    <label end="70" start="57" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="5" start="0" name="NP"/>
+                    <label end="41" start="28" name="PP"/>
+                    <label end="55" start="43" name="PP"/>
+                    <label end="70" start="57" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-T-PPalong-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+    <subCorpus name="01-T-PPto-(2)"/>
+    <subCorpus name="02-T-PPback-(2)"/>
+    <subCorpus name="03-T-PPtowards-(2)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="7757" aPos="36466748" ID="1561380">
+            <text>The pilots were told to divert towards India but it is believed they turned north by mistake and hit the mountains .</text>
+            <annotationSet cDate="05/26/2010 03:04:28 PDT Wed" status="UNANN" ID="2565520">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="9" start="4" name="nns"/>
+                    <label end="14" start="11" name="VBD"/>
+                    <label end="19" start="16" name="VVN"/>
+                    <label end="22" start="21" name="to"/>
+                    <label end="29" start="24" name="VV"/>
+                    <label end="37" start="31" name="in"/>
+                    <label end="43" start="39" name="NP"/>
+                    <label end="47" start="45" name="cc"/>
+                    <label end="50" start="49" name="PP"/>
+                    <label end="53" start="52" name="VBZ"/>
+                    <label end="62" start="55" name="VVN"/>
+                    <label end="67" start="64" name="PP"/>
+                    <label end="74" start="69" name="VVD"/>
+                    <label end="80" start="76" name="rb"/>
+                    <label end="83" start="82" name="in"/>
+                    <label end="91" start="85" name="nn"/>
+                    <label end="95" start="93" name="cc"/>
+                    <label end="99" start="97" name="VVD"/>
+                    <label end="103" start="101" name="dt"/>
+                    <label end="113" start="105" name="nns"/>
+                    <label end="115" start="115" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/26/2010 03:04:28 PDT Wed" status="MANUAL" ID="2565521">
+                <layer rank="1" name="Target">
+                    <label cBy="571" end="29" start="24" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="571" feID="8320" end="9" start="0" name="Theme"/>
+                    <label cBy="571" feID="8335" end="43" start="31" name="Direction"/>
+                    <label cBy="571" feID="8337" itype="CNI" name="Agent"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="9" start="0" name="Ext"/>
+                    <label end="43" start="31" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="9" start="0" name="NP"/>
+                    <label end="43" start="31" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(2)"/>
+    <subCorpus name="other-unmatched-(2)"/>
+</lexUnit>

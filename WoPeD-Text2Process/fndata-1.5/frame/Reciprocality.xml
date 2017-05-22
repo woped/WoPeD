@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="731" cDate="02/07/2001 04:11:42 PST Wed" name="Reciprocality" ID="9" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;This frame characterizes states-of-affairs with &lt;fen&gt;Protagonists&lt;/fen&gt; in relations with each other that may be viewed symmetrically.  When the &lt;fen&gt;Protagonists&lt;/fen&gt; are equally prominent, each equally serving to identify the others, they are expressed together as &lt;fen&gt;Protagonists&lt;/fen&gt;.  When one of the &lt;fen&gt;Protagonists&lt;/fen&gt; serves to define the other (more or less as a Ground), it is called &lt;fen&gt;Protagonist_2&lt;/fen&gt;, and the other is called &lt;fen&gt;Protagonist_1&lt;/fen&gt; (i.e. the Figure).
+&lt;ex&gt;&lt;/ex&gt;
+This frame exists as a background for a number of lexical frames, including Chatting, Similarity, Exchange, and Being_attached.  The most basic frames inheriting from this one are symmetrical states.  (For example, Being_attached is symmetrical, since if A is attached to B, B is attached to A.)  
+&lt;ex&gt;&lt;/ex&gt;
+Other frames exhibiting reciprocality either have a causative/inchoative relation to such a stative frame (e.g. ), or are stative-like summarizations of multiple events of the same kind.  This second type, in which events are performed reciprocally, with two equal participants acting on each other, can be exemplified by the Chatting frame in which two people are effectively both speakers and addressees in a joint act of communication. 
+&lt;ex&gt;&lt;/ex&gt;
+The basic characteristic of this frame, inherited in the daughters, is the equivalence of &lt;fen&gt;Protagonist_1&lt;/fen&gt; + &lt;fen&gt;Protagonist_2&lt;/fen&gt; to &lt;fen&gt;Protagonists&lt;/fen&gt;, and the further equivalence (modulo figure/ground profiling) of the following:
+&lt;ex&gt;&lt;/ex&gt;
+&lt;fen&gt;Protagonist_1&lt;/fen&gt; &lt;ment&gt;Relation&lt;/ment&gt; with &lt;fen&gt;Protagonist_2&lt;/fen&gt;.
+&lt;ex&gt;&lt;/ex&gt;
+&lt;fen&gt;Protagonist_2&lt;/fen&gt; &lt;ment&gt;Relation&lt;/ment&gt; with &lt;fen&gt;Protagonist_1&lt;/fen&gt;.
+&lt;ex&gt;&lt;/ex&gt;
+&lt;fen&gt;Protagonists&lt;/fen&gt; &lt;ment&gt;Relation&lt;/ment&gt;.&lt;/def-root&gt;</definition>
+    <semType name="Non-Lexical Frame" ID="16"/>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:11:42 PST Wed" abbrev="Prot-1" name="Protagonist_1" ID="33">
+        <definition>&lt;def-root&gt;The particpant in a reciprocal event that is encoded as the subject of an active-form sentence or as a by-PP in a passive. `&lt;ex&gt;&lt;fex name="Protagonist_1"&gt;You&lt;/fex&gt; can't &lt;t&gt;argue&lt;/t&gt; politics with foreigners,' sighed the policeman.&lt;/ex&gt; &lt;/def-root&gt;</definition>
+        <requiresFE name="Protagonist_2" ID="34"/>
+        <excludesFE name="Protagonists" ID="35"/>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:11:42 PST Wed" abbrev="Prot-2" name="Protagonist_2" ID="34">
+        <definition>&lt;def-root&gt;The participant in a reciprocal event that is coded in a with-PP. &lt;ex&gt;We have been &lt;t&gt;arguing&lt;/t&gt; the point &lt;fex name="Protagonist_2"&gt;with the inspector at claims branch&lt;/fex&gt; for many many months and we just seem to go round in circles. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <requiresFE name="Protagonist_1" ID="33"/>
+        <excludesFE name="Protagonists" ID="35"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:11:42 PST Wed" abbrev="Prot-s" name="Protagonists" ID="35">
+        <definition>&lt;def-root&gt;The jointly expressed participants in a reciprocal activity. &lt;ex&gt;&lt;fex name="Protagonists"&gt;They&lt;/fex&gt; were &lt;t&gt;gossiping&lt;/t&gt; about the weather and American football.&lt;/ex&gt; &lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Exchange</relatedFrame>
+        <relatedFrame>Amalgamation</relatedFrame>
+        <relatedFrame>Being_attached</relatedFrame>
+        <relatedFrame>Make_acquaintance</relatedFrame>
+        <relatedFrame>Collaboration</relatedFrame>
+        <relatedFrame>Commercial_transaction</relatedFrame>
+        <relatedFrame>Similarity</relatedFrame>
+        <relatedFrame>Chatting</relatedFrame>
+        <relatedFrame>Discussion</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in">
+        <relatedFrame>Reciprocality_focus</relatedFrame>
+        <relatedFrame>Reciprocality_subordinate_event</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+</frame>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="V" name="translate.v" ID="12948" frame="Have_as_translation_equivalent" frameID="1654" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp=1644" ID="19164"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="cir" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Core" abbrev="con" name="Content"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Peripheral" abbrev="equ" name="Equivalence"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Peripheral" abbrev="med" name="Medium"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="sour" name="Source_representation"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="sous" name="Source_symbol"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="tarr" name="Target_representation"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Core" abbrev="tars" name="Target_symbol"/>
+            <FE fgColor="FFFFFF" bgColor="90876C" type="Peripheral" abbrev="Tm" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: be expressed in a target language as</definition>
+    <lexeme POS="V" name="translate"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Source_symbol"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Source_symbol"/>
+                <annoSet ID="2608804"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Target_symbol"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[as]" FE="Target_symbol"/>
+                <annoSet ID="2608804"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Source_symbol"/>
+            <FE name="Target_symbol"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Source_symbol"/>
+                <valenceUnit GF="Dep" PT="PP[as]" FE="Target_symbol"/>
+                <annoSet ID="2608804"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-pp_as-p-(1)">
+        <sentence corpID="111" docID="19164" sentNo="1" paragNo="149" aPos="0" ID="1586429">
+            <text>'' Waffenruhe '' translates as truce , armistice , an uneasy , provisional peace .</text>
+            <annotationSet cDate="08/23/2010 12:52:03 PDT Mon" status="UNANN" ID="2608803">
+                <layer rank="1" name="PENN">
+                    <label end="12" start="3" name="NP"/>
+                    <label end="26" start="17" name="VVZ"/>
+                    <label end="29" start="28" name="in"/>
+                    <label end="35" start="31" name="nn"/>
+                    <label end="37" start="37" name=","/>
+                    <label end="47" start="39" name="nn"/>
+                    <label end="49" start="49" name=","/>
+                    <label end="52" start="51" name="dt"/>
+                    <label end="59" start="54" name="jj"/>
+                    <label end="61" start="61" name=","/>
+                    <label end="73" start="63" name="jj"/>
+                    <label end="79" start="75" name="nn"/>
+                    <label end="81" start="81" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="08/23/2010 12:52:03 PDT Mon" status="MANUAL" ID="2608804">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="26" start="17" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="9380" end="15" start="0" name="Source_symbol"/>
+                    <label cBy="589" feID="9386" end="79" start="28" name="Target_symbol"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="15" start="0" name="Ext"/>
+                    <label end="79" start="28" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="15" start="0" name="NP"/>
+                    <label end="79" start="28" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-other-matched-(1)"/>
+    <subCorpus name="03-other-unmatched-(1)"/>
+</lexUnit>

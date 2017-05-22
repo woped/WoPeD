@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" POS="C" name="but.c" ID="15429" frame="Concessive" frameID="2150" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="Orwell" ID="3">
+            <document description="Orwell_1984_p1" ID="7"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="" name="Main_statement"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Msg" name="Statement"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Core" abbrev="Top" name="Topic"/>
+        </frame>
+    </header>
+    <definition>except for the fact that</definition>
+    <lexeme POS="C" name="but"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Main_statement"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="Sfin" FE="Main_statement"/>
+                <annoSet ID="2600182"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Statement"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="Sfin" FE="Statement"/>
+                <annoSet ID="2600182"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Main_statement"/>
+            <FE name="Statement"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="Sfin" FE="Main_statement"/>
+                <valenceUnit GF="Dep" PT="Sfin" FE="Statement"/>
+                <annoSet ID="2600182"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="manually-added">
+        <sentence corpID="3" docID="7" sentNo="4" paragNo="3" aPos="0" ID="312917">
+            <text>The instrument ( the telescreen , it was called ) could be dimmed , but there was no way of shutting it off completely .</text>
+            <annotationSet cDate="01/06/2003 10:55:07 PST Mon" status="UNANN" ID="269193">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="13" start="4" name="NN1"/>
+                    <label end="15" start="15" name="PUL"/>
+                    <label end="19" start="17" name="AT0"/>
+                    <label end="30" start="21" name="NN1"/>
+                    <label end="32" start="32" name="PUN"/>
+                    <label end="35" start="34" name="PNP"/>
+                    <label end="39" start="37" name="VBD"/>
+                    <label end="46" start="41" name="VVN"/>
+                    <label end="48" start="48" name="PUR"/>
+                    <label end="54" start="50" name="VM0"/>
+                    <label end="57" start="56" name="VBI"/>
+                    <label end="64" start="59" name="VVN"/>
+                    <label end="66" start="66" name="PUN"/>
+                    <label end="70" start="68" name="CJC"/>
+                    <label end="76" start="72" name="EX0"/>
+                    <label end="80" start="78" name="VBD"/>
+                    <label end="83" start="82" name="AT0"/>
+                    <label end="87" start="85" name="NN1"/>
+                    <label end="90" start="89" name="PRF"/>
+                    <label end="99" start="92" name="VVG"/>
+                    <label end="102" start="101" name="PNP"/>
+                    <label end="106" start="104" name="AVP"/>
+                    <label end="117" start="108" name="AV0"/>
+                    <label end="119" start="119" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/30/2010 02:24:43 PDT Fri" status="MANUAL" ID="2600182">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="70" start="68" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="13302" end="64" start="0" name="Statement"/>
+                    <label cBy="664" feID="13312" end="117" start="72" name="Main_statement"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="64" start="0" name="Dep"/>
+                    <label end="117" start="72" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="64" start="0" name="Sfin"/>
+                    <label end="117" start="72" name="Sfin"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

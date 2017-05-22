@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="N" name="sir.n" ID="5533" frame="Attention_getting" frameID="305" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp=2169" ID="17866"/>
+            <document description="bncp=1574" ID="19231"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Add_t" name="Address_term"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Interj" name="Interjection"/>
+        </frame>
+    </header>
+    <definition>COD: a polite or respectful form of address to a man.</definition>
+    <lexeme POS="N" name="sir"/>
+    <valences>
+        <FERealization total="2">
+            <FE name="Address_term"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="DEN" FE="Address_term"/>
+                <annoSet ID="2590301"/>
+                <annoSet ID="2590305"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Address_term"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="DEN" FE="Address_term"/>
+                <annoSet ID="2590301"/>
+                <annoSet ID="2590305"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-Wplease-(1)">
+        <sentence corpID="111" docID="19231" sentNo="1" paragNo="852" aPos="0" ID="1577841">
+            <text>` That will be thirty-one pounds please , sir . ''</text>
+            <annotationSet cDate="07/15/2010 04:34:52 PDT Thu" status="UNANN" ID="2590300">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="2" name="dt"/>
+                    <label end="10" start="7" name="md"/>
+                    <label end="13" start="12" name="vb"/>
+                    <label end="24" start="15" name="jj"/>
+                    <label end="31" start="26" name="nns"/>
+                    <label end="38" start="33" name="VVP"/>
+                    <label end="40" start="40" name=","/>
+                    <label end="44" start="42" name="nn"/>
+                    <label end="46" start="46" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/15/2010 04:34:52 PDT Thu" status="MANUAL" ID="2590301">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="44" start="42" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="3620" end="44" start="42" name="Address_term"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="17866" sentNo="3" paragNo="202" aPos="0" ID="1577843">
+            <text>But &amp;hellip; please , sir , can you come with me and see for yourself ? ''</text>
+            <annotationSet cDate="07/15/2010 04:34:52 PDT Thu" status="UNANN" ID="2590304">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="cc"/>
+                    <label end="11" start="4" name="nns"/>
+                    <label end="18" start="13" name="VVP"/>
+                    <label end="20" start="20" name=","/>
+                    <label end="24" start="22" name="nn"/>
+                    <label end="26" start="26" name=","/>
+                    <label end="30" start="28" name="md"/>
+                    <label end="34" start="32" name="PP"/>
+                    <label end="39" start="36" name="VV"/>
+                    <label end="44" start="41" name="in"/>
+                    <label end="47" start="46" name="PP"/>
+                    <label end="51" start="49" name="cc"/>
+                    <label end="55" start="53" name="VV"/>
+                    <label end="59" start="57" name="in"/>
+                    <label end="68" start="61" name="PP"/>
+                    <label end="70" start="70" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/15/2010 04:34:52 PDT Thu" status="MANUAL" ID="2590305">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="24" start="22" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="3620" end="24" start="22" name="Address_term"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-other-matched-(1)"/>
+    <subCorpus name="03-other-unmatched-(1)"/>
+</lexUnit>

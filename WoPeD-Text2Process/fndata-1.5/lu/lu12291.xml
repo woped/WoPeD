@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Add_Annotation" POS="N" name="estimate.n" ID="12291" frame="Estimated_value" frameID="1516" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp=1659" ID="18620"/>
+            <document description="bncp=1313" ID="22104"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="cog" name="Cognizer"/>
+            <FE fgColor="FFFFFF" bgColor="d0d0d0" type="Core" abbrev="est" name="Estimation"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="evi" name="Evidence"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Core" abbrev="ite" name="Item"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Peripheral" abbrev="pla" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Core" abbrev="que" name="Question"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="tim" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="val" name="Value"/>
+        </frame>
+    </header>
+    <definition>COD: an approximate calculation or judgement.</definition>
+    <lexeme POS="N" name="estimate"/>
+    <valences>
+        <FERealization total="2">
+            <FE name="Cognizer"/>
+            <pattern total="2">
+                <valenceUnit GF="Gen" PT="Poss" FE="Cognizer"/>
+                <annoSet ID="2600916"/>
+                <annoSet ID="2600950"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Estimation"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Estimation"/>
+                <annoSet ID="2600950"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Item"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Item"/>
+                <annoSet ID="2600916"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Value"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="DEN" FE="Value"/>
+                <annoSet ID="2600916"/>
+                <annoSet ID="2600950"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Cognizer"/>
+            <FE name="Estimation"/>
+            <FE name="Value"/>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Cognizer"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Estimation"/>
+                <valenceUnit GF="" PT="DEN" FE="Value"/>
+                <annoSet ID="2600950"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Cognizer"/>
+            <FE name="Item"/>
+            <FE name="Value"/>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Cognizer"/>
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Item"/>
+                <valenceUnit GF="" PT="DEN" FE="Value"/>
+                <annoSet ID="2600916"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-possessor-(1)">
+        <sentence corpID="111" docID="18620" sentNo="3" paragNo="684" aPos="0" ID="1582675">
+            <text>Each judge 's estimates for all the items are combined and then the combined estimates aggregated to provide the passing score on the test .</text>
+            <annotationSet cDate="08/04/2010 05:25:32 PDT Wed" status="UNANN" ID="2600915">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="dt"/>
+                    <label end="9" start="5" name="nn"/>
+                    <label end="12" start="11" name="POS"/>
+                    <label end="22" start="14" name="nns"/>
+                    <label end="26" start="24" name="in"/>
+                    <label end="30" start="28" name="pdt"/>
+                    <label end="34" start="32" name="dt"/>
+                    <label end="40" start="36" name="nns"/>
+                    <label end="44" start="42" name="vbp"/>
+                    <label end="53" start="46" name="VVN"/>
+                    <label end="57" start="55" name="cc"/>
+                    <label end="62" start="59" name="rb"/>
+                    <label end="66" start="64" name="dt"/>
+                    <label end="75" start="68" name="jj"/>
+                    <label end="85" start="77" name="nns"/>
+                    <label end="96" start="87" name="VVN"/>
+                    <label end="99" start="98" name="to"/>
+                    <label end="107" start="101" name="VV"/>
+                    <label end="111" start="109" name="dt"/>
+                    <label end="119" start="113" name="VVG"/>
+                    <label end="125" start="121" name="nn"/>
+                    <label end="128" start="127" name="in"/>
+                    <label end="132" start="130" name="dt"/>
+                    <label end="137" start="134" name="nn"/>
+                    <label end="139" start="139" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="08/04/2010 05:25:32 PDT Wed" status="MANUAL" ID="2600916">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="22" start="14" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="8259" end="12" start="5" name="Cognizer"/>
+                    <label cBy="589" feID="8261" end="22" start="14" name="Value"/>
+                    <label cBy="589" feID="8262" end="40" start="24" name="Item"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="12" start="5" name="Gen"/>
+                    <label end="40" start="24" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="12" start="5" name="Poss"/>
+                    <label end="40" start="24" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="22104" sentNo="1" paragNo="92" aPos="0" ID="1582692">
+            <text>Borland International Inc president and chief executive Philippe Kahn says the company will report profit for the fourth quarter to March 31 , and adds that he is comfortable with analysts ' estimates of profits of about $0.10 a share : Borland 's target is to be profitable every quarter in the coming fiscal 1994 -- Paradox for Windows is ` doing great '' and is on a winning track and Quattro Pro is now picking up .</text>
+            <annotationSet cDate="08/04/2010 05:25:37 PDT Wed" status="UNANN" ID="2600949">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="0" name="NP"/>
+                    <label end="20" start="8" name="NP"/>
+                    <label end="24" start="22" name="NP"/>
+                    <label end="34" start="26" name="nn"/>
+                    <label end="38" start="36" name="cc"/>
+                    <label end="44" start="40" name="jj"/>
+                    <label end="54" start="46" name="nn"/>
+                    <label end="63" start="56" name="NP"/>
+                    <label end="68" start="65" name="NP"/>
+                    <label end="73" start="70" name="VVZ"/>
+                    <label end="77" start="75" name="dt"/>
+                    <label end="85" start="79" name="nn"/>
+                    <label end="90" start="87" name="md"/>
+                    <label end="97" start="92" name="VV"/>
+                    <label end="104" start="99" name="nn"/>
+                    <label end="108" start="106" name="in"/>
+                    <label end="112" start="110" name="dt"/>
+                    <label end="119" start="114" name="jj"/>
+                    <label end="127" start="121" name="nn"/>
+                    <label end="130" start="129" name="to"/>
+                    <label end="136" start="132" name="NP"/>
+                    <label end="139" start="138" name="cd"/>
+                    <label end="141" start="141" name=","/>
+                    <label end="145" start="143" name="cc"/>
+                    <label end="150" start="147" name="VVZ"/>
+                    <label end="155" start="152" name="in"/>
+                    <label end="158" start="157" name="PP"/>
+                    <label end="161" start="160" name="VBZ"/>
+                    <label end="173" start="163" name="jj"/>
+                    <label end="178" start="175" name="in"/>
+                    <label end="187" start="180" name="nns"/>
+                    <label end="189" start="189" name="POS"/>
+                    <label end="199" start="191" name="nns"/>
+                    <label end="202" start="201" name="in"/>
+                    <label end="210" start="204" name="nns"/>
+                    <label end="213" start="212" name="in"/>
+                    <label end="219" start="215" name="rb"/>
+                    <label end="225" start="221" name="jj"/>
+                    <label end="227" start="227" name="dt"/>
+                    <label end="233" start="229" name="nn"/>
+                    <label end="235" start="235" name=":"/>
+                    <label end="243" start="237" name="NP"/>
+                    <label end="246" start="245" name="POS"/>
+                    <label end="253" start="248" name="nn"/>
+                    <label end="256" start="255" name="VBZ"/>
+                    <label end="259" start="258" name="to"/>
+                    <label end="262" start="261" name="vb"/>
+                    <label end="273" start="264" name="jj"/>
+                    <label end="279" start="275" name="dt"/>
+                    <label end="287" start="281" name="nn"/>
+                    <label end="290" start="289" name="in"/>
+                    <label end="294" start="292" name="dt"/>
+                    <label end="301" start="296" name="VVG"/>
+                    <label end="308" start="303" name="jj"/>
+                    <label end="313" start="310" name="cd"/>
+                    <label end="316" start="315" name=":"/>
+                    <label end="324" start="318" name="nn"/>
+                    <label end="328" start="326" name="in"/>
+                    <label end="336" start="330" name="nns"/>
+                    <label end="339" start="338" name="VBZ"/>
+                    <label end="347" start="343" name="VVG"/>
+                    <label end="353" start="349" name="jj"/>
+                    <label end="360" start="358" name="cc"/>
+                    <label end="363" start="362" name="VBZ"/>
+                    <label end="366" start="365" name="in"/>
+                    <label end="368" start="368" name="dt"/>
+                    <label end="376" start="370" name="VVG"/>
+                    <label end="382" start="378" name="nn"/>
+                    <label end="386" start="384" name="cc"/>
+                    <label end="394" start="388" name="NP"/>
+                    <label end="398" start="396" name="NP"/>
+                    <label end="401" start="400" name="VBZ"/>
+                    <label end="405" start="403" name="rb"/>
+                    <label end="413" start="407" name="VVG"/>
+                    <label end="416" start="415" name="rp"/>
+                    <label end="418" start="418" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="08/04/2010 05:25:38 PDT Wed" status="MANUAL" ID="2600950">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="199" start="191" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="8266" end="233" start="201" name="Estimation"/>
+                    <label cBy="589" feID="8259" end="189" start="180" name="Cognizer"/>
+                    <label cBy="589" feID="8261" end="199" start="191" name="Value"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="233" start="201" name="Dep"/>
+                    <label end="189" start="180" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="233" start="201" name="PP"/>
+                    <label end="189" start="180" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-pp_for-p-(1)"/>
+    <subCorpus name="03-pp_of-p-(1)"/>
+    <subCorpus name="04-base+obtain-(1)"/>
+    <subCorpus name="05-a_modifier-(1)"/>
+    <subCorpus name="06-n_modifier-(1)"/>
+    <subCorpus name="07-pp_that-p-(1)"/>
+    <subCorpus name="08-other-matched-(1)"/>
+    <subCorpus name="09-other-unmatched-(1)"/>
+</lexUnit>

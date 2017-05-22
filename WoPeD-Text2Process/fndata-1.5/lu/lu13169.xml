@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Add_Annotation" POS="V" name="trust.v" ID="13169" frame="Trust" frameID="1731" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp=2310" ID="17802"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Cognizer" name="Cognizer"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="Content" name="Content"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="Exr" name="Expressor"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core" abbrev="inf" name="Information"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Core" abbrev="sou" name="Source"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Topic" name="Topic"/>
+        </frame>
+    </header>
+    <definition>FN: believe (someone, something)</definition>
+    <lexeme POS="V" name="trust"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Cognizer"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Cognizer"/>
+                <annoSet ID="2537866"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Degree"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Degree"/>
+                <annoSet ID="2537866"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Source"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Source"/>
+                <annoSet ID="2537866"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Cognizer"/>
+            <FE name="Degree"/>
+            <FE name="Source"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Cognizer"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Degree"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Source"/>
+                <annoSet ID="2537866"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-anyone+friend-(1)"/>
+    <subCorpus name="02-entirely+fully-(1)">
+        <sentence corpID="111" docID="17802" sentNo="3" paragNo="1347" aPos="0" ID="1547576">
+            <text>But there was a secret smile beneath the bland expression , and she worried about his intentions , feeling in her heart that she could never entirely trust Lucenzo .</text>
+            <annotationSet cDate="03/31/2010 05:17:35 PDT Wed" status="UNANN" ID="2537865">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="cc"/>
+                    <label end="8" start="4" name="ex"/>
+                    <label end="12" start="10" name="VBD"/>
+                    <label end="14" start="14" name="dt"/>
+                    <label end="21" start="16" name="jj"/>
+                    <label end="27" start="23" name="nn"/>
+                    <label end="35" start="29" name="in"/>
+                    <label end="39" start="37" name="dt"/>
+                    <label end="45" start="41" name="jj"/>
+                    <label end="56" start="47" name="nn"/>
+                    <label end="58" start="58" name=","/>
+                    <label end="62" start="60" name="cc"/>
+                    <label end="66" start="64" name="PP"/>
+                    <label end="74" start="68" name="VVD"/>
+                    <label end="80" start="76" name="in"/>
+                    <label end="84" start="82" name="PP$"/>
+                    <label end="95" start="86" name="nns"/>
+                    <label end="97" start="97" name=","/>
+                    <label end="105" start="99" name="VVG"/>
+                    <label end="108" start="107" name="in"/>
+                    <label end="112" start="110" name="PP$"/>
+                    <label end="118" start="114" name="nn"/>
+                    <label end="123" start="120" name="in"/>
+                    <label end="127" start="125" name="PP"/>
+                    <label end="133" start="129" name="md"/>
+                    <label end="139" start="135" name="rb"/>
+                    <label end="148" start="141" name="rb"/>
+                    <label end="154" start="150" name="VV"/>
+                    <label end="162" start="156" name="NP"/>
+                    <label end="164" start="164" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="03/31/2010 05:17:35 PDT Wed" status="MANUAL" ID="2537866">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="154" start="150" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="10018" end="127" start="125" name="Cognizer"/>
+                    <label cBy="589" feID="10021" end="148" start="141" name="Degree"/>
+                    <label cBy="589" feID="10034" end="162" start="156" name="Source"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="127" start="125" name="Ext"/>
+                    <label end="148" start="141" name="Dep"/>
+                    <label end="162" start="156" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="127" start="125" name="NP"/>
+                    <label end="148" start="141" name="AVP"/>
+                    <label end="162" start="156" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="03-modifier-(1)"/>
+    <subCorpus name="04-pp_in-p-(1)"/>
+    <subCorpus name="05-pp_with-p-(1)"/>
+    <subCorpus name="06-infin_comp-(1)"/>
+    <subCorpus name="07-other-matched-(1)"/>
+    <subCorpus name="08-other-unmatched-(1)"/>
+</lexUnit>

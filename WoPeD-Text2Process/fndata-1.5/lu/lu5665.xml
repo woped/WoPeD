@@ -1,0 +1,581 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="fire off.v" ID="5665" frame="Shoot_projectiles" frameID="289" totalAnnotated="8" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Agt" name="Agent"/>
+            <FE fgColor="FF0000" bgColor="FFD700" type="Peripheral" abbrev="Area" name="Area"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="dep" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD73" type="Peripheral" abbrev="Dist" name="Distance"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Peripheral" abbrev="Firearm" name="Firearm"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="Goal" name="Goal"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Path" name="Path"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Core" abbrev="Projectile" name="Projectile"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="pur" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Peripheral" abbrev="Src" name="Source"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: discharge, shoot, launch (a gun, rocket, etc)</definition>
+    <lexeme order="1" headword="true" breakBefore="false" POS="V" name="fire"/>
+    <lexeme order="2" headword="false" breakBefore="true" POS="ADV" name="off"/>
+    <valences>
+        <FERealization total="8">
+            <FE name="Agent"/>
+            <pattern total="8">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <annoSet ID="1942645"/>
+                <annoSet ID="1942655"/>
+                <annoSet ID="1942663"/>
+                <annoSet ID="1942675"/>
+                <annoSet ID="1942683"/>
+                <annoSet ID="1942687"/>
+                <annoSet ID="1942707"/>
+                <annoSet ID="1942709"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Goal"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Goal"/>
+                <annoSet ID="1942655"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Goal"/>
+                <annoSet ID="1942707"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Manner"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Manner"/>
+                <annoSet ID="1942683"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Path"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[across]" FE="Path"/>
+                <annoSet ID="1942687"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="8">
+            <FE name="Projectile"/>
+            <pattern total="8">
+                <valenceUnit GF="Obj" PT="NP" FE="Projectile"/>
+                <annoSet ID="1942645"/>
+                <annoSet ID="1942655"/>
+                <annoSet ID="1942663"/>
+                <annoSet ID="1942675"/>
+                <annoSet ID="1942683"/>
+                <annoSet ID="1942687"/>
+                <annoSet ID="1942707"/>
+                <annoSet ID="1942709"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Agent"/>
+            <FE name="Goal"/>
+            <FE name="Projectile"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Goal"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Projectile"/>
+                <annoSet ID="1942655"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Goal"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Projectile"/>
+                <annoSet ID="1942707"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Agent"/>
+            <FE name="Manner"/>
+            <FE name="Projectile"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Manner"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Projectile"/>
+                <annoSet ID="1942683"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Agent"/>
+            <FE name="Path"/>
+            <FE name="Projectile"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <valenceUnit GF="Dep" PT="PP[across]" FE="Path"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Projectile"/>
+                <annoSet ID="1942687"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="4">
+            <FE name="Agent"/>
+            <FE name="Projectile"/>
+            <pattern total="4">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Projectile"/>
+                <annoSet ID="1942645"/>
+                <annoSet ID="1942663"/>
+                <annoSet ID="1942675"/>
+                <annoSet ID="1942709"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-Woff-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="1653" aPos="0" ID="1247817">
+            <text>At one point , laughing , they fired off a couple of rounds , ricocheting the bullets against a wall .</text>
+            <annotationSet cDate="08/29/2003 10:34:43 PDT Fri" status="UNANN" ID="1942644">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="in"/>
+                    <label end="5" start="3" name="cd"/>
+                    <label end="11" start="7" name="nn"/>
+                    <label end="13" start="13" name=","/>
+                    <label end="22" start="15" name="VVG"/>
+                    <label end="24" start="24" name=","/>
+                    <label end="29" start="26" name="PP"/>
+                    <label end="35" start="31" name="VVD"/>
+                    <label end="39" start="37" name="rp"/>
+                    <label end="41" start="41" name="dt"/>
+                    <label end="48" start="43" name="nn"/>
+                    <label end="51" start="50" name="in"/>
+                    <label end="58" start="53" name="nns"/>
+                    <label end="60" start="60" name=","/>
+                    <label end="72" start="62" name="VVG"/>
+                    <label end="76" start="74" name="dt"/>
+                    <label end="84" start="78" name="nns"/>
+                    <label end="92" start="86" name="in"/>
+                    <label end="94" start="94" name="dt"/>
+                    <label end="99" start="96" name="nn"/>
+                    <label end="101" start="101" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="08/29/2003 10:34:44 PDT Fri" status="AUTO_EDITED" ID="1942645">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="35" start="31" name="Target"/>
+                    <label cBy="618" end="39" start="37" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2500" end="29" start="26" name="Agent"/>
+                    <label cBy="618" feID="2499" end="58" start="41" name="Projectile"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="29" start="26" name="Ext"/>
+                    <label end="58" start="41" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="29" start="26" name="NP"/>
+                    <label end="58" start="41" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="475" aPos="0" ID="1247822">
+            <text>Their trigger fingers are obviously becoming more itchy ; last year they took nine months to fire off 313,000 rounds at demonstrators with a total bill to the Korean taxpayer of $6.7 million .</text>
+            <annotationSet cDate="08/29/2003 10:34:46 PDT Fri" status="UNANN" ID="1942654">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="PP$"/>
+                    <label end="12" start="6" name="nn"/>
+                    <label end="20" start="14" name="nns"/>
+                    <label end="24" start="22" name="vbp"/>
+                    <label end="34" start="26" name="rb"/>
+                    <label end="43" start="36" name="VVG"/>
+                    <label end="48" start="45" name="rbr"/>
+                    <label end="54" start="50" name="jj"/>
+                    <label end="56" start="56" name=":"/>
+                    <label end="61" start="58" name="jj"/>
+                    <label end="66" start="63" name="nn"/>
+                    <label end="71" start="68" name="PP"/>
+                    <label end="76" start="73" name="VVD"/>
+                    <label end="81" start="78" name="cd"/>
+                    <label end="88" start="83" name="nns"/>
+                    <label end="91" start="90" name="to"/>
+                    <label end="96" start="93" name="VV"/>
+                    <label end="100" start="98" name="rp"/>
+                    <label end="108" start="102" name="cd"/>
+                    <label end="115" start="110" name="nns"/>
+                    <label end="118" start="117" name="in"/>
+                    <label end="132" start="120" name="nns"/>
+                    <label end="137" start="134" name="in"/>
+                    <label end="139" start="139" name="dt"/>
+                    <label end="145" start="141" name="jj"/>
+                    <label end="150" start="147" name="nn"/>
+                    <label end="153" start="152" name="to"/>
+                    <label end="157" start="155" name="dt"/>
+                    <label end="164" start="159" name="jj"/>
+                    <label end="173" start="166" name="nn"/>
+                    <label end="176" start="175" name="in"/>
+                    <label end="181" start="178" name="jj"/>
+                    <label end="189" start="183" name="cd"/>
+                    <label end="191" start="191" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="08/29/2003 10:34:46 PDT Fri" status="AUTO_EDITED" ID="1942655">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="96" start="93" name="Target"/>
+                    <label cBy="618" end="100" start="98" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2500" end="71" start="68" name="Agent"/>
+                    <label cBy="618" feID="2499" end="115" start="102" name="Projectile"/>
+                    <label cBy="618" feID="2502" end="132" start="117" name="Goal"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="71" start="68" name="Ext"/>
+                    <label end="115" start="102" name="Obj"/>
+                    <label end="132" start="117" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="71" start="68" name="NP"/>
+                    <label end="115" start="102" name="NP"/>
+                    <label end="132" start="117" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="5355" aPos="0" ID="1247826">
+            <text>He suspected they were terrorists when the they failed to answer his challenge and he fired off a volley of shots from his semi-automatic rifle .</text>
+            <annotationSet cDate="08/29/2003 10:34:48 PDT Fri" status="UNANN" ID="1942662">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="11" start="3" name="VVD"/>
+                    <label end="16" start="13" name="PP"/>
+                    <label end="21" start="18" name="VBD"/>
+                    <label end="32" start="23" name="nns"/>
+                    <label end="37" start="34" name="wrb"/>
+                    <label end="41" start="39" name="dt"/>
+                    <label end="46" start="43" name="PP"/>
+                    <label end="53" start="48" name="VVD"/>
+                    <label end="56" start="55" name="to"/>
+                    <label end="63" start="58" name="VV"/>
+                    <label end="67" start="65" name="PP$"/>
+                    <label end="77" start="69" name="nn"/>
+                    <label end="81" start="79" name="cc"/>
+                    <label end="84" start="83" name="PP"/>
+                    <label end="90" start="86" name="VVD"/>
+                    <label end="94" start="92" name="rp"/>
+                    <label end="96" start="96" name="dt"/>
+                    <label end="103" start="98" name="nn"/>
+                    <label end="106" start="105" name="in"/>
+                    <label end="112" start="108" name="nns"/>
+                    <label end="117" start="114" name="in"/>
+                    <label end="121" start="119" name="PP$"/>
+                    <label end="136" start="123" name="jj"/>
+                    <label end="142" start="138" name="nn"/>
+                    <label end="144" start="144" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="08/29/2003 10:34:48 PDT Fri" status="AUTO_EDITED" ID="1942663">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="90" start="86" name="Target"/>
+                    <label cBy="618" end="94" start="92" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2500" end="84" start="83" name="Agent"/>
+                    <label cBy="618" feID="2499" end="142" start="96" name="Projectile"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="84" start="83" name="Ext"/>
+                    <label end="142" start="96" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="84" start="83" name="NP"/>
+                    <label end="142" start="96" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="592" aPos="0" ID="1247832">
+            <text>Had the sentry panicked at the sound of a galloping horse and fired off a lucky shot , or was there a more sinister design ?</text>
+            <annotationSet cDate="08/29/2003 10:34:53 PDT Fri" status="UNANN" ID="1942674">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="VHD"/>
+                    <label end="6" start="4" name="dt"/>
+                    <label end="13" start="8" name="nn"/>
+                    <label end="22" start="15" name="VVD"/>
+                    <label end="25" start="24" name="in"/>
+                    <label end="29" start="27" name="dt"/>
+                    <label end="35" start="31" name="nn"/>
+                    <label end="38" start="37" name="in"/>
+                    <label end="40" start="40" name="dt"/>
+                    <label end="50" start="42" name="VVG"/>
+                    <label end="56" start="52" name="nn"/>
+                    <label end="60" start="58" name="cc"/>
+                    <label end="66" start="62" name="VVD"/>
+                    <label end="70" start="68" name="rp"/>
+                    <label end="72" start="72" name="dt"/>
+                    <label end="78" start="74" name="jj"/>
+                    <label end="83" start="80" name="nn"/>
+                    <label end="85" start="85" name=","/>
+                    <label end="88" start="87" name="cc"/>
+                    <label end="92" start="90" name="VBD"/>
+                    <label end="98" start="94" name="ex"/>
+                    <label end="100" start="100" name="dt"/>
+                    <label end="105" start="102" name="rbr"/>
+                    <label end="114" start="107" name="jj"/>
+                    <label end="121" start="116" name="nn"/>
+                    <label end="123" start="123" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="08/29/2003 10:34:53 PDT Fri" status="AUTO_EDITED" ID="1942675">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="66" start="62" name="Target"/>
+                    <label cBy="618" end="70" start="68" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2500" end="13" start="4" name="Agent"/>
+                    <label cBy="618" feID="2499" end="83" start="72" name="Projectile"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="13" start="4" name="Ext"/>
+                    <label end="83" start="72" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="13" start="4" name="NP"/>
+                    <label end="83" start="72" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-T-Woff-(1)">
+        <sentence corpID="111" docID="421" sentNo="15" paragNo="371" aPos="0" ID="1247836">
+            <text>She had no time to aim and fired off four shots in rapid succession .</text>
+            <annotationSet cDate="08/29/2003 10:34:55 PDT Fri" status="UNANN" ID="1942682">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="PP"/>
+                    <label end="6" start="4" name="VHD"/>
+                    <label end="9" start="8" name="dt"/>
+                    <label end="14" start="11" name="nn"/>
+                    <label end="17" start="16" name="to"/>
+                    <label end="21" start="19" name="nn"/>
+                    <label end="25" start="23" name="cc"/>
+                    <label end="31" start="27" name="VVD"/>
+                    <label end="35" start="33" name="rp"/>
+                    <label end="40" start="37" name="cd"/>
+                    <label end="46" start="42" name="nns"/>
+                    <label end="49" start="48" name="in"/>
+                    <label end="55" start="51" name="jj"/>
+                    <label end="66" start="57" name="nn"/>
+                    <label end="68" start="68" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="08/29/2003 10:34:55 PDT Fri" status="AUTO_EDITED" ID="1942683">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="31" start="27" name="Target"/>
+                    <label cBy="618" end="35" start="33" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2500" end="2" start="0" name="Agent"/>
+                    <label cBy="618" feID="2499" end="46" start="37" name="Projectile"/>
+                    <label cBy="618" feID="2503" end="66" start="48" name="Manner"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="2" start="0" name="Ext"/>
+                    <label end="46" start="37" name="Obj"/>
+                    <label end="66" start="48" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="2" start="0" name="NP"/>
+                    <label end="46" start="37" name="NP"/>
+                    <label end="66" start="48" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="65535" paragNo="392" aPos="0" ID="1247838">
+            <text>The allied warship fired off warning shots across the Korean ship 's bows to make it stop , but it was cleared to continue it 's voyage .</text>
+            <annotationSet cDate="08/29/2003 10:34:56 PDT Fri" status="UNANN" ID="1942686">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="9" start="4" name="VVD"/>
+                    <label end="17" start="11" name="nn"/>
+                    <label end="23" start="19" name="VVD"/>
+                    <label end="27" start="25" name="rp"/>
+                    <label end="35" start="29" name="VVG"/>
+                    <label end="41" start="37" name="nns"/>
+                    <label end="48" start="43" name="in"/>
+                    <label end="52" start="50" name="dt"/>
+                    <label end="59" start="54" name="jj"/>
+                    <label end="64" start="61" name="nn"/>
+                    <label end="67" start="66" name="POS"/>
+                    <label end="72" start="69" name="nns"/>
+                    <label end="75" start="74" name="to"/>
+                    <label end="80" start="77" name="VV"/>
+                    <label end="83" start="82" name="PP"/>
+                    <label end="88" start="85" name="VV"/>
+                    <label end="90" start="90" name=","/>
+                    <label end="94" start="92" name="cc"/>
+                    <label end="97" start="96" name="PP"/>
+                    <label end="101" start="99" name="VBD"/>
+                    <label end="109" start="103" name="VVN"/>
+                    <label end="112" start="111" name="to"/>
+                    <label end="121" start="114" name="VV"/>
+                    <label end="124" start="123" name="PP"/>
+                    <label end="127" start="126" name="POS"/>
+                    <label end="134" start="129" name="nn"/>
+                    <label end="136" start="136" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="08/29/2003 10:34:56 PDT Fri" status="AUTO_EDITED" ID="1942687">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="23" start="19" name="Target"/>
+                    <label cBy="618" end="27" start="25" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2500" end="17" start="0" name="Agent"/>
+                    <label cBy="618" feID="2499" end="41" start="29" name="Projectile"/>
+                    <label cBy="618" feID="2505" end="72" start="43" name="Path"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="17" start="0" name="Ext"/>
+                    <label end="41" start="29" name="Obj"/>
+                    <label end="72" start="43" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="17" start="0" name="NP"/>
+                    <label end="41" start="29" name="NP"/>
+                    <label end="72" start="43" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="11" paragNo="80" aPos="0" ID="1247848">
+            <text>They had set up their mortar about twenty yards from our trench , and periodically fired off a couple of bombs in the direction of the German positions .</text>
+            <annotationSet cDate="08/29/2003 10:35:01 PDT Fri" status="UNANN" ID="1942706">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="PP"/>
+                    <label end="7" start="5" name="VHD"/>
+                    <label end="11" start="9" name="VVN"/>
+                    <label end="14" start="13" name="rp"/>
+                    <label end="20" start="16" name="PP$"/>
+                    <label end="27" start="22" name="nn"/>
+                    <label end="33" start="29" name="in"/>
+                    <label end="40" start="35" name="cd"/>
+                    <label end="46" start="42" name="nns"/>
+                    <label end="51" start="48" name="in"/>
+                    <label end="55" start="53" name="PP$"/>
+                    <label end="62" start="57" name="nn"/>
+                    <label end="64" start="64" name=","/>
+                    <label end="68" start="66" name="cc"/>
+                    <label end="81" start="70" name="rb"/>
+                    <label end="87" start="83" name="VVD"/>
+                    <label end="91" start="89" name="rp"/>
+                    <label end="93" start="93" name="dt"/>
+                    <label end="100" start="95" name="nn"/>
+                    <label end="103" start="102" name="in"/>
+                    <label end="109" start="105" name="nns"/>
+                    <label end="112" start="111" name="in"/>
+                    <label end="116" start="114" name="dt"/>
+                    <label end="126" start="118" name="nn"/>
+                    <label end="129" start="128" name="in"/>
+                    <label end="133" start="131" name="dt"/>
+                    <label end="140" start="135" name="jj"/>
+                    <label end="150" start="142" name="nns"/>
+                    <label end="152" start="152" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="08/29/2003 10:35:02 PDT Fri" status="AUTO_EDITED" ID="1942707">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="87" start="83" name="Target"/>
+                    <label cBy="618" end="91" start="89" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2500" end="3" start="0" name="Agent"/>
+                    <label cBy="618" feID="2499" end="109" start="93" name="Projectile"/>
+                    <label cBy="618" feID="2502" end="150" start="111" name="Goal"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="3" start="0" name="Ext"/>
+                    <label end="109" start="93" name="Obj"/>
+                    <label end="150" start="111" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="3" start="0" name="NP"/>
+                    <label end="109" start="93" name="NP"/>
+                    <label end="150" start="111" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="7087" aPos="0" ID="1247849">
+            <text>` The missile was so close that the warning system in the cab illuminated and fired off defensive flares , &quot; he said .</text>
+            <annotationSet cDate="08/29/2003 10:35:02 PDT Fri" status="UNANN" ID="1942708">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="2" name="dt"/>
+                    <label end="12" start="6" name="nn"/>
+                    <label end="16" start="14" name="VBD"/>
+                    <label end="19" start="18" name="rb"/>
+                    <label end="25" start="21" name="jj"/>
+                    <label end="30" start="27" name="in"/>
+                    <label end="34" start="32" name="dt"/>
+                    <label end="42" start="36" name="nn"/>
+                    <label end="49" start="44" name="nn"/>
+                    <label end="52" start="51" name="in"/>
+                    <label end="56" start="54" name="dt"/>
+                    <label end="60" start="58" name="nn"/>
+                    <label end="72" start="62" name="VVD"/>
+                    <label end="76" start="74" name="cc"/>
+                    <label end="82" start="78" name="VVD"/>
+                    <label end="86" start="84" name="rp"/>
+                    <label end="96" start="88" name="jj"/>
+                    <label end="103" start="98" name="nns"/>
+                    <label end="105" start="105" name=","/>
+                    <label end="110" start="109" name="PP"/>
+                    <label end="115" start="112" name="VVD"/>
+                    <label end="117" start="117" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="08/29/2003 10:35:02 PDT Fri" status="AUTO_EDITED" ID="1942709">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="82" start="78" name="Target"/>
+                    <label cBy="618" end="86" start="84" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2500" end="49" start="32" name="Agent"/>
+                    <label cBy="618" feID="2499" end="103" start="88" name="Projectile"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="49" start="32" name="Ext"/>
+                    <label end="103" start="88" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="49" start="32" name="NP"/>
+                    <label end="103" start="88" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="03-T-Wbullet,shot,cap-Woff-(1)"/>
+    <subCorpus name="04-T-Woff-NPbullet,shot,cap-(1)"/>
+    <subCorpus name="05-T-Woff-PPto,across,toward-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

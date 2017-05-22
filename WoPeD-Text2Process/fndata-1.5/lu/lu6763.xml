@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" POS="PREP" name="beneath.prep" ID="6763" frame="Locative_relation" frameID="199" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="Orwell" ID="3">
+            <document description="Orwell_1984_p1" ID="7"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Extra-Thematic" abbrev="Dir" name="Direction"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Dist" name="Distance"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Fig" name="Figure"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core-Unexpressed" abbrev="" name="Figures"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="Grnd" name="Ground"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: extending or directly underneath. </definition>
+    <lexeme POS="PREP" name="beneath"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Figure"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Figure"/>
+                <annoSet ID="2599878"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Ground"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Ground"/>
+                <annoSet ID="2599878"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Figure"/>
+            <FE name="Ground"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Figure"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Ground"/>
+                <annoSet ID="2599878"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="manually-added">
+        <sentence corpID="3" docID="7" sentNo="11" paragNo="2" aPos="0" ID="312913">
+            <text>&quot; Big Brother is watching you &quot; , the caption beneath it ran .</text>
+            <annotationSet cDate="01/06/2003 10:55:07 PST Mon" status="UNANN" ID="269189">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="2" name="AJ0"/>
+                    <label end="12" start="6" name="NN1"/>
+                    <label end="15" start="14" name="VBZ"/>
+                    <label end="24" start="17" name="VVG"/>
+                    <label end="28" start="26" name="PNP"/>
+                    <label end="32" start="32" name="PUN"/>
+                    <label end="36" start="34" name="AT0"/>
+                    <label end="44" start="38" name="NN1"/>
+                    <label end="52" start="46" name="PRP"/>
+                    <label end="55" start="54" name="PNP"/>
+                    <label end="59" start="57" name="VVD"/>
+                    <label end="61" start="61" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/27/2010 04:58:01 PDT Tue" status="MANUAL" ID="2599878">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="52" start="46" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="1622" end="44" start="34" name="Figure"/>
+                    <label cBy="664" feID="1621" end="55" start="54" name="Ground"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="44" start="34" name="Ext"/>
+                    <label end="55" start="54" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="44" start="34" name="NP"/>
+                    <label end="55" start="54" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Prep"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

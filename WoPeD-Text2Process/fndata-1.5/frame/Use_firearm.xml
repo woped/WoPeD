@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="03/22/2002 03:02:03 PST Fri" name="Use_firearm" ID="290" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Agent&lt;/fen&gt; causes a &lt;fen&gt;Firearm&lt;/fen&gt; to discharge, usually directing the projectile from the barrel of the &lt;fen&gt;Firearm&lt;/fen&gt; (the &lt;fen&gt;Source&lt;/fen&gt;), along a &lt;fen&gt;Path&lt;/fen&gt;, and to a &lt;fen&gt;Goal&lt;/fen&gt;.
+&lt;ex&gt;&lt;fex name="Agent"&gt;The Germans&lt;/fex&gt; wouldn't stop &lt;t&gt;shooting&lt;/t&gt; &lt;fex name="Firearm"&gt;cannons&lt;/fex&gt; &lt;fex name="Goal"&gt;at them&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Agent"&gt;Oswald&lt;/fex&gt; &lt;t&gt;fired&lt;/t&gt; &lt;fex name="Iteration"&gt;twice&lt;/fex&gt; &lt;fex name="Path"&gt;through the window&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="04/26/2002 02:26:17 PDT Fri" abbrev="Agt" name="Agent" ID="2681">
+        <definition>&lt;def-root&gt;The self-directed entity that uses and activates the &lt;fen&gt;Firearm&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="04/26/2002 02:26:19 PDT Fri" abbrev="Arm" name="Firearm" ID="2682">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Firearm&lt;/fen&gt; that an &lt;fen&gt;Agent&lt;/fen&gt; activates so that it rapidly propels a projectile.&lt;/def-root&gt;</definition>
+        <semType name="Physical_entity" ID="70"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="04/26/2002 02:26:24 PDT Fri" abbrev="Mns" name="Means" ID="2683">
+        <definition>&lt;def-root&gt;This FE identifies the means by which an &lt;fen&gt;Agent&lt;/fen&gt; uses the &lt;fen&gt;Firearm&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="04/26/2002 02:26:27 PDT Fri" abbrev="Mnr" name="Manner" ID="2684">
+        <definition>&lt;def-root&gt;This FE identifies the manner in which an &lt;fen&gt;Agent&lt;/fen&gt; uses the &lt;fen&gt;Firearm&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="04/26/2002 02:26:33 PDT Fri" abbrev="Place" name="Place" ID="2685">
+        <definition>&lt;def-root&gt;This FE identifies the place where the Agent intentionally affects the Patient.
+&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="04/26/2002 02:26:35 PDT Fri" abbrev="Purp" name="Purpose" ID="2686">
+        <definition>&lt;def-root&gt;This FE identifies the purpose for which an &lt;fen&gt;Agent&lt;/fen&gt; uses the firearm.
+&lt;ex&gt;&lt;t&gt;Firing&lt;/t&gt; cannons &lt;fex name="Purp"&gt;to have a good time&lt;/fex&gt; is not my idea of prudence!&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="04/26/2002 02:26:39 PDT Fri" abbrev="Time" name="Time" ID="2687">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Time&lt;/fen&gt; when the &lt;fen&gt;Agent&lt;/fen&gt; fires the &lt;fen&gt;Firearm&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="04/26/2002 02:29:03 PDT Fri" abbrev="Goal" name="Goal" ID="2688">
+        <definition>&lt;def-root&gt;Goal is the location the Theme ends up in, or is intended to end up in.
+&lt;ex&gt;Who &lt;t&gt;fired&lt;/t&gt; a pistol &lt;fex name="Goal"&gt;at my client&lt;/fex&gt;?&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Goal" ID="153"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="04/26/2002 02:29:04 PDT Fri" abbrev="Path" name="Path" ID="2689">
+        <definition>&lt;def-root&gt;This is the path along which the projectiles travel.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="04/26/2002 02:29:08 PDT Fri" abbrev="Src" name="Source" ID="2690">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Source&lt;/fen&gt; is the location of the &lt;fen&gt;Firearm&lt;/fen&gt; from which projectiles originate.&lt;/def-root&gt;</definition>
+        <semType name="Source" ID="151"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="04/26/2002 02:29:30 PDT Fri" abbrev="Area" name="Area" ID="2691">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Area&lt;/fen&gt; is the setting in which the projectile's movement takes place. 
+&lt;ex&gt;Sometimes they got together and &lt;t&gt;fired&lt;/t&gt; off M-16 &lt;fex name="Area"&gt;in the park&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="04/26/2002 02:41:03 PDT Fri" abbrev="Iter" name="Iteration" ID="2692">
+        <definition>&lt;def-root&gt;This FE identifies the number of times a firearm is used.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="296" cDate="05/06/2002 11:35:23 PDT Mon" abbrev="Dep" name="Depictive" ID="2742">
+        <definition>&lt;def-root&gt;Depicitive phrase describing the state of a participant in the action.&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Using</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on">
+        <relatedFrame>Shooting_scenario</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Shoot_projectiles</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="shoot.v" ID="5315" lemmaID="35615" cBy="664" cDate="03/22/2002 03:35:18 PST Fri">
+        <definition>COD: cause (a gun) to fire. </definition>
+        <sentenceCount annotated="7" total="284"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="shoot"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="fire.v" ID="5659" lemmaID="14432" cBy="664" cDate="04/26/2002 12:04:47 PDT Fri">
+        <definition>COD: discharge (a gun or other weapon). </definition>
+        <sentenceCount annotated="36" total="401"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="fire"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="discharge.v" ID="5666" lemmaID="10841" cBy="664" cDate="04/26/2002 03:37:33 PDT Fri">
+        <definition>COD: fire (a gun or missile). </definition>
+        <sentenceCount annotated="6" total="348"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="discharge"/>
+    </lexUnit>
+</frame>

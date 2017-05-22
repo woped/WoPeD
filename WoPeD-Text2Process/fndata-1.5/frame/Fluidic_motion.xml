@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="296" cDate="06/05/2002 03:59:06 PDT Wed" name="Fluidic_motion" ID="345" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;In this frame a &lt;fen&gt;Fluid&lt;/fen&gt; moves from a &lt;fen&gt;Source&lt;/fen&gt; to a &lt;fen&gt;Goal&lt;/fen&gt; along a &lt;fen&gt;Path&lt;/fen&gt; or within an &lt;fen&gt;Area&lt;/fen&gt;.  &lt;ex&gt; &lt;fex name="Fluid"&gt;The blood&lt;/fex&gt; &lt;t&gt;spurted&lt;/t&gt; &lt;fex name="Source"&gt;from the wound&lt;/fex&gt;. &lt;/ex&gt;&lt;ex&gt;&lt;fex name="Fluid"&gt;The water&lt;/fex&gt; &lt;t&gt;gushed&lt;/t&gt; &lt;fex name="Goal"&gt;into the house&lt;/fex&gt; . &lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="06/05/2002 04:00:38 PDT Wed" abbrev="Area" name="Area" ID="2975">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Area&lt;/fen&gt; is the setting in which the &lt;fen&gt;Fluid&lt;/fen&gt;'s movement takes place on an unspecified &lt;fen&gt;Path&lt;/fen&gt;.
+&lt;ex&gt;The Thames River &lt;t&gt;flows&lt;/t&gt; &lt;fex name="Area"&gt;throughout England&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="06/05/2002 04:00:38 PDT Wed" abbrev="Dist" name="Distance" ID="2977">
+        <definition>&lt;def-root&gt;This FE describes the phsyical extent of the motion of the &lt;fen&gt;Fluid&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="000000" coreType="Peripheral" cBy="296" cDate="06/05/2002 04:00:38 PDT Wed" abbrev="Dur" name="Duration" ID="2978">
+        <definition>&lt;def-root&gt;The amount of time for which the &lt;fen&gt;Fluid&lt;/fen&gt; moves.&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="06/05/2002 04:00:38 PDT Wed" abbrev="Goal" name="Goal" ID="2979">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Goal&lt;/fen&gt; is the location the &lt;fen&gt;Fluid&lt;/fen&gt; ends up.&lt;/def-root&gt;</definition>
+        <semType name="Goal" ID="153"/>
+        <excludesFE name="Area" ID="2975"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="06/05/2002 04:00:38 PDT Wed" abbrev="Path" name="Path" ID="2980">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Path&lt;/fen&gt; is the trajectory along which the &lt;fen&gt;Fluid&lt;/fen&gt; moves.&lt;/def-root&gt;</definition>
+        <excludesFE name="Area" ID="2975"/>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="06/05/2002 04:00:38 PDT Wed" abbrev="Src" name="Source" ID="2981">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Source&lt;/fen&gt; is the location the &lt;fen&gt;Fluid&lt;/fen&gt; occupies initially.&lt;/def-root&gt;</definition>
+        <semType name="Source" ID="151"/>
+        <excludesFE name="Area" ID="2975"/>
+    </FE>
+    <FE bgColor="7FFF00" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="06/05/2002 04:00:38 PDT Wed" abbrev="Spd" name="Speed" ID="2982">
+        <definition>&lt;def-root&gt;This is the rate at which the &lt;fen&gt;Fluid&lt;/fen&gt; flows.&lt;/def-root&gt;</definition>
+        <semType name="Speed" ID="234"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="06/05/2002 04:00:38 PDT Wed" abbrev="Fluid" name="Fluid" ID="2983">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Fluid&lt;/fen&gt; is the entity that changes location and moves in a fluidic way.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="000000" coreType="Peripheral" cBy="296" cDate="06/05/2002 04:00:38 PDT Wed" abbrev="Time" name="Time" ID="2984">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Time&lt;/fen&gt; when the &lt;fen&gt;Fluid&lt;/fen&gt; flows.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="296" cDate="06/06/2002 03:21:49 PDT Thu" abbrev="confg" name="Configuration" ID="2988">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Configuration&lt;/fen&gt; encodes information about the amount, arrangement, and unitization of the flow. &lt;ex&gt;&lt;fex name="Fluid"&gt;The water&lt;/fex&gt; &lt;t&gt;cascaded&lt;/t&gt; &lt;fex name="Configuration"&gt;in torrents&lt;/fex&gt;&lt;/ex&gt; .
+&lt;ex&gt;&lt;fex name="Fluid"&gt;The water&lt;/fex&gt; &lt;t&gt;cascades&lt;/t&gt; &lt;fex name="Configuration"&gt;in large volumes&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="06/18/2002 12:13:28 PDT Tue" abbrev="Manr" name="Manner" ID="3093">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Manner&lt;/fen&gt; in which the &lt;fen&gt;Fluid&lt;/fen&gt; flows.&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="06/18/2002 05:26:48 PDT Tue" abbrev="Cause" name="Cause" ID="3110">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Cause&lt;/fen&gt; is the reason for the fluidic motion.
+&lt;ex&gt;It &lt;t&gt;flowed&lt;/t&gt; &lt;fex name="Cause"&gt;from the sheer weight of water above it&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="06/18/2002 05:48:23 PDT Tue" abbrev="Depict" name="Depictive" ID="3111">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Depictive&lt;/fen&gt; phrase describing the &lt;fen&gt;Fluid&lt;/fen&gt; throughout the action.
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="EEE8AA" fgColor="0000FF" coreType="Extra-Thematic" cBy="296" cDate="07/01/2002 10:49:12 PDT Mon" abbrev="Result" name="Result" ID="3301">
+        <definition>&lt;def-root&gt;This FE identifies the result of the &lt;fen&gt;Fluid&lt;/fen&gt; moving.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="7CCD73" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="07/25/2003 01:42:08 PDT Fri" abbrev="" name="Place" ID="4842">
+        <definition>&lt;def-root&gt;The Place describes the location of the motion which has a specified Source, Path or Goal.
+&lt;ex&gt;&lt;fex name="Place"&gt;At Oregon Caves&lt;/fex&gt;, a stream &lt;t&gt;runs&lt;/t&gt; through the dining room.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Source" ID="2981"/>
+        <memberFE name="Path" ID="2980"/>
+        <memberFE name="Goal" ID="2979"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Motion</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Motion</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Breathing</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="drip.v" ID="6015" lemmaID="11788" cBy="296" cDate="06/05/2002 04:05:25 PDT Wed">
+        <definition>COD: fall in small drops. </definition>
+        <sentenceCount annotated="26" total="165"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="drip"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="flow.v" ID="6016" lemmaID="14795" cBy="296" cDate="06/05/2002 04:06:10 PDT Wed">
+        <definition>COD: move steadily and continuously in a current or stream. </definition>
+        <sentenceCount annotated="61" total="364"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="flow"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="bubble.v" ID="6017" lemmaID="4772" cBy="296" cDate="06/05/2002 04:06:54 PDT Wed">
+        <definition>COD: be agitated by rising bubbles of air or gas</definition>
+        <sentenceCount annotated="13" total="117"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="bubble"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="trickle.v" ID="6018" lemmaID="41211" cBy="296" cDate="06/05/2002 04:07:31 PDT Wed">
+        <definition>COD: flow in a small stream.</definition>
+        <sentenceCount annotated="41" total="196"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="trickle"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="gush.v" ID="6019" lemmaID="17100" cBy="296" cDate="06/05/2002 04:08:07 PDT Wed">
+        <definition>COD: send out or flow in a rapid and plentiful stream.</definition>
+        <sentenceCount annotated="23" total="119"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="gush"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="cascade.v" ID="6020" lemmaID="5647" cBy="296" cDate="06/05/2002 04:08:47 PDT Wed">
+        <definition>COD: pour downwards rapidly and in large quantities</definition>
+        <sentenceCount annotated="22" total="87"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="cascade"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="dribble.v" ID="6021" lemmaID="11768" cBy="296" cDate="06/05/2002 04:09:28 PDT Wed">
+        <definition>COD: (of a liquid) fall slowly in drops or a thin stream</definition>
+        <sentenceCount annotated="20" total="106"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="dribble"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="splash.v" ID="6022" lemmaID="37389" cBy="296" cDate="06/05/2002 04:10:09 PDT Wed">
+        <definition>COD: fall or be scattered in drops. </definition>
+        <sentenceCount annotated="23" total="212"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="splash"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="spew.v" ID="6023" lemmaID="37298" cBy="296" cDate="06/05/2002 04:12:29 PDT Wed">
+        <definition>FN: come forth in large quantities rapidly and forcibly. </definition>
+        <sentenceCount annotated="4" total="71"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="spew"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="seep.v" ID="6024" lemmaID="34860" cBy="296" cDate="06/05/2002 04:13:20 PDT Wed">
+        <definition>COD: (of a liquid) flow or leak slowly through porous material or small holes. </definition>
+        <sentenceCount annotated="37" total="146"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="seep"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="ooze.v" ID="6025" lemmaID="26764" cBy="296" cDate="06/05/2002 04:14:13 PDT Wed">
+        <definition>COD: (of a fluid) slowly trickle or seep out. </definition>
+        <sentenceCount annotated="20" total="117"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="ooze"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="percolate.v" ID="6026" lemmaID="28410" cBy="296" cDate="06/05/2002 04:14:48 PDT Wed">
+        <definition>COD: filter through a porous surface or substance. </definition>
+        <sentenceCount annotated="12" total="45"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="percolate"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="leak.v" ID="6027" lemmaID="21928" cBy="296" cDate="06/05/2002 04:15:26 PDT Wed">
+        <definition>COD: (of liquid, gas, etc.) pass in or out through a hole or crack in such a way. </definition>
+        <sentenceCount annotated="31" total="213"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="leak"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="jet.v" ID="6028" lemmaID="20930" cBy="296" cDate="06/05/2002 04:16:00 PDT Wed">
+        <definition>COD: spurt out in a jet. </definition>
+        <sentenceCount annotated="5" total="158"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="jet"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="soak.v" ID="6029" lemmaID="36740" cBy="296" cDate="06/05/2002 04:20:16 PDT Wed">
+        <definition>FN: seep through</definition>
+        <sentenceCount annotated="19" total="184"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="soak"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="run.v" ID="6030" lemmaID="33776" cBy="296" cDate="06/05/2002 04:21:16 PDT Wed">
+        <definition>COD: flow</definition>
+        <sentenceCount annotated="12" total="330"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="run"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="squirt.v" ID="6031" lemmaID="37667" cBy="296" cDate="06/05/2002 04:22:11 PDT Wed">
+        <definition>FN: (of a liquid) move rapidly in a stream out of tightly confining container.</definition>
+        <sentenceCount annotated="4" total="74"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="squirt"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="spurt.v" ID="6032" lemmaID="37581" cBy="296" cDate="06/05/2002 04:22:49 PDT Wed">
+        <definition>COD: gush out in a sudden stream. </definition>
+        <sentenceCount annotated="11" total="79"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="spurt"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="spout.v" ID="6033" lemmaID="37509" cBy="296" cDate="06/05/2002 04:23:30 PDT Wed">
+        <definition>COD: issue forcibly in a stream. </definition>
+        <sentenceCount annotated="6" total="57"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="spout"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="rush.v" ID="6151" lemmaID="33810" cBy="296" cDate="06/17/2002 03:35:23 PDT Mon">
+        <definition>COD: (of air or a liquid) flow strongly.</definition>
+        <sentenceCount annotated="19" total="307"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="rush"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="course.v" ID="6152" lemmaID="8647" cBy="296" cDate="06/17/2002 03:50:27 PDT Mon">
+        <definition>COD: (of liquid) flow</definition>
+        <sentenceCount annotated="15" total="82"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="course"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="V" name="purl.v" ID="6153" lemmaID="31233" cBy="296" cDate="06/17/2002 03:52:19 PDT Mon">
+        <definition>COD: flow with a swirling motion and babbling sound. </definition>
+        <sentenceCount annotated="1" total="2"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="purl"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="spill.v" ID="6155" lemmaID="37321" cBy="296" cDate="06/17/2002 03:56:30 PDT Mon">
+        <definition>COD: flow over the edge of its container. </definition>
+        <sentenceCount annotated="23" total="203"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="spill"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="stream.v" ID="6159" lemmaID="38302" cBy="296" cDate="06/17/2002 04:02:34 PDT Mon">
+        <definition>COD: (of liquid) run in a continuous flow. </definition>
+        <sentenceCount annotated="30" total="185"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="stream"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="hiss.v" ID="9506" lemmaID="18141" cBy="605" cDate="09/22/2003 06:23:26 PDT Mon">
+        <definition>FN: (for air) to move producing a sharp sibilant sound</definition>
+        <sentenceCount annotated="1" total="1"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="hiss"/>
+    </lexUnit>
+</frame>

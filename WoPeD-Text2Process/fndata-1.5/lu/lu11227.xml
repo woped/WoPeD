@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="V" name="find.v" ID="11227" frame="Locating" frameID="792" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Core" abbrev="" name="Ground"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="Loc" name="Location"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="" name="Perceiver"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="" name="Sought_entity"/>
+        </frame>
+    </header>
+    <definition>COD: discover by chance or deliberately.</definition>
+    <lexeme POS="V" name="find"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Location"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[behind]" FE="Location"/>
+                <annoSet ID="2593915"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Perceiver"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Perceiver"/>
+                <annoSet ID="2593915"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Sought_entity"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Sought_entity"/>
+                <annoSet ID="2593915"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Location"/>
+            <FE name="Perceiver"/>
+            <FE name="Sought_entity"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[behind]" FE="Location"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Perceiver"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Sought_entity"/>
+                <annoSet ID="2593915"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-NP-T-NP-PPunder-(1)"/>
+    <subCorpus name="02-NP-T-NP-PPbehind-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="231" aPos="8817977" ID="1579648">
+            <text>` We found them behind the house when we moved in .</text>
+            <annotationSet cDate="07/16/2010 04:16:26 PDT Fri" status="UNANN" ID="2593914">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="2" name="PP"/>
+                    <label end="9" start="5" name="VVD"/>
+                    <label end="14" start="11" name="PP"/>
+                    <label end="21" start="16" name="in"/>
+                    <label end="25" start="23" name="dt"/>
+                    <label end="31" start="27" name="nn"/>
+                    <label end="36" start="33" name="wrb"/>
+                    <label end="39" start="38" name="PP"/>
+                    <label end="45" start="41" name="VVD"/>
+                    <label end="48" start="47" name="rp"/>
+                    <label end="50" start="50" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/16/2010 04:16:26 PDT Fri" status="MANUAL" ID="2593915">
+                <layer rank="1" name="Target">
+                    <label cBy="571" end="9" start="5" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="571" feID="4933" end="3" start="2" name="Perceiver"/>
+                    <label cBy="571" feID="4934" end="14" start="11" name="Sought_entity"/>
+                    <label cBy="571" feID="4935" end="31" start="16" name="Location"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="3" start="2" name="Ext"/>
+                    <label end="14" start="11" name="Obj"/>
+                    <label end="31" start="16" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="3" start="2" name="NP"/>
+                    <label end="14" start="11" name="NP"/>
+                    <label end="31" start="16" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="03-NP-T-NP-PPnext-(1)"/>
+    <subCorpus name="04-NP-T-NP-PPin-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

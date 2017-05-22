@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="V" name="tolerate.v" ID="15327" frame="Tolerating" frameID="2131" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp=1126" ID="19285"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Extra-Thematic" abbrev="cir" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Cont" name="Content"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Event" name="Event"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Exp" name="Experiencer"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Par" name="Parameter"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Extra-Thematic" abbrev="Reas" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Core" abbrev="State" name="State"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Peripheral" abbrev="tim" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Top" name="Topic"/>
+        </frame>
+    </header>
+    <definition>FN: to accept or withstand (something which might be a problem or dificulty)</definition>
+    <lexeme POS="V" name="tolerate"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Content"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="NP" FE="Content"/>
+                <annoSet ID="2578591"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Experiencer"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Experiencer"/>
+                <annoSet ID="2578591"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Content"/>
+            <FE name="Experiencer"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="NP" FE="Content"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Experiencer"/>
+                <annoSet ID="2578591"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-dissent-(1)">
+        <sentence corpID="111" docID="19285" sentNo="5" paragNo="42" aPos="0" ID="1571985">
+            <text>There were clear signals , then , from the beginning of his time in power , that Deng would not tolerate serious dissent .</text>
+            <annotationSet cDate="07/13/2010 04:59:16 PDT Tue" status="UNANN" ID="2578590">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="ex"/>
+                    <label end="9" start="6" name="VBD"/>
+                    <label end="15" start="11" name="jj"/>
+                    <label end="23" start="17" name="nns"/>
+                    <label end="25" start="25" name=","/>
+                    <label end="30" start="27" name="rb"/>
+                    <label end="32" start="32" name=","/>
+                    <label end="37" start="34" name="in"/>
+                    <label end="41" start="39" name="dt"/>
+                    <label end="51" start="43" name="nn"/>
+                    <label end="54" start="53" name="in"/>
+                    <label end="58" start="56" name="PP$"/>
+                    <label end="63" start="60" name="nn"/>
+                    <label end="66" start="65" name="in"/>
+                    <label end="72" start="68" name="nn"/>
+                    <label end="74" start="74" name=","/>
+                    <label end="79" start="76" name="wdt"/>
+                    <label end="84" start="81" name="NP"/>
+                    <label end="90" start="86" name="md"/>
+                    <label end="94" start="92" name="rb"/>
+                    <label end="103" start="96" name="VV"/>
+                    <label end="111" start="105" name="jj"/>
+                    <label end="119" start="113" name="nn"/>
+                    <label end="121" start="121" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/13/2010 04:59:16 PDT Tue" status="MANUAL" ID="2578591">
+                <layer rank="1" name="Target">
+                    <label cBy="773" end="103" start="96" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="773" feID="13142" end="84" start="81" name="Experiencer"/>
+                    <label cBy="773" feID="13143" end="119" start="105" name="Content"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="84" start="81" name="Ext"/>
+                    <label end="119" start="105" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="84" start="81" name="NP"/>
+                    <label end="119" start="105" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-other-matched-(1)"/>
+    <subCorpus name="03-other-unmatched-(1)"/>
+</lexUnit>

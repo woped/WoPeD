@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="imperil.v" ID="8503" frame="Endangering" frameID="631" totalAnnotated="5" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Agent" name="Agent"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="" name="Cause"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Mns" name="Endangering_act"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Mnr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD73" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Valued" name="Valued_entity"/>
+        </frame>
+    </header>
+    <definition>COD: put into danger</definition>
+    <lexeme POS="V" name="imperil"/>
+    <valences>
+        <FERealization total="2">
+            <FE name="Agent"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <annoSet ID="1848603"/>
+                <annoSet ID="1848631"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Cause"/>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="NP" FE="Cause"/>
+                <annoSet ID="1848607"/>
+                <annoSet ID="1848609"/>
+                <annoSet ID="1848619"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Endangering_act"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="INI" FE="Endangering_act"/>
+                <annoSet ID="1848603"/>
+                <annoSet ID="1848631"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Valued_entity"/>
+            <pattern total="5">
+                <valenceUnit GF="Obj" PT="NP" FE="Valued_entity"/>
+                <annoSet ID="1848603"/>
+                <annoSet ID="1848607"/>
+                <annoSet ID="1848609"/>
+                <annoSet ID="1848619"/>
+                <annoSet ID="1848631"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Agent"/>
+            <FE name="Endangering_act"/>
+            <FE name="Valued_entity"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <valenceUnit GF="" PT="INI" FE="Endangering_act"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Valued_entity"/>
+                <annoSet ID="1848603"/>
+                <annoSet ID="1848631"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="3">
+            <FE name="Cause"/>
+            <FE name="Valued_entity"/>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="NP" FE="Cause"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Valued_entity"/>
+                <annoSet ID="1848607"/>
+                <annoSet ID="1848609"/>
+                <annoSet ID="1848619"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-(1)">
+        <sentence sentNo="0" aPos="0" ID="1200721">
+            <text>The view that states imperil their own legitimacy when they offend their own subjects ' conservative conceptions of constitutionality is found more amongst other academic students of politics than amongst political scientists themselves .</text>
+            <annotationSet cDate="04/01/2003 08:24:38 PST Tue" status="UNANN" ID="1848602">
+                <layer rank="1" name="PENN">
+                    <label end="86" start="86" name="POS"/>
+                    <label end="135" start="134" name="VBZ"/>
+                    <label end="141" start="137" name="VVN"/>
+                    <label end="154" start="148" name="PRP"/>
+                    <label end="203" start="197" name="PRP"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/01/2003 08:24:39 PST Tue" status="MANUAL" ID="1848603">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="27" start="21" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4342" end="19" start="14" name="Agent"/>
+                    <label cBy="618" feID="4341" end="48" start="29" name="Valued_entity"/>
+                    <label cBy="296" feID="4390" itype="INI" name="Endangering_act"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="48" start="29" name="Obj"/>
+                    <label end="19" start="14" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="48" start="29" name="NP"/>
+                    <label end="19" start="14" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="0" ID="1200723">
+            <text>Greece insists that the creation of a new state by that name would imperil the safety of its own northern province of Macedonia .</text>
+            <annotationSet cDate="04/01/2003 08:24:39 PST Tue" status="UNANN" ID="1848606">
+                <layer rank="1" name="PENN">
+                    <label end="13" start="7" name="VVZ"/>
+                    <label end="49" start="48" name="PRP"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/01/2003 08:24:39 PST Tue" status="MANUAL" ID="1848607">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="73" start="67" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4340" end="59" start="20" name="Cause"/>
+                    <label cBy="618" feID="4341" end="126" start="75" name="Valued_entity"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="59" start="20" name="Ext"/>
+                    <label end="126" start="75" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="59" start="20" name="NP"/>
+                    <label end="126" start="75" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="0" ID="1200724">
+            <text>In 1346 Pope Clement VI rebuked Edward for a seizure which would imperil his soul , not to mention those of the sacrilegious laymen occupying church goods .</text>
+            <annotationSet cDate="04/01/2003 08:24:39 PST Tue" status="UNANN" ID="1848608">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PRP"/>
+                    <label end="30" start="24" name="VVD"/>
+                    <label end="41" start="39" name="PRP"/>
+                    <label end="140" start="132" name="VVG"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/01/2003 08:24:39 PST Tue" status="MANUAL" ID="1848609">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="71" start="65" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4340" end="57" start="43" name="Cause"/>
+                    <label cBy="618" feID="4341" end="153" start="73" name="Valued_entity"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="57" start="43" name="Ext"/>
+                    <label end="153" start="73" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="57" start="43" name="NP"/>
+                    <label end="153" start="73" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="0" ID="1200729">
+            <text>It goes without saying that any infringements of these new restrictions will imperil what is already an extremely sensitive access agreement .</text>
+            <annotationSet cDate="04/01/2003 08:24:40 PST Tue" status="UNANN" ID="1848618">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="3" name="VVZ"/>
+                    <label end="14" start="8" name="PRP"/>
+                    <label end="21" start="16" name="VVG"/>
+                    <label end="91" start="90" name="VBZ"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/01/2003 08:24:41 PST Tue" status="MANUAL" ID="1848619">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="83" start="77" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4340" end="70" start="28" name="Cause"/>
+                    <label cBy="618" feID="4341" end="139" start="85" name="Valued_entity"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="70" start="28" name="Ext"/>
+                    <label end="139" start="85" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="70" start="28" name="NP"/>
+                    <label end="139" start="85" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="0" ID="1200735">
+            <text>In the days when contraception was still a rarity , every husband knew , if he chose to think of it , that by sleeping with his wife he might imperil her life .</text>
+            <annotationSet cDate="04/01/2003 08:24:42 PST Tue" status="UNANN" ID="1848630">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PRP"/>
+                    <label end="33" start="31" name="VBD"/>
+                    <label end="69" start="66" name="VVD"/>
+                    <label end="83" start="79" name="VVD"/>
+                    <label end="108" start="107" name="PRP"/>
+                    <label end="122" start="119" name="PRP"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/01/2003 08:24:42 PST Tue" status="MANUAL" ID="1848631">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="148" start="142" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4342" end="134" start="133" name="Agent"/>
+                    <label cBy="618" feID="4341" end="157" start="150" name="Valued_entity"/>
+                    <label cBy="296" feID="4390" itype="INI" name="Endangering_act"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="134" start="133" name="Ext"/>
+                    <label end="157" start="150" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="134" start="133" name="NP"/>
+                    <label end="157" start="150" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

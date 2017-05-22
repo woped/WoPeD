@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" POS="PREP" name="about.prep" ID="14273" frame="Relational_quantity" frameID="1923" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="Orwell" ID="3">
+            <document description="Orwell_1984_p1" ID="7"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="" name="Denoted_quantity"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="Ind" name="Individuals"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="M" name="Mass"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Extra-Thematic" abbrev="" name="Q_Prop"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="ref" name="Reference_quantity"/>
+        </frame>
+    </header>
+    <definition>COD: approximately.</definition>
+    <lexeme POS="PREP" name="about"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Denoted_quantity"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="2nd" FE="Denoted_quantity"/>
+                <annoSet ID="2598434"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Reference_quantity"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Reference_quantity"/>
+                <annoSet ID="2598434"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Denoted_quantity"/>
+            <FE name="Reference_quantity"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="2nd" FE="Denoted_quantity"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Reference_quantity"/>
+                <annoSet ID="2598434"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="manually-added">
+        <sentence corpID="3" docID="7" sentNo="3" paragNo="2" aPos="0" ID="312905">
+            <text>It depicted simply an enormous face , more than a metre wide : the face of a man of about forty-five , with a heavy black moustache and ruggedly handsome features .</text>
+            <annotationSet cDate="01/06/2003 10:55:06 PST Mon" status="UNANN" ID="269181">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="10" start="3" name="VVD"/>
+                    <label end="17" start="12" name="AV0"/>
+                    <label end="20" start="19" name="AT0"/>
+                    <label end="29" start="22" name="AJ0"/>
+                    <label end="34" start="31" name="NN1"/>
+                    <label end="36" start="36" name="PUN"/>
+                    <label end="41" start="38" name="AV0"/>
+                    <label end="46" start="43" name="CJS"/>
+                    <label end="48" start="48" name="AT0"/>
+                    <label end="54" start="50" name="NN1"/>
+                    <label end="59" start="56" name="AJ0"/>
+                    <label end="61" start="61" name="PUN"/>
+                    <label end="65" start="63" name="AT0"/>
+                    <label end="70" start="67" name="NN1"/>
+                    <label end="73" start="72" name="PRF"/>
+                    <label end="75" start="75" name="AT0"/>
+                    <label end="79" start="77" name="NN1"/>
+                    <label end="82" start="81" name="PRF"/>
+                    <label end="88" start="84" name="AV0"/>
+                    <label end="99" start="90" name="CRD"/>
+                    <label end="101" start="101" name="PUN"/>
+                    <label end="106" start="103" name="PRP"/>
+                    <label end="108" start="108" name="AT0"/>
+                    <label end="114" start="110" name="AJ0"/>
+                    <label end="120" start="116" name="AJ0"/>
+                    <label end="130" start="122" name="NN1"/>
+                    <label end="134" start="132" name="CJC"/>
+                    <label end="143" start="136" name="AV0"/>
+                    <label end="152" start="145" name="AJ0"/>
+                    <label end="161" start="154" name="NN2"/>
+                    <label end="163" start="163" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/23/2010 06:30:50 PDT Fri" status="MANUAL" ID="2598434">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="88" start="84" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="11577" end="99" start="90" name="Reference_quantity"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="99" start="90" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="99" start="90" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Prep"/>
+                <layer rank="2" name="FE">
+                    <label cBy="664" feID="11573" end="99" start="84" name="Denoted_quantity"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

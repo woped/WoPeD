@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="12/06/2001 09:53:14 PST Thu" name="Communication_means" ID="242" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;This frame concerns &lt;fen&gt;Communicator&lt;/fen&gt;s communicating with each other with the aid of a &lt;fen&gt;Means&lt;/fen&gt; of communication such as a telephone. &lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="12/06/2001 10:39:56 PST Thu" abbrev="Com" name="Communicator" ID="2140">
+        <definition>&lt;def-root&gt;This FE is the person who uses the &lt;fen&gt;Means&lt;/fen&gt; of communication to deliver the &lt;fen&gt;Message&lt;/fen&gt; to the Addressee. The Speaker is normally expressed as the External Argument of target verbs, or as the Genitive modifier of  nouns. &lt;ex&gt;&lt;fex name="Com"&gt;The President&lt;/fex&gt; &lt;t&gt;cabled&lt;/t&gt; his assistant to cancel all of his appointments.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="12/06/2001 10:47:06 PST Thu" abbrev="Addressee" name="Addressee" ID="2141">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Addressee&lt;/fen&gt; is the person to whom the &lt;fen&gt;Message&lt;/fen&gt; is communicated. When this FE is expressed, it often appears in a prepositional phrase introduced by to, or as the direct object, or as the first object in a double object construction.
+&lt;ex&gt;The President &lt;t&gt;cabled&lt;/t&gt; &lt;fex name="Addressee"&gt;his assistant&lt;/fex&gt; to cancel all other engagements.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="12/06/2001 10:48:31 PST Thu" abbrev="" name="Message" ID="2142">
+        <definition>&lt;def-root&gt;This is the FE that identifies the content of what the Speaker is communicating to the Addressee. It can be expressed as a clause or as a noun phrase. &lt;/def-root&gt;</definition>
+        <semType name="Message" ID="56"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="12/06/2001 10:50:12 PST Thu" abbrev="" name="Topic" ID="2143">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Topic&lt;/fen&gt; is the subject matter to which the &lt;fen&gt;Message&lt;/fen&gt; pertains. It is typically expressed as a PP Complement headed by about.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="12/11/2001 09:53:59 PST Tue" abbrev="" name="Manner" ID="2146">
+        <definition>&lt;def-root&gt;This Frame Element is for expressions that elaborate the manner in which an action is carried out.
+ &lt;ex&gt;Jo &lt;t&gt;faxed&lt;/t&gt; the document &lt;fex name="Manner"&gt;speedily&lt;/fex&gt;. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="12/11/2001 09:56:24 PST Tue" abbrev="Means" name="Means" ID="2147">
+        <definition>&lt;def-root&gt;This Frame Element refers to the Instrument of Communication that is used by the Speaker (and Addressee).&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="243" cDate="12/14/2001 12:39:41 PST Fri" abbrev="Reas" name="Reason" ID="2164">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Reason&lt;/fen&gt; for using the means of communication.
+&lt;ex&gt;Pat &lt;t&gt;phoned&lt;/t&gt; &lt;fex name="Reason"&gt;to talk about the party&lt;/fex&gt;.&lt;/ex&gt;
+Note that this FE does not inheret from Intentional_act.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="03/26/2003 05:17:16 PST Wed" abbrev="Dep" name="Depictive" ID="4320">
+        <definition>&lt;def-root&gt;The state of the &lt;fen&gt;Communicator&lt;/fen&gt; or &lt;fen&gt;Message&lt;/fen&gt;during the communication.
+&lt;ex&gt;&lt;fex name="Dep"&gt;Worried about mail delays&lt;/fex&gt;, Stephen &lt;t&gt;faxed&lt;/t&gt; the agreement.&lt;/ex&gt;
+&lt;ex&gt;Since the general had died in the midst of writing them, the operator &lt;t&gt;telegraphed&lt;/t&gt; Andrea's orders &lt;fex name="Dep"&gt;incomplete&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Topic" ID="2143"/>
+        <memberFE name="Message" ID="2142"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Communication</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" incorporatedFE="Means" POS="V" name="cable.v" ID="4485" lemmaID="5132" cBy="605" cDate="12/06/2001 10:24:46 PST Thu">
+        <definition>COD: send a cablegram to</definition>
+        <sentenceCount annotated="9" total="207"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="cable"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" incorporatedFE="Means" POS="V" name="wire.v" ID="4486" lemmaID="44276" cBy="605" cDate="12/06/2001 10:25:48 PST Thu">
+        <definition>COD: send a telegram or cablegram to.</definition>
+        <sentenceCount annotated="1" total="150"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="wire"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Means" POS="V" name="phone.v" ID="4487" lemmaID="28785" cBy="605" cDate="12/06/2001 10:35:23 PST Thu">
+        <definition>COD: telephone.</definition>
+        <sentenceCount annotated="6" total="116"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="phone"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Means" POS="V" name="semaphore.v" ID="4488" lemmaID="35009" cBy="605" cDate="12/06/2001 07:16:51 PST Thu">
+        <definition>COD: send by semaphore or by signals resembling semaphore.</definition>
+        <sentenceCount annotated="5" total="23"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="semaphore"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Means" POS="V" name="telegraph.v" ID="4489" lemmaID="39734" cBy="605" cDate="12/06/2001 07:20:05 PST Thu">
+        <definition>COD: send (someone) a message by telegraph</definition>
+        <sentenceCount annotated="6" total="80"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="telegraph"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Means" POS="V" name="telex.v" ID="4490" lemmaID="39771" cBy="605" cDate="12/07/2001 06:38:17 PST Fri">
+        <definition>COD: send (a message) by telex</definition>
+        <sentenceCount annotated="6" total="85"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="telex"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Means" POS="V" name="radio.v" ID="4493" lemmaID="31660" cBy="605" cDate="12/07/2001 06:54:17 PST Fri">
+        <definition>COD: send a message by radio</definition>
+        <sentenceCount annotated="6" total="67"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="radio"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Means" POS="V" name="telephone.v" ID="7206" lemmaID="39754" cBy="296" cDate="08/12/2002 02:27:22 PDT Mon">
+        <definition>FN: send a message via the telephone</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="telephone"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="fax.v" ID="11146" lemmaID="49678" cBy="303" cDate="11/12/2004 04:36:23 PST Fri">
+        <definition>COD: send (a document) by fax.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="fax"/>
+    </lexUnit>
+</frame>

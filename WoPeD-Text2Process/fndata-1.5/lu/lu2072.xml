@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="peculation.n" ID="2072" frame="Theft" frameID="94" totalAnnotated="4" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="000000" bgColor="00BFFF" type="Extra-Thematic" abbrev="Freq" name="Frequency"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="Goods" name="Goods"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Inst" name="Instrument"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Mnr" name="Manner"/>
+            <FE fgColor="000000" bgColor="7FFF00" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Perp" name="Perpetrator"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Peripheral" abbrev="Reas" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Core" abbrev="Src" name="Source"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Vict" name="Victim"/>
+        </frame>
+    </header>
+    <definition>COD: the embezzlement of public funds.</definition>
+    <lexeme POS="N" name="peculation"/>
+    <valences>
+        <FERealization total="4">
+            <FE name="Goods"/>
+            <pattern total="3">
+                <valenceUnit GF="" PT="INI" FE="Goods"/>
+                <annoSet ID="48904"/>
+                <annoSet ID="48906"/>
+                <annoSet ID="48908"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Goods"/>
+                <annoSet ID="48910"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Perpetrator"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="INI" FE="Perpetrator"/>
+                <annoSet ID="48904"/>
+                <annoSet ID="48906"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Perpetrator"/>
+                <annoSet ID="48908"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Perpetrator"/>
+                <annoSet ID="48910"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="4">
+            <FE name="Goods"/>
+            <FE name="Perpetrator"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="INI" FE="Goods"/>
+                <valenceUnit GF="" PT="INI" FE="Perpetrator"/>
+                <annoSet ID="48904"/>
+                <annoSet ID="48906"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Goods"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Perpetrator"/>
+                <annoSet ID="48908"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Goods"/>
+                <valenceUnit GF="" PT="CNI" FE="Perpetrator"/>
+                <annoSet ID="48910"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-380-other">
+        <sentence sentNo="0" aPos="48277878" ID="200320">
+            <text>In one area -- the handling of government money -- the boundary between peculation and honest dealing was clearly marked . </text>
+            <annotationSet cDate="01/06/2003 06:43:13 PST Mon" status="UNANN" ID="48903">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PRP"/>
+                    <label end="5" start="3" name="CRD"/>
+                    <label end="10" start="7" name="NN1"/>
+                    <label end="13" start="12" name="PUN"/>
+                    <label end="17" start="15" name="AT0"/>
+                    <label end="26" start="19" name="NN1"/>
+                    <label end="29" start="28" name="PRF"/>
+                    <label end="40" start="31" name="NN0"/>
+                    <label end="46" start="42" name="NN1"/>
+                    <label end="49" start="48" name="PUN"/>
+                    <label end="53" start="51" name="AT0"/>
+                    <label end="62" start="55" name="NN1"/>
+                    <label end="70" start="64" name="PRP"/>
+                    <label end="81" start="72" name="NN1"/>
+                    <label end="85" start="83" name="CJC"/>
+                    <label end="92" start="87" name="AJ0"/>
+                    <label end="100" start="94" name="NN1"/>
+                    <label end="104" start="102" name="VBD"/>
+                    <label end="112" start="106" name="AV0"/>
+                    <label end="119" start="114" name="VVN"/>
+                    <label end="121" start="121" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 06:43:13 PST Mon" status="MANUAL" ID="48904">
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="451" itype="INI" name="Perpetrator"/>
+                    <label cBy="664" feID="453" itype="INI" name="Goods"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="81" start="72" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+                <layer rank="1" name="Other"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="88284628" ID="200321">
+            <text>There was opportunity for maladministration in terms of both efficiency and peculation . </text>
+            <annotationSet cDate="01/06/2003 06:43:13 PST Mon" status="UNANN" ID="48905">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="EX0"/>
+                    <label end="8" start="6" name="VBD"/>
+                    <label end="20" start="10" name="NN1"/>
+                    <label end="24" start="22" name="PRP"/>
+                    <label end="42" start="26" name="NN1"/>
+                    <label end="45" start="44" name="PRP"/>
+                    <label end="51" start="47" name="PRP"/>
+                    <label end="54" start="53" name="PRP"/>
+                    <label end="59" start="56" name="DT0"/>
+                    <label end="70" start="61" name="NN1"/>
+                    <label end="74" start="72" name="CJC"/>
+                    <label end="85" start="76" name="NN1"/>
+                    <label end="87" start="87" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 06:43:13 PST Mon" status="MANUAL" ID="48906">
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="451" itype="INI" name="Perpetrator"/>
+                    <label cBy="664" feID="453" itype="INI" name="Goods"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="85" start="76" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+                <layer rank="1" name="Other"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-429-lcoll-accused">
+        <sentence sentNo="0" aPos="8847139" ID="200322">
+            <text>Many other Forest wardens were accused of peculation , oppression or neglect . </text>
+            <annotationSet cDate="01/06/2003 06:43:13 PST Mon" status="UNANN" ID="48907">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="DT0"/>
+                    <label end="9" start="5" name="AJ0"/>
+                    <label end="16" start="11" name="NN1-NP0"/>
+                    <label end="24" start="18" name="NN2"/>
+                    <label end="29" start="26" name="VBD"/>
+                    <label end="37" start="31" name="AJ0-VVN"/>
+                    <label end="40" start="39" name="PRF"/>
+                    <label end="51" start="42" name="NN1"/>
+                    <label end="53" start="53" name="PUN"/>
+                    <label end="64" start="55" name="NN1"/>
+                    <label end="67" start="66" name="CJC"/>
+                    <label end="75" start="69" name="NN1-VVB"/>
+                    <label end="77" start="77" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 06:43:13 PST Mon" status="MANUAL" ID="48908">
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="451" end="24" start="0" name="Perpetrator"/>
+                    <label cBy="664" feID="453" itype="INI" name="Goods"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="24" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="24" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="51" start="42" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+                <layer rank="1" name="Other"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-429-rcoll-money">
+        <sentence sentNo="0" aPos="54375914" ID="200323">
+            <text>First , there was no public prosecutor at Athens , so like the Roman informers , the delatores , men like the demagogue Kleon took it on themselves to bring prosecutions for such offences as peculation of public money . </text>
+            <annotationSet cDate="01/06/2003 06:43:13 PST Mon" status="UNANN" ID="48909">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="ORD"/>
+                    <label end="6" start="6" name="PUN"/>
+                    <label end="12" start="8" name="EX0"/>
+                    <label end="16" start="14" name="VBD"/>
+                    <label end="19" start="18" name="AT0"/>
+                    <label end="26" start="21" name="AJ0"/>
+                    <label end="37" start="28" name="NN1"/>
+                    <label end="40" start="39" name="PRP"/>
+                    <label end="47" start="42" name="NP0"/>
+                    <label end="49" start="49" name="PUN"/>
+                    <label end="52" start="51" name="CJS"/>
+                    <label end="57" start="54" name="PRP"/>
+                    <label end="61" start="59" name="AT0"/>
+                    <label end="67" start="63" name="AJ0"/>
+                    <label end="77" start="69" name="NN2"/>
+                    <label end="79" start="79" name="PUN"/>
+                    <label end="83" start="81" name="AT0"/>
+                    <label end="93" start="85" name="NN2"/>
+                    <label end="95" start="95" name="PUN"/>
+                    <label end="99" start="97" name="NN2"/>
+                    <label end="104" start="101" name="PRP"/>
+                    <label end="108" start="106" name="AT0"/>
+                    <label end="118" start="110" name="NN1"/>
+                    <label end="124" start="120" name="NN1-NP0"/>
+                    <label end="129" start="126" name="VVD"/>
+                    <label end="132" start="131" name="PNP"/>
+                    <label end="135" start="134" name="PRP"/>
+                    <label end="146" start="137" name="PNX"/>
+                    <label end="149" start="148" name="TO0"/>
+                    <label end="155" start="151" name="VVI"/>
+                    <label end="168" start="157" name="NN2"/>
+                    <label end="172" start="170" name="PRP"/>
+                    <label end="177" start="174" name="DT0"/>
+                    <label end="186" start="179" name="NN2"/>
+                    <label end="189" start="188" name="CJS-PRP"/>
+                    <label end="200" start="191" name="NN1"/>
+                    <label end="203" start="202" name="PRF"/>
+                    <label end="210" start="205" name="AJ0"/>
+                    <label end="216" start="212" name="NN1"/>
+                    <label end="218" start="218" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 06:43:13 PST Mon" status="MANUAL" ID="48910">
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="453" end="216" start="202" name="Goods"/>
+                    <label cBy="664" feID="451" itype="CNI" name="Perpetrator"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="216" start="202" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="216" start="202" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="200" start="191" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+                <layer rank="1" name="Other"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" POS="V" name="tickle.v" ID="1337" frame="Perception_body" frameID="68" totalAnnotated="3" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Core" abbrev="BodP" name="Body_part"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Exp" name="Experiencer"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Extra-Thematic" abbrev="Cause" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Extra-Thematic" abbrev="Sub" name="Subregion"/>
+        </frame>
+    </header>
+    <definition>FN: to have a sensation as though being tickled.</definition>
+    <lexeme POS="V" name="tickle"/>
+    <valences>
+        <FERealization total="3">
+            <FE name="Body_part"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Body_part"/>
+                <annoSet ID="787418"/>
+                <annoSet ID="787422"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Body_part"/>
+                <annoSet ID="787518"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Degree"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[like]" FE="Degree"/>
+                <annoSet ID="787418"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Experiencer"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="2nd" FE="Experiencer"/>
+                <annoSet ID="787418"/>
+                <annoSet ID="787422"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Body_part"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Body_part"/>
+                <annoSet ID="787518"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Body_part"/>
+            <FE name="Degree"/>
+            <FE name="Experiencer"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Body_part"/>
+                <valenceUnit GF="Dep" PT="PP[like]" FE="Degree"/>
+                <valenceUnit GF="" PT="2nd" FE="Experiencer"/>
+                <annoSet ID="787418"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Body_part"/>
+            <FE name="Experiencer"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Body_part"/>
+                <valenceUnit GF="" PT="2nd" FE="Experiencer"/>
+                <annoSet ID="787422"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-570-np-ppbehind"/>
+    <subCorpus name="V-570-np-ppin"/>
+    <subCorpus name="V-570-np-ppon"/>
+    <subCorpus name="V-570-np-ppunder"/>
+    <subCorpus name="V-570-np-ppwith"/>
+    <subCorpus name="V-620-np-ppother"/>
+    <subCorpus name="V-650-np-pother"/>
+    <subCorpus name="V-660-trans-simple"/>
+    <subCorpus name="V-670-pass-by"/>
+    <subCorpus name="V-680-pass"/>
+    <subCorpus name="V-690-trans-other"/>
+    <subCorpus name="V-730-ppat"/>
+    <subCorpus name="V-730-ppin"/>
+    <subCorpus name="V-730-pplike">
+        <sentence sentNo="0" aPos="62588565" ID="653475">
+            <text>The end of my teddy-tail is tickling like mad , but it is not-nice for boys to scratch down below . </text>
+            <annotationSet cDate="01/07/2003 09:30:39 PST Tue" status="UNANN" ID="787417">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="6" start="4" name="NN1"/>
+                    <label end="9" start="8" name="PRF"/>
+                    <label end="12" start="11" name="DPS"/>
+                    <label end="23" start="14" name="NN1"/>
+                    <label end="26" start="25" name="VBZ"/>
+                    <label end="35" start="28" name="VVG"/>
+                    <label end="40" start="37" name="PRP"/>
+                    <label end="44" start="42" name="AJ0"/>
+                    <label end="46" start="46" name="PUN"/>
+                    <label end="50" start="48" name="CJC"/>
+                    <label end="53" start="52" name="PNP"/>
+                    <label end="56" start="55" name="VBZ"/>
+                    <label end="65" start="58" name="AJ0"/>
+                    <label end="69" start="67" name="PRP"/>
+                    <label end="74" start="71" name="NN2"/>
+                    <label end="77" start="76" name="TO0"/>
+                    <label end="85" start="79" name="VVI"/>
+                    <label end="90" start="87" name="AVP"/>
+                    <label end="96" start="92" name="AV0"/>
+                    <label end="98" start="98" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 09:30:39 PST Tue" status="MANUAL" ID="787418">
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="320" end="23" start="0" name="Body_part"/>
+                    <label cBy="605" feID="1961" end="44" start="37" name="Degree"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="23" start="0" name="Ext"/>
+                    <label end="44" start="37" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="23" start="0" name="NP"/>
+                    <label end="44" start="37" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="35" start="28" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+                <layer rank="2" name="FE">
+                    <label cBy="605" feID="319" end="12" start="11" name="Experiencer"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-730-ppwith">
+        <sentence sentNo="0" aPos="79443817" ID="653477">
+            <text>My feet tickle with the marching rhythm . </text>
+            <annotationSet cDate="01/07/2003 09:30:39 PST Tue" status="UNANN" ID="787421">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="DPS"/>
+                    <label end="6" start="3" name="NN2"/>
+                    <label end="13" start="8" name="VVB"/>
+                    <label end="18" start="15" name="PRP"/>
+                    <label end="22" start="20" name="AT0"/>
+                    <label end="31" start="24" name="AJ0"/>
+                    <label end="38" start="33" name="NN1"/>
+                    <label end="40" start="40" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 09:30:39 PST Tue" status="MANUAL" ID="787422">
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="320" end="6" start="0" name="Body_part"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="6" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="6" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="13" start="8" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+                <layer rank="2" name="FE">
+                    <label cBy="605" feID="319" end="1" start="0" name="Experiencer"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-780-ppother"/>
+    <subCorpus name="V-890-intrans-adverb"/>
+    <subCorpus name="V-900-other">
+        <sentence sentNo="0" aPos="101524451" ID="653525">
+            <text>He laughed softly , and it tickled up her spine . </text>
+            <annotationSet cDate="01/07/2003 09:30:47 PST Tue" status="UNANN" ID="787517">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="9" start="3" name="VVD"/>
+                    <label end="16" start="11" name="AV0"/>
+                    <label end="18" start="18" name="PUN"/>
+                    <label end="22" start="20" name="CJC"/>
+                    <label end="25" start="24" name="PNP"/>
+                    <label end="33" start="27" name="VVD"/>
+                    <label end="36" start="35" name="AVP"/>
+                    <label end="40" start="38" name="DPS"/>
+                    <label end="46" start="42" name="NN1"/>
+                    <label end="48" start="48" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 09:30:47 PST Tue" status="MANUAL" ID="787518">
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="320" end="46" start="35" name="Body_part"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="46" start="35" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="46" start="35" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other">
+                    <label end="25" start="24" name="Null"/>
+                </layer>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="33" start="27" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

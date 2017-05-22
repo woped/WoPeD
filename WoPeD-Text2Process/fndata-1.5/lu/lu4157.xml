@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" POS="N" name="belittling.n" ID="4157" frame="Judgment_communication" frameID="219" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Add" name="Addressee"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Com" name="Communicator"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Extra-Thematic" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Depictt" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Eval" name="Evaluee"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Core" abbrev="Exr" name="Expressor"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD73" type="Extra-Thematic" abbrev="" name="Extent_of_acclaim"/>
+            <FE fgColor="000000" bgColor="FFA500" type="Extra-Thematic" abbrev="Fre" name="Frequency"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Extra-Thematic" abbrev="" name="Grounds"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="IC" name="Internal_cause"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Core" abbrev="Medium" name="Medium"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core" abbrev="Reas" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Extra-Thematic" abbrev="Result" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Extra-Thematic" abbrev="Role" name="Role"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Top" name="Topic"/>
+        </frame>
+    </header>
+    <definition>FN: disparaging, representing a slight</definition>
+    <lexeme POS="N" name="belittling"/>
+    <semType name="Negative_judgment" ID="14"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Addressee"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Addressee"/>
+                <annoSet ID="818991"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Evaluee"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="2nd" FE="Evaluee"/>
+                <annoSet ID="818991"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Addressee"/>
+            <FE name="Evaluee"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Addressee"/>
+                <valenceUnit GF="" PT="2nd" FE="Evaluee"/>
+                <annoSet ID="818991"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-001-all">
+        <sentence sentNo="0" aPos="11862804" ID="670725">
+            <text>Sophronia 's behaviour is , then , linked to a belittling of Leapor 's poetry . </text>
+            <annotationSet cDate="01/07/2003 10:11:23 PST Tue" status="UNANN" ID="818990">
+                <layer rank="1" name="BNC">
+                    <label end="8" start="0" name="NP0"/>
+                    <label end="11" start="10" name="POS"/>
+                    <label end="21" start="13" name="NN1"/>
+                    <label end="24" start="23" name="VBZ"/>
+                    <label end="26" start="26" name="PUN"/>
+                    <label end="31" start="28" name="AV0"/>
+                    <label end="33" start="33" name="PUN"/>
+                    <label end="40" start="35" name="VVD-VVN"/>
+                    <label end="43" start="42" name="PRP"/>
+                    <label end="45" start="45" name="AT0"/>
+                    <label end="56" start="47" name="NN1"/>
+                    <label end="59" start="58" name="PRF"/>
+                    <label end="66" start="61" name="NP0"/>
+                    <label end="69" start="68" name="POS"/>
+                    <label end="76" start="71" name="NN1"/>
+                    <label end="78" start="78" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:11:23 PST Tue" status="MANUAL" ID="818991">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="1770" end="76" start="58" name="Addressee"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="76" start="58" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="76" start="58" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="56" start="47" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+                <layer rank="2" name="FE">
+                    <label cBy="669" feID="1777" end="76" start="58" name="Evaluee"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="01-T-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

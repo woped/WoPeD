@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="drowse.v" ID="4826" frame="Sleep" frameID="264" totalAnnotated="4" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Extra-Thematic" abbrev="Deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Dur" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Slp" name="Sleeper"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: no obj. be half asleep; doze. </definition>
+    <lexeme POS="V" name="drowse"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Duration"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[through]" FE="Duration"/>
+                <annoSet ID="1046544"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Place"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Place"/>
+                <annoSet ID="1046560"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Sleeper"/>
+            <pattern total="4">
+                <valenceUnit GF="Ext" PT="NP" FE="Sleeper"/>
+                <annoSet ID="1046544"/>
+                <annoSet ID="1046550"/>
+                <annoSet ID="1046556"/>
+                <annoSet ID="1046560"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Duration"/>
+            <FE name="Sleeper"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[through]" FE="Duration"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Sleeper"/>
+                <annoSet ID="1046544"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Place"/>
+            <FE name="Sleeper"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Place"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Sleeper"/>
+                <annoSet ID="1046560"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Sleeper"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Sleeper"/>
+                <annoSet ID="1046550"/>
+                <annoSet ID="1046556"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-001-all">
+        <sentence sentNo="0" aPos="8637639" ID="793939">
+            <text>Roped perilously to the ice face , the German pair drowsed through the night . </text>
+            <annotationSet cDate="01/07/2003 02:48:35 PST Tue" status="UNANN" ID="1046543">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="VVD"/>
+                    <label end="15" start="6" name="AV0"/>
+                    <label end="18" start="17" name="PRP"/>
+                    <label end="22" start="20" name="AT0"/>
+                    <label end="26" start="24" name="NN1"/>
+                    <label end="31" start="28" name="NN1"/>
+                    <label end="33" start="33" name="PUN"/>
+                    <label end="37" start="35" name="AT0"/>
+                    <label end="44" start="39" name="AJ0-NN1"/>
+                    <label end="49" start="46" name="NN0"/>
+                    <label end="57" start="51" name="VVD"/>
+                    <label end="65" start="59" name="PRP"/>
+                    <label end="69" start="67" name="AT0"/>
+                    <label end="75" start="71" name="NN1"/>
+                    <label end="77" start="77" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:48:35 PST Tue" status="MANUAL" ID="1046544">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="2282" end="49" start="35" name="Sleeper"/>
+                    <label cBy="669" feID="2283" end="75" start="59" name="Duration"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="49" start="35" name="Ext"/>
+                    <label end="75" start="59" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="49" start="35" name="NP"/>
+                    <label end="75" start="59" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="57" start="51" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="58763659" ID="793942">
+            <text>The shop gloomed behind its blinds and the parakeet drowsed . </text>
+            <annotationSet cDate="01/07/2003 02:48:36 PST Tue" status="UNANN" ID="1046549">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="7" start="4" name="NN1"/>
+                    <label end="15" start="9" name="VVD-VVN"/>
+                    <label end="22" start="17" name="PRP"/>
+                    <label end="26" start="24" name="DPS"/>
+                    <label end="33" start="28" name="NN2"/>
+                    <label end="37" start="35" name="CJC"/>
+                    <label end="41" start="39" name="AT0"/>
+                    <label end="50" start="43" name="NN1"/>
+                    <label end="58" start="52" name="VVD"/>
+                    <label end="60" start="60" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:48:36 PST Tue" status="MANUAL" ID="1046550">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="2282" end="50" start="39" name="Sleeper"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="50" start="39" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="50" start="39" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="58" start="52" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="76491504" ID="793945">
+            <text>and you drowse and mutter beside me . </text>
+            <annotationSet cDate="01/07/2003 02:48:36 PST Tue" status="UNANN" ID="1046555">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="CJC"/>
+                    <label end="6" start="4" name="PNP"/>
+                    <label end="13" start="8" name="VVB"/>
+                    <label end="17" start="15" name="CJC"/>
+                    <label end="24" start="19" name="NN1-VVB"/>
+                    <label end="31" start="26" name="PRP"/>
+                    <label end="34" start="33" name="PNP"/>
+                    <label end="36" start="36" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:48:36 PST Tue" status="MANUAL" ID="1046556">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="2282" end="6" start="4" name="Sleeper"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="6" start="4" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="6" start="4" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="13" start="8" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="97272286" ID="793947">
+            <text>Exhausted by their exercise , they were content to drowse in the sun . </text>
+            <annotationSet cDate="01/07/2003 02:48:36 PST Tue" status="UNANN" ID="1046559">
+                <layer rank="1" name="BNC">
+                    <label end="8" start="0" name="VVN"/>
+                    <label end="11" start="10" name="PRP"/>
+                    <label end="17" start="13" name="DPS"/>
+                    <label end="26" start="19" name="NN1"/>
+                    <label end="28" start="28" name="PUN"/>
+                    <label end="33" start="30" name="PNP"/>
+                    <label end="38" start="35" name="VBD"/>
+                    <label end="46" start="40" name="AJ0"/>
+                    <label end="49" start="48" name="TO0"/>
+                    <label end="56" start="51" name="VVI"/>
+                    <label end="59" start="58" name="PRP"/>
+                    <label end="63" start="61" name="AT0"/>
+                    <label end="67" start="65" name="NN1"/>
+                    <label end="69" start="69" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:48:36 PST Tue" status="MANUAL" ID="1046560">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="2285" end="67" start="58" name="Place"/>
+                    <label cBy="669" feID="2282" end="33" start="30" name="Sleeper"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="67" start="58" name="Dep"/>
+                    <label end="33" start="30" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="67" start="58" name="PP"/>
+                    <label end="33" start="30" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="56" start="51" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

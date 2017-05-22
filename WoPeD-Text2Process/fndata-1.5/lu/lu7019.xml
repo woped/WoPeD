@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="A" name="festooned.a" ID="7019" frame="Abounding_with" frameID="262" totalAnnotated="7" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Loc" name="Location"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="Thm" name="Theme"/>
+            <FE fgColor="FFFF00" bgColor="FFA500" type="Peripheral" abbrev="" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: adorned with festoons</definition>
+    <lexeme POS="A" name="festooned"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Degree"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Degree"/>
+                <annoSet ID="1558951"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="7">
+            <FE name="Location"/>
+            <pattern total="7">
+                <valenceUnit GF="Ext" PT="NP" FE="Location"/>
+                <annoSet ID="1558925"/>
+                <annoSet ID="1558939"/>
+                <annoSet ID="1558951"/>
+                <annoSet ID="1558965"/>
+                <annoSet ID="1558999"/>
+                <annoSet ID="1559007"/>
+                <annoSet ID="1559019"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="7">
+            <FE name="Theme"/>
+            <pattern total="7">
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Theme"/>
+                <annoSet ID="1558925"/>
+                <annoSet ID="1558939"/>
+                <annoSet ID="1558951"/>
+                <annoSet ID="1558965"/>
+                <annoSet ID="1558999"/>
+                <annoSet ID="1559007"/>
+                <annoSet ID="1559019"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Degree"/>
+            <FE name="Location"/>
+            <FE name="Location"/>
+            <FE name="Theme"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Degree"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Location"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Location"/>
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Theme"/>
+                <annoSet ID="1558951"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="6">
+            <FE name="Location"/>
+            <FE name="Theme"/>
+            <pattern total="6">
+                <valenceUnit GF="Ext" PT="NP" FE="Location"/>
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Theme"/>
+                <annoSet ID="1558925"/>
+                <annoSet ID="1558939"/>
+                <annoSet ID="1558965"/>
+                <annoSet ID="1558999"/>
+                <annoSet ID="1559007"/>
+                <annoSet ID="1559019"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="A-001-all">
+        <sentence sentNo="0" aPos="6095449" ID="1053760">
+            <text>Every inch of the wire is festooned with cartoons of Mikhail Gorbachev as Stalin , Hitler or Saddam Hussein . </text>
+            <annotationSet cDate="01/08/2003 12:33:36 PST Wed" status="UNANN" ID="1558924">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="AT0"/>
+                    <label end="9" start="6" name="NN1"/>
+                    <label end="12" start="11" name="PRF"/>
+                    <label end="16" start="14" name="AT0"/>
+                    <label end="21" start="18" name="NN1"/>
+                    <label end="24" start="23" name="VBZ"/>
+                    <label end="34" start="26" name="VVN"/>
+                    <label end="39" start="36" name="PRP"/>
+                    <label end="48" start="41" name="NN2"/>
+                    <label end="51" start="50" name="PRF"/>
+                    <label end="59" start="53" name="NP0"/>
+                    <label end="69" start="61" name="NP0"/>
+                    <label end="72" start="71" name="CJS-PRP"/>
+                    <label end="79" start="74" name="NP0"/>
+                    <label end="81" start="81" name="PUN"/>
+                    <label end="88" start="83" name="NP0"/>
+                    <label end="91" start="90" name="CJC"/>
+                    <label end="98" start="93" name="NP0"/>
+                    <label end="106" start="100" name="NP0"/>
+                    <label end="108" start="108" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:33:36 PST Wed" status="MANUAL" ID="1558925">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2261" end="21" start="0" name="Location"/>
+                    <label cBy="618" feID="2260" end="106" start="36" name="Theme"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="21" start="0" name="Ext"/>
+                    <label end="106" start="36" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="21" start="0" name="NP"/>
+                    <label end="106" start="36" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="34" start="26" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj">
+                    <label end="24" start="23" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="11227198" ID="1053767">
+            <text>Although the exterior of the Oberland is very traditional with shuttered windows festooned with flowers and the interior decor is quite modern . </text>
+            <annotationSet cDate="01/08/2003 12:33:39 PST Wed" status="UNANN" ID="1558938">
+                <layer rank="1" name="BNC">
+                    <label end="7" start="0" name="CJS"/>
+                    <label end="11" start="9" name="AT0"/>
+                    <label end="20" start="13" name="NN1"/>
+                    <label end="23" start="22" name="PRF"/>
+                    <label end="27" start="25" name="AT0"/>
+                    <label end="36" start="29" name="NN1-NP0"/>
+                    <label end="39" start="38" name="VBZ"/>
+                    <label end="44" start="41" name="AV0"/>
+                    <label end="56" start="46" name="AJ0"/>
+                    <label end="61" start="58" name="PRP"/>
+                    <label end="71" start="63" name="AJ0"/>
+                    <label end="79" start="73" name="NN2"/>
+                    <label end="89" start="81" name="VVD-VVN"/>
+                    <label end="94" start="91" name="PRP"/>
+                    <label end="102" start="96" name="NN2"/>
+                    <label end="106" start="104" name="CJC"/>
+                    <label end="110" start="108" name="AT0"/>
+                    <label end="119" start="112" name="AJ0"/>
+                    <label end="125" start="121" name="NN1"/>
+                    <label end="128" start="127" name="VBZ"/>
+                    <label end="134" start="130" name="AV0"/>
+                    <label end="141" start="136" name="AJ0"/>
+                    <label end="143" start="143" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:33:39 PST Wed" status="MANUAL" ID="1558939">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2261" end="79" start="63" name="Location"/>
+                    <label cBy="618" feID="2260" end="102" start="91" name="Theme"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="79" start="63" name="Ext"/>
+                    <label end="102" start="91" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="79" start="63" name="NP"/>
+                    <label end="102" start="91" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="89" start="81" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="14270934" ID="1053773">
+            <text>He had , according to rumour , a corner which was completely festooned with his own photographs ; his own personal shrine , his own glorification of his own status . </text>
+            <annotationSet cDate="01/08/2003 12:33:39 PST Wed" status="UNANN" ID="1558950">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="5" start="3" name="VHD"/>
+                    <label end="7" start="7" name="PUN"/>
+                    <label end="17" start="9" name="PRP"/>
+                    <label end="20" start="19" name="PRP"/>
+                    <label end="27" start="22" name="NN1"/>
+                    <label end="29" start="29" name="PUN"/>
+                    <label end="31" start="31" name="AT0"/>
+                    <label end="38" start="33" name="NN1"/>
+                    <label end="44" start="40" name="DTQ"/>
+                    <label end="48" start="46" name="VBD"/>
+                    <label end="59" start="50" name="AV0"/>
+                    <label end="69" start="61" name="VVN"/>
+                    <label end="74" start="71" name="PRP"/>
+                    <label end="78" start="76" name="DPS"/>
+                    <label end="82" start="80" name="DT0"/>
+                    <label end="94" start="84" name="NN2"/>
+                    <label end="96" start="96" name="PUN"/>
+                    <label end="100" start="98" name="DPS"/>
+                    <label end="104" start="102" name="DT0"/>
+                    <label end="113" start="106" name="AJ0"/>
+                    <label end="120" start="115" name="NN1"/>
+                    <label end="122" start="122" name="PUN"/>
+                    <label end="126" start="124" name="DPS"/>
+                    <label end="130" start="128" name="DT0"/>
+                    <label end="144" start="132" name="NN1"/>
+                    <label end="147" start="146" name="PRF"/>
+                    <label end="151" start="149" name="DPS"/>
+                    <label end="155" start="153" name="DT0"/>
+                    <label end="162" start="157" name="NN1"/>
+                    <label end="164" start="164" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:33:39 PST Wed" status="MANUAL" ID="1558951">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2261" end="38" start="31" name="Location"/>
+                    <label cBy="618" feID="2271" end="59" start="50" name="Degree"/>
+                    <label cBy="618" feID="2260" end="94" start="71" name="Theme"/>
+                    <label cBy="309" feID="2261" end="44" start="40" name="Location"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="38" start="31" name="Ext"/>
+                    <label end="59" start="50" name="Dep"/>
+                    <label end="94" start="71" name="Dep"/>
+                    <label end="44" start="40" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="38" start="31" name="NP"/>
+                    <label end="59" start="50" name="AVP"/>
+                    <label end="94" start="71" name="PP"/>
+                    <label end="44" start="40" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other">
+                    <label end="38" start="31" name="Ant"/>
+                    <label end="44" start="40" name="Rel"/>
+                </layer>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="69" start="61" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj">
+                    <label end="48" start="46" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="33463800" ID="1053780">
+            <text>On the main floor a lorry serves as a DJ booth ( cab ) and stage ( trailer ) , and the walls and ceiling are festooned with white camouflage netting . </text>
+            <annotationSet cDate="01/08/2003 12:33:40 PST Wed" status="UNANN" ID="1558964">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PRP"/>
+                    <label end="5" start="3" name="AT0"/>
+                    <label end="10" start="7" name="AJ0"/>
+                    <label end="16" start="12" name="NN1"/>
+                    <label end="18" start="18" name="AT0"/>
+                    <label end="24" start="20" name="NN1"/>
+                    <label end="31" start="26" name="VVZ"/>
+                    <label end="34" start="33" name="PRP"/>
+                    <label end="36" start="36" name="AT0"/>
+                    <label end="39" start="38" name="NN1"/>
+                    <label end="45" start="41" name="NN1"/>
+                    <label end="47" start="47" name="PUL"/>
+                    <label end="51" start="49" name="NN1-VVB"/>
+                    <label end="53" start="53" name="PUR"/>
+                    <label end="57" start="55" name="CJC"/>
+                    <label end="63" start="59" name="NN1"/>
+                    <label end="65" start="65" name="PUL"/>
+                    <label end="73" start="67" name="NN1"/>
+                    <label end="75" start="75" name="PUR"/>
+                    <label end="77" start="77" name="PUN"/>
+                    <label end="81" start="79" name="CJC"/>
+                    <label end="85" start="83" name="AT0"/>
+                    <label end="91" start="87" name="NN2"/>
+                    <label end="95" start="93" name="CJC"/>
+                    <label end="103" start="97" name="NN1"/>
+                    <label end="107" start="105" name="VBB"/>
+                    <label end="117" start="109" name="VVN"/>
+                    <label end="122" start="119" name="PRP"/>
+                    <label end="128" start="124" name="AJ0"/>
+                    <label end="139" start="130" name="NN1"/>
+                    <label end="147" start="141" name="NN1"/>
+                    <label end="149" start="149" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:33:40 PST Wed" status="MANUAL" ID="1558965">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2261" end="103" start="83" name="Location"/>
+                    <label cBy="618" feID="2260" end="147" start="119" name="Theme"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="103" start="83" name="Ext"/>
+                    <label end="147" start="119" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="103" start="83" name="NP"/>
+                    <label end="147" start="119" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="117" start="109" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj">
+                    <label end="107" start="105" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="59997088" ID="1053797">
+            <text>A man came out with a big bouquet of Regale lilies , festooned with white ribbons . </text>
+            <annotationSet cDate="01/08/2003 12:33:42 PST Wed" status="UNANN" ID="1558998">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="AT0"/>
+                    <label end="4" start="2" name="NN1"/>
+                    <label end="9" start="6" name="VVD"/>
+                    <label end="13" start="11" name="AVP"/>
+                    <label end="18" start="15" name="PRP"/>
+                    <label end="20" start="20" name="AT0"/>
+                    <label end="24" start="22" name="AJ0"/>
+                    <label end="32" start="26" name="NN1"/>
+                    <label end="35" start="34" name="PRF"/>
+                    <label end="42" start="37" name="VVB"/>
+                    <label end="49" start="44" name="NN2"/>
+                    <label end="51" start="51" name="PUN"/>
+                    <label end="61" start="53" name="VVD-VVN"/>
+                    <label end="66" start="63" name="PRP"/>
+                    <label end="72" start="68" name="AJ0"/>
+                    <label end="80" start="74" name="NN2"/>
+                    <label end="82" start="82" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:33:42 PST Wed" status="MANUAL" ID="1558999">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2261" end="49" start="20" name="Location"/>
+                    <label cBy="618" feID="2260" end="80" start="63" name="Theme"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="49" start="20" name="Ext"/>
+                    <label end="80" start="63" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="49" start="20" name="NP"/>
+                    <label end="80" start="63" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="61" start="53" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="66207543" ID="1053801">
+            <text>In the west , lichens are taken for granted -- bushes and trees are often festooned with them -- while in the drier east , fewer species survive , partly also because of acidic air pollution . </text>
+            <annotationSet cDate="01/08/2003 12:33:43 PST Wed" status="UNANN" ID="1559006">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PRP"/>
+                    <label end="5" start="3" name="AT0"/>
+                    <label end="10" start="7" name="NN1"/>
+                    <label end="12" start="12" name="PUN"/>
+                    <label end="20" start="14" name="NN2"/>
+                    <label end="24" start="22" name="VBB"/>
+                    <label end="30" start="26" name="VVN"/>
+                    <label end="34" start="32" name="CJS-PRP"/>
+                    <label end="42" start="36" name="VVN"/>
+                    <label end="45" start="44" name="PUN"/>
+                    <label end="52" start="47" name="NN2"/>
+                    <label end="56" start="54" name="CJC"/>
+                    <label end="62" start="58" name="NN2"/>
+                    <label end="66" start="64" name="VBB"/>
+                    <label end="72" start="68" name="AV0"/>
+                    <label end="82" start="74" name="VVN"/>
+                    <label end="87" start="84" name="PRP"/>
+                    <label end="92" start="89" name="PNP"/>
+                    <label end="95" start="94" name="PUN"/>
+                    <label end="101" start="97" name="CJS"/>
+                    <label end="104" start="103" name="PRP"/>
+                    <label end="108" start="106" name="AT0"/>
+                    <label end="114" start="110" name="AJC"/>
+                    <label end="119" start="116" name="NN1"/>
+                    <label end="121" start="121" name="PUN"/>
+                    <label end="127" start="123" name="DT0"/>
+                    <label end="135" start="129" name="NN0"/>
+                    <label end="143" start="137" name="VVB"/>
+                    <label end="145" start="145" name="PUN"/>
+                    <label end="152" start="147" name="AV0"/>
+                    <label end="157" start="154" name="AV0"/>
+                    <label end="165" start="159" name="PRP"/>
+                    <label end="168" start="167" name="PRP"/>
+                    <label end="175" start="170" name="AJ0"/>
+                    <label end="179" start="177" name="NN1"/>
+                    <label end="189" start="181" name="NN1"/>
+                    <label end="191" start="191" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:33:43 PST Wed" status="MANUAL" ID="1559007">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2261" end="62" start="47" name="Location"/>
+                    <label cBy="618" feID="2260" end="92" start="84" name="Theme"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="62" start="47" name="Ext"/>
+                    <label end="92" start="84" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="62" start="47" name="NP"/>
+                    <label end="92" start="84" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="82" start="74" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj">
+                    <label end="66" start="64" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="80765043" ID="1053807">
+            <text>The room was festooned with cobwebs , the air musty and thick with dust and disuse . </text>
+            <annotationSet cDate="01/08/2003 12:33:43 PST Wed" status="UNANN" ID="1559018">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="7" start="4" name="NN1"/>
+                    <label end="11" start="9" name="VBD"/>
+                    <label end="21" start="13" name="VVN"/>
+                    <label end="26" start="23" name="PRP"/>
+                    <label end="34" start="28" name="NN2"/>
+                    <label end="36" start="36" name="PUN"/>
+                    <label end="40" start="38" name="AT0"/>
+                    <label end="44" start="42" name="NN1"/>
+                    <label end="50" start="46" name="AJ0"/>
+                    <label end="54" start="52" name="CJC"/>
+                    <label end="60" start="56" name="AJ0-AV0"/>
+                    <label end="65" start="62" name="PRP"/>
+                    <label end="70" start="67" name="NN1"/>
+                    <label end="74" start="72" name="CJC"/>
+                    <label end="81" start="76" name="NN1-VVB"/>
+                    <label end="83" start="83" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:33:43 PST Wed" status="MANUAL" ID="1559019">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2261" end="7" start="0" name="Location"/>
+                    <label cBy="618" feID="2260" end="34" start="23" name="Theme"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="7" start="0" name="Ext"/>
+                    <label end="34" start="23" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="7" start="0" name="NP"/>
+                    <label end="34" start="23" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="21" start="13" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj">
+                    <label end="11" start="9" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

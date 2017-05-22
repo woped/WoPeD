@@ -1,0 +1,756 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="possessor.n" ID="2432" frame="Possession" frameID="118" totalAnnotated="11" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Extra-Thematic" abbrev="" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Extra-Thematic" abbrev="" name="Explanation"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Own" name="Owner"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Pos" name="Possession"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: one who possesses s.t.</definition>
+    <lexeme POS="N" name="possessor"/>
+    <valences>
+        <governor type="Sup" lemma="find">
+            <annoSet ID="1841809"/>
+        </governor>
+        <FERealization total="2">
+            <FE name="Depictive"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Depictive"/>
+                <annoSet ID="1841789"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="VPfin" FE="Depictive"/>
+                <annoSet ID="1841789"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="VPbrst" FE="Depictive"/>
+                <annoSet ID="1841689"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Manner"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="A" FE="Manner"/>
+                <annoSet ID="1841703"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="10">
+            <FE name="Owner"/>
+            <pattern total="7">
+                <valenceUnit GF="" PT="DEN" FE="Owner"/>
+                <annoSet ID="1841685"/>
+                <annoSet ID="1841689"/>
+                <annoSet ID="1841703"/>
+                <annoSet ID="1841783"/>
+                <annoSet ID="1841789"/>
+                <annoSet ID="1841803"/>
+                <annoSet ID="1841809"/>
+            </pattern>
+            <pattern total="4">
+                <valenceUnit GF="Ext" PT="NP" FE="Owner"/>
+                <annoSet ID="1841697"/>
+                <annoSet ID="1841775"/>
+                <annoSet ID="1841781"/>
+                <annoSet ID="1841809"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="11">
+            <FE name="Possession"/>
+            <pattern total="6">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Possession"/>
+                <annoSet ID="1841697"/>
+                <annoSet ID="1841703"/>
+                <annoSet ID="1841775"/>
+                <annoSet ID="1841781"/>
+                <annoSet ID="1841789"/>
+                <annoSet ID="1841809"/>
+            </pattern>
+            <pattern total="3">
+                <valenceUnit GF="Gen" PT="Poss" FE="Possession"/>
+                <annoSet ID="1841689"/>
+                <annoSet ID="1841771"/>
+                <annoSet ID="1841803"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="" PT="DNI" FE="Possession"/>
+                <annoSet ID="1841685"/>
+                <annoSet ID="1841783"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Depictive"/>
+            <FE name="Depictive"/>
+            <FE name="Owner"/>
+            <FE name="Possession"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Depictive"/>
+                <valenceUnit GF="Dep" PT="VPfin" FE="Depictive"/>
+                <valenceUnit GF="" PT="DEN" FE="Owner"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Possession"/>
+                <annoSet ID="1841789"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Depictive"/>
+            <FE name="Owner"/>
+            <FE name="Possession"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="VPbrst" FE="Depictive"/>
+                <valenceUnit GF="" PT="DEN" FE="Owner"/>
+                <valenceUnit GF="Gen" PT="Poss" FE="Possession"/>
+                <annoSet ID="1841689"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Manner"/>
+            <FE name="Owner"/>
+            <FE name="Possession"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="A" FE="Manner"/>
+                <valenceUnit GF="" PT="DEN" FE="Owner"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Possession"/>
+                <annoSet ID="1841703"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Owner"/>
+            <FE name="Owner"/>
+            <FE name="Possession"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Owner"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Owner"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Possession"/>
+                <annoSet ID="1841809"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="6">
+            <FE name="Owner"/>
+            <FE name="Possession"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="DEN" FE="Owner"/>
+                <valenceUnit GF="" PT="DNI" FE="Possession"/>
+                <annoSet ID="1841685"/>
+                <annoSet ID="1841783"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Owner"/>
+                <valenceUnit GF="Gen" PT="Poss" FE="Possession"/>
+                <annoSet ID="1841803"/>
+            </pattern>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="NP" FE="Owner"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Possession"/>
+                <annoSet ID="1841697"/>
+                <annoSet ID="1841775"/>
+                <annoSet ID="1841781"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Possession"/>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Possession"/>
+                <annoSet ID="1841771"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="123" aPos="0" ID="1197247">
+            <text>A thief may therefore steal from several people : the owner , the possessor , and the person in physical control .</text>
+            <annotationSet cDate="03/20/2003 02:19:04 PST Thu" status="UNANN" ID="1841684">
+                <layer rank="1" name="PENN">
+                    <label end="0" start="0" name="dt"/>
+                    <label end="6" start="2" name="nn"/>
+                    <label end="10" start="8" name="md"/>
+                    <label end="20" start="12" name="rb"/>
+                    <label end="26" start="22" name="VV"/>
+                    <label end="31" start="28" name="in"/>
+                    <label end="39" start="33" name="jj"/>
+                    <label end="46" start="41" name="nns"/>
+                    <label end="48" start="48" name=":"/>
+                    <label end="52" start="50" name="dt"/>
+                    <label end="58" start="54" name="nn"/>
+                    <label end="60" start="60" name=","/>
+                    <label end="64" start="62" name="dt"/>
+                    <label end="74" start="66" name="nn"/>
+                    <label end="76" start="76" name=","/>
+                    <label end="80" start="78" name="cc"/>
+                    <label end="84" start="82" name="dt"/>
+                    <label end="91" start="86" name="nn"/>
+                    <label end="94" start="93" name="in"/>
+                    <label end="103" start="96" name="jj"/>
+                    <label end="111" start="105" name="nn"/>
+                    <label end="113" start="113" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="03/20/2003 02:19:04 PST Thu" status="MANUAL" ID="1841685">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="74" start="66" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="303" feID="573" end="74" start="66" name="Owner"/>
+                    <label cBy="303" feID="582" itype="DNI" name="Possession"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="8" paragNo="684" aPos="0" ID="1197249">
+            <text>She had been nineteen like me , and youth , as I knew , even when its possessor is unattractive , has an appeal of its own .</text>
+            <annotationSet cDate="03/20/2003 02:19:07 PST Thu" status="UNANN" ID="1841688">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="PP"/>
+                    <label end="6" start="4" name="VHD"/>
+                    <label end="11" start="8" name="VBN"/>
+                    <label end="20" start="13" name="cd"/>
+                    <label end="25" start="22" name="in"/>
+                    <label end="28" start="27" name="PP"/>
+                    <label end="30" start="30" name=","/>
+                    <label end="34" start="32" name="cc"/>
+                    <label end="40" start="36" name="nn"/>
+                    <label end="42" start="42" name=","/>
+                    <label end="45" start="44" name="in"/>
+                    <label end="47" start="47" name="PP"/>
+                    <label end="52" start="49" name="VVD"/>
+                    <label end="54" start="54" name=","/>
+                    <label end="59" start="56" name="rb"/>
+                    <label end="64" start="61" name="wrb"/>
+                    <label end="68" start="66" name="PP$"/>
+                    <label end="78" start="70" name="nn"/>
+                    <label end="81" start="80" name="VBZ"/>
+                    <label end="94" start="83" name="jj"/>
+                    <label end="96" start="96" name=","/>
+                    <label end="100" start="98" name="VHZ"/>
+                    <label end="103" start="102" name="dt"/>
+                    <label end="110" start="105" name="nn"/>
+                    <label end="113" start="112" name="in"/>
+                    <label end="117" start="115" name="PP$"/>
+                    <label end="121" start="119" name="jj"/>
+                    <label end="123" start="123" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="03/20/2003 02:19:08 PST Thu" status="MANUAL" ID="1841689">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="78" start="70" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="303" feID="582" end="68" start="66" name="Possession"/>
+                    <label cBy="303" feID="573" end="78" start="70" name="Owner"/>
+                    <label cBy="303" feID="584" end="94" start="80" name="Depictive"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="68" start="66" name="Gen"/>
+                    <label end="94" start="80" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="68" start="66" name="Poss"/>
+                    <label end="94" start="80" name="VPbrst"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="66" aPos="0" ID="1197253">
+            <text>He was the possessor of learning which he shared unselfishly with his students , making them feel it was just as much theirs as his .</text>
+            <annotationSet cDate="03/20/2003 02:19:12 PST Thu" status="UNANN" ID="1841696">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="5" start="3" name="VBD"/>
+                    <label end="9" start="7" name="dt"/>
+                    <label end="19" start="11" name="nn"/>
+                    <label end="22" start="21" name="in"/>
+                    <label end="31" start="24" name="VVG"/>
+                    <label end="37" start="33" name="wdt"/>
+                    <label end="40" start="39" name="PP"/>
+                    <label end="47" start="42" name="VVD"/>
+                    <label end="59" start="49" name="rb"/>
+                    <label end="64" start="61" name="in"/>
+                    <label end="68" start="66" name="PP$"/>
+                    <label end="77" start="70" name="nns"/>
+                    <label end="79" start="79" name=","/>
+                    <label end="86" start="81" name="VVG"/>
+                    <label end="91" start="88" name="PP"/>
+                    <label end="96" start="93" name="VVP"/>
+                    <label end="99" start="98" name="PP"/>
+                    <label end="103" start="101" name="VBD"/>
+                    <label end="108" start="105" name="rb"/>
+                    <label end="111" start="110" name="rb"/>
+                    <label end="116" start="113" name="rb"/>
+                    <label end="123" start="118" name="jj"/>
+                    <label end="126" start="125" name="in"/>
+                    <label end="130" start="128" name="PP$"/>
+                    <label end="132" start="132" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="03/20/2003 02:19:13 PST Thu" status="MANUAL" ID="1841697">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="19" start="11" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="303" feID="582" end="77" start="21" name="Possession"/>
+                    <label cBy="395" feID="573" end="1" start="0" name="Owner"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="77" start="21" name="Dep"/>
+                    <label end="1" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="77" start="21" name="PP"/>
+                    <label end="1" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="5" start="3" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="245" aPos="0" ID="1197256">
+            <text>We wended our way home , glowing with triumph ( and blood pressure ! ) , each of us the proud possessor of a plastic , imitation silver , trophy .</text>
+            <annotationSet cDate="03/20/2003 02:19:19 PST Thu" status="UNANN" ID="1841702">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="8" start="3" name="VVD"/>
+                    <label end="12" start="10" name="PP$"/>
+                    <label end="16" start="14" name="nn"/>
+                    <label end="21" start="18" name="nn"/>
+                    <label end="23" start="23" name=","/>
+                    <label end="31" start="25" name="VVG"/>
+                    <label end="36" start="33" name="in"/>
+                    <label end="44" start="38" name="nn"/>
+                    <label end="46" start="46" name="("/>
+                    <label end="50" start="48" name="cc"/>
+                    <label end="56" start="52" name="nn"/>
+                    <label end="65" start="58" name="nn"/>
+                    <label end="67" start="67" name="sent"/>
+                    <label end="69" start="69" name=")"/>
+                    <label end="71" start="71" name=","/>
+                    <label end="76" start="73" name="dt"/>
+                    <label end="79" start="78" name="in"/>
+                    <label end="82" start="81" name="PP"/>
+                    <label end="86" start="84" name="dt"/>
+                    <label end="92" start="88" name="jj"/>
+                    <label end="102" start="94" name="nn"/>
+                    <label end="105" start="104" name="in"/>
+                    <label end="107" start="107" name="dt"/>
+                    <label end="115" start="109" name="nn"/>
+                    <label end="117" start="117" name=","/>
+                    <label end="127" start="119" name="nn"/>
+                    <label end="134" start="129" name="nn"/>
+                    <label end="136" start="136" name=","/>
+                    <label end="143" start="138" name="nn"/>
+                    <label end="145" start="145" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="03/20/2003 02:19:20 PST Thu" status="MANUAL" ID="1841703">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="102" start="94" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="303" feID="587" end="92" start="88" name="Manner"/>
+                    <label cBy="303" feID="573" end="102" start="94" name="Owner"/>
+                    <label cBy="303" feID="582" end="143" start="104" name="Possession"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="92" start="88" name="Dep"/>
+                    <label end="143" start="104" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="92" start="88" name="A"/>
+                    <label end="143" start="104" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="151" aPos="0" ID="1197290">
+            <text>Natural selection favoured those ancestral caddis genes that caused their possessors to build effective houses .</text>
+            <annotationSet cDate="03/20/2003 02:20:00 PST Thu" status="UNANN" ID="1841770">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="0" name="jj"/>
+                    <label end="16" start="8" name="nn"/>
+                    <label end="25" start="18" name="VVD"/>
+                    <label end="31" start="27" name="dt"/>
+                    <label end="41" start="33" name="jj"/>
+                    <label end="48" start="43" name="nn"/>
+                    <label end="54" start="50" name="nns"/>
+                    <label end="59" start="56" name="wdt"/>
+                    <label end="66" start="61" name="VVD"/>
+                    <label end="72" start="68" name="PP$"/>
+                    <label end="83" start="74" name="nns"/>
+                    <label end="86" start="85" name="to"/>
+                    <label end="92" start="88" name="VV"/>
+                    <label end="102" start="94" name="jj"/>
+                    <label end="109" start="104" name="nns"/>
+                    <label end="111" start="111" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="03/20/2003 02:20:01 PST Thu" status="MANUAL" ID="1841771">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="83" start="74" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="303" feID="582" end="72" start="68" name="Possession"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="72" start="68" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="72" start="68" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="5" paragNo="617" aPos="0" ID="1197292">
+            <text>Lagerfeld 's father , who was already sixty when Karl was born , was Swedish and the possessor of a considerable fortune , made from a dairy company .</text>
+            <annotationSet cDate="03/20/2003 02:20:02 PST Thu" status="UNANN" ID="1841774">
+                <layer rank="1" name="PENN">
+                    <label end="8" start="0" name="NP"/>
+                    <label end="11" start="10" name="POS"/>
+                    <label end="18" start="13" name="nn"/>
+                    <label end="20" start="20" name=","/>
+                    <label end="24" start="22" name="wp"/>
+                    <label end="28" start="26" name="VBD"/>
+                    <label end="36" start="30" name="rb"/>
+                    <label end="42" start="38" name="cd"/>
+                    <label end="47" start="44" name="wrb"/>
+                    <label end="52" start="49" name="NP"/>
+                    <label end="56" start="54" name="VBD"/>
+                    <label end="61" start="58" name="VVN"/>
+                    <label end="63" start="63" name=","/>
+                    <label end="67" start="65" name="VBD"/>
+                    <label end="75" start="69" name="jj"/>
+                    <label end="79" start="77" name="cc"/>
+                    <label end="83" start="81" name="dt"/>
+                    <label end="93" start="85" name="nn"/>
+                    <label end="96" start="95" name="in"/>
+                    <label end="98" start="98" name="dt"/>
+                    <label end="111" start="100" name="jj"/>
+                    <label end="119" start="113" name="nn"/>
+                    <label end="121" start="121" name=","/>
+                    <label end="126" start="123" name="VVN"/>
+                    <label end="131" start="128" name="in"/>
+                    <label end="133" start="133" name="dt"/>
+                    <label end="139" start="135" name="nn"/>
+                    <label end="147" start="141" name="nn"/>
+                    <label end="149" start="149" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="03/20/2003 02:20:03 PST Thu" status="MANUAL" ID="1841775">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="93" start="85" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="303" feID="582" end="147" start="95" name="Possession"/>
+                    <label cBy="395" feID="573" end="61" start="0" name="Owner"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="147" start="95" name="Dep"/>
+                    <label end="61" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="147" start="95" name="PP"/>
+                    <label end="61" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="67" start="65" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="85" aPos="0" ID="1197295">
+            <text>Fundamentally , he is an orthodox batsman who can be totally unorthodox , the possessor of every stroke in the book and an improviser who can create any number of others .</text>
+            <annotationSet cDate="03/20/2003 02:20:06 PST Thu" status="UNANN" ID="1841780">
+                <layer rank="1" name="PENN">
+                    <label end="12" start="0" name="rb"/>
+                    <label end="14" start="14" name=","/>
+                    <label end="17" start="16" name="PP"/>
+                    <label end="20" start="19" name="VBZ"/>
+                    <label end="23" start="22" name="dt"/>
+                    <label end="32" start="25" name="jj"/>
+                    <label end="40" start="34" name="nn"/>
+                    <label end="44" start="42" name="wp"/>
+                    <label end="48" start="46" name="md"/>
+                    <label end="51" start="50" name="vb"/>
+                    <label end="59" start="53" name="rb"/>
+                    <label end="70" start="61" name="jj"/>
+                    <label end="72" start="72" name=","/>
+                    <label end="76" start="74" name="dt"/>
+                    <label end="86" start="78" name="nn"/>
+                    <label end="89" start="88" name="in"/>
+                    <label end="95" start="91" name="dt"/>
+                    <label end="102" start="97" name="nn"/>
+                    <label end="105" start="104" name="in"/>
+                    <label end="109" start="107" name="dt"/>
+                    <label end="114" start="111" name="nn"/>
+                    <label end="118" start="116" name="cc"/>
+                    <label end="121" start="120" name="dt"/>
+                    <label end="132" start="123" name="nn"/>
+                    <label end="136" start="134" name="wp"/>
+                    <label end="140" start="138" name="md"/>
+                    <label end="147" start="142" name="VV"/>
+                    <label end="151" start="149" name="dt"/>
+                    <label end="158" start="153" name="nn"/>
+                    <label end="161" start="160" name="in"/>
+                    <label end="168" start="163" name="nns"/>
+                    <label end="170" start="170" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="03/20/2003 02:20:07 PST Thu" status="MANUAL" ID="1841781">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="86" start="78" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="303" feID="582" end="114" start="88" name="Possession"/>
+                    <label cBy="395" feID="573" end="17" start="16" name="Owner"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="114" start="88" name="Dep"/>
+                    <label end="17" start="16" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="114" start="88" name="PP"/>
+                    <label end="17" start="16" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="20" start="19" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="262" aPos="0" ID="1197296">
+            <text>Wrangham opines that while attacks on a possessor are rarely successful , such harassment often prevents eating .</text>
+            <annotationSet cDate="03/20/2003 02:20:07 PST Thu" status="UNANN" ID="1841782">
+                <layer rank="1" name="PENN">
+                    <label end="7" start="0" name="NP"/>
+                    <label end="14" start="9" name="VVZ"/>
+                    <label end="19" start="16" name="in"/>
+                    <label end="25" start="21" name="in"/>
+                    <label end="33" start="27" name="nns"/>
+                    <label end="36" start="35" name="in"/>
+                    <label end="38" start="38" name="dt"/>
+                    <label end="48" start="40" name="nn"/>
+                    <label end="52" start="50" name="vbp"/>
+                    <label end="59" start="54" name="rb"/>
+                    <label end="70" start="61" name="jj"/>
+                    <label end="72" start="72" name=","/>
+                    <label end="77" start="74" name="jj"/>
+                    <label end="88" start="79" name="nn"/>
+                    <label end="94" start="90" name="rb"/>
+                    <label end="103" start="96" name="VVZ"/>
+                    <label end="110" start="105" name="VVG"/>
+                    <label end="112" start="112" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="03/20/2003 02:20:08 PST Thu" status="MANUAL" ID="1841783">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="48" start="40" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="303" feID="582" itype="DNI" name="Possession"/>
+                    <label cBy="303" feID="573" end="48" start="40" name="Owner"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="123" aPos="0" ID="1197299">
+            <text>At common law the possessor of ` cattle &quot; was strictly liable , independently of scienter , for damage done by them when they trespassed on the land of his neighbour .</text>
+            <annotationSet cDate="03/20/2003 02:20:10 PST Thu" status="UNANN" ID="1841788">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="in"/>
+                    <label end="8" start="3" name="jj"/>
+                    <label end="12" start="10" name="nn"/>
+                    <label end="16" start="14" name="dt"/>
+                    <label end="26" start="18" name="nn"/>
+                    <label end="29" start="28" name="in"/>
+                    <label end="38" start="33" name="nns"/>
+                    <label end="44" start="42" name="VBD"/>
+                    <label end="53" start="46" name="rb"/>
+                    <label end="60" start="55" name="jj"/>
+                    <label end="62" start="62" name=","/>
+                    <label end="76" start="64" name="rb"/>
+                    <label end="79" start="78" name="in"/>
+                    <label end="88" start="81" name="rb"/>
+                    <label end="90" start="90" name=","/>
+                    <label end="94" start="92" name="in"/>
+                    <label end="101" start="96" name="nn"/>
+                    <label end="106" start="103" name="VVN"/>
+                    <label end="109" start="108" name="in"/>
+                    <label end="114" start="111" name="PP"/>
+                    <label end="119" start="116" name="wrb"/>
+                    <label end="124" start="121" name="PP"/>
+                    <label end="135" start="126" name="VVD"/>
+                    <label end="138" start="137" name="in"/>
+                    <label end="142" start="140" name="dt"/>
+                    <label end="147" start="144" name="nn"/>
+                    <label end="150" start="149" name="in"/>
+                    <label end="154" start="152" name="PP$"/>
+                    <label end="164" start="156" name="nn"/>
+                    <label end="166" start="166" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="03/20/2003 02:20:12 PST Thu" status="MANUAL" ID="1841789">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="26" start="18" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="303" feID="582" end="38" start="28" name="Possession"/>
+                    <label cBy="303" feID="573" end="26" start="18" name="Owner"/>
+                    <label cBy="303" feID="584" end="60" start="42" name="Depictive"/>
+                    <label cBy="303" feID="584" end="164" start="92" name="Depictive"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="38" start="28" name="Dep"/>
+                    <label end="60" start="42" name="Dep"/>
+                    <label end="164" start="92" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="38" start="28" name="PP"/>
+                    <label end="60" start="42" name="VPfin"/>
+                    <label end="164" start="92" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="236" aPos="0" ID="1197306">
+            <text>His companion was much younger , perhaps no older than herself , fair , very good-looking , blue-eyed , with the sort of open face that persuades you its possessor must be gentle and kind .</text>
+            <annotationSet cDate="03/20/2003 02:20:21 PST Thu" status="UNANN" ID="1841802">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="PP$"/>
+                    <label end="12" start="4" name="nn"/>
+                    <label end="16" start="14" name="VBD"/>
+                    <label end="21" start="18" name="rb"/>
+                    <label end="29" start="23" name="jjr"/>
+                    <label end="31" start="31" name=","/>
+                    <label end="39" start="33" name="rb"/>
+                    <label end="42" start="41" name="rb"/>
+                    <label end="48" start="44" name="jjr"/>
+                    <label end="53" start="50" name="in"/>
+                    <label end="61" start="55" name="PP"/>
+                    <label end="63" start="63" name=","/>
+                    <label end="68" start="65" name="jj"/>
+                    <label end="70" start="70" name=","/>
+                    <label end="75" start="72" name="rb"/>
+                    <label end="88" start="77" name="jj"/>
+                    <label end="90" start="90" name=","/>
+                    <label end="100" start="92" name="jj"/>
+                    <label end="102" start="102" name=","/>
+                    <label end="107" start="104" name="in"/>
+                    <label end="111" start="109" name="dt"/>
+                    <label end="116" start="113" name="nn"/>
+                    <label end="119" start="118" name="in"/>
+                    <label end="124" start="121" name="jj"/>
+                    <label end="129" start="126" name="nn"/>
+                    <label end="134" start="131" name="wdt"/>
+                    <label end="144" start="136" name="VVZ"/>
+                    <label end="148" start="146" name="PP"/>
+                    <label end="152" start="150" name="PP$"/>
+                    <label end="162" start="154" name="nn"/>
+                    <label end="167" start="164" name="md"/>
+                    <label end="170" start="169" name="vb"/>
+                    <label end="177" start="172" name="jj"/>
+                    <label end="181" start="179" name="cc"/>
+                    <label end="186" start="183" name="nn"/>
+                    <label end="188" start="188" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="03/20/2003 02:20:23 PST Thu" status="MANUAL" ID="1841803">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="162" start="154" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="303" feID="582" end="152" start="150" name="Possession"/>
+                    <label cBy="303" feID="573" end="162" start="154" name="Owner"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="152" start="150" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="152" start="150" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="6" paragNo="188" aPos="0" ID="1197309">
+            <text>The major wheezed his farewells and Stephen found himself the possessor of a shiny belt , new boots and a deferential batman .</text>
+            <annotationSet cDate="03/20/2003 02:20:26 PST Thu" status="UNANN" ID="1841808">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="8" start="4" name="jj"/>
+                    <label end="16" start="10" name="VVN"/>
+                    <label end="20" start="18" name="PP$"/>
+                    <label end="30" start="22" name="nns"/>
+                    <label end="34" start="32" name="cc"/>
+                    <label end="42" start="36" name="NP"/>
+                    <label end="48" start="44" name="VVD"/>
+                    <label end="56" start="50" name="PP"/>
+                    <label end="60" start="58" name="dt"/>
+                    <label end="70" start="62" name="nn"/>
+                    <label end="73" start="72" name="in"/>
+                    <label end="75" start="75" name="dt"/>
+                    <label end="81" start="77" name="jj"/>
+                    <label end="86" start="83" name="nn"/>
+                    <label end="88" start="88" name=","/>
+                    <label end="92" start="90" name="jj"/>
+                    <label end="98" start="94" name="nns"/>
+                    <label end="102" start="100" name="cc"/>
+                    <label end="104" start="104" name="dt"/>
+                    <label end="116" start="106" name="jj"/>
+                    <label end="123" start="118" name="nn"/>
+                    <label end="125" start="125" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="03/20/2003 02:20:27 PST Thu" status="MANUAL" ID="1841809">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="70" start="62" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="303" feID="573" end="56" start="50" name="Owner"/>
+                    <label cBy="303" feID="582" end="123" start="72" name="Possession"/>
+                    <label cBy="277" feID="573" end="70" start="62" name="Owner"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="56" start="50" name="Ext"/>
+                    <label end="123" start="72" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="56" start="50" name="NP"/>
+                    <label end="123" start="72" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="48" start="44" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

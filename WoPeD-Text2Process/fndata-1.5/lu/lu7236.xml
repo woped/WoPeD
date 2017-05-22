@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="A" name="enervated.a" ID="7236" frame="Biological_urge" frameID="394" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Peripheral" abbrev="Dur" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Exp" name="Experiencer"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Expressor" name="Expressor"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="Par" name="Parameter"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="Rea" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Stat" name="State"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: drained of energy</definition>
+    <lexeme POS="A" name="enervated"/>
+    <valences>
+        <governor type="Sup" lemma="feel">
+            <annoSet ID="1662207"/>
+        </governor>
+        <FERealization total="1">
+            <FE name="Degree"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Degree"/>
+                <annoSet ID="1662207"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="VPto" FE="Degree"/>
+                <annoSet ID="1662207"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Experiencer"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Experiencer"/>
+                <annoSet ID="1662207"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Degree"/>
+            <FE name="Degree"/>
+            <FE name="Experiencer"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Degree"/>
+                <valenceUnit GF="Dep" PT="VPto" FE="Degree"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Experiencer"/>
+                <annoSet ID="1662207"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="A-001-all">
+        <sentence sentNo="0" aPos="69166901" ID="1105536">
+            <text>David felt too enervated to resist . </text>
+            <annotationSet cDate="01/08/2003 02:38:41 PST Wed" status="UNANN" ID="1662206">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="NP0"/>
+                    <label end="9" start="6" name="VVD"/>
+                    <label end="13" start="11" name="AV0"/>
+                    <label end="23" start="15" name="VVD-VVN"/>
+                    <label end="26" start="25" name="TO0"/>
+                    <label end="33" start="28" name="VVI"/>
+                    <label end="35" start="35" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 02:38:41 PST Wed" status="MANUAL" ID="1662207">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3520" end="4" start="0" name="Experiencer"/>
+                    <label cBy="618" feID="3519" end="13" start="11" name="Degree"/>
+                    <label cBy="618" feID="3519" end="33" start="25" name="Degree"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="4" start="0" name="Ext"/>
+                    <label end="13" start="11" name="Dep"/>
+                    <label end="33" start="25" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="4" start="0" name="NP"/>
+                    <label end="13" start="11" name="AVP"/>
+                    <label end="33" start="25" name="VPto"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="23" start="15" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj">
+                    <label end="9" start="6" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

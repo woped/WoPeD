@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="11/10/2005 07:01:07 PST Thu" name="Intentional_traversing" ID="1642" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A &lt;fen&gt;Self_mover&lt;/fen&gt; intentionally moves in a &lt;fen&gt;Direction&lt;/fen&gt;on a &lt;fen&gt;Path&lt;/fen&gt; relative to landmark that is neither the &lt;fen&gt;Source&lt;/fen&gt; nor the &lt;fen&gt;Goal&lt;/fen&gt; of the overall motion. The shape or configuration of the &lt;fen&gt;Path&lt;/fen&gt; may be expressed with a &lt;fen&gt;Path_shape&lt;/fen&gt;
+
+
+&lt;ex&gt;&lt;fex name="Self_mover"&gt;Ambrose Powell&lt;/fex&gt; &lt;t&gt;forded&lt;/t&gt; &lt;fex name="Path"&gt;over&lt;/fex&gt; &lt;fex name="Vehicle"&gt;on one horse&lt;/fex&gt;, and we drove the others after him.&lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="Self_mover"&gt;We&lt;/fex&gt; repassed the first day's battlefield and &lt;t&gt;ascended&lt;/t&gt; &lt;fex name="Path"&gt;the road to the city&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="Self_mover"&gt;Jeff Manor and I&lt;/fex&gt; &lt;t&gt;climbed&lt;/t&gt; &lt;fex name="Path"&gt;the North Face of Mt Shuksan&lt;/fex&gt;, &lt;fex name="cir"&gt;with cold, clear weather and solid ice&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="11/10/2005 07:01:07 PST Thu" abbrev="sel" name="Self_mover" ID="9202">
+        <definition>&lt;def-root&gt;This is a sentient being or a vehicle steered by a sentient being which moves.
+
+
+&lt;ex&gt;&lt;fex name="Self_mover"&gt;We&lt;/fex&gt; drive down dusty roads, &lt;t&gt;forded&lt;/t&gt; through a stream, and tried to get up a mountainside on a rocky road.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="11/10/2005 07:01:08 PST Thu" abbrev="Src" name="Source" ID="9203">
+        <definition>&lt;def-root&gt;Any expression which implies a definite starting-point of motion expresses the frame element &lt;fen&gt;Source&lt;/fen&gt;. 
+
+&lt;ex&gt;We &lt;t&gt;forded&lt;/t&gt; &lt;fex name="Src"&gt;from the island&lt;/fex&gt; to the mainland.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Source" ID="151"/>
+        <excludesFE name="Place" ID="9214"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="11/10/2005 07:01:08 PST Thu" abbrev="Path" name="Path" ID="9204">
+        <definition>&lt;def-root&gt;Any description of a trajectory of motion which is neither a &lt;fen&gt;Source&lt;/fen&gt; nor a &lt;fen&gt;Goal&lt;/fen&gt; expresses the frame element &lt;fen&gt;Path&lt;/fen&gt;, excluding directional expressions: 
+
+
+&lt;ex&gt;We decided to &lt;t&gt;cut&lt;/t&gt; &lt;fex name="Path"&gt;through the forest&lt;/fex&gt;. &lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+        <semType name="Path" ID="152"/>
+        <excludesFE name="Place" ID="9214"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="11/10/2005 07:01:08 PST Thu" abbrev="Goal" name="Goal" ID="9205">
+        <definition>&lt;def-root&gt;Any expression which indicates where the &lt;fen&gt;Self_mover&lt;/fen&gt; ends up as a result of the motion expresses the frame element &lt;fen&gt;Goal&lt;/fen&gt;. 
+
+&lt;ex&gt;I'll &lt;t&gt;cut&lt;/t&gt; across the Sahara desert &lt;fex name="Goal"&gt;up to Algeria and Morocco&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Goal" ID="153"/>
+        <excludesFE name="Place" ID="9214"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="11/10/2005 07:01:08 PST Thu" abbrev="Manr" name="Manner" ID="9206">
+        <definition>&lt;def-root&gt;Any description of the event (or state) which is not covered by more specific FEs, including force (&lt;ment&gt;hard&lt;/ment&gt;, &lt;ment&gt;softly&lt;/ment&gt;), secondary effects (&lt;ment&gt;quietly&lt;/ment&gt;, &lt;ment&gt;loudly&lt;/ment&gt;), and general descriptions comparing events (&lt;ment&gt;the same way&lt;/ment&gt;). It may indicate salient characteristics of a &lt;fen&gt;Self_mover&lt;/fen&gt; that also affect the action (&lt;ment&gt;presumptuously&lt;/ment&gt;, &lt;ment&gt;coldly&lt;/ment&gt;, &lt;ment&gt;deliberately&lt;/ment&gt;, &lt;ment&gt;eagerly&lt;/ment&gt;, &lt;ment&gt;carefully&lt;/ment&gt;). 
+
+&lt;ex&gt;Immediately, the monk invited her to sit on his shoulders and he &lt;fex name="Manner"&gt;carefully&lt;/fex&gt; &lt;t&gt;forded&lt;/t&gt; the river, depositing her on the opposite bank.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="000000" coreType="Peripheral" cBy="605" cDate="11/10/2005 07:01:08 PST Thu" abbrev="Dist" name="Distance" ID="9207">
+        <definition>&lt;def-root&gt;Any expression which characterizes the extent of motion expresses the frame element &lt;fen&gt;Distance&lt;/fen&gt;. 
+
+&lt;ex&gt;He followed the coast as far as Fronteras, then &lt;t&gt;cut&lt;/t&gt; &lt;fex name="Dist"&gt;160 miles&lt;/fex&gt; across the Gulf of Mexico to the Yucatán Peninsula.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Quantity" ID="59"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="11/10/2005 07:01:08 PST Thu" abbrev="Mns" name="Means" ID="9210">
+        <definition>&lt;def-root&gt;An event involving the &lt;fen&gt;Self_mover&lt;/fen&gt; that results in their moving in the specified way.
+
+&lt;ex&gt;The enemy had &lt;t&gt;forded&lt;/t&gt; the river &lt;fex name="Mns"&gt;by piling up the bodies of their fallen comrades in the river bed&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Human_act" ID="69"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="11/10/2005 07:01:08 PST Thu" abbrev="Spd" name="Speed" ID="9211">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Speed&lt;/fen&gt; is the rate at which the &lt;fen&gt;Self_mover&lt;/fen&gt; moves.
+
+
+&lt;ex&gt;Motorists once again must &lt;fex name="Speed"&gt;quickly&lt;/fex&gt; &lt;t&gt;cut&lt;/t&gt; across three lanes of traffic to get from Exit 7 to Exit 8.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Speed" ID="234"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="000000" coreType="Extra-Thematic" cBy="605" cDate="11/10/2005 07:01:08 PST Thu" abbrev="Thm_c" name="Cotheme" ID="9212">
+        <definition>&lt;def-root&gt;This is a second moving object, expressed as a direct object or an oblique, relative to which the &lt;fen&gt;Self_mover&lt;/fen&gt; moves.
+
+
+&lt;ex&gt;They &lt;t&gt;cut&lt;/t&gt; across the bushes &lt;fex name="Thm_c"&gt;after him&lt;/fex&gt; and watched him Go into a small shrine-like building at the very center of the compound&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Physical_object" ID="68"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="11/10/2005 07:01:08 PST Thu" abbrev="Dep-Und" name="Depictive" ID="9213">
+        <definition>&lt;def-root&gt;Depictive phrase describing the &lt;fen&gt;Self_mover&lt;/fen&gt;.
+
+&lt;ex&gt;I actually &lt;t&gt;forded&lt;/t&gt; the river &lt;fex name="Dep-Und"&gt;in my ski boots&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State" ID="77"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="11/10/2005 07:01:08 PST Thu" abbrev="" name="Place" ID="9214">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Place&lt;/fen&gt; is where the motion (which is specified by a &lt;fen&gt;Source&lt;/fen&gt;, &lt;fen&gt;Path&lt;/fen&gt; or &lt;fen&gt;Goal&lt;/fen&gt;) is located.
+
+&lt;ex&gt;The common brook is best &lt;t&gt;forded&lt;/t&gt; &lt;fex name="Place"&gt;south of the hut&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="90876C" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="11/10/2005 07:01:08 PST Thu" abbrev="PS" name="Path_shape" ID="9215">
+        <definition>&lt;def-root&gt;The configuration formed by the entire &lt;fen&gt;Path&lt;/fen&gt; of the &lt;fen&gt;Self_mover&lt;/fen&gt;, taken simultaneously.
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="11/10/2005 07:01:08 PST Thu" abbrev="dir" name="Direction" ID="9216">
+        <definition>&lt;def-root&gt;The direction in which the &lt;fen&gt;Self_mover&lt;/fen&gt; goes.
+
+&lt;ex&gt;We followed the trail (which is well marked with cairns) and then &lt;t&gt;cut&lt;/t&gt; &lt;fex name="dir"&gt;west&lt;/fex&gt; across a grassy meadow for about 1000 feet to the crest of  the nearby saddle lying below North Peak.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A9A9A9" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="11/10/2005 07:01:08 PST Thu" abbrev="tim" name="Time" ID="9217">
+        <definition>&lt;def-root&gt;The time at which the motion takes place.
+
+
+
+&lt;ex&gt;The Federal Army of the Potomac &lt;t&gt;forded&lt;/t&gt; the river &lt;fex name="Time"&gt;in August 1862&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="90876C" fgColor="000000" coreType="Peripheral" cBy="605" cDate="11/10/2005 07:01:08 PST Thu" abbrev="pur" name="Purpose" ID="9218">
+        <definition>&lt;def-root&gt;The state-of-affairs that the &lt;fen&gt;Self_mover&lt;/fen&gt; wishes to bring about.
+
+
+&lt;ex&gt;I &lt;t&gt;cut&lt;/t&gt; through the alley in order &lt;fex name="Purpose"&gt;to escape my pursuers&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Human_act" ID="69"/>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="11/10/2005 07:01:08 PST Thu" abbrev="veh" name="Vehicle" ID="9219">
+        <definition>&lt;def-root&gt;The device or bodypart that serves to move the &lt;fen&gt;Self_mover&lt;/fen&gt;.
+
+&lt;ex&gt;The General was received by Colonel Thayer, and &lt;t&gt;ascended&lt;/t&gt; the hill &lt;fex name="Vehicle"&gt;in a landau&lt;/fex&gt;, escorted by the officers of the post.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="11/10/2005 07:01:08 PST Thu" abbrev="dur" name="Duration" ID="9220">
+        <definition>&lt;def-root&gt;The length of time that the &lt;fen&gt;Self_mover&lt;/fen&gt; spends in motion.
+
+
+&lt;ex&gt;We &lt;t&gt;forded&lt;/t&gt; Cooper Cr. &lt;fex name="dur"&gt;for several hours&lt;/fex&gt; then built a fire to dry out gear.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="A9A9A9" fgColor="000000" coreType="Extra-Thematic" cBy="605" cDate="11/10/2005 07:01:09 PST Thu" abbrev="exp" name="Explanation" ID="9222">
+        <definition>&lt;def-root&gt;A factor which explains the particular motion or manner of motion of the &lt;fen&gt;Self_mover&lt;/fen&gt;.
+
+&lt;ex&gt;Streams were &lt;t&gt;forded&lt;/t&gt; &lt;fex name="Explanation"&gt;because there were no bridges over meandering Back Creek&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="11/10/2005 07:01:09 PST Thu" abbrev="con" name="Containing_event" ID="9224">
+        <definition>&lt;def-root&gt;An event that occurs or state of affairs that holds at the time the Intentional_traversing occurs and which the Intentional_traversing is taken to be a part of.
+
+&lt;ex&gt;He had comfortably &lt;t&gt;forded&lt;/t&gt; it &lt;fex name="Containing_event"&gt;on his trip to Beatrice&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="11/10/2005 07:01:09 PST Thu" abbrev="fre" name="Frequency" ID="9225">
+        <definition>&lt;def-root&gt;The number of times that an action occurs in a given time.
+
+&lt;ex&gt;Early in the morning, Chapman had &lt;fex name="Frequency"&gt;twice&lt;/fex&gt; &lt;t&gt;forded&lt;/t&gt; the river a short distance north
+of the footbridge.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="000000" coreType="Extra-Thematic" cBy="605" cDate="11/10/2005 07:01:09 PST Thu" abbrev="ree" name="Re_encoding" ID="9226">
+        <definition>&lt;def-root&gt;A larger conceptualization that includes the Intentional_traversing as an integral part. The Intentional_traversing expressed by the target typically corresponds to a Means action in this larger conceptualization. 
+
+&lt;ex&gt;The 133rd Infantry hurriedly &lt;t&gt;forded&lt;/t&gt; the river &lt;fex name="ree"&gt;in an attempt to capture a bridge intact&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="000000" coreType="Extra-Thematic" cBy="605" cDate="11/10/2005 07:01:09 PST Thu" abbrev="consec" name="Consecutive" ID="9227">
+        <definition>&lt;def-root&gt;An unexpected event that affects some agent (usually the &lt;fen&gt;Self_mover&lt;/fen&gt;), which is enabled by, and occurs after, the Intentional_traversing.
+
+&lt;ex&gt;I &lt;t&gt;cut&lt;/t&gt; across Arnold's new backyard &lt;fex name="Consecutive"&gt;only to find literally hundreds of squirrels everywhere&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="800080" fgColor="000000" coreType="Extra-Thematic" cBy="605" cDate="11/10/2005 07:01:09 PST Thu" abbrev="cir" name="Circumstances" ID="9228">
+        <definition>&lt;def-root&gt;The state of the world (at a particular time and place) which is specifically independent of the Traversing event itself and any of its participants, and is merely peripherally related to the event as a whole.
+
+&lt;ex&gt;These waterways can be &lt;t&gt;forded&lt;/t&gt; by infantry &lt;fex name="cir"&gt;at low water&lt;/fex&gt;, but at other times a six-foot tide makes them difficult to cross.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="7CCD73" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="11/10/2005 07:01:09 PST Thu" abbrev="end" name="Endpoints" ID="9229">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Source&lt;/fen&gt; and &lt;fen&gt;Goal&lt;/fen&gt; of either a single or a repeated motion taken together as &lt;fen&gt;Endpoints&lt;/fen&gt; of the &lt;fen&gt;Path&lt;/fen&gt;.
+
+
+&lt;ex&gt;It is located at the place where explorers Marquette and Jolliet &lt;t&gt;forded&lt;/t&gt; &lt;fex name="Endpoints"&gt;between the Chicago and Des Plaines Rivers&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="000000" coreType="Extra-Thematic" cBy="605" cDate="12/08/2005 07:16:20 PST Thu" abbrev="cop" name="Co_participant" ID="9717">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Co_participant&lt;/fen&gt; is an entity that participates in a coordinated way in the same event as the primary protagonist, regardless of whether the protagonist, and hence the &lt;fen&gt;Co_participant&lt;/fen&gt;, is more agent- or more undergoer-like.
+
+&lt;ex&gt;John &lt;t&gt;forded&lt;/t&gt; the river &lt;fex name="Co_participant"&gt;with his cousin&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Path_shape" ID="9215"/>
+        <memberFE name="Source" ID="9203"/>
+        <memberFE name="Direction" ID="9216"/>
+        <memberFE name="Path" ID="9204"/>
+        <memberFE name="Goal" ID="9205"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Traversing</relatedFrame>
+        <relatedFrame>Self_motion</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)">
+        <relatedFrame>Quitting_a_place</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="ford.v" ID="12895" lemmaID="15034" cBy="605" cDate="11/11/2005 06:54:18 PST Fri">
+        <definition>FN: cross a stream at a shallow place</definition>
+        <sentenceCount annotated="17" total="31"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="ford"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="cut.v" ID="12896" lemmaID="9360" cBy="605" cDate="11/14/2005 04:55:30 PST Mon">
+        <definition>FN: to go directly across rather than around an area </definition>
+        <sentenceCount annotated="12" total="170"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="cut"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="climb.v" ID="12920" lemmaID="6789" cBy="605" cDate="11/16/2005 01:35:25 PST Wed">
+        <definition>FN: traverse an inclined surface so as to rise in elevation</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="climb"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="V" name="ascend.v" ID="12921" lemmaID="2048" cBy="605" cDate="11/16/2005 01:43:03 PST Wed">
+        <definition>FN: move up an inclined surface</definition>
+        <sentenceCount annotated="1" total="70"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="ascend"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="traverse.v" ID="13107" lemmaID="41107" cBy="618" cDate="01/31/2006 07:30:36 PST Tue">
+        <definition>FN: travel across or through.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="traverse"/>
+    </lexUnit>
+</frame>

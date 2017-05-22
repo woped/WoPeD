@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" POS="V" name="jet.v" ID="8865" frame="Bringing" frameID="240" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Agt" name="Agent"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Core" abbrev="Area" name="Area"/>
+            <FE fgColor="000000" bgColor="EEE8AA" type="Extra-Thematic" abbrev="" name="Beneficiary"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Core" abbrev="Car" name="Carrier"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="CL" name="Constant_location"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Extra-Thematic" abbrev="" name="Co_participant"/>
+            <FE fgColor="000000" bgColor="7CCD73" type="Extra-Thematic" abbrev="" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="Dist" name="Distance"/>
+            <FE fgColor="000000" bgColor="7FFF00" type="Extra-Thematic" abbrev="" name="Duration"/>
+            <FE fgColor="000000" bgColor="FFD700" type="Extra-Thematic" abbrev="" name="Explanation"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Extra-Thematic" abbrev="" name="Frequency"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Core" abbrev="goa" name="Goal"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="000000" bgColor="90876C" type="Extra-Thematic" abbrev="" name="Particular_iteration"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Core" abbrev="Path" name="Path"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD7C" type="Extra-Thematic" abbrev="" name="Period_of_iterations"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="Pps" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="sou" name="Source"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Peripheral" abbrev="" name="Speed"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Theme" name="Theme"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: transport by means of jet aircraft</definition>
+    <lexeme POS="V" name="jet"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Agent"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <annoSet ID="2260261"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Carrier"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Carrier"/>
+                <annoSet ID="2260249"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Goal"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Goal"/>
+                <annoSet ID="2260261"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Goal"/>
+                <annoSet ID="2260249"/>
+                <annoSet ID="2260261"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Manner"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <annoSet ID="2260261"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Path"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Path"/>
+                <annoSet ID="2260261"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Theme"/>
+            <pattern total="2">
+                <valenceUnit GF="Obj" PT="NP" FE="Theme"/>
+                <annoSet ID="2260249"/>
+                <annoSet ID="2260261"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="NP" FE="Time"/>
+                <annoSet ID="2260249"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Agent"/>
+            <FE name="Goal"/>
+            <FE name="Goal"/>
+            <FE name="Manner"/>
+            <FE name="Path"/>
+            <FE name="Theme"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Goal"/>
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Goal"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Path"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Theme"/>
+                <annoSet ID="2260261"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Carrier"/>
+            <FE name="Goal"/>
+            <FE name="Theme"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Carrier"/>
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Goal"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Theme"/>
+                <valenceUnit GF="Dep" PT="NP" FE="Time"/>
+                <annoSet ID="2260249"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-NP-T-NPpackage,supplies,passenger-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="89" aPos="53876521" ID="1406204">
+            <text>Each night the Falcons depart from over 130 major market areas , jetting packages to a computerised sorting centre at Memphis , where they are sorted at the rate of 10,000 per hour .</text>
+            <annotationSet cDate="12/01/2006 04:11:26 PST Fri" status="UNANN" ID="2260248">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="dt"/>
+                    <label end="9" start="5" name="nn"/>
+                    <label end="13" start="11" name="dt"/>
+                    <label end="21" start="15" name="nns"/>
+                    <label end="28" start="23" name="VVP"/>
+                    <label end="33" start="30" name="in"/>
+                    <label end="38" start="35" name="in"/>
+                    <label end="42" start="40" name="cd"/>
+                    <label end="48" start="44" name="jj"/>
+                    <label end="55" start="50" name="nn"/>
+                    <label end="61" start="57" name="nns"/>
+                    <label end="63" start="63" name=","/>
+                    <label end="71" start="65" name="VVG"/>
+                    <label end="80" start="73" name="nns"/>
+                    <label end="83" start="82" name="to"/>
+                    <label end="85" start="85" name="dt"/>
+                    <label end="98" start="87" name="VVN"/>
+                    <label end="106" start="100" name="VVG"/>
+                    <label end="113" start="108" name="nn"/>
+                    <label end="116" start="115" name="in"/>
+                    <label end="124" start="118" name="NP"/>
+                    <label end="126" start="126" name=","/>
+                    <label end="132" start="128" name="wrb"/>
+                    <label end="137" start="134" name="PP"/>
+                    <label end="141" start="139" name="vbp"/>
+                    <label end="148" start="143" name="VVN"/>
+                    <label end="151" start="150" name="in"/>
+                    <label end="155" start="153" name="dt"/>
+                    <label end="160" start="157" name="nn"/>
+                    <label end="163" start="162" name="in"/>
+                    <label end="170" start="165" name="cd"/>
+                    <label end="174" start="172" name="in"/>
+                    <label end="179" start="176" name="nn"/>
+                    <label end="181" start="181" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="12/01/2006 04:11:26 PST Fri" status="MANUAL" ID="2260249">
+                <layer rank="1" name="Target">
+                    <label cBy="361" end="71" start="65" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="4863" end="21" start="11" name="Carrier"/>
+                    <label cBy="361" feID="2121" end="80" start="73" name="Theme"/>
+                    <label cBy="361" feID="2118" end="179" start="82" name="Goal"/>
+                    <label cBy="361" feID="5454" end="9" start="0" name="Time"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="21" start="11" name="Ext"/>
+                    <label end="80" start="73" name="Obj"/>
+                    <label end="179" start="82" name="Dep"/>
+                    <label end="9" start="0" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="21" start="11" name="NP"/>
+                    <label end="80" start="73" name="NP"/>
+                    <label end="179" start="82" name="PP"/>
+                    <label end="9" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-NP-T-NP-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="1164" aPos="38399886" ID="1406210">
+            <text>Gently , Valence jetted the two suits back down to the training deck .</text>
+            <annotationSet cDate="12/01/2006 04:11:28 PST Fri" status="UNANN" ID="2260260">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="0" name="rb"/>
+                    <label end="7" start="7" name=","/>
+                    <label end="15" start="9" name="NP"/>
+                    <label end="22" start="17" name="VVD"/>
+                    <label end="26" start="24" name="dt"/>
+                    <label end="30" start="28" name="cd"/>
+                    <label end="36" start="32" name="nns"/>
+                    <label end="41" start="38" name="rb"/>
+                    <label end="46" start="43" name="rb"/>
+                    <label end="49" start="48" name="to"/>
+                    <label end="53" start="51" name="dt"/>
+                    <label end="62" start="55" name="nn"/>
+                    <label end="67" start="64" name="nn"/>
+                    <label end="69" start="69" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="12/01/2006 04:11:28 PST Fri" status="MANUAL" ID="2260261">
+                <layer rank="1" name="Target">
+                    <label cBy="361" end="22" start="17" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="2127" end="5" start="0" name="Manner"/>
+                    <label cBy="361" feID="2117" end="15" start="9" name="Agent"/>
+                    <label cBy="361" feID="2121" end="36" start="24" name="Theme"/>
+                    <label cBy="361" feID="2118" end="41" start="38" name="Goal"/>
+                    <label cBy="361" feID="2120" end="46" start="43" name="Path"/>
+                    <label cBy="361" feID="2118" end="67" start="48" name="Goal"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="5" start="0" name="Dep"/>
+                    <label end="15" start="9" name="Ext"/>
+                    <label end="36" start="24" name="Obj"/>
+                    <label end="41" start="38" name="Dep"/>
+                    <label end="46" start="43" name="Dep"/>
+                    <label end="67" start="48" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="5" start="0" name="AVP"/>
+                    <label end="15" start="9" name="NP"/>
+                    <label end="36" start="24" name="NP"/>
+                    <label end="41" start="38" name="AVP"/>
+                    <label end="46" start="43" name="AVP"/>
+                    <label end="67" start="48" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

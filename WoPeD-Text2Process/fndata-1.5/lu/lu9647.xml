@@ -1,0 +1,592 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" POS="N" name="cough.n" ID="9647" frame="Sounds" frameID="850" totalAnnotated="10" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="" name="Component_sound"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="" name="Ground"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="" name="Internal_cause"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Peripheral" abbrev="" name="Location_of_sound_source"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="" name="Manner"/>
+            <FE fgColor="800080" bgColor="FFFF00" type="Peripheral" abbrev="" name="Noisy_event"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="" name="Path"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="" name="Place"/>
+            <FE fgColor="FFFF00" bgColor="FF69B4" type="Extra-Thematic" abbrev="" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="" name="Sound_source"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="" name="Theme"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Peripheral" abbrev="" name="Themes"/>
+        </frame>
+    </header>
+    <definition>COD: a sound of coughing</definition>
+    <lexeme POS="N" name="cough"/>
+    <valences>
+        <governor type="Sup" lemma="give">
+            <annoSet ID="463608"/>
+            <annoSet ID="464018"/>
+            <annoSet ID="464104"/>
+            <annoSet ID="464130"/>
+            <annoSet ID="464190"/>
+        </governor>
+        <governor type="Sup" lemma="have">
+            <annoSet ID="463620"/>
+        </governor>
+        <FERealization total="2">
+            <FE name="Component_sound"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="AJP" FE="Component_sound"/>
+                <annoSet ID="463620"/>
+                <annoSet ID="464078"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Internal_cause"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Internal_cause"/>
+                <annoSet ID="463738"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Manner"/>
+            <pattern total="5">
+                <valenceUnit GF="Dep" PT="AJP" FE="Manner"/>
+                <annoSet ID="463608"/>
+                <annoSet ID="463768"/>
+                <annoSet ID="464018"/>
+                <annoSet ID="464130"/>
+                <annoSet ID="464190"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Manner"/>
+                <annoSet ID="463768"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="7">
+            <FE name="Sound_source"/>
+            <pattern total="6">
+                <valenceUnit GF="Ext" PT="NP" FE="Sound_source"/>
+                <annoSet ID="463608"/>
+                <annoSet ID="463620"/>
+                <annoSet ID="464018"/>
+                <annoSet ID="464104"/>
+                <annoSet ID="464130"/>
+                <annoSet ID="464190"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Sound_source"/>
+                <annoSet ID="463540"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Component_sound"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Component_sound"/>
+                <annoSet ID="464078"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Component_sound"/>
+            <FE name="Sound_source"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Component_sound"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Sound_source"/>
+                <annoSet ID="463620"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Internal_cause"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Internal_cause"/>
+                <annoSet ID="463738"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Manner"/>
+            <FE name="Manner"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Manner"/>
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Manner"/>
+                <annoSet ID="463768"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="4">
+            <FE name="Manner"/>
+            <FE name="Sound_source"/>
+            <pattern total="4">
+                <valenceUnit GF="Dep" PT="AJP" FE="Manner"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Sound_source"/>
+                <annoSet ID="463608"/>
+                <annoSet ID="464018"/>
+                <annoSet ID="464130"/>
+                <annoSet ID="464190"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Sound_source"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Sound_source"/>
+                <annoSet ID="464104"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Sound_source"/>
+                <annoSet ID="463540"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="NoPattern">
+        <sentence sentNo="0" aPos="106307464" ID="410606">
+            <text>The incubation period of the virus is 24 to 48 hours and the infection is probably spread by droplets from the coughs and sneezes of those who are already suffering . </text>
+            <annotationSet cDate="01/07/2003 02:50:17 PST Tue" status="UNANN" ID="463539">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="13" start="4" name="NN1"/>
+                    <label end="20" start="15" name="NN1"/>
+                    <label end="23" start="22" name="PRF"/>
+                    <label end="27" start="25" name="AT0"/>
+                    <label end="33" start="29" name="NN1"/>
+                    <label end="36" start="35" name="VBZ"/>
+                    <label end="39" start="38" name="CRD"/>
+                    <label end="42" start="41" name="PRP"/>
+                    <label end="45" start="44" name="CRD"/>
+                    <label end="51" start="47" name="NN2"/>
+                    <label end="55" start="53" name="CJC"/>
+                    <label end="59" start="57" name="AT0"/>
+                    <label end="69" start="61" name="NN1"/>
+                    <label end="72" start="71" name="VBZ"/>
+                    <label end="81" start="74" name="AV0"/>
+                    <label end="88" start="83" name="VVN"/>
+                    <label end="91" start="90" name="PRP"/>
+                    <label end="100" start="93" name="NN2"/>
+                    <label end="105" start="102" name="PRP"/>
+                    <label end="109" start="107" name="AT0"/>
+                    <label end="116" start="111" name="NN2"/>
+                    <label end="120" start="118" name="CJC"/>
+                    <label end="128" start="122" name="NN2"/>
+                    <label end="131" start="130" name="PRF"/>
+                    <label end="137" start="133" name="DT0"/>
+                    <label end="141" start="139" name="PNQ"/>
+                    <label end="145" start="143" name="VBB"/>
+                    <label end="153" start="147" name="AV0"/>
+                    <label end="163" start="155" name="VVG"/>
+                    <label end="165" start="165" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:50:17 PST Tue" status="MANUAL" ID="463540">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="5492" end="163" start="130" name="Sound_source"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="163" start="130" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="163" start="130" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="116" start="111" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="32381645" ID="410640">
+            <text>He gave a little cough and looked at me . </text>
+            <annotationSet cDate="01/07/2003 02:50:21 PST Tue" status="UNANN" ID="463607">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="6" start="3" name="VVD"/>
+                    <label end="8" start="8" name="DT0"/>
+                    <label end="15" start="10" name="DT0"/>
+                    <label end="21" start="17" name="NN1"/>
+                    <label end="25" start="23" name="CJC"/>
+                    <label end="32" start="27" name="VVD-VVN"/>
+                    <label end="35" start="34" name="PRP"/>
+                    <label end="38" start="37" name="PNP"/>
+                    <label end="40" start="40" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:50:21 PST Tue" status="MANUAL" ID="463608">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="5492" end="1" start="0" name="Sound_source"/>
+                    <label cBy="103" feID="5499" end="15" start="10" name="Manner"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="1" start="0" name="Ext"/>
+                    <label end="15" start="10" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="1" start="0" name="NP"/>
+                    <label end="15" start="10" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="21" start="17" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="6" start="3" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="7627579" ID="410646">
+            <text>The man had a rasping cough that exploded from his lungs in noisy barks which often left him groaning and gasping for breath . </text>
+            <annotationSet cDate="01/07/2003 02:50:21 PST Tue" status="UNANN" ID="463619">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="6" start="4" name="NN1"/>
+                    <label end="10" start="8" name="VHD"/>
+                    <label end="12" start="12" name="AT0"/>
+                    <label end="20" start="14" name="AJ0-NN1"/>
+                    <label end="26" start="22" name="NN1"/>
+                    <label end="31" start="28" name="CJT"/>
+                    <label end="40" start="33" name="VVD"/>
+                    <label end="45" start="42" name="PRP"/>
+                    <label end="49" start="47" name="DPS"/>
+                    <label end="55" start="51" name="NN2"/>
+                    <label end="58" start="57" name="PRP"/>
+                    <label end="64" start="60" name="AJ0"/>
+                    <label end="70" start="66" name="NN2"/>
+                    <label end="76" start="72" name="DTQ"/>
+                    <label end="82" start="78" name="AV0"/>
+                    <label end="87" start="84" name="VVD-VVN"/>
+                    <label end="91" start="89" name="PNP"/>
+                    <label end="100" start="93" name="VVG"/>
+                    <label end="104" start="102" name="CJC"/>
+                    <label end="112" start="106" name="VVG"/>
+                    <label end="116" start="114" name="PRP"/>
+                    <label end="123" start="118" name="NN1"/>
+                    <label end="125" start="125" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:50:22 PST Tue" status="MANUAL" ID="463620">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="5492" end="6" start="0" name="Sound_source"/>
+                    <label cBy="103" feID="5500" end="20" start="14" name="Component_sound"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="6" start="0" name="Ext"/>
+                    <label end="20" start="14" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="6" start="0" name="NP"/>
+                    <label end="20" start="14" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="reexamine"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="26" start="22" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="10" start="8" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="69190202" ID="410705">
+            <text>Mind you , &quot; she added with a cough of concern , ` the breakdown has brought us closer together than ever . </text>
+            <annotationSet cDate="01/07/2003 02:50:31 PST Tue" status="UNANN" ID="463737">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="VVB"/>
+                    <label end="7" start="5" name="PNP"/>
+                    <label end="9" start="9" name="PUN"/>
+                    <label end="11" start="11" name="PUQ"/>
+                    <label end="15" start="13" name="PNP"/>
+                    <label end="21" start="17" name="VVD"/>
+                    <label end="26" start="23" name="PRP"/>
+                    <label end="28" start="28" name="AT0"/>
+                    <label end="34" start="30" name="NN1"/>
+                    <label end="37" start="36" name="PRF"/>
+                    <label end="45" start="39" name="NN1"/>
+                    <label end="47" start="47" name="PUN"/>
+                    <label end="49" start="49" name="PUQ"/>
+                    <label end="53" start="51" name="AT0"/>
+                    <label end="63" start="55" name="NN1"/>
+                    <label end="67" start="65" name="VHZ"/>
+                    <label end="75" start="69" name="VVN"/>
+                    <label end="78" start="77" name="PNP"/>
+                    <label end="85" start="80" name="AV0"/>
+                    <label end="94" start="87" name="AV0"/>
+                    <label end="99" start="96" name="CJS"/>
+                    <label end="104" start="101" name="AV0"/>
+                    <label end="106" start="106" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:50:32 PST Tue" status="MANUAL" ID="463738">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="5498" end="45" start="36" name="Internal_cause"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="45" start="36" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="45" start="36" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="reexamine"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="34" start="30" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="17621388" ID="410720">
+            <text>A chill with much pain in the chest , a short , hard , racking , dry cough with scanty or rusty coloured sputum . </text>
+            <annotationSet cDate="01/07/2003 02:50:33 PST Tue" status="UNANN" ID="463767">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="AT0"/>
+                    <label end="6" start="2" name="NN1"/>
+                    <label end="11" start="8" name="PRP"/>
+                    <label end="16" start="13" name="DT0"/>
+                    <label end="21" start="18" name="NN1"/>
+                    <label end="24" start="23" name="PRP"/>
+                    <label end="28" start="26" name="AT0"/>
+                    <label end="34" start="30" name="NN1"/>
+                    <label end="36" start="36" name="PUN"/>
+                    <label end="38" start="38" name="AT0"/>
+                    <label end="44" start="40" name="AJ0"/>
+                    <label end="46" start="46" name="PUN"/>
+                    <label end="51" start="48" name="AV0"/>
+                    <label end="53" start="53" name="PUN"/>
+                    <label end="61" start="55" name="VVG"/>
+                    <label end="63" start="63" name="PUN"/>
+                    <label end="67" start="65" name="AJ0"/>
+                    <label end="73" start="69" name="NN1"/>
+                    <label end="78" start="75" name="PRP"/>
+                    <label end="85" start="80" name="AJ0"/>
+                    <label end="88" start="87" name="CJC"/>
+                    <label end="94" start="90" name="AJ0"/>
+                    <label end="103" start="96" name="AJ0"/>
+                    <label end="110" start="105" name="NN1"/>
+                    <label end="112" start="112" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:50:33 PST Tue" status="MANUAL" ID="463768">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="5499" end="67" start="40" name="Manner"/>
+                    <label cBy="103" feID="5499" end="110" start="75" name="Manner"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="67" start="40" name="Dep"/>
+                    <label end="110" start="75" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="67" start="40" name="AJP"/>
+                    <label end="110" start="75" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="reexamine"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="73" start="69" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="67146888" ID="410845">
+            <text>And there were other things ; saliva drooled from her lips and every few seconds she gave a retching cough . </text>
+            <annotationSet cDate="01/07/2003 02:50:49 PST Tue" status="UNANN" ID="464017">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="CJC"/>
+                    <label end="8" start="4" name="EX0"/>
+                    <label end="13" start="10" name="VBD"/>
+                    <label end="19" start="15" name="AJ0"/>
+                    <label end="26" start="21" name="NN2"/>
+                    <label end="28" start="28" name="PUN"/>
+                    <label end="35" start="30" name="NN1"/>
+                    <label end="43" start="37" name="VVD-VVN"/>
+                    <label end="48" start="45" name="PRP"/>
+                    <label end="52" start="50" name="DPS"/>
+                    <label end="57" start="54" name="NN2"/>
+                    <label end="61" start="59" name="CJC"/>
+                    <label end="67" start="63" name="AT0"/>
+                    <label end="71" start="69" name="DT0"/>
+                    <label end="79" start="73" name="NN2"/>
+                    <label end="83" start="81" name="PNP"/>
+                    <label end="88" start="85" name="VVD"/>
+                    <label end="90" start="90" name="AT0"/>
+                    <label end="99" start="92" name="AJ0"/>
+                    <label end="105" start="101" name="NN1"/>
+                    <label end="107" start="107" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:50:49 PST Tue" status="MANUAL" ID="464018">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="5492" end="83" start="81" name="Sound_source"/>
+                    <label cBy="103" feID="5499" end="99" start="92" name="Manner"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="83" start="81" name="Ext"/>
+                    <label end="99" start="92" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="83" start="81" name="NP"/>
+                    <label end="99" start="92" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="105" start="101" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="88" start="85" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="100390065" ID="410875">
+            <text>The majority signs of Oslerus infection are respiratory distress and a rasping cough , especially after exercise . </text>
+            <annotationSet cDate="01/07/2003 02:50:52 PST Tue" status="UNANN" ID="464077">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="11" start="4" name="NN0"/>
+                    <label end="17" start="13" name="NN2"/>
+                    <label end="20" start="19" name="PRF"/>
+                    <label end="28" start="22" name="NN1-NP0"/>
+                    <label end="38" start="30" name="NN1"/>
+                    <label end="42" start="40" name="VBB"/>
+                    <label end="54" start="44" name="AJ0"/>
+                    <label end="63" start="56" name="NN1"/>
+                    <label end="67" start="65" name="CJC"/>
+                    <label end="69" start="69" name="AT0"/>
+                    <label end="77" start="71" name="AJ0"/>
+                    <label end="83" start="79" name="NN1"/>
+                    <label end="85" start="85" name="PUN"/>
+                    <label end="96" start="87" name="AV0"/>
+                    <label end="102" start="98" name="CJS-PRP"/>
+                    <label end="111" start="104" name="NN1"/>
+                    <label end="113" start="113" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:50:52 PST Tue" status="MANUAL" ID="464078">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="5500" end="77" start="71" name="Component_sound"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="77" start="71" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="77" start="71" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="reexamine"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="83" start="79" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="101684393" ID="410888">
+            <text>The chauffeur gave a discreet cough . </text>
+            <annotationSet cDate="01/07/2003 02:50:54 PST Tue" status="UNANN" ID="464103">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="12" start="4" name="NN1"/>
+                    <label end="17" start="14" name="VVD"/>
+                    <label end="19" start="19" name="AT0"/>
+                    <label end="28" start="21" name="AJ0"/>
+                    <label end="34" start="30" name="NN1"/>
+                    <label end="36" start="36" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:50:54 PST Tue" status="MANUAL" ID="464104">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="5492" end="12" start="0" name="Sound_source"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="12" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="12" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="reexamine"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="34" start="30" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="17" start="14" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="3858481" ID="410901">
+            <text>He gave a low cough . </text>
+            <annotationSet cDate="01/07/2003 02:50:55 PST Tue" status="UNANN" ID="464129">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="6" start="3" name="VVD"/>
+                    <label end="8" start="8" name="AT0"/>
+                    <label end="12" start="10" name="AJ0"/>
+                    <label end="18" start="14" name="NN1"/>
+                    <label end="20" start="20" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:50:55 PST Tue" status="MANUAL" ID="464130">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="5492" end="1" start="0" name="Sound_source"/>
+                    <label cBy="103" feID="5499" end="12" start="10" name="Manner"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="1" start="0" name="Ext"/>
+                    <label end="12" start="10" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="1" start="0" name="NP"/>
+                    <label end="12" start="10" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="18" start="14" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="6" start="3" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="8940877" ID="410931">
+            <text>At length , he gave a little cough . </text>
+            <annotationSet cDate="01/07/2003 02:51:01 PST Tue" status="UNANN" ID="464189">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="AV0"/>
+                    <label end="8" start="3" name="AV0"/>
+                    <label end="10" start="10" name="PUN"/>
+                    <label end="13" start="12" name="PNP"/>
+                    <label end="18" start="15" name="VVD"/>
+                    <label end="20" start="20" name="AT0"/>
+                    <label end="27" start="22" name="AJ0"/>
+                    <label end="33" start="29" name="NN1"/>
+                    <label end="35" start="35" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:51:01 PST Tue" status="MANUAL" ID="464190">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="5492" end="13" start="12" name="Sound_source"/>
+                    <label cBy="103" feID="5499" end="27" start="22" name="Manner"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="13" start="12" name="Ext"/>
+                    <label end="27" start="22" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="13" start="12" name="NP"/>
+                    <label end="27" start="22" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="33" start="29" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="18" start="15" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

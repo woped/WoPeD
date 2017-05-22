@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="731" cDate="02/07/2001 04:11:51 PST Wed" name="Posture" ID="18" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Agent&lt;/fen&gt; supports their body in a particular &lt;fen&gt;Location&lt;/fen&gt;.  The LUs of the frame convey which body part is the &lt;fen&gt;Point_of_contact&lt;/fen&gt; where the &lt;fen&gt;Agent&lt;/fen&gt; is supported, what orientation the body is in, and some overall arrangement of the limbs (especially the legs) and the torso.
+
+&lt;ex&gt;&lt;fex name="Agent"&gt;He&lt;/fex&gt; &lt;t&gt;knelt&lt;/t&gt; down Location , &lt;fex name="Depictive"&gt;hand on heart&lt;/fex&gt; .&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:11:51 PST Wed" abbrev="Agt" name="Agent" ID="81">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Agent&lt;/fen&gt; is the individual whose body is in a particular posture.  The &lt;fen&gt;Agent&lt;/fen&gt; FE is generally expressed as the external argument of verbs: 
+&lt;ex&gt;&lt;fex name="Agent"&gt;Kim&lt;/fex&gt; was &lt;t&gt;kneeling&lt;/t&gt; by the window.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:11:51 PST Wed" abbrev="Loc" name="Location" ID="82">
+        <definition>&lt;def-root&gt;A description of the position of the &lt;fen&gt;Agent&lt;/fen&gt;.  The &lt;fen&gt;Location&lt;/fen&gt; of the &lt;fen&gt;Agent&lt;/fen&gt; is frequently expressed and generally occurs as a PP Complement: 
+&lt;ex&gt;Kim was &lt;t&gt;kneeling&lt;/t&gt; &lt;fex name="Location"&gt;by the window&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Location" ID="54"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/22/2001 10:30:45 PDT Fri" abbrev="Degr" name="Degree" ID="937">
+        <definition>&lt;def-root&gt;Degree to which event occurs&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="06/22/2001 10:30:45 PDT Fri" abbrev="Depict" name="Depictive" ID="938">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Agent&lt;/fen&gt;'s state throughout the time they are in a particular posture.
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/22/2001 10:30:45 PDT Fri" abbrev="Manr" name="Manner" ID="941">
+        <definition>&lt;def-root&gt;Any description of the event which is not covered by more specific FEs, including secondary effects (&lt;ment&gt;quietly, loudly&lt;/ment&gt;), and general descriptions comparing events (&lt;ment&gt;the same way&lt;/ment&gt;). In addition, it may indicate salient characteristics of an &lt;fen&gt;Agent&lt;/fen&gt; that also affect the action (&lt;ment&gt;presumptuously, coldly, deliberately, eagerly, carefully&lt;/ment&gt;). &lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="618" cDate="12/02/2002 10:34:32 PST Mon" abbrev="Res" name="Dependent_state" ID="3949">
+        <definition>&lt;def-root&gt;A state of the Agent which crucially depends on their posture.
+&lt;ex&gt;She &lt;t&gt;sat&lt;/t&gt; &lt;fex name="Dependent_state"&gt;upright&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="7CCD7C" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="09/02/2003 05:27:03 PDT Tue" abbrev="" name="Time" ID="5015">
+        <definition>&lt;def-root&gt;This FE indicates the Time interval during which the &lt;fen&gt;Agent&lt;/fen&gt; held a certain posture.
+
+&lt;ex&gt; &lt;fex name="Time"&gt;Yesterday evening&lt;/fex&gt; he was &lt;t&gt;sitting&lt;/t&gt; in his armchair as usual&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="09/02/2003 05:35:48 PDT Tue" abbrev="" name="Purpose" ID="5016">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Purpose&lt;/fen&gt; for which the &lt;fen&gt;Agent&lt;/fen&gt; holds the posture.
+
+&lt;ex&gt; Joel &lt;t&gt;sat&lt;/t&gt; on the porch &lt;fex name="Purpose"&gt;to watch the traffic go by&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="000000" coreType="Peripheral" cBy="605" cDate="09/02/2003 08:30:57 PDT Tue" abbrev="" name="Duration" ID="5019">
+        <definition>&lt;def-root&gt;The length of time for which the &lt;fen&gt;Agent&lt;/fen&gt; holds the posture.
+
+&lt;ex&gt; I could have &lt;t&gt;stood&lt;/t&gt; there &lt;fex name="Duration"&gt;all afternoon&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="d0d0d0" fgColor="0000FF" coreType="Core" cBy="605" cDate="09/02/2003 08:51:17 PDT Tue" abbrev="poc" name="Point_of_contact" ID="5020">
+        <definition>&lt;def-root&gt;The part of the body that provides support to the &lt;fen&gt;Agent&lt;/fen&gt;'s body in the posture.
+
+&lt;ex&gt;I &lt;t&gt;stood&lt;/t&gt; &lt;fex name="poc"&gt;on my heels&lt;/fex&gt; and looked out the window&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Point_of_contact" ID="5020"/>
+        <memberFE name="Location" ID="82"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>State</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="bend.v" ID="130" lemmaID="3348" cBy="731" cDate="02/08/2001 01:27:38 PST Thu">
+        <definition>COD: incline the body downwards; stoop. </definition>
+        <sentenceCount annotated="14" total="334"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="bend"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Point_of_contact" POS="V" name="crouch.v" ID="131" lemmaID="9082" cBy="731" cDate="02/08/2001 01:27:38 PST Thu">
+        <definition>COD: adopt a position where the knees are bent and the upper body is brought forward and down. </definition>
+        <sentenceCount annotated="26" total="303"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="crouch"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="hunch.v" ID="132" lemmaID="18665" cBy="731" cDate="02/08/2001 01:27:39 PST Thu">
+        <definition>COD: raise (one's shoulders) and bend the top of one's body forward, or sit or stand in such a position. </definition>
+        <sentenceCount annotated="5" total="202"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="hunch"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="huddle.v" ID="133" lemmaID="18589" cBy="731" cDate="02/08/2001 01:27:39 PST Thu">
+        <definition>COD: curl one's body into a small space. </definition>
+        <sentenceCount annotated="22" total="188"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="huddle"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Point_of_contact" POS="V" name="kneel.v" ID="134" lemmaID="21411" cBy="731" cDate="02/08/2001 01:27:39 PST Thu">
+        <definition>COD: fall or rest on a knee or the knees. </definition>
+        <sentenceCount annotated="37" total="260"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="kneel"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="lean.v" ID="135" lemmaID="21935" cBy="731" cDate="02/08/2001 01:27:39 PST Thu">
+        <definition>COD: be in or move into a sloping position. </definition>
+        <sentenceCount annotated="12" total="377"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="lean"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Point_of_contact" POS="V" name="lie.v" ID="136" lemmaID="22250" cBy="731" cDate="02/08/2001 01:27:39 PST Thu">
+        <definition>COD: be in or assume a horizontal or resting position on a supporting surface. </definition>
+        <sentenceCount annotated="47" total="559"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="lie"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Point_of_contact" POS="V" name="sit.v" ID="137" lemmaID="36054" cBy="731" cDate="02/08/2001 01:27:39 PST Thu">
+        <definition>COD: be or cause to be in a position in which one's weight is supported by one's buttocks rather than one's feet and one's back is upright. </definition>
+        <sentenceCount annotated="57" total="498"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="sit"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="slouch.v" ID="138" lemmaID="36414" cBy="731" cDate="02/08/2001 01:27:39 PST Thu">
+        <definition>COD: stand, move, or sit in a lazy, drooping way. </definition>
+        <sentenceCount annotated="11" total="75"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="slouch"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="sprawl.v" ID="139" lemmaID="37515" cBy="731" cDate="02/08/2001 01:27:39 PST Thu">
+        <definition>COD: sit, lie, or fall with one's limbs spread out in an ungainly way. </definition>
+        <sentenceCount annotated="13" total="177"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="sprawl"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Point_of_contact" POS="V" name="squat.v" ID="140" lemmaID="37625" cBy="731" cDate="02/08/2001 01:27:39 PST Thu">
+        <definition>COD: crouch or sit with the knees bent and the heels close to or touching the buttocks or thighs. </definition>
+        <sentenceCount annotated="36" total="157"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="squat"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Point_of_contact" POS="V" name="stand.v" ID="141" lemmaID="37785" cBy="731" cDate="02/08/2001 01:27:39 PST Thu">
+        <definition>COD: be in or rise to an upright position, supported by one's feet. </definition>
+        <sentenceCount annotated="73" total="536"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="stand"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="stoop.v" ID="142" lemmaID="38184" cBy="731" cDate="02/08/2001 01:27:39 PST Thu">
+        <definition>COD: bend one's head or body forwards and downwards, or have the head and shoulders habitually bent forwards. </definition>
+        <sentenceCount annotated="10" total="139"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="stoop"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="bent.a" ID="5362" lemmaID="3393" cBy="664" cDate="03/29/2002 06:35:35 PST Fri">
+        <definition>COD: sharply curved or having an angle. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="bent"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="crouched.a" ID="5363" lemmaID="45576" cBy="664" cDate="03/29/2002 06:36:25 PST Fri">
+        <definition>FN: in a crouching posture.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="crouched"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="huddled.a" ID="5364" lemmaID="45577" cBy="664" cDate="03/29/2002 06:37:59 PST Fri">
+        <definition>FN: having the limbs drawn in so that the body takes up little space.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="huddled"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="hunched.a" ID="5365" lemmaID="45578" cBy="664" cDate="03/29/2002 06:39:45 PST Fri">
+        <definition>FN: with back and shoulders bent forward.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="hunched"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="sprawled.a" ID="9420" lemmaID="45579" cBy="605" cDate="09/08/2003 08:20:03 PDT Mon">
+        <definition>FN: with one's limbs spread out in an ungainly way</definition>
+        <sentenceCount annotated="28" total="90"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="sprawled"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="slouched.a" ID="9421" lemmaID="48342" cBy="605" cDate="09/08/2003 09:05:32 PDT Mon">
+        <definition>FN: stand or sit in a lazy, drooping way with one's muscles extremely relaxed</definition>
+        <sentenceCount annotated="12" total="60"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="slouched"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Point_of_contact" POS="A" name="seated.a" ID="9422" lemmaID="48362" cBy="605" cDate="09/08/2003 09:40:38 PDT Mon">
+        <definition>FN: sitting</definition>
+        <sentenceCount annotated="50" total="209"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="seated"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="posture.n" ID="10356" lemmaID="29908" cBy="445" cDate="03/18/2004 02:21:51 PST Thu">
+        <definition>COD: a particular position of the body.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="posture"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="stance.n" ID="10357" lemmaID="37778" cBy="445" cDate="03/18/2004 02:23:25 PST Thu">
+        <definition>COD: the way in which someone stands, especially when deliberately adopted.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="stance"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="position.n" ID="10871" lemmaID="29842" cBy="203" cDate="08/18/2004 05:20:17 PDT Wed">
+        <definition>COD: a way in which someone or something is placed or arranged.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="position"/>
+    </lexUnit>
+</frame>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="V" name="strike.v" ID="15115" frame="Eventive_affecting" frameID="88" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Ent" name="Entity"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core-Unexpressed" abbrev="Evnt" name="Event"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Extra-Thematic" abbrev="Fre" name="Frequency"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="Reas" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: occur with less-than-desirable consequences</definition>
+    <lexeme POS="V" name="strike"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Entity"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Entity"/>
+                <annoSet ID="2604912"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Event"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Event"/>
+                <annoSet ID="2604912"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Frequency"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Frequency"/>
+                <annoSet ID="2604912"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="NP" FE="Time"/>
+                <annoSet ID="2604912"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Entity"/>
+            <FE name="Event"/>
+            <FE name="Frequency"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Entity"/>
+                <valenceUnit GF="" PT="CNI" FE="Event"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Frequency"/>
+                <valenceUnit GF="Dep" PT="NP" FE="Time"/>
+                <annoSet ID="2604912"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-pp_by-p-(1)"/>
+    <subCorpus name="02-subject-(1)"/>
+    <subCorpus name="03-modifier-(1)"/>
+    <subCorpus name="04-pp_with-p-(1)"/>
+    <subCorpus name="05-adj_comp-(1)"/>
+    <subCorpus name="06-other-matched-(1)"/>
+    <subCorpus name="07-other-unmatched-(1)"/>
+    <subCorpus name="01-Warea-Wbe-T-(2)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="1828" aPos="111480886" ID="1584534">
+            <text>The Ferryhill area was struck twice last weekend , once on Friday and then again on Saturday .</text>
+            <annotationSet cDate="08/13/2010 12:55:24 PDT Fri" status="UNANN" ID="2604911">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="12" start="4" name="NP"/>
+                    <label end="17" start="14" name="nn"/>
+                    <label end="21" start="19" name="VBD"/>
+                    <label end="28" start="23" name="VVN"/>
+                    <label end="34" start="30" name="rb"/>
+                    <label end="39" start="36" name="jj"/>
+                    <label end="47" start="41" name="nn"/>
+                    <label end="49" start="49" name=","/>
+                    <label end="54" start="51" name="rb"/>
+                    <label end="57" start="56" name="in"/>
+                    <label end="64" start="59" name="NP"/>
+                    <label end="68" start="66" name="cc"/>
+                    <label end="73" start="70" name="rb"/>
+                    <label end="79" start="75" name="rb"/>
+                    <label end="82" start="81" name="in"/>
+                    <label end="91" start="84" name="NP"/>
+                    <label end="93" start="93" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="08/13/2010 12:55:24 PDT Fri" status="MANUAL" ID="2604912">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="28" start="23" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="1190" end="17" start="0" name="Entity"/>
+                    <label cBy="589" feID="403" itype="CNI" name="Event"/>
+                    <label cBy="589" feID="405" end="47" start="36" name="Time"/>
+                    <label cBy="589" feID="12780" end="34" start="30" name="Frequency"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="17" start="0" name="Ext"/>
+                    <label end="47" start="36" name="Dep"/>
+                    <label end="34" start="30" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="17" start="0" name="NP"/>
+                    <label end="47" start="36" name="NP"/>
+                    <label end="34" start="30" name="AVP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(2)"/>
+    <subCorpus name="other-unmatched-(2)"/>
+</lexUnit>

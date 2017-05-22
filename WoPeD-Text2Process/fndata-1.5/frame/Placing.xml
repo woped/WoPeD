@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="731" cDate="02/07/2001 04:12:16 PST Wed" name="Placing" ID="62" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;Generally without overall (translational) motion,  an &lt;fen&gt;Agent&lt;/fen&gt; places a &lt;fen&gt;Theme&lt;/fen&gt; at a location, the &lt;fen&gt;Goal&lt;/fen&gt;, which is profiled.  In this frame, the &lt;fen&gt;Theme&lt;/fen&gt; is under the control of the &lt;fen&gt;Agent&lt;/fen&gt;/&lt;fen&gt;Cause&lt;/fen&gt; at the time of its arrival at the &lt;fen&gt;Goal&lt;/fen&gt;. 
+&lt;ex&gt;&lt;fex name="Agent"&gt;David&lt;/fex&gt; &lt;t&gt;placed&lt;/t&gt; &lt;fex name="Theme"&gt;his briefcase&lt;/fex&gt; &lt;fex name="Goal"&gt;on the floor&lt;/fex&gt;.&lt;/ex&gt;
+
+This frame differs from Filling in that it focuses on the &lt;fen&gt;Theme&lt;/fen&gt; rather than the effect on the &lt;fen&gt;Goal&lt;/fen&gt; entity.  It differs from Removing in focusing on the &lt;fen&gt;Goal&lt;/fen&gt; rather than the &lt;fen&gt;Source&lt;/fen&gt; of motion for the &lt;fen&gt;Theme&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:16 PST Wed" abbrev="Agt" name="Agent" ID="273">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Agent&lt;/fen&gt; is the person (or other force) that causes the &lt;fen&gt;Theme&lt;/fen&gt; to move.
+
+&lt;ex&gt;&lt;fex name="Agent"&gt;The waiter&lt;/fex&gt; &lt;t&gt;placed&lt;/t&gt; the food on the table.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:16 PST Wed" abbrev="Thm" name="Theme" ID="274">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Theme&lt;/fen&gt; is the object that changes location during the Placing.
+
+&lt;ex&gt;The waiter &lt;t&gt;placed&lt;/t&gt; &lt;fex name="Theme"&gt;the food&lt;/fex&gt; on the table.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Physical_object" ID="68"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Peripheral" cBy="731" cDate="02/07/2001 04:12:16 PST Wed" abbrev="Src" name="Source" ID="275">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Source&lt;/fen&gt; is the initial location of the &lt;fen&gt;Theme&lt;/fen&gt;, before it changes location. 
+&lt;ex&gt;Her mother &lt;t&gt;shelved&lt;/t&gt; the cans &lt;fex name="Src"&gt;from the countertop&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Source" ID="151"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Peripheral" cBy="731" cDate="02/07/2001 04:12:16 PST Wed" abbrev="Path" name="Path" ID="276">
+        <definition>&lt;def-root&gt;Any description of a trajectory of motion which is neither a &lt;fen&gt;Source&lt;/fen&gt; nor a &lt;fen&gt;Goal&lt;/fen&gt; expresses the frame element &lt;fen&gt;Path&lt;/fen&gt;. In this frame, &lt;fen&gt;Path&lt;/fen&gt; expressions almost always have a &lt;ment&gt;via&lt;/ment&gt;-sense.
+
+&lt;ex&gt;The mail carrier &lt;t&gt;stuck&lt;/t&gt; the letters &lt;fex name="Path"&gt;through the slot&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:16 PST Wed" abbrev="Goal" name="Goal" ID="277">
+        <definition>&lt;def-root&gt;The FE &lt;fen&gt;Goal&lt;/fen&gt; is the location where the &lt;fen&gt;Theme&lt;/fen&gt; ends up. This FE is profiled by words in this frame.  
+&lt;ex&gt;The waiter &lt;t&gt;placed&lt;/t&gt; the food &lt;fex name="Goal"&gt;on the table&lt;/fex&gt;.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+        <semType name="Goal" ID="153"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="731" cDate="02/07/2001 04:12:16 PST Wed" abbrev="Manr" name="Manner" ID="278">
+        <definition>&lt;def-root&gt;Any expression which describes a property of the placing action which is not directly related to the trajectory of the &lt;fen&gt;Theme&lt;/fen&gt;'s motion expresses the frame element &lt;fen&gt;Manner&lt;/fen&gt;. Descriptions of speed, steadiness, grace, means of motion, and other things count as &lt;fen&gt;Manner&lt;/fen&gt; expressions.
+
+&lt;ex&gt;The chef &lt;t&gt;packaged&lt;/t&gt; the food &lt;fex name="Manner"&gt;carefully&lt;/fex&gt; into take-out containers.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="06/05/2001 12:33:42 PDT Tue" abbrev="Degr" name="Degree" ID="731">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Degree&lt;/fen&gt; indicates the degree to which the placing occurs.&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="06/05/2001 12:33:42 PDT Tue" abbrev="Dep" name="Depictive" ID="733">
+        <definition>&lt;def-root&gt;This FE identifies any &lt;fen&gt;Depictive&lt;/fen&gt; phrase describing the &lt;fen&gt;Agent&lt;/fen&gt; or &lt;fen&gt;Theme&lt;/fen&gt; of the placing.
+
+
+&lt;ex&gt;I &lt;t&gt;put&lt;/t&gt; the dishes into the cabinet &lt;fex name="Depictive"&gt;unwashed&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="06/05/2001 12:33:42 PDT Tue" abbrev="Mns" name="Means" ID="736">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Means&lt;/fen&gt; is an act whereby the &lt;fen&gt;Agent&lt;/fen&gt; achieves the placing of the &lt;fen&gt;Theme&lt;/fen&gt;.
+
+&lt;ex&gt;The Egyptians &lt;t&gt;set&lt;/t&gt; it in place &lt;fex name="Mns"&gt;by simple levering&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="06/05/2001 12:33:42 PDT Tue" abbrev="Result" name="Result" ID="737">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Result&lt;/fen&gt; of the Placing.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="90876C" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="06/05/2001 12:34:02 PDT Tue" abbrev="Duration" name="Duration" ID="739">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Duration&lt;/fen&gt; is the amount of time for which the &lt;fen&gt;Theme&lt;/fen&gt; is to stay in the &lt;fen&gt;Goal&lt;/fen&gt; location.
+
+&lt;ex&gt;If you &lt;t&gt;place&lt;/t&gt; it there &lt;fex name="Duration"&gt;for extended periods&lt;/fex&gt;, your monitor may suffer permanent damage.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="06/05/2001 12:34:02 PDT Tue" abbrev="Place" name="Place" ID="741">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Place&lt;/fen&gt; indicates where the Placing occurs.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="7CCD73" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="06/05/2001 12:34:02 PDT Tue" abbrev="Reason" name="Reason" ID="742">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Reason&lt;/fen&gt; indicates why the Placing occurs.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="06/05/2001 12:34:02 PDT Tue" abbrev="Time" name="Time" ID="743">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Time&lt;/fen&gt; is when the Placing occurs
+
+&lt;ex&gt;Smithers had &lt;t&gt;placed&lt;/t&gt; the table there &lt;fex name="Time"&gt;the night before&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="09/18/2001 05:02:38 PDT Tue" abbrev="Area" name="Area" ID="1964">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Area&lt;/fen&gt; is the setting into which the &lt;fen&gt;Theme&lt;/fen&gt; is placed.
+
+
+&lt;ex&gt;She emptied a wash basket full of towels and &lt;t&gt;deposited&lt;/t&gt; them &lt;fex name="Area"&gt;around the house&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="09/18/2001 05:10:39 PDT Tue" abbrev="Thm_c" name="Cotheme" ID="1971">
+        <definition>&lt;def-root&gt;This is the second moving object, expressed as a direct object or an oblique.
+
+&lt;ex&gt;Pat &lt;t&gt;lay&lt;/t&gt; the trophy on the mantle &lt;fex name="Cotheme"&gt;along with her portrait&lt;/fex&gt;. &lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="000000" coreType="Peripheral" cBy="664" cDate="09/18/2001 05:10:50 PDT Tue" abbrev="Dist" name="Distance" ID="1972">
+        <definition>&lt;def-root&gt;This FE is any expression which characterizes the extent of motion.  
+
+&lt;ex&gt;I &lt;t&gt;plunged&lt;/t&gt; my hands &lt;fex name="Distance"&gt;wrist deep&lt;/fex&gt; in the fragrant herbs and rubbed the dry fragments between the fingertips&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="09/18/2001 05:10:50 PDT Tue" abbrev="Spd" name="Speed" ID="1973">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Speed&lt;/fen&gt; is the rate at which Placing occurs.
+
+&lt;ex&gt;Smithers &lt;t&gt;put&lt;/t&gt; his book down &lt;fex name="Speed"&gt;quickly&lt;/fex&gt; and turned around.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Speed" ID="234"/>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="09/18/2001 05:29:11 PDT Tue" abbrev="Cause" name="Cause" ID="1975">
+        <definition>&lt;def-root&gt;&lt;ex&gt;Grass , which is sown with clover , provides rich pasture for cattle in summer and the clover is &lt;fex name="Cause"&gt;another plant which&lt;/fex&gt; &lt;t&gt;puts&lt;/t&gt; nitrogen into the soil .&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Agent" ID="273"/>
+    </FE>
+    <FE bgColor="d0d0d0" fgColor="00008B" coreType="Extra-Thematic" cBy="605" cDate="11/19/2003 03:20:44 PST Wed" abbrev="" name="Purpose" ID="5742">
+        <definition>&lt;def-root&gt;An action that the &lt;fen&gt;Agent&lt;/fen&gt; intends to accomplish by perform the placing action.
+
+&lt;ex&gt;They &lt;t&gt;put&lt;/t&gt; the vase in a box &lt;fex name="Purpose"&gt;to protect it during transportation&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="EEE8AA" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="11/15/2006 04:44:41 PST Wed" abbrev="" name="Beneficiary" ID="10835">
+        <definition>&lt;def-root&gt;This extrathematic FE applies to participants that derive a benefit from the occurrence of the event specified by the target predicate. Further, the target predicate should involve some sort of Agent that intends that the benefit go to the Beneficiary.&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Transitive_action</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Dispersal</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on">
+        <relatedFrame>Placing_scenario</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Motion</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Dressing</relatedFrame>
+        <relatedFrame>Arranging</relatedFrame>
+        <relatedFrame>Installing</relatedFrame>
+        <relatedFrame>Storing</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of">
+        <relatedFrame>Cause_motion</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by">
+        <relatedFrame>Removing</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="FN1_Sent" POS="V" name="deposit.v" ID="1084" lemmaID="10238" cBy="731" cDate="02/08/2001 01:29:12 PST Thu">
+        <definition>COD: put or set down in a specific place.</definition>
+        <sentenceCount annotated="30" total="290"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="deposit"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="embed.v" ID="1085" lemmaID="12541" cBy="731" cDate="02/08/2001 01:29:12 PST Thu">
+        <definition>FN: fix firmly and deeply in a surrounding mass</definition>
+        <sentenceCount annotated="29" total="137"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="embed"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="hang.v" ID="1086" lemmaID="17383" cBy="731" cDate="02/08/2001 01:29:13 PST Thu">
+        <definition>COD: suspend or be suspended from above with the lower part not attached.</definition>
+        <sentenceCount annotated="42" total="267"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="hang"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="immerse.v" ID="1087" lemmaID="19051" cBy="731" cDate="02/08/2001 01:29:13 PST Thu">
+        <definition>COD: dip or submerge in a liquid.</definition>
+        <sentenceCount annotated="21" total="88"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="immerse"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="implant.v" ID="1088" lemmaID="19186" cBy="731" cDate="02/08/2001 01:29:13 PST Thu">
+        <definition>COD: insert or fix (tissue or an artificial object) into the body</definition>
+        <sentenceCount annotated="25" total="119"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="implant"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="inject.v" ID="1089" lemmaID="19976" cBy="731" cDate="02/08/2001 01:29:13 PST Thu">
+        <definition>COD: introduce (a liquid, especially a drug or vaccine) into the body with a syringe</definition>
+        <sentenceCount annotated="21" total="197"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="inject"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="insert.v" ID="1090" lemmaID="20103" cBy="731" cDate="02/08/2001 01:29:13 PST Thu">
+        <definition>COD: place, fit, or incorporate (something) in something else</definition>
+        <sentenceCount annotated="53" total="303"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="insert"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="insertion.n" ID="1091" lemmaID="20104" cBy="731" cDate="02/08/2001 01:29:14 PST Thu">
+        <definition>FN: the placing, fitting, or incorporating of (something) in something else</definition>
+        <sentenceCount annotated="22" total="106"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="insertion"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="lay.v" ID="1092" lemmaID="21875" cBy="731" cDate="02/08/2001 01:29:14 PST Thu">
+        <definition>COD: place or fix (equipment) in position ready for use.</definition>
+        <sentenceCount annotated="26" total="511"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="lay"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="lean.v" ID="1093" lemmaID="21935" cBy="731" cDate="02/08/2001 01:29:14 PST Thu">
+        <definition>COD: incline from the perpendicular and rest against.</definition>
+        <sentenceCount annotated="22" total="331"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="lean"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="load.v" ID="1094" lemmaID="22578" cBy="731" cDate="02/08/2001 01:29:14 PST Thu">
+        <definition>COD: put a load on or in (a vehicle, ship, etc.).</definition>
+        <sentenceCount annotated="25" total="180"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="load"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="lodge.v" ID="1095" lemmaID="22647" cBy="731" cDate="02/08/2001 01:29:15 PST Thu">
+        <definition>COD: make or become firmly fixed in a place.</definition>
+        <sentenceCount annotated="6" total="300"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="lodge"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="pack.v" ID="1097" lemmaID="27482" cBy="731" cDate="02/08/2001 01:29:15 PST Thu">
+        <definition>COD: to place in a container for transport or storage</definition>
+        <sentenceCount annotated="30" total="185"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="pack"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="park.v" ID="1098" lemmaID="27845" cBy="731" cDate="02/08/2001 01:29:15 PST Thu">
+        <definition>COD: deposit or leave in a convenient place until required</definition>
+        <sentenceCount annotated="32" total="347"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="park"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="pile.v" ID="1099" lemmaID="28997" cBy="731" cDate="02/08/2001 01:29:15 PST Thu">
+        <definition>COD: place (things) one on top of the other</definition>
+        <sentenceCount annotated="22" total="168"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="pile"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="place.v" ID="1100" lemmaID="29199" cBy="731" cDate="02/08/2001 01:29:15 PST Thu">
+        <definition>COD: put in a particular position</definition>
+        <sentenceCount annotated="51" total="549"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="place"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="placement.n" ID="1101" lemmaID="29204" cBy="731" cDate="02/08/2001 01:29:15 PST Thu">
+        <definition>COD: the action or fact of placing or being placed</definition>
+        <sentenceCount annotated="25" total="174"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="placement"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="plant.v" ID="1102" lemmaID="29262" cBy="731" cDate="02/08/2001 01:29:15 PST Thu">
+        <definition>COD: place (a seed, bulb, or plant) in the ground so that it can grow.</definition>
+        <sentenceCount annotated="58" total="237"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="plant"/>
+    </lexUnit>
+    <lexUnit status="In_Use" POS="V" name="position.v" ID="1103" lemmaID="29843" cBy="731" cDate="02/08/2001 01:29:15 PST Thu">
+        <definition>COD: put or arrange in a particular position.</definition>
+        <sentenceCount annotated="34" total="306"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="position"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="rest.v" ID="1104" lemmaID="32918" cBy="731" cDate="02/08/2001 01:29:15 PST Thu">
+        <definition>COD: place or be placed so as to stay in a specified position</definition>
+        <sentenceCount annotated="10" total="393"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="rest"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="set.v" ID="1105" lemmaID="35224" cBy="731" cDate="02/08/2001 01:29:15 PST Thu">
+        <definition>COD: put, lay, or stand (something) in a specified place or position</definition>
+        <sentenceCount annotated="19" total="554"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="set"/>
+    </lexUnit>
+    <lexUnit status="In_Use" POS="V" name="situate.v" ID="1106" lemmaID="36063" cBy="731" cDate="02/08/2001 01:29:16 PST Thu">
+        <definition>COD: place in a particular location or context</definition>
+        <sentenceCount annotated="11" total="28"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="situate"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="smear.v" ID="1107" lemmaID="36503" cBy="731" cDate="02/08/2001 01:29:16 PST Thu">
+        <definition>COD: spread (a greasy or sticky substance) over a surface</definition>
+        <sentenceCount annotated="22" total="130"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="smear"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="stand.v" ID="1109" lemmaID="37785" cBy="731" cDate="02/08/2001 01:29:16 PST Thu">
+        <definition>FN: place in a particular position</definition>
+        <sentenceCount annotated="14" total="524"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="stand"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="stash.v" ID="1110" lemmaID="37850" cBy="731" cDate="02/08/2001 01:29:16 PST Thu">
+        <definition>COD: store safely in a secret place.</definition>
+        <sentenceCount annotated="15" total="59"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="stash"/>
+    </lexUnit>
+    <lexUnit status="Problem" POS="V" name="station.v" ID="1111" lemmaID="37873" cBy="731" cDate="02/08/2001 01:29:16 PST Thu">
+        <definition>FN: to set in a position</definition>
+        <sentenceCount annotated="12" total="225"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="station"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="stow.v" ID="1113" lemmaID="38229" cBy="731" cDate="02/08/2001 01:29:16 PST Thu">
+        <definition>COD: pack or store (an object) tidily in an appropriate place.</definition>
+        <sentenceCount annotated="26" total="124"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="stow"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="stuff.v" ID="1114" lemmaID="38436" cBy="731" cDate="02/08/2001 01:29:16 PST Thu">
+        <definition>COD: force tightly into a receptacle or space.</definition>
+        <sentenceCount annotated="26" total="307"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="stuff"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="tuck.v" ID="1115" lemmaID="41443" cBy="731" cDate="02/08/2001 01:29:16 PST Thu">
+        <definition>FN: put into a snug place</definition>
+        <sentenceCount annotated="44" total="467"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="tuck"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="wrap.v" ID="1116" lemmaID="44555" cBy="731" cDate="02/08/2001 01:29:16 PST Thu">
+        <definition>COD: arrange (paper or soft material) round something, as a covering or for warmth or protection.</definition>
+        <sentenceCount annotated="11" total="194"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="wrap"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Goal" POS="V" name="bag.v" ID="2433" lemmaID="2681" cBy="613" cDate="05/29/2001 04:02:51 PDT Tue">
+        <definition>COD: put in a bag</definition>
+        <sentenceCount annotated="14" total="190"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="bag"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="billet.v" ID="2435" lemmaID="3578" cBy="613" cDate="05/29/2001 04:30:02 PDT Tue">
+        <definition>COD: lodge (soldiers) in a civilian house</definition>
+        <sentenceCount annotated="20" total="43"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="billet"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Goal" POS="V" name="bin.v" ID="2438" lemmaID="44912" cBy="613" cDate="05/29/2001 04:36:56 PDT Tue">
+        <definition>COD: a. throw (something) away by putting it in a bin. </definition>
+        <sentenceCount annotated="4" total="33"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="bin"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Goal" POS="V" name="bottle.v" ID="2440" lemmaID="4278" cBy="613" cDate="05/29/2001 04:55:57 PDT Tue">
+        <definition>COD: place in bottles for storage</definition>
+        <sentenceCount annotated="25" total="137"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="bottle"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="archive.v" ID="2441" lemmaID="44913" cBy="613" cDate="05/29/2001 05:14:48 PDT Tue">
+        <definition>COD: place in an archive</definition>
+        <sentenceCount annotated="4" total="52"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="archive"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Goal" POS="V" name="box.v" ID="2442" lemmaID="4363" cBy="613" cDate="05/29/2001 05:28:46 PDT Tue">
+        <definition>COD: put in ... a box</definition>
+        <sentenceCount annotated="9" total="230"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="box"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Goal" POS="V" name="cage.v" ID="2443" lemmaID="5181" cBy="613" cDate="05/29/2001 05:38:53 PDT Tue">
+        <definition>COD: confine in or as in a cage</definition>
+        <sentenceCount annotated="5" total="109"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="cage"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Goal" POS="V" name="crate.v" ID="2445" lemmaID="8813" cBy="613" cDate="05/29/2001 08:00:49 PDT Tue">
+        <definition>COD: pack in a crate for transportation</definition>
+        <sentenceCount annotated="8" total="29"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="crate"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Goal" POS="V" name="file.v" ID="2447" lemmaID="14341" cBy="613" cDate="05/29/2001 08:20:17 PDT Tue">
+        <definition>COD: place (a document) in a file</definition>
+        <sentenceCount annotated="25" total="343"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="file"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Goal" POS="V" name="garage.v" ID="2448" lemmaID="15906" cBy="613" cDate="05/29/2001 08:28:42 PDT Tue">
+        <definition>COD: put or keep (a motor vehicle) in a garage.</definition>
+        <sentenceCount annotated="8" total="100"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="garage"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Goal" POS="V" name="pocket.v" ID="2449" lemmaID="29503" cBy="613" cDate="05/29/2001 08:39:02 PDT Tue">
+        <definition>COD: put into one's pocket</definition>
+        <sentenceCount annotated="12" total="41"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="pocket"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Goal" POS="V" name="shelve.v" ID="2451" lemmaID="35485" cBy="613" cDate="05/29/2001 08:44:17 PDT Tue">
+        <definition>COD: place on a shelf</definition>
+        <sentenceCount annotated="6" total="123"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="shelve"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Goal" POS="V" name="stable.v" ID="2454" lemmaID="37683" cBy="613" cDate="05/30/2001 11:18:47 PDT Wed">
+        <definition>COD: put [or keep] a horse in a stable</definition>
+        <sentenceCount annotated="17" total="119"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="stable"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="perch.v" ID="2455" lemmaID="28406" cBy="613" cDate="05/30/2001 12:42:49 PDT Wed">
+        <definition>COD: set or balance someone or something on</definition>
+        <sentenceCount annotated="13" total="121"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="perch"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="sit.v" ID="2486" lemmaID="36054" cBy="613" cDate="06/03/2001 12:11:02 PDT Sun">
+        <definition>FN: cause to sit or be placed (somewhere)</definition>
+        <sentenceCount annotated="11" total="256"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="sit"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="daub.v" ID="2487" lemmaID="9614" cBy="613" cDate="06/03/2001 02:26:45 PDT Sun">
+        <definition>COD: spread (a thick substance) on a surface [carelessly or liberally]</definition>
+        <sentenceCount annotated="4" total="76"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="daub"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="drizzle.v" ID="2488" lemmaID="11806" cBy="613" cDate="06/03/2001 02:34:42 PDT Sun">
+        <definition>FN: pour (liquid) in a thin stream</definition>
+        <sentenceCount annotated="11" total="52"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="drizzle"/>
+    </lexUnit>
+    <lexUnit status="Problem" POS="V" name="sow.v" ID="2490" lemmaID="37111" cBy="613" cDate="06/03/2001 03:10:29 PDT Sun">
+        <definition>COD: plant (seed) by scattering it on or in the earth</definition>
+        <sentenceCount annotated="23" total="203"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="sow"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="dab.v" ID="2493" lemmaID="9448" cBy="613" cDate="06/03/2001 03:40:22 PDT Sun">
+        <definition>COD: apply (a substance) with light quick strokes</definition>
+        <sentenceCount annotated="15" total="119"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="dab"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="drape.v" ID="2496" lemmaID="11701" cBy="613" cDate="06/03/2001 04:11:05 PDT Sun">
+        <definition>COD: arrange (cloth or clothing) loosely on or round something</definition>
+        <sentenceCount annotated="40" total="158"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="drape"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="brush.v" ID="2511" lemmaID="4751" cBy="613" cDate="06/05/2001 10:42:45 PDT Tue">
+        <definition>FN: apply with a brush </definition>
+        <sentenceCount annotated="11" total="264"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="brush"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="dust.v" ID="2528" lemmaID="11997" cBy="613" cDate="06/06/2001 04:58:45 PDT Wed">
+        <definition>FN: apply (a powdered substance) lightly to a surface</definition>
+        <sentenceCount annotated="5" total="128"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="dust"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="heap.v" ID="2529" lemmaID="17675" cBy="613" cDate="06/06/2001 05:05:18 PDT Wed">
+        <definition>COD: put in or form a heap</definition>
+        <sentenceCount annotated="12" total="154"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="heap"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="jam.v" ID="2530" lemmaID="20817" cBy="613" cDate="06/06/2001 05:24:55 PDT Wed">
+        <definition>FN: squeeze or pack tightly into a space, sometimes with force</definition>
+        <sentenceCount annotated="26" total="214"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="jam"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="rub.v" ID="2546" lemmaID="33678" cBy="613" cDate="06/07/2001 05:27:29 PDT Thu">
+        <definition>COD: apply with a rubbing action</definition>
+        <sentenceCount annotated="20" total="292"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="rub"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="cram.v" ID="2548" lemmaID="8774" cBy="613" cDate="06/07/2001 05:37:50 PDT Thu">
+        <definition>COD: force too many (people or things) into a container</definition>
+        <sentenceCount annotated="19" total="183"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="cram"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="shower.v" ID="2571" lemmaID="35691" cBy="613" cDate="06/09/2001 06:14:58 PDT Sat">
+        <definition>FN: pour or throw (a liquid or other substance) in a shower</definition>
+        <sentenceCount annotated="8" total="152"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="shower"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Goal" POS="V" name="pot.v" ID="3913" lemmaID="29914" cBy="605" cDate="09/10/2001 05:06:15 PDT Mon">
+        <definition>COD: plant in a pot</definition>
+        <sentenceCount annotated="10" total="114"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="pot"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Goal" POS="V" name="sheathe.v" ID="3914" lemmaID="35439" cBy="605" cDate="09/10/2001 05:23:41 PDT Mon">
+        <definition>COD: put (a knife or sword) into a sheath</definition>
+        <sentenceCount annotated="9" total="62"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="sheathe"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Goal" POS="V" name="warehouse.v" ID="3915" lemmaID="44915" cBy="605" cDate="09/10/2001 06:15:41 PDT Mon">
+        <definition>FN: place in a warehouse.</definition>
+        <sentenceCount annotated="4" total="27"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="warehouse"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="shoulder.v" ID="3916" lemmaID="35672" cBy="605" cDate="09/10/2001 06:43:21 PDT Mon">
+        <definition>COD: rob or plunder (a ship). </definition>
+        <sentenceCount annotated="8" total="81"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="shoulder"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="stick.v" ID="4726" lemmaID="45303" cBy="296" cDate="01/16/2002 02:30:36 PST Wed">
+        <definition>COD: with obj. and adverbial of place put somewhere in a quick or careless way. </definition>
+        <sentenceCount annotated="13" total="220"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="stick"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="V" name="bestow.v" ID="5354" lemmaID="3443" cBy="664" cDate="03/29/2002 02:27:45 PST Fri">
+        <definition>COD: [archaic] put (something) in a specified place.</definition>
+        <sentenceCount annotated="2" total="102"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="bestow"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="put.v" ID="5355" lemmaID="31295" cBy="664" cDate="03/29/2002 02:41:37 PST Fri">
+        <definition>COD: move to or place in a particular position. </definition>
+        <sentenceCount annotated="62" total="509"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="put"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Goal" POS="V" name="package.v" ID="5356" lemmaID="27484" cBy="664" cDate="03/29/2002 03:00:54 PST Fri">
+        <definition>COD: put into a box or wrapping. </definition>
+        <sentenceCount annotated="8" total="174"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="package"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="plunge.v" ID="6034" lemmaID="29460" cBy="296" cDate="06/06/2002 09:50:25 PDT Thu">
+        <definition>COD: push or thrust something quickly. </definition>
+        <sentenceCount annotated="23" total="328"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="plunge"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="arrange.v" ID="11298" lemmaID="1971" cBy="303" cDate="11/23/2004 02:39:42 PST Tue">
+        <definition>FN: put in order on or against a background</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="arrange"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="emplace.v" ID="13994" lemmaID="50554" cBy="618" cDate="03/16/2007 09:28:21 PDT Fri">
+        <definition>FN: set in a position.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="emplace"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="enclose.v" ID="14796" lemmaID="12688" cBy="361" cDate="02/20/2008 02:16:12 PST Wed">
+        <definition>FN: insert inside a container</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="enclose"/>
+    </lexUnit>
+</frame>

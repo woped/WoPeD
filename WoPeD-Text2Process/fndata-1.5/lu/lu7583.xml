@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="splinter.v" ID="7583" frame="Cause_to_fragment" frameID="414" totalAnnotated="6" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Agt" name="Agent"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="cau" name="Cause"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Ins" name="Instrument"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Mnr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Core" abbrev="Pieces" name="Pieces"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="Reason" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Peripheral" abbrev="Res_surf" name="Resistant_surface"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="Result" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD73" type="Extra-Thematic" abbrev="Subr" name="Subregion"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Pat" name="Whole_patient"/>
+        </frame>
+    </header>
+    <definition>FN: cause to break into small, long, thin pieces (i.e. splinters).</definition>
+    <lexeme POS="V" name="splinter"/>
+    <valences>
+        <FERealization total="6">
+            <FE name="Agent"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <annoSet ID="1793745"/>
+            </pattern>
+            <pattern total="5">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <annoSet ID="1793761"/>
+                <annoSet ID="1793767"/>
+                <annoSet ID="1793769"/>
+                <annoSet ID="1793799"/>
+                <annoSet ID="1793823"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="6">
+            <FE name="Pieces"/>
+            <pattern total="6">
+                <valenceUnit GF="" PT="INI" FE="Pieces"/>
+                <annoSet ID="1793745"/>
+                <annoSet ID="1793761"/>
+                <annoSet ID="1793767"/>
+                <annoSet ID="1793769"/>
+                <annoSet ID="1793799"/>
+                <annoSet ID="1793823"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Place"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Place"/>
+                <annoSet ID="1793767"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Subregion"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Subregion"/>
+                <annoSet ID="1793799"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="2nd" FE="Time"/>
+                <annoSet ID="1793767"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="6">
+            <FE name="Whole_patient"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Whole_patient"/>
+                <annoSet ID="1793745"/>
+            </pattern>
+            <pattern total="4">
+                <valenceUnit GF="Obj" PT="NP" FE="Whole_patient"/>
+                <annoSet ID="1793761"/>
+                <annoSet ID="1793767"/>
+                <annoSet ID="1793769"/>
+                <annoSet ID="1793799"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="NP" FE="Whole_patient"/>
+                <annoSet ID="1793823"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Agent"/>
+            <FE name="Agent"/>
+            <FE name="Pieces"/>
+            <FE name="Whole_patient"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <valenceUnit GF="" PT="INI" FE="Pieces"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Whole_patient"/>
+                <annoSet ID="1793769"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Agent"/>
+            <FE name="Pieces"/>
+            <FE name="Place"/>
+            <FE name="Time"/>
+            <FE name="Whole_patient"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <valenceUnit GF="" PT="INI" FE="Pieces"/>
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Place"/>
+                <valenceUnit GF="" PT="2nd" FE="Time"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Whole_patient"/>
+                <annoSet ID="1793767"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Agent"/>
+            <FE name="Pieces"/>
+            <FE name="Subregion"/>
+            <FE name="Whole_patient"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <valenceUnit GF="" PT="INI" FE="Pieces"/>
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Subregion"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Whole_patient"/>
+                <annoSet ID="1793799"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="3">
+            <FE name="Agent"/>
+            <FE name="Pieces"/>
+            <FE name="Whole_patient"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <valenceUnit GF="" PT="INI" FE="Pieces"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Whole_patient"/>
+                <annoSet ID="1793745"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <valenceUnit GF="" PT="INI" FE="Pieces"/>
+                <valenceUnit GF="Dep" PT="NP" FE="Whole_patient"/>
+                <annoSet ID="1793823"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <valenceUnit GF="" PT="INI" FE="Pieces"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Whole_patient"/>
+                <annoSet ID="1793761"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-001-all">
+        <sentence sentNo="0" aPos="7039077" ID="1171705">
+            <text>The cupboard doors had all been deeply hacked and scored with a knife , every crisp bag had been burst , every stick of rock shattered and splintered : it was a very thorough job . </text>
+            <annotationSet cDate="01/08/2003 05:22:40 PST Wed" status="UNANN" ID="1793744">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="11" start="4" name="NN1"/>
+                    <label end="17" start="13" name="NN2"/>
+                    <label end="21" start="19" name="VHD"/>
+                    <label end="25" start="23" name="AV0"/>
+                    <label end="30" start="27" name="VBN"/>
+                    <label end="37" start="32" name="AV0"/>
+                    <label end="44" start="39" name="VVN"/>
+                    <label end="48" start="46" name="CJC"/>
+                    <label end="55" start="50" name="VVN"/>
+                    <label end="60" start="57" name="PRP"/>
+                    <label end="62" start="62" name="AT0"/>
+                    <label end="68" start="64" name="NN1"/>
+                    <label end="70" start="70" name="PUN"/>
+                    <label end="76" start="72" name="AT0"/>
+                    <label end="82" start="78" name="AJ0"/>
+                    <label end="86" start="84" name="NN1"/>
+                    <label end="90" start="88" name="VHD"/>
+                    <label end="95" start="92" name="VBN"/>
+                    <label end="101" start="97" name="VVN"/>
+                    <label end="103" start="103" name="PUN"/>
+                    <label end="109" start="105" name="AT0"/>
+                    <label end="115" start="111" name="NN1"/>
+                    <label end="118" start="117" name="PRF"/>
+                    <label end="123" start="120" name="NN1"/>
+                    <label end="133" start="125" name="VVD-VVN"/>
+                    <label end="137" start="135" name="CJC"/>
+                    <label end="148" start="139" name="VVD"/>
+                    <label end="150" start="150" name="PUN"/>
+                    <label end="153" start="152" name="PNP"/>
+                    <label end="157" start="155" name="VBD"/>
+                    <label end="159" start="159" name="AT0"/>
+                    <label end="164" start="161" name="AV0"/>
+                    <label end="173" start="166" name="AJ0"/>
+                    <label end="177" start="175" name="NN1"/>
+                    <label end="179" start="179" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:22:40 PST Wed" status="MANUAL" ID="1793745">
+                <layer rank="1" name="FE">
+                    <label cBy="351" feID="3806" end="123" start="105" name="Whole_patient"/>
+                    <label cBy="351" feID="3802" itype="CNI" name="Agent"/>
+                    <label cBy="351" feID="3812" itype="INI" name="Pieces"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="123" start="105" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="123" start="105" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="148" start="139" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="19650074" ID="1171713">
+            <text>Some of these lorikeets have small bills that are capable only of pinching the skin of human handlers , while other species can easily draw blood and even splinter wood . </text>
+            <annotationSet cDate="01/08/2003 05:22:41 PST Wed" status="UNANN" ID="1793760">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="DT0"/>
+                    <label end="6" start="5" name="PRF"/>
+                    <label end="12" start="8" name="DT0"/>
+                    <label end="22" start="14" name="NN2"/>
+                    <label end="27" start="24" name="VHB"/>
+                    <label end="33" start="29" name="AJ0"/>
+                    <label end="39" start="35" name="NN2"/>
+                    <label end="44" start="41" name="CJT"/>
+                    <label end="48" start="46" name="VBB"/>
+                    <label end="56" start="50" name="AJ0"/>
+                    <label end="61" start="58" name="AV0"/>
+                    <label end="64" start="63" name="PRF"/>
+                    <label end="73" start="66" name="VVG"/>
+                    <label end="77" start="75" name="AT0"/>
+                    <label end="82" start="79" name="NN1"/>
+                    <label end="85" start="84" name="PRF"/>
+                    <label end="91" start="87" name="AJ0"/>
+                    <label end="100" start="93" name="NN2"/>
+                    <label end="102" start="102" name="PUN"/>
+                    <label end="108" start="104" name="CJS"/>
+                    <label end="114" start="110" name="AJ0"/>
+                    <label end="122" start="116" name="NN0"/>
+                    <label end="126" start="124" name="VM0"/>
+                    <label end="133" start="128" name="AV0"/>
+                    <label end="138" start="135" name="VVI"/>
+                    <label end="144" start="140" name="NN1"/>
+                    <label end="148" start="146" name="CJC"/>
+                    <label end="153" start="150" name="AV0"/>
+                    <label end="162" start="155" name="VVB"/>
+                    <label end="167" start="164" name="NN1"/>
+                    <label end="169" start="169" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:22:41 PST Wed" status="MANUAL" ID="1793761">
+                <layer rank="1" name="FE">
+                    <label cBy="351" feID="3802" end="122" start="110" name="Agent"/>
+                    <label cBy="351" feID="3806" end="167" start="164" name="Whole_patient"/>
+                    <label cBy="351" feID="3812" itype="INI" name="Pieces"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="122" start="110" name="Ext"/>
+                    <label end="167" start="164" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="122" start="110" name="NP"/>
+                    <label end="167" start="164" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="162" start="155" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="25115883" ID="1171716">
+            <text>I 'll admit I felt just like you do when I first saw Townshend doing his smashing act ; I would have died for the SG he splintered at Woodstock ! </text>
+            <annotationSet cDate="01/08/2003 05:22:42 PST Wed" status="UNANN" ID="1793766">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PNP"/>
+                    <label end="4" start="2" name="VM0"/>
+                    <label end="10" start="6" name="VVI"/>
+                    <label end="12" start="12" name="PNP"/>
+                    <label end="17" start="14" name="VVD"/>
+                    <label end="22" start="19" name="AV0"/>
+                    <label end="27" start="24" name="PRP"/>
+                    <label end="31" start="29" name="PNP"/>
+                    <label end="34" start="33" name="VDB"/>
+                    <label end="39" start="36" name="AVQ-CJS"/>
+                    <label end="41" start="41" name="PNP"/>
+                    <label end="47" start="43" name="ORD"/>
+                    <label end="51" start="49" name="VVD"/>
+                    <label end="61" start="53" name="NN1-NP0"/>
+                    <label end="67" start="63" name="VDG"/>
+                    <label end="71" start="69" name="DPS"/>
+                    <label end="80" start="73" name="AJ0"/>
+                    <label end="84" start="82" name="NN1"/>
+                    <label end="86" start="86" name="PUN"/>
+                    <label end="88" start="88" name="PNP"/>
+                    <label end="94" start="90" name="VM0"/>
+                    <label end="99" start="96" name="VHI"/>
+                    <label end="104" start="101" name="VVN"/>
+                    <label end="108" start="106" name="PRP"/>
+                    <label end="112" start="110" name="AT0"/>
+                    <label end="115" start="114" name="NN1"/>
+                    <label end="118" start="117" name="PNP"/>
+                    <label end="129" start="120" name="VVD"/>
+                    <label end="132" start="131" name="PRP"/>
+                    <label end="142" start="134" name="NP0"/>
+                    <label end="144" start="144" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:22:42 PST Wed" status="MANUAL" ID="1793767">
+                <layer rank="1" name="FE">
+                    <label cBy="351" feID="3806" end="115" start="110" name="Whole_patient"/>
+                    <label cBy="351" feID="3802" end="118" start="117" name="Agent"/>
+                    <label cBy="351" feID="3807" end="142" start="131" name="Place"/>
+                    <label cBy="351" feID="3812" itype="INI" name="Pieces"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="115" start="110" name="Obj"/>
+                    <label end="118" start="117" name="Ext"/>
+                    <label end="142" start="131" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="115" start="110" name="NP"/>
+                    <label end="118" start="117" name="NP"/>
+                    <label end="142" start="131" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other">
+                    <label end="115" start="110" name="Ant"/>
+                </layer>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="129" start="120" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+                <layer rank="2" name="FE">
+                    <label cBy="351" feID="3810" end="142" start="131" name="Time"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="25890513" ID="1171717">
+            <text>His ghost became known as the Bad Lord , it being a noxious POLTERGEIST who irritates the family 's descendants more as time goes by -- roaring in the cellars , splintering furniture and frightening maidservants . </text>
+            <annotationSet cDate="01/08/2003 05:22:42 PST Wed" status="UNANN" ID="1793768">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="DPS"/>
+                    <label end="8" start="4" name="NN1"/>
+                    <label end="15" start="10" name="VVD"/>
+                    <label end="21" start="17" name="VVN"/>
+                    <label end="24" start="23" name="PRP"/>
+                    <label end="28" start="26" name="AT0"/>
+                    <label end="32" start="30" name="AJ0"/>
+                    <label end="37" start="34" name="NN1-NP0"/>
+                    <label end="39" start="39" name="PUN"/>
+                    <label end="42" start="41" name="PNP"/>
+                    <label end="48" start="44" name="VBG"/>
+                    <label end="50" start="50" name="AT0"/>
+                    <label end="58" start="52" name="AJ0"/>
+                    <label end="70" start="60" name="NN1"/>
+                    <label end="74" start="72" name="PNQ"/>
+                    <label end="84" start="76" name="VVZ"/>
+                    <label end="88" start="86" name="AT0"/>
+                    <label end="95" start="90" name="NN0"/>
+                    <label end="98" start="97" name="POS"/>
+                    <label end="110" start="100" name="NN2"/>
+                    <label end="115" start="112" name="AV0"/>
+                    <label end="118" start="117" name="CJS-PRP"/>
+                    <label end="123" start="120" name="NN1"/>
+                    <label end="128" start="125" name="VVZ"/>
+                    <label end="131" start="130" name="AVP-PRP"/>
+                    <label end="134" start="133" name="PUN"/>
+                    <label end="142" start="136" name="VVG"/>
+                    <label end="145" start="144" name="PRP"/>
+                    <label end="149" start="147" name="AT0"/>
+                    <label end="157" start="151" name="NN2"/>
+                    <label end="159" start="159" name="PUN"/>
+                    <label end="171" start="161" name="VVG"/>
+                    <label end="181" start="173" name="NN1"/>
+                    <label end="185" start="183" name="CJC"/>
+                    <label end="197" start="187" name="AJ0"/>
+                    <label end="210" start="199" name="NN2"/>
+                    <label end="212" start="212" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:22:42 PST Wed" status="MANUAL" ID="1793769">
+                <layer rank="1" name="FE">
+                    <label cBy="351" feID="3806" end="181" start="173" name="Whole_patient"/>
+                    <label cBy="351" feID="3802" end="70" start="50" name="Agent"/>
+                    <label cBy="351" feID="3812" itype="INI" name="Pieces"/>
+                    <label cBy="309" feID="3802" end="74" start="72" name="Agent"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="181" start="173" name="Obj"/>
+                    <label end="70" start="50" name="Ext"/>
+                    <label end="74" start="72" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="181" start="173" name="NP"/>
+                    <label end="70" start="50" name="NP"/>
+                    <label end="74" start="72" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other">
+                    <label end="70" start="50" name="Ant"/>
+                    <label end="74" start="72" name="Rel"/>
+                </layer>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="171" start="161" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="57346523" ID="1171732">
+            <text>He yanked down with his hand and lifted his head , biting a chunk out of the glass , then turned the rim and bit again , splintering the glass almost to its stem . </text>
+            <annotationSet cDate="01/08/2003 05:22:46 PST Wed" status="UNANN" ID="1793798">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="8" start="3" name="VVD"/>
+                    <label end="13" start="10" name="AVP"/>
+                    <label end="18" start="15" name="PRP"/>
+                    <label end="22" start="20" name="DPS"/>
+                    <label end="27" start="24" name="NN1"/>
+                    <label end="31" start="29" name="CJC"/>
+                    <label end="38" start="33" name="VVD"/>
+                    <label end="42" start="40" name="DPS"/>
+                    <label end="47" start="44" name="NN1"/>
+                    <label end="49" start="49" name="PUN"/>
+                    <label end="56" start="51" name="VVG"/>
+                    <label end="58" start="58" name="AT0"/>
+                    <label end="64" start="60" name="NN1"/>
+                    <label end="68" start="66" name="PRP"/>
+                    <label end="71" start="70" name="PRP"/>
+                    <label end="75" start="73" name="AT0"/>
+                    <label end="81" start="77" name="NN1"/>
+                    <label end="83" start="83" name="PUN"/>
+                    <label end="88" start="85" name="AV0"/>
+                    <label end="95" start="90" name="VVD-VVN"/>
+                    <label end="99" start="97" name="AT0"/>
+                    <label end="103" start="101" name="NN1"/>
+                    <label end="107" start="105" name="CJC"/>
+                    <label end="111" start="109" name="VVD"/>
+                    <label end="117" start="113" name="AV0"/>
+                    <label end="119" start="119" name="PUN"/>
+                    <label end="131" start="121" name="VVG"/>
+                    <label end="135" start="133" name="AT0"/>
+                    <label end="141" start="137" name="NN1"/>
+                    <label end="148" start="143" name="AV0"/>
+                    <label end="151" start="150" name="PRP"/>
+                    <label end="155" start="153" name="DPS"/>
+                    <label end="160" start="157" name="NN1"/>
+                    <label end="162" start="162" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:22:46 PST Wed" status="MANUAL" ID="1793799">
+                <layer rank="1" name="FE">
+                    <label cBy="351" feID="3802" end="1" start="0" name="Agent"/>
+                    <label cBy="351" feID="3806" end="141" start="133" name="Whole_patient"/>
+                    <label cBy="351" feID="3834" end="160" start="143" name="Subregion"/>
+                    <label cBy="351" feID="3812" itype="INI" name="Pieces"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="1" start="0" name="Ext"/>
+                    <label end="141" start="133" name="Obj"/>
+                    <label end="160" start="143" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="1" start="0" name="NP"/>
+                    <label end="141" start="133" name="NP"/>
+                    <label end="160" start="143" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="131" start="121" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="63630968" ID="1171744">
+            <text>` There was a time , &quot; one said , with a choking laugh , ` I could splinter a hazelnut tossed up in the air at five hundred yards . </text>
+            <annotationSet cDate="01/08/2003 05:22:47 PST Wed" status="UNANN" ID="1793822">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PUQ"/>
+                    <label end="6" start="2" name="EX0"/>
+                    <label end="10" start="8" name="VBD"/>
+                    <label end="12" start="12" name="AT0"/>
+                    <label end="17" start="14" name="NN1"/>
+                    <label end="19" start="19" name="PUN"/>
+                    <label end="21" start="21" name="PUQ"/>
+                    <label end="25" start="23" name="CRD-PNI"/>
+                    <label end="30" start="27" name="VVD"/>
+                    <label end="32" start="32" name="PUN"/>
+                    <label end="37" start="34" name="PRP"/>
+                    <label end="39" start="39" name="AT0"/>
+                    <label end="47" start="41" name="AJ0-NN1"/>
+                    <label end="53" start="49" name="NN1"/>
+                    <label end="55" start="55" name="PUN"/>
+                    <label end="57" start="57" name="PUQ"/>
+                    <label end="59" start="59" name="PNP"/>
+                    <label end="65" start="61" name="VM0"/>
+                    <label end="74" start="67" name="VVI"/>
+                    <label end="76" start="76" name="AT0"/>
+                    <label end="85" start="78" name="NN1"/>
+                    <label end="92" start="87" name="VVD"/>
+                    <label end="95" start="94" name="AVP"/>
+                    <label end="98" start="97" name="PRP"/>
+                    <label end="102" start="100" name="AT0"/>
+                    <label end="106" start="104" name="NN1"/>
+                    <label end="109" start="108" name="PRP"/>
+                    <label end="114" start="111" name="CRD"/>
+                    <label end="122" start="116" name="CRD"/>
+                    <label end="128" start="124" name="NN2"/>
+                    <label end="130" start="130" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:22:47 PST Wed" status="MANUAL" ID="1793823">
+                <layer rank="1" name="FE">
+                    <label cBy="351" feID="3802" end="59" start="59" name="Agent"/>
+                    <label cBy="351" feID="3806" end="128" start="76" name="Whole_patient"/>
+                    <label cBy="351" feID="3812" itype="INI" name="Pieces"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="59" start="59" name="Ext"/>
+                    <label end="128" start="76" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="59" start="59" name="NP"/>
+                    <label end="128" start="76" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="74" start="67" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

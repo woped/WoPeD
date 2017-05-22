@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" POS="N" name="risk.n" ID="13381" frame="Risky_situation" frameID="1762" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="ass" name="Asset"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Peripheral" abbrev="" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="dan_ent" name="Dangerous_entity"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Extra-Thematic" abbrev="dom" name="Domain"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Extra-Thematic" abbrev="" name="Frequency"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="pla" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="sit" name="Situation"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: a situation involving exposure to danger. </definition>
+    <lexeme POS="N" name="risk"/>
+    <valences>
+        <governor type="Sup" lemma="pose">
+            <annoSet ID="1913625"/>
+        </governor>
+        <FERealization total="1">
+            <FE name="Asset"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Asset"/>
+                <annoSet ID="1913625"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Degree"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Degree"/>
+                <annoSet ID="1913625"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Situation"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Situation"/>
+                <annoSet ID="1913625"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Time"/>
+                <annoSet ID="1913625"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Asset"/>
+            <FE name="Degree"/>
+            <FE name="Situation"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Asset"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Degree"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Situation"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Time"/>
+                <annoSet ID="1913625"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="other-unmatched-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="236" aPos="0" ID="1233297">
+            <text>But daily consumption of ETU , a component of the fungicides , posed a considerable long-term risk .</text>
+            <annotationSet cDate="06/24/2003 09:57:14 PDT Tue" status="UNANN" ID="1913624">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="cc"/>
+                    <label end="8" start="4" name="jj"/>
+                    <label end="20" start="10" name="nn"/>
+                    <label end="23" start="22" name="in"/>
+                    <label end="27" start="25" name="NP"/>
+                    <label end="29" start="29" name=","/>
+                    <label end="31" start="31" name="dt"/>
+                    <label end="41" start="33" name="nn"/>
+                    <label end="44" start="43" name="in"/>
+                    <label end="48" start="46" name="dt"/>
+                    <label end="59" start="50" name="nns"/>
+                    <label end="61" start="61" name=","/>
+                    <label end="67" start="63" name="VVD"/>
+                    <label end="69" start="69" name="dt"/>
+                    <label end="82" start="71" name="jj"/>
+                    <label end="92" start="84" name="jj"/>
+                    <label end="97" start="94" name="nn"/>
+                    <label end="99" start="99" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/24/2003 09:57:15 PDT Tue" status="MANUAL" ID="1913625">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="97" start="94" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="303" feID="10370" end="59" start="4" name="Situation"/>
+                    <label cBy="303" feID="10372" end="82" start="71" name="Degree"/>
+                    <label cBy="303" feID="10374" end="92" start="84" name="Time"/>
+                    <label cBy="618" feID="10371" itype="INI" name="Asset"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="59" start="4" name="Ext"/>
+                    <label end="82" start="71" name="Dep"/>
+                    <label end="92" start="84" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="59" start="4" name="NP"/>
+                    <label end="82" start="71" name="AJP"/>
+                    <label end="92" start="84" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="67" start="63" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

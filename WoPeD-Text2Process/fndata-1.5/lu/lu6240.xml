@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="bar mitzvah.n" ID="6240" frame="Rite" frameID="301" totalAnnotated="6" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <corpus name="AP" ID="113">
+            <document description="apwsE950527.0230" ID="1034"/>
+            <document description="apwsE950516.0275" ID="1039"/>
+            <document description="apwsE951201.0286" ID="1041"/>
+            <document description="apwsE950726.0485" ID="1042"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="DesS" name="Desired_state"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="G_member" name="Guardian"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Core" abbrev="Ins" name="Instrument"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Ldr" name="Leader"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Mbr" name="Member"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Core" abbrev="NStat" name="New_Status"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core" abbrev="Obj" name="Object"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Core" abbrev="Org" name="Organization"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Core" abbrev="Type" name="Type"/>
+        </frame>
+    </header>
+    <definition>COD: the religious initiation ceremony of a Jewish boy who has reached the age of 13</definition>
+    <lexeme order="1" headword="false" breakBefore="false" POS="N" name="bar"/>
+    <lexeme order="2" headword="true" breakBefore="false" POS="N" name="mitzvah"/>
+    <valences>
+        <governor type="Gov" lemma="celebrate">
+            <annoSet ID="1870859"/>
+        </governor>
+        <FERealization total="6">
+            <FE name="Member"/>
+            <pattern total="6">
+                <valenceUnit GF="Gen" PT="Poss" FE="Member"/>
+                <annoSet ID="1870859"/>
+                <annoSet ID="1870869"/>
+                <annoSet ID="1870871"/>
+                <annoSet ID="1870873"/>
+                <annoSet ID="2073111"/>
+                <annoSet ID="2073115"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="6">
+            <FE name="Member"/>
+            <pattern total="6">
+                <valenceUnit GF="Gen" PT="Poss" FE="Member"/>
+                <annoSet ID="1870859"/>
+                <annoSet ID="1870869"/>
+                <annoSet ID="1870871"/>
+                <annoSet ID="1870873"/>
+                <annoSet ID="2073111"/>
+                <annoSet ID="2073115"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)">
+        <sentence corpID="113" docID="1034" sentNo="1" paragNo="13" aPos="0" ID="1211879">
+            <text>It was Nov. 9 , 1938 , a week before he was supposed to celebrate his bar mitzvah .</text>
+            <annotationSet cDate="04/30/2003 05:41:56 PDT Wed" status="UNANN" ID="1870858">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="nn"/>
+                    <label end="5" start="3" name="sent"/>
+                    <label end="12" start="12" name="in"/>
+                    <label end="14" start="14" name="dt"/>
+                    <label end="19" start="16" name="nn"/>
+                    <label end="21" start="21" name="VBD"/>
+                    <label end="23" start="23" name="in"/>
+                    <label end="28" start="25" name="nns"/>
+                    <label end="35" start="30" name=","/>
+                    <label end="38" start="37" name="PP"/>
+                    <label end="42" start="40" name="VVD"/>
+                    <label end="51" start="44" name="dt"/>
+                    <label end="54" start="53" name="nn"/>
+                    <label end="64" start="56" name="vb"/>
+                    <label end="68" start="66" name="dt"/>
+                    <label end="72" start="70" name="nn"/>
+                    <label end="80" start="74" name="POS"/>
+                    <label end="82" start="82" name="nn"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 05:41:57 PDT Wed" status="MANUAL" ID="1870859">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="80" start="70" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2595" end="68" start="66" name="Member"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="68" start="66" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="68" start="66" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="64" start="56" name="Gov"/>
+                    <label end="80" start="66" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="1041" sentNo="1" paragNo="7" aPos="0" ID="1211884">
+            <text>White refused requests to allow Monus free on bond while a conviction is appealed or to allow him to report voluntarily to prison on Jan. 15 after his son 's bar mitzvah .</text>
+            <annotationSet cDate="04/30/2003 05:41:58 PDT Wed" status="UNANN" ID="1870868">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="nn"/>
+                    <label end="12" start="6" name="sent"/>
+                    <label end="44" start="43" name="NP"/>
+                    <label end="49" start="46" name="("/>
+                    <label end="55" start="51" name="NP"/>
+                    <label end="57" start="57" name=")"/>
+                    <label end="68" start="59" name=":"/>
+                    <label end="71" start="70" name="jj"/>
+                    <label end="80" start="73" name="NP"/>
+                    <label end="83" start="82" name="NP"/>
+                    <label end="86" start="85" name="in"/>
+                    <label end="92" start="88" name="NP"/>
+                    <label end="96" start="94" name="VVD"/>
+                    <label end="99" start="98" name="dt"/>
+                    <label end="106" start="101" name="jj"/>
+                    <label end="118" start="108" name="nn"/>
+                    <label end="121" start="120" name="in"/>
+                    <label end="128" start="123" name="nn"/>
+                    <label end="131" start="130" name="in"/>
+                    <label end="136" start="133" name="NP"/>
+                    <label end="139" start="138" name=","/>
+                    <label end="145" start="141" name="VVG"/>
+                    <label end="149" start="147" name="dt"/>
+                    <label end="153" start="151" name="cd"/>
+                    <label end="156" start="155" name="jj"/>
+                    <label end="160" start="158" name="nns"/>
+                    <label end="168" start="162" name="in"/>
+                    <label end="170" start="170" name="dt"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 05:41:58 PDT Wed" status="MANUAL" ID="1870869">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="168" start="158" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="2595" end="156" start="151" name="Member"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="156" start="151" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="156" start="151" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="1039" sentNo="3" paragNo="15" aPos="0" ID="1211885">
+            <text>`` And I did what I have to do for my bar mitzvah .</text>
+            <annotationSet cDate="04/30/2003 05:41:58 PDT Wed" status="UNANN" ID="1870870">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="nn"/>
+                    <label end="5" start="3" name="sent"/>
+                    <label end="11" start="9" name="dt"/>
+                    <label end="16" start="13" name="nn"/>
+                    <label end="18" start="18" name="VBD"/>
+                    <label end="23" start="20" name="VVG"/>
+                    <label end="26" start="25" name=","/>
+                    <label end="29" start="28" name="VVG"/>
+                    <label end="33" start="31" name=":"/>
+                    <label end="36" start="35" name="''"/>
+                    <label end="48" start="42" name="dt"/>
+                    <label end="50" start="50" name="nn"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 05:41:58 PDT Wed" status="MANUAL" ID="1870871">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="48" start="38" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2595" end="36" start="35" name="Member"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="36" start="35" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="36" start="35" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="1042" sentNo="1" paragNo="23" aPos="0" ID="1211886">
+            <text>Korff lived in Poland for seven years , then came to the United States for his bar mitzvah .</text>
+            <annotationSet cDate="04/30/2003 05:41:58 PDT Wed" status="UNANN" ID="1870872">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="nn"/>
+                    <label end="10" start="6" name="sent"/>
+                    <label end="20" start="15" name="rb"/>
+                    <label end="24" start="22" name=","/>
+                    <label end="30" start="26" name="PP"/>
+                    <label end="36" start="32" name="VVD"/>
+                    <label end="38" start="38" name="to"/>
+                    <label end="43" start="40" name="VV"/>
+                    <label end="48" start="45" name="in"/>
+                    <label end="51" start="50" name="dt"/>
+                    <label end="55" start="53" name="NP"/>
+                    <label end="62" start="57" name="NP"/>
+                    <label end="69" start="64" name=","/>
+                    <label end="73" start="71" name="VVG"/>
+                    <label end="77" start="75" name="in"/>
+                    <label end="81" start="79" name="NP"/>
+                    <label end="89" start="83" name="NP"/>
+                    <label end="91" start="91" name="POS"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 05:41:59 PDT Wed" status="MANUAL" ID="1870873">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="89" start="79" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2595" end="77" start="75" name="Member"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="77" start="75" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="77" start="75" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="01-T-(2)"/>
+    <subCorpus name="other-matched-(2)"/>
+    <subCorpus name="other-unmatched-(2)"/>
+    <subCorpus name="01-T-(3)"/>
+    <subCorpus name="other-matched-(3)"/>
+    <subCorpus name="other-unmatched-(3)"/>
+    <subCorpus name="01-T-(4)">
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="205" aPos="62446446" ID="1312485">
+            <text>But the patina of religiosity his demeanour had acquired through attendance at Hebrew classes and preparation for his bar mitzvah was quickly shed when the classes and his bar mitzvah had passed and early manhood overtook him .</text>
+            <annotationSet cDate="02/16/2005 09:31:54 PST Wed" status="UNANN" ID="2073110">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="cc"/>
+                    <label end="6" start="4" name="dt"/>
+                    <label end="13" start="8" name="nn"/>
+                    <label end="16" start="15" name="in"/>
+                    <label end="28" start="18" name="nn"/>
+                    <label end="32" start="30" name="PP$"/>
+                    <label end="42" start="34" name="nn"/>
+                    <label end="46" start="44" name="VHD"/>
+                    <label end="55" start="48" name="VVN"/>
+                    <label end="63" start="57" name="in"/>
+                    <label end="74" start="65" name="nn"/>
+                    <label end="77" start="76" name="in"/>
+                    <label end="84" start="79" name="jj"/>
+                    <label end="92" start="86" name="nns"/>
+                    <label end="96" start="94" name="cc"/>
+                    <label end="108" start="98" name="nn"/>
+                    <label end="112" start="110" name="in"/>
+                    <label end="116" start="114" name="PP$"/>
+                    <label end="120" start="118" name="nn"/>
+                    <label end="128" start="122" name="nn"/>
+                    <label end="132" start="130" name="VBD"/>
+                    <label end="140" start="134" name="rb"/>
+                    <label end="145" start="142" name="VVN"/>
+                    <label end="150" start="147" name="wrb"/>
+                    <label end="154" start="152" name="dt"/>
+                    <label end="162" start="156" name="nns"/>
+                    <label end="166" start="164" name="cc"/>
+                    <label end="170" start="168" name="PP$"/>
+                    <label end="174" start="172" name="nn"/>
+                    <label end="182" start="176" name="nn"/>
+                    <label end="186" start="184" name="VHD"/>
+                    <label end="193" start="188" name="VVN"/>
+                    <label end="197" start="195" name="cc"/>
+                    <label end="203" start="199" name="jj"/>
+                    <label end="211" start="205" name="nn"/>
+                    <label end="220" start="213" name="VVD"/>
+                    <label end="224" start="222" name="PP"/>
+                    <label end="226" start="226" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+            </annotationSet>
+            <annotationSet cDate="02/16/2005 09:31:55 PST Wed" status="MANUAL" ID="2073111">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="128" start="118" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="2595" end="116" start="114" name="Member"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="116" start="114" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="116" start="114" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="381" aPos="93974007" ID="1312487">
+            <text>He had been to Martin Finkelstein 's bar mitzvah and had been given a small white hat , which was still on his mantelpiece at home .</text>
+            <annotationSet cDate="02/16/2005 09:31:55 PST Wed" status="UNANN" ID="2073114">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="5" start="3" name="VHD"/>
+                    <label end="10" start="7" name="VBN"/>
+                    <label end="13" start="12" name="to"/>
+                    <label end="20" start="15" name="NP"/>
+                    <label end="32" start="22" name="NP"/>
+                    <label end="35" start="34" name="POS"/>
+                    <label end="39" start="37" name="nn"/>
+                    <label end="47" start="41" name="nn"/>
+                    <label end="51" start="49" name="cc"/>
+                    <label end="55" start="53" name="VHD"/>
+                    <label end="60" start="57" name="VBN"/>
+                    <label end="66" start="62" name="VVN"/>
+                    <label end="68" start="68" name="dt"/>
+                    <label end="74" start="70" name="jj"/>
+                    <label end="80" start="76" name="jj"/>
+                    <label end="84" start="82" name="nn"/>
+                    <label end="86" start="86" name=","/>
+                    <label end="92" start="88" name="wdt"/>
+                    <label end="96" start="94" name="VBD"/>
+                    <label end="102" start="98" name="rb"/>
+                    <label end="105" start="104" name="in"/>
+                    <label end="109" start="107" name="PP$"/>
+                    <label end="121" start="111" name="nn"/>
+                    <label end="124" start="123" name="in"/>
+                    <label end="129" start="126" name="nn"/>
+                    <label end="131" start="131" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+            </annotationSet>
+            <annotationSet cDate="02/16/2005 09:31:55 PST Wed" status="MANUAL" ID="2073115">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="47" start="37" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="2595" end="35" start="15" name="Member"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="35" start="15" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="35" start="15" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(4)"/>
+    <subCorpus name="other-unmatched-(4)"/>
+</lexUnit>

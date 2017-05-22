@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="snowfall.n" ID="5702" frame="Precipitation" frameID="314" totalAnnotated="6" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Extra-Thematic" abbrev="Cause" name="Cause"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Peripheral" abbrev="Dur" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD73" type="Extra-Thematic" abbrev="" name="Frequency"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Precipitation" name="Precipitation"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="Quantity" name="Quantity"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="Rate" name="Rate"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Peripheral" abbrev="Temp" name="Temperature"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Core" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: a fall of snow. </definition>
+    <lexeme POS="N" name="snowfall"/>
+    <valences>
+        <governor type="Gov" lemma="get">
+            <annoSet ID="1210987"/>
+        </governor>
+        <FERealization total="6">
+            <FE name="Manner"/>
+            <pattern total="6">
+                <valenceUnit GF="Dep" PT="AJP" FE="Manner"/>
+                <annoSet ID="1210949"/>
+                <annoSet ID="1210957"/>
+                <annoSet ID="1210987"/>
+                <annoSet ID="1210999"/>
+                <annoSet ID="1211017"/>
+                <annoSet ID="1211019"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="6">
+            <FE name="Precipitation"/>
+            <pattern total="6">
+                <valenceUnit GF="" PT="DEN" FE="Precipitation"/>
+                <annoSet ID="1210949"/>
+                <annoSet ID="1210957"/>
+                <annoSet ID="1210987"/>
+                <annoSet ID="1210999"/>
+                <annoSet ID="1211017"/>
+                <annoSet ID="1211019"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="6">
+            <FE name="Manner"/>
+            <FE name="Precipitation"/>
+            <pattern total="6">
+                <valenceUnit GF="Dep" PT="AJP" FE="Manner"/>
+                <valenceUnit GF="" PT="DEN" FE="Precipitation"/>
+                <annoSet ID="1210949"/>
+                <annoSet ID="1210957"/>
+                <annoSet ID="1210987"/>
+                <annoSet ID="1210999"/>
+                <annoSet ID="1211017"/>
+                <annoSet ID="1211019"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-001-all">
+        <sentence sentNo="0" aPos="14436361" ID="878033">
+            <text>A heavy snowfall left the hills deliciously inviting and the sky was clear and bright . </text>
+            <annotationSet cDate="01/07/2003 05:56:59 PST Tue" status="UNANN" ID="1210948">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="AT0"/>
+                    <label end="6" start="2" name="AJ0"/>
+                    <label end="15" start="8" name="NN1"/>
+                    <label end="20" start="17" name="VVD-VVN"/>
+                    <label end="24" start="22" name="AT0"/>
+                    <label end="30" start="26" name="NN2"/>
+                    <label end="42" start="32" name="AV0"/>
+                    <label end="51" start="44" name="AJ0-VVG"/>
+                    <label end="55" start="53" name="CJC"/>
+                    <label end="59" start="57" name="AT0"/>
+                    <label end="63" start="61" name="NN1"/>
+                    <label end="67" start="65" name="VBD"/>
+                    <label end="73" start="69" name="AJ0"/>
+                    <label end="77" start="75" name="CJC"/>
+                    <label end="84" start="79" name="AJ0"/>
+                    <label end="86" start="86" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:56:59 PST Tue" status="MANUAL" ID="1210949">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="2733" end="15" start="8" name="Precipitation"/>
+                    <label cBy="669" feID="2740" end="6" start="2" name="Manner"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="6" start="2" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="6" start="2" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="15" start="8" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="21821942" ID="878037">
+            <text>This occurs in cold climates that have heavy snowfalls during the winter . </text>
+            <annotationSet cDate="01/07/2003 05:57:01 PST Tue" status="UNANN" ID="1210956">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="DT0"/>
+                    <label end="10" start="5" name="VVZ"/>
+                    <label end="13" start="12" name="PRP"/>
+                    <label end="18" start="15" name="AJ0"/>
+                    <label end="27" start="20" name="NN2"/>
+                    <label end="32" start="29" name="CJT"/>
+                    <label end="37" start="34" name="VHB"/>
+                    <label end="43" start="39" name="AJ0"/>
+                    <label end="53" start="45" name="NN2"/>
+                    <label end="60" start="55" name="PRP"/>
+                    <label end="64" start="62" name="AT0"/>
+                    <label end="71" start="66" name="NN1"/>
+                    <label end="73" start="73" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:57:01 PST Tue" status="MANUAL" ID="1210957">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="2740" end="43" start="39" name="Manner"/>
+                    <label cBy="669" feID="2733" end="53" start="45" name="Precipitation"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="43" start="39" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="43" start="39" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="53" start="45" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="62646404" ID="878052">
+            <text>The weather reports indicate that we may get a light snowfall some time over the next few days . </text>
+            <annotationSet cDate="01/07/2003 05:57:04 PST Tue" status="UNANN" ID="1210986">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="10" start="4" name="NN1"/>
+                    <label end="18" start="12" name="NN2"/>
+                    <label end="27" start="20" name="VVB"/>
+                    <label end="32" start="29" name="CJT"/>
+                    <label end="35" start="34" name="PNP"/>
+                    <label end="39" start="37" name="VM0"/>
+                    <label end="43" start="41" name="VVI"/>
+                    <label end="45" start="45" name="AT0"/>
+                    <label end="51" start="47" name="AJ0-NN1"/>
+                    <label end="60" start="53" name="NN1-VVB"/>
+                    <label end="65" start="62" name="DT0"/>
+                    <label end="70" start="67" name="NN1"/>
+                    <label end="75" start="72" name="PRP"/>
+                    <label end="79" start="77" name="AT0"/>
+                    <label end="84" start="81" name="ORD"/>
+                    <label end="88" start="86" name="DT0"/>
+                    <label end="93" start="90" name="NN2"/>
+                    <label end="95" start="95" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:57:04 PST Tue" status="MANUAL" ID="1210987">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="2740" end="51" start="47" name="Manner"/>
+                    <label cBy="669" feID="2733" end="60" start="53" name="Precipitation"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="51" start="47" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="51" start="47" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="60" start="53" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="43" start="41" name="Gov"/>
+                    <label end="60" start="45" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="81014395" ID="878058">
+            <text>It was a heavy snowfall and by morning even the most prominent landmark was disguised beneath a thick covering of snow . </text>
+            <annotationSet cDate="01/07/2003 05:57:05 PST Tue" status="UNANN" ID="1210998">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="5" start="3" name="VBD"/>
+                    <label end="7" start="7" name="AT0"/>
+                    <label end="13" start="9" name="AJ0"/>
+                    <label end="22" start="15" name="NN1"/>
+                    <label end="26" start="24" name="CJC"/>
+                    <label end="29" start="28" name="PRP"/>
+                    <label end="37" start="31" name="NN1"/>
+                    <label end="42" start="39" name="AV0"/>
+                    <label end="46" start="44" name="AT0"/>
+                    <label end="51" start="48" name="AV0"/>
+                    <label end="61" start="53" name="AJ0"/>
+                    <label end="70" start="63" name="NN1"/>
+                    <label end="74" start="72" name="VBD"/>
+                    <label end="84" start="76" name="VVN"/>
+                    <label end="92" start="86" name="PRP"/>
+                    <label end="94" start="94" name="AT0"/>
+                    <label end="100" start="96" name="AJ0"/>
+                    <label end="109" start="102" name="NN1"/>
+                    <label end="112" start="111" name="PRF"/>
+                    <label end="117" start="114" name="NN1"/>
+                    <label end="119" start="119" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:57:05 PST Tue" status="MANUAL" ID="1210999">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="2740" end="13" start="9" name="Manner"/>
+                    <label cBy="669" feID="2733" end="22" start="15" name="Precipitation"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="13" start="9" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="13" start="9" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="22" start="15" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="106608083" ID="878067">
+            <text>He began his planning in January but found practice curtailed two weeks ago by a heavy snowfall . </text>
+            <annotationSet cDate="01/07/2003 05:57:06 PST Tue" status="UNANN" ID="1211016">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="7" start="3" name="VVD"/>
+                    <label end="11" start="9" name="DPS"/>
+                    <label end="20" start="13" name="NN1"/>
+                    <label end="23" start="22" name="PRP"/>
+                    <label end="31" start="25" name="NP0"/>
+                    <label end="35" start="33" name="CJC"/>
+                    <label end="41" start="37" name="VVD-VVN"/>
+                    <label end="50" start="43" name="NN1"/>
+                    <label end="60" start="52" name="VVD"/>
+                    <label end="64" start="62" name="CRD"/>
+                    <label end="70" start="66" name="NN2"/>
+                    <label end="74" start="72" name="AV0"/>
+                    <label end="77" start="76" name="PRP"/>
+                    <label end="79" start="79" name="AT0"/>
+                    <label end="85" start="81" name="AJ0"/>
+                    <label end="94" start="87" name="NN1"/>
+                    <label end="96" start="96" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:57:06 PST Tue" status="MANUAL" ID="1211017">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="2740" end="85" start="81" name="Manner"/>
+                    <label cBy="669" feID="2733" end="94" start="87" name="Precipitation"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="85" start="81" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="85" start="81" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="94" start="87" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="106691788" ID="878068">
+            <text>There were heavy snowfalls in areas which never expect to see such wintry conditions . </text>
+            <annotationSet cDate="01/07/2003 05:57:06 PST Tue" status="UNANN" ID="1211018">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="EX0"/>
+                    <label end="9" start="6" name="VBD"/>
+                    <label end="15" start="11" name="AJ0"/>
+                    <label end="25" start="17" name="NN2"/>
+                    <label end="28" start="27" name="PRP"/>
+                    <label end="34" start="30" name="NN2"/>
+                    <label end="40" start="36" name="DTQ"/>
+                    <label end="46" start="42" name="AV0"/>
+                    <label end="53" start="48" name="VVB"/>
+                    <label end="56" start="55" name="TO0"/>
+                    <label end="60" start="58" name="VVI"/>
+                    <label end="65" start="62" name="DT0"/>
+                    <label end="72" start="67" name="AJ0"/>
+                    <label end="83" start="74" name="NN2"/>
+                    <label end="85" start="85" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:57:06 PST Tue" status="MANUAL" ID="1211019">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="2740" end="15" start="11" name="Manner"/>
+                    <label cBy="669" feID="2733" end="25" start="17" name="Precipitation"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="15" start="11" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="15" start="11" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="25" start="17" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

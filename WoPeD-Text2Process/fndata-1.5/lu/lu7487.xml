@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" POS="N" name="intension.n" ID="7487" frame="Linguistic_meaning" frameID="406" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Extra-Thematic" abbrev="Context" name="Context"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Extra-Thematic" abbrev="" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="Form" name="Form"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Core" abbrev="Meaning" name="Meaning"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Referent" name="Referent"/>
+        </frame>
+    </header>
+    <definition>COD: the internal content of a concept</definition>
+    <lexeme POS="N" name="intension"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Form"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Form"/>
+                <annoSet ID="1854285"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Meaning"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Meaning"/>
+                <annoSet ID="1854285"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Form"/>
+            <FE name="Meaning"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Form"/>
+                <valenceUnit GF="" PT="DEN" FE="Meaning"/>
+                <annoSet ID="1854285"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="77" aPos="0" ID="1203572">
+            <text>In the traditional natural sciences generality is achieved in two different ways , each based upon a particular choice of the informal inverse relation between the intension and extension of a class .</text>
+            <annotationSet cDate="04/15/2003 08:14:17 PDT Tue" status="UNANN" ID="1854284">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="in"/>
+                    <label end="5" start="3" name="dt"/>
+                    <label end="17" start="7" name="jj"/>
+                    <label end="25" start="19" name="jj"/>
+                    <label end="34" start="27" name="nns"/>
+                    <label end="45" start="36" name="nn"/>
+                    <label end="48" start="47" name="VBZ"/>
+                    <label end="57" start="50" name="VVN"/>
+                    <label end="60" start="59" name="in"/>
+                    <label end="64" start="62" name="cd"/>
+                    <label end="74" start="66" name="jj"/>
+                    <label end="79" start="76" name="nns"/>
+                    <label end="81" start="81" name=","/>
+                    <label end="86" start="83" name="dt"/>
+                    <label end="92" start="88" name="VVN"/>
+                    <label end="97" start="94" name="in"/>
+                    <label end="99" start="99" name="dt"/>
+                    <label end="110" start="101" name="jj"/>
+                    <label end="117" start="112" name="nn"/>
+                    <label end="120" start="119" name="in"/>
+                    <label end="124" start="122" name="dt"/>
+                    <label end="133" start="126" name="jj"/>
+                    <label end="141" start="135" name="jj"/>
+                    <label end="150" start="143" name="nn"/>
+                    <label end="158" start="152" name="in"/>
+                    <label end="162" start="160" name="dt"/>
+                    <label end="172" start="164" name="nn"/>
+                    <label end="176" start="174" name="cc"/>
+                    <label end="186" start="178" name="nn"/>
+                    <label end="189" start="188" name="in"/>
+                    <label end="191" start="191" name="dt"/>
+                    <label end="197" start="193" name="nn"/>
+                    <label end="199" start="199" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/15/2003 08:14:18 PDT Tue" status="MANUAL" ID="1854285">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="172" start="164" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3745" end="197" start="188" name="Form"/>
+                    <label cBy="618" feID="3746" end="172" start="164" name="Meaning"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="197" start="188" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="197" start="188" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

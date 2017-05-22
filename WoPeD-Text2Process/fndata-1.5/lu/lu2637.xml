@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="A" name="styled.a" ID="2637" frame="Hair_configuration" frameID="126" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="Acc" name="Accessory"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Core" abbrev="Cfg" name="Configuration"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="Hair" name="Hair"/>
+            <FE fgColor="800080" bgColor="FFFF00" type="Core" abbrev="Hair-Prop" name="Hair_Property"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="Loc" name="Location"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Poss" name="Possessor"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Subr" name="Subregion"/>
+        </frame>
+    </header>
+    <definition>FN: being designed or arranged in a particular way </definition>
+    <lexeme POS="A" name="styled"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Hair"/>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="N" FE="Hair"/>
+                <annoSet ID="814553"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Hair"/>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="N" FE="Hair"/>
+                <annoSet ID="814553"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="A-002-s20-rcoll-hair">
+        <sentence sentNo="0" aPos="100952912" ID="668506">
+            <text>She was well into her thirties , nowhere near as young as the carefully styled fall of blonde hair suggested . </text>
+            <annotationSet cDate="01/07/2003 10:05:54 PST Tue" status="UNANN" ID="814552">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="PNP"/>
+                    <label end="6" start="4" name="VBD"/>
+                    <label end="11" start="8" name="AV0"/>
+                    <label end="16" start="13" name="PRP"/>
+                    <label end="20" start="18" name="DPS"/>
+                    <label end="29" start="22" name="CRD"/>
+                    <label end="31" start="31" name="PUN"/>
+                    <label end="39" start="33" name="AV0"/>
+                    <label end="44" start="41" name="AV0"/>
+                    <label end="47" start="46" name="AV0"/>
+                    <label end="53" start="49" name="AJ0"/>
+                    <label end="56" start="55" name="CJS"/>
+                    <label end="60" start="58" name="AT0"/>
+                    <label end="70" start="62" name="AV0"/>
+                    <label end="77" start="72" name="AJ0"/>
+                    <label end="82" start="79" name="NN1"/>
+                    <label end="85" start="84" name="PRF"/>
+                    <label end="92" start="87" name="AJ0"/>
+                    <label end="97" start="94" name="NN1"/>
+                    <label end="107" start="99" name="VVD-VVN"/>
+                    <label end="109" start="109" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:05:54 PST Tue" status="MANUAL" ID="814553">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="777" end="97" start="79" name="Hair"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="97" start="79" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="97" start="79" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="77" start="72" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="A-170-s20-prenom"/>
+    <subCorpus name="A-180-s20-punct"/>
+    <subCorpus name="A-190-s20-other"/>
+</lexUnit>

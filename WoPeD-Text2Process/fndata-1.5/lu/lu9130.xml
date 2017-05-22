@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Pre-Marked" POS="V" name="get up.v" ID="9130" frame="Waking_up" frameID="295" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="7CCD73" type="Extra-Thematic" abbrev="" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Extra-Thematic" abbrev="" name="Explanation"/>
+            <FE fgColor="00008B" bgColor="7FFF00" type="Extra-Thematic" abbrev="" name="Frequency"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Man" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="" name="Particular_iteration"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Slpr" name="Sleeper"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Core" abbrev="Sleep_state" name="Sleep_state"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Time" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Extra-Thematic" abbrev="W-state" name="World_state"/>
+        </frame>
+    </header>
+    <definition>FN: to wake up</definition>
+    <lexeme order="1" headword="true" breakBefore="false" POS="V" name="get"/>
+    <lexeme order="2" headword="false" breakBefore="true" POS="ADV" name="up"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Frequency"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Frequency"/>
+                <annoSet ID="2310093"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Sleep_state"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Sleep_state"/>
+                <annoSet ID="2310093"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Sleeper"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Sleeper"/>
+                <annoSet ID="2310093"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Time"/>
+                <annoSet ID="2310093"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Frequency"/>
+            <FE name="Sleep_state"/>
+            <FE name="Sleeper"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Frequency"/>
+                <valenceUnit GF="" PT="INI" FE="Sleep_state"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Sleeper"/>
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Time"/>
+                <annoSet ID="2310093"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-Wtime-Wto-T-(1)"/>
+    <subCorpus name="02-Walways,never-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="692" aPos="106808818" ID="1431166">
+            <text>` You know that the twins always seem to get up at the crack of dawn .</text>
+            <annotationSet cDate="06/28/2007 05:32:49 PDT Thu" status="UNANN" ID="2310092">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="2" name="PP"/>
+                    <label end="9" start="6" name="VVP"/>
+                    <label end="14" start="11" name="in"/>
+                    <label end="18" start="16" name="dt"/>
+                    <label end="24" start="20" name="nns"/>
+                    <label end="31" start="26" name="rb"/>
+                    <label end="36" start="33" name="VVP"/>
+                    <label end="39" start="38" name="to"/>
+                    <label end="43" start="41" name="VV"/>
+                    <label end="46" start="45" name="rp"/>
+                    <label end="49" start="48" name="in"/>
+                    <label end="53" start="51" name="dt"/>
+                    <label end="59" start="55" name="nn"/>
+                    <label end="62" start="61" name="in"/>
+                    <label end="67" start="64" name="nn"/>
+                    <label end="69" start="69" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="06/28/2007 05:32:49 PDT Thu" status="AUTO_EDITED" ID="2310093">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="46" start="41" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2529" end="67" start="48" name="Time"/>
+                    <label cBy="361" feID="2528" end="24" start="16" name="Sleeper"/>
+                    <label cBy="361" feID="3471" itype="INI" name="Sleep_state"/>
+                    <label cBy="361" feID="11980" end="31" start="26" name="Frequency"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="67" start="48" name="Dep"/>
+                    <label end="24" start="16" name="Ext"/>
+                    <label end="31" start="26" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="67" start="48" name="PP"/>
+                    <label end="24" start="16" name="NP"/>
+                    <label end="31" start="26" name="AVP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="03-T-PPat-(1)"/>
+    <subCorpus name="04-T-Wearly,late,first-(1)"/>
+    <subCorpus name="05-T-PPabout,around-(1)"/>
+    <subCorpus name="06-T-PPon,for-(1)"/>
+    <subCorpus name="07-T-Wto-(1)"/>
+    <subCorpus name="08-T-PPin,with-(1)"/>
+    <subCorpus name="09-T-Wweekend,weekday,saturday-(1)"/>
+    <subCorpus name="10-T-Wpee,bathroom,toilet-(1)"/>
+    <subCorpus name="11-T-Wdawn,bright,ready-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

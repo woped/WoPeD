@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" POS="V" name="creak.v" ID="9466" frame="Cause_to_make_noise" frameID="801" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="" name="Agent"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="" name="Cause"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Extra-Thematic" abbrev="" name="Frequency"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Extra-Thematic" abbrev="" name="Iteration"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="pla" name="Place"/>
+            <FE fgColor="000000" bgColor="d0d0d0" type="Peripheral" abbrev="pur" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="rea" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="" name="Sound_maker"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="" name="Source"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Extra-Thematic" abbrev="" name="Subregion"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Peripheral" abbrev="tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: cause to make a harsh high-pitched sound when moving or applying pressure</definition>
+    <lexeme POS="V" name="creak"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Agent"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <annoSet ID="464470"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Cause"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Cause"/>
+                <annoSet ID="464466"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Sound_maker"/>
+            <pattern total="2">
+                <valenceUnit GF="Obj" PT="NP" FE="Sound_maker"/>
+                <annoSet ID="464466"/>
+                <annoSet ID="464470"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Agent"/>
+            <FE name="Sound_maker"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Sound_maker"/>
+                <annoSet ID="464470"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Cause"/>
+            <FE name="Cause"/>
+            <FE name="Sound_maker"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Cause"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Cause"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Sound_maker"/>
+                <annoSet ID="464466"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="NoPattern">
+        <sentence sentNo="0" aPos="71244300" ID="411069">
+            <text>Ratagan cocked his head to listen to the race of the wind outside that creaked the rafters . </text>
+            <annotationSet cDate="01/07/2003 02:51:19 PST Tue" status="UNANN" ID="464465">
+                <layer rank="1" name="BNC">
+                    <label end="6" start="0" name="NN1-NP0"/>
+                    <label end="13" start="8" name="VVD"/>
+                    <label end="17" start="15" name="DPS"/>
+                    <label end="22" start="19" name="NN1"/>
+                    <label end="25" start="24" name="TO0"/>
+                    <label end="32" start="27" name="VVI"/>
+                    <label end="35" start="34" name="PRP"/>
+                    <label end="39" start="37" name="AT0"/>
+                    <label end="44" start="41" name="NN1"/>
+                    <label end="47" start="46" name="PRF"/>
+                    <label end="51" start="49" name="AT0"/>
+                    <label end="56" start="53" name="NN1"/>
+                    <label end="64" start="58" name="PRP"/>
+                    <label end="69" start="66" name="CJT-DT0"/>
+                    <label end="77" start="71" name="VVD"/>
+                    <label end="81" start="79" name="AT0"/>
+                    <label end="89" start="83" name="NN2"/>
+                    <label end="91" start="91" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:51:19 PST Tue" status="MANUAL" ID="464466">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="4953" end="56" start="49" name="Cause"/>
+                    <label cBy="103" feID="4947" end="89" start="79" name="Sound_maker"/>
+                    <label cBy="309" feID="4953" end="69" start="58" name="Cause"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="56" start="49" name="Ext"/>
+                    <label end="89" start="79" name="Obj"/>
+                    <label end="69" start="58" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="56" start="49" name="NP"/>
+                    <label end="89" start="79" name="NP"/>
+                    <label end="69" start="58" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other">
+                    <label end="56" start="49" name="Ant"/>
+                    <label end="69" start="66" name="Rel"/>
+                </layer>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="77" start="71" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="80802799" ID="411071">
+            <text>Emmie got up , trying not to creak the chair . </text>
+            <annotationSet cDate="01/07/2003 02:51:19 PST Tue" status="UNANN" ID="464469">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="NN1-NP0"/>
+                    <label end="8" start="6" name="VVD"/>
+                    <label end="11" start="10" name="AVP"/>
+                    <label end="13" start="13" name="PUN"/>
+                    <label end="20" start="15" name="VVG"/>
+                    <label end="24" start="22" name="XX0"/>
+                    <label end="27" start="26" name="TO0"/>
+                    <label end="33" start="29" name="VVI"/>
+                    <label end="37" start="35" name="AT0"/>
+                    <label end="43" start="39" name="NN1"/>
+                    <label end="45" start="45" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:51:19 PST Tue" status="MANUAL" ID="464470">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="4946" end="4" start="0" name="Agent"/>
+                    <label cBy="103" feID="4947" end="43" start="35" name="Sound_maker"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="4" start="0" name="Ext"/>
+                    <label end="43" start="35" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="4" start="0" name="NP"/>
+                    <label end="43" start="35" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="33" start="29" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

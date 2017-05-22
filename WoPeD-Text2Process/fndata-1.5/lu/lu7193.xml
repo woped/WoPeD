@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" POS="A" name="tuckered out.a" ID="7193" frame="Biological_urge" frameID="394" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="AP" ID="113">
+            <document description="apwsE950922.0514" ID="2777"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Peripheral" abbrev="Dur" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Exp" name="Experiencer"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Expressor" name="Expressor"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="Par" name="Parameter"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="Rea" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Stat" name="State"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: ready to sleep</definition>
+    <lexeme order="1" headword="true" breakBefore="false" POS="A" name="tuckered"/>
+    <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="out"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Experiencer"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Experiencer"/>
+                <annoSet ID="1934605"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[after]" FE="Time"/>
+                <annoSet ID="1934605"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Experiencer"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Experiencer"/>
+                <valenceUnit GF="Dep" PT="PP[after]" FE="Time"/>
+                <annoSet ID="1934605"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-(1)">
+        <sentence corpID="113" docID="2777" sentNo="1" paragNo="8" aPos="0" ID="1243787">
+            <text>`` People are all tuckered out after the last couple of days , '' said Kevin Lawrie , a vice president at Mellon Bank in Pittsburgh .</text>
+            <annotationSet cDate="07/24/2003 05:45:47 PDT Thu" status="UNANN" ID="1934604">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="``"/>
+                    <label end="8" start="3" name="nns"/>
+                    <label end="12" start="10" name="vbp"/>
+                    <label end="16" start="14" name="rb"/>
+                    <label end="25" start="18" name="VVN"/>
+                    <label end="29" start="27" name="rp"/>
+                    <label end="35" start="31" name="in"/>
+                    <label end="39" start="37" name="dt"/>
+                    <label end="44" start="41" name="jj"/>
+                    <label end="51" start="46" name="nn"/>
+                    <label end="54" start="53" name="in"/>
+                    <label end="59" start="56" name="nns"/>
+                    <label end="61" start="61" name=","/>
+                    <label end="64" start="63" name="''"/>
+                    <label end="69" start="66" name="VVD"/>
+                    <label end="75" start="71" name="NP"/>
+                    <label end="82" start="77" name="NP"/>
+                    <label end="84" start="84" name=","/>
+                    <label end="86" start="86" name="dt"/>
+                    <label end="91" start="88" name="nn"/>
+                    <label end="101" start="93" name="nn"/>
+                    <label end="104" start="103" name="in"/>
+                    <label end="111" start="106" name="NP"/>
+                    <label end="116" start="113" name="NP"/>
+                    <label end="119" start="118" name="in"/>
+                    <label end="130" start="121" name="NP"/>
+                    <label end="132" start="132" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/24/2003 05:45:47 PDT Thu" status="MANUAL" ID="1934605">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="29" start="18" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3520" end="8" start="3" name="Experiencer"/>
+                    <label cBy="618" feID="3521" end="59" start="31" name="Time"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="8" start="3" name="Ext"/>
+                    <label end="59" start="31" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="8" start="3" name="NP"/>
+                    <label end="59" start="31" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj">
+                    <label end="12" start="10" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

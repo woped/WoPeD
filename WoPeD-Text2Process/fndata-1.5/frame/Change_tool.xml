@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="07/13/2004 04:12:38 PDT Tue" name="Change_tool" ID="1173" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Agent&lt;/fen&gt; changes &lt;fen&gt;Tools&lt;/fen&gt;, from the &lt;fen&gt;Old_tool&lt;/fen&gt; to a &lt;fen&gt;New_tool&lt;/fen&gt;.  The &lt;fen&gt;Tools&lt;/fen&gt; may include vehicles, services providers, or more proto-typical implements.
+
+&lt;ex&gt;If this happens one more time, &lt;fex name="age"&gt;we&lt;/fex&gt; 're going to &lt;t&gt;switch&lt;/t&gt; &lt;fex name="tos"&gt;operating systems&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="age"&gt;Stephen&lt;/fex&gt; had to &lt;t&gt;transfer&lt;/t&gt; &lt;fex name="ite"&gt;five times&lt;/fex&gt; &lt;fex name="tim"&gt;by the time he got to Lincolnville&lt;/fex&gt;. &lt;fex name="tos"&gt;DNI&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="07/13/2004 04:12:38 PDT Tue" abbrev="age" name="Agent" ID="6806">
+        <definition>&lt;def-root&gt;The individual that changes their situation.&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="07/13/2004 04:12:38 PDT Tue" abbrev="Place" name="Place" ID="6807">
+        <definition>&lt;def-root&gt;This FE identifies the place where the &lt;fen&gt;Agent&lt;/fen&gt; makes a change.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="07/13/2004 04:12:38 PDT Tue" abbrev="Purp" name="Purpose" ID="6808">
+        <definition>&lt;def-root&gt;The aim of the &lt;fen&gt;Agent&lt;/fen&gt; when they carry out the change.
+&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="07/13/2004 04:12:38 PDT Tue" abbrev="tim" name="Time" ID="6809">
+        <definition>&lt;def-root&gt;This FE identifies the time when the &lt;fen&gt;Agent&lt;/fen&gt; acts intentionally.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="07/13/2004 04:12:38 PDT Tue" abbrev="mea" name="Means" ID="6810">
+        <definition>&lt;def-root&gt;The action of the &lt;fen&gt;Agent&lt;/fen&gt; which brings about a change.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="07/13/2004 04:12:38 PDT Tue" abbrev="man" name="Manner" ID="6811">
+        <definition>&lt;def-root&gt;Any description of the &lt;fen&gt;Agent&lt;/fen&gt;'s change which is not covered by more specific FEs, including secondary effects (&lt;ment&gt;quietly, loudly&lt;/ment&gt;), and general descriptions comparing events (&lt;ment&gt;the same way&lt;/ment&gt;). In addition, it may indicate salient characteristics of an &lt;fen&gt;Agent&lt;/fen&gt; that also affect the action (&lt;ment&gt;presumptuously, coldly, deliberately, eagerly, carefully&lt;/ment&gt;). 
+
+&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="07/26/2004 01:58:58 PDT Mon" abbrev="tos" name="Tools" ID="6976">
+        <definition>&lt;def-root&gt;The entities controlled by an Agent to achieve some Purpose.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="07/26/2004 02:01:14 PDT Mon" abbrev="oto" name="Old_tool" ID="6977">
+        <definition>&lt;def-root&gt;The tool that the &lt;fen&gt;Agent&lt;/fen&gt; had been using.&lt;/def-root&gt;</definition>
+        <excludesFE name="Tools" ID="6976"/>
+    </FE>
+    <FE bgColor="A9A9A9" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="07/26/2004 02:33:54 PDT Mon" abbrev="nto" name="New_tool" ID="6978">
+        <definition>&lt;def-root&gt;The tool that the &lt;fen&gt;Agent&lt;/fen&gt; ends up using.&lt;/def-root&gt;</definition>
+        <excludesFE name="Tools" ID="6976"/>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="07/26/2004 02:45:54 PDT Mon" abbrev="ite" name="Iterations" ID="6979">
+        <definition>&lt;def-root&gt;The number of times that the action goes from start to finish.&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Intentionally_act</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Created" POS="V" name="change.v" ID="10824" lemmaID="6040" cBy="664" cDate="07/26/2004 12:55:35 PDT Mon">
+        <definition>FN: discontinue use of and begin use of another</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="change"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="transfer.v" ID="10825" lemmaID="40996" cBy="664" cDate="07/26/2004 02:50:28 PDT Mon">
+        <definition>COD: change to another place, route, or means of transport during a journey.</definition>
+        <sentenceCount annotated="6" total="189"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="transfer"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="switch.v" ID="10826" lemmaID="39191" cBy="664" cDate="07/26/2004 02:50:57 PDT Mon">
+        <definition>FN: change affiliation (to a provider of a service)</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="switch"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="swap.v" ID="13434" lemmaID="39079" cBy="618" cDate="08/09/2006 03:03:25 PDT Wed">
+        <definition>FN: exchange one tool for another available tool.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="swap"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="trade.v" ID="13435" lemmaID="40911" cBy="618" cDate="08/09/2006 03:14:57 PDT Wed">
+        <definition>FN: switch one item (tool, accessory, etc.) for another.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="trade"/>
+    </lexUnit>
+</frame>

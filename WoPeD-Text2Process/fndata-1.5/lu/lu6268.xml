@@ -1,0 +1,577 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="fly.v" ID="6268" frame="Motion" frameID="7" totalAnnotated="9" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Core" abbrev="Area" name="Area"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Extra-Thematic" abbrev="Car" name="Carrier"/>
+            <FE fgColor="000000" bgColor="9F79EE" type="Extra-Thematic" abbrev="con" name="Containing_event"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Extra-Thematic" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="A9A9A9" type="Core" abbrev="" name="Direction"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Core" abbrev="Dist" name="Distance"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Peripheral" abbrev="Dur" name="Duration"/>
+            <FE fgColor="000000" bgColor="EEE8AA" type="Extra-Thematic" abbrev="" name="Frequency"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Goal" name="Goal"/>
+            <FE fgColor="00008B" bgColor="FFFF00" type="Extra-Thematic" abbrev="" name="Iteration"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Path" name="Path"/>
+            <FE fgColor="000000" bgColor="00BFFF" type="Extra-Thematic" abbrev="sha" name="Path_shape"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD7C" type="Extra-Thematic" abbrev="pur" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="Result" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Core" abbrev="Src" name="Source"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="Spd" name="Speed"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Thm" name="Theme"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: move or be hurled quickly through the air. </definition>
+    <lexeme POS="V" name="fly"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Area"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[through]" FE="Area"/>
+                <annoSet ID="1868009"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Distance"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Distance"/>
+                <annoSet ID="1868191"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Goal"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[into]" FE="Goal"/>
+                <annoSet ID="1868137"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[onto]" FE="Goal"/>
+                <annoSet ID="1868051"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="7">
+            <FE name="Path"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Path"/>
+                <annoSet ID="1868191"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[up]" FE="Path"/>
+                <annoSet ID="1868051"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[between]" FE="Path"/>
+                <annoSet ID="1868149"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Path"/>
+                <annoSet ID="1868089"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[over]" FE="Path"/>
+                <annoSet ID="1868013"/>
+                <annoSet ID="1868039"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[towards]" FE="Path"/>
+                <annoSet ID="1868033"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="9">
+            <FE name="Theme"/>
+            <pattern total="9">
+                <valenceUnit GF="Ext" PT="NP" FE="Theme"/>
+                <annoSet ID="1868009"/>
+                <annoSet ID="1868013"/>
+                <annoSet ID="1868033"/>
+                <annoSet ID="1868039"/>
+                <annoSet ID="1868051"/>
+                <annoSet ID="1868089"/>
+                <annoSet ID="1868137"/>
+                <annoSet ID="1868149"/>
+                <annoSet ID="1868191"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Area"/>
+            <FE name="Theme"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[through]" FE="Area"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Theme"/>
+                <annoSet ID="1868009"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Distance"/>
+            <FE name="Path"/>
+            <FE name="Theme"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Distance"/>
+                <valenceUnit GF="" PT="INI" FE="Path"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Theme"/>
+                <annoSet ID="1868191"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Goal"/>
+            <FE name="Path"/>
+            <FE name="Theme"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[onto]" FE="Goal"/>
+                <valenceUnit GF="Dep" PT="PP[up]" FE="Path"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Theme"/>
+                <annoSet ID="1868051"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Goal"/>
+            <FE name="Theme"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[into]" FE="Goal"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Theme"/>
+                <annoSet ID="1868137"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="5">
+            <FE name="Path"/>
+            <FE name="Theme"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[between]" FE="Path"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Theme"/>
+                <annoSet ID="1868149"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Path"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Theme"/>
+                <annoSet ID="1868089"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[over]" FE="Path"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Theme"/>
+                <annoSet ID="1868013"/>
+                <annoSet ID="1868039"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[towards]" FE="Path"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Theme"/>
+                <annoSet ID="1868033"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="03-NPball,kite,arrow-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="2296" aPos="0" ID="1210454">
+            <text>The professional assessment is that the Mitre ball is heavier when it flies through the air and therefore lends itself to greater accuracy .</text>
+            <annotationSet cDate="04/30/2003 04:29:07 PDT Wed" status="UNANN" ID="1868008">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="15" start="4" name="jj"/>
+                    <label end="26" start="17" name="nn"/>
+                    <label end="29" start="28" name="VBZ"/>
+                    <label end="34" start="31" name="in"/>
+                    <label end="38" start="36" name="dt"/>
+                    <label end="44" start="40" name="nn"/>
+                    <label end="49" start="46" name="nn"/>
+                    <label end="52" start="51" name="VBZ"/>
+                    <label end="60" start="54" name="jjr"/>
+                    <label end="65" start="62" name="wrb"/>
+                    <label end="68" start="67" name="PP"/>
+                    <label end="74" start="70" name="VVZ"/>
+                    <label end="82" start="76" name="in"/>
+                    <label end="86" start="84" name="dt"/>
+                    <label end="90" start="88" name="nn"/>
+                    <label end="94" start="92" name="cc"/>
+                    <label end="104" start="96" name="rb"/>
+                    <label end="110" start="106" name="VVZ"/>
+                    <label end="117" start="112" name="PP"/>
+                    <label end="120" start="119" name="to"/>
+                    <label end="128" start="122" name="jjr"/>
+                    <label end="137" start="130" name="nn"/>
+                    <label end="139" start="139" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 04:29:07 PDT Wed" status="MANUAL" ID="1868009">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="74" start="70" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="26" end="68" start="67" name="Theme"/>
+                    <label cBy="618" feID="30" end="90" start="76" name="Area"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="68" start="67" name="Ext"/>
+                    <label end="90" start="76" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="68" start="67" name="NP"/>
+                    <label end="90" start="76" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="6" paragNo="71" aPos="0" ID="1210456">
+            <text>As the ball flew over the front edge , I was screaming inside , “ Come down , come down ; oh , God ! ”</text>
+            <annotationSet cDate="04/30/2003 04:29:08 PDT Wed" status="UNANN" ID="1868012">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="in"/>
+                    <label end="5" start="3" name="dt"/>
+                    <label end="10" start="7" name="nn"/>
+                    <label end="15" start="12" name="VVD"/>
+                    <label end="20" start="17" name="in"/>
+                    <label end="24" start="22" name="dt"/>
+                    <label end="30" start="26" name="jj"/>
+                    <label end="35" start="32" name="nn"/>
+                    <label end="37" start="37" name=","/>
+                    <label end="39" start="39" name="PP"/>
+                    <label end="43" start="41" name="VBD"/>
+                    <label end="53" start="45" name="VVG"/>
+                    <label end="60" start="55" name="in"/>
+                    <label end="62" start="62" name=","/>
+                    <label end="69" start="66" name="VV"/>
+                    <label end="74" start="71" name="rb"/>
+                    <label end="76" start="76" name=","/>
+                    <label end="81" start="78" name="VVD"/>
+                    <label end="86" start="83" name="rp"/>
+                    <label end="88" start="88" name=":"/>
+                    <label end="91" start="90" name="uh"/>
+                    <label end="93" start="93" name=","/>
+                    <label end="97" start="95" name="NP"/>
+                    <label end="99" start="99" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 04:29:08 PDT Wed" status="MANUAL" ID="1868013">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="15" start="12" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="26" end="10" start="3" name="Theme"/>
+                    <label cBy="618" feID="28" end="35" start="17" name="Path"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="10" start="3" name="Ext"/>
+                    <label end="35" start="17" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="10" start="3" name="NP"/>
+                    <label end="35" start="17" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="5" paragNo="338" aPos="0" ID="1210466">
+            <text>The arrow was flying towards her and she bled in anticipation .</text>
+            <annotationSet cDate="04/30/2003 04:29:12 PDT Wed" status="UNANN" ID="1868032">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="8" start="4" name="nn"/>
+                    <label end="12" start="10" name="VBD"/>
+                    <label end="19" start="14" name="VVG"/>
+                    <label end="27" start="21" name="in"/>
+                    <label end="31" start="29" name="PP"/>
+                    <label end="35" start="33" name="cc"/>
+                    <label end="39" start="37" name="PP"/>
+                    <label end="44" start="41" name="VVD"/>
+                    <label end="47" start="46" name="in"/>
+                    <label end="60" start="49" name="nn"/>
+                    <label end="62" start="62" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 04:29:12 PDT Wed" status="MANUAL" ID="1868033">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="19" start="14" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="26" end="8" start="0" name="Theme"/>
+                    <label cBy="618" feID="28" end="31" start="21" name="Path"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="8" start="0" name="Ext"/>
+                    <label end="31" start="21" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="8" start="0" name="NP"/>
+                    <label end="31" start="21" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="751" aPos="0" ID="1210469">
+            <text>He says there were bullets flying over the fence .</text>
+            <annotationSet cDate="04/30/2003 04:29:13 PDT Wed" status="UNANN" ID="1868038">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="6" start="3" name="VVZ"/>
+                    <label end="12" start="8" name="ex"/>
+                    <label end="17" start="14" name="VBD"/>
+                    <label end="25" start="19" name="nns"/>
+                    <label end="32" start="27" name="VVG"/>
+                    <label end="37" start="34" name="in"/>
+                    <label end="41" start="39" name="dt"/>
+                    <label end="47" start="43" name="nn"/>
+                    <label end="49" start="49" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 04:29:13 PDT Wed" status="MANUAL" ID="1868039">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="32" start="27" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="26" end="25" start="19" name="Theme"/>
+                    <label cBy="618" feID="28" end="47" start="34" name="Path"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="25" start="19" name="Ext"/>
+                    <label end="47" start="34" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="25" start="19" name="NP"/>
+                    <label end="47" start="34" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="04-NPcar,aeroplane,aircraft-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="100" aPos="0" ID="1210475">
+            <text>The car flew up onto the Westway .</text>
+            <annotationSet cDate="04/30/2003 04:29:15 PDT Wed" status="UNANN" ID="1868050">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="6" start="4" name="nn"/>
+                    <label end="11" start="8" name="VVD"/>
+                    <label end="14" start="13" name="PRP"/>
+                    <label end="19" start="16" name="in"/>
+                    <label end="23" start="21" name="dt"/>
+                    <label end="31" start="25" name="NP"/>
+                    <label end="33" start="33" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 04:29:15 PDT Wed" status="MANUAL" ID="1868051">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="11" start="8" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="26" end="6" start="0" name="Theme"/>
+                    <label cBy="618" feID="28" end="14" start="13" name="Path"/>
+                    <label cBy="618" feID="29" end="31" start="16" name="Goal"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="6" start="0" name="Ext"/>
+                    <label end="14" start="13" name="Dep"/>
+                    <label end="31" start="16" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="6" start="0" name="NP"/>
+                    <label end="14" start="13" name="PP"/>
+                    <label end="31" start="16" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="05-T-PPacross,on,in-(1)">
+        <sentence corpID="111" docID="421" sentNo="9" paragNo="208" aPos="0" ID="1210494">
+            <text>Horses careered into the fence and sent gorse flying in all directions .</text>
+            <annotationSet cDate="04/30/2003 04:29:21 PDT Wed" status="UNANN" ID="1868088">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="0" name="nns"/>
+                    <label end="14" start="7" name="VVD"/>
+                    <label end="19" start="16" name="in"/>
+                    <label end="23" start="21" name="dt"/>
+                    <label end="29" start="25" name="nn"/>
+                    <label end="33" start="31" name="cc"/>
+                    <label end="38" start="35" name="VVD"/>
+                    <label end="44" start="40" name="nn"/>
+                    <label end="51" start="46" name="VVG"/>
+                    <label end="54" start="53" name="in"/>
+                    <label end="58" start="56" name="dt"/>
+                    <label end="69" start="60" name="nns"/>
+                    <label end="71" start="71" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 04:29:22 PDT Wed" status="MANUAL" ID="1868089">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="51" start="46" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="26" end="44" start="40" name="Theme"/>
+                    <label cBy="618" feID="28" end="69" start="53" name="Path"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="44" start="40" name="Ext"/>
+                    <label end="69" start="53" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="44" start="40" name="NP"/>
+                    <label end="69" start="53" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="06-T-PParound-(1)"/>
+    <subCorpus name="07-T-PPaway-(1)"/>
+    <subCorpus name="08-T-PPup-(1)"/>
+    <subCorpus name="09-T-PPover-(1)"/>
+    <subCorpus name="10-T-PPout-(1)"/>
+    <subCorpus name="11-T-PPdown-(1)"/>
+    <subCorpus name="other-matched-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="701" aPos="0" ID="1210518">
+            <text>Travelling like a cannonball it flew straight into the shallow ditch at the far side .</text>
+            <annotationSet cDate="04/30/2003 04:29:30 PDT Wed" status="UNANN" ID="1868136">
+                <layer rank="1" name="PENN">
+                    <label end="9" start="0" name="VVG"/>
+                    <label end="14" start="11" name="in"/>
+                    <label end="16" start="16" name="dt"/>
+                    <label end="27" start="18" name="nn"/>
+                    <label end="30" start="29" name="PP"/>
+                    <label end="35" start="32" name="VVD"/>
+                    <label end="44" start="37" name="rb"/>
+                    <label end="49" start="46" name="in"/>
+                    <label end="53" start="51" name="dt"/>
+                    <label end="61" start="55" name="jj"/>
+                    <label end="67" start="63" name="nn"/>
+                    <label end="70" start="69" name="in"/>
+                    <label end="74" start="72" name="dt"/>
+                    <label end="78" start="76" name="jj"/>
+                    <label end="83" start="80" name="nn"/>
+                    <label end="85" start="85" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 04:29:30 PDT Wed" status="MANUAL" ID="1868137">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="35" start="32" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="26" end="30" start="29" name="Theme"/>
+                    <label cBy="618" feID="29" end="83" start="37" name="Goal"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="30" start="29" name="Ext"/>
+                    <label end="83" start="37" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="30" start="29" name="NP"/>
+                    <label end="83" start="37" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="4826" aPos="0" ID="1210524">
+            <text>Her researcher , Anthony Massey , said : ` The shrapnel flew between us and a piece bounced off Kate 's helmet .</text>
+            <annotationSet cDate="04/30/2003 04:29:32 PDT Wed" status="UNANN" ID="1868148">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="PP$"/>
+                    <label end="13" start="4" name="nn"/>
+                    <label end="15" start="15" name=","/>
+                    <label end="23" start="17" name="NP"/>
+                    <label end="30" start="25" name="NP"/>
+                    <label end="32" start="32" name=","/>
+                    <label end="37" start="34" name="VVD"/>
+                    <label end="39" start="39" name=":"/>
+                    <label end="45" start="43" name="dt"/>
+                    <label end="54" start="47" name="nn"/>
+                    <label end="59" start="56" name="VVD"/>
+                    <label end="67" start="61" name="in"/>
+                    <label end="70" start="69" name="PP"/>
+                    <label end="74" start="72" name="cc"/>
+                    <label end="76" start="76" name="dt"/>
+                    <label end="82" start="78" name="nn"/>
+                    <label end="90" start="84" name="VVD"/>
+                    <label end="94" start="92" name="rp"/>
+                    <label end="99" start="96" name="NP"/>
+                    <label end="102" start="101" name="POS"/>
+                    <label end="109" start="104" name="nn"/>
+                    <label end="111" start="111" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 04:29:33 PDT Wed" status="MANUAL" ID="1868149">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="59" start="56" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="26" end="54" start="43" name="Theme"/>
+                    <label cBy="618" feID="28" end="70" start="61" name="Path"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="54" start="43" name="Ext"/>
+                    <label end="70" start="61" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="54" start="43" name="NP"/>
+                    <label end="70" start="61" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="373" aPos="0" ID="1210545">
+            <text>Because a wet ball will fly farther , use less club then normal on approach shots .</text>
+            <annotationSet cDate="04/30/2003 04:29:40 PDT Wed" status="UNANN" ID="1868190">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="0" name="in"/>
+                    <label end="8" start="8" name="dt"/>
+                    <label end="12" start="10" name="jj"/>
+                    <label end="17" start="14" name="nn"/>
+                    <label end="22" start="19" name="md"/>
+                    <label end="26" start="24" name="VV"/>
+                    <label end="34" start="28" name="rb"/>
+                    <label end="36" start="36" name=","/>
+                    <label end="40" start="38" name="VV"/>
+                    <label end="45" start="42" name="jjr"/>
+                    <label end="50" start="47" name="nn"/>
+                    <label end="55" start="52" name="rb"/>
+                    <label end="62" start="57" name="jj"/>
+                    <label end="65" start="64" name="in"/>
+                    <label end="74" start="67" name="nn"/>
+                    <label end="80" start="76" name="nns"/>
+                    <label end="82" start="82" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 04:29:40 PDT Wed" status="MANUAL" ID="1868191">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="26" start="24" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="26" end="17" start="8" name="Theme"/>
+                    <label cBy="618" feID="1965" end="34" start="28" name="Distance"/>
+                    <label cBy="296" feID="28" itype="INI" name="Path"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="17" start="8" name="Ext"/>
+                    <label end="34" start="28" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="17" start="8" name="NP"/>
+                    <label end="34" start="28" name="AVP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

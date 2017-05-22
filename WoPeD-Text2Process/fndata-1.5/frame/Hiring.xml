@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="05/13/2002 02:44:47 PDT Mon" name="Hiring" ID="322" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Employer&lt;/fen&gt; hires an &lt;fen&gt;Employee&lt;/fen&gt;, promising the &lt;fen&gt;Employee&lt;/fen&gt; a certain &lt;fen&gt;Compensation&lt;/fen&gt; in exchange for the performance of a job.  The job may be described either in terms of a &lt;fen&gt;Task&lt;/fen&gt; or a &lt;fen&gt;Position&lt;/fen&gt;.  In some cases, the &lt;fen&gt;Employee&lt;/fen&gt; FE will also indicate the &lt;fen&gt;Position&lt;/fen&gt; (see fourth example below).
+
+&lt;ex&gt;&lt;fex name="Empee"&gt;John&lt;/fex&gt; was &lt;t&gt;hired&lt;/t&gt; &lt;fex name="Task"&gt;to clean up the file system&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Emper"&gt;IBM&lt;/fex&gt; &lt;t&gt;hired&lt;/t&gt; &lt;fex name="Empee"&gt;Gates&lt;/fex&gt; &lt;fex name="Posit"&gt;as chief janitor&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Empee"&gt;I&lt;/fex&gt; was &lt;t&gt;retained&lt;/t&gt; &lt;fex name="Compense"&gt;at $500 an hour&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Emper"&gt;The A's&lt;/fex&gt; &lt;t&gt;signed&lt;/t&gt; &lt;fex name="Empee"&gt;a new third baseman&lt;/fex&gt; &lt;fex name="Compense"&gt;for $30M&lt;/fex&gt;.&lt;/ex&gt;
+The same sentence (above) should also have the FE &lt;fen&gt;Position&lt;/fen&gt; on the second layer:
+&lt;ex&gt;The A's &lt;t&gt;signed&lt;/t&gt; &lt;fex name="Posit"&gt;a new third baseman&lt;/fex&gt; for $30M.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="05/14/2002 12:46:35 PDT Tue" abbrev="Empee" name="Employee" ID="2777">
+        <definition>&lt;def-root&gt;The person whom the &lt;fen&gt;Employer&lt;/fen&gt; takes on as an &lt;fen&gt;Employee&lt;/fen&gt;, obligating them to perform some &lt;fen&gt;Task&lt;/fen&gt; in order to receive &lt;fen&gt;Compensation&lt;/fen&gt;.
+
+&lt;ex&gt;&lt;fex name="Employee"&gt;I&lt;/fex&gt; was just &lt;t&gt;hired&lt;/t&gt; yesterday!&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="05/14/2002 12:47:02 PDT Tue" abbrev="Emper" name="Employer" ID="2778">
+        <definition>&lt;def-root&gt;The person (or institution) that takes on an &lt;fen&gt;Employee&lt;/fen&gt;, giving them  &lt;fen&gt;Compensation&lt;/fen&gt; in return for the performance of an assigned &lt;fen&gt;Task&lt;/fen&gt;.
+
+&lt;ex&gt;Last month, &lt;fex name="Emper"&gt;IBM&lt;/fex&gt; &lt;t&gt;hired&lt;/t&gt; Mike Zisman to head up its storage software group.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="05/14/2002 12:49:02 PDT Tue" abbrev="Compense" name="Compensation" ID="2779">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Compensation&lt;/fen&gt; is the payment that the &lt;fen&gt;Employee&lt;/fen&gt; is set to receive  for performing an assigned &lt;fen&gt;Task&lt;/fen&gt;.
+
+&lt;ex&gt;They fired our management, &lt;t&gt;hired&lt;/t&gt; him &lt;fex name="Compense"&gt;for 20% more&lt;/fex&gt; and gave him a free office to set up his own company.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="05/14/2002 12:03:32 PDT Tue" abbrev="Mnr" name="Manner" ID="2780">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Manner&lt;/fen&gt; in which an &lt;fen&gt;Employer&lt;/fen&gt; hires an &lt;fen&gt;Employee&lt;/fen&gt;.
+
+&lt;ex&gt;The three young men were given medals and &lt;fex name="Manner"&gt;hastily&lt;/fex&gt; &lt;t&gt;commissioned&lt;/t&gt;&lt;/ex&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="05/14/2002 12:03:54 PDT Tue" abbrev="Place" name="Place" ID="2781">
+        <definition>&lt;def-root&gt;This FE identifies the place where the &lt;fen&gt;Employer&lt;/fen&gt; hires the &lt;fen&gt;Employee&lt;/fen&gt;.
+
+&lt;ex&gt;Actually, he &lt;t&gt;hired&lt;/t&gt; me &lt;fex name="Place"&gt;in a bordello&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="05/14/2002 12:03:56 PDT Tue" abbrev="Time" name="Time" ID="2782">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Time&lt;/fen&gt; when an &lt;fen&gt;Employer&lt;/fen&gt; hires the &lt;fen&gt;Employee&lt;/fen&gt;.
+
+&lt;ex&gt;Guess who just got &lt;t&gt;hired&lt;/t&gt; &lt;fex name="Time"&gt;today&lt;/fex&gt;!&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="05/14/2002 12:04:04 PDT Tue" abbrev="Purp" name="Purpose" ID="2783">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Purpose&lt;/fen&gt; for which an &lt;fen&gt;Employer&lt;/fen&gt; hires the &lt;fen&gt;Employee&lt;/fen&gt;.
+
+&lt;ex&gt;John &lt;t&gt;hired&lt;/t&gt; her &lt;fex name="Purp"&gt;to make his wife jealous&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="05/14/2002 12:06:30 PDT Tue" abbrev="Task" name="Task" ID="2784">
+        <definition>&lt;def-root&gt;The action that the &lt;fen&gt;Employee&lt;/fen&gt; is taken on by the &lt;fen&gt;Employer&lt;/fen&gt; to do.
+
+&lt;ex&gt;I was &lt;t&gt;hired&lt;/t&gt; &lt;fex name="Task"&gt;just to empty the trash cans&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="05/14/2002 12:17:56 PDT Tue" abbrev="Posit" name="Position" ID="2785">
+        <definition>&lt;def-root&gt;The label given to a particular type of employment.
+
+&lt;ex&gt;Look, I wasn't &lt;t&gt;hired&lt;/t&gt; &lt;fex name="Posit"&gt;as your waitress&lt;/fex&gt;!&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Core" cBy="669" cDate="05/14/2002 03:40:20 PDT Tue" abbrev="Field" name="Field" ID="2805">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Field&lt;/fen&gt; that the &lt;fen&gt;Employee&lt;/fen&gt; is going to work in for their &lt;fen&gt;Employer&lt;/fen&gt;.
+
+
+
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Peripheral" cBy="309" cDate="10/02/2003 11:37:00 PDT Thu" abbrev="Ins" name="Instrument" ID="5418">
+        <definition>&lt;def-root&gt;An entity that the &lt;fen&gt;Employer&lt;/fen&gt; uses to hire the &lt;fen&gt;Employee&lt;/fen&gt;.
+
+
+&lt;ex&gt;The congressman &lt;t&gt;hired&lt;/t&gt; him &lt;fex name="Instrument"&gt;with personal funds&lt;/fex&gt; as an aide &lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Physical_entity" ID="70"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="309" cDate="10/02/2003 11:37:00 PDT Thu" abbrev="Mns" name="Means" ID="5419">
+        <definition>&lt;def-root&gt;An action by the &lt;fen&gt;Employer&lt;/fen&gt; whereby the hire is brought about.
+
+&lt;ex&gt;The manager &lt;t&gt;hired&lt;/t&gt; me &lt;fex name="Means"&gt;with a handshake&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="d0d0d0" fgColor="00008B" coreType="Peripheral" cBy="605" cDate="05/18/2004 06:30:03 PDT Tue" abbrev="cb" name="Contract_basis" ID="6462">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Contract_basis&lt;/fen&gt; is the condition of employment with respect to permanency, hours per time period or payment arrangements.
+
+
+&lt;ex&gt;She couldn't figure it out but suggested that I'd be good for the job, so they &lt;t&gt;hired&lt;/t&gt; me &lt;fex name="cb"&gt;part time&lt;/fex&gt; at first.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="7FFF00" fgColor="000000" coreType="Extra-Thematic" cBy="571" cDate="05/28/2010 11:43:50 PDT Fri" abbrev="per" name="Period_of_iterations" ID="13940">
+        <definition>&lt;def-root&gt;The length of time from when the hiring event began to be repeated to when it stopped. &lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Position" ID="2785"/>
+        <memberFE name="Task" ID="2784"/>
+        <memberFE name="Field" ID="2805"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Intentionally_affect</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on">
+        <relatedFrame>Employment_start</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of">
+        <relatedFrame>Employer's_scenario</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes">
+        <relatedFrame>Employing</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="hire.v" ID="5774" lemmaID="18135" cBy="664" cDate="05/13/2002 02:45:26 PDT Mon">
+        <definition>COD: employ for wages. </definition>
+        <sentenceCount annotated="36" total="403"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="hire"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="sign.v" ID="5775" lemmaID="35869" cBy="664" cDate="05/13/2002 03:32:45 PDT Mon">
+        <definition>FN: engage someone to work by signing a contract. </definition>
+        <sentenceCount annotated="18" total="450"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="sign"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="retain.v" ID="5776" lemmaID="32974" cBy="664" cDate="05/13/2002 03:33:20 PDT Mon">
+        <definition>COD: keep engaged in one's service. </definition>
+        <sentenceCount annotated="5" total="215"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="retain"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="commission.v" ID="5777" lemmaID="7360" cBy="664" cDate="05/13/2002 04:57:15 PDT Mon">
+        <definition>COD: order or authorize (someone) to do or produce something. </definition>
+        <sentenceCount annotated="19" total="267"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="commission"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="take on.v" ID="5778" lemmaID="45679" cBy="664" cDate="05/13/2002 11:33:39 PDT Mon">
+        <definition>FN: hire</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="take"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="PREP" name="on"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="hire.n" ID="5779" lemmaID="18134" cBy="664" cDate="05/13/2002 11:47:51 PDT Mon">
+        <definition>COD: the action of hiring. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="hire"/>
+    </lexUnit>
+    <lexUnit status="Rules_Defined" POS="V" name="give job.v" ID="10534" lemmaID="45684" cBy="605" cDate="05/19/2004 06:52:24 PDT Wed">
+        <definition>FN: take somebody on as an employee</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="give"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="job"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="commission.n" ID="13257" lemmaID="7359" cBy="303" cDate="06/19/2006 03:18:45 PDT Mon">
+        <definition>FN: act of commissioning</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="commission"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="contract.v" ID="15643" lemmaID="8105" cBy="618" cDate="02/22/2010 10:56:03 PST Mon">
+        <definition>FN: assign a job by contract.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="contract"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="subcontract.v" ID="15644" lemmaID="38510" cBy="618" cDate="02/22/2010 10:58:09 PST Mon">
+        <definition>FN: hire to render services for another contract.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="subcontract"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="sign on.v" ID="15645" lemmaID="49120" cBy="618" cDate="02/22/2010 11:01:15 PST Mon">
+        <definition>FN: engage someone to work by signing a contract. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="sign"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="on"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="sign up.v" ID="15646" lemmaID="51080" cBy="618" cDate="02/22/2010 11:03:59 PST Mon">
+        <definition>FN: engage someone to work by signing a contract. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="sign"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="up"/>
+    </lexUnit>
+</frame>

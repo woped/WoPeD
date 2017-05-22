@@ -1,0 +1,625 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="overpass.n" ID="3784" frame="Roadways" frameID="203" totalAnnotated="9" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="AP" ID="113">
+            <document description="apwsE980213.0690" ID="6735"/>
+            <document description="apwsE980221.0213" ID="6738"/>
+            <document description="apwsE950616.0650" ID="6756"/>
+            <document description="apwsE950814.0359" ID="6764"/>
+            <document description="apwsE950228.0004" ID="6765"/>
+            <document description="apwsE950120.0175" ID="6766"/>
+            <document description="apwsE980218.0100" ID="6771"/>
+            <document description="apwsE941206.0559" ID="6773"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="A_e" name="Abundant_entities"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Char" name="Characteristic"/>
+            <FE fgColor="FFFFFF" bgColor="A9A9A9" type="Peripheral" abbrev="Dir" name="Direction"/>
+            <FE fgColor="9400D3" bgColor="d0d0d0" type="Peripheral" abbrev="EPs" name="Endpoints"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="F_use" name="Frequency_of_use"/>
+            <FE fgColor="000000" bgColor="9F79EE" type="Peripheral" abbrev="Goal" name="Goal"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Length" name="Length"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="Mat" name="Material"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Name" name="Name"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD73" type="Peripheral" abbrev="par" name="Part"/>
+            <FE fgColor="90876C" bgColor="000000" type="Peripheral" abbrev="Pat" name="Path"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="rel" name="Relative_location"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Road" name="Roadway"/>
+            <FE fgColor="EEE8AA" bgColor="A52A2A" type="Peripheral" abbrev="Src" name="Source"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Peripheral" abbrev="Use" name="Use"/>
+        </frame>
+    </header>
+    <definition>COD: a bridge by which a road or railway line passes over another. [Engin] </definition>
+    <lexeme POS="N" name="overpass"/>
+    <valences>
+        <governor type="Gov" lemma="below">
+            <annoSet ID="2044973"/>
+        </governor>
+        <governor type="Gov" lemma="beneath">
+            <annoSet ID="2044971"/>
+        </governor>
+        <governor type="Gov" lemma="from">
+            <annoSet ID="2044951"/>
+            <annoSet ID="2044993"/>
+        </governor>
+        <governor type="Gov" lemma="on">
+            <annoSet ID="2044909"/>
+            <annoSet ID="2044989"/>
+        </governor>
+        <FERealization total="1">
+            <FE name="Material"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Material"/>
+                <annoSet ID="2044971"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Name"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="N" FE="Name"/>
+                <annoSet ID="2044989"/>
+                <annoSet ID="2044993"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Relative_location"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Relative_location"/>
+                <annoSet ID="2044989"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Relative_location"/>
+                <annoSet ID="617074"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="9">
+            <FE name="Roadway"/>
+            <pattern total="9">
+                <valenceUnit GF="" PT="DEN" FE="Roadway"/>
+                <annoSet ID="617074"/>
+                <annoSet ID="2044903"/>
+                <annoSet ID="2044909"/>
+                <annoSet ID="2044951"/>
+                <annoSet ID="2044971"/>
+                <annoSet ID="2044973"/>
+                <annoSet ID="2044975"/>
+                <annoSet ID="2044989"/>
+                <annoSet ID="2044993"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Use"/>
+            <pattern total="5">
+                <valenceUnit GF="Dep" PT="N" FE="Use"/>
+                <annoSet ID="2044903"/>
+                <annoSet ID="2044951"/>
+                <annoSet ID="2044971"/>
+                <annoSet ID="2044973"/>
+                <annoSet ID="2044993"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Material"/>
+            <FE name="Roadway"/>
+            <FE name="Use"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Material"/>
+                <valenceUnit GF="" PT="DEN" FE="Roadway"/>
+                <valenceUnit GF="Dep" PT="N" FE="Use"/>
+                <annoSet ID="2044971"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Name"/>
+            <FE name="Relative_location"/>
+            <FE name="Roadway"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Name"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Relative_location"/>
+                <valenceUnit GF="" PT="DEN" FE="Roadway"/>
+                <annoSet ID="2044989"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Name"/>
+            <FE name="Roadway"/>
+            <FE name="Use"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Name"/>
+                <valenceUnit GF="" PT="DEN" FE="Roadway"/>
+                <valenceUnit GF="Dep" PT="N" FE="Use"/>
+                <annoSet ID="2044993"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Relative_location"/>
+            <FE name="Roadway"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Relative_location"/>
+                <valenceUnit GF="" PT="DEN" FE="Roadway"/>
+                <annoSet ID="617074"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Roadway"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="DEN" FE="Roadway"/>
+                <annoSet ID="2044909"/>
+                <annoSet ID="2044975"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="3">
+            <FE name="Roadway"/>
+            <FE name="Use"/>
+            <pattern total="3">
+                <valenceUnit GF="" PT="DEN" FE="Roadway"/>
+                <valenceUnit GF="Dep" PT="N" FE="Use"/>
+                <annoSet ID="2044903"/>
+                <annoSet ID="2044951"/>
+                <annoSet ID="2044973"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-001-all">
+        <sentence sentNo="0" aPos="33735650" ID="505642">
+            <text>Overpasses at Heathrow and Farnborough were requested during the flight . </text>
+            <annotationSet cDate="01/07/2003 05:58:32 PST Tue" status="UNANN" ID="617073">
+                <layer rank="1" name="BNC">
+                    <label end="9" start="0" name="NN2"/>
+                    <label end="12" start="11" name="PRP"/>
+                    <label end="21" start="14" name="NP0"/>
+                    <label end="25" start="23" name="CJC"/>
+                    <label end="37" start="27" name="NP0"/>
+                    <label end="42" start="39" name="VBD"/>
+                    <label end="52" start="44" name="VVN"/>
+                    <label end="59" start="54" name="PRP"/>
+                    <label end="63" start="61" name="AT0"/>
+                    <label end="70" start="65" name="NN1"/>
+                    <label end="72" start="72" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:58:32 PST Tue" status="MANUAL" ID="617074">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="1657" end="9" start="0" name="Roadway"/>
+                    <label cBy="865" feID="3515" end="37" start="11" name="Relative_location"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="37" start="11" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="37" start="11" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="9" start="0" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="01-T-(1)">
+        <sentence corpID="113" docID="6735" sentNo="7" paragNo="25" aPos="122077682" ID="1298371">
+            <text>Past the bovine and technological detritus , however , where the road narrows into a little lane pressed up against a highway overpass , a different sort of merchandise is on display .</text>
+            <annotationSet cDate="01/06/2005 09:38:09 PST Thu" status="UNANN" ID="2044902">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="in"/>
+                    <label end="7" start="5" name="dt"/>
+                    <label end="14" start="9" name="jj"/>
+                    <label end="18" start="16" name="cc"/>
+                    <label end="32" start="20" name="jj"/>
+                    <label end="41" start="34" name="nn"/>
+                    <label end="43" start="43" name=","/>
+                    <label end="51" start="45" name="rb"/>
+                    <label end="53" start="53" name=","/>
+                    <label end="59" start="55" name="wrb"/>
+                    <label end="63" start="61" name="dt"/>
+                    <label end="68" start="65" name="nn"/>
+                    <label end="76" start="70" name="VVZ"/>
+                    <label end="81" start="78" name="in"/>
+                    <label end="83" start="83" name="dt"/>
+                    <label end="90" start="85" name="jj"/>
+                    <label end="95" start="92" name="nn"/>
+                    <label end="103" start="97" name="VVN"/>
+                    <label end="106" start="105" name="rp"/>
+                    <label end="114" start="108" name="in"/>
+                    <label end="116" start="116" name="dt"/>
+                    <label end="124" start="118" name="nn"/>
+                    <label end="133" start="126" name="nn"/>
+                    <label end="135" start="135" name=","/>
+                    <label end="137" start="137" name="dt"/>
+                    <label end="147" start="139" name="jj"/>
+                    <label end="152" start="149" name="nn"/>
+                    <label end="155" start="154" name="in"/>
+                    <label end="167" start="157" name="nn"/>
+                    <label end="170" start="169" name="VBZ"/>
+                    <label end="173" start="172" name="in"/>
+                    <label end="181" start="175" name="nn"/>
+                    <label end="183" start="183" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2005 09:38:09 PST Thu" status="MANUAL" ID="2044903">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="133" start="126" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="1657" end="133" start="126" name="Roadway"/>
+                    <label cBy="395" feID="1753" end="124" start="118" name="Use"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="124" start="118" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="124" start="118" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="6738" sentNo="1" paragNo="11" aPos="125171907" ID="1298374">
+            <text>There were 30 Pakistanis and five Iranians working on the overpass at the time of the shooting , said Mohammed .</text>
+            <annotationSet cDate="01/06/2005 09:38:11 PST Thu" status="UNANN" ID="2044908">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="ex"/>
+                    <label end="9" start="6" name="VBD"/>
+                    <label end="12" start="11" name="cd"/>
+                    <label end="23" start="14" name="nns"/>
+                    <label end="27" start="25" name="cc"/>
+                    <label end="32" start="29" name="cd"/>
+                    <label end="41" start="34" name="nns"/>
+                    <label end="49" start="43" name="VVG"/>
+                    <label end="52" start="51" name="in"/>
+                    <label end="56" start="54" name="dt"/>
+                    <label end="65" start="58" name="nn"/>
+                    <label end="68" start="67" name="in"/>
+                    <label end="72" start="70" name="dt"/>
+                    <label end="77" start="74" name="nn"/>
+                    <label end="80" start="79" name="in"/>
+                    <label end="84" start="82" name="dt"/>
+                    <label end="93" start="86" name="nn"/>
+                    <label end="95" start="95" name=","/>
+                    <label end="100" start="97" name="VVD"/>
+                    <label end="109" start="102" name="NP"/>
+                    <label end="111" start="111" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2005 09:38:11 PST Thu" status="MANUAL" ID="2044909">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="65" start="58" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="1657" end="65" start="58" name="Roadway"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="52" start="51" name="Gov"/>
+                    <label end="65" start="54" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)">
+        <sentence corpID="113" docID="6756" sentNo="1" paragNo="9" aPos="67735366" ID="1298395">
+            <text>Thousands cheered , hanging from freeway overpasses and stopping to get out of their cars .</text>
+            <annotationSet cDate="01/06/2005 09:38:24 PST Thu" status="UNANN" ID="2044950">
+                <layer rank="1" name="PENN">
+                    <label end="8" start="0" name="nns"/>
+                    <label end="16" start="10" name="VVD"/>
+                    <label end="18" start="18" name=","/>
+                    <label end="26" start="20" name="VVG"/>
+                    <label end="31" start="28" name="in"/>
+                    <label end="39" start="33" name="nn"/>
+                    <label end="50" start="41" name="nns"/>
+                    <label end="54" start="52" name="cc"/>
+                    <label end="63" start="56" name="VVG"/>
+                    <label end="66" start="65" name="to"/>
+                    <label end="70" start="68" name="VV"/>
+                    <label end="74" start="72" name="rp"/>
+                    <label end="77" start="76" name="in"/>
+                    <label end="83" start="79" name="PP$"/>
+                    <label end="88" start="85" name="nns"/>
+                    <label end="90" start="90" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2005 09:38:24 PST Thu" status="MANUAL" ID="2044951">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="50" start="41" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="1753" end="39" start="33" name="Use"/>
+                    <label cBy="395" feID="1657" end="50" start="41" name="Roadway"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="39" start="33" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="39" start="33" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="31" start="28" name="Gov"/>
+                    <label end="50" start="33" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="6764" sentNo="1" paragNo="6" aPos="82439899" ID="1298405">
+            <text>The bunker , though tiny and primitive , sits beneath a concrete highway overpass and is flanked by rocks two meters ( six feet ) thick .</text>
+            <annotationSet cDate="01/06/2005 09:38:29 PST Thu" status="UNANN" ID="2044970">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="9" start="4" name="nn"/>
+                    <label end="11" start="11" name=","/>
+                    <label end="18" start="13" name="in"/>
+                    <label end="23" start="20" name="jj"/>
+                    <label end="27" start="25" name="cc"/>
+                    <label end="37" start="29" name="jj"/>
+                    <label end="39" start="39" name=","/>
+                    <label end="44" start="41" name="VVZ"/>
+                    <label end="52" start="46" name="in"/>
+                    <label end="54" start="54" name="dt"/>
+                    <label end="63" start="56" name="jj"/>
+                    <label end="71" start="65" name="nn"/>
+                    <label end="80" start="73" name="nn"/>
+                    <label end="84" start="82" name="cc"/>
+                    <label end="87" start="86" name="VBZ"/>
+                    <label end="95" start="89" name="VVN"/>
+                    <label end="98" start="97" name="in"/>
+                    <label end="104" start="100" name="nns"/>
+                    <label end="108" start="106" name="cd"/>
+                    <label end="115" start="110" name="nns"/>
+                    <label end="117" start="117" name="("/>
+                    <label end="121" start="119" name="cd"/>
+                    <label end="126" start="123" name="nns"/>
+                    <label end="128" start="128" name=")"/>
+                    <label end="134" start="130" name="jj"/>
+                    <label end="136" start="136" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2005 09:38:30 PST Thu" status="MANUAL" ID="2044971">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="80" start="73" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="3516" end="63" start="56" name="Material"/>
+                    <label cBy="395" feID="1753" end="71" start="65" name="Use"/>
+                    <label cBy="395" feID="1657" end="80" start="73" name="Roadway"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="63" start="56" name="Dep"/>
+                    <label end="71" start="65" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="63" start="56" name="AJP"/>
+                    <label end="71" start="65" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="52" start="46" name="Gov"/>
+                    <label end="80" start="54" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="6765" sentNo="1" paragNo="5" aPos="41120871" ID="1298406">
+            <text>The noise just below a rail road overpass when a train goes by is around 100 decibels .</text>
+            <annotationSet cDate="01/06/2005 09:38:30 PST Thu" status="UNANN" ID="2044972">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="8" start="4" name="nn"/>
+                    <label end="13" start="10" name="rb"/>
+                    <label end="19" start="15" name="in"/>
+                    <label end="21" start="21" name="dt"/>
+                    <label end="26" start="23" name="nn"/>
+                    <label end="31" start="28" name="nn"/>
+                    <label end="40" start="33" name="nn"/>
+                    <label end="45" start="42" name="wrb"/>
+                    <label end="47" start="47" name="dt"/>
+                    <label end="53" start="49" name="nn"/>
+                    <label end="58" start="55" name="VVZ"/>
+                    <label end="61" start="60" name="in"/>
+                    <label end="64" start="63" name="VBZ"/>
+                    <label end="71" start="66" name="in"/>
+                    <label end="75" start="73" name="cd"/>
+                    <label end="84" start="77" name="nns"/>
+                    <label end="86" start="86" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2005 09:38:30 PST Thu" status="MANUAL" ID="2044973">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="40" start="33" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="1753" end="31" start="23" name="Use"/>
+                    <label cBy="395" feID="1657" end="40" start="33" name="Roadway"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="31" start="23" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="31" start="23" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="19" start="15" name="Gov"/>
+                    <label end="40" start="21" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="6766" sentNo="1" paragNo="16" aPos="32475821" ID="1298407">
+            <text>Officials said one of the top priorities would be to relieve the transport bottleneck by removing debris and shoring up bridges and overpasses which survived the quake .</text>
+            <annotationSet cDate="01/06/2005 09:38:30 PST Thu" status="UNANN" ID="2044974">
+                <layer rank="1" name="PENN">
+                    <label end="8" start="0" name="nns"/>
+                    <label end="13" start="10" name="VVD"/>
+                    <label end="17" start="15" name="cd"/>
+                    <label end="20" start="19" name="in"/>
+                    <label end="24" start="22" name="dt"/>
+                    <label end="28" start="26" name="jj"/>
+                    <label end="39" start="30" name="nns"/>
+                    <label end="45" start="41" name="md"/>
+                    <label end="48" start="47" name="vb"/>
+                    <label end="51" start="50" name="to"/>
+                    <label end="59" start="53" name="VV"/>
+                    <label end="63" start="61" name="dt"/>
+                    <label end="73" start="65" name="nn"/>
+                    <label end="84" start="75" name="nn"/>
+                    <label end="87" start="86" name="in"/>
+                    <label end="96" start="89" name="VVG"/>
+                    <label end="103" start="98" name="nn"/>
+                    <label end="107" start="105" name="cc"/>
+                    <label end="115" start="109" name="VVG"/>
+                    <label end="118" start="117" name="rp"/>
+                    <label end="126" start="120" name="nns"/>
+                    <label end="130" start="128" name="cc"/>
+                    <label end="141" start="132" name="nns"/>
+                    <label end="147" start="143" name="wdt"/>
+                    <label end="156" start="149" name="VVD"/>
+                    <label end="160" start="158" name="dt"/>
+                    <label end="166" start="162" name="nn"/>
+                    <label end="168" start="168" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2005 09:38:31 PST Thu" status="MANUAL" ID="2044975">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="141" start="132" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="1657" end="141" start="132" name="Roadway"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="118" start="109" name="Gov"/>
+                    <label end="141" start="120" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="6771" sentNo="1" paragNo="16" aPos="123740706" ID="1298414">
+            <text>The migrants who gather at an unofficial labor market on the Yongding Gate overpass in Beijing are near the bottom of the new social ladder .</text>
+            <annotationSet cDate="01/06/2005 09:38:35 PST Thu" status="UNANN" ID="2044988">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="11" start="4" name="nns"/>
+                    <label end="15" start="13" name="wp"/>
+                    <label end="22" start="17" name="VVP"/>
+                    <label end="25" start="24" name="in"/>
+                    <label end="28" start="27" name="dt"/>
+                    <label end="39" start="30" name="jj"/>
+                    <label end="45" start="41" name="nn"/>
+                    <label end="52" start="47" name="nn"/>
+                    <label end="55" start="54" name="in"/>
+                    <label end="59" start="57" name="dt"/>
+                    <label end="68" start="61" name="NP"/>
+                    <label end="73" start="70" name="NP"/>
+                    <label end="82" start="75" name="nn"/>
+                    <label end="85" start="84" name="in"/>
+                    <label end="93" start="87" name="NP"/>
+                    <label end="97" start="95" name="vbp"/>
+                    <label end="102" start="99" name="in"/>
+                    <label end="106" start="104" name="dt"/>
+                    <label end="113" start="108" name="nn"/>
+                    <label end="116" start="115" name="in"/>
+                    <label end="120" start="118" name="dt"/>
+                    <label end="124" start="122" name="jj"/>
+                    <label end="131" start="126" name="jj"/>
+                    <label end="138" start="133" name="nn"/>
+                    <label end="140" start="140" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2005 09:38:35 PST Thu" status="MANUAL" ID="2044989">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="82" start="75" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="1662" end="73" start="61" name="Name"/>
+                    <label cBy="395" feID="3515" end="93" start="84" name="Relative_location"/>
+                    <label cBy="395" feID="1657" end="82" start="75" name="Roadway"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="73" start="61" name="Dep"/>
+                    <label end="93" start="84" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="73" start="61" name="N"/>
+                    <label end="93" start="84" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="55" start="54" name="Gov"/>
+                    <label end="93" start="57" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="6773" sentNo="1" paragNo="4" aPos="6009870" ID="1298416">
+            <text>The 37-year-old jumper , who was not identified , missed the interstate entirely when he leaped from the Jefferson Davis Highway overpass , police Sgt. Barry Fletcher said .</text>
+            <annotationSet cDate="01/06/2005 09:38:36 PST Thu" status="UNANN" ID="2044992">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="14" start="4" name="jj"/>
+                    <label end="21" start="16" name="nn"/>
+                    <label end="23" start="23" name=","/>
+                    <label end="27" start="25" name="wp"/>
+                    <label end="31" start="29" name="VBD"/>
+                    <label end="35" start="33" name="rb"/>
+                    <label end="46" start="37" name="VVN"/>
+                    <label end="48" start="48" name=","/>
+                    <label end="55" start="50" name="VVD"/>
+                    <label end="59" start="57" name="dt"/>
+                    <label end="70" start="61" name="jj"/>
+                    <label end="79" start="72" name="rb"/>
+                    <label end="84" start="81" name="wrb"/>
+                    <label end="87" start="86" name="PP"/>
+                    <label end="94" start="89" name="VVD"/>
+                    <label end="99" start="96" name="in"/>
+                    <label end="103" start="101" name="dt"/>
+                    <label end="113" start="105" name="NP"/>
+                    <label end="119" start="115" name="NP"/>
+                    <label end="127" start="121" name="NP"/>
+                    <label end="136" start="129" name="nn"/>
+                    <label end="138" start="138" name=","/>
+                    <label end="145" start="140" name="nn"/>
+                    <label end="150" start="147" name="NP"/>
+                    <label end="156" start="152" name="NP"/>
+                    <label end="165" start="158" name="NP"/>
+                    <label end="170" start="167" name="VVD"/>
+                    <label end="172" start="172" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2005 09:38:37 PST Thu" status="MANUAL" ID="2044993">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="136" start="129" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="1753" end="127" start="121" name="Use"/>
+                    <label cBy="395" feID="1662" end="119" start="105" name="Name"/>
+                    <label cBy="395" feID="1657" end="136" start="129" name="Roadway"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="127" start="121" name="Dep"/>
+                    <label end="119" start="105" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="127" start="121" name="N"/>
+                    <label end="119" start="105" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="99" start="96" name="Gov"/>
+                    <label end="136" start="101" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

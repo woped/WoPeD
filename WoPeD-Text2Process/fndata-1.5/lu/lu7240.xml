@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="A" name="nauseous.a" ID="7240" frame="Biological_urge" frameID="394" totalAnnotated="6" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Peripheral" abbrev="Dur" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Exp" name="Experiencer"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Expressor" name="Expressor"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="Par" name="Parameter"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="Rea" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Stat" name="State"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: affected with a feeling of sickness and an urge to vomit</definition>
+    <lexeme POS="A" name="nauseous"/>
+    <valences>
+        <governor type="Sup" lemma="feel">
+            <annoSet ID="1662397"/>
+            <annoSet ID="1662407"/>
+            <annoSet ID="1662417"/>
+            <annoSet ID="1662425"/>
+            <annoSet ID="1662429"/>
+            <annoSet ID="1662483"/>
+        </governor>
+        <FERealization total="6">
+            <FE name="Experiencer"/>
+            <pattern total="6">
+                <valenceUnit GF="Ext" PT="NP" FE="Experiencer"/>
+                <annoSet ID="1662397"/>
+                <annoSet ID="1662407"/>
+                <annoSet ID="1662417"/>
+                <annoSet ID="1662425"/>
+                <annoSet ID="1662429"/>
+                <annoSet ID="1662483"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="NP" FE="Time"/>
+                <annoSet ID="1662429"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="5">
+            <FE name="Experiencer"/>
+            <pattern total="5">
+                <valenceUnit GF="Ext" PT="NP" FE="Experiencer"/>
+                <annoSet ID="1662397"/>
+                <annoSet ID="1662407"/>
+                <annoSet ID="1662417"/>
+                <annoSet ID="1662425"/>
+                <annoSet ID="1662483"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Experiencer"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Experiencer"/>
+                <valenceUnit GF="Dep" PT="NP" FE="Time"/>
+                <annoSet ID="1662429"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="A-001-all">
+        <sentence sentNo="0" aPos="4943350" ID="1105631">
+            <text>By then his eyes and hands were swelling , he was feeling nauseous and could not lie down at night because of the pain in his back . </text>
+            <annotationSet cDate="01/08/2003 02:38:54 PST Wed" status="UNANN" ID="1662396">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PRP"/>
+                    <label end="6" start="3" name="AV0"/>
+                    <label end="10" start="8" name="DPS"/>
+                    <label end="15" start="12" name="NN2"/>
+                    <label end="19" start="17" name="CJC"/>
+                    <label end="25" start="21" name="NN2"/>
+                    <label end="30" start="27" name="VBD"/>
+                    <label end="39" start="32" name="VVG"/>
+                    <label end="41" start="41" name="PUN"/>
+                    <label end="44" start="43" name="PNP"/>
+                    <label end="48" start="46" name="VBD"/>
+                    <label end="56" start="50" name="VVG"/>
+                    <label end="65" start="58" name="AJ0"/>
+                    <label end="69" start="67" name="CJC"/>
+                    <label end="75" start="71" name="VM0"/>
+                    <label end="79" start="77" name="XX0"/>
+                    <label end="83" start="81" name="VVI"/>
+                    <label end="88" start="85" name="AVP"/>
+                    <label end="91" start="90" name="PRP"/>
+                    <label end="97" start="93" name="NN1"/>
+                    <label end="105" start="99" name="PRP"/>
+                    <label end="108" start="107" name="PRP"/>
+                    <label end="112" start="110" name="AT0"/>
+                    <label end="117" start="114" name="NN1"/>
+                    <label end="120" start="119" name="PRP"/>
+                    <label end="124" start="122" name="DPS"/>
+                    <label end="129" start="126" name="NN1"/>
+                    <label end="131" start="131" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 02:38:54 PST Wed" status="MANUAL" ID="1662397">
+                <layer rank="1" name="FE">
+                    <label cBy="865" feID="3520" end="44" start="43" name="Experiencer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="44" start="43" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="44" start="43" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="65" start="58" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj">
+                    <label end="56" start="50" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="13341125" ID="1105636">
+            <text>Flashes of warmth darted uncomfortably through his chilled limbs and he felt nauseous . </text>
+            <annotationSet cDate="01/08/2003 02:38:55 PST Wed" status="UNANN" ID="1662406">
+                <layer rank="1" name="BNC">
+                    <label end="6" start="0" name="NN2"/>
+                    <label end="9" start="8" name="PRF"/>
+                    <label end="16" start="11" name="NN1"/>
+                    <label end="23" start="18" name="VVD"/>
+                    <label end="37" start="25" name="AV0"/>
+                    <label end="45" start="39" name="PRP"/>
+                    <label end="49" start="47" name="DPS"/>
+                    <label end="57" start="51" name="AJ0"/>
+                    <label end="63" start="59" name="NN2"/>
+                    <label end="67" start="65" name="CJC"/>
+                    <label end="70" start="69" name="PNP"/>
+                    <label end="75" start="72" name="VVD"/>
+                    <label end="84" start="77" name="AJ0"/>
+                    <label end="86" start="86" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 02:38:55 PST Wed" status="MANUAL" ID="1662407">
+                <layer rank="1" name="FE">
+                    <label cBy="865" feID="3520" end="70" start="69" name="Experiencer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="70" start="69" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="70" start="69" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="84" start="77" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj">
+                    <label end="75" start="72" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="23357179" ID="1105641">
+            <text>He felt faint and nauseous . </text>
+            <annotationSet cDate="01/08/2003 02:38:57 PST Wed" status="UNANN" ID="1662416">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="6" start="3" name="VVD"/>
+                    <label end="12" start="8" name="AJ0"/>
+                    <label end="16" start="14" name="CJC"/>
+                    <label end="25" start="18" name="AJ0"/>
+                    <label end="27" start="27" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 02:38:57 PST Wed" status="MANUAL" ID="1662417">
+                <layer rank="1" name="FE">
+                    <label cBy="865" feID="3520" end="1" start="0" name="Experiencer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="1" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="1" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="25" start="18" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj">
+                    <label end="6" start="3" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="31686233" ID="1105645">
+            <text>I felt nauseous and rotten for a week . </text>
+            <annotationSet cDate="01/08/2003 02:38:57 PST Wed" status="UNANN" ID="1662424">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PNP"/>
+                    <label end="5" start="2" name="VVD"/>
+                    <label end="14" start="7" name="AJ0"/>
+                    <label end="18" start="16" name="CJC"/>
+                    <label end="25" start="20" name="AJ0"/>
+                    <label end="29" start="27" name="PRP"/>
+                    <label end="31" start="31" name="AT0"/>
+                    <label end="36" start="33" name="NN1"/>
+                    <label end="38" start="38" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 02:38:57 PST Wed" status="MANUAL" ID="1662425">
+                <layer rank="1" name="FE">
+                    <label cBy="865" feID="3520" end="0" start="0" name="Experiencer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="0" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="0" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="14" start="7" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj">
+                    <label end="5" start="2" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="33895127" ID="1105647">
+            <text>The taste of food may be aversive and they may feel nauseous every time they eat , for example those with renal failure and a variety of metabolic problems or allergic reactions may experience this . </text>
+            <annotationSet cDate="01/08/2003 02:38:57 PST Wed" status="UNANN" ID="1662428">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="8" start="4" name="NN1"/>
+                    <label end="11" start="10" name="PRF"/>
+                    <label end="16" start="13" name="NN1"/>
+                    <label end="20" start="18" name="VM0"/>
+                    <label end="23" start="22" name="VBI"/>
+                    <label end="32" start="25" name="AJ0"/>
+                    <label end="36" start="34" name="CJC"/>
+                    <label end="41" start="38" name="PNP"/>
+                    <label end="45" start="43" name="VM0"/>
+                    <label end="50" start="47" name="VVI"/>
+                    <label end="59" start="52" name="AJ0"/>
+                    <label end="65" start="61" name="AT0"/>
+                    <label end="70" start="67" name="NN1"/>
+                    <label end="75" start="72" name="PNP"/>
+                    <label end="79" start="77" name="VVB"/>
+                    <label end="81" start="81" name="PUN"/>
+                    <label end="85" start="83" name="AV0"/>
+                    <label end="93" start="87" name="AV0"/>
+                    <label end="99" start="95" name="DT0"/>
+                    <label end="104" start="101" name="PRP"/>
+                    <label end="110" start="106" name="AJ0"/>
+                    <label end="118" start="112" name="NN1"/>
+                    <label end="122" start="120" name="CJC"/>
+                    <label end="124" start="124" name="AT0"/>
+                    <label end="132" start="126" name="NN1"/>
+                    <label end="135" start="134" name="PRF"/>
+                    <label end="145" start="137" name="AJ0"/>
+                    <label end="154" start="147" name="NN2"/>
+                    <label end="157" start="156" name="CJC"/>
+                    <label end="166" start="159" name="AJ0"/>
+                    <label end="176" start="168" name="NN2"/>
+                    <label end="180" start="178" name="VM0"/>
+                    <label end="191" start="182" name="VVI"/>
+                    <label end="196" start="193" name="DT0"/>
+                    <label end="198" start="198" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 02:38:57 PST Wed" status="MANUAL" ID="1662429">
+                <layer rank="1" name="FE">
+                    <label cBy="865" feID="3520" end="41" start="38" name="Experiencer"/>
+                    <label cBy="865" feID="3521" end="79" start="61" name="Time"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="41" start="38" name="Ext"/>
+                    <label end="79" start="61" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="41" start="38" name="NP"/>
+                    <label end="79" start="61" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="59" start="52" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj">
+                    <label end="50" start="47" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="79526715" ID="1105674">
+            <text>She felt nauseous , and , terrified she might be sick , she pushed away his hand so that she could hold her head up . </text>
+            <annotationSet cDate="01/08/2003 02:39:00 PST Wed" status="UNANN" ID="1662482">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="PNP"/>
+                    <label end="7" start="4" name="VVD"/>
+                    <label end="16" start="9" name="AJ0"/>
+                    <label end="18" start="18" name="PUN"/>
+                    <label end="22" start="20" name="CJC"/>
+                    <label end="24" start="24" name="PUN"/>
+                    <label end="34" start="26" name="VVD"/>
+                    <label end="38" start="36" name="PNP"/>
+                    <label end="44" start="40" name="VM0"/>
+                    <label end="47" start="46" name="VBI"/>
+                    <label end="52" start="49" name="AJ0"/>
+                    <label end="54" start="54" name="PUN"/>
+                    <label end="58" start="56" name="PNP"/>
+                    <label end="65" start="60" name="VVD"/>
+                    <label end="70" start="67" name="AVP"/>
+                    <label end="74" start="72" name="DPS"/>
+                    <label end="79" start="76" name="NN1"/>
+                    <label end="82" start="81" name="CJS"/>
+                    <label end="87" start="84" name="CJS"/>
+                    <label end="91" start="89" name="PNP"/>
+                    <label end="97" start="93" name="VM0"/>
+                    <label end="102" start="99" name="VVI"/>
+                    <label end="106" start="104" name="PNP"/>
+                    <label end="111" start="108" name="NN1-VVB"/>
+                    <label end="114" start="113" name="AVP"/>
+                    <label end="116" start="116" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 02:39:00 PST Wed" status="MANUAL" ID="1662483">
+                <layer rank="1" name="FE">
+                    <label cBy="865" feID="3520" end="2" start="0" name="Experiencer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="2" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="2" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="16" start="9" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj">
+                    <label end="7" start="4" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

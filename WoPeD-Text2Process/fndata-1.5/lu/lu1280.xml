@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="FN1_Sent" incorporatedFE="Vehicle" POS="V" name="parachute.v" ID="1280" frame="Operate_vehicle" frameID="65" totalAnnotated="4" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Core" abbrev="Area" name="Area"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Extra-Thematic" abbrev="Cond" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Extra-Thematic" abbrev="Thm_c" name="Cotheme"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Dist" name="Distance"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Driv" name="Driver"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Peripheral" abbrev="Dur" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Extra-Thematic" abbrev="Evnt" name="Event"/>
+            <FE fgColor="000000" bgColor="EEE8AA" type="Extra-Thematic" abbrev="" name="Explanation"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Extra-Thematic" abbrev="" name="Frequency"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Goal" name="Goal"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD7C" type="Extra-Thematic" abbrev="" name="Particular_iteration"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Core" abbrev="Path" name="Path"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="A9A9A9" type="Peripheral" abbrev="pur" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Extra-Thematic" abbrev="Result" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Rte" name="Route"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="Src" name="Source"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD73" type="Peripheral" abbrev="Spd" name="Speed"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core" abbrev="Veh" name="Vehicle"/>
+        </frame>
+    </header>
+    <definition>COD: drop or cause to drop by parachute.</definition>
+    <lexeme POS="V" name="parachute"/>
+    <valences>
+        <FERealization total="4">
+            <FE name="Driver"/>
+            <pattern total="4">
+                <valenceUnit GF="Ext" PT="NP" FE="Driver"/>
+                <annoSet ID="771328"/>
+                <annoSet ID="771330"/>
+                <annoSet ID="771334"/>
+                <annoSet ID="771340"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Goal"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[down]" FE="Goal"/>
+                <annoSet ID="771340"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[into]" FE="Goal"/>
+                <annoSet ID="771328"/>
+                <annoSet ID="771330"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Goal"/>
+                <annoSet ID="771334"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Vehicle"/>
+            <pattern total="4">
+                <valenceUnit GF="" PT="INC" FE="Vehicle"/>
+                <annoSet ID="771328"/>
+                <annoSet ID="771330"/>
+                <annoSet ID="771334"/>
+                <annoSet ID="771340"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="4">
+            <FE name="Driver"/>
+            <FE name="Goal"/>
+            <FE name="Vehicle"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Driver"/>
+                <valenceUnit GF="Dep" PT="PP[down]" FE="Goal"/>
+                <valenceUnit GF="" PT="INC" FE="Vehicle"/>
+                <annoSet ID="771340"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Driver"/>
+                <valenceUnit GF="Dep" PT="PP[into]" FE="Goal"/>
+                <valenceUnit GF="" PT="INC" FE="Vehicle"/>
+                <annoSet ID="771328"/>
+                <annoSet ID="771330"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Driver"/>
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Goal"/>
+                <valenceUnit GF="" PT="INC" FE="Vehicle"/>
+                <annoSet ID="771334"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-550-np-np"/>
+    <subCorpus name="V-570-np-ppby"/>
+    <subCorpus name="V-570-np-ppinto"/>
+    <subCorpus name="V-570-np-ppon"/>
+    <subCorpus name="V-620-np-ppother"/>
+    <subCorpus name="V-660-trans-simple"/>
+    <subCorpus name="V-690-trans-other"/>
+    <subCorpus name="V-730-ppfrom"/>
+    <subCorpus name="V-730-ppin"/>
+    <subCorpus name="V-730-ppinto">
+        <sentence sentNo="0" aPos="90672092" ID="645019">
+            <text>` Liam Devlin , if it is Devlin they choose , is hardly going to parachute into the courtyard at St Mary 's Priory tomorrow night , Jack , and if he did , so what ? </text>
+            <annotationSet cDate="01/07/2003 09:11:09 PST Tue" status="UNANN" ID="771327">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PUQ"/>
+                    <label end="5" start="2" name="NP0"/>
+                    <label end="12" start="7" name="NP0"/>
+                    <label end="14" start="14" name="PUN"/>
+                    <label end="17" start="16" name="CJS"/>
+                    <label end="20" start="19" name="PNP"/>
+                    <label end="23" start="22" name="VBZ"/>
+                    <label end="30" start="25" name="NN1-NP0"/>
+                    <label end="35" start="32" name="PNP"/>
+                    <label end="42" start="37" name="VVB"/>
+                    <label end="44" start="44" name="PUN"/>
+                    <label end="47" start="46" name="VBZ"/>
+                    <label end="54" start="49" name="AV0"/>
+                    <label end="60" start="56" name="VVG"/>
+                    <label end="63" start="62" name="TO0"/>
+                    <label end="73" start="65" name="VVI"/>
+                    <label end="78" start="75" name="PRP"/>
+                    <label end="82" start="80" name="AT0"/>
+                    <label end="92" start="84" name="NN1"/>
+                    <label end="95" start="94" name="PRP"/>
+                    <label end="98" start="97" name="NP0"/>
+                    <label end="103" start="100" name="NP0"/>
+                    <label end="106" start="105" name="POS"/>
+                    <label end="113" start="108" name="NN1-NP0"/>
+                    <label end="122" start="115" name="AV0"/>
+                    <label end="128" start="124" name="NN1"/>
+                    <label end="130" start="130" name="PUN"/>
+                    <label end="135" start="132" name="NP0"/>
+                    <label end="137" start="137" name="PUN"/>
+                    <label end="141" start="139" name="CJC"/>
+                    <label end="144" start="143" name="CJS"/>
+                    <label end="147" start="146" name="PNP"/>
+                    <label end="151" start="149" name="VDD"/>
+                    <label end="153" start="153" name="PUN"/>
+                    <label end="156" start="155" name="CJS"/>
+                    <label end="161" start="158" name="DTQ"/>
+                    <label end="163" start="163" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 09:11:09 PST Tue" status="MANUAL" ID="771328">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="292" end="12" start="2" name="Driver"/>
+                    <label cBy="103" feID="297" end="113" start="75" name="Goal"/>
+                    <label cBy="309" feID="294" end="73" start="65" name="Vehicle"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="12" start="2" name="Ext"/>
+                    <label end="113" start="75" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="12" start="2" name="NP"/>
+                    <label end="113" start="75" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="73" start="65" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="27333265" ID="645020">
+            <text>Squadrons parachute into simulated ` hostile &quot; territory . </text>
+            <annotationSet cDate="01/07/2003 09:11:09 PST Tue" status="UNANN" ID="771329">
+                <layer rank="1" name="BNC">
+                    <label end="8" start="0" name="NN2"/>
+                    <label end="18" start="10" name="NN1-VVB"/>
+                    <label end="23" start="20" name="PRP"/>
+                    <label end="33" start="25" name="AJ0"/>
+                    <label end="35" start="35" name="PUQ"/>
+                    <label end="43" start="37" name="AJ0"/>
+                    <label end="45" start="45" name="PUQ"/>
+                    <label end="55" start="47" name="NN1"/>
+                    <label end="57" start="57" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 09:11:09 PST Tue" status="MANUAL" ID="771330">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="292" end="8" start="0" name="Driver"/>
+                    <label cBy="103" feID="297" end="55" start="20" name="Goal"/>
+                    <label cBy="309" feID="294" end="18" start="10" name="Vehicle"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="8" start="0" name="Ext"/>
+                    <label end="55" start="20" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="8" start="0" name="NP"/>
+                    <label end="55" start="20" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="18" start="10" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-730-ppon"/>
+    <subCorpus name="V-730-ppto">
+        <sentence sentNo="0" aPos="87697324" ID="645022">
+            <text>He hoped that the rear gunner had been able to parachute to safety . </text>
+            <annotationSet cDate="01/07/2003 09:11:09 PST Tue" status="UNANN" ID="771333">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="7" start="3" name="VVD"/>
+                    <label end="12" start="9" name="CJT"/>
+                    <label end="16" start="14" name="AT0"/>
+                    <label end="21" start="18" name="AJ0"/>
+                    <label end="28" start="23" name="NN1"/>
+                    <label end="32" start="30" name="VHD"/>
+                    <label end="37" start="34" name="VBN"/>
+                    <label end="42" start="39" name="AJ0"/>
+                    <label end="45" start="44" name="TO0"/>
+                    <label end="55" start="47" name="VVI"/>
+                    <label end="58" start="57" name="PRP"/>
+                    <label end="65" start="60" name="NN1"/>
+                    <label end="67" start="67" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 09:11:10 PST Tue" status="MANUAL" ID="771334">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="292" end="28" start="14" name="Driver"/>
+                    <label cBy="103" feID="297" end="65" start="57" name="Goal"/>
+                    <label cBy="309" feID="294" end="55" start="47" name="Vehicle"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="28" start="14" name="Ext"/>
+                    <label end="65" start="57" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="28" start="14" name="NP"/>
+                    <label end="65" start="57" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="55" start="47" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-780-ppother"/>
+    <subCorpus name="V-820-avpdown">
+        <sentence sentNo="0" aPos="88756596" ID="645025">
+            <text>` Fire the balloon , make them jump , than shoot them as they parachute down . </text>
+            <annotationSet cDate="01/07/2003 09:11:10 PST Tue" status="UNANN" ID="771339">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PUQ"/>
+                    <label end="5" start="2" name="VVB"/>
+                    <label end="9" start="7" name="AT0"/>
+                    <label end="17" start="11" name="NN1"/>
+                    <label end="19" start="19" name="PUN"/>
+                    <label end="24" start="21" name="VVB"/>
+                    <label end="29" start="26" name="PNP"/>
+                    <label end="34" start="31" name="VVI"/>
+                    <label end="36" start="36" name="PUN"/>
+                    <label end="41" start="38" name="CJS"/>
+                    <label end="47" start="43" name="VVB"/>
+                    <label end="52" start="49" name="PNP"/>
+                    <label end="55" start="54" name="CJS"/>
+                    <label end="60" start="57" name="PNP"/>
+                    <label end="70" start="62" name="VVB"/>
+                    <label end="75" start="72" name="AVP"/>
+                    <label end="77" start="77" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 09:11:10 PST Tue" status="MANUAL" ID="771340">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="292" end="60" start="57" name="Driver"/>
+                    <label cBy="103" feID="297" end="75" start="72" name="Goal"/>
+                    <label cBy="309" feID="294" end="70" start="62" name="Vehicle"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="60" start="57" name="Ext"/>
+                    <label end="75" start="72" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="60" start="57" name="NP"/>
+                    <label end="75" start="72" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="70" start="62" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-860-avpaway-p"/>
+    <subCorpus name="V-860-avpon-p"/>
+    <subCorpus name="V-860-avpup-p"/>
+    <subCorpus name="V-890-intrans-adverb"/>
+    <subCorpus name="V-900-other"/>
+</lexUnit>

@@ -1,0 +1,580 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="probe.n" ID="7959" frame="Criminal_investigation" frameID="500" totalAnnotated="10" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Extra-Thematic" abbrev="Dur" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Inc" name="Incident"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Inv" name="Investigator"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Core" abbrev="Sus" name="Suspect"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: an investigation.</definition>
+    <lexeme POS="N" name="probe"/>
+    <valences>
+        <governor type="Gov" lemma="halt">
+            <annoSet ID="1931087"/>
+        </governor>
+        <governor type="Gov" lemma="target">
+            <annoSet ID="1931049"/>
+        </governor>
+        <FERealization total="7">
+            <FE name="Incident"/>
+            <pattern total="4">
+                <valenceUnit GF="Dep" PT="N" FE="Incident"/>
+                <annoSet ID="1931007"/>
+                <annoSet ID="1931049"/>
+                <annoSet ID="1931083"/>
+                <annoSet ID="1931085"/>
+            </pattern>
+            <pattern total="4">
+                <valenceUnit GF="Dep" PT="PP[into]" FE="Incident"/>
+                <annoSet ID="1931007"/>
+                <annoSet ID="1931087"/>
+                <annoSet ID="1931089"/>
+                <annoSet ID="1931307"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Investigator"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="N" FE="Investigator"/>
+                <annoSet ID="1931307"/>
+                <annoSet ID="1931309"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Investigator"/>
+                <annoSet ID="1930985"/>
+                <annoSet ID="1930989"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="5">
+            <FE name="Incident"/>
+            <pattern total="3">
+                <valenceUnit GF="Dep" PT="N" FE="Incident"/>
+                <annoSet ID="1931049"/>
+                <annoSet ID="1931083"/>
+                <annoSet ID="1931085"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[into]" FE="Incident"/>
+                <annoSet ID="1931087"/>
+                <annoSet ID="1931089"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Incident"/>
+            <FE name="Incident"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Incident"/>
+                <valenceUnit GF="Dep" PT="PP[into]" FE="Incident"/>
+                <annoSet ID="1931007"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Incident"/>
+            <FE name="Investigator"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[into]" FE="Incident"/>
+                <valenceUnit GF="Dep" PT="N" FE="Investigator"/>
+                <annoSet ID="1931307"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="3">
+            <FE name="Investigator"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Investigator"/>
+                <annoSet ID="1931309"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Investigator"/>
+                <annoSet ID="1930985"/>
+                <annoSet ID="1930989"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-PPby-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="9666" aPos="0" ID="1241977">
+            <text>But the BBC feared a probe by the Broadcast Standards Commission .</text>
+            <annotationSet cDate="07/17/2003 03:58:47 PDT Thu" status="UNANN" ID="1930984">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="cc"/>
+                    <label end="6" start="4" name="dt"/>
+                    <label end="10" start="8" name="NP"/>
+                    <label end="17" start="12" name="VVD"/>
+                    <label end="19" start="19" name="dt"/>
+                    <label end="25" start="21" name="nn"/>
+                    <label end="28" start="27" name="in"/>
+                    <label end="32" start="30" name="dt"/>
+                    <label end="42" start="34" name="NP"/>
+                    <label end="52" start="44" name="NPS"/>
+                    <label end="63" start="54" name="NP"/>
+                    <label end="65" start="65" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/17/2003 03:58:48 PDT Thu" status="MANUAL" ID="1930985">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="25" start="21" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4041" end="63" start="27" name="Investigator"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="63" start="27" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="63" start="27" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="4883" aPos="0" ID="1241979">
+            <text>According to BBC reports , a probe by Merseyside police concludes that there is no reason to reopen the case of the 13-year-old newsboy murdered at a Staffordshire farmhouse in 1978 .</text>
+            <annotationSet cDate="07/17/2003 03:58:50 PDT Thu" status="UNANN" ID="1930988">
+                <layer rank="1" name="PENN">
+                    <label end="8" start="0" name="VVG"/>
+                    <label end="11" start="10" name="to"/>
+                    <label end="15" start="13" name="NP"/>
+                    <label end="23" start="17" name="nns"/>
+                    <label end="25" start="25" name=","/>
+                    <label end="27" start="27" name="dt"/>
+                    <label end="33" start="29" name="nn"/>
+                    <label end="36" start="35" name="in"/>
+                    <label end="47" start="38" name="nn"/>
+                    <label end="54" start="49" name="nn"/>
+                    <label end="64" start="56" name="VVZ"/>
+                    <label end="69" start="66" name="in"/>
+                    <label end="75" start="71" name="ex"/>
+                    <label end="78" start="77" name="VBZ"/>
+                    <label end="81" start="80" name="dt"/>
+                    <label end="88" start="83" name="nn"/>
+                    <label end="91" start="90" name="to"/>
+                    <label end="98" start="93" name="VV"/>
+                    <label end="102" start="100" name="dt"/>
+                    <label end="107" start="104" name="nn"/>
+                    <label end="110" start="109" name="in"/>
+                    <label end="114" start="112" name="dt"/>
+                    <label end="126" start="116" name="jj"/>
+                    <label end="134" start="128" name="nn"/>
+                    <label end="143" start="136" name="VVN"/>
+                    <label end="146" start="145" name="in"/>
+                    <label end="148" start="148" name="dt"/>
+                    <label end="162" start="150" name="NP"/>
+                    <label end="172" start="164" name="nn"/>
+                    <label end="175" start="174" name="in"/>
+                    <label end="180" start="177" name="cd"/>
+                    <label end="182" start="182" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/17/2003 03:58:50 PDT Thu" status="MANUAL" ID="1930989">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="33" start="29" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4041" end="54" start="35" name="Investigator"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="54" start="35" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="54" start="35" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="01-T-PPinto-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="4986" aPos="0" ID="1241988">
+            <text>Mr Goria quit after persistent slurs over his alleged role over a bank collapse 17 years ago and a bribery probe into the building of hospital in his northern constituency of Asti , his ministry said .</text>
+            <annotationSet cDate="07/17/2003 03:58:58 PDT Thu" status="UNANN" ID="1931006">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="NP"/>
+                    <label end="7" start="3" name="NP"/>
+                    <label end="12" start="9" name="VVD"/>
+                    <label end="18" start="14" name="in"/>
+                    <label end="29" start="20" name="jj"/>
+                    <label end="35" start="31" name="nns"/>
+                    <label end="40" start="37" name="in"/>
+                    <label end="44" start="42" name="PP$"/>
+                    <label end="52" start="46" name="jj"/>
+                    <label end="57" start="54" name="nn"/>
+                    <label end="62" start="59" name="in"/>
+                    <label end="64" start="64" name="dt"/>
+                    <label end="69" start="66" name="nn"/>
+                    <label end="78" start="71" name="nn"/>
+                    <label end="81" start="80" name="cd"/>
+                    <label end="87" start="83" name="nns"/>
+                    <label end="91" start="89" name="rb"/>
+                    <label end="95" start="93" name="cc"/>
+                    <label end="97" start="97" name="dt"/>
+                    <label end="105" start="99" name="nn"/>
+                    <label end="111" start="107" name="nn"/>
+                    <label end="116" start="113" name="in"/>
+                    <label end="120" start="118" name="dt"/>
+                    <label end="129" start="122" name="nn"/>
+                    <label end="132" start="131" name="in"/>
+                    <label end="141" start="134" name="nn"/>
+                    <label end="144" start="143" name="in"/>
+                    <label end="148" start="146" name="PP$"/>
+                    <label end="157" start="150" name="jj"/>
+                    <label end="170" start="159" name="nn"/>
+                    <label end="173" start="172" name="in"/>
+                    <label end="178" start="175" name="NP"/>
+                    <label end="180" start="180" name=","/>
+                    <label end="184" start="182" name="PP$"/>
+                    <label end="193" start="186" name="nn"/>
+                    <label end="198" start="195" name="VVD"/>
+                    <label end="200" start="200" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/17/2003 03:58:59 PDT Thu" status="MANUAL" ID="1931007">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="111" start="107" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4045" end="105" start="99" name="Incident"/>
+                    <label cBy="618" feID="4045" end="178" start="113" name="Incident"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="105" start="99" name="Dep"/>
+                    <label end="178" start="113" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="105" start="99" name="N"/>
+                    <label end="178" start="113" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="01-T-PPof-(1)"/>
+    <subCorpus name="02-Wnn-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="5302" aPos="0" ID="1242009">
+            <text>THE Italian agriculture minister , Gianni Fontana , yesterday resigned from the government after being targeted by a corruption probe .</text>
+            <annotationSet cDate="07/17/2003 03:59:06 PDT Thu" status="UNANN" ID="1931048">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="10" start="4" name="jj"/>
+                    <label end="22" start="12" name="nn"/>
+                    <label end="31" start="24" name="nn"/>
+                    <label end="33" start="33" name=","/>
+                    <label end="40" start="35" name="NP"/>
+                    <label end="48" start="42" name="NP"/>
+                    <label end="50" start="50" name=","/>
+                    <label end="60" start="52" name="nn"/>
+                    <label end="69" start="62" name="VVD"/>
+                    <label end="74" start="71" name="in"/>
+                    <label end="78" start="76" name="dt"/>
+                    <label end="89" start="80" name="nn"/>
+                    <label end="95" start="91" name="in"/>
+                    <label end="101" start="97" name="nn"/>
+                    <label end="110" start="103" name="VVN"/>
+                    <label end="113" start="112" name="in"/>
+                    <label end="115" start="115" name="dt"/>
+                    <label end="126" start="117" name="nn"/>
+                    <label end="132" start="128" name="nn"/>
+                    <label end="134" start="134" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/17/2003 03:59:07 PDT Thu" status="MANUAL" ID="1931049">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="132" start="128" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4045" end="126" start="117" name="Incident"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="126" start="117" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="126" start="117" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="110" start="103" name="Gov"/>
+                    <label end="132" start="112" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="03-Wmurder,arson-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="796" aPos="0" ID="1242026">
+            <text>Five held in murder probe</text>
+            <annotationSet cDate="07/17/2003 03:59:14 PDT Thu" status="UNANN" ID="1931082">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="cd"/>
+                    <label end="8" start="5" name="VVN"/>
+                    <label end="11" start="10" name="in"/>
+                    <label end="18" start="13" name="nn"/>
+                    <label end="24" start="20" name="nn"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/17/2003 03:59:14 PDT Thu" status="MANUAL" ID="1931083">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="24" start="20" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4045" end="18" start="13" name="Incident"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="18" start="13" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="18" start="13" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="130" aPos="0" ID="1242027">
+            <text>Arson probe after three die at home</text>
+            <annotationSet cDate="07/17/2003 03:59:15 PDT Thu" status="UNANN" ID="1931084">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="nn"/>
+                    <label end="10" start="6" name="nn"/>
+                    <label end="16" start="12" name="in"/>
+                    <label end="22" start="18" name="cd"/>
+                    <label end="26" start="24" name="nn"/>
+                    <label end="29" start="28" name="in"/>
+                    <label end="34" start="31" name="nn"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/17/2003 03:59:15 PDT Thu" status="MANUAL" ID="1931085">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="10" start="6" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4045" end="4" start="0" name="Incident"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="4" start="0" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="4" start="0" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="04-T-PPpolice,authority,sheriff-(1)"/>
+    <subCorpus name="05-T-PPmurder,arson,crime-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="256" aPos="0" ID="1242028">
+            <text>A CHILEAN judge has halted a probe into the death of British defence journalist Jonathan Moyle because of a lack of clues .</text>
+            <annotationSet cDate="07/17/2003 03:59:15 PDT Thu" status="UNANN" ID="1931086">
+                <layer rank="1" name="PENN">
+                    <label end="0" start="0" name="dt"/>
+                    <label end="8" start="2" name="jj"/>
+                    <label end="14" start="10" name="nn"/>
+                    <label end="18" start="16" name="VHZ"/>
+                    <label end="25" start="20" name="VVN"/>
+                    <label end="27" start="27" name="dt"/>
+                    <label end="33" start="29" name="nn"/>
+                    <label end="38" start="35" name="in"/>
+                    <label end="42" start="40" name="dt"/>
+                    <label end="48" start="44" name="nn"/>
+                    <label end="51" start="50" name="in"/>
+                    <label end="59" start="53" name="jj"/>
+                    <label end="67" start="61" name="nn"/>
+                    <label end="78" start="69" name="nn"/>
+                    <label end="87" start="80" name="NP"/>
+                    <label end="93" start="89" name="NP"/>
+                    <label end="101" start="95" name="in"/>
+                    <label end="104" start="103" name="in"/>
+                    <label end="106" start="106" name="dt"/>
+                    <label end="111" start="108" name="nn"/>
+                    <label end="114" start="113" name="in"/>
+                    <label end="120" start="116" name="nns"/>
+                    <label end="122" start="122" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/17/2003 03:59:15 PDT Thu" status="MANUAL" ID="1931087">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="33" start="29" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4045" end="93" start="35" name="Incident"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="93" start="35" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="93" start="35" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="25" start="20" name="Gov"/>
+                    <label end="93" start="27" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="548" aPos="0" ID="1242029">
+            <text>Another wreath came from police manning the incident room at Wimbledon station , where the probe into the brutal murder continues .</text>
+            <annotationSet cDate="07/17/2003 03:59:15 PDT Thu" status="UNANN" ID="1931088">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="0" name="dt"/>
+                    <label end="13" start="8" name="nn"/>
+                    <label end="18" start="15" name="VVD"/>
+                    <label end="23" start="20" name="in"/>
+                    <label end="30" start="25" name="nns"/>
+                    <label end="38" start="32" name="VVG"/>
+                    <label end="42" start="40" name="dt"/>
+                    <label end="51" start="44" name="nn"/>
+                    <label end="56" start="53" name="nn"/>
+                    <label end="59" start="58" name="in"/>
+                    <label end="69" start="61" name="NP"/>
+                    <label end="77" start="71" name="nn"/>
+                    <label end="79" start="79" name=","/>
+                    <label end="85" start="81" name="wrb"/>
+                    <label end="89" start="87" name="dt"/>
+                    <label end="95" start="91" name="nn"/>
+                    <label end="100" start="97" name="in"/>
+                    <label end="104" start="102" name="dt"/>
+                    <label end="111" start="106" name="jj"/>
+                    <label end="118" start="113" name="nn"/>
+                    <label end="128" start="120" name="VVZ"/>
+                    <label end="130" start="130" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/17/2003 03:59:15 PDT Thu" status="MANUAL" ID="1931089">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="95" start="91" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4045" end="128" start="97" name="Incident"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="128" start="97" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="128" start="97" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="06-Wlaunch,start,initiate-T-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+    <subCorpus name="01-Wpolice,enforcement,yard-T-(2)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="6925" aPos="0" ID="1242138">
+            <text>Stark evidence of this came via yesterday 's announcement of a police probe into the financial affairs of Beazer Homes League outfit Weymouth .</text>
+            <annotationSet cDate="07/17/2003 04:33:26 PDT Thu" status="UNANN" ID="1931306">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="jj"/>
+                    <label end="13" start="6" name="nn"/>
+                    <label end="16" start="15" name="in"/>
+                    <label end="21" start="18" name="dt"/>
+                    <label end="26" start="23" name="VVD"/>
+                    <label end="30" start="28" name="in"/>
+                    <label end="40" start="32" name="nn"/>
+                    <label end="43" start="42" name="POS"/>
+                    <label end="56" start="45" name="nn"/>
+                    <label end="59" start="58" name="in"/>
+                    <label end="61" start="61" name="dt"/>
+                    <label end="68" start="63" name="nn"/>
+                    <label end="74" start="70" name="nn"/>
+                    <label end="79" start="76" name="in"/>
+                    <label end="83" start="81" name="dt"/>
+                    <label end="93" start="85" name="jj"/>
+                    <label end="101" start="95" name="nns"/>
+                    <label end="104" start="103" name="in"/>
+                    <label end="111" start="106" name="NP"/>
+                    <label end="117" start="113" name="NPS"/>
+                    <label end="124" start="119" name="NP"/>
+                    <label end="131" start="126" name="nn"/>
+                    <label end="140" start="133" name="NP"/>
+                    <label end="142" start="142" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/17/2003 04:33:26 PDT Thu" status="MANUAL" ID="1931307">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="74" start="70" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4041" end="68" start="63" name="Investigator"/>
+                    <label cBy="618" feID="4045" end="140" start="76" name="Incident"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="68" start="63" name="Dep"/>
+                    <label end="140" start="76" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="68" start="63" name="N"/>
+                    <label end="140" start="76" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="11756" aPos="0" ID="1242139">
+            <text>A UNION demand for a review of an order to reinstate a Liverpool councillor sacked after she helped a police probe has been turned down .</text>
+            <annotationSet cDate="07/17/2003 04:33:27 PDT Thu" status="UNANN" ID="1931308">
+                <layer rank="1" name="PENN">
+                    <label end="0" start="0" name="dt"/>
+                    <label end="6" start="2" name="nn"/>
+                    <label end="13" start="8" name="nn"/>
+                    <label end="17" start="15" name="in"/>
+                    <label end="19" start="19" name="dt"/>
+                    <label end="26" start="21" name="nn"/>
+                    <label end="29" start="28" name="in"/>
+                    <label end="32" start="31" name="dt"/>
+                    <label end="38" start="34" name="nn"/>
+                    <label end="41" start="40" name="to"/>
+                    <label end="51" start="43" name="VV"/>
+                    <label end="53" start="53" name="dt"/>
+                    <label end="63" start="55" name="NP"/>
+                    <label end="74" start="65" name="nn"/>
+                    <label end="81" start="76" name="VVD"/>
+                    <label end="87" start="83" name="in"/>
+                    <label end="91" start="89" name="PP"/>
+                    <label end="98" start="93" name="VVD"/>
+                    <label end="100" start="100" name="dt"/>
+                    <label end="107" start="102" name="nn"/>
+                    <label end="113" start="109" name="nn"/>
+                    <label end="117" start="115" name="VHZ"/>
+                    <label end="122" start="119" name="VBN"/>
+                    <label end="129" start="124" name="VVN"/>
+                    <label end="134" start="131" name="rp"/>
+                    <label end="136" start="136" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/17/2003 04:33:27 PDT Thu" status="MANUAL" ID="1931309">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="113" start="109" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4041" end="107" start="102" name="Investigator"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="107" start="102" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="107" start="102" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(2)"/>
+    <subCorpus name="other-unmatched-(2)"/>
+</lexUnit>

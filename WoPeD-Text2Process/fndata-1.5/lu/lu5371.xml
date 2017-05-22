@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="gift.v" ID="5371" frame="Giving" frameID="139" totalAnnotated="6" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="cir" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="dep" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Donor" name="Donor"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Man" name="Manner"/>
+            <FE fgColor="2E8B57" bgColor="A9A9A9" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="000000" bgColor="7FFF00" type="Extra-Thematic" abbrev="" name="Period_of_iterations"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Extra-Thematic" abbrev="pot" name="Purpose_of_theme"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Extra-Thematic" abbrev="Reas" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Rec" name="Recipient"/>
+            <FE fgColor="FFD700" bgColor="9400D3" type="Core" abbrev="Thm" name="Theme"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: give as a gift, especially formally. </definition>
+    <lexeme POS="V" name="gift"/>
+    <valences>
+        <FERealization total="6">
+            <FE name="Donor"/>
+            <pattern total="6">
+                <valenceUnit GF="Ext" PT="NP" FE="Donor"/>
+                <annoSet ID="1632313"/>
+                <annoSet ID="2140691"/>
+                <annoSet ID="2140701"/>
+                <annoSet ID="2140703"/>
+                <annoSet ID="2140707"/>
+                <annoSet ID="2140711"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Reason"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="VPing" FE="Reason"/>
+                <annoSet ID="2140703"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="6">
+            <FE name="Recipient"/>
+            <pattern total="3">
+                <valenceUnit GF="Obj" PT="NP" FE="Recipient"/>
+                <annoSet ID="2140691"/>
+                <annoSet ID="2140703"/>
+                <annoSet ID="2140707"/>
+            </pattern>
+            <pattern total="3">
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Recipient"/>
+                <annoSet ID="1632313"/>
+                <annoSet ID="2140701"/>
+                <annoSet ID="2140711"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="6">
+            <FE name="Theme"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="NP" FE="Theme"/>
+                <annoSet ID="2140691"/>
+                <annoSet ID="2140707"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Theme"/>
+                <annoSet ID="2140703"/>
+            </pattern>
+            <pattern total="3">
+                <valenceUnit GF="Obj" PT="NP" FE="Theme"/>
+                <annoSet ID="1632313"/>
+                <annoSet ID="2140701"/>
+                <annoSet ID="2140711"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Time"/>
+                <annoSet ID="2140711"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Time"/>
+                <annoSet ID="2140701"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Donor"/>
+            <FE name="Donor"/>
+            <FE name="Recipient"/>
+            <FE name="Theme"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Donor"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Donor"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Recipient"/>
+                <valenceUnit GF="Dep" PT="NP" FE="Theme"/>
+                <annoSet ID="2140707"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Donor"/>
+            <FE name="Reason"/>
+            <FE name="Recipient"/>
+            <FE name="Theme"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Donor"/>
+                <valenceUnit GF="Dep" PT="VPing" FE="Reason"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Recipient"/>
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Theme"/>
+                <annoSet ID="2140703"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Donor"/>
+            <FE name="Recipient"/>
+            <FE name="Theme"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Donor"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Recipient"/>
+                <valenceUnit GF="Dep" PT="NP" FE="Theme"/>
+                <annoSet ID="2140691"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Donor"/>
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Recipient"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Theme"/>
+                <annoSet ID="1632313"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Donor"/>
+            <FE name="Recipient"/>
+            <FE name="Theme"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Donor"/>
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Recipient"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Theme"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Time"/>
+                <annoSet ID="2140711"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Donor"/>
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Recipient"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Theme"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Time"/>
+                <annoSet ID="2140701"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-001-all">
+        <sentence sentNo="0" aPos="45961344" ID="1090589">
+            <text>Lady Weighall was also responsible for laying out Jubilee Park , opposite Petwood , and later gifting it to the authorities . </text>
+            <annotationSet cDate="01/08/2003 02:04:01 PST Wed" status="UNANN" ID="1632312">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="NP0"/>
+                    <label end="12" start="5" name="NP0"/>
+                    <label end="16" start="14" name="VBD"/>
+                    <label end="21" start="18" name="AV0"/>
+                    <label end="33" start="23" name="AJ0"/>
+                    <label end="37" start="35" name="PRP"/>
+                    <label end="44" start="39" name="VVG"/>
+                    <label end="48" start="46" name="AVP"/>
+                    <label end="56" start="50" name="NP0"/>
+                    <label end="61" start="58" name="NP0"/>
+                    <label end="63" start="63" name="PUN"/>
+                    <label end="72" start="65" name="AJ0"/>
+                    <label end="80" start="74" name="NN1-NP0"/>
+                    <label end="82" start="82" name="PUN"/>
+                    <label end="86" start="84" name="CJC"/>
+                    <label end="92" start="88" name="AV0"/>
+                    <label end="100" start="94" name="VVG"/>
+                    <label end="103" start="102" name="PNP"/>
+                    <label end="106" start="105" name="PRP"/>
+                    <label end="110" start="108" name="AT0"/>
+                    <label end="122" start="112" name="NN2"/>
+                    <label end="124" start="124" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 02:04:01 PST Wed" status="MANUAL" ID="1632313">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="1052" end="12" start="0" name="Donor"/>
+                    <label cBy="618" feID="1054" end="103" start="102" name="Theme"/>
+                    <label cBy="618" feID="1053" end="122" start="105" name="Recipient"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="12" start="0" name="Ext"/>
+                    <label end="103" start="102" name="Obj"/>
+                    <label end="122" start="105" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="12" start="0" name="NP"/>
+                    <label end="103" start="102" name="NP"/>
+                    <label end="122" start="105" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="100" start="94" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="01-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="10" paragNo="270" aPos="46987150" ID="1346355">
+            <text>By conceding on the timetable , O'Neill gifted the Republicans an important advantage , helping them by drastically curtailing the protracted and damaging interplay of pluralist forces that would have otherwise taken place over the budget .</text>
+            <annotationSet cDate="01/26/2006 04:26:41 PST Thu" status="UNANN" ID="2140690">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="in"/>
+                    <label end="11" start="3" name="VVG"/>
+                    <label end="14" start="13" name="in"/>
+                    <label end="18" start="16" name="dt"/>
+                    <label end="28" start="20" name="nn"/>
+                    <label end="30" start="30" name=","/>
+                    <label end="38" start="32" name="NP"/>
+                    <label end="45" start="40" name="VVD"/>
+                    <label end="49" start="47" name="dt"/>
+                    <label end="61" start="51" name="NPS"/>
+                    <label end="64" start="63" name="dt"/>
+                    <label end="74" start="66" name="jj"/>
+                    <label end="84" start="76" name="nn"/>
+                    <label end="86" start="86" name=","/>
+                    <label end="94" start="88" name="VVG"/>
+                    <label end="99" start="96" name="PP"/>
+                    <label end="102" start="101" name="in"/>
+                    <label end="114" start="104" name="rb"/>
+                    <label end="125" start="116" name="VVG"/>
+                    <label end="129" start="127" name="dt"/>
+                    <label end="140" start="131" name="jj"/>
+                    <label end="144" start="142" name="cc"/>
+                    <label end="153" start="146" name="jj"/>
+                    <label end="163" start="155" name="nn"/>
+                    <label end="166" start="165" name="in"/>
+                    <label end="176" start="168" name="jj"/>
+                    <label end="183" start="178" name="nns"/>
+                    <label end="188" start="185" name="wdt"/>
+                    <label end="194" start="190" name="md"/>
+                    <label end="199" start="196" name="VH"/>
+                    <label end="209" start="201" name="rb"/>
+                    <label end="215" start="211" name="VVN"/>
+                    <label end="221" start="217" name="nn"/>
+                    <label end="226" start="223" name="in"/>
+                    <label end="230" start="228" name="dt"/>
+                    <label end="237" start="232" name="nn"/>
+                    <label end="239" start="239" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="01/26/2006 04:26:42 PST Thu" status="MANUAL" ID="2140691">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="45" start="40" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="1052" end="38" start="32" name="Donor"/>
+                    <label cBy="618" feID="1053" end="61" start="47" name="Recipient"/>
+                    <label cBy="618" feID="1054" end="84" start="63" name="Theme"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="38" start="32" name="Ext"/>
+                    <label end="61" start="47" name="Obj"/>
+                    <label end="84" start="63" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="38" start="32" name="NP"/>
+                    <label end="61" start="47" name="NP"/>
+                    <label end="84" start="63" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="175" aPos="48633167" ID="1346360">
+            <text>In 1967 the owner of the Manor , Miss Dorothy Higgins , gifted it to the Alford Civic Trust who have since done much to restore it after years of neglect .</text>
+            <annotationSet cDate="01/26/2006 04:26:47 PST Thu" status="UNANN" ID="2140700">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="in"/>
+                    <label end="6" start="3" name="cd"/>
+                    <label end="10" start="8" name="dt"/>
+                    <label end="16" start="12" name="nn"/>
+                    <label end="19" start="18" name="in"/>
+                    <label end="23" start="21" name="dt"/>
+                    <label end="29" start="25" name="NP"/>
+                    <label end="31" start="31" name=","/>
+                    <label end="36" start="33" name="NP"/>
+                    <label end="44" start="38" name="NP"/>
+                    <label end="52" start="46" name="NP"/>
+                    <label end="54" start="54" name=","/>
+                    <label end="61" start="56" name="VVD"/>
+                    <label end="64" start="63" name="PP"/>
+                    <label end="67" start="66" name="to"/>
+                    <label end="71" start="69" name="dt"/>
+                    <label end="78" start="73" name="NP"/>
+                    <label end="84" start="80" name="NP"/>
+                    <label end="90" start="86" name="NP"/>
+                    <label end="94" start="92" name="wp"/>
+                    <label end="99" start="96" name="VHP"/>
+                    <label end="105" start="101" name="rb"/>
+                    <label end="110" start="107" name="VVN"/>
+                    <label end="115" start="112" name="rb"/>
+                    <label end="118" start="117" name="to"/>
+                    <label end="126" start="120" name="VV"/>
+                    <label end="129" start="128" name="PP"/>
+                    <label end="135" start="131" name="in"/>
+                    <label end="141" start="137" name="nns"/>
+                    <label end="144" start="143" name="in"/>
+                    <label end="152" start="146" name="nn"/>
+                    <label end="154" start="154" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="01/26/2006 04:26:47 PST Thu" status="MANUAL" ID="2140701">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="61" start="56" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="1682" end="6" start="0" name="Time"/>
+                    <label cBy="618" feID="1052" end="54" start="8" name="Donor"/>
+                    <label cBy="618" feID="1054" end="64" start="63" name="Theme"/>
+                    <label cBy="618" feID="1053" end="152" start="66" name="Recipient"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="6" start="0" name="Dep"/>
+                    <label end="54" start="8" name="Ext"/>
+                    <label end="64" start="63" name="Obj"/>
+                    <label end="152" start="66" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="6" start="0" name="PP"/>
+                    <label end="54" start="8" name="NP"/>
+                    <label end="64" start="63" name="NP"/>
+                    <label end="152" start="66" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="5" paragNo="455" aPos="41303450" ID="1346361">
+            <text>Seeing that Teclis could not be dissuaded , the High Loremaster gifted him with the War Crown of Saphery and let him go .</text>
+            <annotationSet cDate="01/26/2006 04:26:47 PST Thu" status="UNANN" ID="2140702">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="0" name="VVG"/>
+                    <label end="10" start="7" name="in"/>
+                    <label end="17" start="12" name="NP"/>
+                    <label end="23" start="19" name="md"/>
+                    <label end="27" start="25" name="rb"/>
+                    <label end="30" start="29" name="vb"/>
+                    <label end="40" start="32" name="VVN"/>
+                    <label end="42" start="42" name=","/>
+                    <label end="46" start="44" name="dt"/>
+                    <label end="51" start="48" name="NP"/>
+                    <label end="62" start="53" name="NP"/>
+                    <label end="69" start="64" name="VVD"/>
+                    <label end="73" start="71" name="PP"/>
+                    <label end="78" start="75" name="in"/>
+                    <label end="82" start="80" name="dt"/>
+                    <label end="86" start="84" name="NP"/>
+                    <label end="92" start="88" name="NP"/>
+                    <label end="95" start="94" name="in"/>
+                    <label end="103" start="97" name="NP"/>
+                    <label end="107" start="105" name="cc"/>
+                    <label end="111" start="109" name="VV"/>
+                    <label end="115" start="113" name="PP"/>
+                    <label end="118" start="117" name="VV"/>
+                    <label end="120" start="120" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="01/26/2006 04:26:47 PST Thu" status="MANUAL" ID="2140703">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="69" start="64" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="1052" end="62" start="44" name="Donor"/>
+                    <label cBy="618" feID="1053" end="73" start="71" name="Recipient"/>
+                    <label cBy="618" feID="1054" end="118" start="75" name="Theme"/>
+                    <label cBy="618" feID="1681" end="40" start="0" name="Reason"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="62" start="44" name="Ext"/>
+                    <label end="73" start="71" name="Obj"/>
+                    <label end="118" start="75" name="Dep"/>
+                    <label end="40" start="0" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="62" start="44" name="NP"/>
+                    <label end="73" start="71" name="NP"/>
+                    <label end="118" start="75" name="PP"/>
+                    <label end="40" start="0" name="VPing"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="513" aPos="110408684" ID="1346363">
+            <text>The Lions believe they were robbed by first and last-minute decisions from Australian referee Brian Kinsey which gifted New Zealand eight points in a cliffhanging match .</text>
+            <annotationSet cDate="01/26/2006 04:26:48 PST Thu" status="UNANN" ID="2140706">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="8" start="4" name="NP"/>
+                    <label end="16" start="10" name="VVP"/>
+                    <label end="21" start="18" name="PP"/>
+                    <label end="26" start="23" name="VBD"/>
+                    <label end="33" start="28" name="VVN"/>
+                    <label end="36" start="35" name="in"/>
+                    <label end="42" start="38" name="jj"/>
+                    <label end="46" start="44" name="cc"/>
+                    <label end="58" start="48" name="jj"/>
+                    <label end="68" start="60" name="nns"/>
+                    <label end="73" start="70" name="in"/>
+                    <label end="84" start="75" name="jj"/>
+                    <label end="92" start="86" name="nn"/>
+                    <label end="98" start="94" name="NP"/>
+                    <label end="105" start="100" name="NP"/>
+                    <label end="111" start="107" name="wdt"/>
+                    <label end="118" start="113" name="VVD"/>
+                    <label end="122" start="120" name="NP"/>
+                    <label end="130" start="124" name="NP"/>
+                    <label end="136" start="132" name="cd"/>
+                    <label end="143" start="138" name="nns"/>
+                    <label end="146" start="145" name="in"/>
+                    <label end="148" start="148" name="dt"/>
+                    <label end="161" start="150" name="jj"/>
+                    <label end="167" start="163" name="nn"/>
+                    <label end="169" start="169" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="01/26/2006 04:26:48 PST Thu" status="MANUAL" ID="2140707">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="118" start="113" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="1052" end="105" start="38" name="Donor"/>
+                    <label cBy="618" feID="1052" end="111" start="107" name="Donor"/>
+                    <label cBy="618" feID="1053" end="130" start="120" name="Recipient"/>
+                    <label cBy="618" feID="1054" end="143" start="132" name="Theme"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="105" start="38" name="Ext"/>
+                    <label end="111" start="107" name="Ext"/>
+                    <label end="130" start="120" name="Obj"/>
+                    <label end="143" start="132" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="105" start="38" name="NP"/>
+                    <label end="111" start="107" name="NP"/>
+                    <label end="130" start="120" name="NP"/>
+                    <label end="143" start="132" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other">
+                    <label end="105" start="38" name="Ant"/>
+                    <label end="111" start="107" name="Rel"/>
+                </layer>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="Metaphor"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="236" aPos="48636211" ID="1346365">
+            <text>Lady Weighall was also responsible for laying out Jubilee Park , opposite Petwood , and later gifting it to the authorities .</text>
+            <annotationSet cDate="01/26/2006 04:26:49 PST Thu" status="UNANN" ID="2140710">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="NP"/>
+                    <label end="12" start="5" name="NP"/>
+                    <label end="16" start="14" name="VBD"/>
+                    <label end="21" start="18" name="rb"/>
+                    <label end="33" start="23" name="jj"/>
+                    <label end="37" start="35" name="in"/>
+                    <label end="44" start="39" name="VVG"/>
+                    <label end="48" start="46" name="rp"/>
+                    <label end="56" start="50" name="NP"/>
+                    <label end="61" start="58" name="NP"/>
+                    <label end="63" start="63" name=","/>
+                    <label end="72" start="65" name="jj"/>
+                    <label end="80" start="74" name="NP"/>
+                    <label end="82" start="82" name=","/>
+                    <label end="86" start="84" name="cc"/>
+                    <label end="92" start="88" name="rb"/>
+                    <label end="100" start="94" name="VVG"/>
+                    <label end="103" start="102" name="PP"/>
+                    <label end="106" start="105" name="to"/>
+                    <label end="110" start="108" name="dt"/>
+                    <label end="122" start="112" name="nns"/>
+                    <label end="124" start="124" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="01/26/2006 04:26:49 PST Thu" status="MANUAL" ID="2140711">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="100" start="94" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="1052" end="12" start="0" name="Donor"/>
+                    <label cBy="618" feID="1682" end="92" start="88" name="Time"/>
+                    <label cBy="618" feID="1054" end="103" start="102" name="Theme"/>
+                    <label cBy="618" feID="1053" end="122" start="105" name="Recipient"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="12" start="0" name="Ext"/>
+                    <label end="92" start="88" name="Dep"/>
+                    <label end="103" start="102" name="Obj"/>
+                    <label end="122" start="105" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="12" start="0" name="NP"/>
+                    <label end="92" start="88" name="AVP"/>
+                    <label end="103" start="102" name="NP"/>
+                    <label end="122" start="105" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

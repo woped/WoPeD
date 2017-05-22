@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="assemblage.n" ID="2141" frame="Aggregate" frameID="103" totalAnnotated="5" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Core" abbrev="Agg" name="Aggregate"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Extra-Thematic" abbrev="AgProp" name="AggregateProperty"/>
+            <FE fgColor="000000" bgColor="EEE8AA" type="Extra-Thematic" abbrev="Con" name="Container_possessor"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Extra-Thematic" abbrev="" name="Domain"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Ind" name="Individuals"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="" name="Name"/>
+        </frame>
+    </header>
+    <definition>COD: a collection or gathering</definition>
+    <lexeme POS="N" name="assemblage"/>
+    <valences>
+        <FERealization total="5">
+            <FE name="Aggregate"/>
+            <pattern total="5">
+                <valenceUnit GF="" PT="DEN" FE="Aggregate"/>
+                <annoSet ID="151345"/>
+                <annoSet ID="151347"/>
+                <annoSet ID="151363"/>
+                <annoSet ID="151447"/>
+                <annoSet ID="151489"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="AggregateProperty"/>
+            <pattern total="3">
+                <valenceUnit GF="Dep" PT="AJP" FE="AggregateProperty"/>
+                <annoSet ID="151345"/>
+                <annoSet ID="151347"/>
+                <annoSet ID="151489"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Individuals"/>
+            <pattern total="4">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Individuals"/>
+                <annoSet ID="151345"/>
+                <annoSet ID="151347"/>
+                <annoSet ID="151363"/>
+                <annoSet ID="151489"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Individuals"/>
+                <annoSet ID="151447"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="3">
+            <FE name="Aggregate"/>
+            <FE name="AggregateProperty"/>
+            <FE name="Individuals"/>
+            <pattern total="3">
+                <valenceUnit GF="" PT="DEN" FE="Aggregate"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="AggregateProperty"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Individuals"/>
+                <annoSet ID="151345"/>
+                <annoSet ID="151347"/>
+                <annoSet ID="151489"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Aggregate"/>
+            <FE name="Individuals"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Aggregate"/>
+                <valenceUnit GF="" PT="DNI" FE="Individuals"/>
+                <annoSet ID="151447"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Aggregate"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Individuals"/>
+                <annoSet ID="151363"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-250-ppof">
+        <sentence sentNo="0" aPos="1266800" ID="252795">
+            <text>Buckyballs , of buckminsterfullerene , are soccer-ball-shaped assemblages of 60 carbon atoms . </text>
+            <annotationSet cDate="01/06/2003 08:37:17 PST Mon" status="UNANN" ID="151344">
+                <layer rank="1" name="BNC">
+                    <label end="9" start="0" name="NN2"/>
+                    <label end="11" start="11" name="PUN"/>
+                    <label end="14" start="13" name="PRF"/>
+                    <label end="35" start="16" name="NN1"/>
+                    <label end="37" start="37" name="PUN"/>
+                    <label end="41" start="39" name="VBB"/>
+                    <label end="60" start="43" name="AJ0"/>
+                    <label end="72" start="62" name="NN2"/>
+                    <label end="75" start="74" name="PRF"/>
+                    <label end="78" start="77" name="CRD"/>
+                    <label end="85" start="80" name="NN1"/>
+                    <label end="91" start="87" name="NN2"/>
+                    <label end="93" start="93" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 08:37:17 PST Mon" status="MANUAL" ID="151345">
+                <layer rank="1" name="FE">
+                    <label cBy="285" feID="786" end="60" start="43" name="AggregateProperty"/>
+                    <label cBy="285" feID="744" end="91" start="74" name="Individuals"/>
+                    <label cBy="285" feID="745" end="72" start="62" name="Aggregate"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="60" start="43" name="Dep"/>
+                    <label end="91" start="74" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="60" start="43" name="AJP"/>
+                    <label end="91" start="74" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="72" start="62" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="17584198" ID="252796">
+            <text>This latter institution also has a vast assemblage of deeds , rolls , family papers and ecclesiastical records of importance to local history research . </text>
+            <annotationSet cDate="01/06/2003 08:37:17 PST Mon" status="UNANN" ID="151346">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="DT0"/>
+                    <label end="10" start="5" name="DT0"/>
+                    <label end="22" start="12" name="NN1"/>
+                    <label end="27" start="24" name="AV0"/>
+                    <label end="31" start="29" name="VHZ"/>
+                    <label end="33" start="33" name="AT0"/>
+                    <label end="38" start="35" name="AJ0"/>
+                    <label end="49" start="40" name="NN1"/>
+                    <label end="52" start="51" name="PRF"/>
+                    <label end="58" start="54" name="NN2"/>
+                    <label end="60" start="60" name="PUN"/>
+                    <label end="66" start="62" name="NN2-VVZ"/>
+                    <label end="68" start="68" name="PUN"/>
+                    <label end="75" start="70" name="NN0"/>
+                    <label end="82" start="77" name="NN2"/>
+                    <label end="86" start="84" name="CJC"/>
+                    <label end="101" start="88" name="AJ0"/>
+                    <label end="109" start="103" name="NN2"/>
+                    <label end="112" start="111" name="PRF"/>
+                    <label end="123" start="114" name="NN1"/>
+                    <label end="126" start="125" name="PRP"/>
+                    <label end="132" start="128" name="AJ0"/>
+                    <label end="140" start="134" name="NN1"/>
+                    <label end="149" start="142" name="NN1"/>
+                    <label end="151" start="151" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 08:37:17 PST Mon" status="MANUAL" ID="151347">
+                <layer rank="1" name="FE">
+                    <label cBy="285" feID="786" end="38" start="35" name="AggregateProperty"/>
+                    <label cBy="285" feID="744" end="149" start="51" name="Individuals"/>
+                    <label cBy="285" feID="745" end="49" start="40" name="Aggregate"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="38" start="35" name="Dep"/>
+                    <label end="149" start="51" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="38" start="35" name="AJP"/>
+                    <label end="149" start="51" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="49" start="40" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="32850617" ID="252804">
+            <text>Nevertheless an assemblage of tools is often found together comprising shears , combs and spindle whorls for spinning . </text>
+            <annotationSet cDate="01/06/2003 08:37:18 PST Mon" status="UNANN" ID="151362">
+                <layer rank="1" name="BNC">
+                    <label end="11" start="0" name="AV0"/>
+                    <label end="14" start="13" name="AT0"/>
+                    <label end="25" start="16" name="NN1"/>
+                    <label end="28" start="27" name="PRF"/>
+                    <label end="34" start="30" name="NN2"/>
+                    <label end="37" start="36" name="VBZ"/>
+                    <label end="43" start="39" name="AV0"/>
+                    <label end="49" start="45" name="VVN"/>
+                    <label end="58" start="51" name="AV0"/>
+                    <label end="69" start="60" name="AJ0"/>
+                    <label end="76" start="71" name="NN0"/>
+                    <label end="78" start="78" name="PUN"/>
+                    <label end="84" start="80" name="NN2-VVZ"/>
+                    <label end="88" start="86" name="CJC"/>
+                    <label end="96" start="90" name="NN1-VVB"/>
+                    <label end="103" start="98" name="NN2-VVZ"/>
+                    <label end="107" start="105" name="PRP"/>
+                    <label end="116" start="109" name="NN1-VVG"/>
+                    <label end="118" start="118" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 08:37:18 PST Mon" status="MANUAL" ID="151363">
+                <layer rank="1" name="FE">
+                    <label cBy="285" feID="744" end="34" start="27" name="Individuals"/>
+                    <label cBy="285" feID="745" end="25" start="16" name="Aggregate"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="34" start="27" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="34" start="27" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="25" start="16" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-280-poss"/>
+    <subCorpus name="N-290-posscmpd"/>
+    <subCorpus name="N-300-cmpd"/>
+    <subCorpus name="N-340-ppother">
+        <sentence sentNo="0" aPos="7452065" ID="252846">
+            <text>The rumours started earlier this year , when B-boys began showing up at New York clubs and wowing the assemblage with their traditional towering tonsors . </text>
+            <annotationSet cDate="01/06/2003 08:37:24 PST Mon" status="UNANN" ID="151446">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="10" start="4" name="NN2"/>
+                    <label end="18" start="12" name="VVD-VVN"/>
+                    <label end="26" start="20" name="AV0"/>
+                    <label end="31" start="28" name="DT0"/>
+                    <label end="36" start="33" name="NN1"/>
+                    <label end="38" start="38" name="PUN"/>
+                    <label end="43" start="40" name="AVQ-CJS"/>
+                    <label end="50" start="45" name="NN2"/>
+                    <label end="56" start="52" name="VVD"/>
+                    <label end="64" start="58" name="VVG"/>
+                    <label end="67" start="66" name="AVP"/>
+                    <label end="70" start="69" name="PRP"/>
+                    <label end="74" start="72" name="NP0"/>
+                    <label end="79" start="76" name="NP0"/>
+                    <label end="85" start="81" name="NN2"/>
+                    <label end="89" start="87" name="CJC"/>
+                    <label end="96" start="91" name="VVG"/>
+                    <label end="100" start="98" name="AT0"/>
+                    <label end="111" start="102" name="NN1"/>
+                    <label end="116" start="113" name="PRP"/>
+                    <label end="122" start="118" name="DPS"/>
+                    <label end="134" start="124" name="AJ0"/>
+                    <label end="143" start="136" name="AJ0-NN1"/>
+                    <label end="151" start="145" name="NN2"/>
+                    <label end="153" start="153" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 08:37:24 PST Mon" status="MANUAL" ID="151447">
+                <layer rank="1" name="FE">
+                    <label cBy="285" feID="745" end="111" start="102" name="Aggregate"/>
+                    <label cBy="285" feID="744" itype="DNI" name="Individuals"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="111" start="102" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-370-pother">
+        <sentence sentNo="0" aPos="37666372" ID="252867">
+            <text>When Nam June Paik recently unveiled a gigantic assemblage of over 400 television monitors -- commissioned by the Chase Manhattan bank for the lobby of its latest branch office in Brooklyn -- he left space within its 200 foot wall of dancing images for video works , to be changed periodically , by ` guest artists &quot; . </text>
+            <annotationSet cDate="01/06/2003 08:37:26 PST Mon" status="UNANN" ID="151488">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="CJS"/>
+                    <label end="7" start="5" name="NP0"/>
+                    <label end="12" start="9" name="NP0"/>
+                    <label end="17" start="14" name="NN1-NP0"/>
+                    <label end="26" start="19" name="AV0"/>
+                    <label end="35" start="28" name="VVD-VVN"/>
+                    <label end="37" start="37" name="AT0"/>
+                    <label end="46" start="39" name="AJ0"/>
+                    <label end="57" start="48" name="NN1"/>
+                    <label end="60" start="59" name="PRF"/>
+                    <label end="65" start="62" name="AV0"/>
+                    <label end="69" start="67" name="CRD"/>
+                    <label end="80" start="71" name="NN1"/>
+                    <label end="89" start="82" name="NN2-VVZ"/>
+                    <label end="92" start="91" name="PUN"/>
+                    <label end="105" start="94" name="VVD-VVN"/>
+                    <label end="108" start="107" name="PRP"/>
+                    <label end="112" start="110" name="AT0"/>
+                    <label end="118" start="114" name="NN1-NP0"/>
+                    <label end="128" start="120" name="NP0"/>
+                    <label end="133" start="130" name="NN1"/>
+                    <label end="137" start="135" name="PRP"/>
+                    <label end="141" start="139" name="AT0"/>
+                    <label end="147" start="143" name="NN1"/>
+                    <label end="150" start="149" name="PRF"/>
+                    <label end="154" start="152" name="DPS"/>
+                    <label end="161" start="156" name="AJS"/>
+                    <label end="168" start="163" name="NN1"/>
+                    <label end="175" start="170" name="NN1"/>
+                    <label end="178" start="177" name="PRP"/>
+                    <label end="187" start="180" name="NP0"/>
+                    <label end="190" start="189" name="PUN"/>
+                    <label end="193" start="192" name="PNP"/>
+                    <label end="198" start="195" name="AJ0-VVD"/>
+                    <label end="204" start="200" name="NN1"/>
+                    <label end="211" start="206" name="PRP"/>
+                    <label end="215" start="213" name="DPS"/>
+                    <label end="219" start="217" name="CRD"/>
+                    <label end="224" start="221" name="NN1"/>
+                    <label end="229" start="226" name="NN1"/>
+                    <label end="232" start="231" name="PRF"/>
+                    <label end="240" start="234" name="NN1-VVG"/>
+                    <label end="247" start="242" name="NN2"/>
+                    <label end="251" start="249" name="PRP"/>
+                    <label end="257" start="253" name="NN1"/>
+                    <label end="263" start="259" name="VVZ"/>
+                    <label end="265" start="265" name="PUN"/>
+                    <label end="268" start="267" name="TO0"/>
+                    <label end="271" start="270" name="VBI"/>
+                    <label end="279" start="273" name="VVN"/>
+                    <label end="292" start="281" name="AV0"/>
+                    <label end="294" start="294" name="PUN"/>
+                    <label end="297" start="296" name="PRP"/>
+                    <label end="299" start="299" name="PUQ"/>
+                    <label end="305" start="301" name="NN1"/>
+                    <label end="313" start="307" name="NN2"/>
+                    <label end="315" start="315" name="PUQ"/>
+                    <label end="317" start="317" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 08:37:26 PST Mon" status="MANUAL" ID="151489">
+                <layer rank="1" name="FE">
+                    <label cBy="709" feID="744" end="89" start="59" name="Individuals"/>
+                    <label cBy="709" feID="745" end="57" start="48" name="Aggregate"/>
+                    <label cBy="709" feID="786" end="46" start="39" name="AggregateProperty"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="89" start="59" name="Dep"/>
+                    <label end="46" start="39" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="89" start="59" name="PP"/>
+                    <label end="46" start="39" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="57" start="48" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-380-other"/>
+</lexUnit>

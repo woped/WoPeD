@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="V" name="drop.v" ID="5164" frame="Birth" frameID="281" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Child" name="Child"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Extra-Thematic" abbrev="cir" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Depict" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Core" abbrev="Egg" name="Egg"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Pop" name="Father"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Peripheral" abbrev="man" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Mom" name="Mother"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Core" abbrev="Par" name="Parents"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Extra-Thematic" abbrev="" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: (of an animal) give birth to. [Vet] </definition>
+    <lexeme POS="V" name="drop"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Child"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Child"/>
+                <annoSet ID="1101187"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Mother"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Mother"/>
+                <annoSet ID="1101187"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Child"/>
+            <FE name="Mother"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Child"/>
+                <valenceUnit GF="" PT="CNI" FE="Mother"/>
+                <annoSet ID="1101187"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-429-s20-rcoll-egg"/>
+    <subCorpus name="V-429-s20-rcoll-lamb">
+        <sentence sentNo="0" aPos="7506427" ID="822323">
+            <text>He was also intrigued by the breed 's ability to breed all year round , and to drop rangy lambs that could be taken to 18kg with little risk of over-fatness . </text>
+            <annotationSet cDate="01/07/2003 03:51:13 PST Tue" status="UNANN" ID="1101186">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="5" start="3" name="VBD"/>
+                    <label end="10" start="7" name="AV0"/>
+                    <label end="20" start="12" name="VVN"/>
+                    <label end="23" start="22" name="PRP"/>
+                    <label end="27" start="25" name="AT0"/>
+                    <label end="33" start="29" name="NN1"/>
+                    <label end="36" start="35" name="POS"/>
+                    <label end="44" start="38" name="NN1"/>
+                    <label end="47" start="46" name="TO0"/>
+                    <label end="53" start="49" name="VVI"/>
+                    <label end="57" start="55" name="DT0"/>
+                    <label end="62" start="59" name="NN1"/>
+                    <label end="68" start="64" name="AVP"/>
+                    <label end="70" start="70" name="PUN"/>
+                    <label end="74" start="72" name="CJC"/>
+                    <label end="77" start="76" name="TO0"/>
+                    <label end="82" start="79" name="VVI"/>
+                    <label end="88" start="84" name="AJ0"/>
+                    <label end="94" start="90" name="NN2"/>
+                    <label end="99" start="96" name="CJT"/>
+                    <label end="105" start="101" name="VM0"/>
+                    <label end="108" start="107" name="VBI"/>
+                    <label end="114" start="110" name="VVN"/>
+                    <label end="117" start="116" name="PRP"/>
+                    <label end="122" start="119" name="NN0"/>
+                    <label end="127" start="124" name="PRP"/>
+                    <label end="134" start="129" name="DT0"/>
+                    <label end="139" start="136" name="NN1"/>
+                    <label end="142" start="141" name="PRF"/>
+                    <label end="155" start="144" name="NN1"/>
+                    <label end="157" start="157" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:51:13 PST Tue" status="MANUAL" ID="1101187">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="2440" end="155" start="84" name="Child"/>
+                    <label cBy="296" feID="2439" itype="CNI" name="Mother"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="155" start="84" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="155" start="84" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="82" start="79" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-670-s20-pass-by"/>
+    <subCorpus name="V-680-s20-pass"/>
+    <subCorpus name="V-880-s20-intrans-simple"/>
+    <subCorpus name="V-890-s20-intrans-adverb"/>
+    <subCorpus name="V-900-s20-other"/>
+</lexUnit>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" POS="N" name="zit.n" ID="7091" frame="Body_mark" frameID="393" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="Attachment" name="Attachment"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Body_m" name="Body_mark"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="cause" name="Cause"/>
+            <FE fgColor="000000" bgColor="d0d0d0" type="Peripheral" abbrev="con" name="Constituents"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="Desc" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Poss" name="Possessor"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="typ" name="Type"/>
+        </frame>
+    </header>
+    <definition>FN: a pimple</definition>
+    <lexeme POS="N" name="zit"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Attachment"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Attachment"/>
+                <annoSet ID="1568201"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Body_mark"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Body_mark"/>
+                <annoSet ID="1568201"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Possessor"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="2nd" FE="Possessor"/>
+                <annoSet ID="1568201"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Attachment"/>
+            <FE name="Body_mark"/>
+            <FE name="Possessor"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Attachment"/>
+                <valenceUnit GF="" PT="DEN" FE="Body_mark"/>
+                <valenceUnit GF="" PT="2nd" FE="Possessor"/>
+                <annoSet ID="1568201"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-001-all">
+        <sentence sentNo="0" aPos="72645541" ID="1058398">
+            <text>He 's only on antiboyotics as it is , for this zit on his armpit and his impetoygo . </text>
+            <annotationSet cDate="01/08/2003 12:44:06 PST Wed" status="UNANN" ID="1568200">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="4" start="3" name="VBZ"/>
+                    <label end="9" start="6" name="AV0"/>
+                    <label end="12" start="11" name="PRP"/>
+                    <label end="25" start="14" name="NN1"/>
+                    <label end="28" start="27" name="CJS"/>
+                    <label end="31" start="30" name="PNP"/>
+                    <label end="34" start="33" name="VBZ"/>
+                    <label end="36" start="36" name="PUN"/>
+                    <label end="40" start="38" name="PRP"/>
+                    <label end="45" start="42" name="DT0"/>
+                    <label end="49" start="47" name="NN1"/>
+                    <label end="52" start="51" name="PRP"/>
+                    <label end="56" start="54" name="DPS"/>
+                    <label end="63" start="58" name="NN1"/>
+                    <label end="67" start="65" name="CJC"/>
+                    <label end="71" start="69" name="DPS"/>
+                    <label end="81" start="73" name="NN1"/>
+                    <label end="83" start="83" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:44:06 PST Wed" status="MANUAL" ID="1568201">
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="3507" end="49" start="47" name="Body_mark"/>
+                    <label cBy="268" feID="3506" end="63" start="51" name="Attachment"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="63" start="51" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="63" start="51" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="49" start="47" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+                <layer rank="2" name="FE">
+                    <label cBy="268" feID="3510" end="56" start="54" name="Possessor"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

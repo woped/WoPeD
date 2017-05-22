@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" POS="A" name="ambrosial.a" ID="4938" frame="Chemical-sense_description" frameID="271" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Source" name="Perceptual_source"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Percept" name="Sensory_attribute"/>
+        </frame>
+    </header>
+    <definition>FN: extremely tasty</definition>
+    <lexeme POS="A" name="ambrosial"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Perceptual_source"/>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="N" FE="Perceptual_source"/>
+                <annoSet ID="1057984"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Perceptual_source"/>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="N" FE="Perceptual_source"/>
+                <annoSet ID="1057984"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="A-001-all">
+        <sentence sentNo="0" aPos="11861912" ID="799776">
+            <text>Ambrosial Butter with the temper 'd Cheese : </text>
+            <annotationSet cDate="01/07/2003 03:01:26 PST Tue" status="UNANN" ID="1057983">
+                <layer rank="1" name="BNC">
+                    <label end="8" start="0" name="AJ0"/>
+                    <label end="15" start="10" name="NN1"/>
+                    <label end="20" start="17" name="PRP"/>
+                    <label end="24" start="22" name="AT0"/>
+                    <label end="31" start="26" name="NN1"/>
+                    <label end="34" start="33" name="VHD"/>
+                    <label end="41" start="36" name="NN1"/>
+                    <label end="43" start="43" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:01:26 PST Tue" status="MANUAL" ID="1057984">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="2324" end="15" start="10" name="Perceptual_source"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="15" start="10" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="15" start="10" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="8" start="0" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

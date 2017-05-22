@@ -1,0 +1,623 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="lock.n" ID="2600" frame="Hair_configuration" frameID="126" totalAnnotated="8" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="Acc" name="Accessory"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Core" abbrev="Cfg" name="Configuration"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="Hair" name="Hair"/>
+            <FE fgColor="800080" bgColor="FFFF00" type="Core" abbrev="Hair-Prop" name="Hair_Property"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="Loc" name="Location"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Poss" name="Possessor"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Subr" name="Subregion"/>
+        </frame>
+    </header>
+    <definition>COD: a) a piece of a person's hair that coils or hangs together.  b) locks chiefly poetic/literary a person's hair.</definition>
+    <lexeme POS="N" name="lock"/>
+    <valences>
+        <governor type="Gov" lemma="cut">
+            <annoSet ID="183569"/>
+            <annoSet ID="183577"/>
+        </governor>
+        <governor type="Gov" lemma="cut off">
+            <annoSet ID="184071"/>
+        </governor>
+        <FERealization total="8">
+            <FE name="Configuration"/>
+            <pattern total="5">
+                <valenceUnit GF="" PT="2nd" FE="Configuration"/>
+                <annoSet ID="183541"/>
+                <annoSet ID="183569"/>
+                <annoSet ID="183577"/>
+                <annoSet ID="183797"/>
+                <annoSet ID="183809"/>
+            </pattern>
+            <pattern total="3">
+                <valenceUnit GF="" PT="DEN" FE="Configuration"/>
+                <annoSet ID="184061"/>
+                <annoSet ID="184071"/>
+                <annoSet ID="184087"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="8">
+            <FE name="Hair"/>
+            <pattern total="5">
+                <valenceUnit GF="" PT="DEN" FE="Hair"/>
+                <annoSet ID="183541"/>
+                <annoSet ID="183569"/>
+                <annoSet ID="183577"/>
+                <annoSet ID="183797"/>
+                <annoSet ID="183809"/>
+            </pattern>
+            <pattern total="3">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Hair"/>
+                <annoSet ID="184061"/>
+                <annoSet ID="184071"/>
+                <annoSet ID="184087"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Hair_Property"/>
+            <pattern total="4">
+                <valenceUnit GF="Dep" PT="AJP" FE="Hair_Property"/>
+                <annoSet ID="183541"/>
+                <annoSet ID="183569"/>
+                <annoSet ID="183577"/>
+                <annoSet ID="183797"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[into]" FE="Hair_Property"/>
+                <annoSet ID="183569"/>
+                <annoSet ID="183577"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Hair_Property"/>
+                <annoSet ID="183809"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Possessor"/>
+            <pattern total="3">
+                <valenceUnit GF="Gen" PT="Poss" FE="Possessor"/>
+                <annoSet ID="183569"/>
+                <annoSet ID="183577"/>
+                <annoSet ID="183809"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="" PT="2nd" FE="Possessor"/>
+                <annoSet ID="184061"/>
+                <annoSet ID="184071"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Configuration"/>
+            <FE name="Hair"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Configuration"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Hair"/>
+                <annoSet ID="184087"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Configuration"/>
+            <FE name="Hair"/>
+            <FE name="Hair_Property"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="2nd" FE="Configuration"/>
+                <valenceUnit GF="" PT="DEN" FE="Hair"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Hair_Property"/>
+                <annoSet ID="183541"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Configuration"/>
+            <FE name="Hair"/>
+            <FE name="Hair_Property"/>
+            <FE name="Hair_Property"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="2nd" FE="Configuration"/>
+                <valenceUnit GF="" PT="DEN" FE="Hair"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Hair_Property"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Hair_Property"/>
+                <annoSet ID="183797"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Configuration"/>
+            <FE name="Hair"/>
+            <FE name="Hair_Property"/>
+            <FE name="Hair_Property"/>
+            <FE name="Possessor"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="2nd" FE="Configuration"/>
+                <valenceUnit GF="" PT="DEN" FE="Hair"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Hair_Property"/>
+                <valenceUnit GF="Dep" PT="PP[into]" FE="Hair_Property"/>
+                <valenceUnit GF="Gen" PT="Poss" FE="Possessor"/>
+                <annoSet ID="183569"/>
+                <annoSet ID="183577"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Configuration"/>
+            <FE name="Hair"/>
+            <FE name="Hair_Property"/>
+            <FE name="Possessor"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="2nd" FE="Configuration"/>
+                <valenceUnit GF="" PT="DEN" FE="Hair"/>
+                <valenceUnit GF="Dep" PT="N" FE="Hair_Property"/>
+                <valenceUnit GF="Gen" PT="Poss" FE="Possessor"/>
+                <annoSet ID="183809"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Configuration"/>
+            <FE name="Hair"/>
+            <FE name="Possessor"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="DEN" FE="Configuration"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Hair"/>
+                <valenceUnit GF="" PT="2nd" FE="Possessor"/>
+                <annoSet ID="184061"/>
+                <annoSet ID="184071"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-220-vpto"/>
+    <subCorpus name="N-230-vping">
+        <sentence sentNo="0" aPos="31635774" ID="268976">
+            <text>But it is Day-Lewis who dominates everything as he races around , long locks flowing and trusty musket in tow . </text>
+            <annotationSet cDate="01/06/2003 09:14:03 PST Mon" status="UNANN" ID="183540">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="CJC"/>
+                    <label end="5" start="4" name="PNP"/>
+                    <label end="8" start="7" name="VBZ"/>
+                    <label end="18" start="10" name="NP0"/>
+                    <label end="22" start="20" name="PNQ"/>
+                    <label end="32" start="24" name="VVZ"/>
+                    <label end="43" start="34" name="PNI"/>
+                    <label end="46" start="45" name="CJS"/>
+                    <label end="49" start="48" name="PNP"/>
+                    <label end="55" start="51" name="VVZ"/>
+                    <label end="62" start="57" name="AVP"/>
+                    <label end="64" start="64" name="PUN"/>
+                    <label end="69" start="66" name="AJ0-AV0"/>
+                    <label end="75" start="71" name="NN2"/>
+                    <label end="83" start="77" name="VVG"/>
+                    <label end="87" start="85" name="CJC"/>
+                    <label end="94" start="89" name="AJ0"/>
+                    <label end="101" start="96" name="NN1"/>
+                    <label end="104" start="103" name="PRP"/>
+                    <label end="108" start="106" name="NN1"/>
+                    <label end="110" start="110" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 09:14:03 PST Mon" status="MANUAL" ID="183541">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="785" end="69" start="66" name="Hair_Property"/>
+                    <label cBy="669" feID="777" end="75" start="71" name="Hair"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="69" start="66" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="69" start="66" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="75" start="71" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+                <layer rank="2" name="FE">
+                    <label cBy="669" feID="782" end="75" start="71" name="Configuration"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-280-poss">
+        <sentence sentNo="0" aPos="27534896" ID="268990">
+            <text>The stylist helped the 29-year-old make a symbolic break from her troubled past by cutting her blonde locks into a short , ` slick , groomed style &quot; . </text>
+            <annotationSet cDate="01/06/2003 09:14:05 PST Mon" status="UNANN" ID="183568">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="10" start="4" name="NN1"/>
+                    <label end="17" start="12" name="VVD-VVN"/>
+                    <label end="21" start="19" name="AT0"/>
+                    <label end="33" start="23" name="AJ0-NN1"/>
+                    <label end="38" start="35" name="VVB"/>
+                    <label end="40" start="40" name="AT0"/>
+                    <label end="49" start="42" name="AJ0"/>
+                    <label end="55" start="51" name="NN1"/>
+                    <label end="60" start="57" name="PRP"/>
+                    <label end="64" start="62" name="PNP"/>
+                    <label end="73" start="66" name="AJ0-VVD"/>
+                    <label end="78" start="75" name="AV0"/>
+                    <label end="81" start="80" name="PRP"/>
+                    <label end="89" start="83" name="VVG"/>
+                    <label end="93" start="91" name="DPS"/>
+                    <label end="100" start="95" name="AJ0"/>
+                    <label end="106" start="102" name="NN2"/>
+                    <label end="111" start="108" name="PRP"/>
+                    <label end="113" start="113" name="AT0"/>
+                    <label end="119" start="115" name="AJ0"/>
+                    <label end="121" start="121" name="PUN"/>
+                    <label end="123" start="123" name="PUQ"/>
+                    <label end="129" start="125" name="AJ0-NN1"/>
+                    <label end="131" start="131" name="PUN"/>
+                    <label end="139" start="133" name="AJ0-VVD"/>
+                    <label end="145" start="141" name="NN1"/>
+                    <label end="147" start="147" name="PUQ"/>
+                    <label end="149" start="149" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 09:14:05 PST Mon" status="MANUAL" ID="183569">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="785" end="145" start="108" name="Hair_Property"/>
+                    <label cBy="669" feID="785" end="100" start="95" name="Hair_Property"/>
+                    <label cBy="669" feID="777" end="106" start="102" name="Hair"/>
+                    <label cBy="669" feID="779" end="93" start="91" name="Possessor"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="145" start="108" name="Dep"/>
+                    <label end="100" start="95" name="Dep"/>
+                    <label end="93" start="91" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="145" start="108" name="PP"/>
+                    <label end="100" start="95" name="AJP"/>
+                    <label end="93" start="91" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="106" start="102" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="89" start="83" name="Gov"/>
+                    <label end="145" start="91" name="X"/>
+                </layer>
+                <layer rank="2" name="FE">
+                    <label cBy="669" feID="782" end="106" start="102" name="Configuration"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="43519212" ID="268994">
+            <text>He then cut her longish locks into a classic , chin-length bob . </text>
+            <annotationSet cDate="01/06/2003 09:14:05 PST Mon" status="UNANN" ID="183576">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="6" start="3" name="AV0"/>
+                    <label end="10" start="8" name="VVD"/>
+                    <label end="14" start="12" name="DPS"/>
+                    <label end="22" start="16" name="AJ0"/>
+                    <label end="28" start="24" name="NN2"/>
+                    <label end="33" start="30" name="PRP"/>
+                    <label end="35" start="35" name="AT0"/>
+                    <label end="43" start="37" name="AJ0-NN1"/>
+                    <label end="45" start="45" name="PUN"/>
+                    <label end="57" start="47" name="AJ0"/>
+                    <label end="61" start="59" name="NN1"/>
+                    <label end="63" start="63" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 09:14:05 PST Mon" status="MANUAL" ID="183577">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="779" end="14" start="12" name="Possessor"/>
+                    <label cBy="669" feID="785" end="22" start="16" name="Hair_Property"/>
+                    <label cBy="669" feID="777" end="28" start="24" name="Hair"/>
+                    <label cBy="669" feID="785" end="61" start="30" name="Hair_Property"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="14" start="12" name="Gen"/>
+                    <label end="22" start="16" name="Dep"/>
+                    <label end="61" start="30" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="14" start="12" name="Poss"/>
+                    <label end="22" start="16" name="AJP"/>
+                    <label end="61" start="30" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="28" start="24" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="10" start="8" name="Gov"/>
+                    <label end="61" start="12" name="X"/>
+                </layer>
+                <layer rank="2" name="FE">
+                    <label cBy="669" feID="782" end="28" start="24" name="Configuration"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-290-posscmpd"/>
+    <subCorpus name="N-300-cmpd"/>
+    <subCorpus name="N-380-other"/>
+    <subCorpus name="N-429-lcoll-combination"/>
+    <subCorpus name="N-429-lcoll-door"/>
+    <subCorpus name="N-429-lcoll-gate"/>
+    <subCorpus name="N-429-lcoll-hair">
+        <sentence sentNo="0" aPos="33824427" ID="269104">
+            <text>There 's a perm to suit all hair types -- transform lank , fine hair into thick manageable locks or long straight hair into a mass of tumbling curls . </text>
+            <annotationSet cDate="01/06/2003 09:14:20 PST Mon" status="UNANN" ID="183796">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="EX0"/>
+                    <label end="7" start="6" name="VBZ"/>
+                    <label end="9" start="9" name="AT0"/>
+                    <label end="14" start="11" name="NN1"/>
+                    <label end="17" start="16" name="TO0"/>
+                    <label end="22" start="19" name="VVI"/>
+                    <label end="26" start="24" name="DT0"/>
+                    <label end="31" start="28" name="NN1"/>
+                    <label end="37" start="33" name="NN2"/>
+                    <label end="40" start="39" name="PUN"/>
+                    <label end="50" start="42" name="NN1-VVB"/>
+                    <label end="55" start="52" name="NN1"/>
+                    <label end="57" start="57" name="PUN"/>
+                    <label end="62" start="59" name="AJ0"/>
+                    <label end="67" start="64" name="NN1"/>
+                    <label end="72" start="69" name="PRP"/>
+                    <label end="78" start="74" name="AJ0"/>
+                    <label end="89" start="80" name="AJ0"/>
+                    <label end="95" start="91" name="NN2"/>
+                    <label end="98" start="97" name="CJC"/>
+                    <label end="103" start="100" name="AV0"/>
+                    <label end="112" start="105" name="AJ0"/>
+                    <label end="117" start="114" name="NN1"/>
+                    <label end="122" start="119" name="PRP"/>
+                    <label end="124" start="124" name="AT0"/>
+                    <label end="129" start="126" name="NN1"/>
+                    <label end="132" start="131" name="PRF"/>
+                    <label end="141" start="134" name="AJ0-VVG"/>
+                    <label end="147" start="143" name="NN2"/>
+                    <label end="149" start="149" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 09:14:20 PST Mon" status="MANUAL" ID="183797">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="785" end="78" start="74" name="Hair_Property"/>
+                    <label cBy="669" feID="785" end="89" start="80" name="Hair_Property"/>
+                    <label cBy="669" feID="777" end="95" start="91" name="Hair"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="78" start="74" name="Dep"/>
+                    <label end="89" start="80" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="78" start="74" name="AJP"/>
+                    <label end="89" start="80" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="95" start="91" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+                <layer rank="2" name="FE">
+                    <label cBy="669" feID="782" end="95" start="91" name="Configuration"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="79696547" ID="269110">
+            <text>I saw that there were grey hairs among his auburn locks . </text>
+            <annotationSet cDate="01/06/2003 09:14:20 PST Mon" status="UNANN" ID="183808">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PNP"/>
+                    <label end="4" start="2" name="VVD"/>
+                    <label end="9" start="6" name="CJT"/>
+                    <label end="15" start="11" name="EX0"/>
+                    <label end="20" start="17" name="VBD"/>
+                    <label end="25" start="22" name="AJ0"/>
+                    <label end="31" start="27" name="NN2"/>
+                    <label end="37" start="33" name="PRP"/>
+                    <label end="41" start="39" name="DPS"/>
+                    <label end="48" start="43" name="NN1"/>
+                    <label end="54" start="50" name="NN2"/>
+                    <label end="56" start="56" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 09:14:20 PST Mon" status="MANUAL" ID="183809">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="779" end="41" start="39" name="Possessor"/>
+                    <label cBy="669" feID="785" end="48" start="43" name="Hair_Property"/>
+                    <label cBy="669" feID="777" end="54" start="50" name="Hair"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="41" start="39" name="Gen"/>
+                    <label end="48" start="43" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="41" start="39" name="Poss"/>
+                    <label end="48" start="43" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="54" start="50" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+                <layer rank="2" name="FE">
+                    <label cBy="669" feID="782" end="54" start="50" name="Configuration"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-429-lcoll-key"/>
+    <subCorpus name="N-429-lcoll-lever"/>
+    <subCorpus name="N-429-lcoll-safety"/>
+    <subCorpus name="N-429-lcoll-security"/>
+    <subCorpus name="N-429-lcoll-window"/>
+    <subCorpus name="N-429-lcoll-yale"/>
+    <subCorpus name="N-429-rcoll-door"/>
+    <subCorpus name="N-429-rcoll-gate"/>
+    <subCorpus name="N-429-rcoll-hair">
+        <sentence sentNo="0" aPos="54327300" ID="269236">
+            <text>As a final touch each was accompanied by a lock of the particular loved one 's hair . </text>
+            <annotationSet cDate="01/06/2003 09:14:36 PST Mon" status="UNANN" ID="184060">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="CJS-PRP"/>
+                    <label end="3" start="3" name="AT0"/>
+                    <label end="9" start="5" name="AJ0"/>
+                    <label end="15" start="11" name="NN1"/>
+                    <label end="20" start="17" name="DT0"/>
+                    <label end="24" start="22" name="VBD"/>
+                    <label end="36" start="26" name="VVN"/>
+                    <label end="39" start="38" name="PRP"/>
+                    <label end="41" start="41" name="AT0"/>
+                    <label end="46" start="43" name="NN1"/>
+                    <label end="49" start="48" name="PRF"/>
+                    <label end="53" start="51" name="AT0"/>
+                    <label end="64" start="55" name="NN1"/>
+                    <label end="70" start="66" name="VVD-VVN"/>
+                    <label end="74" start="72" name="CRD"/>
+                    <label end="77" start="76" name="VBZ"/>
+                    <label end="82" start="79" name="NN1"/>
+                    <label end="84" start="84" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 09:14:36 PST Mon" status="MANUAL" ID="184061">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="782" end="46" start="43" name="Configuration"/>
+                    <label cBy="669" feID="777" end="82" start="48" name="Hair"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="82" start="48" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="82" start="48" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="46" start="43" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+                <layer rank="2" name="FE">
+                    <label cBy="669" feID="779" end="74" start="51" name="Possessor"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="69206521" ID="269241">
+            <text>But I wanted something to remember her by , so I just picked up a pair of scissors that were lying around and cut off a lock of her hair . </text>
+            <annotationSet cDate="01/06/2003 09:14:36 PST Mon" status="UNANN" ID="184070">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="CJC"/>
+                    <label end="4" start="4" name="PNP"/>
+                    <label end="11" start="6" name="VVD"/>
+                    <label end="21" start="13" name="PNI"/>
+                    <label end="24" start="23" name="TO0"/>
+                    <label end="33" start="26" name="VVI"/>
+                    <label end="37" start="35" name="PNP"/>
+                    <label end="40" start="39" name="AVP-PRP"/>
+                    <label end="42" start="42" name="PUN"/>
+                    <label end="45" start="44" name="CJS"/>
+                    <label end="47" start="47" name="PNP"/>
+                    <label end="52" start="49" name="AV0"/>
+                    <label end="59" start="54" name="VVD-VVN"/>
+                    <label end="62" start="61" name="AVP-PRP"/>
+                    <label end="64" start="64" name="AT0"/>
+                    <label end="69" start="66" name="NN0"/>
+                    <label end="72" start="71" name="PRF"/>
+                    <label end="81" start="74" name="NN2"/>
+                    <label end="86" start="83" name="CJT"/>
+                    <label end="91" start="88" name="VBD"/>
+                    <label end="97" start="93" name="VVG"/>
+                    <label end="104" start="99" name="AVP"/>
+                    <label end="108" start="106" name="CJC"/>
+                    <label end="112" start="110" name="VVD"/>
+                    <label end="116" start="114" name="AVP-PRP"/>
+                    <label end="118" start="118" name="AT0"/>
+                    <label end="123" start="120" name="NN1"/>
+                    <label end="126" start="125" name="PRF"/>
+                    <label end="130" start="128" name="DPS"/>
+                    <label end="135" start="132" name="NN1"/>
+                    <label end="137" start="137" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 09:14:37 PST Mon" status="MANUAL" ID="184071">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="777" end="135" start="125" name="Hair"/>
+                    <label cBy="669" feID="782" end="123" start="120" name="Configuration"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="135" start="125" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="135" start="125" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="123" start="120" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="112" start="110" name="Gov"/>
+                    <label end="116" start="114" name="Gov"/>
+                    <label end="135" start="118" name="X"/>
+                </layer>
+                <layer rank="2" name="FE">
+                    <label cBy="669" feID="779" end="130" start="128" name="Possessor"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="101007365" ID="269249">
+            <text>A lock of straight chestnut-brown hair flopped over her brother 's high , idealistic forehead , and he smiled his crooked , boyish smile at her . </text>
+            <annotationSet cDate="01/06/2003 09:14:38 PST Mon" status="UNANN" ID="184086">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="AT0"/>
+                    <label end="5" start="2" name="NN1"/>
+                    <label end="8" start="7" name="PRF"/>
+                    <label end="17" start="10" name="AJ0-AV0"/>
+                    <label end="32" start="19" name="AJ0"/>
+                    <label end="37" start="34" name="NN1"/>
+                    <label end="45" start="39" name="VVD"/>
+                    <label end="50" start="47" name="AVP-PRP"/>
+                    <label end="54" start="52" name="DPS"/>
+                    <label end="62" start="56" name="NN1"/>
+                    <label end="65" start="64" name="VBZ"/>
+                    <label end="70" start="67" name="AJ0-AV0"/>
+                    <label end="72" start="72" name="PUN"/>
+                    <label end="83" start="74" name="AJ0"/>
+                    <label end="92" start="85" name="NN1"/>
+                    <label end="94" start="94" name="PUN"/>
+                    <label end="98" start="96" name="CJC"/>
+                    <label end="101" start="100" name="PNP"/>
+                    <label end="108" start="103" name="VVD"/>
+                    <label end="112" start="110" name="PNP"/>
+                    <label end="120" start="114" name="AJ0-VVD"/>
+                    <label end="122" start="122" name="PUN"/>
+                    <label end="129" start="124" name="AJ0"/>
+                    <label end="135" start="131" name="NN1"/>
+                    <label end="138" start="137" name="PRP"/>
+                    <label end="142" start="140" name="PNP"/>
+                    <label end="144" start="144" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 09:14:38 PST Mon" status="MANUAL" ID="184087">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="782" end="5" start="2" name="Configuration"/>
+                    <label cBy="669" feID="777" end="37" start="7" name="Hair"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="37" start="7" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="37" start="7" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="5" start="2" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-429-rcoll-key"/>
+    <subCorpus name="N-429-rcoll-security"/>
+    <subCorpus name="N-429-rcoll-window"/>
+</lexUnit>

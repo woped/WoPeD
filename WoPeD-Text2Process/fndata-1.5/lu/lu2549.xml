@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" incorporatedFE="Body_part" POS="N" name="hindlimb.n" ID="2549" frame="Observable_body_parts" frameID="119" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Peripheral" abbrev="Attachment" name="Attachment"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Body_P" name="Body_part"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="Desc" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="OrLoc" name="Orientational_Location"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Poss" name="Possessor"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Subr" name="Subregion"/>
+        </frame>
+    </header>
+    <definition>FN: any of the rearmost limbs of a creature.</definition>
+    <lexeme POS="N" name="hindlimb"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Body_part"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Body_part"/>
+                <annoSet ID="162015"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Possessor"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Possessor"/>
+                <annoSet ID="162015"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Body_part"/>
+            <FE name="Possessor"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Body_part"/>
+                <valenceUnit GF="" PT="DNI" FE="Possessor"/>
+                <annoSet ID="162015"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-380-other">
+        <sentence sentNo="0" aPos="14993316" ID="258130">
+            <text>In whales , the digits are longer in the hand and the hindlimb has disappeared . </text>
+            <annotationSet cDate="01/06/2003 08:49:32 PST Mon" status="UNANN" ID="162014">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PRP"/>
+                    <label end="8" start="3" name="NN2"/>
+                    <label end="10" start="10" name="PUN"/>
+                    <label end="14" start="12" name="AT0"/>
+                    <label end="21" start="16" name="NN2"/>
+                    <label end="25" start="23" name="VBB"/>
+                    <label end="32" start="27" name="AV0"/>
+                    <label end="35" start="34" name="PRP"/>
+                    <label end="39" start="37" name="AT0"/>
+                    <label end="44" start="41" name="NN1"/>
+                    <label end="48" start="46" name="CJC"/>
+                    <label end="52" start="50" name="AT0"/>
+                    <label end="61" start="54" name="NN1"/>
+                    <label end="65" start="63" name="VHZ"/>
+                    <label end="77" start="67" name="VVN"/>
+                    <label end="79" start="79" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 08:49:32 PST Mon" status="MANUAL" ID="162015">
+                <layer rank="1" name="FE">
+                    <label cBy="709" feID="692" end="61" start="54" name="Body_part"/>
+                    <label cBy="709" feID="611" itype="DNI" name="Possessor"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="61" start="54" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

@@ -1,0 +1,553 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="A" name="curative.a" ID="4022" frame="Cure" frameID="50" totalAnnotated="9" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Core" abbrev="Affl" name="Affliction"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core" abbrev="B_p" name="Body_part"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Extra-Thematic" abbrev="Dur" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Hlr" name="Healer"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Core" abbrev="Med" name="Medication"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Motive" name="Motivation"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Pat" name="Patient"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Trtm" name="Treatment"/>
+        </frame>
+    </header>
+    <definition>COD: able to cure disease</definition>
+    <lexeme POS="A" name="curative"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Degree"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Degree"/>
+                <annoSet ID="714370"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="9">
+            <FE name="Treatment"/>
+            <pattern total="8">
+                <valenceUnit GF="Head" PT="N" FE="Treatment"/>
+                <annoSet ID="714370"/>
+                <annoSet ID="714406"/>
+                <annoSet ID="714410"/>
+                <annoSet ID="714422"/>
+                <annoSet ID="714432"/>
+                <annoSet ID="714458"/>
+                <annoSet ID="714608"/>
+                <annoSet ID="714624"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Treatment"/>
+                <annoSet ID="714374"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Degree"/>
+            <FE name="Treatment"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Degree"/>
+                <valenceUnit GF="Head" PT="N" FE="Treatment"/>
+                <annoSet ID="714370"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="8">
+            <FE name="Treatment"/>
+            <pattern total="7">
+                <valenceUnit GF="Head" PT="N" FE="Treatment"/>
+                <annoSet ID="714406"/>
+                <annoSet ID="714410"/>
+                <annoSet ID="714422"/>
+                <annoSet ID="714432"/>
+                <annoSet ID="714458"/>
+                <annoSet ID="714608"/>
+                <annoSet ID="714624"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Treatment"/>
+                <annoSet ID="714374"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="A-001-all">
+        <sentence sentNo="0" aPos="1603770" ID="616540">
+            <text>` If one of my patients wants to give up a potentially curative treatment in favour of an alternative therapy , then I will try to dissuade them . </text>
+            <annotationSet cDate="01/07/2003 08:03:16 PST Tue" status="UNANN" ID="714369">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PUQ"/>
+                    <label end="3" start="2" name="CJS"/>
+                    <label end="7" start="5" name="CRD"/>
+                    <label end="10" start="9" name="PRF"/>
+                    <label end="13" start="12" name="DPS"/>
+                    <label end="22" start="15" name="NN2"/>
+                    <label end="28" start="24" name="VVZ"/>
+                    <label end="31" start="30" name="TO0"/>
+                    <label end="36" start="33" name="VVI"/>
+                    <label end="39" start="38" name="AVP"/>
+                    <label end="41" start="41" name="AT0"/>
+                    <label end="53" start="43" name="AV0"/>
+                    <label end="62" start="55" name="AJ0"/>
+                    <label end="72" start="64" name="NN1"/>
+                    <label end="75" start="74" name="PRP"/>
+                    <label end="82" start="77" name="PRP"/>
+                    <label end="85" start="84" name="PRP"/>
+                    <label end="88" start="87" name="AT0"/>
+                    <label end="100" start="90" name="AJ0-NN1"/>
+                    <label end="108" start="102" name="NN1"/>
+                    <label end="110" start="110" name="PUN"/>
+                    <label end="115" start="112" name="AV0"/>
+                    <label end="117" start="117" name="PNP"/>
+                    <label end="122" start="119" name="VM0"/>
+                    <label end="126" start="124" name="VVI"/>
+                    <label end="129" start="128" name="TO0"/>
+                    <label end="138" start="131" name="VVI"/>
+                    <label end="143" start="140" name="PNP"/>
+                    <label end="145" start="145" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 08:03:16 PST Tue" status="MANUAL" ID="714370">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="1203" end="53" start="43" name="Degree"/>
+                    <label cBy="669" feID="211" end="72" start="64" name="Treatment"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="53" start="43" name="Dep"/>
+                    <label end="72" start="64" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="53" start="43" name="AVP"/>
+                    <label end="72" start="64" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="62" start="55" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="8342291" ID="616542">
+            <text>It is a good Christian well now , and the water is said to be curative . </text>
+            <annotationSet cDate="01/07/2003 08:03:17 PST Tue" status="UNANN" ID="714373">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="4" start="3" name="VBZ"/>
+                    <label end="6" start="6" name="AT0"/>
+                    <label end="11" start="8" name="AJ0"/>
+                    <label end="21" start="13" name="AJ0-NN1"/>
+                    <label end="26" start="23" name="AV0"/>
+                    <label end="30" start="28" name="AV0"/>
+                    <label end="32" start="32" name="PUN"/>
+                    <label end="36" start="34" name="CJC"/>
+                    <label end="40" start="38" name="AT0"/>
+                    <label end="46" start="42" name="NN1"/>
+                    <label end="49" start="48" name="VBZ"/>
+                    <label end="54" start="51" name="VVN"/>
+                    <label end="57" start="56" name="TO0"/>
+                    <label end="60" start="59" name="VBI"/>
+                    <label end="69" start="62" name="AJ0"/>
+                    <label end="71" start="71" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 08:03:17 PST Tue" status="MANUAL" ID="714374">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="211" end="46" start="38" name="Treatment"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="46" start="38" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="46" start="38" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="69" start="62" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj">
+                    <label end="49" start="48" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="13951217" ID="616558">
+            <text>In the absence of supplies of the curative substance and of any prospect of making it within months or years , such publicity is a tragic source of false hope and disillusion , and would be better avoided . </text>
+            <annotationSet cDate="01/07/2003 08:03:19 PST Tue" status="UNANN" ID="714405">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PRP"/>
+                    <label end="5" start="3" name="AT0"/>
+                    <label end="13" start="7" name="NN1"/>
+                    <label end="16" start="15" name="PRF"/>
+                    <label end="25" start="18" name="NN2"/>
+                    <label end="28" start="27" name="PRF"/>
+                    <label end="32" start="30" name="AT0"/>
+                    <label end="41" start="34" name="AJ0"/>
+                    <label end="51" start="43" name="NN1"/>
+                    <label end="55" start="53" name="CJC"/>
+                    <label end="58" start="57" name="PRF"/>
+                    <label end="62" start="60" name="DT0"/>
+                    <label end="71" start="64" name="NN1"/>
+                    <label end="74" start="73" name="PRF"/>
+                    <label end="81" start="76" name="VVG"/>
+                    <label end="84" start="83" name="PNP"/>
+                    <label end="91" start="86" name="PRP"/>
+                    <label end="98" start="93" name="NN2"/>
+                    <label end="101" start="100" name="CJC"/>
+                    <label end="107" start="103" name="NN2"/>
+                    <label end="109" start="109" name="PUN"/>
+                    <label end="114" start="111" name="DT0"/>
+                    <label end="124" start="116" name="NN1"/>
+                    <label end="127" start="126" name="VBZ"/>
+                    <label end="129" start="129" name="AT0"/>
+                    <label end="136" start="131" name="AJ0"/>
+                    <label end="143" start="138" name="NN1"/>
+                    <label end="146" start="145" name="PRF"/>
+                    <label end="152" start="148" name="AJ0"/>
+                    <label end="157" start="154" name="NN1"/>
+                    <label end="161" start="159" name="CJC"/>
+                    <label end="173" start="163" name="VVB"/>
+                    <label end="175" start="175" name="PUN"/>
+                    <label end="179" start="177" name="CJC"/>
+                    <label end="185" start="181" name="VM0"/>
+                    <label end="188" start="187" name="VBI"/>
+                    <label end="195" start="190" name="AV0"/>
+                    <label end="203" start="197" name="VVN"/>
+                    <label end="205" start="205" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 08:03:19 PST Tue" status="MANUAL" ID="714406">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="211" end="51" start="43" name="Treatment"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="51" start="43" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="51" start="43" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="41" start="34" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="14018721" ID="616560">
+            <text>The problem with mercury was that the curative dose was much too close to the lethal dose , and it was easy to make the patient worse as a result of treatment . </text>
+            <annotationSet cDate="01/07/2003 08:03:19 PST Tue" status="UNANN" ID="714409">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="10" start="4" name="NN1"/>
+                    <label end="15" start="12" name="PRP"/>
+                    <label end="23" start="17" name="NN1"/>
+                    <label end="27" start="25" name="VBD"/>
+                    <label end="32" start="29" name="CJT"/>
+                    <label end="36" start="34" name="AT0"/>
+                    <label end="45" start="38" name="AJ0-NN1"/>
+                    <label end="50" start="47" name="NN1"/>
+                    <label end="54" start="52" name="VBD"/>
+                    <label end="59" start="56" name="AV0"/>
+                    <label end="63" start="61" name="AV0"/>
+                    <label end="69" start="65" name="AJ0-AV0"/>
+                    <label end="72" start="71" name="PRP"/>
+                    <label end="76" start="74" name="AT0"/>
+                    <label end="83" start="78" name="AJ0"/>
+                    <label end="88" start="85" name="NN1"/>
+                    <label end="90" start="90" name="PUN"/>
+                    <label end="94" start="92" name="CJC"/>
+                    <label end="97" start="96" name="PNP"/>
+                    <label end="101" start="99" name="VBD"/>
+                    <label end="106" start="103" name="AJ0"/>
+                    <label end="109" start="108" name="TO0"/>
+                    <label end="114" start="111" name="VVI"/>
+                    <label end="118" start="116" name="AT0"/>
+                    <label end="126" start="120" name="AJ0-NN1"/>
+                    <label end="132" start="128" name="AJC"/>
+                    <label end="135" start="134" name="CJS-PRP"/>
+                    <label end="137" start="137" name="AT0"/>
+                    <label end="144" start="139" name="NN1"/>
+                    <label end="147" start="146" name="PRF"/>
+                    <label end="157" start="149" name="NN1"/>
+                    <label end="159" start="159" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 08:03:19 PST Tue" status="MANUAL" ID="714410">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="211" end="50" start="47" name="Treatment"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="50" start="47" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="50" start="47" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="45" start="38" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="17598385" ID="616566">
+            <text>Curative treatment for such conditions is quite beyond the scope of this book . </text>
+            <annotationSet cDate="01/07/2003 08:03:20 PST Tue" status="UNANN" ID="714421">
+                <layer rank="1" name="BNC">
+                    <label end="7" start="0" name="AJ0"/>
+                    <label end="17" start="9" name="NN1"/>
+                    <label end="21" start="19" name="PRP"/>
+                    <label end="26" start="23" name="DT0"/>
+                    <label end="37" start="28" name="NN2"/>
+                    <label end="40" start="39" name="VBZ"/>
+                    <label end="46" start="42" name="AV0"/>
+                    <label end="53" start="48" name="PRP"/>
+                    <label end="57" start="55" name="AT0"/>
+                    <label end="63" start="59" name="NN1"/>
+                    <label end="66" start="65" name="PRF"/>
+                    <label end="71" start="68" name="DT0"/>
+                    <label end="76" start="73" name="NN1"/>
+                    <label end="78" start="78" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 08:03:20 PST Tue" status="MANUAL" ID="714422">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="211" end="17" start="9" name="Treatment"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="17" start="9" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="17" start="9" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="7" start="0" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="19920669" ID="616571">
+            <text>Chinese medicine regards tonic and adjustive remedies as the most important ( the ` kings &quot; ) of all medicines while curative drugs are the least important ( the ` servants &quot; ) . </text>
+            <annotationSet cDate="01/07/2003 08:03:20 PST Tue" status="UNANN" ID="714431">
+                <layer rank="1" name="BNC">
+                    <label end="6" start="0" name="AJ0"/>
+                    <label end="15" start="8" name="NN1"/>
+                    <label end="23" start="17" name="VVZ"/>
+                    <label end="29" start="25" name="NN1"/>
+                    <label end="33" start="31" name="CJC"/>
+                    <label end="43" start="35" name="AJ0"/>
+                    <label end="52" start="45" name="NN2"/>
+                    <label end="55" start="54" name="PRP"/>
+                    <label end="59" start="57" name="AT0"/>
+                    <label end="64" start="61" name="DT0"/>
+                    <label end="74" start="66" name="AJ0"/>
+                    <label end="76" start="76" name="PUL"/>
+                    <label end="80" start="78" name="AT0"/>
+                    <label end="82" start="82" name="PUQ"/>
+                    <label end="88" start="84" name="NN2"/>
+                    <label end="90" start="90" name="PUQ"/>
+                    <label end="92" start="92" name="PUR"/>
+                    <label end="95" start="94" name="PRF"/>
+                    <label end="99" start="97" name="DT0"/>
+                    <label end="109" start="101" name="NN2-VVZ"/>
+                    <label end="115" start="111" name="CJS"/>
+                    <label end="124" start="117" name="AJ0"/>
+                    <label end="130" start="126" name="NN2"/>
+                    <label end="134" start="132" name="VBB"/>
+                    <label end="138" start="136" name="AT0"/>
+                    <label end="144" start="140" name="DT0"/>
+                    <label end="154" start="146" name="AJ0"/>
+                    <label end="156" start="156" name="PUL"/>
+                    <label end="160" start="158" name="AT0"/>
+                    <label end="162" start="162" name="PUQ"/>
+                    <label end="171" start="164" name="NN2"/>
+                    <label end="173" start="173" name="PUQ"/>
+                    <label end="175" start="175" name="PUR"/>
+                    <label end="177" start="177" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 08:03:20 PST Tue" status="MANUAL" ID="714432">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="211" end="130" start="126" name="Treatment"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="130" start="126" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="130" start="126" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="124" start="117" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="27313914" ID="616584">
+            <text>As for the supposedly curative hair of the dog , this stems from the ancient belief that the only cure for an infected dog bite was a poultice of milk , bread and fur from the offending animal . </text>
+            <annotationSet cDate="01/07/2003 08:03:24 PST Tue" status="UNANN" ID="714457">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PRP"/>
+                    <label end="5" start="3" name="PRP"/>
+                    <label end="9" start="7" name="AT0"/>
+                    <label end="20" start="11" name="AV0"/>
+                    <label end="29" start="22" name="AJ0"/>
+                    <label end="34" start="31" name="NN1"/>
+                    <label end="37" start="36" name="PRF"/>
+                    <label end="41" start="39" name="AT0"/>
+                    <label end="45" start="43" name="NN1"/>
+                    <label end="47" start="47" name="PUN"/>
+                    <label end="52" start="49" name="DT0"/>
+                    <label end="58" start="54" name="NN2-VVZ"/>
+                    <label end="63" start="60" name="PRP"/>
+                    <label end="67" start="65" name="AT0"/>
+                    <label end="75" start="69" name="AJ0"/>
+                    <label end="82" start="77" name="NN1"/>
+                    <label end="87" start="84" name="CJT"/>
+                    <label end="91" start="89" name="AT0"/>
+                    <label end="96" start="93" name="AJ0"/>
+                    <label end="101" start="98" name="NN1"/>
+                    <label end="105" start="103" name="PRP"/>
+                    <label end="108" start="107" name="AT0"/>
+                    <label end="117" start="110" name="AJ0"/>
+                    <label end="121" start="119" name="NN1"/>
+                    <label end="126" start="123" name="NN1"/>
+                    <label end="130" start="128" name="VBD"/>
+                    <label end="132" start="132" name="AT0"/>
+                    <label end="141" start="134" name="NN1"/>
+                    <label end="144" start="143" name="PRF"/>
+                    <label end="149" start="146" name="NN1"/>
+                    <label end="151" start="151" name="PUN"/>
+                    <label end="157" start="153" name="NN1"/>
+                    <label end="161" start="159" name="CJC"/>
+                    <label end="165" start="163" name="NN1-VVB"/>
+                    <label end="170" start="167" name="PRP"/>
+                    <label end="174" start="172" name="AT0"/>
+                    <label end="184" start="176" name="AJ0-NN1"/>
+                    <label end="191" start="186" name="NN1"/>
+                    <label end="193" start="193" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 08:03:24 PST Tue" status="MANUAL" ID="714458">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="211" end="45" start="31" name="Treatment"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="45" start="31" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="45" start="31" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="29" start="22" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="93048691" ID="616659">
+            <text>In terms of prognosis after curative surgery , Duke 's B colorectal cancer represents a therapeutic dilemma . </text>
+            <annotationSet cDate="01/07/2003 08:03:36 PST Tue" status="UNANN" ID="714607">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PRP"/>
+                    <label end="7" start="3" name="PRP"/>
+                    <label end="10" start="9" name="PRP"/>
+                    <label end="20" start="12" name="NN1"/>
+                    <label end="26" start="22" name="CJS-PRP"/>
+                    <label end="35" start="28" name="AJ0"/>
+                    <label end="43" start="37" name="NN1"/>
+                    <label end="45" start="45" name="PUN"/>
+                    <label end="50" start="47" name="NN1"/>
+                    <label end="53" start="52" name="VBZ"/>
+                    <label end="55" start="55" name="ZZ0"/>
+                    <label end="66" start="57" name="AJ0"/>
+                    <label end="73" start="68" name="NN1"/>
+                    <label end="84" start="75" name="VVZ"/>
+                    <label end="86" start="86" name="AT0"/>
+                    <label end="98" start="88" name="AJ0"/>
+                    <label end="106" start="100" name="NN1"/>
+                    <label end="108" start="108" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 08:03:36 PST Tue" status="MANUAL" ID="714608">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="211" end="43" start="37" name="Treatment"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="43" start="37" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="43" start="37" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="35" start="28" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="94032841" ID="616667">
+            <text>As the ineffectiveness of curative medicine is increasingly exposed ( and costs soar ) Western medicine has paid more attention to prevention , but again within a narrowly individualistic framework . </text>
+            <annotationSet cDate="01/07/2003 08:03:37 PST Tue" status="UNANN" ID="714623">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="CJS-PRP"/>
+                    <label end="5" start="3" name="AT0"/>
+                    <label end="21" start="7" name="NN1"/>
+                    <label end="24" start="23" name="PRF"/>
+                    <label end="33" start="26" name="AJ0"/>
+                    <label end="42" start="35" name="NN1"/>
+                    <label end="45" start="44" name="VBZ"/>
+                    <label end="58" start="47" name="AV0"/>
+                    <label end="66" start="60" name="VVD-VVN"/>
+                    <label end="68" start="68" name="PUL"/>
+                    <label end="72" start="70" name="CJC"/>
+                    <label end="78" start="74" name="NN2-VVZ"/>
+                    <label end="83" start="80" name="NN1-VVB"/>
+                    <label end="85" start="85" name="PUR"/>
+                    <label end="93" start="87" name="AJ0"/>
+                    <label end="102" start="95" name="NN1"/>
+                    <label end="106" start="104" name="VHZ"/>
+                    <label end="111" start="108" name="VVN"/>
+                    <label end="116" start="113" name="DT0"/>
+                    <label end="126" start="118" name="NN1"/>
+                    <label end="129" start="128" name="PRP"/>
+                    <label end="140" start="131" name="NN1"/>
+                    <label end="142" start="142" name="PUN"/>
+                    <label end="146" start="144" name="CJC"/>
+                    <label end="152" start="148" name="AV0"/>
+                    <label end="159" start="154" name="PRP"/>
+                    <label end="161" start="161" name="AT0"/>
+                    <label end="170" start="163" name="AV0"/>
+                    <label end="186" start="172" name="AJ0"/>
+                    <label end="196" start="188" name="NN1"/>
+                    <label end="198" start="198" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 08:03:37 PST Tue" status="MANUAL" ID="714624">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="211" end="42" start="35" name="Treatment"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="42" start="35" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="42" start="35" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="33" start="26" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

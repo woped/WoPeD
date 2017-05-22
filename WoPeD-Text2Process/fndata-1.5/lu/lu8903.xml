@@ -1,0 +1,567 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="V" name="cite.v" ID="8903" frame="Judgment_communication" frameID="219" totalAnnotated="7" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Add" name="Addressee"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Com" name="Communicator"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Extra-Thematic" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Depictt" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Eval" name="Evaluee"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Core" abbrev="Exr" name="Expressor"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD73" type="Extra-Thematic" abbrev="" name="Extent_of_acclaim"/>
+            <FE fgColor="000000" bgColor="FFA500" type="Extra-Thematic" abbrev="Fre" name="Frequency"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Extra-Thematic" abbrev="" name="Grounds"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="IC" name="Internal_cause"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Core" abbrev="Medium" name="Medium"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core" abbrev="Reas" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Extra-Thematic" abbrev="Result" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Extra-Thematic" abbrev="Role" name="Role"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Top" name="Topic"/>
+        </frame>
+    </header>
+    <definition>COD: praise for a courageous act in an official dispatch</definition>
+    <lexeme POS="V" name="cite"/>
+    <semType name="Positive_judgment" ID="13"/>
+    <valences>
+        <FERealization total="7">
+            <FE name="Communicator"/>
+            <pattern total="6">
+                <valenceUnit GF="Ext" PT="NP" FE="Communicator"/>
+                <annoSet ID="10785"/>
+                <annoSet ID="10791"/>
+                <annoSet ID="10805"/>
+                <annoSet ID="10875"/>
+                <annoSet ID="10881"/>
+                <annoSet ID="11207"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Communicator"/>
+                <annoSet ID="11151"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="7">
+            <FE name="Evaluee"/>
+            <pattern total="6">
+                <valenceUnit GF="Obj" PT="NP" FE="Evaluee"/>
+                <annoSet ID="10785"/>
+                <annoSet ID="10791"/>
+                <annoSet ID="10805"/>
+                <annoSet ID="10875"/>
+                <annoSet ID="10881"/>
+                <annoSet ID="11207"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Evaluee"/>
+                <annoSet ID="11151"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="7">
+            <FE name="Reason"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[as]" FE="Reason"/>
+                <annoSet ID="10875"/>
+                <annoSet ID="10881"/>
+            </pattern>
+            <pattern total="3">
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Reason"/>
+                <annoSet ID="10785"/>
+                <annoSet ID="10791"/>
+                <annoSet ID="10805"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PPing[as]" FE="Reason"/>
+                <annoSet ID="11207"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PPing[for]" FE="Reason"/>
+                <annoSet ID="11151"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Communicator"/>
+            <FE name="Evaluee"/>
+            <FE name="Evaluee"/>
+            <FE name="Reason"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Communicator"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Evaluee"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Evaluee"/>
+                <valenceUnit GF="Dep" PT="PPing[for]" FE="Reason"/>
+                <annoSet ID="11151"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="6">
+            <FE name="Communicator"/>
+            <FE name="Evaluee"/>
+            <FE name="Reason"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Communicator"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Evaluee"/>
+                <valenceUnit GF="Dep" PT="PP[as]" FE="Reason"/>
+                <annoSet ID="10875"/>
+                <annoSet ID="10881"/>
+            </pattern>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="NP" FE="Communicator"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Evaluee"/>
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Reason"/>
+                <annoSet ID="10785"/>
+                <annoSet ID="10791"/>
+                <annoSet ID="10805"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Communicator"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Evaluee"/>
+                <valenceUnit GF="Dep" PT="PPing[as]" FE="Reason"/>
+                <annoSet ID="11207"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-coordpass"/>
+    <subCorpus name="V-intrans-adverb"/>
+    <subCorpus name="V-intrans-simple"/>
+    <subCorpus name="V-np-pingfor"/>
+    <subCorpus name="V-np-pingin"/>
+    <subCorpus name="V-np-pingon"/>
+    <subCorpus name="V-np-pingother"/>
+    <subCorpus name="V-np-pingwith">
+        <sentence sentNo="0" aPos="20213183" ID="60676">
+            <text>The House of Representatives took the unprecedented step of citing Burford for ` contempt of Congress &quot;  -- a charge that , if proved , could put her behind bars . </text>
+            <annotationSet cDate="01/06/2003 06:02:54 PST Mon" status="UNANN" ID="10784">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="8" start="4" name="NN1"/>
+                    <label end="11" start="10" name="PRF"/>
+                    <label end="27" start="13" name="NP0"/>
+                    <label end="32" start="29" name="VVD"/>
+                    <label end="36" start="34" name="AT0"/>
+                    <label end="50" start="38" name="AJ0"/>
+                    <label end="55" start="52" name="NN1"/>
+                    <label end="58" start="57" name="PRF"/>
+                    <label end="65" start="60" name="VVG"/>
+                    <label end="73" start="67" name="NP0"/>
+                    <label end="77" start="75" name="PRP"/>
+                    <label end="79" start="79" name="PUQ"/>
+                    <label end="88" start="81" name="NN1"/>
+                    <label end="91" start="90" name="PRF"/>
+                    <label end="100" start="93" name="NN0"/>
+                    <label end="102" start="102" name="PUQ"/>
+                    <label end="103" start="104" name="PUQ"/>
+                    <label end="106" start="105" name="PUN"/>
+                    <label end="108" start="108" name="AT0"/>
+                    <label end="115" start="110" name="NN1"/>
+                    <label end="120" start="117" name="CJT"/>
+                    <label end="122" start="122" name="PUN"/>
+                    <label end="125" start="124" name="CJS"/>
+                    <label end="132" start="127" name="VVN"/>
+                    <label end="134" start="134" name="PUN"/>
+                    <label end="140" start="136" name="VM0"/>
+                    <label end="144" start="142" name="VVI"/>
+                    <label end="148" start="146" name="PNP"/>
+                    <label end="155" start="150" name="PRP"/>
+                    <label end="160" start="157" name="NN2"/>
+                    <label end="162" start="162" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 06:02:54 PST Mon" status="MANUAL" ID="10785">
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="1771" end="27" start="0" name="Communicator"/>
+                    <label cBy="664" feID="1777" end="73" start="67" name="Evaluee"/>
+                    <label cBy="664" feID="1781" end="160" start="75" name="Reason"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="27" start="0" name="Ext"/>
+                    <label end="73" start="67" name="Obj"/>
+                    <label end="160" start="75" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="27" start="0" name="NP"/>
+                    <label end="73" start="67" name="NP"/>
+                    <label end="160" start="75" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="731" end="65" start="60" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-np-ppfor">
+        <sentence sentNo="0" aPos="108464646" ID="60679">
+            <text>But Warrington have warned they may cite Jones for a different challenge in the same game . </text>
+            <annotationSet cDate="01/06/2003 06:02:55 PST Mon" status="UNANN" ID="10790">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="CJC"/>
+                    <label end="13" start="4" name="NP0"/>
+                    <label end="18" start="15" name="VHB"/>
+                    <label end="25" start="20" name="VVN"/>
+                    <label end="30" start="27" name="PNP"/>
+                    <label end="34" start="32" name="VM0"/>
+                    <label end="39" start="36" name="VVI"/>
+                    <label end="45" start="41" name="NP0"/>
+                    <label end="49" start="47" name="PRP"/>
+                    <label end="51" start="51" name="AT0"/>
+                    <label end="61" start="53" name="AJ0"/>
+                    <label end="71" start="63" name="NN1"/>
+                    <label end="74" start="73" name="PRP"/>
+                    <label end="78" start="76" name="AT0"/>
+                    <label end="83" start="80" name="DT0"/>
+                    <label end="88" start="85" name="NN1"/>
+                    <label end="90" start="90" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 06:02:55 PST Mon" status="MANUAL" ID="10791">
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="1771" end="30" start="27" name="Communicator"/>
+                    <label cBy="664" feID="1777" end="45" start="41" name="Evaluee"/>
+                    <label cBy="664" feID="1781" end="88" start="47" name="Reason"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="30" start="27" name="Ext"/>
+                    <label end="45" start="41" name="Obj"/>
+                    <label end="88" start="47" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="30" start="27" name="NP"/>
+                    <label end="45" start="41" name="NP"/>
+                    <label end="88" start="47" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="731" end="39" start="36" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="31950558" ID="60686">
+            <text>` Naturally , we are very aggrieved at the incident and are considering citing Jones for the incident in the tackle . &quot;  </text>
+            <annotationSet cDate="01/06/2003 06:02:56 PST Mon" status="UNANN" ID="10804">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PUQ"/>
+                    <label end="10" start="2" name="NP0"/>
+                    <label end="12" start="12" name="PUN"/>
+                    <label end="15" start="14" name="PNP"/>
+                    <label end="19" start="17" name="VBB"/>
+                    <label end="24" start="21" name="AV0"/>
+                    <label end="34" start="26" name="VVN"/>
+                    <label end="37" start="36" name="PRP"/>
+                    <label end="41" start="39" name="AT0"/>
+                    <label end="50" start="43" name="NN1"/>
+                    <label end="54" start="52" name="CJC"/>
+                    <label end="58" start="56" name="VBB"/>
+                    <label end="70" start="60" name="PRP"/>
+                    <label end="77" start="72" name="VVG"/>
+                    <label end="83" start="79" name="NP0"/>
+                    <label end="87" start="85" name="PRP"/>
+                    <label end="91" start="89" name="AT0"/>
+                    <label end="100" start="93" name="NN1"/>
+                    <label end="103" start="102" name="PRP"/>
+                    <label end="107" start="105" name="AT0"/>
+                    <label end="114" start="109" name="NN1"/>
+                    <label end="116" start="116" name="PUN"/>
+                    <label end="118" start="118" name="PUQ"/>
+                    <label end="119" start="120" name="PUQ"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 06:02:56 PST Mon" status="MANUAL" ID="10805">
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="1771" end="15" start="14" name="Communicator"/>
+                    <label cBy="664" feID="1777" end="83" start="79" name="Evaluee"/>
+                    <label cBy="664" feID="1781" end="114" start="85" name="Reason"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="15" start="14" name="Ext"/>
+                    <label end="83" start="79" name="Obj"/>
+                    <label end="114" start="85" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="15" start="14" name="NP"/>
+                    <label end="83" start="79" name="NP"/>
+                    <label end="114" start="85" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="731" end="77" start="72" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-np-ppin"/>
+    <subCorpus name="V-np-ppon"/>
+    <subCorpus name="V-np-ppother">
+        <sentence sentNo="0" aPos="6155352" ID="60721">
+            <text>By April 30th Carla Hills , the American trade boss , must decide whether to cite China as an ` unfair &quot;  trader . </text>
+            <annotationSet cDate="01/06/2003 06:03:00 PST Mon" status="UNANN" ID="10874">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PRP"/>
+                    <label end="7" start="3" name="NP0"/>
+                    <label end="12" start="9" name="ORD"/>
+                    <label end="18" start="14" name="NP0"/>
+                    <label end="24" start="20" name="NP0"/>
+                    <label end="26" start="26" name="PUN"/>
+                    <label end="30" start="28" name="AT0"/>
+                    <label end="39" start="32" name="AJ0"/>
+                    <label end="45" start="41" name="NN1"/>
+                    <label end="50" start="47" name="NN1"/>
+                    <label end="52" start="52" name="PUN"/>
+                    <label end="57" start="54" name="VM0"/>
+                    <label end="64" start="59" name="VVI"/>
+                    <label end="72" start="66" name="CJS"/>
+                    <label end="75" start="74" name="TO0"/>
+                    <label end="80" start="77" name="VVI"/>
+                    <label end="86" start="82" name="NN1-NP0"/>
+                    <label end="89" start="88" name="PRP"/>
+                    <label end="92" start="91" name="AT0"/>
+                    <label end="94" start="94" name="PUQ"/>
+                    <label end="101" start="96" name="AJ0"/>
+                    <label end="103" start="103" name="PUQ"/>
+                    <label end="104" start="105" name="PUQ"/>
+                    <label end="111" start="106" name="NN1"/>
+                    <label end="113" start="113" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 06:03:00 PST Mon" status="MANUAL" ID="10875">
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="1771" end="50" start="14" name="Communicator"/>
+                    <label cBy="664" feID="1777" end="86" start="82" name="Evaluee"/>
+                    <label cBy="664" feID="1781" end="111" start="88" name="Reason"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="50" start="14" name="Ext"/>
+                    <label end="86" start="82" name="Obj"/>
+                    <label end="111" start="88" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="50" start="14" name="NP"/>
+                    <label end="86" start="82" name="NP"/>
+                    <label end="111" start="88" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="731" end="80" start="77" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="96596462" ID="60724">
+            <text>An all-party committee of MPs has strongly criticised government plans for energy conservation -- citing current strategy as a shambles . </text>
+            <annotationSet cDate="01/06/2003 06:03:01 PST Mon" status="UNANN" ID="10880">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="AT0"/>
+                    <label end="11" start="3" name="AJ0"/>
+                    <label end="21" start="13" name="NN0"/>
+                    <label end="24" start="23" name="PRF"/>
+                    <label end="28" start="26" name="NN2"/>
+                    <label end="32" start="30" name="VHZ"/>
+                    <label end="41" start="34" name="AV0"/>
+                    <label end="52" start="43" name="VVN"/>
+                    <label end="63" start="54" name="NN0"/>
+                    <label end="69" start="65" name="NN2-VVZ"/>
+                    <label end="73" start="71" name="PRP"/>
+                    <label end="80" start="75" name="NN1"/>
+                    <label end="93" start="82" name="NN1"/>
+                    <label end="96" start="95" name="PUN"/>
+                    <label end="103" start="98" name="VVG"/>
+                    <label end="111" start="105" name="AJ0"/>
+                    <label end="120" start="113" name="NN1"/>
+                    <label end="123" start="122" name="PRP"/>
+                    <label end="125" start="125" name="AT0"/>
+                    <label end="134" start="127" name="NN2"/>
+                    <label end="136" start="136" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 06:03:01 PST Mon" status="MANUAL" ID="10881">
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="1771" end="28" start="0" name="Communicator"/>
+                    <label cBy="664" feID="1777" end="120" start="105" name="Evaluee"/>
+                    <label cBy="664" feID="1781" end="134" start="122" name="Reason"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="28" start="0" name="Ext"/>
+                    <label end="120" start="105" name="Obj"/>
+                    <label end="134" start="122" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="28" start="0" name="NP"/>
+                    <label end="120" start="105" name="NP"/>
+                    <label end="134" start="122" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="731" end="103" start="98" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-np-ppunder"/>
+    <subCorpus name="V-np-ppwith"/>
+    <subCorpus name="V-np-pwhfor"/>
+    <subCorpus name="V-np-pwhwith"/>
+    <subCorpus name="V-pingfor"/>
+    <subCorpus name="V-pingin"/>
+    <subCorpus name="V-pingon"/>
+    <subCorpus name="V-ppfor"/>
+    <subCorpus name="V-ppin"/>
+    <subCorpus name="V-ppon"/>
+    <subCorpus name="V-ppother"/>
+    <subCorpus name="V-ppunder"/>
+    <subCorpus name="V-pwhfor"/>
+    <subCorpus name="V-pwhwith"/>
+    <subCorpus name="V-surepass">
+        <sentence sentNo="0" aPos="106844004" ID="60859">
+            <text>The amnesty prevents the trial of other military leaders , including General Rene Emilio Ponce , the defence minister who was cited by the Truth Commission for ordering the Jesuit murders . </text>
+            <annotationSet cDate="01/06/2003 06:03:18 PST Mon" status="UNANN" ID="11150">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="10" start="4" name="NN1"/>
+                    <label end="19" start="12" name="VVZ"/>
+                    <label end="23" start="21" name="AT0"/>
+                    <label end="29" start="25" name="NN1"/>
+                    <label end="32" start="31" name="PRF"/>
+                    <label end="38" start="34" name="AJ0"/>
+                    <label end="47" start="40" name="AJ0"/>
+                    <label end="55" start="49" name="NN2"/>
+                    <label end="57" start="57" name="PUN"/>
+                    <label end="67" start="59" name="PRP"/>
+                    <label end="75" start="69" name="NP0"/>
+                    <label end="80" start="77" name="NP0"/>
+                    <label end="87" start="82" name="NP0"/>
+                    <label end="93" start="89" name="NN1"/>
+                    <label end="95" start="95" name="PUN"/>
+                    <label end="99" start="97" name="AT0"/>
+                    <label end="107" start="101" name="NN1"/>
+                    <label end="116" start="109" name="NN1"/>
+                    <label end="120" start="118" name="PNQ"/>
+                    <label end="124" start="122" name="VBD"/>
+                    <label end="130" start="126" name="VVN"/>
+                    <label end="133" start="132" name="PRP"/>
+                    <label end="137" start="135" name="AT0"/>
+                    <label end="143" start="139" name="NN1"/>
+                    <label end="154" start="145" name="NN0"/>
+                    <label end="158" start="156" name="PRP"/>
+                    <label end="167" start="160" name="VVG"/>
+                    <label end="171" start="169" name="AT0"/>
+                    <label end="178" start="173" name="NN1"/>
+                    <label end="186" start="180" name="NN2"/>
+                    <label end="188" start="188" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 06:03:18 PST Mon" status="MANUAL" ID="11151">
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="1771" end="154" start="132" name="Communicator"/>
+                    <label cBy="664" feID="1781" end="186" start="156" name="Reason"/>
+                    <label cBy="605" feID="1777" end="116" start="97" name="Evaluee"/>
+                    <label cBy="605" feID="1777" end="120" start="118" name="Evaluee"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="154" start="132" name="Dep"/>
+                    <label end="186" start="156" name="Dep"/>
+                    <label end="116" start="97" name="Ext"/>
+                    <label end="120" start="118" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="154" start="132" name="PP"/>
+                    <label end="186" start="156" name="PPing"/>
+                    <label end="116" start="97" name="NP"/>
+                    <label end="120" start="118" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other">
+                    <label end="116" start="97" name="Ant"/>
+                    <label end="120" start="118" name="Rel"/>
+                </layer>
+                <layer rank="1" name="Target">
+                    <label cBy="731" end="130" start="126" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-trans-other">
+        <sentence sentNo="0" aPos="71750851" ID="60887">
+            <text>The 1991 Amman Valley Regeneration Strategy cites opencast mining as creating ` substantial difficulties &quot;  for both valleys ` in terms of the quality of the local environment and its blighting effect upon alternative local economic prospects &quot;  . </text>
+            <annotationSet cDate="01/06/2003 06:03:21 PST Mon" status="UNANN" ID="11206">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="7" start="4" name="CRD"/>
+                    <label end="13" start="9" name="NP0"/>
+                    <label end="20" start="15" name="NP0"/>
+                    <label end="33" start="22" name="NN1"/>
+                    <label end="42" start="35" name="NN1"/>
+                    <label end="48" start="44" name="VVZ"/>
+                    <label end="57" start="50" name="AJ0-NN1"/>
+                    <label end="64" start="59" name="NN1-VVG"/>
+                    <label end="67" start="66" name="PRP"/>
+                    <label end="76" start="69" name="VVG"/>
+                    <label end="78" start="78" name="PUQ"/>
+                    <label end="90" start="80" name="AJ0"/>
+                    <label end="103" start="92" name="NN2"/>
+                    <label end="105" start="105" name="PUQ"/>
+                    <label end="106" start="107" name="PUQ"/>
+                    <label end="110" start="108" name="PRP"/>
+                    <label end="115" start="112" name="DT0"/>
+                    <label end="123" start="117" name="NN2"/>
+                    <label end="125" start="125" name="PUQ"/>
+                    <label end="128" start="127" name="PRP"/>
+                    <label end="134" start="130" name="PRP"/>
+                    <label end="137" start="136" name="PRP"/>
+                    <label end="141" start="139" name="AT0"/>
+                    <label end="149" start="143" name="NN1"/>
+                    <label end="152" start="151" name="PRF"/>
+                    <label end="156" start="154" name="AT0"/>
+                    <label end="162" start="158" name="AJ0"/>
+                    <label end="174" start="164" name="NN1"/>
+                    <label end="178" start="176" name="CJC"/>
+                    <label end="182" start="180" name="DPS"/>
+                    <label end="192" start="184" name="AJ0-NN1"/>
+                    <label end="199" start="194" name="NN1"/>
+                    <label end="204" start="201" name="PRP"/>
+                    <label end="216" start="206" name="AJ0"/>
+                    <label end="222" start="218" name="AJ0"/>
+                    <label end="231" start="224" name="AJ0"/>
+                    <label end="241" start="233" name="NN2"/>
+                    <label end="243" start="243" name="PUQ"/>
+                    <label end="244" start="245" name="PUQ"/>
+                    <label end="246" start="246" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 06:03:21 PST Mon" status="MANUAL" ID="11207">
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="1771" end="42" start="0" name="Communicator"/>
+                    <label cBy="664" feID="1777" end="64" start="50" name="Evaluee"/>
+                    <label cBy="664" feID="1781" end="243" start="66" name="Reason"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="42" start="0" name="Ext"/>
+                    <label end="64" start="50" name="Obj"/>
+                    <label end="243" start="66" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="42" start="0" name="NP"/>
+                    <label end="64" start="50" name="NP"/>
+                    <label end="243" start="66" name="PPing"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="731" end="48" start="44" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-trans-simple"/>
+</lexUnit>

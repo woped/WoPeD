@@ -1,0 +1,850 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="plane.n" ID="7836" frame="Vehicle" frameID="429" totalAnnotated="16" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="Desc" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Iti" name="Itinerary"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Extra-Thematic" abbrev="Prop" name="Means_of_propulsion"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Poss" name="Possessor"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="use" name="Use"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Core" abbrev="Veh" name="Vehicle"/>
+        </frame>
+    </header>
+    <definition>COD: a powered flying vehicle with fixed wings and a weight greater than that of the air it displaces.</definition>
+    <lexeme POS="N" name="plane"/>
+    <valences>
+        <governor type="Gov" lemma="arrive">
+            <annoSet ID="1871319"/>
+        </governor>
+        <governor type="Gov" lemma="board">
+            <annoSet ID="1871307"/>
+        </governor>
+        <governor type="Gov" lemma="catch">
+            <annoSet ID="1871257"/>
+            <annoSet ID="1871259"/>
+            <annoSet ID="1871263"/>
+            <annoSet ID="1871339"/>
+        </governor>
+        <governor type="Gov" lemma="circle">
+            <annoSet ID="1871381"/>
+        </governor>
+        <governor type="Gov" lemma="fly">
+            <annoSet ID="1871287"/>
+            <annoSet ID="1871311"/>
+            <annoSet ID="1871365"/>
+        </governor>
+        <governor type="Gov" lemma="get">
+            <annoSet ID="1871249"/>
+            <annoSet ID="1871295"/>
+        </governor>
+        <governor type="Gov" lemma="land">
+            <annoSet ID="1871289"/>
+        </governor>
+        <FERealization total="5">
+            <FE name="Descriptor"/>
+            <pattern total="4">
+                <valenceUnit GF="Dep" PT="AJP" FE="Descriptor"/>
+                <annoSet ID="1871249"/>
+                <annoSet ID="1871329"/>
+                <annoSet ID="1871347"/>
+                <annoSet ID="1871381"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Descriptor"/>
+                <annoSet ID="1871365"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Itinerary"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Itinerary"/>
+                <annoSet ID="1871263"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="16">
+            <FE name="Vehicle"/>
+            <pattern total="16">
+                <valenceUnit GF="" PT="DEN" FE="Vehicle"/>
+                <annoSet ID="1871249"/>
+                <annoSet ID="1871257"/>
+                <annoSet ID="1871259"/>
+                <annoSet ID="1871263"/>
+                <annoSet ID="1871287"/>
+                <annoSet ID="1871289"/>
+                <annoSet ID="1871295"/>
+                <annoSet ID="1871307"/>
+                <annoSet ID="1871311"/>
+                <annoSet ID="1871319"/>
+                <annoSet ID="1871329"/>
+                <annoSet ID="1871339"/>
+                <annoSet ID="1871347"/>
+                <annoSet ID="1871365"/>
+                <annoSet ID="1871381"/>
+                <annoSet ID="1871395"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Descriptor"/>
+            <FE name="Descriptor"/>
+            <FE name="Vehicle"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Descriptor"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Descriptor"/>
+                <valenceUnit GF="" PT="DEN" FE="Vehicle"/>
+                <annoSet ID="1871347"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Descriptor"/>
+                <valenceUnit GF="Dep" PT="N" FE="Descriptor"/>
+                <valenceUnit GF="" PT="DEN" FE="Vehicle"/>
+                <annoSet ID="1871365"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="3">
+            <FE name="Descriptor"/>
+            <FE name="Vehicle"/>
+            <pattern total="3">
+                <valenceUnit GF="Dep" PT="AJP" FE="Descriptor"/>
+                <valenceUnit GF="" PT="DEN" FE="Vehicle"/>
+                <annoSet ID="1871249"/>
+                <annoSet ID="1871329"/>
+                <annoSet ID="1871381"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Itinerary"/>
+            <FE name="Vehicle"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Itinerary"/>
+                <valenceUnit GF="" PT="DEN" FE="Vehicle"/>
+                <annoSet ID="1871263"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="10">
+            <FE name="Vehicle"/>
+            <pattern total="10">
+                <valenceUnit GF="" PT="DEN" FE="Vehicle"/>
+                <annoSet ID="1871257"/>
+                <annoSet ID="1871259"/>
+                <annoSet ID="1871287"/>
+                <annoSet ID="1871289"/>
+                <annoSet ID="1871295"/>
+                <annoSet ID="1871307"/>
+                <annoSet ID="1871311"/>
+                <annoSet ID="1871319"/>
+                <annoSet ID="1871339"/>
+                <annoSet ID="1871395"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="03-Wget,catch,board-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="199" aPos="0" ID="1212074">
+            <text>The twelve people got into the little plane , and the plane began to move .</text>
+            <annotationSet cDate="04/30/2003 06:19:50 PDT Wed" status="UNANN" ID="1871248">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="9" start="4" name="nn"/>
+                    <label end="16" start="11" name="nns"/>
+                    <label end="20" start="18" name="VVD"/>
+                    <label end="25" start="22" name="in"/>
+                    <label end="29" start="27" name="dt"/>
+                    <label end="36" start="31" name="jj"/>
+                    <label end="42" start="38" name="nn"/>
+                    <label end="44" start="44" name=","/>
+                    <label end="48" start="46" name="cc"/>
+                    <label end="52" start="50" name="dt"/>
+                    <label end="58" start="54" name="nn"/>
+                    <label end="64" start="60" name="VVD"/>
+                    <label end="67" start="66" name="to"/>
+                    <label end="72" start="69" name="VV"/>
+                    <label end="74" start="74" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 06:19:51 PDT Wed" status="MANUAL" ID="1871249">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="42" start="38" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3958" end="42" start="38" name="Vehicle"/>
+                    <label cBy="618" feID="3957" end="36" start="31" name="Descriptor"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="36" start="31" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="36" start="31" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="20" start="18" name="Gov"/>
+                    <label end="42" start="22" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="5" paragNo="172" aPos="0" ID="1212078">
+            <text>Mortimer left in a hurry , caught his plane , and was standing bewigged at the Old Bailey the next day .</text>
+            <annotationSet cDate="04/30/2003 06:19:52 PDT Wed" status="UNANN" ID="1871256">
+                <layer rank="1" name="PENN">
+                    <label end="7" start="0" name="NP"/>
+                    <label end="12" start="9" name="VVD"/>
+                    <label end="15" start="14" name="in"/>
+                    <label end="17" start="17" name="dt"/>
+                    <label end="23" start="19" name="nn"/>
+                    <label end="25" start="25" name=","/>
+                    <label end="32" start="27" name="VVD"/>
+                    <label end="36" start="34" name="PP$"/>
+                    <label end="42" start="38" name="nn"/>
+                    <label end="44" start="44" name=","/>
+                    <label end="48" start="46" name="cc"/>
+                    <label end="52" start="50" name="VBD"/>
+                    <label end="61" start="54" name="VVG"/>
+                    <label end="70" start="63" name="jj"/>
+                    <label end="73" start="72" name="in"/>
+                    <label end="77" start="75" name="dt"/>
+                    <label end="81" start="79" name="NP"/>
+                    <label end="88" start="83" name="NP"/>
+                    <label end="92" start="90" name="dt"/>
+                    <label end="97" start="94" name="jj"/>
+                    <label end="101" start="99" name="nn"/>
+                    <label end="103" start="103" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 06:19:52 PDT Wed" status="MANUAL" ID="1871257">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="42" start="38" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3958" end="42" start="38" name="Vehicle"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="32" start="27" name="Gov"/>
+                    <label end="42" start="34" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="523" aPos="0" ID="1212079">
+            <text>She caught the first plane back to New York .</text>
+            <annotationSet cDate="04/30/2003 06:19:52 PDT Wed" status="UNANN" ID="1871258">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="PP"/>
+                    <label end="9" start="4" name="VVD"/>
+                    <label end="13" start="11" name="dt"/>
+                    <label end="19" start="15" name="jj"/>
+                    <label end="25" start="21" name="nn"/>
+                    <label end="30" start="27" name="rb"/>
+                    <label end="33" start="32" name="to"/>
+                    <label end="37" start="35" name="NP"/>
+                    <label end="42" start="39" name="NP"/>
+                    <label end="44" start="44" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 06:19:52 PDT Wed" status="MANUAL" ID="1871259">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="25" start="21" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3958" end="25" start="21" name="Vehicle"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="9" start="4" name="Gov"/>
+                    <label end="25" start="11" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="8" paragNo="82" aPos="0" ID="1212081">
+            <text>Catching the earliest plane to Brussels . &quot;</text>
+            <annotationSet cDate="04/30/2003 06:19:53 PDT Wed" status="UNANN" ID="1871262">
+                <layer rank="1" name="PENN">
+                    <label end="7" start="0" name="VVG"/>
+                    <label end="11" start="9" name="dt"/>
+                    <label end="20" start="13" name="jjs"/>
+                    <label end="26" start="22" name="nn"/>
+                    <label end="29" start="28" name="to"/>
+                    <label end="38" start="31" name="NP"/>
+                    <label end="40" start="40" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 06:19:53 PDT Wed" status="MANUAL" ID="1871263">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="26" start="22" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3960" end="38" start="28" name="Itinerary"/>
+                    <label cBy="618" feID="3958" end="26" start="22" name="Vehicle"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="38" start="28" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="38" start="28" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="7" start="0" name="Gov"/>
+                    <label end="38" start="9" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="04-Wfly,land,collide-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="132" aPos="0" ID="1212093">
+            <text>` If we did not feel 100 per cent positive about our ability to fly the plane safely , we would not put it in the air . &quot;</text>
+            <annotationSet cDate="04/30/2003 06:19:57 PDT Wed" status="UNANN" ID="1871286">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="2" name="in"/>
+                    <label end="6" start="5" name="PP"/>
+                    <label end="10" start="8" name="VVD"/>
+                    <label end="14" start="12" name="rb"/>
+                    <label end="19" start="16" name="VV"/>
+                    <label end="23" start="21" name="cd"/>
+                    <label end="27" start="25" name="in"/>
+                    <label end="32" start="29" name="nn"/>
+                    <label end="41" start="34" name="jj"/>
+                    <label end="47" start="43" name="in"/>
+                    <label end="51" start="49" name="PP$"/>
+                    <label end="59" start="53" name="nn"/>
+                    <label end="62" start="61" name="to"/>
+                    <label end="66" start="64" name="VV"/>
+                    <label end="70" start="68" name="dt"/>
+                    <label end="76" start="72" name="nn"/>
+                    <label end="83" start="78" name="rb"/>
+                    <label end="85" start="85" name=","/>
+                    <label end="88" start="87" name="PP"/>
+                    <label end="94" start="90" name="md"/>
+                    <label end="98" start="96" name="rb"/>
+                    <label end="102" start="100" name="VV"/>
+                    <label end="105" start="104" name="PP"/>
+                    <label end="108" start="107" name="in"/>
+                    <label end="112" start="110" name="dt"/>
+                    <label end="116" start="114" name="nn"/>
+                    <label end="118" start="118" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 06:19:57 PDT Wed" status="MANUAL" ID="1871287">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="76" start="72" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3958" end="76" start="72" name="Vehicle"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="76" start="68" name="X"/>
+                    <label end="66" start="64" name="Gov"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="65535" paragNo="392" aPos="0" ID="1212094">
+            <text>The pilot wrestled with the highjackers as he desperately tried to land the plane at Canton airport , it then slammed into two other passenger jets .</text>
+            <annotationSet cDate="04/30/2003 06:19:59 PDT Wed" status="UNANN" ID="1871288">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="8" start="4" name="nn"/>
+                    <label end="17" start="10" name="VVN"/>
+                    <label end="22" start="19" name="in"/>
+                    <label end="26" start="24" name="dt"/>
+                    <label end="38" start="28" name="nns"/>
+                    <label end="41" start="40" name="in"/>
+                    <label end="44" start="43" name="PP"/>
+                    <label end="56" start="46" name="rb"/>
+                    <label end="62" start="58" name="VVD"/>
+                    <label end="65" start="64" name="to"/>
+                    <label end="70" start="67" name="VV"/>
+                    <label end="74" start="72" name="dt"/>
+                    <label end="80" start="76" name="nn"/>
+                    <label end="83" start="82" name="in"/>
+                    <label end="90" start="85" name="NP"/>
+                    <label end="98" start="92" name="nn"/>
+                    <label end="100" start="100" name=","/>
+                    <label end="103" start="102" name="PP"/>
+                    <label end="108" start="105" name="rb"/>
+                    <label end="116" start="110" name="VVD"/>
+                    <label end="121" start="118" name="in"/>
+                    <label end="125" start="123" name="cd"/>
+                    <label end="131" start="127" name="jj"/>
+                    <label end="141" start="133" name="nn"/>
+                    <label end="146" start="143" name="nns"/>
+                    <label end="148" start="148" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 06:19:59 PDT Wed" status="MANUAL" ID="1871289">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="80" start="76" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3958" end="80" start="76" name="Vehicle"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="70" start="67" name="Gov"/>
+                    <label end="80" start="72" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="5940" aPos="0" ID="1212097">
+            <text>` There was no real panic but when we landed and got off the plane the window looked like a spider 's web .</text>
+            <annotationSet cDate="04/30/2003 06:20:01 PDT Wed" status="UNANN" ID="1871294">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="2" name="ex"/>
+                    <label end="10" start="8" name="VBD"/>
+                    <label end="13" start="12" name="dt"/>
+                    <label end="18" start="15" name="jj"/>
+                    <label end="24" start="20" name="nn"/>
+                    <label end="28" start="26" name="cc"/>
+                    <label end="33" start="30" name="wrb"/>
+                    <label end="36" start="35" name="PP"/>
+                    <label end="43" start="38" name="VVD"/>
+                    <label end="47" start="45" name="cc"/>
+                    <label end="51" start="49" name="VVD"/>
+                    <label end="55" start="53" name="rp"/>
+                    <label end="59" start="57" name="dt"/>
+                    <label end="65" start="61" name="nn"/>
+                    <label end="69" start="67" name="dt"/>
+                    <label end="76" start="71" name="nn"/>
+                    <label end="83" start="78" name="VVD"/>
+                    <label end="88" start="85" name="in"/>
+                    <label end="90" start="90" name="dt"/>
+                    <label end="97" start="92" name="nn"/>
+                    <label end="100" start="99" name="POS"/>
+                    <label end="104" start="102" name="nn"/>
+                    <label end="106" start="106" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 06:20:01 PDT Wed" status="MANUAL" ID="1871295">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="65" start="61" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3958" end="65" start="61" name="Vehicle"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="51" start="49" name="Gov"/>
+                    <label end="65" start="53" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="05-T-PPfrom,into,in-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="33" aPos="0" ID="1212103">
+            <text>Waiting to board a plane in Venezuela , Faber suddenly feels faint , and goes to the bathroom , hoping that the plane will leave without him .</text>
+            <annotationSet cDate="04/30/2003 06:20:03 PDT Wed" status="UNANN" ID="1871306">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="0" name="VVG"/>
+                    <label end="9" start="8" name="to"/>
+                    <label end="15" start="11" name="VV"/>
+                    <label end="17" start="17" name="dt"/>
+                    <label end="23" start="19" name="nn"/>
+                    <label end="26" start="25" name="in"/>
+                    <label end="36" start="28" name="NP"/>
+                    <label end="38" start="38" name=","/>
+                    <label end="44" start="40" name="NP"/>
+                    <label end="53" start="46" name="rb"/>
+                    <label end="59" start="55" name="VVZ"/>
+                    <label end="65" start="61" name="jj"/>
+                    <label end="67" start="67" name=","/>
+                    <label end="71" start="69" name="cc"/>
+                    <label end="76" start="73" name="VVZ"/>
+                    <label end="79" start="78" name="to"/>
+                    <label end="83" start="81" name="dt"/>
+                    <label end="92" start="85" name="nn"/>
+                    <label end="94" start="94" name=","/>
+                    <label end="101" start="96" name="VVG"/>
+                    <label end="106" start="103" name="in"/>
+                    <label end="110" start="108" name="dt"/>
+                    <label end="116" start="112" name="nn"/>
+                    <label end="121" start="118" name="md"/>
+                    <label end="127" start="123" name="VV"/>
+                    <label end="135" start="129" name="in"/>
+                    <label end="139" start="137" name="PP"/>
+                    <label end="141" start="141" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 06:20:04 PDT Wed" status="MANUAL" ID="1871307">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="23" start="19" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3958" end="23" start="19" name="Vehicle"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="15" start="11" name="Gov"/>
+                    <label end="23" start="17" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="06-T-Warrive,crash,land-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="116" aPos="0" ID="1212105">
+            <text>Early the following morning , the planes flew again .</text>
+            <annotationSet cDate="04/30/2003 06:20:05 PDT Wed" status="UNANN" ID="1871310">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="rb"/>
+                    <label end="8" start="6" name="dt"/>
+                    <label end="18" start="10" name="VVG"/>
+                    <label end="26" start="20" name="nn"/>
+                    <label end="28" start="28" name=","/>
+                    <label end="32" start="30" name="dt"/>
+                    <label end="39" start="34" name="nns"/>
+                    <label end="44" start="41" name="VVD"/>
+                    <label end="50" start="46" name="rb"/>
+                    <label end="52" start="52" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 06:20:05 PDT Wed" status="MANUAL" ID="1871311">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="39" start="34" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3958" end="39" start="34" name="Vehicle"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="39" start="30" name="X"/>
+                    <label end="44" start="41" name="Gov"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="5" paragNo="742" aPos="0" ID="1212109">
+            <text>The passengers on a plane arriving from Istanbul were set on by the pickets at Tegel airport yesterday .</text>
+            <annotationSet cDate="04/30/2003 06:20:07 PDT Wed" status="UNANN" ID="1871318">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="13" start="4" name="nns"/>
+                    <label end="16" start="15" name="in"/>
+                    <label end="18" start="18" name="dt"/>
+                    <label end="24" start="20" name="nn"/>
+                    <label end="33" start="26" name="VVG"/>
+                    <label end="38" start="35" name="in"/>
+                    <label end="47" start="40" name="NP"/>
+                    <label end="52" start="49" name="VBD"/>
+                    <label end="56" start="54" name="VVN"/>
+                    <label end="59" start="58" name="in"/>
+                    <label end="62" start="61" name="in"/>
+                    <label end="66" start="64" name="dt"/>
+                    <label end="74" start="68" name="nns"/>
+                    <label end="77" start="76" name="in"/>
+                    <label end="83" start="79" name="NP"/>
+                    <label end="91" start="85" name="nn"/>
+                    <label end="101" start="93" name="nn"/>
+                    <label end="103" start="103" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 06:20:07 PDT Wed" status="MANUAL" ID="1871319">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="24" start="20" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3958" end="24" start="20" name="Vehicle"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="33" start="26" name="Gov"/>
+                    <label end="24" start="18" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="152" aPos="0" ID="1212114">
+            <text>The pilot warned there would be only room for one moose on the small plane .</text>
+            <annotationSet cDate="04/30/2003 06:20:11 PDT Wed" status="UNANN" ID="1871328">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="8" start="4" name="nn"/>
+                    <label end="15" start="10" name="VVD"/>
+                    <label end="21" start="17" name="ex"/>
+                    <label end="27" start="23" name="md"/>
+                    <label end="30" start="29" name="vb"/>
+                    <label end="35" start="32" name="jj"/>
+                    <label end="40" start="37" name="nn"/>
+                    <label end="44" start="42" name="in"/>
+                    <label end="48" start="46" name="cd"/>
+                    <label end="54" start="50" name="nn"/>
+                    <label end="57" start="56" name="in"/>
+                    <label end="61" start="59" name="dt"/>
+                    <label end="67" start="63" name="jj"/>
+                    <label end="73" start="69" name="nn"/>
+                    <label end="75" start="75" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 06:20:11 PDT Wed" status="MANUAL" ID="1871329">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="73" start="69" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3957" end="67" start="63" name="Descriptor"/>
+                    <label cBy="618" feID="3958" end="73" start="69" name="Vehicle"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="67" start="63" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="67" start="63" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="52" aPos="0" ID="1212119">
+            <text>And he went straight from this place , to catch his plane ? &quot;</text>
+            <annotationSet cDate="04/30/2003 06:20:14 PDT Wed" status="UNANN" ID="1871338">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="cc"/>
+                    <label end="5" start="4" name="PP"/>
+                    <label end="10" start="7" name="VVD"/>
+                    <label end="19" start="12" name="rb"/>
+                    <label end="24" start="21" name="in"/>
+                    <label end="29" start="26" name="dt"/>
+                    <label end="35" start="31" name="nn"/>
+                    <label end="37" start="37" name=","/>
+                    <label end="40" start="39" name="to"/>
+                    <label end="46" start="42" name="VV"/>
+                    <label end="50" start="48" name="PP$"/>
+                    <label end="56" start="52" name="nn"/>
+                    <label end="58" start="58" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 06:20:14 PDT Wed" status="MANUAL" ID="1871339">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="56" start="52" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3958" end="56" start="52" name="Vehicle"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="46" start="42" name="Gov"/>
+                    <label end="56" start="48" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="811" aPos="0" ID="1212123">
+            <text>A low-flying German plane could hop over a hangar and massacre a squad with one sudden burst .</text>
+            <annotationSet cDate="04/30/2003 06:20:17 PDT Wed" status="UNANN" ID="1871346">
+                <layer rank="1" name="PENN">
+                    <label end="0" start="0" name="dt"/>
+                    <label end="11" start="2" name="jj"/>
+                    <label end="18" start="13" name="jj"/>
+                    <label end="24" start="20" name="nn"/>
+                    <label end="30" start="26" name="md"/>
+                    <label end="34" start="32" name="VV"/>
+                    <label end="39" start="36" name="in"/>
+                    <label end="41" start="41" name="dt"/>
+                    <label end="48" start="43" name="nn"/>
+                    <label end="52" start="50" name="cc"/>
+                    <label end="61" start="54" name="nn"/>
+                    <label end="63" start="63" name="dt"/>
+                    <label end="69" start="65" name="nn"/>
+                    <label end="74" start="71" name="in"/>
+                    <label end="78" start="76" name="cd"/>
+                    <label end="85" start="80" name="jj"/>
+                    <label end="91" start="87" name="nn"/>
+                    <label end="93" start="93" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 06:20:17 PDT Wed" status="MANUAL" ID="1871347">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="24" start="20" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3957" end="11" start="2" name="Descriptor"/>
+                    <label cBy="618" feID="3957" end="18" start="13" name="Descriptor"/>
+                    <label cBy="618" feID="3958" end="24" start="20" name="Vehicle"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="11" start="2" name="Dep"/>
+                    <label end="18" start="13" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="11" start="2" name="AJP"/>
+                    <label end="18" start="13" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="162" aPos="0" ID="1212132">
+            <text>As convoys of military cargo planes flew into Howard Air Force base all day on Tuesday , bringing the advance elements of the 82nd Airborne , there was little real surprise .</text>
+            <annotationSet cDate="04/30/2003 06:20:23 PDT Wed" status="UNANN" ID="1871364">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="in"/>
+                    <label end="9" start="3" name="nns"/>
+                    <label end="12" start="11" name="in"/>
+                    <label end="21" start="14" name="jj"/>
+                    <label end="27" start="23" name="nn"/>
+                    <label end="34" start="29" name="nns"/>
+                    <label end="39" start="36" name="VVD"/>
+                    <label end="44" start="41" name="in"/>
+                    <label end="51" start="46" name="NP"/>
+                    <label end="55" start="53" name="NP"/>
+                    <label end="61" start="57" name="NP"/>
+                    <label end="66" start="63" name="nn"/>
+                    <label end="70" start="68" name="dt"/>
+                    <label end="74" start="72" name="nn"/>
+                    <label end="77" start="76" name="in"/>
+                    <label end="85" start="79" name="NP"/>
+                    <label end="87" start="87" name=","/>
+                    <label end="96" start="89" name="VVG"/>
+                    <label end="100" start="98" name="dt"/>
+                    <label end="108" start="102" name="nn"/>
+                    <label end="117" start="110" name="nns"/>
+                    <label end="120" start="119" name="in"/>
+                    <label end="124" start="122" name="dt"/>
+                    <label end="129" start="126" name="jj"/>
+                    <label end="138" start="131" name="jj"/>
+                    <label end="140" start="140" name=","/>
+                    <label end="146" start="142" name="ex"/>
+                    <label end="150" start="148" name="VBD"/>
+                    <label end="157" start="152" name="rb"/>
+                    <label end="162" start="159" name="jj"/>
+                    <label end="171" start="164" name="nn"/>
+                    <label end="173" start="173" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 06:20:24 PDT Wed" status="MANUAL" ID="1871365">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="34" start="29" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3957" end="21" start="14" name="Descriptor"/>
+                    <label cBy="618" feID="3957" end="27" start="23" name="Descriptor"/>
+                    <label cBy="618" feID="3958" end="34" start="29" name="Vehicle"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="21" start="14" name="Dep"/>
+                    <label end="27" start="23" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="21" start="14" name="N"/>
+                    <label end="27" start="23" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="39" start="36" name="Gov"/>
+                    <label end="34" start="3" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="357" aPos="0" ID="1212140">
+            <text>We catch sight of a small plane circling the mountain .</text>
+            <annotationSet cDate="04/30/2003 06:20:29 PDT Wed" status="UNANN" ID="1871380">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="7" start="3" name="VVP"/>
+                    <label end="13" start="9" name="nn"/>
+                    <label end="16" start="15" name="in"/>
+                    <label end="18" start="18" name="dt"/>
+                    <label end="24" start="20" name="jj"/>
+                    <label end="30" start="26" name="nn"/>
+                    <label end="39" start="32" name="VVG"/>
+                    <label end="43" start="41" name="dt"/>
+                    <label end="52" start="45" name="nn"/>
+                    <label end="54" start="54" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 06:20:29 PDT Wed" status="MANUAL" ID="1871381">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="30" start="26" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3957" end="24" start="20" name="Descriptor"/>
+                    <label cBy="618" feID="3958" end="30" start="26" name="Vehicle"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="24" start="20" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="24" start="20" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="30" start="18" name="X"/>
+                    <label end="39" start="32" name="Gov"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="2223" aPos="0" ID="1212147">
+            <text>The plane took off an hour behind time thanks to EC president Jacques Delors ' late arrival .</text>
+            <annotationSet cDate="04/30/2003 06:20:34 PDT Wed" status="UNANN" ID="1871394">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="8" start="4" name="nn"/>
+                    <label end="13" start="10" name="VVD"/>
+                    <label end="17" start="15" name="rp"/>
+                    <label end="20" start="19" name="dt"/>
+                    <label end="25" start="22" name="nn"/>
+                    <label end="32" start="27" name="in"/>
+                    <label end="37" start="34" name="nn"/>
+                    <label end="44" start="39" name="nns"/>
+                    <label end="47" start="46" name="to"/>
+                    <label end="50" start="49" name="NP"/>
+                    <label end="60" start="52" name="nn"/>
+                    <label end="68" start="62" name="NP"/>
+                    <label end="75" start="70" name="NP"/>
+                    <label end="77" start="77" name="POS"/>
+                    <label end="82" start="79" name="jj"/>
+                    <label end="90" start="84" name="nn"/>
+                    <label end="92" start="92" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 06:20:34 PDT Wed" status="MANUAL" ID="1871395">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="8" start="4" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3958" end="8" start="4" name="Vehicle"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="8" start="0" name="X"/>
+                    <label end="17" start="10" name="Gov"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

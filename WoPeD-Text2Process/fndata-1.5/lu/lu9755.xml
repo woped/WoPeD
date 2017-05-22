@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" POS="V" name="plash.v" ID="9755" frame="Impact" frameID="311" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Cause" name="Cause"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Extra-Thematic" abbrev="" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Frc" name="Force"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Imp2" name="Impactee"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Imp1" name="Impactor"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Imps" name="Impactors"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="P_it" name="Period_of_Iterations"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="Result" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="Speed" name="Speed"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Peripheral" abbrev="Sub_R" name="Subregion"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: make or hit with a splash.</definition>
+    <lexeme POS="V" name="plash"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Impactee"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[against]" FE="Impactee"/>
+                <annoSet ID="1705413"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Impactor"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Impactor"/>
+                <annoSet ID="1705413"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Impactee"/>
+            <FE name="Impactor"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[against]" FE="Impactee"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Impactor"/>
+                <annoSet ID="1705413"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="NoPattern">
+        <sentence sentNo="0" aPos="58374947" ID="1127153">
+            <text>The watery fluid plashed against my cheeks ; as it did so I felt a novel sensation , a sloughing , pulling and slipping of the skin . </text>
+            <annotationSet cDate="01/08/2003 03:32:15 PST Wed" status="UNANN" ID="1705412">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="9" start="4" name="AJ0"/>
+                    <label end="15" start="11" name="NN1"/>
+                    <label end="23" start="17" name="VVD-VVN"/>
+                    <label end="31" start="25" name="PRP"/>
+                    <label end="34" start="33" name="DPS"/>
+                    <label end="41" start="36" name="NN2"/>
+                    <label end="43" start="43" name="PUN"/>
+                    <label end="46" start="45" name="CJS"/>
+                    <label end="49" start="48" name="PNP"/>
+                    <label end="53" start="51" name="VDD"/>
+                    <label end="56" start="55" name="CJS"/>
+                    <label end="58" start="58" name="PNP"/>
+                    <label end="63" start="60" name="VVD"/>
+                    <label end="65" start="65" name="AT0"/>
+                    <label end="71" start="67" name="AJ0"/>
+                    <label end="81" start="73" name="NN1"/>
+                    <label end="83" start="83" name="PUN"/>
+                    <label end="85" start="85" name="AT0"/>
+                    <label end="95" start="87" name="AJ0-NN1"/>
+                    <label end="97" start="97" name="PUN"/>
+                    <label end="105" start="99" name="VVG"/>
+                    <label end="109" start="107" name="CJC"/>
+                    <label end="118" start="111" name="NN1-VVG"/>
+                    <label end="121" start="120" name="PRF"/>
+                    <label end="125" start="123" name="AT0"/>
+                    <label end="130" start="127" name="NN1"/>
+                    <label end="132" start="132" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 03:32:15 PST Wed" status="MANUAL" ID="1705413">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="2671" end="15" start="0" name="Impactor"/>
+                    <label cBy="103" feID="2672" end="41" start="25" name="Impactee"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="15" start="0" name="Ext"/>
+                    <label end="41" start="25" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="15" start="0" name="NP"/>
+                    <label end="41" start="25" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="23" start="17" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

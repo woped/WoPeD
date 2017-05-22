@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="07/16/2001 04:25:22 PDT Mon" name="Activity_done_state" ID="182" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Agent&lt;/fen&gt; has completed an &lt;fen&gt;Activity&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="07/16/2001 04:45:10 PDT Mon" abbrev="Agent" name="Agent" ID="1416">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Agent&lt;/fen&gt; in a done state of an the &lt;fen&gt;Activity&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="05/09/2002 05:17:01 PDT Thu" abbrev="Act" name="Activity" ID="2754">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Activity&lt;/fen&gt; in which the &lt;fen&gt;Agent&lt;/fen&gt; was engaged.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="07/19/2006 04:22:39 PDT Wed" abbrev="" name="Time" ID="10386">
+        <definition>&lt;def-root&gt;The point at which the &lt;fen&gt;Agent&lt;/fen&gt; is done with the &lt;fen&gt;Activity&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="07/19/2006 05:58:53 PDT Wed" abbrev="pla" name="Place" ID="10411">
+        <definition>&lt;def-root&gt;The location where the &lt;fen&gt;Agent&lt;/fen&gt; finishes the &lt;fen&gt;Activity&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>State</relatedFrame>
+        <relatedFrame>Process_completed_state</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of">
+        <relatedFrame>Activity</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by">
+        <relatedFrame>Activity_finish</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Needs_SCs" POS="A" name="done.a" ID="5506" lemmaID="11484" cBy="243" cDate="04/12/2002 12:42:06 PDT Fri">
+        <definition>FN: finished</definition>
+        <sentenceCount annotated="5" total="243"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="done"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="finished.a" ID="5763" lemmaID="14421" cBy="664" cDate="05/09/2002 05:18:03 PDT Thu">
+        <definition>FN: having nothing more to be done</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="finished"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="through.a" ID="6985" lemmaID="40297" cBy="664" cDate="08/01/2002 07:13:17 PDT Thu">
+        <definition>FN: from beginning to end of</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="through"/>
+    </lexUnit>
+</frame>

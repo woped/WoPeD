@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="curdle.v" ID="6039" frame="Change_of_consistency" frameID="341" totalAnnotated="4" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Extra-Thematic" abbrev="cir" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="I_state" name="Initial_state"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="Reas" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Extra-Thematic" abbrev="Result" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="Spd" name="Speed"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Extra-Thematic" abbrev="sub" name="Subregion"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Und" name="Undergoer"/>
+        </frame>
+    </header>
+    <definition>COD: separate into curds or lumps</definition>
+    <lexeme POS="V" name="curdle"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Circumstances"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="Sub" FE="Circumstances"/>
+                <annoSet ID="1298398"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Manner"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <annoSet ID="1298358"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Undergoer"/>
+            <pattern total="4">
+                <valenceUnit GF="Ext" PT="NP" FE="Undergoer"/>
+                <annoSet ID="1298332"/>
+                <annoSet ID="1298334"/>
+                <annoSet ID="1298358"/>
+                <annoSet ID="1298398"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Circumstances"/>
+            <FE name="Undergoer"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="Sub" FE="Circumstances"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Undergoer"/>
+                <annoSet ID="1298398"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Manner"/>
+            <FE name="Undergoer"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Undergoer"/>
+                <annoSet ID="1298358"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Undergoer"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Undergoer"/>
+                <annoSet ID="1298332"/>
+                <annoSet ID="1298334"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-001-all">
+        <sentence sentNo="0" aPos="5750884" ID="922228">
+            <text>Cook slowly , stirring constantly , until thickened but do not allow the sauce to boil or the cream will curdle and the egg will scramble . </text>
+            <annotationSet cDate="01/07/2003 07:36:14 PST Tue" status="UNANN" ID="1298331">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="NN1-VVB"/>
+                    <label end="10" start="5" name="AV0"/>
+                    <label end="12" start="12" name="PUN"/>
+                    <label end="21" start="14" name="VVG"/>
+                    <label end="32" start="23" name="AV0"/>
+                    <label end="34" start="34" name="PUN"/>
+                    <label end="40" start="36" name="CJS"/>
+                    <label end="50" start="42" name="AJ0-VVN"/>
+                    <label end="54" start="52" name="CJC"/>
+                    <label end="57" start="56" name="VDB"/>
+                    <label end="61" start="59" name="XX0"/>
+                    <label end="67" start="63" name="VVI"/>
+                    <label end="71" start="69" name="AT0"/>
+                    <label end="77" start="73" name="NN1"/>
+                    <label end="80" start="79" name="TO0"/>
+                    <label end="85" start="82" name="VVI"/>
+                    <label end="88" start="87" name="CJC"/>
+                    <label end="92" start="90" name="AT0"/>
+                    <label end="98" start="94" name="NN1"/>
+                    <label end="103" start="100" name="VM0"/>
+                    <label end="110" start="105" name="VVI"/>
+                    <label end="114" start="112" name="CJC"/>
+                    <label end="118" start="116" name="AT0"/>
+                    <label end="122" start="120" name="NN1"/>
+                    <label end="127" start="124" name="VM0"/>
+                    <label end="136" start="129" name="VVI"/>
+                    <label end="138" start="138" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 07:36:14 PST Tue" status="MANUAL" ID="1298332">
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="2919" end="98" start="90" name="Undergoer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="98" start="90" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="98" start="90" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="110" start="105" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="6862798" ID="922229">
+            <text>The clotted cream on the rhubarb had curdled . </text>
+            <annotationSet cDate="01/07/2003 07:36:14 PST Tue" status="UNANN" ID="1298333">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="10" start="4" name="AJ0"/>
+                    <label end="16" start="12" name="NN1"/>
+                    <label end="19" start="18" name="PRP"/>
+                    <label end="23" start="21" name="AT0"/>
+                    <label end="31" start="25" name="NN1"/>
+                    <label end="35" start="33" name="VHD"/>
+                    <label end="43" start="37" name="VVN"/>
+                    <label end="45" start="45" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 07:36:14 PST Tue" status="MANUAL" ID="1298334">
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="2919" end="31" start="0" name="Undergoer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="31" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="31" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="43" start="37" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="24729201" ID="922241">
+            <text>The cake mixture will curdle slightly , as it contains so little flour -- but do not worry . </text>
+            <annotationSet cDate="01/07/2003 07:36:15 PST Tue" status="UNANN" ID="1298357">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="7" start="4" name="NN1"/>
+                    <label end="15" start="9" name="NN1"/>
+                    <label end="20" start="17" name="VM0"/>
+                    <label end="27" start="22" name="VVI"/>
+                    <label end="36" start="29" name="AV0"/>
+                    <label end="38" start="38" name="PUN"/>
+                    <label end="41" start="40" name="CJS"/>
+                    <label end="44" start="43" name="PNP"/>
+                    <label end="53" start="46" name="VVZ"/>
+                    <label end="56" start="55" name="AV0"/>
+                    <label end="63" start="58" name="AJ0"/>
+                    <label end="69" start="65" name="NN1"/>
+                    <label end="72" start="71" name="PUN"/>
+                    <label end="76" start="74" name="CJC"/>
+                    <label end="79" start="78" name="VDB"/>
+                    <label end="83" start="81" name="XX0"/>
+                    <label end="89" start="85" name="VVI"/>
+                    <label end="91" start="91" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 07:36:15 PST Tue" status="MANUAL" ID="1298358">
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="2919" end="15" start="0" name="Undergoer"/>
+                    <label cBy="268" feID="2987" end="36" start="29" name="Manner"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="15" start="0" name="Ext"/>
+                    <label end="36" start="29" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="15" start="0" name="NP"/>
+                    <label end="36" start="29" name="AVP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="27" start="22" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="95382450" ID="922261">
+            <text>Gradually beat in the eggs , one at a time -- if you add them too quickly the mixture may curdle . </text>
+            <annotationSet cDate="01/07/2003 07:36:18 PST Tue" status="UNANN" ID="1298397">
+                <layer rank="1" name="BNC">
+                    <label end="8" start="0" name="AV0"/>
+                    <label end="13" start="10" name="VVD"/>
+                    <label end="16" start="15" name="PRP"/>
+                    <label end="20" start="18" name="AT0"/>
+                    <label end="25" start="22" name="NN2"/>
+                    <label end="27" start="27" name="PUN"/>
+                    <label end="31" start="29" name="CRD-PNI"/>
+                    <label end="34" start="33" name="PRP"/>
+                    <label end="36" start="36" name="AT0"/>
+                    <label end="41" start="38" name="NN1"/>
+                    <label end="44" start="43" name="PUN"/>
+                    <label end="47" start="46" name="CJS"/>
+                    <label end="51" start="49" name="PNP"/>
+                    <label end="55" start="53" name="VVB"/>
+                    <label end="60" start="57" name="PNP"/>
+                    <label end="64" start="62" name="AV0"/>
+                    <label end="72" start="66" name="AV0"/>
+                    <label end="76" start="74" name="AT0"/>
+                    <label end="84" start="78" name="NN1"/>
+                    <label end="88" start="86" name="VM0"/>
+                    <label end="95" start="90" name="VVI"/>
+                    <label end="97" start="97" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 07:36:18 PST Tue" status="MANUAL" ID="1298398">
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="2919" end="84" start="74" name="Undergoer"/>
+                    <label cBy="268" feID="2986" end="72" start="46" name="Circumstances"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="84" start="74" name="Ext"/>
+                    <label end="72" start="46" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="84" start="74" name="NP"/>
+                    <label end="72" start="46" name="Sub"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="95" start="90" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

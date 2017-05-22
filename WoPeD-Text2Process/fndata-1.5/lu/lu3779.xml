@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="expressway.n" ID="3779" frame="Roadways" frameID="203" totalAnnotated="5" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="A_e" name="Abundant_entities"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Char" name="Characteristic"/>
+            <FE fgColor="FFFFFF" bgColor="A9A9A9" type="Peripheral" abbrev="Dir" name="Direction"/>
+            <FE fgColor="9400D3" bgColor="d0d0d0" type="Peripheral" abbrev="EPs" name="Endpoints"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="F_use" name="Frequency_of_use"/>
+            <FE fgColor="000000" bgColor="9F79EE" type="Peripheral" abbrev="Goal" name="Goal"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Length" name="Length"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="Mat" name="Material"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Name" name="Name"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD73" type="Peripheral" abbrev="par" name="Part"/>
+            <FE fgColor="90876C" bgColor="000000" type="Peripheral" abbrev="Pat" name="Path"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="rel" name="Relative_location"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Road" name="Roadway"/>
+            <FE fgColor="EEE8AA" bgColor="A52A2A" type="Peripheral" abbrev="Src" name="Source"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Peripheral" abbrev="Use" name="Use"/>
+        </frame>
+    </header>
+    <definition>COD: chiefly N. Amer. an urban motorway</definition>
+    <lexeme POS="N" name="expressway"/>
+    <valences>
+        <governor type="Gov" lemma="drive">
+            <annoSet ID="616950"/>
+        </governor>
+        <governor type="Gov" lemma="lead">
+            <annoSet ID="616952"/>
+        </governor>
+        <FERealization total="4">
+            <FE name="Characteristic"/>
+            <pattern total="4">
+                <valenceUnit GF="Dep" PT="AJP" FE="Characteristic"/>
+                <annoSet ID="616950"/>
+                <annoSet ID="616952"/>
+                <annoSet ID="616968"/>
+                <annoSet ID="616986"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Goal"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[into]" FE="Goal"/>
+                <annoSet ID="616950"/>
+                <annoSet ID="616986"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Name"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="N" FE="Name"/>
+                <annoSet ID="616960"/>
+                <annoSet ID="616986"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Roadway"/>
+            <pattern total="5">
+                <valenceUnit GF="" PT="DEN" FE="Roadway"/>
+                <annoSet ID="616950"/>
+                <annoSet ID="616952"/>
+                <annoSet ID="616960"/>
+                <annoSet ID="616968"/>
+                <annoSet ID="616986"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Characteristic"/>
+            <FE name="Goal"/>
+            <FE name="Name"/>
+            <FE name="Roadway"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Characteristic"/>
+                <valenceUnit GF="Dep" PT="PP[into]" FE="Goal"/>
+                <valenceUnit GF="Dep" PT="N" FE="Name"/>
+                <valenceUnit GF="" PT="DEN" FE="Roadway"/>
+                <annoSet ID="616986"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Characteristic"/>
+            <FE name="Goal"/>
+            <FE name="Roadway"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Characteristic"/>
+                <valenceUnit GF="Dep" PT="PP[into]" FE="Goal"/>
+                <valenceUnit GF="" PT="DEN" FE="Roadway"/>
+                <annoSet ID="616950"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Characteristic"/>
+            <FE name="Roadway"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="AJP" FE="Characteristic"/>
+                <valenceUnit GF="" PT="DEN" FE="Roadway"/>
+                <annoSet ID="616952"/>
+                <annoSet ID="616968"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Name"/>
+            <FE name="Roadway"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Name"/>
+                <valenceUnit GF="" PT="DEN" FE="Roadway"/>
+                <annoSet ID="616960"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-001-all">
+        <sentence sentNo="0" aPos="7720707" ID="505580">
+            <text>We were driven along the tree and flower lined expressway into ` Lion City &quot; as Singapore is known . </text>
+            <annotationSet cDate="01/07/2003 05:58:24 PST Tue" status="UNANN" ID="616949">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="6" start="3" name="VBD"/>
+                    <label end="13" start="8" name="VVN"/>
+                    <label end="19" start="15" name="AVP-PRP"/>
+                    <label end="23" start="21" name="AT0"/>
+                    <label end="28" start="25" name="NN1"/>
+                    <label end="32" start="30" name="CJC"/>
+                    <label end="39" start="34" name="NN1"/>
+                    <label end="45" start="41" name="AJ0-VVD"/>
+                    <label end="56" start="47" name="NN1"/>
+                    <label end="61" start="58" name="PRP"/>
+                    <label end="63" start="63" name="PUQ"/>
+                    <label end="68" start="65" name="NP0"/>
+                    <label end="73" start="70" name="NP0"/>
+                    <label end="75" start="75" name="PUQ"/>
+                    <label end="78" start="77" name="CJS-PRP"/>
+                    <label end="88" start="80" name="NP0"/>
+                    <label end="91" start="90" name="VBZ"/>
+                    <label end="97" start="93" name="VVN"/>
+                    <label end="99" start="99" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:58:24 PST Tue" status="MANUAL" ID="616950">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="1661" end="45" start="25" name="Characteristic"/>
+                    <label cBy="669" feID="1657" end="56" start="47" name="Roadway"/>
+                    <label cBy="669" feID="1659" end="75" start="58" name="Goal"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="45" start="25" name="Dep"/>
+                    <label end="75" start="58" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="45" start="25" name="AJP"/>
+                    <label end="75" start="58" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="56" start="47" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="13" start="8" name="Gov"/>
+                    <label end="75" start="15" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="12664860" ID="505581">
+            <text>Vic threads the tunnels , switches lanes , swings out on to a long covered ramp that leads to a six-lane expressway thrust like a gigantic concrete fist through the backstreets of his boyhood . </text>
+            <annotationSet cDate="01/07/2003 05:58:25 PST Tue" status="UNANN" ID="616951">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="NP0"/>
+                    <label end="10" start="4" name="VVZ"/>
+                    <label end="14" start="12" name="AT0"/>
+                    <label end="22" start="16" name="NN2"/>
+                    <label end="24" start="24" name="PUN"/>
+                    <label end="33" start="26" name="VVZ"/>
+                    <label end="39" start="35" name="NN2"/>
+                    <label end="41" start="41" name="PUN"/>
+                    <label end="48" start="43" name="VVZ"/>
+                    <label end="52" start="50" name="AVP"/>
+                    <label end="55" start="54" name="PRP"/>
+                    <label end="58" start="57" name="PRP"/>
+                    <label end="60" start="60" name="AT0"/>
+                    <label end="65" start="62" name="AJ0-AV0"/>
+                    <label end="73" start="67" name="AJ0-VVN"/>
+                    <label end="78" start="75" name="NN1-VVB"/>
+                    <label end="83" start="80" name="CJT"/>
+                    <label end="89" start="85" name="NN2-VVZ"/>
+                    <label end="92" start="91" name="PRP"/>
+                    <label end="94" start="94" name="AT0"/>
+                    <label end="103" start="96" name="AJ0-NN1"/>
+                    <label end="114" start="105" name="NN1"/>
+                    <label end="121" start="116" name="VVD-VVN"/>
+                    <label end="126" start="123" name="PRP"/>
+                    <label end="128" start="128" name="AT0"/>
+                    <label end="137" start="130" name="AJ0"/>
+                    <label end="146" start="139" name="AJ0-NN1"/>
+                    <label end="151" start="148" name="NN1"/>
+                    <label end="159" start="153" name="PRP"/>
+                    <label end="163" start="161" name="AT0"/>
+                    <label end="175" start="165" name="NN2"/>
+                    <label end="178" start="177" name="PRF"/>
+                    <label end="182" start="180" name="DPS"/>
+                    <label end="190" start="184" name="NN1"/>
+                    <label end="192" start="192" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:58:25 PST Tue" status="MANUAL" ID="616952">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="1661" end="103" start="96" name="Characteristic"/>
+                    <label cBy="669" feID="1657" end="114" start="105" name="Roadway"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="103" start="96" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="103" start="96" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="114" start="105" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="89" start="85" name="Gov"/>
+                    <label end="114" start="91" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="48714191" ID="505585">
+            <text>The resort is now even easier to get to , thanks to the new A55 Expressway . </text>
+            <annotationSet cDate="01/07/2003 05:58:25 PST Tue" status="UNANN" ID="616959">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="9" start="4" name="NN1"/>
+                    <label end="12" start="11" name="VBZ"/>
+                    <label end="16" start="14" name="AV0"/>
+                    <label end="21" start="18" name="AV0"/>
+                    <label end="28" start="23" name="AJC"/>
+                    <label end="31" start="30" name="TO0"/>
+                    <label end="35" start="33" name="VVI"/>
+                    <label end="38" start="37" name="AVP-PRP"/>
+                    <label end="40" start="40" name="PUN"/>
+                    <label end="47" start="42" name="NN2"/>
+                    <label end="50" start="49" name="PRP"/>
+                    <label end="54" start="52" name="AT0"/>
+                    <label end="58" start="56" name="AJ0"/>
+                    <label end="62" start="60" name="UNC"/>
+                    <label end="73" start="64" name="NN1-NP0"/>
+                    <label end="75" start="75" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:58:25 PST Tue" status="MANUAL" ID="616960">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="1662" end="62" start="60" name="Name"/>
+                    <label cBy="669" feID="1657" end="73" start="64" name="Roadway"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="62" start="60" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="62" start="60" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="73" start="64" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="63159717" ID="505589">
+            <text>It 's a ten-lane expressway , on a warm mid-summer evening , with the sky clearing after a day of rain . </text>
+            <annotationSet cDate="01/07/2003 05:58:25 PST Tue" status="UNANN" ID="616967">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="4" start="3" name="VBZ"/>
+                    <label end="6" start="6" name="AT0"/>
+                    <label end="15" start="8" name="AJ0"/>
+                    <label end="26" start="17" name="NN1"/>
+                    <label end="28" start="28" name="PUN"/>
+                    <label end="31" start="30" name="PRP"/>
+                    <label end="33" start="33" name="AT0"/>
+                    <label end="38" start="35" name="AJ0"/>
+                    <label end="49" start="40" name="NN1"/>
+                    <label end="57" start="51" name="NN1"/>
+                    <label end="59" start="59" name="PUN"/>
+                    <label end="64" start="61" name="PRP"/>
+                    <label end="68" start="66" name="AT0"/>
+                    <label end="72" start="70" name="NN1"/>
+                    <label end="81" start="74" name="NN1-VVG"/>
+                    <label end="87" start="83" name="PRP"/>
+                    <label end="89" start="89" name="AT0"/>
+                    <label end="93" start="91" name="NN1"/>
+                    <label end="96" start="95" name="PRF"/>
+                    <label end="101" start="98" name="NN1"/>
+                    <label end="103" start="103" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:58:26 PST Tue" status="MANUAL" ID="616968">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="1661" end="15" start="8" name="Characteristic"/>
+                    <label cBy="669" feID="1657" end="26" start="17" name="Roadway"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="15" start="8" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="15" start="8" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="26" start="17" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="108277988" ID="505598">
+            <text>The convent , built between 1868 and 1907 has been used as a school , orphanage and convalescent home , but is in a derelict state and in full view of the main A55 Expressway into Wales . </text>
+            <annotationSet cDate="01/07/2003 05:58:27 PST Tue" status="UNANN" ID="616985">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="10" start="4" name="NN1"/>
+                    <label end="12" start="12" name="PUN"/>
+                    <label end="18" start="14" name="VVD-VVN"/>
+                    <label end="26" start="20" name="PRP"/>
+                    <label end="31" start="28" name="CRD"/>
+                    <label end="35" start="33" name="CJC"/>
+                    <label end="40" start="37" name="CRD"/>
+                    <label end="44" start="42" name="VHZ"/>
+                    <label end="49" start="46" name="VBN"/>
+                    <label end="54" start="51" name="VVN"/>
+                    <label end="57" start="56" name="PRP"/>
+                    <label end="59" start="59" name="AT0"/>
+                    <label end="66" start="61" name="NN1"/>
+                    <label end="68" start="68" name="PUN"/>
+                    <label end="78" start="70" name="NN1"/>
+                    <label end="82" start="80" name="CJC"/>
+                    <label end="95" start="84" name="AJ0"/>
+                    <label end="100" start="97" name="NN1"/>
+                    <label end="102" start="102" name="PUN"/>
+                    <label end="106" start="104" name="CJC"/>
+                    <label end="109" start="108" name="VBZ"/>
+                    <label end="112" start="111" name="PRP"/>
+                    <label end="114" start="114" name="AT0"/>
+                    <label end="123" start="116" name="AJ0"/>
+                    <label end="129" start="125" name="NN1"/>
+                    <label end="133" start="131" name="CJC"/>
+                    <label end="136" start="135" name="AV0"/>
+                    <label end="141" start="138" name="AV0"/>
+                    <label end="146" start="143" name="NN1"/>
+                    <label end="149" start="148" name="PRF"/>
+                    <label end="153" start="151" name="AT0"/>
+                    <label end="158" start="155" name="AJ0-NN1"/>
+                    <label end="162" start="160" name="ZZ0"/>
+                    <label end="173" start="164" name="NN1"/>
+                    <label end="178" start="175" name="PRP"/>
+                    <label end="184" start="180" name="NP0"/>
+                    <label end="186" start="186" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:58:27 PST Tue" status="MANUAL" ID="616986">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="1657" end="173" start="164" name="Roadway"/>
+                    <label cBy="669" feID="1659" end="184" start="175" name="Goal"/>
+                    <label cBy="865" feID="1661" end="158" start="155" name="Characteristic"/>
+                    <label cBy="865" feID="1662" end="162" start="160" name="Name"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="184" start="175" name="Dep"/>
+                    <label end="158" start="155" name="Dep"/>
+                    <label end="162" start="160" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="184" start="175" name="PP"/>
+                    <label end="158" start="155" name="AJP"/>
+                    <label end="162" start="160" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="173" start="164" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>
