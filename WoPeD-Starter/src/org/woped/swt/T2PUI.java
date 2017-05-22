@@ -64,7 +64,7 @@ public class T2PUI extends JDialog {
 		this.setVisible(false);
 		this.getContentPane().setLayout(new BorderLayout());
 		this.setUndecorated(false);
-		this.setResizable(false);
+		this.setResizable(true);
 		this.getContentPane().add(getAboutPanel(), BorderLayout.NORTH);
 		this.getContentPane().add(getButtonPanel(), BorderLayout.SOUTH);
 		this.setTitle(Messages.getTitle("Action.ShowAbout"));
@@ -88,7 +88,7 @@ public class T2PUI extends JDialog {
 			panel.setLayout(new GridBagLayout());
 			GridBagConstraints c = new GridBagConstraints();
 			c.gridy = 1;
-			c.insets = new Insets(0, 10, 0, 10);
+			//c.insets = new Insets(0, 10, 0, 10);
 
 			textArea = new JTextArea();
 			textArea.setFont(new Font("Lucia Grande", Font.PLAIN, 13));
@@ -103,12 +103,12 @@ public class T2PUI extends JDialog {
 		if (buttonPanel == null) {
 
 			buttonPanel = new JPanel();
-			getContentPane().add(buttonPanel, BorderLayout.SOUTH);
-			buttonPanel.setLayout(new GridLayout(1, 0, 0, 0));
+			buttonPanel.setLayout(new GridBagLayout());
+			GridBagConstraints c1 = new GridBagConstraints();
 
 			WopedButton btnGenerate = new WopedButton("Generate");
 			btnGenerate.setIcon(new ImageIcon(getClass().getResource(Messages.getString("Action.ShowAbout.Icon"))));
-			buttonPanel.add(btnGenerate);
+			buttonPanel.add(btnGenerate,c1);
 
 			WopedButton btnErase = new WopedButton("Delete");
 			btnErase.setIcon(new ImageIcon(getClass().getResource(Messages.getString("T2P.Icon.Delete"))));
@@ -122,7 +122,7 @@ public class T2PUI extends JDialog {
 
 				}
 			});
-			buttonPanel.add(btnErase);
+			buttonPanel.add(btnErase,c1);
 
 			WopedButton btnUpload = new WopedButton("Upload");
 			btnUpload.setIcon(new ImageIcon(getClass().getResource(Messages.getString("Button.Import.Icon"))));
@@ -141,7 +141,7 @@ public class T2PUI extends JDialog {
 					textArea.setText(of.sb.toString());
 				}
 			});
-			buttonPanel.add(btnUpload);
+			buttonPanel.add(btnUpload,c1);
 			
 			
 			/*
