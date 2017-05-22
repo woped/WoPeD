@@ -45,6 +45,7 @@ import java.util.jar.JarFile;
 import java.util.zip.ZipEntry;
 
 public class MainFrame extends JRibbonFrame implements IUserInterface {
+	//
 
     private static final long serialVersionUID = 1L;
 
