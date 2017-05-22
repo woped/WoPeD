@@ -2,6 +2,7 @@ package org.woped.swt;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Frame;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -90,8 +91,9 @@ public class T2PUI extends JDialog {
 			c.insets = new Insets(0, 10, 0, 10);
 
 			textArea = new JTextArea();
+			textArea.setFont(new Font("Lucia Grande", Font.PLAIN, 13));
 			panel.add(textArea, c);
-
+			
 			aboutPanel = new JScrollPane(panel);
 		}
 		return aboutPanel;
