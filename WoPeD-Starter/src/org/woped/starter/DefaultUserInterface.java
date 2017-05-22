@@ -174,28 +174,13 @@ public class DefaultUserInterface extends MainFrame implements IUserInterface, I
     	
     	Texteditor frame = new Texteditor();
     	
-    	
-    	//JInternalFrame frame = new JInternalFrame();
-
-//        Point position = getNextEditorPosition();
-//        frame.setAlignmentX((float) position.getX());
-//        frame.setAlignmentY((float) position.getY());
-//        frame.addInternalFrameListener(this);
-//        frame.setLocation(position);
         desktop.add(frame, BorderLayout.CENTER);
 
         frame.pack();
 
-        frame.setTitle("Texteditor");
+        frame.setTitle("Text2Process");
         frame.setResizable(true);
         frame.setClosable(true);
-        
-		// JTextArea jt = new JTextArea();
-		// jt.setText("Lorem fucking ipsum");
-		//
-		// JPanel jp = new JPanel();
-		// jp.add(jt);
-		// frame.add(jp);
         
         // Notify MainFrame
 
