@@ -23,8 +23,9 @@ import org.apromore.manager.client.ManagerService;
 import org.apromore.manager.client.ManagerServiceClient;
 import org.apromore.model.ExportFormatResultType;
 import org.apromore.model.FolderType;
-import org.apromore.model.ProcessSummariesType;
 import org.apromore.model.ProcessSummaryType;
+import org.apromore.model.SummariesType;
+import org.apromore.model.SummaryType;
 import org.apromore.model.UserType;
 import org.apromore.model.VersionSummaryType;
 import org.apromore.plugin.property.RequestParameterType;
@@ -57,7 +58,7 @@ public class ApromoreAccess {
 	private SaajSoapMessageFactory soapMsgFactory;
 	private WebServiceTemplate wsTemp;
 	private ManagerService managerService;
-	private ProcessSummariesType processSummaries;
+	private SummariesType processSummaries;
 	private List<ProcessSummaryType> processList;
 
 	private ApromoreServer[] servers = null;
@@ -178,11 +179,11 @@ public class ApromoreAccess {
 		processList = new ArrayList<ProcessSummaryType>();
 		for (FolderType folder : folderForUser) {
 			processSummaries = managerService.readProcessSummaries(folder.getId(), null);
-			List<ProcessSummaryType> processesWithoutFolder = processSummaries.getProcessSummary();
-			for (ProcessSummaryType pst : processesWithoutFolder) {
-				pst.setFolder(folder);
+			for (SummaryType summary : processSummaries.getSummary()) {
+				ProcessSummaryType process = (ProcessSummaryType)summary;
+				process.setFolder(folder);
+				processList.add(process);
 			}
-			processList.addAll(processesWithoutFolder);
 		}
 		String[][] s = new String[processList.size()][7];
 
@@ -386,5 +387,4 @@ public class ApromoreAccess {
 
 		}
 	}
-
 }
