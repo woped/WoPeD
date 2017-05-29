@@ -122,8 +122,9 @@ public class T2PUI extends JDialog {
 					if (textArea.getText().equals("")) {
 						
 						String textMessages[] = {
-								Messages.getString("Dialog.Ok")
-								};
+								Messages.getString("Dialog.Ok"),
+								
+								};	
 						
 						int value = JOptionPane.showOptionDialog(null, Messages.getStringReplaced(
 										"Action.Confirm.T2P.Empty.TextArea.Text", null),
@@ -136,9 +137,28 @@ public class T2PUI extends JDialog {
 						
 					} else {
 						
+						String textMessages[] = {
+								Messages.getString("Dialog.Ok"),
+								Messages.getString("Dialog.Cancel")
+								};	
 						
-					mediator.createEditor(true);
-				close();
+						
+						
+						
+						int value = JOptionPane.showOptionDialog(null, Messages.getStringReplaced(
+								"Action.Confirm.T2P.NewEditor.TextArea.Text", null),
+						Messages.getString("T2P.textBandTitle"),
+						JOptionPane.YES_NO_CANCEL_OPTION,
+						JOptionPane.ERROR_MESSAGE,
+						null, 
+						textMessages,
+						textMessages[0]);
+						
+						if(value== (JOptionPane.YES_OPTION)){
+							mediator.createEditor(true);
+							close();
+							
+						} 
 					}
 				}
 			});
