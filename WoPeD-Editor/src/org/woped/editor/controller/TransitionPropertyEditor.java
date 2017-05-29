@@ -183,7 +183,7 @@ public class TransitionPropertyEditor extends JDialog implements
 		this.editor = editor;
 		this.setVisible(false);
 		initialize();
-		this.setSize(650, 620);
+		this.setSize(650, 640);
 		this.setLocationRelativeTo(null); // center dialog on screen
 		this.setVisible(true);
 	}

@@ -46,6 +46,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.editor.action.DisposeWindowAction;
 import org.woped.editor.help.action.LaunchDefaultBrowserAction;
 import org.woped.gui.lookAndFeel.WopedButton;
@@ -128,11 +129,12 @@ public class AboutUI extends JDialog
     private JScrollPane getAboutPanel()
     {    	
        	String[] aboutArgs       = { Messages.getWoPeDVersionWithTimestamp() };
-       	String   aboutText       = "<html><p>" + Messages.getStringReplaced("About.Text", aboutArgs) + 
+       	String   aboutText       = "<html><p>" + Messages.getStringReplaced("About.Text", aboutArgs) +
+       								"<br />" + 
        								Messages.getString("About.Members") +
        								Messages.getString("About.Thanks") +
        								"</p></html>";
-       	String   javaText 		 = "<html><p><b>" + Messages.getString("About.Java") + ": </b>" + System.getProperty("java.version") + "</p></html>";
+       	String   javaText 		 = "<html><p><b>" + Messages.getString("About.Java") + ": </b>" + System.getProperty("java.version") + "</p><br /></html>";
        	
        	if (aboutPanel == null)
         {
@@ -150,13 +152,13 @@ public class AboutUI extends JDialog
             c.gridy = 1;
             c.insets = new Insets(0, 10, 0, 10);
             c.anchor = GridBagConstraints.WEST;
-            javaTextLabel = new JLabel(javaText);
+            javaTextLabel = new JLabel(aboutText);
             panel.add(javaTextLabel, c);
 
             c.gridy = 2;
             c.insets = new Insets(0, 10, 0, 10);
             c.anchor = GridBagConstraints.WEST;
-            aboutTextLabel = new JLabel(aboutText);
+            aboutTextLabel = new JLabel(javaText);
             panel.add(aboutTextLabel, c);
 
             c.gridy = 3;
@@ -243,6 +245,8 @@ public class AboutUI extends JDialog
             JTextArea text = new JTextArea();
             text.setBackground(panel.getBackground());
             text.append(changeLog);
+            text.setCaretPosition(0);
+            text.setFont(DefaultStaticConfiguration.DEFAULT_LABEL_FONT);
             panel.add(text, c1);
             JPanel panel2 = new JPanel(new FlowLayout(FlowLayout.LEFT));
             panel2.add(panel);
