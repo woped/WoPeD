@@ -74,11 +74,11 @@ public class T2PUI extends JDialog {
 		this.pack();
 
 		if (getOwner() != null) {
-			this.setLocation(getOwner().getX() + ((getOwner().getWidth() - this.getWidth()) * 3),
-					getOwner().getY() + ((getOwner().getHeight() - this.getHeight()) / 3));
+			this.setLocation(getOwner().getX() + ((getOwner().getWidth() - this.getWidth()) /2),
+					getOwner().getY() + ((getOwner().getHeight() - this.getHeight()) /2));
 		} else {
 			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-			this.setLocation((screenSize.width - this.getWidth()), (screenSize.height - this.getHeight()));
+			this.setLocation((screenSize.width - this.getWidth())/2, (screenSize.height - this.getHeight())/2);
 		}
 
 		this.setSize(800,500);
@@ -111,6 +111,14 @@ public class T2PUI extends JDialog {
 			WopedButton btnGenerate = new WopedButton("Generate");
 			btnGenerate.setIcon(new ImageIcon(getClass().getResource(Messages.getString("Action.ShowAbout.Icon"))));
 			buttonPanel.add(btnGenerate);
+			btnGenerate.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					
+					if (textArea.getText() == null) {
+						System.out.println("Hello");
+					}
+				}
+			});
 
 			WopedButton btnErase = new WopedButton("Delete");
 			btnErase.setIcon(new ImageIcon(getClass().getResource(Messages.getString("T2P.Icon.Delete"))));
