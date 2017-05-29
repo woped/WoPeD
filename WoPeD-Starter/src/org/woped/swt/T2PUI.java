@@ -21,12 +21,14 @@ import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import org.junit.experimental.max.MaxCore;
 import org.woped.editor.action.DisposeWindowAction;
+import org.woped.gui.images.svg.system_log_out;
 import org.woped.gui.lookAndFeel.WopedButton;
 import org.woped.gui.translations.Messages;
 
@@ -73,9 +75,20 @@ public class T2PUI extends JDialog {
 		this.setTitle(Messages.getString("T2P.textBandTitle"));
 		this.pack();
 
+		
+		System.out.println(getOwner());
+		System.out.println(getOwner().getX());
+		System.out.println((getOwner().getWidth()));
+		System.out.println(this.getWidth());
+		
+		
+		System.out.println(getOwner().getY());
+		System.out.println((getOwner().getHeight()));
+		System.out.println(this.getHeight());
+		
 		if (getOwner() != null) {
-			this.setLocation(getOwner().getX() + ((getOwner().getWidth() - this.getWidth()) /2),
-					getOwner().getY() + ((getOwner().getHeight() - this.getHeight()) /2));
+			this.setLocation(0,
+					getOwner().getHeight()/4);
 		} else {
 			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 			this.setLocation((screenSize.width - this.getWidth())/2, (screenSize.height - this.getHeight())/2);
@@ -114,7 +127,23 @@ public class T2PUI extends JDialog {
 			btnGenerate.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					
-					if (textArea.getText() == null) {
+					
+					if (textArea.getText().equals("")) {
+						
+						String textMessages[] = {
+								Messages.getString("Dialog.Ok")
+								};
+						
+						int value = JOptionPane.showOptionDialog(null, Messages.getStringReplaced(
+										"Action.Confirm.T2P.Empty.TextArea.Text", null),
+								Messages.getString("Action.Confirm.T2P.Empty.TextArea.Title"),
+								JOptionPane.YES_NO_CANCEL_OPTION,
+								JOptionPane.ERROR_MESSAGE,
+								null, 
+								textMessages,
+								textMessages[0]);
+						
+					} else {
 						System.out.println("Hello");
 					}
 				}
