@@ -87,10 +87,10 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 			if (getMediator().getUi() != null
 					&& getMediator().getUi().getComponent() instanceof JFrame)
 			{
-				t2p = new T2PUI((JFrame) getMediator().getUi());
+				t2p = new T2PUI((JFrame) getMediator().getUi(), getMediator());
 			} else
 			{
-				t2p = new T2PUI();
+				t2p = new T2PUI(getMediator());
 			}
 			t2p.setVisible(true);
 			break;

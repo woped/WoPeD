@@ -3,32 +3,23 @@ package org.woped.swt;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Frame;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.HeadlessException;
-import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.io.IOException;
 
-import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-import org.junit.experimental.max.MaxCore;
-import org.woped.editor.action.DisposeWindowAction;
-import org.woped.gui.images.svg.system_log_out;
+import org.woped.core.controller.AbstractApplicationMediator;
+import org.woped.editor.controller.ApplicationMediator;
 import org.woped.gui.lookAndFeel.WopedButton;
 import org.woped.gui.translations.Messages;
 
@@ -41,9 +32,11 @@ public class T2PUI extends JDialog {
 
 	private JScrollPane aboutPanel = null;
 	private JPanel buttonPanel = null;
+	private ApplicationMediator mediator = null;
 
-	public T2PUI() {
-		this(null);
+	public T2PUI(AbstractApplicationMediator mediator) {
+		
+		this(null, mediator);
 	}
 
 	/**
@@ -52,8 +45,9 @@ public class T2PUI extends JDialog {
 	 * @param owner
 	 * @throws HeadlessException
 	 */
-	public T2PUI(Frame owner) throws HeadlessException {
+	public T2PUI(Frame owner, AbstractApplicationMediator mediator) throws HeadlessException {
 		super(owner, true);
+		this.mediator = (ApplicationMediator)mediator;
 		initialize();
 	}
 
@@ -66,6 +60,7 @@ public class T2PUI extends JDialog {
 	 * @return void
 	 */
 	private void initialize() {
+		
 		this.setVisible(false);
 		this.getContentPane().setLayout(new BorderLayout());
 		this.setUndecorated(false);
@@ -75,16 +70,6 @@ public class T2PUI extends JDialog {
 		this.setTitle(Messages.getString("T2P.textBandTitle"));
 		this.pack();
 
-		
-		System.out.println(getOwner());
-		System.out.println(getOwner().getX());
-		System.out.println((getOwner().getWidth()));
-		System.out.println(this.getWidth());
-		
-		
-		System.out.println(getOwner().getY());
-		System.out.println((getOwner().getHeight()));
-		System.out.println(this.getHeight());
 		
 		if (getOwner() != null) {
 			this.setLocation(0,
@@ -97,6 +82,12 @@ public class T2PUI extends JDialog {
 		this.setSize(800,500);
 	}
 
+	
+	private void close(){
+		this.dispose();
+	}
+	
+	
 	private JScrollPane getT2PPanel() {
 		
 			JPanel panel = new JPanel();
@@ -144,7 +135,10 @@ public class T2PUI extends JDialog {
 								textMessages[0]);
 						
 					} else {
-						System.out.println("Hello");
+						
+						
+					mediator.createEditor(true);
+				close();
 					}
 				}
 			});
@@ -183,71 +177,7 @@ public class T2PUI extends JDialog {
 			buttonPanel.add(btnUpload);
 			
 			
-			/*
-		
-			aboutButton = new WopedButton(new AbstractAction() {
-				public void actionPerformed(ActionEvent arg0) {
-					try {
-						getContentPane().remove(getChangeLogPanel());
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					getContentPane().add(getAboutPanel(), BorderLayout.CENTER, 0);
-					aboutButton.setEnabled(false);
-					changelogButton.setEnabled(true);
-					pack();
-					repaint();
-				}
-			});
-
-			aboutButton.setMnemonic(KeyEvent.VK_A);
-			aboutButton.setIcon(new ImageIcon(getClass().getResource(Messages.getString("Action.ShowAbout.Icon"))));
-			aboutButton.setText(Messages.getString("Action.ShowAbout.Title"));
-			aboutButton.setEnabled(false);
-			c1.gridy = 0;
-			c1.gridx = 0;
-			c1.insets = new Insets(10, 10, 10, 10);
-			c1.anchor = GridBagConstraints.WEST;
-			buttonPanel.add(aboutButton, c1);
-
 			
-			changelogButton = new WopedButton(new AbstractAction() {
-				public void actionPerformed(ActionEvent arg0) {
-					getContentPane().remove(getAboutPanel());
-					try {
-						getContentPane().add(getChangeLogPanel(), BorderLayout.CENTER, 0);
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					aboutButton.setEnabled(true);
-					changelogButton.setEnabled(false);
-					pack();
-					repaint();
-				}
-			});
-
-			changelogButton.setMnemonic(KeyEvent.VK_L);
-			changelogButton.setText(Messages.getString("Window.About.Versions"));
-			changelogButton.setIcon(Messages.getImageIcon("Window.About.Versions"));
-			c1.gridy = 0;
-			c1.gridx = 1;
-			c1.insets = new Insets(0, 0, 0, 0);
-			c1.anchor = GridBagConstraints.CENTER;
-			buttonPanel.add(changelogButton, c1);
-
-		
-			closeButton = new WopedButton(new DisposeWindowAction());
-			closeButton.setMnemonic(KeyEvent.VK_C);
-			closeButton.requestFocus();
-
-			c1.gridy = 0;
-			c1.gridx = 2;
-			c1.insets = new Insets(10, 10, 10, 10);
-			c1.anchor = GridBagConstraints.EAST;
-			buttonPanel.add(closeButton, c1);
-			 */
 		}
 		return buttonPanel;
 	}
