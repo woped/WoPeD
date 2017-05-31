@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+import org.woped.t2p.gui.*;
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.editor.controller.ApplicationMediator;
 import org.woped.gui.lookAndFeel.WopedButton;
@@ -142,7 +143,8 @@ public class T2PUI extends JDialog {
 								Messages.getString("Dialog.Cancel")
 								};	
 						
-						
+						Initiator init = new Initiator();
+						init.convert(textArea.getText(), true, null);
 						
 						
 						int value = JOptionPane.showOptionDialog(null, Messages.getStringReplaced(
@@ -155,6 +157,8 @@ public class T2PUI extends JDialog {
 						textMessages[0]);
 						
 						if(value== (JOptionPane.YES_OPTION)){
+							
+							
 							mediator.createEditor(true);
 							close();
 							
