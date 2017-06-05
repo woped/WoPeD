@@ -26,19 +26,19 @@
 
 <h4>Legend</h4>
 
-<img class="node" src="../images/cga_unprocessed.PNG">
-<p class="clearfix">Unprocessed node - The node has not been analysed yet</p>
-<img class="node" src="../images/cga_processing.PNG">
-<p class="clearfix">Currently processed node - The node is being analysed</p>
-<img class="node" src="../images/cga_active.PNG">
+<img class="node" src="../images/cga_unprocessed.png">
+<p class="clearfix">Unprocessed node - The node has not been analyzed yet</p>
+<img class="node" src="../images/cga_processing.png">
+<p class="clearfix">Currently processed node - The node is being analyzed</p>
+<img class="node" src="../images/cga_active.png">
 <p class="clearfix">Active node - Currently part of the minimal coverability set</p>
-<img class="node" src="../images/cga_inactive.PNG">
+<img class="node" src="../images/cga_inactive.png">
 <p class="clearfix">Inactive node - Marking covered by an active node</p>
-<img class="node" src="../images/cga_less_active.PNG">
+<img class="node" src="../images/cga_less_active.png">
 <p class="clearfix">Deactivated node - Node has been deactivated by the currently processed node</p>
-<img class="node" src="../images/cga_less_inactive.PNG">
+<img class="node" src="../images/cga_less_inactive.png">
 <p class="clearfix">Less node - The node is the reason for the deactivation of an active node</p>
-<img class="node" src="../images/cga_larger.PNG">
+<img class="node" src="../images/cga_larger.png">
 <p class="clearfix">Larger node - The node is larger or equal than the currently processed node</p>
 
 <h4>Menu Bar</h4>
@@ -54,17 +54,17 @@
 <p>
     The process is also divided into two parts. In the first step the coverability tree is built by
     analysing node by node. If all nodes have
-    been analysed, the resulting tree is converted into an graph in a second step.
+    been analyzed, the resulting tree is converted into an graph in a second step.
 </p>
 
 <h4>Part 1: Building the coverability tree</h4>
 <p>
-    A unprocessed node (marked with an ?) can be analysed by clicking at the node or by clicking the button "choose random node" from the
+    A unprocessed node (marked with an ?) can be analyzed by clicking at the node or by clicking the button "choose random node" from the
     sidebar. The analysis performs a couple of sequential checks on the contained marking which are listed below. In part 1 the labels of
     the node are extended in some cases with a prefix and a suffix number. The prefix number indicates the step in which the node has been
-    analysed and the suffix number in which step the has been deactivated, e.g the label <img src="../images/cga_inactive.PNG"
+    analyzed and the suffix number in which step the has been deactivated, e.g the label <img src="../images/cga_inactive.png"
                                                                                               style="vertical-align: middle; height: 1.4em;">
-    means that the node with the marking <code>(p4)</code> has been analysed in step 4 and has been deactivated in step 5.
+    means that the node with the marking <code>(p4)</code> has been analyzed in step 4 and has been deactivated in step 5.
 </p>
 <p>
     <strong>Check 1:</strong><br>
