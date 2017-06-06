@@ -18,11 +18,12 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-import org.woped.t2p.gui.*;
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.editor.controller.ApplicationMediator;
 import org.woped.gui.lookAndFeel.WopedButton;
 import org.woped.gui.translations.Messages;
+
+import gui.Initiator;
 
 public class T2PUI extends JDialog {
 
@@ -143,20 +144,23 @@ public class T2PUI extends JDialog {
 								Messages.getString("Dialog.Cancel")
 								};	
 						
-						Initiator init = new Initiator();
-						init.convert(textArea.getText(), true, null);
+						
 						
 						
 						int value = JOptionPane.showOptionDialog(null, Messages.getStringReplaced(
 								"Action.Confirm.T2P.NewEditor.TextArea.Text", null),
 						Messages.getString("T2P.textBandTitle"),
 						JOptionPane.YES_NO_CANCEL_OPTION,
-						JOptionPane.ERROR_MESSAGE,
+						JOptionPane.QUESTION_MESSAGE,
 						null, 
 						textMessages,
 						textMessages[0]);
 						
 						if(value== (JOptionPane.YES_OPTION)){
+							
+													
+							Initiator init = new Initiator();
+							init.convert(textArea.getText(), true, null);
 							
 							
 							mediator.createEditor(true);
