@@ -10,18 +10,26 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
-import nodes.Cluster;
-import nodes.FlowObject;
-import nodes.ProcessEdge;
-import nodes.ProcessNode;
-import nodes.ProcessObject;
-import models.BPMNModel;
-import models.EPCModel;
 import bpmn.Lane;
 import bpmn.Message;
 import bpmn.MessageFlow;
 import bpmn.Pool;
 import bpmn.Task;
+import edu.stanford.nlp.trees.TypedDependency;
+import epc.Connector;
+import epc.EPCRepairer;
+import epc.Function;
+import epc.Organisation;
+import epc.SequenceFlow;
+import export.BPMNExporter;
+import export.EPCExporter;
+import models.BPMNModel;
+import models.EPCModel;
+import nodes.Cluster;
+import nodes.FlowObject;
+import nodes.ProcessEdge;
+import nodes.ProcessNode;
+import nodes.ProcessObject;
 import processing.T2PStanfordWrapper;
 import text.T2PSentence;
 import text.Text;
@@ -34,14 +42,7 @@ import transform.TextAnalyzer;
 import transform.TextModelBuilder;
 import worldModel.Action;
 import worldModel.SpecifiedElement;
-import edu.stanford.nlp.trees.TypedDependency;
-import epc.Connector;
-import epc.EPCRepairer;
-import epc.Function;
-import epc.Organisation;
-import epc.SequenceFlow;
-import export.BPMNExporter;
-import export.EPCExporter;
+import worldModel.WorldModel;
 
 /**
  * wraps all of the functionality to create processes from text.
@@ -95,6 +96,17 @@ private T2PStanfordWrapper f_stanford = new T2PStanfordWrapper();
 	 /**
      * (Re-)starts analyzing the loaded text and creates a process model
      */
+	
+	public WorldModel getWorldModel (String text){
+		
+		f_text = f_stanford.createText(text);
+		f_analyzer.clear();
+		f_analyzer.analyze(f_text);
+		return f_analyzer.getWorld();
+		
+	}
+	
+	
 	public void analyzeText(boolean rebuildTextModel, boolean bpmn, File outputFile) {
 		boolean f_bpmn = bpmn;
 		f_analyzer.analyze(f_text);

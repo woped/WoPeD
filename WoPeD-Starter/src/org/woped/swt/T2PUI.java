@@ -24,10 +24,10 @@ import org.woped.gui.lookAndFeel.WopedButton;
 import org.woped.gui.translations.Messages;
 
 import gui.Initiator;
+import worldModel.WorldModel;
 
 public class T2PUI extends JDialog {
 
-	
 	private static final long serialVersionUID = 1L;
 
 	private JTextArea textArea = null;
@@ -37,7 +37,7 @@ public class T2PUI extends JDialog {
 	private ApplicationMediator mediator = null;
 
 	public T2PUI(AbstractApplicationMediator mediator) {
-		
+
 		this(null, mediator);
 	}
 
@@ -49,7 +49,7 @@ public class T2PUI extends JDialog {
 	 */
 	public T2PUI(Frame owner, AbstractApplicationMediator mediator) throws HeadlessException {
 		super(owner, true);
-		this.mediator = (ApplicationMediator)mediator;
+		this.mediator = (ApplicationMediator) mediator;
 		initialize();
 	}
 
@@ -62,7 +62,7 @@ public class T2PUI extends JDialog {
 	 * @return void
 	 */
 	private void initialize() {
-		
+
 		this.setVisible(false);
 		this.getContentPane().setLayout(new BorderLayout());
 		this.setUndecorated(false);
@@ -72,38 +72,34 @@ public class T2PUI extends JDialog {
 		this.setTitle(Messages.getString("T2P.textBandTitle"));
 		this.pack();
 
-		
 		if (getOwner() != null) {
-			this.setLocation(0,
-					getOwner().getHeight()/4);
+			this.setLocation(0, getOwner().getHeight() / 4);
 		} else {
 			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-			this.setLocation((screenSize.width - this.getWidth())/2, (screenSize.height - this.getHeight())/2);
+			this.setLocation((screenSize.width - this.getWidth()) / 2, (screenSize.height - this.getHeight()) / 2);
 		}
 
-		this.setSize(800,500);
+		this.setSize(800, 500);
 	}
 
-	
-	private void close(){
+	private void close() {
 		this.dispose();
 	}
-	
-	
+
 	private JScrollPane getT2PPanel() {
-		
-			JPanel panel = new JPanel();
-			panel.setLayout(new GridLayout());
-	//		GridBagConstraints c = new GridBagConstraints();
-			
-			panel.setBackground(Color.white);
-			textArea = new JTextArea();
-			textArea.setFont(new Font("Lucia Grande", Font.PLAIN, 13));
-			
-			panel.add(textArea);
-			
-			aboutPanel = new JScrollPane(panel);
-		
+
+		JPanel panel = new JPanel();
+		panel.setLayout(new GridLayout());
+		// GridBagConstraints c = new GridBagConstraints();
+
+		panel.setBackground(Color.white);
+		textArea = new JTextArea();
+		textArea.setFont(new Font("Lucia Grande", Font.PLAIN, 13));
+
+		panel.add(textArea);
+
+		aboutPanel = new JScrollPane(panel);
+
 		return aboutPanel;
 	}
 
@@ -112,61 +108,55 @@ public class T2PUI extends JDialog {
 
 			buttonPanel = new JPanel();
 			buttonPanel.setLayout(new GridLayout(1, 3));
-//			GridBagConstraints c1 = new GridBagConstraints();
+			// GridBagConstraints c1 = new GridBagConstraints();
 
 			WopedButton btnGenerate = new WopedButton("Generate");
 			btnGenerate.setIcon(new ImageIcon(getClass().getResource(Messages.getString("Action.ShowAbout.Icon"))));
 			buttonPanel.add(btnGenerate);
 			btnGenerate.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					
-					
+
 					if (textArea.getText().equals("")) {
-						
-						String textMessages[] = {
-								Messages.getString("Dialog.Ok"),
-								
-								};	
-						
-						int value = JOptionPane.showOptionDialog(null, Messages.getStringReplaced(
-										"Action.Confirm.T2P.Empty.TextArea.Text", null),
+
+						String textMessages[] = { Messages.getString("Dialog.Ok"),
+
+						};
+
+						int value = JOptionPane.showOptionDialog(null,
+								Messages.getStringReplaced("Action.Confirm.T2P.Empty.TextArea.Text", null),
 								Messages.getString("Action.Confirm.T2P.Empty.TextArea.Title"),
-								JOptionPane.YES_NO_CANCEL_OPTION,
-								JOptionPane.ERROR_MESSAGE,
-								null, 
-								textMessages,
+								JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE, null, textMessages,
 								textMessages[0]);
-						
+
 					} else {
-						
-						String textMessages[] = {
-								Messages.getString("Dialog.Ok"),
-								Messages.getString("Dialog.Cancel")
-								};	
-						
-						
-						
-						
-						int value = JOptionPane.showOptionDialog(null, Messages.getStringReplaced(
-								"Action.Confirm.T2P.NewEditor.TextArea.Text", null),
-						Messages.getString("T2P.textBandTitle"),
-						JOptionPane.YES_NO_CANCEL_OPTION,
-						JOptionPane.QUESTION_MESSAGE,
-						null, 
-						textMessages,
-						textMessages[0]);
-						
-						if(value== (JOptionPane.YES_OPTION)){
-							
-													
+
+						String textMessages[] = { Messages.getString("Dialog.Ok"),
+								Messages.getString("Dialog.Cancel") };
+
+						int value = JOptionPane.showOptionDialog(null,
+								Messages.getStringReplaced("Action.Confirm.T2P.NewEditor.TextArea.Text", null),
+								Messages.getString("T2P.textBandTitle"), JOptionPane.YES_NO_CANCEL_OPTION,
+								JOptionPane.QUESTION_MESSAGE, null, textMessages, textMessages[0]);
+
+						if (value == (JOptionPane.YES_OPTION)) {
+
 							Initiator init = new Initiator();
-							init.convert(textArea.getText(), true, null);
-							
-							
+							WorldModel world = init.convert(textArea.getText());
+
+							Ausgabe ausgabe = new Ausgabe();
+							ausgabe.init();
+							ausgabe.setPlace(world.getActors());
+							ausgabe.setTransition(world.getActions());
+							ausgabe.setArc(world.getFlows());
+
+							ausgabe.after();
+
+							// orld.
+
 							mediator.createEditor(true);
 							close();
-							
-						} 
+
+						}
 					}
 				}
 			});
@@ -203,9 +193,7 @@ public class T2PUI extends JDialog {
 				}
 			});
 			buttonPanel.add(btnUpload);
-			
-			
-			
+
 		}
 		return buttonPanel;
 	}

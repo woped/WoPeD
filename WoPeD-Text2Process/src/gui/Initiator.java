@@ -1,13 +1,12 @@
 package gui;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.PrintWriter;
 
+import etc.TextToProcess;
 import processing.FrameNetWrapper;
 import processing.WordNetWrapper;
-import etc.TextToProcess;
+import worldModel.WorldModel;
 
 public class Initiator {
 	
@@ -17,6 +16,11 @@ public class Initiator {
 	public Initiator(){
 		WordNetWrapper.init();
 		FrameNetWrapper.init();
+	}
+	
+	
+	public WorldModel convert(String input){
+		return t2p.getWorldModel(input);
 	}
 	
 	public void convert (String input, boolean bpmn, File outputFile){
