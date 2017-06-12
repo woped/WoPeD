@@ -49,9 +49,10 @@ public class Ausgabe {
 	}
 
 	public void setPlace(List<Actor> actions) {
+		int zaehler = 1;
 		for (Actor action : actions) {
 
-			int zaehler = 1;
+	
 			Element place = setElement(doc, root, "place", null, new String[] { "id" }, new String[] { "p" + zaehler });
 
 			Element name = setElement(doc, place, "name", null, null, null);
@@ -75,10 +76,11 @@ public class Ausgabe {
 	}
 
 	public void setArc(List<Flow> flows) {
+		int zaehler = 1;
 
 		for (Flow flow : flows) {
 
-			int zaehler = 1;
+
 
 			Element arc = setElement(doc, root, "arc", null, new String[] { "id", "source", "target" },
 					new String[] { "a" + zaehler, "p1", "t1" });
@@ -108,10 +110,11 @@ public class Ausgabe {
 	}
 
 	public void setTransition(List<Action> actions) {
+		int zaehler = 1;
+
 
 		for (Action action : actions) {
 
-			int zaehler = 1;
 			Element transition = setElement(doc, root, "transition", null, new String[] { "id" },
 					new String[] { "t" + zaehler });
 
