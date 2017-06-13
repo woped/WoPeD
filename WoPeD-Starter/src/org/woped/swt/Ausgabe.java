@@ -18,8 +18,11 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import com.sun.xml.internal.ws.wsdl.ActionBasedOperationSignature;
+
 import worldModel.Action;
 import worldModel.Actor;
+import worldModel.ExtractedObject;
 import worldModel.Flow;
 
 public class Ausgabe {
@@ -48,16 +51,18 @@ public class Ausgabe {
 
 	}
 
-	public void setPlace(List<Actor> actions) {
+	public void setPlace(List<Actor> actors) {
 		int zaehler = 1;
-		for (Actor action : actions) {
+		for (Actor actor : actors) {
 
 	
-			Element place = setElement(doc, root, "place", null, new String[] { "id" }, new String[] { "p" + zaehler });
+			Element place = setElement(doc, root, "place", null, new String[] { "id" }, new String[] { "p" + actor.hashCode()});
+			
+			System.out.println("Actor found: #" + actor.hashCode());
 
 			Element name = setElement(doc, place, "name", null, null, null);
 
-			setElement(doc, name, "text", "p1", null, null); // action.toString()
+			setElement(doc, name, "text", actor.toString(), null, null); // action.toString()
 
 			Element graphics = setElement(doc, name, "graphics", null, null, null);
 
@@ -83,9 +88,27 @@ public class Ausgabe {
 
 
 			Element arc = setElement(doc, root, "arc", null, new String[] { "id", "source", "target" },
-					new String[] { "a" + zaehler, "p1", "t1" });
+					new String[] { "a" + zaehler, "p"+ zaehler , "t"+ zaehler});
 			
-						
+			//flow.getSingleObject().getActorFrom().hashCode()
+			//flow.getSingleObject().getObject().hashCode()}
+			
+			
+			Action action = flow.getSingleObject();
+			if (action != null) {
+				Actor actorFrom = action.getActorFrom();
+				if (actorFrom != null) {
+					System.out.println("Source found: #"+actorFrom.hashCode());
+				} else {
+					System.out.println("flow is fucked up: " + flow.toString());
+				}
+			} else {
+				System.out.println("flow is fucked up: " + flow.toString());
+			}
+			
+
+			
+			// flow.f_single.f_actorFrom
 
 			Element inscription = setElement(doc, arc, "inscription", null, null, null);
 
@@ -116,11 +139,11 @@ public class Ausgabe {
 		for (Action action : actions) {
 
 			Element transition = setElement(doc, root, "transition", null, new String[] { "id" },
-					new String[] { "t" + zaehler });
+					new String[] { "t" + action.hashCode()});
 
 			Element name = setElement(doc, transition, "name", null, null, null);
 
-			setElement(doc, name, "text", "test", null, null); // action.toString()
+			setElement(doc, name, "text", action.toString(), null, null); // action.toString()
 
 			Element graphics = setElement(doc, name, "graphics", null, null, null);
 

@@ -142,13 +142,19 @@ public class T2PUI extends JDialog {
 
 							Initiator init = new Initiator();
 							WorldModel world = init.convert(textArea.getText());
-
+							
+							
 							Ausgabe ausgabe = new Ausgabe();
 							ausgabe.init();
+							System.out.println(world.getActors());
+							System.out.println(world.getLastFlowAdded());
+							System.out.println(world.getResources());
 							ausgabe.setPlace(world.getActors());
+							// ausgabe.setPlace(world.getResources());
+							System.out.println(world.getActions());
 							ausgabe.setTransition(world.getActions());
+							System.out.println(world.getFlows());
 							ausgabe.setArc(world.getFlows());
-
 							ausgabe.after();
 
 							// orld.
