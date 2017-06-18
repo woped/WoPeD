@@ -145,19 +145,12 @@ public class T2PUI extends JDialog {
 							
 							
 							Ausgabe ausgabe = new Ausgabe();
-							ausgabe.init();
-							System.out.println(world.getActors());
-							System.out.println(world.getLastFlowAdded());
-							System.out.println(world.getResources());
-							ausgabe.setPlace(world.getActors());
-							// ausgabe.setPlace(world.getResources());
-							System.out.println(world.getActions());
-							ausgabe.setTransition(world.getActions());
-							System.out.println(world.getFlows());
-							ausgabe.setArc(world.getFlows());
-							ausgabe.after();
+								ausgabe.init();
+								ausgabe.createDummyPlace();
+								ausgabe.setTransition(world.getActions());
+								ausgabe.setArc();
+								ausgabe.after();
 
-							// orld.
 
 							mediator.createEditor(true);
 							close();

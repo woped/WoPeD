@@ -27,8 +27,13 @@ import worldModel.Flow;
 
 public class Ausgabe {
 
+	public Ausgabe() {
+
+	}
+
 	public Element root;
 	public Document doc;
+	public int zaehlerTrans = 1;
 
 	public void init() {
 
@@ -51,120 +56,163 @@ public class Ausgabe {
 
 	}
 
-	public void setPlace(List<Actor> actors) {
-		int zaehler = 1;
-		for (Actor actor : actors) {
+	public void setPlace(int id) {
 
-	
-			Element place = setElement(doc, root, "place", null, new String[] { "id" }, new String[] { "p" + actor.hashCode()});
-			
-			System.out.println("Actor found: #" + actor.hashCode());
+		Element place = setElement(doc, root, "place", null, new String[] { "id" }, new String[] { "p" + id });
 
-			Element name = setElement(doc, place, "name", null, null, null);
+		Element name = setElement(doc, place, "name", null, null, null);
 
-			setElement(doc, name, "text", actor.toString(), null, null); // action.toString()
+		setElement(doc, name, "text", "p"+id, null, null); // action.toString()
 
-			Element graphics = setElement(doc, name, "graphics", null, null, null);
+		Element graphics = setElement(doc, name, "graphics", null, null, null);
 
-			setElement(doc, graphics, "offset", null, new String[] { "x", "y" }, new String[] { "0", "0" });
+		setElement(doc, graphics, "offset", null, new String[] { "x", "y" }, new String[] { "0", "0" });
 
-			Element graphics1 = setElement(doc, place, "graphics", null, null, null);
+		Element graphics1 = setElement(doc, place, "graphics", null, null, null);
 
-			setElement(doc, graphics1, "position", null, new String[] { "x", "y" }, new String[] { "0", "0" });
+		setElement(doc, graphics1, "position", null, new String[] { "x", "y" }, new String[] { "0", "0" });
 
-			setElement(doc, graphics1, "dimension", null, new String[] { "x", "y" }, new String[] { "40", "40" });
+		setElement(doc, graphics1, "dimension", null, new String[] { "x", "y" }, new String[] { "40", "40" });
 
-			zaehler++;
+	}
+
+	public void setArc() {
+
+		int zaehlerArc = 1;
+		for (int zaehler = 1; zaehler <= zaehlerTrans; zaehler++) {
+
+			createArcPT(zaehlerArc, zaehler, zaehler);
+			zaehlerArc++;
+			if (zaehler < zaehlerTrans) {
+				createArcTP(zaehlerArc, zaehler+1, zaehler);
+			zaehlerArc++;
+			}
 
 		}
 
 	}
+	
+	
+	private void createArcTP(int zaehler, int zaehlerP, int zaehlerT) {
+		Element arc = setElement(doc, root, "arc", null, new String[] { "id", "source", "target" },
+				new String[] { "a" + zaehler, "t" + zaehlerT, "p" + zaehlerP });
 
-	public void setArc(List<Flow> flows) {
-		int zaehler = 1;
+		// flow.getSingleObject().getActorFrom().hashCode()
+		// flow.getSingleObject().getObject().hashCode()}
 
-		for (Flow flow : flows) {
+		// Action action = flow.getSingleObject();
+		// if (action != null) {
+		// Actor actorFrom = action.getActorFrom();
+		// if (actorFrom != null) {
+		// System.out.println("Source found: #" + actorFrom.hashCode());
+		// } else {
+		// System.out.println("flow is fucked up: " + flow.toString());
+		// }
+		// } else {
+		// System.out.println("flow is fucked up: " + flow.toString());
+		// }
 
+		// flow.f_single.f_actorFrom
 
+		Element inscription = setElement(doc, arc, "inscription", null, null, null);
 
-			Element arc = setElement(doc, root, "arc", null, new String[] { "id", "source", "target" },
-					new String[] { "a" + zaehler, "p"+ zaehler , "t"+ zaehler});
-			
-			//flow.getSingleObject().getActorFrom().hashCode()
-			//flow.getSingleObject().getObject().hashCode()}
-			
-			
-			Action action = flow.getSingleObject();
-			if (action != null) {
-				Actor actorFrom = action.getActorFrom();
-				if (actorFrom != null) {
-					System.out.println("Source found: #"+actorFrom.hashCode());
-				} else {
-					System.out.println("flow is fucked up: " + flow.toString());
-				}
-			} else {
-				System.out.println("flow is fucked up: " + flow.toString());
-			}
-			
+		setElement(doc, inscription, "text", "1", null, null);
 
-			
-			// flow.f_single.f_actorFrom
+		setElement(doc, arc, "graphics", null, null, null);
 
-			Element inscription = setElement(doc, arc, "inscription", null, null, null);
+		Element toolspecific = setElement(doc, arc, "toolspecific", null, new String[] { "tool", "version" },
+				new String[] { "WoPeD", "1.0" });
 
-			setElement(doc, inscription, "text", "1", null, null); // action.toString()
+		setElement(doc, toolspecific, "probability", "1.0", null, null);
 
-			setElement(doc, arc, "graphics", null, null, null);
+		setElement(doc, toolspecific, "displayProbabilityOn", "false", null, null);
 
-			Element toolspecific = setElement(doc, arc, "toolspecific", null, new String[] { "tool", "version" },
-					new String[] { "WoPeD", "1.0" });
+		setElement(doc, toolspecific, "displayProbabilityPosition", null, new String[] { "x", "y" },
+				new String[] { "500.0", "0.0" });
+	}
 
-			setElement(doc, toolspecific, "probability", "1.0", null, null);
+	private void createArcPT(int zaehler, int zaehlerP, int zaehlerT) {
+		Element arc = setElement(doc, root, "arc", null, new String[] { "id", "source", "target" },
+				new String[] { "a" + zaehler, "p" + zaehlerP, "t" + zaehlerT });
 
-			setElement(doc, toolspecific, "displayProbabilityOn", "false", null, null);
+		// flow.getSingleObject().getActorFrom().hashCode()
+		// flow.getSingleObject().getObject().hashCode()}
 
-			setElement(doc, toolspecific, "displayProbabilityPosition", null, new String[] { "x", "y" },
-					new String[] { "500.0", "0.0" });
+		// Action action = flow.getSingleObject();
+		// if (action != null) {
+		// Actor actorFrom = action.getActorFrom();
+		// if (actorFrom != null) {
+		// System.out.println("Source found: #" + actorFrom.hashCode());
+		// } else {
+		// System.out.println("flow is fucked up: " + flow.toString());
+		// }
+		// } else {
+		// System.out.println("flow is fucked up: " + flow.toString());
+		// }
 
-			zaehler++;
+		// flow.f_single.f_actorFrom
 
-		}
+		Element inscription = setElement(doc, arc, "inscription", null, null, null);
+
+		setElement(doc, inscription, "text", "1", null, null);
+
+		setElement(doc, arc, "graphics", null, null, null);
+
+		Element toolspecific = setElement(doc, arc, "toolspecific", null, new String[] { "tool", "version" },
+				new String[] { "WoPeD", "1.0" });
+
+		setElement(doc, toolspecific, "probability", "1.0", null, null);
+
+		setElement(doc, toolspecific, "displayProbabilityOn", "false", null, null);
+
+		setElement(doc, toolspecific, "displayProbabilityPosition", null, new String[] { "x", "y" },
+				new String[] { "500.0", "0.0" });
+	}
+
+	public void createDummyPlace() {
+
+		setPlace(new Integer(1));
 
 	}
 
 	public void setTransition(List<Action> actions) {
-		int zaehler = 1;
-
 
 		for (Action action : actions) {
 
-			Element transition = setElement(doc, root, "transition", null, new String[] { "id" },
-					new String[] { "t" + action.hashCode()});
+			System.out.println("Hashcode Transition:" + action.hashCode());
 
-			Element name = setElement(doc, transition, "name", null, null, null);
+			if (!action.toString().equals("Action - Dummy Node")) {
 
-			setElement(doc, name, "text", action.toString(), null, null); // action.toString()
+				Element transition = setElement(doc, root, "transition", null, new String[] { "id" },
+						new String[] { "t" + zaehlerTrans });
 
-			Element graphics = setElement(doc, name, "graphics", null, null, null);
+				Element name = setElement(doc, transition, "name", null, null, null);
 
-			setElement(doc, graphics, "offset", null, new String[] { "x", "y" }, new String[] { "0", "0" });
+				setElement(doc, name, "text", getTextTrans(action.toString()), null, null); // action.toString()
 
-			Element graphics1 = setElement(doc, transition, "graphics", null, null, null);
+				Element graphics = setElement(doc, name, "graphics", null, null, null);
 
-			setElement(doc, graphics1, "position", null, new String[] { "x", "y" }, new String[] { "0", "0" });
+				setElement(doc, graphics, "offset", null, new String[] { "x", "y" }, new String[] { "0", "0" });
 
-			setElement(doc, graphics1, "dimension", null, new String[] { "x", "y" }, new String[] { "40", "40" });
+				Element graphics1 = setElement(doc, transition, "graphics", null, null, null);
 
-			Element toolspecific = setElement(doc, transition, "toolspecific", null, new String[] { "tool", "version" },
-					new String[] { "WoPeD", "1.0" });
+				setElement(doc, graphics1, "position", null, new String[] { "x", "y" }, new String[] { "0", "0" });
 
-			setElement(doc, toolspecific, "time", "0", null, null);
+				setElement(doc, graphics1, "dimension", null, new String[] { "x", "y" }, new String[] { "40", "40" });
 
-			setElement(doc, toolspecific, "timeUnit", "1", null, null);
+				Element toolspecific = setElement(doc, transition, "toolspecific", null,
+						new String[] { "tool", "version" }, new String[] { "WoPeD", "1.0" });
 
-			setElement(doc, toolspecific, "orientation", "1", null, null);
+				setElement(doc, toolspecific, "time", "0", null, null);
 
-			zaehler++;
+				setElement(doc, toolspecific, "timeUnit", "1", null, null);
+
+				setElement(doc, toolspecific, "orientation", "1", null, null);
+
+				zaehlerTrans++;
+
+				setPlace(zaehlerTrans);
+			}
 
 		}
 
@@ -210,6 +258,19 @@ public class Ausgabe {
 		}
 
 		System.out.println("\nXML DOM Created Successfully..");
+	}
+	
+	public String getTextTrans(String input){
+		
+		String output = input.replace("Action - ","");
+		if(output.indexOf("PP") != -1){
+			output = output.substring(0, output.indexOf("\n\tPP"));
+		}
+		
+		
+		
+		
+		return output;
 	}
 
 }
