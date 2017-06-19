@@ -7,12 +7,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.UnknownHostException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
+import java.util.concurrent.CopyOnWriteArraySet;
 
 import javax.swing.JOptionPane;
 import javax.xml.soap.MessageFactory;
@@ -268,7 +264,9 @@ public class ApromoreAccess {
 
 		ProcessSummaryType p = processList.get(id);
 		ExportFormatResultType exf = null;
-		final Set<RequestParameterType<?>> noCanoniserParameters = Collections.emptySet();
+		final Set<RequestParameterType<?>> noCanoniserParameters = new CopyOnWriteArraySet<>();
+		RequestParameterType<?> rpt = new RequestParameterType<>("isCpfTaskPnmlTransition", true);
+		noCanoniserParameters.add(rpt);
 		String inputString;
 
 		exf = managerService.exportFormat(p.getId(), p.getName(), "MAIN", p.getLastVersion(), "PNML 1.3.2",
