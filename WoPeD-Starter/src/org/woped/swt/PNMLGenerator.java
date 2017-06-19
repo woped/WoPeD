@@ -1,12 +1,16 @@
 package org.woped.swt;
 
-import java.io.File;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Result;
+import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
@@ -17,13 +21,6 @@ import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-
-import com.sun.xml.internal.ws.wsdl.ActionBasedOperationSignature;
-
-import worldModel.Action;
-import worldModel.Actor;
-import worldModel.ExtractedObject;
-import worldModel.Flow;
 
 public class PNMLGenerator {
 
@@ -62,7 +59,7 @@ public class PNMLGenerator {
 
 		Element name = setElement(doc, place, "name", null, null, null);
 
-		setElement(doc, name, "text", "p"+id, null, null); // action.toString()
+		setElement(doc, name, "text", "p" + id, null, null); // action.toString()
 
 		Element graphics = setElement(doc, name, "graphics", null, null, null);
 
@@ -84,15 +81,14 @@ public class PNMLGenerator {
 			createArcPT(zaehlerArc, zaehler, zaehler);
 			zaehlerArc++;
 			if (zaehler < zaehlerTrans) {
-				createArcTP(zaehlerArc, zaehler+1, zaehler);
-			zaehlerArc++;
+				createArcTP(zaehlerArc, zaehler + 1, zaehler);
+				zaehlerArc++;
 			}
 
 		}
 
 	}
-	
-	
+
 	private void createArcTP(int zaehler, int zaehlerP, int zaehlerT) {
 		Element arc = setElement(doc, root, "arc", null, new String[] { "id", "source", "target" },
 				new String[] { "a" + zaehler, "t" + zaehlerT, "p" + zaehlerP });
@@ -175,9 +171,9 @@ public class PNMLGenerator {
 
 	}
 
-	public void setTransition(List<Action> actions) {
+	public void setTransition(List<String> actions) {
 
-		for (Action action : actions) {
+		for (String action : actions) {
 
 			System.out.println("Hashcode Transition:" + action.hashCode());
 
@@ -188,7 +184,7 @@ public class PNMLGenerator {
 
 				Element name = setElement(doc, transition, "name", null, null, null);
 
-				setElement(doc, name, "text", getTextTrans(action.toString()), null, null); // action.toString()
+				setElement(doc, name, "text", action, null, null); // action.toString()
 
 				Element graphics = setElement(doc, name, "graphics", null, null, null);
 
@@ -239,7 +235,7 @@ public class PNMLGenerator {
 		return element;
 	}
 
-	public void after() {
+	public InputStream after() {
 		Transformer transformer = null;
 		try {
 			transformer = TransformerFactory.newInstance().newTransformer();
@@ -248,29 +244,27 @@ public class PNMLGenerator {
 			e.printStackTrace();
 		}
 		transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-		DOMSource source = new DOMSource(doc);
-		StreamResult console = new StreamResult(new File("output.pnml").getPath());
+		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+		Source source = new DOMSource(doc);
+		Result outputTarget = new StreamResult(outputStream);
 		try {
-			transformer.transform(source, console);
+			transformer.transform(source, outputTarget);
 		} catch (TransformerException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return new ByteArrayInputStream(outputStream.toByteArray());
 
-		System.out.println("\nXML DOM Created Successfully..");
-	}
-	
-	public String getTextTrans(String input){
-		
-		String output = input.replace("Action - ","");
-		if(output.indexOf("PP") != -1){
-			output = output.substring(0, output.indexOf("\n\tPP"));
-		}
-		
-		
-		
-		
-		return output;
+		// StreamResult console = new StreamResult(new
+		// File("output.pnml").getPath());
+		// try {
+		// transformer.transform(source, console);
+		// } catch (TransformerException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
+		//
+		// System.out.println("\nXML DOM Created Successfully..");
 	}
 
 }

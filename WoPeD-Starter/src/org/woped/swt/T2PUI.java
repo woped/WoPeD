@@ -10,7 +10,6 @@ import java.awt.HeadlessException;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
@@ -20,10 +19,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import org.woped.core.controller.AbstractApplicationMediator;
-import org.woped.core.utilities.FileFilterImpl;
+import org.woped.core.controller.IEditor;
 import org.woped.editor.controller.ApplicationMediator;
 import org.woped.editor.controller.vc.EditorVC;
-import org.woped.file.controller.vep.FileEventProcessor;
+import org.woped.file.PNMLImport;
 import org.woped.gui.lookAndFeel.WopedButton;
 import org.woped.gui.translations.Messages;
 
@@ -146,18 +145,28 @@ public class T2PUI extends JDialog {
 
 							Initiator init = new Initiator();
 							WorldModel world = init.convert(textArea.getText());
-							
-							
-							PNMLGenerator generator = new PNMLGenerator();
-								generator.init();
-								generator.createDummyPlace();
-								generator.setTransition(world.getActions());
-								generator.setArc();
-								generator.after();
 
-								FileEventProcessor processor = new FileEventProcessor(mediator);
-								
-								  ((EditorVC)processor.openFile(new File("output.pnml"), FileFilterImpl.PNMLFilter)).startBeautify(0, 0, 0);
+							InterpetWorldModel interpreter = new InterpetWorldModel();
+
+							PNMLGenerator generator = new PNMLGenerator();
+							generator.init();
+							generator.createDummyPlace();
+							generator.setTransition(interpreter.getTextTrans(world.getActions()));
+							generator.setArc();
+
+							PNMLImport pnmlImport = new PNMLImport(mediator);
+							pnmlImport.run(generator.after(), "Generiertes Modell", true);
+
+							IEditor[] editor = pnmlImport.getEditor();
+							((EditorVC) editor[0]).startBeautify(0, 0, 0);
+
+							// FileEventProcessor processor = new
+							// FileEventProcessor(mediator);
+
+							// ((EditorVC)processor.openFile(new
+							// File("output.pnml"),
+							// FileFilterImpl.PNMLFilter)).startBeautify(0, 0,
+							// 0);
 
 							close();
 
