@@ -25,9 +25,9 @@ import worldModel.Actor;
 import worldModel.ExtractedObject;
 import worldModel.Flow;
 
-public class Ausgabe {
+public class PNMLGenerator {
 
-	public Ausgabe() {
+	public PNMLGenerator() {
 
 	}
 
