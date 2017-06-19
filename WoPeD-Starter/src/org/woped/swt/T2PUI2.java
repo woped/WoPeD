@@ -30,9 +30,12 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import org.woped.core.controller.AbstractApplicationMediator;
+import org.woped.core.controller.IEditor;
 import org.woped.editor.action.DisposeWindowAction;
 import org.woped.editor.controller.ApplicationMediator;
+import org.woped.editor.controller.vc.EditorVC;
 import org.woped.editor.help.action.LaunchDefaultBrowserAction;
+import org.woped.file.PNMLImport;
 import org.woped.gui.lookAndFeel.WopedButton;
 import org.woped.gui.translations.Messages;
 import org.woped.starter.AboutUI;
@@ -236,15 +239,20 @@ public class T2PUI2 extends JDialog{
 							WorldModel world = init.convert(textArea.getText());
 							
 							
-							Ausgabe ausgabe = new Ausgabe();
-								ausgabe.init();
-								ausgabe.createDummyPlace();
-								ausgabe.setTransition(world.getActions());
-								ausgabe.setArc();
-								ausgabe.after();
+							InterpetWorldModel interpreter = new InterpetWorldModel();
 
+							PNMLGenerator generator = new PNMLGenerator();
+							generator.init();
+							generator.createDummyPlace();
+							generator.setTransition(interpreter.getTextTrans(world.getActions()));
+							generator.setArc();
 
-							mediator.createEditor(true);
+							PNMLImport pnmlImport = new PNMLImport(mediator);
+							pnmlImport.run(generator.after(), "Generiertes Modell", true);
+
+							IEditor[] editor = pnmlImport.getEditor();
+							((EditorVC) editor[0]).startBeautify(0, 0, 0);
+
 							close();
 
 						}
