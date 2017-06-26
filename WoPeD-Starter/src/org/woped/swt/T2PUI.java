@@ -3,7 +3,6 @@ package org.woped.swt;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Frame;
 import java.awt.GridBagConstraints;
@@ -14,13 +13,7 @@ import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.net.URL;
 
-import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
@@ -31,20 +24,16 @@ import javax.swing.JTextArea;
 
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.IEditor;
-import org.woped.editor.action.DisposeWindowAction;
 import org.woped.editor.controller.ApplicationMediator;
 import org.woped.editor.controller.vc.EditorVC;
-import org.woped.editor.help.action.LaunchDefaultBrowserAction;
 import org.woped.file.PNMLImport;
 import org.woped.gui.lookAndFeel.WopedButton;
 import org.woped.gui.translations.Messages;
-import org.woped.starter.AboutUI;
 
-import gui.Initiator;
+import processing.FrameNetWrapper;
 import worldModel.WorldModel;
 
-
-public class T2PUI extends JDialog{
+public class T2PUI extends JDialog {
 	private JLabel logoLabel = null;
 	private JLabel aboutTextLabel = null;
 	private JLabel javaTextLabel = null;
@@ -110,12 +99,14 @@ public class T2PUI extends JDialog{
 	private void close() {
 		this.dispose();
 	}
-	
+
 	private JScrollPane getAboutPanel() {
 		String[] aboutArgs = { Messages.getWoPeDVersionWithTimestamp() };
-		String aboutText = "<html><p>" + Messages.getStringReplaced("T2PUI.Scrollpane", aboutArgs)+ "</p></html>";
-/*		String javaText = "<html><p><b>" + Messages.getString("About.Java") + ": </b>"
-				+ System.getProperty("java.version") + "</p></html>";*/
+		String aboutText = "<html><p>" + Messages.getStringReplaced("T2PUI.Scrollpane", aboutArgs) + "</p></html>";
+		/*
+		 * String javaText = "<html><p><b>" + Messages.getString("About.Java") +
+		 * ": </b>" + System.getProperty("java.version") + "</p></html>";
+		 */
 
 		if (aboutPanel == null) {
 			JPanel panel = new JPanel();
@@ -129,11 +120,11 @@ public class T2PUI extends JDialog{
 			logoLabel = new JLabel(new ImageIcon(getClass().getResource(Messages.getString("Window.T2PUI.Image"))));
 			panel.add(logoLabel, c);
 
-			/*c.gridy = 1;
-			c.insets = new Insets(0, 10, 0, 10);
-			c.anchor = GridBagConstraints.WEST;
-			javaTextLabel = new JLabel(javaText);
-			panel.add(javaTextLabel, c);*/
+			/*
+			 * c.gridy = 1; c.insets = new Insets(0, 10, 0, 10); c.anchor =
+			 * GridBagConstraints.WEST; javaTextLabel = new JLabel(javaText);
+			 * panel.add(javaTextLabel, c);
+			 */
 
 			c.gridy = 1;
 			c.insets = new Insets(0, 10, 0, 10);
@@ -141,39 +132,41 @@ public class T2PUI extends JDialog{
 			aboutTextLabel = new JLabel(aboutText);
 			panel.add(aboutTextLabel, c);
 
-			/*c.gridy = 3;
-			c.insets = new Insets(0, 10, 0, 10);
-			homepageLabel = new JLabel("<html><p>" + Messages.getString("About.Homepage") + "</p></html>");
-			homepageLabel.addMouseListener(
-					new LaunchDefaultBrowserAction(Messages.getString("About.Homepage.Link"), homepageLabel));
-			panel.add(homepageLabel, c);
+			/*
+			 * c.gridy = 3; c.insets = new Insets(0, 10, 0, 10); homepageLabel =
+			 * new JLabel("<html><p>" + Messages.getString("About.Homepage") +
+			 * "</p></html>"); homepageLabel.addMouseListener( new
+			 * LaunchDefaultBrowserAction(Messages.getString(
+			 * "About.Homepage.Link"), homepageLabel)); panel.add(homepageLabel,
+			 * c);
+			 * 
+			 * c.gridy = 4; c.insets = new Insets(0, 10, 0, 10); mailtoLabel =
+			 * new JLabel("<html><p>" + Messages.getString("About.Email") +
+			 * "</p></html>"); mailtoLabel.addMouseListener( new
+			 * LaunchDefaultBrowserAction(Messages.getString("About.Email.Link")
+			 * , mailtoLabel)); panel.add(mailtoLabel, c);
+			 * 
+			 * c.gridy = 5; c.insets = new Insets(0, 10, 0, 10); sfLabel = new
+			 * JLabel("<html><p>" + Messages.getString("About.Development") +
+			 * "</p></html>"); sfLabel.addMouseListener( new
+			 * LaunchDefaultBrowserAction(Messages.getString(
+			 * "About.Development.Link"), sfLabel)); panel.add(sfLabel, c);
+			 * 
+			 * c.gridy = 6; c.insets = new Insets(0, 10, 0, 10); icLabel = new
+			 * JLabel("<html><p>" + Messages.getString("About.Iconset") +
+			 * "</p></html>"); icLabel.addMouseListener(new
+			 * LaunchDefaultBrowserAction(Messages.getString(
+			 * "About.Iconset.Link"), icLabel)); panel.add(icLabel, c);
+			 */
 
-			c.gridy = 4;
-			c.insets = new Insets(0, 10, 0, 10);
-			mailtoLabel = new JLabel("<html><p>" + Messages.getString("About.Email") + "</p></html>");
-			mailtoLabel.addMouseListener(
-					new LaunchDefaultBrowserAction(Messages.getString("About.Email.Link"), mailtoLabel));
-			panel.add(mailtoLabel, c);
-
-			c.gridy = 5;
-			c.insets = new Insets(0, 10, 0, 10);
-			sfLabel = new JLabel("<html><p>" + Messages.getString("About.Development") + "</p></html>");
-			sfLabel.addMouseListener(
-					new LaunchDefaultBrowserAction(Messages.getString("About.Development.Link"), sfLabel));
-			panel.add(sfLabel, c);
-
-			c.gridy = 6;
-			c.insets = new Insets(0, 10, 0, 10);
-			icLabel = new JLabel("<html><p>" + Messages.getString("About.Iconset") + "</p></html>");
-			icLabel.addMouseListener(new LaunchDefaultBrowserAction(Messages.getString("About.Iconset.Link"), icLabel));
-			panel.add(icLabel, c);*/
-			
-			/*c.gridy = 3;
-			c.insets = new Insets(10, 10, 10, 10);
-			homepageLabel = new JLabel("<html><p>" + Messages.getString("About.Homepage") + "</p></html>");
-			homepageLabel.addMouseListener(
-					new LaunchDefaultBrowserAction(Messages.getString("About.Homepage.Link"), homepageLabel));
-			panel.add(homepageLabel, c);*/
+			/*
+			 * c.gridy = 3; c.insets = new Insets(10, 10, 10, 10); homepageLabel
+			 * = new JLabel("<html><p>" + Messages.getString("About.Homepage") +
+			 * "</p></html>"); homepageLabel.addMouseListener( new
+			 * LaunchDefaultBrowserAction(Messages.getString(
+			 * "About.Homepage.Link"), homepageLabel)); panel.add(homepageLabel,
+			 * c);
+			 */
 
 			aboutPanel = new JScrollPane(panel);
 		}
@@ -196,8 +189,7 @@ public class T2PUI extends JDialog{
 
 		return aboutPanel;
 	}
-	
-	
+
 	private JPanel getButtonPanel() {
 		if (buttonPanel == null) {
 
@@ -223,6 +215,17 @@ public class T2PUI extends JDialog{
 								JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE, null, textMessages,
 								textMessages[0]);
 
+					} else if (!FrameNetWrapper.getGenrateButton()) {
+						String textMessages[] = { Messages.getString("Dialog.Ok"),
+
+						};
+
+						int value = JOptionPane.showOptionDialog(null,
+								Messages.getStringReplaced("Action.Confirm.T2P.NotLoad.TextArea.Text", null),
+								Messages.getString("Action.Confirm.T2P.NotLoad.TextArea.Title"),
+								JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE, null, textMessages,
+								textMessages[0]);
+
 					} else {
 
 						String textMessages[] = { Messages.getString("Dialog.Ok"),
@@ -237,8 +240,6 @@ public class T2PUI extends JDialog{
 
 							WorldModel world = WorldModelExecution.getInitiator().convert(textArea.getText());
 
-							
-							
 							InterpetWorldModel interpreter = new InterpetWorldModel();
 
 							PNMLGenerator generator = new PNMLGenerator();

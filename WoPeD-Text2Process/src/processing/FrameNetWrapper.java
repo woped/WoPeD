@@ -46,6 +46,7 @@ public class FrameNetWrapper {
 	private static String f_frameNetHome = "/fndata-1.5/";
 	private static FrameNet f_frameNet;
 	private static AnnotationCorpus f_corpus;
+	private static boolean generateButton = false;
 	//public static final boolean LOAD_ANNOTATIONS = true;
 
 	public static void init() {		
@@ -88,11 +89,17 @@ public class FrameNetWrapper {
 			f_corpus.parse(new File(f_frameNetHome+"lu"));
 			
 			//logging loading time
-			System.out.println("Loaded FrameNet-Annotations in: "+(System.currentTimeMillis()-_annoStart)+"ms");			
+			System.out.println("Loaded FrameNet-Annotations in: "+(System.currentTimeMillis()-_annoStart)+"ms");
+			generateButton = true;
+			
 		} catch (Exception ex) {
 			System.err.print("could not initialize FrameNetWrapper: "+ex.getMessage());
 			ex.printStackTrace();
 		} 
+	}
+	
+	public static  boolean getGenrateButton(){
+		return generateButton;
 	}
 
 	public static void printAllFrames() {

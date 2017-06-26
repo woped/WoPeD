@@ -7,7 +7,7 @@ public class WorldModelExecution implements Runnable {
 	static Initiator init = null;
 
 	public void run() {
-		System.out.println("Hello from a thread!");
+		//System.out.println("Hello from a thread!");
 		init = new Initiator();
 
 	}
