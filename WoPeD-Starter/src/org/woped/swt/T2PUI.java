@@ -3,16 +3,27 @@ package org.woped.swt;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Frame;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.HeadlessException;
+import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.net.URL;
 
+import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -20,27 +31,38 @@ import javax.swing.JTextArea;
 
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.IEditor;
+import org.woped.editor.action.DisposeWindowAction;
 import org.woped.editor.controller.ApplicationMediator;
 import org.woped.editor.controller.vc.EditorVC;
+import org.woped.editor.help.action.LaunchDefaultBrowserAction;
 import org.woped.file.PNMLImport;
 import org.woped.gui.lookAndFeel.WopedButton;
 import org.woped.gui.translations.Messages;
+import org.woped.starter.AboutUI;
 
 import gui.Initiator;
 import worldModel.WorldModel;
 
-public class T2PUI extends JDialog {
 
-	private static final long serialVersionUID = 1L;
-
+public class T2PUI extends JDialog{
+	private JLabel logoLabel = null;
+	private JLabel aboutTextLabel = null;
+	private JLabel javaTextLabel = null;
+	private JLabel homepageLabel = null;
+	private JLabel mailtoLabel = null;
+	private JLabel sfLabel = null;
+	private JLabel icLabel = null;
+	private WopedButton closeButton = null;
+	private WopedButton aboutButton = null;
+	private WopedButton changelogButton = null;
 	private JTextArea textArea = null;
 
 	private JScrollPane aboutPanel = null;
+	private JScrollPane changeLogPanel = null;
 	private JPanel buttonPanel = null;
-	private ApplicationMediator mediator = null;
+	private ApplicationMediator mediator;
 
 	public T2PUI(AbstractApplicationMediator mediator) {
-
 		this(null, mediator);
 	}
 
@@ -65,11 +87,11 @@ public class T2PUI extends JDialog {
 	 * @return void
 	 */
 	private void initialize() {
-
 		this.setVisible(false);
 		this.getContentPane().setLayout(new BorderLayout());
 		this.setUndecorated(false);
 		this.setResizable(true);
+		this.getContentPane().add(getAboutPanel(), BorderLayout.NORTH);
 		this.getContentPane().add(getT2PPanel(), BorderLayout.CENTER);
 		this.getContentPane().add(getButtonPanel(), BorderLayout.SOUTH);
 		this.setTitle(Messages.getString("T2P.textBandTitle"));
@@ -88,6 +110,75 @@ public class T2PUI extends JDialog {
 	private void close() {
 		this.dispose();
 	}
+	
+	private JScrollPane getAboutPanel() {
+		String[] aboutArgs = { Messages.getWoPeDVersionWithTimestamp() };
+		String aboutText = "<html><p>" + Messages.getStringReplaced("T2PUI.Scrollpane", aboutArgs)+ "</p></html>";
+/*		String javaText = "<html><p><b>" + Messages.getString("About.Java") + ": </b>"
+				+ System.getProperty("java.version") + "</p></html>";*/
+
+		if (aboutPanel == null) {
+			JPanel panel = new JPanel();
+			panel.setLayout(new GridBagLayout());
+			GridBagConstraints c = new GridBagConstraints();
+
+			c.gridx = 0;
+			c.gridy = 0;
+			c.anchor = GridBagConstraints.NORTH;
+			c.insets = new Insets(10, 10, 10, 10);
+			logoLabel = new JLabel(new ImageIcon(getClass().getResource(Messages.getString("Window.T2PUI.Image"))));
+			panel.add(logoLabel, c);
+
+			/*c.gridy = 1;
+			c.insets = new Insets(0, 10, 0, 10);
+			c.anchor = GridBagConstraints.WEST;
+			javaTextLabel = new JLabel(javaText);
+			panel.add(javaTextLabel, c);*/
+
+			c.gridy = 1;
+			c.insets = new Insets(0, 10, 0, 10);
+			c.anchor = GridBagConstraints.NORTH;
+			aboutTextLabel = new JLabel(aboutText);
+			panel.add(aboutTextLabel, c);
+
+			/*c.gridy = 3;
+			c.insets = new Insets(0, 10, 0, 10);
+			homepageLabel = new JLabel("<html><p>" + Messages.getString("About.Homepage") + "</p></html>");
+			homepageLabel.addMouseListener(
+					new LaunchDefaultBrowserAction(Messages.getString("About.Homepage.Link"), homepageLabel));
+			panel.add(homepageLabel, c);
+
+			c.gridy = 4;
+			c.insets = new Insets(0, 10, 0, 10);
+			mailtoLabel = new JLabel("<html><p>" + Messages.getString("About.Email") + "</p></html>");
+			mailtoLabel.addMouseListener(
+					new LaunchDefaultBrowserAction(Messages.getString("About.Email.Link"), mailtoLabel));
+			panel.add(mailtoLabel, c);
+
+			c.gridy = 5;
+			c.insets = new Insets(0, 10, 0, 10);
+			sfLabel = new JLabel("<html><p>" + Messages.getString("About.Development") + "</p></html>");
+			sfLabel.addMouseListener(
+					new LaunchDefaultBrowserAction(Messages.getString("About.Development.Link"), sfLabel));
+			panel.add(sfLabel, c);
+
+			c.gridy = 6;
+			c.insets = new Insets(0, 10, 0, 10);
+			icLabel = new JLabel("<html><p>" + Messages.getString("About.Iconset") + "</p></html>");
+			icLabel.addMouseListener(new LaunchDefaultBrowserAction(Messages.getString("About.Iconset.Link"), icLabel));
+			panel.add(icLabel, c);*/
+			
+			/*c.gridy = 3;
+			c.insets = new Insets(10, 10, 10, 10);
+			homepageLabel = new JLabel("<html><p>" + Messages.getString("About.Homepage") + "</p></html>");
+			homepageLabel.addMouseListener(
+					new LaunchDefaultBrowserAction(Messages.getString("About.Homepage.Link"), homepageLabel));
+			panel.add(homepageLabel, c);*/
+
+			aboutPanel = new JScrollPane(panel);
+		}
+		return aboutPanel;
+	}
 
 	private JScrollPane getT2PPanel() {
 
@@ -105,7 +196,8 @@ public class T2PUI extends JDialog {
 
 		return aboutPanel;
 	}
-
+	
+	
 	private JPanel getButtonPanel() {
 		if (buttonPanel == null) {
 
@@ -143,9 +235,10 @@ public class T2PUI extends JDialog {
 
 						if (value == (JOptionPane.YES_OPTION)) {
 
-							Initiator init = new Initiator();
-							WorldModel world = init.convert(textArea.getText());
+							WorldModel world = WorldModelExecution.getInitiator().convert(textArea.getText());
 
+							
+							
 							InterpetWorldModel interpreter = new InterpetWorldModel();
 
 							PNMLGenerator generator = new PNMLGenerator();
@@ -159,14 +252,6 @@ public class T2PUI extends JDialog {
 
 							IEditor[] editor = pnmlImport.getEditor();
 							((EditorVC) editor[0]).startBeautify(0, 0, 0);
-
-							// FileEventProcessor processor = new
-							// FileEventProcessor(mediator);
-
-							// ((EditorVC)processor.openFile(new
-							// File("output.pnml"),
-							// FileFilterImpl.PNMLFilter)).startBeautify(0, 0,
-							// 0);
 
 							close();
 
@@ -211,5 +296,4 @@ public class T2PUI extends JDialog {
 		}
 		return buttonPanel;
 	}
-
 }
