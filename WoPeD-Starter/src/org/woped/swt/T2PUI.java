@@ -252,7 +252,26 @@ public class T2PUI extends JDialog {
 							pnmlImport.run(generator.after(), Messages.getString("Document.T2P.Output"), true);
 
 							IEditor[] editor = pnmlImport.getEditor();
+							
+				
+							
+							
+							try{
 							((EditorVC) editor[0]).startBeautify(0, 0, 0);
+							}
+							catch(ArithmeticException exc){
+								close();
+								
+								String textMessagesNV[] = { Messages.getString("Dialog.Ok"),
+									 };
+
+							JOptionPane.showOptionDialog(null,
+										Messages.getStringReplaced("Action.Confirm.T2P.NotValid.TextArea.Text", null),
+										Messages.getString("Action.Confirm.T2P.NotValid.TextArea.Title"),
+										JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.ERROR_MESSAGE, null, textMessagesNV,
+										textMessagesNV[0]);
+								
+							}
 
 							close();
 
