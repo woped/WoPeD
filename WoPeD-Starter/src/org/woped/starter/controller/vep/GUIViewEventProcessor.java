@@ -58,7 +58,7 @@ import org.woped.starter.Constants;
 import org.woped.starter.RegistrationUI;
 import org.woped.starter.controller.vc.DefaultApplicationMediator;
 import org.woped.swt.T2PUI;
-import org.woped.swt.T2PUI2;
+import org.woped.swt.T2PUI;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -84,14 +84,14 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 		switch (event.getOrder())
 		{
 		case AbstractViewEvent.T2P:				
-			T2PUI2 t2p;
+			T2PUI t2p;
 			if (getMediator().getUi() != null
 					&& getMediator().getUi().getComponent() instanceof JFrame)
 			{
-				t2p = new T2PUI2((JFrame) getMediator().getUi(), getMediator());
+				t2p = new T2PUI((JFrame) getMediator().getUi(), getMediator());
 			} else
 			{
-				t2p = new T2PUI2(getMediator());
+				t2p = new T2PUI(getMediator());
 			}
 			t2p.setVisible(true);
 			break;
