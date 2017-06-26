@@ -248,7 +248,7 @@ public class T2PUI extends JDialog{
 							generator.setArc();
 
 							PNMLImport pnmlImport = new PNMLImport(mediator);
-							pnmlImport.run(generator.after(), "Generiertes Modell", true);
+							pnmlImport.run(generator.after(), Messages.getString("Document.T2P.Output"), true);
 
 							IEditor[] editor = pnmlImport.getEditor();
 							((EditorVC) editor[0]).startBeautify(0, 0, 0);
