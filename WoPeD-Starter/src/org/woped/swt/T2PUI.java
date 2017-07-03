@@ -118,7 +118,7 @@ public class T2PUI extends JDialog {
 		this.getContentPane().add(getT2PPanel(), BorderLayout.CENTER);
 
 		this.getContentPane().add(getButtonPanel(), BorderLayout.SOUTH);
-		this.setTitle(Messages.getTitle("Action.ShowAbout"));
+		this.setTitle(Messages.getString("T2P.tooltip"));
 		this.pack();
 
 		if (getOwner() != null) {
@@ -128,7 +128,7 @@ public class T2PUI extends JDialog {
 			this.setLocation((screenSize.width - this.getWidth()) / 2, (screenSize.height - this.getHeight()) / 2);
 		}
 
-		this.setSize(800, 500);
+		this.setSize(830, 500);
 	}
 
 	private JPanel getTextPanel() {
