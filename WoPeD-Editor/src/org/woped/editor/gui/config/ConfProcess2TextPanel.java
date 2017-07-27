@@ -55,6 +55,8 @@ public class ConfProcess2TextPanel extends AbstractConfPanel {
 	private JCheckBox useBox = null;
 	private JPanel enabledPanel = null;
 	private JPanel settingsPanel = null;
+	private JPanel settingsPanel_T2P = null;
+
 	private JTextField serverURLText = null;
 	private JLabel serverURLLabel = null;
 	private JLabel serverPortLabel = null;
@@ -63,6 +65,14 @@ public class ConfProcess2TextPanel extends AbstractConfPanel {
 	private JLabel managerPathLabel = null;
 	private WopedButton testButton = null;
 	private WopedButton defaultButton = null;
+	private JTextField serverURLText_T2P = null;
+	private JLabel serverURLLabel_T2P = null;
+	private JLabel serverPortLabel_T2P = null;
+	private JTextField serverPortText_T2P = null;
+	private JTextField managerPathText_T2P = null;
+	private JLabel managerPathLabel_T2P = null;
+	private WopedButton testButton_T2P = null;
+	private WopedButton defaultButton_T2P = null;
 
 	/**
 	 * Constructor for ConfToolsPanel.
@@ -138,11 +148,17 @@ public class ConfProcess2TextPanel extends AbstractConfPanel {
 		c.gridx = 0;
 		c.gridy = 1;
 		contentPanel.add(getSettingsPanel(), c);
+		
+		c.weightx = 1;
+		c.gridx = 0;
+		c.gridy = 3;
+		contentPanel.add(getSettingsPanel_T2P(), c);
+
 
 		// dummy
 		c.fill = GridBagConstraints.VERTICAL;
 		c.weighty = 1;
-		c.gridy = 2;
+		c.gridy = 4;
 		contentPanel.add(new JPanel(), c);
 
 		setMainPanel(contentPanel);
@@ -161,6 +177,22 @@ public class ConfProcess2TextPanel extends AbstractConfPanel {
 		}
 		return serverURLText;
 	}
+	
+	private JTextField getServerURLText_T2P() {
+		if (serverURLText_T2P == null) {
+			serverURLText_T2P = new JTextField();
+			serverURLText_T2P.setColumns(40);
+			serverURLText_T2P.setEnabled(true);
+			serverURLText_T2P.setToolTipText("<html>"
+					+ Messages.getString("Configuration.P2T.Label.ServerHost")
+					+ "</html>");
+		}
+		return serverURLText_T2P;
+	}
+	
+	
+	
+	
 
 	private JPanel getEnabledPanel() {
 		if (enabledPanel == null) {
@@ -245,12 +277,75 @@ public class ConfProcess2TextPanel extends AbstractConfPanel {
 		return settingsPanel;
 	}
 
+	private JPanel getSettingsPanel_T2P() {
+		if (settingsPanel_T2P == null) {
+			settingsPanel_T2P = new JPanel();
+			settingsPanel_T2P.setLayout(new GridBagLayout());
+			GridBagConstraints c = new GridBagConstraints();
+			c.anchor = GridBagConstraints.WEST;
+
+			settingsPanel_T2P
+					.setBorder(BorderFactory.createCompoundBorder(
+							BorderFactory
+									.createTitledBorder(Messages
+											.getString("Configuration.T2P.Settings.Panel.Title")),
+							BorderFactory.createEmptyBorder(10, 10, 10, 10)));
+			c.weightx = 1;
+			c.gridx = 0;
+			c.gridy = 0;
+			settingsPanel_T2P.add(getServerURLLabel_T2P(), c);
+
+			c.weightx = 1;
+			c.gridx = 1;
+			c.gridy = 0;
+			c.gridwidth = 2;
+			settingsPanel_T2P.add(getServerURLText_T2P(), c);
+
+			c.weightx = 1;
+			c.gridx = 0;
+			c.gridy = 1;
+			c.gridwidth = 1;
+			settingsPanel_T2P.add(getServerPortLabel_T2P(), c);
+
+			c.weightx = 1;
+			c.gridx = 1;
+			c.gridy = 1;
+			settingsPanel_T2P.add(getServerPortText_T2P(), c);
+
+			c.weightx = 1;
+			c.gridx = 2;
+			c.gridy = 1;
+			settingsPanel_T2P.add(getTestButton_T2P(), c);
+
+			c.weightx = 1;
+			c.gridx = 0;
+			c.gridy = 2;
+			settingsPanel_T2P.add(getManagerPathLabel_T2P(), c);
+
+			c.weightx = 1;
+			c.gridx = 1;
+			c.gridy = 2;
+			c.gridwidth = 2;
+			settingsPanel_T2P.add(getManagerPathText_T2P(), c);
+
+			c.weightx = 1;
+			c.gridx = 1;
+			c.gridy = 4;
+			settingsPanel_T2P.add(getDefaultButton_T2P(), c);
+
+		}
+
+		settingsPanel_T2P.setVisible(getUseBox_T2P().isSelected());
+		return settingsPanel_T2P;
+	}
+	
 	class CheckboxListener implements ItemListener {
 
 		public void itemStateChanged(ItemEvent ie) {
 			JCheckBox jcb = (JCheckBox) ie.getSource();
 			if (jcb == useBox) {
 				getSettingsPanel().setVisible(jcb.isSelected());
+				getSettingsPanel_T2P().setVisible(jcb.isSelected());
 			}
 		}
 	}
@@ -264,6 +359,16 @@ public class ConfProcess2TextPanel extends AbstractConfPanel {
 		}
 		return serverURLLabel;
 	}
+	
+	private JLabel getServerURLLabel_T2P() {
+		if (serverURLLabel_T2P == null) {
+			serverURLLabel_T2P = new JLabel("<html>"
+					+ Messages.getString("Configuration.P2T.Label.ServerHost")
+					+ "</html>");
+			serverURLLabel_T2P.setHorizontalAlignment(JLabel.RIGHT);
+		}
+		return serverURLLabel_T2P;
+	}
 
 	private JLabel getServerPortLabel() {
 		if (serverPortLabel == null) {
@@ -275,6 +380,16 @@ public class ConfProcess2TextPanel extends AbstractConfPanel {
 		return serverPortLabel;
 	}
 
+	private JLabel getServerPortLabel_T2P() {
+		if (serverPortLabel_T2P == null) {
+			serverPortLabel_T2P = new JLabel("<html>"
+					+ Messages.getString("Configuration.P2T.Label.ServerPort")
+					+ "</html>");
+			serverPortLabel_T2P.setHorizontalAlignment(JLabel.RIGHT);
+		}
+		return serverPortLabel_T2P;
+	}
+	
 	private JTextField getServerPortText() {
 		if (serverPortText == null) {
 			serverPortText = new JTextField();
@@ -286,8 +401,35 @@ public class ConfProcess2TextPanel extends AbstractConfPanel {
 		}
 		return serverPortText;
 	}
+	
+	private JTextField getServerPortText_T2P() {
+		if (serverPortText_T2P == null) {
+			serverPortText_T2P = new JTextField();
+			serverPortText_T2P.setColumns(4);
+			serverPortText_T2P.setEnabled(true);
+			serverPortText_T2P.setToolTipText("<html>"
+					+ Messages.getString("Configuration.P2T.Label.ServerPort")
+					+ "</html>");
+		}
+		return serverPortText_T2P;
+	}
 
 	private JCheckBox getUseBox() {
+		if (useBox == null) {
+			useBox = new JCheckBox(
+					Messages.getString("Configuration.P2T.Label.Use"));
+			useBox.setEnabled(true);
+			useBox.setToolTipText("<html>"
+					+ Messages.getString("Configuration.P2T.Label.Use")
+					+ "</html>");
+			CheckboxListener cbl = new CheckboxListener();
+			useBox.addItemListener(cbl);
+		}
+
+		return useBox;
+	}
+	
+	private JCheckBox getUseBox_T2P() {
 		if (useBox == null) {
 			useBox = new JCheckBox(
 					Messages.getString("Configuration.P2T.Label.Use"));
@@ -311,6 +453,16 @@ public class ConfProcess2TextPanel extends AbstractConfPanel {
 		}
 		return managerPathLabel;
 	}
+	
+	private JLabel getManagerPathLabel_T2P() {
+		if (managerPathLabel_T2P == null) {
+			managerPathLabel_T2P = new JLabel("<html>"
+					+ Messages.getString("Configuration.P2T.Label.ServerURI")
+					+ "</html>");
+			managerPathLabel_T2P.setHorizontalAlignment(JLabel.RIGHT);
+		}
+		return managerPathLabel_T2P;
+	}
 
 	private JTextField getManagerPathText() {
 		if (managerPathText == null) {
@@ -322,6 +474,18 @@ public class ConfProcess2TextPanel extends AbstractConfPanel {
 					+ "</html>");
 		}
 		return managerPathText;
+	}
+	
+	private JTextField getManagerPathText_T2P() {
+		if (managerPathText_T2P == null) {
+			managerPathText_T2P = new JTextField();
+			managerPathText_T2P.setColumns(40);
+			managerPathText_T2P.setEnabled(true);
+			managerPathText_T2P.setToolTipText("<html>"
+					+ Messages.getString("Configuration.P2T.Label.ServerURI")
+					+ "</html>");
+		}
+		return managerPathText_T2P;
 	}
 
 	private WopedButton getTestButton() {
@@ -342,6 +506,25 @@ public class ConfProcess2TextPanel extends AbstractConfPanel {
 
 		return testButton;
 	}
+	
+	private WopedButton getTestButton_T2P() {
+		if (testButton_T2P == null) {
+			testButton_T2P = new WopedButton();
+			testButton_T2P.setText(Messages.getTitle("Button.TestConnection"));
+			testButton_T2P.setIcon(Messages.getImageIcon("Button.TestConnection"));
+			testButton_T2P.setMnemonic(Messages
+					.getMnemonic("Button.TestConnection"));
+			testButton_T2P.setPreferredSize(new Dimension(160, 25));
+			testButton_T2P.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					testText2ProcessConnection();
+				}
+			});
+
+		}
+
+		return testButton_T2P;
+	}
 
 	private WopedButton getDefaultButton() {
 		if (defaultButton == null) {
@@ -355,6 +538,20 @@ public class ConfProcess2TextPanel extends AbstractConfPanel {
 			});
 		}
 		return defaultButton;
+	}
+	
+	private WopedButton getDefaultButton_T2P() {
+		if (defaultButton_T2P == null) {
+			defaultButton_T2P = new WopedButton();
+			defaultButton_T2P.setText(Messages.getTitle("Button.SetToDefault"));
+			defaultButton_T2P.setPreferredSize(new Dimension(200, 25));
+			defaultButton_T2P.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					setDefaultValues_T2P();
+				}
+			});
+		}
+		return defaultButton_T2P;
 	}
 
 	private void testProcess2TextConnection() {
@@ -391,6 +588,40 @@ public class ConfProcess2TextPanel extends AbstractConfPanel {
 
 	}
 
+	private void testText2ProcessConnection() {
+		URL url = null;
+		String connection = "http://" + getServerURLText_T2P().getText() + ":"
+				+ getServerPortText_T2P().getText()
+				+ getManagerPathText_T2P().getText();
+		try {
+			url = new URL(connection);
+			URLConnection urlConnection = url.openConnection();
+			if (urlConnection.getContent() != null) {
+				JOptionPane
+						.showMessageDialog(
+								this.getSettingsPanel_T2P(),
+								Messages.getString("Paraphrasing.Webservice.Success.Message"),
+								Messages.getString("Paraphrasing.Webservice.Success.Title"),
+								JOptionPane.INFORMATION_MESSAGE);
+			}
+		} catch (MalformedURLException mue) {
+			JOptionPane
+					.showMessageDialog(
+							this.getSettingsPanel_T2P(),
+							Messages.getString("Paraphrasing.Webservice.Error.Webserviceexception.Message"),
+							Messages.getString("Paraphrasing.Webservice.Error.Title"),
+							JOptionPane.INFORMATION_MESSAGE);
+		} catch (IOException ex) {
+			JOptionPane
+					.showMessageDialog(
+							this.getSettingsPanel_T2P(),
+							Messages.getString("Paraphrasing.Webservice.Error.Webserviceexception.Message"),
+							Messages.getString("Paraphrasing.Webservice.Error.Title"),
+							JOptionPane.INFORMATION_MESSAGE);
+		}
+
+	}
+	
 	private void setDefaultValues() {
 		getServerURLText().setText(
 				ConfigurationManager.getStandardConfiguration()
@@ -403,4 +634,18 @@ public class ConfProcess2TextPanel extends AbstractConfPanel {
 						+ ConfigurationManager.getStandardConfiguration()
 								.getProcess2TextServerPort());
 	}
+
+	private void setDefaultValues_T2P() {
+		getServerURLText_T2P().setText(
+				ConfigurationManager.getStandardConfiguration()
+						.getProcess2TextServerHost());
+		getManagerPathText_T2P().setText(
+				ConfigurationManager.getStandardConfiguration()
+						.getProcess2TextServerURI());
+		getServerPortText_T2P().setText(
+				""
+						+ ConfigurationManager.getStandardConfiguration()
+								.getProcess2TextServerPort());
+	}
+	
 }
