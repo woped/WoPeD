@@ -1,4 +1,4 @@
-package org.woped.swt;
+package org.woped.t2p;
 
 
 import java.awt.event.ActionEvent;

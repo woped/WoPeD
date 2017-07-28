@@ -1,6 +1,7 @@
 package processtotext.ws;
 
 import java.io.File;
+import java.io.InputStream;
 import java.io.PrintWriter;
 
 import javax.annotation.Resource;
@@ -11,10 +12,15 @@ import javax.servlet.ServletContext;
 import javax.xml.ws.WebServiceContext;
 import javax.xml.ws.handler.MessageContext;
 
+import gui.Initiator;
 import textGenerator.TextGenerator;
+import worldModel.WorldModel;
 
 @WebService
 public class ProcessToTextWebService {
+	
+	
+	private Initiator init = new Initiator();
 
 	@Resource
 	private WebServiceContext context;
@@ -34,4 +40,31 @@ public class ProcessToTextWebService {
 		tempFile.delete();
 		return result;
 	}
+	
+	
+
+
+	@WebMethod(operationName = "generateProcessToTextSpecification")
+	public InputStream generateProcessFromTextSpecification(
+			@WebParam(name = "textSpecification") String processSpecification)
+			throws Exception {
+		
+		
+		WorldModel world = init.convert(processSpecification);
+
+		InterpetWorldModel interpreter = new InterpetWorldModel();
+
+		PNMLGenerator generator = new PNMLGenerator();
+		generator.init();
+		generator.createDummyPlace();
+		generator.setTransition(interpreter.getTextTrans(world.getActions()));
+		generator.setArc();
+
+	
+		
+		
+	
+		return generator.after();
+	}
+	
 }

@@ -30,7 +30,6 @@ import java.util.Vector;
 
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import org.woped.core.config.ConfigurationManager;
@@ -57,8 +56,7 @@ import org.woped.starter.BugReportUI;
 import org.woped.starter.Constants;
 import org.woped.starter.RegistrationUI;
 import org.woped.starter.controller.vc.DefaultApplicationMediator;
-import org.woped.swt.T2PUI;
-import org.woped.swt.T2PUI;
+import org.woped.t2p.T2PUI;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>

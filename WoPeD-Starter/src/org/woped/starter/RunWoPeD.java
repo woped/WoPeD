@@ -42,7 +42,7 @@ import org.woped.core.utilities.LoggerManager;
 import org.woped.core.utilities.Platform;
 import org.woped.starter.controller.vc.DefaultApplicationMediator;
 import org.woped.starter.utilities.WopedLogger;
-import org.woped.swt.WorldModelExecution;
+import org.woped.t2p.WorldModelExecution;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>

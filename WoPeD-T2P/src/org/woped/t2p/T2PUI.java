@@ -20,7 +20,7 @@
  * For contact information please visit http://woped.dhbw-karlsruhe.de
  *
  */
-package org.woped.swt;
+package org.woped.t2p;
 
 import java.awt.BorderLayout;
 import java.awt.Button;

@@ -1,4 +1,4 @@
-package org.woped.swt;
+package processtotext.ws;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

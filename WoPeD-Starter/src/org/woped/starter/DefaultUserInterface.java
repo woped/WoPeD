@@ -50,7 +50,6 @@ import org.woped.gui.translations.Messages;
 import org.woped.qualanalysis.simulation.ReferenceProvider;
 import org.woped.starter.controller.vc.StatusBarVC;
 import org.woped.starter.osxMenu.OSXFullscreen;
-import org.woped.swt.Texteditor;
 
 @SuppressWarnings("serial")
 public class DefaultUserInterface extends MainFrame implements IUserInterface, InternalFrameListener {
@@ -167,33 +166,7 @@ public class DefaultUserInterface extends MainFrame implements IUserInterface, I
 
         }
     }
-    
-    public void addTextEditor(IEditor editor) {
-    	
-    	
-    	
-    	Texteditor frame = new Texteditor();
-    	
-        desktop.add(frame, BorderLayout.CENTER);
-
-        frame.pack();
-
-        frame.setTitle("Text2Process");
-        frame.setResizable(true);
-        frame.setClosable(true);
-        
-        // Notify MainFrame
-
-        try {
-        	frame.setVisible(true);
-            frame.setMaximum(true);
-            frame.setSelected(true);
-        } catch (Exception e) {
-            LoggerManager.error(Constants.GUI_LOGGER, "VetoException Could not Select Frame");
-        }
-
-    }
-    
+       
     
 
     public void quit() {
