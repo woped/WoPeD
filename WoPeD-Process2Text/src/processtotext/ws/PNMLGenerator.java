@@ -239,7 +239,7 @@ public class PNMLGenerator {
 		Transformer transformer = null;
 		try {
 			transformer = TransformerFactory.newInstance().newTransformer();
-		} catch (TransformerConfigurationException | TransformerFactoryConfigurationError e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
