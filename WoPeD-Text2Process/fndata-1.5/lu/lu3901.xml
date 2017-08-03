@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="surface.v" ID="3901" frame="Filling" frameID="59" totalAnnotated="5" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Agt" name="Agent"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD7C" type="Core" abbrev="cau" name="Cause"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Goal" name="Goal"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Ins" name="Instrument"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Path" name="Path"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Extra-Thematic" abbrev="Reas" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="Result" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Peripheral" abbrev="Src" name="Source"/>
+            <FE fgColor="FFFFFF" bgColor="90876C" type="Extra-Thematic" abbrev="Sub" name="Subregion"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core" abbrev="Thm" name="Theme"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: provide (something, especially a road) with a particular surface</definition>
+    <lexeme POS="V" name="surface"/>
+    <valences>
+        <FERealization total="5">
+            <FE name="Agent"/>
+            <pattern total="5">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <annoSet ID="1530083"/>
+                <annoSet ID="1530091"/>
+                <annoSet ID="1530101"/>
+                <annoSet ID="1530107"/>
+                <annoSet ID="1530135"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Goal"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Goal"/>
+                <annoSet ID="1530101"/>
+                <annoSet ID="1530107"/>
+            </pattern>
+            <pattern total="3">
+                <valenceUnit GF="Obj" PT="NP" FE="Goal"/>
+                <annoSet ID="1530083"/>
+                <annoSet ID="1530091"/>
+                <annoSet ID="1530135"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Manner"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <annoSet ID="1530101"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Theme"/>
+            <pattern total="4">
+                <valenceUnit GF="" PT="INI" FE="Theme"/>
+                <annoSet ID="1530083"/>
+                <annoSet ID="1530091"/>
+                <annoSet ID="1530101"/>
+                <annoSet ID="1530135"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Theme"/>
+                <annoSet ID="1530107"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Agent"/>
+            <FE name="Goal"/>
+            <FE name="Goal"/>
+            <FE name="Manner"/>
+            <FE name="Theme"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Goal"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Goal"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <valenceUnit GF="" PT="INI" FE="Theme"/>
+                <annoSet ID="1530101"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="4">
+            <FE name="Agent"/>
+            <FE name="Goal"/>
+            <FE name="Theme"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Goal"/>
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Theme"/>
+                <annoSet ID="1530107"/>
+            </pattern>
+            <pattern total="3">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Goal"/>
+                <valenceUnit GF="" PT="INI" FE="Theme"/>
+                <annoSet ID="1530083"/>
+                <annoSet ID="1530091"/>
+                <annoSet ID="1530135"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-429-s20-rcoll-road">
+        <sentence sentNo="0" aPos="20263311" ID="1039294">
+            <text>The West Midlands County Council will be left with the job of surfacing the roads . </text>
+            <annotationSet cDate="01/08/2003 12:00:26 PST Wed" status="UNANN" ID="1530082">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="7" start="4" name="NP0"/>
+                    <label end="16" start="9" name="NP0"/>
+                    <label end="23" start="18" name="NP0"/>
+                    <label end="31" start="25" name="NP0"/>
+                    <label end="36" start="33" name="VM0"/>
+                    <label end="39" start="38" name="VBI"/>
+                    <label end="44" start="41" name="VVN"/>
+                    <label end="49" start="46" name="PRP"/>
+                    <label end="53" start="51" name="AT0"/>
+                    <label end="57" start="55" name="NN1"/>
+                    <label end="60" start="59" name="PRF"/>
+                    <label end="70" start="62" name="VVG"/>
+                    <label end="74" start="72" name="AT0"/>
+                    <label end="80" start="76" name="NN2"/>
+                    <label end="82" start="82" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:00:26 PST Wed" status="MANUAL" ID="1530083">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="257" end="80" start="72" name="Goal"/>
+                    <label cBy="618" feID="254" itype="INI" name="Theme"/>
+                    <label cBy="618" feID="253" itype="CNI" name="Agent"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="80" start="72" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="80" start="72" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="70" start="62" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-429-s20-rcoll-slate"/>
+    <subCorpus name="V-570-s20-np-ppwith"/>
+    <subCorpus name="V-620-s20-np-ppother">
+        <sentence sentNo="0" aPos="23516533" ID="1039298">
+            <text>Nearly £15,000 has been spent on landscaping and surfacing the area by The Globe public house and down to Alresford Pond . </text>
+            <annotationSet cDate="01/08/2003 12:00:26 PST Wed" status="UNANN" ID="1530090">
+                <layer rank="1" name="BNC">
+                    <label end="5" start="0" name="AV0"/>
+                    <label end="13" start="7" name="NN0"/>
+                    <label end="17" start="15" name="VHZ"/>
+                    <label end="22" start="19" name="VBN"/>
+                    <label end="28" start="24" name="VVN"/>
+                    <label end="31" start="30" name="PRP"/>
+                    <label end="43" start="33" name="VVG"/>
+                    <label end="47" start="45" name="CJC"/>
+                    <label end="57" start="49" name="VVG"/>
+                    <label end="61" start="59" name="AT0"/>
+                    <label end="66" start="63" name="NN1"/>
+                    <label end="69" start="68" name="PRP"/>
+                    <label end="73" start="71" name="AT0"/>
+                    <label end="79" start="75" name="NN1-NP0"/>
+                    <label end="86" start="81" name="AJ0"/>
+                    <label end="92" start="88" name="NN1"/>
+                    <label end="96" start="94" name="CJC"/>
+                    <label end="101" start="98" name="AVP"/>
+                    <label end="104" start="103" name="PRP"/>
+                    <label end="114" start="106" name="NP0"/>
+                    <label end="119" start="116" name="NP0"/>
+                    <label end="121" start="121" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:00:26 PST Wed" status="MANUAL" ID="1530091">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="257" end="66" start="59" name="Goal"/>
+                    <label cBy="618" feID="254" itype="INI" name="Theme"/>
+                    <label cBy="618" feID="253" itype="CNI" name="Agent"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="66" start="59" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="66" start="59" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="57" start="49" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-660-s20-trans-simple"/>
+    <subCorpus name="V-680-s20-pass">
+        <sentence sentNo="0" aPos="22336584" ID="1039303">
+            <text>During the 18th Century Turnpike Trusts were set up , partly to build new roads , but mainly to maintain old ones , many of which were poorly surfaced and too badly rutted to carry the increasing traffic . </text>
+            <annotationSet cDate="01/08/2003 12:00:27 PST Wed" status="UNANN" ID="1530100">
+                <layer rank="1" name="BNC">
+                    <label end="5" start="0" name="PRP"/>
+                    <label end="9" start="7" name="AT0"/>
+                    <label end="14" start="11" name="ORD"/>
+                    <label end="22" start="16" name="NN1"/>
+                    <label end="31" start="24" name="NN1-NP0"/>
+                    <label end="38" start="33" name="NN2"/>
+                    <label end="43" start="40" name="VBD"/>
+                    <label end="47" start="45" name="VVN"/>
+                    <label end="50" start="49" name="AVP"/>
+                    <label end="52" start="52" name="PUN"/>
+                    <label end="59" start="54" name="AV0"/>
+                    <label end="62" start="61" name="TO0"/>
+                    <label end="68" start="64" name="VVI"/>
+                    <label end="72" start="70" name="AJ0"/>
+                    <label end="78" start="74" name="NN2"/>
+                    <label end="80" start="80" name="PUN"/>
+                    <label end="84" start="82" name="CJC"/>
+                    <label end="91" start="86" name="AV0"/>
+                    <label end="94" start="93" name="TO0"/>
+                    <label end="103" start="96" name="VVI"/>
+                    <label end="107" start="105" name="AJ0"/>
+                    <label end="112" start="109" name="PNI"/>
+                    <label end="114" start="114" name="PUN"/>
+                    <label end="119" start="116" name="DT0"/>
+                    <label end="122" start="121" name="PRF"/>
+                    <label end="128" start="124" name="DTQ"/>
+                    <label end="133" start="130" name="VBD"/>
+                    <label end="140" start="135" name="AV0"/>
+                    <label end="149" start="142" name="VVN"/>
+                    <label end="153" start="151" name="CJC"/>
+                    <label end="157" start="155" name="AV0"/>
+                    <label end="163" start="159" name="AV0"/>
+                    <label end="170" start="165" name="VVD-VVN"/>
+                    <label end="173" start="172" name="TO0"/>
+                    <label end="179" start="175" name="VVI"/>
+                    <label end="183" start="181" name="AT0"/>
+                    <label end="194" start="185" name="AJ0"/>
+                    <label end="202" start="196" name="NN1"/>
+                    <label end="204" start="204" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:00:27 PST Wed" status="MANUAL" ID="1530101">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="257" end="119" start="116" name="Goal"/>
+                    <label cBy="618" feID="844" end="140" start="135" name="Manner"/>
+                    <label cBy="618" feID="253" itype="CNI" name="Agent"/>
+                    <label cBy="618" feID="254" itype="INI" name="Theme"/>
+                    <label cBy="309" feID="257" end="128" start="121" name="Goal"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="119" start="116" name="Ext"/>
+                    <label end="140" start="135" name="Dep"/>
+                    <label end="128" start="121" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="119" start="116" name="NP"/>
+                    <label end="140" start="135" name="AVP"/>
+                    <label end="128" start="121" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other">
+                    <label end="119" start="116" name="Ant"/>
+                    <label end="128" start="124" name="Rel"/>
+                </layer>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="149" start="142" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="53280977" ID="1039306">
+            <text>Only a relatively narrow width was surfaced with stone , and the remainder was left under grass as we see it today . </text>
+            <annotationSet cDate="01/08/2003 12:00:27 PST Wed" status="UNANN" ID="1530106">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="AV0"/>
+                    <label end="5" start="5" name="AT0"/>
+                    <label end="16" start="7" name="AV0"/>
+                    <label end="23" start="18" name="AJ0"/>
+                    <label end="29" start="25" name="NN1"/>
+                    <label end="33" start="31" name="VBD"/>
+                    <label end="42" start="35" name="VVN"/>
+                    <label end="47" start="44" name="PRP"/>
+                    <label end="53" start="49" name="NN1"/>
+                    <label end="55" start="55" name="PUN"/>
+                    <label end="59" start="57" name="CJC"/>
+                    <label end="63" start="61" name="AT0"/>
+                    <label end="73" start="65" name="NN1"/>
+                    <label end="77" start="75" name="VBD"/>
+                    <label end="82" start="79" name="VVN"/>
+                    <label end="88" start="84" name="PRP"/>
+                    <label end="94" start="90" name="NN1"/>
+                    <label end="97" start="96" name="CJS"/>
+                    <label end="100" start="99" name="PNP"/>
+                    <label end="104" start="102" name="VVB"/>
+                    <label end="107" start="106" name="PNP"/>
+                    <label end="113" start="109" name="AV0"/>
+                    <label end="115" start="115" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:00:27 PST Wed" status="MANUAL" ID="1530107">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="257" end="29" start="0" name="Goal"/>
+                    <label cBy="618" feID="254" end="53" start="44" name="Theme"/>
+                    <label cBy="618" feID="253" itype="CNI" name="Agent"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="29" start="0" name="Ext"/>
+                    <label end="53" start="44" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="29" start="0" name="NP"/>
+                    <label end="53" start="44" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="42" start="35" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-690-s20-trans-other">
+        <sentence sentNo="0" aPos="20189876" ID="1039320">
+            <text>When finance became available to complete the park in a traditional gardenesque manner , there was so much opposition that , apart from surfacing a few paths and strengthening the natural scrub , it was left . </text>
+            <annotationSet cDate="01/08/2003 12:00:29 PST Wed" status="UNANN" ID="1530134">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="AVQ-CJS"/>
+                    <label end="11" start="5" name="NN1"/>
+                    <label end="18" start="13" name="VVD"/>
+                    <label end="28" start="20" name="AJ0"/>
+                    <label end="31" start="30" name="TO0"/>
+                    <label end="40" start="33" name="VVI"/>
+                    <label end="44" start="42" name="AT0"/>
+                    <label end="49" start="46" name="NN1"/>
+                    <label end="52" start="51" name="PRP"/>
+                    <label end="54" start="54" name="AT0"/>
+                    <label end="66" start="56" name="AJ0"/>
+                    <label end="78" start="68" name="AJ0"/>
+                    <label end="85" start="80" name="NN1"/>
+                    <label end="87" start="87" name="PUN"/>
+                    <label end="93" start="89" name="EX0"/>
+                    <label end="97" start="95" name="VBD"/>
+                    <label end="100" start="99" name="AV0"/>
+                    <label end="105" start="102" name="DT0"/>
+                    <label end="116" start="107" name="NN1"/>
+                    <label end="121" start="118" name="CJT"/>
+                    <label end="123" start="123" name="PUN"/>
+                    <label end="129" start="125" name="PRP"/>
+                    <label end="134" start="131" name="PRP"/>
+                    <label end="144" start="136" name="VVG"/>
+                    <label end="146" start="146" name="DT0"/>
+                    <label end="150" start="148" name="DT0"/>
+                    <label end="156" start="152" name="NN2"/>
+                    <label end="160" start="158" name="CJC"/>
+                    <label end="174" start="162" name="VVG"/>
+                    <label end="178" start="176" name="AT0"/>
+                    <label end="186" start="180" name="AJ0"/>
+                    <label end="192" start="188" name="NN1"/>
+                    <label end="194" start="194" name="PUN"/>
+                    <label end="197" start="196" name="PNP"/>
+                    <label end="201" start="199" name="VBD"/>
+                    <label end="206" start="203" name="VVN"/>
+                    <label end="208" start="208" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:00:29 PST Wed" status="MANUAL" ID="1530135">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="257" end="156" start="146" name="Goal"/>
+                    <label cBy="618" feID="253" itype="CNI" name="Agent"/>
+                    <label cBy="618" feID="254" itype="INI" name="Theme"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="156" start="146" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="156" start="146" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="144" start="136" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-730-s20-ppwith"/>
+    <subCorpus name="V-780-s20-ppother"/>
+    <subCorpus name="V-810-s20-pother"/>
+    <subCorpus name="V-880-s20-intrans-simple"/>
+    <subCorpus name="V-890-s20-intrans-adverb"/>
+    <subCorpus name="V-900-s20-other"/>
+</lexUnit>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="N" name="service.n" ID="12616" frame="Public_services" frameID="1605" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core" abbrev="dom" name="Domain"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="ins" name="Institution"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="ser" name="Service_action"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="tar" name="Target_group"/>
+        </frame>
+    </header>
+    <definition>COD: a system supplying a public need such as transport, or utilities such as electricity and water.</definition>
+    <lexeme POS="N" name="service"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Domain"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[as]" FE="Domain"/>
+                <annoSet ID="2587295"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Institution"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Institution"/>
+                <annoSet ID="2587295"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Service_action"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Service_action"/>
+                <annoSet ID="2587295"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Target_group"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Target_group"/>
+                <annoSet ID="2587295"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Domain"/>
+            <FE name="Institution"/>
+            <FE name="Service_action"/>
+            <FE name="Target_group"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[as]" FE="Domain"/>
+                <valenceUnit GF="" PT="INI" FE="Institution"/>
+                <valenceUnit GF="" PT="INI" FE="Service_action"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Target_group"/>
+                <annoSet ID="2587295"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-Wpublic-T-(1)"/>
+    <subCorpus name="other-matched-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="115" aPos="95160449" ID="1576338">
+            <text>Thatcher and her supporters &quot; seem intent on doing to the NHS what they have done to other public services such as gas and water .</text>
+            <annotationSet cDate="07/15/2010 02:41:29 PDT Thu" status="UNANN" ID="2587294">
+                <layer rank="1" name="PENN">
+                    <label end="7" start="0" name="NP"/>
+                    <label end="11" start="9" name="cc"/>
+                    <label end="15" start="13" name="PP$"/>
+                    <label end="26" start="17" name="nns"/>
+                    <label end="33" start="30" name="VVP"/>
+                    <label end="40" start="35" name="nn"/>
+                    <label end="43" start="42" name="in"/>
+                    <label end="49" start="45" name="VVG"/>
+                    <label end="52" start="51" name="to"/>
+                    <label end="56" start="54" name="dt"/>
+                    <label end="60" start="58" name="nn"/>
+                    <label end="65" start="62" name="wp"/>
+                    <label end="70" start="67" name="PP"/>
+                    <label end="75" start="72" name="VHP"/>
+                    <label end="80" start="77" name="VVN"/>
+                    <label end="83" start="82" name="to"/>
+                    <label end="89" start="85" name="jj"/>
+                    <label end="96" start="91" name="jj"/>
+                    <label end="105" start="98" name="nns"/>
+                    <label end="110" start="107" name="jj"/>
+                    <label end="113" start="112" name="in"/>
+                    <label end="117" start="115" name="nn"/>
+                    <label end="121" start="119" name="cc"/>
+                    <label end="127" start="123" name="nn"/>
+                    <label end="129" start="129" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/15/2010 02:41:29 PDT Thu" status="MANUAL" ID="2587295">
+                <layer rank="1" name="Target">
+                    <label cBy="571" end="105" start="98" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="571" feID="8831" end="96" start="91" name="Target_group"/>
+                    <label cBy="571" feID="8829" end="127" start="107" name="Domain"/>
+                    <label cBy="571" feID="8828" itype="INI" name="Institution"/>
+                    <label cBy="571" feID="8832" itype="INI" name="Service_action"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="96" start="91" name="Dep"/>
+                    <label end="127" start="107" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="96" start="91" name="AJP"/>
+                    <label end="127" start="107" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

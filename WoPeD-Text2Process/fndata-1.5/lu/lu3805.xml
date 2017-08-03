@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="N" name="standoff.n" ID="3805" frame="Hostile_encounter" frameID="93" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD73" type="Peripheral" abbrev="Dur" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Ins" name="Instrument"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Extra-Thematic" abbrev="ICause" name="Internal_cause"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Core" abbrev="Iss" name="Issue"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="000000" bgColor="FFD700" type="Extra-Thematic" abbrev="" name="Particular_iteration"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="pla" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Purpose" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="Reas" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="Result" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core" abbrev="Sides" name="Sides"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Side-1" name="Side_1"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="Side-2" name="Side_2"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: a deadlock between two equally matched opponents. </definition>
+    <lexeme POS="N" name="standoff"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Duration"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Duration"/>
+                <annoSet ID="617962"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Manner"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Manner"/>
+                <annoSet ID="617958"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Side_1"/>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Side_1"/>
+                <annoSet ID="617962"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Side_2"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Side_2"/>
+                <annoSet ID="617962"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Sides"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[between]" FE="Sides"/>
+                <annoSet ID="617958"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Duration"/>
+            <FE name="Side_1"/>
+            <FE name="Side_2"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Duration"/>
+                <valenceUnit GF="Gen" PT="Poss" FE="Side_1"/>
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Side_2"/>
+                <annoSet ID="617962"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Manner"/>
+            <FE name="Sides"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Manner"/>
+                <valenceUnit GF="Dep" PT="PP[between]" FE="Sides"/>
+                <annoSet ID="617958"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-001-all">
+        <sentence sentNo="0" aPos="94082073" ID="506084">
+            <text>This led to a military standoff between French and American troops and a bitter rebuke from President Truman . </text>
+            <annotationSet cDate="01/07/2003 05:59:41 PST Tue" status="UNANN" ID="617957">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="DT0"/>
+                    <label end="7" start="5" name="VVD-VVN"/>
+                    <label end="10" start="9" name="PRP"/>
+                    <label end="12" start="12" name="AT0"/>
+                    <label end="21" start="14" name="AJ0"/>
+                    <label end="30" start="23" name="NN1"/>
+                    <label end="38" start="32" name="PRP"/>
+                    <label end="45" start="40" name="AJ0-NN1"/>
+                    <label end="49" start="47" name="CJC"/>
+                    <label end="58" start="51" name="AJ0"/>
+                    <label end="65" start="60" name="NN2"/>
+                    <label end="69" start="67" name="CJC"/>
+                    <label end="71" start="71" name="AT0"/>
+                    <label end="78" start="73" name="AJ0"/>
+                    <label end="85" start="80" name="NN1"/>
+                    <label end="90" start="87" name="PRP"/>
+                    <label end="100" start="92" name="NP0"/>
+                    <label end="107" start="102" name="NP0"/>
+                    <label end="109" start="109" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:59:41 PST Tue" status="MANUAL" ID="617958">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="445" end="21" start="14" name="Manner"/>
+                    <label cBy="669" feID="441" end="65" start="32" name="Sides"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="21" start="14" name="Dep"/>
+                    <label end="65" start="32" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="21" start="14" name="AJP"/>
+                    <label end="65" start="32" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="30" start="23" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="106828693" ID="506086">
+            <text>THE FBI said yesterday that the Texas cult leader David Koresh had indicated that he appears close to receiving a sign from God , implying that an end to his 20-day standoff with federal agents might be near . </text>
+            <annotationSet cDate="01/07/2003 05:59:41 PST Tue" status="UNANN" ID="617961">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="6" start="4" name="NP0"/>
+                    <label end="11" start="8" name="VVD"/>
+                    <label end="21" start="13" name="AV0"/>
+                    <label end="26" start="23" name="CJT"/>
+                    <label end="30" start="28" name="AT0"/>
+                    <label end="36" start="32" name="NP0"/>
+                    <label end="41" start="38" name="NN1-VVB"/>
+                    <label end="48" start="43" name="NN1"/>
+                    <label end="54" start="50" name="NP0"/>
+                    <label end="61" start="56" name="NP0"/>
+                    <label end="65" start="63" name="VHD"/>
+                    <label end="75" start="67" name="VVN"/>
+                    <label end="80" start="77" name="CJT"/>
+                    <label end="83" start="82" name="PNP"/>
+                    <label end="91" start="85" name="VVZ"/>
+                    <label end="97" start="93" name="AV0"/>
+                    <label end="100" start="99" name="PRP"/>
+                    <label end="110" start="102" name="VVG"/>
+                    <label end="112" start="112" name="AT0"/>
+                    <label end="117" start="114" name="NN1"/>
+                    <label end="122" start="119" name="PRP"/>
+                    <label end="126" start="124" name="NP0"/>
+                    <label end="128" start="128" name="PUN"/>
+                    <label end="137" start="130" name="VVG"/>
+                    <label end="142" start="139" name="CJT"/>
+                    <label end="145" start="144" name="AT0"/>
+                    <label end="149" start="147" name="NN1"/>
+                    <label end="152" start="151" name="PRP"/>
+                    <label end="156" start="154" name="DPS"/>
+                    <label end="163" start="158" name="AJ0-NN1"/>
+                    <label end="172" start="165" name="NN1"/>
+                    <label end="177" start="174" name="PRP"/>
+                    <label end="185" start="179" name="AJ0"/>
+                    <label end="192" start="187" name="NN2"/>
+                    <label end="198" start="194" name="VM0"/>
+                    <label end="201" start="200" name="VBI"/>
+                    <label end="206" start="203" name="AV0"/>
+                    <label end="208" start="208" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:59:41 PST Tue" status="MANUAL" ID="617962">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="439" end="156" start="154" name="Side_1"/>
+                    <label cBy="669" feID="718" end="163" start="158" name="Duration"/>
+                    <label cBy="669" feID="440" end="192" start="174" name="Side_2"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="156" start="154" name="Gen"/>
+                    <label end="163" start="158" name="Dep"/>
+                    <label end="192" start="174" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="156" start="154" name="Poss"/>
+                    <label end="163" start="158" name="AJP"/>
+                    <label end="192" start="174" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="172" start="165" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

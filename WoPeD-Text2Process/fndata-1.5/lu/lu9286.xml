@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" POS="A" name="great.a" ID="9286" frame="Usefulness" frameID="726" totalAnnotated="3" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="dom" name="Domain"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Ent" name="Entity"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: excellent. </definition>
+    <lexeme POS="A" name="great"/>
+    <valences>
+        <FERealization total="3">
+            <FE name="Entity"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Entity"/>
+                <annoSet ID="1479401"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Entity"/>
+                <annoSet ID="1478691"/>
+                <annoSet ID="1479275"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Purpose"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PPing[for]" FE="Purpose"/>
+                <annoSet ID="1478691"/>
+                <annoSet ID="1479401"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Purpose"/>
+                <annoSet ID="1479275"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="3">
+            <FE name="Entity"/>
+            <FE name="Purpose"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Entity"/>
+                <valenceUnit GF="Dep" PT="PPing[for]" FE="Purpose"/>
+                <annoSet ID="1479401"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Entity"/>
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Purpose"/>
+                <annoSet ID="1479275"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Entity"/>
+                <valenceUnit GF="Dep" PT="PPing[for]" FE="Purpose"/>
+                <annoSet ID="1478691"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="A-001-s40-lgov-be">
+        <sentence sentNo="0" aPos="30688187" ID="1013041">
+            <text>Traditional exercises like sit-ups , press-ups and pull-ups are great for strengthening the body , providing that you do them properly . </text>
+            <annotationSet cDate="01/07/2003 11:02:01 PST Tue" status="UNANN" ID="1478690">
+                <layer rank="1" name="BNC">
+                    <label end="10" start="0" name="AJ0"/>
+                    <label end="20" start="12" name="NN2"/>
+                    <label end="25" start="22" name="PRP"/>
+                    <label end="33" start="27" name="NN2"/>
+                    <label end="35" start="35" name="PUN"/>
+                    <label end="45" start="37" name="NN2"/>
+                    <label end="49" start="47" name="CJC"/>
+                    <label end="58" start="51" name="NN2"/>
+                    <label end="62" start="60" name="VBB"/>
+                    <label end="68" start="64" name="AJ0"/>
+                    <label end="72" start="70" name="PRP"/>
+                    <label end="86" start="74" name="VVG"/>
+                    <label end="90" start="88" name="AT0"/>
+                    <label end="95" start="92" name="NN1"/>
+                    <label end="97" start="97" name="PUN"/>
+                    <label end="107" start="99" name="CJS"/>
+                    <label end="112" start="109" name="CJS"/>
+                    <label end="116" start="114" name="PNP"/>
+                    <label end="119" start="118" name="VDB"/>
+                    <label end="124" start="121" name="PNP"/>
+                    <label end="133" start="126" name="AV0"/>
+                    <label end="135" start="135" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 11:02:01 PST Tue" status="MANUAL" ID="1478691">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4783" end="58" start="0" name="Entity"/>
+                    <label cBy="618" feID="4784" end="95" start="70" name="Purpose"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="58" start="0" name="Ext"/>
+                    <label end="95" start="70" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="58" start="0" name="NP"/>
+                    <label end="95" start="70" name="PPing"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="68" start="64" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj">
+                    <label end="62" start="60" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="A-100-s20-ppfor">
+        <sentence sentNo="0" aPos="22932506" ID="1013333">
+            <text>They 're great for tiredness , flu , hangovers . &quot; </text>
+            <annotationSet cDate="01/07/2003 11:02:41 PST Tue" status="UNANN" ID="1479274">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="PNP"/>
+                    <label end="7" start="5" name="VBB"/>
+                    <label end="13" start="9" name="AJ0"/>
+                    <label end="17" start="15" name="PRP"/>
+                    <label end="27" start="19" name="NN1"/>
+                    <label end="29" start="29" name="PUN"/>
+                    <label end="33" start="31" name="NN1"/>
+                    <label end="35" start="35" name="PUN"/>
+                    <label end="45" start="37" name="NN2"/>
+                    <label end="47" start="47" name="PUN"/>
+                    <label end="49" start="49" name="PUQ"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 11:02:41 PST Tue" status="MANUAL" ID="1479275">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4783" end="3" start="0" name="Entity"/>
+                    <label cBy="618" feID="4784" end="45" start="15" name="Purpose"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="3" start="0" name="Ext"/>
+                    <label end="45" start="15" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="3" start="0" name="NP"/>
+                    <label end="45" start="15" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="13" start="9" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj">
+                    <label end="7" start="5" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="A-120-s20-pingfor">
+        <sentence sentNo="0" aPos="77267606" ID="1013396">
+            <text>Great for livening up otherwise boring presentations . </text>
+            <annotationSet cDate="01/07/2003 11:02:48 PST Tue" status="UNANN" ID="1479400">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="AJ0"/>
+                    <label end="8" start="6" name="PRP"/>
+                    <label end="17" start="10" name="VVG"/>
+                    <label end="20" start="19" name="AVP"/>
+                    <label end="30" start="22" name="AV0"/>
+                    <label end="37" start="32" name="AJ0"/>
+                    <label end="51" start="39" name="NN2"/>
+                    <label end="53" start="53" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 11:02:48 PST Tue" status="MANUAL" ID="1479401">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4784" end="51" start="6" name="Purpose"/>
+                    <label cBy="618" feID="4783" itype="DNI" name="Entity"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="51" start="6" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="51" start="6" name="PPing"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="4" start="0" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="PREP" name="under_arrest.prep" ID="5683" frame="Detaining" frameID="313" totalAnnotated="7" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Auth" name="Authorities"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Chg" name="Charges"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="State" name="Dependent_state"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="Dur" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Hold_L" name="Holding_Location"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Basis" name="Legal_basis"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="P" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Susp" name="Suspect"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="T" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: having been taken into custody</definition>
+    <lexeme order="1" headword="false" breakBefore="false" POS="N" name="arrest"/>
+    <lexeme order="1" headword="true" breakBefore="false" POS="PREP" name="under"/>
+    <valences>
+        <FERealization total="2">
+            <FE name="Holding_Location"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Holding_Location"/>
+                <annoSet ID="1207033"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Holding_Location"/>
+                <annoSet ID="1207037"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Place"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Place"/>
+                <annoSet ID="1207125"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="7">
+            <FE name="Suspect"/>
+            <pattern total="7">
+                <valenceUnit GF="Ext" PT="NP" FE="Suspect"/>
+                <annoSet ID="1207033"/>
+                <annoSet ID="1207037"/>
+                <annoSet ID="1207057"/>
+                <annoSet ID="1207069"/>
+                <annoSet ID="1207093"/>
+                <annoSet ID="1207111"/>
+                <annoSet ID="1207125"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[during]" FE="Time"/>
+                <annoSet ID="1207033"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Holding_Location"/>
+            <FE name="Suspect"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Holding_Location"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Suspect"/>
+                <annoSet ID="1207037"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Holding_Location"/>
+            <FE name="Suspect"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Holding_Location"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Suspect"/>
+                <valenceUnit GF="Dep" PT="PP[during]" FE="Time"/>
+                <annoSet ID="1207033"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Place"/>
+            <FE name="Suspect"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Place"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Suspect"/>
+                <annoSet ID="1207125"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="4">
+            <FE name="Suspect"/>
+            <pattern total="4">
+                <valenceUnit GF="Ext" PT="NP" FE="Suspect"/>
+                <annoSet ID="1207057"/>
+                <annoSet ID="1207069"/>
+                <annoSet ID="1207093"/>
+                <annoSet ID="1207111"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-330-s20-period"/>
+    <subCorpus name="N-380-s20-other"/>
+    <subCorpus name="N-429-s50-lgov-under">
+        <sentence sentNo="0" aPos="2019211" ID="876075">
+            <text>Another witness had earlier reported seeing four hooded and shackled men under arrest at the military section of the airport during the coup , but there was no way of identifying them . </text>
+            <annotationSet cDate="01/07/2003 05:52:28 PST Tue" status="UNANN" ID="1207032">
+                <layer rank="1" name="BNC">
+                    <label end="6" start="0" name="DT0"/>
+                    <label end="14" start="8" name="NN1"/>
+                    <label end="18" start="16" name="VHD"/>
+                    <label end="26" start="20" name="AV0"/>
+                    <label end="35" start="28" name="VVN"/>
+                    <label end="42" start="37" name="VVG"/>
+                    <label end="47" start="44" name="CRD"/>
+                    <label end="54" start="49" name="AJ0-VVD"/>
+                    <label end="58" start="56" name="CJC"/>
+                    <label end="67" start="60" name="AJ0-VVD"/>
+                    <label end="71" start="69" name="NN2"/>
+                    <label end="77" start="73" name="PRP"/>
+                    <label end="84" start="79" name="NN1"/>
+                    <label end="87" start="86" name="PRP"/>
+                    <label end="91" start="89" name="AT0"/>
+                    <label end="100" start="93" name="AJ0"/>
+                    <label end="108" start="102" name="NN1"/>
+                    <label end="111" start="110" name="PRF"/>
+                    <label end="115" start="113" name="AT0"/>
+                    <label end="123" start="117" name="NN1"/>
+                    <label end="130" start="125" name="PRP"/>
+                    <label end="134" start="132" name="AT0"/>
+                    <label end="139" start="136" name="NN1"/>
+                    <label end="141" start="141" name="PUN"/>
+                    <label end="145" start="143" name="CJC"/>
+                    <label end="151" start="147" name="EX0"/>
+                    <label end="155" start="153" name="VBD"/>
+                    <label end="158" start="157" name="AT0"/>
+                    <label end="162" start="160" name="NN1"/>
+                    <label end="165" start="164" name="PRF"/>
+                    <label end="177" start="167" name="VVG"/>
+                    <label end="182" start="179" name="PNP"/>
+                    <label end="184" start="184" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:52:28 PST Tue" status="MANUAL" ID="1207033">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="2705" end="71" start="44" name="Suspect"/>
+                    <label cBy="669" feID="2708" end="123" start="86" name="Holding_Location"/>
+                    <label cBy="669" feID="2706" end="139" start="125" name="Time"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="71" start="44" name="Ext"/>
+                    <label end="123" start="86" name="Dep"/>
+                    <label end="139" start="125" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="71" start="44" name="NP"/>
+                    <label end="123" start="86" name="PP"/>
+                    <label end="139" start="125" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="84" start="79" name="Target"/>
+                    <label cBy="605" end="77" start="73" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="11714426" ID="876077">
+            <text>Israel 's plan was actually that of an American businessman now under arrest in the United States charged with trading with Iran . </text>
+            <annotationSet cDate="01/07/2003 05:52:28 PST Tue" status="UNANN" ID="1207036">
+                <layer rank="1" name="BNC">
+                    <label end="5" start="0" name="NP0"/>
+                    <label end="8" start="7" name="POS"/>
+                    <label end="13" start="10" name="NN1"/>
+                    <label end="17" start="15" name="VBD"/>
+                    <label end="26" start="19" name="AV0"/>
+                    <label end="31" start="28" name="DT0"/>
+                    <label end="34" start="33" name="PRF"/>
+                    <label end="37" start="36" name="AT0"/>
+                    <label end="46" start="39" name="AJ0"/>
+                    <label end="58" start="48" name="NN1"/>
+                    <label end="62" start="60" name="AV0"/>
+                    <label end="68" start="64" name="PRP"/>
+                    <label end="75" start="70" name="NN1"/>
+                    <label end="78" start="77" name="PRP"/>
+                    <label end="82" start="80" name="AT0"/>
+                    <label end="89" start="84" name="NP0"/>
+                    <label end="96" start="91" name="NP0"/>
+                    <label end="104" start="98" name="VVD"/>
+                    <label end="109" start="106" name="PRP"/>
+                    <label end="117" start="111" name="VVG"/>
+                    <label end="122" start="119" name="PRP"/>
+                    <label end="127" start="124" name="NP0"/>
+                    <label end="129" start="129" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:52:28 PST Tue" status="MANUAL" ID="1207037">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="2705" end="58" start="36" name="Suspect"/>
+                    <label cBy="669" feID="2708" end="96" start="77" name="Holding_Location"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="58" start="36" name="Ext"/>
+                    <label end="96" start="77" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="58" start="36" name="NP"/>
+                    <label end="96" start="77" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="75" start="70" name="Target"/>
+                    <label cBy="605" end="68" start="64" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="54600349" ID="876087">
+            <text>If the suspect is not under arrest he may only be interrogated in the presence of his lawyer . </text>
+            <annotationSet cDate="01/07/2003 05:52:32 PST Tue" status="UNANN" ID="1207056">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="CJS"/>
+                    <label end="5" start="3" name="AT0"/>
+                    <label end="13" start="7" name="NN1"/>
+                    <label end="16" start="15" name="VBZ"/>
+                    <label end="20" start="18" name="XX0"/>
+                    <label end="26" start="22" name="AV0"/>
+                    <label end="33" start="28" name="NN1-VVB"/>
+                    <label end="36" start="35" name="PNP"/>
+                    <label end="40" start="38" name="VM0"/>
+                    <label end="45" start="42" name="AV0"/>
+                    <label end="48" start="47" name="VBI"/>
+                    <label end="61" start="50" name="VVN"/>
+                    <label end="64" start="63" name="PRP"/>
+                    <label end="68" start="66" name="AT0"/>
+                    <label end="77" start="70" name="NN1"/>
+                    <label end="80" start="79" name="PRF"/>
+                    <label end="84" start="82" name="DPS"/>
+                    <label end="91" start="86" name="NN1"/>
+                    <label end="93" start="93" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:52:32 PST Tue" status="MANUAL" ID="1207057">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="2705" end="13" start="7" name="Suspect"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="13" start="7" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="13" start="7" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="33" start="28" name="Target"/>
+                    <label cBy="605" end="26" start="22" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="16" start="15" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="66774462" ID="876093">
+            <text>But I 'm not under arrest ? &quot; </text>
+            <annotationSet cDate="01/07/2003 05:52:32 PST Tue" status="UNANN" ID="1207068">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="CJC"/>
+                    <label end="4" start="4" name="PNP"/>
+                    <label end="7" start="6" name="VBB"/>
+                    <label end="11" start="9" name="XX0"/>
+                    <label end="17" start="13" name="PRP"/>
+                    <label end="24" start="19" name="NN1"/>
+                    <label end="26" start="26" name="PUN"/>
+                    <label end="28" start="28" name="PUQ"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:52:32 PST Tue" status="MANUAL" ID="1207069">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="2705" end="4" start="4" name="Suspect"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="4" start="4" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="4" start="4" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="24" start="19" name="Target"/>
+                    <label cBy="605" end="17" start="13" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="7" start="6" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="86119586" ID="876105">
+            <text>Maldom Bada had been under arrest since the alleged coup attempt of October 1991 [ see p. 38519 ] and his inclusion therefore signified his political rehabilitation . </text>
+            <annotationSet cDate="01/07/2003 05:52:34 PST Tue" status="UNANN" ID="1207092">
+                <layer rank="1" name="BNC">
+                    <label end="5" start="0" name="NP0"/>
+                    <label end="10" start="7" name="NP0"/>
+                    <label end="14" start="12" name="VHD"/>
+                    <label end="19" start="16" name="VBN"/>
+                    <label end="25" start="21" name="PRP"/>
+                    <label end="32" start="27" name="NN1"/>
+                    <label end="38" start="34" name="CJS-PRP"/>
+                    <label end="42" start="40" name="AT0"/>
+                    <label end="50" start="44" name="AJ0"/>
+                    <label end="55" start="52" name="NN1"/>
+                    <label end="63" start="57" name="NN1"/>
+                    <label end="66" start="65" name="PRF"/>
+                    <label end="74" start="68" name="NP0"/>
+                    <label end="79" start="76" name="CRD"/>
+                    <label end="81" start="81" name="PUL"/>
+                    <label end="85" start="83" name="VVB"/>
+                    <label end="88" start="87" name="NN0"/>
+                    <label end="94" start="90" name="CRD"/>
+                    <label end="96" start="96" name="PUR"/>
+                    <label end="100" start="98" name="CJC"/>
+                    <label end="104" start="102" name="DPS"/>
+                    <label end="114" start="106" name="NN1"/>
+                    <label end="124" start="116" name="AV0"/>
+                    <label end="134" start="126" name="VVD"/>
+                    <label end="138" start="136" name="DPS"/>
+                    <label end="148" start="140" name="AJ0"/>
+                    <label end="163" start="150" name="NN1"/>
+                    <label end="165" start="165" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:52:34 PST Tue" status="MANUAL" ID="1207093">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="2705" end="10" start="0" name="Suspect"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="10" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="10" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="32" start="27" name="Target"/>
+                    <label cBy="605" end="25" start="21" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="19" start="16" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="90569426" ID="876114">
+            <text>You are all under arrest . &quot; </text>
+            <annotationSet cDate="01/07/2003 05:52:35 PST Tue" status="UNANN" ID="1207110">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="PNP"/>
+                    <label end="6" start="4" name="VBB"/>
+                    <label end="10" start="8" name="DT0"/>
+                    <label end="16" start="12" name="PRP"/>
+                    <label end="23" start="18" name="NN1"/>
+                    <label end="25" start="25" name="PUN"/>
+                    <label end="27" start="27" name="PUQ"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:52:35 PST Tue" status="MANUAL" ID="1207111">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="2705" end="2" start="0" name="Suspect"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="2" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="2" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="23" start="18" name="Target"/>
+                    <label cBy="605" end="16" start="12" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="6" start="4" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="106028122" ID="876121">
+            <text>The seven laureates hope to focus world attention on the plight of Ms Suu Kyi , who has been under house arrest in Burma since 1989 , and 1,500 other political prisoners of the junta . </text>
+            <annotationSet cDate="01/07/2003 05:52:36 PST Tue" status="UNANN" ID="1207124">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="8" start="4" name="CRD"/>
+                    <label end="18" start="10" name="NN2"/>
+                    <label end="23" start="20" name="VVB"/>
+                    <label end="26" start="25" name="TO0"/>
+                    <label end="32" start="28" name="VVI"/>
+                    <label end="38" start="34" name="NN1"/>
+                    <label end="48" start="40" name="NN1"/>
+                    <label end="51" start="50" name="PRP"/>
+                    <label end="55" start="53" name="AT0"/>
+                    <label end="62" start="57" name="NN1"/>
+                    <label end="65" start="64" name="PRF"/>
+                    <label end="68" start="67" name="NP0"/>
+                    <label end="72" start="70" name="NP0"/>
+                    <label end="76" start="74" name="NP0"/>
+                    <label end="78" start="78" name="PUN"/>
+                    <label end="82" start="80" name="PNQ"/>
+                    <label end="86" start="84" name="VHZ"/>
+                    <label end="91" start="88" name="VBN"/>
+                    <label end="97" start="93" name="PRP"/>
+                    <label end="103" start="99" name="NN1"/>
+                    <label end="110" start="105" name="NN1-VVB"/>
+                    <label end="113" start="112" name="PRP"/>
+                    <label end="119" start="115" name="NN1-NP0"/>
+                    <label end="125" start="121" name="PRP"/>
+                    <label end="130" start="127" name="CRD"/>
+                    <label end="132" start="132" name="PUN"/>
+                    <label end="136" start="134" name="CJC"/>
+                    <label end="142" start="138" name="CRD"/>
+                    <label end="148" start="144" name="AJ0"/>
+                    <label end="158" start="150" name="AJ0"/>
+                    <label end="168" start="160" name="NN2"/>
+                    <label end="171" start="170" name="PRF"/>
+                    <label end="175" start="173" name="AT0"/>
+                    <label end="181" start="177" name="NN1"/>
+                    <label end="183" start="183" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:52:36 PST Tue" status="MANUAL" ID="1207125">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="2705" end="82" start="80" name="Suspect"/>
+                    <label cBy="669" feID="2704" end="103" start="99" name="Place"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="82" start="80" name="Ext"/>
+                    <label end="103" start="99" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="82" start="80" name="NP"/>
+                    <label end="103" start="99" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="110" start="105" name="Target"/>
+                    <label cBy="605" end="97" start="93" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="91" start="88" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" POS="N" name="hyponym.n" ID="7477" frame="Word_relations" frameID="404" totalAnnotated="3" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Extra-Thematic" abbrev="cir" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Sgns" name="Signs"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Core" abbrev="Sgn-1" name="Sign_1"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Core" abbrev="Sgn-2" name="Sign_2"/>
+        </frame>
+    </header>
+    <definition>FN: denoting a subtype of what another lexical unit denotes</definition>
+    <lexeme POS="N" name="hyponym"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Circumstances"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Circumstances"/>
+                <annoSet ID="1776595"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Sign_1"/>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="NP" FE="Sign_1"/>
+                <annoSet ID="1776585"/>
+                <annoSet ID="1776587"/>
+                <annoSet ID="1776595"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Sign_2"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Sign_2"/>
+                <annoSet ID="1776595"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Sign_2"/>
+                <annoSet ID="1776585"/>
+                <annoSet ID="1776587"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Circumstances"/>
+            <FE name="Sign_1"/>
+            <FE name="Sign_2"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Circumstances"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Sign_1"/>
+                <valenceUnit GF="" PT="DNI" FE="Sign_2"/>
+                <annoSet ID="1776595"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Sign_1"/>
+            <FE name="Sign_2"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Sign_1"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Sign_2"/>
+                <annoSet ID="1776585"/>
+                <annoSet ID="1776587"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-001-all">
+        <sentence sentNo="0" aPos="53119302" ID="1163125">
+            <text>The equivalence between queen and female monarch , and kitten and young cat , for instance , establishes queen as a hyponym of monarch , and kitten as a hyponym of cat . </text>
+            <annotationSet cDate="01/08/2003 05:01:38 PST Wed" status="UNANN" ID="1776584">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="14" start="4" name="NN1"/>
+                    <label end="22" start="16" name="PRP"/>
+                    <label end="28" start="24" name="NN1"/>
+                    <label end="32" start="30" name="CJC"/>
+                    <label end="39" start="34" name="AJ0"/>
+                    <label end="47" start="41" name="NN1"/>
+                    <label end="49" start="49" name="PUN"/>
+                    <label end="53" start="51" name="CJC"/>
+                    <label end="60" start="55" name="NN1"/>
+                    <label end="64" start="62" name="CJC"/>
+                    <label end="70" start="66" name="AJ0"/>
+                    <label end="74" start="72" name="NN1"/>
+                    <label end="76" start="76" name="PUN"/>
+                    <label end="80" start="78" name="AV0"/>
+                    <label end="89" start="82" name="AV0"/>
+                    <label end="91" start="91" name="PUN"/>
+                    <label end="103" start="93" name="VVZ"/>
+                    <label end="109" start="105" name="NN1"/>
+                    <label end="112" start="111" name="PRP"/>
+                    <label end="114" start="114" name="AT0"/>
+                    <label end="122" start="116" name="NN1"/>
+                    <label end="125" start="124" name="PRF"/>
+                    <label end="133" start="127" name="NN1"/>
+                    <label end="135" start="135" name="PUN"/>
+                    <label end="139" start="137" name="CJC"/>
+                    <label end="146" start="141" name="NN1"/>
+                    <label end="149" start="148" name="PRP"/>
+                    <label end="151" start="151" name="AT0"/>
+                    <label end="159" start="153" name="NN1"/>
+                    <label end="162" start="161" name="PRF"/>
+                    <label end="166" start="164" name="NN1"/>
+                    <label end="168" start="168" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:01:38 PST Wed" status="MANUAL" ID="1776585">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3732" end="109" start="105" name="Sign_1"/>
+                    <label cBy="618" feID="3733" end="133" start="124" name="Sign_2"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="109" start="105" name="Ext"/>
+                    <label end="133" start="124" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="109" start="105" name="NP"/>
+                    <label end="133" start="124" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="122" start="116" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="53119310" ID="1163126">
+            <text>The equivalence between queen and female monarch , and kitten and young cat , for instance , establishes queen as a hyponym of monarch , and kitten as a hyponym of cat . </text>
+            <annotationSet cDate="01/08/2003 05:01:38 PST Wed" status="UNANN" ID="1776586">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="14" start="4" name="NN1"/>
+                    <label end="22" start="16" name="PRP"/>
+                    <label end="28" start="24" name="NN1"/>
+                    <label end="32" start="30" name="CJC"/>
+                    <label end="39" start="34" name="AJ0"/>
+                    <label end="47" start="41" name="NN1"/>
+                    <label end="49" start="49" name="PUN"/>
+                    <label end="53" start="51" name="CJC"/>
+                    <label end="60" start="55" name="NN1"/>
+                    <label end="64" start="62" name="CJC"/>
+                    <label end="70" start="66" name="AJ0"/>
+                    <label end="74" start="72" name="NN1"/>
+                    <label end="76" start="76" name="PUN"/>
+                    <label end="80" start="78" name="AV0"/>
+                    <label end="89" start="82" name="AV0"/>
+                    <label end="91" start="91" name="PUN"/>
+                    <label end="103" start="93" name="VVZ"/>
+                    <label end="109" start="105" name="NN1"/>
+                    <label end="112" start="111" name="PRP"/>
+                    <label end="114" start="114" name="AT0"/>
+                    <label end="122" start="116" name="NN1"/>
+                    <label end="125" start="124" name="PRF"/>
+                    <label end="133" start="127" name="NN1"/>
+                    <label end="135" start="135" name="PUN"/>
+                    <label end="139" start="137" name="CJC"/>
+                    <label end="146" start="141" name="NN1"/>
+                    <label end="149" start="148" name="PRP"/>
+                    <label end="151" start="151" name="AT0"/>
+                    <label end="159" start="153" name="NN1"/>
+                    <label end="162" start="161" name="PRF"/>
+                    <label end="166" start="164" name="NN1"/>
+                    <label end="168" start="168" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:01:38 PST Wed" status="MANUAL" ID="1776587">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3732" end="146" start="141" name="Sign_1"/>
+                    <label cBy="618" feID="3733" end="166" start="161" name="Sign_2"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="146" start="141" name="Ext"/>
+                    <label end="166" start="161" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="146" start="141" name="NP"/>
+                    <label end="166" start="161" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="159" start="153" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="72903311" ID="1163130">
+            <text>Here England is a locative hyponym . </text>
+            <annotationSet cDate="01/08/2003 05:01:39 PST Wed" status="UNANN" ID="1776594">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="AV0"/>
+                    <label end="11" start="5" name="NP0"/>
+                    <label end="14" start="13" name="VBZ"/>
+                    <label end="16" start="16" name="AT0"/>
+                    <label end="25" start="18" name="AJ0"/>
+                    <label end="33" start="27" name="NN1"/>
+                    <label end="35" start="35" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:01:39 PST Wed" status="MANUAL" ID="1776595">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3739" end="3" start="0" name="Circumstances"/>
+                    <label cBy="618" feID="3732" end="11" start="5" name="Sign_1"/>
+                    <label cBy="618" feID="3733" itype="DNI" name="Sign_2"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="3" start="0" name="Dep"/>
+                    <label end="11" start="5" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="3" start="0" name="AVP"/>
+                    <label end="11" start="5" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="33" start="27" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="14" start="13" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

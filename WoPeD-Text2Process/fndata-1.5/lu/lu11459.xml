@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Add_Annotation" POS="N" name="transaction.n" ID="11459" frame="Commercial_transaction" frameID="177" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp=1523" ID="18167"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core" abbrev="Byr" name="Buyer"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="Gds" name="Goods"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Core" abbrev="Mny" name="Money"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="Rate" name="Rate"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Slr" name="Seller"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Unit" name="Unit"/>
+        </frame>
+    </header>
+    <definition>COD: an instance of buying or selling.</definition>
+    <lexeme POS="N" name="transaction"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Buyer"/>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Buyer"/>
+                <annoSet ID="2599267"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Goods"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Goods"/>
+                <annoSet ID="2599267"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Money"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Money"/>
+                <annoSet ID="2599267"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Seller"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Seller"/>
+                <annoSet ID="2599267"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Buyer"/>
+            <FE name="Goods"/>
+            <FE name="Money"/>
+            <FE name="Seller"/>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Buyer"/>
+                <valenceUnit GF="" PT="INI" FE="Goods"/>
+                <valenceUnit GF="" PT="INI" FE="Money"/>
+                <valenceUnit GF="" PT="INI" FE="Seller"/>
+                <annoSet ID="2599267"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-object_of-(1)">
+        <sentence corpID="111" docID="18167" sentNo="1" paragNo="241" aPos="0" ID="1582128">
+            <text>But why might potential buyers of financial assets delay their transactions and instead hold their wealth in a perfectly liquid form with a zero or low yield , e.g. cash or current account deposits ?</text>
+            <annotationSet cDate="07/26/2010 11:29:07 PDT Mon" status="UNANN" ID="2599266">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="cc"/>
+                    <label end="6" start="4" name="wrb"/>
+                    <label end="12" start="8" name="md"/>
+                    <label end="22" start="14" name="jj"/>
+                    <label end="29" start="24" name="nns"/>
+                    <label end="32" start="31" name="in"/>
+                    <label end="42" start="34" name="jj"/>
+                    <label end="49" start="44" name="nns"/>
+                    <label end="55" start="51" name="VVP"/>
+                    <label end="61" start="57" name="PP$"/>
+                    <label end="74" start="63" name="nns"/>
+                    <label end="78" start="76" name="cc"/>
+                    <label end="86" start="80" name="rb"/>
+                    <label end="91" start="88" name="VV"/>
+                    <label end="97" start="93" name="PP$"/>
+                    <label end="104" start="99" name="nn"/>
+                    <label end="107" start="106" name="in"/>
+                    <label end="109" start="109" name="dt"/>
+                    <label end="119" start="111" name="rb"/>
+                    <label end="126" start="121" name="jj"/>
+                    <label end="131" start="128" name="nn"/>
+                    <label end="136" start="133" name="in"/>
+                    <label end="138" start="138" name="dt"/>
+                    <label end="143" start="140" name="nn"/>
+                    <label end="146" start="145" name="cc"/>
+                    <label end="150" start="148" name="jj"/>
+                    <label end="156" start="152" name="nn"/>
+                    <label end="158" start="158" name=","/>
+                    <label end="163" start="160" name="jj"/>
+                    <label end="168" start="165" name="nn"/>
+                    <label end="171" start="170" name="cc"/>
+                    <label end="179" start="173" name="jj"/>
+                    <label end="187" start="181" name="nn"/>
+                    <label end="196" start="189" name="nns"/>
+                    <label end="198" start="198" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/26/2010 11:29:07 PDT Mon" status="MANUAL" ID="2599267">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="74" start="63" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="1380" end="61" start="57" name="Buyer"/>
+                    <label cBy="589" feID="1381" itype="INI" name="Goods"/>
+                    <label cBy="589" feID="1383" itype="INI" name="Money"/>
+                    <label cBy="589" feID="1385" itype="INI" name="Seller"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="61" start="57" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="61" start="57" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-a_modifier-(1)"/>
+    <subCorpus name="03-n_modifier-(1)"/>
+    <subCorpus name="05-pp_between-p-(1)"/>
+    <subCorpus name="06-pp_with-p-(1)"/>
+    <subCorpus name="07-possessor-(1)"/>
+    <subCorpus name="08-pp_by-p-(1)"/>
+    <subCorpus name="09-other-matched-(1)"/>
+    <subCorpus name="10-other-unmatched-(1)"/>
+</lexUnit>

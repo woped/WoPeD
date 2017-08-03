@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="618" cDate="01/15/2003 11:45:21 PST Wed" name="Criminal_investigation" ID="500" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;This frame describes the process that involves the determination by an authority, the &lt;fen&gt;Investigator&lt;/fen&gt;, of the circumstances surrounding an &lt;fen&gt;Incident&lt;/fen&gt; by means of inquiry.
+
+&lt;ex&gt;&lt;fex name="Investigator"&gt;The police&lt;/fex&gt; are &lt;t&gt;investigating&lt;/t&gt; &lt;fex name="Inc"&gt;the bank's reported loss of several thousand dollars from their downtown branch's top security vault&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Investigator"&gt;Authorities&lt;/fex&gt; are &lt;t&gt;investigating&lt;/t&gt; &lt;fex name="Inc"&gt;several murders&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="01/15/2003 11:56:43 PST Wed" abbrev="Inv" name="Investigator" ID="4041">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Investigator&lt;/fen&gt; is the person or agency that investigates a person of a crime.&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="01/15/2003 12:39:10 PST Wed" abbrev="Inc" name="Incident" ID="4045">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Investigator&lt;/fen&gt; attempts to determine the exact circumstances surrounding the &lt;fen&gt;Incident&lt;/fen&gt;, which is typically a criminal act (murder, robbery) or the result of such an act (death, loss of money).&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="01/17/2003 12:35:23 PST Fri" abbrev="Time" name="Time" ID="4075">
+        <definition>&lt;def-root&gt;When the &lt;fen&gt;Investigator&lt;/fen&gt; investigates the &lt;fen&gt;Incident&lt;/fen&gt;.
+&lt;ex&gt;Our guys are &lt;fex name="Time"&gt;currently&lt;/fex&gt; &lt;t&gt;investigating&lt;/t&gt; her disappearance.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="618" cDate="01/20/2003 02:43:24 PST Mon" abbrev="Dur" name="Duration" ID="4096">
+        <definition>&lt;def-root&gt;The length of the investigation.
+&lt;ex&gt;The police carried out a &lt;fex name="Dur"&gt;two-year&lt;/fex&gt; &lt;t&gt;investigation&lt;/t&gt; into terrorist kidnappings.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Core" cBy="840" cDate="06/26/2003 05:08:52 PDT Thu" abbrev="Sus" name="Suspect" ID="4693">
+        <definition>&lt;def-root&gt;This FE denotes the &lt;fen&gt;Suspect&lt;/fen&gt; that is investigated by the &lt;fen&gt;Investigator&lt;/fen&gt;.
+&lt;ex&gt;&lt;fex name="Investigator"&gt;The police&lt;/fex&gt; are &lt;t&gt;investigating&lt;/t&gt; &lt;fex name="Suspect"&gt;Dr. Phil&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Goal" ID="153"/>
+        <requiresFE name="Incident" ID="4045"/>
+    </FE>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Seeking</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Suspicion</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of">
+        <relatedFrame>Crime_scenario</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes">
+        <relatedFrame>Criminal_process</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Preceded by">
+        <relatedFrame>Committing_crime</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Created" POS="N" name="inquiry.n" ID="7958" lemmaID="30" cBy="618" cDate="01/15/2003 01:19:52 PST Wed">
+        <definition>COD: an official investigation.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="inquiry"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="probe.n" ID="7959" lemmaID="30528" cBy="618" cDate="01/15/2003 01:21:04 PST Wed">
+        <definition>COD: an investigation.</definition>
+        <sentenceCount annotated="10" total="215"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="probe"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="investigate.v" ID="7963" lemmaID="20534" cBy="618" cDate="01/15/2003 01:23:57 PST Wed">
+        <definition>COD: carry out a systematic or formal inquiry into (an incident, person or allegation) so as to establish the truth of a criminal event. </definition>
+        <sentenceCount annotated="37" total="371"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="investigate"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="inquire.v" ID="7965" lemmaID="29" cBy="618" cDate="01/15/2003 01:28:27 PST Wed">
+        <definition>FN: to ask questions and gather evidence about a possible crime "The police began to inquire into the circumstances of his death."</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="inquire"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="probe.v" ID="7966" lemmaID="30529" cBy="618" cDate="01/15/2003 01:33:42 PST Wed">
+        <definition>COD: enquire into closely.</definition>
+        <sentenceCount annotated="16" total="294"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="probe"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="investigation.n" ID="8046" lemmaID="20535" cBy="618" cDate="01/17/2003 11:27:13 PST Fri">
+        <definition>FN: a systematic search or inquiry into an incident</definition>
+        <sentenceCount annotated="31" total="210"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="investigation"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="lead.n" ID="8402" lemmaID="21905" cBy="840" cDate="03/07/2003 05:34:13 PST Fri">
+        <definition>COD: a clue to be followed in the resolution of a problem. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="lead"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="clue.n" ID="8403" lemmaID="47503" cBy="840" cDate="03/07/2003 05:35:30 PST Fri">
+        <definition>COD: a fact or piece of evidence serving to reveal a hidden truth or solve a problem. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="clue"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="PREP" name="under investigation.prep" ID="9126" lemmaID="48224" cBy="618" cDate="07/17/2003 04:04:51 PDT Thu">
+        <definition>FN: be the subject of a (criminal) investigation.</definition>
+        <sentenceCount annotated="19" total="118"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="under"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="investigation"/>
+    </lexUnit>
+</frame>

@@ -546,7 +546,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
     /**
      * TODO: DOCUMENTATION (silenco)
      */
-    public IEditor openEditor() {
+    private IEditor openEditor() {
         JFileChooser fileChooser;
         FileDialog fileDialog;
         String fn;
@@ -627,7 +627,7 @@ public class FileEventProcessor extends AbstractEventProcessor {
      * @param file
      * @param filter
      */
-    private IEditor openFile(File file, int filter) {
+    public IEditor openFile(File file, int filter) {
         IEditor editor = null;
         final PNMLImport pnmlImport;
 

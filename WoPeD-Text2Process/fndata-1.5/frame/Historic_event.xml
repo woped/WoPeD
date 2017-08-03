@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="618" cDate="03/28/2007 12:42:45 PDT Wed" name="Historic_event" ID="1908" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;In the course of history, an &lt;fen&gt;Event&lt;/fen&gt; or &lt;fen&gt;Entity&lt;/fen&gt; is taken to have importance or significance.
+
+&lt;ex&gt;Throughout the campaign &lt;fex name="Entity"&gt;activists&lt;/fex&gt; have &lt;t&gt;made&lt;/t&gt; &lt;fex name="dom"&gt;financial&lt;/fex&gt; &lt;t&gt;history&lt;/t&gt; &lt;fex name="Time"&gt;as one by one major corporations have yielded to protester power&lt;/fex&gt;&lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="Event"&gt;The conference&lt;/fex&gt; &lt;m&gt;was&lt;/m&gt; &lt;t&gt;historic&lt;/t&gt; &lt;fex name="Entity"&gt;for Atlanta's growth as a city&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;Many of the &lt;t&gt;historic&lt;/t&gt; &lt;fex name="Ent"&gt;sites&lt;/fex&gt; offer additional outdoor recreation activities.&lt;/ex&gt;
+
+&lt;ex&gt;The James River is arguably the most &lt;t&gt;historic&lt;/t&gt; &lt;fex name="Ent"&gt;river&lt;/fex&gt; in the country and one of the most important rivers in the Southeast.&lt;/ex&gt;
+
+&lt;ex&gt;Take in the &lt;t&gt;&lt;fex name="Ent"&gt;history&lt;/fex&gt;&lt;/t&gt;, the sawdust-covered floors, and the legendary backroom where the ale flowed during Prohibition.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="03/28/2007 12:42:45 PDT Wed" abbrev="Evnt" name="Event" ID="11417">
+        <definition>&lt;def-root&gt;This FE identifies the event which occurs to create history.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="03/28/2007 12:42:45 PDT Wed" abbrev="Place" name="Place" ID="11418">
+        <definition>&lt;def-root&gt;This FE identifies where the event takes place.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="03/28/2007 12:42:45 PDT Wed" abbrev="Time" name="Time" ID="11419">
+        <definition>&lt;def-root&gt;This FE identifies the time when the event occurs.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="618" cDate="03/28/2007 12:42:45 PDT Wed" abbrev="Reas" name="Reason" ID="11420">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Reason&lt;/fen&gt; for which an event occurs.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="03/28/2007 12:42:45 PDT Wed" abbrev="Ent" name="Entity" ID="11421">
+        <definition>&lt;def-root&gt;This FE identifies the entity, concrete or abstract.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="03/28/2007 12:42:45 PDT Wed" abbrev="Man" name="Manner" ID="11422">
+        <definition>&lt;def-root&gt;Any description of the event which is not covered by more specific FEs, including secondary effects (quietly, loudly) and general descriptions comparing events (the same way).&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="808080" fgColor="000000" coreType="Peripheral" cBy="618" cDate="03/28/2007 03:46:54 PDT Wed" abbrev="dom" name="Domain" ID="11427">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Domain&lt;/fen&gt; is (a characterization of) the type of event that is part of the &lt;fen&gt;Event&lt;/fen&gt;'s history.
+
+&lt;ex&gt;Throughout the campaign activists have &lt;t&gt;made&lt;/t&gt; &lt;fex name="dom"&gt;financial&lt;/fex&gt; &lt;t&gt;history&lt;/t&gt; as one by one major corporations have yielded to protester power&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="361" cDate="07/11/2008 02:54:21 PDT Fri" abbrev="Deg" name="Degree" ID="13000">
+        <definition>&lt;def-root&gt;This frame element selects some gradable attribute and modifies the expected value for it.&lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Event" ID="11417"/>
+        <memberFE name="Entity" ID="11421"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Eventive_affecting</relatedFrame>
+        <relatedFrame>Event_in_history</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Importance</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of">
+        <relatedFrame>Individual_history</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="A" name="historic.a" ID="14182" lemmaID="18146" cBy="618" cDate="03/28/2007 12:53:24 PDT Wed">
+        <definition>COD: famous or important in history, or potentially so.</definition>
+        <sentenceCount annotated="14" total="201"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="historic"/>
+    </lexUnit>
+    <lexUnit status="Rules_Defined" POS="V" name="make history.v" ID="14183" lemmaID="50592" cBy="618" cDate="03/28/2007 12:59:17 PDT Wed">
+        <definition>FN: participate in a historical event.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="make"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="history"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="historic_((entity)).a" ID="15178" lemmaID="18146" cBy="361" cDate="07/10/2008 03:28:28 PDT Thu">
+        <definition>FN: pertaining to entities that have historic significance.</definition>
+        <sentenceCount annotated="19" total="151"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="historic"/>
+    </lexUnit>
+</frame>

@@ -132,7 +132,8 @@ public class VisualController implements PropertyChangeListener, IClipboaredList
     // Auto play is running
     public static final int TOKENGAME_AUTOPLAY_PLAYING		= 57;
 	public static final int P2T	 							= 58;
-	public static final int CAN_DECREASE_ARC_WEIGHT = 59;
+	public static final int T2P	 							= 59;
+	public static final int CAN_DECREASE_ARC_WEIGHT = 60;
 
 	private static final int MAX_ID = 61;
 	private static VisualController instance = null;

@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="pustule.n" ID="7102" frame="Body_mark" frameID="393" totalAnnotated="5" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="Attachment" name="Attachment"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Body_m" name="Body_mark"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="cause" name="Cause"/>
+            <FE fgColor="000000" bgColor="d0d0d0" type="Peripheral" abbrev="con" name="Constituents"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="Desc" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Poss" name="Possessor"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="typ" name="Type"/>
+        </frame>
+    </header>
+    <definition>COD: a small blister or pimple containing pus.</definition>
+    <lexeme POS="N" name="pustule"/>
+    <valences>
+        <FERealization total="5">
+            <FE name="Body_mark"/>
+            <pattern total="5">
+                <valenceUnit GF="" PT="DEN" FE="Body_mark"/>
+                <annoSet ID="1569299"/>
+                <annoSet ID="1569307"/>
+                <annoSet ID="1569311"/>
+                <annoSet ID="1569313"/>
+                <annoSet ID="1569321"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Descriptor"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="A" FE="Descriptor"/>
+                <annoSet ID="1569321"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="AJP" FE="Descriptor"/>
+                <annoSet ID="1569307"/>
+                <annoSet ID="1569311"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="N" FE="Descriptor"/>
+                <annoSet ID="1569311"/>
+                <annoSet ID="1569313"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Descriptor"/>
+                <annoSet ID="1569313"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="VPing" FE="Descriptor"/>
+                <annoSet ID="1569299"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Body_mark"/>
+            <FE name="Descriptor"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Body_mark"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Descriptor"/>
+                <annoSet ID="1569307"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Body_mark"/>
+                <valenceUnit GF="Dep" PT="VPing" FE="Descriptor"/>
+                <annoSet ID="1569299"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="3">
+            <FE name="Body_mark"/>
+            <FE name="Descriptor"/>
+            <FE name="Descriptor"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Body_mark"/>
+                <valenceUnit GF="Dep" PT="A" FE="Descriptor"/>
+                <valenceUnit GF="Dep" PT="A" FE="Descriptor"/>
+                <annoSet ID="1569321"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Body_mark"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Descriptor"/>
+                <valenceUnit GF="Dep" PT="N" FE="Descriptor"/>
+                <annoSet ID="1569311"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Body_mark"/>
+                <valenceUnit GF="Dep" PT="N" FE="Descriptor"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Descriptor"/>
+                <annoSet ID="1569313"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-001-all">
+        <sentence sentNo="0" aPos="7488184" ID="1058947">
+            <text>It was covered in weeping pustules and had been isolated from the group . </text>
+            <annotationSet cDate="01/08/2003 12:45:21 PST Wed" status="UNANN" ID="1569298">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="5" start="3" name="VBD"/>
+                    <label end="13" start="7" name="VVN"/>
+                    <label end="16" start="15" name="PRP"/>
+                    <label end="24" start="18" name="AJ0-VVG"/>
+                    <label end="33" start="26" name="NN2"/>
+                    <label end="37" start="35" name="CJC"/>
+                    <label end="41" start="39" name="VHD"/>
+                    <label end="46" start="43" name="VBN"/>
+                    <label end="55" start="48" name="AJ0"/>
+                    <label end="60" start="57" name="PRP"/>
+                    <label end="64" start="62" name="AT0"/>
+                    <label end="70" start="66" name="NN0"/>
+                    <label end="72" start="72" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:45:21 PST Wed" status="MANUAL" ID="1569299">
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="3508" end="24" start="18" name="Descriptor"/>
+                    <label cBy="268" feID="3507" end="33" start="26" name="Body_mark"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="24" start="18" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="24" start="18" name="VPing"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="33" start="26" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="58373979" ID="1058951">
+            <text>For recently the random eruptions and scattered pustules that had decked my chin and brows for the past year had begun to mass , forming formidably ugly scarps and weeping lesions . </text>
+            <annotationSet cDate="01/08/2003 12:45:21 PST Wed" status="UNANN" ID="1569306">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="PRP"/>
+                    <label end="11" start="4" name="AV0"/>
+                    <label end="15" start="13" name="AT0"/>
+                    <label end="22" start="17" name="AJ0"/>
+                    <label end="32" start="24" name="NN2"/>
+                    <label end="36" start="34" name="CJC"/>
+                    <label end="46" start="38" name="AJ0-VVD"/>
+                    <label end="55" start="48" name="NN2"/>
+                    <label end="60" start="57" name="CJT"/>
+                    <label end="64" start="62" name="VHD"/>
+                    <label end="71" start="66" name="VVN"/>
+                    <label end="74" start="73" name="DPS"/>
+                    <label end="79" start="76" name="NN1"/>
+                    <label end="83" start="81" name="CJC"/>
+                    <label end="89" start="85" name="NN2"/>
+                    <label end="93" start="91" name="PRP"/>
+                    <label end="97" start="95" name="AT0"/>
+                    <label end="102" start="99" name="AJ0"/>
+                    <label end="107" start="104" name="NN1"/>
+                    <label end="111" start="109" name="VHD"/>
+                    <label end="117" start="113" name="VVN"/>
+                    <label end="120" start="119" name="PRP"/>
+                    <label end="125" start="122" name="AJ0-NN1"/>
+                    <label end="127" start="127" name="PUN"/>
+                    <label end="135" start="129" name="VVG"/>
+                    <label end="146" start="137" name="AV0"/>
+                    <label end="151" start="148" name="AJ0"/>
+                    <label end="158" start="153" name="NN2"/>
+                    <label end="162" start="160" name="CJC"/>
+                    <label end="170" start="164" name="AJ0-VVG"/>
+                    <label end="178" start="172" name="NN2"/>
+                    <label end="180" start="180" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:45:21 PST Wed" status="MANUAL" ID="1569307">
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="3508" end="46" start="38" name="Descriptor"/>
+                    <label cBy="268" feID="3507" end="55" start="48" name="Body_mark"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="46" start="38" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="46" start="38" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="55" start="48" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="67668467" ID="1058953">
+            <text>Earlier English inoculators had made deep cuts with the lancet and inserted large amounts of material from mature smallpox pustules , believing that protection was not obtainable unless the patient suffered a pronounced smallpox attack . </text>
+            <annotationSet cDate="01/08/2003 12:45:21 PST Wed" status="UNANN" ID="1569310">
+                <layer rank="1" name="BNC">
+                    <label end="6" start="0" name="AV0"/>
+                    <label end="14" start="8" name="AJ0"/>
+                    <label end="26" start="16" name="NN2"/>
+                    <label end="30" start="28" name="VHD"/>
+                    <label end="35" start="32" name="VVN"/>
+                    <label end="40" start="37" name="AV0"/>
+                    <label end="45" start="42" name="NN2-VVZ"/>
+                    <label end="50" start="47" name="PRP"/>
+                    <label end="54" start="52" name="AT0"/>
+                    <label end="61" start="56" name="NN1"/>
+                    <label end="65" start="63" name="CJC"/>
+                    <label end="74" start="67" name="VVD"/>
+                    <label end="80" start="76" name="AJ0"/>
+                    <label end="88" start="82" name="NN2"/>
+                    <label end="91" start="90" name="PRF"/>
+                    <label end="100" start="93" name="NN1"/>
+                    <label end="105" start="102" name="PRP"/>
+                    <label end="112" start="107" name="AJ0"/>
+                    <label end="121" start="114" name="NN1"/>
+                    <label end="130" start="123" name="NN2-VVZ"/>
+                    <label end="132" start="132" name="PUN"/>
+                    <label end="142" start="134" name="VVG"/>
+                    <label end="147" start="144" name="CJT-DT0"/>
+                    <label end="158" start="149" name="NN1"/>
+                    <label end="162" start="160" name="VBD"/>
+                    <label end="166" start="164" name="XX0"/>
+                    <label end="177" start="168" name="AJ0"/>
+                    <label end="184" start="179" name="CJS"/>
+                    <label end="188" start="186" name="AT0"/>
+                    <label end="196" start="190" name="NN1"/>
+                    <label end="205" start="198" name="VVD"/>
+                    <label end="207" start="207" name="AT0"/>
+                    <label end="218" start="209" name="AJ0"/>
+                    <label end="227" start="220" name="NN1"/>
+                    <label end="234" start="229" name="NN1"/>
+                    <label end="236" start="236" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:45:22 PST Wed" status="MANUAL" ID="1569311">
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="3508" end="112" start="107" name="Descriptor"/>
+                    <label cBy="268" feID="3508" end="121" start="114" name="Descriptor"/>
+                    <label cBy="268" feID="3507" end="130" start="123" name="Body_mark"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="112" start="107" name="Dep"/>
+                    <label end="121" start="114" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="112" start="107" name="AJP"/>
+                    <label end="121" start="114" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="130" start="123" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="67668542" ID="1058954">
+            <text>Even more important was his use of lymph taken from a smallpox pustule in its early stage of development , rather than from a mature pustule which was likely to be contaminated with a variety of organisms . </text>
+            <annotationSet cDate="01/08/2003 12:45:22 PST Wed" status="UNANN" ID="1569312">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="AV0"/>
+                    <label end="8" start="5" name="AV0"/>
+                    <label end="18" start="10" name="AJ0"/>
+                    <label end="22" start="20" name="VBD"/>
+                    <label end="26" start="24" name="DPS"/>
+                    <label end="30" start="28" name="NN1"/>
+                    <label end="33" start="32" name="PRF"/>
+                    <label end="39" start="35" name="NN1"/>
+                    <label end="45" start="41" name="VVN"/>
+                    <label end="50" start="47" name="PRP"/>
+                    <label end="52" start="52" name="AT0"/>
+                    <label end="61" start="54" name="NN1"/>
+                    <label end="69" start="63" name="NN1-VVB"/>
+                    <label end="72" start="71" name="PRP"/>
+                    <label end="76" start="74" name="DPS"/>
+                    <label end="82" start="78" name="AJ0"/>
+                    <label end="88" start="84" name="NN1"/>
+                    <label end="91" start="90" name="PRF"/>
+                    <label end="103" start="93" name="NN1"/>
+                    <label end="105" start="105" name="PUN"/>
+                    <label end="112" start="107" name="CJS"/>
+                    <label end="117" start="114" name="CJS"/>
+                    <label end="122" start="119" name="PRP"/>
+                    <label end="124" start="124" name="AT0"/>
+                    <label end="131" start="126" name="AJ0"/>
+                    <label end="139" start="133" name="NN1"/>
+                    <label end="145" start="141" name="DTQ"/>
+                    <label end="149" start="147" name="VBD"/>
+                    <label end="156" start="151" name="AJ0"/>
+                    <label end="159" start="158" name="TO0"/>
+                    <label end="162" start="161" name="VBI"/>
+                    <label end="175" start="164" name="VVN"/>
+                    <label end="180" start="177" name="PRP"/>
+                    <label end="182" start="182" name="AT0"/>
+                    <label end="190" start="184" name="NN1"/>
+                    <label end="193" start="192" name="PRF"/>
+                    <label end="203" start="195" name="NN2"/>
+                    <label end="205" start="205" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:45:22 PST Wed" status="MANUAL" ID="1569313">
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="3508" end="61" start="54" name="Descriptor"/>
+                    <label cBy="268" feID="3507" end="69" start="63" name="Body_mark"/>
+                    <label cBy="268" feID="3508" end="103" start="71" name="Descriptor"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="61" start="54" name="Dep"/>
+                    <label end="103" start="71" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="61" start="54" name="N"/>
+                    <label end="103" start="71" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="69" start="63" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="69808983" ID="1058958">
+            <text>` What else can it be when you 're covered from head to toe in foul little pustules ? &quot; </text>
+            <annotationSet cDate="01/08/2003 12:45:22 PST Wed" status="UNANN" ID="1569320">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PUQ"/>
+                    <label end="5" start="2" name="DTQ"/>
+                    <label end="10" start="7" name="AV0"/>
+                    <label end="14" start="12" name="VM0"/>
+                    <label end="17" start="16" name="PNP"/>
+                    <label end="20" start="19" name="VBI"/>
+                    <label end="25" start="22" name="CJS"/>
+                    <label end="29" start="27" name="PNP"/>
+                    <label end="33" start="31" name="VBB"/>
+                    <label end="41" start="35" name="VVN"/>
+                    <label end="46" start="43" name="PRP"/>
+                    <label end="51" start="48" name="NN1"/>
+                    <label end="54" start="53" name="PRP"/>
+                    <label end="58" start="56" name="NN1"/>
+                    <label end="61" start="60" name="PRP"/>
+                    <label end="66" start="63" name="AJ0-NN1"/>
+                    <label end="73" start="68" name="AJ0"/>
+                    <label end="82" start="75" name="NN2"/>
+                    <label end="84" start="84" name="PUN"/>
+                    <label end="86" start="86" name="PUQ"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:45:22 PST Wed" status="MANUAL" ID="1569321">
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="3508" end="66" start="63" name="Descriptor"/>
+                    <label cBy="268" feID="3508" end="73" start="68" name="Descriptor"/>
+                    <label cBy="268" feID="3507" end="82" start="75" name="Body_mark"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="66" start="63" name="Dep"/>
+                    <label end="73" start="68" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="66" start="63" name="A"/>
+                    <label end="73" start="68" name="A"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="82" start="75" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

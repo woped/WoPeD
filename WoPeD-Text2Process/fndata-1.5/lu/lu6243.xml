@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="void.v" ID="6243" frame="Emitting" frameID="359" totalAnnotated="5" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FF0000" bgColor="FFD700" type="Peripheral" abbrev="Area" name="Area"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Car" name="Carrier"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FF0000" bgColor="EEE8AA" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="006400" bgColor="FFFF00" type="Peripheral" abbrev="Dist" name="Distance"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Peripheral" abbrev="Dur" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core" abbrev="Emission" name="Emission"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Form" name="Form"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="Goal" name="Goal"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Mnr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="A9A9A9" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="Path" name="Path"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="Reas" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Source_e" name="Source_emitter"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="Spd" name="Speed"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="" name="Sub_source"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: discharge or drain away (water, gases, etc.)</definition>
+    <lexeme POS="V" name="void"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Area"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Area"/>
+                <annoSet ID="1348448"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Carrier"/>
+            <pattern total="3">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Carrier"/>
+                <annoSet ID="1348446"/>
+                <annoSet ID="1348468"/>
+                <annoSet ID="1348492"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Emission"/>
+            <pattern total="4">
+                <valenceUnit GF="Ext" PT="NP" FE="Emission"/>
+                <annoSet ID="1348446"/>
+                <annoSet ID="1348448"/>
+                <annoSet ID="1348468"/>
+                <annoSet ID="1348492"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Emission"/>
+                <annoSet ID="1348476"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Manner"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <annoSet ID="1348446"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Source_emitter"/>
+            <pattern total="4">
+                <valenceUnit GF="" PT="CNI" FE="Source_emitter"/>
+                <annoSet ID="1348446"/>
+                <annoSet ID="1348448"/>
+                <annoSet ID="1348468"/>
+                <annoSet ID="1348492"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Source_emitter"/>
+                <annoSet ID="1348476"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Area"/>
+            <FE name="Emission"/>
+            <FE name="Source_emitter"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Area"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Emission"/>
+                <valenceUnit GF="" PT="CNI" FE="Source_emitter"/>
+                <annoSet ID="1348448"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Carrier"/>
+            <FE name="Emission"/>
+            <FE name="Manner"/>
+            <FE name="Source_emitter"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Carrier"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Emission"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <valenceUnit GF="" PT="CNI" FE="Source_emitter"/>
+                <annoSet ID="1348446"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Carrier"/>
+            <FE name="Emission"/>
+            <FE name="Source_emitter"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Carrier"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Emission"/>
+                <valenceUnit GF="" PT="CNI" FE="Source_emitter"/>
+                <annoSet ID="1348468"/>
+                <annoSet ID="1348492"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Emission"/>
+            <FE name="Source_emitter"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Emission"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Source_emitter"/>
+                <annoSet ID="1348476"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-001-all">
+        <sentence sentNo="0" aPos="14019372" ID="947383">
+            <text>The metallic mercury was voided naturally , unchanged , in the faeces . </text>
+            <annotationSet cDate="01/07/2003 08:34:03 PST Tue" status="UNANN" ID="1348445">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="11" start="4" name="AJ0"/>
+                    <label end="19" start="13" name="NN1"/>
+                    <label end="23" start="21" name="VBD"/>
+                    <label end="30" start="25" name="VVN"/>
+                    <label end="40" start="32" name="AV0"/>
+                    <label end="42" start="42" name="PUN"/>
+                    <label end="52" start="44" name="AJ0"/>
+                    <label end="54" start="54" name="PUN"/>
+                    <label end="57" start="56" name="PRP"/>
+                    <label end="61" start="59" name="AT0"/>
+                    <label end="68" start="63" name="NN2"/>
+                    <label end="70" start="70" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 08:34:03 PST Tue" status="MANUAL" ID="1348446">
+                <layer rank="1" name="FE">
+                    <label cBy="532" feID="3139" end="19" start="0" name="Emission"/>
+                    <label cBy="532" feID="3135" end="40" start="32" name="Manner"/>
+                    <label cBy="532" feID="3172" end="68" start="56" name="Carrier"/>
+                    <label cBy="532" feID="3138" itype="CNI" name="Source_emitter"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="19" start="0" name="Ext"/>
+                    <label end="40" start="32" name="Dep"/>
+                    <label end="68" start="56" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="19" start="0" name="NP"/>
+                    <label end="40" start="32" name="AVP"/>
+                    <label end="68" start="56" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="30" start="25" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="15170843" ID="947384">
+            <text>An urn of Waimea sand , representing the ashes of the dead man , was voided on the sea . </text>
+            <annotationSet cDate="01/07/2003 08:34:03 PST Tue" status="UNANN" ID="1348447">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="AT0"/>
+                    <label end="5" start="3" name="NN1"/>
+                    <label end="8" start="7" name="PRF"/>
+                    <label end="15" start="10" name="NP0"/>
+                    <label end="20" start="17" name="NN1"/>
+                    <label end="22" start="22" name="PUN"/>
+                    <label end="35" start="24" name="VVG"/>
+                    <label end="39" start="37" name="AT0"/>
+                    <label end="45" start="41" name="NN2"/>
+                    <label end="48" start="47" name="PRF"/>
+                    <label end="52" start="50" name="AT0"/>
+                    <label end="57" start="54" name="AJ0"/>
+                    <label end="61" start="59" name="NN1"/>
+                    <label end="63" start="63" name="PUN"/>
+                    <label end="67" start="65" name="VBD"/>
+                    <label end="74" start="69" name="VVN"/>
+                    <label end="77" start="76" name="PRP"/>
+                    <label end="81" start="79" name="AT0"/>
+                    <label end="85" start="83" name="NN1"/>
+                    <label end="87" start="87" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 08:34:03 PST Tue" status="MANUAL" ID="1348448">
+                <layer rank="1" name="FE">
+                    <label cBy="532" feID="3139" end="61" start="0" name="Emission"/>
+                    <label cBy="532" feID="3140" end="85" start="76" name="Area"/>
+                    <label cBy="532" feID="3138" itype="CNI" name="Source_emitter"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="61" start="0" name="Ext"/>
+                    <label end="85" start="76" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="61" start="0" name="NP"/>
+                    <label end="85" start="76" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="74" start="69" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="36068460" ID="947394">
+            <text>The eggs of these parasites are voided in the faeces , and the resulting larvae do represent a slight risk to human health , because they may cause the disease known as toxocariasis . </text>
+            <annotationSet cDate="01/07/2003 08:34:06 PST Tue" status="UNANN" ID="1348467">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="7" start="4" name="NN2"/>
+                    <label end="10" start="9" name="PRF"/>
+                    <label end="16" start="12" name="DT0"/>
+                    <label end="26" start="18" name="NN2"/>
+                    <label end="30" start="28" name="VBB"/>
+                    <label end="37" start="32" name="VVN"/>
+                    <label end="40" start="39" name="PRP"/>
+                    <label end="44" start="42" name="AT0"/>
+                    <label end="51" start="46" name="NN2"/>
+                    <label end="53" start="53" name="PUN"/>
+                    <label end="57" start="55" name="CJC"/>
+                    <label end="61" start="59" name="AT0"/>
+                    <label end="71" start="63" name="AJ0"/>
+                    <label end="78" start="73" name="NN2"/>
+                    <label end="81" start="80" name="VDB"/>
+                    <label end="91" start="83" name="VVI"/>
+                    <label end="93" start="93" name="AT0"/>
+                    <label end="100" start="95" name="AJ0"/>
+                    <label end="105" start="102" name="NN1"/>
+                    <label end="108" start="107" name="PRP"/>
+                    <label end="114" start="110" name="AJ0"/>
+                    <label end="121" start="116" name="NN1"/>
+                    <label end="123" start="123" name="PUN"/>
+                    <label end="131" start="125" name="CJS"/>
+                    <label end="136" start="133" name="PNP"/>
+                    <label end="140" start="138" name="VM0"/>
+                    <label end="146" start="142" name="VVI"/>
+                    <label end="150" start="148" name="AT0"/>
+                    <label end="158" start="152" name="NN1"/>
+                    <label end="164" start="160" name="VVN"/>
+                    <label end="167" start="166" name="CJS-PRP"/>
+                    <label end="180" start="169" name="NN1"/>
+                    <label end="182" start="182" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 08:34:06 PST Tue" status="MANUAL" ID="1348468">
+                <layer rank="1" name="FE">
+                    <label cBy="532" feID="3139" end="26" start="0" name="Emission"/>
+                    <label cBy="532" feID="3172" end="51" start="39" name="Carrier"/>
+                    <label cBy="532" feID="3138" itype="CNI" name="Source_emitter"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="26" start="0" name="Ext"/>
+                    <label end="51" start="39" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="26" start="0" name="NP"/>
+                    <label end="51" start="39" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="37" start="32" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="49268102" ID="947398">
+            <text>By this time poor Dr Dunstaple had voided a great deal of &quot; rice-water &quot; fluid and was seized by perpetual , agonizing cramps . </text>
+            <annotationSet cDate="01/07/2003 08:34:06 PST Tue" status="UNANN" ID="1348475">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PRP"/>
+                    <label end="6" start="3" name="DT0"/>
+                    <label end="11" start="8" name="NN1"/>
+                    <label end="16" start="13" name="AJ0"/>
+                    <label end="19" start="18" name="NP0"/>
+                    <label end="29" start="21" name="NP0"/>
+                    <label end="33" start="31" name="VHD"/>
+                    <label end="40" start="35" name="VVN"/>
+                    <label end="42" start="42" name="AT0"/>
+                    <label end="48" start="44" name="AJ0"/>
+                    <label end="53" start="50" name="NN1"/>
+                    <label end="56" start="55" name="PRF"/>
+                    <label end="58" start="58" name="PUQ"/>
+                    <label end="69" start="60" name="AJ0"/>
+                    <label end="71" start="71" name="PUQ"/>
+                    <label end="77" start="73" name="NN1"/>
+                    <label end="81" start="79" name="CJC"/>
+                    <label end="85" start="83" name="VBD"/>
+                    <label end="92" start="87" name="VVN"/>
+                    <label end="95" start="94" name="PRP"/>
+                    <label end="105" start="97" name="AJ0"/>
+                    <label end="107" start="107" name="PUN"/>
+                    <label end="117" start="109" name="VVG"/>
+                    <label end="124" start="119" name="NN2"/>
+                    <label end="126" start="126" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 08:34:06 PST Tue" status="MANUAL" ID="1348476">
+                <layer rank="1" name="FE">
+                    <label cBy="532" feID="3138" end="29" start="13" name="Source_emitter"/>
+                    <label cBy="532" feID="3139" end="69" start="42" name="Emission"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="29" start="13" name="Ext"/>
+                    <label end="69" start="42" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="29" start="13" name="NP"/>
+                    <label end="69" start="42" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="40" start="35" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="77889369" ID="947406">
+            <text>The disease is caused by the species of bacterium called Leptospira icterohaemorrhagiae , present in the kidneys of the brown rat and voided in the urine . </text>
+            <annotationSet cDate="01/07/2003 08:34:07 PST Tue" status="UNANN" ID="1348491">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="10" start="4" name="NN1"/>
+                    <label end="13" start="12" name="VBZ"/>
+                    <label end="20" start="15" name="VVN"/>
+                    <label end="23" start="22" name="PRP"/>
+                    <label end="27" start="25" name="AT0"/>
+                    <label end="35" start="29" name="NN0"/>
+                    <label end="38" start="37" name="PRF"/>
+                    <label end="48" start="40" name="NN1"/>
+                    <label end="55" start="50" name="VVD-VVN"/>
+                    <label end="66" start="57" name="NP0"/>
+                    <label end="86" start="68" name="NN2"/>
+                    <label end="88" start="88" name="PUN"/>
+                    <label end="96" start="90" name="AJ0-NN1"/>
+                    <label end="99" start="98" name="PRP"/>
+                    <label end="103" start="101" name="AT0"/>
+                    <label end="111" start="105" name="NN2"/>
+                    <label end="114" start="113" name="PRF"/>
+                    <label end="118" start="116" name="AT0"/>
+                    <label end="124" start="120" name="AJ0"/>
+                    <label end="128" start="126" name="NN1"/>
+                    <label end="132" start="130" name="CJC"/>
+                    <label end="139" start="134" name="VVD"/>
+                    <label end="142" start="141" name="PRP"/>
+                    <label end="146" start="144" name="AT0"/>
+                    <label end="152" start="148" name="NN1"/>
+                    <label end="154" start="154" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 08:34:08 PST Tue" status="MANUAL" ID="1348492">
+                <layer rank="1" name="FE">
+                    <label cBy="532" feID="3139" end="86" start="40" name="Emission"/>
+                    <label cBy="532" feID="3172" end="152" start="141" name="Carrier"/>
+                    <label cBy="532" feID="3138" itype="CNI" name="Source_emitter"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="86" start="40" name="Ext"/>
+                    <label end="152" start="141" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="86" start="40" name="NP"/>
+                    <label end="152" start="141" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="139" start="134" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

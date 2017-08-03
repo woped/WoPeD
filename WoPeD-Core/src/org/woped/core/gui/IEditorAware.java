@@ -16,4 +16,6 @@ public interface IEditorAware
     //! their display of the editor reference (e.g. the task bar)
     //! @param editor specifies the editor whose name has changed
     public void renameEditor(IEditor editor);
+
+	public void addTextEditor(IEditor editor);
 }

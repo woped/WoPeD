@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="veil.v" ID="8540" frame="Eclipse" frameID="652" totalAnnotated="5" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degree" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Eclipsed" name="Eclipsed"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Obstruction" name="Obstruction"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD7C" type="Extra-Thematic" abbrev="sub" name="Subregion"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Extra-Thematic" abbrev="VP" name="Vantage_point"/>
+        </frame>
+    </header>
+    <definition>COD: partially conceal, disguise, or obscure</definition>
+    <lexeme POS="V" name="veil"/>
+    <valences>
+        <FERealization total="5">
+            <FE name="Eclipsed"/>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="NP" FE="Eclipsed"/>
+                <annoSet ID="1852161"/>
+                <annoSet ID="1852171"/>
+                <annoSet ID="1852253"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Obj" PT="NP" FE="Eclipsed"/>
+                <annoSet ID="1852163"/>
+                <annoSet ID="1852165"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Obstruction"/>
+            <pattern total="3">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Obstruction"/>
+                <annoSet ID="1852161"/>
+                <annoSet ID="1852171"/>
+                <annoSet ID="1852253"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Obstruction"/>
+                <annoSet ID="1852163"/>
+                <annoSet ID="1852165"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="4">
+            <FE name="Eclipsed"/>
+            <FE name="Obstruction"/>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="NP" FE="Eclipsed"/>
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Obstruction"/>
+                <annoSet ID="1852161"/>
+                <annoSet ID="1852171"/>
+                <annoSet ID="1852253"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Eclipsed"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Obstruction"/>
+                <annoSet ID="1852165"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Eclipsed"/>
+            <FE name="Obstruction"/>
+            <FE name="Obstruction"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Eclipsed"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Obstruction"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Obstruction"/>
+                <annoSet ID="1852163"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="04-NPcloud,mist,sky-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="988" aPos="0" ID="1202510">
+            <text>Hardly a star showed , for the sky was veiled by a lacy wrack , bleached snow-white by the moon that rose in a clear unclouded patch .</text>
+            <annotationSet cDate="04/14/2003 05:58:12 PDT Mon" status="UNANN" ID="1852160">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="0" name="rb"/>
+                    <label end="7" start="7" name="dt"/>
+                    <label end="12" start="9" name="nn"/>
+                    <label end="19" start="14" name="VVD"/>
+                    <label end="21" start="21" name=","/>
+                    <label end="25" start="23" name="in"/>
+                    <label end="29" start="27" name="dt"/>
+                    <label end="33" start="31" name="nn"/>
+                    <label end="37" start="35" name="VBD"/>
+                    <label end="44" start="39" name="VVN"/>
+                    <label end="47" start="46" name="in"/>
+                    <label end="49" start="49" name="dt"/>
+                    <label end="54" start="51" name="jj"/>
+                    <label end="60" start="56" name="nn"/>
+                    <label end="62" start="62" name=","/>
+                    <label end="71" start="64" name="VVD"/>
+                    <label end="82" start="73" name="jj"/>
+                    <label end="85" start="84" name="in"/>
+                    <label end="89" start="87" name="dt"/>
+                    <label end="94" start="91" name="nn"/>
+                    <label end="99" start="96" name="wdt"/>
+                    <label end="104" start="101" name="VVD"/>
+                    <label end="107" start="106" name="in"/>
+                    <label end="109" start="109" name="dt"/>
+                    <label end="115" start="111" name="jj"/>
+                    <label end="125" start="117" name="jj"/>
+                    <label end="131" start="127" name="nn"/>
+                    <label end="133" start="133" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/14/2003 05:58:12 PDT Mon" status="MANUAL" ID="1852161">
+                <layer rank="1" name="Target">
+                    <label cBy="351" end="44" start="39" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="351" feID="4362" end="33" start="27" name="Eclipsed"/>
+                    <label cBy="351" feID="4361" end="60" start="46" name="Obstruction"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="33" start="27" name="Ext"/>
+                    <label end="60" start="46" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="33" start="27" name="NP"/>
+                    <label end="60" start="46" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="656" aPos="0" ID="1202511">
+            <text>The air was constantly heavy with moisture , few days being clear of the mists , which veiled the moor-tops and drifted among the valley trees in swathes , cloaking the bare branches .</text>
+            <annotationSet cDate="04/14/2003 05:58:13 PDT Mon" status="UNANN" ID="1852162">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="6" start="4" name="nn"/>
+                    <label end="10" start="8" name="VBD"/>
+                    <label end="21" start="12" name="rb"/>
+                    <label end="27" start="23" name="jj"/>
+                    <label end="32" start="29" name="in"/>
+                    <label end="41" start="34" name="nn"/>
+                    <label end="43" start="43" name=","/>
+                    <label end="47" start="45" name="jj"/>
+                    <label end="52" start="49" name="nns"/>
+                    <label end="58" start="54" name="nn"/>
+                    <label end="64" start="60" name="jj"/>
+                    <label end="67" start="66" name="in"/>
+                    <label end="71" start="69" name="dt"/>
+                    <label end="77" start="73" name="nns"/>
+                    <label end="79" start="79" name=","/>
+                    <label end="85" start="81" name="wdt"/>
+                    <label end="92" start="87" name="VVN"/>
+                    <label end="96" start="94" name="dt"/>
+                    <label end="106" start="98" name="nns"/>
+                    <label end="110" start="108" name="cc"/>
+                    <label end="118" start="112" name="VVD"/>
+                    <label end="124" start="120" name="in"/>
+                    <label end="128" start="126" name="dt"/>
+                    <label end="135" start="130" name="nn"/>
+                    <label end="141" start="137" name="nns"/>
+                    <label end="144" start="143" name="in"/>
+                    <label end="152" start="146" name="nns"/>
+                    <label end="154" start="154" name=","/>
+                    <label end="163" start="156" name="VVG"/>
+                    <label end="167" start="165" name="dt"/>
+                    <label end="172" start="169" name="jj"/>
+                    <label end="181" start="174" name="nns"/>
+                    <label end="183" start="183" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/14/2003 05:58:13 PDT Mon" status="MANUAL" ID="1852163">
+                <layer rank="1" name="Target">
+                    <label cBy="351" end="92" start="87" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="351" feID="4361" end="77" start="69" name="Obstruction"/>
+                    <label cBy="351" feID="4362" end="106" start="94" name="Eclipsed"/>
+                    <label cBy="309" feID="4361" end="85" start="81" name="Obstruction"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="77" start="69" name="Ext"/>
+                    <label end="106" start="94" name="Obj"/>
+                    <label end="85" start="81" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="77" start="69" name="NP"/>
+                    <label end="106" start="94" name="NP"/>
+                    <label end="85" start="81" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other">
+                    <label end="77" start="69" name="Ant"/>
+                    <label end="85" start="81" name="Rel"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="1371" aPos="0" ID="1202512">
+            <text>Above , storm clouds veiled the heavens , blocking the sunlight , and below the red stillness covered the surface of the planet .</text>
+            <annotationSet cDate="04/14/2003 05:58:14 PDT Mon" status="UNANN" ID="1852164">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="rb"/>
+                    <label end="6" start="6" name=","/>
+                    <label end="12" start="8" name="nn"/>
+                    <label end="19" start="14" name="nns"/>
+                    <label end="26" start="21" name="VVN"/>
+                    <label end="30" start="28" name="dt"/>
+                    <label end="38" start="32" name="nns"/>
+                    <label end="40" start="40" name=","/>
+                    <label end="49" start="42" name="VVG"/>
+                    <label end="53" start="51" name="dt"/>
+                    <label end="62" start="55" name="nn"/>
+                    <label end="64" start="64" name=","/>
+                    <label end="68" start="66" name="cc"/>
+                    <label end="74" start="70" name="in"/>
+                    <label end="78" start="76" name="dt"/>
+                    <label end="82" start="80" name="jj"/>
+                    <label end="92" start="84" name="nn"/>
+                    <label end="100" start="94" name="VVD"/>
+                    <label end="104" start="102" name="dt"/>
+                    <label end="112" start="106" name="nn"/>
+                    <label end="115" start="114" name="in"/>
+                    <label end="119" start="117" name="dt"/>
+                    <label end="126" start="121" name="nn"/>
+                    <label end="128" start="128" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/14/2003 05:58:14 PDT Mon" status="MANUAL" ID="1852165">
+                <layer rank="1" name="Target">
+                    <label cBy="351" end="26" start="21" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="351" feID="4361" end="19" start="8" name="Obstruction"/>
+                    <label cBy="351" feID="4362" end="38" start="28" name="Eclipsed"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="19" start="8" name="Ext"/>
+                    <label end="38" start="28" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="19" start="8" name="NP"/>
+                    <label end="38" start="28" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="05-T-NPcloud,mist,sky-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="230" aPos="0" ID="1202515">
+            <text>We saw the moon appear and disappear , veiled by clouds .</text>
+            <annotationSet cDate="04/14/2003 05:58:15 PDT Mon" status="UNANN" ID="1852170">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="5" start="3" name="VVD"/>
+                    <label end="9" start="7" name="dt"/>
+                    <label end="14" start="11" name="nn"/>
+                    <label end="21" start="16" name="VV"/>
+                    <label end="25" start="23" name="cc"/>
+                    <label end="35" start="27" name="VV"/>
+                    <label end="37" start="37" name=","/>
+                    <label end="44" start="39" name="VVN"/>
+                    <label end="47" start="46" name="in"/>
+                    <label end="54" start="49" name="nns"/>
+                    <label end="56" start="56" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/14/2003 05:58:15 PDT Mon" status="MANUAL" ID="1852171">
+                <layer rank="1" name="Target">
+                    <label cBy="351" end="44" start="39" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="351" feID="4362" end="14" start="7" name="Eclipsed"/>
+                    <label cBy="351" feID="4361" end="54" start="46" name="Obstruction"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="14" start="7" name="Ext"/>
+                    <label end="54" start="46" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="14" start="7" name="NP"/>
+                    <label end="54" start="46" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="1203" aPos="0" ID="1202556">
+            <text>He looked at her , eyes veiled by hooded lids .</text>
+            <annotationSet cDate="04/14/2003 05:58:34 PDT Mon" status="UNANN" ID="1852252">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="8" start="3" name="VVD"/>
+                    <label end="11" start="10" name="in"/>
+                    <label end="15" start="13" name="PP"/>
+                    <label end="17" start="17" name=","/>
+                    <label end="22" start="19" name="nns"/>
+                    <label end="29" start="24" name="VVN"/>
+                    <label end="32" start="31" name="in"/>
+                    <label end="39" start="34" name="jj"/>
+                    <label end="44" start="41" name="nns"/>
+                    <label end="46" start="46" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/14/2003 05:58:35 PDT Mon" status="MANUAL" ID="1852253">
+                <layer rank="1" name="Target">
+                    <label cBy="351" end="29" start="24" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="351" feID="4362" end="22" start="19" name="Eclipsed"/>
+                    <label cBy="351" feID="4361" end="44" start="31" name="Obstruction"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="22" start="19" name="Ext"/>
+                    <label end="44" start="31" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="22" start="19" name="NP"/>
+                    <label end="44" start="31" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

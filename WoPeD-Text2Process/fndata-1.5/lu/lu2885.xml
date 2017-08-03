@@ -1,0 +1,590 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="harem.n" ID="2885" frame="Aggregate" frameID="103" totalAnnotated="9" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Core" abbrev="Agg" name="Aggregate"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Extra-Thematic" abbrev="AgProp" name="AggregateProperty"/>
+            <FE fgColor="000000" bgColor="EEE8AA" type="Extra-Thematic" abbrev="Con" name="Container_possessor"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Extra-Thematic" abbrev="" name="Domain"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Ind" name="Individuals"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="" name="Name"/>
+        </frame>
+    </header>
+    <definition>COD: the wives (or concubines) of a polygamous man. </definition>
+    <lexeme POS="N" name="harem"/>
+    <valences>
+        <governor type="Gov" lemma="accommodate">
+            <annoSet ID="492333"/>
+        </governor>
+        <governor type="Gov" lemma="attract">
+            <annoSet ID="492321"/>
+        </governor>
+        <governor type="Gov" lemma="control">
+            <annoSet ID="492331"/>
+            <annoSet ID="492361"/>
+        </governor>
+        <governor type="Gov" lemma="defend">
+            <annoSet ID="492339"/>
+        </governor>
+        <governor type="Gov" lemma="dominate">
+            <annoSet ID="492367"/>
+        </governor>
+        <governor type="Gov" lemma="emerge">
+            <annoSet ID="492325"/>
+        </governor>
+        <governor type="Gov" lemma="hold">
+            <annoSet ID="492469"/>
+        </governor>
+        <governor type="Gov" lemma="maintain">
+            <annoSet ID="492343"/>
+        </governor>
+        <FERealization total="9">
+            <FE name="Aggregate"/>
+            <pattern total="9">
+                <valenceUnit GF="" PT="DEN" FE="Aggregate"/>
+                <annoSet ID="492321"/>
+                <annoSet ID="492325"/>
+                <annoSet ID="492331"/>
+                <annoSet ID="492333"/>
+                <annoSet ID="492339"/>
+                <annoSet ID="492343"/>
+                <annoSet ID="492361"/>
+                <annoSet ID="492367"/>
+                <annoSet ID="492469"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="AggregateProperty"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="AJP" FE="AggregateProperty"/>
+                <annoSet ID="492321"/>
+                <annoSet ID="492339"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="9">
+            <FE name="Individuals"/>
+            <pattern total="9">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Individuals"/>
+                <annoSet ID="492321"/>
+                <annoSet ID="492325"/>
+                <annoSet ID="492331"/>
+                <annoSet ID="492333"/>
+                <annoSet ID="492339"/>
+                <annoSet ID="492343"/>
+                <annoSet ID="492361"/>
+                <annoSet ID="492367"/>
+                <annoSet ID="492469"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Aggregate"/>
+            <FE name="AggregateProperty"/>
+            <FE name="Individuals"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="DEN" FE="Aggregate"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="AggregateProperty"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Individuals"/>
+                <annoSet ID="492321"/>
+                <annoSet ID="492339"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="7">
+            <FE name="Aggregate"/>
+            <FE name="Individuals"/>
+            <pattern total="7">
+                <valenceUnit GF="" PT="DEN" FE="Aggregate"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Individuals"/>
+                <annoSet ID="492325"/>
+                <annoSet ID="492331"/>
+                <annoSet ID="492333"/>
+                <annoSet ID="492343"/>
+                <annoSet ID="492361"/>
+                <annoSet ID="492367"/>
+                <annoSet ID="492469"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-250-s35-ppof">
+        <sentence sentNo="0" aPos="11295033" ID="426377">
+            <text>Males take territories here and attract temporary harems of females on to them . </text>
+            <annotationSet cDate="01/07/2003 03:27:08 PST Tue" status="UNANN" ID="492320">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="NN2"/>
+                    <label end="9" start="6" name="VVB"/>
+                    <label end="21" start="11" name="NN2"/>
+                    <label end="26" start="23" name="AV0"/>
+                    <label end="30" start="28" name="CJC"/>
+                    <label end="38" start="32" name="VVB"/>
+                    <label end="48" start="40" name="AJ0"/>
+                    <label end="55" start="50" name="NN2"/>
+                    <label end="58" start="57" name="PRF"/>
+                    <label end="66" start="60" name="NN2"/>
+                    <label end="69" start="68" name="PRP"/>
+                    <label end="72" start="71" name="PRP"/>
+                    <label end="77" start="74" name="PNP"/>
+                    <label end="79" start="79" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:27:08 PST Tue" status="MANUAL" ID="492321">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="786" end="48" start="40" name="AggregateProperty"/>
+                    <label cBy="296" feID="745" end="55" start="50" name="Aggregate"/>
+                    <label cBy="296" feID="744" end="66" start="57" name="Individuals"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="48" start="40" name="Dep"/>
+                    <label end="66" start="57" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="48" start="40" name="AJP"/>
+                    <label end="66" start="57" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="55" start="50" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="38" start="32" name="Gov"/>
+                    <label end="66" start="40" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="11308068" ID="426379">
+            <text>There thus emerges a harem of juvenile females in association with the secondary male , but this male is as yet unable to mate with them because they are too young . </text>
+            <annotationSet cDate="01/07/2003 03:27:08 PST Tue" status="UNANN" ID="492324">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="AV0"/>
+                    <label end="9" start="6" name="AV0"/>
+                    <label end="17" start="11" name="VVZ"/>
+                    <label end="19" start="19" name="AT0"/>
+                    <label end="25" start="21" name="NN1"/>
+                    <label end="28" start="27" name="PRF"/>
+                    <label end="37" start="30" name="AJ0-NN1"/>
+                    <label end="45" start="39" name="NN2"/>
+                    <label end="48" start="47" name="PRP"/>
+                    <label end="60" start="50" name="PRP"/>
+                    <label end="65" start="62" name="PRP"/>
+                    <label end="69" start="67" name="AT0"/>
+                    <label end="79" start="71" name="AJ0"/>
+                    <label end="84" start="81" name="NN1"/>
+                    <label end="86" start="86" name="PUN"/>
+                    <label end="90" start="88" name="CJC"/>
+                    <label end="95" start="92" name="DT0"/>
+                    <label end="100" start="97" name="NN1"/>
+                    <label end="103" start="102" name="VBZ"/>
+                    <label end="106" start="105" name="AV0"/>
+                    <label end="110" start="108" name="AV0"/>
+                    <label end="117" start="112" name="AJ0"/>
+                    <label end="120" start="119" name="TO0"/>
+                    <label end="125" start="122" name="VVI"/>
+                    <label end="130" start="127" name="PRP"/>
+                    <label end="135" start="132" name="PNP"/>
+                    <label end="143" start="137" name="CJS"/>
+                    <label end="148" start="145" name="PNP"/>
+                    <label end="152" start="150" name="VBB"/>
+                    <label end="156" start="154" name="AV0"/>
+                    <label end="162" start="158" name="AJ0"/>
+                    <label end="164" start="164" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:27:09 PST Tue" status="MANUAL" ID="492325">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="745" end="25" start="21" name="Aggregate"/>
+                    <label cBy="296" feID="744" end="45" start="27" name="Individuals"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="45" start="27" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="45" start="27" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="25" start="21" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="17" start="11" name="Gov"/>
+                    <label end="45" start="19" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="24477962" ID="426382">
+            <text>A single male will control a harem of females , but if he dies the most dominant ranking female will change sex to fill the vacancy . </text>
+            <annotationSet cDate="01/07/2003 03:27:09 PST Tue" status="UNANN" ID="492330">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="AT0"/>
+                    <label end="7" start="2" name="AJ0"/>
+                    <label end="12" start="9" name="NN1"/>
+                    <label end="17" start="14" name="VM0"/>
+                    <label end="25" start="19" name="VVI"/>
+                    <label end="27" start="27" name="AT0"/>
+                    <label end="33" start="29" name="NN1"/>
+                    <label end="36" start="35" name="PRF"/>
+                    <label end="44" start="38" name="NN2"/>
+                    <label end="46" start="46" name="PUN"/>
+                    <label end="50" start="48" name="CJC"/>
+                    <label end="53" start="52" name="CJS"/>
+                    <label end="56" start="55" name="PNP"/>
+                    <label end="61" start="58" name="VVZ"/>
+                    <label end="65" start="63" name="AT0"/>
+                    <label end="70" start="67" name="AV0"/>
+                    <label end="79" start="72" name="AJ0"/>
+                    <label end="87" start="81" name="AJ0-NN1"/>
+                    <label end="94" start="89" name="NN1"/>
+                    <label end="99" start="96" name="VM0"/>
+                    <label end="106" start="101" name="VVI"/>
+                    <label end="110" start="108" name="NN1"/>
+                    <label end="113" start="112" name="TO0"/>
+                    <label end="118" start="115" name="VVI"/>
+                    <label end="122" start="120" name="AT0"/>
+                    <label end="130" start="124" name="NN1"/>
+                    <label end="132" start="132" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:27:09 PST Tue" status="MANUAL" ID="492331">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="745" end="33" start="29" name="Aggregate"/>
+                    <label cBy="296" feID="744" end="44" start="35" name="Individuals"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="44" start="35" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="44" start="35" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="33" start="29" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="25" start="19" name="Gov"/>
+                    <label end="44" start="27" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="29783211" ID="426383">
+            <text>He shrugged and then flung open the door wide enough to accommodate a harem of estranged wives . </text>
+            <annotationSet cDate="01/07/2003 03:27:09 PST Tue" status="UNANN" ID="492332">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="10" start="3" name="VVD"/>
+                    <label end="14" start="12" name="CJC"/>
+                    <label end="19" start="16" name="AV0"/>
+                    <label end="25" start="21" name="VVD-VVN"/>
+                    <label end="30" start="27" name="VVB"/>
+                    <label end="34" start="32" name="AT0"/>
+                    <label end="39" start="36" name="NN1"/>
+                    <label end="44" start="41" name="AJ0-AV0"/>
+                    <label end="51" start="46" name="AV0"/>
+                    <label end="54" start="53" name="TO0"/>
+                    <label end="66" start="56" name="VVI"/>
+                    <label end="68" start="68" name="AT0"/>
+                    <label end="74" start="70" name="NN1"/>
+                    <label end="77" start="76" name="PRF"/>
+                    <label end="87" start="79" name="AJ0"/>
+                    <label end="93" start="89" name="NN2"/>
+                    <label end="95" start="95" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:27:09 PST Tue" status="MANUAL" ID="492333">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="745" end="74" start="70" name="Aggregate"/>
+                    <label cBy="296" feID="744" end="93" start="76" name="Individuals"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="93" start="76" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="93" start="76" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="74" start="70" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="66" start="56" name="Gov"/>
+                    <label end="93" start="68" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="35838173" ID="426386">
+            <text>These deer tend to form large herds , and during the breeding season males defend large harems of females . </text>
+            <annotationSet cDate="01/07/2003 03:27:09 PST Tue" status="UNANN" ID="492338">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="DT0"/>
+                    <label end="9" start="6" name="NN0"/>
+                    <label end="14" start="11" name="VVB"/>
+                    <label end="17" start="16" name="TO0"/>
+                    <label end="22" start="19" name="VVI"/>
+                    <label end="28" start="24" name="AJ0"/>
+                    <label end="34" start="30" name="NN2"/>
+                    <label end="36" start="36" name="PUN"/>
+                    <label end="40" start="38" name="CJC"/>
+                    <label end="47" start="42" name="PRP"/>
+                    <label end="51" start="49" name="AT0"/>
+                    <label end="60" start="53" name="AJ0-NN1"/>
+                    <label end="67" start="62" name="NN1"/>
+                    <label end="73" start="69" name="NN2"/>
+                    <label end="80" start="75" name="VVB"/>
+                    <label end="86" start="82" name="AJ0"/>
+                    <label end="93" start="88" name="NN2"/>
+                    <label end="96" start="95" name="PRF"/>
+                    <label end="104" start="98" name="NN2"/>
+                    <label end="106" start="106" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:27:09 PST Tue" status="MANUAL" ID="492339">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="786" end="86" start="82" name="AggregateProperty"/>
+                    <label cBy="296" feID="745" end="93" start="88" name="Aggregate"/>
+                    <label cBy="296" feID="744" end="104" start="95" name="Individuals"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="86" start="82" name="Dep"/>
+                    <label end="104" start="95" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="86" start="82" name="AJP"/>
+                    <label end="104" start="95" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="93" start="88" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="80" start="75" name="Gov"/>
+                    <label end="104" start="82" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="38693993" ID="426388">
+            <text>This C.rubriventralis is a male which , in the wild , will maintain a harem of females . </text>
+            <annotationSet cDate="01/07/2003 03:27:10 PST Tue" status="UNANN" ID="492342">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="DT0"/>
+                    <label end="20" start="5" name="NN0"/>
+                    <label end="23" start="22" name="VBZ"/>
+                    <label end="25" start="25" name="AT0"/>
+                    <label end="30" start="27" name="NN1"/>
+                    <label end="36" start="32" name="DTQ"/>
+                    <label end="38" start="38" name="PUN"/>
+                    <label end="41" start="40" name="PRP"/>
+                    <label end="45" start="43" name="AT0"/>
+                    <label end="50" start="47" name="AJ0"/>
+                    <label end="52" start="52" name="PUN"/>
+                    <label end="57" start="54" name="VM0"/>
+                    <label end="66" start="59" name="VVI"/>
+                    <label end="68" start="68" name="AT0"/>
+                    <label end="74" start="70" name="NN1"/>
+                    <label end="77" start="76" name="PRF"/>
+                    <label end="85" start="79" name="NN2"/>
+                    <label end="87" start="87" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:27:10 PST Tue" status="MANUAL" ID="492343">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="745" end="74" start="70" name="Aggregate"/>
+                    <label cBy="296" feID="744" end="85" start="76" name="Individuals"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="85" start="76" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="85" start="76" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="74" start="70" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="66" start="59" name="Gov"/>
+                    <label end="85" start="68" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="68544675" ID="426397">
+            <text>The females evolve to be larger and brighter coloured than the males , and control harems of dull-coloured egg-sitters , competing for their domestic skills against other acquisitive and territorial females . </text>
+            <annotationSet cDate="01/07/2003 03:27:11 PST Tue" status="UNANN" ID="492360">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="10" start="4" name="NN2"/>
+                    <label end="17" start="12" name="VVB"/>
+                    <label end="20" start="19" name="TO0"/>
+                    <label end="23" start="22" name="VBI"/>
+                    <label end="30" start="25" name="AJC"/>
+                    <label end="34" start="32" name="CJC"/>
+                    <label end="43" start="36" name="AV0"/>
+                    <label end="52" start="45" name="AJ0-VVD"/>
+                    <label end="57" start="54" name="CJS"/>
+                    <label end="61" start="59" name="AT0"/>
+                    <label end="67" start="63" name="NN2"/>
+                    <label end="69" start="69" name="PUN"/>
+                    <label end="73" start="71" name="CJC"/>
+                    <label end="81" start="75" name="NN1-VVB"/>
+                    <label end="88" start="83" name="NN2"/>
+                    <label end="91" start="90" name="PRF"/>
+                    <label end="105" start="93" name="AJ0"/>
+                    <label end="117" start="107" name="NN2"/>
+                    <label end="119" start="119" name="PUN"/>
+                    <label end="129" start="121" name="VVG"/>
+                    <label end="133" start="131" name="PRP"/>
+                    <label end="139" start="135" name="DPS"/>
+                    <label end="148" start="141" name="AJ0"/>
+                    <label end="155" start="150" name="NN2"/>
+                    <label end="163" start="157" name="PRP"/>
+                    <label end="169" start="165" name="AJ0"/>
+                    <label end="181" start="171" name="AJ0"/>
+                    <label end="185" start="183" name="CJC"/>
+                    <label end="197" start="187" name="AJ0"/>
+                    <label end="205" start="199" name="NN2"/>
+                    <label end="207" start="207" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:27:11 PST Tue" status="MANUAL" ID="492361">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="745" end="88" start="83" name="Aggregate"/>
+                    <label cBy="296" feID="744" end="117" start="90" name="Individuals"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="117" start="90" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="117" start="90" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="88" start="83" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="81" start="75" name="Gov"/>
+                    <label end="117" start="83" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="91643974" ID="426400">
+            <text>We know male deer develop enormous antler at vast cost to themselves to dominate harems of females , but not all male deer do that . </text>
+            <annotationSet cDate="01/07/2003 03:27:11 PST Tue" status="UNANN" ID="492366">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="6" start="3" name="VVB"/>
+                    <label end="11" start="8" name="AJ0-NN1"/>
+                    <label end="16" start="13" name="NN0"/>
+                    <label end="24" start="18" name="VVB"/>
+                    <label end="33" start="26" name="AJ0"/>
+                    <label end="40" start="35" name="NN1"/>
+                    <label end="43" start="42" name="PRP"/>
+                    <label end="48" start="45" name="AJ0"/>
+                    <label end="53" start="50" name="NN1"/>
+                    <label end="56" start="55" name="PRP"/>
+                    <label end="67" start="58" name="PNX"/>
+                    <label end="70" start="69" name="TO0"/>
+                    <label end="79" start="72" name="VVI"/>
+                    <label end="86" start="81" name="NN2"/>
+                    <label end="89" start="88" name="PRF"/>
+                    <label end="97" start="91" name="NN2"/>
+                    <label end="99" start="99" name="PUN"/>
+                    <label end="103" start="101" name="CJC"/>
+                    <label end="107" start="105" name="XX0"/>
+                    <label end="111" start="109" name="DT0"/>
+                    <label end="116" start="113" name="AJ0-NN1"/>
+                    <label end="121" start="118" name="NN0"/>
+                    <label end="124" start="123" name="VDB"/>
+                    <label end="129" start="126" name="DT0"/>
+                    <label end="131" start="131" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:27:11 PST Tue" status="MANUAL" ID="492367">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="745" end="86" start="81" name="Aggregate"/>
+                    <label cBy="296" feID="744" end="97" start="88" name="Individuals"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="97" start="88" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="97" start="88" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="86" start="81" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="79" start="72" name="Gov"/>
+                    <label end="97" start="81" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-280-s20-poss"/>
+    <subCorpus name="N-300-s20-cmpd"/>
+    <subCorpus name="N-320-s20-ingcmpd"/>
+    <subCorpus name="N-340-s20-ppother"/>
+    <subCorpus name="N-370-s20-pother">
+        <sentence sentNo="0" aPos="39336058" ID="426451">
+            <text>Considering that male red deer can hold harems of over thirty hinds , it is , perhaps , surprising that male success does not vary more widely . </text>
+            <annotationSet cDate="01/07/2003 03:27:20 PST Tue" status="UNANN" ID="492468">
+                <layer rank="1" name="BNC">
+                    <label end="10" start="0" name="CJS"/>
+                    <label end="15" start="12" name="CJS"/>
+                    <label end="20" start="17" name="AJ0"/>
+                    <label end="24" start="22" name="AJ0"/>
+                    <label end="29" start="26" name="NN0"/>
+                    <label end="33" start="31" name="VM0"/>
+                    <label end="38" start="35" name="VVI"/>
+                    <label end="45" start="40" name="NN2"/>
+                    <label end="48" start="47" name="PRF"/>
+                    <label end="53" start="50" name="AV0"/>
+                    <label end="60" start="55" name="CRD"/>
+                    <label end="66" start="62" name="NN2"/>
+                    <label end="68" start="68" name="PUN"/>
+                    <label end="71" start="70" name="PNP"/>
+                    <label end="74" start="73" name="VBZ"/>
+                    <label end="76" start="76" name="PUN"/>
+                    <label end="84" start="78" name="AV0"/>
+                    <label end="86" start="86" name="PUN"/>
+                    <label end="97" start="88" name="AJ0-VVG"/>
+                    <label end="102" start="99" name="CJT-DT0"/>
+                    <label end="107" start="104" name="AJ0"/>
+                    <label end="115" start="109" name="NN1"/>
+                    <label end="120" start="117" name="VDZ"/>
+                    <label end="124" start="122" name="XX0"/>
+                    <label end="129" start="126" name="VVI"/>
+                    <label end="134" start="131" name="AV0"/>
+                    <label end="141" start="136" name="AV0"/>
+                    <label end="143" start="143" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:27:20 PST Tue" status="MANUAL" ID="492469">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="745" end="45" start="40" name="Aggregate"/>
+                    <label cBy="296" feID="744" end="66" start="47" name="Individuals"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="66" start="47" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="66" start="47" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="45" start="40" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="38" start="35" name="Gov"/>
+                    <label end="66" start="40" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-380-s20-other-s20"/>
+</lexUnit>

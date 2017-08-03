@@ -1,5 +1,33 @@
 package org.woped.starter;
 
+
+
+import java.awt.BorderLayout;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.Window;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeSupport;
+import java.beans.PropertyVetoException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Vector;
+
+import javax.swing.JDesktopPane;
+import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
+import javax.swing.border.BevelBorder;
+import javax.swing.event.InternalFrameEvent;
+import javax.swing.event.InternalFrameListener;
+
 import org.woped.bpel.gui.EditorData;
 import org.woped.bpel.gui.EditorOperations;
 import org.woped.core.config.ConfigurationManager;
@@ -22,20 +50,6 @@ import org.woped.gui.translations.Messages;
 import org.woped.qualanalysis.simulation.ReferenceProvider;
 import org.woped.starter.controller.vc.StatusBarVC;
 import org.woped.starter.osxMenu.OSXFullscreen;
-
-import javax.swing.*;
-import javax.swing.border.BevelBorder;
-import javax.swing.event.InternalFrameEvent;
-import javax.swing.event.InternalFrameListener;
-import java.awt.*;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeSupport;
-import java.beans.PropertyVetoException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Vector;
 
 @SuppressWarnings("serial")
 public class DefaultUserInterface extends MainFrame implements IUserInterface, InternalFrameListener {
@@ -121,37 +135,39 @@ public class DefaultUserInterface extends MainFrame implements IUserInterface, I
 
     public void addEditor(IEditor editor) {
         if ( editor != null ) {
-            frame = new DefaultEditorFrame((EditorVC) editor, new EditorOperations(editor), new EditorData(), new PetriNetResourceEditor((EditorVC) editor));
+        	 frame = new DefaultEditorFrame((EditorVC) editor, new EditorOperations(editor), new EditorData(), new PetriNetResourceEditor((EditorVC) editor));
 
-            Point position = getNextEditorPosition();
-            frame.setAlignmentX((float) position.getX());
-            frame.setAlignmentY((float) position.getY());
-            frame.addInternalFrameListener(this);
-            frame.setLocation(position);
-            desktop.add(frame, BorderLayout.CENTER);
+             Point position = getNextEditorPosition();
+             frame.setAlignmentX((float) position.getX());
+             frame.setAlignmentY((float) position.getY());
+             frame.addInternalFrameListener(this);
+             frame.setLocation(position);
+             desktop.add(frame, BorderLayout.CENTER);
 
-            if ( editor instanceof SubprocessEditorVC ) {
-                // Make subprocess editor window stay in foreground
-                m_modalityStack.add(0, frame);
-            }
+             if ( editor instanceof SubprocessEditorVC ) {
+                 // Make subprocess editor window stay in foreground
+                 m_modalityStack.add(0, frame);
+             }
 
-            editorList.add(frame.getEditor());
-            ((EditorVC) frame.getEditor()).getEditorPanel().setContainer(frame);
-            frame.pack();
-            frame.setVisible(true);
+             editorList.add(frame.getEditor());
+             ((EditorVC) frame.getEditor()).getEditorPanel().setContainer(frame);
+             frame.pack();
+             frame.setVisible(true);
 
-            // Notify MainFrame
-            super.addEditor(frame.getEditor());
+             // Notify MainFrame
+             super.addEditor(frame.getEditor());
 
-            try {
-                frame.setMaximum(true);
-                frame.setSelected(true);
-            } catch (Exception e) {
-                LoggerManager.error(Constants.GUI_LOGGER, "VetoException Could not Select Frame");
-            }
+             try {
+                 frame.setMaximum(true);
+                 frame.setSelected(true);
+             } catch (Exception e) {
+                 LoggerManager.error(Constants.GUI_LOGGER, "VetoException Could not Select Frame");
+             }
 
         }
     }
+       
+    
 
     public void quit() {
         WoPeDAction action = ActionFactory.getStaticAction(ActionFactory.ACTIONID_EXIT);

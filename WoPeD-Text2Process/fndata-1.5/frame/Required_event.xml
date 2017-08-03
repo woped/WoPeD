@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="04/11/2005 05:57:34 PDT Mon" name="Required_event" ID="1381" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;Unless a particular &lt;fen&gt;Required_situation&lt;/fen&gt; obtains, &lt;fen&gt;Negative_consequences&lt;/fen&gt; will follow.  Alternatively, the &lt;fen&gt;Required_situation&lt;/fen&gt; is required to achieve a &lt;fen&gt;Purpose&lt;/fen&gt; (which avoids &lt;fen&gt;Negative_consequences&lt;/fen&gt;). A set of &lt;fen&gt;Circumstances&lt;/fen&gt; may be specified under which the requirement holds.
+
+&lt;ex&gt;&lt;fex name="req"&gt;You&lt;/fex&gt; &lt;t&gt;must&lt;/t&gt; &lt;fex name="req"&gt;turn in your test by 5 p.m.&lt;/fex&gt;&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="req"&gt;You&lt;/fex&gt; &lt;t&gt;better&lt;/t&gt; &lt;fex name="req"&gt;have that fixed by tomorrow&lt;/fex&gt; &lt;fex name="neg"&gt;or else we'll fire you&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="req"&gt;The book&lt;/fex&gt; &lt;t&gt;needs&lt;/t&gt; &lt;fex name="req"&gt;to be shorter&lt;/fex&gt; &lt;fex name="pur"&gt;to sell to such a young audience.&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="04/11/2005 06:02:47 PDT Mon" abbrev="req" name="Required_situation" ID="7752">
+        <definition>&lt;def-root&gt;The state-of-affairs which prevents &lt;fen&gt;Negative_consequences&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="04/11/2005 06:03:44 PDT Mon" abbrev="neg" name="Negative_consequences" ID="7753">
+        <definition>&lt;def-root&gt;An event or state of affairs that results if the required &lt;fen&gt;Required_situation&lt;/fen&gt; does not occur and which impacts some deprofiled entity in a way that the speaker finds undesirable.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="04/11/2005 06:06:25 PDT Mon" abbrev="cir" name="Circumstances" ID="7754">
+        <definition>&lt;def-root&gt;The FE &lt;fen&gt;Circumstances&lt;/fen&gt; encodes a setting, often temporal or spatial, within which the requirement holds.
+
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="04/11/2005 06:25:37 PDT Mon" abbrev="pur" name="Purpose" ID="7755">
+        <definition>&lt;def-root&gt;The event or state of affairs that is achieved by bringing about the &lt;fen&gt;Required_situation&lt;/fen&gt; and which entails the non-occurrance of &lt;fen&gt;Negative_consequences&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/10/2005 12:26:03 PDT Fri" abbrev="tim" name="Time" ID="8142">
+        <definition>&lt;def-root&gt;The period during which the &lt;fen&gt;Required_situation&lt;/fen&gt; is necessary to prevent negative consequences.
+
+&lt;ex&gt;He was told that &lt;fex name="tim"&gt;when he got back&lt;/fex&gt; , his column &lt;t&gt;needed&lt;/t&gt; a serious rethink .&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/10/2005 12:36:23 PDT Fri" abbrev="pla" name="Place" ID="8143">
+        <definition>&lt;def-root&gt;The location within which the &lt;fen&gt;Required_situation&lt;/fen&gt; is required.
+
+&lt;ex&gt;&lt;fex name="pla"&gt;In California&lt;/fex&gt; , seatbelts &lt;t&gt;must&lt;/t&gt; be fastened at all times .&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="06/10/2005 12:43:01 PDT Fri" abbrev="exp" name="Explanation" ID="8144">
+        <definition>&lt;def-root&gt;The reason why the &lt;fen&gt;Required_situation&lt;/fen&gt; is necessary.
+
+&lt;ex&gt; I do realize his pitch &lt;t&gt;needed&lt;/t&gt; to be wide-ranging &lt;fex name="exp"&gt;because of the differences between folks in the room&lt;/fex&gt; .&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/10/2005 01:04:21 PDT Fri" abbrev="deg" name="Degree" ID="8145">
+        <definition>&lt;def-root&gt;The degree to which the &lt;fen&gt;Required_situation&lt;/fen&gt; is necessary.  The &lt;fen&gt;Degree&lt;/fen&gt; may either imply a modification of the direness of the &lt;fen&gt;Negative_consequences&lt;/fen&gt;, the probability of the &lt;fen&gt;Negative_consequences&lt;/fen&gt; (if the &lt;fen&gt;Required_situation&lt;/fen&gt; is not made to hold), or both.
+
+&lt;ex&gt;He &lt;fex name="deg"&gt;absolutely&lt;/fex&gt; &lt;t&gt;must&lt;/t&gt; be replaced .&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Obligation_scenario</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Being_necessary</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Desirable_event</relatedFrame>
+        <relatedFrame>Deserving</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="must.v" ID="11816" lemmaID="25293" cBy="605" cDate="04/11/2005 06:14:24 PDT Mon">
+        <definition>FN: be strongly required in order to avoid negative consequences, social or otherwise</definition>
+        <sentenceCount annotated="23" total="250"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="must"/>
+    </lexUnit>
+    <lexUnit status="Rules_Defined" POS="V" name="need.v" ID="11817" lemmaID="25602" cBy="605" cDate="04/11/2005 06:20:19 PDT Mon">
+        <definition>FN: be required in order to avoid negative consequences, usually physical</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="need"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="had better.v" ID="12875" lemmaID="50283" cBy="995" cDate="11/02/2005 04:18:24 PST Wed">
+        <definition>COD: would find it wiser to.</definition>
+        <sentenceCount annotated="13" total="129"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="had"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="better"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="better.v" ID="12876" lemmaID="50284" cBy="995" cDate="11/02/2005 04:28:13 PST Wed">
+        <definition>FN: would find it wiser to.</definition>
+        <sentenceCount annotated="15" total="177"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="better"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="got_to.v" ID="13052" lemmaID="46050" cBy="664" cDate="12/06/2005 07:11:24 PST Tue">
+        <definition>FN: be obliged to; must</definition>
+        <sentenceCount annotated="21" total="253"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="got"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="to"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="gotta.v" ID="13053" lemmaID="46046" cBy="664" cDate="12/06/2005 07:11:46 PST Tue">
+        <definition>COD: have got to. </definition>
+        <sentenceCount annotated="10" total="64"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="gotta"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="hafta.v" ID="13054" lemmaID="46045" cBy="664" cDate="12/06/2005 07:12:15 PST Tue">
+        <definition>FN: have to</definition>
+        <sentenceCount annotated="3" total="6"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="hafta"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="oughta.v" ID="13055" lemmaID="46052" cBy="664" cDate="12/06/2005 07:12:54 PST Tue">
+        <definition>FN: ought to</definition>
+        <sentenceCount annotated="4" total="8"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="oughta"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="have to.v" ID="13067" lemmaID="46040" cBy="618" cDate="12/08/2005 04:59:06 PST Thu">
+        <definition>FN: must.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="have"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="to"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="should.v" ID="13069" lemmaID="35670" cBy="618" cDate="12/08/2005 05:05:54 PST Thu">
+        <definition>FN: ought to be.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="should"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="ought to.v" ID="13070" lemmaID="46041" cBy="618" cDate="12/08/2005 05:52:38 PST Thu">
+        <definition>FN: should.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="ought"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="to"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="be_supposed_(to).v" ID="13546" lemmaID="50444" cBy="361" cDate="08/24/2006 04:23:44 PDT Thu">
+        <definition>COD: be required or expected to do something.</definition>
+        <sentenceCount annotated="6" total="64"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="be"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="A" name="supposed"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="best.v" ID="14360" lemmaID="50653" cBy="361" cDate="04/06/2007 04:06:42 PDT Fri">
+        <definition>FN: had better; ought to</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="best"/>
+    </lexUnit>
+</frame>

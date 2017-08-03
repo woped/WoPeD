@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="840" cDate="10/02/2002 06:38:09 PDT Wed" name="Manufacturing" ID="408" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A &lt;fen&gt;Manufacturer&lt;/fen&gt; produces a &lt;fen&gt;Product&lt;/fen&gt; from a &lt;fen&gt;Resource&lt;/fen&gt; for commercial purposes.
+&lt;ex&gt; They &lt;t&gt;produced&lt;/t&gt; &lt;fex name="Product"&gt;only half of the units&lt;/fex&gt; &lt;fex name="Circumstances"&gt;after an injunction to follow the environmental policy&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="840" cDate="10/02/2002 07:01:56 PDT Wed" abbrev="Man" name="Manufacturer" ID="3756">
+        <definition>&lt;def-root&gt;The person or company that produces the Product.
+&lt;ex&gt;&lt;fex name="Manufacturer"&gt;General Electric&lt;/fex&gt; &lt;t&gt;manufactures&lt;/t&gt; &lt;fex name="Product"&gt;electronic appliances&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="840" cDate="10/02/2002 07:11:13 PDT Wed" abbrev="Pro" name="Product" ID="3757">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Product&lt;/fen&gt; is produced by the &lt;fen&gt;Manufacturer&lt;/fen&gt;.
+&lt;ex&gt;&lt;fex name="Manufacturer"&gt;The company&lt;/fex&gt; &lt;t&gt;manufactured&lt;/t&gt; &lt;fex name="Product"&gt;T-shirts&lt;/fex&gt;.&lt;/ex&gt; &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="840" cDate="10/03/2002 02:37:04 PDT Thu" abbrev="Res" name="Resource" ID="3758">
+        <definition>&lt;def-root&gt;Resource is the material that the product is made from.
+&lt;ex&gt;&lt;fex name="Product"&gt;Copal varnishes&lt;/fex&gt; are &lt;t&gt;manufactured&lt;/t&gt; &lt;fex name="Resource"&gt;from fossilised resins&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="840" cDate="10/03/2002 03:26:26 PDT Thu" abbrev="Pla" name="Place" ID="3759">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Place&lt;/fen&gt; where the &lt;fen&gt;Product&lt;/fen&gt; is manufactured.
+&lt;ex&gt;&lt;fex name="Product"&gt;Those leather shoes&lt;/fex&gt; were &lt;t&gt;made&lt;/t&gt; &lt;fex name="Place"&gt;in Italy&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="840" cDate="10/04/2002 10:31:45 PDT Fri" abbrev="Tim" name="Time" ID="3768">
+        <definition>&lt;def-root&gt;This Fe identifies the &lt;fen&gt;Time&lt;/fen&gt; when the product was produced.
+&lt;ex&gt;&lt;fex name="Product"&gt;Those cars&lt;/fex&gt; were &lt;t&gt;produced&lt;/t&gt; &lt;fex name="Time"&gt;in 1997&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Core" cBy="840" cDate="10/04/2002 10:39:20 PDT Fri" abbrev="Fac" name="Factory" ID="3769">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Factory&lt;/fen&gt; identifies the particular plant where the &lt;fen&gt;Product&lt;/fen&gt; is manufactured.
+&lt;ex&gt;&lt;fex name="Product"&gt;Those machines&lt;/fex&gt; were &lt;t&gt;manufactured&lt;/t&gt; &lt;fex name="Factory"&gt;in the Miami plant&lt;/fex&gt;.&lt;/ex&gt; &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Peripheral" cBy="840" cDate="10/04/2002 10:54:13 PDT Fri" abbrev="Con" name="Consumer" ID="3770">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Manufacturer&lt;/fen&gt; produces the &lt;fen&gt;Product&lt;/fen&gt; for the &lt;fen&gt;Consumer&lt;/fen&gt;.
+&lt;ex&gt;&lt;fex name="Product"&gt;The toys&lt;/fex&gt; are &lt;t&gt;made&lt;/t&gt; &lt;fex name="Consumer"&gt;for children&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="840" cDate="10/04/2002 04:47:28 PDT Fri" abbrev="Depict" name="Depictive" ID="3773">
+        <definition>&lt;def-root&gt;A phrase that describes the state of the &lt;fen&gt;Manufacturer&lt;/fen&gt; or the &lt;fen&gt;Product&lt;/fen&gt; during the manufacturing process.
+&lt;ex&gt;They &lt;t&gt;manufactured&lt;/t&gt; the goods &lt;fex name="Depictive"&gt;naked&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Peripheral" cBy="840" cDate="10/04/2002 04:47:28 PDT Fri" abbrev="Ins" name="Instrument" ID="3774">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Instrument&lt;/fen&gt; with which a &lt;fen&gt;Manufacturer&lt;/fen&gt;
+ produces a &lt;fen&gt;Product&lt;/fen&gt;.
+&lt;ex&gt;&lt;fex name="Product"&gt;Those lamps&lt;/fex&gt; were &lt;t&gt;made&lt;/t&gt; &lt;fex name="Instrument"&gt;by machines&lt;/fex&gt;.&lt;/ex&gt; &lt;/def-root&gt;</definition>
+        <semType name="Physical_entity" ID="70"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="840" cDate="10/04/2002 04:47:28 PDT Fri" abbrev="Manr" name="Manner" ID="3775">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Manner&lt;/fen&gt; in which a &lt;fen&gt;Manufacturer&lt;/fen&gt; creates a &lt;fen&gt;Product&lt;/fen&gt;.
+&lt;ex&gt;&lt;fex name="Product"&gt;Fine furniture&lt;/fex&gt; is  usually &lt;t&gt;made&lt;/t&gt; &lt;fex name="Manner"&gt;slowly&lt;/fex&gt;.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="840" cDate="10/04/2002 04:47:28 PDT Fri" abbrev="Mns" name="Means" ID="3776">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Means&lt;/fen&gt; by which a &lt;fen&gt;Manufacturer&lt;/fen&gt;  creates a &lt;fen&gt;Product&lt;/fen&gt;.
+&lt;ex&gt;&lt;fex name="Product"&gt;Cars&lt;/fex&gt; are &lt;t&gt;manufactured&lt;/t&gt; &lt;fex name="Means"&gt;by mass production&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="840" cDate="10/04/2002 04:47:28 PDT Fri" abbrev="Purp" name="Purpose" ID="3777">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Purpose&lt;/fen&gt; for which an &lt;fen&gt;Manufacturer&lt;/fen&gt; produces a &lt;fen&gt;Product&lt;/fen&gt;.
+&lt;ex&gt;&lt;fex name="Manufacturer"&gt;The company&lt;/fex&gt; will &lt;t&gt;produce&lt;/t&gt; more &lt;fex name="Depictive"&gt;high-tech&lt;/fex&gt; &lt;fex name="Product"&gt; gadgets&lt;/fex&gt; &lt;fex name="Purpose"&gt;to meet the demand of the market&lt;/fex&gt;.&lt;/ex&gt; &lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="840" cDate="10/04/2002 04:48:57 PDT Fri" abbrev="Cond" name="Circumstances" ID="3778">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Circumstances&lt;/fen&gt; under which the the product was produced.
+&lt;ex&gt;&lt;fex name="Manufacturer"&gt;They&lt;/fex&gt; &lt;t&gt;produced&lt;/t&gt; &lt;fex name="Product"&gt;only half of the units&lt;/fex&gt; &lt;fex name="Circumstances"&gt;after an injunction to follow the environmental policy&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="d0d0d0" fgColor="000000" coreType="Extra-Thematic" cBy="618" cDate="02/04/2005 11:53:15 PST Fri" abbrev="fre" name="Frequency" ID="7482">
+        <definition>&lt;def-root&gt;The number of manufacturing events in a given time period.
+
+&lt;ex&gt;We &lt;t&gt;produce&lt;/t&gt; 90 million units &lt;fex name="fre"&gt;every month&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="000000" coreType="Extra-Thematic" cBy="225" cDate="06/03/2009 04:07:26 PDT Wed" abbrev="" name="Locus" ID="13186">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Locus&lt;/fen&gt; is a description of the active zone of the &lt;fen&gt;Manufacturer&lt;/fen&gt;, where the manufacturing most saliently takes place.
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Manufacturer" ID="3756"/>
+        <memberFE name="Factory" ID="3769"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Intentionally_create</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="manufacture.v" ID="7518" lemmaID="23434" cBy="840" cDate="10/03/2002 06:01:08 PDT Thu">
+        <definition>COD: make (something) on a large scale using machinery. </definition>
+        <sentenceCount annotated="39" total="304"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="manufacture"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="produce.v" ID="7523" lemmaID="30579" cBy="840" cDate="10/04/2002 10:41:51 PDT Fri">
+        <definition>COD: make, manufacture, or create.</definition>
+        <sentenceCount annotated="23" total="311"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="produce"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="manufacture.n" ID="7524" lemmaID="23433" cBy="840" cDate="10/04/2002 10:43:06 PDT Fri">
+        <definition>COD:  the process of manufacturing</definition>
+        <sentenceCount annotated="26" total="242"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="manufacture"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="make.v" ID="7526" lemmaID="23215" cBy="840" cDate="10/04/2002 10:59:16 PDT Fri">
+        <definition>FN: form by putting parts together or combining substances. </definition>
+        <sentenceCount annotated="6" total="300"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="make"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="manufacturing.n" ID="7533" lemmaID="46154" cBy="840" cDate="10/04/2002 05:12:30 PDT Fri">
+        <definition>FN: the process of producing products</definition>
+        <sentenceCount annotated="27" total="124"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="manufacturing"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Manufacturer" POS="N" name="manufacturer.n" ID="7708" lemmaID="23435" cBy="840" cDate="11/08/2002 05:17:10 PST Fri">
+        <definition>FN: the company or person that makes (something) on a large scale using machinery</definition>
+        <sentenceCount annotated="30" total="301"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="manufacturer"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="production.n" ID="11441" lemmaID="49826" cBy="664" cDate="12/14/2004 11:00:04 PST Tue">
+        <definition>COD: the action or process of producing or being produced.</definition>
+        <sentenceCount annotated="38" total="292"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="production"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="producer.n" ID="11595" lemmaID="30580" cBy="618" cDate="02/23/2005 04:24:48 PST Wed">
+        <definition>FN: a company or person that produces something on a mass scale</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="producer"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="industrial.a" ID="11667" lemmaID="19716" cBy="605" cDate="03/02/2005 05:54:46 PST Wed">
+        <definition>FN: related to economic activity concerned with the processing of raw materials and manufacture of goods in factories.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="industrial"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="fabricate.v" ID="11757" lemmaID="13756" cBy="605" cDate="03/24/2005 09:24:47 PST Thu">
+        <definition>COD: construct or manufacture (an industrial product), especially from prepared components</definition>
+        <sentenceCount annotated="21" total="137"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="fabricate"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="fabrication.n" ID="11758" lemmaID="49901" cBy="605" cDate="03/24/2005 09:25:31 PST Thu">
+        <definition>FN: construction or manufacturing  of an industrial product, especially from prepared components</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="fabrication"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="maker.n" ID="15239" lemmaID="23217" cBy="597" cDate="08/26/2008 01:21:13 PDT Tue">
+        <definition>FN: party responsible for manufacturing.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="maker"/>
+    </lexUnit>
+</frame>

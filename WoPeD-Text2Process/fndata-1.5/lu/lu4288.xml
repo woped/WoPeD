@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="tun.n" ID="4288" frame="Containers" frameID="78" totalAnnotated="4" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="Cons" name="Construction"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Container" name="Container"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="Cont" name="Contents"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Peripheral" abbrev="" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Mat" name="Material"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Own" name="Owner"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="Part" name="Part"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Rel_loc" name="Relative_location"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Peripheral" abbrev="Type" name="Type"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Use" name="Use"/>
+        </frame>
+    </header>
+    <definition>COD: a large beer or wine cask</definition>
+    <lexeme POS="N" name="tun"/>
+    <semType name="Container" ID="15"/>
+    <valences>
+        <governor type="Gov" lemma="export">
+            <annoSet ID="856739"/>
+        </governor>
+        <FERealization total="4">
+            <FE name="Container"/>
+            <pattern total="4">
+                <valenceUnit GF="" PT="DEN" FE="Container"/>
+                <annoSet ID="856723"/>
+                <annoSet ID="856739"/>
+                <annoSet ID="856753"/>
+                <annoSet ID="856785"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Contents"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Contents"/>
+                <annoSet ID="856739"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Material"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Material"/>
+                <annoSet ID="856753"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Type"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Type"/>
+                <annoSet ID="856723"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Use"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Use"/>
+                <annoSet ID="856785"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Container"/>
+            <FE name="Contents"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Container"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Contents"/>
+                <annoSet ID="856739"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Container"/>
+            <FE name="Material"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Container"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Material"/>
+                <annoSet ID="856753"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Container"/>
+            <FE name="Type"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Container"/>
+                <valenceUnit GF="Dep" PT="N" FE="Type"/>
+                <annoSet ID="856723"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Container"/>
+            <FE name="Use"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Container"/>
+                <valenceUnit GF="Dep" PT="N" FE="Use"/>
+                <annoSet ID="856785"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-001-all">
+        <sentence sentNo="0" aPos="263658" ID="689718">
+            <text>In the brewery it is milled into a powder called grist and then mixed with hot water ( known as liquor in breweries ) in a vessel called a mash tun . </text>
+            <annotationSet cDate="01/07/2003 10:56:11 PST Tue" status="UNANN" ID="856722">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PRP"/>
+                    <label end="5" start="3" name="AT0"/>
+                    <label end="13" start="7" name="NN1"/>
+                    <label end="16" start="15" name="PNP"/>
+                    <label end="19" start="18" name="VBZ"/>
+                    <label end="26" start="21" name="VVN"/>
+                    <label end="31" start="28" name="PRP"/>
+                    <label end="33" start="33" name="AT0"/>
+                    <label end="40" start="35" name="NN1"/>
+                    <label end="47" start="42" name="VVD-VVN"/>
+                    <label end="53" start="49" name="NN1"/>
+                    <label end="57" start="55" name="CJC"/>
+                    <label end="62" start="59" name="AV0"/>
+                    <label end="68" start="64" name="VVD-VVN"/>
+                    <label end="73" start="70" name="PRP"/>
+                    <label end="77" start="75" name="AJ0"/>
+                    <label end="83" start="79" name="NN1"/>
+                    <label end="85" start="85" name="PUL"/>
+                    <label end="91" start="87" name="VVN"/>
+                    <label end="94" start="93" name="CJS-PRP"/>
+                    <label end="101" start="96" name="NN1"/>
+                    <label end="104" start="103" name="PRP"/>
+                    <label end="114" start="106" name="NN2"/>
+                    <label end="116" start="116" name="PUR"/>
+                    <label end="119" start="118" name="PRP"/>
+                    <label end="121" start="121" name="AT0"/>
+                    <label end="128" start="123" name="NN1"/>
+                    <label end="135" start="130" name="VVD-VVN"/>
+                    <label end="137" start="137" name="AT0"/>
+                    <label end="142" start="139" name="NN1"/>
+                    <label end="146" start="144" name="NN1"/>
+                    <label end="148" start="148" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:56:11 PST Tue" status="MANUAL" ID="856723">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="2012" end="142" start="139" name="Type"/>
+                    <label cBy="669" feID="367" end="146" start="144" name="Container"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="142" start="139" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="142" start="139" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="146" start="144" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="1111325" ID="689726">
+            <text>This traced itself back to John Merchant , a Fleming given a permit almost 100 years earlier , in 1492 , to export 50 tuns of ` ale called berre &quot; to the Low Countries . </text>
+            <annotationSet cDate="01/07/2003 10:56:12 PST Tue" status="UNANN" ID="856738">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="DT0"/>
+                    <label end="10" start="5" name="VVD"/>
+                    <label end="17" start="12" name="PNX"/>
+                    <label end="22" start="19" name="AVP"/>
+                    <label end="25" start="24" name="PRP"/>
+                    <label end="30" start="27" name="NP0"/>
+                    <label end="39" start="32" name="NN1"/>
+                    <label end="41" start="41" name="PUN"/>
+                    <label end="43" start="43" name="AT0"/>
+                    <label end="51" start="45" name="NP0"/>
+                    <label end="57" start="53" name="VVN"/>
+                    <label end="59" start="59" name="AT0"/>
+                    <label end="66" start="61" name="NN1"/>
+                    <label end="73" start="68" name="AV0"/>
+                    <label end="77" start="75" name="CRD"/>
+                    <label end="83" start="79" name="NN2"/>
+                    <label end="91" start="85" name="AV0"/>
+                    <label end="93" start="93" name="PUN"/>
+                    <label end="96" start="95" name="PRP"/>
+                    <label end="101" start="98" name="CRD"/>
+                    <label end="103" start="103" name="PUN"/>
+                    <label end="106" start="105" name="TO0"/>
+                    <label end="113" start="108" name="VVI"/>
+                    <label end="116" start="115" name="CRD"/>
+                    <label end="121" start="118" name="NN2"/>
+                    <label end="124" start="123" name="PRF"/>
+                    <label end="126" start="126" name="PUQ"/>
+                    <label end="130" start="128" name="NN1"/>
+                    <label end="137" start="132" name="VVD-VVN"/>
+                    <label end="143" start="139" name="NN1"/>
+                    <label end="145" start="145" name="PUQ"/>
+                    <label end="148" start="147" name="PRP"/>
+                    <label end="152" start="150" name="AT0"/>
+                    <label end="156" start="154" name="AJ0"/>
+                    <label end="166" start="158" name="NN2"/>
+                    <label end="168" start="168" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:56:12 PST Tue" status="MANUAL" ID="856739">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="368" end="143" start="123" name="Contents"/>
+                    <label cBy="669" feID="367" end="121" start="118" name="Container"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="143" start="123" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="143" start="123" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="121" start="118" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="113" start="108" name="Gov"/>
+                    <label end="143" start="115" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="12164673" ID="689733">
+            <text>Surrounding the stones is a wooden tun lined with zinc . </text>
+            <annotationSet cDate="01/07/2003 10:56:13 PST Tue" status="UNANN" ID="856752">
+                <layer rank="1" name="BNC">
+                    <label end="10" start="0" name="VVG"/>
+                    <label end="14" start="12" name="AT0"/>
+                    <label end="21" start="16" name="NN2"/>
+                    <label end="24" start="23" name="VBZ"/>
+                    <label end="26" start="26" name="AT0"/>
+                    <label end="33" start="28" name="AJ0"/>
+                    <label end="37" start="35" name="NN1"/>
+                    <label end="43" start="39" name="VVD-VVN"/>
+                    <label end="48" start="45" name="PRP"/>
+                    <label end="53" start="50" name="NN1"/>
+                    <label end="55" start="55" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:56:13 PST Tue" status="MANUAL" ID="856753">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="2011" end="33" start="28" name="Material"/>
+                    <label cBy="669" feID="367" end="37" start="35" name="Container"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="33" start="28" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="33" start="28" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="37" start="35" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="75453344" ID="689749">
+            <text>The cellars were huge and cavernous but contained nothing remarkable ; beer barrels , wine tuns , cut logs , sea coal and other stores . </text>
+            <annotationSet cDate="01/07/2003 10:56:15 PST Tue" status="UNANN" ID="856784">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="10" start="4" name="NN2"/>
+                    <label end="15" start="12" name="VBD"/>
+                    <label end="20" start="17" name="AJ0"/>
+                    <label end="24" start="22" name="CJC"/>
+                    <label end="34" start="26" name="AJ0"/>
+                    <label end="38" start="36" name="CJC"/>
+                    <label end="48" start="40" name="VVD-VVN"/>
+                    <label end="56" start="50" name="PNI"/>
+                    <label end="67" start="58" name="AJ0"/>
+                    <label end="69" start="69" name="PUN"/>
+                    <label end="74" start="71" name="NN1"/>
+                    <label end="82" start="76" name="NN2"/>
+                    <label end="84" start="84" name="PUN"/>
+                    <label end="89" start="86" name="NN1"/>
+                    <label end="94" start="91" name="NN2-VVZ"/>
+                    <label end="96" start="96" name="PUN"/>
+                    <label end="100" start="98" name="VVB"/>
+                    <label end="105" start="102" name="NN2"/>
+                    <label end="107" start="107" name="PUN"/>
+                    <label end="111" start="109" name="NN1"/>
+                    <label end="116" start="113" name="NN1"/>
+                    <label end="120" start="118" name="CJC"/>
+                    <label end="126" start="122" name="AJ0"/>
+                    <label end="133" start="128" name="NN2"/>
+                    <label end="135" start="135" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:56:15 PST Tue" status="MANUAL" ID="856785">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="2064" end="89" start="86" name="Use"/>
+                    <label cBy="669" feID="367" end="94" start="91" name="Container"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="89" start="86" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="89" start="86" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="94" start="91" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

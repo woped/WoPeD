@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" POS="PREP" name="opposite.prep" ID="14031" frame="Locative_relation" frameID="199" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="Orwell" ID="3">
+            <document description="Orwell_1984_p1" ID="7"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Extra-Thematic" abbrev="Dir" name="Direction"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Dist" name="Distance"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Fig" name="Figure"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core-Unexpressed" abbrev="" name="Figures"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="Grnd" name="Ground"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: in a position opposite to.</definition>
+    <lexeme POS="PREP" name="opposite"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Figure"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Figure"/>
+                <annoSet ID="2599867"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Ground"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Ground"/>
+                <annoSet ID="2599867"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Figure"/>
+            <FE name="Ground"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Figure"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Ground"/>
+                <annoSet ID="2599867"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="manually-added">
+        <sentence corpID="3" docID="7" sentNo="9" paragNo="2" aPos="0" ID="312911">
+            <text>On each landing , opposite the lift-shaft , the poster with the enormous face gazed from the wall .</text>
+            <annotationSet cDate="01/06/2003 10:55:07 PST Mon" status="UNANN" ID="269187">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PRP"/>
+                    <label end="6" start="3" name="DT0"/>
+                    <label end="14" start="8" name="NN1"/>
+                    <label end="16" start="16" name="PUN"/>
+                    <label end="25" start="18" name="PRP"/>
+                    <label end="29" start="27" name="AT0"/>
+                    <label end="40" start="31" name="NN1"/>
+                    <label end="42" start="42" name="PUN"/>
+                    <label end="46" start="44" name="AT0"/>
+                    <label end="53" start="48" name="NN1"/>
+                    <label end="58" start="55" name="PRP"/>
+                    <label end="62" start="60" name="AT0"/>
+                    <label end="71" start="64" name="AJ0"/>
+                    <label end="76" start="73" name="NN1"/>
+                    <label end="82" start="78" name="VVD"/>
+                    <label end="87" start="84" name="PRP"/>
+                    <label end="91" start="89" name="AT0"/>
+                    <label end="96" start="93" name="NN1"/>
+                    <label end="98" start="98" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/27/2010 03:56:47 PDT Tue" status="MANUAL" ID="2599867">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="25" start="18" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="1621" end="40" start="27" name="Ground"/>
+                    <label cBy="664" feID="1622" end="76" start="44" name="Figure"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="40" start="27" name="Obj"/>
+                    <label end="76" start="44" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="40" start="27" name="NP"/>
+                    <label end="76" start="44" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Prep"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

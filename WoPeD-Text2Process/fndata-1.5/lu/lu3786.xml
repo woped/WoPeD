@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="railroad.n" ID="3786" frame="Roadways" frameID="203" totalAnnotated="7" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="A_e" name="Abundant_entities"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Char" name="Characteristic"/>
+            <FE fgColor="FFFFFF" bgColor="A9A9A9" type="Peripheral" abbrev="Dir" name="Direction"/>
+            <FE fgColor="9400D3" bgColor="d0d0d0" type="Peripheral" abbrev="EPs" name="Endpoints"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="F_use" name="Frequency_of_use"/>
+            <FE fgColor="000000" bgColor="9F79EE" type="Peripheral" abbrev="Goal" name="Goal"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Length" name="Length"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="Mat" name="Material"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Name" name="Name"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD73" type="Peripheral" abbrev="par" name="Part"/>
+            <FE fgColor="90876C" bgColor="000000" type="Peripheral" abbrev="Pat" name="Path"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="rel" name="Relative_location"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Road" name="Roadway"/>
+            <FE fgColor="EEE8AA" bgColor="A52A2A" type="Peripheral" abbrev="Src" name="Source"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Peripheral" abbrev="Use" name="Use"/>
+        </frame>
+    </header>
+    <definition>COD: North American term for railway.</definition>
+    <lexeme POS="N" name="railroad"/>
+    <valences>
+        <governor type="Gov" lemma="blockade">
+            <annoSet ID="617198"/>
+        </governor>
+        <FERealization total="1">
+            <FE name="Characteristic"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Characteristic"/>
+                <annoSet ID="617198"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Endpoints"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[between]" FE="Endpoints"/>
+                <annoSet ID="617124"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Name"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Name"/>
+                <annoSet ID="617108"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Name"/>
+                <annoSet ID="617136"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Relative_location"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[near]" FE="Relative_location"/>
+                <annoSet ID="617198"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Relative_location"/>
+                <annoSet ID="617154"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Relative_location"/>
+                <annoSet ID="617112"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="7">
+            <FE name="Roadway"/>
+            <pattern total="7">
+                <valenceUnit GF="" PT="DEN" FE="Roadway"/>
+                <annoSet ID="617094"/>
+                <annoSet ID="617108"/>
+                <annoSet ID="617112"/>
+                <annoSet ID="617124"/>
+                <annoSet ID="617136"/>
+                <annoSet ID="617154"/>
+                <annoSet ID="617198"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Characteristic"/>
+            <FE name="Relative_location"/>
+            <FE name="Roadway"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Characteristic"/>
+                <valenceUnit GF="Dep" PT="PP[near]" FE="Relative_location"/>
+                <valenceUnit GF="" PT="DEN" FE="Roadway"/>
+                <annoSet ID="617198"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Endpoints"/>
+            <FE name="Roadway"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[between]" FE="Endpoints"/>
+                <valenceUnit GF="" PT="DEN" FE="Roadway"/>
+                <annoSet ID="617124"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Name"/>
+            <FE name="Roadway"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Name"/>
+                <valenceUnit GF="" PT="DEN" FE="Roadway"/>
+                <annoSet ID="617108"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Name"/>
+                <valenceUnit GF="" PT="DEN" FE="Roadway"/>
+                <annoSet ID="617136"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Relative_location"/>
+            <FE name="Roadway"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Relative_location"/>
+                <valenceUnit GF="" PT="DEN" FE="Roadway"/>
+                <annoSet ID="617154"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Relative_location"/>
+                <valenceUnit GF="" PT="DEN" FE="Roadway"/>
+                <annoSet ID="617112"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Roadway"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Roadway"/>
+                <annoSet ID="617094"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-001-all">
+        <sentence sentNo="0" aPos="13526346" ID="505652">
+            <text>The railroad is in all its relations a matter of earnest business , to be got through as soon as possible . </text>
+            <annotationSet cDate="01/07/2003 05:58:33 PST Tue" status="UNANN" ID="617093">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="11" start="4" name="NN1"/>
+                    <label end="14" start="13" name="VBZ"/>
+                    <label end="17" start="16" name="PRP"/>
+                    <label end="21" start="19" name="DT0"/>
+                    <label end="25" start="23" name="DPS"/>
+                    <label end="35" start="27" name="NN2"/>
+                    <label end="37" start="37" name="AT0"/>
+                    <label end="44" start="39" name="NN1"/>
+                    <label end="47" start="46" name="PRF"/>
+                    <label end="55" start="49" name="AJ0"/>
+                    <label end="64" start="57" name="NN1"/>
+                    <label end="66" start="66" name="PUN"/>
+                    <label end="69" start="68" name="TO0"/>
+                    <label end="72" start="71" name="VBI"/>
+                    <label end="76" start="74" name="VVN"/>
+                    <label end="84" start="78" name="AVP-PRP"/>
+                    <label end="87" start="86" name="CJS"/>
+                    <label end="92" start="89" name="CJS"/>
+                    <label end="95" start="94" name="CJS"/>
+                    <label end="104" start="97" name="AJ0"/>
+                    <label end="106" start="106" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:58:33 PST Tue" status="MANUAL" ID="617094">
+                <layer rank="1" name="FE">
+                    <label cBy="865" feID="1657" end="11" start="4" name="Roadway"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="11" start="4" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="13532367" ID="505659">
+            <text>The tracks of the New York Central railroad occupied some of the finest land in New York . </text>
+            <annotationSet cDate="01/07/2003 05:58:34 PST Tue" status="UNANN" ID="617107">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="9" start="4" name="NN2"/>
+                    <label end="12" start="11" name="PRF"/>
+                    <label end="16" start="14" name="AT0"/>
+                    <label end="20" start="18" name="NP0"/>
+                    <label end="25" start="22" name="NP0"/>
+                    <label end="33" start="27" name="AJ0"/>
+                    <label end="42" start="35" name="NN1"/>
+                    <label end="51" start="44" name="VVD"/>
+                    <label end="56" start="53" name="DT0"/>
+                    <label end="59" start="58" name="PRF"/>
+                    <label end="63" start="61" name="AT0"/>
+                    <label end="70" start="65" name="AJS"/>
+                    <label end="75" start="72" name="NN1"/>
+                    <label end="78" start="77" name="PRP"/>
+                    <label end="82" start="80" name="NP0"/>
+                    <label end="87" start="84" name="NP0"/>
+                    <label end="89" start="89" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:58:34 PST Tue" status="MANUAL" ID="617108">
+                <layer rank="1" name="FE">
+                    <label cBy="865" feID="1662" end="33" start="18" name="Name"/>
+                    <label cBy="865" feID="1657" end="42" start="35" name="Roadway"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="33" start="18" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="33" start="18" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="42" start="35" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="13533222" ID="505661">
+            <text>The Spanish style , favoured by the Santa Fe and other railroads in the Southern States , can be divided into two streams , the baroque and the mission . </text>
+            <annotationSet cDate="01/07/2003 05:58:35 PST Tue" status="UNANN" ID="617111">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="10" start="4" name="AJ0"/>
+                    <label end="16" start="12" name="NN1"/>
+                    <label end="18" start="18" name="PUN"/>
+                    <label end="27" start="20" name="VVN"/>
+                    <label end="30" start="29" name="PRP"/>
+                    <label end="34" start="32" name="AT0"/>
+                    <label end="40" start="36" name="NP0"/>
+                    <label end="43" start="42" name="NP0"/>
+                    <label end="47" start="45" name="CJC"/>
+                    <label end="53" start="49" name="AJ0"/>
+                    <label end="63" start="55" name="NN2"/>
+                    <label end="66" start="65" name="PRP"/>
+                    <label end="70" start="68" name="AT0"/>
+                    <label end="79" start="72" name="NP0"/>
+                    <label end="86" start="81" name="NP0"/>
+                    <label end="88" start="88" name="PUN"/>
+                    <label end="92" start="90" name="VM0"/>
+                    <label end="95" start="94" name="VBI"/>
+                    <label end="103" start="97" name="VVN"/>
+                    <label end="108" start="105" name="PRP"/>
+                    <label end="112" start="110" name="CRD"/>
+                    <label end="120" start="114" name="NN2"/>
+                    <label end="122" start="122" name="PUN"/>
+                    <label end="126" start="124" name="AT0"/>
+                    <label end="134" start="128" name="NN1"/>
+                    <label end="138" start="136" name="CJC"/>
+                    <label end="142" start="140" name="AT0"/>
+                    <label end="150" start="144" name="NN1"/>
+                    <label end="152" start="152" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:58:36 PST Tue" status="MANUAL" ID="617112">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="1657" end="63" start="55" name="Roadway"/>
+                    <label cBy="669" feID="3515" end="86" start="65" name="Relative_location"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="86" start="65" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="86" start="65" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="63" start="55" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="16957593" ID="505667">
+            <text>The railroad between Armagh and Belfast opens up another important commercial communication . </text>
+            <annotationSet cDate="01/07/2003 05:58:38 PST Tue" status="UNANN" ID="617123">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="11" start="4" name="NN1"/>
+                    <label end="19" start="13" name="PRP"/>
+                    <label end="26" start="21" name="NN1-NP0"/>
+                    <label end="30" start="28" name="CJC"/>
+                    <label end="38" start="32" name="NP0"/>
+                    <label end="44" start="40" name="VVZ"/>
+                    <label end="47" start="46" name="AVP-PRP"/>
+                    <label end="55" start="49" name="DT0"/>
+                    <label end="65" start="57" name="AJ0"/>
+                    <label end="76" start="67" name="AJ0"/>
+                    <label end="90" start="78" name="NN1"/>
+                    <label end="92" start="92" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:58:38 PST Tue" status="MANUAL" ID="617124">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="1660" end="38" start="13" name="Endpoints"/>
+                    <label cBy="669" feID="1657" end="11" start="4" name="Roadway"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="38" start="13" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="38" start="13" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="11" start="4" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="47230137" ID="505673">
+            <text>It looked like somewhere waiting for a film to happen , Jasper thought , like a Western on television where two gunmen will come out of the badlands and hold up the mailtrain on the Santa Fe railroad . </text>
+            <annotationSet cDate="01/07/2003 05:58:38 PST Tue" status="UNANN" ID="617135">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="8" start="3" name="VVD"/>
+                    <label end="13" start="10" name="PRP"/>
+                    <label end="23" start="15" name="AV0"/>
+                    <label end="31" start="25" name="AJ0-VVG"/>
+                    <label end="35" start="33" name="PRP"/>
+                    <label end="37" start="37" name="AT0"/>
+                    <label end="42" start="39" name="NN1"/>
+                    <label end="45" start="44" name="TO0"/>
+                    <label end="52" start="47" name="VVI"/>
+                    <label end="54" start="54" name="PUN"/>
+                    <label end="61" start="56" name="NP0"/>
+                    <label end="69" start="63" name="VVD"/>
+                    <label end="71" start="71" name="PUN"/>
+                    <label end="76" start="73" name="PRP"/>
+                    <label end="78" start="78" name="AT0"/>
+                    <label end="86" start="80" name="NP0"/>
+                    <label end="89" start="88" name="PRP"/>
+                    <label end="100" start="91" name="NN1"/>
+                    <label end="106" start="102" name="AVQ-CJS"/>
+                    <label end="110" start="108" name="CRD"/>
+                    <label end="117" start="112" name="NN2"/>
+                    <label end="122" start="119" name="VM0"/>
+                    <label end="127" start="124" name="VVI"/>
+                    <label end="131" start="129" name="PRP"/>
+                    <label end="134" start="133" name="PRP"/>
+                    <label end="138" start="136" name="AT0"/>
+                    <label end="147" start="140" name="NN2"/>
+                    <label end="151" start="149" name="CJC"/>
+                    <label end="156" start="153" name="VVB"/>
+                    <label end="159" start="158" name="AVP-PRP"/>
+                    <label end="163" start="161" name="AT0"/>
+                    <label end="173" start="165" name="NN1"/>
+                    <label end="176" start="175" name="PRP"/>
+                    <label end="180" start="178" name="AT0"/>
+                    <label end="186" start="182" name="NP0"/>
+                    <label end="189" start="188" name="NP0"/>
+                    <label end="198" start="191" name="NN1"/>
+                    <label end="200" start="200" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:58:38 PST Tue" status="MANUAL" ID="617136">
+                <layer rank="1" name="FE">
+                    <label cBy="865" feID="1662" end="189" start="182" name="Name"/>
+                    <label cBy="865" feID="1657" end="198" start="191" name="Roadway"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="189" start="182" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="189" start="182" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="198" start="191" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="52965248" ID="505682">
+            <text>Morgan , Andrew Carnegie , and John D. Rockefeller , Sr followed suit in their massive restructurings of US railroads and industries . </text>
+            <annotationSet cDate="01/07/2003 05:58:39 PST Tue" status="UNANN" ID="617153">
+                <layer rank="1" name="BNC">
+                    <label end="5" start="0" name="NN1-NP0"/>
+                    <label end="7" start="7" name="PUN"/>
+                    <label end="14" start="9" name="NP0"/>
+                    <label end="23" start="16" name="NP0"/>
+                    <label end="25" start="25" name="PUN"/>
+                    <label end="29" start="27" name="CJC"/>
+                    <label end="34" start="31" name="NP0"/>
+                    <label end="37" start="36" name="NP0"/>
+                    <label end="49" start="39" name="NP0"/>
+                    <label end="51" start="51" name="PUN"/>
+                    <label end="54" start="53" name="NP0"/>
+                    <label end="63" start="56" name="VVD"/>
+                    <label end="68" start="65" name="NN1-VVB"/>
+                    <label end="71" start="70" name="PRP"/>
+                    <label end="77" start="73" name="DPS"/>
+                    <label end="85" start="79" name="AJ0"/>
+                    <label end="100" start="87" name="NN2"/>
+                    <label end="103" start="102" name="PRF"/>
+                    <label end="106" start="105" name="NP0"/>
+                    <label end="116" start="108" name="NN2"/>
+                    <label end="120" start="118" name="CJC"/>
+                    <label end="131" start="122" name="NN2"/>
+                    <label end="133" start="133" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:58:39 PST Tue" status="MANUAL" ID="617154">
+                <layer rank="1" name="FE">
+                    <label cBy="865" feID="3515" end="106" start="105" name="Relative_location"/>
+                    <label cBy="865" feID="1657" end="116" start="108" name="Roadway"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="106" start="105" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="106" start="105" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="116" start="108" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="84607913" ID="505704">
+            <text>In a parallel dispute over land claims , freight and passenger rail traffic was seriously disrupted by Ojibwa Indians who blockaded two trans-continental railroads near Thunder Bay in north-western Ontario for five days . </text>
+            <annotationSet cDate="01/07/2003 05:58:42 PST Tue" status="UNANN" ID="617197">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PRP"/>
+                    <label end="3" start="3" name="AT0"/>
+                    <label end="12" start="5" name="AJ0"/>
+                    <label end="20" start="14" name="NN1"/>
+                    <label end="25" start="22" name="PRP"/>
+                    <label end="30" start="27" name="NN1"/>
+                    <label end="37" start="32" name="NN2-VVZ"/>
+                    <label end="39" start="39" name="PUN"/>
+                    <label end="47" start="41" name="NN1"/>
+                    <label end="51" start="49" name="CJC"/>
+                    <label end="61" start="53" name="NN1"/>
+                    <label end="66" start="63" name="NN1"/>
+                    <label end="74" start="68" name="NN1"/>
+                    <label end="78" start="76" name="VBD"/>
+                    <label end="88" start="80" name="AV0"/>
+                    <label end="98" start="90" name="VVN"/>
+                    <label end="101" start="100" name="PRP"/>
+                    <label end="108" start="103" name="NP0"/>
+                    <label end="116" start="110" name="NN2"/>
+                    <label end="120" start="118" name="PNQ"/>
+                    <label end="130" start="122" name="VVD"/>
+                    <label end="134" start="132" name="CRD"/>
+                    <label end="152" start="136" name="AJ0"/>
+                    <label end="162" start="154" name="NN2"/>
+                    <label end="167" start="164" name="PRP"/>
+                    <label end="175" start="169" name="NP0"/>
+                    <label end="179" start="177" name="NP0"/>
+                    <label end="182" start="181" name="PRP"/>
+                    <label end="196" start="184" name="AJ0"/>
+                    <label end="204" start="198" name="NP0"/>
+                    <label end="208" start="206" name="PRP"/>
+                    <label end="213" start="210" name="CRD"/>
+                    <label end="218" start="215" name="NN2"/>
+                    <label end="220" start="220" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:58:42 PST Tue" status="MANUAL" ID="617198">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="1661" end="152" start="136" name="Characteristic"/>
+                    <label cBy="669" feID="1657" end="162" start="154" name="Roadway"/>
+                    <label cBy="865" feID="3515" end="204" start="164" name="Relative_location"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="152" start="136" name="Dep"/>
+                    <label end="204" start="164" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="152" start="136" name="AJP"/>
+                    <label end="204" start="164" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="162" start="154" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="130" start="122" name="Gov"/>
+                    <label end="204" start="132" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

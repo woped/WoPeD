@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="battery.n" ID="7996" frame="Offenses" frameID="432" totalAnnotated="6" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <corpus name="AP" ID="113">
+            <document description="apwsE970101.0238" ID="8865"/>
+            <document description="apwsE950209.0654" ID="8866"/>
+            <document description="apwsE941123.0359" ID="8888"/>
+            <document description="apwsE970222.0264" ID="8901"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Off" name="Offense"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="" name="Perpetrator"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Extra-Thematic" abbrev="Pun" name="Punishment"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Extra-Thematic" abbrev="Spec" name="Specification"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Core" abbrev="Vic" name="Victim"/>
+        </frame>
+    </header>
+    <definition>COD: the infliction of unlawful personal violence on another person, even where the contact does no physical harm.</definition>
+    <lexeme POS="N" name="battery"/>
+    <valences>
+        <governor type="Gov" lemma="charge">
+            <annoSet ID="1871569"/>
+            <annoSet ID="2066081"/>
+            <annoSet ID="2066163"/>
+        </governor>
+        <governor type="Gov" lemma="from">
+            <annoSet ID="2066133"/>
+        </governor>
+        <FERealization total="1">
+            <FE name="Degree"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Degree"/>
+                <annoSet ID="2066163"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="6">
+            <FE name="Offense"/>
+            <pattern total="6">
+                <valenceUnit GF="" PT="DEN" FE="Offense"/>
+                <annoSet ID="1871569"/>
+                <annoSet ID="1871597"/>
+                <annoSet ID="2066081"/>
+                <annoSet ID="2066085"/>
+                <annoSet ID="2066133"/>
+                <annoSet ID="2066163"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Specification"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Specification"/>
+                <annoSet ID="2066133"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="NP" FE="Specification"/>
+                <annoSet ID="1871597"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Victim"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[against]" FE="Victim"/>
+                <annoSet ID="2066163"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Degree"/>
+            <FE name="Offense"/>
+            <FE name="Victim"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Degree"/>
+                <valenceUnit GF="" PT="DEN" FE="Offense"/>
+                <valenceUnit GF="Dep" PT="PP[against]" FE="Victim"/>
+                <annoSet ID="2066163"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="3">
+            <FE name="Offense"/>
+            <pattern total="3">
+                <valenceUnit GF="" PT="DEN" FE="Offense"/>
+                <annoSet ID="1871569"/>
+                <annoSet ID="2066081"/>
+                <annoSet ID="2066085"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Offense"/>
+            <FE name="Specification"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Offense"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Specification"/>
+                <annoSet ID="2066133"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Offense"/>
+                <valenceUnit GF="Dep" PT="NP" FE="Specification"/>
+                <annoSet ID="1871597"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="276" aPos="0" ID="1212234">
+            <text>William Kennedy Smith , nephew of Senator Edward Kennedy , was charged on May 9 with one felony count of sexual battery ( the definition of rape under Florida law ) and one misdemeanour count of battery .</text>
+            <annotationSet cDate="04/30/2003 06:22:51 PDT Wed" status="UNANN" ID="1871568">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="0" name="NP"/>
+                    <label end="14" start="8" name="NP"/>
+                    <label end="20" start="16" name="NP"/>
+                    <label end="22" start="22" name=","/>
+                    <label end="29" start="24" name="nn"/>
+                    <label end="32" start="31" name="in"/>
+                    <label end="40" start="34" name="NP"/>
+                    <label end="47" start="42" name="NP"/>
+                    <label end="55" start="49" name="NP"/>
+                    <label end="57" start="57" name=","/>
+                    <label end="61" start="59" name="VBD"/>
+                    <label end="69" start="63" name="VVN"/>
+                    <label end="72" start="71" name="in"/>
+                    <label end="76" start="74" name="NP"/>
+                    <label end="78" start="78" name="cd"/>
+                    <label end="83" start="80" name="in"/>
+                    <label end="87" start="85" name="cd"/>
+                    <label end="94" start="89" name="nn"/>
+                    <label end="100" start="96" name="nn"/>
+                    <label end="103" start="102" name="in"/>
+                    <label end="110" start="105" name="jj"/>
+                    <label end="118" start="112" name="nn"/>
+                    <label end="120" start="120" name="("/>
+                    <label end="124" start="122" name="dt"/>
+                    <label end="135" start="126" name="nn"/>
+                    <label end="138" start="137" name="in"/>
+                    <label end="143" start="140" name="nn"/>
+                    <label end="149" start="145" name="in"/>
+                    <label end="157" start="151" name="NP"/>
+                    <label end="161" start="159" name="nn"/>
+                    <label end="163" start="163" name=")"/>
+                    <label end="167" start="165" name="cc"/>
+                    <label end="171" start="169" name="cd"/>
+                    <label end="184" start="173" name="nn"/>
+                    <label end="190" start="186" name="nn"/>
+                    <label end="193" start="192" name="in"/>
+                    <label end="201" start="195" name="nn"/>
+                    <label end="203" start="203" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 06:22:51 PDT Wed" status="MANUAL" ID="1871569">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="201" start="195" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="3971" end="201" start="195" name="Offense"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="69" start="63" name="Gov"/>
+                    <label end="201" start="80" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="645" aPos="0" ID="1212248">
+            <text>A battery is the infliction of unlawful force on another person .</text>
+            <annotationSet cDate="04/30/2003 06:22:56 PDT Wed" status="UNANN" ID="1871596">
+                <layer rank="1" name="PENN">
+                    <label end="0" start="0" name="dt"/>
+                    <label end="8" start="2" name="nn"/>
+                    <label end="11" start="10" name="VBZ"/>
+                    <label end="15" start="13" name="dt"/>
+                    <label end="26" start="17" name="nn"/>
+                    <label end="29" start="28" name="in"/>
+                    <label end="38" start="31" name="jj"/>
+                    <label end="44" start="40" name="nn"/>
+                    <label end="47" start="46" name="in"/>
+                    <label end="55" start="49" name="dt"/>
+                    <label end="62" start="57" name="nn"/>
+                    <label end="64" start="64" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/30/2003 06:22:56 PDT Wed" status="MANUAL" ID="1871597">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="8" start="2" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="3971" end="8" start="2" name="Offense"/>
+                    <label cBy="268" feID="3969" end="62" start="13" name="Specification"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="62" start="13" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="62" start="13" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="11" start="10" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="01-NPassault,weapon,abduction-T-(2)">
+        <sentence corpID="113" docID="8865" sentNo="2" paragNo="18" aPos="105903651" ID="1308965">
+            <text>Police can be charged only with assault and battery and few are ever punished .</text>
+            <annotationSet cDate="01/28/2005 11:21:37 PST Fri" status="UNANN" ID="2066080">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="0" name="nns"/>
+                    <label end="9" start="7" name="md"/>
+                    <label end="12" start="11" name="vb"/>
+                    <label end="20" start="14" name="VVN"/>
+                    <label end="25" start="22" name="rb"/>
+                    <label end="30" start="27" name="in"/>
+                    <label end="38" start="32" name="nn"/>
+                    <label end="42" start="40" name="cc"/>
+                    <label end="50" start="44" name="nn"/>
+                    <label end="54" start="52" name="cc"/>
+                    <label end="58" start="56" name="jj"/>
+                    <label end="62" start="60" name="vbp"/>
+                    <label end="67" start="64" name="rb"/>
+                    <label end="76" start="69" name="VVN"/>
+                    <label end="78" start="78" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/28/2005 11:21:38 PST Fri" status="MANUAL" ID="2066081">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="50" start="44" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="3971" end="50" start="44" name="Offense"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="20" start="14" name="Gov"/>
+                    <label end="50" start="27" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="8866" sentNo="1" paragNo="7" aPos="37435766" ID="1308967">
+            <text>In her first trial , she was acquitted of mayhem and assault , but the jury deadlocked on battery .</text>
+            <annotationSet cDate="01/28/2005 11:21:39 PST Fri" status="UNANN" ID="2066084">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="in"/>
+                    <label end="5" start="3" name="PP$"/>
+                    <label end="11" start="7" name="jj"/>
+                    <label end="17" start="13" name="nn"/>
+                    <label end="19" start="19" name=","/>
+                    <label end="23" start="21" name="PP"/>
+                    <label end="27" start="25" name="VBD"/>
+                    <label end="37" start="29" name="VVN"/>
+                    <label end="40" start="39" name="in"/>
+                    <label end="47" start="42" name="nn"/>
+                    <label end="51" start="49" name="cc"/>
+                    <label end="59" start="53" name="nn"/>
+                    <label end="61" start="61" name=","/>
+                    <label end="65" start="63" name="cc"/>
+                    <label end="69" start="67" name="dt"/>
+                    <label end="74" start="71" name="nn"/>
+                    <label end="85" start="76" name="VVN"/>
+                    <label end="88" start="87" name="in"/>
+                    <label end="96" start="90" name="nn"/>
+                    <label end="98" start="98" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/28/2005 11:21:39 PST Fri" status="MANUAL" ID="2066085">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="96" start="90" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="3971" end="96" start="90" name="Offense"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="85" start="76" name="Gov"/>
+                    <label end="96" start="87" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="03-PPfor,with-T-(2)"/>
+    <subCorpus name="other-matched-(2)"/>
+    <subCorpus name="other-unmatched-(2)">
+        <sentence corpID="113" docID="8888" sentNo="2" paragNo="12" aPos="2868966" ID="1308991">
+            <text>Charges ranged from sexual battery and aggravated assault to robbery and violation of probation .</text>
+            <annotationSet cDate="01/28/2005 11:21:53 PST Fri" status="UNANN" ID="2066132">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="0" name="nns"/>
+                    <label end="13" start="8" name="VVD"/>
+                    <label end="18" start="15" name="in"/>
+                    <label end="25" start="20" name="jj"/>
+                    <label end="33" start="27" name="nn"/>
+                    <label end="37" start="35" name="cc"/>
+                    <label end="48" start="39" name="VVN"/>
+                    <label end="56" start="50" name="nn"/>
+                    <label end="59" start="58" name="to"/>
+                    <label end="67" start="61" name="nn"/>
+                    <label end="71" start="69" name="cc"/>
+                    <label end="81" start="73" name="nn"/>
+                    <label end="84" start="83" name="in"/>
+                    <label end="94" start="86" name="nn"/>
+                    <label end="96" start="96" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/28/2005 11:21:53 PST Fri" status="MANUAL" ID="2066133">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="33" start="27" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="3969" end="25" start="20" name="Specification"/>
+                    <label cBy="395" feID="3971" end="33" start="27" name="Offense"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="25" start="20" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="25" start="20" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="18" start="15" name="Gov"/>
+                    <label end="56" start="20" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="8901" sentNo="1" paragNo="18" aPos="115733772" ID="1309006">
+            <text>LOS ANGELES ( AP ) --- Actor Charlie Sheen was charged with misdemeanor battery against his ex-girlfriend after a confrontation that allegedly left her bloody and unconscious .</text>
+            <annotationSet cDate="01/28/2005 11:22:03 PST Fri" status="UNANN" ID="2066162">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="NP"/>
+                    <label end="10" start="4" name="NP"/>
+                    <label end="12" start="12" name="("/>
+                    <label end="15" start="14" name="NP"/>
+                    <label end="17" start="17" name=")"/>
+                    <label end="21" start="19" name=":"/>
+                    <label end="27" start="23" name="nn"/>
+                    <label end="35" start="29" name="NP"/>
+                    <label end="41" start="37" name="NP"/>
+                    <label end="45" start="43" name="VBD"/>
+                    <label end="53" start="47" name="VVN"/>
+                    <label end="58" start="55" name="in"/>
+                    <label end="70" start="60" name="nn"/>
+                    <label end="78" start="72" name="nn"/>
+                    <label end="86" start="80" name="in"/>
+                    <label end="90" start="88" name="PP$"/>
+                    <label end="104" start="92" name="nn"/>
+                    <label end="110" start="106" name="in"/>
+                    <label end="112" start="112" name="dt"/>
+                    <label end="126" start="114" name="nn"/>
+                    <label end="131" start="128" name="wdt"/>
+                    <label end="141" start="133" name="rb"/>
+                    <label end="146" start="143" name="VVD"/>
+                    <label end="150" start="148" name="PP$"/>
+                    <label end="157" start="152" name="jj"/>
+                    <label end="161" start="159" name="cc"/>
+                    <label end="173" start="163" name="jj"/>
+                    <label end="175" start="175" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/28/2005 11:22:04 PST Fri" status="MANUAL" ID="2066163">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="78" start="72" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="4652" end="104" start="80" name="Victim"/>
+                    <label cBy="395" feID="3971" end="78" start="72" name="Offense"/>
+                    <label cBy="395" feID="3968" end="70" start="60" name="Degree"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="104" start="80" name="Dep"/>
+                    <label end="70" start="60" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="104" start="80" name="PP"/>
+                    <label end="70" start="60" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="53" start="47" name="Gov"/>
+                    <label end="104" start="55" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

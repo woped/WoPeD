@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="V" name="stand.v" ID="9364" frame="Change_posture" frameID="770" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="" name="Direction"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="" name="Distance"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Peripheral" abbrev="" name="Goal"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Peripheral" abbrev="" name="Location"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="mea" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="" name="Path"/>
+            <FE fgColor="0000FF" bgColor="d0d0d0" type="Extra-Thematic" abbrev="poc" name="Point_of_contact"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Prot" name="Protagonist"/>
+            <FE fgColor="000000" bgColor="9F79EE" type="Peripheral" abbrev="" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Extra-Thematic" abbrev="" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Peripheral" abbrev="" name="Source"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: rise to an upright position on one's feet. </definition>
+    <lexeme POS="V" name="stand"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Goal"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Goal"/>
+                <annoSet ID="1751381"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Protagonist"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Protagonist"/>
+                <annoSet ID="1751381"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Protagonist"/>
+                <annoSet ID="1751547"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Result"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Result"/>
+                <annoSet ID="1751547"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Goal"/>
+            <FE name="Protagonist"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Goal"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Protagonist"/>
+                <annoSet ID="1751381"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Protagonist"/>
+            <FE name="Result"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Protagonist"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Result"/>
+                <annoSet ID="1751547"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-670-pass-by">
+        <sentence sentNo="0" aPos="70305412" ID="1150137">
+            <text>When the restaurant was quiet , she went and stood by Bogle 's desk . </text>
+            <annotationSet cDate="01/08/2003 04:29:37 PST Wed" status="UNANN" ID="1751380">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="CJS"/>
+                    <label end="7" start="5" name="AT0"/>
+                    <label end="18" start="9" name="NN1"/>
+                    <label end="22" start="20" name="VBD"/>
+                    <label end="28" start="24" name="AJ0"/>
+                    <label end="30" start="30" name="PUN"/>
+                    <label end="34" start="32" name="PNP"/>
+                    <label end="39" start="36" name="VVD"/>
+                    <label end="43" start="41" name="CJC"/>
+                    <label end="49" start="45" name="VVD"/>
+                    <label end="52" start="51" name="PRP"/>
+                    <label end="58" start="54" name="NP0"/>
+                    <label end="61" start="60" name="POS"/>
+                    <label end="66" start="63" name="NN1"/>
+                    <label end="68" start="68" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 04:29:37 PST Wed" status="MANUAL" ID="1751381">
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="5002" end="34" start="32" name="Protagonist"/>
+                    <label cBy="605" feID="5011" end="66" start="51" name="Goal"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="34" start="32" name="Ext"/>
+                    <label end="66" start="51" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="34" start="32" name="NP"/>
+                    <label end="66" start="51" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="49" start="45" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-710-adverbupright">
+        <sentence sentNo="0" aPos="913931" ID="1150220">
+            <text>Stand upright , holding the bar at shoulder height in front of your chest with your palms facing outwards . </text>
+            <annotationSet cDate="01/08/2003 04:29:50 PST Wed" status="UNANN" ID="1751546">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="VVB"/>
+                    <label end="12" start="6" name="AJ0-AV0"/>
+                    <label end="14" start="14" name="PUN"/>
+                    <label end="22" start="16" name="VVG"/>
+                    <label end="26" start="24" name="AT0"/>
+                    <label end="30" start="28" name="NN1"/>
+                    <label end="33" start="32" name="PRP"/>
+                    <label end="42" start="35" name="NN1"/>
+                    <label end="49" start="44" name="NN1"/>
+                    <label end="52" start="51" name="PRP"/>
+                    <label end="58" start="54" name="PRP"/>
+                    <label end="61" start="60" name="PRP"/>
+                    <label end="66" start="63" name="DPS"/>
+                    <label end="72" start="68" name="NN1"/>
+                    <label end="77" start="74" name="PRP"/>
+                    <label end="82" start="79" name="DPS"/>
+                    <label end="88" start="84" name="NN2"/>
+                    <label end="95" start="90" name="VVG"/>
+                    <label end="104" start="97" name="AV0"/>
+                    <label end="106" start="106" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 04:29:50 PST Wed" status="MANUAL" ID="1751547">
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="5002" itype="CNI" name="Protagonist"/>
+                    <label cBy="605" feID="5006" end="12" start="6" name="Result"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="12" start="6" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="12" start="6" name="AVP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="4" start="0" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="01-Wwhen-T-(1)"/>
+    <subCorpus name="02-Wsuddenly-T-(1)"/>
+    <subCorpus name="03-T-Wto-(1)"/>
+    <subCorpus name="04-T-Wand-(1)"/>
+    <subCorpus name="05-NP-T-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

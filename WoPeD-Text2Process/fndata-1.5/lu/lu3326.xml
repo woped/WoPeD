@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" POS="N" name="scads.n" ID="3326" frame="Quantity" frameID="189" totalAnnotated="3" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="Ind" name="Individuals"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="M" name="Mass"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Qua" name="Quantity"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Peripheral" abbrev="" name="Q_Prop"/>
+        </frame>
+    </header>
+    <definition>COD: a large number or quantity. </definition>
+    <lexeme POS="N" name="scads"/>
+    <semType name="Transparent Noun" ID="9"/>
+    <valences>
+        <governor type="Gov" lemma="have">
+            <annoSet ID="524113"/>
+            <annoSet ID="524117"/>
+        </governor>
+        <FERealization total="3">
+            <FE name="Individuals"/>
+            <pattern total="3">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Individuals"/>
+                <annoSet ID="524111"/>
+                <annoSet ID="524113"/>
+                <annoSet ID="524117"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Quantity"/>
+            <pattern total="3">
+                <valenceUnit GF="" PT="DEN" FE="Quantity"/>
+                <annoSet ID="524111"/>
+                <annoSet ID="524113"/>
+                <annoSet ID="524117"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="3">
+            <FE name="Individuals"/>
+            <FE name="Quantity"/>
+            <pattern total="3">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Individuals"/>
+                <valenceUnit GF="" PT="DEN" FE="Quantity"/>
+                <annoSet ID="524111"/>
+                <annoSet ID="524113"/>
+                <annoSet ID="524117"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-001-all">
+        <sentence sentNo="0" aPos="622332" ID="442411">
+            <text>Lucy paced , rampaged , flung out scads of unrequited ire , impassioned as Jay had never seen her . </text>
+            <annotationSet cDate="01/07/2003 04:05:11 PST Tue" status="UNANN" ID="524110">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="NP0"/>
+                    <label end="9" start="5" name="VVD"/>
+                    <label end="11" start="11" name="PUN"/>
+                    <label end="20" start="13" name="VVD"/>
+                    <label end="22" start="22" name="PUN"/>
+                    <label end="28" start="24" name="VVD-VVN"/>
+                    <label end="32" start="30" name="AVP"/>
+                    <label end="38" start="34" name="NN2"/>
+                    <label end="41" start="40" name="PRF"/>
+                    <label end="52" start="43" name="AJ0"/>
+                    <label end="56" start="54" name="NN1"/>
+                    <label end="58" start="58" name="PUN"/>
+                    <label end="70" start="60" name="AJ0"/>
+                    <label end="73" start="72" name="CJS-PRP"/>
+                    <label end="77" start="75" name="NP0"/>
+                    <label end="81" start="79" name="VHD"/>
+                    <label end="87" start="83" name="AV0"/>
+                    <label end="92" start="89" name="VVN"/>
+                    <label end="96" start="94" name="PNP"/>
+                    <label end="98" start="98" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 04:05:11 PST Tue" status="MANUAL" ID="524111">
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="1552" end="56" start="40" name="Individuals"/>
+                    <label cBy="395" feID="1550" end="38" start="34" name="Quantity"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="56" start="40" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="56" start="40" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="Metaphor"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="38" start="34" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="28" start="24" name="Gov"/>
+                    <label end="32" start="30" name="Gov"/>
+                    <label end="56" start="34" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="100893034" ID="442412">
+            <text>` I 've got scads of friends , &quot; Sebastian replied . </text>
+            <annotationSet cDate="01/07/2003 04:05:11 PST Tue" status="UNANN" ID="524112">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PUQ"/>
+                    <label end="2" start="2" name="PNP"/>
+                    <label end="6" start="4" name="VHB"/>
+                    <label end="10" start="8" name="VVN"/>
+                    <label end="16" start="12" name="NN2"/>
+                    <label end="19" start="18" name="PRF"/>
+                    <label end="27" start="21" name="NN2"/>
+                    <label end="29" start="29" name="PUN"/>
+                    <label end="31" start="31" name="PUQ"/>
+                    <label end="41" start="33" name="NP0"/>
+                    <label end="49" start="43" name="VVD"/>
+                    <label end="51" start="51" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 04:05:11 PST Tue" status="MANUAL" ID="524113">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="1550" end="16" start="12" name="Quantity"/>
+                    <label cBy="669" feID="1552" end="27" start="18" name="Individuals"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="27" start="18" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="27" start="18" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="16" start="12" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="6" start="4" name="Gov"/>
+                    <label end="27" start="12" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="101801794" ID="442414">
+            <text>` Oh -- um -- I 'm afraid I 've scads of letters I must write , &quot; she excused , hoping to be forgiven . </text>
+            <annotationSet cDate="01/07/2003 04:05:11 PST Tue" status="UNANN" ID="524116">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PUQ"/>
+                    <label end="3" start="2" name="ITJ"/>
+                    <label end="6" start="5" name="PUN"/>
+                    <label end="9" start="8" name="ITJ"/>
+                    <label end="12" start="11" name="PUN"/>
+                    <label end="14" start="14" name="PNP"/>
+                    <label end="17" start="16" name="VBB"/>
+                    <label end="24" start="19" name="AJ0"/>
+                    <label end="26" start="26" name="PNP"/>
+                    <label end="30" start="28" name="VHB"/>
+                    <label end="36" start="32" name="NN2"/>
+                    <label end="39" start="38" name="PRF"/>
+                    <label end="47" start="41" name="NN2"/>
+                    <label end="49" start="49" name="PNP"/>
+                    <label end="54" start="51" name="VM0"/>
+                    <label end="60" start="56" name="VVI"/>
+                    <label end="62" start="62" name="PUN"/>
+                    <label end="64" start="64" name="PUQ"/>
+                    <label end="68" start="66" name="PNP"/>
+                    <label end="76" start="70" name="VVD"/>
+                    <label end="78" start="78" name="PUN"/>
+                    <label end="85" start="80" name="VVG"/>
+                    <label end="88" start="87" name="TO0"/>
+                    <label end="91" start="90" name="VBI"/>
+                    <label end="100" start="93" name="VVN"/>
+                    <label end="102" start="102" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 04:05:12 PST Tue" status="MANUAL" ID="524117">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="1550" end="36" start="32" name="Quantity"/>
+                    <label cBy="669" feID="1552" end="47" start="38" name="Individuals"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="47" start="38" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="47" start="38" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="36" start="32" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="30" start="28" name="Gov"/>
+                    <label end="47" start="32" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

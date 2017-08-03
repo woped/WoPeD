@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="145" cDate="02/18/2001 01:08:38 PST Sun" name="Eventive_affecting" ID="88" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Entity&lt;/fen&gt; undergoes some change (the &lt;fen&gt;Event&lt;/fen&gt;) that is (or is construed as) punctual.  (This frame exists mainly to allow common FEs to be inherited.)
+
+&lt;ex&gt;&lt;fex name="Event"&gt;This&lt;/fex&gt; &lt;t&gt;happens&lt;/t&gt; &lt;fex name="Entity"&gt;to me&lt;/fex&gt; &lt;fex name="Frequency"&gt;all the time&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="Entity"&gt;The area&lt;/fex&gt; was &lt;t&gt;struck&lt;/t&gt; &lt;fex name="Event"&gt;by tragedy&lt;/fex&gt; &lt;fex name="Time"&gt;in 1996&lt;/fex&gt;, &lt;fex name="Time"&gt;when an assassin killed 35 people in Port Arthur.&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core-Unexpressed" cBy="145" cDate="02/18/2001 01:10:20 PST Sun" abbrev="Evnt" name="Event" ID="403">
+        <definition>&lt;def-root&gt;This FE identifies the event which occurs and affects the &lt;fen&gt;Entity&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="145" cDate="02/18/2001 01:10:55 PST Sun" abbrev="Place" name="Place" ID="404">
+        <definition>&lt;def-root&gt;This FE identifies where the event takes place.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="145" cDate="02/18/2001 01:11:43 PST Sun" abbrev="Time" name="Time" ID="405">
+        <definition>&lt;def-root&gt;This FE identifies the time when the event occurs.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="243" cDate="06/01/2001 04:21:01 PDT Fri" abbrev="Reas" name="Reason" ID="693">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Reason&lt;/fen&gt; for which an event occurs.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="06/29/2001 06:43:48 PDT Fri" abbrev="Ent" name="Entity" ID="1190">
+        <definition>&lt;def-root&gt;This FE identifies the entity, concrete or abstract.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/15/2006 04:11:43 PDT Thu" abbrev="" name="Manner" ID="10304">
+        <definition>&lt;def-root&gt;Any description of the event which is not covered by more specific FEs, including secondary effects (quietly, loudly) and general descriptions comparing events (the same way).&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="361" cDate="06/12/2008 05:07:11 PDT Thu" abbrev="Fre" name="Frequency" ID="12780">
+        <definition>&lt;def-root&gt;How often the &lt;fen&gt;Event&lt;/fen&gt; happens to the &lt;fen&gt;Entity&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Event</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Transfer</relatedFrame>
+        <relatedFrame>Lose_possession</relatedFrame>
+        <relatedFrame>Causation</relatedFrame>
+        <relatedFrame>Historic_event</relatedFrame>
+        <relatedFrame>Aging</relatedFrame>
+        <relatedFrame>Response</relatedFrame>
+        <relatedFrame>Arriving</relatedFrame>
+        <relatedFrame>Departing</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Social_event</relatedFrame>
+        <relatedFrame>Memory</relatedFrame>
+        <relatedFrame>Coming_up_with</relatedFrame>
+        <relatedFrame>Activity_stop</relatedFrame>
+        <relatedFrame>Activity_start</relatedFrame>
+        <relatedFrame>Activity_prepare</relatedFrame>
+        <relatedFrame>Activity_pause</relatedFrame>
+        <relatedFrame>Undergoing</relatedFrame>
+        <relatedFrame>Catastrophe</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Created" POS="V" name="happen.v" ID="2500" lemmaID="17414" cBy="664" cDate="06/03/2001 05:55:00 PDT Sun">
+        <definition>COD: take place, occur</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="happen"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="V" name="strike.v" ID="15115" lemmaID="38350" cBy="361" cDate="06/12/2008 05:09:34 PDT Thu">
+        <definition>FN: occur with less-than-desirable consequences</definition>
+        <sentenceCount annotated="1" total="252"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="strike"/>
+    </lexUnit>
+</frame>

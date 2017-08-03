@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="10/04/2001 03:34:23 PDT Thu" name="Motion_scenario" ID="238" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;This frame binds together the various parts of movement, from setting out, to traveling, to arriving.&lt;/def-root&gt;</definition>
+    <semType name="Non-Lexical Frame" ID="16"/>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="10/04/2001 03:38:17 PDT Thu" abbrev="Dur" name="Duration" ID="2052">
+        <definition>&lt;def-root&gt;The amount of time for the movement is ongoing.&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="10/04/2001 03:38:17 PDT Thu" abbrev="Time" name="Time" ID="2053">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Time&lt;/fen&gt; when the motion occurs.
+
+&lt;ex&gt;The truck &lt;t&gt;moved&lt;/t&gt; &lt;fex name="Time"&gt;at 10 o'clock&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="10/04/2001 03:38:17 PDT Thu" abbrev="Area" name="Area" ID="2054">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Area&lt;/fen&gt; is the setting in which the &lt;fen&gt;Theme&lt;/fen&gt;'s movement takes place. 
+
+&lt;ex&gt;Emily rose to her feet and &lt;t&gt;moved&lt;/t&gt; restlessly &lt;fex name="Area"&gt;around the room&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="10/04/2001 03:38:17 PDT Thu" abbrev="Thm_c" name="Cotheme" ID="2055">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Cotheme&lt;/fen&gt; is the second moving object, expressed as a direct object or an oblique.
+
+&lt;ex&gt;Pat &lt;t&gt;accompanied&lt;/t&gt; &lt;fex name="Cotheme"&gt;me&lt;/fex&gt; down the street.&lt;/ex&gt;
+&lt;ex&gt;The squirrel &lt;t&gt;chased&lt;/t&gt; &lt;fex name="Cotheme"&gt;after the nut&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="10/04/2001 03:38:17 PDT Thu" abbrev="Dist" name="Distance" ID="2056">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Distance&lt;/fen&gt;is any expression which characterizes the extent of motion.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="10/04/2001 03:38:17 PDT Thu" abbrev="Goal" name="Goal" ID="2057">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Goal&lt;/fen&gt; is the location the &lt;fen&gt;Theme&lt;/fen&gt; ends up in.
+
+&lt;ex&gt;The car accelerated and &lt;t&gt;moved&lt;/t&gt; &lt;fex name="Goal"&gt;into the slow lane&lt;/fex&gt;, as he passed.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Goal" ID="153"/>
+        <excludesFE name="Area" ID="2054"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="10/04/2001 03:38:17 PDT Thu" abbrev="Path" name="Path" ID="2058">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Path&lt;/fen&gt; refers to (a part of the) ground that the &lt;fen&gt;Theme&lt;/fen&gt; travels over or to a landmark the &lt;fen&gt;Theme&lt;/fen&gt; travels past.
+
+&lt;ex&gt;The door opened , and he &lt;t&gt;moved&lt;/t&gt; &lt;fex name="Path"&gt;past Dad&lt;/fex&gt;, into the hall.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Area" ID="2054"/>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="10/04/2001 03:38:17 PDT Thu" abbrev="Src" name="Source" ID="2059">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Source&lt;/fen&gt; is the location the &lt;fen&gt;Theme&lt;/fen&gt; initially occupies before its change of location.
+
+&lt;ex&gt;The policeman &lt;t&gt;moved&lt;/t&gt; &lt;fex name="Source"&gt;away from the door&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Source" ID="151"/>
+        <excludesFE name="Area" ID="2054"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="10/04/2001 03:38:17 PDT Thu" abbrev="Spd" name="Speed" ID="2060">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Speed&lt;/fen&gt; is the rate at which motion occurs.
+
+&lt;ex&gt;The car &lt;t&gt;moved&lt;/t&gt; along &lt;fex name="Spd"&gt;at 55 miles per hour&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Speed" ID="234"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="10/04/2001 03:38:17 PDT Thu" abbrev="Thm" name="Theme" ID="2061">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Theme&lt;/fen&gt; is the entity that changes location. 
+
+&lt;ex&gt;The explosion made &lt;fex name="Thm"&gt;me&lt;/fex&gt; &lt;t&gt;move&lt;/t&gt; in a hurry.&lt;/ex&gt; &lt;/def-root&gt;</definition>
+        <semType name="Physical_object" ID="68"/>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="10/04/2001 03:38:18 PDT Thu" abbrev="MoT" name="Mode_of_transportation" ID="2062">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Mode_of_transportation&lt;/fen&gt; expresses how the motion of the &lt;fen&gt;Theme&lt;/fen&gt; is effected, by its body or by a vehicle which holds and conveys the &lt;fen&gt;Theme&lt;/fen&gt;. Vehicles can move in any way and in any medium. They are usually expressed obliquely with 'in' or 'by'.
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Goal" ID="2057"/>
+        <memberFE name="Path" ID="2058"/>
+        <memberFE name="Source" ID="2059"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in">
+        <relatedFrame>Motion</relatedFrame>
+        <relatedFrame>Source_of_getting</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+</frame>

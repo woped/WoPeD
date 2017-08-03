@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" POS="N" name="bedsore.n" ID="7167" frame="Body_mark" frameID="393" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="AP" ID="113">
+            <document description="apwsE980217.0913" ID="6069"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="Attachment" name="Attachment"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Body_m" name="Body_mark"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="cause" name="Cause"/>
+            <FE fgColor="000000" bgColor="d0d0d0" type="Peripheral" abbrev="con" name="Constituents"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="Desc" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Poss" name="Possessor"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="typ" name="Type"/>
+        </frame>
+    </header>
+    <definition>COD: a sore that develops as a result of lying in bed in one position for a prolonged period. </definition>
+    <lexeme POS="N" name="bedsore"/>
+    <valences>
+        <governor type="Sup" lemma="have">
+            <annoSet ID="1600965"/>
+        </governor>
+        <governor type="Gov" lemma="with">
+            <annoSet ID="2040701"/>
+        </governor>
+        <FERealization total="1">
+            <FE name="Body_mark"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Body_mark"/>
+                <annoSet ID="1600965"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Descriptor"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Descriptor"/>
+                <annoSet ID="2040701"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Possessor"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Possessor"/>
+                <annoSet ID="1600965"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Body_mark"/>
+            <FE name="Possessor"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Body_mark"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Possessor"/>
+                <annoSet ID="1600965"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Descriptor"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Descriptor"/>
+                <annoSet ID="2040701"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-001-all">
+        <sentence sentNo="0" aPos="60789089" ID="1074780">
+            <text>If a patient has a bedsore and is incontinent the frequent changing of sheets and incontinence pads might be regarded as nursing . </text>
+            <annotationSet cDate="01/08/2003 01:23:54 PST Wed" status="UNANN" ID="1600964">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="CJS"/>
+                    <label end="3" start="3" name="AT0"/>
+                    <label end="11" start="5" name="NN1"/>
+                    <label end="15" start="13" name="VHZ"/>
+                    <label end="17" start="17" name="AT0"/>
+                    <label end="25" start="19" name="NN1"/>
+                    <label end="29" start="27" name="CJC"/>
+                    <label end="32" start="31" name="VBZ"/>
+                    <label end="44" start="34" name="AJ0"/>
+                    <label end="48" start="46" name="AT0"/>
+                    <label end="57" start="50" name="AJ0"/>
+                    <label end="66" start="59" name="NN1"/>
+                    <label end="69" start="68" name="PRF"/>
+                    <label end="76" start="71" name="NN2"/>
+                    <label end="80" start="78" name="CJC"/>
+                    <label end="93" start="82" name="NN1"/>
+                    <label end="98" start="95" name="NN2"/>
+                    <label end="104" start="100" name="VM0"/>
+                    <label end="107" start="106" name="VBI"/>
+                    <label end="116" start="109" name="VVN"/>
+                    <label end="119" start="118" name="CJS"/>
+                    <label end="127" start="121" name="AJ0-VVG"/>
+                    <label end="129" start="129" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 01:23:54 PST Wed" status="MANUAL" ID="1600965">
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="3507" end="25" start="19" name="Body_mark"/>
+                    <label cBy="268" feID="3510" end="11" start="5" name="Possessor"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="11" start="5" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="11" start="5" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="25" start="19" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="15" start="13" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="01-T-(1)">
+        <sentence corpID="113" docID="6069" sentNo="2" paragNo="22" aPos="123630546" ID="1296270">
+            <text>One patient , suffering from cerebral palsy , was admitted with terrible bedsores which have since been treated .</text>
+            <annotationSet cDate="01/04/2005 10:24:44 PST Tue" status="UNANN" ID="2040700">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="cd"/>
+                    <label end="10" start="4" name="nn"/>
+                    <label end="12" start="12" name=","/>
+                    <label end="22" start="14" name="VVG"/>
+                    <label end="27" start="24" name="in"/>
+                    <label end="36" start="29" name="jj"/>
+                    <label end="42" start="38" name="nn"/>
+                    <label end="44" start="44" name=","/>
+                    <label end="48" start="46" name="VBD"/>
+                    <label end="57" start="50" name="VVN"/>
+                    <label end="62" start="59" name="in"/>
+                    <label end="71" start="64" name="jj"/>
+                    <label end="80" start="73" name="nns"/>
+                    <label end="86" start="82" name="wdt"/>
+                    <label end="91" start="88" name="VHP"/>
+                    <label end="97" start="93" name="rb"/>
+                    <label end="102" start="99" name="VBN"/>
+                    <label end="110" start="104" name="VVN"/>
+                    <label end="112" start="112" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/04/2005 10:24:44 PST Tue" status="MANUAL" ID="2040701">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="80" start="73" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="3508" end="71" start="64" name="Descriptor"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="71" start="64" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="71" start="64" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="62" start="59" name="Gov"/>
+                    <label end="110" start="64" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+    <subCorpus name="01-T-(2)"/>
+    <subCorpus name="other-matched-(2)"/>
+    <subCorpus name="other-unmatched-(2)"/>
+</lexUnit>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="243" cDate="05/13/2002 12:09:04 PDT Mon" name="Try_defendant" ID="320" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A &lt;fen&gt;Defendant&lt;/fen&gt; is tried by a &lt;fen&gt;Jury&lt;/fen&gt; or &lt;fen&gt;Judge&lt;/fen&gt; in a &lt;fen&gt;Court&lt;/fen&gt; for &lt;fen&gt;Charges&lt;/fen&gt;.  This frame perspectivalizes the general Trial frame.&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="243" cDate="05/13/2002 12:09:48 PDT Mon" abbrev="Judge" name="Judge" ID="2768">
+        <definition>&lt;def-root&gt;The Judge heads the court where the case is tried.  An expression referring to the court may also stand in for the Judge.
+&lt;ex&gt;&lt;fex name="Judge"&gt;Judge Murphy&lt;/fex&gt; will &lt;t&gt;try&lt;/t&gt; the defendant for murder.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Judge"&gt;The court&lt;/fex&gt; is currently &lt;t&gt;trying&lt;/t&gt; several South American militants on charges of vehicular manslaughter.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+        <excludesFE name="Governing_authority" ID="4725"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Peripheral" cBy="243" cDate="05/13/2002 12:12:59 PDT Mon" abbrev="Crt" name="Court" ID="2769">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Court&lt;/fen&gt; in which a case is tried.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="243" cDate="05/13/2002 12:24:07 PDT Mon" abbrev="Defens" name="Defendant" ID="2771">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Defendant&lt;/fen&gt; is being tried for the &lt;fen&gt;Charges&lt;/fen&gt; in &lt;fen&gt;Court&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Core" cBy="243" cDate="05/13/2002 12:26:54 PDT Mon" abbrev="Jury" name="Jury" ID="2773">
+        <definition>&lt;def-root&gt;This FE identifies the people who are charged by the Court to listen to the testimony, evidence, and arguments, and come to a consensus about the guilt or innocence of the Defendant.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="243" cDate="05/13/2002 12:32:24 PDT Mon" abbrev="T" name="Time" ID="2774">
+        <definition>&lt;def-root&gt;This FE identifies the Time when the case is tried.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="243" cDate="05/13/2002 12:32:51 PDT Mon" abbrev="P" name="Place" ID="2775">
+        <definition>&lt;def-root&gt;This FE identifies the place where the case is tried.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Core" cBy="243" cDate="05/13/2002 12:41:50 PDT Mon" abbrev="Chg" name="Charges" ID="2776">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Charges&lt;/fen&gt; brought against the Defendant.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="07/03/2003 10:30:45 PDT Thu" abbrev="GA" name="Governing_authority" ID="4725">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Defendant&lt;/fen&gt; is tried under the laws of the &lt;fen&gt;Governing_authority&lt;/fen&gt;.
+&lt;ex&gt;&lt;fex name="GA"&gt;The United States&lt;/fex&gt; will &lt;t&gt;try&lt;/t&gt; the accused bomber in a federal courthouse.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="07/03/2003 03:11:03 PDT Thu" abbrev="Mnr" name="Manner" ID="4730">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Manner&lt;/fen&gt; of the trial of the &lt;fen&gt;Defendant&lt;/fen&gt;.
+&lt;ex&gt;Thomas Klein was &lt;t&gt;tried&lt;/t&gt; &lt;fex name="Manner"&gt;in absentia&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Governing_authority" ID="4725"/>
+        <memberFE name="Judge" ID="2768"/>
+        <memberFE name="Jury" ID="2773"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on">
+        <relatedFrame>Trial</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="try.v" ID="9131" lemmaID="41411" cBy="618" cDate="07/21/2003 03:02:24 PDT Mon">
+        <definition>COD: subject (someone) to trial, or investigate and decide (a case or issue) in a formal trial.</definition>
+        <sentenceCount annotated="35" total="270"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="try"/>
+    </lexUnit>
+</frame>

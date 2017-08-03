@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="243" cDate="11/21/2001 03:41:51 PST Wed" name="Competition" ID="241" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;This frame is concerned with the idea that people (Participant_1, Participant_2, or Participants) participate in an organized rule governed activity (the Competition) in order to achieve some advantageous outcome (often the Prize).  Rank and Score are different criteria by which the degree of achievement of the advantageous outcome is judged.   &lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="243" cDate="11/21/2001 04:21:35 PST Wed" abbrev="Partic-1" name="Participant_1" ID="2128">
+        <definition>&lt;def-root&gt;This FE identifies the first (or only) participant in a competition.
+&lt;ex&gt;&lt;fex name="Participant_1"&gt;Jo&lt;/fex&gt; &lt;t&gt;played&lt;/t&gt; the lottery every day.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+        <excludesFE name="Participants" ID="2130"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="243" cDate="11/21/2001 04:24:07 PST Wed" abbrev="Partic-2" name="Participant_2" ID="2129">
+        <definition>&lt;def-root&gt;This FE identifies the second participant in a competition.
+&lt;ex&gt;Jo &lt;t&gt;played&lt;/t&gt; &lt;fex name="Participant_2"&gt;Leslie&lt;/fex&gt; at tennis.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <requiresFE name="Participant_1" ID="2128"/>
+        <excludesFE name="Participants" ID="2130"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Core" cBy="243" cDate="11/21/2001 04:27:45 PST Wed" abbrev="Partic-S" name="Participants" ID="2130">
+        <definition>&lt;def-root&gt;This FE is used for plural NP participants in a competition.
+&lt;ex&gt;&lt;fex name="Participants"&gt;The Yankees&lt;/fex&gt; &lt;t&gt;played&lt;/t&gt; in the World Series.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="000000" coreType="Core" cBy="243" cDate="11/21/2001 04:29:58 PST Wed" abbrev="Comp" name="Competition" ID="2131">
+        <definition>&lt;def-root&gt;This FE is used for the name of the competition.
+&lt;ex&gt;Jo &lt;t&gt;played&lt;/t&gt; &lt;fex name="Comp"&gt;in the foosball tournament&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="243" cDate="11/21/2001 04:32:05 PST Wed" abbrev="Score" name="Score" ID="2132">
+        <definition>&lt;def-root&gt;This FE is used for the score in a game.
+&lt;ex&gt;The Yankees won the game &lt;fex name="Score"&gt;2 to 0&lt;/fex&gt;.&lt;/ex&gt;
+EX: The Yankees won the game &lt;fex name="Score"&gt;by two points&lt;/fex&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="243" cDate="11/21/2001 04:34:34 PST Wed" abbrev="Rank" name="Rank" ID="2133">
+        <definition>&lt;def-root&gt;This FE is used for the ranked results of a competition, and is translatable into a numerical value.
+&lt;ex&gt;Jo came in &lt;fex name="Rank"&gt;third&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="243" cDate="11/21/2001 04:36:33 PST Wed" abbrev="Prize" name="Prize" ID="2134">
+        <definition>&lt;def-root&gt;This FE indicates a prize won in a competition.
+&lt;ex&gt;John was &lt;t&gt;competing&lt;/t&gt; &lt;fex name="Prize"&gt;for a bronze medal&lt;/fex&gt;.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="243" cDate="11/27/2001 11:56:44 PST Tue" abbrev="Venue" name="Venue" ID="2135">
+        <definition>&lt;def-root&gt;This FE is for the named venue of a competition, particularly when the place has been built for the purpose of a competition.
+&lt;ex&gt;The Mets will play &lt;fex name="Venue"&gt;at the ball park&lt;/fex&gt; on Sunday.&lt;/ex&gt;
+&lt;ex&gt;The Mets  will play &lt;fex name="Venue"&gt;at Shea Stadium&lt;/fex&gt; tonight.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="243" cDate="11/27/2001 12:05:13 PST Tue" abbrev="Place" name="Place" ID="2136">
+        <definition>&lt;def-root&gt;Where the event takes place. 
+A constituent tagged as &lt;fen&gt;Place&lt;/fen&gt; may require annotation on a secondary FE-layer. 
+&lt;ex&gt;First layer: John's first &lt;t&gt;competition&lt;/t&gt;  &lt;fex name="Place"&gt;at Wimbledon&lt;/fex&gt; astonished the crowd.&lt;/ex&gt;
+&lt;ex&gt;Second layer: John's first &lt;t&gt;competition&lt;/t&gt;  &lt;fex name="Competition"&gt;at Wimbledon&lt;/fex&gt; astonished the crowd.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="309" cDate="10/02/2003 11:36:55 PDT Thu" abbrev="Mnr" name="Manner" ID="5370">
+        <definition>&lt;def-root&gt;The way the &lt;fen&gt;Participants&lt;/fen&gt; compete.&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="309" cDate="10/02/2003 11:36:55 PDT Thu" abbrev="Means" name="Means" ID="5371">
+        <definition>&lt;def-root&gt;The action the &lt;fen&gt;Participants&lt;/fen&gt; (or &lt;fen&gt;Participant_1&lt;/fen&gt;) are involved in that constitutes a &lt;fen&gt;Competition&lt;/fen&gt;.
+
+&lt;ex&gt;They &lt;t&gt;played&lt;/t&gt; &lt;fex name="Means"&gt;by seeing who could get the ball to the far side of the parking lot&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="000000" coreType="Peripheral" cBy="309" cDate="10/02/2003 11:36:55 PDT Thu" abbrev="Time" name="Time" ID="5372">
+        <definition>&lt;def-root&gt;The period of time when the &lt;fen&gt;Competition&lt;/fen&gt; occurs.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="000000" coreType="Peripheral" cBy="303" cDate="01/26/2006 06:53:40 PST Thu" abbrev="" name="Duration" ID="9889">
+        <definition>&lt;def-root&gt;This FE is used to describe the length of time over which competition occurs. &lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="d0d0d0" fgColor="000000" coreType="Extra-Thematic" cBy="303" cDate="01/26/2006 06:59:26 PST Thu" abbrev="" name="Purpose" ID="9890">
+        <definition>&lt;def-root&gt;This FE is used to describe the intended outcome of the competition. &lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="000000" coreType="Peripheral" cBy="303" cDate="01/27/2006 03:47:06 PST Fri" abbrev="" name="Degree" ID="9892">
+        <definition>&lt;def-root&gt;This FE describes the intensity of competition.&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="000000" coreType="Extra-Thematic" cBy="589" cDate="01/14/2010 01:57:48 PST Thu" abbrev="" name="Frequency" ID="13476">
+        <definition>&lt;def-root&gt;This FE expresses how often the &lt;fen&gt;Competition&lt;/fen&gt; occurs.&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Intentionally_act</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Alliance</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)">
+        <relatedFrame>Finish_competition</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="N" name="competition.n" ID="4467" lemmaID="7469" cBy="605" cDate="11/21/2001 05:38:56 PST Wed">
+        <definition>COD: the activity or condition of competing against others</definition>
+        <sentenceCount annotated="20" total="638"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="competition"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="competitive.a" ID="4468" lemmaID="7470" cBy="605" cDate="11/21/2001 05:39:30 PST Wed">
+        <definition>COD: relating to or characterized by competition.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="competitive"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="competitor.n" ID="4469" lemmaID="7473" cBy="605" cDate="11/21/2001 05:40:23 PST Wed">
+        <definition>COD: a person who takes part in a sporting contest</definition>
+        <sentenceCount annotated="27" total="299"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="competitor"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="compete.v" ID="9837" lemmaID="7464" cBy="664" cDate="10/17/2003 10:30:58 PDT Fri">
+        <definition>COD: strive to gain or win something by defeating or establishing superiority over others. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="compete"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="play.v" ID="9838" lemmaID="29309" cBy="664" cDate="10/17/2003 10:31:46 PDT Fri">
+        <definition>COD: take part in (a sport or contest). </definition>
+        <sentenceCount annotated="38" total="276"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="play"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="challenge.n" ID="12501" lemmaID="6004" cBy="605" cDate="07/18/2005 08:24:55 PDT Mon">
+        <definition>FN: competition against a favored opponent</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="challenge"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="rivalry.n" ID="13799" lemmaID="33361" cBy="664" cDate="02/24/2007 11:24:26 PST Sat">
+        <definition>FN: a semi-permanent or long-term state of being in competition (with).</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="rivalry"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="rival.n" ID="13800" lemmaID="33358" cBy="664" cDate="02/24/2007 11:27:03 PST Sat">
+        <definition>COD: a person or thing competing with another for superiority or the same objective.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="rival"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="player.n" ID="16012" lemmaID="29318" cBy="976" cDate="08/11/2010 03:07:27 PDT Wed">
+        <definition>FN: a person who is an active member of a competition</definition>
+        <sentenceCount annotated="82" total="82"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="player"/>
+    </lexUnit>
+</frame>

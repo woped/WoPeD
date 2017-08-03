@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="N" name="presage.n" ID="7547" frame="Omen" frameID="412" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="7CCD7C" type="Extra-Thematic" abbrev="" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Extra-Thematic" abbrev="" name="Explanation"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Peripheral" abbrev="Interested_party" name="Interested_party"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Outcome" name="Outcome"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Phen1" name="Phenomenon_1"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="Phen-2" name="Phenomenon_2"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="str" name="Strength"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD:   an omen or portent.</definition>
+    <lexeme POS="N" name="presage"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Phenomenon_1"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Phenomenon_1"/>
+                <annoSet ID="1786741"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Phenomenon_2"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Phenomenon_2"/>
+                <annoSet ID="1786741"/>
+                <annoSet ID="1786743"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Phenomenon_1"/>
+            <FE name="Phenomenon_2"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Phenomenon_1"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Phenomenon_2"/>
+                <annoSet ID="1786741"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Phenomenon_2"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Phenomenon_2"/>
+                <annoSet ID="1786743"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-001-all">
+        <sentence sentNo="0" aPos="44026937" ID="1168203">
+            <text>Gerald Bellay 's rebellion against Geoffrey le Bel , with his appeal for support to Louis VII , were significant presages of future developments . </text>
+            <annotationSet cDate="01/08/2003 05:14:35 PST Wed" status="UNANN" ID="1786740">
+                <layer rank="1" name="BNC">
+                    <label end="5" start="0" name="NP0"/>
+                    <label end="12" start="7" name="NP0"/>
+                    <label end="15" start="14" name="POS"/>
+                    <label end="25" start="17" name="NN1"/>
+                    <label end="33" start="27" name="PRP"/>
+                    <label end="42" start="35" name="NP0"/>
+                    <label end="45" start="44" name="NN1"/>
+                    <label end="49" start="47" name="NN1-NP0"/>
+                    <label end="51" start="51" name="PUN"/>
+                    <label end="56" start="53" name="PRP"/>
+                    <label end="60" start="58" name="DPS"/>
+                    <label end="67" start="62" name="NN1"/>
+                    <label end="71" start="69" name="PRP"/>
+                    <label end="79" start="73" name="NN1"/>
+                    <label end="82" start="81" name="PRP"/>
+                    <label end="88" start="84" name="NP0"/>
+                    <label end="92" start="90" name="CRD"/>
+                    <label end="94" start="94" name="PUN"/>
+                    <label end="99" start="96" name="VBD"/>
+                    <label end="111" start="101" name="AJ0"/>
+                    <label end="120" start="113" name="NN2"/>
+                    <label end="123" start="122" name="PRF"/>
+                    <label end="130" start="125" name="AJ0"/>
+                    <label end="143" start="132" name="NN2"/>
+                    <label end="145" start="145" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:14:36 PST Wed" status="MANUAL" ID="1786741">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3780" end="143" start="122" name="Phenomenon_2"/>
+                    <label cBy="618" feID="3779" end="94" start="0" name="Phenomenon_1"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="143" start="122" name="Dep"/>
+                    <label end="94" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="143" start="122" name="PP"/>
+                    <label end="94" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="120" start="113" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="99" start="96" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="64458489" ID="1168204">
+            <text>In Angleby , though , with the first presages of autumn already blurring the hard edges of the city , the outlook , like the weather , was more unsettled . </text>
+            <annotationSet cDate="01/08/2003 05:14:36 PST Wed" status="UNANN" ID="1786742">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PRP"/>
+                    <label end="9" start="3" name="NN1-NP0"/>
+                    <label end="11" start="11" name="PUN"/>
+                    <label end="18" start="13" name="CJS"/>
+                    <label end="20" start="20" name="PUN"/>
+                    <label end="25" start="22" name="PRP"/>
+                    <label end="29" start="27" name="AT0"/>
+                    <label end="35" start="31" name="ORD"/>
+                    <label end="44" start="37" name="NN2"/>
+                    <label end="47" start="46" name="PRF"/>
+                    <label end="54" start="49" name="NN1"/>
+                    <label end="62" start="56" name="AV0"/>
+                    <label end="71" start="64" name="VVG"/>
+                    <label end="75" start="73" name="AT0"/>
+                    <label end="80" start="77" name="AJ0"/>
+                    <label end="86" start="82" name="NN2"/>
+                    <label end="89" start="88" name="PRF"/>
+                    <label end="93" start="91" name="AT0"/>
+                    <label end="98" start="95" name="NN1"/>
+                    <label end="100" start="100" name="PUN"/>
+                    <label end="104" start="102" name="AT0"/>
+                    <label end="112" start="106" name="NN1"/>
+                    <label end="114" start="114" name="PUN"/>
+                    <label end="119" start="116" name="PRP"/>
+                    <label end="123" start="121" name="AT0"/>
+                    <label end="131" start="125" name="NN1"/>
+                    <label end="133" start="133" name="PUN"/>
+                    <label end="137" start="135" name="VBD"/>
+                    <label end="142" start="139" name="AV0"/>
+                    <label end="152" start="144" name="AJ0-VVN"/>
+                    <label end="154" start="154" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:14:36 PST Wed" status="MANUAL" ID="1786743">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3780" end="54" start="46" name="Phenomenon_2"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="54" start="46" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="54" start="46" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="44" start="37" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="01-T-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+    <subCorpus name="01-T-(2)"/>
+    <subCorpus name="other-matched-(2)"/>
+    <subCorpus name="other-unmatched-(2)"/>
+</lexUnit>

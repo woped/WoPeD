@@ -1,0 +1,776 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="double-check.v" ID="11270" frame="Inspecting" frameID="1262" totalAnnotated="12" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="cir" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="A9A9A9" type="Peripheral" abbrev="deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="des" name="Desired_state"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="gro" name="Ground"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="insp" name="Inspector"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Peripheral" abbrev="inst" name="Instrument"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Extra-Thematic" abbrev="loc" name="Location_of_inspector"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="man" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="mea" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD73" type="Extra-Thematic" abbrev="" name="Particular_iteration"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Core" abbrev="pur" name="Purpose"/>
+            <FE fgColor="00008B" bgColor="d0d0d0" type="Peripheral" abbrev="tim" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="unw" name="Unwanted_entity"/>
+        </frame>
+    </header>
+    <definition>COD: check again.</definition>
+    <lexeme POS="V" name="double-check"/>
+    <valences>
+        <FERealization total="2">
+            <FE name="Desired_state"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="Sfin" FE="Desired_state"/>
+                <annoSet ID="1849975"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="Sinterrog" FE="Desired_state"/>
+                <annoSet ID="1849979"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="12">
+            <FE name="Ground"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="DNI" FE="Ground"/>
+                <annoSet ID="1849975"/>
+                <annoSet ID="1849979"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Ground"/>
+                <annoSet ID="1850073"/>
+            </pattern>
+            <pattern total="9">
+                <valenceUnit GF="Obj" PT="NP" FE="Ground"/>
+                <annoSet ID="1849961"/>
+                <annoSet ID="1849963"/>
+                <annoSet ID="1849969"/>
+                <annoSet ID="1849983"/>
+                <annoSet ID="1849985"/>
+                <annoSet ID="1849991"/>
+                <annoSet ID="1849993"/>
+                <annoSet ID="1849995"/>
+                <annoSet ID="1850065"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="12">
+            <FE name="Inspector"/>
+            <pattern total="9">
+                <valenceUnit GF="Ext" PT="NP" FE="Inspector"/>
+                <annoSet ID="1849961"/>
+                <annoSet ID="1849963"/>
+                <annoSet ID="1849969"/>
+                <annoSet ID="1849975"/>
+                <annoSet ID="1849979"/>
+                <annoSet ID="1849983"/>
+                <annoSet ID="1849985"/>
+                <annoSet ID="1849991"/>
+                <annoSet ID="1849993"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Inspector"/>
+                <annoSet ID="1850073"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="" PT="CNI" FE="Inspector"/>
+                <annoSet ID="1849995"/>
+                <annoSet ID="1850065"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Manner"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <annoSet ID="1849979"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="10">
+            <FE name="Unwanted_entity"/>
+            <pattern total="9">
+                <valenceUnit GF="" PT="INI" FE="Unwanted_entity"/>
+                <annoSet ID="1849961"/>
+                <annoSet ID="1849963"/>
+                <annoSet ID="1849969"/>
+                <annoSet ID="1849983"/>
+                <annoSet ID="1849985"/>
+                <annoSet ID="1849991"/>
+                <annoSet ID="1849993"/>
+                <annoSet ID="1850065"/>
+                <annoSet ID="1850073"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Unwanted_entity"/>
+                <annoSet ID="1849995"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Desired_state"/>
+            <FE name="Ground"/>
+            <FE name="Inspector"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="Sfin" FE="Desired_state"/>
+                <valenceUnit GF="" PT="DNI" FE="Ground"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Inspector"/>
+                <annoSet ID="1849975"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Desired_state"/>
+            <FE name="Ground"/>
+            <FE name="Inspector"/>
+            <FE name="Manner"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="Sinterrog" FE="Desired_state"/>
+                <valenceUnit GF="" PT="DNI" FE="Ground"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Inspector"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <annoSet ID="1849979"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="10">
+            <FE name="Ground"/>
+            <FE name="Inspector"/>
+            <FE name="Unwanted_entity"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Ground"/>
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Inspector"/>
+                <valenceUnit GF="" PT="INI" FE="Unwanted_entity"/>
+                <annoSet ID="1850073"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Ground"/>
+                <valenceUnit GF="" PT="CNI" FE="Inspector"/>
+                <valenceUnit GF="" PT="INI" FE="Unwanted_entity"/>
+                <annoSet ID="1850065"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Ground"/>
+                <valenceUnit GF="" PT="CNI" FE="Inspector"/>
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Unwanted_entity"/>
+                <annoSet ID="1849995"/>
+            </pattern>
+            <pattern total="7">
+                <valenceUnit GF="Obj" PT="NP" FE="Ground"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Inspector"/>
+                <valenceUnit GF="" PT="INI" FE="Unwanted_entity"/>
+                <annoSet ID="1849961"/>
+                <annoSet ID="1849963"/>
+                <annoSet ID="1849969"/>
+                <annoSet ID="1849983"/>
+                <annoSet ID="1849985"/>
+                <annoSet ID="1849991"/>
+                <annoSet ID="1849993"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="04-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="6135" aPos="0" ID="1201400">
+            <text>He should really start thinking about double-checking a few things .</text>
+            <annotationSet cDate="04/04/2003 04:06:19 PST Fri" status="UNANN" ID="1849960">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="8" start="3" name="md"/>
+                    <label end="15" start="10" name="rb"/>
+                    <label end="21" start="17" name="VV"/>
+                    <label end="30" start="23" name="VVG"/>
+                    <label end="36" start="32" name="in"/>
+                    <label end="52" start="38" name="VVG"/>
+                    <label end="54" start="54" name="dt"/>
+                    <label end="58" start="56" name="jj"/>
+                    <label end="65" start="60" name="nns"/>
+                    <label end="67" start="67" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/04/2003 04:06:20 PST Fri" status="MANUAL" ID="1849961">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="52" start="38" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="7279" end="1" start="0" name="Inspector"/>
+                    <label cBy="605" feID="7280" end="65" start="54" name="Ground"/>
+                    <label cBy="605" feID="7281" itype="INI" name="Unwanted_entity"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="1" start="0" name="Ext"/>
+                    <label end="65" start="54" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="1" start="0" name="NP"/>
+                    <label end="65" start="54" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="565" aPos="0" ID="1201401">
+            <text>But what really excited her about the visit was the museum 's corresponding red leather book containing all the same names , which enabled both to double-check the information .</text>
+            <annotationSet cDate="04/04/2003 04:06:21 PST Fri" status="UNANN" ID="1849962">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="cc"/>
+                    <label end="7" start="4" name="wp"/>
+                    <label end="14" start="9" name="rb"/>
+                    <label end="22" start="16" name="VVN"/>
+                    <label end="26" start="24" name="PP"/>
+                    <label end="32" start="28" name="in"/>
+                    <label end="36" start="34" name="dt"/>
+                    <label end="42" start="38" name="nn"/>
+                    <label end="46" start="44" name="VBD"/>
+                    <label end="50" start="48" name="dt"/>
+                    <label end="57" start="52" name="nn"/>
+                    <label end="60" start="59" name="POS"/>
+                    <label end="74" start="62" name="jj"/>
+                    <label end="78" start="76" name="jj"/>
+                    <label end="86" start="80" name="nn"/>
+                    <label end="91" start="88" name="nn"/>
+                    <label end="102" start="93" name="VVG"/>
+                    <label end="106" start="104" name="pdt"/>
+                    <label end="110" start="108" name="dt"/>
+                    <label end="115" start="112" name="jj"/>
+                    <label end="121" start="117" name="nns"/>
+                    <label end="123" start="123" name=","/>
+                    <label end="129" start="125" name="wdt"/>
+                    <label end="137" start="131" name="VVD"/>
+                    <label end="142" start="139" name="pdt"/>
+                    <label end="145" start="144" name="to"/>
+                    <label end="158" start="147" name="VV"/>
+                    <label end="162" start="160" name="dt"/>
+                    <label end="174" start="164" name="nn"/>
+                    <label end="176" start="176" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/04/2003 04:06:21 PST Fri" status="MANUAL" ID="1849963">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="158" start="147" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="7279" end="142" start="139" name="Inspector"/>
+                    <label cBy="605" feID="7280" end="174" start="160" name="Ground"/>
+                    <label cBy="439" feID="7281" itype="INI" name="Unwanted_entity"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="142" start="139" name="Ext"/>
+                    <label end="174" start="160" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="142" start="139" name="NP"/>
+                    <label end="174" start="160" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="13" paragNo="7" aPos="0" ID="1201404">
+            <text>Julia resolved to double-check everything she typed today and stay late , if need be , to get up to date .</text>
+            <annotationSet cDate="04/04/2003 04:06:22 PST Fri" status="UNANN" ID="1849968">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="NP"/>
+                    <label end="13" start="6" name="VVD"/>
+                    <label end="16" start="15" name="to"/>
+                    <label end="29" start="18" name="VV"/>
+                    <label end="40" start="31" name="nn"/>
+                    <label end="44" start="42" name="PP"/>
+                    <label end="50" start="46" name="VVN"/>
+                    <label end="56" start="52" name="nn"/>
+                    <label end="60" start="58" name="cc"/>
+                    <label end="65" start="62" name="VV"/>
+                    <label end="70" start="67" name="rb"/>
+                    <label end="72" start="72" name=","/>
+                    <label end="75" start="74" name="in"/>
+                    <label end="80" start="77" name="md"/>
+                    <label end="83" start="82" name="vb"/>
+                    <label end="85" start="85" name=","/>
+                    <label end="88" start="87" name="to"/>
+                    <label end="92" start="90" name="VV"/>
+                    <label end="95" start="94" name="rp"/>
+                    <label end="98" start="97" name="to"/>
+                    <label end="103" start="100" name="nn"/>
+                    <label end="105" start="105" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/04/2003 04:06:22 PST Fri" status="MANUAL" ID="1849969">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="29" start="18" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="7279" end="4" start="0" name="Inspector"/>
+                    <label cBy="605" feID="7280" end="56" start="31" name="Ground"/>
+                    <label cBy="439" feID="7281" itype="INI" name="Unwanted_entity"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="4" start="0" name="Ext"/>
+                    <label end="56" start="31" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="4" start="0" name="NP"/>
+                    <label end="56" start="31" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="6" paragNo="88" aPos="0" ID="1201407">
+            <text>You should always double-check that the patient is sitting up safely , and keep watch in case he changes position as you go along .</text>
+            <annotationSet cDate="04/04/2003 04:06:23 PST Fri" status="UNANN" ID="1849974">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="PP"/>
+                    <label end="9" start="4" name="md"/>
+                    <label end="16" start="11" name="rb"/>
+                    <label end="29" start="18" name="VV"/>
+                    <label end="34" start="31" name="in"/>
+                    <label end="38" start="36" name="dt"/>
+                    <label end="46" start="40" name="nn"/>
+                    <label end="49" start="48" name="VBZ"/>
+                    <label end="57" start="51" name="VVG"/>
+                    <label end="60" start="59" name="rp"/>
+                    <label end="67" start="62" name="rb"/>
+                    <label end="69" start="69" name=","/>
+                    <label end="73" start="71" name="cc"/>
+                    <label end="78" start="75" name="VV"/>
+                    <label end="84" start="80" name="nn"/>
+                    <label end="87" start="86" name="in"/>
+                    <label end="92" start="89" name="nn"/>
+                    <label end="95" start="94" name="PP"/>
+                    <label end="103" start="97" name="VVZ"/>
+                    <label end="112" start="105" name="nn"/>
+                    <label end="115" start="114" name="in"/>
+                    <label end="119" start="117" name="PP"/>
+                    <label end="122" start="121" name="VVP"/>
+                    <label end="128" start="124" name="rb"/>
+                    <label end="130" start="130" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/04/2003 04:06:24 PST Fri" status="MANUAL" ID="1849975">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="29" start="18" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="7279" end="2" start="0" name="Inspector"/>
+                    <label cBy="605" feID="7297" end="67" start="31" name="Desired_state"/>
+                    <label cBy="303" feID="7280" itype="DNI" name="Ground"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="2" start="0" name="Ext"/>
+                    <label end="67" start="31" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="2" start="0" name="NP"/>
+                    <label end="67" start="31" name="Sfin"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="124" aPos="0" ID="1201409">
+            <text>As I neurotically double-check if the tape is running , I mutter by way of apology , ` I 've had some bad experiences with tape recorders . &quot;</text>
+            <annotationSet cDate="04/04/2003 04:06:25 PST Fri" status="UNANN" ID="1849978">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="in"/>
+                    <label end="3" start="3" name="PP"/>
+                    <label end="16" start="5" name="rb"/>
+                    <label end="29" start="18" name="VV"/>
+                    <label end="32" start="31" name="in"/>
+                    <label end="36" start="34" name="dt"/>
+                    <label end="41" start="38" name="nn"/>
+                    <label end="44" start="43" name="VBZ"/>
+                    <label end="52" start="46" name="VVG"/>
+                    <label end="54" start="54" name=","/>
+                    <label end="56" start="56" name="nn"/>
+                    <label end="63" start="58" name="nn"/>
+                    <label end="66" start="65" name="in"/>
+                    <label end="70" start="68" name="nn"/>
+                    <label end="73" start="72" name="in"/>
+                    <label end="81" start="75" name="nn"/>
+                    <label end="83" start="83" name=","/>
+                    <label end="87" start="87" name="PP"/>
+                    <label end="91" start="89" name="VHP"/>
+                    <label end="95" start="93" name="VHD"/>
+                    <label end="100" start="97" name="dt"/>
+                    <label end="104" start="102" name="jj"/>
+                    <label end="116" start="106" name="nns"/>
+                    <label end="121" start="118" name="in"/>
+                    <label end="126" start="123" name="nn"/>
+                    <label end="136" start="128" name="nns"/>
+                    <label end="138" start="138" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/04/2003 04:06:25 PST Fri" status="MANUAL" ID="1849979">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="29" start="18" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="7279" end="3" start="3" name="Inspector"/>
+                    <label cBy="605" feID="7297" end="52" start="31" name="Desired_state"/>
+                    <label cBy="605" feID="7285" end="16" start="5" name="Manner"/>
+                    <label cBy="303" feID="7280" itype="DNI" name="Ground"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="3" start="3" name="Ext"/>
+                    <label end="52" start="31" name="Dep"/>
+                    <label end="16" start="5" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="3" start="3" name="NP"/>
+                    <label end="52" start="31" name="Sinterrog"/>
+                    <label end="16" start="5" name="AVP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="7" paragNo="824" aPos="0" ID="1201411">
+            <text>He double-checked the pockets of his suit and turned up a folded business card belonging to one Murray Mancuso , Offshore Investors Ltd .</text>
+            <annotationSet cDate="04/04/2003 04:06:26 PST Fri" status="UNANN" ID="1849982">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="16" start="3" name="VVD"/>
+                    <label end="20" start="18" name="dt"/>
+                    <label end="28" start="22" name="nns"/>
+                    <label end="31" start="30" name="in"/>
+                    <label end="35" start="33" name="PP$"/>
+                    <label end="40" start="37" name="nn"/>
+                    <label end="44" start="42" name="cc"/>
+                    <label end="51" start="46" name="VVD"/>
+                    <label end="54" start="53" name="rp"/>
+                    <label end="56" start="56" name="dt"/>
+                    <label end="63" start="58" name="VVN"/>
+                    <label end="72" start="65" name="nn"/>
+                    <label end="77" start="74" name="nn"/>
+                    <label end="87" start="79" name="VVG"/>
+                    <label end="90" start="89" name="to"/>
+                    <label end="94" start="92" name="cd"/>
+                    <label end="101" start="96" name="NP"/>
+                    <label end="109" start="103" name="NP"/>
+                    <label end="111" start="111" name=","/>
+                    <label end="120" start="113" name="NP"/>
+                    <label end="130" start="122" name="NPS"/>
+                    <label end="134" start="132" name="NP"/>
+                    <label end="136" start="136" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/04/2003 04:06:26 PST Fri" status="MANUAL" ID="1849983">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="16" start="3" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="7279" end="1" start="0" name="Inspector"/>
+                    <label cBy="605" feID="7280" end="40" start="18" name="Ground"/>
+                    <label cBy="439" feID="7281" itype="INI" name="Unwanted_entity"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="1" start="0" name="Ext"/>
+                    <label end="40" start="18" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="1" start="0" name="NP"/>
+                    <label end="40" start="18" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="584" aPos="0" ID="1201412">
+            <text>In other words , he double-checks the contents of a fish finger or a sausage .</text>
+            <annotationSet cDate="04/04/2003 04:06:26 PST Fri" status="UNANN" ID="1849984">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="in"/>
+                    <label end="7" start="3" name="jj"/>
+                    <label end="13" start="9" name="nns"/>
+                    <label end="15" start="15" name=","/>
+                    <label end="18" start="17" name="PP"/>
+                    <label end="32" start="20" name="VVZ"/>
+                    <label end="36" start="34" name="dt"/>
+                    <label end="45" start="38" name="nns"/>
+                    <label end="48" start="47" name="in"/>
+                    <label end="50" start="50" name="dt"/>
+                    <label end="55" start="52" name="nn"/>
+                    <label end="62" start="57" name="nn"/>
+                    <label end="65" start="64" name="cc"/>
+                    <label end="67" start="67" name="dt"/>
+                    <label end="75" start="69" name="nn"/>
+                    <label end="77" start="77" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/04/2003 04:06:27 PST Fri" status="MANUAL" ID="1849985">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="32" start="20" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="7279" end="18" start="17" name="Inspector"/>
+                    <label cBy="605" feID="7280" end="75" start="34" name="Ground"/>
+                    <label cBy="439" feID="7281" itype="INI" name="Unwanted_entity"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="18" start="17" name="Ext"/>
+                    <label end="75" start="34" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="18" start="17" name="NP"/>
+                    <label end="75" start="34" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="295" aPos="0" ID="1201415">
+            <text>Two hours later , when he had finished , Manville began to double-check it , by re-translating it all back into English .</text>
+            <annotationSet cDate="04/04/2003 04:06:28 PST Fri" status="UNANN" ID="1849990">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="cd"/>
+                    <label end="8" start="4" name="nns"/>
+                    <label end="14" start="10" name="rbr"/>
+                    <label end="16" start="16" name=","/>
+                    <label end="21" start="18" name="wrb"/>
+                    <label end="24" start="23" name="PP"/>
+                    <label end="28" start="26" name="VHD"/>
+                    <label end="37" start="30" name="VVN"/>
+                    <label end="39" start="39" name=","/>
+                    <label end="48" start="41" name="NP"/>
+                    <label end="54" start="50" name="VVD"/>
+                    <label end="57" start="56" name="to"/>
+                    <label end="70" start="59" name="VV"/>
+                    <label end="73" start="72" name="PP"/>
+                    <label end="75" start="75" name=","/>
+                    <label end="78" start="77" name="in"/>
+                    <label end="93" start="80" name="VVG"/>
+                    <label end="96" start="95" name="PP"/>
+                    <label end="100" start="98" name="dt"/>
+                    <label end="105" start="102" name="nn"/>
+                    <label end="110" start="107" name="in"/>
+                    <label end="118" start="112" name="NP"/>
+                    <label end="120" start="120" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/04/2003 04:06:28 PST Fri" status="MANUAL" ID="1849991">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="70" start="59" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="7279" end="48" start="41" name="Inspector"/>
+                    <label cBy="605" feID="7280" end="73" start="72" name="Ground"/>
+                    <label cBy="439" feID="7281" itype="INI" name="Unwanted_entity"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="48" start="41" name="Ext"/>
+                    <label end="73" start="72" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="48" start="41" name="NP"/>
+                    <label end="73" start="72" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="393" aPos="0" ID="1201416">
+            <text>Which was why she was checking and double-checking everything that landed on her desk .</text>
+            <annotationSet cDate="04/04/2003 04:06:28 PST Fri" status="UNANN" ID="1849992">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="wdt"/>
+                    <label end="8" start="6" name="VBD"/>
+                    <label end="12" start="10" name="wrb"/>
+                    <label end="16" start="14" name="PP"/>
+                    <label end="20" start="18" name="VBD"/>
+                    <label end="29" start="22" name="VVG"/>
+                    <label end="33" start="31" name="cc"/>
+                    <label end="49" start="35" name="VVG"/>
+                    <label end="60" start="51" name="nn"/>
+                    <label end="65" start="62" name="wdt"/>
+                    <label end="72" start="67" name="VVD"/>
+                    <label end="75" start="74" name="in"/>
+                    <label end="79" start="77" name="PP$"/>
+                    <label end="84" start="81" name="nn"/>
+                    <label end="86" start="86" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/04/2003 04:06:29 PST Fri" status="MANUAL" ID="1849993">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="49" start="35" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="7279" end="16" start="14" name="Inspector"/>
+                    <label cBy="605" feID="7280" end="84" start="51" name="Ground"/>
+                    <label cBy="439" feID="7281" itype="INI" name="Unwanted_entity"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="16" start="14" name="Ext"/>
+                    <label end="84" start="51" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="16" start="14" name="NP"/>
+                    <label end="84" start="51" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="15" paragNo="404" aPos="0" ID="1201417">
+            <text>This stage can also be used for double-checking your copper track design for errors or omissions .</text>
+            <annotationSet cDate="04/04/2003 04:06:29 PST Fri" status="UNANN" ID="1849994">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="dt"/>
+                    <label end="9" start="5" name="nn"/>
+                    <label end="13" start="11" name="md"/>
+                    <label end="18" start="15" name="rb"/>
+                    <label end="21" start="20" name="vb"/>
+                    <label end="26" start="23" name="VVN"/>
+                    <label end="30" start="28" name="in"/>
+                    <label end="46" start="32" name="VVG"/>
+                    <label end="51" start="48" name="PP$"/>
+                    <label end="58" start="53" name="nn"/>
+                    <label end="64" start="60" name="nn"/>
+                    <label end="71" start="66" name="nn"/>
+                    <label end="75" start="73" name="in"/>
+                    <label end="82" start="77" name="nns"/>
+                    <label end="85" start="84" name="cc"/>
+                    <label end="95" start="87" name="nns"/>
+                    <label end="97" start="97" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/04/2003 04:06:29 PST Fri" status="MANUAL" ID="1849995">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="46" start="32" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="7280" end="71" start="48" name="Ground"/>
+                    <label cBy="605" feID="7281" end="95" start="73" name="Unwanted_entity"/>
+                    <label cBy="605" feID="7279" itype="CNI" name="Inspector"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="71" start="48" name="Obj"/>
+                    <label end="95" start="73" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="71" start="48" name="NP"/>
+                    <label end="95" start="73" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(2)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="561" aPos="0" ID="1201452">
+            <text>Even if you normally do not bother too much about checking the wiring before trying out a new project , always at least double-check the mains wiring on any mains powered projects .</text>
+            <annotationSet cDate="04/04/2003 04:15:18 PST Fri" status="UNANN" ID="1850064">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="rb"/>
+                    <label end="6" start="5" name="in"/>
+                    <label end="10" start="8" name="PP"/>
+                    <label end="19" start="12" name="rb"/>
+                    <label end="22" start="21" name="VVP"/>
+                    <label end="26" start="24" name="rb"/>
+                    <label end="33" start="28" name="VV"/>
+                    <label end="37" start="35" name="rb"/>
+                    <label end="42" start="39" name="rb"/>
+                    <label end="48" start="44" name="in"/>
+                    <label end="57" start="50" name="VVG"/>
+                    <label end="61" start="59" name="dt"/>
+                    <label end="68" start="63" name="nn"/>
+                    <label end="75" start="70" name="in"/>
+                    <label end="82" start="77" name="VVG"/>
+                    <label end="86" start="84" name="rp"/>
+                    <label end="88" start="88" name="dt"/>
+                    <label end="92" start="90" name="jj"/>
+                    <label end="100" start="94" name="nn"/>
+                    <label end="102" start="102" name=","/>
+                    <label end="109" start="104" name="rb"/>
+                    <label end="112" start="111" name="in"/>
+                    <label end="118" start="114" name="jjs"/>
+                    <label end="131" start="120" name="VV"/>
+                    <label end="135" start="133" name="dt"/>
+                    <label end="141" start="137" name="nns"/>
+                    <label end="148" start="143" name="nn"/>
+                    <label end="151" start="150" name="in"/>
+                    <label end="155" start="153" name="dt"/>
+                    <label end="161" start="157" name="nns"/>
+                    <label end="169" start="163" name="VVN"/>
+                    <label end="178" start="171" name="nns"/>
+                    <label end="180" start="180" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/04/2003 04:15:19 PST Fri" status="MANUAL" ID="1850065">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="131" start="120" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="7280" end="148" start="133" name="Ground"/>
+                    <label cBy="605" feID="7279" itype="CNI" name="Inspector"/>
+                    <label cBy="605" feID="7281" itype="INI" name="Unwanted_entity"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="148" start="133" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="148" start="133" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="11" aPos="0" ID="1201456">
+            <text>Any suspicious images can then be double-checked by a radiologist before any decision is taken to treat the patient .</text>
+            <annotationSet cDate="04/04/2003 04:15:20 PST Fri" status="UNANN" ID="1850072">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="13" start="4" name="jj"/>
+                    <label end="20" start="15" name="nns"/>
+                    <label end="24" start="22" name="md"/>
+                    <label end="29" start="26" name="rb"/>
+                    <label end="32" start="31" name="vb"/>
+                    <label end="47" start="34" name="VVN"/>
+                    <label end="50" start="49" name="in"/>
+                    <label end="52" start="52" name="dt"/>
+                    <label end="64" start="54" name="nn"/>
+                    <label end="71" start="66" name="in"/>
+                    <label end="75" start="73" name="dt"/>
+                    <label end="84" start="77" name="nn"/>
+                    <label end="87" start="86" name="VBZ"/>
+                    <label end="93" start="89" name="VVN"/>
+                    <label end="96" start="95" name="to"/>
+                    <label end="102" start="98" name="VV"/>
+                    <label end="106" start="104" name="dt"/>
+                    <label end="114" start="108" name="nn"/>
+                    <label end="116" start="116" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/04/2003 04:15:20 PST Fri" status="MANUAL" ID="1850073">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="47" start="34" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="7280" end="20" start="0" name="Ground"/>
+                    <label cBy="605" feID="7279" end="64" start="49" name="Inspector"/>
+                    <label cBy="605" feID="7281" itype="INI" name="Unwanted_entity"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="20" start="0" name="Ext"/>
+                    <label end="64" start="49" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="20" start="0" name="NP"/>
+                    <label end="64" start="49" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

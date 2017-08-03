@@ -277,6 +277,7 @@ public abstract class AbstractViewEvent extends ActionEvent
     public static final int TWITTER     			  = 1098;
     public static final int COMMUNITY     			  = 1099;
     public static final int P2T						  = 1100;
+    public static final int T2P						  = 1103;
     public static final int INCREASE_ARC_WEIGHT = 1101;
     public static final int DECREASE_ARC_WEIGHT = 1102;
 

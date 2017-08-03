@@ -1,0 +1,909 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="599" cDate="06/15/2001 05:35:31 PDT Fri" name="Clothing" ID="134" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;This frame refers to clothing and its characteristics,  including anything that people conventionally wear.  The &lt;fen&gt;Wearer&lt;/fen&gt; wears a &lt;fen&gt;Garment&lt;/fen&gt; that has a certain &lt;fen&gt;Style&lt;/fen&gt;, is made of a certain &lt;fen&gt;Material&lt;/fen&gt;, and can be otherwise characterized by a &lt;fen&gt;Descriptor&lt;/fen&gt;.  In some cases, the &lt;fen&gt;Body_location&lt;/fen&gt; (where the garment is worn) and &lt;fen&gt;Subregion&lt;/fen&gt; of the clothing may also be specified.
+
+&lt;ex&gt;Claudia dressed in a &lt;fex name="Descriptor"&gt;dark&lt;/fex&gt; &lt;fex name="Descriptor"&gt;green&lt;/fex&gt; &lt;fex name="Material"&gt;cotton&lt;/fex&gt; &lt;t&gt;DRESS&lt;/t&gt; clasped round her slender waist with a broad yellow belt , drank a cup of coffee and opened her neglected post .&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <semType name="Artifact" ID="61"/>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="599" cDate="06/15/2001 05:45:34 PDT Fri" abbrev="Gar" name="Garment" ID="869">
+        <definition>&lt;def-root&gt;This FE identifes the clothing worn.
+
+&lt;ex&gt;Mike wore a new leather &lt;fex name="Garment"&gt;jacket&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Artifact" ID="61"/>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Peripheral" cBy="599" cDate="06/15/2001 05:57:02 PDT Fri" abbrev="Wear" name="Wearer" ID="870">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Wearer&lt;/fen&gt; is the person wearing the clothes, or for whom the clothes are intended.
+
+&lt;ex&gt;&lt;fex name="Wearer"&gt;Mike&lt;/fex&gt; wore a new leather jacket.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="599" cDate="06/15/2001 05:59:08 PDT Fri" abbrev="Sty" name="Style" ID="871">
+        <definition>&lt;def-root&gt;This FE identifes the design, or cut, of the clothing.
+
+&lt;ex&gt;Mike wore a &lt;fex name="Style"&gt;tailored&lt;/fex&gt; leather &lt;t&gt;jacket&lt;/t&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Peripheral" cBy="599" cDate="06/15/2001 06:01:10 PDT Fri" abbrev="Mat" name="Material" ID="872">
+        <definition>&lt;def-root&gt;This FE identifes the material from which the clothing is made.
+
+&lt;ex&gt;Mike wore a new &lt;fex name="Material"&gt;leather&lt;/fex&gt; jacket.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Peripheral" cBy="599" cDate="06/15/2001 06:03:17 PDT Fri" abbrev="Desc" name="Descriptor" ID="873">
+        <definition>&lt;def-root&gt;This FE identifes any description of the clothing besides &lt;fen&gt;Style&lt;/fen&gt;  and &lt;fen&gt;Material&lt;/fen&gt;.
+&lt;ex&gt;Mike wore a &lt;fex name="Descriptor"&gt;new&lt;/fex&gt; &lt;fex name="Descriptor"&gt;black&lt;/fex&gt; leather &lt;t&gt;jacket&lt;/t&gt;.&lt;/ex&gt;
+Note that each modifer of the target gets its own FE (and, hence, its own GF and PT).&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Peripheral" cBy="599" cDate="06/20/2001 05:13:19 PDT Wed" abbrev="Subr" name="Subregion" ID="892">
+        <definition>&lt;def-root&gt;This FE identifies a part of the clothing.
+
+&lt;ex&gt;Mike wore a leather jacket &lt;fex name="Subregion"&gt;with fringes&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="599" cDate="06/23/2001 02:26:41 PDT Sat" abbrev="Use" name="Use" ID="973">
+        <definition>&lt;def-root&gt;This FE identifes the &lt;fen&gt;Use&lt;/fen&gt; for which a &lt;fen&gt;Garment&lt;/fen&gt; is worn or was made. 
+ 
+&lt;ex&gt;Mike wore a new &lt;fex name="Use"&gt;riding&lt;/fex&gt; jacket.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="669" cDate="05/01/2002 11:33:15 PDT Wed" abbrev="Body_loc" name="Body_location" ID="2725">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Body_location&lt;/fen&gt; identifies the place on the body where the clothing is worn.
+
+&lt;ex&gt;Hannah draped a shawl elegantly &lt;fex name="Body_loc"&gt;over her shoulders&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="11/10/2004 07:19:33 PST Wed" abbrev="cre" name="Creator" ID="7220">
+        <definition>&lt;def-root&gt;The individual who created the &lt;fen&gt;Garment&lt;/fen&gt;.
+
+&lt;ex&gt;She 's wearing a &lt;fex name="cre"&gt;Ralph Lauren&lt;/fex&gt; &lt;t&gt;dress&lt;/t&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="11/10/2004 07:22:48 PST Wed" abbrev="tim" name="Time_of_creation" ID="7221">
+        <definition>&lt;def-root&gt;The time at which the &lt;fen&gt;Creator&lt;/fen&gt; makes the &lt;fen&gt;Garment&lt;/fen&gt;.
+
+&lt;ex&gt;The &lt;t&gt;bikinis&lt;/t&gt; &lt;fex name="tim"&gt;of the 1940's&lt;/fex&gt; are fairly similar.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="d0d0d0" fgColor="000000" coreType="Peripheral" cBy="664" cDate="11/10/2004 07:25:41 PST Wed" abbrev="nam" name="Name" ID="7222">
+        <definition>&lt;def-root&gt;The name given to a specific &lt;fen&gt;Garment&lt;/fen&gt;.  Note this is not the name of a general class of clothing items, but rather an individual item.  This is accordingly VERY RARE.
+
+&lt;ex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Artifact</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Closure</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Clothing_parts</relatedFrame>
+        <relatedFrame>Wearing</relatedFrame>
+        <relatedFrame>Undressing</relatedFrame>
+        <relatedFrame>Dressing</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="dress.n" ID="2657" lemmaID="11756" cBy="599" cDate="06/15/2001 06:08:01 PDT Fri">
+        <definition>COD: a one-piece garment for a woman or a girl that covers the body and extends down over the legs.</definition>
+        <sentenceCount annotated="46" total="382"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="dress"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="frock.n" ID="2682" lemmaID="15526" cBy="599" cDate="06/19/2001 01:04:41 PDT Tue">
+        <definition>COD: a woman's or girl's dress</definition>
+        <sentenceCount annotated="34" total="130"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="frock"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="petticoat.n" ID="2686" lemmaID="28672" cBy="599" cDate="06/19/2001 06:29:54 PDT Tue">
+        <definition>COD: a woman's light, loose undergarment in the form of a skirt or dress.</definition>
+        <sentenceCount annotated="19" total="59"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="petticoat"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="ballgown.n" ID="2687" lemmaID="44949" cBy="599" cDate="06/20/2001 11:32:09 PDT Wed">
+        <definition>FN: a long dress, worn for the formal occasion of a ball</definition>
+        <sentenceCount annotated="5" total="10"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="ballgown"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="culottes.n" ID="2688" lemmaID="9211" cBy="599" cDate="06/20/2001 11:37:11 PDT Wed">
+        <definition>COD: women's knee-length trousers, cut with very full legs to resemble a skirt.</definition>
+        <sentenceCount annotated="8" total="23"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="culottes"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="chemise.n" ID="2689" lemmaID="6226" cBy="599" cDate="06/20/2001 11:48:35 PDT Wed">
+        <definition>COD: a woman's loose-fitting undergarment or nightdress.</definition>
+        <sentenceCount annotated="5" total="20"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="chemise"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="jodhpurs.n" ID="2690" lemmaID="21005" cBy="599" cDate="06/20/2001 03:14:46 PDT Wed">
+        <definition>COD: trousers worn for horse riding that are close-fitting below the knee and have reinforced patches on the inside of the leg.</definition>
+        <sentenceCount annotated="7" total="26"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="jodhpurs"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="sock.n" ID="2691" lemmaID="36784" cBy="599" cDate="06/20/2001 03:28:22 PDT Wed">
+        <definition>COD: a knitted garment for the foot and lower part of the leg.</definition>
+        <sentenceCount annotated="34" total="327"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="sock"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="stocking.n" ID="2692" lemmaID="38118" cBy="599" cDate="06/20/2001 04:15:32 PDT Wed">
+        <definition>COD: a woman's garment that fits closely over the foot and leg, typically made of fine knitted nylon yarn, held up by suspenders or an elasticated strip at the upper thigh.</definition>
+        <sentenceCount annotated="24" total="347"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="stocking"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="leggings.n" ID="2695" lemmaID="22035" cBy="599" cDate="06/20/2001 05:23:39 PDT Wed">
+        <definition>COD: protective overgarments for the legs</definition>
+        <sentenceCount annotated="20" total="76"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="leggings"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="tunic.n" ID="2696" lemmaID="41490" cBy="599" cDate="06/20/2001 05:42:10 PDT Wed">
+        <definition>FN: a short, coat-like  garment reaching</definition>
+        <sentenceCount annotated="30" total="160"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="tunic"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="slip.n" ID="2715" lemmaID="36360" cBy="599" cDate="06/21/2001 03:09:35 PDT Thu">
+        <definition>COD: a loose-fitting garment, especially a short petticoat.</definition>
+        <sentenceCount annotated="10" total="398"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="slip"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="gown.n" ID="2731" lemmaID="16617" cBy="599" cDate="06/23/2001 10:53:19 PDT Sat">
+        <definition>COD: a long dress worn on formal occasions.</definition>
+        <sentenceCount annotated="49" total="218"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="gown"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="skirt.n" ID="2732" lemmaID="36172" cBy="599" cDate="06/23/2001 12:35:04 PDT Sat">
+        <definition>COD: a woman's outer garment fastened around the waist and hanging down around the legs.</definition>
+        <sentenceCount annotated="67" total="356"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="skirt"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="shorts.n" ID="2864" lemmaID="35659" cBy="599" cDate="07/05/2001 03:19:33 PDT Thu">
+        <definition>COD: short trousers that reach only to the knees or thighs. </definition>
+        <sentenceCount annotated="23" total="195"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="shorts"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="pants.n" ID="2866" lemmaID="27703" cBy="599" cDate="07/05/2001 05:14:43 PDT Thu">
+        <definition>FN: article of clothing worn at the waist, covering the buttocks and legs</definition>
+        <sentenceCount annotated="22" total="214"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="pants"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="trousers.n" ID="2878" lemmaID="41347" cBy="599" cDate="07/05/2001 08:00:00 PDT Thu">
+        <definition>COD:  an outer garment covering the body from the waist to the ankles, with a separate part for each leg. </definition>
+        <sentenceCount annotated="86" total="373"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="trousers"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="wrap.n" ID="2900" lemmaID="44554" cBy="599" cDate="07/06/2001 12:26:06 PDT Fri">
+        <definition>COD: a loose outer garment or piece of material. [Clothing]</definition>
+        <sentenceCount annotated="17" total="102"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="wrap"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="shirt.n" ID="2906" lemmaID="35567" cBy="599" cDate="07/06/2001 02:24:59 PDT Fri">
+        <definition>COD: a. a garment for the upper body, typically with a collar and sleeves and buttons down the front</definition>
+        <sentenceCount annotated="56" total="375"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="shirt"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="blouse.n" ID="2907" lemmaID="3923" cBy="599" cDate="07/06/2001 05:32:44 PDT Fri">
+        <definition>COD:  a woman's upper garment resembling a shirt</definition>
+        <sentenceCount annotated="50" total="224"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="blouse"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="cloak.n" ID="2908" lemmaID="6823" cBy="599" cDate="07/06/2001 06:44:43 PDT Fri">
+        <definition>COD: an overgarment that hangs loosely from the shoulders over the arms to the knees or ankles. </definition>
+        <sentenceCount annotated="41" total="252"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="cloak"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="cape.n" ID="2909" lemmaID="5440" cBy="599" cDate="07/06/2001 07:06:29 PDT Fri">
+        <definition>COD: a sleeveless cloak, especially a short one. </definition>
+        <sentenceCount annotated="16" total="142"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="cape"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="coat.n" ID="2910" lemmaID="6976" cBy="599" cDate="07/06/2001 07:31:36 PDT Fri">
+        <definition>COD: a full-length outer garment with sleeves</definition>
+        <sentenceCount annotated="49" total="465"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="coat"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="greatcoat.n" ID="2911" lemmaID="44965" cBy="599" cDate="07/06/2001 09:15:03 PDT Fri">
+        <definition>COD: a long heavy overcoat. </definition>
+        <sentenceCount annotated="21" total="76"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="greatcoat"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="overcoat.n" ID="2912" lemmaID="27235" cBy="599" cDate="07/06/2001 09:30:29 PDT Fri">
+        <definition>COD: a long warm coat. </definition>
+        <sentenceCount annotated="37" total="170"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="overcoat"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="jacket.n" ID="2913" lemmaID="20784" cBy="599" cDate="07/06/2001 09:39:07 PDT Fri">
+        <definition>COD: an outer garment extending to the waist or hips, with sleeves and a fastening down the front. [Clothing] </definition>
+        <sentenceCount annotated="64" total="470"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="jacket"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="vest.n" ID="2914" lemmaID="42926" cBy="599" cDate="07/06/2001 10:05:59 PDT Fri">
+        <definition>FN: a sleeveless garment worn on the upper part of the body</definition>
+        <sentenceCount annotated="29" total="155"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="vest"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="tie.n" ID="2915" lemmaID="40393" cBy="599" cDate="07/06/2001 10:48:43 PDT Fri">
+        <definition>COD: a strip of material worn around the neck beneath a collar, tied in a knot at the front. [Clothing]</definition>
+        <sentenceCount annotated="28" total="296"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="tie"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="hose.n" ID="2925" lemmaID="18459" cBy="599" cDate="07/09/2001 12:06:22 PDT Mon">
+        <definition>COD: stockings, socks, and tights</definition>
+        <sentenceCount annotated="16" total="105"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="hose"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="hosiery.n" ID="2933" lemmaID="18463" cBy="599" cDate="07/09/2001 02:59:00 PDT Mon">
+        <definition>COD: stockings, socks, and tights collectively</definition>
+        <sentenceCount annotated="5" total="46"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="hosiery"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="clothing.n" ID="2935" lemmaID="6889" cBy="599" cDate="07/09/2001 03:14:20 PDT Mon">
+        <definition>COD: mass noun clothes collectively.</definition>
+        <sentenceCount annotated="58" total="361"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="clothing"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="clothes.n" ID="2936" lemmaID="6882" cBy="599" cDate="07/09/2001 03:36:10 PDT Mon">
+        <definition>COD: items worn to cover the body.</definition>
+        <sentenceCount annotated="80" total="412"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="clothes"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="finery.n" ID="2937" lemmaID="14400" cBy="599" cDate="07/09/2001 03:43:47 PDT Mon">
+        <definition>COD: ostentatious clothes or decoration. </definition>
+        <sentenceCount annotated="15" total="60"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="finery"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="suit.n" ID="2938" lemmaID="38720" cBy="599" cDate="07/09/2001 03:45:46 PDT Mon">
+        <definition>COD: a. a set of outer clothes made of the same fabric and designed to be worn together, typically consisting of a jacket and trousers or a jacket and skirt</definition>
+        <sentenceCount annotated="53" total="307"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="suit"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="necktie.n" ID="2940" lemmaID="25589" cBy="599" cDate="07/09/2001 03:49:20 PDT Mon">
+        <definition>COD: another term for tie</definition>
+        <sentenceCount annotated="7" total="14"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="necktie"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" incorporatedFE="Garment" POS="N" name="neckwear.n" ID="2941" lemmaID="25590" cBy="599" cDate="07/09/2001 03:50:00 PDT Mon">
+        <definition>COD: mass noun items worn around the neck, such as collars or ties, collectively. </definition>
+        <sentenceCount annotated="2" total="2"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="neckwear"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="cummerbund.n" ID="2942" lemmaID="9231" cBy="599" cDate="07/09/2001 03:51:04 PDT Mon">
+        <definition>COD: a sash worn around the waist, especially as part of a man's formal evening suit. </definition>
+        <sentenceCount annotated="6" total="10"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="cummerbund"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="scarf.n" ID="2943" lemmaID="34348" cBy="599" cDate="07/09/2001 03:52:37 PDT Mon">
+        <definition>COD: pl. scarves or scarfs a length or square of fabric worn around the neck or head. </definition>
+        <sentenceCount annotated="37" total="183"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="scarf"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="shawl.n" ID="2944" lemmaID="35430" cBy="599" cDate="07/09/2001 03:53:38 PDT Mon">
+        <definition>COD: a piece of fabric worn by women over the shoulders or head or wrapped round a baby. </definition>
+        <sentenceCount annotated="29" total="151"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="shawl"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="bow-tie.n" ID="2948" lemmaID="44969" cBy="599" cDate="07/10/2001 10:21:56 PDT Tue">
+        <definition>COD: a necktie in the form of a bow.</definition>
+        <sentenceCount annotated="6" total="16"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="bow-tie"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="pantyhose.n" ID="2972" lemmaID="44975" cBy="599" cDate="07/12/2001 01:43:53 PDT Thu">
+        <definition>COD: women's thin nylon tights. </definition>
+        <sentenceCount annotated="5" total="18"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="pantyhose"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="garter.n" ID="2976" lemmaID="15944" cBy="599" cDate="07/12/2001 01:52:55 PDT Thu">
+        <definition>COD: a band worn around the leg to keep up a stocking or sock</definition>
+        <sentenceCount annotated="9" total="43"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="garter"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="panties.n" ID="2985" lemmaID="27695" cBy="599" cDate="07/12/2001 02:11:09 PDT Thu">
+        <definition>COD: informal legless underpants worn by women and girls; knickers. </definition>
+        <sentenceCount annotated="13" total="51"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="panties"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="knickers.n" ID="2990" lemmaID="21415" cBy="599" cDate="07/12/2001 02:13:49 PDT Thu">
+        <definition>COD: a woman's or girl's undergarment, covering the body from the waist or hips to the top of the thighs and having two holes for the legs. </definition>
+        <sentenceCount annotated="33" total="158"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="knickers"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="sweater.n" ID="2992" lemmaID="39109" cBy="599" cDate="07/12/2001 02:47:16 PDT Thu">
+        <definition>COD: a pullover with long sleeves. [Clothing] </definition>
+        <sentenceCount annotated="40" total="225"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="sweater"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="jumper.n" ID="2993" lemmaID="21140" cBy="599" cDate="07/12/2001 03:05:30 PDT Thu">
+        <definition>COD: Brit. a pullover or sweater</definition>
+        <sentenceCount annotated="37" total="151"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="jumper"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="cardigan.n" ID="2994" lemmaID="5527" cBy="599" cDate="07/12/2001 03:06:29 PDT Thu">
+        <definition>COD: a knitted jumper fastening with buttons down the front. </definition>
+        <sentenceCount annotated="40" total="144"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="cardigan"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="pullover.n" ID="2995" lemmaID="31116" cBy="599" cDate="07/12/2001 03:07:22 PDT Thu">
+        <definition>COD: a knitted garment put on over the head and covering the top half of the body. </definition>
+        <sentenceCount annotated="31" total="102"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="pullover"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="blazer.n" ID="2996" lemmaID="3790" cBy="599" cDate="07/12/2001 03:08:51 PDT Thu">
+        <definition>FN: a jacket not forming part of a suit</definition>
+        <sentenceCount annotated="43" total="124"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="blazer"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="kilt.n" ID="2997" lemmaID="21318" cBy="599" cDate="07/12/2001 03:17:04 PDT Thu">
+        <definition>COD: a knee-length skirt of pleated tartan cloth, traditionally worn by men as part of Scottish Highland dress and also worn by women and girls. [Clothing] </definition>
+        <sentenceCount annotated="17" total="76"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="kilt"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="swimsuit.n" ID="3026" lemmaID="44977" cBy="599" cDate="07/12/2001 04:17:51 PDT Thu">
+        <definition>COD: a woman's one-piece swimming costume. </definition>
+        <sentenceCount annotated="20" total="83"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="swimsuit"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="bikini.n" ID="3030" lemmaID="3556" cBy="599" cDate="07/12/2001 04:19:28 PDT Thu">
+        <definition>COD: a women's two-piece swimsuit [Clothing] </definition>
+        <sentenceCount annotated="24" total="73"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="bikini"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="robe.n" ID="3033" lemmaID="33411" cBy="599" cDate="07/12/2001 04:21:59 PDT Thu">
+        <definition>COD: a long, loose outer garment reaching to the ankles</definition>
+        <sentenceCount annotated="60" total="235"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="robe"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="bathrobe.n" ID="3034" lemmaID="3030" cBy="599" cDate="07/12/2001 04:24:55 PDT Thu">
+        <definition>COD: a dressing gown, especially one made of towelling. (Cdn query) </definition>
+        <sentenceCount annotated="8" total="46"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="bathrobe"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="apron.n" ID="3035" lemmaID="1792" cBy="599" cDate="07/12/2001 04:25:49 PDT Thu">
+        <definition>COD: a protective garment covering the front of one's clothes and tied at the back. [Clothing] </definition>
+        <sentenceCount annotated="59" total="225"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="apron"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="miniskirt.n" ID="3036" lemmaID="44978" cBy="599" cDate="07/12/2001 04:29:12 PDT Thu">
+        <definition>COD: a very short skirt. </definition>
+        <sentenceCount annotated="5" total="45"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="miniskirt"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="fishnet.n" ID="3037" lemmaID="44979" cBy="599" cDate="07/12/2001 04:35:50 PDT Thu">
+        <definition>FN: a fabric with an open mesh resembling a fishing net (modifier) or stockings made out of such a material.</definition>
+        <sentenceCount annotated="7" total="18"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="fishnet"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" incorporatedFE="Garment" POS="N" name="legwarmers.n" ID="3046" lemmaID="44980" cBy="599" cDate="07/13/2001 11:25:42 PDT Fri">
+        <definition>COD: a pair of tubular knitted garments covering the legs from ankle to knee or thigh.  (listed as leg warmers)</definition>
+        <sentenceCount annotated="2" total="2"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="legwarmers"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="regalia.n" ID="3055" lemmaID="32375" cBy="599" cDate="07/13/2001 03:22:21 PDT Fri">
+        <definition>COD: the distinctive clothing and trappings of high office, worn at formal occasions. </definition>
+        <sentenceCount annotated="13" total="69"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="regalia"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="raiment.n" ID="3057" lemmaID="31720" cBy="599" cDate="07/13/2001 03:36:03 PDT Fri">
+        <definition>COD: mass noun archaic &amp;or. poetic/literary clothing. </definition>
+        <sentenceCount annotated="5" total="10"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="raiment"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="apparel.n" ID="3059" lemmaID="1700" cBy="599" cDate="07/13/2001 03:37:40 PDT Fri">
+        <definition>COD: formal clothing </definition>
+        <sentenceCount annotated="9" total="39"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="apparel"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="attire.n" ID="3062" lemmaID="2308" cBy="599" cDate="07/13/2001 03:41:11 PDT Fri">
+        <definition>COD: mass noun clothes, especially fine or formal ones</definition>
+        <sentenceCount annotated="20" total="92"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="attire"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="vestment.n" ID="3066" lemmaID="42936" cBy="599" cDate="07/13/2001 03:47:48 PDT Fri">
+        <definition>FN: a robe worn by the clergy</definition>
+        <sentenceCount annotated="26" total="68"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="vestment"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="livery.n" ID="3067" lemmaID="22563" cBy="599" cDate="07/13/2001 03:50:58 PDT Fri">
+        <definition>COD: a special uniform worn by a servant, an official, or a member of a City Company. [Clothing] </definition>
+        <sentenceCount annotated="16" total="140"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="livery"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="outfit.n" ID="3068" lemmaID="27082" cBy="599" cDate="07/13/2001 03:52:12 PDT Fri">
+        <definition>COD: a set of clothes worn together. </definition>
+        <sentenceCount annotated="65" total="259"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="outfit"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="garment.n" ID="3069" lemmaID="15929" cBy="599" cDate="07/13/2001 03:53:33 PDT Fri">
+        <definition>COD: an item of clothing</definition>
+        <sentenceCount annotated="49" total="321"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="garment"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="undergarment.n" ID="3070" lemmaID="41951" cBy="599" cDate="07/13/2001 03:54:47 PDT Fri">
+        <definition>COD: an article of underclothing. </definition>
+        <sentenceCount annotated="7" total="19"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="undergarment"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" incorporatedFE="Garment" POS="N" name="underclothing.n" ID="3071" lemmaID="41934" cBy="599" cDate="07/13/2001 03:57:05 PDT Fri">
+        <definition>FN: clothing worn under others next to the skin.</definition>
+        <sentenceCount annotated="4" total="10"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="underclothing"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="underclothes.n" ID="3072" lemmaID="41933" cBy="599" cDate="07/13/2001 03:58:16 PDT Fri">
+        <definition>COD: clothes worn under others next to the s</definition>
+        <sentenceCount annotated="12" total="47"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="underclothes"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="underwear.n" ID="3073" lemmaID="42026" cBy="599" cDate="07/13/2001 03:59:54 PDT Fri">
+        <definition>COD: mass noun clothing worn under other clothes next to the skin. </definition>
+        <sentenceCount annotated="20" total="122"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="underwear"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="togs.n" ID="3074" lemmaID="40616" cBy="599" cDate="07/13/2001 04:53:46 PDT Fri">
+        <definition>COD: informal for clothing</definition>
+        <sentenceCount annotated="4" total="9"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="togs"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="undies.n" ID="3075" lemmaID="42038" cBy="599" cDate="07/16/2001 10:18:34 PDT Mon">
+        <definition>COD: informal articles of underwear. </definition>
+        <sentenceCount annotated="5" total="25"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="undies"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="shift.n" ID="3076" lemmaID="35507" cBy="599" cDate="07/16/2001 10:21:37 PDT Mon">
+        <definition>COD: a straight unwaisted dress. </definition>
+        <sentenceCount annotated="9" total="225"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="shift"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="pinafore.n" ID="3077" lemmaID="29037" cBy="599" cDate="07/16/2001 10:23:28 PDT Mon">
+        <definition>FN: a collarless, sleeveless dress worn over a blouse or jumper</definition>
+        <sentenceCount annotated="5" total="8"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="pinafore"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="mitten.n" ID="3140" lemmaID="24612" cBy="599" cDate="07/17/2001 05:07:13 PDT Tue">
+        <definition>COD: a glove with two sections, one for the thumb and the other for all four fingers. [Clothing] </definition>
+        <sentenceCount annotated="5" total="21"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="mitten"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="mitt.n" ID="3141" lemmaID="24611" cBy="599" cDate="07/17/2001 05:12:55 PDT Tue">
+        <definition>COD: a mitten, or a glove leaving the fingers and thumb-tip exposed; also baseball mitt-a large fingerless glove worn by the catcher or first baseman</definition>
+        <sentenceCount annotated="5" total="21"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="mitt"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="glove.n" ID="3142" lemmaID="16388" cBy="599" cDate="07/17/2001 05:16:27 PDT Tue">
+        <definition>COD: a covering for the hand having separate parts for each finger and the thumb. [Clothing] </definition>
+        <sentenceCount annotated="51" total="356"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="glove"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="bodice.n" ID="3344" lemmaID="4039" cBy="599" cDate="07/30/2001 11:08:56 PDT Mon">
+        <definition>COD: a woman's sleeveless undergarment, often laced at the front. [Clothing] </definition>
+        <sentenceCount annotated="14" total="93"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="bodice"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="corset.n" ID="3345" lemmaID="8473" cBy="599" cDate="07/30/2001 11:34:25 PDT Mon">
+        <definition>COD: tightly fitting undergarment extending from below the chest to the hips, worn to shape the figure. or support a weak or injured back.</definition>
+        <sentenceCount annotated="11" total="73"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="corset"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="parka.n" ID="3346" lemmaID="27846" cBy="599" cDate="07/30/2001 11:36:13 PDT Mon">
+        <definition>COD: a large windproof hooded jacket for use in cold weather. </definition>
+        <sentenceCount annotated="7" total="35"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="parka"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="windbreaker.n" ID="3347" lemmaID="44212" cBy="599" cDate="07/30/2001 11:39:15 PDT Mon">
+        <definition>COD: US trademark a windcheater. [Clothing] </definition>
+        <sentenceCount annotated="8" total="47"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="windbreaker"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="windcheater.n" ID="3348" lemmaID="45018" cBy="599" cDate="07/30/2001 11:40:40 PDT Mon">
+        <definition>COD: chiefly Brit. a wind-resistant jacket with a close-fitting neck, waistband, and cuffs. [Clothing] </definition>
+        <sentenceCount annotated="6" total="14"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="windcheater"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="raincoat.n" ID="3349" lemmaID="31724" cBy="599" cDate="07/30/2001 11:57:06 PDT Mon">
+        <definition>COD: a long coat made from waterproofed or water-resistant fabric. </definition>
+        <sentenceCount annotated="27" total="153"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="raincoat"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="pyjama.n" ID="3350" lemmaID="45019" cBy="599" cDate="07/30/2001 01:06:24 PDT Mon">
+        <definition>COD: (as pyjamas) a suit of loose trousers and jacket for sleeping in</definition>
+        <sentenceCount annotated="31" total="181"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="pyjama"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="nightie.n" ID="3351" lemmaID="25849" cBy="599" cDate="07/30/2001 01:25:51 PDT Mon">
+        <definition>COD: informal a nightdress. </definition>
+        <sentenceCount annotated="10" total="68"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="nightie"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="nightdress.n" ID="3352" lemmaID="25845" cBy="599" cDate="07/30/2001 01:28:41 PDT Mon">
+        <definition>COD: a light, loose garment worn by a woman or girl in bed. </definition>
+        <sentenceCount annotated="37" total="116"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="nightdress"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="nightgown.n" ID="3353" lemmaID="25847" cBy="599" cDate="07/30/2001 01:29:25 PDT Mon">
+        <definition>COD: a nightdress.</definition>
+        <sentenceCount annotated="13" total="70"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="nightgown"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="nightwear.n" ID="3354" lemmaID="45020" cBy="599" cDate="07/30/2001 01:31:19 PDT Mon">
+        <definition>COD: mass noun clothing worn in bed. </definition>
+        <sentenceCount annotated="4" total="10"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="nightwear"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="lingerie.n" ID="3355" lemmaID="22429" cBy="599" cDate="07/30/2001 01:32:24 PDT Mon">
+        <definition>COD: mass noun women's underwear and nightclothes. </definition>
+        <sentenceCount annotated="6" total="58"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="lingerie"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="camisole.n" ID="3356" lemmaID="5295" cBy="599" cDate="07/30/2001 01:33:57 PDT Mon">
+        <definition>COD: a woman's loose-fitting undergarment for the upper body. </definition>
+        <sentenceCount annotated="5" total="20"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="camisole"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="waistcoat.n" ID="3357" lemmaID="43341" cBy="599" cDate="07/30/2001 01:35:57 PDT Mon">
+        <definition>COD: Brit. a close-fitting waist-length garment with no sleeves or collar and buttoning down the front, worn typically by men over a shirt and under a jacket. [Clothing] </definition>
+        <sentenceCount annotated="34" total="143"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="waistcoat"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="jeans.n" ID="3378" lemmaID="20877" cBy="599" cDate="07/30/2001 03:23:45 PDT Mon">
+        <definition>COD: hard-wearing trousers made of denim or other cotton fabric. </definition>
+        <sentenceCount annotated="50" total="306"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="jeans"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="overall.n" ID="3379" lemmaID="27201" cBy="599" cDate="07/30/2001 03:31:27 PDT Mon">
+        <definition>FN: (also overalls) a loose-fitting coat or pair of dungarees worn over ordinary clothes for protection</definition>
+        <sentenceCount annotated="25" total="249"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="overall"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="coverall.n" ID="3380" lemmaID="45021" cBy="599" cDate="07/30/2001 03:33:57 PDT Mon">
+        <definition>COD: also coveralls a full-length protective outer garment, typically with a zip at the front. </definition>
+        <sentenceCount annotated="10" total="24"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="coverall"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="garb.n" ID="3383" lemmaID="15907" cBy="599" cDate="07/31/2001 12:45:24 PDT Tue">
+        <definition>COD: clothing or dress, especially of a distinctive or special kind </definition>
+        <sentenceCount annotated="12" total="62"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="garb"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="smock.n" ID="3388" lemmaID="36527" cBy="599" cDate="07/31/2001 01:57:33 PDT Tue">
+        <definition>FN: a loose blouse or dress-like garment whose the upper part is gathered in smocking</definition>
+        <sentenceCount annotated="27" total="93"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="smock"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="sundress.n" ID="3389" lemmaID="45022" cBy="599" cDate="07/31/2001 02:08:36 PDT Tue">
+        <definition>COD: a light, loose sleeveless dress, typically having a wide neckline and thin shoulder straps. </definition>
+        <sentenceCount annotated="9" total="19"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="sundress"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="bra.n" ID="3395" lemmaID="4385" cBy="599" cDate="07/31/2001 03:13:39 PDT Tue">
+        <definition>COD: a woman's undergarment worn to support the breasts.</definition>
+        <sentenceCount annotated="23" total="149"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="bra"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="brassiere.n" ID="3396" lemmaID="4449" cBy="599" cDate="07/31/2001 03:19:27 PDT Tue">
+        <definition>COD: full form of bra.</definition>
+        <sentenceCount annotated="7" total="24"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="brassiere"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="teddy.n" ID="3397" lemmaID="39705" cBy="599" cDate="07/31/2001 03:59:53 PDT Tue">
+        <definition>FN: A piece of lingerie resembling a leotard or a bathing suit in cut.</definition>
+        <sentenceCount annotated="6" total="46"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="teddy"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="tights.n" ID="3398" lemmaID="40417" cBy="599" cDate="07/31/2001 04:18:56 PDT Tue">
+        <definition>COD:  a close-fitting garment made of a knitted yarn, covering the legs, hips and bottom.</definition>
+        <sentenceCount annotated="34" total="146"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="tights"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="jumpsuit.n" ID="3400" lemmaID="45024" cBy="599" cDate="07/31/2001 04:44:39 PDT Tue">
+        <definition>COD: a garment incorporating trousers and a sleeved top in one piece</definition>
+        <sentenceCount annotated="5" total="17"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="jumpsuit"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="kimono.n" ID="3402" lemmaID="21319" cBy="599" cDate="07/31/2001 04:56:54 PDT Tue">
+        <definition>COD: a long, loose robe having wide sleeves and tied with a sash, originally worn as a formal garment in Japan.</definition>
+        <sentenceCount annotated="9" total="43"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="kimono"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="kaftan.n" ID="3403" lemmaID="45025" cBy="599" cDate="07/31/2001 05:05:51 PDT Tue">
+        <definition>FN: a long, loosely fitted, tunic-like dress, worn by either men or women</definition>
+        <sentenceCount annotated="7" total="25"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="kaftan"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="uniform.n" ID="3542" lemmaID="42182" cBy="599" cDate="08/02/2001 02:35:05 PDT Thu">
+        <definition>COD: the distinctive clothing worn by members of the same organization or body or by children attending certain schools. </definition>
+        <sentenceCount annotated="60" total="281"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="uniform"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="costume.n" ID="3543" lemmaID="8521" cBy="599" cDate="08/02/2001 02:44:09 PDT Thu">
+        <definition>FN: a set of clothes in a style typical of a particular time or place, often worn for a special occasion, such as a party or performance</definition>
+        <sentenceCount annotated="48" total="215"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="costume"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" incorporatedFE="Garment" POS="N" name="motley.n" ID="3544" lemmaID="25028" cBy="599" cDate="08/02/2001 02:52:51 PDT Thu">
+        <definition>COD: mass noun historical the particoloured costume of a jester. </definition>
+        <sentenceCount annotated="2" total="43"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="motley"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="get-up.n" ID="3545" lemmaID="16172" cBy="599" cDate="08/02/2001 02:56:54 PDT Thu">
+        <definition>COD: informal a style or arrangement of dress, especially an elabora</definition>
+        <sentenceCount annotated="7" total="24"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="get-up"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="ensemble.n" ID="3546" lemmaID="12826" cBy="599" cDate="08/02/2001 03:07:06 PDT Thu">
+        <definition>COD: usu. in sing. a set of clothes worn together. </definition>
+        <sentenceCount annotated="5" total="107"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="ensemble"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="surplice.n" ID="3547" lemmaID="38991" cBy="599" cDate="08/02/2001 04:13:17 PDT Thu">
+        <definition>COD: a loose white linen vestment worn over a cassock by clergy and choristers at Christian church services. </definition>
+        <sentenceCount annotated="6" total="15"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="surplice"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="galosh.n" ID="3548" lemmaID="15847" cBy="599" cDate="08/02/2001 04:14:41 PDT Thu">
+        <definition>COD: a waterproof rubber overshoe. </definition>
+        <sentenceCount annotated="5" total="10"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="galosh"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="welly.n" ID="3550" lemmaID="45054" cBy="599" cDate="08/02/2001 04:20:25 PDT Thu">
+        <definition>COD: short for wellington.</definition>
+        <sentenceCount annotated="9" total="81"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="welly"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="wellington.n" ID="3551" lemmaID="43768" cBy="599" cDate="08/02/2001 04:33:53 PDT Thu">
+        <definition>COD: ly Brit. a knee-length waterproof rubber or plastic boot. </definition>
+        <sentenceCount annotated="19" total="120"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="wellington"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="slipper.n" ID="3552" lemmaID="36369" cBy="599" cDate="08/02/2001 04:41:33 PDT Thu">
+        <definition>FN: a comfortable slip-on shoe, usuall worn indoors</definition>
+        <sentenceCount annotated="55" total="183"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="slipper"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="sandal.n" ID="3553" lemmaID="34087" cBy="599" cDate="08/02/2001 05:06:06 PDT Thu">
+        <definition>COD: a light shoe with an openwork upper or straps attaching the sole to the foot. </definition>
+        <sentenceCount annotated="15" total="68"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="sandal"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="sneaker.n" ID="3556" lemmaID="36618" cBy="599" cDate="08/02/2001 05:36:57 PDT Thu">
+        <definition>COD: mer. a soft shoe worn for sports or casual occasions. </definition>
+        <sentenceCount annotated="8" total="29"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="sneaker"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="stiletto.n" ID="3557" lemmaID="38051" cBy="599" cDate="08/02/2001 05:45:15 PDT Thu">
+        <definition>FN: a women's shoe with a thin, high, tapering heel.</definition>
+        <sentenceCount annotated="7" total="44"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="stiletto"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="boot.n" ID="3558" lemmaID="4195" cBy="599" cDate="08/02/2001 05:51:23 PDT Thu">
+        <definition>COD: a sturdy item of footwear covering the foot and ankle, and sometimes the lower leg. </definition>
+        <sentenceCount annotated="80" total="410"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="boot"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="shoe.n" ID="3559" lemmaID="35600" cBy="599" cDate="08/02/2001 05:55:15 PDT Thu">
+        <definition>COD: a covering for the foot having a sturdy sole and not reaching above the ankle. </definition>
+        <sentenceCount annotated="56" total="274"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="shoe"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="gumboot.n" ID="3560" lemmaID="17066" cBy="599" cDate="08/02/2001 06:01:10 PDT Thu">
+        <definition>COD:  chiefly Brit. a long rubber boot; a wellington </definition>
+        <sentenceCount annotated="4" total="16"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="gumboot"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="clog.n" ID="3561" lemmaID="6844" cBy="599" cDate="08/02/2001 06:11:46 PDT Thu">
+        <definition>COD: a shoe with a thick wooden sole. </definition>
+        <sentenceCount annotated="10" total="59"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="clog"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="footwear.n" ID="3599" lemmaID="15000" cBy="599" cDate="08/03/2001 01:06:45 PDT Fri">
+        <definition>COD: shoes, boots, and other coverings for the feet </definition>
+        <sentenceCount annotated="28" total="110"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="footwear"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="sari.n" ID="3601" lemmaID="34155" cBy="599" cDate="08/03/2001 01:24:55 PDT Fri">
+        <definition>COD: pl. saris or sarees a garment consisting of a length of cotton or silk elaborately draped around the body, traditionally worn by women from the Indian subcontinent. </definition>
+        <sentenceCount annotated="14" total="59"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="sari"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="sarong.n" ID="3602" lemmaID="34157" cBy="599" cDate="08/03/2001 01:26:33 PDT Fri">
+        <definition>COD: a garment consisting of a long piece of cloth wrapped round the body and tucked at the waist or under the armpits, traditionally worn in SE Asia and now also by Western women. </definition>
+        <sentenceCount annotated="6" total="26"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="sarong"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="poncho.n" ID="3603" lemmaID="29694" cBy="599" cDate="08/03/2001 01:28:37 PDT Fri">
+        <definition>COD: pl. -os a garment of a type originally worn in South America, made of a thick piece of woollen cloth with a slit in the middle for the head. </definition>
+        <sentenceCount annotated="7" total="26"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="poncho"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" incorporatedFE="Garment" POS="N" name="abaya.n" ID="3619" lemmaID="45067" cBy="599" cDate="08/03/2001 03:00:03 PDT Fri">
+        <definition>COD: a full-length, sleeveless outer garment worn by Arabs. </definition>
+        <sentenceCount annotated="2" total="3"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="abaya"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="armour.n" ID="3625" lemmaID="45069" cBy="599" cDate="08/03/2001 04:43:33 PDT Fri">
+        <definition>FN: coverings made of metal, leather or some other tough material, worn as protection against weapons</definition>
+        <sentenceCount annotated="37" total="281"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="armour"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="jerkin.n" ID="3626" lemmaID="20906" cBy="599" cDate="08/03/2001 05:19:25 PDT Fri">
+        <definition>COD:  a sleeveless jacket</definition>
+        <sentenceCount annotated="9" total="52"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="jerkin"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="crinoline.n" ID="3635" lemmaID="8956" cBy="599" cDate="08/04/2001 07:14:18 PDT Sat">
+        <definition>COD: historical a stiffened or hooped petticoat worn to make a long skirt stand out. [Clothing] </definition>
+        <sentenceCount annotated="5" total="20"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="crinoline"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="muff.n" ID="3636" lemmaID="25153" cBy="599" cDate="08/04/2001 07:50:01 PDT Sat">
+        <definition>COD: a short tube made of fur or other warm material into which the hands are placed for warmth. </definition>
+        <sentenceCount annotated="5" total="29"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="muff"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="cowl.n" ID="3637" lemmaID="8708" cBy="599" cDate="08/04/2001 07:57:11 PDT Sat">
+        <definition>COD: a large loose hood forming part of a monk's habit. </definition>
+        <sentenceCount annotated="9" total="62"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="cowl"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="tutu.n" ID="3638" lemmaID="41572" cBy="599" cDate="08/04/2001 08:02:14 PDT Sat">
+        <definition>COD: a female ballet dancer's costume consisting of a bodice and an attached skirt incorporating numerous layers of fabric, this being either short and stiff and projecting horizontally from the waist (the classical tutu) or long, soft, and bell-shaped (the romantic tutu). </definition>
+        <sentenceCount annotated="6" total="17"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="tutu"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="t-shirt.n" ID="3639" lemmaID="41419" cBy="599" cDate="08/04/2001 08:15:55 PDT Sat">
+        <definition>COD: a short-sleeved casual top, having the shape of a T when spread out flat. </definition>
+        <sentenceCount annotated="17" total="166"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="t-shirt"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="polo-neck.n" ID="3640" lemmaID="45073" cBy="599" cDate="08/04/2001 08:45:55 PDT Sat">
+        <definition>COD: Brit. a high, close-fitting, turned-over collar on a sweater.  (listed as polo neck)</definition>
+        <sentenceCount annotated="5" total="15"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="polo-neck"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="g-string.n" ID="3641" lemmaID="16978" cBy="599" cDate="08/04/2001 08:51:24 PDT Sat">
+        <definition>COD: a skimpy undergarment covering the genitals, consisting of a narrow strip of cloth attached to a waistband. </definition>
+        <sentenceCount annotated="6" total="12"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="g-string"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="flip-flops.n" ID="3642" lemmaID="45074" cBy="599" cDate="08/06/2001 10:20:20 PDT Mon">
+        <definition>COD: a light sandal with a thong that passes between the big and second toes. [Clothing] </definition>
+        <sentenceCount annotated="6" total="23"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="flip-flops"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="one-piece.n" ID="3643" lemmaID="45075" cBy="599" cDate="08/06/2001 10:31:49 PDT Mon">
+        <definition>COD: an article of clothing made or consisting of a single piece. </definition>
+        <sentenceCount annotated="6" total="23"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="one-piece"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="two-piece.n" ID="3644" lemmaID="41664" cBy="599" cDate="08/06/2001 10:33:06 PDT Mon">
+        <definition>COD: a two-piece suit. [Clothing] </definition>
+        <sentenceCount annotated="4" total="28"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="two-piece"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="flannels.n" ID="3645" lemmaID="14609" cBy="599" cDate="08/06/2001 12:44:12 PDT Mon">
+        <definition>COD: men's trousers made of woollen flannel. </definition>
+        <sentenceCount annotated="12" total="34"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="flannels"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="rags.n" ID="3646" lemmaID="45076" cBy="599" cDate="08/06/2001 01:44:58 PDT Mon">
+        <definition>COD: rags old or tattered clothes. </definition>
+        <sentenceCount annotated="27" total="179"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="rags"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="silks.n" ID="3648" lemmaID="45078" cBy="599" cDate="08/06/2001 03:54:35 PDT Mon">
+        <definition>COD: garments made from silk, especially as worn by a jockey in the colours of a particular horse owner.</definition>
+        <sentenceCount annotated="10" total="83"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="silks"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="satins.n" ID="3649" lemmaID="45079" cBy="599" cDate="08/06/2001 04:03:48 PDT Mon">
+        <definition>FN: garments made out of satin.</definition>
+        <sentenceCount annotated="4" total="19"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="satins"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" incorporatedFE="Garment" POS="N" name="cottons.n" ID="3650" lemmaID="45080" cBy="599" cDate="08/06/2001 04:25:54 PDT Mon">
+        <definition>FN: garments made of cotton.</definition>
+        <sentenceCount annotated="3" total="25"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="cottons"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="tweeds.n" ID="3651" lemmaID="41587" cBy="599" cDate="08/06/2001 04:28:55 PDT Mon">
+        <definition>COD:  clothes made of tweed. </definition>
+        <sentenceCount annotated="10" total="48"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="tweeds"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" incorporatedFE="Garment" POS="N" name="ermines.n" ID="3653" lemmaID="45083" cBy="599" cDate="08/06/2001 04:58:11 PDT Mon">
+        <definition>FN: garments made of ermine</definition>
+        <sentenceCount annotated="1" total="2"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="ermines"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="muslins.n" ID="3654" lemmaID="45084" cBy="599" cDate="08/06/2001 05:01:04 PDT Mon">
+        <definition>FN: garments made of ermine.</definition>
+        <sentenceCount annotated="4" total="7"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="muslins"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" incorporatedFE="Garment" POS="N" name="tippet.n" ID="3655" lemmaID="40515" cBy="599" cDate="08/06/2001 05:16:25 PDT Mon">
+        <definition>COD: a woman's fur cape or woollen shawl</definition>
+        <sentenceCount annotated="2" total="3"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="tippet"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="doublet.n" ID="3656" lemmaID="11573" cBy="599" cDate="08/06/2001 05:19:04 PDT Mon">
+        <definition>COD: a man's short close-fitting padded jacket, commonly worn from the 14th to the 17th century</definition>
+        <sentenceCount annotated="9" total="37"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="doublet"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="tatters.n" ID="3657" lemmaID="39598" cBy="599" cDate="08/06/2001 05:22:00 PDT Mon">
+        <definition>FN: garments that are extensively torn.</definition>
+        <sentenceCount annotated="4" total="74"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="tatters"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="neckerchief.n" ID="3659" lemmaID="25585" cBy="599" cDate="08/06/2001 06:34:56 PDT Mon">
+        <definition>COD: a square of cloth worn round the neck. </definition>
+        <sentenceCount annotated="4" total="7"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="neckerchief"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="breeches.n" ID="3660" lemmaID="4541" cBy="599" cDate="08/06/2001 06:41:18 PDT Mon">
+        <definition>COD: short trousers fastened just below the knee, now chiefly worn for riding or as part of ceremonial dress</definition>
+        <sentenceCount annotated="20" total="146"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="breeches"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="sweatshirt.n" ID="3661" lemmaID="39110" cBy="599" cDate="08/06/2001 07:16:20 PDT Mon">
+        <definition>COD: a loose sweater, typically of knitted cotton, worn for exercise or leisure. </definition>
+        <sentenceCount annotated="14" total="124"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="sweatshirt"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="sweatpants.n" ID="3663" lemmaID="45088" cBy="599" cDate="08/07/2001 11:40:24 PDT Tue">
+        <definition>COD: loose trousers with an elasticated or drawstring waist, worn for exercise or leisure. </definition>
+        <sentenceCount annotated="6" total="15"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="sweatpants"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="tracksuit.n" ID="3665" lemmaID="40902" cBy="599" cDate="08/07/2001 12:18:02 PDT Tue">
+        <definition>COD: a loose, warm outfit consisting of a sweatshirt and trousers, worn when exercising or as casual wear. </definition>
+        <sentenceCount annotated="15" total="126"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="tracksuit"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" incorporatedFE="Garment" POS="N" name="alb.n" ID="3666" lemmaID="950" cBy="599" cDate="08/07/2001 12:21:08 PDT Tue">
+        <definition>COD: a white vestment reaching to the feet, worn by clergy and servers in some Christian Churches. </definition>
+        <sentenceCount annotated="4" total="19"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="alb"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="stole.n" ID="3667" lemmaID="38147" cBy="599" cDate="08/07/2001 12:25:00 PDT Tue">
+        <definition>COD: a long scarf or shawl, generally worn by women, loosely over the shoulders.</definition>
+        <sentenceCount annotated="4" total="12"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="stole"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="chasuble.n" ID="3668" lemmaID="6141" cBy="599" cDate="08/07/2001 12:31:38 PDT Tue">
+        <definition>COD: an ornate sleeveless outer vestment worn by a priest when celebrating Mass. </definition>
+        <sentenceCount annotated="5" total="6"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="chasuble"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="cope.n" ID="3669" lemmaID="8291" cBy="599" cDate="08/07/2001 01:01:11 PDT Tue">
+        <definition>COD: a long, loose cloak worn by a priest or bishop on ceremonial occasions. [Eccl] </definition>
+        <sentenceCount annotated="8" total="51"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="cope"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="buskin.n" ID="3670" lemmaID="45091" cBy="599" cDate="08/07/2001 01:29:47 PDT Tue">
+        <definition>COD: historical a calf-high or knee-high boot. </definition>
+        <sentenceCount annotated="4" total="6"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="buskin"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="pallium.n" ID="3671" lemmaID="45092" cBy="599" cDate="08/07/2001 01:33:58 PDT Tue">
+        <definition>COD: a woollen vestment conferred by the Pope on an archbishop, consisting of a narrow circular band placed round the shoulders with a short lappet hanging from front and back</definition>
+        <sentenceCount annotated="4" total="21"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="pallium"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="gauntlet.n" ID="3680" lemmaID="16003" cBy="599" cDate="08/07/2001 06:13:02 PDT Tue">
+        <definition>COD: a stout glove with a long loose wrist</definition>
+        <sentenceCount annotated="11" total="117"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="gauntlet"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="cravat.n" ID="4058" lemmaID="8815" cBy="296" cDate="09/20/2001 03:07:39 PDT Thu">
+        <definition>COD: a short, wide strip of fabric worn by men round the neck and tucked inside an open-necked shirt. </definition>
+        <sentenceCount annotated="14" total="42"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="cravat"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="briefs.n" ID="7201" lemmaID="4600" cBy="296" cDate="08/12/2002 08:46:05 PDT Mon">
+        <definition>FN: men's underwear</definition>
+        <sentenceCount annotated="13" total="91"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="briefs"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="N" name="cossie.n" ID="11150" lemmaID="49680" cBy="664" cDate="11/16/2004 11:51:40 PST Tue">
+        <definition>COD: a swimming costume or a pair of swimming trunks.</definition>
+        <sentenceCount annotated="1" total="1"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="cossie"/>
+    </lexUnit>
+</frame>

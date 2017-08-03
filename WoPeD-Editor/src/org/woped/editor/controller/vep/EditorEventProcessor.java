@@ -336,8 +336,8 @@ public class EditorEventProcessor extends AbstractEventProcessor {
                     } else {
                         editor.getEditorPanel().hideP2TBar();
                     }
-
-                    break;
+                	break;
+    			
                 default:
                     break;
             }

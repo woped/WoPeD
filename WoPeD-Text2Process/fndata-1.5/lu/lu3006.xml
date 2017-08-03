@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_X-Gov" POS="N" name="condominium.n" ID="3006" frame="Buildings" frameID="173" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Extra-Thematic" abbrev="Bldr" name="Builder"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="" name="Building"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="" name="Function"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Extra-Thematic" abbrev="Mat" name="Material"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Extra-Thematic" abbrev="" name="Name"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD73" type="Peripheral" abbrev="" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Peripheral" abbrev="" name="Relative_location"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Extra-Thematic" abbrev="toc" name="Time_of_creation"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="" name="Type"/>
+        </frame>
+    </header>
+    <definition>COD: a building or complex containing a number of individually owned flats or houses. </definition>
+    <lexeme POS="N" name="condominium"/>
+    <valences>
+        <governor type="Gov" lemma="fetch">
+            <annoSet ID="274009"/>
+        </governor>
+    </valences>
+    <subCorpus name="N-380-s20-other-s20">
+        <sentence sentNo="0" aPos="6055524" ID="315354">
+            <text>It hopes to sell properties ( mostly land , because condominiums are fetching only distress prices ) worth ¥100 billion-200 billion to reduce its borrowings . </text>
+            <annotationSet cDate="01/06/2003 11:01:04 PST Mon" status="UNANN" ID="274008">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="7" start="3" name="VVZ"/>
+                    <label end="10" start="9" name="TO0"/>
+                    <label end="15" start="12" name="VVI"/>
+                    <label end="26" start="17" name="NN2"/>
+                    <label end="28" start="28" name="PUL"/>
+                    <label end="35" start="30" name="AV0"/>
+                    <label end="40" start="37" name="NN1-VVB"/>
+                    <label end="42" start="42" name="PUN"/>
+                    <label end="50" start="44" name="CJS"/>
+                    <label end="63" start="52" name="NN2"/>
+                    <label end="67" start="65" name="VBB"/>
+                    <label end="76" start="69" name="AJ0-VVG"/>
+                    <label end="81" start="78" name="AJ0-AV0"/>
+                    <label end="90" start="83" name="NN1-VVB"/>
+                    <label end="97" start="92" name="NN2"/>
+                    <label end="99" start="99" name="PUR"/>
+                    <label end="105" start="101" name="PRP"/>
+                    <label end="110" start="107" name="UNC"/>
+                    <label end="122" start="112" name="NN1"/>
+                    <label end="130" start="124" name="CRD"/>
+                    <label end="133" start="132" name="TO0"/>
+                    <label end="140" start="135" name="VVI"/>
+                    <label end="144" start="142" name="DPS"/>
+                    <label end="155" start="146" name="NN2"/>
+                    <label end="157" start="157" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 11:01:04 PST Mon" status="MANUAL" ID="274009">
+                <layer rank="1" name="FE"/>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="63" start="52" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="63" start="52" name="X"/>
+                    <label end="76" start="69" name="Gov"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

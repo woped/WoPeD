@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" POS="N" name="scoopful.n" ID="3341" frame="Measure_volume" frameID="155" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="" name="Count"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Size" name="Size"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="" name="Stuff"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="" name="Unit"/>
+        </frame>
+    </header>
+    <definition>FN: the volume contained in a scoop</definition>
+    <lexeme POS="N" name="scoopful"/>
+    <semType name="Transparent Noun" ID="9"/>
+    <valences>
+        <governor type="Gov" lemma="divide">
+            <annoSet ID="525479"/>
+        </governor>
+        <FERealization total="1">
+            <FE name="Unit"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Unit"/>
+                <annoSet ID="525479"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Unit"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Unit"/>
+                <annoSet ID="525479"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-001-all">
+        <sentence sentNo="0" aPos="74966339" ID="443118">
+            <text>She divides it into great scoopfuls and fills a cornflake bowl for each of us . </text>
+            <annotationSet cDate="01/07/2003 04:06:55 PST Tue" status="UNANN" ID="525478">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="PNP"/>
+                    <label end="10" start="4" name="VVZ"/>
+                    <label end="13" start="12" name="PNP"/>
+                    <label end="18" start="15" name="PRP"/>
+                    <label end="24" start="20" name="AJ0"/>
+                    <label end="34" start="26" name="NN2"/>
+                    <label end="38" start="36" name="CJC"/>
+                    <label end="44" start="40" name="VVZ"/>
+                    <label end="46" start="46" name="AT0"/>
+                    <label end="56" start="48" name="NN1"/>
+                    <label end="61" start="58" name="NN1-VVB"/>
+                    <label end="65" start="63" name="PRP"/>
+                    <label end="70" start="67" name="DT0"/>
+                    <label end="73" start="72" name="PRF"/>
+                    <label end="76" start="75" name="PNP"/>
+                    <label end="78" start="78" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 04:06:56 PST Tue" status="MANUAL" ID="525479">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="1198" end="34" start="26" name="Unit"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="34" start="26" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="10" start="4" name="Gov"/>
+                    <label end="34" start="15" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

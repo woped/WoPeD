@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" incorporatedFE="Attribute" POS="A" name="rapid.a" ID="14974" frame="Speed" frameID="966" totalAnnotated="6" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <corpus name="MASC" ID="150">
+            <document description="rapid" ID="22072"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Core" abbrev="Att" name="Attribute"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="Cir" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Core" abbrev="Deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Ent" name="Entity"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Extra-Thematic" abbrev="Exp" name="Explanation"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="Spe" name="Speed"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Extra-Thematic" abbrev="Tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: moving at a high speed</definition>
+    <lexeme POS="A" name="rapid"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Attribute"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="--" FE="Attribute"/>
+                <annoSet ID="2597282"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="6">
+            <FE name="Entity"/>
+            <pattern total="5">
+                <valenceUnit GF="Head" PT="N" FE="Entity"/>
+                <annoSet ID="2470502"/>
+                <annoSet ID="2470512"/>
+                <annoSet ID="2470570"/>
+                <annoSet ID="2470720"/>
+                <annoSet ID="2597282"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="NP" FE="Entity"/>
+                <annoSet ID="2470556"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Attribute"/>
+            <FE name="Entity"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="--" FE="Attribute"/>
+                <valenceUnit GF="Head" PT="N" FE="Entity"/>
+                <annoSet ID="2597282"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="5">
+            <FE name="Entity"/>
+            <pattern total="4">
+                <valenceUnit GF="Head" PT="N" FE="Entity"/>
+                <annoSet ID="2470502"/>
+                <annoSet ID="2470512"/>
+                <annoSet ID="2470570"/>
+                <annoSet ID="2470720"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="NP" FE="Entity"/>
+                <annoSet ID="2470556"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-NPcar,bicycle,truck-(1)">
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="1027" aPos="85151057" ID="1512174">
+            <text>In terms of ` carrying efficiency &quot; , the bicycle is roughly twice as efficient as the car , the bus seven times and surface rapid rail twelve times as efficient .</text>
+            <annotationSet cDate="05/11/2009 10:24:27 PDT Mon" status="UNANN" ID="2470501">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="in"/>
+                    <label end="7" start="3" name="nns"/>
+                    <label end="10" start="9" name="in"/>
+                    <label end="21" start="14" name="VVG"/>
+                    <label end="32" start="23" name="nn"/>
+                    <label end="36" start="36" name=","/>
+                    <label end="40" start="38" name="dt"/>
+                    <label end="48" start="42" name="nn"/>
+                    <label end="51" start="50" name="VBZ"/>
+                    <label end="59" start="53" name="rb"/>
+                    <label end="65" start="61" name="rb"/>
+                    <label end="68" start="67" name="rb"/>
+                    <label end="78" start="70" name="jj"/>
+                    <label end="81" start="80" name="in"/>
+                    <label end="85" start="83" name="dt"/>
+                    <label end="89" start="87" name="nn"/>
+                    <label end="91" start="91" name=","/>
+                    <label end="95" start="93" name="dt"/>
+                    <label end="99" start="97" name="nn"/>
+                    <label end="105" start="101" name="cd"/>
+                    <label end="111" start="107" name="nns"/>
+                    <label end="115" start="113" name="cc"/>
+                    <label end="123" start="117" name="VV"/>
+                    <label end="129" start="125" name="jj"/>
+                    <label end="134" start="131" name="nn"/>
+                    <label end="141" start="136" name="nn"/>
+                    <label end="147" start="143" name="nns"/>
+                    <label end="150" start="149" name="in"/>
+                    <label end="160" start="152" name="jj"/>
+                    <label end="162" start="162" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/11/2009 10:24:27 PDT Mon" status="MANUAL" ID="2470502">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="129" start="125" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="976" feID="5902" end="134" start="131" name="Entity"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="134" start="131" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="134" start="131" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="201" aPos="72426525" ID="1512179">
+            <text>Consideration was given to measures such as encouraging car pools , creating a rapid transit system , prohibiting vehicles at certain times or in certain areas , and imposing a smog tax on vehicles .</text>
+            <annotationSet cDate="05/11/2009 10:24:28 PDT Mon" status="UNANN" ID="2470511">
+                <layer rank="1" name="PENN">
+                    <label end="12" start="0" name="nn"/>
+                    <label end="16" start="14" name="VBD"/>
+                    <label end="22" start="18" name="VVN"/>
+                    <label end="25" start="24" name="to"/>
+                    <label end="34" start="27" name="nns"/>
+                    <label end="39" start="36" name="jj"/>
+                    <label end="42" start="41" name="in"/>
+                    <label end="54" start="44" name="VVG"/>
+                    <label end="58" start="56" name="nn"/>
+                    <label end="64" start="60" name="nns"/>
+                    <label end="66" start="66" name=","/>
+                    <label end="75" start="68" name="VVG"/>
+                    <label end="77" start="77" name="dt"/>
+                    <label end="83" start="79" name="jj"/>
+                    <label end="91" start="85" name="nn"/>
+                    <label end="98" start="93" name="nn"/>
+                    <label end="100" start="100" name=","/>
+                    <label end="112" start="102" name="VVG"/>
+                    <label end="121" start="114" name="nns"/>
+                    <label end="124" start="123" name="in"/>
+                    <label end="132" start="126" name="jj"/>
+                    <label end="138" start="134" name="nns"/>
+                    <label end="141" start="140" name="cc"/>
+                    <label end="144" start="143" name="in"/>
+                    <label end="152" start="146" name="jj"/>
+                    <label end="158" start="154" name="nns"/>
+                    <label end="160" start="160" name=","/>
+                    <label end="164" start="162" name="cc"/>
+                    <label end="173" start="166" name="VVG"/>
+                    <label end="175" start="175" name="dt"/>
+                    <label end="180" start="177" name="nn"/>
+                    <label end="184" start="182" name="nn"/>
+                    <label end="187" start="186" name="in"/>
+                    <label end="196" start="189" name="nns"/>
+                    <label end="198" start="198" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/11/2009 10:24:28 PDT Mon" status="MANUAL" ID="2470512">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="83" start="79" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="5902" end="98" start="85" name="Entity"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="98" start="85" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="98" start="85" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-NP-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="151" aPos="27224256" ID="1512201">
+            <text>It was invented by Mr Gordon as a rapid means of transport between his house at Monte and his office in Funchal .</text>
+            <annotationSet cDate="05/11/2009 10:24:33 PDT Mon" status="UNANN" ID="2470555">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="5" start="3" name="VBD"/>
+                    <label end="14" start="7" name="VVN"/>
+                    <label end="17" start="16" name="in"/>
+                    <label end="20" start="19" name="NP"/>
+                    <label end="27" start="22" name="NP"/>
+                    <label end="30" start="29" name="in"/>
+                    <label end="32" start="32" name="dt"/>
+                    <label end="38" start="34" name="jj"/>
+                    <label end="44" start="40" name="nn"/>
+                    <label end="47" start="46" name="in"/>
+                    <label end="57" start="49" name="nn"/>
+                    <label end="65" start="59" name="in"/>
+                    <label end="69" start="67" name="PP$"/>
+                    <label end="75" start="71" name="nn"/>
+                    <label end="78" start="77" name="in"/>
+                    <label end="84" start="80" name="NP"/>
+                    <label end="88" start="86" name="cc"/>
+                    <label end="92" start="90" name="PP$"/>
+                    <label end="99" start="94" name="nn"/>
+                    <label end="102" start="101" name="in"/>
+                    <label end="110" start="104" name="NP"/>
+                    <label end="112" start="112" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/11/2009 10:24:33 PDT Mon" status="MANUAL" ID="2470556">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="38" start="34" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="976" feID="5902" end="44" start="40" name="Entity"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="44" start="40" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="44" start="40" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="326" aPos="102446296" ID="1512208">
+            <text>On transport within cities , Rifkind promised research into the development of new rapid transit networks , coupled with a range of initiatives to help buses move more freely .</text>
+            <annotationSet cDate="05/11/2009 10:24:34 PDT Mon" status="UNANN" ID="2470569">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="in"/>
+                    <label end="11" start="3" name="nn"/>
+                    <label end="18" start="13" name="in"/>
+                    <label end="25" start="20" name="nns"/>
+                    <label end="27" start="27" name=","/>
+                    <label end="35" start="29" name="NP"/>
+                    <label end="44" start="37" name="VVD"/>
+                    <label end="53" start="46" name="nn"/>
+                    <label end="58" start="55" name="in"/>
+                    <label end="62" start="60" name="dt"/>
+                    <label end="74" start="64" name="nn"/>
+                    <label end="77" start="76" name="in"/>
+                    <label end="81" start="79" name="jj"/>
+                    <label end="87" start="83" name="jj"/>
+                    <label end="95" start="89" name="nn"/>
+                    <label end="104" start="97" name="nns"/>
+                    <label end="106" start="106" name=","/>
+                    <label end="114" start="108" name="VVN"/>
+                    <label end="119" start="116" name="in"/>
+                    <label end="121" start="121" name="dt"/>
+                    <label end="127" start="123" name="nn"/>
+                    <label end="130" start="129" name="in"/>
+                    <label end="142" start="132" name="nns"/>
+                    <label end="145" start="144" name="to"/>
+                    <label end="150" start="147" name="VV"/>
+                    <label end="156" start="152" name="nns"/>
+                    <label end="161" start="158" name="VV"/>
+                    <label end="166" start="163" name="rbr"/>
+                    <label end="173" start="168" name="rb"/>
+                    <label end="175" start="175" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/11/2009 10:24:35 PDT Mon" status="MANUAL" ID="2470570">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="87" start="83" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="5902" end="104" start="89" name="Entity"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="104" start="89" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="104" start="89" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)">
+        <sentence corpID="111" docID="421" sentNo="5" paragNo="426" aPos="39810613" ID="1512283">
+            <text>He was the chief architect in charge of the then-burgeoning rapid transit system -- and it turns out he was also a painter .</text>
+            <annotationSet cDate="05/11/2009 10:24:51 PDT Mon" status="UNANN" ID="2470719">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="5" start="3" name="VBD"/>
+                    <label end="9" start="7" name="dt"/>
+                    <label end="15" start="11" name="jj"/>
+                    <label end="25" start="17" name="nn"/>
+                    <label end="28" start="27" name="in"/>
+                    <label end="35" start="30" name="nn"/>
+                    <label end="38" start="37" name="in"/>
+                    <label end="42" start="40" name="dt"/>
+                    <label end="58" start="44" name="VVG"/>
+                    <label end="64" start="60" name="jj"/>
+                    <label end="72" start="66" name="nn"/>
+                    <label end="79" start="74" name="nn"/>
+                    <label end="82" start="81" name=":"/>
+                    <label end="86" start="84" name="cc"/>
+                    <label end="89" start="88" name="PP"/>
+                    <label end="95" start="91" name="VVZ"/>
+                    <label end="99" start="97" name="in"/>
+                    <label end="102" start="101" name="PP"/>
+                    <label end="106" start="104" name="VBD"/>
+                    <label end="111" start="108" name="rb"/>
+                    <label end="113" start="113" name="dt"/>
+                    <label end="121" start="115" name="nn"/>
+                    <label end="123" start="123" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/11/2009 10:24:52 PDT Mon" status="MANUAL" ID="2470720">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="64" start="60" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="5902" end="79" start="66" name="Entity"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="79" start="66" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="79" start="66" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-unmatched-(1)"/>
+    <subCorpus name="manually-added">
+        <sentence corpID="150" docID="22072" sentNo="9" paragNo="2" aPos="0" ID="1571078">
+            <text>a network of rapid transit systems you know just from say outlying districts of downtown especially California where the i saw a program on uh PBS last night they 're saying the average</text>
+            <annotationSet cDate="06/30/2010 04:08:50 PDT Wed" status="UNANN" ID="2577130">
+                <layer rank="1" name="PENN">
+                    <label end="0" start="0" name="dt"/>
+                    <label end="8" start="2" name="nn"/>
+                    <label end="11" start="10" name="in"/>
+                    <label end="17" start="13" name="jj"/>
+                    <label end="25" start="19" name="nn"/>
+                    <label end="33" start="27" name="nns"/>
+                    <label end="37" start="35" name="PP"/>
+                    <label end="42" start="39" name="VVP"/>
+                    <label end="47" start="44" name="rb"/>
+                    <label end="52" start="49" name="in"/>
+                    <label end="56" start="54" name="VV"/>
+                    <label end="65" start="58" name="jj"/>
+                    <label end="75" start="67" name="nns"/>
+                    <label end="78" start="77" name="in"/>
+                    <label end="87" start="80" name="nn"/>
+                    <label end="98" start="89" name="rb"/>
+                    <label end="109" start="100" name="NP"/>
+                    <label end="115" start="111" name="wrb"/>
+                    <label end="119" start="117" name="dt"/>
+                    <label end="121" start="121" name="NP"/>
+                    <label end="125" start="123" name="VVD"/>
+                    <label end="127" start="127" name="dt"/>
+                    <label end="135" start="129" name="nn"/>
+                    <label end="138" start="137" name="in"/>
+                    <label end="141" start="140" name="uh"/>
+                    <label end="145" start="143" name="NP"/>
+                    <label end="150" start="147" name="jj"/>
+                    <label end="156" start="152" name="nn"/>
+                    <label end="161" start="158" name="PP"/>
+                    <label end="165" start="163" name="vbp"/>
+                    <label end="172" start="167" name="VVG"/>
+                    <label end="176" start="174" name="dt"/>
+                    <label end="184" start="178" name="jj"/>
+                </layer>
+                <layer rank="1" name="NER">
+                    <label end="109" start="100" name="location"/>
+                    <label end="145" start="143" name="organization"/>
+                </layer>
+                <layer rank="1" name="WSL">
+                    <label end="0" start="0" name="NT"/>
+                    <label end="11" start="10" name="NT"/>
+                    <label end="37" start="35" name="NT"/>
+                    <label end="47" start="44" name="NT"/>
+                    <label end="52" start="49" name="NT"/>
+                    <label end="78" start="77" name="NT"/>
+                    <label end="98" start="89" name="NT"/>
+                    <label end="109" start="100" name="NT"/>
+                    <label end="115" start="111" name="NT"/>
+                    <label end="119" start="117" name="NT"/>
+                    <label end="121" start="121" name="NT"/>
+                    <label end="127" start="127" name="NT"/>
+                    <label end="138" start="137" name="NT"/>
+                    <label end="141" start="140" name="NT"/>
+                    <label end="145" start="143" name="NT"/>
+                    <label end="161" start="158" name="NT"/>
+                    <label end="165" start="163" name="NT"/>
+                    <label end="176" start="174" name="NT"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/20/2010 04:09:29 PDT Tue" status="MANUAL" ID="2597282">
+                <layer rank="1" name="Target">
+                    <label cBy="571" end="17" start="13" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="571" feID="5902" end="33" start="19" name="Entity"/>
+                    <label cBy="571" feID="5903" end="17" start="13" name="Attribute"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="33" start="19" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="33" start="19" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

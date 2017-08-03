@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="FN1_Sent" POS="V" name="shrink.v" ID="1661" frame="Cause_expansion" frameID="77" totalAnnotated="7" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Agt" name="Agent"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="" name="Cause"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Extra-Thematic" abbrev="Co_Var" name="Co_Variable"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="Dim" name="Dimension"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD73" type="Extra-Thematic" abbrev="" name="Elapsed_time"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="Grp" name="Group"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Peripheral" abbrev="Initial" name="Initial_size"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Inst" name="Instrument"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Item" name="Item"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Speed" name="Rate"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Peripheral" abbrev="Reas" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="Result" name="Result_size"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Sizec" name="Size_change"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: become or make smaller in size or amount; contract</definition>
+    <lexeme POS="V" name="shrink"/>
+    <valences>
+        <FERealization total="3">
+            <FE name="Agent"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <annoSet ID="1760288"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <annoSet ID="1760252"/>
+                <annoSet ID="1760268"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Cause"/>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="NP" FE="Cause"/>
+                <annoSet ID="1760224"/>
+                <annoSet ID="1760264"/>
+                <annoSet ID="1760336"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Cause"/>
+                <annoSet ID="1760372"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Elapsed_time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Elapsed_time"/>
+                <annoSet ID="1760224"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="7">
+            <FE name="Item"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Item"/>
+                <annoSet ID="1760288"/>
+                <annoSet ID="1760372"/>
+            </pattern>
+            <pattern total="5">
+                <valenceUnit GF="Obj" PT="NP" FE="Item"/>
+                <annoSet ID="1760224"/>
+                <annoSet ID="1760252"/>
+                <annoSet ID="1760264"/>
+                <annoSet ID="1760268"/>
+                <annoSet ID="1760336"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Result_size"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Result_size"/>
+                <annoSet ID="1760224"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Size_change"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Size_change"/>
+                <annoSet ID="1760288"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Agent"/>
+            <FE name="Item"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Item"/>
+                <annoSet ID="1760252"/>
+                <annoSet ID="1760268"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Agent"/>
+            <FE name="Item"/>
+            <FE name="Size_change"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Item"/>
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Size_change"/>
+                <annoSet ID="1760288"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Cause"/>
+            <FE name="Elapsed_time"/>
+            <FE name="Item"/>
+            <FE name="Result_size"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Cause"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Elapsed_time"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Item"/>
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Result_size"/>
+                <annoSet ID="1760224"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="3">
+            <FE name="Cause"/>
+            <FE name="Item"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Cause"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Item"/>
+                <annoSet ID="1760264"/>
+                <annoSet ID="1760336"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Cause"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Item"/>
+                <annoSet ID="1760372"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-570-np-ppby"/>
+    <subCorpus name="V-570-np-ppto">
+        <sentence sentNo="0" aPos="19552831" ID="1154560">
+            <text>Self-gravity would shrink the Sun to a point in a mere 29 minutes , if the outward thermonuclear pressures were absent . </text>
+            <annotationSet cDate="01/08/2003 04:40:55 PST Wed" status="UNANN" ID="1760223">
+                <layer rank="1" name="BNC">
+                    <label end="11" start="0" name="NN1"/>
+                    <label end="17" start="13" name="VM0"/>
+                    <label end="24" start="19" name="VVI"/>
+                    <label end="28" start="26" name="AT0"/>
+                    <label end="32" start="30" name="NN1"/>
+                    <label end="35" start="34" name="PRP"/>
+                    <label end="37" start="37" name="AT0"/>
+                    <label end="43" start="39" name="NN1"/>
+                    <label end="46" start="45" name="PRP"/>
+                    <label end="48" start="48" name="AT0"/>
+                    <label end="53" start="50" name="AJ0"/>
+                    <label end="56" start="55" name="CRD"/>
+                    <label end="64" start="58" name="NN2"/>
+                    <label end="66" start="66" name="PUN"/>
+                    <label end="69" start="68" name="CJS"/>
+                    <label end="73" start="71" name="AT0"/>
+                    <label end="81" start="75" name="AJ0-AV0"/>
+                    <label end="95" start="83" name="AJ0"/>
+                    <label end="105" start="97" name="NN2"/>
+                    <label end="110" start="107" name="VBD"/>
+                    <label end="117" start="112" name="AJ0"/>
+                    <label end="119" start="119" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 04:40:55 PST Wed" status="MANUAL" ID="1760224">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="4542" end="11" start="0" name="Cause"/>
+                    <label cBy="103" feID="362" end="32" start="26" name="Item"/>
+                    <label cBy="103" feID="364" end="43" start="34" name="Result_size"/>
+                    <label cBy="296" feID="4543" end="64" start="45" name="Elapsed_time"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="11" start="0" name="Ext"/>
+                    <label end="32" start="26" name="Obj"/>
+                    <label end="43" start="34" name="Dep"/>
+                    <label end="64" start="45" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="11" start="0" name="NP"/>
+                    <label end="32" start="26" name="NP"/>
+                    <label end="43" start="34" name="PP"/>
+                    <label end="64" start="45" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="reexamine"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="24" start="19" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-620-np-ppother"/>
+    <subCorpus name="V-660-trans-simple">
+        <sentence sentNo="0" aPos="98221402" ID="1154574">
+            <text>This provision has a narrow ambit and it does not prevent a supplier attempting to shrink the core of the obligations , rather than excluding the implied terms . </text>
+            <annotationSet cDate="01/08/2003 04:40:57 PST Wed" status="UNANN" ID="1760251">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="DT0"/>
+                    <label end="13" start="5" name="NN1"/>
+                    <label end="17" start="15" name="VHZ"/>
+                    <label end="19" start="19" name="AT0"/>
+                    <label end="26" start="21" name="AJ0"/>
+                    <label end="32" start="28" name="NN1"/>
+                    <label end="36" start="34" name="CJC"/>
+                    <label end="39" start="38" name="PNP"/>
+                    <label end="44" start="41" name="VDZ"/>
+                    <label end="48" start="46" name="XX0"/>
+                    <label end="56" start="50" name="VVI"/>
+                    <label end="58" start="58" name="AT0"/>
+                    <label end="67" start="60" name="NN1"/>
+                    <label end="78" start="69" name="VVG"/>
+                    <label end="81" start="80" name="TO0"/>
+                    <label end="88" start="83" name="VVI"/>
+                    <label end="92" start="90" name="AT0"/>
+                    <label end="97" start="94" name="NN1"/>
+                    <label end="100" start="99" name="PRF"/>
+                    <label end="104" start="102" name="AT0"/>
+                    <label end="116" start="106" name="NN2"/>
+                    <label end="118" start="118" name="PUN"/>
+                    <label end="125" start="120" name="PRP"/>
+                    <label end="130" start="127" name="PRP"/>
+                    <label end="140" start="132" name="VVG"/>
+                    <label end="144" start="142" name="AT0"/>
+                    <label end="152" start="146" name="AJ0"/>
+                    <label end="158" start="154" name="NN2"/>
+                    <label end="160" start="160" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 04:40:57 PST Wed" status="MANUAL" ID="1760252">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="361" end="67" start="58" name="Agent"/>
+                    <label cBy="103" feID="362" end="116" start="90" name="Item"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="67" start="58" name="Ext"/>
+                    <label end="116" start="90" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="67" start="58" name="NP"/>
+                    <label end="116" start="90" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="88" start="83" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="15835518" ID="1154580">
+            <text>Sudden movements in exchange and interest rates can erode profit margins , strain your cashflow and shrink overall profits . </text>
+            <annotationSet cDate="01/08/2003 04:40:58 PST Wed" status="UNANN" ID="1760263">
+                <layer rank="1" name="BNC">
+                    <label end="5" start="0" name="AJ0"/>
+                    <label end="15" start="7" name="NN2"/>
+                    <label end="18" start="17" name="PRP"/>
+                    <label end="27" start="20" name="NN1"/>
+                    <label end="31" start="29" name="CJC"/>
+                    <label end="40" start="33" name="NN1"/>
+                    <label end="46" start="42" name="NN2"/>
+                    <label end="50" start="48" name="VM0"/>
+                    <label end="56" start="52" name="VVI"/>
+                    <label end="63" start="58" name="NN1"/>
+                    <label end="71" start="65" name="NN2"/>
+                    <label end="73" start="73" name="PUN"/>
+                    <label end="80" start="75" name="VVB"/>
+                    <label end="85" start="82" name="DPS"/>
+                    <label end="94" start="87" name="NN1"/>
+                    <label end="98" start="96" name="CJC"/>
+                    <label end="105" start="100" name="VVB"/>
+                    <label end="113" start="107" name="AJ0"/>
+                    <label end="121" start="115" name="NN2"/>
+                    <label end="123" start="123" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 04:40:58 PST Wed" status="MANUAL" ID="1760264">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="4542" end="46" start="0" name="Cause"/>
+                    <label cBy="103" feID="362" end="121" start="107" name="Item"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="46" start="0" name="Ext"/>
+                    <label end="121" start="107" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="46" start="0" name="NP"/>
+                    <label end="121" start="107" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="105" start="100" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="69011286" ID="1154582">
+            <text>The children took deep breaths , tried to shrink their shoulder-blades , as the buttons were done up at the back . </text>
+            <annotationSet cDate="01/08/2003 04:40:58 PST Wed" status="UNANN" ID="1760267">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="11" start="4" name="NN2"/>
+                    <label end="16" start="13" name="VVD"/>
+                    <label end="21" start="18" name="AJ0"/>
+                    <label end="29" start="23" name="NN2"/>
+                    <label end="31" start="31" name="PUN"/>
+                    <label end="37" start="33" name="VVD-VVN"/>
+                    <label end="40" start="39" name="TO0"/>
+                    <label end="47" start="42" name="VVI"/>
+                    <label end="53" start="49" name="DPS"/>
+                    <label end="69" start="55" name="NN2"/>
+                    <label end="71" start="71" name="PUN"/>
+                    <label end="74" start="73" name="CJS-PRP"/>
+                    <label end="78" start="76" name="AT0"/>
+                    <label end="86" start="80" name="NN2"/>
+                    <label end="91" start="88" name="VBD"/>
+                    <label end="96" start="93" name="VDN"/>
+                    <label end="99" start="98" name="AVP"/>
+                    <label end="102" start="101" name="PRP"/>
+                    <label end="106" start="104" name="AT0"/>
+                    <label end="111" start="108" name="NN1"/>
+                    <label end="113" start="113" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 04:40:58 PST Wed" status="MANUAL" ID="1760268">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="361" end="11" start="0" name="Agent"/>
+                    <label cBy="103" feID="362" end="69" start="49" name="Item"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="11" start="0" name="Ext"/>
+                    <label end="69" start="49" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="11" start="0" name="NP"/>
+                    <label end="69" start="49" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="47" start="42" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-670-pass-by"/>
+    <subCorpus name="V-680-pass">
+        <sentence sentNo="0" aPos="2095648" ID="1154592">
+            <text>Another limitation is the extent to which components can be shrunk before quantum effects decrease their reliability . </text>
+            <annotationSet cDate="01/08/2003 04:40:59 PST Wed" status="UNANN" ID="1760287">
+                <layer rank="1" name="BNC">
+                    <label end="6" start="0" name="DT0"/>
+                    <label end="17" start="8" name="NN1"/>
+                    <label end="20" start="19" name="VBZ"/>
+                    <label end="24" start="22" name="AT0"/>
+                    <label end="31" start="26" name="NN1"/>
+                    <label end="34" start="33" name="PRP"/>
+                    <label end="40" start="36" name="DTQ"/>
+                    <label end="51" start="42" name="NN2"/>
+                    <label end="55" start="53" name="VM0"/>
+                    <label end="58" start="57" name="VBI"/>
+                    <label end="65" start="60" name="VVN"/>
+                    <label end="72" start="67" name="PRP"/>
+                    <label end="80" start="74" name="NN1"/>
+                    <label end="88" start="82" name="NN2"/>
+                    <label end="97" start="90" name="VVB"/>
+                    <label end="103" start="99" name="DPS"/>
+                    <label end="115" start="105" name="NN1"/>
+                    <label end="117" start="117" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 04:40:59 PST Wed" status="MANUAL" ID="1760288">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="365" end="31" start="22" name="Size_change"/>
+                    <label cBy="103" feID="362" end="51" start="42" name="Item"/>
+                    <label cBy="618" feID="361" itype="CNI" name="Agent"/>
+                    <label cBy="309" feID="365" end="40" start="33" name="Size_change"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="31" start="22" name="Dep"/>
+                    <label end="51" start="42" name="Ext"/>
+                    <label end="40" start="33" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="31" start="22" name="PP"/>
+                    <label end="51" start="42" name="NP"/>
+                    <label end="40" start="33" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other">
+                    <label end="31" start="22" name="Ant"/>
+                    <label end="40" start="36" name="Rel"/>
+                </layer>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="65" start="60" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-690-trans-other">
+        <sentence sentNo="0" aPos="80514882" ID="1154616">
+            <text>Such help to industry shrinks the tax base . </text>
+            <annotationSet cDate="01/08/2003 04:41:04 PST Wed" status="UNANN" ID="1760335">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="DT0"/>
+                    <label end="8" start="5" name="NN1"/>
+                    <label end="11" start="10" name="PRP"/>
+                    <label end="20" start="13" name="NN1"/>
+                    <label end="28" start="22" name="VVZ"/>
+                    <label end="32" start="30" name="AT0"/>
+                    <label end="36" start="34" name="NN1"/>
+                    <label end="41" start="38" name="NN1"/>
+                    <label end="43" start="43" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 04:41:04 PST Wed" status="MANUAL" ID="1760336">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="4542" end="20" start="0" name="Cause"/>
+                    <label cBy="103" feID="362" end="41" start="30" name="Item"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="20" start="0" name="Ext"/>
+                    <label end="41" start="30" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="20" start="0" name="NP"/>
+                    <label end="41" start="30" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="28" start="22" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-730-ppby">
+        <sentence sentNo="0" aPos="15949906" ID="1154634">
+            <text>The show is a mix of puppets and a human Alice when she 's the normal size and a puppet Alice when she 's shrunk by the potion . </text>
+            <annotationSet cDate="01/08/2003 04:41:06 PST Wed" status="UNANN" ID="1760371">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="7" start="4" name="NN1"/>
+                    <label end="10" start="9" name="VBZ"/>
+                    <label end="12" start="12" name="AT0"/>
+                    <label end="16" start="14" name="NN1"/>
+                    <label end="19" start="18" name="PRF"/>
+                    <label end="27" start="21" name="NN2"/>
+                    <label end="31" start="29" name="CJC"/>
+                    <label end="33" start="33" name="AT0"/>
+                    <label end="39" start="35" name="AJ0-NN1"/>
+                    <label end="45" start="41" name="NP0"/>
+                    <label end="50" start="47" name="AVQ-CJS"/>
+                    <label end="54" start="52" name="PNP"/>
+                    <label end="57" start="56" name="VBZ"/>
+                    <label end="61" start="59" name="AT0"/>
+                    <label end="68" start="63" name="AJ0"/>
+                    <label end="73" start="70" name="NN1"/>
+                    <label end="77" start="75" name="CJC"/>
+                    <label end="79" start="79" name="AT0"/>
+                    <label end="86" start="81" name="NN1"/>
+                    <label end="92" start="88" name="NP0"/>
+                    <label end="97" start="94" name="AVQ-CJS"/>
+                    <label end="101" start="99" name="PNP"/>
+                    <label end="104" start="103" name="VHZ"/>
+                    <label end="111" start="106" name="VVN"/>
+                    <label end="114" start="113" name="PRP"/>
+                    <label end="118" start="116" name="AT0"/>
+                    <label end="125" start="120" name="NN1"/>
+                    <label end="127" start="127" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 04:41:06 PST Wed" status="MANUAL" ID="1760372">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="362" end="101" start="99" name="Item"/>
+                    <label cBy="103" feID="4542" end="125" start="113" name="Cause"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="101" start="99" name="Ext"/>
+                    <label end="125" start="113" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="101" start="99" name="NP"/>
+                    <label end="125" start="113" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="111" start="106" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-730-ppfrom"/>
+    <subCorpus name="V-730-ppin"/>
+    <subCorpus name="V-730-ppinto"/>
+    <subCorpus name="V-780-ppother"/>
+    <subCorpus name="V-810-pother"/>
+    <subCorpus name="V-890-intrans-adverb"/>
+    <subCorpus name="V-900-other"/>
+</lexUnit>

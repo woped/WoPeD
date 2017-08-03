@@ -141,6 +141,35 @@ public class ApplicationMediator extends AbstractApplicationMediator {
         editor.setSaved(true);
         return editor;
     }
+    
+    
+    public IEditor createTextEditor(boolean undoSupport){
+    	return createTextEditor(undoSupport, true);
+    }
+
+    // ! Create a new editor window and register it with all visual controllers
+    // ! @param undoSupport if set to true undo support is to be enabled
+    // ! @return reference to new editor object
+    @Override
+    public IEditor createTextEditor(boolean undoSupport, boolean loadUI) {
+        EditorVC editor = new EditorVC(EditorVC.ID_PREFIX + editorCounter, clipboard, undoSupport,
+                this, loadUI);
+        addViewController(editor);
+        if(loadUI){
+//        	editor.getGraph().addMouseListener(visualController);
+
+	        editor.setName(Messages.getString("Document.Title.Untitled") + " - " + newEditorCounter++);
+	        // notify the editor aware vc
+	        Iterator<?> editorIter = getEditorAwareVCs().iterator();
+	        while (editorIter.hasNext()) {
+	            ((IEditorAware) editorIter.next()).addTextEditor(editor);
+	        }
+	        VisualController.getInstance()
+	                .propertyChange(new PropertyChangeEvent(this, "InternalFrameCount", null, editor));
+        }
+        editor.setSaved(true);
+        return editor;
+    }
 
     // ! Create a sub-process editor window and register it with all visual controllers.
     // ! If a sub-process editor window already exists for the given sub-process return it.

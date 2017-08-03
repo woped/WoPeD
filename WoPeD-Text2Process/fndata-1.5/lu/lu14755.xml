@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="PREP" name="in.prep" ID="14755" frame="Medium" frameID="2005" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Fre" name="Frequency"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Ite" name="Item"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Tex" name="Text"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: found within</definition>
+    <lexeme POS="PREP" name="in"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Item"/>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="Sfin" FE="Item"/>
+                <annoSet ID="2592865"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Text"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Text"/>
+                <annoSet ID="2592865"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Item"/>
+            <FE name="Item"/>
+            <FE name="Text"/>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="Sfin" FE="Item"/>
+                <valenceUnit GF="Head" PT="Sfin" FE="Item"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Text"/>
+                <annoSet ID="2592865"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-Wbible,book-(1)">
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="438" aPos="16815547" ID="1579123">
+            <text>Although the authors in this book agree that the situation is iniquitous , they differ in their views of the solution .</text>
+            <annotationSet cDate="07/16/2010 01:40:42 PDT Fri" status="UNANN" ID="2592864">
+                <layer rank="1" name="PENN">
+                    <label end="7" start="0" name="in"/>
+                    <label end="11" start="9" name="dt"/>
+                    <label end="19" start="13" name="nns"/>
+                    <label end="22" start="21" name="in"/>
+                    <label end="27" start="24" name="dt"/>
+                    <label end="32" start="29" name="nn"/>
+                    <label end="38" start="34" name="VVP"/>
+                    <label end="43" start="40" name="in"/>
+                    <label end="47" start="45" name="dt"/>
+                    <label end="57" start="49" name="nn"/>
+                    <label end="60" start="59" name="VBZ"/>
+                    <label end="71" start="62" name="jj"/>
+                    <label end="73" start="73" name=","/>
+                    <label end="78" start="75" name="PP"/>
+                    <label end="85" start="80" name="VVP"/>
+                    <label end="88" start="87" name="in"/>
+                    <label end="94" start="90" name="PP$"/>
+                    <label end="100" start="96" name="nns"/>
+                    <label end="103" start="102" name="in"/>
+                    <label end="107" start="105" name="dt"/>
+                    <label end="116" start="109" name="nn"/>
+                    <label end="118" start="118" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/16/2010 01:40:42 PDT Fri" status="MANUAL" ID="2592865">
+                <layer rank="1" name="Target">
+                    <label cBy="571" end="22" start="21" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="571" feID="12092" end="32" start="24" name="Text"/>
+                    <label cBy="571" feID="12093" end="71" start="34" name="Item"/>
+                    <label cBy="571" feID="12093" end="19" start="9" name="Item"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="32" start="24" name="Obj"/>
+                    <label end="71" start="34" name="Head"/>
+                    <label end="19" start="9" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="32" start="24" name="NP"/>
+                    <label end="71" start="34" name="Sfin"/>
+                    <label end="19" start="9" name="Sfin"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Prep"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-T-Warticle-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

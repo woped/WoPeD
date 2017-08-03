@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" POS="N" name="immolation.n" ID="9091" frame="Killing" frameID="590" totalAnnotated="3" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="AP" ID="113">
+            <document description="apwsE950310.0256" ID="8095"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Extra-Thematic" abbrev="ben" name="Beneficiary"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Core" abbrev="" name="Cause"/>
+            <FE fgColor="000000" bgColor="90876C" type="Extra-Thematic" abbrev="" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Extra-Thematic" abbrev="" name="Explanation"/>
+            <FE fgColor="000000" bgColor="FFA500" type="Extra-Thematic" abbrev="" name="Frequency"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Instr" name="Instrument"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Kill" name="Killer"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="Man" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Core" abbrev="" name="Means"/>
+            <FE fgColor="000000" bgColor="7CCD73" type="Extra-Thematic" abbrev="" name="Period_of_iterations"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Loc" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Extra-Thematic" abbrev="" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="" name="Victim"/>
+        </frame>
+    </header>
+    <definition>FN: the act of killing or offering as a sacrifice, especially by burning.</definition>
+    <lexeme POS="N" name="immolation"/>
+    <valences>
+        <governor type="Gov" lemma="witness">
+            <annoSet ID="2056456"/>
+        </governor>
+        <FERealization total="2">
+            <FE name="Killer"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="INI" FE="Killer"/>
+                <annoSet ID="79507"/>
+                <annoSet ID="79509"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Victim"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Victim"/>
+                <annoSet ID="79507"/>
+                <annoSet ID="79509"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Killer"/>
+            <FE name="Victim"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="INI" FE="Killer"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Victim"/>
+                <annoSet ID="79507"/>
+                <annoSet ID="79509"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-250-ppof">
+        <sentence sentNo="0" aPos="35074301" ID="216463">
+            <text>Burn baby , burn : Toni Halliday contemplates the immediate immolation of whoever thought of this ` amusing &quot; female-torso style cigarette lighter </text>
+            <annotationSet cDate="01/06/2003 07:16:44 PST Mon" status="UNANN" ID="79506">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="NN1-VVB"/>
+                    <label end="8" start="5" name="NN1"/>
+                    <label end="10" start="10" name="PUN"/>
+                    <label end="15" start="12" name="NN1-VVB"/>
+                    <label end="17" start="17" name="PUN"/>
+                    <label end="22" start="19" name="NP0"/>
+                    <label end="31" start="24" name="NP0"/>
+                    <label end="44" start="33" name="VVZ"/>
+                    <label end="48" start="46" name="AT0"/>
+                    <label end="58" start="50" name="AJ0"/>
+                    <label end="69" start="60" name="NN1"/>
+                    <label end="72" start="71" name="PRF"/>
+                    <label end="80" start="74" name="PNQ"/>
+                    <label end="88" start="82" name="VVD"/>
+                    <label end="91" start="90" name="PRF"/>
+                    <label end="96" start="93" name="DT0"/>
+                    <label end="98" start="98" name="PUQ"/>
+                    <label end="106" start="100" name="AJ0"/>
+                    <label end="108" start="108" name="PUQ"/>
+                    <label end="121" start="110" name="AJ0-NN1"/>
+                    <label end="127" start="123" name="NN1"/>
+                    <label end="137" start="129" name="NN1"/>
+                    <label end="145" start="139" name="NN1"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 07:16:44 PST Mon" status="MANUAL" ID="79507">
+                <layer rank="1" name="FE">
+                    <label cBy="599" feID="4451" end="145" start="71" name="Victim"/>
+                    <label cBy="599" feID="4450" itype="INI" name="Killer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="145" start="71" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="145" start="71" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="69" start="60" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="74441142" ID="216464">
+            <text>Later , on witnessing a sati ( the immolation of a Hindu widow ) , Ibn Battuta was so shocked he nearly fell off his camel . </text>
+            <annotationSet cDate="01/06/2003 07:16:44 PST Mon" status="UNANN" ID="79508">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="AV0"/>
+                    <label end="6" start="6" name="PUN"/>
+                    <label end="9" start="8" name="PRP"/>
+                    <label end="20" start="11" name="VVG"/>
+                    <label end="22" start="22" name="AT0"/>
+                    <label end="27" start="24" name="NN2"/>
+                    <label end="29" start="29" name="PUL"/>
+                    <label end="33" start="31" name="AT0"/>
+                    <label end="44" start="35" name="NN1"/>
+                    <label end="47" start="46" name="PRF"/>
+                    <label end="49" start="49" name="AT0"/>
+                    <label end="55" start="51" name="AJ0"/>
+                    <label end="61" start="57" name="NN1"/>
+                    <label end="63" start="63" name="PUR"/>
+                    <label end="65" start="65" name="PUN"/>
+                    <label end="69" start="67" name="NP0"/>
+                    <label end="77" start="71" name="NP0"/>
+                    <label end="81" start="79" name="VBD"/>
+                    <label end="84" start="83" name="AV0"/>
+                    <label end="92" start="86" name="VVN"/>
+                    <label end="95" start="94" name="PNP"/>
+                    <label end="102" start="97" name="AV0"/>
+                    <label end="107" start="104" name="VVD"/>
+                    <label end="111" start="109" name="AVP-PRP"/>
+                    <label end="115" start="113" name="DPS"/>
+                    <label end="121" start="117" name="NN1"/>
+                    <label end="123" start="123" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 07:16:44 PST Mon" status="MANUAL" ID="79509">
+                <layer rank="1" name="FE">
+                    <label cBy="599" feID="4451" end="61" start="46" name="Victim"/>
+                    <label cBy="599" feID="4450" itype="INI" name="Killer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="61" start="46" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="61" start="46" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="44" start="35" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-340-ppother"/>
+    <subCorpus name="N-380-other"/>
+    <subCorpus name="01-T-(1)">
+        <sentence corpID="113" docID="8095" sentNo="1" paragNo="7" aPos="43643401" ID="1304147">
+            <text>The man rebuffed efforts to send him to the Polish consulate or the United Nations , said Debra Bunt , the other Red Cross worker who witnessed the immolation .</text>
+            <annotationSet cDate="01/15/2005 01:12:39 PST Sat" status="UNANN" ID="2056455">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="6" start="4" name="nn"/>
+                    <label end="15" start="8" name="VVD"/>
+                    <label end="23" start="17" name="nns"/>
+                    <label end="26" start="25" name="to"/>
+                    <label end="31" start="28" name="VV"/>
+                    <label end="35" start="33" name="PP"/>
+                    <label end="38" start="37" name="to"/>
+                    <label end="42" start="40" name="dt"/>
+                    <label end="49" start="44" name="jj"/>
+                    <label end="59" start="51" name="nn"/>
+                    <label end="62" start="61" name="cc"/>
+                    <label end="66" start="64" name="dt"/>
+                    <label end="73" start="68" name="NP"/>
+                    <label end="81" start="75" name="NPS"/>
+                    <label end="83" start="83" name=","/>
+                    <label end="88" start="85" name="VVD"/>
+                    <label end="94" start="90" name="NP"/>
+                    <label end="99" start="96" name="NP"/>
+                    <label end="101" start="101" name=","/>
+                    <label end="105" start="103" name="dt"/>
+                    <label end="111" start="107" name="jj"/>
+                    <label end="115" start="113" name="NP"/>
+                    <label end="121" start="117" name="NP"/>
+                    <label end="128" start="123" name="nn"/>
+                    <label end="132" start="130" name="wp"/>
+                    <label end="142" start="134" name="VVD"/>
+                    <label end="146" start="144" name="dt"/>
+                    <label end="157" start="148" name="nn"/>
+                    <label end="159" start="159" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/15/2005 01:12:39 PST Sat" status="MANUAL" ID="2056456">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="157" start="148" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE"/>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="142" start="134" name="Gov"/>
+                    <label end="157" start="144" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

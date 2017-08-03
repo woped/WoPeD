@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="pop.v" ID="6913" frame="Ingest_substance" frameID="386" totalAnnotated="5" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="AP" ID="113">
+            <document description="apwsE970217.0454" ID="6020"/>
+            <document description="apwsE950410.0070" ID="6021"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="D_device" name="Delivery_device"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="Dur" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Peripheral" abbrev="E_path" name="Entry_path"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Extra-Thematic" abbrev="Freq" name="Frequency"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Ing" name="Ingestor"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Mnr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Means" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="2E8B57" bgColor="00008B" type="Core" abbrev="Sub" name="Substance"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: take or inject (a drug). </definition>
+    <lexeme POS="V" name="pop"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Entry_path"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Entry_path"/>
+                <annoSet ID="1525043"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Ingestor"/>
+            <pattern total="5">
+                <valenceUnit GF="Ext" PT="NP" FE="Ingestor"/>
+                <annoSet ID="1525043"/>
+                <annoSet ID="1525045"/>
+                <annoSet ID="1525049"/>
+                <annoSet ID="2040577"/>
+                <annoSet ID="2040579"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Manner"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[like]" FE="Manner"/>
+                <annoSet ID="2040579"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Purpose"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="VPto" FE="Purpose"/>
+                <annoSet ID="2040579"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Substance"/>
+            <pattern total="5">
+                <valenceUnit GF="Obj" PT="NP" FE="Substance"/>
+                <annoSet ID="1525043"/>
+                <annoSet ID="1525045"/>
+                <annoSet ID="1525049"/>
+                <annoSet ID="2040577"/>
+                <annoSet ID="2040579"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="Sinterrog" FE="Time"/>
+                <annoSet ID="2040577"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Entry_path"/>
+            <FE name="Ingestor"/>
+            <FE name="Substance"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Entry_path"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Ingestor"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Substance"/>
+                <annoSet ID="1525043"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Ingestor"/>
+            <FE name="Manner"/>
+            <FE name="Purpose"/>
+            <FE name="Substance"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Ingestor"/>
+                <valenceUnit GF="Dep" PT="PP[like]" FE="Manner"/>
+                <valenceUnit GF="Dep" PT="VPto" FE="Purpose"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Substance"/>
+                <annoSet ID="2040579"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Ingestor"/>
+            <FE name="Substance"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Ingestor"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Substance"/>
+                <annoSet ID="1525045"/>
+                <annoSet ID="1525049"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Ingestor"/>
+            <FE name="Substance"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Ingestor"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Substance"/>
+                <valenceUnit GF="Dep" PT="Sinterrog" FE="Time"/>
+                <annoSet ID="2040577"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-429-s20-rcoll-aspirin">
+        <sentence sentNo="0" aPos="14075714" ID="1036696">
+            <text>So , if you 're popping down a daily aspirin , keep the pop music down too . </text>
+            <annotationSet cDate="01/07/2003 11:54:33 PST Tue" status="UNANN" ID="1525042">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="AV0"/>
+                    <label end="3" start="3" name="PUN"/>
+                    <label end="6" start="5" name="CJS"/>
+                    <label end="10" start="8" name="PNP"/>
+                    <label end="14" start="12" name="VBB"/>
+                    <label end="22" start="16" name="VVG"/>
+                    <label end="27" start="24" name="AVP"/>
+                    <label end="29" start="29" name="AT0"/>
+                    <label end="35" start="31" name="AJ0"/>
+                    <label end="43" start="37" name="NN0"/>
+                    <label end="45" start="45" name="PUN"/>
+                    <label end="50" start="47" name="VVB"/>
+                    <label end="54" start="52" name="AT0"/>
+                    <label end="58" start="56" name="NN1"/>
+                    <label end="64" start="60" name="NN1"/>
+                    <label end="69" start="66" name="AVP"/>
+                    <label end="73" start="71" name="AV0"/>
+                    <label end="75" start="75" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 11:54:33 PST Tue" status="MANUAL" ID="1525043">
+                <layer rank="1" name="FE">
+                    <label cBy="865" feID="3459" end="10" start="8" name="Ingestor"/>
+                    <label cBy="865" feID="3465" end="27" start="24" name="Entry_path"/>
+                    <label cBy="865" feID="3460" end="43" start="29" name="Substance"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="10" start="8" name="Ext"/>
+                    <label end="27" start="24" name="Dep"/>
+                    <label end="43" start="29" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="10" start="8" name="NP"/>
+                    <label end="27" start="24" name="AVP"/>
+                    <label end="43" start="29" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="22" start="16" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-429-s20-rcoll-pill">
+        <sentence sentNo="0" aPos="25980070" ID="1036697">
+            <text>Consigned to the obituary column more times than he 's popped a pill or praised the Lord , Johnny Cash continues to confound critics and medical science by bouncing back every year with a new triumph . </text>
+            <annotationSet cDate="01/07/2003 11:54:33 PST Tue" status="UNANN" ID="1525044">
+                <layer rank="1" name="BNC">
+                    <label end="8" start="0" name="VVD"/>
+                    <label end="11" start="10" name="PRP"/>
+                    <label end="15" start="13" name="AT0"/>
+                    <label end="24" start="17" name="AJ0"/>
+                    <label end="31" start="26" name="NN1"/>
+                    <label end="36" start="33" name="DT0"/>
+                    <label end="42" start="38" name="NN2"/>
+                    <label end="47" start="44" name="CJS"/>
+                    <label end="50" start="49" name="PNP"/>
+                    <label end="53" start="52" name="VHZ"/>
+                    <label end="60" start="55" name="VVN"/>
+                    <label end="62" start="62" name="AT0"/>
+                    <label end="67" start="64" name="NN1"/>
+                    <label end="70" start="69" name="CJC"/>
+                    <label end="78" start="72" name="VVD"/>
+                    <label end="82" start="80" name="AT0"/>
+                    <label end="87" start="84" name="NN1-NP0"/>
+                    <label end="89" start="89" name="PUN"/>
+                    <label end="96" start="91" name="NP0"/>
+                    <label end="101" start="98" name="NN1-NP0"/>
+                    <label end="111" start="103" name="VVZ"/>
+                    <label end="114" start="113" name="TO0"/>
+                    <label end="123" start="116" name="VVI"/>
+                    <label end="131" start="125" name="NN2"/>
+                    <label end="135" start="133" name="CJC"/>
+                    <label end="143" start="137" name="AJ0"/>
+                    <label end="151" start="145" name="NN1"/>
+                    <label end="154" start="153" name="PRP"/>
+                    <label end="163" start="156" name="AJ0"/>
+                    <label end="168" start="165" name="NN1"/>
+                    <label end="174" start="170" name="AT0"/>
+                    <label end="179" start="176" name="NN1"/>
+                    <label end="184" start="181" name="PRP"/>
+                    <label end="186" start="186" name="AT0"/>
+                    <label end="190" start="188" name="AJ0"/>
+                    <label end="198" start="192" name="NN1"/>
+                    <label end="200" start="200" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 11:54:34 PST Tue" status="MANUAL" ID="1525045">
+                <layer rank="1" name="FE">
+                    <label cBy="865" feID="3459" end="50" start="49" name="Ingestor"/>
+                    <label cBy="865" feID="3460" end="67" start="62" name="Substance"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="50" start="49" name="Ext"/>
+                    <label end="67" start="62" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="50" start="49" name="NP"/>
+                    <label end="67" start="62" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="60" start="55" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="63146878" ID="1036699">
+            <text>Turning back to the storm-rinsed windows and the dangerous electrical crackle of Darkfall lightning on the glass , he popped the pill and watched the water running down the glass in ever-increasing and mysterious rivulets . </text>
+            <annotationSet cDate="01/07/2003 11:54:34 PST Tue" status="UNANN" ID="1525048">
+                <layer rank="1" name="BNC">
+                    <label end="6" start="0" name="VVG"/>
+                    <label end="11" start="8" name="AVP"/>
+                    <label end="14" start="13" name="PRP"/>
+                    <label end="18" start="16" name="AT0"/>
+                    <label end="31" start="20" name="AJ0"/>
+                    <label end="39" start="33" name="NN2"/>
+                    <label end="43" start="41" name="CJC"/>
+                    <label end="47" start="45" name="AT0"/>
+                    <label end="57" start="49" name="AJ0"/>
+                    <label end="68" start="59" name="AJ0"/>
+                    <label end="76" start="70" name="NN1"/>
+                    <label end="79" start="78" name="PRF"/>
+                    <label end="88" start="81" name="NP0"/>
+                    <label end="98" start="90" name="NN1-VVG"/>
+                    <label end="101" start="100" name="PRP"/>
+                    <label end="105" start="103" name="AT0"/>
+                    <label end="111" start="107" name="NN1"/>
+                    <label end="113" start="113" name="PUN"/>
+                    <label end="116" start="115" name="PNP"/>
+                    <label end="123" start="118" name="VVD"/>
+                    <label end="127" start="125" name="AT0"/>
+                    <label end="132" start="129" name="NN1"/>
+                    <label end="136" start="134" name="CJC"/>
+                    <label end="144" start="138" name="VVD-VVN"/>
+                    <label end="148" start="146" name="AT0"/>
+                    <label end="154" start="150" name="NN1"/>
+                    <label end="162" start="156" name="VVG"/>
+                    <label end="167" start="164" name="AVP"/>
+                    <label end="171" start="169" name="AT0"/>
+                    <label end="177" start="173" name="NN1"/>
+                    <label end="180" start="179" name="PRP"/>
+                    <label end="196" start="182" name="AJ0-NN1"/>
+                    <label end="200" start="198" name="CJC"/>
+                    <label end="211" start="202" name="AJ0"/>
+                    <label end="220" start="213" name="NN2"/>
+                    <label end="222" start="222" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 11:54:34 PST Tue" status="MANUAL" ID="1525049">
+                <layer rank="1" name="FE">
+                    <label cBy="865" feID="3459" end="116" start="115" name="Ingestor"/>
+                    <label cBy="865" feID="3460" end="132" start="125" name="Substance"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="116" start="115" name="Ext"/>
+                    <label end="132" start="125" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="116" start="115" name="NP"/>
+                    <label end="132" start="125" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="123" start="118" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-680-s20-pass"/>
+    <subCorpus name="V-880-s20-intrans-simple"/>
+    <subCorpus name="V-890-s20-intrans-adverb"/>
+    <subCorpus name="V-900-s20-other"/>
+    <subCorpus name="01-T-NPinsert,noun,collocate-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+    <subCorpus name="01-T-NPlozenge,pill-(2)">
+        <sentence corpID="113" docID="6020" sentNo="2" paragNo="2" aPos="114777792" ID="1296208">
+            <text>So he popped the lozenges when his sniffles hit --- and suffered a week with the flu , a virus that zinc is n't known to affect .</text>
+            <annotationSet cDate="01/03/2005 05:40:36 PST Mon" status="UNANN" ID="2040576">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="rb"/>
+                    <label end="4" start="3" name="PP"/>
+                    <label end="11" start="6" name="VVD"/>
+                    <label end="15" start="13" name="dt"/>
+                    <label end="24" start="17" name="nns"/>
+                    <label end="29" start="26" name="wrb"/>
+                    <label end="33" start="31" name="PP$"/>
+                    <label end="42" start="35" name="nns"/>
+                    <label end="46" start="44" name="VVP"/>
+                    <label end="50" start="48" name=":"/>
+                    <label end="54" start="52" name="cc"/>
+                    <label end="63" start="56" name="VVD"/>
+                    <label end="65" start="65" name="dt"/>
+                    <label end="70" start="67" name="nn"/>
+                    <label end="75" start="72" name="in"/>
+                    <label end="79" start="77" name="dt"/>
+                    <label end="83" start="81" name="nn"/>
+                    <label end="85" start="85" name=","/>
+                    <label end="87" start="87" name="dt"/>
+                    <label end="93" start="89" name="nn"/>
+                    <label end="98" start="95" name="in"/>
+                    <label end="103" start="100" name="nn"/>
+                    <label end="106" start="105" name="VBZ"/>
+                    <label end="110" start="108" name="rb"/>
+                    <label end="116" start="112" name="VVN"/>
+                    <label end="119" start="118" name="to"/>
+                    <label end="126" start="121" name="VV"/>
+                    <label end="128" start="128" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/03/2005 05:40:36 PST Mon" status="MANUAL" ID="2040577">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="11" start="6" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="3459" end="4" start="3" name="Ingestor"/>
+                    <label cBy="395" feID="3460" end="24" start="13" name="Substance"/>
+                    <label cBy="395" feID="3457" end="46" start="26" name="Time"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="4" start="3" name="Ext"/>
+                    <label end="24" start="13" name="Obj"/>
+                    <label end="46" start="26" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="4" start="3" name="NP"/>
+                    <label end="24" start="13" name="NP"/>
+                    <label end="46" start="26" name="Sinterrog"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="6021" sentNo="1" paragNo="2" aPos="50747054" ID="1296209">
+            <text>NEW YORK ( AP ) --- Actress Elizabeth Taylor popped pills like candy to cope with a marathon of affairs and marriages , according to a new unauthorized biography .</text>
+            <annotationSet cDate="01/03/2005 05:40:36 PST Mon" status="UNANN" ID="2040578">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="jj"/>
+                    <label end="7" start="4" name="VV"/>
+                    <label end="9" start="9" name="("/>
+                    <label end="12" start="11" name="NP"/>
+                    <label end="14" start="14" name=")"/>
+                    <label end="18" start="16" name=":"/>
+                    <label end="26" start="20" name="nn"/>
+                    <label end="36" start="28" name="NP"/>
+                    <label end="43" start="38" name="NP"/>
+                    <label end="50" start="45" name="VVD"/>
+                    <label end="56" start="52" name="nns"/>
+                    <label end="61" start="58" name="in"/>
+                    <label end="67" start="63" name="nn"/>
+                    <label end="70" start="69" name="to"/>
+                    <label end="75" start="72" name="VV"/>
+                    <label end="80" start="77" name="in"/>
+                    <label end="82" start="82" name="dt"/>
+                    <label end="91" start="84" name="nn"/>
+                    <label end="94" start="93" name="in"/>
+                    <label end="102" start="96" name="nns"/>
+                    <label end="106" start="104" name="cc"/>
+                    <label end="116" start="108" name="nns"/>
+                    <label end="118" start="118" name=","/>
+                    <label end="128" start="120" name="VVG"/>
+                    <label end="131" start="130" name="to"/>
+                    <label end="133" start="133" name="dt"/>
+                    <label end="137" start="135" name="jj"/>
+                    <label end="150" start="139" name="jj"/>
+                    <label end="160" start="152" name="nn"/>
+                    <label end="162" start="162" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/03/2005 05:40:37 PST Mon" status="MANUAL" ID="2040579">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="50" start="45" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="3459" end="43" start="20" name="Ingestor"/>
+                    <label cBy="395" feID="3460" end="56" start="52" name="Substance"/>
+                    <label cBy="395" feID="3453" end="67" start="58" name="Manner"/>
+                    <label cBy="395" feID="3456" end="116" start="69" name="Purpose"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="43" start="20" name="Ext"/>
+                    <label end="56" start="52" name="Obj"/>
+                    <label end="67" start="58" name="Dep"/>
+                    <label end="116" start="69" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="43" start="20" name="NP"/>
+                    <label end="56" start="52" name="NP"/>
+                    <label end="67" start="58" name="PP"/>
+                    <label end="116" start="69" name="VPto"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(2)"/>
+    <subCorpus name="other-unmatched-(2)"/>
+</lexUnit>

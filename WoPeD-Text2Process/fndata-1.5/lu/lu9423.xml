@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" incorporatedFE="Sound" POS="V" name="beep.v" ID="9423" frame="Make_noise" frameID="69" totalAnnotated="9" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <corpus name="AP" ID="113">
+            <document description="apwsE950806.0182" ID="2793"/>
+            <document description="apwsE950806.0078" ID="2796"/>
+            <document description="apwsE980211.0797" ID="2797"/>
+            <document description="apwsE950806.0082" ID="2804"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="" name="Addressee"/>
+            <FE fgColor="00008B" bgColor="d0d0d0" type="Extra-Thematic" abbrev="cir" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Extra-Thematic" abbrev="ICause" name="Internal_cause"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Extra-Thematic" abbrev="ite" name="Iterations"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Extra-Thematic" abbrev="Loc-Src" name="Location_of_source"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="" name="Noisy_event"/>
+            <FE fgColor="000000" bgColor="FFD700" type="Extra-Thematic" abbrev="par" name="Particular_iteration"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Extra-Thematic" abbrev="" name="Path"/>
+            <FE fgColor="000000" bgColor="FFA500" type="Peripheral" abbrev="" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="Rsn" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Sound" name="Sound"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="Src-p" name="Sound_source"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Extra-Thematic" abbrev="Sub" name="Subregion"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Peripheral" abbrev="" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: make a high-pitched electronic noise</definition>
+    <lexeme POS="V" name="beep"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Internal_cause"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="Sub" FE="Internal_cause"/>
+                <annoSet ID="1944171"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Manner"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <annoSet ID="1944153"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Manner"/>
+                <annoSet ID="1944143"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Place"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Place"/>
+                <annoSet ID="1944161"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="9">
+            <FE name="Sound"/>
+            <pattern total="9">
+                <valenceUnit GF="" PT="INC" FE="Sound"/>
+                <annoSet ID="1944139"/>
+                <annoSet ID="1944143"/>
+                <annoSet ID="1944147"/>
+                <annoSet ID="1944149"/>
+                <annoSet ID="1944153"/>
+                <annoSet ID="1944161"/>
+                <annoSet ID="1944169"/>
+                <annoSet ID="1944171"/>
+                <annoSet ID="1944185"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="9">
+            <FE name="Sound_source"/>
+            <pattern total="9">
+                <valenceUnit GF="Ext" PT="NP" FE="Sound_source"/>
+                <annoSet ID="1944139"/>
+                <annoSet ID="1944143"/>
+                <annoSet ID="1944147"/>
+                <annoSet ID="1944149"/>
+                <annoSet ID="1944153"/>
+                <annoSet ID="1944161"/>
+                <annoSet ID="1944169"/>
+                <annoSet ID="1944171"/>
+                <annoSet ID="1944185"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[within]" FE="Time"/>
+                <annoSet ID="1944139"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Internal_cause"/>
+            <FE name="Sound"/>
+            <FE name="Sound_source"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="Sub" FE="Internal_cause"/>
+                <valenceUnit GF="" PT="INC" FE="Sound"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Sound_source"/>
+                <annoSet ID="1944171"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Manner"/>
+            <FE name="Sound"/>
+            <FE name="Sound_source"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <valenceUnit GF="" PT="INC" FE="Sound"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Sound_source"/>
+                <annoSet ID="1944153"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Manner"/>
+                <valenceUnit GF="" PT="INC" FE="Sound"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Sound_source"/>
+                <annoSet ID="1944143"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Place"/>
+            <FE name="Sound"/>
+            <FE name="Sound_source"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Place"/>
+                <valenceUnit GF="" PT="INC" FE="Sound"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Sound_source"/>
+                <annoSet ID="1944161"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="4">
+            <FE name="Sound"/>
+            <FE name="Sound_source"/>
+            <pattern total="4">
+                <valenceUnit GF="" PT="INC" FE="Sound"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Sound_source"/>
+                <annoSet ID="1944147"/>
+                <annoSet ID="1944149"/>
+                <annoSet ID="1944169"/>
+                <annoSet ID="1944185"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Sound"/>
+            <FE name="Sound_source"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INC" FE="Sound"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Sound_source"/>
+                <valenceUnit GF="Dep" PT="PP[within]" FE="Time"/>
+                <annoSet ID="1944139"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="226" aPos="0" ID="1248564">
+            <text>Within minutes , the machines were beeping and the tills humming .</text>
+            <annotationSet cDate="09/09/2003 06:35:47 PDT Tue" status="UNANN" ID="1944138">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="0" name="in"/>
+                    <label end="13" start="7" name="nns"/>
+                    <label end="15" start="15" name=","/>
+                    <label end="19" start="17" name="dt"/>
+                    <label end="28" start="21" name="nns"/>
+                    <label end="33" start="30" name="VBD"/>
+                    <label end="41" start="35" name="VVG"/>
+                    <label end="45" start="43" name="cc"/>
+                    <label end="49" start="47" name="dt"/>
+                    <label end="55" start="51" name="nns"/>
+                    <label end="63" start="57" name="VVG"/>
+                    <label end="65" start="65" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="09/09/2003 06:35:47 PDT Tue" status="MANUAL" ID="1944139">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="41" start="35" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="323" end="28" start="17" name="Sound_source"/>
+                    <label cBy="664" feID="6327" end="13" start="0" name="Time"/>
+                    <label cBy="309" feID="328" end="41" start="35" name="Sound"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="28" start="17" name="Ext"/>
+                    <label end="13" start="0" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="28" start="17" name="NP"/>
+                    <label end="13" start="0" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="344" aPos="0" ID="1248566">
+            <text>Klaxons beeped in rhythmic unison and a man 's voice chanted over a megaphone the initials of the President 's Party and the name of Belpan 's Minister of Tourism and Transport : ` VOTE PP .</text>
+            <annotationSet cDate="09/09/2003 06:35:48 PDT Tue" status="UNANN" ID="1944142">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="0" name="nns"/>
+                    <label end="13" start="8" name="VVN"/>
+                    <label end="16" start="15" name="in"/>
+                    <label end="25" start="18" name="jj"/>
+                    <label end="32" start="27" name="nn"/>
+                    <label end="36" start="34" name="cc"/>
+                    <label end="38" start="38" name="dt"/>
+                    <label end="42" start="40" name="nn"/>
+                    <label end="45" start="44" name="POS"/>
+                    <label end="51" start="47" name="nn"/>
+                    <label end="59" start="53" name="VVD"/>
+                    <label end="64" start="61" name="in"/>
+                    <label end="66" start="66" name="dt"/>
+                    <label end="76" start="68" name="nn"/>
+                    <label end="80" start="78" name="dt"/>
+                    <label end="89" start="82" name="nns"/>
+                    <label end="92" start="91" name="in"/>
+                    <label end="96" start="94" name="dt"/>
+                    <label end="106" start="98" name="NP"/>
+                    <label end="109" start="108" name="POS"/>
+                    <label end="115" start="111" name="NP"/>
+                    <label end="119" start="117" name="cc"/>
+                    <label end="123" start="121" name="dt"/>
+                    <label end="128" start="125" name="nn"/>
+                    <label end="131" start="130" name="in"/>
+                    <label end="138" start="133" name="NP"/>
+                    <label end="141" start="140" name="POS"/>
+                    <label end="150" start="143" name="NP"/>
+                    <label end="153" start="152" name="in"/>
+                    <label end="161" start="155" name="NP"/>
+                    <label end="165" start="163" name="cc"/>
+                    <label end="175" start="167" name="NP"/>
+                    <label end="177" start="177" name=":"/>
+                    <label end="184" start="181" name="VV"/>
+                    <label end="187" start="186" name="NP"/>
+                    <label end="189" start="189" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="09/09/2003 06:35:49 PDT Tue" status="MANUAL" ID="1944143">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="13" start="8" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="323" end="6" start="0" name="Sound_source"/>
+                    <label cBy="664" feID="329" end="32" start="15" name="Manner"/>
+                    <label cBy="309" feID="328" end="13" start="8" name="Sound"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="6" start="0" name="Ext"/>
+                    <label end="32" start="15" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="6" start="0" name="NP"/>
+                    <label end="32" start="15" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="759" aPos="0" ID="1248568">
+            <text>The machine beeped , and then started screaming again .</text>
+            <annotationSet cDate="09/09/2003 06:35:49 PDT Tue" status="UNANN" ID="1944146">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="10" start="4" name="nn"/>
+                    <label end="17" start="12" name="VVD"/>
+                    <label end="19" start="19" name=","/>
+                    <label end="23" start="21" name="cc"/>
+                    <label end="28" start="25" name="rb"/>
+                    <label end="36" start="30" name="VVD"/>
+                    <label end="46" start="38" name="VVG"/>
+                    <label end="52" start="48" name="rb"/>
+                    <label end="54" start="54" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="09/09/2003 06:35:49 PDT Tue" status="MANUAL" ID="1944147">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="17" start="12" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="323" end="10" start="0" name="Sound_source"/>
+                    <label cBy="309" feID="328" end="17" start="12" name="Sound"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="10" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="10" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="980" aPos="0" ID="1248569">
+            <text>Some of the keynames ( like Beep ) can only be set to one of two values , so Beep = yes means that Windows will beep every time there 's an error .</text>
+            <annotationSet cDate="09/09/2003 06:35:49 PDT Tue" status="UNANN" ID="1944148">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="dt"/>
+                    <label end="6" start="5" name="in"/>
+                    <label end="10" start="8" name="dt"/>
+                    <label end="19" start="12" name="nns"/>
+                    <label end="21" start="21" name="("/>
+                    <label end="26" start="23" name="in"/>
+                    <label end="31" start="28" name="nn"/>
+                    <label end="33" start="33" name=")"/>
+                    <label end="37" start="35" name="md"/>
+                    <label end="42" start="39" name="rb"/>
+                    <label end="45" start="44" name="vb"/>
+                    <label end="49" start="47" name="VVN"/>
+                    <label end="52" start="51" name="to"/>
+                    <label end="56" start="54" name="cd"/>
+                    <label end="59" start="58" name="in"/>
+                    <label end="63" start="61" name="cd"/>
+                    <label end="70" start="65" name="nns"/>
+                    <label end="72" start="72" name=","/>
+                    <label end="75" start="74" name="rb"/>
+                    <label end="80" start="77" name="nn"/>
+                    <label end="82" start="82" name="sym"/>
+                    <label end="86" start="84" name="uh"/>
+                    <label end="92" start="88" name="VVZ"/>
+                    <label end="97" start="94" name="wdt"/>
+                    <label end="105" start="99" name="nns"/>
+                    <label end="110" start="107" name="md"/>
+                    <label end="115" start="112" name="VV"/>
+                    <label end="121" start="117" name="dt"/>
+                    <label end="126" start="123" name="nn"/>
+                    <label end="132" start="128" name="ex"/>
+                    <label end="135" start="134" name="VBZ"/>
+                    <label end="138" start="137" name="dt"/>
+                    <label end="144" start="140" name="nn"/>
+                    <label end="146" start="146" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="09/09/2003 06:35:50 PDT Tue" status="MANUAL" ID="1944149">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="115" start="112" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="323" end="105" start="99" name="Sound_source"/>
+                    <label cBy="309" feID="328" end="115" start="112" name="Sound"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="105" start="99" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="105" start="99" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="324" aPos="0" ID="1248571">
+            <text>The doctor had opened the door suddenly , was walking in with two nurses , directing them to either side of the bed as the heart machine flashed and beeped alarmingly .</text>
+            <annotationSet cDate="09/09/2003 06:35:51 PDT Tue" status="UNANN" ID="1944152">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="9" start="4" name="nn"/>
+                    <label end="13" start="11" name="VHD"/>
+                    <label end="20" start="15" name="VVN"/>
+                    <label end="24" start="22" name="dt"/>
+                    <label end="29" start="26" name="nn"/>
+                    <label end="38" start="31" name="rb"/>
+                    <label end="40" start="40" name=","/>
+                    <label end="44" start="42" name="VBD"/>
+                    <label end="52" start="46" name="VVG"/>
+                    <label end="55" start="54" name="in"/>
+                    <label end="60" start="57" name="in"/>
+                    <label end="64" start="62" name="cd"/>
+                    <label end="71" start="66" name="nns"/>
+                    <label end="73" start="73" name=","/>
+                    <label end="83" start="75" name="VVG"/>
+                    <label end="88" start="85" name="PP"/>
+                    <label end="91" start="90" name="to"/>
+                    <label end="98" start="93" name="dt"/>
+                    <label end="103" start="100" name="nn"/>
+                    <label end="106" start="105" name="in"/>
+                    <label end="110" start="108" name="dt"/>
+                    <label end="114" start="112" name="nn"/>
+                    <label end="117" start="116" name="in"/>
+                    <label end="121" start="119" name="dt"/>
+                    <label end="127" start="123" name="nn"/>
+                    <label end="135" start="129" name="nn"/>
+                    <label end="143" start="137" name="VVD"/>
+                    <label end="147" start="145" name="cc"/>
+                    <label end="154" start="149" name="VVD"/>
+                    <label end="165" start="156" name="rb"/>
+                    <label end="167" start="167" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="09/09/2003 06:35:51 PDT Tue" status="MANUAL" ID="1944153">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="154" start="149" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="329" end="165" start="156" name="Manner"/>
+                    <label cBy="605" feID="323" end="135" start="119" name="Sound_source"/>
+                    <label cBy="309" feID="328" end="154" start="149" name="Sound"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="165" start="156" name="Dep"/>
+                    <label end="135" start="119" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="165" start="156" name="AVP"/>
+                    <label end="135" start="119" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+    <subCorpus name="01-T-(2)">
+        <sentence corpID="113" docID="2793" sentNo="3" paragNo="13" aPos="0" ID="1248575">
+            <text>It has been beeping all over .</text>
+            <annotationSet cDate="09/09/2003 06:45:05 PDT Tue" status="UNANN" ID="1944160">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="5" start="3" name="VHZ"/>
+                    <label end="10" start="7" name="VBN"/>
+                    <label end="18" start="12" name="VVG"/>
+                    <label end="22" start="20" name="pdt"/>
+                    <label end="27" start="24" name="rp"/>
+                    <label end="29" start="29" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="09/09/2003 06:45:06 PDT Tue" status="MANUAL" ID="1944161">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="18" start="12" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="303" feID="323" end="1" start="0" name="Sound_source"/>
+                    <label cBy="303" feID="328" end="18" start="12" name="Sound"/>
+                    <label cBy="303" feID="5080" end="27" start="20" name="Place"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="1" start="0" name="Ext"/>
+                    <label end="27" start="20" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="1" start="0" name="NP"/>
+                    <label end="27" start="20" name="AVP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="2796" sentNo="2" paragNo="8" aPos="0" ID="1248579">
+            <text>It has been beeping all over .</text>
+            <annotationSet cDate="09/09/2003 06:45:07 PDT Tue" status="UNANN" ID="1944168">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="5" start="3" name="VHZ"/>
+                    <label end="10" start="7" name="VBN"/>
+                    <label end="18" start="12" name="VVG"/>
+                    <label end="22" start="20" name="pdt"/>
+                    <label end="27" start="24" name="rp"/>
+                    <label end="29" start="29" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="09/09/2003 06:45:07 PDT Tue" status="MANUAL" ID="1944169">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="18" start="12" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="323" end="1" start="0" name="Sound_source"/>
+                    <label cBy="309" feID="328" end="18" start="12" name="Sound"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="1" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="1" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="2797" sentNo="2" paragNo="32" aPos="0" ID="1248580">
+            <text>Metal detectors were used in the search , beeping when they passed over a suspicious item .</text>
+            <annotationSet cDate="09/09/2003 06:45:07 PDT Tue" status="UNANN" ID="1944170">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="nn"/>
+                    <label end="14" start="6" name="nns"/>
+                    <label end="19" start="16" name="VBD"/>
+                    <label end="24" start="21" name="VVN"/>
+                    <label end="27" start="26" name="in"/>
+                    <label end="31" start="29" name="dt"/>
+                    <label end="38" start="33" name="nn"/>
+                    <label end="40" start="40" name=","/>
+                    <label end="48" start="42" name="VVG"/>
+                    <label end="53" start="50" name="wrb"/>
+                    <label end="58" start="55" name="PP"/>
+                    <label end="65" start="60" name="VVD"/>
+                    <label end="70" start="67" name="in"/>
+                    <label end="72" start="72" name="dt"/>
+                    <label end="83" start="74" name="jj"/>
+                    <label end="88" start="85" name="nn"/>
+                    <label end="90" start="90" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="09/09/2003 06:45:08 PDT Tue" status="MANUAL" ID="1944171">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="48" start="42" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="323" end="14" start="0" name="Sound_source"/>
+                    <label cBy="309" feID="328" end="48" start="42" name="Sound"/>
+                    <label cBy="303" feID="1505" end="88" start="50" name="Internal_cause"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="14" start="0" name="Ext"/>
+                    <label end="88" start="50" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="14" start="0" name="NP"/>
+                    <label end="88" start="50" name="Sub"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="2804" sentNo="2" paragNo="8" aPos="0" ID="1248587">
+            <text>It has been beeping all over .</text>
+            <annotationSet cDate="09/09/2003 06:45:10 PDT Tue" status="UNANN" ID="1944184">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="5" start="3" name="VHZ"/>
+                    <label end="10" start="7" name="VBN"/>
+                    <label end="18" start="12" name="VVG"/>
+                    <label end="22" start="20" name="pdt"/>
+                    <label end="27" start="24" name="rp"/>
+                    <label end="29" start="29" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="09/09/2003 06:45:10 PDT Tue" status="MANUAL" ID="1944185">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="18" start="12" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="323" end="1" start="0" name="Sound_source"/>
+                    <label cBy="309" feID="328" end="18" start="12" name="Sound"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="1" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="1" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(2)"/>
+    <subCorpus name="other-unmatched-(2)"/>
+</lexUnit>

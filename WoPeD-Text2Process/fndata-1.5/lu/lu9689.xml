@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" POS="N" name="smack.n" ID="9689" frame="Sounds" frameID="850" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="" name="Component_sound"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="" name="Ground"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="" name="Internal_cause"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Peripheral" abbrev="" name="Location_of_sound_source"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="" name="Manner"/>
+            <FE fgColor="800080" bgColor="FFFF00" type="Peripheral" abbrev="" name="Noisy_event"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="" name="Path"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="" name="Place"/>
+            <FE fgColor="FFFF00" bgColor="FF69B4" type="Extra-Thematic" abbrev="" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="" name="Sound_source"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="" name="Theme"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Peripheral" abbrev="" name="Themes"/>
+        </frame>
+    </header>
+    <definition>COD: a sharp blow or slap, typically one given with the palm of the hand.</definition>
+    <lexeme POS="N" name="smack"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Ground"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Ground"/>
+                <annoSet ID="1712017"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Manner"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Manner"/>
+                <annoSet ID="1712017"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Theme"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Theme"/>
+                <annoSet ID="1712017"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Ground"/>
+            <FE name="Manner"/>
+            <FE name="Theme"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Ground"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Manner"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Theme"/>
+                <annoSet ID="1712017"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="NoPattern">
+        <sentence sentNo="0" aPos="57496553" ID="1130455">
+            <text>As she listened to the faint smack of the sea on the rocks below , she thought again , regretfully , of Angus . </text>
+            <annotationSet cDate="01/08/2003 03:40:25 PST Wed" status="UNANN" ID="1712016">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="CJS"/>
+                    <label end="5" start="3" name="PNP"/>
+                    <label end="14" start="7" name="VVD"/>
+                    <label end="17" start="16" name="PRP"/>
+                    <label end="21" start="19" name="AT0"/>
+                    <label end="27" start="23" name="AJ0"/>
+                    <label end="33" start="29" name="NN1"/>
+                    <label end="36" start="35" name="PRF"/>
+                    <label end="40" start="38" name="AT0"/>
+                    <label end="44" start="42" name="NN1"/>
+                    <label end="47" start="46" name="PRP"/>
+                    <label end="51" start="49" name="AT0"/>
+                    <label end="57" start="53" name="NN2"/>
+                    <label end="63" start="59" name="AV0"/>
+                    <label end="65" start="65" name="PUN"/>
+                    <label end="69" start="67" name="PNP"/>
+                    <label end="77" start="71" name="VVD"/>
+                    <label end="83" start="79" name="AV0"/>
+                    <label end="85" start="85" name="PUN"/>
+                    <label end="97" start="87" name="AV0"/>
+                    <label end="99" start="99" name="PUN"/>
+                    <label end="102" start="101" name="PRF"/>
+                    <label end="108" start="104" name="NN1-NP0"/>
+                    <label end="110" start="110" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 03:40:25 PST Wed" status="MANUAL" ID="1712017">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="5499" end="27" start="23" name="Manner"/>
+                    <label cBy="103" feID="5493" end="44" start="35" name="Theme"/>
+                    <label cBy="103" feID="5494" end="63" start="46" name="Ground"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="27" start="23" name="Dep"/>
+                    <label end="44" start="35" name="Dep"/>
+                    <label end="63" start="46" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="27" start="23" name="AJP"/>
+                    <label end="44" start="35" name="PP"/>
+                    <label end="63" start="46" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="33" start="29" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

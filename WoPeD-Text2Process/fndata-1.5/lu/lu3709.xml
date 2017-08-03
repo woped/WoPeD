@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="bootlace.n" ID="3709" frame="Clothing_parts" frameID="194" totalAnnotated="5" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="00008B" bgColor="9F79EE" type="Peripheral" abbrev="BLoc" name="Body_location"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Peripheral" abbrev="clo" name="Clothing"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Des" name="Descriptor"/>
+            <FE fgColor="7FFF00" bgColor="1E90FF" type="Peripheral" abbrev="mat" name="Material"/>
+            <FE fgColor="0000FF" bgColor="00BFFF" type="Core" abbrev="sp" name="Subpart"/>
+            <FE fgColor="FFFF00" bgColor="0000FF" type="Peripheral" abbrev="Subr" name="Subregion"/>
+            <FE fgColor="000000" bgColor="FF69B4" type="Peripheral" abbrev="Wear" name="Wearer"/>
+        </frame>
+    </header>
+    <definition>COD: a cord or leather strip for lacing boots. </definition>
+    <lexeme POS="N" name="bootlace"/>
+    <valences>
+        <governor type="Gov" lemma="unravel">
+            <annoSet ID="595412"/>
+        </governor>
+        <FERealization total="1">
+            <FE name="Material"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Material"/>
+                <annoSet ID="595408"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Subpart"/>
+            <pattern total="5">
+                <valenceUnit GF="" PT="DEN" FE="Subpart"/>
+                <annoSet ID="595408"/>
+                <annoSet ID="595410"/>
+                <annoSet ID="595412"/>
+                <annoSet ID="595430"/>
+                <annoSet ID="595432"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Wearer"/>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Wearer"/>
+                <annoSet ID="595432"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Material"/>
+            <FE name="Subpart"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Material"/>
+                <valenceUnit GF="" PT="DEN" FE="Subpart"/>
+                <annoSet ID="595408"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="3">
+            <FE name="Subpart"/>
+            <pattern total="3">
+                <valenceUnit GF="" PT="DEN" FE="Subpart"/>
+                <annoSet ID="595410"/>
+                <annoSet ID="595412"/>
+                <annoSet ID="595430"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Subpart"/>
+            <FE name="Wearer"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Subpart"/>
+                <valenceUnit GF="Gen" PT="Poss" FE="Wearer"/>
+                <annoSet ID="595432"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-001-all">
+        <sentence sentNo="0" aPos="1987187" ID="478259">
+            <text>Thousands are graded for size , shape and consistency and then strung on leather bootlaces . </text>
+            <annotationSet cDate="01/07/2003 05:31:55 PST Tue" status="UNANN" ID="595407">
+                <layer rank="1" name="BNC">
+                    <label end="8" start="0" name="NN2"/>
+                    <label end="12" start="10" name="VBB"/>
+                    <label end="19" start="14" name="VVN"/>
+                    <label end="23" start="21" name="PRP"/>
+                    <label end="28" start="25" name="NN1"/>
+                    <label end="30" start="30" name="PUN"/>
+                    <label end="36" start="32" name="NN1-VVB"/>
+                    <label end="40" start="38" name="CJC"/>
+                    <label end="52" start="42" name="NN1"/>
+                    <label end="56" start="54" name="CJC"/>
+                    <label end="61" start="58" name="AV0"/>
+                    <label end="68" start="63" name="VVD-VVN"/>
+                    <label end="71" start="70" name="PRP"/>
+                    <label end="79" start="73" name="NN1"/>
+                    <label end="89" start="81" name="NN2-VVZ"/>
+                    <label end="91" start="91" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:31:55 PST Tue" status="MANUAL" ID="595408">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="1593" end="79" start="73" name="Material"/>
+                    <label cBy="669" feID="1592" end="89" start="81" name="Subpart"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="79" start="73" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="79" start="73" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="89" start="81" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="13340059" ID="478260">
+            <text>His hands were tightly bound together with what felt like bootlaces . </text>
+            <annotationSet cDate="01/07/2003 05:31:55 PST Tue" status="UNANN" ID="595409">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="DPS"/>
+                    <label end="8" start="4" name="NN2"/>
+                    <label end="13" start="10" name="VBD"/>
+                    <label end="21" start="15" name="AV0"/>
+                    <label end="27" start="23" name="VVD-VVN"/>
+                    <label end="36" start="29" name="PRP"/>
+                    <label end="41" start="38" name="PRP"/>
+                    <label end="46" start="43" name="DTQ"/>
+                    <label end="51" start="48" name="VVD"/>
+                    <label end="56" start="53" name="PRP"/>
+                    <label end="66" start="58" name="NN2"/>
+                    <label end="68" start="68" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:31:55 PST Tue" status="MANUAL" ID="595410">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="1592" end="66" start="58" name="Subpart"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="66" start="58" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="13341268" ID="478261">
+            <text>He patiently unravelled the bootlaces and Richard winced with pain as the circulation returned to his fingers . </text>
+            <annotationSet cDate="01/07/2003 05:31:55 PST Tue" status="UNANN" ID="595411">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="11" start="3" name="AV0"/>
+                    <label end="22" start="13" name="VVD"/>
+                    <label end="26" start="24" name="AT0"/>
+                    <label end="36" start="28" name="NN2"/>
+                    <label end="40" start="38" name="CJC"/>
+                    <label end="48" start="42" name="NP0"/>
+                    <label end="55" start="50" name="VVD"/>
+                    <label end="60" start="57" name="PRP"/>
+                    <label end="65" start="62" name="NN1"/>
+                    <label end="68" start="67" name="PRP"/>
+                    <label end="72" start="70" name="AT0"/>
+                    <label end="84" start="74" name="NN1"/>
+                    <label end="93" start="86" name="VVD-VVN"/>
+                    <label end="96" start="95" name="PRP"/>
+                    <label end="100" start="98" name="DPS"/>
+                    <label end="108" start="102" name="NN2"/>
+                    <label end="110" start="110" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:31:55 PST Tue" status="MANUAL" ID="595412">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="1592" end="36" start="28" name="Subpart"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="36" start="28" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="22" start="13" name="Gov"/>
+                    <label end="36" start="24" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="83234519" ID="478270">
+            <text>The Mark Hateley of suit and silk tie is a polar opposite to the Mark Hateley of shorts and bootlaces . </text>
+            <annotationSet cDate="01/07/2003 05:31:56 PST Tue" status="UNANN" ID="595429">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="7" start="4" name="NN1-NP0"/>
+                    <label end="15" start="9" name="NN1-NP0"/>
+                    <label end="18" start="17" name="PRF"/>
+                    <label end="23" start="20" name="NN1"/>
+                    <label end="27" start="25" name="CJC"/>
+                    <label end="32" start="29" name="NN1"/>
+                    <label end="36" start="34" name="NN1"/>
+                    <label end="39" start="38" name="VBZ"/>
+                    <label end="41" start="41" name="AT0"/>
+                    <label end="47" start="43" name="AJ0"/>
+                    <label end="56" start="49" name="AJ0-NN1"/>
+                    <label end="59" start="58" name="PRP"/>
+                    <label end="63" start="61" name="AT0"/>
+                    <label end="68" start="65" name="NN1-NP0"/>
+                    <label end="76" start="70" name="NN1-NP0"/>
+                    <label end="79" start="78" name="PRF"/>
+                    <label end="86" start="81" name="NN2"/>
+                    <label end="90" start="88" name="CJC"/>
+                    <label end="100" start="92" name="NN2"/>
+                    <label end="102" start="102" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:31:56 PST Tue" status="MANUAL" ID="595430">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="1592" end="100" start="92" name="Subpart"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="100" start="92" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="90198447" ID="478271">
+            <text>I can remember stuff they thought too petty for Trivial Pursuit and then somedays I have to look up the instructions on my bootlaces . </text>
+            <annotationSet cDate="01/07/2003 05:31:56 PST Tue" status="UNANN" ID="595431">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PNP"/>
+                    <label end="4" start="2" name="VM0"/>
+                    <label end="13" start="6" name="VVI"/>
+                    <label end="19" start="15" name="NN1"/>
+                    <label end="24" start="21" name="PNP"/>
+                    <label end="32" start="26" name="VVD"/>
+                    <label end="36" start="34" name="AV0"/>
+                    <label end="42" start="38" name="AJ0"/>
+                    <label end="46" start="44" name="PRP"/>
+                    <label end="54" start="48" name="NP0"/>
+                    <label end="62" start="56" name="NN1-NP0"/>
+                    <label end="66" start="64" name="CJC"/>
+                    <label end="71" start="68" name="AV0"/>
+                    <label end="80" start="73" name="NN2"/>
+                    <label end="82" start="82" name="PNP"/>
+                    <label end="87" start="84" name="VHB"/>
+                    <label end="90" start="89" name="TO0"/>
+                    <label end="95" start="92" name="VVI"/>
+                    <label end="98" start="97" name="AVP"/>
+                    <label end="102" start="100" name="AT0"/>
+                    <label end="115" start="104" name="NN2"/>
+                    <label end="118" start="117" name="PRP"/>
+                    <label end="121" start="120" name="DPS"/>
+                    <label end="131" start="123" name="NN2"/>
+                    <label end="133" start="133" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:31:56 PST Tue" status="MANUAL" ID="595432">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="1656" end="121" start="120" name="Wearer"/>
+                    <label cBy="618" feID="1592" end="131" start="123" name="Subpart"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="121" start="120" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="121" start="120" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="131" start="123" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

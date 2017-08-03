@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="03/24/2006 02:32:00 PST Fri" name="Shooting_scenario" ID="1727" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A firearm is discharged, causing the motion of a projectile.  This frame exists primarily to relate frames.&lt;/def-root&gt;</definition>
+    <semType name="Non-Lexical Frame" ID="16"/>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="03/24/2006 02:32:00 PST Fri" abbrev="Firearm" name="Firearm" ID="9971">
+        <definition>&lt;def-root&gt;The device used by the &lt;fen&gt;Agent&lt;/fen&gt; to cause the motion of the &lt;fen&gt;Projectile&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Physical_entity" ID="70"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="03/24/2006 02:32:01 PST Fri" abbrev="Projectile" name="Projectile" ID="9972">
+        <definition>&lt;def-root&gt;The entity whose rapid, dangerous motion is caused by the Agent and/or Firearm.&lt;/def-root&gt;</definition>
+        <semType name="Physical_entity" ID="70"/>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="03/24/2006 02:32:01 PST Fri" abbrev="Agt" name="Agent" ID="9973">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Agent&lt;/fen&gt; is the person performing the intentional act causing the motion of the &lt;fen&gt;Projectile&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="7CCD73" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="03/24/2006 02:32:01 PST Fri" abbrev="Dist" name="Distance" ID="9974">
+        <definition>&lt;def-root&gt;This FE is any expression characterizing the extent of motion of the &lt;fen&gt;Projectile&lt;/fen&gt;. 
+&lt;ex&gt;Pat &lt;t&gt;threw&lt;/t&gt; the Javelin &lt;fex name="Distance"&gt;50 meters&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="03/24/2006 02:32:01 PST Fri" abbrev="Goal" name="Goal" ID="9975">
+        <definition>&lt;def-root&gt;This FE is the point at which the Theme ends up as a result of the motion. Kim &lt;t&gt;threw&lt;/t&gt; the cat &lt;fex name="Goal"&gt;into the garden&lt;/fex&gt;. &lt;/def-root&gt;</definition>
+        <semType name="Goal" ID="153"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="03/24/2006 02:32:01 PST Fri" abbrev="Manr" name="Manner" ID="9976">
+        <definition>&lt;def-root&gt;Manner of performing an action&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="03/24/2006 02:32:01 PST Fri" abbrev="Mns" name="Means" ID="9977">
+        <definition>&lt;def-root&gt;An act of the &lt;fen&gt;Agent&lt;/fen&gt; whereby the rapid motion of the &lt;fen&gt;Projectile&lt;/fen&gt; is achieved.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="03/24/2006 02:32:01 PST Fri" abbrev="Path" name="Path" ID="9978">
+        <definition>&lt;def-root&gt;This FE is any description of a trajectory of motion which is neither a Source nor Goal. I &lt;t&gt;pushed&lt;/t&gt; the trolley &lt;fex name="Path"&gt;along the street&lt;/fex&gt;. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="03/24/2006 02:32:01 PST Fri" abbrev="Src" name="Source" ID="9979">
+        <definition>&lt;def-root&gt;This FE is the starting point of motion. Pat dragged the box &lt;fex name="Source"&gt;out of the cupboard&lt;/fex&gt;. &lt;/def-root&gt;</definition>
+        <semType name="Source" ID="151"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="03/24/2006 02:32:01 PST Fri" abbrev="Degr" name="Degree" ID="9980">
+        <definition>&lt;def-root&gt;Degree to which event occurs&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="03/24/2006 02:32:01 PST Fri" abbrev="dep" name="Depictive" ID="9981">
+        <definition>&lt;def-root&gt;A description of the state of the &lt;fen&gt;Agent&lt;/fen&gt; or &lt;fen&gt;Projectile&lt;/fen&gt; during the event.
+
+&lt;ex&gt;He &lt;t&gt;shot&lt;/t&gt; three arrows at the target, &lt;fex name="dep"&gt;all unsuspecting as to why Harold had done so well&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFD700" fgColor="FF0000" coreType="Peripheral" cBy="664" cDate="03/24/2006 02:32:01 PST Fri" abbrev="Area" name="Area" ID="9982">
+        <definition>&lt;def-root&gt;This frame element is used for expressions which describe a general area in which motion takes place when the motion is understood to be irregular or not to consist of a single, linear path. Locative setting adjuncts may also be assigned this frame element. Kim &lt;t&gt;pushed&lt;/t&gt; the lawnmower &lt;fex name="Area"&gt;around the garden&lt;/fex&gt;. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="03/24/2006 02:32:01 PST Fri" abbrev="Place" name="Place" ID="9983">
+        <definition>&lt;def-root&gt;The location in which the shooting event takes place.
+
+&lt;ex&gt;The bankrobbers were crazy enough to &lt;t&gt;shoot&lt;/t&gt; at the clerks with an AK-47 &lt;fex name="Place"&gt;inside the bank&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="03/24/2006 02:32:01 PST Fri" abbrev="Time" name="Time" ID="9984">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Time&lt;/fen&gt; when the shooting event takes place.
+
+&lt;ex&gt;The robbers &lt;t&gt;shot&lt;/t&gt; at the clerks &lt;fex name="Time"&gt;as they ran out of the bank&lt;/fex&gt;&lt;/ex&gt;
+
+&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="03/24/2006 02:32:01 PST Fri" abbrev="pur" name="Purpose" ID="9985">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Agent&lt;/fen&gt;'s purpose in launching the &lt;fen&gt;Projectile&lt;/fen&gt;
+
+&lt;ex&gt;We mistook a satellite &lt;t&gt;launched&lt;/t&gt; &lt;fex name="pur"&gt;to study earthquakes&lt;/fex&gt; to be a missile, so we shot it down over the Pacific.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Attempt_distant_interaction_scenario</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in">
+        <relatedFrame>Shoot_projectiles</relatedFrame>
+        <relatedFrame>Use_firearm</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Uses">
+        <relatedFrame>Bearing_arms</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Hit_target</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+</frame>

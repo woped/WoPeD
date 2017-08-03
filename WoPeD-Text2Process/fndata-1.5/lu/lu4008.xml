@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="parley.v" ID="4008" frame="Discussion" frameID="34" totalAnnotated="4" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Amo" name="Amount_of_discussion"/>
+            <FE fgColor="000000" bgColor="7CCD73" type="Extra-Thematic" abbrev="con_eve" name="Containing_event"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Depict" name="Depictive"/>
+            <FE fgColor="000000" bgColor="FFD700" type="Extra-Thematic" abbrev="dom" name="Domain"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Dur" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Extra-Thematic" abbrev="fre" name="Frequency"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Intlc_s" name="Interlocutors"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Intlc_1" name="Interlocutor_1"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="Intlc_2" name="Interlocutor_2"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Peripheral" abbrev="Lang" name="Language"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="" name="Means_of_communication"/>
+            <FE fgColor="FFFFFF" bgColor="90876C" type="Extra-Thematic" abbrev="" name="Period_of_iterations"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Peripheral" abbrev="" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Top" name="Topic"/>
+        </frame>
+    </header>
+    <definition>FN: hold a conference between opposing sides in a dispute, especially regarding an armistice</definition>
+    <lexeme POS="V" name="parley"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Duration"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Duration"/>
+                <annoSet ID="712828"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Interlocutor_1"/>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="NP" FE="Interlocutor_1"/>
+                <annoSet ID="712820"/>
+                <annoSet ID="712862"/>
+                <annoSet ID="712872"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Interlocutor_2"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Interlocutor_2"/>
+                <annoSet ID="712872"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Interlocutor_2"/>
+                <annoSet ID="712820"/>
+                <annoSet ID="712862"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Interlocutors"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Interlocutors"/>
+                <annoSet ID="712828"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Topic"/>
+            <pattern total="4">
+                <valenceUnit GF="" PT="INI" FE="Topic"/>
+                <annoSet ID="712820"/>
+                <annoSet ID="712828"/>
+                <annoSet ID="712862"/>
+                <annoSet ID="712872"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Duration"/>
+            <FE name="Interlocutors"/>
+            <FE name="Topic"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Duration"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Interlocutors"/>
+                <valenceUnit GF="" PT="INI" FE="Topic"/>
+                <annoSet ID="712828"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="3">
+            <FE name="Interlocutor_1"/>
+            <FE name="Interlocutor_2"/>
+            <FE name="Topic"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Interlocutor_1"/>
+                <valenceUnit GF="" PT="DNI" FE="Interlocutor_2"/>
+                <valenceUnit GF="" PT="INI" FE="Topic"/>
+                <annoSet ID="712872"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Interlocutor_1"/>
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Interlocutor_2"/>
+                <valenceUnit GF="" PT="INI" FE="Topic"/>
+                <annoSet ID="712820"/>
+                <annoSet ID="712862"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-001-all">
+        <sentence sentNo="0" aPos="673031" ID="615765">
+            <text>` I will not parley with a rabble . &quot; </text>
+            <annotationSet cDate="01/07/2003 08:01:29 PST Tue" status="UNANN" ID="712819">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PUQ"/>
+                    <label end="2" start="2" name="PNP"/>
+                    <label end="7" start="4" name="VM0"/>
+                    <label end="11" start="9" name="XX0"/>
+                    <label end="18" start="13" name="VVI"/>
+                    <label end="23" start="20" name="PRP"/>
+                    <label end="25" start="25" name="AT0"/>
+                    <label end="32" start="27" name="NN1"/>
+                    <label end="34" start="34" name="PUN"/>
+                    <label end="36" start="36" name="PUQ"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 08:01:29 PST Tue" status="MANUAL" ID="712820">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="140" end="2" start="2" name="Interlocutor_1"/>
+                    <label cBy="669" feID="141" end="32" start="20" name="Interlocutor_2"/>
+                    <label cBy="153" feID="143" itype="INI" name="Topic"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="2" start="2" name="Ext"/>
+                    <label end="32" start="20" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="2" start="2" name="NP"/>
+                    <label end="32" start="20" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="18" start="13" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="10824019" ID="615769">
+            <text>For three days they parleyed ; Rawn demanding their surrender and the Nez Perce asking to be allowed into Montana in peace . </text>
+            <annotationSet cDate="01/07/2003 08:01:29 PST Tue" status="UNANN" ID="712827">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="PRP"/>
+                    <label end="8" start="4" name="CRD"/>
+                    <label end="13" start="10" name="NN2"/>
+                    <label end="18" start="15" name="PNP"/>
+                    <label end="27" start="20" name="VVD"/>
+                    <label end="29" start="29" name="PUN"/>
+                    <label end="34" start="31" name="NN1-NP0"/>
+                    <label end="44" start="36" name="VVG"/>
+                    <label end="50" start="46" name="DPS"/>
+                    <label end="60" start="52" name="NN1"/>
+                    <label end="64" start="62" name="CJC"/>
+                    <label end="68" start="66" name="AT0"/>
+                    <label end="72" start="70" name="NP0"/>
+                    <label end="78" start="74" name="NP0"/>
+                    <label end="85" start="80" name="VVG"/>
+                    <label end="88" start="87" name="TO0"/>
+                    <label end="91" start="90" name="VBI"/>
+                    <label end="99" start="93" name="VVN"/>
+                    <label end="104" start="101" name="PRP"/>
+                    <label end="112" start="106" name="NP0"/>
+                    <label end="115" start="114" name="PRP"/>
+                    <label end="121" start="117" name="NN1"/>
+                    <label end="123" start="123" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 08:01:29 PST Tue" status="MANUAL" ID="712828">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="142" end="18" start="15" name="Interlocutors"/>
+                    <label cBy="153" feID="143" itype="INI" name="Topic"/>
+                    <label cBy="664" feID="4360" end="13" start="0" name="Duration"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="18" start="15" name="Ext"/>
+                    <label end="13" start="0" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="18" start="15" name="NP"/>
+                    <label end="13" start="0" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="27" start="20" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="88093277" ID="615786">
+            <text>It might seem odd that the Minister for the Interior , rather than the Foreign Minister , Beigbeder , should be entrusted with the mission of parleying with Hitler . </text>
+            <annotationSet cDate="01/07/2003 08:01:31 PST Tue" status="UNANN" ID="712861">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="7" start="3" name="VM0"/>
+                    <label end="12" start="9" name="VVI"/>
+                    <label end="16" start="14" name="AJ0"/>
+                    <label end="21" start="18" name="CJT"/>
+                    <label end="25" start="23" name="AT0"/>
+                    <label end="34" start="27" name="NN1"/>
+                    <label end="38" start="36" name="PRP"/>
+                    <label end="42" start="40" name="AT0"/>
+                    <label end="51" start="44" name="NN1"/>
+                    <label end="53" start="53" name="PUN"/>
+                    <label end="60" start="55" name="PRP"/>
+                    <label end="65" start="62" name="PRP"/>
+                    <label end="69" start="67" name="AT0"/>
+                    <label end="77" start="71" name="AJ0"/>
+                    <label end="86" start="79" name="NN1"/>
+                    <label end="88" start="88" name="PUN"/>
+                    <label end="98" start="90" name="NN1-NP0"/>
+                    <label end="100" start="100" name="PUN"/>
+                    <label end="107" start="102" name="VM0"/>
+                    <label end="110" start="109" name="VBI"/>
+                    <label end="120" start="112" name="VVN"/>
+                    <label end="125" start="122" name="PRP"/>
+                    <label end="129" start="127" name="AT0"/>
+                    <label end="137" start="131" name="NN1"/>
+                    <label end="140" start="139" name="PRF"/>
+                    <label end="150" start="142" name="VVG"/>
+                    <label end="155" start="152" name="PRP"/>
+                    <label end="162" start="157" name="NP0"/>
+                    <label end="164" start="164" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 08:01:31 PST Tue" status="MANUAL" ID="712862">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="141" end="162" start="152" name="Interlocutor_2"/>
+                    <label cBy="153" feID="143" itype="INI" name="Topic"/>
+                    <label cBy="664" feID="140" end="100" start="23" name="Interlocutor_1"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="162" start="152" name="Dep"/>
+                    <label end="100" start="23" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="162" start="152" name="PP"/>
+                    <label end="100" start="23" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="150" start="142" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="106835117" ID="615791">
+            <text>In the lifetime of the current Westminster parliament , it appears inconceivable that the Government will go beyond its existing words to entreat Sinn Fein to parley . </text>
+            <annotationSet cDate="01/07/2003 08:01:31 PST Tue" status="UNANN" ID="712871">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PRP"/>
+                    <label end="5" start="3" name="AT0"/>
+                    <label end="14" start="7" name="NN1"/>
+                    <label end="17" start="16" name="PRF"/>
+                    <label end="21" start="19" name="AT0"/>
+                    <label end="29" start="23" name="AJ0"/>
+                    <label end="41" start="31" name="NP0"/>
+                    <label end="52" start="43" name="NN1"/>
+                    <label end="54" start="54" name="PUN"/>
+                    <label end="57" start="56" name="PNP"/>
+                    <label end="65" start="59" name="VVZ"/>
+                    <label end="79" start="67" name="AJ0"/>
+                    <label end="84" start="81" name="CJT"/>
+                    <label end="88" start="86" name="AT0"/>
+                    <label end="99" start="90" name="NN0"/>
+                    <label end="104" start="101" name="VM0"/>
+                    <label end="107" start="106" name="VVI"/>
+                    <label end="114" start="109" name="PRP"/>
+                    <label end="118" start="116" name="DPS"/>
+                    <label end="127" start="120" name="AJ0"/>
+                    <label end="133" start="129" name="NN2"/>
+                    <label end="136" start="135" name="TO0"/>
+                    <label end="144" start="138" name="VVI"/>
+                    <label end="149" start="146" name="NN0"/>
+                    <label end="154" start="151" name="NN0"/>
+                    <label end="157" start="156" name="TO0"/>
+                    <label end="164" start="159" name="VVI"/>
+                    <label end="166" start="166" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 08:01:32 PST Tue" status="MANUAL" ID="712872">
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="140" end="154" start="146" name="Interlocutor_1"/>
+                    <label cBy="664" feID="141" itype="DNI" name="Interlocutor_2"/>
+                    <label cBy="664" feID="143" itype="INI" name="Topic"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="154" start="146" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="154" start="146" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="164" start="159" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

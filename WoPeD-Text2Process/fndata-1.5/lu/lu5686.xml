@@ -1,0 +1,899 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="intern.v" ID="5686" frame="Detaining" frameID="313" totalAnnotated="13" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Auth" name="Authorities"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Chg" name="Charges"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="State" name="Dependent_state"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="Dur" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Hold_L" name="Holding_Location"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Basis" name="Legal_basis"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="P" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Susp" name="Suspect"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="T" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: confine as a prisoner. </definition>
+    <lexeme POS="V" name="intern"/>
+    <valences>
+        <FERealization total="13">
+            <FE name="Authorities"/>
+            <pattern total="8">
+                <valenceUnit GF="" PT="CNI" FE="Authorities"/>
+                <annoSet ID="1672719"/>
+                <annoSet ID="1672723"/>
+                <annoSet ID="1672735"/>
+                <annoSet ID="1672745"/>
+                <annoSet ID="1672747"/>
+                <annoSet ID="1672749"/>
+                <annoSet ID="1672755"/>
+                <annoSet ID="1672797"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Authorities"/>
+                <annoSet ID="1672707"/>
+                <annoSet ID="1672781"/>
+            </pattern>
+            <pattern total="3">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Authorities"/>
+                <annoSet ID="1672693"/>
+                <annoSet ID="1672773"/>
+                <annoSet ID="1672811"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Charges"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Charges"/>
+                <annoSet ID="1672735"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Duration"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Duration"/>
+                <annoSet ID="1672797"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[from]" FE="Duration"/>
+                <annoSet ID="1672755"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Duration"/>
+                <annoSet ID="1672747"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Duration"/>
+                <annoSet ID="1672693"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="6">
+            <FE name="Holding_Location"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Holding_Location"/>
+                <annoSet ID="1672797"/>
+            </pattern>
+            <pattern total="4">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Holding_Location"/>
+                <annoSet ID="1672719"/>
+                <annoSet ID="1672723"/>
+                <annoSet ID="1672745"/>
+                <annoSet ID="1672755"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Holding_Location"/>
+                <annoSet ID="1672811"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Place"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Place"/>
+                <annoSet ID="1672693"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="13">
+            <FE name="Suspect"/>
+            <pattern total="11">
+                <valenceUnit GF="Ext" PT="NP" FE="Suspect"/>
+                <annoSet ID="1672693"/>
+                <annoSet ID="1672719"/>
+                <annoSet ID="1672723"/>
+                <annoSet ID="1672735"/>
+                <annoSet ID="1672745"/>
+                <annoSet ID="1672747"/>
+                <annoSet ID="1672749"/>
+                <annoSet ID="1672755"/>
+                <annoSet ID="1672773"/>
+                <annoSet ID="1672797"/>
+                <annoSet ID="1672811"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Obj" PT="NP" FE="Suspect"/>
+                <annoSet ID="1672707"/>
+                <annoSet ID="1672781"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Time"/>
+                <annoSet ID="1672749"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Authorities"/>
+            <FE name="Charges"/>
+            <FE name="Suspect"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Authorities"/>
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Charges"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Suspect"/>
+                <annoSet ID="1672735"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Authorities"/>
+            <FE name="Duration"/>
+            <FE name="Holding_Location"/>
+            <FE name="Suspect"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Authorities"/>
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Duration"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Holding_Location"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Suspect"/>
+                <annoSet ID="1672797"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Authorities"/>
+                <valenceUnit GF="Dep" PT="PP[from]" FE="Duration"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Holding_Location"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Suspect"/>
+                <annoSet ID="1672755"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Authorities"/>
+            <FE name="Duration"/>
+            <FE name="Place"/>
+            <FE name="Suspect"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Authorities"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Duration"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Place"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Suspect"/>
+                <annoSet ID="1672693"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Authorities"/>
+            <FE name="Duration"/>
+            <FE name="Suspect"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Authorities"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Duration"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Suspect"/>
+                <annoSet ID="1672747"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="4">
+            <FE name="Authorities"/>
+            <FE name="Holding_Location"/>
+            <FE name="Suspect"/>
+            <pattern total="3">
+                <valenceUnit GF="" PT="CNI" FE="Authorities"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Holding_Location"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Suspect"/>
+                <annoSet ID="1672719"/>
+                <annoSet ID="1672723"/>
+                <annoSet ID="1672745"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Authorities"/>
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Holding_Location"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Suspect"/>
+                <annoSet ID="1672811"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="3">
+            <FE name="Authorities"/>
+            <FE name="Suspect"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Authorities"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Suspect"/>
+                <annoSet ID="1672707"/>
+                <annoSet ID="1672781"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Authorities"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Suspect"/>
+                <annoSet ID="1672773"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Authorities"/>
+            <FE name="Suspect"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Authorities"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Suspect"/>
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Time"/>
+                <annoSet ID="1672749"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-001-all">
+        <sentence sentNo="0" aPos="1495942" ID="1110779">
+            <text>He was briefly interned by the Germans in Tunis , then liberated by the Americans . </text>
+            <annotationSet cDate="01/08/2003 02:51:06 PST Wed" status="UNANN" ID="1672692">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="5" start="3" name="VBD"/>
+                    <label end="13" start="7" name="AV0"/>
+                    <label end="22" start="15" name="VVN"/>
+                    <label end="25" start="24" name="PRP"/>
+                    <label end="29" start="27" name="AT0"/>
+                    <label end="37" start="31" name="NN2"/>
+                    <label end="40" start="39" name="PRP"/>
+                    <label end="46" start="42" name="NP0"/>
+                    <label end="48" start="48" name="PUN"/>
+                    <label end="53" start="50" name="AV0"/>
+                    <label end="63" start="55" name="VVD-VVN"/>
+                    <label end="66" start="65" name="PRP"/>
+                    <label end="70" start="68" name="AT0"/>
+                    <label end="80" start="72" name="NN2"/>
+                    <label end="82" start="82" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 02:51:06 PST Wed" status="MANUAL" ID="1672693">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2705" end="1" start="0" name="Suspect"/>
+                    <label cBy="618" feID="2721" end="13" start="7" name="Duration"/>
+                    <label cBy="618" feID="2702" end="37" start="24" name="Authorities"/>
+                    <label cBy="618" feID="2704" end="46" start="39" name="Place"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="1" start="0" name="Ext"/>
+                    <label end="13" start="7" name="Dep"/>
+                    <label end="37" start="24" name="Dep"/>
+                    <label end="46" start="39" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="1" start="0" name="NP"/>
+                    <label end="13" start="7" name="AVP"/>
+                    <label end="37" start="24" name="PP"/>
+                    <label end="46" start="39" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="22" start="15" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="6083466" ID="1110786">
+            <text>Albert Mokhiber , president of the Arab-American Anti-Discrimination Committee ( ADC ) , does not believe that anybody in the government wants to intern Arab-Americans . </text>
+            <annotationSet cDate="01/08/2003 02:51:07 PST Wed" status="UNANN" ID="1672706">
+                <layer rank="1" name="BNC">
+                    <label end="5" start="0" name="NP0"/>
+                    <label end="14" start="7" name="NP0"/>
+                    <label end="16" start="16" name="PUN"/>
+                    <label end="26" start="18" name="NN1"/>
+                    <label end="29" start="28" name="PRF"/>
+                    <label end="33" start="31" name="AT0"/>
+                    <label end="47" start="35" name="AJ0"/>
+                    <label end="67" start="49" name="NP0"/>
+                    <label end="77" start="69" name="NN0"/>
+                    <label end="79" start="79" name="PUL"/>
+                    <label end="83" start="81" name="NP0"/>
+                    <label end="85" start="85" name="PUR"/>
+                    <label end="87" start="87" name="PUN"/>
+                    <label end="92" start="89" name="VDZ"/>
+                    <label end="96" start="94" name="XX0"/>
+                    <label end="104" start="98" name="VVI"/>
+                    <label end="109" start="106" name="CJT"/>
+                    <label end="117" start="111" name="PNI"/>
+                    <label end="120" start="119" name="PRP"/>
+                    <label end="124" start="122" name="AT0"/>
+                    <label end="135" start="126" name="NN0"/>
+                    <label end="141" start="137" name="VVZ"/>
+                    <label end="144" start="143" name="TO0"/>
+                    <label end="151" start="146" name="VVI"/>
+                    <label end="166" start="153" name="NP0"/>
+                    <label end="168" start="168" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 02:51:07 PST Wed" status="MANUAL" ID="1672707">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2702" end="135" start="111" name="Authorities"/>
+                    <label cBy="618" feID="2705" end="166" start="153" name="Suspect"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="135" start="111" name="Ext"/>
+                    <label end="166" start="153" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="135" start="111" name="NP"/>
+                    <label end="166" start="153" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="151" start="146" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="22452436" ID="1110792">
+            <text>Ya'acov Friedler was interned in the women 's camp at Port Erin with his sister , who had asked for him and his brother to join her there . </text>
+            <annotationSet cDate="01/08/2003 02:51:07 PST Wed" status="UNANN" ID="1672718">
+                <layer rank="1" name="BNC">
+                    <label end="6" start="0" name="NP0"/>
+                    <label end="15" start="8" name="NP0"/>
+                    <label end="19" start="17" name="VBD"/>
+                    <label end="28" start="21" name="VVN"/>
+                    <label end="31" start="30" name="PRP"/>
+                    <label end="35" start="33" name="AT0"/>
+                    <label end="41" start="37" name="NN2"/>
+                    <label end="44" start="43" name="POS"/>
+                    <label end="49" start="46" name="NN1"/>
+                    <label end="52" start="51" name="PRP"/>
+                    <label end="57" start="54" name="NP0"/>
+                    <label end="62" start="59" name="NP0"/>
+                    <label end="67" start="64" name="PRP"/>
+                    <label end="71" start="69" name="DPS"/>
+                    <label end="78" start="73" name="NN1"/>
+                    <label end="80" start="80" name="PUN"/>
+                    <label end="84" start="82" name="PNQ"/>
+                    <label end="88" start="86" name="VHD"/>
+                    <label end="94" start="90" name="VVN"/>
+                    <label end="98" start="96" name="PRP"/>
+                    <label end="102" start="100" name="PNP"/>
+                    <label end="106" start="104" name="CJC"/>
+                    <label end="110" start="108" name="DPS"/>
+                    <label end="118" start="112" name="NN1"/>
+                    <label end="121" start="120" name="TO0"/>
+                    <label end="126" start="123" name="VVI"/>
+                    <label end="130" start="128" name="PNP"/>
+                    <label end="136" start="132" name="AV0"/>
+                    <label end="138" start="138" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 02:51:08 PST Wed" status="MANUAL" ID="1672719">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2705" end="15" start="0" name="Suspect"/>
+                    <label cBy="618" feID="2708" end="62" start="30" name="Holding_Location"/>
+                    <label cBy="618" feID="2702" itype="CNI" name="Authorities"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="15" start="0" name="Ext"/>
+                    <label end="62" start="30" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="15" start="0" name="NP"/>
+                    <label end="62" start="30" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="28" start="21" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="24230547" ID="1110794">
+            <text>The arrest was made on 4 May and Gandhi was interned in Yeravda jail . </text>
+            <annotationSet cDate="01/08/2003 02:51:08 PST Wed" status="UNANN" ID="1672722">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="9" start="4" name="NN1"/>
+                    <label end="13" start="11" name="VBD"/>
+                    <label end="18" start="15" name="VVN"/>
+                    <label end="21" start="20" name="PRP"/>
+                    <label end="23" start="23" name="CRD"/>
+                    <label end="27" start="25" name="NP0"/>
+                    <label end="31" start="29" name="CJC"/>
+                    <label end="38" start="33" name="NN1-NP0"/>
+                    <label end="42" start="40" name="VBD"/>
+                    <label end="51" start="44" name="VVN"/>
+                    <label end="54" start="53" name="PRP"/>
+                    <label end="62" start="56" name="NP0"/>
+                    <label end="67" start="64" name="NN1"/>
+                    <label end="69" start="69" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 02:51:08 PST Wed" status="MANUAL" ID="1672723">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2705" end="38" start="33" name="Suspect"/>
+                    <label cBy="618" feID="2708" end="67" start="53" name="Holding_Location"/>
+                    <label cBy="618" feID="2702" itype="CNI" name="Authorities"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="38" start="33" name="Ext"/>
+                    <label end="67" start="53" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="38" start="33" name="NP"/>
+                    <label end="67" start="53" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="51" start="44" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="29056317" ID="1110800">
+            <text>The story was so mad that your brother was being told to shoot Martin Meehan and that I was going to be interned for doing nothing . &quot; </text>
+            <annotationSet cDate="01/08/2003 02:51:08 PST Wed" status="UNANN" ID="1672734">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="8" start="4" name="NN1"/>
+                    <label end="12" start="10" name="VBD"/>
+                    <label end="15" start="14" name="AV0"/>
+                    <label end="19" start="17" name="AJ0"/>
+                    <label end="24" start="21" name="CJT"/>
+                    <label end="29" start="26" name="DPS"/>
+                    <label end="37" start="31" name="NN1"/>
+                    <label end="41" start="39" name="VBD"/>
+                    <label end="47" start="43" name="VBG"/>
+                    <label end="52" start="49" name="VVN"/>
+                    <label end="55" start="54" name="TO0"/>
+                    <label end="61" start="57" name="VVI"/>
+                    <label end="68" start="63" name="NP0"/>
+                    <label end="75" start="70" name="NP0"/>
+                    <label end="79" start="77" name="CJC"/>
+                    <label end="84" start="81" name="CJT"/>
+                    <label end="86" start="86" name="PNP"/>
+                    <label end="90" start="88" name="VBD"/>
+                    <label end="96" start="92" name="VVG"/>
+                    <label end="99" start="98" name="TO0"/>
+                    <label end="102" start="101" name="VBI"/>
+                    <label end="111" start="104" name="VVN"/>
+                    <label end="115" start="113" name="PRP"/>
+                    <label end="121" start="117" name="VDG"/>
+                    <label end="129" start="123" name="PNI"/>
+                    <label end="131" start="131" name="PUN"/>
+                    <label end="133" start="133" name="PUQ"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 02:51:09 PST Wed" status="MANUAL" ID="1672735">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2705" end="86" start="86" name="Suspect"/>
+                    <label cBy="618" feID="2703" end="129" start="113" name="Charges"/>
+                    <label cBy="618" feID="2702" itype="CNI" name="Authorities"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="86" start="86" name="Ext"/>
+                    <label end="129" start="113" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="86" start="86" name="NP"/>
+                    <label end="129" start="113" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="111" start="104" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="36928744" ID="1110805">
+            <text>He 's been interned in some sort of camp in Belgium . </text>
+            <annotationSet cDate="01/08/2003 02:51:09 PST Wed" status="UNANN" ID="1672744">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="4" start="3" name="VHZ"/>
+                    <label end="9" start="6" name="VBN"/>
+                    <label end="18" start="11" name="VVN"/>
+                    <label end="21" start="20" name="PRP"/>
+                    <label end="26" start="23" name="DT0"/>
+                    <label end="31" start="28" name="NN1"/>
+                    <label end="34" start="33" name="PRF"/>
+                    <label end="39" start="36" name="NN1"/>
+                    <label end="42" start="41" name="PRP"/>
+                    <label end="50" start="44" name="NP0"/>
+                    <label end="52" start="52" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 02:51:09 PST Wed" status="MANUAL" ID="1672745">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2705" end="1" start="0" name="Suspect"/>
+                    <label cBy="618" feID="2708" end="50" start="20" name="Holding_Location"/>
+                    <label cBy="618" feID="2702" itype="CNI" name="Authorities"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="1" start="0" name="Ext"/>
+                    <label end="50" start="20" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="1" start="0" name="NP"/>
+                    <label end="50" start="20" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="18" start="11" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="42543359" ID="1110806">
+            <text>He was considered to be one of the most dangerous of all the fascists and was interned until the end of the Second World War . </text>
+            <annotationSet cDate="01/08/2003 02:51:09 PST Wed" status="UNANN" ID="1672746">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="5" start="3" name="VBD"/>
+                    <label end="16" start="7" name="VVN"/>
+                    <label end="19" start="18" name="TO0"/>
+                    <label end="22" start="21" name="VBI"/>
+                    <label end="26" start="24" name="CRD"/>
+                    <label end="29" start="28" name="PRF"/>
+                    <label end="33" start="31" name="AT0"/>
+                    <label end="38" start="35" name="AV0"/>
+                    <label end="48" start="40" name="AJ0"/>
+                    <label end="51" start="50" name="PRF"/>
+                    <label end="55" start="53" name="DT0"/>
+                    <label end="59" start="57" name="AT0"/>
+                    <label end="68" start="61" name="NN2"/>
+                    <label end="72" start="70" name="CJC"/>
+                    <label end="76" start="74" name="VBD"/>
+                    <label end="85" start="78" name="VVN"/>
+                    <label end="91" start="87" name="CJS"/>
+                    <label end="95" start="93" name="AT0"/>
+                    <label end="99" start="97" name="NN1"/>
+                    <label end="102" start="101" name="PRF"/>
+                    <label end="106" start="104" name="AT0"/>
+                    <label end="113" start="108" name="ORD"/>
+                    <label end="119" start="115" name="NN1"/>
+                    <label end="123" start="121" name="NN1"/>
+                    <label end="125" start="125" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 02:51:09 PST Wed" status="MANUAL" ID="1672747">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2705" end="1" start="0" name="Suspect"/>
+                    <label cBy="618" feID="2721" end="123" start="87" name="Duration"/>
+                    <label cBy="618" feID="2702" itype="CNI" name="Authorities"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="1" start="0" name="Ext"/>
+                    <label end="123" start="87" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="1" start="0" name="NP"/>
+                    <label end="123" start="87" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="85" start="78" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="42547318" ID="1110807">
+            <text>Only on the outbreak of war were steps taken to discourage its members from any anti-war activity when two of its leading members , Oliver Gilbert and T. Victor-Rowe , were interned on 22 September 1939 . </text>
+            <annotationSet cDate="01/08/2003 02:51:09 PST Wed" status="UNANN" ID="1672748">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="AV0"/>
+                    <label end="6" start="5" name="PRP"/>
+                    <label end="10" start="8" name="AT0"/>
+                    <label end="19" start="12" name="NN1"/>
+                    <label end="22" start="21" name="PRF"/>
+                    <label end="26" start="24" name="NN1"/>
+                    <label end="31" start="28" name="VBD"/>
+                    <label end="37" start="33" name="NN2"/>
+                    <label end="43" start="39" name="VVN"/>
+                    <label end="46" start="45" name="TO0"/>
+                    <label end="57" start="48" name="VVI"/>
+                    <label end="61" start="59" name="DPS"/>
+                    <label end="69" start="63" name="NN2"/>
+                    <label end="74" start="71" name="PRP"/>
+                    <label end="78" start="76" name="DT0"/>
+                    <label end="87" start="80" name="AJ0"/>
+                    <label end="96" start="89" name="NN1"/>
+                    <label end="101" start="98" name="AVQ-CJS"/>
+                    <label end="105" start="103" name="CRD"/>
+                    <label end="108" start="107" name="PRF"/>
+                    <label end="112" start="110" name="DPS"/>
+                    <label end="120" start="114" name="AJ0"/>
+                    <label end="128" start="122" name="NN2"/>
+                    <label end="130" start="130" name="PUN"/>
+                    <label end="137" start="132" name="NP0"/>
+                    <label end="145" start="139" name="NP0"/>
+                    <label end="149" start="147" name="CJC"/>
+                    <label end="152" start="151" name="NP0"/>
+                    <label end="164" start="154" name="NP0"/>
+                    <label end="166" start="166" name="PUN"/>
+                    <label end="171" start="168" name="VBD"/>
+                    <label end="180" start="173" name="VVN"/>
+                    <label end="183" start="182" name="PRP"/>
+                    <label end="186" start="185" name="CRD"/>
+                    <label end="196" start="188" name="NP0"/>
+                    <label end="201" start="198" name="CRD"/>
+                    <label end="203" start="203" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 02:51:09 PST Wed" status="MANUAL" ID="1672749">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2705" end="166" start="103" name="Suspect"/>
+                    <label cBy="618" feID="2706" end="201" start="182" name="Time"/>
+                    <label cBy="618" feID="2702" itype="CNI" name="Authorities"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="166" start="103" name="Ext"/>
+                    <label end="201" start="182" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="166" start="103" name="NP"/>
+                    <label end="201" start="182" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="180" start="173" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="45148493" ID="1110810">
+            <text>Interned from 1932-33 in a Nazi concentration camp , he fled to Czechoslovakia after the war . </text>
+            <annotationSet cDate="01/08/2003 02:51:10 PST Wed" status="UNANN" ID="1672754">
+                <layer rank="1" name="BNC">
+                    <label end="7" start="0" name="VVD"/>
+                    <label end="12" start="9" name="PRP"/>
+                    <label end="20" start="14" name="CRD"/>
+                    <label end="23" start="22" name="PRP"/>
+                    <label end="25" start="25" name="AT0"/>
+                    <label end="30" start="27" name="AJ0"/>
+                    <label end="44" start="32" name="NN1"/>
+                    <label end="49" start="46" name="NN1"/>
+                    <label end="51" start="51" name="PUN"/>
+                    <label end="54" start="53" name="PNP"/>
+                    <label end="59" start="56" name="VVD"/>
+                    <label end="62" start="61" name="PRP"/>
+                    <label end="77" start="64" name="NP0"/>
+                    <label end="83" start="79" name="PRP"/>
+                    <label end="87" start="85" name="AT0"/>
+                    <label end="91" start="89" name="NN1"/>
+                    <label end="93" start="93" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 02:51:10 PST Wed" status="MANUAL" ID="1672755">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2721" end="20" start="9" name="Duration"/>
+                    <label cBy="618" feID="2708" end="49" start="22" name="Holding_Location"/>
+                    <label cBy="618" feID="2705" end="54" start="53" name="Suspect"/>
+                    <label cBy="618" feID="2702" itype="CNI" name="Authorities"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="20" start="9" name="Dep"/>
+                    <label end="49" start="22" name="Dep"/>
+                    <label end="54" start="53" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="20" start="9" name="PP"/>
+                    <label end="49" start="22" name="PP"/>
+                    <label end="54" start="53" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="7" start="0" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="49148498" ID="1110819">
+            <text>Arrested and interned by the Germans , Adair was eventually moved from Bayonne to Fresne . </text>
+            <annotationSet cDate="01/08/2003 02:51:11 PST Wed" status="UNANN" ID="1672772">
+                <layer rank="1" name="BNC">
+                    <label end="7" start="0" name="NP0"/>
+                    <label end="11" start="9" name="CJC"/>
+                    <label end="20" start="13" name="VVD-VVN"/>
+                    <label end="23" start="22" name="PRP"/>
+                    <label end="27" start="25" name="AT0"/>
+                    <label end="35" start="29" name="NN2"/>
+                    <label end="37" start="37" name="PUN"/>
+                    <label end="43" start="39" name="NN1-NP0"/>
+                    <label end="47" start="45" name="VBD"/>
+                    <label end="58" start="49" name="AV0"/>
+                    <label end="64" start="60" name="VVN"/>
+                    <label end="69" start="66" name="PRP"/>
+                    <label end="77" start="71" name="NN1"/>
+                    <label end="80" start="79" name="PRP"/>
+                    <label end="87" start="82" name="NN1"/>
+                    <label end="89" start="89" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 02:51:11 PST Wed" status="MANUAL" ID="1672773">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2702" end="35" start="22" name="Authorities"/>
+                    <label cBy="618" feID="2705" end="43" start="39" name="Suspect"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="35" start="22" name="Dep"/>
+                    <label end="43" start="39" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="35" start="22" name="PP"/>
+                    <label end="43" start="39" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="20" start="13" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="53538285" ID="1110823">
+            <text>The Japanese interned those who surrendered without a struggle and killed all those French elements who put up a resistance . </text>
+            <annotationSet cDate="01/08/2003 02:51:11 PST Wed" status="UNANN" ID="1672780">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="11" start="4" name="NN1"/>
+                    <label end="20" start="13" name="VVD"/>
+                    <label end="26" start="22" name="DT0"/>
+                    <label end="30" start="28" name="PNQ"/>
+                    <label end="42" start="32" name="VVD"/>
+                    <label end="50" start="44" name="PRP"/>
+                    <label end="52" start="52" name="AT0"/>
+                    <label end="61" start="54" name="NN1"/>
+                    <label end="65" start="63" name="CJC"/>
+                    <label end="72" start="67" name="VVD-VVN"/>
+                    <label end="76" start="74" name="DT0"/>
+                    <label end="82" start="78" name="DT0"/>
+                    <label end="89" start="84" name="AJ0"/>
+                    <label end="98" start="91" name="NN2"/>
+                    <label end="102" start="100" name="PNQ"/>
+                    <label end="106" start="104" name="VVD"/>
+                    <label end="109" start="108" name="AVP"/>
+                    <label end="111" start="111" name="AT0"/>
+                    <label end="122" start="113" name="NN1"/>
+                    <label end="124" start="124" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 02:51:11 PST Wed" status="MANUAL" ID="1672781">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2702" end="11" start="0" name="Authorities"/>
+                    <label cBy="618" feID="2705" end="61" start="22" name="Suspect"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="11" start="0" name="Ext"/>
+                    <label end="61" start="22" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="11" start="0" name="NP"/>
+                    <label end="61" start="22" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="20" start="13" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="66537656" ID="1110831">
+            <text>He did n't want to go to Switzerland : if he did go , the chances were that he would be interned there for the rest of the war . </text>
+            <annotationSet cDate="01/08/2003 02:51:15 PST Wed" status="UNANN" ID="1672796">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="5" start="3" name="VDD"/>
+                    <label end="9" start="7" name="XX0"/>
+                    <label end="14" start="11" name="VVI"/>
+                    <label end="17" start="16" name="TO0"/>
+                    <label end="20" start="19" name="VVI"/>
+                    <label end="23" start="22" name="PRP"/>
+                    <label end="35" start="25" name="NP0"/>
+                    <label end="37" start="37" name="PUN"/>
+                    <label end="40" start="39" name="CJS"/>
+                    <label end="43" start="42" name="PNP"/>
+                    <label end="47" start="45" name="VDD"/>
+                    <label end="50" start="49" name="VVI"/>
+                    <label end="52" start="52" name="PUN"/>
+                    <label end="56" start="54" name="AT0"/>
+                    <label end="64" start="58" name="NN2"/>
+                    <label end="69" start="66" name="VBD"/>
+                    <label end="74" start="71" name="CJT"/>
+                    <label end="77" start="76" name="PNP"/>
+                    <label end="83" start="79" name="VM0"/>
+                    <label end="86" start="85" name="VBI"/>
+                    <label end="95" start="88" name="VVN"/>
+                    <label end="101" start="97" name="AV0"/>
+                    <label end="105" start="103" name="PRP"/>
+                    <label end="109" start="107" name="AT0"/>
+                    <label end="114" start="111" name="NN1"/>
+                    <label end="117" start="116" name="PRF"/>
+                    <label end="121" start="119" name="AT0"/>
+                    <label end="125" start="123" name="NN1"/>
+                    <label end="127" start="127" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 02:51:15 PST Wed" status="MANUAL" ID="1672797">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2705" end="77" start="76" name="Suspect"/>
+                    <label cBy="618" feID="2708" end="101" start="97" name="Holding_Location"/>
+                    <label cBy="618" feID="2721" end="125" start="103" name="Duration"/>
+                    <label cBy="296" feID="2702" itype="CNI" name="Authorities"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="77" start="76" name="Ext"/>
+                    <label end="101" start="97" name="Dep"/>
+                    <label end="125" start="103" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="77" start="76" name="NP"/>
+                    <label end="101" start="97" name="AVP"/>
+                    <label end="125" start="103" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="95" start="88" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="78274270" ID="1110838">
+            <text>Liddell later returned to China as a teacher and missionary where he was interned by the Japanese at a camp in Weifang . </text>
+            <annotationSet cDate="01/08/2003 02:51:15 PST Wed" status="UNANN" ID="1672810">
+                <layer rank="1" name="BNC">
+                    <label end="6" start="0" name="NN1-NP0"/>
+                    <label end="12" start="8" name="AV0"/>
+                    <label end="21" start="14" name="VVD-VVN"/>
+                    <label end="24" start="23" name="PRP"/>
+                    <label end="30" start="26" name="NN1-NP0"/>
+                    <label end="33" start="32" name="PRP"/>
+                    <label end="35" start="35" name="AT0"/>
+                    <label end="43" start="37" name="NN1"/>
+                    <label end="47" start="45" name="CJC"/>
+                    <label end="58" start="49" name="AJ0"/>
+                    <label end="64" start="60" name="AVQ-CJS"/>
+                    <label end="67" start="66" name="PNP"/>
+                    <label end="71" start="69" name="VBD"/>
+                    <label end="80" start="73" name="VVN"/>
+                    <label end="83" start="82" name="PRP"/>
+                    <label end="87" start="85" name="AT0"/>
+                    <label end="96" start="89" name="AJ0-NN1"/>
+                    <label end="99" start="98" name="PRP"/>
+                    <label end="101" start="101" name="AT0"/>
+                    <label end="106" start="103" name="NN1"/>
+                    <label end="109" start="108" name="PRP"/>
+                    <label end="117" start="111" name="NN1-NP0"/>
+                    <label end="119" start="119" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 02:51:16 PST Wed" status="MANUAL" ID="1672811">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2705" end="67" start="66" name="Suspect"/>
+                    <label cBy="618" feID="2702" end="96" start="82" name="Authorities"/>
+                    <label cBy="618" feID="2708" end="117" start="98" name="Holding_Location"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="67" start="66" name="Ext"/>
+                    <label end="96" start="82" name="Dep"/>
+                    <label end="117" start="98" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="67" start="66" name="NP"/>
+                    <label end="96" start="82" name="PP"/>
+                    <label end="117" start="98" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="80" start="73" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

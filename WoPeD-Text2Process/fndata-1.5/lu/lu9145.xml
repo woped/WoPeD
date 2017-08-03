@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" POS="V" name="hold_tongue.v" ID="9145" frame="Become_silent" frameID="731" totalAnnotated="4" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Core" abbrev="" name="Expressor"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Extra-Thematic" abbrev="" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="" name="Speaker"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="" name="Topic"/>
+        </frame>
+    </header>
+    <definition>COD: remain silent</definition>
+    <lexeme order="1" headword="true" breakBefore="false" POS="V" name="hold"/>
+    <lexeme order="2" headword="false" breakBefore="true" POS="N" name="tongue"/>
+    <valences>
+        <FERealization total="3">
+            <FE name="Reason"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Reason"/>
+                <annoSet ID="1127446"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[out]" FE="Reason"/>
+                <annoSet ID="1127422"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="VPto" FE="Reason"/>
+                <annoSet ID="1127440"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Speaker"/>
+            <pattern total="4">
+                <valenceUnit GF="Ext" PT="NP" FE="Speaker"/>
+                <annoSet ID="1127408"/>
+                <annoSet ID="1127422"/>
+                <annoSet ID="1127440"/>
+                <annoSet ID="1127446"/>
+            </pattern>
+            <pattern total="4">
+                <valenceUnit GF="Gen" PT="Poss" FE="Speaker"/>
+                <annoSet ID="1127408"/>
+                <annoSet ID="1127422"/>
+                <annoSet ID="1127440"/>
+                <annoSet ID="1127446"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="3">
+            <FE name="Reason"/>
+            <FE name="Speaker"/>
+            <FE name="Speaker"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Reason"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Speaker"/>
+                <valenceUnit GF="Gen" PT="Poss" FE="Speaker"/>
+                <annoSet ID="1127446"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[out]" FE="Reason"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Speaker"/>
+                <valenceUnit GF="Gen" PT="Poss" FE="Speaker"/>
+                <annoSet ID="1127422"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="VPto" FE="Reason"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Speaker"/>
+                <valenceUnit GF="Gen" PT="Poss" FE="Speaker"/>
+                <annoSet ID="1127440"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Speaker"/>
+            <FE name="Speaker"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Speaker"/>
+                <valenceUnit GF="Gen" PT="Poss" FE="Speaker"/>
+                <annoSet ID="1127408"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-429-s50-rcoll-tongue">
+        <sentence sentNo="0" aPos="10163180" ID="835459">
+            <text>Prescott promises to hold his tongue </text>
+            <annotationSet cDate="01/07/2003 04:21:16 PST Tue" status="UNANN" ID="1127407">
+                <layer rank="1" name="BNC">
+                    <label end="7" start="0" name="NN1-NP0"/>
+                    <label end="16" start="9" name="VVZ"/>
+                    <label end="19" start="18" name="TO0"/>
+                    <label end="24" start="21" name="VVI"/>
+                    <label end="28" start="26" name="DPS"/>
+                    <label end="35" start="30" name="NN1"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 04:21:16 PST Tue" status="MANUAL" ID="1127408">
+                <layer rank="1" name="FE">
+                    <label cBy="893" feID="4825" end="7" start="0" name="Speaker"/>
+                    <label cBy="296" feID="4825" end="28" start="26" name="Speaker"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="7" start="0" name="Ext"/>
+                    <label end="28" start="26" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="7" start="0" name="NP"/>
+                    <label end="28" start="26" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="24" start="21" name="Target"/>
+                    <label cBy="893" end="35" start="30" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="37253737" ID="835466">
+            <text>Out of sheer curiosity I held my tongue , and waited . </text>
+            <annotationSet cDate="01/07/2003 04:21:17 PST Tue" status="UNANN" ID="1127421">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="PRP"/>
+                    <label end="5" start="4" name="PRP"/>
+                    <label end="11" start="7" name="AJ0"/>
+                    <label end="21" start="13" name="NN1"/>
+                    <label end="23" start="23" name="PNP"/>
+                    <label end="28" start="25" name="VVD"/>
+                    <label end="31" start="30" name="DPS"/>
+                    <label end="38" start="33" name="NN1"/>
+                    <label end="40" start="40" name="PUN"/>
+                    <label end="44" start="42" name="CJC"/>
+                    <label end="51" start="46" name="VVD"/>
+                    <label end="53" start="53" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 04:21:17 PST Tue" status="MANUAL" ID="1127422">
+                <layer rank="1" name="FE">
+                    <label cBy="893" feID="4829" end="21" start="0" name="Reason"/>
+                    <label cBy="893" feID="4825" end="23" start="23" name="Speaker"/>
+                    <label cBy="296" feID="4825" end="31" start="30" name="Speaker"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="21" start="0" name="Dep"/>
+                    <label end="23" start="23" name="Ext"/>
+                    <label end="31" start="30" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="21" start="0" name="PP"/>
+                    <label end="23" start="23" name="NP"/>
+                    <label end="31" start="30" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="28" start="25" name="Target"/>
+                    <label cBy="893" end="38" start="33" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="57832076" ID="835475">
+            <text>But there were times when he had to hold his tongue , if only to ensure that he could keep on using this fool for his own ends . </text>
+            <annotationSet cDate="01/07/2003 04:21:18 PST Tue" status="UNANN" ID="1127439">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="CJC"/>
+                    <label end="8" start="4" name="EX0"/>
+                    <label end="13" start="10" name="VBD"/>
+                    <label end="19" start="15" name="NN2"/>
+                    <label end="24" start="21" name="AVQ"/>
+                    <label end="27" start="26" name="PNP"/>
+                    <label end="31" start="29" name="VHD"/>
+                    <label end="34" start="33" name="TO0"/>
+                    <label end="39" start="36" name="VVI"/>
+                    <label end="43" start="41" name="DPS"/>
+                    <label end="50" start="45" name="NN1"/>
+                    <label end="52" start="52" name="PUN"/>
+                    <label end="55" start="54" name="CJS"/>
+                    <label end="60" start="57" name="AV0"/>
+                    <label end="63" start="62" name="TO0"/>
+                    <label end="70" start="65" name="VVI"/>
+                    <label end="75" start="72" name="CJT"/>
+                    <label end="78" start="77" name="PNP"/>
+                    <label end="84" start="80" name="VM0"/>
+                    <label end="89" start="86" name="VVI"/>
+                    <label end="92" start="91" name="PRP"/>
+                    <label end="98" start="94" name="VVG"/>
+                    <label end="103" start="100" name="DT0"/>
+                    <label end="108" start="105" name="NN1"/>
+                    <label end="112" start="110" name="PRP"/>
+                    <label end="116" start="114" name="DPS"/>
+                    <label end="120" start="118" name="DT0"/>
+                    <label end="125" start="122" name="NN2"/>
+                    <label end="127" start="127" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 04:21:18 PST Tue" status="MANUAL" ID="1127440">
+                <layer rank="1" name="FE">
+                    <label cBy="893" feID="4825" end="27" start="26" name="Speaker"/>
+                    <label cBy="153" feID="4829" end="125" start="54" name="Reason"/>
+                    <label cBy="296" feID="4825" end="43" start="41" name="Speaker"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="27" start="26" name="Ext"/>
+                    <label end="125" start="54" name="Dep"/>
+                    <label end="43" start="41" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="27" start="26" name="NP"/>
+                    <label end="125" start="54" name="VPto"/>
+                    <label end="43" start="41" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="39" start="36" name="Target"/>
+                    <label cBy="893" end="50" start="45" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="58870549" ID="835478">
+            <text>But we shall watch no longer , nor hold our tongues for fear of hurting you . </text>
+            <annotationSet cDate="01/07/2003 04:21:19 PST Tue" status="UNANN" ID="1127445">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="CJC"/>
+                    <label end="5" start="4" name="PNP"/>
+                    <label end="11" start="7" name="VM0"/>
+                    <label end="17" start="13" name="VVI"/>
+                    <label end="20" start="19" name="AV0"/>
+                    <label end="27" start="22" name="AV0"/>
+                    <label end="29" start="29" name="PUN"/>
+                    <label end="33" start="31" name="CJC"/>
+                    <label end="38" start="35" name="VVB"/>
+                    <label end="42" start="40" name="DPS"/>
+                    <label end="50" start="44" name="NN2"/>
+                    <label end="54" start="52" name="PRP"/>
+                    <label end="59" start="56" name="PRP"/>
+                    <label end="62" start="61" name="PRP"/>
+                    <label end="70" start="64" name="VVG"/>
+                    <label end="74" start="72" name="PNP"/>
+                    <label end="76" start="76" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 04:21:19 PST Tue" status="MANUAL" ID="1127446">
+                <layer rank="1" name="FE">
+                    <label cBy="893" feID="4825" end="5" start="4" name="Speaker"/>
+                    <label cBy="893" feID="4829" end="74" start="52" name="Reason"/>
+                    <label cBy="296" feID="4825" end="42" start="40" name="Speaker"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="5" start="4" name="Ext"/>
+                    <label end="74" start="52" name="Dep"/>
+                    <label end="42" start="40" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="5" start="4" name="NP"/>
+                    <label end="74" start="52" name="PP"/>
+                    <label end="42" start="40" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="38" start="35" name="Target"/>
+                    <label cBy="893" end="50" start="44" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-670-s20-pass-by"/>
+    <subCorpus name="V-680-s20-pass"/>
+    <subCorpus name="V-880-s20-intrans-simple"/>
+    <subCorpus name="V-890-s20-intrans-adverb"/>
+    <subCorpus name="V-900-s20-other"/>
+</lexUnit>

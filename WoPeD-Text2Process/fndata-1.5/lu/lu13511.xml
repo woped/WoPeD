@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="A" name="rife.a" ID="13511" frame="Abounding_with" frameID="262" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Loc" name="Location"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="Thm" name="Theme"/>
+            <FE fgColor="FFFF00" bgColor="FFA500" type="Peripheral" abbrev="" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: full (often of something bad).</definition>
+    <lexeme POS="A" name="rife"/>
+    <valences>
+        <FERealization total="2">
+            <FE name="Location"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Location"/>
+                <annoSet ID="2334229"/>
+                <annoSet ID="2334251"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Theme"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Theme"/>
+                <annoSet ID="2334229"/>
+                <annoSet ID="2334251"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="NP" FE="Time"/>
+                <annoSet ID="2334251"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Location"/>
+            <FE name="Theme"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Location"/>
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Theme"/>
+                <annoSet ID="2334229"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Location"/>
+            <FE name="Theme"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Location"/>
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Theme"/>
+                <valenceUnit GF="Dep" PT="NP" FE="Time"/>
+                <annoSet ID="2334251"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="122" aPos="55135441" ID="1443234">
+            <text>The last quarter of 1325 and the first three quarters of 1326 were rife with rumour , alarm , threatening manoeuvres and unavailing diplomacy .</text>
+            <annotationSet cDate="11/20/2007 01:40:46 PST Tue" status="UNANN" ID="2334228">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="7" start="4" name="jj"/>
+                    <label end="15" start="9" name="nn"/>
+                    <label end="18" start="17" name="in"/>
+                    <label end="23" start="20" name="cd"/>
+                    <label end="27" start="25" name="cc"/>
+                    <label end="31" start="29" name="dt"/>
+                    <label end="37" start="33" name="jj"/>
+                    <label end="43" start="39" name="cd"/>
+                    <label end="52" start="45" name="nns"/>
+                    <label end="55" start="54" name="in"/>
+                    <label end="60" start="57" name="cd"/>
+                    <label end="65" start="62" name="VBD"/>
+                    <label end="70" start="67" name="jj"/>
+                    <label end="75" start="72" name="in"/>
+                    <label end="82" start="77" name="nn"/>
+                    <label end="84" start="84" name=","/>
+                    <label end="90" start="86" name="nn"/>
+                    <label end="92" start="92" name=","/>
+                    <label end="104" start="94" name="VVG"/>
+                    <label end="115" start="106" name="nns"/>
+                    <label end="119" start="117" name="cc"/>
+                    <label end="130" start="121" name="jj"/>
+                    <label end="140" start="132" name="nn"/>
+                    <label end="142" start="142" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="11/20/2007 01:40:46 PST Tue" status="MANUAL" ID="2334229">
+                <layer rank="1" name="Target">
+                    <label cBy="361" end="70" start="67" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="2261" end="60" start="0" name="Location"/>
+                    <label cBy="597" feID="2260" end="140" start="72" name="Theme"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="60" start="0" name="Ext"/>
+                    <label end="140" start="72" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="60" start="0" name="NP"/>
+                    <label end="140" start="72" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj">
+                    <label end="65" start="62" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="1962" aPos="36571825" ID="1443245">
+            <text>The Grand Prix world was rife with rumour last night that team boss Frank Williams will put him in the seat every top driver wants .</text>
+            <annotationSet cDate="11/20/2007 01:40:50 PST Tue" status="UNANN" ID="2334250">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="8" start="4" name="NP"/>
+                    <label end="13" start="10" name="NP"/>
+                    <label end="19" start="15" name="nn"/>
+                    <label end="23" start="21" name="VBD"/>
+                    <label end="28" start="25" name="jj"/>
+                    <label end="33" start="30" name="in"/>
+                    <label end="40" start="35" name="nn"/>
+                    <label end="45" start="42" name="jj"/>
+                    <label end="51" start="47" name="nn"/>
+                    <label end="56" start="53" name="in"/>
+                    <label end="61" start="58" name="nn"/>
+                    <label end="66" start="63" name="nn"/>
+                    <label end="72" start="68" name="NP"/>
+                    <label end="81" start="74" name="NP"/>
+                    <label end="86" start="83" name="md"/>
+                    <label end="90" start="88" name="VV"/>
+                    <label end="94" start="92" name="PP"/>
+                    <label end="97" start="96" name="in"/>
+                    <label end="101" start="99" name="dt"/>
+                    <label end="106" start="103" name="nn"/>
+                    <label end="112" start="108" name="dt"/>
+                    <label end="116" start="114" name="jj"/>
+                    <label end="123" start="118" name="nn"/>
+                    <label end="129" start="125" name="VVZ"/>
+                    <label end="131" start="131" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="11/20/2007 01:40:50 PST Tue" status="MANUAL" ID="2334251">
+                <layer rank="1" name="Target">
+                    <label cBy="361" end="28" start="25" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="2261" end="19" start="0" name="Location"/>
+                    <label cBy="597" feID="2260" end="40" start="30" name="Theme"/>
+                    <label cBy="597" feID="10821" end="51" start="42" name="Time"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="19" start="0" name="Ext"/>
+                    <label end="40" start="30" name="Dep"/>
+                    <label end="51" start="42" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="19" start="0" name="NP"/>
+                    <label end="40" start="30" name="PP"/>
+                    <label end="51" start="42" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj">
+                    <label end="23" start="21" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

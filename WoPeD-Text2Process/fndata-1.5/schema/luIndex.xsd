@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://framenet.icsi.berkeley.edu"
+    elementFormDefault="qualified" xmlns:tns="http://framenet.icsi.berkeley.edu">
+    <xsd:element name="luIndex">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="legend">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element name="statusType" minOccurs="0" maxOccurs="unbounded">
+                                <xsd:complexType>
+                                    <xsd:attribute name="name" type="xsd:string" use="required"/>
+                                    <xsd:attribute name="description" type="xsd:string" use="required"/>
+                                </xsd:complexType>
+                            </xsd:element>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element name="lu" maxOccurs="unbounded">
+                    <xsd:complexType>
+                        <xsd:attribute name="ID" type="xsd:int"/>
+                        <xsd:attribute name="name" type="xsd:string"/>
+                        <xsd:attribute name="status" type="xsd:string"/>
+                        <xsd:attribute name="frameName" type="xsd:string"/>
+                        <xsd:attribute name="frameID" type="xsd:int"/>
+                        <xsd:attribute name="hasAnnotation" type="xsd:boolean"/>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>

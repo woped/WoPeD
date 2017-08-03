@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="FN1_Sent" POS="N" name="bouquet.n" ID="1540" frame="Sensation" frameID="71" totalAnnotated="8" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Core" abbrev="BodP" name="Body_part"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD7C" type="Core" abbrev="Ground" name="Ground"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Core" abbrev="Perc-Pass" name="Perceiver_passive"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Pcpt" name="Percept"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="Src" name="Source"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: the characteristic scent of a wine or perfume.</definition>
+    <lexeme POS="N" name="bouquet"/>
+    <valences>
+        <governor type="Sup" lemma="have">
+            <annoSet ID="820399"/>
+            <annoSet ID="820477"/>
+        </governor>
+        <FERealization total="5">
+            <FE name="Percept"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Percept"/>
+                <annoSet ID="820431"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Percept"/>
+                <annoSet ID="820399"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Percept"/>
+                <annoSet ID="820411"/>
+                <annoSet ID="820417"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Percept"/>
+                <annoSet ID="820473"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Source"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Source"/>
+                <annoSet ID="820399"/>
+                <annoSet ID="820477"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[from]" FE="Source"/>
+                <annoSet ID="820457"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Source"/>
+                <annoSet ID="820375"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="4">
+            <FE name="Percept"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Percept"/>
+                <annoSet ID="820431"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Percept"/>
+                <annoSet ID="820411"/>
+                <annoSet ID="820417"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Percept"/>
+                <annoSet ID="820473"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Percept"/>
+            <FE name="Source"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Percept"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Source"/>
+                <annoSet ID="820399"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="3">
+            <FE name="Source"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Source"/>
+                <annoSet ID="820477"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[from]" FE="Source"/>
+                <annoSet ID="820457"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Source"/>
+                <annoSet ID="820375"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-250-ppof"/>
+    <subCorpus name="N-280-poss">
+        <sentence sentNo="0" aPos="32963221" ID="671433">
+            <text>But there 's no substitute for its warm aromatic bouquet . </text>
+            <annotationSet cDate="01/07/2003 10:13:04 PST Tue" status="UNANN" ID="820374">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="CJC"/>
+                    <label end="8" start="4" name="EX0"/>
+                    <label end="11" start="10" name="VBZ"/>
+                    <label end="14" start="13" name="AT0"/>
+                    <label end="25" start="16" name="AJ0-NN1"/>
+                    <label end="29" start="27" name="PRP"/>
+                    <label end="33" start="31" name="DPS"/>
+                    <label end="38" start="35" name="AJ0"/>
+                    <label end="47" start="40" name="AJ0"/>
+                    <label end="55" start="49" name="NN1"/>
+                    <label end="57" start="57" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:13:04 PST Tue" status="MANUAL" ID="820375">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="340" end="33" start="31" name="Source"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="33" start="31" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="33" start="31" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="55" start="49" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-290-posscmpd"/>
+    <subCorpus name="N-300-cmpd">
+        <sentence sentNo="0" aPos="24743059" ID="671445">
+            <text>This fresh and flowery sparkling wine -- in the pungent Asti style -- is not as sweet as some on the market , but it has an attractive Muscatel and almond bouquet . </text>
+            <annotationSet cDate="01/07/2003 10:13:05 PST Tue" status="UNANN" ID="820398">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="DT0"/>
+                    <label end="9" start="5" name="AJ0"/>
+                    <label end="13" start="11" name="CJC"/>
+                    <label end="21" start="15" name="AJ0"/>
+                    <label end="31" start="23" name="AJ0-NN1"/>
+                    <label end="36" start="33" name="NN1"/>
+                    <label end="39" start="38" name="PUN"/>
+                    <label end="42" start="41" name="PRP"/>
+                    <label end="46" start="44" name="AT0"/>
+                    <label end="54" start="48" name="AJ0"/>
+                    <label end="59" start="56" name="AJ0-NN1"/>
+                    <label end="65" start="61" name="NN1"/>
+                    <label end="68" start="67" name="PUN"/>
+                    <label end="71" start="70" name="VBZ"/>
+                    <label end="75" start="73" name="XX0"/>
+                    <label end="78" start="77" name="AV0"/>
+                    <label end="84" start="80" name="AJ0"/>
+                    <label end="87" start="86" name="CJS"/>
+                    <label end="92" start="89" name="DT0"/>
+                    <label end="95" start="94" name="PRP"/>
+                    <label end="99" start="97" name="AT0"/>
+                    <label end="106" start="101" name="NN1"/>
+                    <label end="108" start="108" name="PUN"/>
+                    <label end="112" start="110" name="CJC"/>
+                    <label end="115" start="114" name="PNP"/>
+                    <label end="119" start="117" name="VHZ"/>
+                    <label end="122" start="121" name="AT0"/>
+                    <label end="133" start="124" name="AJ0"/>
+                    <label end="142" start="135" name="NN1-NP0"/>
+                    <label end="146" start="144" name="CJC"/>
+                    <label end="153" start="148" name="NN1"/>
+                    <label end="161" start="155" name="NN1"/>
+                    <label end="163" start="163" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:13:05 PST Tue" status="MANUAL" ID="820399">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="340" end="115" start="114" name="Source"/>
+                    <label cBy="103" feID="341" end="153" start="135" name="Percept"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="115" start="114" name="Ext"/>
+                    <label end="153" start="135" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="115" start="114" name="NP"/>
+                    <label end="153" start="135" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="161" start="155" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="119" start="117" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="23868402" ID="671451">
+            <text>The characteristics afforded to Champagne by the inclusion of Bouzy wines in a cuvée are those of great weight and extract , richness of flavour , powerful Pinot bouquet and a high alcoholic content . </text>
+            <annotationSet cDate="01/07/2003 10:13:06 PST Tue" status="UNANN" ID="820410">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="18" start="4" name="NN2"/>
+                    <label end="27" start="20" name="VVD-VVN"/>
+                    <label end="30" start="29" name="PRP"/>
+                    <label end="40" start="32" name="NN1-NP0"/>
+                    <label end="43" start="42" name="PRP"/>
+                    <label end="47" start="45" name="AT0"/>
+                    <label end="57" start="49" name="NN1"/>
+                    <label end="60" start="59" name="PRF"/>
+                    <label end="66" start="62" name="AJ0"/>
+                    <label end="72" start="68" name="NN2"/>
+                    <label end="75" start="74" name="PRP"/>
+                    <label end="77" start="77" name="AT0"/>
+                    <label end="83" start="79" name="NN1"/>
+                    <label end="87" start="85" name="VBB"/>
+                    <label end="93" start="89" name="DT0"/>
+                    <label end="96" start="95" name="PRF"/>
+                    <label end="102" start="98" name="AJ0"/>
+                    <label end="109" start="104" name="NN1"/>
+                    <label end="113" start="111" name="CJC"/>
+                    <label end="121" start="115" name="NN1-VVB"/>
+                    <label end="123" start="123" name="PUN"/>
+                    <label end="132" start="125" name="NN1"/>
+                    <label end="135" start="134" name="PRF"/>
+                    <label end="143" start="137" name="NN1"/>
+                    <label end="145" start="145" name="PUN"/>
+                    <label end="154" start="147" name="AJ0"/>
+                    <label end="160" start="156" name="NN1"/>
+                    <label end="168" start="162" name="NN1"/>
+                    <label end="172" start="170" name="CJC"/>
+                    <label end="174" start="174" name="AT0"/>
+                    <label end="179" start="176" name="AJ0"/>
+                    <label end="189" start="181" name="AJ0-NN1"/>
+                    <label end="197" start="191" name="NN1"/>
+                    <label end="199" start="199" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:13:06 PST Tue" status="MANUAL" ID="820411">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="341" end="160" start="156" name="Percept"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="160" start="156" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="160" start="156" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="168" start="162" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="24743291" ID="671454">
+            <text>Made from the grape of the same name , it has a haunting tobacco and snuff bouquet , leading into a syrupy , apricot flavour . </text>
+            <annotationSet cDate="01/07/2003 10:13:07 PST Tue" status="UNANN" ID="820416">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="VVN"/>
+                    <label end="8" start="5" name="PRP"/>
+                    <label end="12" start="10" name="AT0"/>
+                    <label end="18" start="14" name="NN1"/>
+                    <label end="21" start="20" name="PRF"/>
+                    <label end="25" start="23" name="AT0"/>
+                    <label end="30" start="27" name="DT0"/>
+                    <label end="35" start="32" name="NN1"/>
+                    <label end="37" start="37" name="PUN"/>
+                    <label end="40" start="39" name="PNP"/>
+                    <label end="44" start="42" name="VHZ"/>
+                    <label end="46" start="46" name="AT0"/>
+                    <label end="55" start="48" name="AJ0"/>
+                    <label end="63" start="57" name="NN1"/>
+                    <label end="67" start="65" name="CJC"/>
+                    <label end="73" start="69" name="NN1-VVB"/>
+                    <label end="81" start="75" name="NN1"/>
+                    <label end="83" start="83" name="PUN"/>
+                    <label end="91" start="85" name="VVG"/>
+                    <label end="96" start="93" name="PRP"/>
+                    <label end="98" start="98" name="AT0"/>
+                    <label end="105" start="100" name="AJ0"/>
+                    <label end="107" start="107" name="PUN"/>
+                    <label end="115" start="109" name="NN1-VVB"/>
+                    <label end="123" start="117" name="NN1"/>
+                    <label end="125" start="125" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:13:07 PST Tue" status="MANUAL" ID="820417">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="341" end="73" start="57" name="Percept"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="73" start="57" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="73" start="57" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="81" start="75" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-340-ppother">
+        <sentence sentNo="0" aPos="2499253" ID="671461">
+            <text>Pouilly-Fume 1988 , Domaine les Pres Bessons , £5.99 , also at Thresher ; typical “ grassy ” bouquet with stylish , concentrated , crisp fruitiness . </text>
+            <annotationSet cDate="01/07/2003 10:13:07 PST Tue" status="UNANN" ID="820430">
+                <layer rank="1" name="BNC">
+                    <label end="11" start="0" name="NP0"/>
+                    <label end="16" start="13" name="CRD"/>
+                    <label end="18" start="18" name="PUN"/>
+                    <label end="26" start="20" name="NP0"/>
+                    <label end="30" start="28" name="NN2"/>
+                    <label end="35" start="32" name="NP0"/>
+                    <label end="43" start="37" name="NP0"/>
+                    <label end="45" start="45" name="PUN"/>
+                    <label end="51" start="47" name="NN0"/>
+                    <label end="53" start="53" name="PUN"/>
+                    <label end="58" start="55" name="AV0"/>
+                    <label end="61" start="60" name="PRP"/>
+                    <label end="70" start="63" name="NN1-NP0"/>
+                    <label end="72" start="72" name="PUN"/>
+                    <label end="80" start="74" name="AJ0"/>
+                    <label end="82" start="82" name="PUQ"/>
+                    <label end="89" start="84" name="AJ0"/>
+                    <label end="91" start="91" name="PUQ"/>
+                    <label end="99" start="93" name="NN1"/>
+                    <label end="104" start="101" name="PRP"/>
+                    <label end="112" start="106" name="AJ0"/>
+                    <label end="114" start="114" name="PUN"/>
+                    <label end="127" start="116" name="VVD"/>
+                    <label end="129" start="129" name="PUN"/>
+                    <label end="135" start="131" name="AJ0"/>
+                    <label end="146" start="137" name="NN1"/>
+                    <label end="148" start="148" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:13:08 PST Tue" status="MANUAL" ID="820431">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="341" end="89" start="84" name="Percept"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="89" start="84" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="89" start="84" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="99" start="93" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="72174227" ID="671474">
+            <text>In contrast to most Alsace types , there is seldom much of a bouquet from Pinot Blanc wines . </text>
+            <annotationSet cDate="01/07/2003 10:13:09 PST Tue" status="UNANN" ID="820456">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PRP"/>
+                    <label end="10" start="3" name="NN1"/>
+                    <label end="13" start="12" name="PRP"/>
+                    <label end="18" start="15" name="DT0"/>
+                    <label end="25" start="20" name="NN1-NP0"/>
+                    <label end="31" start="27" name="NN2"/>
+                    <label end="33" start="33" name="PUN"/>
+                    <label end="39" start="35" name="EX0"/>
+                    <label end="42" start="41" name="VBZ"/>
+                    <label end="49" start="44" name="AV0"/>
+                    <label end="54" start="51" name="DT0"/>
+                    <label end="57" start="56" name="PRF"/>
+                    <label end="59" start="59" name="AT0"/>
+                    <label end="67" start="61" name="NN1"/>
+                    <label end="72" start="69" name="PRP"/>
+                    <label end="78" start="74" name="NP0"/>
+                    <label end="84" start="80" name="NP0"/>
+                    <label end="90" start="86" name="NN2"/>
+                    <label end="92" start="92" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:13:09 PST Tue" status="MANUAL" ID="820457">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="340" end="90" start="69" name="Source"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="90" start="69" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="90" start="69" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="67" start="61" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-350-pingother">
+        <sentence sentNo="0" aPos="60181725" ID="671482">
+            <text>He swirled the caramel liquor around in his cupped palm and savoured its bouquet before taking another small taste . </text>
+            <annotationSet cDate="01/07/2003 10:13:10 PST Tue" status="UNANN" ID="820472">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="9" start="3" name="VVD"/>
+                    <label end="13" start="11" name="AT0"/>
+                    <label end="21" start="15" name="NN1"/>
+                    <label end="28" start="23" name="NN1"/>
+                    <label end="35" start="30" name="AVP"/>
+                    <label end="38" start="37" name="PRP"/>
+                    <label end="42" start="40" name="DPS"/>
+                    <label end="49" start="44" name="AJ0"/>
+                    <label end="54" start="51" name="NN1"/>
+                    <label end="58" start="56" name="CJC"/>
+                    <label end="67" start="60" name="VVD"/>
+                    <label end="71" start="69" name="DPS"/>
+                    <label end="79" start="73" name="NN1"/>
+                    <label end="86" start="81" name="PRP"/>
+                    <label end="93" start="88" name="VVG"/>
+                    <label end="101" start="95" name="DT0"/>
+                    <label end="107" start="103" name="AJ0"/>
+                    <label end="113" start="109" name="NN1"/>
+                    <label end="115" start="115" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:13:10 PST Tue" status="MANUAL" ID="820473">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="341" end="71" start="69" name="Percept"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="71" start="69" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="71" start="69" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="79" start="73" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-370-pother"/>
+    <subCorpus name="N-380-other">
+        <sentence sentNo="0" aPos="5722548" ID="671484">
+            <text>These mild , mellow coffees have a full flavour and fragrant bouquet . </text>
+            <annotationSet cDate="01/07/2003 10:13:10 PST Tue" status="UNANN" ID="820476">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="DT0"/>
+                    <label end="9" start="6" name="AJ0-NN1"/>
+                    <label end="11" start="11" name="PUN"/>
+                    <label end="18" start="13" name="AJ0"/>
+                    <label end="26" start="20" name="NN2"/>
+                    <label end="31" start="28" name="VHB"/>
+                    <label end="33" start="33" name="AT0"/>
+                    <label end="38" start="35" name="AJ0"/>
+                    <label end="46" start="40" name="NN1"/>
+                    <label end="50" start="48" name="CJC"/>
+                    <label end="59" start="52" name="AJ0"/>
+                    <label end="67" start="61" name="NN1"/>
+                    <label end="69" start="69" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:13:10 PST Tue" status="MANUAL" ID="820477">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="340" end="26" start="0" name="Source"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="26" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="26" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="67" start="61" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="31" start="28" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

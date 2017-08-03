@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" POS="V" name="braise.v" ID="4169" frame="Apply_heat" frameID="236" totalAnnotated="3" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Core" abbrev="Container" name="Container"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Cook" name="Cook"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="" name="Co_participant"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="000000" bgColor="7FFF00" type="Peripheral" abbrev="Dur" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Food" name="Food"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Core" abbrev="Heat_instr" name="Heating_instrument"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Extra-Thematic" abbrev="Med" name="Medium"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Temp" name="Temperature_setting"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: fry lightly and then stew slowly in a closed container</definition>
+    <lexeme POS="V" name="braise"/>
+    <valences>
+        <FERealization total="3">
+            <FE name="Cook"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="CNI" FE="Cook"/>
+                <annoSet ID="819519"/>
+                <annoSet ID="1897745"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Cook"/>
+                <annoSet ID="819521"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Food"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Food"/>
+                <annoSet ID="819519"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Obj" PT="NP" FE="Food"/>
+                <annoSet ID="819521"/>
+                <annoSet ID="1897745"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Heating_instrument"/>
+            <pattern total="3">
+                <valenceUnit GF="" PT="INI" FE="Heating_instrument"/>
+                <annoSet ID="819519"/>
+                <annoSet ID="819521"/>
+                <annoSet ID="1897745"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Medium"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Medium"/>
+                <annoSet ID="819519"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Cook"/>
+            <FE name="Food"/>
+            <FE name="Heating_instrument"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Cook"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Food"/>
+                <valenceUnit GF="" PT="INI" FE="Heating_instrument"/>
+                <annoSet ID="1897745"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Cook"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Food"/>
+                <valenceUnit GF="" PT="INI" FE="Heating_instrument"/>
+                <annoSet ID="819521"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Cook"/>
+            <FE name="Food"/>
+            <FE name="Heating_instrument"/>
+            <FE name="Medium"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Cook"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Food"/>
+                <valenceUnit GF="" PT="INI" FE="Heating_instrument"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Medium"/>
+                <annoSet ID="819519"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-001-all">
+        <sentence sentNo="0" aPos="5408713" ID="671005">
+            <text>I am not such a fathead as to attempt to describe the pleasure of eating , but I would draw your attention to the vegetable soup cooked with a hambone ( le garbure ) , to the river trout braised in Henri IV 's favourite Juranon wine , the grilled breast of duck . </text>
+            <annotationSet cDate="01/07/2003 10:12:00 PST Tue" status="UNANN" ID="819518">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PNP"/>
+                    <label end="3" start="2" name="VBB"/>
+                    <label end="7" start="5" name="XX0"/>
+                    <label end="12" start="9" name="DT0"/>
+                    <label end="14" start="14" name="AT0"/>
+                    <label end="22" start="16" name="NN1"/>
+                    <label end="25" start="24" name="PRP"/>
+                    <label end="28" start="27" name="PRP"/>
+                    <label end="36" start="30" name="NN1"/>
+                    <label end="39" start="38" name="TO0"/>
+                    <label end="48" start="41" name="VVI"/>
+                    <label end="52" start="50" name="AT0"/>
+                    <label end="61" start="54" name="NN1"/>
+                    <label end="64" start="63" name="PRF"/>
+                    <label end="71" start="66" name="NN1-VVG"/>
+                    <label end="73" start="73" name="PUN"/>
+                    <label end="77" start="75" name="CJC"/>
+                    <label end="79" start="79" name="PNP"/>
+                    <label end="85" start="81" name="VM0"/>
+                    <label end="90" start="87" name="VVI"/>
+                    <label end="95" start="92" name="DPS"/>
+                    <label end="105" start="97" name="NN1"/>
+                    <label end="108" start="107" name="PRP"/>
+                    <label end="112" start="110" name="AT0"/>
+                    <label end="122" start="114" name="NN1"/>
+                    <label end="127" start="124" name="NN1"/>
+                    <label end="134" start="129" name="VVD-VVN"/>
+                    <label end="139" start="136" name="PRP"/>
+                    <label end="141" start="141" name="AT0"/>
+                    <label end="149" start="143" name="NN1"/>
+                    <label end="151" start="151" name="PUL"/>
+                    <label end="154" start="153" name="NN1"/>
+                    <label end="162" start="156" name="NN1"/>
+                    <label end="164" start="164" name="PUR"/>
+                    <label end="166" start="166" name="PUN"/>
+                    <label end="169" start="168" name="PRP"/>
+                    <label end="173" start="171" name="AT0"/>
+                    <label end="179" start="175" name="NN1"/>
+                    <label end="185" start="181" name="NN1"/>
+                    <label end="193" start="187" name="VVD-VVN"/>
+                    <label end="196" start="195" name="PRP"/>
+                    <label end="202" start="198" name="NN1-NP0"/>
+                    <label end="205" start="204" name="CRD"/>
+                    <label end="208" start="207" name="POS"/>
+                    <label end="218" start="210" name="AJ0-NN1"/>
+                    <label end="226" start="220" name="NN1"/>
+                    <label end="231" start="228" name="NN1"/>
+                    <label end="233" start="233" name="PUN"/>
+                    <label end="237" start="235" name="AT0"/>
+                    <label end="245" start="239" name="AJ0"/>
+                    <label end="252" start="247" name="NN1"/>
+                    <label end="255" start="254" name="PRF"/>
+                    <label end="260" start="257" name="NN0"/>
+                    <label end="262" start="262" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:12:01 PST Tue" status="MANUAL" ID="819519">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="2030" end="185" start="171" name="Food"/>
+                    <label cBy="669" feID="2037" end="231" start="195" name="Medium"/>
+                    <label cBy="296" feID="2027" itype="CNI" name="Cook"/>
+                    <label cBy="153" feID="2028" itype="INI" name="Heating_instrument"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="185" start="171" name="Ext"/>
+                    <label end="231" start="195" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="185" start="171" name="NP"/>
+                    <label end="231" start="195" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="193" start="187" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="9039356" ID="671006">
+            <text>This winter Koffmann has been reinterpreting Cabessal de lievre : instead of stuffing and braising the hare he lightly roasts the fillet and laps it in a deep spicy sauce grand veneur set off by a heap of nutty pates . </text>
+            <annotationSet cDate="01/07/2003 10:12:01 PST Tue" status="UNANN" ID="819520">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="DT0"/>
+                    <label end="10" start="5" name="NN1"/>
+                    <label end="19" start="12" name="NN1-NP0"/>
+                    <label end="23" start="21" name="VHZ"/>
+                    <label end="28" start="25" name="VBN"/>
+                    <label end="43" start="30" name="VVG"/>
+                    <label end="52" start="45" name="NN1-NP0"/>
+                    <label end="55" start="54" name="NP0"/>
+                    <label end="62" start="57" name="NN1"/>
+                    <label end="64" start="64" name="PUN"/>
+                    <label end="72" start="66" name="PRP"/>
+                    <label end="75" start="74" name="PRP"/>
+                    <label end="84" start="77" name="NN1-VVG"/>
+                    <label end="88" start="86" name="CJC"/>
+                    <label end="97" start="90" name="VVG"/>
+                    <label end="101" start="99" name="AT0"/>
+                    <label end="106" start="103" name="NN1"/>
+                    <label end="109" start="108" name="PNP"/>
+                    <label end="117" start="111" name="AV0"/>
+                    <label end="124" start="119" name="VVZ"/>
+                    <label end="128" start="126" name="AT0"/>
+                    <label end="135" start="130" name="NN1"/>
+                    <label end="139" start="137" name="CJC"/>
+                    <label end="144" start="141" name="NN2-VVZ"/>
+                    <label end="147" start="146" name="PNP"/>
+                    <label end="150" start="149" name="PRP"/>
+                    <label end="152" start="152" name="AT0"/>
+                    <label end="157" start="154" name="AJ0-AV0"/>
+                    <label end="163" start="159" name="AJ0"/>
+                    <label end="169" start="165" name="NN1"/>
+                    <label end="175" start="171" name="AJ0"/>
+                    <label end="182" start="177" name="NN1"/>
+                    <label end="186" start="184" name="VVD-VVN"/>
+                    <label end="190" start="188" name="AVP"/>
+                    <label end="193" start="192" name="PRP"/>
+                    <label end="195" start="195" name="AT0"/>
+                    <label end="200" start="197" name="NN1"/>
+                    <label end="203" start="202" name="PRF"/>
+                    <label end="209" start="205" name="AJ0"/>
+                    <label end="215" start="211" name="NN2"/>
+                    <label end="217" start="217" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:12:01 PST Tue" status="MANUAL" ID="819521">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="2030" end="106" start="99" name="Food"/>
+                    <label cBy="296" feID="2027" end="109" start="108" name="Cook"/>
+                    <label cBy="153" feID="2028" itype="INI" name="Heating_instrument"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="106" start="99" name="Obj"/>
+                    <label end="109" start="108" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="106" start="99" name="NP"/>
+                    <label end="109" start="108" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="97" start="90" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="01-T-Wsteak,vegetable-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="127" aPos="0" ID="1225342">
+            <text>In the days when Pomiane was writing , chefs did not dream of braising vegetables -- lettuces , leeks , Belgian endives , for example -- without a preliminary blanching .</text>
+            <annotationSet cDate="06/11/2003 09:58:32 PDT Wed" status="UNANN" ID="1897744">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="in"/>
+                    <label end="5" start="3" name="dt"/>
+                    <label end="10" start="7" name="nns"/>
+                    <label end="15" start="12" name="wrb"/>
+                    <label end="23" start="17" name="NP"/>
+                    <label end="27" start="25" name="VBD"/>
+                    <label end="35" start="29" name="VVG"/>
+                    <label end="37" start="37" name=","/>
+                    <label end="43" start="39" name="nns"/>
+                    <label end="47" start="45" name="VVD"/>
+                    <label end="51" start="49" name="rb"/>
+                    <label end="57" start="53" name="nn"/>
+                    <label end="60" start="59" name="in"/>
+                    <label end="69" start="62" name="VVG"/>
+                    <label end="80" start="71" name="nns"/>
+                    <label end="83" start="82" name=":"/>
+                    <label end="92" start="85" name="nns"/>
+                    <label end="94" start="94" name=","/>
+                    <label end="100" start="96" name="nns"/>
+                    <label end="102" start="102" name=","/>
+                    <label end="110" start="104" name="jj"/>
+                    <label end="118" start="112" name="nns"/>
+                    <label end="120" start="120" name=","/>
+                    <label end="124" start="122" name="in"/>
+                    <label end="132" start="126" name="nn"/>
+                    <label end="135" start="134" name=":"/>
+                    <label end="143" start="137" name="in"/>
+                    <label end="145" start="145" name="dt"/>
+                    <label end="157" start="147" name="jj"/>
+                    <label end="167" start="159" name="VVG"/>
+                    <label end="169" start="169" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/11/2003 09:58:33 PDT Wed" status="MANUAL" ID="1897745">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="69" start="62" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2030" end="80" start="71" name="Food"/>
+                    <label cBy="618" feID="2027" itype="CNI" name="Cook"/>
+                    <label cBy="153" feID="2028" itype="INI" name="Heating_instrument"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="80" start="71" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="80" start="71" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+    <subCorpus name="01-T-PPwith,in-(2)"/>
+    <subCorpus name="other-matched-(2)"/>
+    <subCorpus name="other-unmatched-(2)"/>
+</lexUnit>

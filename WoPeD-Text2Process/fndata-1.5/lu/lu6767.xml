@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" POS="PREP" name="up.prep" ID="6767" frame="Locative_relation" frameID="199" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="Orwell" ID="3">
+            <document description="Orwell_1984_p1" ID="7"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Extra-Thematic" abbrev="Dir" name="Direction"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Dist" name="Distance"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Fig" name="Figure"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core-Unexpressed" abbrev="" name="Figures"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="Grnd" name="Ground"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: from a lower to a higher point of. </definition>
+    <lexeme POS="PREP" name="up"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Direction"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="--" FE="Direction"/>
+                <annoSet ID="2600200"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Distance"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="NP" FE="Distance"/>
+                <annoSet ID="2600200"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Figure"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Figure"/>
+                <annoSet ID="2600200"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Ground"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Ground"/>
+                <annoSet ID="2600200"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Direction"/>
+            <FE name="Distance"/>
+            <FE name="Figure"/>
+            <FE name="Ground"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="--" FE="Direction"/>
+                <valenceUnit GF="Dep" PT="NP" FE="Distance"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Figure"/>
+                <valenceUnit GF="" PT="DNI" FE="Ground"/>
+                <annoSet ID="2600200"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="manually-added">
+        <sentence corpID="3" docID="7" sentNo="8" paragNo="2" aPos="0" ID="312910">
+            <text>The flat was seven flights up , and Winston , who was thirty-nine and had a varicose ulcer above his right ankle , went slowly , resting several times on the way .</text>
+            <annotationSet cDate="01/06/2003 10:55:06 PST Mon" status="UNANN" ID="269186">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="7" start="4" name="NN1"/>
+                    <label end="11" start="9" name="VBD"/>
+                    <label end="17" start="13" name="CRD"/>
+                    <label end="25" start="19" name="NN2"/>
+                    <label end="28" start="27" name="AVP"/>
+                    <label end="30" start="30" name="PUN"/>
+                    <label end="34" start="32" name="CJC"/>
+                    <label end="42" start="36" name="NP0"/>
+                    <label end="44" start="44" name="PUN"/>
+                    <label end="48" start="46" name="PNQ"/>
+                    <label end="52" start="50" name="VBD"/>
+                    <label end="64" start="54" name="CRD"/>
+                    <label end="68" start="66" name="CJC"/>
+                    <label end="72" start="70" name="VHD"/>
+                    <label end="74" start="74" name="AT0"/>
+                    <label end="83" start="76" name="AJ0"/>
+                    <label end="89" start="85" name="NN1"/>
+                    <label end="95" start="91" name="PRP"/>
+                    <label end="99" start="97" name="DPS"/>
+                    <label end="105" start="101" name="AJ0"/>
+                    <label end="111" start="107" name="NN1"/>
+                    <label end="113" start="113" name="PUN"/>
+                    <label end="118" start="115" name="VVD"/>
+                    <label end="125" start="120" name="AV0"/>
+                    <label end="127" start="127" name="PUN"/>
+                    <label end="135" start="129" name="VVG"/>
+                    <label end="143" start="137" name="DT0"/>
+                    <label end="149" start="145" name="NN2"/>
+                    <label end="152" start="151" name="PRP"/>
+                    <label end="156" start="154" name="AT0"/>
+                    <label end="160" start="158" name="NN1"/>
+                    <label end="162" start="162" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/30/2010 05:38:42 PDT Fri" status="MANUAL" ID="2600200">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="28" start="27" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="3401" end="25" start="13" name="Distance"/>
+                    <label cBy="664" feID="1622" end="7" start="0" name="Figure"/>
+                    <label cBy="664" feID="3404" end="28" start="27" name="Direction"/>
+                    <label cBy="664" feID="1621" itype="DNI" name="Ground"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="25" start="13" name="Dep"/>
+                    <label end="7" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="25" start="13" name="NP"/>
+                    <label end="7" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Prep">
+                    <label end="11" start="9" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

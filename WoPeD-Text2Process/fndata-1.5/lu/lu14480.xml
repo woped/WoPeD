@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="PREP" name="in.prep" ID="14480" frame="Containment_relation" frameID="1980" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Extra-Thematic" abbrev="Dir" name="Direction"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Fig" name="Figure"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="Grnd" name="Ground"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: expressing the situation of being enclosed or surrounded by something. </definition>
+    <lexeme POS="PREP" name="in"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Figure"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Figure"/>
+                <annoSet ID="2600052"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Ground"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Ground"/>
+                <annoSet ID="2600052"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Figure"/>
+            <FE name="Ground"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Figure"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Ground"/>
+                <annoSet ID="2600052"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-Wkitchen-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="490" aPos="80481543" ID="1582330">
+            <text>Later , as he was dressing and Helen was in the kitchen frying bacon , he shouted : ` You see , it adds up to nothing .</text>
+            <annotationSet cDate="07/30/2010 11:04:06 PDT Fri" status="UNANN" ID="2600051">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="rb"/>
+                    <label end="6" start="6" name=","/>
+                    <label end="9" start="8" name="in"/>
+                    <label end="12" start="11" name="PP"/>
+                    <label end="16" start="14" name="VBD"/>
+                    <label end="25" start="18" name="VVG"/>
+                    <label end="29" start="27" name="cc"/>
+                    <label end="35" start="31" name="NP"/>
+                    <label end="39" start="37" name="VBD"/>
+                    <label end="42" start="41" name="in"/>
+                    <label end="46" start="44" name="dt"/>
+                    <label end="54" start="48" name="nn"/>
+                    <label end="61" start="56" name="VVG"/>
+                    <label end="67" start="63" name="nn"/>
+                    <label end="69" start="69" name=","/>
+                    <label end="72" start="71" name="PP"/>
+                    <label end="80" start="74" name="VVD"/>
+                    <label end="82" start="82" name=":"/>
+                    <label end="88" start="86" name="PP"/>
+                    <label end="92" start="90" name="VVP"/>
+                    <label end="94" start="94" name=","/>
+                    <label end="97" start="96" name="PP"/>
+                    <label end="102" start="99" name="VVZ"/>
+                    <label end="105" start="104" name="rp"/>
+                    <label end="108" start="107" name="to"/>
+                    <label end="116" start="110" name="nn"/>
+                    <label end="118" start="118" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/30/2010 11:04:07 PDT Fri" status="MANUAL" ID="2600052">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="42" start="41" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="11918" end="35" start="31" name="Figure"/>
+                    <label cBy="589" feID="11917" end="54" start="44" name="Ground"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="35" start="31" name="Ext"/>
+                    <label end="54" start="44" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="35" start="31" name="NP"/>
+                    <label end="54" start="44" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Prep">
+                    <label end="39" start="37" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

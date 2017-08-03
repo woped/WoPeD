@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" POS="N" name="economy.n" ID="15942" frame="Frugality" frameID="84" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="Orwell" ID="3">
+            <document description="Orwell_1984_p1" ID="7"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="Behv" name="Behavior"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="000000" bgColor="7FFF00" type="Peripheral" abbrev="" name="Judge"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Core" abbrev="Res" name="Resource"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Pers" name="Resource_controller"/>
+        </frame>
+    </header>
+    <definition>FN: careful use of money and resources.</definition>
+    <lexeme POS="N" name="economy"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Resource"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Resource"/>
+                <annoSet ID="2599848"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Resource_controller"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Resource_controller"/>
+                <annoSet ID="2599848"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Resource"/>
+            <FE name="Resource_controller"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Resource"/>
+                <valenceUnit GF="" PT="INI" FE="Resource_controller"/>
+                <annoSet ID="2599848"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="manually-added">
+        <sentence corpID="3" docID="7" sentNo="7" paragNo="2" aPos="0" ID="312909">
+            <text>It was part of the economy drive in preparation for Hate Week .</text>
+            <annotationSet cDate="01/06/2003 10:55:06 PST Mon" status="UNANN" ID="269185">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="5" start="3" name="VBD"/>
+                    <label end="10" start="7" name="NN1"/>
+                    <label end="13" start="12" name="PRF"/>
+                    <label end="17" start="15" name="AT0"/>
+                    <label end="25" start="19" name="NN1"/>
+                    <label end="31" start="27" name="NN1"/>
+                    <label end="34" start="33" name="PRP"/>
+                    <label end="46" start="36" name="NN1"/>
+                    <label end="50" start="48" name="PRP"/>
+                    <label end="55" start="52" name="NN1"/>
+                    <label end="60" start="57" name="NN1"/>
+                    <label end="62" start="62" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/27/2010 02:54:06 PDT Tue" status="MANUAL" ID="2599848">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="25" start="19" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="386" itype="INI" name="Resource_controller"/>
+                    <label cBy="664" feID="389" itype="INI" name="Resource"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

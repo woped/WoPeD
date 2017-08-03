@@ -1,0 +1,786 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="terminate.v" ID="5801" frame="Firing" frameID="326" totalAnnotated="10" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="AP" ID="113">
+            <document description="apwsE950704.0110" ID="4953"/>
+            <document description="apwsE980203.0868" ID="4954"/>
+            <document description="apwsE980203.0765" ID="4955"/>
+            <document description="apwsE980204.0722" ID="4958"/>
+            <document description="apwsE980227.0087" ID="4961"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Empee" name="Employee"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Emper" name="Employer"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Mnr" name="Manner"/>
+            <FE fgColor="000000" bgColor="EEE8AA" type="Peripheral" abbrev="" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Core" abbrev="Posit" name="Position"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Extra-Thematic" abbrev="Reas" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core" abbrev="Task" name="Task"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: end the employment of. </definition>
+    <lexeme POS="V" name="terminate"/>
+    <valences>
+        <FERealization total="10">
+            <FE name="Employee"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="2nd" FE="Employee"/>
+                <annoSet ID="1278469"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Employee"/>
+                <annoSet ID="1278467"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Employee"/>
+                <annoSet ID="2008677"/>
+            </pattern>
+            <pattern total="7">
+                <valenceUnit GF="Obj" PT="NP" FE="Employee"/>
+                <annoSet ID="1278569"/>
+                <annoSet ID="1278683"/>
+                <annoSet ID="1278701"/>
+                <annoSet ID="2008679"/>
+                <annoSet ID="2008681"/>
+                <annoSet ID="2008687"/>
+                <annoSet ID="2008693"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="10">
+            <FE name="Employer"/>
+            <pattern total="9">
+                <valenceUnit GF="Ext" PT="NP" FE="Employer"/>
+                <annoSet ID="1278467"/>
+                <annoSet ID="1278469"/>
+                <annoSet ID="1278569"/>
+                <annoSet ID="1278683"/>
+                <annoSet ID="1278701"/>
+                <annoSet ID="2008679"/>
+                <annoSet ID="2008681"/>
+                <annoSet ID="2008687"/>
+                <annoSet ID="2008693"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Employer"/>
+                <annoSet ID="2008677"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Manner"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="VPing" FE="Manner"/>
+                <annoSet ID="1278469"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <annoSet ID="1278683"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[without]" FE="Manner"/>
+                <annoSet ID="2008687"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="10">
+            <FE name="Position"/>
+            <pattern total="2">
+                <valenceUnit GF="Obj" PT="NP" FE="Position"/>
+                <annoSet ID="1278467"/>
+                <annoSet ID="1278469"/>
+            </pattern>
+            <pattern total="8">
+                <valenceUnit GF="" PT="DNI" FE="Position"/>
+                <annoSet ID="1278569"/>
+                <annoSet ID="1278683"/>
+                <annoSet ID="1278701"/>
+                <annoSet ID="2008677"/>
+                <annoSet ID="2008679"/>
+                <annoSet ID="2008681"/>
+                <annoSet ID="2008687"/>
+                <annoSet ID="2008693"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Purpose"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="VPto" FE="Purpose"/>
+                <annoSet ID="1278701"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Reason"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Reason"/>
+                <annoSet ID="1278469"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Time"/>
+                <annoSet ID="1278469"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Employee"/>
+            <FE name="Employer"/>
+            <FE name="Manner"/>
+            <FE name="Position"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Employee"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Employer"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <valenceUnit GF="" PT="DNI" FE="Position"/>
+                <annoSet ID="1278683"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Employee"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Employer"/>
+                <valenceUnit GF="Dep" PT="PP[without]" FE="Manner"/>
+                <valenceUnit GF="" PT="DNI" FE="Position"/>
+                <annoSet ID="2008687"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Employee"/>
+            <FE name="Employer"/>
+            <FE name="Manner"/>
+            <FE name="Position"/>
+            <FE name="Reason"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="2nd" FE="Employee"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Employer"/>
+                <valenceUnit GF="Dep" PT="VPing" FE="Manner"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Position"/>
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Reason"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Time"/>
+                <annoSet ID="1278469"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="6">
+            <FE name="Employee"/>
+            <FE name="Employer"/>
+            <FE name="Position"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Employee"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Employer"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Position"/>
+                <annoSet ID="1278467"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Employee"/>
+                <valenceUnit GF="" PT="CNI" FE="Employer"/>
+                <valenceUnit GF="" PT="DNI" FE="Position"/>
+                <annoSet ID="2008677"/>
+            </pattern>
+            <pattern total="4">
+                <valenceUnit GF="Obj" PT="NP" FE="Employee"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Employer"/>
+                <valenceUnit GF="" PT="DNI" FE="Position"/>
+                <annoSet ID="1278569"/>
+                <annoSet ID="2008679"/>
+                <annoSet ID="2008681"/>
+                <annoSet ID="2008693"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Employee"/>
+            <FE name="Employer"/>
+            <FE name="Position"/>
+            <FE name="Purpose"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Employee"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Employer"/>
+                <valenceUnit GF="" PT="DNI" FE="Position"/>
+                <valenceUnit GF="Dep" PT="VPto" FE="Purpose"/>
+                <annoSet ID="1278701"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-429-s20-lcoll-employer"/>
+    <subCorpus name="V-429-s20-lcoll-employment"/>
+    <subCorpus name="V-429-s20-rcoll-cause"/>
+    <subCorpus name="V-429-s20-rcoll-employment">
+        <sentence sentNo="0" aPos="51705191" ID="912039">
+            <text>The justification for the reversal of the burden of proof in unfair dismissal cases is that employers will be in the best position to explain what reasons they had for terminating the employment . </text>
+            <annotationSet cDate="01/07/2003 07:14:37 PST Tue" status="UNANN" ID="1278466">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="16" start="4" name="NN1"/>
+                    <label end="20" start="18" name="PRP"/>
+                    <label end="24" start="22" name="AT0"/>
+                    <label end="33" start="26" name="NN1"/>
+                    <label end="36" start="35" name="PRF"/>
+                    <label end="40" start="38" name="AT0"/>
+                    <label end="47" start="42" name="NN1"/>
+                    <label end="50" start="49" name="PRF"/>
+                    <label end="56" start="52" name="NN1"/>
+                    <label end="59" start="58" name="PRP"/>
+                    <label end="66" start="61" name="AJ0"/>
+                    <label end="76" start="68" name="NN1"/>
+                    <label end="82" start="78" name="NN2"/>
+                    <label end="85" start="84" name="VBZ"/>
+                    <label end="90" start="87" name="CJT"/>
+                    <label end="100" start="92" name="NN2"/>
+                    <label end="105" start="102" name="VM0"/>
+                    <label end="108" start="107" name="VBI"/>
+                    <label end="111" start="110" name="PRP"/>
+                    <label end="115" start="113" name="AT0"/>
+                    <label end="120" start="117" name="AJS"/>
+                    <label end="129" start="122" name="NN1"/>
+                    <label end="132" start="131" name="TO0"/>
+                    <label end="140" start="134" name="VVI"/>
+                    <label end="145" start="142" name="DTQ"/>
+                    <label end="153" start="147" name="NN2-VVZ"/>
+                    <label end="158" start="155" name="PNP"/>
+                    <label end="162" start="160" name="VHD"/>
+                    <label end="166" start="164" name="PRP"/>
+                    <label end="178" start="168" name="VVG"/>
+                    <label end="182" start="180" name="AT0"/>
+                    <label end="193" start="184" name="NN1"/>
+                    <label end="195" start="195" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 07:14:37 PST Tue" status="MANUAL" ID="1278467">
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="2840" end="158" start="155" name="Employer"/>
+                    <label cBy="395" feID="2844" end="193" start="180" name="Position"/>
+                    <label cBy="395" feID="2839" itype="CNI" name="Employee"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="158" start="155" name="Ext"/>
+                    <label end="193" start="180" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="158" start="155" name="NP"/>
+                    <label end="193" start="180" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="178" start="168" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="55579921" ID="912040">
+            <text>In 1988 the university purportedly terminated the applicant 's contract of employment not for good cause but on the ground of redundancy , giving him three months ' written notice . </text>
+            <annotationSet cDate="01/07/2003 07:14:38 PST Tue" status="UNANN" ID="1278468">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PRP"/>
+                    <label end="6" start="3" name="CRD"/>
+                    <label end="10" start="8" name="AT0"/>
+                    <label end="21" start="12" name="NN1"/>
+                    <label end="33" start="23" name="AV0"/>
+                    <label end="44" start="35" name="VVD"/>
+                    <label end="48" start="46" name="AT0"/>
+                    <label end="58" start="50" name="NN1"/>
+                    <label end="61" start="60" name="POS"/>
+                    <label end="70" start="63" name="NN1"/>
+                    <label end="73" start="72" name="PRF"/>
+                    <label end="84" start="75" name="NN1"/>
+                    <label end="88" start="86" name="XX0"/>
+                    <label end="92" start="90" name="PRP"/>
+                    <label end="97" start="94" name="AJ0"/>
+                    <label end="103" start="99" name="NN1"/>
+                    <label end="107" start="105" name="CJC"/>
+                    <label end="110" start="109" name="PRP"/>
+                    <label end="114" start="112" name="AT0"/>
+                    <label end="121" start="116" name="NN1"/>
+                    <label end="124" start="123" name="PRF"/>
+                    <label end="135" start="126" name="NN1"/>
+                    <label end="137" start="137" name="PUN"/>
+                    <label end="144" start="139" name="VVG"/>
+                    <label end="148" start="146" name="PNP"/>
+                    <label end="154" start="150" name="CRD"/>
+                    <label end="161" start="156" name="NN2"/>
+                    <label end="163" start="163" name="POS"/>
+                    <label end="171" start="165" name="AJ0"/>
+                    <label end="178" start="173" name="NN1"/>
+                    <label end="180" start="180" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 07:14:38 PST Tue" status="MANUAL" ID="1278469">
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="2840" end="21" start="8" name="Employer"/>
+                    <label cBy="395" feID="2847" end="6" start="0" name="Time"/>
+                    <label cBy="395" feID="2844" end="84" start="46" name="Position"/>
+                    <label cBy="395" feID="2848" end="135" start="86" name="Reason"/>
+                    <label cBy="395" feID="2842" end="178" start="139" name="Manner"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="21" start="8" name="Ext"/>
+                    <label end="84" start="46" name="Obj"/>
+                    <label end="135" start="86" name="Dep"/>
+                    <label end="178" start="139" name="Dep"/>
+                    <label end="6" start="0" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="21" start="8" name="NP"/>
+                    <label end="6" start="0" name="PP"/>
+                    <label end="84" start="46" name="NP"/>
+                    <label end="135" start="86" name="PP"/>
+                    <label end="178" start="139" name="VPing"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="44" start="35" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+                <layer rank="2" name="FE">
+                    <label cBy="395" feID="2839" end="61" start="46" name="Employee"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-429-s20-rcoll-them"/>
+    <subCorpus name="V-570-s20-np-ppat"/>
+    <subCorpus name="V-570-s20-np-ppfor"/>
+    <subCorpus name="V-570-s20-np-ppfrom"/>
+    <subCorpus name="V-620-s20-np-ppother"/>
+    <subCorpus name="V-630-s20-np-pingother"/>
+    <subCorpus name="V-650-s20-np-pother"/>
+    <subCorpus name="V-660-s20-trans-simple">
+        <sentence sentNo="0" aPos="76323396" ID="912090">
+            <text>Did he think they were going to terminate him ? </text>
+            <annotationSet cDate="01/07/2003 07:14:44 PST Tue" status="UNANN" ID="1278568">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="VDD"/>
+                    <label end="5" start="4" name="PNP"/>
+                    <label end="11" start="7" name="VVI"/>
+                    <label end="16" start="13" name="PNP"/>
+                    <label end="21" start="18" name="VBD"/>
+                    <label end="27" start="23" name="VVG"/>
+                    <label end="30" start="29" name="TO0"/>
+                    <label end="40" start="32" name="VVI"/>
+                    <label end="44" start="42" name="PNP"/>
+                    <label end="46" start="46" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 07:14:44 PST Tue" status="MANUAL" ID="1278569">
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="2840" end="16" start="13" name="Employer"/>
+                    <label cBy="268" feID="2839" end="44" start="42" name="Employee"/>
+                    <label cBy="296" feID="2844" itype="DNI" name="Position"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="16" start="13" name="Ext"/>
+                    <label end="44" start="42" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="16" start="13" name="NP"/>
+                    <label end="44" start="42" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="40" start="32" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-670-s20-pass-by"/>
+    <subCorpus name="V-680-s20-pass"/>
+    <subCorpus name="V-690-s20-trans-other">
+        <sentence sentNo="0" aPos="76347414" ID="912147">
+            <text>I could not terminate Adolph Ng so conveniently . </text>
+            <annotationSet cDate="01/07/2003 07:14:53 PST Tue" status="UNANN" ID="1278682">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PNP"/>
+                    <label end="6" start="2" name="VM0"/>
+                    <label end="10" start="8" name="XX0"/>
+                    <label end="20" start="12" name="VVI"/>
+                    <label end="27" start="22" name="NP0"/>
+                    <label end="30" start="29" name="NP0"/>
+                    <label end="33" start="32" name="AV0"/>
+                    <label end="46" start="35" name="AV0"/>
+                    <label end="48" start="48" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 07:14:53 PST Tue" status="MANUAL" ID="1278683">
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="2840" end="0" start="0" name="Employer"/>
+                    <label cBy="268" feID="2839" end="30" start="22" name="Employee"/>
+                    <label cBy="268" feID="2842" end="46" start="32" name="Manner"/>
+                    <label cBy="296" feID="2844" itype="DNI" name="Position"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="0" start="0" name="Ext"/>
+                    <label end="30" start="22" name="Obj"/>
+                    <label end="46" start="32" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="0" start="0" name="NP"/>
+                    <label end="30" start="22" name="NP"/>
+                    <label end="46" start="32" name="AVP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="20" start="12" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="76333250" ID="912156">
+            <text>They 'd have terminated me just to get rid of a nuisance . </text>
+            <annotationSet cDate="01/07/2003 07:14:54 PST Tue" status="UNANN" ID="1278700">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="PNP"/>
+                    <label end="6" start="5" name="VM0"/>
+                    <label end="11" start="8" name="VHI"/>
+                    <label end="22" start="13" name="VVD-VVN"/>
+                    <label end="25" start="24" name="PNP"/>
+                    <label end="30" start="27" name="AV0"/>
+                    <label end="33" start="32" name="TO0"/>
+                    <label end="37" start="35" name="VVI"/>
+                    <label end="41" start="39" name="VVN"/>
+                    <label end="44" start="43" name="PRF"/>
+                    <label end="46" start="46" name="AT0"/>
+                    <label end="55" start="48" name="NN1"/>
+                    <label end="57" start="57" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 07:14:54 PST Tue" status="MANUAL" ID="1278701">
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="2840" end="3" start="0" name="Employer"/>
+                    <label cBy="268" feID="2839" end="25" start="24" name="Employee"/>
+                    <label cBy="268" feID="2845" end="55" start="27" name="Purpose"/>
+                    <label cBy="296" feID="2844" itype="DNI" name="Position"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="3" start="0" name="Ext"/>
+                    <label end="25" start="24" name="Obj"/>
+                    <label end="55" start="27" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="3" start="0" name="NP"/>
+                    <label end="25" start="24" name="NP"/>
+                    <label end="55" start="27" name="VPto"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="22" start="13" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-780-s20-ppother"/>
+    <subCorpus name="V-810-s20-pother"/>
+    <subCorpus name="V-880-s20-intrans-simple"/>
+    <subCorpus name="V-890-s20-intrans-adverb"/>
+    <subCorpus name="V-900-s20-other"/>
+    <subCorpus name="01-NPemployee,worker-T-(1)">
+        <sentence corpID="113" docID="4953" sentNo="1" paragNo="7" aPos="72217790" ID="1280238">
+            <text>`` No under-aged workers will be terminated before the survey can be completed and until the appropriate school programs for the workers can be put in place , '' the accord said .</text>
+            <annotationSet cDate="10/08/2004 04:51:44 PDT Fri" status="UNANN" ID="2008676">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="``"/>
+                    <label end="4" start="3" name="dt"/>
+                    <label end="15" start="6" name="VVN"/>
+                    <label end="23" start="17" name="nns"/>
+                    <label end="28" start="25" name="md"/>
+                    <label end="31" start="30" name="vb"/>
+                    <label end="42" start="33" name="VVN"/>
+                    <label end="49" start="44" name="in"/>
+                    <label end="53" start="51" name="dt"/>
+                    <label end="60" start="55" name="nn"/>
+                    <label end="64" start="62" name="md"/>
+                    <label end="67" start="66" name="vb"/>
+                    <label end="77" start="69" name="VVN"/>
+                    <label end="81" start="79" name="cc"/>
+                    <label end="87" start="83" name="in"/>
+                    <label end="91" start="89" name="dt"/>
+                    <label end="103" start="93" name="jj"/>
+                    <label end="110" start="105" name="nn"/>
+                    <label end="119" start="112" name="nns"/>
+                    <label end="123" start="121" name="in"/>
+                    <label end="127" start="125" name="dt"/>
+                    <label end="135" start="129" name="nns"/>
+                    <label end="139" start="137" name="md"/>
+                    <label end="142" start="141" name="vb"/>
+                    <label end="146" start="144" name="VVN"/>
+                    <label end="149" start="148" name="in"/>
+                    <label end="155" start="151" name="nn"/>
+                    <label end="157" start="157" name=","/>
+                    <label end="160" start="159" name="''"/>
+                    <label end="164" start="162" name="dt"/>
+                    <label end="171" start="166" name="nn"/>
+                    <label end="176" start="173" name="VVD"/>
+                    <label end="178" start="178" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/08/2004 04:51:44 PDT Fri" status="MANUAL" ID="2008677">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="42" start="33" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2839" end="23" start="3" name="Employee"/>
+                    <label cBy="618" feID="2840" itype="CNI" name="Employer"/>
+                    <label cBy="618" feID="2844" itype="DNI" name="Position"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="23" start="3" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="23" start="3" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="4954" sentNo="4" paragNo="19" aPos="117975414" ID="1280239">
+            <text>Sabah Shipyard was reported to have retrenched 703 workers , Seagate 750 workers , a factory in Kulim laid off 1,000 workers , and another in Ipoh terminated 146 employees .</text>
+            <annotationSet cDate="10/08/2004 04:51:45 PDT Fri" status="UNANN" ID="2008678">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="NP"/>
+                    <label end="13" start="6" name="nn"/>
+                    <label end="17" start="15" name="VBD"/>
+                    <label end="26" start="19" name="VVN"/>
+                    <label end="29" start="28" name="to"/>
+                    <label end="34" start="31" name="VH"/>
+                    <label end="45" start="36" name="VVN"/>
+                    <label end="49" start="47" name="cd"/>
+                    <label end="57" start="51" name="nns"/>
+                    <label end="59" start="59" name=","/>
+                    <label end="67" start="61" name="NP"/>
+                    <label end="71" start="69" name="cd"/>
+                    <label end="79" start="73" name="nns"/>
+                    <label end="81" start="81" name=","/>
+                    <label end="83" start="83" name="dt"/>
+                    <label end="91" start="85" name="nn"/>
+                    <label end="94" start="93" name="in"/>
+                    <label end="100" start="96" name="nn"/>
+                    <label end="105" start="102" name="VVN"/>
+                    <label end="109" start="107" name="in"/>
+                    <label end="115" start="111" name="cd"/>
+                    <label end="123" start="117" name="nns"/>
+                    <label end="125" start="125" name=","/>
+                    <label end="129" start="127" name="cc"/>
+                    <label end="137" start="131" name="dt"/>
+                    <label end="140" start="139" name="in"/>
+                    <label end="145" start="142" name="NP"/>
+                    <label end="156" start="147" name="VVD"/>
+                    <label end="160" start="158" name="cd"/>
+                    <label end="170" start="162" name="nns"/>
+                    <label end="172" start="172" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/08/2004 04:51:45 PDT Fri" status="MANUAL" ID="2008679">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="156" start="147" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2840" end="145" start="131" name="Employer"/>
+                    <label cBy="618" feID="2839" end="170" start="158" name="Employee"/>
+                    <label cBy="618" feID="2844" itype="DNI" name="Position"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="145" start="131" name="Ext"/>
+                    <label end="170" start="158" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="145" start="131" name="NP"/>
+                    <label end="170" start="158" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-T-NPemployee,worker-(1)">
+        <sentence corpID="113" docID="4955" sentNo="2" paragNo="27" aPos="117912692" ID="1280240">
+            <text>It was also reported that Seagate in Singapore has terminated 1,000 workers , of which 70-80 per cent are Malaysians .</text>
+            <annotationSet cDate="10/08/2004 04:51:45 PDT Fri" status="UNANN" ID="2008680">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="5" start="3" name="VBD"/>
+                    <label end="10" start="7" name="rb"/>
+                    <label end="19" start="12" name="VVN"/>
+                    <label end="24" start="21" name="in"/>
+                    <label end="32" start="26" name="NP"/>
+                    <label end="35" start="34" name="in"/>
+                    <label end="45" start="37" name="NP"/>
+                    <label end="49" start="47" name="VHZ"/>
+                    <label end="60" start="51" name="VVN"/>
+                    <label end="66" start="62" name="cd"/>
+                    <label end="74" start="68" name="nns"/>
+                    <label end="76" start="76" name=","/>
+                    <label end="79" start="78" name="in"/>
+                    <label end="85" start="81" name="wdt"/>
+                    <label end="91" start="87" name="cd"/>
+                    <label end="95" start="93" name="in"/>
+                    <label end="100" start="97" name="nn"/>
+                    <label end="104" start="102" name="vbp"/>
+                    <label end="115" start="106" name="nns"/>
+                    <label end="117" start="117" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/08/2004 04:51:46 PDT Fri" status="MANUAL" ID="2008681">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="60" start="51" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2840" end="45" start="26" name="Employer"/>
+                    <label cBy="618" feID="2839" end="115" start="62" name="Employee"/>
+                    <label cBy="618" feID="2844" itype="DNI" name="Position"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="45" start="26" name="Ext"/>
+                    <label end="115" start="62" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="45" start="26" name="NP"/>
+                    <label end="115" start="62" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="4958" sentNo="1" paragNo="19" aPos="118416710" ID="1280243">
+            <text>The Prime Minister , who was asked to comment on reports that employers had resorted to terminating workers without any notice , described retrenchment in Malaysia as not serious and limited to certain groups of people .</text>
+            <annotationSet cDate="10/08/2004 04:51:47 PDT Fri" status="UNANN" ID="2008686">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="8" start="4" name="NP"/>
+                    <label end="17" start="10" name="NP"/>
+                    <label end="19" start="19" name=","/>
+                    <label end="23" start="21" name="wp"/>
+                    <label end="27" start="25" name="VBD"/>
+                    <label end="33" start="29" name="VVN"/>
+                    <label end="36" start="35" name="to"/>
+                    <label end="44" start="38" name="VV"/>
+                    <label end="47" start="46" name="in"/>
+                    <label end="55" start="49" name="nns"/>
+                    <label end="60" start="57" name="in"/>
+                    <label end="70" start="62" name="nns"/>
+                    <label end="74" start="72" name="VHD"/>
+                    <label end="83" start="76" name="VVN"/>
+                    <label end="86" start="85" name="to"/>
+                    <label end="98" start="88" name="VVG"/>
+                    <label end="106" start="100" name="nns"/>
+                    <label end="114" start="108" name="in"/>
+                    <label end="118" start="116" name="dt"/>
+                    <label end="125" start="120" name="nn"/>
+                    <label end="127" start="127" name=","/>
+                    <label end="137" start="129" name="VVD"/>
+                    <label end="150" start="139" name="nn"/>
+                    <label end="153" start="152" name="in"/>
+                    <label end="162" start="155" name="NP"/>
+                    <label end="165" start="164" name="in"/>
+                    <label end="169" start="167" name="rb"/>
+                    <label end="177" start="171" name="jj"/>
+                    <label end="181" start="179" name="cc"/>
+                    <label end="189" start="183" name="jj"/>
+                    <label end="192" start="191" name="to"/>
+                    <label end="200" start="194" name="jj"/>
+                    <label end="207" start="202" name="nns"/>
+                    <label end="210" start="209" name="in"/>
+                    <label end="217" start="212" name="nns"/>
+                    <label end="219" start="219" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/08/2004 04:51:48 PDT Fri" status="MANUAL" ID="2008687">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="98" start="88" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2840" end="70" start="62" name="Employer"/>
+                    <label cBy="618" feID="2839" end="106" start="100" name="Employee"/>
+                    <label cBy="618" feID="2842" end="125" start="108" name="Manner"/>
+                    <label cBy="395" feID="2844" itype="DNI" name="Position"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="70" start="62" name="Ext"/>
+                    <label end="106" start="100" name="Obj"/>
+                    <label end="125" start="108" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="70" start="62" name="NP"/>
+                    <label end="106" start="100" name="NP"/>
+                    <label end="125" start="108" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="4961" sentNo="1" paragNo="4" aPos="127148011" ID="1280246">
+            <text>An Indonesian court , acting on a complaint from Multipolar , issued a provisional order Thursday requiring Wal-Mart to hand over all accounting documents for the stores to Multipolar and not to terminate any employees .</text>
+            <annotationSet cDate="10/08/2004 04:51:49 PDT Fri" status="UNANN" ID="2008692">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="dt"/>
+                    <label end="12" start="3" name="jj"/>
+                    <label end="18" start="14" name="nn"/>
+                    <label end="20" start="20" name=","/>
+                    <label end="27" start="22" name="VVG"/>
+                    <label end="30" start="29" name="in"/>
+                    <label end="32" start="32" name="dt"/>
+                    <label end="42" start="34" name="nn"/>
+                    <label end="47" start="44" name="in"/>
+                    <label end="58" start="49" name="jj"/>
+                    <label end="60" start="60" name=","/>
+                    <label end="67" start="62" name="VVD"/>
+                    <label end="69" start="69" name="dt"/>
+                    <label end="81" start="71" name="jj"/>
+                    <label end="87" start="83" name="nn"/>
+                    <label end="96" start="89" name="NP"/>
+                    <label end="106" start="98" name="VVG"/>
+                    <label end="115" start="108" name="NP"/>
+                    <label end="118" start="117" name="to"/>
+                    <label end="123" start="120" name="VV"/>
+                    <label end="128" start="125" name="rp"/>
+                    <label end="132" start="130" name="dt"/>
+                    <label end="143" start="134" name="nn"/>
+                    <label end="153" start="145" name="nns"/>
+                    <label end="157" start="155" name="in"/>
+                    <label end="161" start="159" name="dt"/>
+                    <label end="168" start="163" name="nns"/>
+                    <label end="171" start="170" name="to"/>
+                    <label end="182" start="173" name="jj"/>
+                    <label end="186" start="184" name="cc"/>
+                    <label end="190" start="188" name="rb"/>
+                    <label end="193" start="192" name="to"/>
+                    <label end="203" start="195" name="VV"/>
+                    <label end="207" start="205" name="dt"/>
+                    <label end="217" start="209" name="nns"/>
+                    <label end="219" start="219" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/08/2004 04:51:50 PDT Fri" status="MANUAL" ID="2008693">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="203" start="195" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2840" end="115" start="108" name="Employer"/>
+                    <label cBy="618" feID="2839" end="217" start="205" name="Employee"/>
+                    <label cBy="395" feID="2844" itype="DNI" name="Position"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="115" start="108" name="Ext"/>
+                    <label end="217" start="205" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="115" start="108" name="NP"/>
+                    <label end="217" start="205" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="10/14/2002 03:21:46 PDT Mon" name="Cause_to_fragment" ID="414" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Agent&lt;/fen&gt; suddenly and often violently separates the &lt;fen&gt;Whole_patient&lt;/fen&gt; into two or more smaller &lt;fen&gt;Pieces&lt;/fen&gt;, resulting in the &lt;fen&gt;Whole_patient&lt;/fen&gt; no longer existing as such.  Several lexical items are marked with the semantic type Negative, which indicates that the fragmentation is necessarily judged as injurious to the original &lt;fen&gt;Whole_patient&lt;/fen&gt;.
+
+Compare this frame with Damaging, Render_non-functional, and Removing.
+
+&lt;ex&gt;&lt;fex name="Agent"&gt;He&lt;/fex&gt; &lt;t&gt;ripped&lt;/t&gt; &lt;t&gt;up&lt;/t&gt; &lt;fex name="Pat"&gt;the letter&lt;/fex&gt; &lt;fex name="Manner"&gt;faster than you can say "Jack Robbins"&lt;/fex&gt;. &lt;fex name="Pieces"&gt;INI&lt;/fex&gt;&lt;/ex&gt;
+&lt;ex&gt;Don't go in there or &lt;fex name="Pat"&gt;you&lt;/fex&gt; 'll be &lt;t&gt;torn&lt;/t&gt; &lt;fex name="Pieces"&gt;to bits&lt;/fex&gt;! &lt;fex name="Agent"&gt;CNI&lt;/fex&gt;&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Agent"&gt;She&lt;/fex&gt; &lt;t&gt;shattered&lt;/t&gt; &lt;fex name="Pat"&gt;the vase&lt;/fex&gt; &lt;fex name="Means"&gt;with a casual backhand blow&lt;/fex&gt; &lt;fex name="Purp"&gt;to make it look like there had been a struggle&lt;/fex&gt;. &lt;fex name="Pieces"&gt;INI&lt;/fex&gt;&lt;/ex&gt;
+&lt;ex&gt;&lt;t&gt;Tear&lt;/t&gt; &lt;fex name="Pieces"&gt;into 6" strips, each about one inch wide&lt;/fex&gt;, then bake at 400. &lt;fex name="Agent"&gt;CNI&lt;/fex&gt; &lt;fex name="Pat"&gt;CNI&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="10/14/2002 03:25:28 PDT Mon" abbrev="Agt" name="Agent" ID="3802">
+        <definition>&lt;def-root&gt;The conscious entity, generally a person, that performs the intentional action that results in the &lt;fen&gt;Whole_patient&lt;/fen&gt; being broken into &lt;fen&gt;Pieces&lt;/fen&gt;.
+&lt;ex&gt;&lt;fex name="Agt"&gt;I and I alone&lt;/fex&gt; can &lt;t&gt;shatter&lt;/t&gt; the gem and break the curse.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+        <excludesFE name="Cause" ID="9819"/>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="10/14/2002 03:25:28 PDT Mon" abbrev="Ins" name="Instrument" ID="3803">
+        <definition>&lt;def-root&gt;An entity directed by the &lt;fen&gt;Agent&lt;/fen&gt; that interacts with a &lt;fen&gt;Whole_patient&lt;/fen&gt; to accomplish its fracture. &lt;/def-root&gt;</definition>
+        <semType name="Physical_entity" ID="70"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="10/14/2002 03:25:28 PDT Mon" abbrev="Mnr" name="Manner" ID="3804">
+        <definition>&lt;def-root&gt;Any description of the fracturing which is not covered by more specific FEs, including epistemic modification (&lt;ment&gt;probably, presumably, mysteriously&lt;/ment&gt;), force (&lt;ment&gt;hard, softly&lt;/ment&gt;), secondary effects (&lt;ment&gt;quietly, loudly&lt;/ment&gt;), and general descriptions comparing events (&lt;ment&gt;the same way&lt;/ment&gt;). It may also indicate salient characteristics of an &lt;fen&gt;Agent&lt;/fen&gt; that also affect the action (&lt;ment&gt;presumptuously, coldly, deliberately, eagerly, carefully&lt;/ment&gt;). &lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="10/14/2002 03:25:28 PDT Mon" abbrev="Mns" name="Means" ID="3805">
+        <definition>&lt;def-root&gt;An intentional action performed by the &lt;fen&gt;Agent&lt;/fen&gt; that accomplishes the breakage. &lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="10/14/2002 03:25:28 PDT Mon" abbrev="Pat" name="Whole_patient" ID="3806">
+        <definition>&lt;def-root&gt;The entity which is destroyed by the &lt;fen&gt;Agent&lt;/fen&gt; and that ends up broken into &lt;fen&gt;Pieces&lt;/fen&gt;.
+&lt;ex&gt;Shattering someone's confidence is a little different than &lt;t&gt;shattering&lt;/t&gt; &lt;fex name="Pat"&gt;a dish&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="10/14/2002 03:25:28 PDT Mon" abbrev="Place" name="Place" ID="3807">
+        <definition>&lt;def-root&gt;This FE identifies the place where the &lt;fen&gt;Agent&lt;/fen&gt; breaks the &lt;fen&gt;Whole_patient&lt;/fen&gt; into pieces.
+&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="10/14/2002 03:25:28 PDT Mon" abbrev="Purp" name="Purpose" ID="3808">
+        <definition>&lt;def-root&gt;This FE identifies the purpose for which an &lt;fen&gt;Agent&lt;/fen&gt; causes the break-up of the &lt;fen&gt;Whole_patient&lt;/fen&gt;.
+&lt;ex&gt;The window cleaners &lt;t&gt;shattered&lt;/t&gt; every other pane &lt;fex name="Purp"&gt;to protest their working conditions&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="10/14/2002 03:25:28 PDT Mon" abbrev="Reason" name="Reason" ID="3809">
+        <definition>&lt;def-root&gt;A state of affairs that the &lt;fen&gt;Agent&lt;/fen&gt; is responding to in performing the action.
+&lt;ex&gt;He &lt;t&gt;tore&lt;/t&gt; the treaty &lt;t&gt;up&lt;/t&gt; &lt;fex name="Reason"&gt;out of frustration&lt;/fex&gt;.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="10/14/2002 03:25:28 PDT Mon" abbrev="Time" name="Time" ID="3810">
+        <definition>&lt;def-root&gt;This FE identifies the time when the &lt;fen&gt;Agent&lt;/fen&gt; breaks up the &lt;fen&gt;Whole_patient&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="10/14/2002 03:31:10 PDT Mon" abbrev="Pieces" name="Pieces" ID="3812">
+        <definition>&lt;def-root&gt;The fragments of the &lt;fen&gt;Whole_patient&lt;/fen&gt; that result from the &lt;fen&gt;Agent&lt;/fen&gt;'s action.
+&lt;ex&gt;I &lt;t&gt;smashed&lt;/t&gt; the toy boat &lt;fex name="Pieces"&gt;to flinders&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="10/14/2002 03:48:15 PDT Mon" abbrev="Degr" name="Degree" ID="3813">
+        <definition>&lt;def-root&gt;The degree to which the fracturing is completed.
+&lt;ex&gt;I &lt;t&gt;shattered&lt;/t&gt; the vase &lt;fex name="Degr"&gt;completely&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="7CCD73" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="10/18/2002 02:44:29 PDT Fri" abbrev="Subr" name="Subregion" ID="3834">
+        <definition>&lt;def-root&gt;The part of the &lt;fen&gt;Whole_patient&lt;/fen&gt; which is directly affected by the breakage.
+&lt;ex&gt;With a swing of his broadsword, he &lt;t&gt;shattered&lt;/t&gt; the goblet&lt;fex name="Subr"&gt;all the way to the stem&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="10/21/2002 12:06:49 PDT Mon" abbrev="Result" name="Result" ID="3835">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Result&lt;/fen&gt; of an event.
+&lt;ex&gt; I &lt;t&gt;broke&lt;/t&gt; it &lt;fex name="Result"&gt;open&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="10/21/2002 12:19:55 PDT Mon" abbrev="Res_surf" name="Resistant_surface" ID="3836">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Resistant_surface&lt;/fen&gt; is the surface against which a &lt;fen&gt;Agent&lt;/fen&gt; presses the &lt;fen&gt;Whole_patient&lt;/fen&gt;.
+
+&lt;ex&gt;Michael &lt;t&gt;broke&lt;/t&gt; the bottle &lt;fex name="Res_surf"&gt;against his head&lt;/fex&gt; . &lt;/ex&gt;
+&lt;ex&gt;She did her best to &lt;t&gt;rip&lt;/t&gt; her shirt &lt;fex name="Res_surf"&gt;on the fence&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="01/03/2006 06:02:46 PST Tue" abbrev="cau" name="Cause" ID="9819">
+        <definition>&lt;def-root&gt;An event which leads to the fragmentation of the &lt;fen&gt;Whole_patient&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Transitive_action</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Destroying</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of">
+        <relatedFrame>Breaking_apart</relatedFrame>
+    </frameRelation>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="fracture.v" ID="7578" lemmaID="15298" cBy="664" cDate="10/14/2002 03:52:03 PDT Mon">
+        <definition>FN: cause to end up in multiple pieces.</definition>
+        <sentenceCount annotated="6" total="119"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="fracture"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="V" name="rend.v" ID="7579" lemmaID="32616" cBy="664" cDate="10/14/2002 03:56:53 PDT Mon">
+        <definition>COD: tear to pieces. </definition>
+        <sentenceCount annotated="4" total="84"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="rend"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="snap.v" ID="7580" lemmaID="36595" cBy="664" cDate="10/14/2002 04:04:50 PDT Mon">
+        <definition>FN: cause to break suddenly after the application of tension.</definition>
+        <sentenceCount annotated="14" total="297"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="snap"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="break.v" ID="7581" lemmaID="4496" cBy="664" cDate="10/14/2002 04:45:24 PDT Mon">
+        <definition>FN: cause to suddenly separate into pieces in a destructive manner.</definition>
+        <sentenceCount annotated="31" total="644"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="break"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="V" name="shiver.v" ID="7582" lemmaID="35581" cBy="664" cDate="10/14/2002 04:45:36 PDT Mon">
+        <definition>COD: break into shivers.</definition>
+        <sentenceCount annotated="0" total="122"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="shiver"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="splinter.v" ID="7583" lemmaID="37412" cBy="664" cDate="10/14/2002 04:45:51 PDT Mon">
+        <definition>FN: cause to break into small, long, thin pieces (i.e. splinters).</definition>
+        <sentenceCount annotated="6" total="87"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="splinter"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="fragment.v" ID="7584" lemmaID="15302" cBy="664" cDate="10/14/2002 04:46:25 PDT Mon">
+        <definition>FN: cause to break into small, usually sharp-edged pieces (i.e. fragments).</definition>
+        <sentenceCount annotated="4" total="116"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="fragment"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="shatter.v" ID="7585" lemmaID="35419" cBy="664" cDate="10/14/2002 04:46:40 PDT Mon">
+        <definition>FN: cause to separate into many pieces due to a sharp impact.</definition>
+        <sentenceCount annotated="12" total="320"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="shatter"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="smash.v" ID="7586" lemmaID="36494" cBy="664" cDate="10/14/2002 04:46:55 PDT Mon">
+        <definition>FN: cause to break into pieces by hitting violently.</definition>
+        <sentenceCount annotated="31" total="492"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="smash"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="shred.v" ID="7587" lemmaID="35708" cBy="664" cDate="10/14/2002 04:47:26 PDT Mon">
+        <definition>COD:  tear or cut into shreds. </definition>
+        <sentenceCount annotated="17" total="82"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="shred"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="rip.v" ID="7588" lemmaID="33318" cBy="664" cDate="10/14/2002 04:47:52 PDT Mon">
+        <definition>FN: separate into pieces by tearing</definition>
+        <sentenceCount annotated="20" total="588"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="rip"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="tear.v" ID="7589" lemmaID="39664" cBy="664" cDate="10/14/2002 04:48:14 PDT Mon">
+        <definition>COD: pull or rip apart or to pieces.</definition>
+        <sentenceCount annotated="23" total="351"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="tear"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="rip_up.v" ID="7591" lemmaID="46161" cBy="664" cDate="10/15/2002 05:25:30 PDT Tue">
+        <definition>COD: tear something into small pieces. </definition>
+        <sentenceCount annotated="8" total="201"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="rip"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="up"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="cleave.v" ID="7592" lemmaID="6746" cBy="664" cDate="10/15/2002 05:46:31 PDT Tue">
+        <definition>COD: split or sever along a natural grain or line.</definition>
+        <sentenceCount annotated="7" total="96"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="cleave"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="tear_up.v" ID="7593" lemmaID="46163" cBy="664" cDate="10/17/2002 12:00:52 PDT Thu">
+        <definition>FN: rip into many small pieces.</definition>
+        <sentenceCount annotated="28" total="186"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="tear"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="up"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="break_apart.v" ID="12089" lemmaID="50021" cBy="303" cDate="05/18/2005 05:00:34 PDT Wed">
+        <definition>FN: forcibly separate into pieces</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="break"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="apart"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="break_up.v" ID="12090" lemmaID="46164" cBy="303" cDate="05/18/2005 05:01:55 PDT Wed">
+        <definition>FN: cause to separate into pieces</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="break"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="up"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="break_down.v" ID="12091" lemmaID="50022" cBy="303" cDate="05/18/2005 05:04:28 PDT Wed">
+        <definition>FN: dismantle.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="break"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="down"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="chip.v" ID="12092" lemmaID="6349" cBy="303" cDate="05/18/2005 05:10:51 PDT Wed">
+        <definition>FN: break chips from a hard material such as ice.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="chip"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="dissect.v" ID="12093" lemmaID="11153" cBy="303" cDate="05/18/2005 05:12:48 PDT Wed">
+        <definition>FN: methodically cut up </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="dissect"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="dissolve.v" ID="12094" lemmaID="11187" cBy="303" cDate="05/18/2005 05:15:46 PDT Wed">
+        <definition>FN: cause (a solid) to come apart in solution.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="dissolve"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="rive.v" ID="12095" lemmaID="33362" cBy="303" cDate="05/18/2005 05:18:17 PDT Wed">
+        <definition>COD: tear apart.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="rive"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="sliver.v" ID="12096" lemmaID="36384" cBy="303" cDate="05/18/2005 05:20:03 PDT Wed">
+        <definition>COD: cut or break into slivers.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="sliver"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="split.v" ID="12097" lemmaID="37416" cBy="303" cDate="05/18/2005 05:23:12 PDT Wed">
+        <definition>FN: cause to separate into 2 or more pieces.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="split"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="take_apart.v" ID="12098" lemmaID="50023" cBy="303" cDate="05/18/2005 05:24:21 PDT Wed">
+        <definition>FN: separate into constituent parts</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="take"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="apart"/>
+    </lexUnit>
+</frame>

@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" incorporatedFE="Goal" POS="V" name="cage.v" ID="2443" frame="Placing" frameID="62" totalAnnotated="5" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Agt" name="Agent"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Area" name="Area"/>
+            <FE fgColor="000000" bgColor="EEE8AA" type="Extra-Thematic" abbrev="" name="Beneficiary"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Core" abbrev="Cause" name="Cause"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="Thm_c" name="Cotheme"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Extra-Thematic" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Peripheral" abbrev="Dist" name="Distance"/>
+            <FE fgColor="FFFFFF" bgColor="90876C" type="Extra-Thematic" abbrev="Duration" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Goal" name="Goal"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="Path" name="Path"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="00008B" bgColor="d0d0d0" type="Extra-Thematic" abbrev="" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD73" type="Extra-Thematic" abbrev="Reason" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Extra-Thematic" abbrev="Result" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="Src" name="Source"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Peripheral" abbrev="Spd" name="Speed"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Thm" name="Theme"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: confine in or as in a cage</definition>
+    <lexeme POS="V" name="cage"/>
+    <valences>
+        <FERealization total="5">
+            <FE name="Agent"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <annoSet ID="127703"/>
+                <annoSet ID="127719"/>
+            </pattern>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <annoSet ID="127689"/>
+                <annoSet ID="127695"/>
+                <annoSet ID="127729"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Goal"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[behind]" FE="Goal"/>
+                <annoSet ID="127703"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Goal"/>
+                <annoSet ID="127719"/>
+            </pattern>
+            <pattern total="3">
+                <valenceUnit GF="" PT="INC" FE="Goal"/>
+                <annoSet ID="127689"/>
+                <annoSet ID="127695"/>
+                <annoSet ID="127729"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Theme"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Theme"/>
+                <annoSet ID="127703"/>
+                <annoSet ID="127719"/>
+            </pattern>
+            <pattern total="3">
+                <valenceUnit GF="Obj" PT="NP" FE="Theme"/>
+                <annoSet ID="127689"/>
+                <annoSet ID="127695"/>
+                <annoSet ID="127729"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="5">
+            <FE name="Agent"/>
+            <FE name="Goal"/>
+            <FE name="Theme"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <valenceUnit GF="Dep" PT="PP[behind]" FE="Goal"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Theme"/>
+                <annoSet ID="127703"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Goal"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Theme"/>
+                <annoSet ID="127719"/>
+            </pattern>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <valenceUnit GF="" PT="INC" FE="Goal"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Theme"/>
+                <annoSet ID="127689"/>
+                <annoSet ID="127695"/>
+                <annoSet ID="127729"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-429-rcoll-bird"/>
+    <subCorpus name="V-570-np-ppin"/>
+    <subCorpus name="V-660-trans-simple">
+        <sentence sentNo="0" aPos="79832321" ID="240606">
+            <text>He would never try to cage Mark . </text>
+            <annotationSet cDate="01/06/2003 08:10:39 PST Mon" status="UNANN" ID="127688">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="7" start="3" name="VM0"/>
+                    <label end="13" start="9" name="AV0"/>
+                    <label end="17" start="15" name="VVI"/>
+                    <label end="20" start="19" name="TO0"/>
+                    <label end="25" start="22" name="VVI"/>
+                    <label end="30" start="27" name="NP0"/>
+                    <label end="32" start="32" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 08:10:39 PST Mon" status="MANUAL" ID="127689">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="273" end="1" start="0" name="Agent"/>
+                    <label cBy="296" feID="274" end="30" start="27" name="Theme"/>
+                    <label cBy="309" feID="277" end="25" start="22" name="Goal"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="1" start="0" name="Ext"/>
+                    <label end="30" start="27" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="1" start="0" name="NP"/>
+                    <label end="30" start="27" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="25" start="22" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="17918745" ID="240609">
+            <text>Eventually the law caught up with him and he was heavily fined for caging protected species . </text>
+            <annotationSet cDate="01/06/2003 08:10:39 PST Mon" status="UNANN" ID="127694">
+                <layer rank="1" name="BNC">
+                    <label end="9" start="0" name="AV0"/>
+                    <label end="13" start="11" name="AT0"/>
+                    <label end="17" start="15" name="NN1"/>
+                    <label end="24" start="19" name="VVD-VVN"/>
+                    <label end="27" start="26" name="AVP"/>
+                    <label end="32" start="29" name="PRP"/>
+                    <label end="36" start="34" name="PNP"/>
+                    <label end="40" start="38" name="CJC"/>
+                    <label end="43" start="42" name="PNP"/>
+                    <label end="47" start="45" name="VBD"/>
+                    <label end="55" start="49" name="AV0"/>
+                    <label end="61" start="57" name="VVD-VVN"/>
+                    <label end="65" start="63" name="PRP"/>
+                    <label end="72" start="67" name="VVG"/>
+                    <label end="82" start="74" name="AJ0"/>
+                    <label end="90" start="84" name="NN0"/>
+                    <label end="92" start="92" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 08:10:39 PST Mon" status="MANUAL" ID="127695">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="274" end="90" start="74" name="Theme"/>
+                    <label cBy="296" feID="273" end="43" start="42" name="Agent"/>
+                    <label cBy="309" feID="277" end="72" start="67" name="Goal"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="90" start="74" name="Obj"/>
+                    <label end="43" start="42" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="90" start="74" name="NP"/>
+                    <label end="43" start="42" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="72" start="67" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-670-pass-by"/>
+    <subCorpus name="V-680-pass">
+        <sentence sentNo="0" aPos="12228329" ID="240613">
+            <text>But he 'll be caged behind bars like everyone else &quot; . </text>
+            <annotationSet cDate="01/06/2003 08:10:39 PST Mon" status="UNANN" ID="127702">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="CJC"/>
+                    <label end="5" start="4" name="PNP"/>
+                    <label end="9" start="7" name="VM0"/>
+                    <label end="12" start="11" name="VBI"/>
+                    <label end="18" start="14" name="VVN"/>
+                    <label end="25" start="20" name="PRP"/>
+                    <label end="30" start="27" name="NN2"/>
+                    <label end="35" start="32" name="PRP"/>
+                    <label end="44" start="37" name="PNI"/>
+                    <label end="49" start="46" name="AV0"/>
+                    <label end="51" start="51" name="PUQ"/>
+                    <label end="53" start="53" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 08:10:39 PST Mon" status="MANUAL" ID="127703">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="274" end="5" start="4" name="Theme"/>
+                    <label cBy="296" feID="277" end="30" start="20" name="Goal"/>
+                    <label cBy="296" feID="273" itype="CNI" name="Agent"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="5" start="4" name="Ext"/>
+                    <label end="30" start="20" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="5" start="4" name="NP"/>
+                    <label end="30" start="20" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="18" start="14" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="34836432" ID="240621">
+            <text>Her husband Paul , a 33-year-old catering manager , was caged in one of Iraqi tyrant Saddam Hussein 's jails last week . </text>
+            <annotationSet cDate="01/06/2003 08:10:41 PST Mon" status="UNANN" ID="127718">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="DPS"/>
+                    <label end="10" start="4" name="NN1"/>
+                    <label end="15" start="12" name="NP0"/>
+                    <label end="17" start="17" name="PUN"/>
+                    <label end="19" start="19" name="AT0"/>
+                    <label end="31" start="21" name="AJ0"/>
+                    <label end="40" start="33" name="AJ0-NN1"/>
+                    <label end="48" start="42" name="NN1"/>
+                    <label end="50" start="50" name="PUN"/>
+                    <label end="54" start="52" name="VBD"/>
+                    <label end="60" start="56" name="VVN"/>
+                    <label end="63" start="62" name="PRP"/>
+                    <label end="67" start="65" name="CRD"/>
+                    <label end="70" start="69" name="PRF"/>
+                    <label end="76" start="72" name="AJ0"/>
+                    <label end="83" start="78" name="NN1"/>
+                    <label end="90" start="85" name="NP0"/>
+                    <label end="98" start="92" name="NP0"/>
+                    <label end="101" start="100" name="POS"/>
+                    <label end="107" start="103" name="NN2"/>
+                    <label end="112" start="109" name="ORD"/>
+                    <label end="117" start="114" name="NN1"/>
+                    <label end="119" start="119" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 08:10:41 PST Mon" status="MANUAL" ID="127719">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="274" end="50" start="0" name="Theme"/>
+                    <label cBy="296" feID="277" end="107" start="62" name="Goal"/>
+                    <label cBy="296" feID="273" itype="CNI" name="Agent"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="50" start="0" name="Ext"/>
+                    <label end="107" start="62" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="50" start="0" name="NP"/>
+                    <label end="107" start="62" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="60" start="56" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-690-trans-other">
+        <sentence sentNo="0" aPos="67036333" ID="240626">
+            <text>This story is really made up of two stories : A How Rima caught and caged the cassowary B How the Bower-bird tricked the Cassowary . </text>
+            <annotationSet cDate="01/06/2003 08:10:41 PST Mon" status="UNANN" ID="127728">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="DT0"/>
+                    <label end="9" start="5" name="NN1"/>
+                    <label end="12" start="11" name="VBZ"/>
+                    <label end="19" start="14" name="AV0"/>
+                    <label end="24" start="21" name="VVD-VVN"/>
+                    <label end="27" start="26" name="AVP"/>
+                    <label end="30" start="29" name="PRF"/>
+                    <label end="34" start="32" name="CRD"/>
+                    <label end="42" start="36" name="NN2"/>
+                    <label end="44" start="44" name="PUN"/>
+                    <label end="46" start="46" name="ZZ0"/>
+                    <label end="50" start="48" name="AVQ"/>
+                    <label end="55" start="52" name="NP0"/>
+                    <label end="62" start="57" name="VVD"/>
+                    <label end="66" start="64" name="CJC"/>
+                    <label end="72" start="68" name="VVD"/>
+                    <label end="76" start="74" name="AT0"/>
+                    <label end="86" start="78" name="NN1"/>
+                    <label end="88" start="88" name="ZZ0"/>
+                    <label end="92" start="90" name="AVQ"/>
+                    <label end="96" start="94" name="AT0"/>
+                    <label end="107" start="98" name="NN1"/>
+                    <label end="115" start="109" name="VVD"/>
+                    <label end="119" start="117" name="AT0"/>
+                    <label end="129" start="121" name="AJ0-NN1"/>
+                    <label end="131" start="131" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 08:10:42 PST Mon" status="MANUAL" ID="127729">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="273" end="55" start="52" name="Agent"/>
+                    <label cBy="296" feID="274" end="86" start="74" name="Theme"/>
+                    <label cBy="309" feID="277" end="72" start="68" name="Goal"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="55" start="52" name="Ext"/>
+                    <label end="86" start="74" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="55" start="52" name="NP"/>
+                    <label end="86" start="74" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="72" start="68" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-730-ppbehind"/>
+    <subCorpus name="V-730-ppby"/>
+    <subCorpus name="V-730-ppin"/>
+    <subCorpus name="V-780-ppother"/>
+    <subCorpus name="V-810-pother"/>
+    <subCorpus name="V-890-intrans-adverb"/>
+    <subCorpus name="V-900-other"/>
+</lexUnit>

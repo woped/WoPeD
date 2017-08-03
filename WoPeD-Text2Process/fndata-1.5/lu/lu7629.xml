@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="annihilate.v" ID="7629" frame="Destroying" frameID="417" totalAnnotated="7" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Cause" name="Cause"/>
+            <FE fgColor="00008B" bgColor="7FFF00" type="Extra-Thematic" abbrev="Con" name="Containing_event"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="00008B" bgColor="A9A9A9" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Agt" name="Destroyer"/>
+            <FE fgColor="000000" bgColor="EEE8AA" type="Extra-Thematic" abbrev="Exp" name="Explanation"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Extra-Thematic" abbrev="Fre" name="Frequency"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Ins" name="Instrument"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Mnr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="Reason" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="Result" name="Result"/>
+            <FE fgColor="0000FF" bgColor="FFFF00" type="Extra-Thematic" abbrev="Rol" name="Role"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD73" type="Extra-Thematic" abbrev="Subr" name="Subregion"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Und" name="Undergoer"/>
+        </frame>
+    </header>
+    <definition>COD: destroy utterly.</definition>
+    <lexeme POS="V" name="annihilate"/>
+    <valences>
+        <FERealization total="7">
+            <FE name="Destroyer"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="CNI" FE="Destroyer"/>
+                <annoSet ID="1802260"/>
+                <annoSet ID="1802318"/>
+            </pattern>
+            <pattern total="4">
+                <valenceUnit GF="Ext" PT="NP" FE="Destroyer"/>
+                <annoSet ID="1802268"/>
+                <annoSet ID="1802304"/>
+                <annoSet ID="1802362"/>
+                <annoSet ID="1802410"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Destroyer"/>
+                <annoSet ID="1802328"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Place"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Place"/>
+                <annoSet ID="1802328"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Time"/>
+                <annoSet ID="1802318"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Time"/>
+                <annoSet ID="1802328"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="7">
+            <FE name="Undergoer"/>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="NP" FE="Undergoer"/>
+                <annoSet ID="1802260"/>
+                <annoSet ID="1802318"/>
+                <annoSet ID="1802328"/>
+            </pattern>
+            <pattern total="4">
+                <valenceUnit GF="Obj" PT="NP" FE="Undergoer"/>
+                <annoSet ID="1802268"/>
+                <annoSet ID="1802304"/>
+                <annoSet ID="1802362"/>
+                <annoSet ID="1802410"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Destroyer"/>
+            <FE name="Destroyer"/>
+            <FE name="Undergoer"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Destroyer"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Destroyer"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Undergoer"/>
+                <annoSet ID="1802304"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Destroyer"/>
+            <FE name="Place"/>
+            <FE name="Time"/>
+            <FE name="Undergoer"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Destroyer"/>
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Place"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Time"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Undergoer"/>
+                <annoSet ID="1802328"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Destroyer"/>
+            <FE name="Time"/>
+            <FE name="Undergoer"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Destroyer"/>
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Time"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Undergoer"/>
+                <annoSet ID="1802318"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="4">
+            <FE name="Destroyer"/>
+            <FE name="Undergoer"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Destroyer"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Undergoer"/>
+                <annoSet ID="1802260"/>
+            </pattern>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="NP" FE="Destroyer"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Undergoer"/>
+                <annoSet ID="1802268"/>
+                <annoSet ID="1802362"/>
+                <annoSet ID="1802410"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-001-all">
+        <sentence sentNo="0" aPos="6119548" ID="1176058">
+            <text>Your brothers are being annihilated . </text>
+            <annotationSet cDate="01/08/2003 05:32:23 PST Wed" status="UNANN" ID="1802259">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="DPS"/>
+                    <label end="12" start="5" name="NN2"/>
+                    <label end="16" start="14" name="VBB"/>
+                    <label end="22" start="18" name="VBG"/>
+                    <label end="34" start="24" name="VVN"/>
+                    <label end="36" start="36" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:32:23 PST Wed" status="MANUAL" ID="1802260">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3850" end="12" start="0" name="Undergoer"/>
+                    <label cBy="618" feID="3837" itype="CNI" name="Destroyer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="12" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="12" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="34" start="24" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="7325246" ID="1176062">
+            <text>As God 's ultimate judgement She punishes the evil forces by annihilating them . </text>
+            <annotationSet cDate="01/08/2003 05:32:23 PST Wed" status="UNANN" ID="1802267">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="CJS"/>
+                    <label end="5" start="3" name="NP0"/>
+                    <label end="8" start="7" name="POS"/>
+                    <label end="17" start="10" name="AJ0"/>
+                    <label end="27" start="19" name="NN1"/>
+                    <label end="31" start="29" name="PNP"/>
+                    <label end="40" start="33" name="VVZ"/>
+                    <label end="44" start="42" name="AT0"/>
+                    <label end="49" start="46" name="AJ0-NN1"/>
+                    <label end="56" start="51" name="NN2"/>
+                    <label end="59" start="58" name="PRP"/>
+                    <label end="72" start="61" name="VVG"/>
+                    <label end="77" start="74" name="PNP"/>
+                    <label end="79" start="79" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:32:23 PST Wed" status="MANUAL" ID="1802268">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3837" end="31" start="29" name="Destroyer"/>
+                    <label cBy="618" feID="3850" end="77" start="74" name="Undergoer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="31" start="29" name="Ext"/>
+                    <label end="77" start="74" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="31" start="29" name="NP"/>
+                    <label end="77" start="74" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="72" start="61" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="34753979" ID="1176080">
+            <text>KAMALA : The man mountain who annihilates all who get in his way </text>
+            <annotationSet cDate="01/08/2003 05:32:25 PST Wed" status="UNANN" ID="1802303">
+                <layer rank="1" name="BNC">
+                    <label end="5" start="0" name="NN1-NP0"/>
+                    <label end="7" start="7" name="PUN"/>
+                    <label end="11" start="9" name="AT0"/>
+                    <label end="15" start="13" name="NN1"/>
+                    <label end="24" start="17" name="NN1"/>
+                    <label end="28" start="26" name="PNQ"/>
+                    <label end="40" start="30" name="VVZ"/>
+                    <label end="44" start="42" name="DT0"/>
+                    <label end="48" start="46" name="PNQ"/>
+                    <label end="52" start="50" name="VVB"/>
+                    <label end="55" start="54" name="PRP"/>
+                    <label end="59" start="57" name="DPS"/>
+                    <label end="63" start="61" name="NN1"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:32:25 PST Wed" status="MANUAL" ID="1802304">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3837" end="24" start="9" name="Destroyer"/>
+                    <label cBy="618" feID="3850" end="63" start="42" name="Undergoer"/>
+                    <label cBy="309" feID="3837" end="28" start="26" name="Destroyer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="24" start="9" name="Ext"/>
+                    <label end="63" start="42" name="Obj"/>
+                    <label end="28" start="26" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="24" start="9" name="NP"/>
+                    <label end="63" start="42" name="NP"/>
+                    <label end="28" start="26" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other">
+                    <label end="24" start="9" name="Ant"/>
+                    <label end="28" start="26" name="Rel"/>
+                </layer>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="40" start="30" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="49231945" ID="1176087">
+            <text>On 4 July the army of Jerusalem was annihilated . </text>
+            <annotationSet cDate="01/08/2003 05:32:26 PST Wed" status="UNANN" ID="1802317">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PRP"/>
+                    <label end="3" start="3" name="CRD"/>
+                    <label end="8" start="5" name="NP0"/>
+                    <label end="12" start="10" name="AT0"/>
+                    <label end="17" start="14" name="NN0"/>
+                    <label end="20" start="19" name="PRF"/>
+                    <label end="30" start="22" name="NP0"/>
+                    <label end="34" start="32" name="VBD"/>
+                    <label end="46" start="36" name="VVN"/>
+                    <label end="48" start="48" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:32:26 PST Wed" status="MANUAL" ID="1802318">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3849" end="8" start="0" name="Time"/>
+                    <label cBy="618" feID="3850" end="30" start="10" name="Undergoer"/>
+                    <label cBy="618" feID="3837" itype="CNI" name="Destroyer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="8" start="0" name="Dep"/>
+                    <label end="30" start="10" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="8" start="0" name="PP"/>
+                    <label end="30" start="10" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="46" start="36" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="52115723" ID="1176092">
+            <text>The nadir was reached when at Bannockburn in 1314 the English army was annihilated by the Scots under Robert Bruce . </text>
+            <annotationSet cDate="01/08/2003 05:32:27 PST Wed" status="UNANN" ID="1802327">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="8" start="4" name="NN1"/>
+                    <label end="12" start="10" name="VBD"/>
+                    <label end="20" start="14" name="VVN"/>
+                    <label end="25" start="22" name="CJS"/>
+                    <label end="28" start="27" name="PRP"/>
+                    <label end="40" start="30" name="NN1-NP0"/>
+                    <label end="43" start="42" name="PRP"/>
+                    <label end="48" start="45" name="CRD"/>
+                    <label end="52" start="50" name="AT0"/>
+                    <label end="60" start="54" name="AJ0"/>
+                    <label end="65" start="62" name="NN0"/>
+                    <label end="69" start="67" name="VBD"/>
+                    <label end="81" start="71" name="VVN"/>
+                    <label end="84" start="83" name="PRP"/>
+                    <label end="88" start="86" name="AT0"/>
+                    <label end="94" start="90" name="NN2"/>
+                    <label end="100" start="96" name="PRP"/>
+                    <label end="107" start="102" name="NP0"/>
+                    <label end="113" start="109" name="NP0"/>
+                    <label end="115" start="115" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:32:27 PST Wed" status="MANUAL" ID="1802328">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3843" end="40" start="27" name="Place"/>
+                    <label cBy="618" feID="3849" end="48" start="42" name="Time"/>
+                    <label cBy="618" feID="3850" end="65" start="50" name="Undergoer"/>
+                    <label cBy="618" feID="3837" end="113" start="83" name="Destroyer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="40" start="27" name="Dep"/>
+                    <label end="48" start="42" name="Dep"/>
+                    <label end="65" start="50" name="Ext"/>
+                    <label end="113" start="83" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="40" start="27" name="PP"/>
+                    <label end="48" start="42" name="PP"/>
+                    <label end="65" start="50" name="NP"/>
+                    <label end="113" start="83" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="81" start="71" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="72276723" ID="1176109">
+            <text>He then surrounded and annihilated Ras Lul Seged 's army , and the Ras was among those killed . </text>
+            <annotationSet cDate="01/08/2003 05:32:29 PST Wed" status="UNANN" ID="1802361">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="6" start="3" name="AV0"/>
+                    <label end="17" start="8" name="VVD"/>
+                    <label end="21" start="19" name="CJC"/>
+                    <label end="33" start="23" name="VVD"/>
+                    <label end="37" start="35" name="NP0"/>
+                    <label end="41" start="39" name="NP0"/>
+                    <label end="47" start="43" name="NP0"/>
+                    <label end="50" start="49" name="POS"/>
+                    <label end="55" start="52" name="NN0"/>
+                    <label end="57" start="57" name="PUN"/>
+                    <label end="61" start="59" name="CJC"/>
+                    <label end="65" start="63" name="AT0"/>
+                    <label end="69" start="67" name="NP0"/>
+                    <label end="73" start="71" name="VBD"/>
+                    <label end="79" start="75" name="PRP"/>
+                    <label end="85" start="81" name="DT0"/>
+                    <label end="92" start="87" name="VVD-VVN"/>
+                    <label end="94" start="94" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:32:29 PST Wed" status="MANUAL" ID="1802362">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3837" end="1" start="0" name="Destroyer"/>
+                    <label cBy="618" feID="3850" end="55" start="35" name="Undergoer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="1" start="0" name="Ext"/>
+                    <label end="55" start="35" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="1" start="0" name="NP"/>
+                    <label end="55" start="35" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="33" start="23" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="92229003" ID="1176133">
+            <text>` And he 's mad at them , &quot; Jamie grinned , drinking his pint as I annihilated various dodging , multi-coloured spacecraft on the screen . </text>
+            <annotationSet cDate="01/08/2003 05:32:35 PST Wed" status="UNANN" ID="1802409">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PUQ"/>
+                    <label end="4" start="2" name="CJC"/>
+                    <label end="7" start="6" name="PNP"/>
+                    <label end="10" start="9" name="VBZ"/>
+                    <label end="14" start="12" name="AJ0"/>
+                    <label end="17" start="16" name="PRP"/>
+                    <label end="22" start="19" name="PNP"/>
+                    <label end="24" start="24" name="PUN"/>
+                    <label end="26" start="26" name="PUQ"/>
+                    <label end="32" start="28" name="NP0"/>
+                    <label end="40" start="34" name="VVD"/>
+                    <label end="42" start="42" name="PUN"/>
+                    <label end="51" start="44" name="VVG"/>
+                    <label end="55" start="53" name="DPS"/>
+                    <label end="60" start="57" name="NN1"/>
+                    <label end="63" start="62" name="CJS"/>
+                    <label end="65" start="65" name="PNP"/>
+                    <label end="77" start="67" name="VVD"/>
+                    <label end="85" start="79" name="AJ0"/>
+                    <label end="93" start="87" name="NN1"/>
+                    <label end="95" start="95" name="PUN"/>
+                    <label end="110" start="97" name="AJ0"/>
+                    <label end="121" start="112" name="NN1"/>
+                    <label end="124" start="123" name="PRP"/>
+                    <label end="128" start="126" name="AT0"/>
+                    <label end="135" start="130" name="NN1"/>
+                    <label end="137" start="137" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:32:35 PST Wed" status="MANUAL" ID="1802410">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3837" end="65" start="65" name="Destroyer"/>
+                    <label cBy="618" feID="3850" end="135" start="79" name="Undergoer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="65" start="65" name="Ext"/>
+                    <label end="135" start="79" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="65" start="65" name="NP"/>
+                    <label end="135" start="79" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="77" start="67" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="V" name="control.v" ID="13610" frame="Control" frameID="1799" totalAnnotated="3" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp=2462" ID="17505"/>
+            <document description="bncp=291" ID="20066"/>
+            <document description="bncp=1029" ID="20372"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="cone" name="Controlling_entity"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Core-Unexpressed" abbrev="cons" name="Controlling_situation"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core-Unexpressed" abbrev="conv" name="Controlling_variable"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Core-Unexpressed" abbrev="deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Core" abbrev="depe" name="Dependent_entity"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core-Unexpressed" abbrev="deps" name="Dependent_situation"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Core-Unexpressed" abbrev="depv" name="Dependent_variable"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="man" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="pla" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: to (primarily) determine various features of some situation or entity.</definition>
+    <lexeme POS="V" name="control"/>
+    <valences>
+        <FERealization total="3">
+            <FE name="Controlling_entity"/>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="NP" FE="Controlling_entity"/>
+                <annoSet ID="2600370"/>
+                <annoSet ID="2600396"/>
+                <annoSet ID="2600398"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Dependent_entity"/>
+            <pattern total="2">
+                <valenceUnit GF="Obj" PT="NP" FE="Dependent_entity"/>
+                <annoSet ID="2600370"/>
+                <annoSet ID="2600396"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Dependent_situation"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Dependent_situation"/>
+                <annoSet ID="2600398"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[after]" FE="Time"/>
+                <annoSet ID="2600396"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Controlling_entity"/>
+            <FE name="Dependent_entity"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Controlling_entity"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Dependent_entity"/>
+                <annoSet ID="2600370"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Controlling_entity"/>
+            <FE name="Dependent_entity"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Controlling_entity"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Dependent_entity"/>
+                <valenceUnit GF="Dep" PT="PP[after]" FE="Time"/>
+                <annoSet ID="2600396"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Controlling_entity"/>
+            <FE name="Dependent_situation"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Controlling_entity"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Dependent_situation"/>
+                <annoSet ID="2600398"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-object-(1)">
+        <sentence corpID="111" docID="17505" sentNo="2" paragNo="742" aPos="0" ID="1582402">
+            <text>The sensors control the pump -- allowing water to be pumped around the system only when the temperature at the solar panel is higher than the temperature in the cylinder .</text>
+            <annotationSet cDate="08/04/2010 03:24:34 PDT Wed" status="UNANN" ID="2600369">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="10" start="4" name="nns"/>
+                    <label end="18" start="12" name="VVP"/>
+                    <label end="22" start="20" name="dt"/>
+                    <label end="27" start="24" name="nn"/>
+                    <label end="30" start="29" name=":"/>
+                    <label end="39" start="32" name="VVG"/>
+                    <label end="45" start="41" name="nn"/>
+                    <label end="48" start="47" name="to"/>
+                    <label end="51" start="50" name="vb"/>
+                    <label end="58" start="53" name="VVN"/>
+                    <label end="65" start="60" name="in"/>
+                    <label end="69" start="67" name="dt"/>
+                    <label end="76" start="71" name="nn"/>
+                    <label end="81" start="78" name="rb"/>
+                    <label end="86" start="83" name="wrb"/>
+                    <label end="90" start="88" name="dt"/>
+                    <label end="102" start="92" name="nn"/>
+                    <label end="105" start="104" name="in"/>
+                    <label end="109" start="107" name="dt"/>
+                    <label end="115" start="111" name="jj"/>
+                    <label end="121" start="117" name="nn"/>
+                    <label end="124" start="123" name="VBZ"/>
+                    <label end="131" start="126" name="jjr"/>
+                    <label end="136" start="133" name="in"/>
+                    <label end="140" start="138" name="dt"/>
+                    <label end="152" start="142" name="nn"/>
+                    <label end="155" start="154" name="in"/>
+                    <label end="159" start="157" name="dt"/>
+                    <label end="168" start="161" name="nn"/>
+                    <label end="170" start="170" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="08/04/2010 03:24:34 PDT Wed" status="MANUAL" ID="2600370">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="18" start="12" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="10665" end="10" start="0" name="Controlling_entity"/>
+                    <label cBy="589" feID="10666" end="27" start="20" name="Dependent_entity"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="10" start="0" name="Ext"/>
+                    <label end="27" start="20" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="10" start="0" name="NP"/>
+                    <label end="27" start="20" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="20066" sentNo="2" paragNo="141" aPos="0" ID="1582415">
+            <text>After 10 tumultous years of substantial achievement and disastrous mistakes , the Sandinistas control the army , the unions , the youth movements , much of the media and the money -- what there is of it .</text>
+            <annotationSet cDate="08/04/2010 03:24:38 PDT Wed" status="UNANN" ID="2600395">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="in"/>
+                    <label end="7" start="6" name="cd"/>
+                    <label end="17" start="9" name="jj"/>
+                    <label end="23" start="19" name="nns"/>
+                    <label end="26" start="25" name="in"/>
+                    <label end="38" start="28" name="jj"/>
+                    <label end="50" start="40" name="nn"/>
+                    <label end="54" start="52" name="cc"/>
+                    <label end="65" start="56" name="jj"/>
+                    <label end="74" start="67" name="nns"/>
+                    <label end="76" start="76" name=","/>
+                    <label end="80" start="78" name="dt"/>
+                    <label end="92" start="82" name="NPS"/>
+                    <label end="100" start="94" name="VVP"/>
+                    <label end="104" start="102" name="dt"/>
+                    <label end="109" start="106" name="nn"/>
+                    <label end="111" start="111" name=","/>
+                    <label end="115" start="113" name="dt"/>
+                    <label end="122" start="117" name="nns"/>
+                    <label end="124" start="124" name=","/>
+                    <label end="128" start="126" name="dt"/>
+                    <label end="134" start="130" name="nn"/>
+                    <label end="144" start="136" name="nns"/>
+                    <label end="146" start="146" name=","/>
+                    <label end="151" start="148" name="rb"/>
+                    <label end="154" start="153" name="in"/>
+                    <label end="158" start="156" name="dt"/>
+                    <label end="164" start="160" name="nns"/>
+                    <label end="168" start="166" name="cc"/>
+                    <label end="172" start="170" name="dt"/>
+                    <label end="178" start="174" name="nn"/>
+                    <label end="181" start="180" name=":"/>
+                    <label end="186" start="183" name="wp"/>
+                    <label end="192" start="188" name="rb"/>
+                    <label end="195" start="194" name="VBZ"/>
+                    <label end="198" start="197" name="in"/>
+                    <label end="201" start="200" name="PP"/>
+                    <label end="203" start="203" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="08/04/2010 03:24:38 PDT Wed" status="MANUAL" ID="2600396">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="100" start="94" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="10672" end="74" start="0" name="Time"/>
+                    <label cBy="589" feID="10665" end="92" start="78" name="Controlling_entity"/>
+                    <label cBy="589" feID="10666" end="201" start="102" name="Dependent_entity"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="74" start="0" name="Dep"/>
+                    <label end="92" start="78" name="Ext"/>
+                    <label end="201" start="102" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="74" start="0" name="PP"/>
+                    <label end="92" start="78" name="NP"/>
+                    <label end="201" start="102" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="20372" sentNo="6" paragNo="208" aPos="0" ID="1582416">
+            <text>There was a paymaster providing ready money to pay natives , and a signals officer controlling the flow of reports back to Australia and the incoming news of airdrops or bombing raids : essential organisation , for even the most independent force needed supplies , and these had to travel over hundreds of miles of mountain tracks before reaching some platoon areas .</text>
+            <annotationSet cDate="08/04/2010 03:24:39 PDT Wed" status="UNANN" ID="2600397">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="ex"/>
+                    <label end="8" start="6" name="VBD"/>
+                    <label end="10" start="10" name="dt"/>
+                    <label end="20" start="12" name="nn"/>
+                    <label end="30" start="22" name="VVG"/>
+                    <label end="36" start="32" name="jj"/>
+                    <label end="42" start="38" name="nn"/>
+                    <label end="45" start="44" name="to"/>
+                    <label end="49" start="47" name="VV"/>
+                    <label end="57" start="51" name="nns"/>
+                    <label end="59" start="59" name=","/>
+                    <label end="63" start="61" name="cc"/>
+                    <label end="65" start="65" name="dt"/>
+                    <label end="73" start="67" name="nns"/>
+                    <label end="81" start="75" name="nn"/>
+                    <label end="93" start="83" name="VVG"/>
+                    <label end="97" start="95" name="dt"/>
+                    <label end="102" start="99" name="nn"/>
+                    <label end="105" start="104" name="in"/>
+                    <label end="113" start="107" name="nns"/>
+                    <label end="118" start="115" name="rb"/>
+                    <label end="121" start="120" name="to"/>
+                    <label end="131" start="123" name="NP"/>
+                    <label end="135" start="133" name="cc"/>
+                    <label end="139" start="137" name="dt"/>
+                    <label end="148" start="141" name="jj"/>
+                    <label end="153" start="150" name="nn"/>
+                    <label end="156" start="155" name="in"/>
+                    <label end="165" start="158" name="nns"/>
+                    <label end="168" start="167" name="cc"/>
+                    <label end="176" start="170" name="nn"/>
+                    <label end="182" start="178" name="nns"/>
+                    <label end="184" start="184" name=":"/>
+                    <label end="194" start="186" name="jj"/>
+                    <label end="207" start="196" name="nn"/>
+                    <label end="209" start="209" name=","/>
+                    <label end="213" start="211" name="in"/>
+                    <label end="218" start="215" name="rb"/>
+                    <label end="222" start="220" name="dt"/>
+                    <label end="227" start="224" name="rbs"/>
+                    <label end="239" start="229" name="jj"/>
+                    <label end="245" start="241" name="nn"/>
+                    <label end="252" start="247" name="VVN"/>
+                    <label end="261" start="254" name="nns"/>
+                    <label end="263" start="263" name=","/>
+                    <label end="267" start="265" name="cc"/>
+                    <label end="273" start="269" name="dt"/>
+                    <label end="277" start="275" name="VHD"/>
+                    <label end="280" start="279" name="to"/>
+                    <label end="287" start="282" name="VV"/>
+                    <label end="292" start="289" name="rp"/>
+                    <label end="301" start="294" name="nns"/>
+                    <label end="304" start="303" name="in"/>
+                    <label end="310" start="306" name="nns"/>
+                    <label end="313" start="312" name="in"/>
+                    <label end="322" start="315" name="nn"/>
+                    <label end="329" start="324" name="nns"/>
+                    <label end="336" start="331" name="in"/>
+                    <label end="345" start="338" name="VVG"/>
+                    <label end="350" start="347" name="dt"/>
+                    <label end="358" start="352" name="nn"/>
+                    <label end="364" start="360" name="nns"/>
+                    <label end="366" start="366" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="08/04/2010 03:24:39 PDT Wed" status="MANUAL" ID="2600398">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="93" start="83" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="10665" end="81" start="65" name="Controlling_entity"/>
+                    <label cBy="589" feID="10668" end="182" start="95" name="Dependent_situation"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="81" start="65" name="Ext"/>
+                    <label end="182" start="95" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="81" start="65" name="NP"/>
+                    <label end="182" start="95" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-environment+territory-(1)"/>
+    <subCorpus name="03-other-matched-(1)"/>
+    <subCorpus name="04-other-unmatched-(1)"/>
+</lexUnit>

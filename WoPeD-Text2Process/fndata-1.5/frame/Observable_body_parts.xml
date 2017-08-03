@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="197" cDate="05/25/2001 01:41:47 PDT Fri" name="Observable_body_parts" ID="119" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;This frame covers words for &lt;fen&gt;Body_part&lt;/fen&gt;(s) (BP) belonging to a &lt;fen&gt;Possessor&lt;/fen&gt; (Poss), which may be characterized by a &lt;fen&gt;Descriptor&lt;/fen&gt; (Desc). The location of the BP may be identified in terms of  its &lt;fen&gt;Attachment&lt;/fen&gt; or its &lt;fen&gt;Orientational_Location&lt;/fen&gt;.  A &lt;fen&gt;Subregion&lt;/fen&gt; of a BP may also be indicated.  The constructions in which body part words occur include the following:&lt;/def-root&gt;</definition>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="197" cDate="05/25/2001 01:47:39 PDT Fri" abbrev="Poss" name="Possessor" ID="611">
+        <definition>&lt;def-root&gt;This Frame Element denotes the &lt;fen&gt;Possessor&lt;/fen&gt; of the &lt;fen&gt;Body_part&lt;/fen&gt;.
+
+&lt;ex&gt;&lt;fex name="Poss"&gt;Kim's&lt;/fex&gt; arm is broken.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Peripheral" cBy="243" cDate="06/01/2001 01:39:56 PDT Fri" abbrev="Desc" name="Descriptor" ID="691">
+        <definition>&lt;def-root&gt;This Frame Element is used for a characteristic or description of the &lt;fen&gt;Body_part&lt;/fen&gt;. Note that &lt;fen&gt;Descriptor&lt;/fen&gt; is not an FE of the same character as other FEs.  Specifically, rather than filling a slot, it identifies a modifier of its head noun. 
+
+&lt;ex&gt;Kim has &lt;fex name="Desc"&gt;beautiful&lt;/fex&gt; &lt;t&gt;eyes&lt;/t&gt;.&lt;/ex&gt;
+&lt;ex&gt;His &lt;fex name="Desc"&gt;trembling&lt;/fex&gt; &lt;t&gt;hands&lt;/t&gt;....&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="243" cDate="06/01/2001 02:27:52 PDT Fri" abbrev="Body_P" name="Body_part" ID="692">
+        <definition>&lt;def-root&gt;This Frame Element  is the &lt;fen&gt;Body_part&lt;/fen&gt;.
+&lt;ex&gt;Kim's &lt;fex name="Body_P"&gt;arm&lt;/fex&gt; is broken.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Body_part" ID="10"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="613" cDate="06/04/2001 12:41:33 PDT Mon" abbrev="Subr" name="Subregion" ID="707">
+        <definition>&lt;def-root&gt;This FEidentifies  the &lt;fen&gt;Subregion&lt;/fen&gt; of the &lt;fen&gt;Body_part&lt;/fen&gt; referred to by the target.
+
+&lt;ex&gt;&lt;fex name="Subr"&gt;upper&lt;/fex&gt; &lt;t&gt;arm&lt;/t&gt;&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Subr"&gt;lower&lt;/fex&gt; &lt;t&gt;back&lt;/t&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="613" cDate="06/04/2001 12:50:11 PDT Mon" abbrev="OrLoc" name="Orientational_Location" ID="708">
+        <definition>&lt;def-root&gt;This Frame Element describes the location of the &lt;fen&gt;Body_part&lt;/fen&gt; with respect to the inherent orientation of the body (or the larger body part) the &lt;fen&gt;Body_part&lt;/fen&gt; is attached to.
+
+&lt;ex&gt;&lt;fex name="OrLoc"&gt;left&lt;/fex&gt; &lt;t&gt;leg&lt;/t&gt;&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="OrLoc"&gt;hind&lt;/fex&gt; &lt;t&gt;foot&lt;/t&gt;&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="OrLoc"&gt;second&lt;/fex&gt; &lt;t&gt;finger&lt;/t&gt;&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="OrLoc"&gt;front&lt;/fex&gt; &lt;t&gt;wings&lt;/t&gt;&lt;/ex&gt;
+
+NB:  All of these (other than very productive types such as "left", "right", "front", "back", and "second") should be tagged as secondary targets.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Peripheral" cBy="613" cDate="06/04/2001 12:52:00 PDT Mon" abbrev="Attachment" name="Attachment" ID="709">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Attachment&lt;/fen&gt; is the larger body part  to which the BP is attached.
+&lt;ex&gt;the &lt;t&gt;fingers&lt;/t&gt; &lt;fex name="Attachment"&gt;of her left hand&lt;/fex&gt;&lt;/ex&gt;
+&lt;ex&gt;the &lt;t&gt;fin&lt;/t&gt; &lt;fex name="Attachment"&gt;on its back&lt;/fex&gt;&lt;/ex&gt;
+&lt;ex&gt;the &lt;fex name="Attachment"&gt;dorsal&lt;/fex&gt; &lt;t&gt;fin&lt;/t&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Shaped_part</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Hair_configuration</relatedFrame>
+        <relatedFrame>Wearing</relatedFrame>
+        <relatedFrame>Body_movement</relatedFrame>
+        <relatedFrame>Manipulation</relatedFrame>
+        <relatedFrame>Body_description_part</relatedFrame>
+        <relatedFrame>Body_decoration</relatedFrame>
+        <relatedFrame>Body_mark</relatedFrame>
+        <relatedFrame>Medical_conditions</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="arm.n" ID="2377" lemmaID="1932" cBy="197" cDate="05/25/2001 01:48:21 PDT Fri">
+        <definition>COD: each of the two upper limbs of the human body from the shoulder to the hand. </definition>
+        <sentenceCount annotated="40" total="200"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="arm"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="ankle.n" ID="2379" lemmaID="1448" cBy="197" cDate="05/25/2001 01:59:18 PDT Fri">
+        <definition>COD: the joint connecting the foot with the leg.</definition>
+        <sentenceCount annotated="15" total="107"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="ankle"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="anus.n" ID="2380" lemmaID="1615" cBy="197" cDate="05/25/2001 01:59:50 PDT Fri">
+        <definition>COD: the opening at the end of the alimentary canal through which solid waste matter leaves the body. </definition>
+        <sentenceCount annotated="10" total="52"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="anus"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="back.n" ID="2383" lemmaID="2588" cBy="197" cDate="05/25/2001 02:01:53 PDT Fri">
+        <definition>COD: he rear surface of the human body from the shoulders to the hips. </definition>
+        <sentenceCount annotated="11" total="180"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="back"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="beard.n" ID="2384" lemmaID="3109" cBy="197" cDate="05/25/2001 02:02:22 PDT Fri">
+        <definition>COD: a growth of hair on the chin and lower cheeks of a man's face. </definition>
+        <sentenceCount annotated="19" total="116"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="beard"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="belly.n" ID="2385" lemmaID="3322" cBy="197" cDate="05/25/2001 02:02:46 PDT Fri">
+        <definition>COD: the front part of the human trunk below the ribs, containing the stomach and bowels. </definition>
+        <sentenceCount annotated="28" total="131"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="belly"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="body.n" ID="2387" lemmaID="4044" cBy="197" cDate="05/25/2001 02:03:47 PDT Fri">
+        <definition>COD: the physical structure, including the bones, flesh, and organs, of a person or an animal. </definition>
+        <sentenceCount annotated="25" total="182"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="body"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="breast.n" ID="2390" lemmaID="4513" cBy="197" cDate="05/25/2001 02:05:43 PDT Fri">
+        <definition>COD: either of the two soft, protruding organs on the upper front of a woman's body which secrete milk after pregnancy.</definition>
+        <sentenceCount annotated="34" total="122"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="breast"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="buttocks.n" ID="2391" lemmaID="5074" cBy="197" cDate="05/25/2001 02:06:18 PDT Fri">
+        <definition>FN: the fleshy parts of the human body that form the bottom. </definition>
+        <sentenceCount annotated="14" total="100"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="buttocks"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="cheek.n" ID="2393" lemmaID="6191" cBy="197" cDate="05/25/2001 02:07:45 PDT Fri">
+        <definition>COD: either side of the face below the eye, or either of the buttocks. </definition>
+        <sentenceCount annotated="38" total="137"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="cheek"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="chest.n" ID="2394" lemmaID="6246" cBy="197" cDate="05/25/2001 02:08:15 PDT Fri">
+        <definition>COD: the front surface of a person's or animal's body between the neck and the stomach.</definition>
+        <sentenceCount annotated="36" total="299"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="chest"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="chin.n" ID="2395" lemmaID="6330" cBy="197" cDate="05/25/2001 02:08:42 PDT Fri">
+        <definition>COD: the protruding part of the face below the mouth, formed by the apex of the lower jaw. </definition>
+        <sentenceCount annotated="28" total="99"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="chin"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="ear.n" ID="2396" lemmaID="12069" cBy="197" cDate="05/25/2001 02:09:17 PDT Fri">
+        <definition>COD: the organ of hearing and balance in humans and other vertebrates, especially the external part of this.</definition>
+        <sentenceCount annotated="18" total="147"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="ear"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="earlobe.n" ID="2397" lemmaID="12079" cBy="197" cDate="05/25/2001 02:10:55 PDT Fri">
+        <definition>COD: a soft, rounded fleshy part hanging from the lower margin of the ear. </definition>
+        <sentenceCount annotated="8" total="12"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="earlobe"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="elbow.n" ID="2398" lemmaID="12388" cBy="197" cDate="05/25/2001 02:11:35 PDT Fri">
+        <definition>COD: the joint between the forearm and the upper arm. </definition>
+        <sentenceCount annotated="16" total="111"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="elbow"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="eyelid.n" ID="2399" lemmaID="13732" cBy="197" cDate="05/25/2001 02:18:07 PDT Fri">
+        <definition>COD: each of the upper and lower folds of skin which cover the eye when closed. </definition>
+        <sentenceCount annotated="19" total="78"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="eyelid"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="face.n" ID="2400" lemmaID="13761" cBy="197" cDate="05/25/2001 02:18:49 PDT Fri">
+        <definition>COD: the front part of a person's head from the forehead to the chin, or the corresponding part in an animal. </definition>
+        <sentenceCount annotated="37" total="204"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="face"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="finger.n" ID="2402" lemmaID="14402" cBy="197" cDate="05/25/2001 02:20:02 PDT Fri">
+        <definition>COD: each of the four slender jointed parts attached to either hand (or five, if the thumb is included). </definition>
+        <sentenceCount annotated="24" total="180"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="finger"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="flesh.n" ID="2403" lemmaID="14687" cBy="197" cDate="05/25/2001 02:20:59 PDT Fri">
+        <definition>COD: the surface of the human body</definition>
+        <sentenceCount annotated="29" total="150"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="flesh"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="foot.n" ID="2404" lemmaID="14963" cBy="197" cDate="05/25/2001 02:21:40 PDT Fri">
+        <definition>COD: the lower extremity of the leg below the ankle, on which a person or animal stands or walks.</definition>
+        <sentenceCount annotated="20" total="172"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="foot"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="forearm.n" ID="2405" lemmaID="15040" cBy="197" cDate="05/25/2001 02:22:13 PDT Fri">
+        <definition>COD: the part of a person's arm extending from the elbow to the wrist or the fingertips.</definition>
+        <sentenceCount annotated="18" total="73"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="forearm"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="forehead.n" ID="2406" lemmaID="15062" cBy="197" cDate="05/25/2001 02:22:49 PDT Fri">
+        <definition>COD: the part of the face above the eyebrows. </definition>
+        <sentenceCount annotated="19" total="117"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="forehead"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="groin.n" ID="2407" lemmaID="16887" cBy="197" cDate="05/25/2001 02:23:23 PDT Fri">
+        <definition>COD: the area between the abdomen and the thigh on either side of the body, or the region of the genitals. </definition>
+        <sentenceCount annotated="12" total="69"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="groin"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="hair.n" ID="2408" lemmaID="17209" cBy="197" cDate="05/25/2001 02:24:00 PDT Fri">
+        <definition>COD: any of the fine thread-like strands growing from the skin of mammals and other animals, or from the epidermis of a plant, or such strands collectively, especially those on a person's head. </definition>
+        <sentenceCount annotated="48" total="181"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="hair"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="hand.n" ID="2409" lemmaID="17332" cBy="197" cDate="05/25/2001 02:24:29 PDT Fri">
+        <definition>COD: the end part of the arm beyond the wrist, including the palm, fingers, and thumb. </definition>
+        <sentenceCount annotated="23" total="180"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="hand"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="head.n" ID="2410" lemmaID="17624" cBy="197" cDate="05/25/2001 02:25:24 PDT Fri">
+        <definition>COD: the upper part of the human body, or the front or upper part of the body of an animal, typically separated from the rest of the body by a neck, and containing the brain, mouth, and sense organs.</definition>
+        <sentenceCount annotated="17" total="180"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="head"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="heel.n" ID="2412" lemmaID="17788" cBy="197" cDate="05/25/2001 02:26:36 PDT Fri">
+        <definition>COD: the back part of the foot below the ankle.</definition>
+        <sentenceCount annotated="8" total="119"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="heel"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="incisor.n" ID="2413" lemmaID="19422" cBy="197" cDate="05/25/2001 02:27:13 PDT Fri">
+        <definition>COD: a narrow-edged tooth at the front of the mouth, adapted for cutting. </definition>
+        <sentenceCount annotated="15" total="41"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="incisor"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="jaw.n" ID="2415" lemmaID="20861" cBy="197" cDate="05/25/2001 02:28:37 PDT Fri">
+        <definition>COD: each of the upper and lower bony structures in vertebrates forming the framework of the mouth and containing the teeth.</definition>
+        <sentenceCount annotated="15" total="133"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="jaw"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="toe.n" ID="2501" lemmaID="40602" cBy="605" cDate="06/04/2001 01:14:13 PDT Mon">
+        <definition>COD: any of the five digits at the end of the human foot</definition>
+        <sentenceCount annotated="23" total="123"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="toe"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="hoof.n" ID="2502" lemmaID="18351" cBy="605" cDate="06/04/2001 01:15:28 PDT Mon">
+        <definition>COD:  the horny part of the foot of an ungulate, especially a horse</definition>
+        <sentenceCount annotated="39" total="112"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="hoof"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="claw.n" ID="2503" lemmaID="6704" cBy="605" cDate="06/04/2001 01:16:11 PDT Mon">
+        <definition>COD: a curved, pointed horny nail on each digit of the foot in birds, lizards, and some mammals</definition>
+        <sentenceCount annotated="28" total="120"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="claw"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="paw.n" ID="2504" lemmaID="28114" cBy="605" cDate="06/04/2001 01:17:07 PDT Mon">
+        <definition>COD: an animal's foot having claws and pads</definition>
+        <sentenceCount annotated="15" total="81"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="paw"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="talon.n" ID="2505" lemmaID="39451" cBy="605" cDate="06/04/2001 01:17:48 PDT Mon">
+        <definition>COD: a claw, especially one belonging to a bird of prey</definition>
+        <sentenceCount annotated="14" total="73"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="talon"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="wing.n" ID="2506" lemmaID="44245" cBy="664" cDate="06/04/2001 07:36:24 PDT Mon">
+        <definition>COD: a modified forelimb or other appendage allowing a bird, bat, insect, or other creature to fly.</definition>
+        <sentenceCount annotated="24" total="386"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="wing"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="pelt.n" ID="2507" lemmaID="28285" cBy="664" cDate="06/04/2001 08:22:39 PDT Mon">
+        <definition>COD: the skin of an animal with the fur, wool, or hair still on it.</definition>
+        <sentenceCount annotated="7" total="40"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="pelt"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="snout.n" ID="2508" lemmaID="36692" cBy="664" cDate="06/04/2001 08:34:32 PDT Mon">
+        <definition>COD: the projecting nose and mouth of an animal, esp. a mammal</definition>
+        <sentenceCount annotated="21" total="76"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="snout"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="maw.n" ID="2509" lemmaID="23742" cBy="664" cDate="06/04/2001 08:41:09 PDT Mon">
+        <definition>COD: the jaws or throat, esp. of a voracious animal.</definition>
+        <sentenceCount annotated="9" total="31"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="maw"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="fang.n" ID="2510" lemmaID="13928" cBy="664" cDate="06/04/2001 08:51:00 PDT Mon">
+        <definition>FN: a dangerous tooth, large and sharp and/or capable of delivering poison</definition>
+        <sentenceCount annotated="17" total="72"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="fang"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="mane.n" ID="2512" lemmaID="23336" cBy="605" cDate="06/05/2001 12:44:11 PDT Tue">
+        <definition>COD: a growth of long hair on the neck of a horse, lion, or other animal</definition>
+        <sentenceCount annotated="18" total="97"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="mane"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="whisker.n" ID="2513" lemmaID="44013" cBy="605" cDate="06/05/2001 12:44:33 PDT Tue">
+        <definition>COD: a long projecting hair or bristle growing from the face or snout of an animal such as a cat</definition>
+        <sentenceCount annotated="22" total="116"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="whisker"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="feeler.n" ID="2514" lemmaID="14127" cBy="605" cDate="06/05/2001 12:45:41 PDT Tue">
+        <definition>COD: an animal organ such as an antenna that is used for testing things by touch or for searching for food</definition>
+        <sentenceCount annotated="5" total="24"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="feeler"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="antler.n" ID="2515" lemmaID="1613" cBy="605" cDate="06/05/2001 12:45:59 PDT Tue">
+        <definition>COD: a branched horn on the head of an adult deer</definition>
+        <sentenceCount annotated="21" total="82"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="antler"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="muzzle.n" ID="2516" lemmaID="25335" cBy="605" cDate="06/05/2001 12:46:24 PDT Tue">
+        <definition>COD: the projecting part of the face, including the nose and mouth, of an animal such as a dog or horse</definition>
+        <sentenceCount annotated="16" total="104"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="muzzle"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="beak.n" ID="2517" lemmaID="3095" cBy="605" cDate="06/05/2001 12:46:43 PDT Tue">
+        <definition>COD: a bird's horny projecting jaws; a bill</definition>
+        <sentenceCount annotated="35" total="117"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="beak"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="trunk.n" ID="2518" lemmaID="41389" cBy="605" cDate="06/05/2001 12:47:08 PDT Tue">
+        <definition>COD: the elongated, prehensile nose of an elephant</definition>
+        <sentenceCount annotated="13" total="156"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="trunk"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="tail.n" ID="2519" lemmaID="39392" cBy="605" cDate="06/05/2001 12:47:50 PDT Tue">
+        <definition>COD: the hindmost part of an animal, especially when extended beyond the rest of the body, such as the flexible extension of the backbone in a vertebrate  or the feathers at the hind end of a bird</definition>
+        <sentenceCount annotated="35" total="236"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="tail"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="eye.n" ID="2526" lemmaID="13717" cBy="664" cDate="06/06/2001 04:46:04 PDT Wed">
+        <definition>COD: the organ of sight in humans or other animals</definition>
+        <sentenceCount annotated="241" total="1063"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="eye"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="foreleg.n" ID="2533" lemmaID="15068" cBy="664" cDate="06/06/2001 06:06:08 PDT Wed">
+        <definition>FN: each of the most anterior limbs used for locomotion or standing.</definition>
+        <sentenceCount annotated="17" total="41"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="foreleg"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="forefoot.n" ID="2534" lemmaID="15055" cBy="664" cDate="06/06/2001 06:16:18 PDT Wed">
+        <definition>COD: each of the front feet of a four-footed animal</definition>
+        <sentenceCount annotated="7" total="29"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="forefoot"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="forepaw.n" ID="2535" lemmaID="44929" cBy="664" cDate="06/06/2001 06:22:00 PDT Wed">
+        <definition>FN: each of the frontmost paws of an animal</definition>
+        <sentenceCount annotated="6" total="8"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="forepaw"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="limb.n" ID="2536" lemmaID="22366" cBy="664" cDate="06/06/2001 06:24:58 PDT Wed">
+        <definition>COD: an arm, leg, or wing</definition>
+        <sentenceCount annotated="62" total="262"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="limb"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="fin.n" ID="2537" lemmaID="14374" cBy="664" cDate="06/06/2001 06:50:24 PDT Wed">
+        <definition>COD: a flattened appendage on the body of a fish or other aquatic animal, used for propelling, steering, and balancing</definition>
+        <sentenceCount annotated="25" total="196"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="fin"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="flipper.n" ID="2538" lemmaID="14730" cBy="664" cDate="06/06/2001 07:14:06 PDT Wed">
+        <definition>COD: a broad, flat limb without fingers, used for swimming by sea animals such as seals, whales, and turtles</definition>
+        <sentenceCount annotated="9" total="39"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="flipper"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="horn.n" ID="2539" lemmaID="18397" cBy="664" cDate="06/06/2001 07:21:31 PDT Wed">
+        <definition>COD: a hard permanent outgrowth of bone encased in hardened skin, often curved and pointed, found in pairs on the heads of cattle, sheep, and other animals</definition>
+        <sentenceCount annotated="31" total="327"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="horn"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="nape.n" ID="2540" lemmaID="25421" cBy="664" cDate="06/06/2001 07:43:56 PDT Wed">
+        <definition>COD: the back of a person's neck. NB: not always used of people</definition>
+        <sentenceCount annotated="22" total="82"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="nape"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="nose.n" ID="2541" lemmaID="26142" cBy="664" cDate="06/06/2001 07:56:01 PDT Wed">
+        <definition>COD: the part projecting above the mouth on a person or animal, containing the nostrils and used in breathing and smelling</definition>
+        <sentenceCount annotated="111" total="641"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="nose"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="antenna.n" ID="2542" lemmaID="1525" cBy="664" cDate="06/06/2001 08:37:29 PDT Wed">
+        <definition>COD: a long, thin sensory appendage found in pairs on the heads of insects and some other arthropods.</definition>
+        <sentenceCount annotated="14" total="85"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="antenna"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="fluke.n" ID="2543" lemmaID="14821" cBy="664" cDate="06/07/2001 10:40:27 PDT Thu">
+        <definition>COD: either of the lobes of a whale's tail</definition>
+        <sentenceCount annotated="5" total="39"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="fluke"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="skin.n" ID="2544" lemmaID="36152" cBy="664" cDate="06/07/2001 10:54:32 PDT Thu">
+        <definition>COD: a thin layer of tissue forming the natural outer covering of the body of a person or animal</definition>
+        <sentenceCount annotated="104" total="564"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="skin"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="forelimb.n" ID="2547" lemmaID="44930" cBy="664" cDate="06/07/2001 05:31:50 PDT Thu">
+        <definition>FN: any of the frontmost limbs of a creature</definition>
+        <sentenceCount annotated="5" total="17"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="forelimb"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" incorporatedFE="Body_part" POS="N" name="hindlimb.n" ID="2549" lemmaID="44931" cBy="664" cDate="06/07/2001 06:19:34 PDT Thu">
+        <definition>FN: any of the rearmost limbs of a creature.</definition>
+        <sentenceCount annotated="1" total="7"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="hindlimb"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" incorporatedFE="Body_part" POS="N" name="hindleg.n" ID="2550" lemmaID="44932" cBy="664" cDate="06/07/2001 06:30:04 PDT Thu">
+        <definition>FN: any of the hindmost legs of a creature</definition>
+        <sentenceCount annotated="3" total="4"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="hindleg"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="fingertip.n" ID="2551" lemmaID="14414" cBy="664" cDate="06/07/2001 06:37:34 PDT Thu">
+        <definition>FN: the tip of the finger</definition>
+        <sentenceCount annotated="29" total="96"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="fingertip"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="brow.n" ID="2553" lemmaID="4728" cBy="664" cDate="06/08/2001 02:10:03 PDT Fri">
+        <definition>COD: a person's forehead</definition>
+        <sentenceCount annotated="34" total="234"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="brow"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="lip.n" ID="2554" lemmaID="22462" cBy="664" cDate="06/08/2001 02:28:31 PDT Fri">
+        <definition>COD: either of the two fleshy parts forming the edges of the mouth opening. </definition>
+        <sentenceCount annotated="91" total="625"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="lip"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="temple.n" ID="2567" lemmaID="39803" cBy="664" cDate="06/08/2001 06:17:28 PDT Fri">
+        <definition>COD: the flat part either side of the head between the forehead and the ear. </definition>
+        <sentenceCount annotated="29" total="148"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="temple"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="fingernail.n" ID="2568" lemmaID="44934" cBy="664" cDate="06/08/2001 06:35:57 PDT Fri">
+        <definition>COD: the nail on the upper surface of the tip of each finger. </definition>
+        <sentenceCount annotated="47" total="115"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="fingernail"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="tongue.n" ID="2569" lemmaID="40675" cBy="664" cDate="06/08/2001 06:41:28 PDT Fri">
+        <definition>COD: the fleshy muscular organ in the mouth, used for tasting, licking, swallowing, and (in humans) articulating speech</definition>
+        <sentenceCount annotated="91" total="451"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="tongue"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="toenail.n" ID="2570" lemmaID="44935" cBy="664" cDate="06/08/2001 06:52:20 PDT Fri">
+        <definition>COD: a nail on the upper surface of the tip of each toe</definition>
+        <sentenceCount annotated="11" total="44"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="toenail"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="thumb.n" ID="2633" lemmaID="40319" cBy="664" cDate="06/13/2001 06:34:05 PDT Wed">
+        <definition>COD: the short, thick first digit of the hand, set lower and apart from the other four and opposable to them.</definition>
+        <sentenceCount annotated="80" total="452"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="thumb"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="nostril.n" ID="2634" lemmaID="26160" cBy="664" cDate="06/13/2001 08:02:43 PDT Wed">
+        <definition>COD: either of two external openings of the nasal cavity in vertebrates that admit air to the lungs and smells to the olfactory nerves. </definition>
+        <sentenceCount annotated="41" total="180"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="nostril"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="sole.n" ID="2635" lemmaID="36848" cBy="664" cDate="06/13/2001 08:19:42 PDT Wed">
+        <definition>COD: the underside of a person's foot. </definition>
+        <sentenceCount annotated="17" total="151"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="sole"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="midriff.n" ID="2643" lemmaID="24231" cBy="664" cDate="06/14/2001 03:05:03 PDT Thu">
+        <definition>COD: the region of the front of the body between the chest and the waist</definition>
+        <sentenceCount annotated="35" total="53"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="midriff"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="navel.n" ID="2644" lemmaID="25527" cBy="664" cDate="06/14/2001 03:26:05 PDT Thu">
+        <definition>COD: a rounded knotty depression in the center of a person's belly caused by the detachment of the umbilical cord after birth; the umbilicus</definition>
+        <sentenceCount annotated="20" total="69"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="navel"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="neck.n" ID="2646" lemmaID="25581" cBy="664" cDate="06/14/2001 07:52:24 PDT Thu">
+        <definition>COD: the part of a person's or animal's body connecting the head to the rest of the body.</definition>
+        <sentenceCount annotated="92" total="627"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="neck"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="hindquarters.n" ID="2647" lemmaID="18109" cBy="664" cDate="06/14/2001 10:01:54 PDT Thu">
+        <definition>COD: the hind legs and adjoining parts of a quadruped.</definition>
+        <sentenceCount annotated="9" total="44"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="hindquarters"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="forefinger.n" ID="2648" lemmaID="15054" cBy="664" cDate="06/14/2001 10:12:05 PDT Thu">
+        <definition>COD: the finger next to the thumb.</definition>
+        <sentenceCount annotated="28" total="87"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="forefinger"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="thigh.n" ID="2649" lemmaID="40143" cBy="664" cDate="06/14/2001 10:19:03 PDT Thu">
+        <definition>FN: the part of the leg between the hip and the knee.</definition>
+        <sentenceCount annotated="24" total="126"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="thigh"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="mouth.n" ID="2684" lemmaID="25088" cBy="664" cDate="06/19/2001 04:41:04 PDT Tue">
+        <definition>COD:  the opening and cavity in the lower part of the face, surrounded by the lips, through which food and air are taken and vocal sounds are emitted</definition>
+        <sentenceCount annotated="80" total="663"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="mouth"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="tentacle.n" ID="2693" lemmaID="39871" cBy="664" cDate="06/20/2001 04:26:49 PDT Wed">
+        <definition>COD: a long slender flexible appendage of an animal, used for grasping or moving about, or bearing sense organs.</definition>
+        <sentenceCount annotated="14" total="136"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="tentacle"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="bill.n" ID="2694" lemmaID="3574" cBy="664" cDate="06/20/2001 05:14:35 PDT Wed">
+        <definition>COD: a. the beak of a bird, especially when it is slender, flattened, or weak, or belongs to a web-footed bird or a bird of the pigeon family</definition>
+        <sentenceCount annotated="16" total="145"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="bill"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="appendage.n" ID="2845" lemmaID="1719" cBy="664" cDate="07/03/2001 12:22:35 PDT Tue">
+        <definition>COD: a projecting part of an organism, with a distinct appearance or function </definition>
+        <sentenceCount annotated="16" total="63"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="appendage"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="thorax.n" ID="2846" lemmaID="40195" cBy="664" cDate="07/03/2001 12:52:23 PDT Tue">
+        <definition>COD: the part of the body of any living being between the neck and the abdomen, including the cavity enclosed by the ribs, breastbone, and dorsal vertebrae.</definition>
+        <sentenceCount annotated="14" total="40"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="thorax"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="rump.n" ID="2847" lemmaID="33770" cBy="664" cDate="07/03/2001 01:18:26 PDT Tue">
+        <definition>FN: .the hind part of the body of a mammal, the lower back of a bird, or humourously a person's buttocks</definition>
+        <sentenceCount annotated="18" total="114"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="rump"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Body_part" POS="N" name="crown.n" ID="2855" lemmaID="9096" cBy="664" cDate="07/03/2001 02:59:36 PDT Tue">
+        <definition>FN: the top part of a person's head. </definition>
+        <sentenceCount annotated="18" total="246"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="crown"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Body_part" POS="N" name="member.n" ID="10278" lemmaID="23936" cBy="605" cDate="03/09/2004 02:21:34 PST Tue">
+        <definition>COD: a man's penis</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="member"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="leg.n" ID="11244" lemmaID="22017" cBy="303" cDate="11/19/2004 04:53:53 PST Fri">
+        <definition>COD: each of the limbs on which a person or animal walks and stands.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="leg"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="shoulder.n" ID="14162" lemmaID="35671" cBy="361" cDate="03/27/2007 09:55:01 PDT Tue">
+        <definition>COD: the joint between the upper arm or forelimb and the main part of the body.  </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="shoulder"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="tooth.n" ID="15304" lemmaID="40698" cBy="597" cDate="02/26/2009 02:02:18 PST Thu">
+        <definition>FN: a hard structure in the mouth of some animals often used for chewing and other purposes</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="tooth"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="mustache.n" ID="15969" lemmaID="51191" cBy="664" cDate="07/30/2010 06:46:19 PDT Fri">
+        <definition>FN: thick hair between the upper lip and the nose extending often to the corners of the mouth.</definition>
+        <sentenceCount annotated="1" total="1"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="mustache"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="knee.n" ID="15974" lemmaID="21403" cBy="664" cDate="07/30/2010 07:44:55 PDT Fri">
+        <definition>FN: a joint between the upper and lower leg that projects forward and is protected by the patella.</definition>
+        <sentenceCount annotated="1" total="1"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="knee"/>
+    </lexUnit>
+</frame>

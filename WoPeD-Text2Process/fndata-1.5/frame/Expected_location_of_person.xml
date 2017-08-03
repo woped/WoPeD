@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="08/22/2005 06:37:23 PDT Mon" name="Expected_location_of_person" ID="1619" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A &lt;fen&gt;Person&lt;/fen&gt; usually resides or works in a &lt;fen&gt;Location&lt;/fen&gt;.
+
+
+
+
+&lt;ex&gt;&lt;m&gt;Is&lt;/m&gt; &lt;fex name="Person"&gt;Mr. Adams&lt;/fex&gt; &lt;t&gt;in&lt;/t&gt; &lt;fex name="tim"&gt;today&lt;/fex&gt;? &lt;fex name="Location"&gt;DNI&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="08/22/2005 06:37:23 PDT Mon" abbrev="loc" name="Location" ID="8946">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Location&lt;/fen&gt;  is the place of business or residence prototypically occupied by the &lt;fen&gt;Person&lt;/fen&gt;.
+
+&lt;ex&gt;I couldn't access the details of prospective buyers and sellers and was
+uncontactable when I was &lt;t&gt;out&lt;/t&gt; &lt;fex name="loc"&gt;of the office&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="08/22/2005 06:37:23 PDT Mon" abbrev="per" name="Person" ID="8947">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Person&lt;/fen&gt; is located in or at a place that they customarily occupy. 
+
+&lt;ex&gt;&lt;fex name="per"&gt;The doctor&lt;/fex&gt; is not &lt;t&gt;in&lt;/t&gt; right now.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+        <semType name="Human" ID="80"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="08/22/2005 06:53:23 PDT Mon" abbrev="tim" name="Time" ID="8950">
+        <definition>&lt;def-root&gt;The time period during which the &lt;fen&gt;Person&lt;/fen&gt; occupies the &lt;fen&gt;Location&lt;/fen&gt;.
+
+&lt;ex&gt;Call work, tell them you'll be &lt;t&gt;in&lt;/t&gt; &lt;fex name="tim"&gt;in the afternoon&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="08/22/2005 06:53:41 PDT Mon" abbrev="dur" name="Duration" ID="8951">
+        <definition>&lt;def-root&gt;The length of the time interval during which the &lt;fen&gt;Person&lt;/fen&gt; occupies the &lt;fen&gt;Location&lt;/fen&gt;.
+
+&lt;ex&gt;It's only nine o'clock, so he won't be &lt;t&gt;in&lt;/t&gt; &lt;fex name="dur"&gt;for another two hours&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Locative_relation</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Custom</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Created" POS="PREP" name="in.prep" ID="12671" lemmaID="19298" cBy="605" cDate="08/22/2005 06:41:17 PDT Mon">
+        <definition>COD: present at one's home or office.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="in"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="out.prep" ID="12672" lemmaID="27047" cBy="605" cDate="08/22/2005 06:42:30 PDT Mon">
+        <definition>COD: not at home or one's place of work.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="out"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" incorporatedFE="Location" POS="N" name="home.n" ID="12674" lemmaID="50227" cBy="605" cDate="08/22/2005 06:50:37 PDT Mon">
+        <definition>COD: to or at one's home.</definition>
+        <sentenceCount annotated="2" total="220"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="home"/>
+    </lexUnit>
+</frame>

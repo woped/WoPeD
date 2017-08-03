@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" POS="V" name="oxidize.v" ID="6107" frame="Corroding_caused" frameID="350" totalAnnotated="4" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="age" name="Agent"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Core" abbrev="Cause" name="Cause"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Peripheral" abbrev="Dur" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="I_state" name="Initial_state"/>
+            <FE fgColor="000000" bgColor="A9A9A9" type="Extra-Thematic" abbrev="ins" name="Instrument"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Mnr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Extra-Thematic" abbrev="Reas" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Extra-Thematic" abbrev="Result" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="Spd" name="Speed"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Extra-Thematic" abbrev="sub" name="Subregion"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Und" name="Undergoer"/>
+        </frame>
+    </header>
+    <definition>COD: cause to combine with oxygen. </definition>
+    <lexeme POS="V" name="oxidize"/>
+    <valences>
+        <FERealization total="4">
+            <FE name="Cause"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="CNI" FE="Cause"/>
+                <annoSet ID="1322356"/>
+                <annoSet ID="1322372"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Cause"/>
+                <annoSet ID="1322344"/>
+                <annoSet ID="1322362"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Result"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="VPing" FE="Result"/>
+                <annoSet ID="1322344"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Speed"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Speed"/>
+                <annoSet ID="1322356"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Undergoer"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Undergoer"/>
+                <annoSet ID="1322356"/>
+            </pattern>
+            <pattern total="3">
+                <valenceUnit GF="Obj" PT="NP" FE="Undergoer"/>
+                <annoSet ID="1322344"/>
+                <annoSet ID="1322362"/>
+                <annoSet ID="1322372"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Cause"/>
+            <FE name="Result"/>
+            <FE name="Undergoer"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Cause"/>
+                <valenceUnit GF="Dep" PT="VPing" FE="Result"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Undergoer"/>
+                <annoSet ID="1322344"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Cause"/>
+            <FE name="Speed"/>
+            <FE name="Undergoer"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Cause"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Speed"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Undergoer"/>
+                <annoSet ID="1322356"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Cause"/>
+            <FE name="Undergoer"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Cause"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Undergoer"/>
+                <annoSet ID="1322372"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Cause"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Undergoer"/>
+                <annoSet ID="1322362"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-001-all">
+        <sentence sentNo="0" aPos="15086191" ID="934234">
+            <text>Quite often , also , hot steam blasting through a scoria cone may oxidize or ` rust &quot; the iron in the rock , giving the scoria a deep reddish-brown colour . </text>
+            <annotationSet cDate="01/07/2003 08:04:41 PST Tue" status="UNANN" ID="1322343">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="AV0"/>
+                    <label end="10" start="6" name="AV0"/>
+                    <label end="12" start="12" name="PUN"/>
+                    <label end="17" start="14" name="AV0"/>
+                    <label end="19" start="19" name="PUN"/>
+                    <label end="23" start="21" name="AJ0"/>
+                    <label end="29" start="25" name="NN1"/>
+                    <label end="38" start="31" name="VVG"/>
+                    <label end="46" start="40" name="PRP"/>
+                    <label end="48" start="48" name="AT0"/>
+                    <label end="55" start="50" name="NN1"/>
+                    <label end="60" start="57" name="NN1"/>
+                    <label end="64" start="62" name="VM0"/>
+                    <label end="72" start="66" name="VVI"/>
+                    <label end="75" start="74" name="CJC"/>
+                    <label end="77" start="77" name="PUQ"/>
+                    <label end="82" start="79" name="VVI"/>
+                    <label end="84" start="84" name="PUQ"/>
+                    <label end="88" start="86" name="AT0"/>
+                    <label end="93" start="90" name="NN1"/>
+                    <label end="96" start="95" name="PRP"/>
+                    <label end="100" start="98" name="AT0"/>
+                    <label end="105" start="102" name="NN1"/>
+                    <label end="107" start="107" name="PUN"/>
+                    <label end="114" start="109" name="VVG"/>
+                    <label end="118" start="116" name="AT0"/>
+                    <label end="125" start="120" name="NN1"/>
+                    <label end="127" start="127" name="AT0"/>
+                    <label end="132" start="129" name="AJ0-AV0"/>
+                    <label end="146" start="134" name="AJ0"/>
+                    <label end="153" start="148" name="NN1"/>
+                    <label end="155" start="155" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 08:04:41 PST Tue" status="MANUAL" ID="1322344">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3131" end="60" start="21" name="Cause"/>
+                    <label cBy="303" feID="3068" end="105" start="86" name="Undergoer"/>
+                    <label cBy="303" feID="3066" end="153" start="109" name="Result"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="60" start="21" name="Ext"/>
+                    <label end="105" start="86" name="Obj"/>
+                    <label end="153" start="109" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="60" start="21" name="NP"/>
+                    <label end="105" start="86" name="NP"/>
+                    <label end="153" start="109" name="VPing"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="72" start="66" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="19544949" ID="934240">
+            <text>But this new alloy is being oxidised -- and flaking off -- much faster than the old alloy ; the chemistry of the mixtures is still poorly understood . </text>
+            <annotationSet cDate="01/07/2003 08:04:41 PST Tue" status="UNANN" ID="1322355">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="CJC"/>
+                    <label end="7" start="4" name="DT0"/>
+                    <label end="11" start="9" name="AJ0"/>
+                    <label end="17" start="13" name="NN1"/>
+                    <label end="20" start="19" name="VBZ"/>
+                    <label end="26" start="22" name="VBG"/>
+                    <label end="35" start="28" name="VVN"/>
+                    <label end="38" start="37" name="PUN"/>
+                    <label end="42" start="40" name="CJC"/>
+                    <label end="50" start="44" name="VVG"/>
+                    <label end="54" start="52" name="AVP"/>
+                    <label end="57" start="56" name="PUN"/>
+                    <label end="62" start="59" name="AV0"/>
+                    <label end="69" start="64" name="AJC"/>
+                    <label end="74" start="71" name="CJS"/>
+                    <label end="78" start="76" name="AT0"/>
+                    <label end="82" start="80" name="AJ0"/>
+                    <label end="88" start="84" name="NN1"/>
+                    <label end="90" start="90" name="PUN"/>
+                    <label end="94" start="92" name="AT0"/>
+                    <label end="104" start="96" name="NN1"/>
+                    <label end="107" start="106" name="PRF"/>
+                    <label end="111" start="109" name="AT0"/>
+                    <label end="120" start="113" name="NN2"/>
+                    <label end="123" start="122" name="VBZ"/>
+                    <label end="129" start="125" name="AV0"/>
+                    <label end="136" start="131" name="AV0"/>
+                    <label end="147" start="138" name="VVD-VVN"/>
+                    <label end="149" start="149" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 08:04:42 PST Tue" status="MANUAL" ID="1322356">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3068" end="17" start="4" name="Undergoer"/>
+                    <label cBy="618" feID="3123" end="88" start="59" name="Speed"/>
+                    <label cBy="618" feID="3131" itype="CNI" name="Cause"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="17" start="4" name="Ext"/>
+                    <label end="88" start="59" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="17" start="4" name="NP"/>
+                    <label end="88" start="59" name="AVP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="35" start="28" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="19873169" ID="934243">
+            <text>So , says Daedalus , a road surfaced with catalytic material should oxidise the surface of his tyres . </text>
+            <annotationSet cDate="01/07/2003 08:04:42 PST Tue" status="UNANN" ID="1322361">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="AV0"/>
+                    <label end="3" start="3" name="PUN"/>
+                    <label end="8" start="5" name="VVZ"/>
+                    <label end="17" start="10" name="NN1-NP0"/>
+                    <label end="19" start="19" name="PUN"/>
+                    <label end="21" start="21" name="AT0"/>
+                    <label end="26" start="23" name="NN1"/>
+                    <label end="35" start="28" name="VVD-VVN"/>
+                    <label end="40" start="37" name="PRP"/>
+                    <label end="50" start="42" name="AJ0"/>
+                    <label end="59" start="52" name="NN1"/>
+                    <label end="66" start="61" name="VM0"/>
+                    <label end="74" start="68" name="VVI"/>
+                    <label end="78" start="76" name="AT0"/>
+                    <label end="86" start="80" name="NN1"/>
+                    <label end="89" start="88" name="PRF"/>
+                    <label end="93" start="91" name="DPS"/>
+                    <label end="99" start="95" name="NN2"/>
+                    <label end="101" start="101" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 08:04:42 PST Tue" status="MANUAL" ID="1322362">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3131" end="59" start="21" name="Cause"/>
+                    <label cBy="618" feID="3068" end="99" start="76" name="Undergoer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="59" start="21" name="Ext"/>
+                    <label end="99" start="76" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="59" start="21" name="NP"/>
+                    <label end="99" start="76" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="74" start="68" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="22823387" ID="934248">
+            <text>This prevents the cork drying up , shrinking and letting in air thus oxidising the wine . </text>
+            <annotationSet cDate="01/07/2003 08:04:42 PST Tue" status="UNANN" ID="1322371">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="DT0"/>
+                    <label end="12" start="5" name="VVZ"/>
+                    <label end="16" start="14" name="AT0"/>
+                    <label end="21" start="18" name="NN1"/>
+                    <label end="28" start="23" name="VVG"/>
+                    <label end="31" start="30" name="AVP"/>
+                    <label end="33" start="33" name="PUN"/>
+                    <label end="43" start="35" name="VVG"/>
+                    <label end="47" start="45" name="CJC"/>
+                    <label end="55" start="49" name="VVG"/>
+                    <label end="58" start="57" name="PRP"/>
+                    <label end="62" start="60" name="NN1"/>
+                    <label end="67" start="64" name="AV0"/>
+                    <label end="77" start="69" name="VVG"/>
+                    <label end="81" start="79" name="AT0"/>
+                    <label end="86" start="83" name="NN1"/>
+                    <label end="88" start="88" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 08:04:42 PST Tue" status="MANUAL" ID="1322372">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3068" end="86" start="79" name="Undergoer"/>
+                    <label cBy="618" feID="3131" itype="CNI" name="Cause"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="86" start="79" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="86" start="79" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="77" start="69" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="01-NP-T-NP-PPinto-(1)"/>
+    <subCorpus name="02-NP-Wbe-T-PP-(1)"/>
+    <subCorpus name="03-Wair,water,paint-T-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

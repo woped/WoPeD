@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="07/23/2002 06:41:31 PDT Tue" name="Time_vector" ID="379" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Event&lt;/fen&gt; is identified as occurring at a particular &lt;fen&gt;Distance&lt;/fen&gt; and in a particular &lt;fen&gt;Direction&lt;/fen&gt; from a &lt;fen&gt;Landmark_event&lt;/fen&gt;.   The lexical units incorporate the &lt;fen&gt;Direction&lt;/fen&gt; and, in some cases, the &lt;fen&gt;Landmark_event&lt;/fen&gt;.  
+This frame builds on the Direction frame, further specifying the Domain as Time. 
+This frame will receive some of the lexical units currently found in Relative_time.
+
+&lt;ex&gt; &lt;fex name="Event"&gt;Tell me that&lt;/fex&gt; &lt;fex name="Distance"&gt;a week&lt;/fex&gt; &lt;fex name="Direction"&gt;&lt;t&gt;from&lt;/t&gt;&lt;/fex&gt; &lt;fex name="Landmark_event"&gt;now&lt;/fex&gt;. &lt;/ex&gt;
+&lt;ex&gt; &lt;fex name="Distance"&gt;Some twelve months&lt;/fex&gt; &lt;fex name="Direction"&gt;&lt;t&gt;after&lt;/t&gt;&lt;/fex&gt; &lt;fex name="Landmark_event"&gt;I had graduated&lt;/fex&gt;, &lt;fex name="Event"&gt;I had my first job interview&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="07/23/2002 06:58:05 PDT Tue" abbrev="lan" name="Landmark_event" ID="3396">
+        <definition>&lt;def-root&gt;This Frame Element marks expressions that indicate the reference point in which the Event  is anchored.
+
+&lt;ex&gt; Sue is going to pick me up again two days &lt;t&gt;from&lt;/t&gt; &lt;fex name="Landmark_event"&gt;tomorrow&lt;/fex&gt;. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="07/23/2002 06:59:48 PDT Tue" abbrev="Distance" name="Distance" ID="3397">
+        <definition>&lt;def-root&gt;This FE marks expressions that indicate the amount of time that lies between the Target and the &lt;fen&gt;Landmark_event&lt;/fen&gt;.
+
+&lt;ex&gt;Peter will meet me &lt;fex name="Distance"&gt;a week&lt;/fex&gt; &lt;t&gt;from&lt;/t&gt; today &lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="07/23/2002 07:02:33 PDT Tue" abbrev="Direction" name="Direction" ID="3398">
+        <definition>&lt;def-root&gt;This FE marks expressions that indicate whether the Target is prior or subsequent to the &lt;fen&gt;Landmark_event&lt;/fen&gt; on the time line.
+
+&lt;ex&gt; Mom last called me a week &lt;fex name="Direction"&gt;&lt;t&gt;ago&lt;/t&gt;&lt;/fex&gt;. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="000000" coreType="Core" cBy="618" cDate="07/24/2003 04:58:10 PDT Thu" abbrev="Evt" name="Event" ID="4832">
+        <definition>&lt;def-root&gt;This FE indicates the &lt;fen&gt;Event&lt;/fen&gt; temporally located with respect to the &lt;fen&gt;Landmark_event&lt;/fen&gt;.
+&lt;ex&gt;&lt;fex name="Event"&gt;The incident&lt;/fex&gt; &lt;m&gt;was&lt;/m&gt; several years &lt;t&gt;ago&lt;/t&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Trajector-Landmark</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Direction</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also">
+        <relatedFrame>Relative_time</relatedFrame>
+    </frameRelation>
+    <lexUnit status="Finished_Initial" incorporatedFE="Direction" POS="PREP" name="from.prep" ID="6712" lemmaID="15537" cBy="605" cDate="07/23/2002 06:42:16 PDT Tue">
+        <definition>COD: indicating the point in space or time at which a journey, process, or action starts. </definition>
+        <sentenceCount annotated="6" total="136"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="from"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="PREP" name="hence.prep" ID="6713" lemmaID="17862" cBy="605" cDate="07/23/2002 06:42:34 PDT Tue">
+        <definition>COD: from now; in the future</definition>
+        <sentenceCount annotated="13" total="124"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="hence"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="after.prep" ID="6715" lemmaID="746" cBy="605" cDate="07/23/2002 06:43:47 PDT Tue">
+        <definition>COD: in the time following </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="after"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="before.prep" ID="6716" lemmaID="3217" cBy="605" cDate="07/23/2002 06:44:03 PDT Tue">
+        <definition>COD: during the period of time preceding. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="before"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="in time.prep" ID="6717" lemmaID="45899" cBy="605" cDate="07/23/2002 07:19:14 PDT Tue">
+        <definition>FN: at the usual or proper time</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="in"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="time"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Direction" POS="PREP" name="ago.prep" ID="9154" lemmaID="48237" cBy="618" cDate="07/24/2003 04:34:14 PDT Thu">
+        <definition>COD: before the present (used with a measurement of time).</definition>
+        <sentenceCount annotated="28" total="192"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="ago"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="ADV" name="since.adv" ID="9155" lemmaID="35968" cBy="618" cDate="07/24/2003 05:42:03 PDT Thu">
+        <definition>COD: from the time mentioned until the present or the time under consideration.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="since"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Direction" POS="PREP" name="down the road.prep" ID="10555" lemmaID="49145" cBy="605" cDate="05/28/2004 03:42:43 PDT Fri">
+        <definition>FN: later than a specified point of time</definition>
+        <sentenceCount annotated="8" total="149"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="down"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ART" name="the"/>
+        <lexeme order="3" headword="false" breakBefore="false" POS="N" name="road"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="ADV" name="previously.adv" ID="10647" lemmaID="30395" cBy="605" cDate="06/28/2004 11:47:11 PDT Mon">
+        <definition>FN: before</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="previously"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Direction" POS="ADV" name="prior.adv" ID="10664" lemmaID="49254" cBy="605" cDate="06/29/2004 01:24:50 PDT Tue">
+        <definition>FN: before</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="prior"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="ADV" name="beforehand.adv" ID="10887" lemmaID="3219" cBy="605" cDate="08/18/2004 05:48:58 PDT Wed">
+        <definition>COD: in advance.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="beforehand"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="ADV" name="afterward.adv" ID="10888" lemmaID="762" cBy="605" cDate="08/18/2004 05:49:51 PDT Wed">
+        <definition>COD: at a later or future time</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="afterward"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="ADV" name="afterwards.adv" ID="10919" lemmaID="763" cBy="605" cDate="08/19/2004 06:32:40 PDT Thu">
+        <definition>COD: at a later or future time.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="afterwards"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="ADV" name="right away.adv" ID="11818" lemmaID="49927" cBy="605" cDate="04/11/2005 06:55:52 PDT Mon">
+        <definition>COD: immediately</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="right"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="away"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Distance" POS="ADV" name="sooner rather than later.adv" ID="11824" lemmaID="49926" cBy="605" cDate="04/11/2005 11:55:17 PDT Mon">
+        <definition>FN: (of inevitable occurrences) quite soon (as opposed to later)</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="sooner"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="rather"/>
+        <lexeme order="3" headword="false" breakBefore="false" POS="PREP" name="than"/>
+        <lexeme order="4" headword="false" breakBefore="false" POS="ADV" name="later"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="ADV" name="later.adv" ID="11825" lemmaID="49796" cBy="605" cDate="04/12/2005 02:54:51 PDT Tue">
+        <definition>COD:  At a time in the near future; afterwards</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="later"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Landmark_event" POS="ADV" name="thereafter.adv" ID="12620" lemmaID="40075" cBy="605" cDate="08/10/2005 03:51:48 PDT Wed">
+        <definition>COD: after that time</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="thereafter"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="through.prep" ID="13287" lemmaID="49771" cBy="303" cDate="06/21/2006 11:02:10 PDT Wed">
+        <definition>COD: from beginning to end of (an experience or activity).</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="through"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="former.a" ID="14034" lemmaID="15148" cBy="361" cDate="03/22/2007 03:05:49 PDT Thu">
+        <definition>COD: having been previously.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="former"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="ADV" name="formerly.adv" ID="14035" lemmaID="15151" cBy="361" cDate="03/22/2007 03:12:11 PDT Thu">
+        <definition>COD: in the past.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="formerly"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="ADV" name="eventually.adv" ID="14036" lemmaID="13271" cBy="361" cDate="03/22/2007 03:12:47 PDT Thu">
+        <definition>FN: after a long period of time.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="eventually"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="previous.a" ID="14087" lemmaID="30394" cBy="664" cDate="03/23/2007 11:28:37 PDT Fri">
+        <definition>COD: existing or occurring before in time or order.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="previous"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="pre.prep" ID="14089" lemmaID="50568" cBy="664" cDate="03/23/2007 11:31:50 PDT Fri">
+        <definition>COD: before (in time, place, order, degree, or importance)</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="pre"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="post.prep" ID="14090" lemmaID="50569" cBy="664" cDate="03/23/2007 11:32:29 PDT Fri">
+        <definition>COD: after in time or order.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="post"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="ante.prep" ID="14091" lemmaID="50570" cBy="664" cDate="03/23/2007 11:33:51 PDT Fri">
+        <definition>COD: before; preceding.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="ante"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="ADV" name="finally.adv" ID="14176" lemmaID="14382" cBy="361" cDate="03/28/2007 09:22:01 PDT Wed">
+        <definition>FN: at last</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="finally"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="then.a" ID="14528" lemmaID="50723" cBy="361" cDate="08/15/2007 04:09:43 PDT Wed">
+        <definition>FN: being (something) at an earlier time</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="then"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="ADV" name="already.adv" ID="14573" lemmaID="1127" cBy="361" cDate="10/24/2007 01:54:51 PDT Wed">
+        <definition>FN: having done so in the past</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="already"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="until.prep" ID="14602" lemmaID="42405" cBy="361" cDate="10/26/2007 12:56:39 PDT Fri">
+        <definition>FN: at which point something happens that will effect the course of something else. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="until"/>
+    </lexUnit>
+</frame>

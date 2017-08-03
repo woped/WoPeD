@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" incorporatedFE="Direction" POS="PREP" name="from.prep" ID="6712" frame="Time_vector" frameID="379" totalAnnotated="6" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Direction" name="Direction"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="Distance" name="Distance"/>
+            <FE fgColor="000000" bgColor="FFA500" type="Core" abbrev="Evt" name="Event"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="lan" name="Landmark_event"/>
+        </frame>
+    </header>
+    <definition>COD: indicating the point in space or time at which a journey, process, or action starts. </definition>
+    <lexeme POS="PREP" name="from"/>
+    <valences>
+        <FERealization total="6">
+            <FE name="Direction"/>
+            <pattern total="6">
+                <valenceUnit GF="" PT="--" FE="Direction"/>
+                <annoSet ID="1911367"/>
+                <annoSet ID="1911369"/>
+                <annoSet ID="1911371"/>
+                <annoSet ID="1911375"/>
+                <annoSet ID="1911377"/>
+                <annoSet ID="1911397"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Distance"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="DNI" FE="Distance"/>
+                <annoSet ID="1911375"/>
+                <annoSet ID="1911377"/>
+            </pattern>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="NP" FE="Distance"/>
+                <annoSet ID="1911367"/>
+                <annoSet ID="1911369"/>
+                <annoSet ID="1911371"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="6">
+            <FE name="Event"/>
+            <pattern total="3">
+                <valenceUnit GF="Head" PT="Sfin" FE="Event"/>
+                <annoSet ID="1911371"/>
+                <annoSet ID="1911377"/>
+                <annoSet ID="1911397"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="Srel" FE="Event"/>
+                <annoSet ID="1911375"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="Sfin" FE="Event"/>
+                <annoSet ID="1911369"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="Sinterrog" FE="Event"/>
+                <annoSet ID="1911367"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="6">
+            <FE name="Landmark_event"/>
+            <pattern total="6">
+                <valenceUnit GF="Obj" PT="NP" FE="Landmark_event"/>
+                <annoSet ID="1911367"/>
+                <annoSet ID="1911369"/>
+                <annoSet ID="1911371"/>
+                <annoSet ID="1911375"/>
+                <annoSet ID="1911377"/>
+                <annoSet ID="1911397"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Direction"/>
+            <FE name="Distance"/>
+            <FE name="Event"/>
+            <FE name="Event"/>
+            <FE name="Landmark_event"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="--" FE="Direction"/>
+                <valenceUnit GF="" PT="DNI" FE="Distance"/>
+                <valenceUnit GF="Head" PT="Sfin" FE="Event"/>
+                <valenceUnit GF="Head" PT="Sfin" FE="Event"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Landmark_event"/>
+                <annoSet ID="1911377"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="4">
+            <FE name="Direction"/>
+            <FE name="Distance"/>
+            <FE name="Event"/>
+            <FE name="Landmark_event"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="--" FE="Direction"/>
+                <valenceUnit GF="" PT="DNI" FE="Distance"/>
+                <valenceUnit GF="Head" PT="Srel" FE="Event"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Landmark_event"/>
+                <annoSet ID="1911375"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="--" FE="Direction"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Distance"/>
+                <valenceUnit GF="Dep" PT="Sfin" FE="Event"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Landmark_event"/>
+                <annoSet ID="1911369"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="--" FE="Direction"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Distance"/>
+                <valenceUnit GF="Head" PT="Sfin" FE="Event"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Landmark_event"/>
+                <annoSet ID="1911371"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="--" FE="Direction"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Distance"/>
+                <valenceUnit GF="Dep" PT="Sinterrog" FE="Event"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Landmark_event"/>
+                <annoSet ID="1911367"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Direction"/>
+            <FE name="Event"/>
+            <FE name="Event"/>
+            <FE name="Landmark_event"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="--" FE="Direction"/>
+                <valenceUnit GF="Head" PT="Sfin" FE="Event"/>
+                <valenceUnit GF="Head" PT="Sfin" FE="Event"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Landmark_event"/>
+                <annoSet ID="1911397"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="11-T-Wnow-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="2" aPos="0" ID="1232163">
+            <text>In just 28 days from now would you like to be the proud owner of a new body ?</text>
+            <annotationSet cDate="06/20/2003 10:02:34 PDT Fri" status="UNANN" ID="1911366">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="in"/>
+                    <label end="6" start="3" name="rb"/>
+                    <label end="9" start="8" name="cd"/>
+                    <label end="14" start="11" name="nns"/>
+                    <label end="19" start="16" name="in"/>
+                    <label end="23" start="21" name="rb"/>
+                    <label end="29" start="25" name="md"/>
+                    <label end="33" start="31" name="PP"/>
+                    <label end="38" start="35" name="VV"/>
+                    <label end="41" start="40" name="to"/>
+                    <label end="44" start="43" name="vb"/>
+                    <label end="48" start="46" name="dt"/>
+                    <label end="54" start="50" name="jj"/>
+                    <label end="60" start="56" name="nn"/>
+                    <label end="63" start="62" name="in"/>
+                    <label end="65" start="65" name="dt"/>
+                    <label end="69" start="67" name="jj"/>
+                    <label end="74" start="71" name="nn"/>
+                    <label end="76" start="76" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/20/2003 10:02:35 PDT Fri" status="MANUAL" ID="1911367">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="19" start="16" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="303" feID="3396" end="23" start="21" name="Landmark_event"/>
+                    <label cBy="303" feID="4832" end="76" start="25" name="Event"/>
+                    <label cBy="309" feID="3398" end="19" start="16" name="Direction"/>
+                    <label cBy="618" feID="3397" end="14" start="8" name="Distance"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="23" start="21" name="Obj"/>
+                    <label end="76" start="25" name="Dep"/>
+                    <label end="14" start="8" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="23" start="21" name="NP"/>
+                    <label end="76" start="25" name="Sinterrog"/>
+                    <label end="14" start="8" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Prep"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="723" aPos="0" ID="1232164">
+            <text>A decade from now we might , as you suggest , be wondering what all the fuss was about .</text>
+            <annotationSet cDate="06/20/2003 10:02:43 PDT Fri" status="UNANN" ID="1911368">
+                <layer rank="1" name="PENN">
+                    <label end="0" start="0" name="dt"/>
+                    <label end="7" start="2" name="nn"/>
+                    <label end="12" start="9" name="in"/>
+                    <label end="16" start="14" name="rb"/>
+                    <label end="19" start="18" name="PP"/>
+                    <label end="25" start="21" name="md"/>
+                    <label end="27" start="27" name=","/>
+                    <label end="30" start="29" name="in"/>
+                    <label end="34" start="32" name="PP"/>
+                    <label end="42" start="36" name="VVP"/>
+                    <label end="44" start="44" name=","/>
+                    <label end="47" start="46" name="vb"/>
+                    <label end="57" start="49" name="VVG"/>
+                    <label end="62" start="59" name="wp"/>
+                    <label end="66" start="64" name="pdt"/>
+                    <label end="70" start="68" name="dt"/>
+                    <label end="75" start="72" name="nn"/>
+                    <label end="79" start="77" name="VBD"/>
+                    <label end="85" start="81" name="rb"/>
+                    <label end="87" start="87" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/20/2003 10:02:44 PDT Fri" status="MANUAL" ID="1911369">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="12" start="9" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3397" end="7" start="0" name="Distance"/>
+                    <label cBy="618" feID="3398" end="12" start="9" name="Direction"/>
+                    <label cBy="618" feID="3396" end="16" start="14" name="Landmark_event"/>
+                    <label cBy="303" feID="4832" end="85" start="18" name="Event"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="7" start="0" name="Ext"/>
+                    <label end="16" start="14" name="Obj"/>
+                    <label end="85" start="18" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="7" start="0" name="NP"/>
+                    <label end="16" start="14" name="NP"/>
+                    <label end="85" start="18" name="Sfin"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Prep"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="171" aPos="0" ID="1232165">
+            <text>` A great many years from now , in another universe , a man in a mirror told me to do nothing .</text>
+            <annotationSet cDate="06/20/2003 10:02:45 PDT Fri" status="UNANN" ID="1911370">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="2" name="dt"/>
+                    <label end="8" start="4" name="jj"/>
+                    <label end="13" start="10" name="jj"/>
+                    <label end="19" start="15" name="nns"/>
+                    <label end="24" start="21" name="in"/>
+                    <label end="28" start="26" name="rb"/>
+                    <label end="30" start="30" name=","/>
+                    <label end="33" start="32" name="in"/>
+                    <label end="41" start="35" name="dt"/>
+                    <label end="50" start="43" name="nn"/>
+                    <label end="52" start="52" name=","/>
+                    <label end="54" start="54" name="dt"/>
+                    <label end="58" start="56" name="nn"/>
+                    <label end="61" start="60" name="in"/>
+                    <label end="63" start="63" name="dt"/>
+                    <label end="70" start="65" name="nn"/>
+                    <label end="75" start="72" name="VVD"/>
+                    <label end="78" start="77" name="PP"/>
+                    <label end="81" start="80" name="to"/>
+                    <label end="84" start="83" name="VV"/>
+                    <label end="92" start="86" name="nn"/>
+                    <label end="94" start="94" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/20/2003 10:02:46 PDT Fri" status="MANUAL" ID="1911371">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="24" start="21" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3397" end="19" start="2" name="Distance"/>
+                    <label cBy="618" feID="3398" end="24" start="21" name="Direction"/>
+                    <label cBy="618" feID="3396" end="28" start="26" name="Landmark_event"/>
+                    <label cBy="605" feID="4832" end="92" start="54" name="Event"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="19" start="2" name="Ext"/>
+                    <label end="28" start="26" name="Obj"/>
+                    <label end="92" start="54" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="19" start="2" name="NP"/>
+                    <label end="28" start="26" name="NP"/>
+                    <label end="92" start="54" name="Sfin"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Prep"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="12-T-Wtoday-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="54" aPos="0" ID="1232167">
+            <text>The list is part of a national registration scheme which comes into effect from today .</text>
+            <annotationSet cDate="06/20/2003 10:02:47 PDT Fri" status="UNANN" ID="1911374">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="7" start="4" name="nn"/>
+                    <label end="10" start="9" name="VBZ"/>
+                    <label end="15" start="12" name="nn"/>
+                    <label end="18" start="17" name="in"/>
+                    <label end="20" start="20" name="dt"/>
+                    <label end="29" start="22" name="jj"/>
+                    <label end="42" start="31" name="nn"/>
+                    <label end="49" start="44" name="nn"/>
+                    <label end="55" start="51" name="wdt"/>
+                    <label end="61" start="57" name="VVZ"/>
+                    <label end="66" start="63" name="in"/>
+                    <label end="73" start="68" name="nn"/>
+                    <label end="78" start="75" name="in"/>
+                    <label end="84" start="80" name="nn"/>
+                    <label end="86" start="86" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/20/2003 10:02:47 PDT Fri" status="MANUAL" ID="1911375">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="78" start="75" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3398" end="78" start="75" name="Direction"/>
+                    <label cBy="618" feID="3396" end="84" start="80" name="Landmark_event"/>
+                    <label cBy="618" feID="3397" itype="DNI" name="Distance"/>
+                    <label cBy="605" feID="4832" end="73" start="51" name="Event"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="84" start="80" name="Obj"/>
+                    <label end="73" start="51" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="84" start="80" name="NP"/>
+                    <label end="73" start="51" name="Srel"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Prep"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="13-T-Wtomorrow-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="1120" aPos="0" ID="1232168">
+            <text>Tickets will go on sale from tomorrow for season ticket holders and Portsmouth replay ticket holders , and on general sale on Wednesday .</text>
+            <annotationSet cDate="06/20/2003 10:02:49 PDT Fri" status="UNANN" ID="1911376">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="0" name="nns"/>
+                    <label end="11" start="8" name="md"/>
+                    <label end="14" start="13" name="VV"/>
+                    <label end="17" start="16" name="in"/>
+                    <label end="22" start="19" name="nn"/>
+                    <label end="27" start="24" name="in"/>
+                    <label end="36" start="29" name="nn"/>
+                    <label end="40" start="38" name="in"/>
+                    <label end="47" start="42" name="nn"/>
+                    <label end="54" start="49" name="nn"/>
+                    <label end="62" start="56" name="nns"/>
+                    <label end="66" start="64" name="cc"/>
+                    <label end="77" start="68" name="NP"/>
+                    <label end="84" start="79" name="nn"/>
+                    <label end="91" start="86" name="nn"/>
+                    <label end="99" start="93" name="nns"/>
+                    <label end="101" start="101" name=","/>
+                    <label end="105" start="103" name="cc"/>
+                    <label end="108" start="107" name="in"/>
+                    <label end="116" start="110" name="jj"/>
+                    <label end="121" start="118" name="nn"/>
+                    <label end="124" start="123" name="in"/>
+                    <label end="134" start="126" name="NP"/>
+                    <label end="136" start="136" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/20/2003 10:02:49 PDT Fri" status="MANUAL" ID="1911377">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="27" start="24" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3398" end="27" start="24" name="Direction"/>
+                    <label cBy="618" feID="3396" end="36" start="29" name="Landmark_event"/>
+                    <label cBy="618" feID="3397" itype="DNI" name="Distance"/>
+                    <label cBy="303" feID="4832" end="22" start="0" name="Event"/>
+                    <label cBy="605" feID="4832" end="99" start="38" name="Event"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="36" start="29" name="Obj"/>
+                    <label end="22" start="0" name="Head"/>
+                    <label end="99" start="38" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="36" start="29" name="NP"/>
+                    <label end="22" start="0" name="Sfin"/>
+                    <label end="99" start="38" name="Sfin"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Prep"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="14-Wyear-T-(1)"/>
+    <subCorpus name="15-Whour-T-(1)"/>
+    <subCorpus name="16-Wmonth-T-(1)"/>
+    <subCorpus name="17-Wweek-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="304" aPos="0" ID="1232178">
+            <text>Pensioners face a rise of only one pound a week from next April , the smallest increase for years .</text>
+            <annotationSet cDate="06/20/2003 10:02:58 PDT Fri" status="UNANN" ID="1911396">
+                <layer rank="1" name="PENN">
+                    <label end="9" start="0" name="nns"/>
+                    <label end="14" start="11" name="VVP"/>
+                    <label end="16" start="16" name="dt"/>
+                    <label end="21" start="18" name="nn"/>
+                    <label end="24" start="23" name="in"/>
+                    <label end="29" start="26" name="rb"/>
+                    <label end="33" start="31" name="cd"/>
+                    <label end="39" start="35" name="nn"/>
+                    <label end="41" start="41" name="dt"/>
+                    <label end="46" start="43" name="nn"/>
+                    <label end="51" start="48" name="in"/>
+                    <label end="56" start="53" name="jj"/>
+                    <label end="62" start="58" name="NP"/>
+                    <label end="64" start="64" name=","/>
+                    <label end="68" start="66" name="dt"/>
+                    <label end="77" start="70" name="jjs"/>
+                    <label end="86" start="79" name="nn"/>
+                    <label end="90" start="88" name="in"/>
+                    <label end="96" start="92" name="nns"/>
+                    <label end="98" start="98" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/20/2003 10:02:58 PDT Fri" status="MANUAL" ID="1911397">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="51" start="48" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="303" feID="4832" end="46" start="0" name="Event"/>
+                    <label cBy="303" feID="3396" end="62" start="53" name="Landmark_event"/>
+                    <label cBy="303" feID="4832" end="96" start="66" name="Event"/>
+                    <label cBy="309" feID="3398" end="51" start="48" name="Direction"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="46" start="0" name="Head"/>
+                    <label end="62" start="53" name="Obj"/>
+                    <label end="96" start="66" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="46" start="0" name="Sfin"/>
+                    <label end="62" start="53" name="NP"/>
+                    <label end="96" start="66" name="Sfin"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Prep"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="18-NP-T-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

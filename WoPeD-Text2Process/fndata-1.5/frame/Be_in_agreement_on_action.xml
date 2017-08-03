@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="04/11/2005 11:56:11 PDT Mon" name="Be_in_agreement_on_action" ID="1380" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;Two (or more) people (the &lt;fen&gt;Parties&lt;/fen&gt;, also encodable as &lt;fen&gt;Party_1&lt;/fen&gt; and
+&lt;fen&gt;Party_2&lt;/fen&gt;) have an agreement. Both sides are construed as having
+a commitment to an &lt;fen&gt;Obligation&lt;/fen&gt;--the relationship is understood to be symmetrical or
+reciprocal. Instead of a specific mention of the &lt;fen&gt;Obligation&lt;/fen&gt;, a &lt;fen&gt;Topic&lt;/fen&gt; expression may be used to indicate the domain covered.
+&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="04/11/2005 11:56:11 PDT Mon" abbrev="par1" name="Party_1" ID="7742">
+        <definition>&lt;def-root&gt;The individual or individuals that form the more prominent (i.e. agentive) party of the agreement, as compared with &lt;fen&gt;Party_2&lt;/fen&gt;. That is, &lt;fen&gt;Party_1&lt;/fen&gt; is generally encoded as the External Argument of verbs, and peripheral FEs that do not make reference to the event itself generally make reference to &lt;fen&gt;Party_1&lt;/fen&gt;. Thus &lt;fen&gt;Manner&lt;/fen&gt; is construed to be that of &lt;fen&gt;Party_1&lt;/fen&gt;, not necessarily that of &lt;fen&gt;Party_2&lt;/fen&gt; or the group of &lt;fen&gt;Parties&lt;/fen&gt; as a whole.
+
+&lt;ex&gt;&lt;fex name="par1"&gt;AOL 's&lt;/fex&gt; &lt;t&gt;agreement&lt;/t&gt; with the ACLU will soon expire , and renogotiation is not a real possibility .&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+        <requiresFE name="Party_2" ID="7743"/>
+        <excludesFE name="Parties" ID="7748"/>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="04/11/2005 11:56:11 PDT Mon" abbrev="par2" name="Party_2" ID="7743">
+        <definition>&lt;def-root&gt;The semantically (and grammatically) less prominent participant (or group of participants) in the agreement. It is generally encoded within a prepositional phrase (e.g. headed by with).
+
+&lt;ex&gt;Mozilla Foundation now has a binding&lt;t&gt;agreement&lt;/t&gt; &lt;fex name="par2"&gt;with America Online&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+        <requiresFE name="Party_1" ID="7742"/>
+        <excludesFE name="Parties" ID="7748"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="04/11/2005 11:56:11 PDT Mon" abbrev="obl" name="Obligation" ID="7744">
+        <definition>&lt;def-root&gt;An expression of the commitment of the &lt;fen&gt;Parties&lt;/fen&gt; .
+
+&lt;ex&gt;The US and Russia have an &lt;t&gt;agreement&lt;/t&gt; &lt;fex name="obl"&gt;to share early warning data on missile launches&lt;/fex&gt;.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="04/11/2005 11:56:11 PDT Mon" abbrev="top" name="Topic" ID="7745">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Topic&lt;/fen&gt; is a description of the domain covered by the agreement.
+
+&lt;ex&gt;Some types of alloy steel have been covered in the expiring &lt;fex name="top"&gt;trade&lt;/fex&gt; &lt;t&gt;agreement&lt;/t&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="04/11/2005 11:56:11 PDT Mon" abbrev="med" name="Medium" ID="7746">
+        <definition>&lt;def-root&gt;As with other frames in the Communication domain, the &lt;fen&gt;Medium&lt;/fen&gt; of communication may be expressed. &lt;fen&gt;Medium&lt;/fen&gt; is the physical entity or channel used to record or negotiate the &lt;fen&gt;Obligation&lt;/fen&gt;. 
+
+
+&lt;ex&gt;The parties have a &lt;fex name="med"&gt;written&lt;/fex&gt; &lt;t&gt;agreement&lt;/t&gt; to arbitrate disputes arising in connection with the contract.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="04/11/2005 11:56:11 PDT Mon" abbrev="pars" name="Parties" ID="7748">
+        <definition>&lt;def-root&gt;The group of individuals portrayed as equally involved in having an agreement.
+
+&lt;ex&gt;&lt;fex name="pars"&gt;The US and Russia&lt;/fex&gt; have an &lt;t&gt;agreement&lt;/t&gt; to cooperate in destroying surplus portable anti-aircraft missiles.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="04/11/2005 11:56:11 PDT Mon" abbrev="pla" name="Place" ID="7749">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Place&lt;/fen&gt; where an agreement was made.
+
+&lt;ex&gt;The &lt;fex name="pla"&gt;Kyoto&lt;/fex&gt; &lt;t&gt;treaty&lt;/t&gt; has so far been relatively ineffectual.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="04/11/2005 11:56:11 PDT Mon" abbrev="tim" name="Time" ID="7750">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Time&lt;/fen&gt; when the agreement was made.
+
+&lt;ex&gt;The missile &lt;t&gt;agreement&lt;/t&gt; &lt;fex name="tim"&gt;of 1952&lt;/fex&gt; was still in force, however.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="12/20/2005 02:41:56 PST Tue" abbrev="mnr" name="Manner" ID="9801">
+        <definition>&lt;def-root&gt;Any description of the agreement not specified by the other FEs, including particularly salient characteristics of the parties.&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="7CCD73" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="361" cDate="08/14/2006 10:27:27 PDT Mon" abbrev="" name="Circumstances" ID="10464">
+        <definition>&lt;def-root&gt;Circumstances describe the state of the world (at a particular time and place) which is specifically independent of the event itself and any of its participants. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="361" cDate="08/14/2006 10:29:36 PDT Mon" abbrev="" name="Degree" ID="10465">
+        <definition>&lt;def-root&gt;This frame element selects some gradable attribute and modifies the expected value for it.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="361" cDate="08/14/2006 11:30:10 PDT Mon" abbrev="" name="Duration" ID="10466">
+        <definition>&lt;def-root&gt;Duration denotes the length of time from the beginning of a continuous situation (the one denoted by the target) to its end. In many cases, the continuous situation is a dynamic action which is ongoing, while in others it is simply an undifferentiated state.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="12/01/2006 05:46:14 PST Fri" abbrev="" name="Descriptor" ID="10900">
+        <definition>&lt;def-root&gt;This FE describes a characteristic or description of the agreement_on_action. &lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Having_commercial_agreement</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Make_agreement_on_action</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="N" name="treaty.n" ID="11815" lemmaID="41139" cBy="605" cDate="04/11/2005 06:13:08 PDT Mon">
+        <definition>FN: A formal agreement between two or more nations governed by international law</definition>
+        <sentenceCount annotated="39" total="307"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="treaty"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="agreement.n" ID="12454" lemmaID="50173" cBy="618" cDate="07/15/2005 12:45:31 PDT Fri">
+        <definition>COD:  negotiated and typically legally binding arrangement.</definition>
+        <sentenceCount annotated="35" total="341"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="agreement"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="deal.n" ID="12504" lemmaID="9680" cBy="605" cDate="07/18/2005 11:26:23 PDT Mon">
+        <definition>COD: an agreement entered into by two or more parties for their mutual benefit.</definition>
+        <sentenceCount annotated="29" total="260"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="deal"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="accord.n" ID="13779" lemmaID="294" cBy="361" cDate="02/23/2007 02:50:38 PST Fri">
+        <definition>COD: an official agreement or treaty. 
+
+
+</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="accord"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="convention.n" ID="13896" lemmaID="8182" cBy="361" cDate="02/28/2007 02:44:56 PST Wed">
+        <definition>COD: an agreement between states, especially one less formal than a treaty.  </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="convention"/>
+    </lexUnit>
+</frame>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="BTDT" incorporatedFE="Unit" POS="N" name="Tuesday.n" ID="3995" frame="Calendric_unit" frameID="229" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="Pickett" ID="2">
+            <document description="cjf001" ID="6"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="cou" name="Count"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="Name" name="Name"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Core" abbrev="RelT" name="Relative_time"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Extra-Thematic" abbrev="sal_eve" name="Salient_event"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="uni" name="Unit"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Core" abbrev="Whole" name="Whole"/>
+        </frame>
+    </header>
+    <definition>COD: the day of the week before Wednesday and following Monday; Patterns like: Calendric_unit.Wednesday.n</definition>
+    <lexeme POS="N" name="Tuesday"/>
+    <valences>
+        <governor type="Gov" lemma="set">
+            <annoSet ID="1952959"/>
+        </governor>
+        <FERealization total="1">
+            <FE name="Relative_time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="A" FE="Relative_time"/>
+                <annoSet ID="1952959"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Unit"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Unit"/>
+                <annoSet ID="1952959"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Relative_time"/>
+            <FE name="Unit"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="A" FE="Relative_time"/>
+                <valenceUnit GF="" PT="DEN" FE="Unit"/>
+                <annoSet ID="1952959"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="manually-added">
+        <sentence corpID="2" docID="6" sentNo="1" paragNo="3" aPos="0" ID="239740">
+            <text>The magistrate set a preliminary hearing for next Tuesday and ordered Pickett held without bond .</text>
+            <annotationSet cDate="01/06/2003 08:08:39 PST Mon" status="UNANN" ID="125959">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="13" start="4" name="NN1"/>
+                    <label end="17" start="15" name="VVD"/>
+                    <label end="19" start="19" name="AT0"/>
+                    <label end="31" start="21" name="AJ0"/>
+                    <label end="39" start="33" name="NN1"/>
+                    <label end="43" start="41" name="PRP"/>
+                    <label end="48" start="45" name="ORD"/>
+                    <label end="56" start="50" name="NP0"/>
+                    <label end="60" start="58" name="CJC"/>
+                    <label end="68" start="62" name="VVD"/>
+                    <label end="76" start="70" name="NP0"/>
+                    <label end="81" start="78" name="VVD"/>
+                    <label end="89" start="83" name="PRP"/>
+                    <label end="94" start="91" name="NN1"/>
+                    <label end="96" start="96" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/22/2004 04:44:31 PST Thu" status="MANUAL" ID="1952959">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="56" start="50" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="1993" end="48" start="45" name="Relative_time"/>
+                    <label cBy="589" feID="10331" end="56" start="50" name="Unit"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="48" start="45" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="48" start="45" name="A"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="56" start="41" name="X"/>
+                    <label end="17" start="15" name="Gov"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

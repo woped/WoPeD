@@ -1,0 +1,643 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="ancestor.n" ID="2868" frame="Kinship" frameID="104" totalAnnotated="11" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="" name="Alter"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Extra-Thematic" abbrev="des" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="" name="Ego"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Core" abbrev="" name="Relatives"/>
+        </frame>
+    </header>
+    <definition>COD: a person, typically one more remote than a grandparent, from whom one is descended</definition>
+    <lexeme POS="N" name="ancestor"/>
+    <valences>
+        <governor type="Gov" lemma="follow">
+            <annoSet ID="613562"/>
+        </governor>
+        <FERealization total="11">
+            <FE name="Alter"/>
+            <pattern total="10">
+                <valenceUnit GF="" PT="DEN" FE="Alter"/>
+                <annoSet ID="613394"/>
+                <annoSet ID="613400"/>
+                <annoSet ID="613420"/>
+                <annoSet ID="613436"/>
+                <annoSet ID="613454"/>
+                <annoSet ID="613456"/>
+                <annoSet ID="613558"/>
+                <annoSet ID="613562"/>
+                <annoSet ID="613656"/>
+                <annoSet ID="613682"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="NP" FE="Alter"/>
+                <annoSet ID="613426"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="11">
+            <FE name="Ego"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Ego"/>
+                <annoSet ID="613400"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Ego"/>
+                <annoSet ID="613394"/>
+                <annoSet ID="613682"/>
+            </pattern>
+            <pattern total="8">
+                <valenceUnit GF="Gen" PT="Poss" FE="Ego"/>
+                <annoSet ID="613420"/>
+                <annoSet ID="613426"/>
+                <annoSet ID="613436"/>
+                <annoSet ID="613454"/>
+                <annoSet ID="613456"/>
+                <annoSet ID="613558"/>
+                <annoSet ID="613562"/>
+                <annoSet ID="613656"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="11">
+            <FE name="Alter"/>
+            <FE name="Ego"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Alter"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Ego"/>
+                <annoSet ID="613400"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="" PT="DEN" FE="Alter"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Ego"/>
+                <annoSet ID="613394"/>
+                <annoSet ID="613682"/>
+            </pattern>
+            <pattern total="7">
+                <valenceUnit GF="" PT="DEN" FE="Alter"/>
+                <valenceUnit GF="Gen" PT="Poss" FE="Ego"/>
+                <annoSet ID="613420"/>
+                <annoSet ID="613436"/>
+                <annoSet ID="613454"/>
+                <annoSet ID="613456"/>
+                <annoSet ID="613558"/>
+                <annoSet ID="613562"/>
+                <annoSet ID="613656"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="NP" FE="Alter"/>
+                <valenceUnit GF="Gen" PT="Poss" FE="Ego"/>
+                <annoSet ID="613426"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-250-ppof">
+        <sentence sentNo="0" aPos="22321433" ID="503802">
+            <text>Come and meet Lawrence Washington , the builder of Sulgrave Manor , direct ancestor of George . </text>
+            <annotationSet cDate="01/07/2003 05:53:56 PST Tue" status="UNANN" ID="613393">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="VVB"/>
+                    <label end="7" start="5" name="CJC"/>
+                    <label end="12" start="9" name="VVB"/>
+                    <label end="21" start="14" name="NP0"/>
+                    <label end="32" start="23" name="NP0"/>
+                    <label end="34" start="34" name="PUN"/>
+                    <label end="38" start="36" name="AT0"/>
+                    <label end="46" start="40" name="NN1"/>
+                    <label end="49" start="48" name="PRF"/>
+                    <label end="58" start="51" name="NP0"/>
+                    <label end="64" start="60" name="NP0"/>
+                    <label end="66" start="66" name="PUN"/>
+                    <label end="73" start="68" name="AJ0"/>
+                    <label end="82" start="75" name="NN1"/>
+                    <label end="85" start="84" name="PRF"/>
+                    <label end="92" start="87" name="NP0"/>
+                    <label end="94" start="94" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:53:56 PST Tue" status="MANUAL" ID="613394">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="516" end="82" start="75" name="Alter"/>
+                    <label cBy="669" feID="517" end="92" start="84" name="Ego"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="92" start="84" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="92" start="84" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="82" start="75" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="31242973" ID="503805">
+            <text>An ancestor of Charles-Henri , called upon to execute Angelique Tiquet in 1699 for planning the murder of her husband , failed VVD-VVN abysmally . </text>
+            <annotationSet cDate="01/07/2003 05:53:57 PST Tue" status="UNANN" ID="613399">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="AT0"/>
+                    <label end="10" start="3" name="NN1"/>
+                    <label end="13" start="12" name="PRF"/>
+                    <label end="27" start="15" name="AJ0-NN1"/>
+                    <label end="29" start="29" name="PUN"/>
+                    <label end="36" start="31" name="VVN"/>
+                    <label end="41" start="38" name="PRP"/>
+                    <label end="44" start="43" name="TO0"/>
+                    <label end="52" start="46" name="VVI"/>
+                    <label end="62" start="54" name="AJ0"/>
+                    <label end="69" start="64" name="NN1"/>
+                    <label end="72" start="71" name="PRP"/>
+                    <label end="77" start="74" name="CRD"/>
+                    <label end="81" start="79" name="PRP"/>
+                    <label end="90" start="83" name="VVG"/>
+                    <label end="94" start="92" name="AT0"/>
+                    <label end="101" start="96" name="NN1"/>
+                    <label end="104" start="103" name="PRF"/>
+                    <label end="108" start="106" name="DPS"/>
+                    <label end="116" start="110" name="NN1"/>
+                    <label end="118" start="118" name="PUN"/>
+                    <label end="125" start="120" name="__UNDEF__"/>
+                    <label end="133" start="127" name="VVD-VVN"/>
+                    <label end="143" start="135" name="AV0"/>
+                    <label end="145" start="145" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:53:57 PST Tue" status="MANUAL" ID="613400">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="517" end="27" start="12" name="Ego"/>
+                    <label cBy="669" feID="516" end="10" start="3" name="Alter"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="27" start="12" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="27" start="12" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="10" start="3" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-280-poss">
+        <sentence sentNo="0" aPos="17755993" ID="503815">
+            <text>There were times when he spoke as though he was living in the days of his ancestor , Richard ; regarding himself as a f eudal overlord with the power of life and death over his vassals . </text>
+            <annotationSet cDate="01/07/2003 05:53:58 PST Tue" status="UNANN" ID="613419">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="EX0"/>
+                    <label end="9" start="6" name="VBD"/>
+                    <label end="15" start="11" name="NN2"/>
+                    <label end="20" start="17" name="AVQ"/>
+                    <label end="23" start="22" name="PNP"/>
+                    <label end="29" start="25" name="VVD"/>
+                    <label end="32" start="31" name="CJS"/>
+                    <label end="39" start="34" name="CJS"/>
+                    <label end="42" start="41" name="PNP"/>
+                    <label end="46" start="44" name="VBD"/>
+                    <label end="53" start="48" name="VVG"/>
+                    <label end="56" start="55" name="PRP"/>
+                    <label end="60" start="58" name="AT0"/>
+                    <label end="65" start="62" name="NN2"/>
+                    <label end="68" start="67" name="PRF"/>
+                    <label end="72" start="70" name="DPS"/>
+                    <label end="81" start="74" name="NN1"/>
+                    <label end="83" start="83" name="PUN"/>
+                    <label end="91" start="85" name="NP0"/>
+                    <label end="93" start="93" name="PUN"/>
+                    <label end="103" start="95" name="PRP"/>
+                    <label end="111" start="105" name="PNX"/>
+                    <label end="114" start="113" name="PRP"/>
+                    <label end="116" start="116" name="AT0"/>
+                    <label end="124" start="120" name="AJ0"/>
+                    <label end="133" start="126" name="NN1"/>
+                    <label end="138" start="135" name="PRP"/>
+                    <label end="142" start="140" name="AT0"/>
+                    <label end="148" start="144" name="NN1"/>
+                    <label end="151" start="150" name="PRF"/>
+                    <label end="156" start="153" name="NN1"/>
+                    <label end="160" start="158" name="CJC"/>
+                    <label end="166" start="162" name="NN1"/>
+                    <label end="171" start="168" name="PRP"/>
+                    <label end="175" start="173" name="DPS"/>
+                    <label end="183" start="177" name="NN2"/>
+                    <label end="185" start="185" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:53:58 PST Tue" status="MANUAL" ID="613420">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="517" end="72" start="70" name="Ego"/>
+                    <label cBy="669" feID="516" end="81" start="74" name="Alter"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="72" start="70" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="72" start="70" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="81" start="74" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="30766765" ID="503818">
+            <text>After all James was of the Stewart dynasty , so called because his ancestor Robert had been High Steward of Scotland , and had succeeded to the throne on the death of David II in 1371 . </text>
+            <annotationSet cDate="01/07/2003 05:53:58 PST Tue" status="UNANN" ID="613425">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="PRP"/>
+                    <label end="8" start="6" name="DT0"/>
+                    <label end="14" start="10" name="NP0"/>
+                    <label end="18" start="16" name="VBD"/>
+                    <label end="21" start="20" name="PRF"/>
+                    <label end="25" start="23" name="AT0"/>
+                    <label end="33" start="27" name="NP0"/>
+                    <label end="41" start="35" name="NN0"/>
+                    <label end="43" start="43" name="PUN"/>
+                    <label end="46" start="45" name="AJ0"/>
+                    <label end="53" start="48" name="AJ0"/>
+                    <label end="61" start="55" name="CJS"/>
+                    <label end="65" start="63" name="DPS"/>
+                    <label end="74" start="67" name="NN1"/>
+                    <label end="81" start="76" name="NP0"/>
+                    <label end="85" start="83" name="VHD"/>
+                    <label end="90" start="87" name="VBN"/>
+                    <label end="95" start="92" name="AJ0"/>
+                    <label end="103" start="97" name="NN1"/>
+                    <label end="106" start="105" name="PRF"/>
+                    <label end="115" start="108" name="NP0"/>
+                    <label end="117" start="117" name="PUN"/>
+                    <label end="121" start="119" name="CJC"/>
+                    <label end="125" start="123" name="VHD"/>
+                    <label end="135" start="127" name="VVN"/>
+                    <label end="138" start="137" name="PRP"/>
+                    <label end="142" start="140" name="AT0"/>
+                    <label end="149" start="144" name="NN1"/>
+                    <label end="152" start="151" name="PRP"/>
+                    <label end="156" start="154" name="AT0"/>
+                    <label end="162" start="158" name="NN1"/>
+                    <label end="165" start="164" name="PRF"/>
+                    <label end="171" start="167" name="NP0"/>
+                    <label end="174" start="173" name="CRD"/>
+                    <label end="177" start="176" name="PRP"/>
+                    <label end="182" start="179" name="CRD"/>
+                    <label end="184" start="184" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:53:58 PST Tue" status="MANUAL" ID="613426">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="517" end="65" start="63" name="Ego"/>
+                    <label cBy="669" feID="516" end="81" start="76" name="Alter"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="65" start="63" name="Gen"/>
+                    <label end="81" start="76" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="65" start="63" name="Poss"/>
+                    <label end="81" start="76" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="74" start="67" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="49213455" ID="503823">
+            <text>The possibility must have made Eleanor 's ancestors turn in their graves . </text>
+            <annotationSet cDate="01/07/2003 05:53:59 PST Tue" status="UNANN" ID="613435">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="14" start="4" name="NN1"/>
+                    <label end="19" start="16" name="VM0"/>
+                    <label end="24" start="21" name="VHI"/>
+                    <label end="29" start="26" name="VVN"/>
+                    <label end="37" start="31" name="NP0"/>
+                    <label end="40" start="39" name="POS"/>
+                    <label end="50" start="42" name="NN2"/>
+                    <label end="55" start="52" name="VVB"/>
+                    <label end="58" start="57" name="PRP"/>
+                    <label end="64" start="60" name="DPS"/>
+                    <label end="71" start="66" name="NN2"/>
+                    <label end="73" start="73" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:53:59 PST Tue" status="MANUAL" ID="613436">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="517" end="40" start="31" name="Ego"/>
+                    <label cBy="669" feID="516" end="50" start="42" name="Alter"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="40" start="31" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="40" start="31" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="50" start="42" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="97204800" ID="503832">
+            <text>They were guarding the wisdom of their ancestors , the Ark of the Covenant . </text>
+            <annotationSet cDate="01/07/2003 05:54:00 PST Tue" status="UNANN" ID="613453">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="PNP"/>
+                    <label end="8" start="5" name="VBD"/>
+                    <label end="17" start="10" name="VVG"/>
+                    <label end="21" start="19" name="AT0"/>
+                    <label end="28" start="23" name="NN1"/>
+                    <label end="31" start="30" name="PRF"/>
+                    <label end="37" start="33" name="DPS"/>
+                    <label end="47" start="39" name="NN2"/>
+                    <label end="49" start="49" name="PUN"/>
+                    <label end="53" start="51" name="AT0"/>
+                    <label end="57" start="55" name="NN1"/>
+                    <label end="60" start="59" name="PRF"/>
+                    <label end="64" start="62" name="AT0"/>
+                    <label end="73" start="66" name="NN1"/>
+                    <label end="75" start="75" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:54:00 PST Tue" status="MANUAL" ID="613454">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="517" end="37" start="33" name="Ego"/>
+                    <label cBy="669" feID="516" end="47" start="39" name="Alter"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="37" start="33" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="37" start="33" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="47" start="39" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="107771410" ID="503833">
+            <text>John Coffin 's historical researches into his ancestors had caught Jordan 's attention . </text>
+            <annotationSet cDate="01/07/2003 05:54:00 PST Tue" status="UNANN" ID="613455">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="NP0"/>
+                    <label end="10" start="5" name="NP0"/>
+                    <label end="13" start="12" name="POS"/>
+                    <label end="24" start="15" name="AJ0"/>
+                    <label end="35" start="26" name="NN2"/>
+                    <label end="40" start="37" name="PRP"/>
+                    <label end="44" start="42" name="DPS"/>
+                    <label end="54" start="46" name="NN2"/>
+                    <label end="58" start="56" name="VHD"/>
+                    <label end="65" start="60" name="VVN"/>
+                    <label end="72" start="67" name="NP0"/>
+                    <label end="75" start="74" name="POS"/>
+                    <label end="85" start="77" name="NN1"/>
+                    <label end="87" start="87" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:54:00 PST Tue" status="MANUAL" ID="613456">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="517" end="44" start="42" name="Ego"/>
+                    <label cBy="669" feID="516" end="54" start="46" name="Alter"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="44" start="42" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="44" start="42" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="54" start="46" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-290-posscmpd"/>
+    <subCorpus name="N-300-cmpd"/>
+    <subCorpus name="N-340-ppother"/>
+    <subCorpus name="N-370-pother">
+        <sentence sentNo="0" aPos="68889779" ID="503884">
+            <text>At himself for the doubts that ate at him , and at his ancestor for giving him nothing more than a string of empty plat itudes . </text>
+            <annotationSet cDate="01/07/2003 05:54:09 PST Tue" status="UNANN" ID="613557">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PRP"/>
+                    <label end="9" start="3" name="PNX"/>
+                    <label end="13" start="11" name="PRP"/>
+                    <label end="17" start="15" name="AT0"/>
+                    <label end="24" start="19" name="NN2"/>
+                    <label end="29" start="26" name="CJT"/>
+                    <label end="33" start="31" name="VVD"/>
+                    <label end="36" start="35" name="PRP"/>
+                    <label end="40" start="38" name="PNP"/>
+                    <label end="42" start="42" name="PUN"/>
+                    <label end="46" start="44" name="CJC"/>
+                    <label end="49" start="48" name="PRP"/>
+                    <label end="53" start="51" name="DPS"/>
+                    <label end="62" start="55" name="NN1"/>
+                    <label end="66" start="64" name="PRP"/>
+                    <label end="73" start="68" name="VVG"/>
+                    <label end="77" start="75" name="PNP"/>
+                    <label end="85" start="79" name="PNI"/>
+                    <label end="90" start="87" name="AV0"/>
+                    <label end="95" start="92" name="CJS"/>
+                    <label end="97" start="97" name="AT0"/>
+                    <label end="104" start="99" name="NN1"/>
+                    <label end="107" start="106" name="PRF"/>
+                    <label end="113" start="109" name="AJ0"/>
+                    <label end="125" start="120" name="NN2"/>
+                    <label end="127" start="127" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:54:09 PST Tue" status="MANUAL" ID="613558">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="517" end="53" start="51" name="Ego"/>
+                    <label cBy="669" feID="516" end="62" start="55" name="Alter"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="53" start="51" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="53" start="51" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="62" start="55" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="104929433" ID="503886">
+            <text>The youngster was destined to follow many of his ancestors by dying from the family curse hydrocephalus water on the brain . UN </text>
+            <annotationSet cDate="01/07/2003 05:54:09 PST Tue" status="UNANN" ID="613561">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="12" start="4" name="NN1"/>
+                    <label end="16" start="14" name="VBD"/>
+                    <label end="25" start="18" name="VVN"/>
+                    <label end="28" start="27" name="TO0"/>
+                    <label end="35" start="30" name="VVI"/>
+                    <label end="40" start="37" name="DT0"/>
+                    <label end="43" start="42" name="PRF"/>
+                    <label end="47" start="45" name="DPS"/>
+                    <label end="57" start="49" name="NN2"/>
+                    <label end="60" start="59" name="PRP"/>
+                    <label end="66" start="62" name="VVG"/>
+                    <label end="71" start="68" name="PRP"/>
+                    <label end="75" start="73" name="AT0"/>
+                    <label end="82" start="77" name="NN0"/>
+                    <label end="88" start="84" name="NN1-VVB"/>
+                    <label end="102" start="90" name="NN1"/>
+                    <label end="108" start="104" name="NN1"/>
+                    <label end="111" start="110" name="PRP"/>
+                    <label end="115" start="113" name="AT0"/>
+                    <label end="121" start="117" name="NN1"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:54:09 PST Tue" status="MANUAL" ID="613562">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="517" end="47" start="45" name="Ego"/>
+                    <label cBy="669" feID="516" end="57" start="49" name="Alter"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="47" start="45" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="47" start="45" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="57" start="49" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="35" start="30" name="Gov"/>
+                    <label end="57" start="45" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-380-other"/>
+    <subCorpus name="N-429-lgov-be"/>
+    <subCorpus name="N-429-lgov-have">
+        <sentence sentNo="0" aPos="14307415" ID="503933">
+            <text>The issues relating to the power she has now and her ancestors have had do not bother her . </text>
+            <annotationSet cDate="01/07/2003 05:54:15 PST Tue" status="UNANN" ID="613655">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="9" start="4" name="NN2"/>
+                    <label end="18" start="11" name="VVG"/>
+                    <label end="21" start="20" name="PRP"/>
+                    <label end="25" start="23" name="AT0"/>
+                    <label end="31" start="27" name="NN1"/>
+                    <label end="35" start="33" name="PNP"/>
+                    <label end="39" start="37" name="VHZ"/>
+                    <label end="43" start="41" name="AV0"/>
+                    <label end="47" start="45" name="CJC"/>
+                    <label end="51" start="49" name="DPS"/>
+                    <label end="61" start="53" name="NN2"/>
+                    <label end="66" start="63" name="VHB"/>
+                    <label end="70" start="68" name="VHN"/>
+                    <label end="73" start="72" name="VDB"/>
+                    <label end="77" start="75" name="XX0"/>
+                    <label end="84" start="79" name="VVI"/>
+                    <label end="88" start="86" name="PNP"/>
+                    <label end="90" start="90" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:54:15 PST Tue" status="MANUAL" ID="613656">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="517" end="51" start="49" name="Ego"/>
+                    <label cBy="669" feID="516" end="61" start="53" name="Alter"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="51" start="49" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="51" start="49" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="61" start="53" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="105637514" ID="503946">
+            <text>Had any ancestor of mine been minded to donate works of art to a national institution , he would have chosen a museum or JC art gallery and assuredly not a university . </text>
+            <annotationSet cDate="01/07/2003 05:54:17 PST Tue" status="UNANN" ID="613681">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="VHD"/>
+                    <label end="6" start="4" name="DT0"/>
+                    <label end="15" start="8" name="NN1"/>
+                    <label end="18" start="17" name="PRF"/>
+                    <label end="23" start="20" name="PNP"/>
+                    <label end="28" start="25" name="VBN"/>
+                    <label end="35" start="30" name="VVN"/>
+                    <label end="38" start="37" name="TO0"/>
+                    <label end="45" start="40" name="VVI"/>
+                    <label end="51" start="47" name="NN0"/>
+                    <label end="54" start="53" name="PRF"/>
+                    <label end="58" start="56" name="NN1"/>
+                    <label end="61" start="60" name="PRP"/>
+                    <label end="63" start="63" name="AT0"/>
+                    <label end="72" start="65" name="AJ0"/>
+                    <label end="84" start="74" name="NN1"/>
+                    <label end="86" start="86" name="PUN"/>
+                    <label end="89" start="88" name="PNP"/>
+                    <label end="95" start="91" name="VM0"/>
+                    <label end="100" start="97" name="VHI"/>
+                    <label end="107" start="102" name="VVN"/>
+                    <label end="109" start="109" name="AT0"/>
+                    <label end="116" start="111" name="NN1"/>
+                    <label end="119" start="118" name="sent"/>
+                    <label end="126" start="124" name="NN1"/>
+                    <label end="134" start="128" name="NN1"/>
+                    <label end="138" start="136" name="CJC"/>
+                    <label end="148" start="140" name="AV0"/>
+                    <label end="152" start="150" name="XX0"/>
+                    <label end="154" start="154" name="AT0"/>
+                    <label end="165" start="156" name="NN1"/>
+                    <label end="167" start="167" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:54:17 PST Tue" status="MANUAL" ID="613682">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="516" end="15" start="8" name="Alter"/>
+                    <label cBy="669" feID="517" end="23" start="17" name="Ego"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="23" start="17" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="23" start="17" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="15" start="8" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

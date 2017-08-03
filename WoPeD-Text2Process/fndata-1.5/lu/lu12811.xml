@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" incorporatedFE="Vehicle" POS="V" name="entrain.v" ID="12811" frame="Board_vehicle" frameID="1633" totalAnnotated="5" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="000000" bgColor="FFFF00" type="Extra-Thematic" abbrev="" name="Circumstances"/>
+            <FE fgColor="000000" bgColor="d0d0d0" type="Extra-Thematic" abbrev="CT" name="Cotheme"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Extra-Thematic" abbrev="dep" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Extra-Thematic" abbrev="dfs" name="Duration_of_final_state"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="" name="Path"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="pla" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="Pur" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Peripheral" abbrev="" name="Source"/>
+            <FE fgColor="000000" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="tra" name="Traveller"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core" abbrev="veh" name="Vehicle"/>
+        </frame>
+    </header>
+    <definition>FN: board a train.</definition>
+    <lexeme POS="V" name="entrain"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Place"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Place"/>
+                <annoSet ID="2186718"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="NP" FE="Time"/>
+                <annoSet ID="2186726"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Traveller"/>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="NP" FE="Traveller"/>
+                <annoSet ID="2186716"/>
+                <annoSet ID="2186718"/>
+                <annoSet ID="2186726"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="" PT="CNI" FE="Traveller"/>
+                <annoSet ID="2186704"/>
+                <annoSet ID="2186714"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Vehicle"/>
+            <pattern total="4">
+                <valenceUnit GF="" PT="INI" FE="Vehicle"/>
+                <annoSet ID="2186704"/>
+                <annoSet ID="2186714"/>
+                <annoSet ID="2186716"/>
+                <annoSet ID="2186718"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INC" FE="Vehicle"/>
+                <annoSet ID="2186726"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Place"/>
+            <FE name="Traveller"/>
+            <FE name="Vehicle"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Place"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Traveller"/>
+                <valenceUnit GF="" PT="INI" FE="Vehicle"/>
+                <annoSet ID="2186718"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Time"/>
+            <FE name="Traveller"/>
+            <FE name="Vehicle"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="NP" FE="Time"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Traveller"/>
+                <valenceUnit GF="" PT="INC" FE="Vehicle"/>
+                <annoSet ID="2186726"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="3">
+            <FE name="Traveller"/>
+            <FE name="Vehicle"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="CNI" FE="Traveller"/>
+                <valenceUnit GF="" PT="INI" FE="Vehicle"/>
+                <annoSet ID="2186704"/>
+                <annoSet ID="2186714"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Traveller"/>
+                <valenceUnit GF="" PT="INI" FE="Vehicle"/>
+                <annoSet ID="2186716"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="282" aPos="21334257" ID="1369368">
+            <text>It seems that those external changes are somehow detected by the pineal gland , for experimental animals deprived of their pineal are slower to entrain , but the mechanism is not known .</text>
+            <annotationSet cDate="06/01/2006 11:44:55 PDT Thu" status="UNANN" ID="2186703">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="7" start="3" name="VVZ"/>
+                    <label end="12" start="9" name="in"/>
+                    <label end="18" start="14" name="dt"/>
+                    <label end="27" start="20" name="jj"/>
+                    <label end="35" start="29" name="nns"/>
+                    <label end="39" start="37" name="vbp"/>
+                    <label end="47" start="41" name="rb"/>
+                    <label end="56" start="49" name="VVN"/>
+                    <label end="59" start="58" name="in"/>
+                    <label end="63" start="61" name="dt"/>
+                    <label end="70" start="65" name="jj"/>
+                    <label end="76" start="72" name="nn"/>
+                    <label end="78" start="78" name=","/>
+                    <label end="82" start="80" name="in"/>
+                    <label end="95" start="84" name="jj"/>
+                    <label end="103" start="97" name="nns"/>
+                    <label end="112" start="105" name="VVN"/>
+                    <label end="115" start="114" name="in"/>
+                    <label end="121" start="117" name="PP$"/>
+                    <label end="128" start="123" name="nn"/>
+                    <label end="132" start="130" name="vbp"/>
+                    <label end="139" start="134" name="jjr"/>
+                    <label end="142" start="141" name="to"/>
+                    <label end="150" start="144" name="VV"/>
+                    <label end="152" start="152" name=","/>
+                    <label end="156" start="154" name="cc"/>
+                    <label end="160" start="158" name="dt"/>
+                    <label end="170" start="162" name="nn"/>
+                    <label end="173" start="172" name="VBZ"/>
+                    <label end="177" start="175" name="rb"/>
+                    <label end="183" start="179" name="VVN"/>
+                    <label end="185" start="185" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="06/01/2006 11:44:56 PDT Thu" status="MANUAL" ID="2186704">
+                <layer rank="1" name="Target">
+                    <label cBy="303" end="150" start="144" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="976" feID="9109" itype="CNI" name="Traveller"/>
+                    <label cBy="976" feID="9110" itype="INI" name="Vehicle"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="407" aPos="19742607" ID="1369373">
+            <text>Entraining again on the 9th the battalion journeyed to Swindon , for a week 's hard training .</text>
+            <annotationSet cDate="06/01/2006 11:44:58 PDT Thu" status="UNANN" ID="2186713">
+                <layer rank="1" name="PENN">
+                    <label end="9" start="0" name="VVG"/>
+                    <label end="15" start="11" name="rb"/>
+                    <label end="18" start="17" name="in"/>
+                    <label end="22" start="20" name="dt"/>
+                    <label end="26" start="24" name="jj"/>
+                    <label end="30" start="28" name="dt"/>
+                    <label end="40" start="32" name="nn"/>
+                    <label end="50" start="42" name="VVD"/>
+                    <label end="53" start="52" name="to"/>
+                    <label end="61" start="55" name="NP"/>
+                    <label end="63" start="63" name=","/>
+                    <label end="67" start="65" name="in"/>
+                    <label end="69" start="69" name="dt"/>
+                    <label end="74" start="71" name="nn"/>
+                    <label end="77" start="76" name="POS"/>
+                    <label end="82" start="79" name="jj"/>
+                    <label end="91" start="84" name="nn"/>
+                    <label end="93" start="93" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="06/01/2006 11:44:58 PDT Thu" status="MANUAL" ID="2186714">
+                <layer rank="1" name="Target">
+                    <label cBy="303" end="9" start="0" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="976" feID="9109" itype="CNI" name="Traveller"/>
+                    <label cBy="976" feID="9110" itype="INI" name="Vehicle"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="743" aPos="28523116" ID="1369374">
+            <text>Arrived in Bombay they entrain and travel up the far-flung Raj to be snapped up by sex-starved subalterns , District Commissioners and political Officers .</text>
+            <annotationSet cDate="06/01/2006 11:44:58 PDT Thu" status="UNANN" ID="2186715">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="0" name="VVN"/>
+                    <label end="9" start="8" name="in"/>
+                    <label end="16" start="11" name="NP"/>
+                    <label end="21" start="18" name="PP"/>
+                    <label end="29" start="23" name="VV"/>
+                    <label end="33" start="31" name="cc"/>
+                    <label end="40" start="35" name="VV"/>
+                    <label end="43" start="42" name="rp"/>
+                    <label end="47" start="45" name="dt"/>
+                    <label end="57" start="49" name="jj"/>
+                    <label end="61" start="59" name="NP"/>
+                    <label end="64" start="63" name="to"/>
+                    <label end="67" start="66" name="vb"/>
+                    <label end="75" start="69" name="VVN"/>
+                    <label end="78" start="77" name="rp"/>
+                    <label end="81" start="80" name="in"/>
+                    <label end="93" start="83" name="jj"/>
+                    <label end="104" start="95" name="nns"/>
+                    <label end="106" start="106" name=","/>
+                    <label end="115" start="108" name="NP"/>
+                    <label end="129" start="117" name="nns"/>
+                    <label end="133" start="131" name="cc"/>
+                    <label end="143" start="135" name="jj"/>
+                    <label end="152" start="145" name="nns"/>
+                    <label end="154" start="154" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="06/01/2006 11:44:58 PDT Thu" status="MANUAL" ID="2186716">
+                <layer rank="1" name="Target">
+                    <label cBy="303" end="29" start="23" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="976" feID="9109" end="21" start="18" name="Traveller"/>
+                    <label cBy="976" feID="9110" itype="INI" name="Vehicle"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="21" start="18" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="21" start="18" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="238" aPos="14328361" ID="1369375">
+            <text>For Paul Theroux seven decades later one of the great mysteries of Japanese train travel was the manner in which Japanese passengers could safely disembark and entrain at stations where trains stopped merely for seconds .</text>
+            <annotationSet cDate="06/01/2006 11:44:58 PDT Thu" status="UNANN" ID="2186717">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="in"/>
+                    <label end="7" start="4" name="NP"/>
+                    <label end="15" start="9" name="NP"/>
+                    <label end="21" start="17" name="cd"/>
+                    <label end="29" start="23" name="nns"/>
+                    <label end="35" start="31" name="rb"/>
+                    <label end="39" start="37" name="cd"/>
+                    <label end="42" start="41" name="in"/>
+                    <label end="46" start="44" name="dt"/>
+                    <label end="52" start="48" name="jj"/>
+                    <label end="62" start="54" name="nns"/>
+                    <label end="65" start="64" name="in"/>
+                    <label end="74" start="67" name="jj"/>
+                    <label end="80" start="76" name="nn"/>
+                    <label end="87" start="82" name="nn"/>
+                    <label end="91" start="89" name="VBD"/>
+                    <label end="95" start="93" name="dt"/>
+                    <label end="102" start="97" name="nn"/>
+                    <label end="105" start="104" name="in"/>
+                    <label end="111" start="107" name="wdt"/>
+                    <label end="120" start="113" name="jj"/>
+                    <label end="131" start="122" name="nns"/>
+                    <label end="137" start="133" name="md"/>
+                    <label end="144" start="139" name="rb"/>
+                    <label end="154" start="146" name="VV"/>
+                    <label end="158" start="156" name="cc"/>
+                    <label end="166" start="160" name="VV"/>
+                    <label end="169" start="168" name="in"/>
+                    <label end="178" start="171" name="nns"/>
+                    <label end="184" start="180" name="wrb"/>
+                    <label end="191" start="186" name="nns"/>
+                    <label end="199" start="193" name="VVD"/>
+                    <label end="206" start="201" name="rb"/>
+                    <label end="210" start="208" name="in"/>
+                    <label end="218" start="212" name="nns"/>
+                    <label end="220" start="220" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="06/01/2006 11:44:58 PDT Thu" status="MANUAL" ID="2186718">
+                <layer rank="1" name="Target">
+                    <label cBy="303" end="166" start="160" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="976" feID="9109" end="131" start="113" name="Traveller"/>
+                    <label cBy="976" feID="9125" end="218" start="168" name="Place"/>
+                    <label cBy="976" feID="9110" itype="INI" name="Vehicle"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="131" start="113" name="Ext"/>
+                    <label end="218" start="168" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="131" start="113" name="NP"/>
+                    <label end="218" start="168" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="5" paragNo="570" aPos="67887073" ID="1369379">
+            <text>The night of the next day we entrained .</text>
+            <annotationSet cDate="06/01/2006 11:44:59 PDT Thu" status="UNANN" ID="2186725">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="8" start="4" name="nn"/>
+                    <label end="11" start="10" name="in"/>
+                    <label end="15" start="13" name="dt"/>
+                    <label end="20" start="17" name="jj"/>
+                    <label end="24" start="22" name="nn"/>
+                    <label end="27" start="26" name="PP"/>
+                    <label end="37" start="29" name="VVD"/>
+                    <label end="39" start="39" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="06/01/2006 11:45:00 PDT Thu" status="MANUAL" ID="2186726">
+                <layer rank="1" name="Target">
+                    <label cBy="303" end="37" start="29" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="9122" end="24" start="0" name="Time"/>
+                    <label cBy="361" feID="9109" end="27" start="26" name="Traveller"/>
+                    <label cBy="589" feID="9110" end="37" start="29" name="Vehicle"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="24" start="0" name="Dep"/>
+                    <label end="27" start="26" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="24" start="0" name="NP"/>
+                    <label end="27" start="26" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

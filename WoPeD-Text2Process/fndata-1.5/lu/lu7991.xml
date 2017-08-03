@@ -1,0 +1,655 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="felony.n" ID="7991" frame="Offenses" frameID="432" totalAnnotated="11" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="AP" ID="113">
+            <document description="apwsE951217.0003" ID="5247"/>
+            <document description="apwsE941122.0463" ID="5252"/>
+            <document description="apwsE950607.0505" ID="5253"/>
+            <document description="apwsE951109.0343" ID="5266"/>
+            <document description="apwsE950216.0470" ID="5268"/>
+            <document description="apwsE950210.0496" ID="5278"/>
+            <document description="apwsE950303.0235" ID="5284"/>
+            <document description="apwsE950710.0459" ID="5286"/>
+            <document description="apwsE950303.0045" ID="5288"/>
+            <document description="apwsE950104.0395" ID="5289"/>
+            <document description="apwsE950131.0470" ID="5325"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Off" name="Offense"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="" name="Perpetrator"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Extra-Thematic" abbrev="Pun" name="Punishment"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Extra-Thematic" abbrev="Spec" name="Specification"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Core" abbrev="Vic" name="Victim"/>
+        </frame>
+    </header>
+    <definition>COD: a crime, typically one involving violence, regarded in the US and other judicial systems (and formerly in the UK) as more serious than a misdemeanour. </definition>
+    <lexeme POS="N" name="felony"/>
+    <valences>
+        <governor type="Gov" lemma="charge">
+            <annoSet ID="2011889"/>
+        </governor>
+        <governor type="Gov" lemma="commit">
+            <annoSet ID="2011937"/>
+            <annoSet ID="2011957"/>
+            <annoSet ID="2012073"/>
+        </governor>
+        <governor type="Gov" lemma="convict">
+            <annoSet ID="2011903"/>
+        </governor>
+        <governor type="Gov" lemma="prevent">
+            <annoSet ID="2011933"/>
+        </governor>
+        <FERealization total="7">
+            <FE name="Degree"/>
+            <pattern total="3">
+                <valenceUnit GF="Dep" PT="A" FE="Degree"/>
+                <annoSet ID="2011937"/>
+                <annoSet ID="2011975"/>
+                <annoSet ID="2011981"/>
+            </pattern>
+            <pattern total="4">
+                <valenceUnit GF="Dep" PT="AJP" FE="Degree"/>
+                <annoSet ID="2011957"/>
+                <annoSet ID="2011971"/>
+                <annoSet ID="2011987"/>
+                <annoSet ID="2012073"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="11">
+            <FE name="Offense"/>
+            <pattern total="9">
+                <valenceUnit GF="" PT="DEN" FE="Offense"/>
+                <annoSet ID="2011889"/>
+                <annoSet ID="2011903"/>
+                <annoSet ID="2011933"/>
+                <annoSet ID="2011937"/>
+                <annoSet ID="2011957"/>
+                <annoSet ID="2011971"/>
+                <annoSet ID="2011981"/>
+                <annoSet ID="2011987"/>
+                <annoSet ID="2012073"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Offense"/>
+                <annoSet ID="2011905"/>
+                <annoSet ID="2011975"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Specification"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Specification"/>
+                <annoSet ID="2011981"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Specification"/>
+                <annoSet ID="2011981"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="6">
+            <FE name="Degree"/>
+            <FE name="Offense"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="A" FE="Degree"/>
+                <valenceUnit GF="" PT="DEN" FE="Offense"/>
+                <annoSet ID="2011937"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="A" FE="Degree"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Offense"/>
+                <annoSet ID="2011975"/>
+            </pattern>
+            <pattern total="4">
+                <valenceUnit GF="Dep" PT="AJP" FE="Degree"/>
+                <valenceUnit GF="" PT="DEN" FE="Offense"/>
+                <annoSet ID="2011957"/>
+                <annoSet ID="2011971"/>
+                <annoSet ID="2011987"/>
+                <annoSet ID="2012073"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Degree"/>
+            <FE name="Offense"/>
+            <FE name="Specification"/>
+            <FE name="Specification"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="A" FE="Degree"/>
+                <valenceUnit GF="" PT="DEN" FE="Offense"/>
+                <valenceUnit GF="Dep" PT="N" FE="Specification"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Specification"/>
+                <annoSet ID="2011981"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="4">
+            <FE name="Offense"/>
+            <pattern total="3">
+                <valenceUnit GF="" PT="DEN" FE="Offense"/>
+                <annoSet ID="2011889"/>
+                <annoSet ID="2011903"/>
+                <annoSet ID="2011933"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Offense"/>
+                <annoSet ID="2011905"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="02-Wcharge,convict-T-(1)">
+        <sentence corpID="113" docID="5247" sentNo="2" paragNo="4" aPos="25949988" ID="1281843">
+            <text>But because Torres is 2 1/2 months pregnant , deputies Saturday charged Camacho with a felony .</text>
+            <annotationSet cDate="10/18/2004 03:13:13 PDT Mon" status="UNANN" ID="2011888">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="cc"/>
+                    <label end="10" start="4" name="in"/>
+                    <label end="17" start="12" name="NP"/>
+                    <label end="20" start="19" name="VBZ"/>
+                    <label end="22" start="22" name="cd"/>
+                    <label end="26" start="24" name="cd"/>
+                    <label end="33" start="28" name="nns"/>
+                    <label end="42" start="35" name="jj"/>
+                    <label end="44" start="44" name=","/>
+                    <label end="53" start="46" name="nns"/>
+                    <label end="62" start="55" name="NP"/>
+                    <label end="70" start="64" name="VVD"/>
+                    <label end="78" start="72" name="NP"/>
+                    <label end="83" start="80" name="in"/>
+                    <label end="85" start="85" name="dt"/>
+                    <label end="92" start="87" name="nn"/>
+                    <label end="94" start="94" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/18/2004 03:13:14 PDT Mon" status="MANUAL" ID="2011889">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="92" start="87" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3971" end="92" start="87" name="Offense"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="70" start="64" name="Gov"/>
+                    <label end="92" start="80" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="5252" sentNo="1" paragNo="5" aPos="2643987" ID="1281850">
+            <text>She was not convicted of any felonies .</text>
+            <annotationSet cDate="10/18/2004 03:13:17 PDT Mon" status="UNANN" ID="2011902">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="PP"/>
+                    <label end="6" start="4" name="VBD"/>
+                    <label end="10" start="8" name="rb"/>
+                    <label end="20" start="12" name="VVN"/>
+                    <label end="23" start="22" name="in"/>
+                    <label end="27" start="25" name="dt"/>
+                    <label end="36" start="29" name="nns"/>
+                    <label end="38" start="38" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/18/2004 03:13:17 PDT Mon" status="MANUAL" ID="2011903">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="36" start="29" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3971" end="36" start="29" name="Offense"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="20" start="12" name="Gov"/>
+                    <label end="36" start="22" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="5253" sentNo="2" paragNo="5" aPos="65080729" ID="1281851">
+            <text>Each forgery charge is a felony punishable by up to five years in prison and a dlrs 5,000 fine .</text>
+            <annotationSet cDate="10/18/2004 03:13:17 PDT Mon" status="UNANN" ID="2011904">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="dt"/>
+                    <label end="11" start="5" name="nn"/>
+                    <label end="18" start="13" name="nn"/>
+                    <label end="21" start="20" name="VBZ"/>
+                    <label end="23" start="23" name="dt"/>
+                    <label end="30" start="25" name="nn"/>
+                    <label end="41" start="32" name="jj"/>
+                    <label end="44" start="43" name="in"/>
+                    <label end="47" start="46" name="in"/>
+                    <label end="50" start="49" name="to"/>
+                    <label end="55" start="52" name="cd"/>
+                    <label end="61" start="57" name="nns"/>
+                    <label end="64" start="63" name="in"/>
+                    <label end="71" start="66" name="nn"/>
+                    <label end="75" start="73" name="cc"/>
+                    <label end="77" start="77" name="dt"/>
+                    <label end="82" start="79" name="nns"/>
+                    <label end="88" start="84" name="cd"/>
+                    <label end="93" start="90" name="nn"/>
+                    <label end="95" start="95" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/18/2004 03:13:18 PDT Mon" status="MANUAL" ID="2011905">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="30" start="25" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3971" end="18" start="0" name="Offense"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="18" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="18" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="21" start="20" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="03-Wcommit,prevent-T-(1)">
+        <sentence corpID="113" docID="5266" sentNo="1" paragNo="7" aPos="18879760" ID="1281865">
+            <text>Ohad Skornick , 23 , from Tel Aviv , suspected of conspiracy and failure to prevent a felony .</text>
+            <annotationSet cDate="10/18/2004 03:13:27 PDT Mon" status="UNANN" ID="2011932">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="NP"/>
+                    <label end="12" start="5" name="NP"/>
+                    <label end="14" start="14" name=","/>
+                    <label end="17" start="16" name="cd"/>
+                    <label end="19" start="19" name=","/>
+                    <label end="24" start="21" name="in"/>
+                    <label end="28" start="26" name="NP"/>
+                    <label end="33" start="30" name="NP"/>
+                    <label end="35" start="35" name=","/>
+                    <label end="45" start="37" name="VVN"/>
+                    <label end="48" start="47" name="in"/>
+                    <label end="59" start="50" name="nn"/>
+                    <label end="63" start="61" name="cc"/>
+                    <label end="71" start="65" name="nn"/>
+                    <label end="74" start="73" name="to"/>
+                    <label end="82" start="76" name="VV"/>
+                    <label end="84" start="84" name="dt"/>
+                    <label end="91" start="86" name="nn"/>
+                    <label end="93" start="93" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/18/2004 03:13:27 PDT Mon" status="MANUAL" ID="2011933">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="91" start="86" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3971" end="91" start="86" name="Offense"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="82" start="76" name="Gov"/>
+                    <label end="91" start="84" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="5268" sentNo="1" paragNo="3" aPos="38933582" ID="1281867">
+            <text>The decision announced Thursday by Attorney General Janet Reno means the department has found specific and credible allegations that Brown may have committed a federal felony .</text>
+            <annotationSet cDate="10/18/2004 03:13:28 PDT Mon" status="UNANN" ID="2011936">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="11" start="4" name="nn"/>
+                    <label end="21" start="13" name="VVD"/>
+                    <label end="30" start="23" name="NP"/>
+                    <label end="33" start="32" name="in"/>
+                    <label end="42" start="35" name="NP"/>
+                    <label end="50" start="44" name="NP"/>
+                    <label end="56" start="52" name="NP"/>
+                    <label end="61" start="58" name="NP"/>
+                    <label end="67" start="63" name="VVZ"/>
+                    <label end="71" start="69" name="dt"/>
+                    <label end="82" start="73" name="nn"/>
+                    <label end="86" start="84" name="VHZ"/>
+                    <label end="92" start="88" name="VVN"/>
+                    <label end="101" start="94" name="jj"/>
+                    <label end="105" start="103" name="cc"/>
+                    <label end="114" start="107" name="jj"/>
+                    <label end="126" start="116" name="nns"/>
+                    <label end="131" start="128" name="in"/>
+                    <label end="137" start="133" name="NP"/>
+                    <label end="141" start="139" name="md"/>
+                    <label end="146" start="143" name="VH"/>
+                    <label end="156" start="148" name="VVN"/>
+                    <label end="158" start="158" name="dt"/>
+                    <label end="166" start="160" name="jj"/>
+                    <label end="173" start="168" name="nn"/>
+                    <label end="175" start="175" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/18/2004 03:13:28 PDT Mon" status="MANUAL" ID="2011937">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="173" start="168" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3971" end="173" start="168" name="Offense"/>
+                    <label cBy="618" feID="3968" end="166" start="160" name="Degree"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="166" start="160" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="166" start="160" name="A"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="156" start="148" name="Gov"/>
+                    <label end="173" start="158" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="5278" sentNo="1" paragNo="12" aPos="37660272" ID="1281877">
+            <text>Under current law , aliens who commit aggravated felonies can be deported .</text>
+            <annotationSet cDate="10/18/2004 03:13:34 PDT Mon" status="UNANN" ID="2011956">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="in"/>
+                    <label end="12" start="6" name="jj"/>
+                    <label end="16" start="14" name="nn"/>
+                    <label end="18" start="18" name=","/>
+                    <label end="25" start="20" name="nns"/>
+                    <label end="29" start="27" name="wp"/>
+                    <label end="36" start="31" name="VVP"/>
+                    <label end="47" start="38" name="VVN"/>
+                    <label end="56" start="49" name="nns"/>
+                    <label end="60" start="58" name="md"/>
+                    <label end="63" start="62" name="vb"/>
+                    <label end="72" start="65" name="VVD"/>
+                    <label end="74" start="74" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/18/2004 03:13:34 PDT Mon" status="MANUAL" ID="2011957">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="56" start="49" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3968" end="47" start="38" name="Degree"/>
+                    <label cBy="618" feID="3971" end="56" start="49" name="Offense"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="47" start="38" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="47" start="38" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="36" start="31" name="Gov"/>
+                    <label end="56" start="38" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="04-Wfederal,major,violent-T-(1)">
+        <sentence corpID="113" docID="5284" sentNo="1" paragNo="5" aPos="42020269" ID="1281884">
+            <text>The law , enacted last year , requires longer prison sentences for felons with at least one prior conviction for a serious or violent felony .</text>
+            <annotationSet cDate="10/18/2004 03:13:39 PDT Mon" status="UNANN" ID="2011970">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="6" start="4" name="nn"/>
+                    <label end="8" start="8" name=","/>
+                    <label end="16" start="10" name="VVN"/>
+                    <label end="21" start="18" name="jj"/>
+                    <label end="26" start="23" name="nn"/>
+                    <label end="28" start="28" name=","/>
+                    <label end="37" start="30" name="VVZ"/>
+                    <label end="44" start="39" name="jjr"/>
+                    <label end="51" start="46" name="nn"/>
+                    <label end="61" start="53" name="nns"/>
+                    <label end="65" start="63" name="in"/>
+                    <label end="72" start="67" name="nns"/>
+                    <label end="77" start="74" name="in"/>
+                    <label end="80" start="79" name="in"/>
+                    <label end="86" start="82" name="jjs"/>
+                    <label end="90" start="88" name="cd"/>
+                    <label end="96" start="92" name="jj"/>
+                    <label end="107" start="98" name="nn"/>
+                    <label end="111" start="109" name="in"/>
+                    <label end="113" start="113" name="dt"/>
+                    <label end="121" start="115" name="jj"/>
+                    <label end="124" start="123" name="cc"/>
+                    <label end="132" start="126" name="jj"/>
+                    <label end="139" start="134" name="nn"/>
+                    <label end="141" start="141" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/18/2004 03:13:39 PDT Mon" status="MANUAL" ID="2011971">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="139" start="134" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3968" end="132" start="115" name="Degree"/>
+                    <label cBy="618" feID="3971" end="139" start="134" name="Offense"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="132" start="115" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="132" start="115" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="5286" sentNo="1" paragNo="28" aPos="73786636" ID="1281886">
+            <text>Carjacking is a federal felony in this U.S. commonwealth , falling under the jurisdiction of the local U.S. District Court .</text>
+            <annotationSet cDate="10/18/2004 03:13:40 PDT Mon" status="UNANN" ID="2011974">
+                <layer rank="1" name="PENN">
+                    <label end="9" start="0" name="NP"/>
+                    <label end="12" start="11" name="VBZ"/>
+                    <label end="14" start="14" name="dt"/>
+                    <label end="22" start="16" name="jj"/>
+                    <label end="29" start="24" name="nn"/>
+                    <label end="32" start="31" name="in"/>
+                    <label end="37" start="34" name="dt"/>
+                    <label end="42" start="39" name="NP"/>
+                    <label end="55" start="44" name="nn"/>
+                    <label end="57" start="57" name=","/>
+                    <label end="65" start="59" name="VVG"/>
+                    <label end="71" start="67" name="in"/>
+                    <label end="75" start="73" name="dt"/>
+                    <label end="88" start="77" name="nn"/>
+                    <label end="91" start="90" name="in"/>
+                    <label end="95" start="93" name="dt"/>
+                    <label end="101" start="97" name="jj"/>
+                    <label end="106" start="103" name="NP"/>
+                    <label end="115" start="108" name="NP"/>
+                    <label end="121" start="117" name="NP"/>
+                    <label end="123" start="123" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/18/2004 03:13:40 PDT Mon" status="MANUAL" ID="2011975">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="29" start="24" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3971" end="9" start="0" name="Offense"/>
+                    <label cBy="618" feID="3968" end="22" start="16" name="Degree"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="9" start="0" name="Ext"/>
+                    <label end="22" start="16" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="9" start="0" name="NP"/>
+                    <label end="22" start="16" name="A"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="12" start="11" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="5289" sentNo="1" paragNo="6" aPos="29042528" ID="1281889">
+            <text>A new federal crime bill provides the death penalty for some federal gun felonies in which a person is killed .</text>
+            <annotationSet cDate="10/18/2004 03:13:42 PDT Mon" status="UNANN" ID="2011980">
+                <layer rank="1" name="PENN">
+                    <label end="0" start="0" name="dt"/>
+                    <label end="4" start="2" name="jj"/>
+                    <label end="12" start="6" name="jj"/>
+                    <label end="18" start="14" name="nn"/>
+                    <label end="23" start="20" name="nn"/>
+                    <label end="32" start="25" name="VVZ"/>
+                    <label end="36" start="34" name="dt"/>
+                    <label end="42" start="38" name="nn"/>
+                    <label end="50" start="44" name="nn"/>
+                    <label end="54" start="52" name="in"/>
+                    <label end="59" start="56" name="dt"/>
+                    <label end="67" start="61" name="jj"/>
+                    <label end="71" start="69" name="nn"/>
+                    <label end="80" start="73" name="nns"/>
+                    <label end="83" start="82" name="in"/>
+                    <label end="89" start="85" name="wdt"/>
+                    <label end="91" start="91" name="dt"/>
+                    <label end="98" start="93" name="nn"/>
+                    <label end="101" start="100" name="VBZ"/>
+                    <label end="108" start="103" name="VVN"/>
+                    <label end="110" start="110" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/18/2004 03:13:42 PDT Mon" status="MANUAL" ID="2011981">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="80" start="73" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3968" end="67" start="61" name="Degree"/>
+                    <label cBy="618" feID="3969" end="71" start="69" name="Specification"/>
+                    <label cBy="618" feID="3971" end="80" start="73" name="Offense"/>
+                    <label cBy="618" feID="3969" end="108" start="82" name="Specification"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="67" start="61" name="Dep"/>
+                    <label end="71" start="69" name="Dep"/>
+                    <label end="108" start="82" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="67" start="61" name="A"/>
+                    <label end="71" start="69" name="N"/>
+                    <label end="108" start="82" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="5288" sentNo="1" paragNo="5" aPos="41935954" ID="1281892">
+            <text>The law , enacted last year , requires longer prison sentences for felons with at least one prior conviction for a serious or violent felony .</text>
+            <annotationSet cDate="10/18/2004 03:13:43 PDT Mon" status="UNANN" ID="2011986">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="6" start="4" name="nn"/>
+                    <label end="8" start="8" name=","/>
+                    <label end="16" start="10" name="VVN"/>
+                    <label end="21" start="18" name="jj"/>
+                    <label end="26" start="23" name="nn"/>
+                    <label end="28" start="28" name=","/>
+                    <label end="37" start="30" name="VVZ"/>
+                    <label end="44" start="39" name="jjr"/>
+                    <label end="51" start="46" name="nn"/>
+                    <label end="61" start="53" name="nns"/>
+                    <label end="65" start="63" name="in"/>
+                    <label end="72" start="67" name="nns"/>
+                    <label end="77" start="74" name="in"/>
+                    <label end="80" start="79" name="in"/>
+                    <label end="86" start="82" name="jjs"/>
+                    <label end="90" start="88" name="cd"/>
+                    <label end="96" start="92" name="jj"/>
+                    <label end="107" start="98" name="nn"/>
+                    <label end="111" start="109" name="in"/>
+                    <label end="113" start="113" name="dt"/>
+                    <label end="121" start="115" name="jj"/>
+                    <label end="124" start="123" name="cc"/>
+                    <label end="132" start="126" name="jj"/>
+                    <label end="139" start="134" name="nn"/>
+                    <label end="141" start="141" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/18/2004 03:13:43 PDT Mon" status="MANUAL" ID="2011987">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="139" start="134" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3968" end="132" start="115" name="Degree"/>
+                    <label cBy="618" feID="3971" end="139" start="134" name="Offense"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="132" start="115" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="132" start="115" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="05-T-PP-(1)"/>
+    <subCorpus name="other-matched-(1)">
+        <sentence corpID="113" docID="5325" sentNo="1" paragNo="5" aPos="35238922" ID="1281935">
+            <text>For aliens committing serious felonies , the message is , `` You get out of here now !</text>
+            <annotationSet cDate="10/18/2004 03:14:08 PDT Mon" status="UNANN" ID="2012072">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="in"/>
+                    <label end="9" start="4" name="nns"/>
+                    <label end="20" start="11" name="VVG"/>
+                    <label end="28" start="22" name="jj"/>
+                    <label end="37" start="30" name="nns"/>
+                    <label end="39" start="39" name=","/>
+                    <label end="43" start="41" name="dt"/>
+                    <label end="51" start="45" name="nn"/>
+                    <label end="54" start="53" name="VBZ"/>
+                    <label end="56" start="56" name=","/>
+                    <label end="59" start="58" name="``"/>
+                    <label end="63" start="61" name="PP"/>
+                    <label end="67" start="65" name="VVP"/>
+                    <label end="71" start="69" name="rp"/>
+                    <label end="74" start="73" name="in"/>
+                    <label end="79" start="76" name="rb"/>
+                    <label end="83" start="81" name="rb"/>
+                    <label end="85" start="85" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/18/2004 03:14:08 PDT Mon" status="MANUAL" ID="2012073">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="37" start="30" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3968" end="28" start="22" name="Degree"/>
+                    <label cBy="618" feID="3971" end="37" start="30" name="Offense"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="28" start="22" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="28" start="22" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="20" start="11" name="Gov"/>
+                    <label end="37" start="22" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

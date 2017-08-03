@@ -1,0 +1,648 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="opium.n" ID="7036" frame="Intoxicants" frameID="390" totalAnnotated="11" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Co" name="Country_of_origin"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Desc" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Int" name="Intoxicant"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Peripheral" abbrev="Type" name="Type"/>
+        </frame>
+    </header>
+    <definition>COD: an addictive drug prepared from the juice of a poppy (Papaver somniferum), used illicitly as a narcotic and occasionally in medicine as an analgesic</definition>
+    <lexeme POS="N" name="opium"/>
+    <valences>
+        <governor type="Gov" lemma="eat">
+            <annoSet ID="1561275"/>
+        </governor>
+        <governor type="Gov" lemma="get">
+            <annoSet ID="1561291"/>
+        </governor>
+        <governor type="Gov" lemma="grow">
+            <annoSet ID="1561205"/>
+            <annoSet ID="1561295"/>
+            <annoSet ID="1561299"/>
+        </governor>
+        <governor type="Gov" lemma="smoke">
+            <annoSet ID="1561221"/>
+        </governor>
+        <governor type="Gov" lemma="take">
+            <annoSet ID="1561311"/>
+        </governor>
+        <governor type="Gov" lemma="try">
+            <annoSet ID="1561251"/>
+        </governor>
+        <FERealization total="2">
+            <FE name="Country_of_origin"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Country_of_origin"/>
+                <annoSet ID="1561229"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Country_of_origin"/>
+                <annoSet ID="1561183"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="11">
+            <FE name="Intoxicant"/>
+            <pattern total="11">
+                <valenceUnit GF="" PT="DEN" FE="Intoxicant"/>
+                <annoSet ID="1561183"/>
+                <annoSet ID="1561205"/>
+                <annoSet ID="1561221"/>
+                <annoSet ID="1561229"/>
+                <annoSet ID="1561251"/>
+                <annoSet ID="1561275"/>
+                <annoSet ID="1561291"/>
+                <annoSet ID="1561295"/>
+                <annoSet ID="1561299"/>
+                <annoSet ID="1561305"/>
+                <annoSet ID="1561311"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Country_of_origin"/>
+            <FE name="Intoxicant"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Country_of_origin"/>
+                <valenceUnit GF="" PT="DEN" FE="Intoxicant"/>
+                <annoSet ID="1561229"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Country_of_origin"/>
+                <valenceUnit GF="" PT="DEN" FE="Intoxicant"/>
+                <annoSet ID="1561183"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="9">
+            <FE name="Intoxicant"/>
+            <pattern total="9">
+                <valenceUnit GF="" PT="DEN" FE="Intoxicant"/>
+                <annoSet ID="1561205"/>
+                <annoSet ID="1561221"/>
+                <annoSet ID="1561251"/>
+                <annoSet ID="1561275"/>
+                <annoSet ID="1561291"/>
+                <annoSet ID="1561295"/>
+                <annoSet ID="1561299"/>
+                <annoSet ID="1561305"/>
+                <annoSet ID="1561311"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-280-s20-poss">
+        <sentence sentNo="0" aPos="4592618" ID="1054889">
+            <text>Afghanistan 's opium is cheaper and more plentiful . </text>
+            <annotationSet cDate="01/08/2003 12:36:13 PST Wed" status="UNANN" ID="1561182">
+                <layer rank="1" name="BNC">
+                    <label end="10" start="0" name="NP0"/>
+                    <label end="13" start="12" name="POS"/>
+                    <label end="19" start="15" name="NN1"/>
+                    <label end="22" start="21" name="VBZ"/>
+                    <label end="30" start="24" name="AJC"/>
+                    <label end="34" start="32" name="CJC"/>
+                    <label end="39" start="36" name="AV0"/>
+                    <label end="49" start="41" name="AJ0"/>
+                    <label end="51" start="51" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:36:13 PST Wed" status="MANUAL" ID="1561183">
+                <layer rank="1" name="FE">
+                    <label cBy="865" feID="3504" end="13" start="0" name="Country_of_origin"/>
+                    <label cBy="865" feID="3495" end="19" start="15" name="Intoxicant"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="13" start="0" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="13" start="0" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="19" start="15" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-300-s20-cmpd"/>
+    <subCorpus name="N-330-s20-period">
+        <sentence sentNo="0" aPos="4754969" ID="1054900">
+            <text>The farmers , in Buner , an area controlled by the government , were charged with the crime of growing opium . </text>
+            <annotationSet cDate="01/08/2003 12:36:14 PST Wed" status="UNANN" ID="1561204">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="10" start="4" name="NN2"/>
+                    <label end="12" start="12" name="PUN"/>
+                    <label end="15" start="14" name="PRP"/>
+                    <label end="21" start="17" name="NN1-NP0"/>
+                    <label end="23" start="23" name="PUN"/>
+                    <label end="26" start="25" name="AT0"/>
+                    <label end="31" start="28" name="NN1"/>
+                    <label end="42" start="33" name="VVN"/>
+                    <label end="45" start="44" name="PRP"/>
+                    <label end="49" start="47" name="AT0"/>
+                    <label end="60" start="51" name="NN0"/>
+                    <label end="62" start="62" name="PUN"/>
+                    <label end="67" start="64" name="VBD"/>
+                    <label end="75" start="69" name="VVN"/>
+                    <label end="80" start="77" name="PRP"/>
+                    <label end="84" start="82" name="AT0"/>
+                    <label end="90" start="86" name="NN1"/>
+                    <label end="93" start="92" name="PRF"/>
+                    <label end="101" start="95" name="VVG"/>
+                    <label end="107" start="103" name="NN1"/>
+                    <label end="109" start="109" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:36:14 PST Wed" status="MANUAL" ID="1561205">
+                <layer rank="1" name="FE">
+                    <label cBy="865" feID="3495" end="107" start="103" name="Intoxicant"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="107" start="103" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="101" start="95" name="Gov"/>
+                    <label end="107" start="103" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="45058029" ID="1054908">
+            <text>Jean Cocteau , Peggy Guggenheim tells us in her autobiography Confessions of an Art Addict , received her for the first time comfortably horizontal between the sheets , smoking opium . </text>
+            <annotationSet cDate="01/08/2003 12:36:15 PST Wed" status="UNANN" ID="1561220">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="NP0"/>
+                    <label end="11" start="5" name="NP0"/>
+                    <label end="13" start="13" name="PUN"/>
+                    <label end="19" start="15" name="NP0"/>
+                    <label end="30" start="21" name="NP0"/>
+                    <label end="36" start="32" name="VVZ"/>
+                    <label end="39" start="38" name="PNP"/>
+                    <label end="42" start="41" name="PRP"/>
+                    <label end="46" start="44" name="DPS"/>
+                    <label end="60" start="48" name="NN1"/>
+                    <label end="72" start="62" name="NN2"/>
+                    <label end="75" start="74" name="PRF"/>
+                    <label end="78" start="77" name="AT0"/>
+                    <label end="82" start="80" name="NN1"/>
+                    <label end="89" start="84" name="NN1"/>
+                    <label end="91" start="91" name="PUN"/>
+                    <label end="100" start="93" name="VVD-VVN"/>
+                    <label end="104" start="102" name="PNP"/>
+                    <label end="108" start="106" name="PRP"/>
+                    <label end="112" start="110" name="AT0"/>
+                    <label end="118" start="114" name="ORD"/>
+                    <label end="123" start="120" name="NN1"/>
+                    <label end="135" start="125" name="AV0"/>
+                    <label end="146" start="137" name="AJ0"/>
+                    <label end="154" start="148" name="PRP"/>
+                    <label end="158" start="156" name="AT0"/>
+                    <label end="165" start="160" name="NN2"/>
+                    <label end="167" start="167" name="PUN"/>
+                    <label end="175" start="169" name="AJ0-VVG"/>
+                    <label end="181" start="177" name="NN1"/>
+                    <label end="183" start="183" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:36:15 PST Wed" status="MANUAL" ID="1561221">
+                <layer rank="1" name="FE">
+                    <label cBy="865" feID="3495" end="181" start="177" name="Intoxicant"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="181" start="177" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="175" start="169" name="Gov"/>
+                    <label end="181" start="177" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-380-s20-other">
+        <sentence sentNo="0" aPos="4592377" ID="1054912">
+            <text>These regions , known as tribal agencies , are where Afghan and Pakistani opium is made into heroin , often in laboratories no bigger than the average bathroom . </text>
+            <annotationSet cDate="01/08/2003 12:36:15 PST Wed" status="UNANN" ID="1561228">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="DT0"/>
+                    <label end="12" start="6" name="NN2"/>
+                    <label end="14" start="14" name="PUN"/>
+                    <label end="20" start="16" name="VVN"/>
+                    <label end="23" start="22" name="PRP"/>
+                    <label end="30" start="25" name="AJ0"/>
+                    <label end="39" start="32" name="NN2"/>
+                    <label end="41" start="41" name="PUN"/>
+                    <label end="45" start="43" name="VBB"/>
+                    <label end="51" start="47" name="AVQ-CJS"/>
+                    <label end="58" start="53" name="AJ0"/>
+                    <label end="62" start="60" name="CJC"/>
+                    <label end="72" start="64" name="AJ0"/>
+                    <label end="78" start="74" name="NN1"/>
+                    <label end="81" start="80" name="VBZ"/>
+                    <label end="86" start="83" name="VVN"/>
+                    <label end="91" start="88" name="PRP"/>
+                    <label end="98" start="93" name="NN1"/>
+                    <label end="100" start="100" name="PUN"/>
+                    <label end="106" start="102" name="AV0"/>
+                    <label end="109" start="108" name="PRP"/>
+                    <label end="122" start="111" name="NN2"/>
+                    <label end="125" start="124" name="AT0"/>
+                    <label end="132" start="127" name="AJC"/>
+                    <label end="137" start="134" name="CJS"/>
+                    <label end="141" start="139" name="AT0"/>
+                    <label end="149" start="143" name="AJ0"/>
+                    <label end="158" start="151" name="NN1"/>
+                    <label end="160" start="160" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:36:16 PST Wed" status="MANUAL" ID="1561229">
+                <layer rank="1" name="FE">
+                    <label cBy="865" feID="3504" end="72" start="53" name="Country_of_origin"/>
+                    <label cBy="865" feID="3495" end="78" start="74" name="Intoxicant"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="72" start="53" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="72" start="53" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="78" start="74" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="46775019" ID="1054923">
+            <text>I tried opium , and my first experience with anything really hard , using it intravenously , was when I used Omnopon which was from a lifeboat , y'know , from the life-saving equipment on a lifeboat . </text>
+            <annotationSet cDate="01/08/2003 12:36:18 PST Wed" status="UNANN" ID="1561250">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PNP"/>
+                    <label end="6" start="2" name="VVD"/>
+                    <label end="12" start="8" name="NN1"/>
+                    <label end="14" start="14" name="PUN"/>
+                    <label end="18" start="16" name="CJC"/>
+                    <label end="21" start="20" name="DPS"/>
+                    <label end="27" start="23" name="ORD"/>
+                    <label end="38" start="29" name="NN1"/>
+                    <label end="43" start="40" name="PRP"/>
+                    <label end="52" start="45" name="PNI"/>
+                    <label end="59" start="54" name="AV0"/>
+                    <label end="64" start="61" name="AV0"/>
+                    <label end="66" start="66" name="PUN"/>
+                    <label end="72" start="68" name="VVG"/>
+                    <label end="75" start="74" name="PNP"/>
+                    <label end="89" start="77" name="AV0"/>
+                    <label end="91" start="91" name="PUN"/>
+                    <label end="95" start="93" name="VBD"/>
+                    <label end="100" start="97" name="AVQ"/>
+                    <label end="102" start="102" name="PNP"/>
+                    <label end="107" start="104" name="AJ0-VVD"/>
+                    <label end="115" start="109" name="NN1-NP0"/>
+                    <label end="121" start="117" name="DTQ"/>
+                    <label end="125" start="123" name="VBD"/>
+                    <label end="130" start="127" name="PRP"/>
+                    <label end="132" start="132" name="AT0"/>
+                    <label end="141" start="134" name="NN1"/>
+                    <label end="143" start="143" name="PUN"/>
+                    <label end="150" start="145" name="NN1-VVB"/>
+                    <label end="152" start="152" name="PUN"/>
+                    <label end="157" start="154" name="PRP"/>
+                    <label end="161" start="159" name="AT0"/>
+                    <label end="173" start="163" name="AJ0"/>
+                    <label end="183" start="175" name="NN1"/>
+                    <label end="186" start="185" name="PRP"/>
+                    <label end="188" start="188" name="AT0"/>
+                    <label end="197" start="190" name="NN1"/>
+                    <label end="199" start="199" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:36:19 PST Wed" status="MANUAL" ID="1561251">
+                <layer rank="1" name="FE">
+                    <label cBy="865" feID="3495" end="12" start="8" name="Intoxicant"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="12" start="8" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="6" start="2" name="Gov"/>
+                    <label end="12" start="8" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-429-s20-lcoll-British"/>
+    <subCorpus name="N-429-s20-lcoll-Chinese">
+        <sentence sentNo="0" aPos="93832122" ID="1054935">
+            <text>( 114 ) He had known Chinese to eat opium as well as inhale it . </text>
+            <annotationSet cDate="01/08/2003 12:36:21 PST Wed" status="UNANN" ID="1561274">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PUL"/>
+                    <label end="4" start="2" name="CRD"/>
+                    <label end="6" start="6" name="PUR"/>
+                    <label end="9" start="8" name="PNP"/>
+                    <label end="13" start="11" name="VHD"/>
+                    <label end="19" start="15" name="VVN"/>
+                    <label end="27" start="21" name="AJ0"/>
+                    <label end="30" start="29" name="TO0"/>
+                    <label end="34" start="32" name="VVI"/>
+                    <label end="40" start="36" name="NN1"/>
+                    <label end="43" start="42" name="CJC"/>
+                    <label end="48" start="45" name="CJC"/>
+                    <label end="51" start="50" name="CJC"/>
+                    <label end="58" start="53" name="VVB"/>
+                    <label end="61" start="60" name="PNP"/>
+                    <label end="63" start="63" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:36:21 PST Wed" status="MANUAL" ID="1561275">
+                <layer rank="1" name="FE">
+                    <label cBy="865" feID="3495" end="40" start="36" name="Intoxicant"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="40" start="36" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="34" start="32" name="Gov"/>
+                    <label end="40" start="36" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-429-s20-lcoll-English"/>
+    <subCorpus name="N-429-s20-lcoll-blue"/>
+    <subCorpus name="N-429-s20-lcoll-powdered"/>
+    <subCorpus name="N-429-s20-lgov-get">
+        <sentence sentNo="0" aPos="69263714" ID="1054943">
+            <text>There he knew places where he could get opium -- dark , evil places where people bought and sold the beautiful , terrible dreams of opium . </text>
+            <annotationSet cDate="01/08/2003 12:36:22 PST Wed" status="UNANN" ID="1561290">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="AV0"/>
+                    <label end="7" start="6" name="PNP"/>
+                    <label end="12" start="9" name="VVD"/>
+                    <label end="19" start="14" name="NN2"/>
+                    <label end="25" start="21" name="AVQ"/>
+                    <label end="28" start="27" name="PNP"/>
+                    <label end="34" start="30" name="VM0"/>
+                    <label end="38" start="36" name="VVI"/>
+                    <label end="44" start="40" name="NN1"/>
+                    <label end="47" start="46" name="PUN"/>
+                    <label end="52" start="49" name="AJ0-NN1"/>
+                    <label end="54" start="54" name="PUN"/>
+                    <label end="59" start="56" name="AJ0"/>
+                    <label end="66" start="61" name="NN2"/>
+                    <label end="72" start="68" name="AVQ"/>
+                    <label end="79" start="74" name="NN0"/>
+                    <label end="86" start="81" name="VVD-VVN"/>
+                    <label end="90" start="88" name="CJC"/>
+                    <label end="95" start="92" name="VVD-VVN"/>
+                    <label end="99" start="97" name="AT0"/>
+                    <label end="109" start="101" name="AJ0"/>
+                    <label end="111" start="111" name="PUN"/>
+                    <label end="120" start="113" name="AJ0"/>
+                    <label end="127" start="122" name="NN2"/>
+                    <label end="130" start="129" name="PRF"/>
+                    <label end="136" start="132" name="NN1"/>
+                    <label end="138" start="138" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:36:22 PST Wed" status="MANUAL" ID="1561291">
+                <layer rank="1" name="FE">
+                    <label cBy="865" feID="3495" end="44" start="40" name="Intoxicant"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="44" start="40" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="38" start="36" name="Gov"/>
+                    <label end="44" start="40" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-429-s20-lgov-grow">
+        <sentence sentNo="0" aPos="4593316" ID="1054945">
+            <text>A tribal chieftain , Haji Ghulam , argues that with little or no government development , and rising unemployment , it is the right of tribals to grow opium and process it . </text>
+            <annotationSet cDate="01/08/2003 12:36:22 PST Wed" status="UNANN" ID="1561294">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="AT0"/>
+                    <label end="7" start="2" name="AJ0"/>
+                    <label end="17" start="9" name="NN1"/>
+                    <label end="19" start="19" name="PUN"/>
+                    <label end="24" start="21" name="NP0"/>
+                    <label end="31" start="26" name="NP0"/>
+                    <label end="33" start="33" name="PUN"/>
+                    <label end="40" start="35" name="VVZ"/>
+                    <label end="45" start="42" name="CJT"/>
+                    <label end="50" start="47" name="PRP"/>
+                    <label end="57" start="52" name="AJ0"/>
+                    <label end="60" start="59" name="CJC"/>
+                    <label end="63" start="62" name="AT0"/>
+                    <label end="74" start="65" name="NN0"/>
+                    <label end="86" start="76" name="NN1"/>
+                    <label end="88" start="88" name="PUN"/>
+                    <label end="92" start="90" name="CJC"/>
+                    <label end="99" start="94" name="AJ0-VVG"/>
+                    <label end="112" start="101" name="NN1"/>
+                    <label end="114" start="114" name="PUN"/>
+                    <label end="117" start="116" name="PNP"/>
+                    <label end="120" start="119" name="VBZ"/>
+                    <label end="124" start="122" name="AT0"/>
+                    <label end="130" start="126" name="NN1"/>
+                    <label end="133" start="132" name="PRF"/>
+                    <label end="141" start="135" name="NN2"/>
+                    <label end="144" start="143" name="TO0"/>
+                    <label end="149" start="146" name="VVI"/>
+                    <label end="155" start="151" name="NN1"/>
+                    <label end="159" start="157" name="CJC"/>
+                    <label end="167" start="161" name="NN1"/>
+                    <label end="170" start="169" name="PNP"/>
+                    <label end="172" start="172" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:36:22 PST Wed" status="MANUAL" ID="1561295">
+                <layer rank="1" name="FE">
+                    <label cBy="865" feID="3495" end="155" start="151" name="Intoxicant"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="155" start="151" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="149" start="146" name="Gov"/>
+                    <label end="155" start="151" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="4624010" ID="1054947">
+            <text>If he had grown opium on his half acre , he would have been guaranteed at least 20,000 rupees . </text>
+            <annotationSet cDate="01/08/2003 12:36:22 PST Wed" status="UNANN" ID="1561298">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="CJS"/>
+                    <label end="4" start="3" name="PNP"/>
+                    <label end="8" start="6" name="VHD"/>
+                    <label end="14" start="10" name="VVN"/>
+                    <label end="20" start="16" name="NN1"/>
+                    <label end="23" start="22" name="PRP"/>
+                    <label end="27" start="25" name="DPS"/>
+                    <label end="32" start="29" name="DT0"/>
+                    <label end="37" start="34" name="NN1"/>
+                    <label end="39" start="39" name="PUN"/>
+                    <label end="42" start="41" name="PNP"/>
+                    <label end="48" start="44" name="VM0"/>
+                    <label end="53" start="50" name="VHI"/>
+                    <label end="58" start="55" name="VBN"/>
+                    <label end="69" start="60" name="VVN"/>
+                    <label end="72" start="71" name="AV0"/>
+                    <label end="78" start="74" name="AV0"/>
+                    <label end="85" start="80" name="CRD"/>
+                    <label end="92" start="87" name="NN2"/>
+                    <label end="94" start="94" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:36:22 PST Wed" status="MANUAL" ID="1561299">
+                <layer rank="1" name="FE">
+                    <label cBy="865" feID="3495" end="20" start="16" name="Intoxicant"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="20" start="16" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="14" start="10" name="Gov"/>
+                    <label end="20" start="16" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-429-s20-lgov-smoke">
+        <sentence sentNo="0" aPos="20274992" ID="1054950">
+            <text>Many people throughout the world eat or smoke opium , the air-dried latex of the plant . </text>
+            <annotationSet cDate="01/08/2003 12:36:23 PST Wed" status="UNANN" ID="1561304">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="DT0"/>
+                    <label end="10" start="5" name="NN0"/>
+                    <label end="21" start="12" name="PRP"/>
+                    <label end="25" start="23" name="AT0"/>
+                    <label end="31" start="27" name="NN1"/>
+                    <label end="35" start="33" name="VVB"/>
+                    <label end="38" start="37" name="CJC"/>
+                    <label end="44" start="40" name="NN1-VVB"/>
+                    <label end="50" start="46" name="NN1"/>
+                    <label end="52" start="52" name="PUN"/>
+                    <label end="56" start="54" name="AT0"/>
+                    <label end="66" start="58" name="AJ0"/>
+                    <label end="72" start="68" name="NN1"/>
+                    <label end="75" start="74" name="PRF"/>
+                    <label end="79" start="77" name="AT0"/>
+                    <label end="85" start="81" name="NN1"/>
+                    <label end="87" start="87" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:36:23 PST Wed" status="MANUAL" ID="1561305">
+                <layer rank="1" name="FE">
+                    <label cBy="865" feID="3495" end="50" start="46" name="Intoxicant"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="50" start="46" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="44" start="40" name="Gov"/>
+                    <label end="50" start="46" name="X"/>
+                    <label end="35" start="33" name="Gov"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-429-s20-lgov-take">
+        <sentence sentNo="0" aPos="13975319" ID="1054953">
+            <text>It went against all biological sense to suggest that the receptors and the elaborate physiological adaptations which they set in motion had no purpose , or had evolved in response to taking opium . </text>
+            <annotationSet cDate="01/08/2003 12:36:23 PST Wed" status="UNANN" ID="1561310">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="6" start="3" name="VVD"/>
+                    <label end="14" start="8" name="PRP"/>
+                    <label end="18" start="16" name="DT0"/>
+                    <label end="29" start="20" name="AJ0"/>
+                    <label end="35" start="31" name="NN1"/>
+                    <label end="38" start="37" name="TO0"/>
+                    <label end="46" start="40" name="VVI"/>
+                    <label end="51" start="48" name="CJT"/>
+                    <label end="55" start="53" name="AT0"/>
+                    <label end="65" start="57" name="NN2"/>
+                    <label end="69" start="67" name="CJC"/>
+                    <label end="73" start="71" name="AT0"/>
+                    <label end="83" start="75" name="AJ0"/>
+                    <label end="97" start="85" name="AJ0"/>
+                    <label end="109" start="99" name="NN2"/>
+                    <label end="115" start="111" name="DTQ"/>
+                    <label end="120" start="117" name="PNP"/>
+                    <label end="124" start="122" name="VVD"/>
+                    <label end="127" start="126" name="PRP"/>
+                    <label end="134" start="129" name="NN1"/>
+                    <label end="138" start="136" name="VHD"/>
+                    <label end="141" start="140" name="AT0"/>
+                    <label end="149" start="143" name="NN1"/>
+                    <label end="151" start="151" name="PUN"/>
+                    <label end="154" start="153" name="CJC"/>
+                    <label end="158" start="156" name="VHD"/>
+                    <label end="166" start="160" name="VVN"/>
+                    <label end="169" start="168" name="PRP"/>
+                    <label end="178" start="171" name="PRP"/>
+                    <label end="181" start="180" name="PRP"/>
+                    <label end="188" start="183" name="VVG"/>
+                    <label end="194" start="190" name="NN1"/>
+                    <label end="196" start="196" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:36:23 PST Wed" status="MANUAL" ID="1561311">
+                <layer rank="1" name="FE">
+                    <label cBy="865" feID="3495" end="194" start="190" name="Intoxicant"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="194" start="190" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="188" start="183" name="Gov"/>
+                    <label end="194" start="190" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

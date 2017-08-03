@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="beau.n" ID="6087" frame="Personal_relationship" frameID="102" totalAnnotated="8" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Peripheral" abbrev="" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="Means" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="" name="Partners"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="Partner_1" name="Partner_1"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Partner_2" name="Partner_2"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="rel" name="Relationship"/>
+            <FE fgColor="000000" bgColor="FFA500" type="Peripheral" abbrev="Src" name="Source_of_relationship"/>
+        </frame>
+    </header>
+    <definition>COD: a boyfriend or male admirer</definition>
+    <lexeme POS="N" name="beau"/>
+    <valences>
+        <governor type="Sup" lemma="get">
+            <annoSet ID="1321656"/>
+        </governor>
+        <FERealization total="2">
+            <FE name="Depictive"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="A" FE="Depictive"/>
+                <annoSet ID="1321598"/>
+                <annoSet ID="1321618"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="8">
+            <FE name="Partner_1"/>
+            <pattern total="5">
+                <valenceUnit GF="" PT="DEN" FE="Partner_1"/>
+                <annoSet ID="1321566"/>
+                <annoSet ID="1321572"/>
+                <annoSet ID="1321598"/>
+                <annoSet ID="1321618"/>
+                <annoSet ID="1321656"/>
+            </pattern>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="NP" FE="Partner_1"/>
+                <annoSet ID="1321560"/>
+                <annoSet ID="1321564"/>
+                <annoSet ID="1321574"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="6">
+            <FE name="Partner_2"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Partner_2"/>
+                <annoSet ID="1321656"/>
+            </pattern>
+            <pattern total="5">
+                <valenceUnit GF="Gen" PT="Poss" FE="Partner_2"/>
+                <annoSet ID="1321560"/>
+                <annoSet ID="1321564"/>
+                <annoSet ID="1321566"/>
+                <annoSet ID="1321572"/>
+                <annoSet ID="1321574"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Depictive"/>
+            <FE name="Partner_1"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="A" FE="Depictive"/>
+                <valenceUnit GF="" PT="DEN" FE="Partner_1"/>
+                <annoSet ID="1321598"/>
+                <annoSet ID="1321618"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="6">
+            <FE name="Partner_1"/>
+            <FE name="Partner_2"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Partner_1"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Partner_2"/>
+                <annoSet ID="1321656"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="" PT="DEN" FE="Partner_1"/>
+                <valenceUnit GF="Gen" PT="Poss" FE="Partner_2"/>
+                <annoSet ID="1321566"/>
+                <annoSet ID="1321572"/>
+            </pattern>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="NP" FE="Partner_1"/>
+                <valenceUnit GF="Gen" PT="Poss" FE="Partner_2"/>
+                <annoSet ID="1321560"/>
+                <annoSet ID="1321564"/>
+                <annoSet ID="1321574"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-280-s20-poss">
+        <sentence sentNo="0" aPos="19052743" ID="933842">
+            <text>Tonight , you 're my brand new beau . </text>
+            <annotationSet cDate="01/07/2003 08:03:48 PST Tue" status="UNANN" ID="1321559">
+                <layer rank="1" name="BNC">
+                    <label end="6" start="0" name="AV0"/>
+                    <label end="8" start="8" name="PUN"/>
+                    <label end="12" start="10" name="PNP"/>
+                    <label end="16" start="14" name="VBB"/>
+                    <label end="19" start="18" name="DPS"/>
+                    <label end="25" start="21" name="AJ0"/>
+                    <label end="29" start="27" name="AJ0"/>
+                    <label end="34" start="31" name="NN1"/>
+                    <label end="36" start="36" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 08:03:48 PST Tue" status="MANUAL" ID="1321560">
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="488" end="19" start="18" name="Partner_2"/>
+                    <label cBy="268" feID="487" end="12" start="10" name="Partner_1"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="19" start="18" name="Gen"/>
+                    <label end="12" start="10" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="19" start="18" name="Poss"/>
+                    <label end="12" start="10" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="34" start="31" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="16" start="14" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="27208301" ID="933844">
+            <text>Standing a magnificent 12 inches high , Action Man looks set to see off Ken — Barbie 's beau — who stands just 11½ inches tall . </text>
+            <annotationSet cDate="01/07/2003 08:03:48 PST Tue" status="UNANN" ID="1321563">
+                <layer rank="1" name="BNC">
+                    <label end="7" start="0" name="VVG"/>
+                    <label end="9" start="9" name="AT0"/>
+                    <label end="21" start="11" name="AJ0"/>
+                    <label end="24" start="23" name="CRD"/>
+                    <label end="31" start="26" name="NN2"/>
+                    <label end="36" start="33" name="AJ0-AV0"/>
+                    <label end="38" start="38" name="PUN"/>
+                    <label end="45" start="40" name="NN1"/>
+                    <label end="49" start="47" name="NN1-NP0"/>
+                    <label end="55" start="51" name="NN2-VVZ"/>
+                    <label end="59" start="57" name="VVB"/>
+                    <label end="62" start="61" name="TO0"/>
+                    <label end="66" start="64" name="VVI"/>
+                    <label end="70" start="68" name="PRP"/>
+                    <label end="74" start="72" name="NP0"/>
+                    <label end="76" start="76" name="PUN"/>
+                    <label end="83" start="78" name="NP0"/>
+                    <label end="86" start="85" name="POS"/>
+                    <label end="91" start="88" name="NN1"/>
+                    <label end="93" start="93" name="PUN"/>
+                    <label end="97" start="95" name="PNQ"/>
+                    <label end="104" start="99" name="VVZ"/>
+                    <label end="109" start="106" name="AJ0-AV0"/>
+                    <label end="113" start="111" name="UNC"/>
+                    <label end="120" start="115" name="NN2"/>
+                    <label end="125" start="122" name="AJ0"/>
+                    <label end="127" start="127" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 08:03:48 PST Tue" status="MANUAL" ID="1321564">
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="487" end="74" start="72" name="Partner_1"/>
+                    <label cBy="268" feID="488" end="86" start="78" name="Partner_2"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="74" start="72" name="Ext"/>
+                    <label end="86" start="78" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="74" start="72" name="NP"/>
+                    <label end="86" start="78" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="91" start="88" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="30505150" ID="933845">
+            <text>I was very shy but his mischievous grin put me at my ease and we strolled along behind Sally and her beau . </text>
+            <annotationSet cDate="01/07/2003 08:03:48 PST Tue" status="UNANN" ID="1321565">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PNP"/>
+                    <label end="4" start="2" name="VBD"/>
+                    <label end="9" start="6" name="AV0"/>
+                    <label end="13" start="11" name="AJ0"/>
+                    <label end="17" start="15" name="CJC"/>
+                    <label end="21" start="19" name="DPS"/>
+                    <label end="33" start="23" name="AJ0"/>
+                    <label end="38" start="35" name="NN1"/>
+                    <label end="42" start="40" name="VVD-VVN"/>
+                    <label end="45" start="44" name="PNP"/>
+                    <label end="48" start="47" name="PRP"/>
+                    <label end="51" start="50" name="DPS"/>
+                    <label end="56" start="53" name="NN1"/>
+                    <label end="60" start="58" name="CJC"/>
+                    <label end="63" start="62" name="PNP"/>
+                    <label end="72" start="65" name="VVD"/>
+                    <label end="78" start="74" name="AVP"/>
+                    <label end="85" start="80" name="PRP"/>
+                    <label end="91" start="87" name="NP0"/>
+                    <label end="95" start="93" name="CJC"/>
+                    <label end="99" start="97" name="DPS"/>
+                    <label end="104" start="101" name="NN1"/>
+                    <label end="106" start="106" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 08:03:48 PST Tue" status="MANUAL" ID="1321566">
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="488" end="99" start="97" name="Partner_2"/>
+                    <label cBy="268" feID="487" end="104" start="101" name="Partner_1"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="99" start="97" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="99" start="97" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="104" start="101" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="56793296" ID="933848">
+            <text>Violette is driving up from Geneva with from what I can make out is her latest beau and two friends . </text>
+            <annotationSet cDate="01/07/2003 08:03:48 PST Tue" status="UNANN" ID="1321571">
+                <layer rank="1" name="BNC">
+                    <label end="7" start="0" name="NN1-NP0"/>
+                    <label end="10" start="9" name="VBZ"/>
+                    <label end="18" start="12" name="VVG"/>
+                    <label end="21" start="20" name="AVP"/>
+                    <label end="26" start="23" name="PRP"/>
+                    <label end="33" start="28" name="NP0"/>
+                    <label end="38" start="35" name="PRP"/>
+                    <label end="43" start="40" name="PRP"/>
+                    <label end="48" start="45" name="DTQ"/>
+                    <label end="50" start="50" name="PNP"/>
+                    <label end="54" start="52" name="VM0"/>
+                    <label end="59" start="56" name="VVI"/>
+                    <label end="63" start="61" name="AVP"/>
+                    <label end="66" start="65" name="VBZ"/>
+                    <label end="70" start="68" name="DPS"/>
+                    <label end="77" start="72" name="AJS"/>
+                    <label end="82" start="79" name="NN1"/>
+                    <label end="86" start="84" name="CJC"/>
+                    <label end="90" start="88" name="CRD"/>
+                    <label end="98" start="92" name="NN2"/>
+                    <label end="100" start="100" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 08:03:48 PST Tue" status="MANUAL" ID="1321572">
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="488" end="70" start="68" name="Partner_2"/>
+                    <label cBy="268" feID="487" end="82" start="79" name="Partner_1"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="70" start="68" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="70" start="68" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="82" start="79" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="58173786" ID="933849">
+            <text>Twenty minutes later he returned , smiling as if he were her beau . </text>
+            <annotationSet cDate="01/07/2003 08:03:48 PST Tue" status="UNANN" ID="1321573">
+                <layer rank="1" name="BNC">
+                    <label end="5" start="0" name="CRD"/>
+                    <label end="13" start="7" name="NN2"/>
+                    <label end="19" start="15" name="AV0"/>
+                    <label end="22" start="21" name="PNP"/>
+                    <label end="31" start="24" name="VVD"/>
+                    <label end="33" start="33" name="PUN"/>
+                    <label end="41" start="35" name="VVG"/>
+                    <label end="44" start="43" name="CJS"/>
+                    <label end="47" start="46" name="CJS"/>
+                    <label end="50" start="49" name="PNP"/>
+                    <label end="55" start="52" name="VBD"/>
+                    <label end="59" start="57" name="DPS"/>
+                    <label end="64" start="61" name="NN1"/>
+                    <label end="66" start="66" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 08:03:49 PST Tue" status="MANUAL" ID="1321574">
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="488" end="59" start="57" name="Partner_2"/>
+                    <label cBy="268" feID="487" end="50" start="49" name="Partner_1"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="59" start="57" name="Gen"/>
+                    <label end="50" start="49" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="59" start="57" name="Poss"/>
+                    <label end="50" start="49" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="64" start="61" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="55" start="52" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-290-s20-posscmpd"/>
+    <subCorpus name="N-300-s20-cmpd"/>
+    <subCorpus name="N-330-s20-period"/>
+    <subCorpus name="N-340-s20-ppother">
+        <sentence sentNo="0" aPos="49845024" ID="933861">
+            <text>All she wanted was a doting beau on hand , and Rossmayne 's fortune . </text>
+            <annotationSet cDate="01/07/2003 08:03:50 PST Tue" status="UNANN" ID="1321597">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="DT0"/>
+                    <label end="6" start="4" name="PNP"/>
+                    <label end="13" start="8" name="VVD"/>
+                    <label end="17" start="15" name="VBD"/>
+                    <label end="19" start="19" name="AT0"/>
+                    <label end="26" start="21" name="AJ0"/>
+                    <label end="31" start="28" name="NN1"/>
+                    <label end="34" start="33" name="PRP"/>
+                    <label end="39" start="36" name="NN1"/>
+                    <label end="41" start="41" name="PUN"/>
+                    <label end="45" start="43" name="CJC"/>
+                    <label end="55" start="47" name="NP0"/>
+                    <label end="58" start="57" name="POS"/>
+                    <label end="66" start="60" name="NN1"/>
+                    <label end="68" start="68" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 08:03:50 PST Tue" status="MANUAL" ID="1321598">
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="509" end="26" start="21" name="Depictive"/>
+                    <label cBy="268" feID="487" end="31" start="28" name="Partner_1"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="26" start="21" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="26" start="21" name="A"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="31" start="28" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-340a-s20-ppother"/>
+    <subCorpus name="N-380-s20-other">
+        <sentence sentNo="0" aPos="11837980" ID="933871">
+            <text>Although she describes a stereotypical beau , Leapor emphasizes that Strephon 's artificial appearance is part of his strategy to deceive Celia . </text>
+            <annotationSet cDate="01/07/2003 08:03:51 PST Tue" status="UNANN" ID="1321617">
+                <layer rank="1" name="BNC">
+                    <label end="7" start="0" name="CJS"/>
+                    <label end="11" start="9" name="PNP"/>
+                    <label end="21" start="13" name="VVZ"/>
+                    <label end="23" start="23" name="AT0"/>
+                    <label end="37" start="25" name="AJ0"/>
+                    <label end="42" start="39" name="NN1"/>
+                    <label end="44" start="44" name="PUN"/>
+                    <label end="51" start="46" name="NN1-NP0"/>
+                    <label end="62" start="53" name="VVZ"/>
+                    <label end="67" start="64" name="CJT"/>
+                    <label end="76" start="69" name="NP0"/>
+                    <label end="79" start="78" name="POS"/>
+                    <label end="90" start="81" name="AJ0"/>
+                    <label end="101" start="92" name="NN1"/>
+                    <label end="104" start="103" name="VBZ"/>
+                    <label end="109" start="106" name="NN1"/>
+                    <label end="112" start="111" name="PRF"/>
+                    <label end="116" start="114" name="DPS"/>
+                    <label end="125" start="118" name="NN1"/>
+                    <label end="128" start="127" name="TO0"/>
+                    <label end="136" start="130" name="VVI"/>
+                    <label end="142" start="138" name="NP0"/>
+                    <label end="144" start="144" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 08:03:51 PST Tue" status="MANUAL" ID="1321618">
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="509" end="37" start="25" name="Depictive"/>
+                    <label cBy="268" feID="487" end="42" start="39" name="Partner_1"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="37" start="25" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="37" start="25" name="A"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="42" start="39" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-429-s20-lcoll-new"/>
+    <subCorpus name="N-429-s20-lgov-get">
+        <sentence sentNo="0" aPos="45910313" ID="933890">
+            <text>` You got a beau ? &quot; said Fieldfare , coming closer in a conspiratorial way . </text>
+            <annotationSet cDate="01/07/2003 08:03:53 PST Tue" status="UNANN" ID="1321655">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PUQ"/>
+                    <label end="4" start="2" name="PNP"/>
+                    <label end="8" start="6" name="VVD"/>
+                    <label end="10" start="10" name="AT0"/>
+                    <label end="15" start="12" name="NN1"/>
+                    <label end="17" start="17" name="PUN"/>
+                    <label end="19" start="19" name="PUQ"/>
+                    <label end="24" start="21" name="VVD"/>
+                    <label end="34" start="26" name="NN1-NP0"/>
+                    <label end="36" start="36" name="PUN"/>
+                    <label end="43" start="38" name="VVG"/>
+                    <label end="50" start="45" name="AV0"/>
+                    <label end="53" start="52" name="PRP"/>
+                    <label end="55" start="55" name="AT0"/>
+                    <label end="70" start="57" name="AJ0"/>
+                    <label end="74" start="72" name="NN1"/>
+                    <label end="76" start="76" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 08:03:54 PST Tue" status="MANUAL" ID="1321656">
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="487" end="15" start="12" name="Partner_1"/>
+                    <label cBy="268" feID="488" end="4" start="2" name="Partner_2"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="4" start="2" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="4" start="2" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="15" start="12" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="8" start="6" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="06/09/2005 02:01:53 PDT Thu" name="Have_as_requirement" ID="1491" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;The obtaining of a &lt;fen&gt;Requirement&lt;/fen&gt; state of affairs or the presence of a &lt;fen&gt;Required_entity&lt;/fen&gt; is profiled as a prerequisite for the obtaining or occurring of a &lt;fen&gt;Dependent&lt;/fen&gt; state-of-affairs.
+
+&lt;ex&gt;&lt;fex name="Dependent"&gt;This game&lt;/fex&gt; &lt;t&gt;demands&lt;/t&gt; &lt;fex name="Requirement"&gt;great skill&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="Dependent"&gt;The war on terror&lt;/fex&gt; &lt;t&gt;requires&lt;/t&gt; &lt;fex name="Requirement"&gt;little sacrifice for most Americans&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="Dependent"&gt;Glass  art&lt;/fex&gt; &lt;t&gt;demands&lt;/t&gt; &lt;fex name="Requirement"&gt;great patience&lt;/fex&gt; &lt;fex name="Required_individual"&gt;from the student&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="06/09/2005 02:01:53 PDT Thu" abbrev="dep" name="Dependent" ID="8110">
+        <definition>&lt;def-root&gt;The state-of-affairs which cannot hold without the state of affairs of the &lt;fen&gt;Requirement&lt;/fen&gt; or the presence of the &lt;fen&gt;Required_entity&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="06/09/2005 02:01:53 PDT Thu" abbrev="req" name="Requirement" ID="8111">
+        <definition>&lt;def-root&gt;The state-of-affairs that must obtain in order for the &lt;fen&gt;Dependent&lt;/fen&gt; to obtain.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="06/09/2005 02:01:53 PDT Thu" abbrev="deg" name="Degree" ID="8112">
+        <definition>&lt;def-root&gt;The extent to which the &lt;fen&gt;Dependent&lt;/fen&gt; depends on the presence of the &lt;fen&gt;Required_entity&lt;/fen&gt; or the obtaining of the &lt;fen&gt;Requirement&lt;/fen&gt;.
+
+&lt;ex&gt;A performance like this &lt;fex name="deg"&gt;absolutely&lt;/fex&gt; &lt;t&gt;demands&lt;/t&gt; charm.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="d0d0d0" fgColor="800080" coreType="Extra-Thematic" cBy="605" cDate="06/09/2005 02:01:53 PDT Thu" abbrev="exp" name="Explanation" ID="8113">
+        <definition>&lt;def-root&gt;The state-of-affairs which militates that the &lt;fen&gt;Requirement&lt;/fen&gt; is necessary for the &lt;fen&gt;Dependent&lt;/fen&gt; to obtain. &lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="06/09/2005 02:01:53 PDT Thu" abbrev="tim" name="Time" ID="8114">
+        <definition>&lt;def-root&gt;The time at which the &lt;fen&gt;Requirement&lt;/fen&gt; is necessary for the &lt;fen&gt;Dependent&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="06/09/2005 02:01:53 PDT Thu" abbrev="con" name="Condition" ID="8115">
+        <definition>&lt;def-root&gt;The conditions under which the the &lt;fen&gt;Requirement&lt;/fen&gt; is necessary.
+
+&lt;ex&gt;This Par 5 &lt;t&gt;demands&lt;/t&gt; great shotmaking &lt;fex name="Condition"&gt;if the player is to equal or better par&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="06/09/2005 02:01:53 PDT Thu" abbrev="dom" name="Domain" ID="8116">
+        <definition>&lt;def-root&gt;The field of endeavor whose nature imposes the &lt;fen&gt;Requirement&lt;/fen&gt;.
+
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="06/09/2005 02:07:45 PDT Thu" abbrev="reqe" name="Required_entity" ID="8117">
+        <definition>&lt;def-root&gt;An entity that has to be present for the &lt;fen&gt;Dependent&lt;/fen&gt; state of affairs to obtain.
+
+&lt;ex&gt;Believe it or not, but this cake &lt;t&gt;requires&lt;/t&gt; &lt;fex name="Required_entity"&gt;a pound of mild sausage&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Requirement" ID="8111"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="06/09/2005 02:34:53 PDT Thu" abbrev="reqi" name="Required_individual" ID="8118">
+        <definition>&lt;def-root&gt;An individual that has to provide the &lt;fen&gt;Required_entity&lt;/fen&gt; or to see to it that the &lt;fen&gt;Requirement&lt;/fen&gt; state of affairs holds.
+
+&lt;ex&gt;It's a sport that &lt;t&gt;demands&lt;/t&gt; everything &lt;fex name="reqi"&gt;of me&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="06/09/2005 02:48:48 PDT Thu" abbrev="pla" name="Place" ID="8119">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Place&lt;/fen&gt; denotes a location in which the specified relation between &lt;fen&gt;Requirement&lt;/fen&gt; and &lt;fen&gt;Dependent&lt;/fen&gt; holds.
+
+&lt;ex&gt;&lt;fex name="pla"&gt;In the US&lt;/fex&gt;, putting this on the agenda &lt;t&gt;requires&lt;/t&gt; the political weight and leadership of big city mayors.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Contingency</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on">
+        <relatedFrame>Requirement_scenario</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Needing</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Needs_SCs" POS="V" name="demand.v" ID="12201" lemmaID="10085" cBy="605" cDate="06/09/2005 02:37:53 PDT Thu">
+        <definition>COD: require; need.</definition>
+        <sentenceCount annotated="1" total="112"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="demand"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="require.v" ID="12202" lemmaID="32795" cBy="605" cDate="06/09/2005 02:38:44 PDT Thu">
+        <definition>FN: demand (the meeting of an enabling condition)</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="require"/>
+    </lexUnit>
+    <lexUnit status="Problem" POS="V" name="take.v" ID="13071" lemmaID="39414" cBy="664" cDate="12/08/2005 07:54:54 PST Thu">
+        <definition>COD: need or call for.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="take"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="need.v" ID="14504" lemmaID="25602" cBy="361" cDate="08/02/2007 04:30:04 PDT Thu">
+        <definition>FN: to require something in order to be operational.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="need"/>
+    </lexUnit>
+</frame>

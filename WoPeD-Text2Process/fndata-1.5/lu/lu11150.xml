@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="N" name="cossie.n" ID="11150" frame="Clothing" frameID="134" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Body_loc" name="Body_location"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="cre" name="Creator"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="Desc" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Gar" name="Garment"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="Mat" name="Material"/>
+            <FE fgColor="000000" bgColor="d0d0d0" type="Peripheral" abbrev="nam" name="Name"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Sty" name="Style"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Subr" name="Subregion"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="tim" name="Time_of_creation"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Use" name="Use"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Peripheral" abbrev="Wear" name="Wearer"/>
+        </frame>
+    </header>
+    <definition>COD: a swimming costume or a pair of swimming trunks.</definition>
+    <lexeme POS="N" name="cossie"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Garment"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Garment"/>
+                <annoSet ID="2035150"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Style"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Style"/>
+                <annoSet ID="2035150"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Use"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Use"/>
+                <annoSet ID="2035150"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Garment"/>
+            <FE name="Style"/>
+            <FE name="Use"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Garment"/>
+                <valenceUnit GF="Dep" PT="N" FE="Style"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Use"/>
+                <annoSet ID="2035150"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="manually-added">
+        <sentence sentNo="0" aPos="27158727" ID="470232">
+            <text>Whether watching performers in rubber hats and one-piece bathing cossies is an attractive proposition over dinner is a matter for debate . </text>
+            <annotationSet cDate="01/07/2003 05:12:33 PST Tue" status="UNANN" ID="579352">
+                <layer rank="1" name="BNC">
+                    <label end="6" start="0" name="CJS"/>
+                    <label end="15" start="8" name="VVG"/>
+                    <label end="26" start="17" name="NN2"/>
+                    <label end="29" start="28" name="PRP"/>
+                    <label end="36" start="31" name="AJ0-NN1"/>
+                    <label end="41" start="38" name="NN2"/>
+                    <label end="45" start="43" name="CJC"/>
+                    <label end="55" start="47" name="AJ0-NN1"/>
+                    <label end="63" start="57" name="AJ0-VVG"/>
+                    <label end="71" start="65" name="NN2"/>
+                    <label end="74" start="73" name="VBZ"/>
+                    <label end="77" start="76" name="AT0"/>
+                    <label end="88" start="79" name="AJ0"/>
+                    <label end="100" start="90" name="NN1"/>
+                    <label end="105" start="102" name="PRP"/>
+                    <label end="112" start="107" name="NN1"/>
+                    <label end="115" start="114" name="VBZ"/>
+                    <label end="117" start="117" name="AT0"/>
+                    <label end="124" start="119" name="NN1"/>
+                    <label end="128" start="126" name="PRP"/>
+                    <label end="135" start="130" name="NN1"/>
+                    <label end="137" start="137" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="11/16/2004 11:56:45 PST Tue" status="MANUAL" ID="2035150">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="71" start="65" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="869" end="71" start="65" name="Garment"/>
+                    <label cBy="664" feID="973" end="63" start="57" name="Use"/>
+                    <label cBy="664" feID="871" end="55" start="47" name="Style"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="63" start="57" name="Dep"/>
+                    <label end="55" start="47" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="63" start="57" name="AJP"/>
+                    <label end="55" start="47" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

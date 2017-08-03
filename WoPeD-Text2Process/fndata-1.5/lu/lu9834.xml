@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="tie.v" ID="9834" frame="Finish_competition" frameID="798" totalAnnotated="6" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core" abbrev="" name="Competition"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="" name="Competitor"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="" name="Competitors"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="mar" name="Margin"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="" name="Opponent"/>
+            <FE fgColor="000000" bgColor="90876C" type="Extra-Thematic" abbrev="Par" name="Particular_iteration"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="" name="Prize"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="" name="Rank"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Peripheral" abbrev="" name="Score"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="A9A9A9" type="Peripheral" abbrev="" name="Venue"/>
+        </frame>
+    </header>
+    <definition>COD:  achieve the same score or ranking as another competitor. </definition>
+    <lexeme POS="V" name="tie"/>
+    <valences>
+        <FERealization total="6">
+            <FE name="Competition"/>
+            <pattern total="3">
+                <valenceUnit GF="" PT="DNI" FE="Competition"/>
+                <annoSet ID="2427787"/>
+                <annoSet ID="2427897"/>
+                <annoSet ID="2428067"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Competition"/>
+                <annoSet ID="2427715"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Competition"/>
+                <annoSet ID="2427743"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Competition"/>
+                <annoSet ID="2427795"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Competitor"/>
+            <pattern total="5">
+                <valenceUnit GF="Ext" PT="NP" FE="Competitor"/>
+                <annoSet ID="2427715"/>
+                <annoSet ID="2427743"/>
+                <annoSet ID="2427787"/>
+                <annoSet ID="2427795"/>
+                <annoSet ID="2427897"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Competitors"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Competitors"/>
+                <annoSet ID="2428067"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Opponent"/>
+            <pattern total="4">
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Opponent"/>
+                <annoSet ID="2427743"/>
+                <annoSet ID="2427787"/>
+                <annoSet ID="2427795"/>
+                <annoSet ID="2427897"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Opponent"/>
+                <annoSet ID="2427715"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Rank"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Rank"/>
+                <annoSet ID="2427897"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Score"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Score"/>
+                <annoSet ID="2428067"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Competition"/>
+            <FE name="Competitor"/>
+            <FE name="Competitor"/>
+            <FE name="Opponent"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Competition"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Competitor"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Competitor"/>
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Opponent"/>
+                <annoSet ID="2427787"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="3">
+            <FE name="Competition"/>
+            <FE name="Competitor"/>
+            <FE name="Opponent"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Competition"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Competitor"/>
+                <valenceUnit GF="" PT="DNI" FE="Opponent"/>
+                <annoSet ID="2427715"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Competition"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Competitor"/>
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Opponent"/>
+                <annoSet ID="2427743"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Competition"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Competitor"/>
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Opponent"/>
+                <annoSet ID="2427795"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Competition"/>
+            <FE name="Competitor"/>
+            <FE name="Opponent"/>
+            <FE name="Rank"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Competition"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Competitor"/>
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Opponent"/>
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Rank"/>
+                <annoSet ID="2427897"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Competition"/>
+            <FE name="Competitors"/>
+            <FE name="Score"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Competition"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Competitors"/>
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Score"/>
+                <annoSet ID="2428067"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-Wgame,match,opponent-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="118" aPos="1911557" ID="1490527">
+            <text>Toronto 's starting pitcher , Dave Steib , took a 3-2 lead into the sixth inning , but Mark McGwire hit a lead-off home run to tie the game .</text>
+            <annotationSet cDate="06/24/2008 03:39:05 PDT Tue" status="UNANN" ID="2427714">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="0" name="NP"/>
+                    <label end="9" start="8" name="POS"/>
+                    <label end="18" start="11" name="VVG"/>
+                    <label end="26" start="20" name="nn"/>
+                    <label end="28" start="28" name=","/>
+                    <label end="33" start="30" name="NP"/>
+                    <label end="39" start="35" name="NP"/>
+                    <label end="41" start="41" name=","/>
+                    <label end="46" start="43" name="VVD"/>
+                    <label end="48" start="48" name="dt"/>
+                    <label end="52" start="50" name="cd"/>
+                    <label end="57" start="54" name="nn"/>
+                    <label end="62" start="59" name="in"/>
+                    <label end="66" start="64" name="dt"/>
+                    <label end="72" start="68" name="jj"/>
+                    <label end="79" start="74" name="nn"/>
+                    <label end="81" start="81" name=","/>
+                    <label end="85" start="83" name="cc"/>
+                    <label end="90" start="87" name="NP"/>
+                    <label end="98" start="92" name="NP"/>
+                    <label end="102" start="100" name="VVD"/>
+                    <label end="104" start="104" name="dt"/>
+                    <label end="113" start="106" name="nn"/>
+                    <label end="118" start="115" name="nn"/>
+                    <label end="122" start="120" name="VVN"/>
+                    <label end="125" start="124" name="to"/>
+                    <label end="129" start="127" name="VV"/>
+                    <label end="133" start="131" name="dt"/>
+                    <label end="138" start="135" name="nn"/>
+                    <label end="140" start="140" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="06/24/2008 03:39:05 PDT Tue" status="MANUAL" ID="2427715">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="129" start="127" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="5671" end="138" start="131" name="Competition"/>
+                    <label cBy="597" feID="5664" end="98" start="87" name="Competitor"/>
+                    <label cBy="597" feID="5665" itype="DNI" name="Opponent"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="138" start="131" name="Obj"/>
+                    <label end="98" start="87" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="138" start="131" name="NP"/>
+                    <label end="98" start="87" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="54" aPos="66604084" ID="1490541">
+            <text>` My father tied with another man at an Old Newton furrow-drawing match : both had a quarter-inch deviation -- it must have been about sixty years ago .</text>
+            <annotationSet cDate="06/24/2008 03:39:08 PDT Tue" status="UNANN" ID="2427742">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="2" name="PP$"/>
+                    <label end="10" start="5" name="nn"/>
+                    <label end="15" start="12" name="VVN"/>
+                    <label end="20" start="17" name="in"/>
+                    <label end="28" start="22" name="dt"/>
+                    <label end="32" start="30" name="nn"/>
+                    <label end="35" start="34" name="in"/>
+                    <label end="38" start="37" name="dt"/>
+                    <label end="42" start="40" name="NP"/>
+                    <label end="49" start="44" name="NP"/>
+                    <label end="64" start="51" name="nn"/>
+                    <label end="70" start="66" name="nn"/>
+                    <label end="72" start="72" name=":"/>
+                    <label end="77" start="74" name="pdt"/>
+                    <label end="81" start="79" name="VHN"/>
+                    <label end="83" start="83" name="dt"/>
+                    <label end="96" start="85" name="jj"/>
+                    <label end="106" start="98" name="nn"/>
+                    <label end="109" start="108" name=":"/>
+                    <label end="112" start="111" name="PP"/>
+                    <label end="117" start="114" name="md"/>
+                    <label end="122" start="119" name="VH"/>
+                    <label end="127" start="124" name="VBN"/>
+                    <label end="133" start="129" name="rb"/>
+                    <label end="139" start="135" name="cd"/>
+                    <label end="145" start="141" name="nns"/>
+                    <label end="149" start="147" name="rb"/>
+                    <label end="151" start="151" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="06/24/2008 03:39:08 PDT Tue" status="MANUAL" ID="2427743">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="15" start="12" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="5664" end="10" start="2" name="Competitor"/>
+                    <label cBy="597" feID="5665" end="32" start="17" name="Opponent"/>
+                    <label cBy="597" feID="5671" end="70" start="34" name="Competition"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="10" start="2" name="Ext"/>
+                    <label end="32" start="17" name="Dep"/>
+                    <label end="70" start="34" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="10" start="2" name="NP"/>
+                    <label end="32" start="17" name="PP"/>
+                    <label end="70" start="34" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="456" aPos="110407295" ID="1490563">
+            <text>BIRKENHEAD ST MARY 'S increased their lead at the head of the Bromborough Paints Merseyside Competition table but most excitement came at Ainsdale who tied with Rainhill .</text>
+            <annotationSet cDate="06/24/2008 03:39:13 PDT Tue" status="UNANN" ID="2427786">
+                <layer rank="1" name="PENN">
+                    <label end="9" start="0" name="NP"/>
+                    <label end="12" start="11" name="NP"/>
+                    <label end="17" start="14" name="NP"/>
+                    <label end="20" start="19" name="POS"/>
+                    <label end="30" start="22" name="VVN"/>
+                    <label end="36" start="32" name="PP$"/>
+                    <label end="41" start="38" name="nn"/>
+                    <label end="44" start="43" name="in"/>
+                    <label end="48" start="46" name="dt"/>
+                    <label end="53" start="50" name="nn"/>
+                    <label end="56" start="55" name="in"/>
+                    <label end="60" start="58" name="dt"/>
+                    <label end="72" start="62" name="NP"/>
+                    <label end="79" start="74" name="nns"/>
+                    <label end="90" start="81" name="nn"/>
+                    <label end="102" start="92" name="nn"/>
+                    <label end="108" start="104" name="nn"/>
+                    <label end="112" start="110" name="cc"/>
+                    <label end="117" start="114" name="jjs"/>
+                    <label end="128" start="119" name="nn"/>
+                    <label end="133" start="130" name="VVD"/>
+                    <label end="136" start="135" name="in"/>
+                    <label end="145" start="138" name="NP"/>
+                    <label end="149" start="147" name="wp"/>
+                    <label end="154" start="151" name="VVD"/>
+                    <label end="159" start="156" name="in"/>
+                    <label end="168" start="161" name="NP"/>
+                    <label end="170" start="170" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="06/24/2008 03:39:13 PDT Tue" status="MANUAL" ID="2427787">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="154" start="151" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="5664" end="145" start="138" name="Competitor"/>
+                    <label cBy="597" feID="5664" end="149" start="147" name="Competitor"/>
+                    <label cBy="597" feID="5665" end="168" start="156" name="Opponent"/>
+                    <label cBy="597" feID="5671" itype="DNI" name="Competition"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="145" start="138" name="Ext"/>
+                    <label end="149" start="147" name="Ext"/>
+                    <label end="168" start="156" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="145" start="138" name="NP"/>
+                    <label end="149" start="147" name="NP"/>
+                    <label end="168" start="156" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other">
+                    <label end="145" start="138" name="Ant"/>
+                    <label end="149" start="147" name="Rel"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="3" aPos="110469080" ID="1490567">
+            <text>AINSDALE tied with Rainhill in a thrilling Merseyside Competition encounter .</text>
+            <annotationSet cDate="06/24/2008 03:39:14 PDT Tue" status="UNANN" ID="2427794">
+                <layer rank="1" name="PENN">
+                    <label end="7" start="0" name="NP"/>
+                    <label end="12" start="9" name="VVD"/>
+                    <label end="17" start="14" name="in"/>
+                    <label end="26" start="19" name="NP"/>
+                    <label end="29" start="28" name="in"/>
+                    <label end="31" start="31" name="dt"/>
+                    <label end="41" start="33" name="jj"/>
+                    <label end="52" start="43" name="nn"/>
+                    <label end="64" start="54" name="nn"/>
+                    <label end="74" start="66" name="nn"/>
+                    <label end="76" start="76" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="06/24/2008 03:39:14 PDT Tue" status="MANUAL" ID="2427795">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="12" start="9" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="5664" end="7" start="0" name="Competitor"/>
+                    <label cBy="597" feID="5665" end="26" start="14" name="Opponent"/>
+                    <label cBy="597" feID="5671" end="64" start="28" name="Competition"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="7" start="0" name="Ext"/>
+                    <label end="26" start="14" name="Dep"/>
+                    <label end="64" start="28" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="7" start="0" name="NP"/>
+                    <label end="26" start="14" name="PP"/>
+                    <label end="64" start="28" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="03-T-PPat-(1)"/>
+    <subCorpus name="04-T-PPwith-(1)">
+        <sentence corpID="111" docID="421" sentNo="5" paragNo="250" aPos="15460444" ID="1490618">
+            <text>Sandy shot a 71 , though , and that left him tied for the lead with David Graham , who we played with , of course , for the third round .</text>
+            <annotationSet cDate="06/24/2008 03:39:28 PDT Tue" status="UNANN" ID="2427896">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="NP"/>
+                    <label end="9" start="6" name="VVD"/>
+                    <label end="11" start="11" name="dt"/>
+                    <label end="14" start="13" name="cd"/>
+                    <label end="16" start="16" name=","/>
+                    <label end="23" start="18" name="rb"/>
+                    <label end="25" start="25" name=","/>
+                    <label end="29" start="27" name="cc"/>
+                    <label end="34" start="31" name="wdt"/>
+                    <label end="39" start="36" name="VVD"/>
+                    <label end="43" start="41" name="PP"/>
+                    <label end="48" start="45" name="VVD"/>
+                    <label end="52" start="50" name="in"/>
+                    <label end="56" start="54" name="dt"/>
+                    <label end="61" start="58" name="nn"/>
+                    <label end="66" start="63" name="in"/>
+                    <label end="72" start="68" name="NP"/>
+                    <label end="79" start="74" name="NP"/>
+                    <label end="81" start="81" name=","/>
+                    <label end="85" start="83" name="wp"/>
+                    <label end="88" start="87" name="PP"/>
+                    <label end="95" start="90" name="VVD"/>
+                    <label end="100" start="97" name="in"/>
+                    <label end="102" start="102" name=","/>
+                    <label end="105" start="104" name="in"/>
+                    <label end="112" start="107" name="nn"/>
+                    <label end="114" start="114" name=","/>
+                    <label end="118" start="116" name="in"/>
+                    <label end="122" start="120" name="dt"/>
+                    <label end="128" start="124" name="jj"/>
+                    <label end="134" start="130" name="nn"/>
+                    <label end="136" start="136" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="06/24/2008 03:39:28 PDT Tue" status="MANUAL" ID="2427897">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="48" start="45" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="5664" end="43" start="41" name="Competitor"/>
+                    <label cBy="597" feID="5669" end="61" start="50" name="Rank"/>
+                    <label cBy="597" feID="5665" end="79" start="63" name="Opponent"/>
+                    <label cBy="597" feID="5671" itype="DNI" name="Competition"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="43" start="41" name="Ext"/>
+                    <label end="61" start="50" name="Dep"/>
+                    <label end="79" start="63" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="43" start="41" name="NP"/>
+                    <label end="61" start="50" name="PP"/>
+                    <label end="79" start="63" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="08-T-PPon-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="92" aPos="33811115" ID="1490703">
+            <text>He defeated fellow Scot Colin Montgomerie at the first hole of a sudden-death decider after the pair had tied on three-over-par 287 .</text>
+            <annotationSet cDate="06/24/2008 03:39:55 PDT Tue" status="UNANN" ID="2428066">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="10" start="3" name="VVD"/>
+                    <label end="17" start="12" name="jj"/>
+                    <label end="22" start="19" name="NP"/>
+                    <label end="28" start="24" name="NP"/>
+                    <label end="40" start="30" name="NP"/>
+                    <label end="43" start="42" name="in"/>
+                    <label end="47" start="45" name="dt"/>
+                    <label end="53" start="49" name="jj"/>
+                    <label end="58" start="55" name="nn"/>
+                    <label end="61" start="60" name="in"/>
+                    <label end="63" start="63" name="dt"/>
+                    <label end="76" start="65" name="nn"/>
+                    <label end="84" start="78" name="nn"/>
+                    <label end="90" start="86" name="in"/>
+                    <label end="94" start="92" name="dt"/>
+                    <label end="99" start="96" name="nn"/>
+                    <label end="103" start="101" name="VHD"/>
+                    <label end="108" start="105" name="VVN"/>
+                    <label end="111" start="110" name="in"/>
+                    <label end="126" start="113" name="jj"/>
+                    <label end="130" start="128" name="cd"/>
+                    <label end="132" start="132" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="06/24/2008 03:39:55 PDT Tue" status="MANUAL" ID="2428067">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="108" start="105" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="5666" end="99" start="92" name="Competitors"/>
+                    <label cBy="597" feID="5667" end="130" start="110" name="Score"/>
+                    <label cBy="597" feID="5671" itype="DNI" name="Competition"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="99" start="92" name="Ext"/>
+                    <label end="130" start="110" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="99" start="92" name="NP"/>
+                    <label end="130" start="110" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

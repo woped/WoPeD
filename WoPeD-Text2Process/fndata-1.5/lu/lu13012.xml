@@ -1,0 +1,876 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" POS="V" name="forge.v" ID="13012" frame="Forging" frameID="1661" totalAnnotated="14" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="agt" name="Agent"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Extra-Thematic" abbrev="exp" name="Explanation"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="fid" name="Fidelity"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Core" abbrev="for" name="Forgery"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="ins" name="Instrument"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="man" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="pla" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="pur" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="sou" name="Source"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core" abbrev="sta" name="Standard"/>
+            <FE fgColor="FFFFFF" bgColor="A9A9A9" type="Peripheral" abbrev="tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: produce a fraudulent copy or imitation of.</definition>
+    <lexeme POS="V" name="forge"/>
+    <valences>
+        <FERealization total="14">
+            <FE name="Agent"/>
+            <pattern total="5">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <annoSet ID="39453"/>
+                <annoSet ID="39463"/>
+                <annoSet ID="39504"/>
+                <annoSet ID="39508"/>
+                <annoSet ID="39528"/>
+            </pattern>
+            <pattern total="7">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <annoSet ID="39451"/>
+                <annoSet ID="39455"/>
+                <annoSet ID="39457"/>
+                <annoSet ID="39461"/>
+                <annoSet ID="39467"/>
+                <annoSet ID="39592"/>
+                <annoSet ID="39594"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Agent"/>
+                <annoSet ID="39486"/>
+                <annoSet ID="39488"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="14">
+            <FE name="Forgery"/>
+            <pattern total="5">
+                <valenceUnit GF="Ext" PT="NP" FE="Forgery"/>
+                <annoSet ID="39486"/>
+                <annoSet ID="39488"/>
+                <annoSet ID="39504"/>
+                <annoSet ID="39508"/>
+                <annoSet ID="39528"/>
+            </pattern>
+            <pattern total="9">
+                <valenceUnit GF="Obj" PT="NP" FE="Forgery"/>
+                <annoSet ID="39451"/>
+                <annoSet ID="39453"/>
+                <annoSet ID="39455"/>
+                <annoSet ID="39457"/>
+                <annoSet ID="39461"/>
+                <annoSet ID="39463"/>
+                <annoSet ID="39467"/>
+                <annoSet ID="39592"/>
+                <annoSet ID="39594"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="14">
+            <FE name="Standard"/>
+            <pattern total="13">
+                <valenceUnit GF="" PT="2nd" FE="Standard"/>
+                <annoSet ID="39451"/>
+                <annoSet ID="39453"/>
+                <annoSet ID="39455"/>
+                <annoSet ID="39457"/>
+                <annoSet ID="39461"/>
+                <annoSet ID="39463"/>
+                <annoSet ID="39467"/>
+                <annoSet ID="39486"/>
+                <annoSet ID="39488"/>
+                <annoSet ID="39508"/>
+                <annoSet ID="39528"/>
+                <annoSet ID="39592"/>
+                <annoSet ID="39594"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Standard"/>
+                <annoSet ID="39504"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="14">
+            <FE name="Agent"/>
+            <FE name="Forgery"/>
+            <FE name="Standard"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Forgery"/>
+                <valenceUnit GF="" PT="2nd" FE="Standard"/>
+                <annoSet ID="39508"/>
+                <annoSet ID="39528"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Forgery"/>
+                <valenceUnit GF="" PT="DNI" FE="Standard"/>
+                <annoSet ID="39504"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Forgery"/>
+                <valenceUnit GF="" PT="2nd" FE="Standard"/>
+                <annoSet ID="39453"/>
+                <annoSet ID="39463"/>
+            </pattern>
+            <pattern total="7">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Forgery"/>
+                <valenceUnit GF="" PT="2nd" FE="Standard"/>
+                <annoSet ID="39451"/>
+                <annoSet ID="39455"/>
+                <annoSet ID="39457"/>
+                <annoSet ID="39461"/>
+                <annoSet ID="39467"/>
+                <annoSet ID="39592"/>
+                <annoSet ID="39594"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Agent"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Forgery"/>
+                <valenceUnit GF="" PT="2nd" FE="Standard"/>
+                <annoSet ID="39486"/>
+                <annoSet ID="39488"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-429-rcoll-letter">
+        <sentence sentNo="0" aPos="11844293" ID="193884">
+            <text>Leonardo forges a love letter from Emilia , and bribes a servant to deliver it to Eustathius along with Emilia 's stolen glove . </text>
+            <annotationSet cDate="01/06/2003 06:33:11 PST Mon" status="UNANN" ID="39450">
+                <layer rank="1" name="BNC">
+                    <label end="7" start="0" name="NP0"/>
+                    <label end="14" start="9" name="VVZ"/>
+                    <label end="16" start="16" name="AT0"/>
+                    <label end="21" start="18" name="NN1"/>
+                    <label end="28" start="23" name="NN1"/>
+                    <label end="33" start="30" name="PRP"/>
+                    <label end="40" start="35" name="NP0"/>
+                    <label end="42" start="42" name="PUN"/>
+                    <label end="46" start="44" name="CJC"/>
+                    <label end="53" start="48" name="VVZ"/>
+                    <label end="55" start="55" name="AT0"/>
+                    <label end="63" start="57" name="NN1"/>
+                    <label end="66" start="65" name="TO0"/>
+                    <label end="74" start="68" name="VVI"/>
+                    <label end="77" start="76" name="PNP"/>
+                    <label end="80" start="79" name="PRP"/>
+                    <label end="91" start="82" name="NN1-NP0"/>
+                    <label end="97" start="93" name="PRP"/>
+                    <label end="102" start="99" name="PRP"/>
+                    <label end="109" start="104" name="NP0"/>
+                    <label end="112" start="111" name="POS"/>
+                    <label end="119" start="114" name="AJ0-VVN"/>
+                    <label end="125" start="121" name="NN1"/>
+                    <label end="127" start="127" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 06:33:11 PST Mon" status="MANUAL" ID="39451">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="9490" end="7" start="0" name="Agent"/>
+                    <label cBy="103" feID="9492" end="40" start="16" name="Forgery"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="7" start="0" name="Ext"/>
+                    <label end="40" start="16" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="7" start="0" name="NP"/>
+                    <label end="40" start="16" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="14" start="9" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="2" name="FE">
+                    <label cBy="605" feID="9522" end="40" start="16" name="Standard"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="29043710" ID="193885">
+            <text>In one way the collector of autograph and manuscript material is at a disadvantage compared with his bibliophile brother , in that it is much easier to forge a letter than a book . </text>
+            <annotationSet cDate="01/06/2003 06:33:11 PST Mon" status="UNANN" ID="39452">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PRP"/>
+                    <label end="5" start="3" name="CRD"/>
+                    <label end="9" start="7" name="NN1"/>
+                    <label end="13" start="11" name="AT0"/>
+                    <label end="23" start="15" name="NN1"/>
+                    <label end="26" start="25" name="PRF"/>
+                    <label end="36" start="28" name="NN1"/>
+                    <label end="40" start="38" name="CJC"/>
+                    <label end="51" start="42" name="NN1"/>
+                    <label end="60" start="53" name="NN1"/>
+                    <label end="63" start="62" name="VBZ"/>
+                    <label end="66" start="65" name="PRP"/>
+                    <label end="68" start="68" name="AT0"/>
+                    <label end="81" start="70" name="NN1"/>
+                    <label end="90" start="83" name="VVD-VVN"/>
+                    <label end="95" start="92" name="PRP"/>
+                    <label end="99" start="97" name="DPS"/>
+                    <label end="111" start="101" name="NN1"/>
+                    <label end="119" start="113" name="NN1"/>
+                    <label end="121" start="121" name="PUN"/>
+                    <label end="124" start="123" name="PRP"/>
+                    <label end="129" start="126" name="DT0"/>
+                    <label end="132" start="131" name="PNP"/>
+                    <label end="135" start="134" name="VBZ"/>
+                    <label end="140" start="137" name="AV0"/>
+                    <label end="147" start="142" name="AJC"/>
+                    <label end="150" start="149" name="TO0"/>
+                    <label end="156" start="152" name="VVI"/>
+                    <label end="158" start="158" name="AT0"/>
+                    <label end="165" start="160" name="NN1"/>
+                    <label end="170" start="167" name="CJS"/>
+                    <label end="172" start="172" name="AT0"/>
+                    <label end="177" start="174" name="NN1"/>
+                    <label end="179" start="179" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 06:33:11 PST Mon" status="MANUAL" ID="39453">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="9490" itype="CNI" name="Agent"/>
+                    <label cBy="395" feID="9492" end="165" start="158" name="Forgery"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="165" start="158" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="165" start="158" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="156" start="152" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="2" name="FE">
+                    <label cBy="605" feID="9522" end="165" start="158" name="Standard"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="115522611" ID="193886">
+            <text>Then I forge myself a letter . </text>
+            <annotationSet cDate="01/06/2003 06:33:11 PST Mon" status="UNANN" ID="39454">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="AV0"/>
+                    <label end="5" start="5" name="PNP"/>
+                    <label end="11" start="7" name="VVB"/>
+                    <label end="18" start="13" name="PNX"/>
+                    <label end="20" start="20" name="AT0"/>
+                    <label end="27" start="22" name="NN1"/>
+                    <label end="29" start="29" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 06:33:11 PST Mon" status="MANUAL" ID="39455">
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="9490" end="5" start="5" name="Agent"/>
+                    <label cBy="605" feID="9492" end="27" start="20" name="Forgery"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="5" start="5" name="Ext"/>
+                    <label end="27" start="20" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="5" start="5" name="NP"/>
+                    <label end="27" start="20" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="11" start="7" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="2" name="FE">
+                    <label cBy="605" feID="9522" end="27" start="20" name="Standard"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-429-rcoll-name">
+        <sentence sentNo="0" aPos="31856372" ID="193887">
+            <text>ITN 's Nicholson forged her name on his passport to get her out of her homeland and away from the trauma of war . </text>
+            <annotationSet cDate="01/06/2003 06:33:11 PST Mon" status="UNANN" ID="39456">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="NP0"/>
+                    <label end="5" start="4" name="POS"/>
+                    <label end="15" start="7" name="NP0"/>
+                    <label end="22" start="17" name="VVD"/>
+                    <label end="26" start="24" name="DPS"/>
+                    <label end="31" start="28" name="NN1"/>
+                    <label end="34" start="33" name="PRP"/>
+                    <label end="38" start="36" name="DPS"/>
+                    <label end="47" start="40" name="NN1"/>
+                    <label end="50" start="49" name="TO0"/>
+                    <label end="54" start="52" name="VVI"/>
+                    <label end="58" start="56" name="PNP"/>
+                    <label end="62" start="60" name="PRP"/>
+                    <label end="65" start="64" name="PRP"/>
+                    <label end="69" start="67" name="DPS"/>
+                    <label end="78" start="71" name="NN1"/>
+                    <label end="82" start="80" name="CJC"/>
+                    <label end="87" start="84" name="PRP"/>
+                    <label end="92" start="89" name="PRP"/>
+                    <label end="96" start="94" name="AT0"/>
+                    <label end="103" start="98" name="NN1"/>
+                    <label end="106" start="105" name="PRF"/>
+                    <label end="110" start="108" name="NN1"/>
+                    <label end="112" start="112" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 06:33:11 PST Mon" status="MANUAL" ID="39457">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="9490" end="15" start="0" name="Agent"/>
+                    <label cBy="103" feID="9492" end="31" start="24" name="Forgery"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="15" start="0" name="Ext"/>
+                    <label end="31" start="24" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="15" start="0" name="NP"/>
+                    <label end="31" start="24" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="22" start="17" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="2" name="FE">
+                    <label cBy="605" feID="9522" end="31" start="24" name="Standard"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="103582301" ID="193889">
+            <text>COOKSTOWN Magistrates Court was told yesterday that a farmer forged his deceased mother-in-laws name on a cheque to pay his electricity bill . </text>
+            <annotationSet cDate="01/06/2003 06:33:12 PST Mon" status="UNANN" ID="39460">
+                <layer rank="1" name="BNC">
+                    <label end="8" start="0" name="NP0"/>
+                    <label end="20" start="10" name="NP0"/>
+                    <label end="26" start="22" name="NP0"/>
+                    <label end="30" start="28" name="VBD"/>
+                    <label end="35" start="32" name="VVN"/>
+                    <label end="45" start="37" name="AV0"/>
+                    <label end="50" start="47" name="CJT"/>
+                    <label end="52" start="52" name="AT0"/>
+                    <label end="59" start="54" name="NN1"/>
+                    <label end="66" start="61" name="VVD"/>
+                    <label end="70" start="68" name="DPS"/>
+                    <label end="79" start="72" name="AJ0"/>
+                    <label end="94" start="81" name="NN2"/>
+                    <label end="99" start="96" name="NN1-VVB"/>
+                    <label end="102" start="101" name="PRP"/>
+                    <label end="104" start="104" name="AT0"/>
+                    <label end="111" start="106" name="NN1"/>
+                    <label end="114" start="113" name="TO0"/>
+                    <label end="118" start="116" name="VVI"/>
+                    <label end="122" start="120" name="DPS"/>
+                    <label end="134" start="124" name="NN1"/>
+                    <label end="139" start="136" name="NN1"/>
+                    <label end="141" start="141" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 06:33:12 PST Mon" status="MANUAL" ID="39461">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="9490" end="59" start="52" name="Agent"/>
+                    <label cBy="103" feID="9492" end="99" start="68" name="Forgery"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="59" start="52" name="Ext"/>
+                    <label end="99" start="68" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="59" start="52" name="NP"/>
+                    <label end="99" start="68" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="66" start="61" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="2" name="FE">
+                    <label cBy="605" feID="9522" end="99" start="68" name="Standard"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-429-rcoll-signature">
+        <sentence sentNo="0" aPos="2453940" ID="193890">
+            <text>The Committee also handed out a four-week suspension to Bruce Dowling , the jump jockey , for forging a doctor 's signature . </text>
+            <annotationSet cDate="01/06/2003 06:33:12 PST Mon" status="UNANN" ID="39462">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="12" start="4" name="NN0"/>
+                    <label end="17" start="14" name="AV0"/>
+                    <label end="24" start="19" name="VVD-VVN"/>
+                    <label end="28" start="26" name="AVP"/>
+                    <label end="30" start="30" name="AT0"/>
+                    <label end="40" start="32" name="AJ0"/>
+                    <label end="51" start="42" name="NN1"/>
+                    <label end="54" start="53" name="PRP"/>
+                    <label end="60" start="56" name="NP0"/>
+                    <label end="68" start="62" name="NP0"/>
+                    <label end="70" start="70" name="PUN"/>
+                    <label end="74" start="72" name="AT0"/>
+                    <label end="79" start="76" name="NN1"/>
+                    <label end="86" start="81" name="NN1"/>
+                    <label end="88" start="88" name="PUN"/>
+                    <label end="92" start="90" name="PRP"/>
+                    <label end="100" start="94" name="VVG"/>
+                    <label end="102" start="102" name="AT0"/>
+                    <label end="109" start="104" name="NN1"/>
+                    <label end="112" start="111" name="POS"/>
+                    <label end="122" start="114" name="NN1"/>
+                    <label end="124" start="124" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 06:33:12 PST Mon" status="MANUAL" ID="39463">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="9492" end="122" start="102" name="Forgery"/>
+                    <label cBy="103" feID="9490" itype="CNI" name="Agent"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="122" start="102" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="122" start="102" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="100" start="94" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="2" name="FE">
+                    <label cBy="605" feID="9522" end="122" start="102" name="Standard"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="19915770" ID="193892">
+            <text>Scientology circles were shaken by allegations that L. Ron Hubbard was dead and a group of opportunists were forging his signature . </text>
+            <annotationSet cDate="01/06/2003 06:33:12 PST Mon" status="UNANN" ID="39466">
+                <layer rank="1" name="BNC">
+                    <label end="10" start="0" name="NN1-NP0"/>
+                    <label end="18" start="12" name="NN2"/>
+                    <label end="23" start="20" name="VBD"/>
+                    <label end="30" start="25" name="VVN"/>
+                    <label end="33" start="32" name="PRP"/>
+                    <label end="45" start="35" name="NN2"/>
+                    <label end="50" start="47" name="CJT"/>
+                    <label end="53" start="52" name="NP0"/>
+                    <label end="57" start="55" name="NP0"/>
+                    <label end="65" start="59" name="NP0"/>
+                    <label end="69" start="67" name="VBD"/>
+                    <label end="74" start="71" name="AJ0"/>
+                    <label end="78" start="76" name="CJC"/>
+                    <label end="80" start="80" name="AT0"/>
+                    <label end="86" start="82" name="NN0"/>
+                    <label end="89" start="88" name="PRF"/>
+                    <label end="102" start="91" name="NN2"/>
+                    <label end="107" start="104" name="VBD"/>
+                    <label end="115" start="109" name="VVG"/>
+                    <label end="119" start="117" name="DPS"/>
+                    <label end="129" start="121" name="NN1"/>
+                    <label end="131" start="131" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 06:33:12 PST Mon" status="MANUAL" ID="39467">
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="9490" end="102" start="80" name="Agent"/>
+                    <label cBy="605" feID="9492" end="129" start="117" name="Forgery"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="102" start="80" name="Ext"/>
+                    <label end="129" start="117" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="102" start="80" name="NP"/>
+                    <label end="129" start="117" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="115" start="109" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="2" name="FE">
+                    <label cBy="605" feID="9522" end="129" start="117" name="Standard"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-500-vpto"/>
+    <subCorpus name="V-670-pass-by">
+        <sentence sentNo="0" aPos="75981108" ID="193902">
+            <text>The next step forward would seem to be : that the letter had been forged by Hilda Machin . </text>
+            <annotationSet cDate="01/06/2003 06:33:13 PST Mon" status="UNANN" ID="39485">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="7" start="4" name="ORD"/>
+                    <label end="12" start="9" name="NN1"/>
+                    <label end="20" start="14" name="AV0"/>
+                    <label end="26" start="22" name="VM0"/>
+                    <label end="31" start="28" name="VVI"/>
+                    <label end="34" start="33" name="TO0"/>
+                    <label end="37" start="36" name="VBI"/>
+                    <label end="39" start="39" name="PUN"/>
+                    <label end="44" start="41" name="CJT"/>
+                    <label end="48" start="46" name="AT0"/>
+                    <label end="55" start="50" name="NN1"/>
+                    <label end="59" start="57" name="VHD"/>
+                    <label end="64" start="61" name="VBN"/>
+                    <label end="71" start="66" name="VVN"/>
+                    <label end="74" start="73" name="PRP"/>
+                    <label end="80" start="76" name="NP0"/>
+                    <label end="87" start="82" name="NP0"/>
+                    <label end="89" start="89" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 06:33:13 PST Mon" status="MANUAL" ID="39486">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="9492" end="55" start="46" name="Forgery"/>
+                    <label cBy="103" feID="9490" end="87" start="73" name="Agent"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="55" start="46" name="Ext"/>
+                    <label end="87" start="73" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="55" start="46" name="NP"/>
+                    <label end="87" start="73" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="71" start="66" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="2" name="FE">
+                    <label cBy="605" feID="9522" end="55" start="46" name="Standard"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="75981573" ID="193903">
+            <text>He registered in his mind one other possibility : that the letters had been forged by Kronweiser himself , to fill out the picture of Walter Machin for his book . </text>
+            <annotationSet cDate="01/06/2003 06:33:13 PST Mon" status="UNANN" ID="39487">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="12" start="3" name="VVD"/>
+                    <label end="15" start="14" name="PRP"/>
+                    <label end="19" start="17" name="DPS"/>
+                    <label end="24" start="21" name="NN1"/>
+                    <label end="28" start="26" name="CRD"/>
+                    <label end="34" start="30" name="AJ0"/>
+                    <label end="46" start="36" name="NN1"/>
+                    <label end="48" start="48" name="PUN"/>
+                    <label end="53" start="50" name="CJT"/>
+                    <label end="57" start="55" name="AT0"/>
+                    <label end="65" start="59" name="NN2"/>
+                    <label end="69" start="67" name="VHD"/>
+                    <label end="74" start="71" name="VBN"/>
+                    <label end="81" start="76" name="VVN"/>
+                    <label end="84" start="83" name="PRP"/>
+                    <label end="95" start="86" name="NN1-NP0"/>
+                    <label end="103" start="97" name="PNX"/>
+                    <label end="105" start="105" name="PUN"/>
+                    <label end="108" start="107" name="TO0"/>
+                    <label end="113" start="110" name="VVI"/>
+                    <label end="117" start="115" name="AVP"/>
+                    <label end="121" start="119" name="AT0"/>
+                    <label end="129" start="123" name="NN1"/>
+                    <label end="132" start="131" name="PRF"/>
+                    <label end="139" start="134" name="NP0"/>
+                    <label end="146" start="141" name="NP0"/>
+                    <label end="150" start="148" name="PRP"/>
+                    <label end="154" start="152" name="DPS"/>
+                    <label end="159" start="156" name="NN1"/>
+                    <label end="161" start="161" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 06:33:13 PST Mon" status="MANUAL" ID="39488">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="9492" end="65" start="55" name="Forgery"/>
+                    <label cBy="103" feID="9490" end="103" start="83" name="Agent"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="65" start="55" name="Ext"/>
+                    <label end="103" start="83" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="65" start="55" name="NP"/>
+                    <label end="103" start="83" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="81" start="76" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="2" name="FE">
+                    <label cBy="605" feID="9522" end="65" start="55" name="Standard"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-680-pass">
+        <sentence sentNo="0" aPos="101940735" ID="193911">
+            <text>They 'd bought visas from a travel agent in Nepal , not realising they were forged . </text>
+            <annotationSet cDate="01/06/2003 06:33:14 PST Mon" status="UNANN" ID="39503">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="PNP"/>
+                    <label end="6" start="5" name="VHD"/>
+                    <label end="13" start="8" name="VVN"/>
+                    <label end="19" start="15" name="NN2"/>
+                    <label end="24" start="21" name="PRP"/>
+                    <label end="26" start="26" name="AT0"/>
+                    <label end="33" start="28" name="NN1"/>
+                    <label end="39" start="35" name="NN1"/>
+                    <label end="42" start="41" name="PRP"/>
+                    <label end="48" start="44" name="NP0"/>
+                    <label end="50" start="50" name="PUN"/>
+                    <label end="54" start="52" name="XX0"/>
+                    <label end="64" start="56" name="VVG"/>
+                    <label end="69" start="66" name="PNP"/>
+                    <label end="74" start="71" name="VBD"/>
+                    <label end="81" start="76" name="VVN"/>
+                    <label end="83" start="83" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 06:33:14 PST Mon" status="MANUAL" ID="39504">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="9492" end="69" start="66" name="Forgery"/>
+                    <label cBy="664" feID="9490" itype="CNI" name="Agent"/>
+                    <label cBy="605" feID="9522" itype="DNI" name="Standard"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="69" start="66" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="69" start="66" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="81" start="76" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+                <layer rank="1" name="Other"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="101920672" ID="193913">
+            <text>They were jailed after their visas were found to be forged . </text>
+            <annotationSet cDate="01/06/2003 06:33:15 PST Mon" status="UNANN" ID="39507">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="PNP"/>
+                    <label end="8" start="5" name="VBD"/>
+                    <label end="15" start="10" name="VVN"/>
+                    <label end="21" start="17" name="PRP"/>
+                    <label end="27" start="23" name="DPS"/>
+                    <label end="33" start="29" name="NN2"/>
+                    <label end="38" start="35" name="VBD"/>
+                    <label end="44" start="40" name="VVN"/>
+                    <label end="47" start="46" name="TO0"/>
+                    <label end="50" start="49" name="VBI"/>
+                    <label end="57" start="52" name="VVN"/>
+                    <label end="59" start="59" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 06:33:15 PST Mon" status="MANUAL" ID="39508">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="9492" end="33" start="23" name="Forgery"/>
+                    <label cBy="664" feID="9490" itype="CNI" name="Agent"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="33" start="23" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="33" start="23" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="57" start="52" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="2" name="FE">
+                    <label cBy="605" feID="9522" end="33" start="23" name="Standard"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="55308302" ID="193923">
+            <text>There is no doubt but that , if Mrs. Steed 's signature had been forged or if the non est factum plea had been made good , the case would have fallen squarely within paragraph ( g ) . </text>
+            <annotationSet cDate="01/06/2003 06:33:16 PST Mon" status="UNANN" ID="39527">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="EX0"/>
+                    <label end="7" start="6" name="VBZ"/>
+                    <label end="10" start="9" name="AV0"/>
+                    <label end="16" start="12" name="AV0"/>
+                    <label end="20" start="18" name="CJC"/>
+                    <label end="25" start="22" name="CJT-DT0"/>
+                    <label end="27" start="27" name="PUN"/>
+                    <label end="30" start="29" name="CJS"/>
+                    <label end="35" start="32" name="NP0"/>
+                    <label end="41" start="37" name="NP0"/>
+                    <label end="44" start="43" name="POS"/>
+                    <label end="54" start="46" name="NN1"/>
+                    <label end="58" start="56" name="VHD"/>
+                    <label end="63" start="60" name="VBN"/>
+                    <label end="70" start="65" name="VVN"/>
+                    <label end="73" start="72" name="CJC"/>
+                    <label end="76" start="75" name="CJS"/>
+                    <label end="80" start="78" name="AT0"/>
+                    <label end="84" start="82" name="UNC"/>
+                    <label end="88" start="86" name="AJ0"/>
+                    <label end="95" start="90" name="NN1"/>
+                    <label end="100" start="97" name="NN1"/>
+                    <label end="104" start="102" name="VHD"/>
+                    <label end="109" start="106" name="VBN"/>
+                    <label end="114" start="111" name="VVN"/>
+                    <label end="119" start="116" name="AJ0"/>
+                    <label end="121" start="121" name="PUN"/>
+                    <label end="125" start="123" name="AT0"/>
+                    <label end="130" start="127" name="NN1"/>
+                    <label end="136" start="132" name="VM0"/>
+                    <label end="141" start="138" name="VHI"/>
+                    <label end="148" start="143" name="VVN"/>
+                    <label end="157" start="150" name="AV0"/>
+                    <label end="164" start="159" name="PRP"/>
+                    <label end="174" start="166" name="NN1"/>
+                    <label end="176" start="176" name="PUL"/>
+                    <label end="178" start="178" name="ZZ0"/>
+                    <label end="180" start="180" name="PUR"/>
+                    <label end="182" start="182" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 06:33:16 PST Mon" status="MANUAL" ID="39528">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="9492" end="54" start="32" name="Forgery"/>
+                    <label cBy="664" feID="9490" itype="CNI" name="Agent"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="54" start="32" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="54" start="32" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="70" start="65" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="2" name="FE">
+                    <label cBy="605" feID="9522" end="54" start="32" name="Standard"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-890-intrans-adverb"/>
+    <subCorpus name="V-900-other">
+        <sentence sentNo="0" aPos="60316831" ID="193955">
+            <text>X then forged a telegram to the defendants : ` Goods dispatched to your branch in error . </text>
+            <annotationSet cDate="01/06/2003 06:33:21 PST Mon" status="UNANN" ID="39591">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="NP0"/>
+                    <label end="5" start="2" name="AV0"/>
+                    <label end="12" start="7" name="VVD"/>
+                    <label end="14" start="14" name="AT0"/>
+                    <label end="23" start="16" name="NN1"/>
+                    <label end="26" start="25" name="PRP"/>
+                    <label end="30" start="28" name="AT0"/>
+                    <label end="41" start="32" name="NN2"/>
+                    <label end="43" start="43" name="PUN"/>
+                    <label end="45" start="45" name="PUQ"/>
+                    <label end="51" start="47" name="NN2"/>
+                    <label end="62" start="53" name="VVD-VVN"/>
+                    <label end="65" start="64" name="PRP"/>
+                    <label end="70" start="67" name="DPS"/>
+                    <label end="77" start="72" name="NN1"/>
+                    <label end="80" start="79" name="PRP"/>
+                    <label end="86" start="82" name="NN1"/>
+                    <label end="88" start="88" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 06:33:21 PST Mon" status="MANUAL" ID="39592">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="9490" end="0" start="0" name="Agent"/>
+                    <label cBy="103" feID="9492" end="41" start="14" name="Forgery"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="0" start="0" name="Ext"/>
+                    <label end="41" start="14" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="0" start="0" name="NP"/>
+                    <label end="41" start="14" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="12" start="7" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="2" name="FE">
+                    <label cBy="605" feID="9522" end="41" start="14" name="Standard"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="69324785" ID="193956">
+            <text>The eighth one was n't quite so credulous , so he forged her will and smothered her . &quot; </text>
+            <annotationSet cDate="01/06/2003 06:33:21 PST Mon" status="UNANN" ID="39593">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="9" start="4" name="ORD"/>
+                    <label end="13" start="11" name="PNI"/>
+                    <label end="17" start="15" name="VBD"/>
+                    <label end="21" start="19" name="XX0"/>
+                    <label end="27" start="23" name="AV0"/>
+                    <label end="30" start="29" name="AV0"/>
+                    <label end="40" start="32" name="AJ0"/>
+                    <label end="42" start="42" name="PUN"/>
+                    <label end="45" start="44" name="CJS"/>
+                    <label end="48" start="47" name="PNP"/>
+                    <label end="55" start="50" name="VVD"/>
+                    <label end="59" start="57" name="DPS"/>
+                    <label end="64" start="61" name="NN1"/>
+                    <label end="68" start="66" name="CJC"/>
+                    <label end="78" start="70" name="VVD"/>
+                    <label end="82" start="80" name="PNP"/>
+                    <label end="84" start="84" name="PUN"/>
+                    <label end="86" start="86" name="PUQ"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 06:33:21 PST Mon" status="MANUAL" ID="39594">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="9490" end="48" start="47" name="Agent"/>
+                    <label cBy="103" feID="9492" end="64" start="57" name="Forgery"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="48" start="47" name="Ext"/>
+                    <label end="64" start="57" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="48" start="47" name="NP"/>
+                    <label end="64" start="57" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="55" start="50" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="2" name="FE">
+                    <label cBy="605" feID="9522" end="64" start="57" name="Standard"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="manually-added"/>
+</lexUnit>

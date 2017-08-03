@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Add_Annotation" POS="V" name="last.v" ID="15261" frame="Duration_relation" frameID="2121" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp=2072" ID="17763"/>
+            <document description="bncp=2654" ID="20121"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="" name="Entity"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="Evty" name="Eventuality"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Prd" name="Period"/>
+            <FE fgColor="000000" bgColor="2E8B57" type="Extra-Thematic" abbrev="" name="User"/>
+        </frame>
+    </header>
+    <definition>FN: have a duration or period of relevance of</definition>
+    <lexeme POS="V" name="last"/>
+    <valences>
+        <FERealization total="2">
+            <FE name="Duration"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="NP" FE="Duration"/>
+                <annoSet ID="2602007"/>
+                <annoSet ID="2602049"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Entity"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Entity"/>
+                <annoSet ID="2602049"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Eventuality"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Eventuality"/>
+                <annoSet ID="2602007"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Duration"/>
+            <FE name="Entity"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="NP" FE="Duration"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Entity"/>
+                <annoSet ID="2602049"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Duration"/>
+            <FE name="Eventuality"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="NP" FE="Duration"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Eventuality"/>
+                <annoSet ID="2602007"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-Wlifetime+Wminute+Wsecond-(1)">
+        <sentence corpID="111" docID="20121" sentNo="2" paragNo="142" aPos="0" ID="1583181">
+            <text>The fight lasted 20 gripping minutes before the streamlined , sharp toothed giant was landed on the deck of his boat .</text>
+            <annotationSet cDate="08/09/2010 02:41:38 PDT Mon" status="UNANN" ID="2602006">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="8" start="4" name="nn"/>
+                    <label end="15" start="10" name="VVD"/>
+                    <label end="18" start="17" name="cd"/>
+                    <label end="27" start="20" name="jj"/>
+                    <label end="35" start="29" name="nns"/>
+                    <label end="42" start="37" name="in"/>
+                    <label end="46" start="44" name="dt"/>
+                    <label end="58" start="48" name="jj"/>
+                    <label end="60" start="60" name=","/>
+                    <label end="66" start="62" name="jj"/>
+                    <label end="74" start="68" name="jj"/>
+                    <label end="80" start="76" name="nn"/>
+                    <label end="84" start="82" name="VBD"/>
+                    <label end="91" start="86" name="VVN"/>
+                    <label end="94" start="93" name="in"/>
+                    <label end="98" start="96" name="dt"/>
+                    <label end="103" start="100" name="nn"/>
+                    <label end="106" start="105" name="in"/>
+                    <label end="110" start="108" name="PP$"/>
+                    <label end="115" start="112" name="nn"/>
+                    <label end="117" start="117" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="08/09/2010 02:41:38 PDT Mon" status="MANUAL" ID="2602007">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="15" start="10" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="13105" end="8" start="0" name="Eventuality"/>
+                    <label cBy="589" feID="13108" end="35" start="17" name="Duration"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="8" start="0" name="Ext"/>
+                    <label end="35" start="17" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="8" start="0" name="NP"/>
+                    <label end="35" start="17" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-object-(1)">
+        <sentence corpID="111" docID="17763" sentNo="1" paragNo="515" aPos="0" ID="1583202">
+            <text>Although well-made clubs ought to last a lifetime , I have already owned 16 different sets and tried more than that number in a futile search for The Touch .</text>
+            <annotationSet cDate="08/09/2010 02:41:42 PDT Mon" status="UNANN" ID="2602048">
+                <layer rank="1" name="PENN">
+                    <label end="7" start="0" name="in"/>
+                    <label end="17" start="9" name="jj"/>
+                    <label end="23" start="19" name="nns"/>
+                    <label end="29" start="25" name="md"/>
+                    <label end="32" start="31" name="to"/>
+                    <label end="37" start="34" name="VV"/>
+                    <label end="39" start="39" name="dt"/>
+                    <label end="48" start="41" name="nn"/>
+                    <label end="50" start="50" name=","/>
+                    <label end="52" start="52" name="PP"/>
+                    <label end="57" start="54" name="VHP"/>
+                    <label end="65" start="59" name="rb"/>
+                    <label end="71" start="67" name="VVN"/>
+                    <label end="74" start="73" name="cd"/>
+                    <label end="84" start="76" name="jj"/>
+                    <label end="89" start="86" name="nns"/>
+                    <label end="93" start="91" name="cc"/>
+                    <label end="99" start="95" name="VVD"/>
+                    <label end="104" start="101" name="jjr"/>
+                    <label end="109" start="106" name="in"/>
+                    <label end="114" start="111" name="dt"/>
+                    <label end="121" start="116" name="nn"/>
+                    <label end="124" start="123" name="in"/>
+                    <label end="126" start="126" name="dt"/>
+                    <label end="133" start="128" name="jj"/>
+                    <label end="140" start="135" name="nn"/>
+                    <label end="144" start="142" name="in"/>
+                    <label end="148" start="146" name="dt"/>
+                    <label end="154" start="150" name="NP"/>
+                    <label end="156" start="156" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="08/09/2010 02:41:42 PDT Mon" status="MANUAL" ID="2602049">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="37" start="34" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="13109" end="23" start="9" name="Entity"/>
+                    <label cBy="589" feID="13108" end="48" start="39" name="Duration"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="23" start="9" name="Ext"/>
+                    <label end="48" start="39" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="23" start="9" name="NP"/>
+                    <label end="48" start="39" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="03-Wlong+Wonly-(1)"/>
+    <subCorpus name="04-Wforever-(1)"/>
+    <subCorpus name="05-modifier-(1)"/>
+    <subCorpus name="06-pp_until-p-(1)"/>
+    <subCorpus name="07-pp_for-p-(1)"/>
+    <subCorpus name="08-adj_comp-(1)"/>
+    <subCorpus name="09-pp_from-p-(1)"/>
+    <subCorpus name="10-other-matched-(1)"/>
+    <subCorpus name="11-other-unmatched-(1)"/>
+</lexUnit>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Add_Annotation" POS="A" name="tantamount.a" ID="13660" frame="Being_in_category" frameID="1820" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp=999" ID="18090"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Cat" name="Category"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Cog" name="Cognizer"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Core" abbrev="Crit" name="Criteria"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Item" name="Item"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Tm" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: equivalent in seriousness to; virtually the same as.</definition>
+    <lexeme POS="A" name="tantamount"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Category"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="VPto" FE="Category"/>
+                <annoSet ID="2593179"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Criteria"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Criteria"/>
+                <annoSet ID="2593179"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Item"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="VPing" FE="Item"/>
+                <annoSet ID="2593179"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Category"/>
+            <FE name="Criteria"/>
+            <FE name="Item"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="VPto" FE="Category"/>
+                <valenceUnit GF="" PT="INI" FE="Criteria"/>
+                <valenceUnit GF="Ext" PT="VPing" FE="Item"/>
+                <annoSet ID="2593179"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-modifier-(1)"/>
+    <subCorpus name="02-modifies-(1)"/>
+    <subCorpus name="03-adj_comp_of+be-(1)"/>
+    <subCorpus name="04-Wbe-(1)">
+        <sentence corpID="111" docID="18090" sentNo="1" paragNo="150" aPos="0" ID="1579280">
+            <text>Some members also believe that setting up a faculty would be tantamount to handing auditing on a plate to those critics of the profession who have called for auditing matters to be placed under independent control .</text>
+            <annotationSet cDate="07/16/2010 01:59:54 PDT Fri" status="UNANN" ID="2593178">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="dt"/>
+                    <label end="11" start="5" name="nns"/>
+                    <label end="16" start="13" name="rb"/>
+                    <label end="24" start="18" name="VVP"/>
+                    <label end="29" start="26" name="in"/>
+                    <label end="37" start="31" name="VVG"/>
+                    <label end="40" start="39" name="rp"/>
+                    <label end="42" start="42" name="dt"/>
+                    <label end="50" start="44" name="nn"/>
+                    <label end="56" start="52" name="md"/>
+                    <label end="59" start="58" name="vb"/>
+                    <label end="70" start="61" name="jj"/>
+                    <label end="73" start="72" name="to"/>
+                    <label end="81" start="75" name="VVG"/>
+                    <label end="90" start="83" name="nn"/>
+                    <label end="93" start="92" name="in"/>
+                    <label end="95" start="95" name="dt"/>
+                    <label end="101" start="97" name="nn"/>
+                    <label end="104" start="103" name="to"/>
+                    <label end="110" start="106" name="dt"/>
+                    <label end="118" start="112" name="nns"/>
+                    <label end="121" start="120" name="in"/>
+                    <label end="125" start="123" name="dt"/>
+                    <label end="136" start="127" name="nn"/>
+                    <label end="140" start="138" name="wp"/>
+                    <label end="145" start="142" name="VHP"/>
+                    <label end="152" start="147" name="VVN"/>
+                    <label end="156" start="154" name="in"/>
+                    <label end="165" start="158" name="VVG"/>
+                    <label end="173" start="167" name="nns"/>
+                    <label end="176" start="175" name="to"/>
+                    <label end="179" start="178" name="vb"/>
+                    <label end="186" start="181" name="VVN"/>
+                    <label end="192" start="188" name="in"/>
+                    <label end="204" start="194" name="jj"/>
+                    <label end="212" start="206" name="nn"/>
+                    <label end="214" start="214" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/16/2010 01:59:55 PDT Fri" status="MANUAL" ID="2593179">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="70" start="61" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="10771" end="50" start="31" name="Item"/>
+                    <label cBy="589" feID="10772" end="212" start="72" name="Category"/>
+                    <label cBy="589" feID="10773" itype="INI" name="Criteria"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="50" start="31" name="Ext"/>
+                    <label end="212" start="72" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="50" start="31" name="VPing"/>
+                    <label end="212" start="72" name="VPto"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj">
+                    <label end="59" start="58" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="05-np_adj_comp_of-(1)"/>
+    <subCorpus name="06-infin_comp-(1)"/>
+    <subCorpus name="07-other-matched-(1)"/>
+    <subCorpus name="08-other-unmatched-(1)"/>
+</lexUnit>

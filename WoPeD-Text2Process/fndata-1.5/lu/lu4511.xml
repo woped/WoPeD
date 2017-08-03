@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="V" name="tangle.v" ID="4511" frame="Rope_manipulation" frameID="246" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Agt" name="Agent"/>
+            <FE fgColor="FFFFFF" bgColor="A9A9A9" type="Peripheral" abbrev="Ins" name="Instrument"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Core" abbrev="Knot" name="Knot"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Extra-Thematic" abbrev="Loc" name="Location"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Extra-Thematic" abbrev="Reason" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Core" abbrev="Rope" name="Rope"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: twist (strands) together into a confused mass. </definition>
+    <lexeme POS="V" name="tangle"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Agent"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <annoSet ID="1544437"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Knot"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[into]" FE="Knot"/>
+                <annoSet ID="1544437"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Rope"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Rope"/>
+                <annoSet ID="1544437"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Agent"/>
+            <FE name="Knot"/>
+            <FE name="Rope"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <valenceUnit GF="Dep" PT="PP[into]" FE="Knot"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Rope"/>
+                <annoSet ID="1544437"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-429-s20-rcoll-hair">
+        <sentence sentNo="0" aPos="49779025" ID="1046471">
+            <text>They like to tangle their victims ' hair into elflocks , or as they are also called , tangle locks , or mare 's braids . </text>
+            <annotationSet cDate="01/08/2003 12:16:44 PST Wed" status="UNANN" ID="1544436">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="PNP"/>
+                    <label end="8" start="5" name="VVB"/>
+                    <label end="11" start="10" name="TO0"/>
+                    <label end="18" start="13" name="VVI"/>
+                    <label end="24" start="20" name="DPS"/>
+                    <label end="32" start="26" name="NN2"/>
+                    <label end="34" start="34" name="POS"/>
+                    <label end="39" start="36" name="NN1"/>
+                    <label end="44" start="41" name="PRP"/>
+                    <label end="53" start="46" name="NN2"/>
+                    <label end="55" start="55" name="PUN"/>
+                    <label end="58" start="57" name="CJC"/>
+                    <label end="61" start="60" name="CJS"/>
+                    <label end="66" start="63" name="PNP"/>
+                    <label end="70" start="68" name="VBB"/>
+                    <label end="75" start="72" name="AV0"/>
+                    <label end="82" start="77" name="VVN"/>
+                    <label end="84" start="84" name="PUN"/>
+                    <label end="91" start="86" name="NN1-VVB"/>
+                    <label end="97" start="93" name="NN2"/>
+                    <label end="99" start="99" name="PUN"/>
+                    <label end="102" start="101" name="CJC"/>
+                    <label end="107" start="104" name="NN1"/>
+                    <label end="110" start="109" name="POS"/>
+                    <label end="117" start="112" name="NN2"/>
+                    <label end="119" start="119" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:16:44 PST Wed" status="MANUAL" ID="1544437">
+                <layer rank="1" name="FE">
+                    <label cBy="532" feID="2152" end="3" start="0" name="Agent"/>
+                    <label cBy="532" feID="2160" end="39" start="20" name="Rope"/>
+                    <label cBy="532" feID="2161" end="53" start="41" name="Knot"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="3" start="0" name="Ext"/>
+                    <label end="39" start="20" name="Obj"/>
+                    <label end="53" start="41" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="3" start="0" name="NP"/>
+                    <label end="39" start="20" name="NP"/>
+                    <label end="53" start="41" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="18" start="13" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-680-s20-pass"/>
+    <subCorpus name="V-880-s20-intrans-simple"/>
+    <subCorpus name="V-890-s20-intrans-adverb"/>
+    <subCorpus name="V-900-s20-other"/>
+</lexUnit>

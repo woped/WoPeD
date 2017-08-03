@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://framenet.icsi.berkeley.edu"
+    elementFormDefault="qualified" xmlns:fn="http://framenet.icsi.berkeley.edu">
+    <xsd:include schemaLocation="commonTypes.xsd"/>
+    <xsd:element name="frameIndex">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="frame" maxOccurs="unbounded">
+                    <xsd:complexType>
+                        <xsd:attribute name="name" type="xsd:string"/>
+                        <xsd:attribute name="ID" type="xsd:int"/>
+                        <xsd:attribute name="mDate" type="fn:dateTimeType"/>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>

@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="A" name="weaponless.a" ID="8006" frame="Bearing_arms" frameID="470" totalAnnotated="4" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="pla" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="" name="Protagonist"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="tim" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="" name="Weapon"/>
+        </frame>
+    </header>
+    <definition>FN: without weapons</definition>
+    <lexeme POS="A" name="weaponless"/>
+    <semType name="Negative" ID="99"/>
+    <valences>
+        <FERealization total="4">
+            <FE name="Protagonist"/>
+            <pattern total="4">
+                <valenceUnit GF="Ext" PT="NP" FE="Protagonist"/>
+                <annoSet ID="1921521"/>
+                <annoSet ID="1921523"/>
+                <annoSet ID="1921525"/>
+                <annoSet ID="1921527"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Weapon"/>
+            <pattern total="4">
+                <valenceUnit GF="" PT="INI" FE="Weapon"/>
+                <annoSet ID="1921521"/>
+                <annoSet ID="1921523"/>
+                <annoSet ID="1921525"/>
+                <annoSet ID="1921527"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="4">
+            <FE name="Protagonist"/>
+            <FE name="Weapon"/>
+            <pattern total="4">
+                <valenceUnit GF="Ext" PT="NP" FE="Protagonist"/>
+                <valenceUnit GF="" PT="INI" FE="Weapon"/>
+                <annoSet ID="1921521"/>
+                <annoSet ID="1921523"/>
+                <annoSet ID="1921525"/>
+                <annoSet ID="1921527"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="557" aPos="0" ID="1237244">
+            <text>She swung back , weaponless and frightened .</text>
+            <annotationSet cDate="07/09/2003 03:32:24 PDT Wed" status="UNANN" ID="1921520">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="PP"/>
+                    <label end="8" start="4" name="VVD"/>
+                    <label end="13" start="10" name="rb"/>
+                    <label end="15" start="15" name=","/>
+                    <label end="26" start="17" name="jj"/>
+                    <label end="30" start="28" name="cc"/>
+                    <label end="41" start="32" name="jj"/>
+                    <label end="43" start="43" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/09/2003 03:32:25 PDT Wed" status="MANUAL" ID="1921521">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="26" start="17" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4002" end="2" start="0" name="Protagonist"/>
+                    <label cBy="618" feID="4001" itype="INI" name="Weapon"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="2" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="2" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="1401" aPos="0" ID="1237245">
+            <text>` You send us on our way weaponless , so that we can be slaughtered from ambush .</text>
+            <annotationSet cDate="07/09/2003 03:32:25 PDT Wed" status="UNANN" ID="1921522">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="2" name="PP"/>
+                    <label end="9" start="6" name="VVP"/>
+                    <label end="12" start="11" name="PP"/>
+                    <label end="15" start="14" name="in"/>
+                    <label end="19" start="17" name="PP$"/>
+                    <label end="23" start="21" name="nn"/>
+                    <label end="34" start="25" name="jj"/>
+                    <label end="36" start="36" name=","/>
+                    <label end="39" start="38" name="rb"/>
+                    <label end="44" start="41" name="in"/>
+                    <label end="47" start="46" name="PP"/>
+                    <label end="51" start="49" name="md"/>
+                    <label end="54" start="53" name="vb"/>
+                    <label end="66" start="56" name="VVN"/>
+                    <label end="71" start="68" name="in"/>
+                    <label end="78" start="73" name="nn"/>
+                    <label end="80" start="80" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/09/2003 03:32:25 PDT Wed" status="MANUAL" ID="1921523">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="34" start="25" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4002" end="12" start="11" name="Protagonist"/>
+                    <label cBy="618" feID="4001" itype="INI" name="Weapon"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="12" start="11" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="12" start="11" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="5" paragNo="105" aPos="0" ID="1237246">
+            <text>Weaponless , Aenarion strode down the steps of the shrine towards the stunned enemy .</text>
+            <annotationSet cDate="07/09/2003 03:32:26 PDT Wed" status="UNANN" ID="1921524">
+                <layer rank="1" name="PENN">
+                    <label end="9" start="0" name="jj"/>
+                    <label end="11" start="11" name=","/>
+                    <label end="20" start="13" name="NP"/>
+                    <label end="27" start="22" name="VVD"/>
+                    <label end="32" start="29" name="rp"/>
+                    <label end="36" start="34" name="dt"/>
+                    <label end="42" start="38" name="nns"/>
+                    <label end="45" start="44" name="in"/>
+                    <label end="49" start="47" name="dt"/>
+                    <label end="56" start="51" name="nn"/>
+                    <label end="64" start="58" name="in"/>
+                    <label end="68" start="66" name="dt"/>
+                    <label end="76" start="70" name="jj"/>
+                    <label end="82" start="78" name="nn"/>
+                    <label end="84" start="84" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/09/2003 03:32:27 PDT Wed" status="MANUAL" ID="1921525">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="9" start="0" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4002" end="20" start="13" name="Protagonist"/>
+                    <label cBy="618" feID="4001" itype="INI" name="Weapon"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="20" start="13" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="20" start="13" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="1733" aPos="0" ID="1237247">
+            <text>` Am I to be weaponless again ? &quot; said Hrun .</text>
+            <annotationSet cDate="07/09/2003 03:32:27 PDT Wed" status="UNANN" ID="1921526">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="2" name="vbp"/>
+                    <label end="5" start="5" name="PP"/>
+                    <label end="8" start="7" name="to"/>
+                    <label end="11" start="10" name="vb"/>
+                    <label end="22" start="13" name="jj"/>
+                    <label end="28" start="24" name="rb"/>
+                    <label end="30" start="30" name="sent"/>
+                    <label end="37" start="34" name="VVD"/>
+                    <label end="42" start="39" name="NP"/>
+                    <label end="44" start="44" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/09/2003 03:32:28 PDT Wed" status="MANUAL" ID="1921527">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="22" start="13" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4002" end="5" start="5" name="Protagonist"/>
+                    <label cBy="618" feID="4001" itype="INI" name="Weapon"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="5" start="5" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="5" start="5" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj">
+                    <label end="11" start="10" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

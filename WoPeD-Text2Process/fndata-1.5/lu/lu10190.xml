@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="PREP" name="of.prep" ID="10190" frame="Partitive" frameID="1010" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Ent2" name="Group"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Sub" name="Subset"/>
+        </frame>
+    </header>
+    <definition>FN: expressing the relationship between a subset and a group</definition>
+    <lexeme POS="PREP" name="of"/>
+    <valences>
+        <FERealization total="2">
+            <FE name="Group"/>
+            <pattern total="2">
+                <valenceUnit GF="Obj" PT="NP" FE="Group"/>
+                <annoSet ID="2590429"/>
+                <annoSet ID="2590433"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Subset"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Subset"/>
+                <annoSet ID="2590429"/>
+                <annoSet ID="2590433"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Group"/>
+            <FE name="Subset"/>
+            <pattern total="2">
+                <valenceUnit GF="Obj" PT="NP" FE="Group"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Subset"/>
+                <annoSet ID="2590429"/>
+                <annoSet ID="2590433"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-NP-T-NP-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="191" aPos="54806472" ID="1577905">
+            <text>One of the most promising directions , which has been pursued by some large advertising agencies , and which has been extensively talked about , is so-called ` lifestyle &quot; research .</text>
+            <annotationSet cDate="07/15/2010 04:37:02 PDT Thu" status="UNANN" ID="2590428">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="cd"/>
+                    <label end="5" start="4" name="in"/>
+                    <label end="9" start="7" name="dt"/>
+                    <label end="14" start="11" name="rbs"/>
+                    <label end="24" start="16" name="jj"/>
+                    <label end="35" start="26" name="nns"/>
+                    <label end="37" start="37" name=","/>
+                    <label end="43" start="39" name="wdt"/>
+                    <label end="47" start="45" name="VHZ"/>
+                    <label end="52" start="49" name="VBN"/>
+                    <label end="60" start="54" name="VVN"/>
+                    <label end="63" start="62" name="in"/>
+                    <label end="68" start="65" name="dt"/>
+                    <label end="74" start="70" name="jj"/>
+                    <label end="86" start="76" name="nn"/>
+                    <label end="95" start="88" name="nns"/>
+                    <label end="97" start="97" name=","/>
+                    <label end="101" start="99" name="cc"/>
+                    <label end="107" start="103" name="wdt"/>
+                    <label end="111" start="109" name="VHZ"/>
+                    <label end="116" start="113" name="VBN"/>
+                    <label end="128" start="118" name="rb"/>
+                    <label end="135" start="130" name="VVN"/>
+                    <label end="141" start="137" name="rb"/>
+                    <label end="143" start="143" name=","/>
+                    <label end="146" start="145" name="VBZ"/>
+                    <label end="156" start="148" name="jj"/>
+                    <label end="168" start="160" name="nn"/>
+                    <label end="179" start="172" name="nn"/>
+                    <label end="181" start="181" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/15/2010 04:37:02 PDT Thu" status="MANUAL" ID="2590429">
+                <layer rank="1" name="Target">
+                    <label cBy="571" end="5" start="4" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="571" feID="6000" end="2" start="0" name="Subset"/>
+                    <label cBy="571" feID="6001" end="35" start="7" name="Group"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="2" start="0" name="Ext"/>
+                    <label end="35" start="7" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="2" start="0" name="NP"/>
+                    <label end="35" start="7" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Prep"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="286" aPos="138141" ID="1577907">
+            <text>This , as he recognises , is a form of self-praise .</text>
+            <annotationSet cDate="07/15/2010 04:37:02 PDT Thu" status="UNANN" ID="2590432">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="dt"/>
+                    <label end="5" start="5" name=","/>
+                    <label end="8" start="7" name="in"/>
+                    <label end="11" start="10" name="PP"/>
+                    <label end="22" start="13" name="VVZ"/>
+                    <label end="24" start="24" name=","/>
+                    <label end="27" start="26" name="VBZ"/>
+                    <label end="29" start="29" name="dt"/>
+                    <label end="34" start="31" name="nn"/>
+                    <label end="37" start="36" name="in"/>
+                    <label end="49" start="39" name="nn"/>
+                    <label end="51" start="51" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/15/2010 04:37:02 PDT Thu" status="MANUAL" ID="2590433">
+                <layer rank="1" name="Target">
+                    <label cBy="571" end="37" start="36" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="571" feID="6000" end="34" start="29" name="Subset"/>
+                    <label cBy="571" feID="6001" end="49" start="39" name="Group"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="34" start="29" name="Ext"/>
+                    <label end="49" start="39" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="34" start="29" name="NP"/>
+                    <label end="49" start="39" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Prep"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-NP-T-(1)"/>
+    <subCorpus name="03-T-PPabout-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

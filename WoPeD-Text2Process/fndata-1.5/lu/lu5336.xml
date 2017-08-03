@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="give the slip.v" ID="5336" frame="Evading" frameID="275" totalAnnotated="6" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="AP" ID="113">
+            <document description="apwsE980204.0454" ID="2697"/>
+            <document description="apwsE950522.0313" ID="2698"/>
+            <document description="apwsE950917.0309" ID="2699"/>
+            <document description="apwsE950421.0417" ID="2703"/>
+            <document description="apwsE980219.0377" ID="2706"/>
+            <document description="apwsE950227.0101" ID="2711"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Area" name="Area"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core" abbrev="cap" name="Capture"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Extra-Thematic" abbrev="Cond" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Evad" name="Evader"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="MoT" name="Mode_of_transportation"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Peripheral" abbrev="Path" name="Path"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="" name="Pursuer"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Extra-Thematic" abbrev="Reason" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Peripheral" abbrev="Spd" name="Speed"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: escape or evade from someone</definition>
+    <lexeme order="1" headword="true" breakBefore="false" POS="V" name="give"/>
+    <lexeme order="2" headword="false" breakBefore="true" POS="ART" name="the"/>
+    <lexeme order="3" headword="false" breakBefore="false" POS="N" name="slip"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Area"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Area"/>
+                <annoSet ID="1932903"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="6">
+            <FE name="Evader"/>
+            <pattern total="4">
+                <valenceUnit GF="Ext" PT="NP" FE="Evader"/>
+                <annoSet ID="1932903"/>
+                <annoSet ID="1932907"/>
+                <annoSet ID="1932921"/>
+                <annoSet ID="1932933"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="" PT="CNI" FE="Evader"/>
+                <annoSet ID="1932905"/>
+                <annoSet ID="1932915"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Manner"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <annoSet ID="1932907"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Purpose"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="Sfin" FE="Purpose"/>
+                <annoSet ID="1932921"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="6">
+            <FE name="Pursuer"/>
+            <pattern total="5">
+                <valenceUnit GF="Obj" PT="NP" FE="Pursuer"/>
+                <annoSet ID="1932903"/>
+                <annoSet ID="1932907"/>
+                <annoSet ID="1932915"/>
+                <annoSet ID="1932921"/>
+                <annoSet ID="1932933"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Pursuer"/>
+                <annoSet ID="1932905"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Time"/>
+                <annoSet ID="1932903"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[during]" FE="Time"/>
+                <annoSet ID="1932905"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Area"/>
+            <FE name="Evader"/>
+            <FE name="Evader"/>
+            <FE name="Pursuer"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Area"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Evader"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Evader"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Pursuer"/>
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Time"/>
+                <annoSet ID="1932903"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Evader"/>
+            <FE name="Manner"/>
+            <FE name="Pursuer"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Evader"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Pursuer"/>
+                <annoSet ID="1932907"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Evader"/>
+            <FE name="Purpose"/>
+            <FE name="Pursuer"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Evader"/>
+                <valenceUnit GF="Dep" PT="Sfin" FE="Purpose"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Pursuer"/>
+                <annoSet ID="1932921"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Evader"/>
+            <FE name="Pursuer"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Evader"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Pursuer"/>
+                <annoSet ID="1932915"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Evader"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Pursuer"/>
+                <annoSet ID="1932933"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Evader"/>
+            <FE name="Pursuer"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Evader"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Pursuer"/>
+                <valenceUnit GF="Dep" PT="PP[during]" FE="Time"/>
+                <annoSet ID="1932905"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-(3)">
+        <sentence corpID="113" docID="2697" sentNo="1" paragNo="18" aPos="0" ID="1242936">
+            <text>Police investigations showed the unidentified victim was among four of six men who gave police the slip at a roadblock in Gua Musang on Jan 30 .</text>
+            <annotationSet cDate="07/23/2003 11:17:41 PDT Wed" status="UNANN" ID="1932902">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="0" name="nn"/>
+                    <label end="20" start="7" name="nns"/>
+                    <label end="27" start="22" name="VVD"/>
+                    <label end="31" start="29" name="dt"/>
+                    <label end="44" start="33" name="jj"/>
+                    <label end="51" start="46" name="nn"/>
+                    <label end="55" start="53" name="VBD"/>
+                    <label end="61" start="57" name="in"/>
+                    <label end="66" start="63" name="cd"/>
+                    <label end="69" start="68" name="in"/>
+                    <label end="73" start="71" name="cd"/>
+                    <label end="77" start="75" name="nns"/>
+                    <label end="81" start="79" name="wp"/>
+                    <label end="86" start="83" name="VVD"/>
+                    <label end="93" start="88" name="VV"/>
+                    <label end="97" start="95" name="dt"/>
+                    <label end="102" start="99" name="nn"/>
+                    <label end="105" start="104" name="in"/>
+                    <label end="107" start="107" name="dt"/>
+                    <label end="117" start="109" name="nn"/>
+                    <label end="120" start="119" name="in"/>
+                    <label end="124" start="122" name="NP"/>
+                    <label end="131" start="126" name="NP"/>
+                    <label end="134" start="133" name="in"/>
+                    <label end="138" start="136" name="NP"/>
+                    <label end="141" start="140" name="cd"/>
+                    <label end="143" start="143" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/23/2003 11:17:41 PDT Wed" status="MANUAL" ID="1932903">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="86" start="83" name="Target"/>
+                    <label cBy="618" end="102" start="95" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2376" end="77" start="71" name="Evader"/>
+                    <label cBy="618" feID="2380" end="93" start="88" name="Pursuer"/>
+                    <label cBy="618" feID="2374" end="131" start="104" name="Area"/>
+                    <label cBy="618" feID="2386" end="141" start="133" name="Time"/>
+                    <label cBy="309" feID="2376" end="81" start="79" name="Evader"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="77" start="71" name="Ext"/>
+                    <label end="93" start="88" name="Obj"/>
+                    <label end="131" start="104" name="Dep"/>
+                    <label end="141" start="133" name="Dep"/>
+                    <label end="81" start="79" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="77" start="71" name="NP"/>
+                    <label end="93" start="88" name="NP"/>
+                    <label end="131" start="104" name="PP"/>
+                    <label end="141" start="133" name="PP"/>
+                    <label end="81" start="79" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other">
+                    <label end="77" start="71" name="Ant"/>
+                    <label end="81" start="79" name="Rel"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="2698" sentNo="2" paragNo="17" aPos="0" ID="1242937">
+            <text>Police were given the slip during the night but the Porsche was sighted again Monday morning near Diepholz , about 140 kilometers ( 87 miles ) west of Celle .</text>
+            <annotationSet cDate="07/23/2003 11:17:42 PDT Wed" status="UNANN" ID="1932904">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="0" name="nns"/>
+                    <label end="10" start="7" name="VBD"/>
+                    <label end="16" start="12" name="VVN"/>
+                    <label end="20" start="18" name="dt"/>
+                    <label end="25" start="22" name="nn"/>
+                    <label end="32" start="27" name="in"/>
+                    <label end="36" start="34" name="dt"/>
+                    <label end="42" start="38" name="nn"/>
+                    <label end="46" start="44" name="cc"/>
+                    <label end="50" start="48" name="dt"/>
+                    <label end="58" start="52" name="NP"/>
+                    <label end="62" start="60" name="VBD"/>
+                    <label end="70" start="64" name="VVN"/>
+                    <label end="76" start="72" name="rb"/>
+                    <label end="83" start="78" name="NP"/>
+                    <label end="91" start="85" name="nn"/>
+                    <label end="96" start="93" name="in"/>
+                    <label end="105" start="98" name="NP"/>
+                    <label end="107" start="107" name=","/>
+                    <label end="113" start="109" name="rb"/>
+                    <label end="117" start="115" name="cd"/>
+                    <label end="128" start="119" name="nns"/>
+                    <label end="130" start="130" name="("/>
+                    <label end="133" start="132" name="cd"/>
+                    <label end="139" start="135" name="nns"/>
+                    <label end="141" start="141" name=")"/>
+                    <label end="146" start="143" name="rb"/>
+                    <label end="149" start="148" name="in"/>
+                    <label end="155" start="151" name="NP"/>
+                    <label end="157" start="157" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/23/2003 11:17:43 PDT Wed" status="MANUAL" ID="1932905">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="16" start="12" name="Target"/>
+                    <label cBy="618" end="25" start="18" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2380" end="5" start="0" name="Pursuer"/>
+                    <label cBy="618" feID="2376" itype="CNI" name="Evader"/>
+                    <label cBy="618" feID="2386" end="42" start="27" name="Time"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="5" start="0" name="Ext"/>
+                    <label end="42" start="27" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="5" start="0" name="NP"/>
+                    <label end="42" start="27" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="2699" sentNo="1" paragNo="2" aPos="0" ID="1242938">
+            <text>PARIS ( AP ) --- French authorities trying to catch a terrorist bomber are coming to grips with an unpleasant thought --- their No. 1 suspect may have quietly given them the slip .</text>
+            <annotationSet cDate="07/23/2003 11:17:43 PDT Wed" status="UNANN" ID="1932906">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="NP"/>
+                    <label end="6" start="6" name="("/>
+                    <label end="9" start="8" name="NP"/>
+                    <label end="11" start="11" name=")"/>
+                    <label end="15" start="13" name=":"/>
+                    <label end="22" start="17" name="jj"/>
+                    <label end="34" start="24" name="nns"/>
+                    <label end="41" start="36" name="VVG"/>
+                    <label end="44" start="43" name="to"/>
+                    <label end="50" start="46" name="VV"/>
+                    <label end="52" start="52" name="dt"/>
+                    <label end="62" start="54" name="jj"/>
+                    <label end="69" start="64" name="nn"/>
+                    <label end="73" start="71" name="vbp"/>
+                    <label end="80" start="75" name="VVG"/>
+                    <label end="83" start="82" name="to"/>
+                    <label end="89" start="85" name="nns"/>
+                    <label end="94" start="91" name="in"/>
+                    <label end="97" start="96" name="dt"/>
+                    <label end="108" start="99" name="jj"/>
+                    <label end="116" start="110" name="nn"/>
+                    <label end="120" start="118" name=":"/>
+                    <label end="126" start="122" name="PP$"/>
+                    <label end="130" start="128" name="nn"/>
+                    <label end="132" start="132" name="cd"/>
+                    <label end="140" start="134" name="nn"/>
+                    <label end="144" start="142" name="md"/>
+                    <label end="149" start="146" name="VH"/>
+                    <label end="157" start="151" name="rb"/>
+                    <label end="163" start="159" name="VVN"/>
+                    <label end="168" start="165" name="PP"/>
+                    <label end="172" start="170" name="dt"/>
+                    <label end="177" start="174" name="nn"/>
+                    <label end="179" start="179" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/23/2003 11:17:44 PDT Wed" status="MANUAL" ID="1932907">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="163" start="159" name="Target"/>
+                    <label cBy="618" end="177" start="170" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2376" end="140" start="122" name="Evader"/>
+                    <label cBy="618" feID="2382" end="157" start="151" name="Manner"/>
+                    <label cBy="618" feID="2380" end="168" start="165" name="Pursuer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="140" start="122" name="Ext"/>
+                    <label end="157" start="151" name="Dep"/>
+                    <label end="168" start="165" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="140" start="122" name="NP"/>
+                    <label end="157" start="151" name="AVP"/>
+                    <label end="168" start="165" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="2703" sentNo="1" paragNo="7" aPos="0" ID="1242942">
+            <text>Cooper said all five had arrived in Doha on tourist visas arranged by hotels , but they switched hotels in an effort to give security officials the slip .</text>
+            <annotationSet cDate="07/23/2003 11:17:46 PDT Wed" status="UNANN" ID="1932914">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="0" name="NP"/>
+                    <label end="10" start="7" name="VVD"/>
+                    <label end="14" start="12" name="dt"/>
+                    <label end="19" start="16" name="cd"/>
+                    <label end="23" start="21" name="VHD"/>
+                    <label end="31" start="25" name="VVN"/>
+                    <label end="34" start="33" name="in"/>
+                    <label end="39" start="36" name="NP"/>
+                    <label end="42" start="41" name="in"/>
+                    <label end="50" start="44" name="nn"/>
+                    <label end="56" start="52" name="nns"/>
+                    <label end="65" start="58" name="VVN"/>
+                    <label end="68" start="67" name="in"/>
+                    <label end="75" start="70" name="nns"/>
+                    <label end="77" start="77" name=","/>
+                    <label end="81" start="79" name="cc"/>
+                    <label end="86" start="83" name="PP"/>
+                    <label end="95" start="88" name="VVD"/>
+                    <label end="102" start="97" name="nns"/>
+                    <label end="105" start="104" name="in"/>
+                    <label end="108" start="107" name="dt"/>
+                    <label end="115" start="110" name="nn"/>
+                    <label end="118" start="117" name="to"/>
+                    <label end="123" start="120" name="VV"/>
+                    <label end="132" start="125" name="nn"/>
+                    <label end="142" start="134" name="nns"/>
+                    <label end="146" start="144" name="dt"/>
+                    <label end="151" start="148" name="nn"/>
+                    <label end="153" start="153" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/23/2003 11:17:47 PDT Wed" status="MANUAL" ID="1932915">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="123" start="120" name="Target"/>
+                    <label cBy="618" end="151" start="144" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2380" end="142" start="125" name="Pursuer"/>
+                    <label cBy="618" feID="2376" itype="CNI" name="Evader"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="142" start="125" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="142" start="125" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="2706" sentNo="4" paragNo="33" aPos="0" ID="1242945">
+            <text>Sometimes we have to give the officials the slip so that we can go out to fish , '' Samala said .</text>
+            <annotationSet cDate="07/23/2003 11:17:48 PDT Wed" status="UNANN" ID="1932920">
+                <layer rank="1" name="PENN">
+                    <label end="8" start="0" name="rb"/>
+                    <label end="11" start="10" name="PP"/>
+                    <label end="16" start="13" name="VHP"/>
+                    <label end="19" start="18" name="to"/>
+                    <label end="24" start="21" name="VV"/>
+                    <label end="28" start="26" name="dt"/>
+                    <label end="38" start="30" name="nns"/>
+                    <label end="42" start="40" name="dt"/>
+                    <label end="47" start="44" name="nn"/>
+                    <label end="50" start="49" name="rb"/>
+                    <label end="55" start="52" name="in"/>
+                    <label end="58" start="57" name="PP"/>
+                    <label end="62" start="60" name="md"/>
+                    <label end="65" start="64" name="VV"/>
+                    <label end="69" start="67" name="rp"/>
+                    <label end="72" start="71" name="to"/>
+                    <label end="77" start="74" name="nn"/>
+                    <label end="79" start="79" name=","/>
+                    <label end="82" start="81" name="''"/>
+                    <label end="89" start="84" name="NP"/>
+                    <label end="94" start="91" name="VVD"/>
+                    <label end="96" start="96" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/23/2003 11:17:48 PDT Wed" status="MANUAL" ID="1932921">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="47" start="40" name="Target"/>
+                    <label cBy="618" end="24" start="21" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2380" end="38" start="26" name="Pursuer"/>
+                    <label cBy="618" feID="2376" end="11" start="10" name="Evader"/>
+                    <label cBy="618" feID="2383" end="77" start="49" name="Purpose"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="38" start="26" name="Obj"/>
+                    <label end="11" start="10" name="Ext"/>
+                    <label end="77" start="49" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="38" start="26" name="NP"/>
+                    <label end="11" start="10" name="NP"/>
+                    <label end="77" start="49" name="Sfin"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="2711" sentNo="1" paragNo="10" aPos="0" ID="1242951">
+            <text>Kerry gave them the slip and was found Sunday night in Kota Bahru , 400 kilometers ( 250 miles ) north of the capital .</text>
+            <annotationSet cDate="07/23/2003 11:17:52 PDT Wed" status="UNANN" ID="1932932">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="NP"/>
+                    <label end="9" start="6" name="VVD"/>
+                    <label end="14" start="11" name="PP"/>
+                    <label end="18" start="16" name="dt"/>
+                    <label end="23" start="20" name="nn"/>
+                    <label end="27" start="25" name="cc"/>
+                    <label end="31" start="29" name="VBD"/>
+                    <label end="37" start="33" name="VVN"/>
+                    <label end="44" start="39" name="NP"/>
+                    <label end="50" start="46" name="nn"/>
+                    <label end="53" start="52" name="in"/>
+                    <label end="58" start="55" name="NP"/>
+                    <label end="64" start="60" name="NP"/>
+                    <label end="66" start="66" name=","/>
+                    <label end="70" start="68" name="cd"/>
+                    <label end="81" start="72" name="nns"/>
+                    <label end="83" start="83" name="("/>
+                    <label end="87" start="85" name="cd"/>
+                    <label end="93" start="89" name="nns"/>
+                    <label end="95" start="95" name=")"/>
+                    <label end="101" start="97" name="rb"/>
+                    <label end="104" start="103" name="in"/>
+                    <label end="108" start="106" name="dt"/>
+                    <label end="116" start="110" name="nn"/>
+                    <label end="118" start="118" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/23/2003 11:17:53 PDT Wed" status="MANUAL" ID="1932933">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="9" start="6" name="Target"/>
+                    <label cBy="618" end="23" start="16" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2376" end="4" start="0" name="Evader"/>
+                    <label cBy="618" feID="2380" end="14" start="11" name="Pursuer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="4" start="0" name="Ext"/>
+                    <label end="14" start="11" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="4" start="0" name="NP"/>
+                    <label end="14" start="11" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(3)"/>
+    <subCorpus name="other-unmatched-(3)"/>
+</lexUnit>

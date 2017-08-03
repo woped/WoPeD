@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="V" name="convince.v" ID="7348" frame="Eventive_cognizer_affecting" frameID="98" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp=352" ID="17919"/>
+            <document description="bncp=574" ID="19862"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Cognizer" name="Cognizer"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Content" name="Content"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Core" abbrev="Evt" name="Event"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="man" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: make an impression on someone so that they believe something.</definition>
+    <lexeme POS="V" name="convince"/>
+    <valences>
+        <FERealization total="2">
+            <FE name="Cognizer"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Cognizer"/>
+                <annoSet ID="2605034"/>
+                <annoSet ID="2605044"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Content"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="DNI" FE="Content"/>
+                <annoSet ID="2605034"/>
+                <annoSet ID="2605044"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Event"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Event"/>
+                <annoSet ID="2605034"/>
+                <annoSet ID="2605044"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Cognizer"/>
+            <FE name="Content"/>
+            <FE name="Event"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Cognizer"/>
+                <valenceUnit GF="" PT="DNI" FE="Content"/>
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Event"/>
+                <annoSet ID="2605034"/>
+                <annoSet ID="2605044"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-subject-(1)">
+        <sentence corpID="111" docID="19862" sentNo="5" paragNo="71" aPos="0" ID="1584595">
+            <text>Those members of staff who have reservations about the value of a genuine partnership with parents can best be convinced by the successes of many small actions .</text>
+            <annotationSet cDate="08/13/2010 01:15:10 PDT Fri" status="UNANN" ID="2605033">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="dt"/>
+                    <label end="12" start="6" name="nns"/>
+                    <label end="15" start="14" name="in"/>
+                    <label end="21" start="17" name="nn"/>
+                    <label end="25" start="23" name="wp"/>
+                    <label end="30" start="27" name="VHP"/>
+                    <label end="43" start="32" name="nns"/>
+                    <label end="49" start="45" name="in"/>
+                    <label end="53" start="51" name="dt"/>
+                    <label end="59" start="55" name="nn"/>
+                    <label end="62" start="61" name="in"/>
+                    <label end="64" start="64" name="dt"/>
+                    <label end="72" start="66" name="jj"/>
+                    <label end="84" start="74" name="nn"/>
+                    <label end="89" start="86" name="in"/>
+                    <label end="97" start="91" name="nns"/>
+                    <label end="101" start="99" name="md"/>
+                    <label end="106" start="103" name="rb"/>
+                    <label end="109" start="108" name="vb"/>
+                    <label end="119" start="111" name="VVN"/>
+                    <label end="122" start="121" name="in"/>
+                    <label end="126" start="124" name="dt"/>
+                    <label end="136" start="128" name="nns"/>
+                    <label end="139" start="138" name="in"/>
+                    <label end="144" start="141" name="jj"/>
+                    <label end="150" start="146" name="jj"/>
+                    <label end="158" start="152" name="nns"/>
+                    <label end="160" start="160" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="08/13/2010 01:15:10 PDT Fri" status="MANUAL" ID="2605034">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="119" start="111" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="3682" end="97" start="0" name="Cognizer"/>
+                    <label cBy="589" feID="3684" end="158" start="121" name="Event"/>
+                    <label cBy="589" feID="3683" itype="DNI" name="Content"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="97" start="0" name="Ext"/>
+                    <label end="158" start="121" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="97" start="0" name="NP"/>
+                    <label end="158" start="121" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="17919" sentNo="4" paragNo="145" aPos="0" ID="1584600">
+            <text>Many easterners are still not convinced by the virtues of unfettered markets , and only a handful were in any active sense dissenters under the previous regime .</text>
+            <annotationSet cDate="08/13/2010 01:15:11 PDT Fri" status="UNANN" ID="2605043">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="jj"/>
+                    <label end="14" start="5" name="nns"/>
+                    <label end="18" start="16" name="vbp"/>
+                    <label end="24" start="20" name="rb"/>
+                    <label end="28" start="26" name="rb"/>
+                    <label end="38" start="30" name="VVN"/>
+                    <label end="41" start="40" name="in"/>
+                    <label end="45" start="43" name="dt"/>
+                    <label end="53" start="47" name="nns"/>
+                    <label end="56" start="55" name="in"/>
+                    <label end="67" start="58" name="jj"/>
+                    <label end="75" start="69" name="nns"/>
+                    <label end="77" start="77" name=","/>
+                    <label end="81" start="79" name="cc"/>
+                    <label end="86" start="83" name="rb"/>
+                    <label end="88" start="88" name="dt"/>
+                    <label end="96" start="90" name="nn"/>
+                    <label end="101" start="98" name="VBD"/>
+                    <label end="104" start="103" name="in"/>
+                    <label end="108" start="106" name="dt"/>
+                    <label end="115" start="110" name="jj"/>
+                    <label end="121" start="117" name="nn"/>
+                    <label end="132" start="123" name="nns"/>
+                    <label end="138" start="134" name="in"/>
+                    <label end="142" start="140" name="dt"/>
+                    <label end="151" start="144" name="jj"/>
+                    <label end="158" start="153" name="nn"/>
+                    <label end="160" start="160" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="08/13/2010 01:15:11 PDT Fri" status="MANUAL" ID="2605044">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="38" start="30" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="3682" end="14" start="0" name="Cognizer"/>
+                    <label cBy="589" feID="3684" end="75" start="40" name="Event"/>
+                    <label cBy="589" feID="3683" itype="DNI" name="Content"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="14" start="0" name="Ext"/>
+                    <label end="75" start="40" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="14" start="0" name="NP"/>
+                    <label end="75" start="40" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-Wargument+Wmarketing+Wcontent+Wcar-(1)"/>
+    <subCorpus name="03-modifier-(1)"/>
+    <subCorpus name="04-pp_that-p-(1)"/>
+    <subCorpus name="05-other-matched-(1)"/>
+    <subCorpus name="06-other-unmatched-(1)"/>
+</lexUnit>

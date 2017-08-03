@@ -62,7 +62,8 @@ public class ActionFactory
     public final static String         ACTIONID_UPDATENETS             = "Action.UpdateNets";
     
     public final static String		   ACTIONID_P2T					   = "ToolBar.P2T";	
-
+    public final static String		   ACTIONID_T2P					   = "ToolBar.T2P";
+    
     public final static String         ACTIONID_DRAWMODE_PLACE         = "ToolBar.DrawPlace";
     public final static String         ACTIONID_DRAWMODE_TRANSITION    = "ToolBar.DrawTransition";
     public final static String         ACTIONID_DRAWMODE_ANDSPLIT      = "ToolBar.DrawAndSplit";
@@ -254,6 +255,10 @@ public class ActionFactory
         
         STATIC_ACTION_MAP.put(ACTIONID_P2T, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.P2T, null, ACTIONID_P2T));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_P2T), VisualController.WITH_EDITOR, VisualController.WITH_EDITOR, VisualController.P2T);
+        
+        STATIC_ACTION_MAP.put(ACTIONID_T2P, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.T2P, null, ACTIONID_T2P));
+        VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_T2P), VisualController.ALWAYS, VisualController.ALWAYS, VisualController.T2P);
+        
         
         STATIC_ACTION_MAP.put(ACTIONID_ROTATEVIEW, new WoPeDAction(am, AbstractViewEvent.VIEWEVENTTYPE_EDIT, AbstractViewEvent.ROTATEVIEW, null, ACTIONID_ROTATEVIEW));
         VisualController.getInstance().addElement(STATIC_ACTION_MAP.get(ACTIONID_ROTATEVIEW), VisualController.SUBPROCESS_EDITOR, VisualController.SUBPROCESS_EDITOR, VisualController.ROTATE);

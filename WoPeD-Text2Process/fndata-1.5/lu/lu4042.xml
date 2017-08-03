@@ -1,0 +1,985 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="therapist.n" ID="4042" frame="Cure" frameID="50" totalAnnotated="19" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Core" abbrev="Affl" name="Affliction"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core" abbrev="B_p" name="Body_part"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Extra-Thematic" abbrev="Dur" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Hlr" name="Healer"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Core" abbrev="Med" name="Medication"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Motive" name="Motivation"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Pat" name="Patient"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Trtm" name="Treatment"/>
+        </frame>
+    </header>
+    <definition>FN: somebody specializing in a particular course of treatment or rehabilitation</definition>
+    <lexeme POS="N" name="therapist"/>
+    <valences>
+        <FERealization total="3">
+            <FE name="Affliction"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="N" FE="Affliction"/>
+                <annoSet ID="780731"/>
+                <annoSet ID="780735"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Affliction"/>
+                <annoSet ID="780663"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="18">
+            <FE name="Healer"/>
+            <pattern total="18">
+                <valenceUnit GF="" PT="DEN" FE="Healer"/>
+                <annoSet ID="780663"/>
+                <annoSet ID="780669"/>
+                <annoSet ID="780671"/>
+                <annoSet ID="780673"/>
+                <annoSet ID="780705"/>
+                <annoSet ID="780731"/>
+                <annoSet ID="780741"/>
+                <annoSet ID="780755"/>
+                <annoSet ID="780765"/>
+                <annoSet ID="780785"/>
+                <annoSet ID="780789"/>
+                <annoSet ID="780803"/>
+                <annoSet ID="780809"/>
+                <annoSet ID="780815"/>
+                <annoSet ID="780833"/>
+                <annoSet ID="780851"/>
+                <annoSet ID="780857"/>
+                <annoSet ID="780869"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="6">
+            <FE name="Patient"/>
+            <pattern total="6">
+                <valenceUnit GF="Gen" PT="Poss" FE="Patient"/>
+                <annoSet ID="780669"/>
+                <annoSet ID="780671"/>
+                <annoSet ID="780673"/>
+                <annoSet ID="780785"/>
+                <annoSet ID="780789"/>
+                <annoSet ID="780851"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Treatment"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="N" FE="Treatment"/>
+                <annoSet ID="780705"/>
+                <annoSet ID="780741"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Affliction"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Affliction"/>
+                <annoSet ID="780735"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Affliction"/>
+            <FE name="Healer"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Affliction"/>
+                <valenceUnit GF="" PT="DEN" FE="Healer"/>
+                <annoSet ID="780731"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Affliction"/>
+                <valenceUnit GF="" PT="DEN" FE="Healer"/>
+                <annoSet ID="780663"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="8">
+            <FE name="Healer"/>
+            <pattern total="8">
+                <valenceUnit GF="" PT="DEN" FE="Healer"/>
+                <annoSet ID="780755"/>
+                <annoSet ID="780765"/>
+                <annoSet ID="780803"/>
+                <annoSet ID="780809"/>
+                <annoSet ID="780815"/>
+                <annoSet ID="780833"/>
+                <annoSet ID="780857"/>
+                <annoSet ID="780869"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="6">
+            <FE name="Healer"/>
+            <FE name="Patient"/>
+            <pattern total="6">
+                <valenceUnit GF="" PT="DEN" FE="Healer"/>
+                <valenceUnit GF="Gen" PT="Poss" FE="Patient"/>
+                <annoSet ID="780669"/>
+                <annoSet ID="780671"/>
+                <annoSet ID="780673"/>
+                <annoSet ID="780785"/>
+                <annoSet ID="780789"/>
+                <annoSet ID="780851"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Healer"/>
+            <FE name="Treatment"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="DEN" FE="Healer"/>
+                <valenceUnit GF="Dep" PT="N" FE="Treatment"/>
+                <annoSet ID="780705"/>
+                <annoSet ID="780741"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-250-s20-ppof">
+        <sentence sentNo="0" aPos="63707450" ID="649686">
+            <text>Every therapist of emotional pain , no matter their particular style , sees the discharge of feeling through tears as a positive and healing experience . </text>
+            <annotationSet cDate="01/07/2003 09:22:22 PST Tue" status="UNANN" ID="780662">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="AT0"/>
+                    <label end="14" start="6" name="NN1"/>
+                    <label end="17" start="16" name="PRF"/>
+                    <label end="27" start="19" name="AJ0"/>
+                    <label end="32" start="29" name="NN1"/>
+                    <label end="34" start="34" name="PUN"/>
+                    <label end="37" start="36" name="ITJ"/>
+                    <label end="44" start="39" name="NN1-VVB"/>
+                    <label end="50" start="46" name="DPS"/>
+                    <label end="61" start="52" name="AJ0"/>
+                    <label end="67" start="63" name="NN1"/>
+                    <label end="69" start="69" name="PUN"/>
+                    <label end="74" start="71" name="VVZ"/>
+                    <label end="78" start="76" name="AT0"/>
+                    <label end="88" start="80" name="NN1"/>
+                    <label end="91" start="90" name="PRF"/>
+                    <label end="99" start="93" name="NN1-VVG"/>
+                    <label end="107" start="101" name="PRP"/>
+                    <label end="113" start="109" name="NN2"/>
+                    <label end="116" start="115" name="PRP"/>
+                    <label end="118" start="118" name="AT0"/>
+                    <label end="127" start="120" name="AJ0"/>
+                    <label end="131" start="129" name="CJC"/>
+                    <label end="139" start="133" name="AJ0-VVG"/>
+                    <label end="150" start="141" name="NN1"/>
+                    <label end="152" start="152" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 09:22:22 PST Tue" status="MANUAL" ID="780663">
+                <layer rank="1" name="FE">
+                    <label cBy="243" feID="210" end="32" start="16" name="Affliction"/>
+                    <label cBy="243" feID="208" end="14" start="6" name="Healer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="32" start="16" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="32" start="16" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="14" start="6" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-280-s20-poss">
+        <sentence sentNo="0" aPos="16061258" ID="649689">
+            <text>Most importantly , there will be an empathy between yourself and your therapist . </text>
+            <annotationSet cDate="01/07/2003 09:22:22 PST Tue" status="UNANN" ID="780668">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="AV0"/>
+                    <label end="15" start="5" name="AV0"/>
+                    <label end="17" start="17" name="PUN"/>
+                    <label end="23" start="19" name="EX0"/>
+                    <label end="28" start="25" name="VM0"/>
+                    <label end="31" start="30" name="VBI"/>
+                    <label end="34" start="33" name="AT0"/>
+                    <label end="42" start="36" name="NN1"/>
+                    <label end="50" start="44" name="PRP"/>
+                    <label end="59" start="52" name="PNX"/>
+                    <label end="63" start="61" name="CJC"/>
+                    <label end="68" start="65" name="DPS"/>
+                    <label end="78" start="70" name="NN1"/>
+                    <label end="80" start="80" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 09:22:22 PST Tue" status="MANUAL" ID="780669">
+                <layer rank="1" name="FE">
+                    <label cBy="243" feID="209" end="68" start="65" name="Patient"/>
+                    <label cBy="243" feID="208" end="78" start="70" name="Healer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="68" start="65" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="68" start="65" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="78" start="70" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="16069834" ID="649690">
+            <text>Of course , it is equally important for your therapist to feel at ease with you , to facilitate an exchange of energies , as it were . </text>
+            <annotationSet cDate="01/07/2003 09:22:22 PST Tue" status="UNANN" ID="780670">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="AV0"/>
+                    <label end="8" start="3" name="AV0"/>
+                    <label end="10" start="10" name="PUN"/>
+                    <label end="13" start="12" name="PNP"/>
+                    <label end="16" start="15" name="VBZ"/>
+                    <label end="24" start="18" name="AV0"/>
+                    <label end="34" start="26" name="AJ0"/>
+                    <label end="38" start="36" name="PRP"/>
+                    <label end="43" start="40" name="DPS"/>
+                    <label end="53" start="45" name="NN1"/>
+                    <label end="56" start="55" name="TO0"/>
+                    <label end="61" start="58" name="VVI"/>
+                    <label end="64" start="63" name="PRP"/>
+                    <label end="69" start="66" name="NN1"/>
+                    <label end="74" start="71" name="PRP"/>
+                    <label end="78" start="76" name="PNP"/>
+                    <label end="80" start="80" name="PUN"/>
+                    <label end="83" start="82" name="TO0"/>
+                    <label end="94" start="85" name="VVI"/>
+                    <label end="97" start="96" name="AT0"/>
+                    <label end="106" start="99" name="NN1"/>
+                    <label end="109" start="108" name="PRF"/>
+                    <label end="118" start="111" name="NN2"/>
+                    <label end="120" start="120" name="PUN"/>
+                    <label end="123" start="122" name="AV0"/>
+                    <label end="126" start="125" name="AV0"/>
+                    <label end="131" start="128" name="AV0"/>
+                    <label end="133" start="133" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 09:22:23 PST Tue" status="MANUAL" ID="780671">
+                <layer rank="1" name="FE">
+                    <label cBy="243" feID="208" end="53" start="45" name="Healer"/>
+                    <label cBy="243" feID="209" end="43" start="40" name="Patient"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="43" start="40" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="43" start="40" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="53" start="45" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="18841856" ID="649691">
+            <text>Liz and her therapist arranged to meet initially three rimes and then decide whether further contact was necessary . </text>
+            <annotationSet cDate="01/07/2003 09:22:23 PST Tue" status="UNANN" ID="780672">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="NP0"/>
+                    <label end="6" start="4" name="CJC"/>
+                    <label end="10" start="8" name="DPS"/>
+                    <label end="20" start="12" name="NN1"/>
+                    <label end="29" start="22" name="VVD-VVN"/>
+                    <label end="32" start="31" name="TO0"/>
+                    <label end="37" start="34" name="VVI"/>
+                    <label end="47" start="39" name="AV0"/>
+                    <label end="53" start="49" name="CRD"/>
+                    <label end="59" start="55" name="NN2"/>
+                    <label end="63" start="61" name="CJC"/>
+                    <label end="68" start="65" name="AV0"/>
+                    <label end="75" start="70" name="VVB"/>
+                    <label end="83" start="77" name="CJS"/>
+                    <label end="91" start="85" name="AJC"/>
+                    <label end="99" start="93" name="NN1"/>
+                    <label end="103" start="101" name="VBD"/>
+                    <label end="113" start="105" name="AJ0"/>
+                    <label end="115" start="115" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 09:22:23 PST Tue" status="MANUAL" ID="780673">
+                <layer rank="1" name="FE">
+                    <label cBy="243" feID="209" end="10" start="8" name="Patient"/>
+                    <label cBy="243" feID="208" end="20" start="12" name="Healer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="10" start="8" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="10" start="8" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="20" start="12" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-300-s20-cmpd">
+        <sentence sentNo="0" aPos="108215641" ID="649707">
+            <text>They are also supported by psychiatric , social work and child care consultants , with further therapeutic care provided by a qualified art therapist . </text>
+            <annotationSet cDate="01/07/2003 09:22:27 PST Tue" status="UNANN" ID="780704">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="PNP"/>
+                    <label end="7" start="5" name="VBB"/>
+                    <label end="12" start="9" name="AV0"/>
+                    <label end="22" start="14" name="VVN"/>
+                    <label end="25" start="24" name="PRP"/>
+                    <label end="37" start="27" name="AJ0"/>
+                    <label end="39" start="39" name="PUN"/>
+                    <label end="46" start="41" name="AJ0"/>
+                    <label end="51" start="48" name="NN1"/>
+                    <label end="55" start="53" name="CJC"/>
+                    <label end="61" start="57" name="NN1"/>
+                    <label end="66" start="63" name="NN1"/>
+                    <label end="78" start="68" name="NN2"/>
+                    <label end="80" start="80" name="PUN"/>
+                    <label end="85" start="82" name="PRP"/>
+                    <label end="93" start="87" name="AV0"/>
+                    <label end="105" start="95" name="AJ0"/>
+                    <label end="110" start="107" name="NN1"/>
+                    <label end="119" start="112" name="VVN"/>
+                    <label end="122" start="121" name="PRP"/>
+                    <label end="124" start="124" name="AT0"/>
+                    <label end="134" start="126" name="AJ0"/>
+                    <label end="138" start="136" name="NN1"/>
+                    <label end="148" start="140" name="NN1"/>
+                    <label end="150" start="150" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 09:22:27 PST Tue" status="MANUAL" ID="780705">
+                <layer rank="1" name="FE">
+                    <label cBy="243" feID="211" end="138" start="136" name="Treatment"/>
+                    <label cBy="243" feID="208" end="148" start="140" name="Healer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="138" start="136" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="138" start="136" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="148" start="140" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="23566694" ID="649720">
+            <text>Anne Hooper , counsellor , sex therapist , author and mother , offers her help and advice . </text>
+            <annotationSet cDate="01/07/2003 09:22:29 PST Tue" status="UNANN" ID="780730">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="NP0"/>
+                    <label end="10" start="5" name="NP0"/>
+                    <label end="12" start="12" name="PUN"/>
+                    <label end="23" start="14" name="NN1"/>
+                    <label end="25" start="25" name="PUN"/>
+                    <label end="29" start="27" name="NN1"/>
+                    <label end="39" start="31" name="NN1"/>
+                    <label end="41" start="41" name="PUN"/>
+                    <label end="48" start="43" name="NN1"/>
+                    <label end="52" start="50" name="CJC"/>
+                    <label end="59" start="54" name="NN1"/>
+                    <label end="61" start="61" name="PUN"/>
+                    <label end="68" start="63" name="VVZ"/>
+                    <label end="72" start="70" name="DPS"/>
+                    <label end="77" start="74" name="NN1"/>
+                    <label end="81" start="79" name="CJC"/>
+                    <label end="88" start="83" name="NN1"/>
+                    <label end="90" start="90" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 09:22:29 PST Tue" status="MANUAL" ID="780731">
+                <layer rank="1" name="FE">
+                    <label cBy="243" feID="210" end="29" start="27" name="Affliction"/>
+                    <label cBy="243" feID="208" end="39" start="31" name="Healer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="29" start="27" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="29" start="27" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="39" start="31" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="20337445" ID="649722">
+            <text>Sex manuals and sex therapists soon flooded the market to help people make the grade . </text>
+            <annotationSet cDate="01/07/2003 09:22:29 PST Tue" status="UNANN" ID="780734">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="NN1"/>
+                    <label end="10" start="4" name="NN2"/>
+                    <label end="14" start="12" name="CJC"/>
+                    <label end="18" start="16" name="NN1"/>
+                    <label end="29" start="20" name="NN2"/>
+                    <label end="34" start="31" name="AV0"/>
+                    <label end="42" start="36" name="VVD"/>
+                    <label end="46" start="44" name="AT0"/>
+                    <label end="53" start="48" name="NN1"/>
+                    <label end="56" start="55" name="TO0"/>
+                    <label end="61" start="58" name="VVI"/>
+                    <label end="68" start="63" name="NN0"/>
+                    <label end="73" start="70" name="VVI"/>
+                    <label end="77" start="75" name="AT0"/>
+                    <label end="83" start="79" name="NN1"/>
+                    <label end="85" start="85" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 09:22:29 PST Tue" status="MANUAL" ID="780735">
+                <layer rank="1" name="FE">
+                    <label cBy="243" feID="210" end="18" start="16" name="Affliction"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="18" start="16" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="18" start="16" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="29" start="20" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="105952819" ID="649725">
+            <text>She says working as a shiatsu therapist is also risky because the treatment is expensive and people are not always willing to pay when money is short . </text>
+            <annotationSet cDate="01/07/2003 09:22:29 PST Tue" status="UNANN" ID="780740">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="PNP"/>
+                    <label end="7" start="4" name="VVZ"/>
+                    <label end="15" start="9" name="VVG"/>
+                    <label end="18" start="17" name="PRP"/>
+                    <label end="20" start="20" name="AT0"/>
+                    <label end="28" start="22" name="NN1"/>
+                    <label end="38" start="30" name="NN1"/>
+                    <label end="41" start="40" name="VBZ"/>
+                    <label end="46" start="43" name="AV0"/>
+                    <label end="52" start="48" name="AJ0"/>
+                    <label end="60" start="54" name="CJS"/>
+                    <label end="64" start="62" name="AT0"/>
+                    <label end="74" start="66" name="NN1"/>
+                    <label end="77" start="76" name="VBZ"/>
+                    <label end="87" start="79" name="AJ0"/>
+                    <label end="91" start="89" name="CJC"/>
+                    <label end="98" start="93" name="NN0"/>
+                    <label end="102" start="100" name="VBB"/>
+                    <label end="106" start="104" name="XX0"/>
+                    <label end="113" start="108" name="AV0"/>
+                    <label end="121" start="115" name="AJ0"/>
+                    <label end="124" start="123" name="TO0"/>
+                    <label end="128" start="126" name="VVI"/>
+                    <label end="133" start="130" name="AVQ"/>
+                    <label end="139" start="135" name="NN1"/>
+                    <label end="142" start="141" name="VBZ"/>
+                    <label end="148" start="144" name="AJ0-AV0"/>
+                    <label end="150" start="150" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 09:22:29 PST Tue" status="MANUAL" ID="780741">
+                <layer rank="1" name="FE">
+                    <label cBy="243" feID="211" end="28" start="22" name="Treatment"/>
+                    <label cBy="243" feID="208" end="38" start="30" name="Healer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="28" start="22" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="28" start="22" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="38" start="30" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-340-s20-ppother">
+        <sentence sentNo="0" aPos="18841956" ID="649732">
+            <text>Liz came back accompanied by her parents , but wanting to speak to the therapist on her own first . </text>
+            <annotationSet cDate="01/07/2003 09:22:30 PST Tue" status="UNANN" ID="780754">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="NP0"/>
+                    <label end="7" start="4" name="VVD"/>
+                    <label end="12" start="9" name="NN1"/>
+                    <label end="24" start="14" name="VVN"/>
+                    <label end="27" start="26" name="PRP"/>
+                    <label end="31" start="29" name="DPS"/>
+                    <label end="39" start="33" name="NN2"/>
+                    <label end="41" start="41" name="PUN"/>
+                    <label end="45" start="43" name="CJC"/>
+                    <label end="53" start="47" name="VVG"/>
+                    <label end="56" start="55" name="TO0"/>
+                    <label end="62" start="58" name="VVI"/>
+                    <label end="65" start="64" name="PRP"/>
+                    <label end="69" start="67" name="AT0"/>
+                    <label end="79" start="71" name="NN1"/>
+                    <label end="82" start="81" name="PRP"/>
+                    <label end="86" start="84" name="DPS"/>
+                    <label end="90" start="88" name="DT0"/>
+                    <label end="96" start="92" name="ORD"/>
+                    <label end="98" start="98" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 09:22:30 PST Tue" status="MANUAL" ID="780755">
+                <layer rank="1" name="FE">
+                    <label cBy="243" feID="208" end="79" start="71" name="Healer"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="79" start="71" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="18862467" ID="649737">
+            <text>Involvement of the same therapist in assessment and follow-up is likely to increase attendance rates ( Hawton et al. 1979 ) . </text>
+            <annotationSet cDate="01/07/2003 09:22:31 PST Tue" status="UNANN" ID="780764">
+                <layer rank="1" name="BNC">
+                    <label end="10" start="0" name="NN1"/>
+                    <label end="13" start="12" name="PRF"/>
+                    <label end="17" start="15" name="AT0"/>
+                    <label end="22" start="19" name="DT0"/>
+                    <label end="32" start="24" name="NN1"/>
+                    <label end="35" start="34" name="PRP"/>
+                    <label end="46" start="37" name="NN1"/>
+                    <label end="50" start="48" name="CJC"/>
+                    <label end="60" start="52" name="NN1"/>
+                    <label end="63" start="62" name="VBZ"/>
+                    <label end="70" start="65" name="AJ0"/>
+                    <label end="73" start="72" name="TO0"/>
+                    <label end="82" start="75" name="VVI"/>
+                    <label end="93" start="84" name="NN1"/>
+                    <label end="99" start="95" name="NN2"/>
+                    <label end="101" start="101" name="PUL"/>
+                    <label end="108" start="103" name="NP0"/>
+                    <label end="111" start="110" name="AV0"/>
+                    <label end="115" start="113" name="AV0"/>
+                    <label end="120" start="117" name="CRD"/>
+                    <label end="122" start="122" name="PUR"/>
+                    <label end="124" start="124" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 09:22:31 PST Tue" status="MANUAL" ID="780765">
+                <layer rank="1" name="FE">
+                    <label cBy="243" feID="208" end="32" start="24" name="Healer"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="32" start="24" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-370-s20-pother">
+        <sentence sentNo="0" aPos="22244555" ID="649747">
+            <text>Despite describing a happy childhood , she told her therapist about how she had been brought up in a family where she felt unappreciated and undervalued . </text>
+            <annotationSet cDate="01/07/2003 09:22:32 PST Tue" status="UNANN" ID="780784">
+                <layer rank="1" name="BNC">
+                    <label end="6" start="0" name="PRP"/>
+                    <label end="17" start="8" name="VVG"/>
+                    <label end="19" start="19" name="AT0"/>
+                    <label end="25" start="21" name="AJ0"/>
+                    <label end="35" start="27" name="NN1"/>
+                    <label end="37" start="37" name="PUN"/>
+                    <label end="41" start="39" name="PNP"/>
+                    <label end="46" start="43" name="VVD"/>
+                    <label end="50" start="48" name="DPS"/>
+                    <label end="60" start="52" name="NN1"/>
+                    <label end="66" start="62" name="PRP"/>
+                    <label end="70" start="68" name="AVQ"/>
+                    <label end="74" start="72" name="PNP"/>
+                    <label end="78" start="76" name="VHD"/>
+                    <label end="83" start="80" name="VBN"/>
+                    <label end="91" start="85" name="VVN"/>
+                    <label end="94" start="93" name="AVP"/>
+                    <label end="97" start="96" name="PRP"/>
+                    <label end="99" start="99" name="AT0"/>
+                    <label end="106" start="101" name="NN0"/>
+                    <label end="112" start="108" name="AVQ-CJS"/>
+                    <label end="116" start="114" name="PNP"/>
+                    <label end="121" start="118" name="VVD"/>
+                    <label end="135" start="123" name="AJ0"/>
+                    <label end="139" start="137" name="CJC"/>
+                    <label end="151" start="141" name="AJ0"/>
+                    <label end="153" start="153" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 09:22:32 PST Tue" status="MANUAL" ID="780785">
+                <layer rank="1" name="FE">
+                    <label cBy="243" feID="209" end="50" start="48" name="Patient"/>
+                    <label cBy="243" feID="208" end="60" start="52" name="Healer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="50" start="48" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="50" start="48" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="60" start="52" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="64515820" ID="649749">
+            <text>She was acting on the advice of her therapist in speaking thus . </text>
+            <annotationSet cDate="01/07/2003 09:22:33 PST Tue" status="UNANN" ID="780788">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="PNP"/>
+                    <label end="6" start="4" name="VBD"/>
+                    <label end="13" start="8" name="VVG"/>
+                    <label end="16" start="15" name="PRP"/>
+                    <label end="20" start="18" name="AT0"/>
+                    <label end="27" start="22" name="NN1"/>
+                    <label end="30" start="29" name="PRF"/>
+                    <label end="34" start="32" name="DPS"/>
+                    <label end="44" start="36" name="NN1"/>
+                    <label end="47" start="46" name="PRP"/>
+                    <label end="56" start="49" name="VVG"/>
+                    <label end="61" start="58" name="AV0"/>
+                    <label end="63" start="63" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 09:22:33 PST Tue" status="MANUAL" ID="780789">
+                <layer rank="1" name="FE">
+                    <label cBy="243" feID="209" end="34" start="32" name="Patient"/>
+                    <label cBy="243" feID="208" end="44" start="36" name="Healer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="34" start="32" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="34" start="32" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="44" start="36" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-380-s20-other-s20">
+        <sentence sentNo="0" aPos="18843807" ID="649756">
+            <text>Therefore , the therapist suggested she should stop this medication . </text>
+            <annotationSet cDate="01/07/2003 09:22:33 PST Tue" status="UNANN" ID="780802">
+                <layer rank="1" name="BNC">
+                    <label end="8" start="0" name="AV0"/>
+                    <label end="10" start="10" name="PUN"/>
+                    <label end="14" start="12" name="AT0"/>
+                    <label end="24" start="16" name="NN1"/>
+                    <label end="34" start="26" name="VVD-VVN"/>
+                    <label end="38" start="36" name="PNP"/>
+                    <label end="45" start="40" name="VM0"/>
+                    <label end="50" start="47" name="VVI"/>
+                    <label end="55" start="52" name="DT0"/>
+                    <label end="66" start="57" name="NN1"/>
+                    <label end="68" start="68" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 09:22:33 PST Tue" status="MANUAL" ID="780803">
+                <layer rank="1" name="FE">
+                    <label cBy="243" feID="208" end="24" start="16" name="Healer"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="24" start="16" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="25324189" ID="649759">
+            <text>The therapist has to take all your details and to ask you certain questions to establish that you are indeed a suitable subject for hypnosis . </text>
+            <annotationSet cDate="01/07/2003 09:22:34 PST Tue" status="UNANN" ID="780808">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="12" start="4" name="NN1"/>
+                    <label end="16" start="14" name="VHZ"/>
+                    <label end="19" start="18" name="TO0"/>
+                    <label end="24" start="21" name="VVI"/>
+                    <label end="28" start="26" name="DT0"/>
+                    <label end="33" start="30" name="DPS"/>
+                    <label end="41" start="35" name="NN2"/>
+                    <label end="45" start="43" name="CJC"/>
+                    <label end="48" start="47" name="TO0"/>
+                    <label end="52" start="50" name="VVI"/>
+                    <label end="56" start="54" name="PNP"/>
+                    <label end="64" start="58" name="AJ0"/>
+                    <label end="74" start="66" name="NN2"/>
+                    <label end="77" start="76" name="TO0"/>
+                    <label end="87" start="79" name="VVI"/>
+                    <label end="92" start="89" name="CJT"/>
+                    <label end="96" start="94" name="PNP"/>
+                    <label end="100" start="98" name="VBB"/>
+                    <label end="107" start="102" name="AV0"/>
+                    <label end="109" start="109" name="AT0"/>
+                    <label end="118" start="111" name="AJ0"/>
+                    <label end="126" start="120" name="NN1"/>
+                    <label end="130" start="128" name="PRP"/>
+                    <label end="139" start="132" name="NN1"/>
+                    <label end="141" start="141" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 09:22:34 PST Tue" status="MANUAL" ID="780809">
+                <layer rank="1" name="FE">
+                    <label cBy="243" feID="208" end="12" start="4" name="Healer"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="12" start="4" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="33877759" ID="649762">
+            <text>The therapist should explain fully why certain areas of questioning are being broached so that parents feel part of the assessment procedure . </text>
+            <annotationSet cDate="01/07/2003 09:22:34 PST Tue" status="UNANN" ID="780814">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="12" start="4" name="NN1"/>
+                    <label end="19" start="14" name="VM0"/>
+                    <label end="27" start="21" name="VVI"/>
+                    <label end="33" start="29" name="AV0"/>
+                    <label end="37" start="35" name="AVQ"/>
+                    <label end="45" start="39" name="AJ0"/>
+                    <label end="51" start="47" name="NN2"/>
+                    <label end="54" start="53" name="PRF"/>
+                    <label end="66" start="56" name="NN1-VVG"/>
+                    <label end="70" start="68" name="VBB"/>
+                    <label end="76" start="72" name="VBG"/>
+                    <label end="85" start="78" name="VVN"/>
+                    <label end="88" start="87" name="CJS"/>
+                    <label end="93" start="90" name="CJS"/>
+                    <label end="101" start="95" name="NN2"/>
+                    <label end="106" start="103" name="VVB"/>
+                    <label end="111" start="108" name="NN1"/>
+                    <label end="114" start="113" name="PRF"/>
+                    <label end="118" start="116" name="AT0"/>
+                    <label end="129" start="120" name="NN1"/>
+                    <label end="139" start="131" name="NN1"/>
+                    <label end="141" start="141" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 09:22:34 PST Tue" status="MANUAL" ID="780815">
+                <layer rank="1" name="FE">
+                    <label cBy="243" feID="208" end="12" start="4" name="Healer"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="12" start="4" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-429-s20-lcoll-go">
+        <sentence sentNo="0" aPos="8178078" ID="649771">
+            <text>I went for my first visit to the therapist feeling panicky , nervous , hopeful and depressed . </text>
+            <annotationSet cDate="01/07/2003 09:22:35 PST Tue" status="UNANN" ID="780832">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PNP"/>
+                    <label end="5" start="2" name="VVD"/>
+                    <label end="9" start="7" name="PRP"/>
+                    <label end="12" start="11" name="DPS"/>
+                    <label end="18" start="14" name="ORD"/>
+                    <label end="24" start="20" name="NN1"/>
+                    <label end="27" start="26" name="PRP"/>
+                    <label end="31" start="29" name="AT0"/>
+                    <label end="41" start="33" name="NN1"/>
+                    <label end="49" start="43" name="NN1-VVG"/>
+                    <label end="57" start="51" name="AJ0"/>
+                    <label end="59" start="59" name="PUN"/>
+                    <label end="67" start="61" name="AJ0"/>
+                    <label end="69" start="69" name="PUN"/>
+                    <label end="77" start="71" name="AJ0"/>
+                    <label end="81" start="79" name="CJC"/>
+                    <label end="91" start="83" name="VVD-VVN"/>
+                    <label end="93" start="93" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 09:22:35 PST Tue" status="MANUAL" ID="780833">
+                <layer rank="1" name="FE">
+                    <label cBy="243" feID="208" end="41" start="33" name="Healer"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="41" start="33" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-429-s20-lcoll-see">
+        <sentence sentNo="0" aPos="54638807" ID="649780">
+            <text>I went to see my therapist and he kept talking about the bank manager . </text>
+            <annotationSet cDate="01/07/2003 09:22:36 PST Tue" status="UNANN" ID="780850">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PNP"/>
+                    <label end="5" start="2" name="VVD"/>
+                    <label end="8" start="7" name="TO0"/>
+                    <label end="12" start="10" name="VVI"/>
+                    <label end="15" start="14" name="DPS"/>
+                    <label end="25" start="17" name="NN1"/>
+                    <label end="29" start="27" name="CJC"/>
+                    <label end="32" start="31" name="PNP"/>
+                    <label end="37" start="34" name="VVD"/>
+                    <label end="45" start="39" name="VVG"/>
+                    <label end="51" start="47" name="PRP"/>
+                    <label end="55" start="53" name="AT0"/>
+                    <label end="60" start="57" name="NN1"/>
+                    <label end="68" start="62" name="NN1"/>
+                    <label end="70" start="70" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 09:22:36 PST Tue" status="MANUAL" ID="780851">
+                <layer rank="1" name="FE">
+                    <label cBy="243" feID="209" end="15" start="14" name="Patient"/>
+                    <label cBy="243" feID="208" end="25" start="17" name="Healer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="15" start="14" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="15" start="14" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="25" start="17" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="58051238" ID="649783">
+            <text>In New York if you do n't get threatened occasionally you go see a therapist and ask him why you have no charisma . </text>
+            <annotationSet cDate="01/07/2003 09:22:37 PST Tue" status="UNANN" ID="780856">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PRP"/>
+                    <label end="5" start="3" name="NP0"/>
+                    <label end="10" start="7" name="NP0"/>
+                    <label end="13" start="12" name="CJS"/>
+                    <label end="17" start="15" name="PNP"/>
+                    <label end="20" start="19" name="VDB"/>
+                    <label end="24" start="22" name="XX0"/>
+                    <label end="28" start="26" name="VVI"/>
+                    <label end="39" start="30" name="AJ0-VVN"/>
+                    <label end="52" start="41" name="AV0"/>
+                    <label end="56" start="54" name="PNP"/>
+                    <label end="59" start="58" name="VVB"/>
+                    <label end="63" start="61" name="VVB"/>
+                    <label end="65" start="65" name="AT0"/>
+                    <label end="75" start="67" name="NN1"/>
+                    <label end="79" start="77" name="CJC"/>
+                    <label end="83" start="81" name="VVB"/>
+                    <label end="87" start="85" name="PNP"/>
+                    <label end="91" start="89" name="AVQ"/>
+                    <label end="95" start="93" name="PNP"/>
+                    <label end="100" start="97" name="VHB"/>
+                    <label end="103" start="102" name="AT0"/>
+                    <label end="112" start="105" name="NN1"/>
+                    <label end="114" start="114" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 09:22:37 PST Tue" status="MANUAL" ID="780857">
+                <layer rank="1" name="FE">
+                    <label cBy="243" feID="208" end="75" start="67" name="Healer"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="75" start="67" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-429-s20-rcoll-see">
+        <sentence sentNo="0" aPos="18853777" ID="649789">
+            <text>The therapist agreed to see David daily for the next few days in order to provide him with support . </text>
+            <annotationSet cDate="01/07/2003 09:22:37 PST Tue" status="UNANN" ID="780868">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="12" start="4" name="NN1"/>
+                    <label end="19" start="14" name="VVD-VVN"/>
+                    <label end="22" start="21" name="TO0"/>
+                    <label end="26" start="24" name="VVI"/>
+                    <label end="32" start="28" name="NP0"/>
+                    <label end="38" start="34" name="AJ0-AV0"/>
+                    <label end="42" start="40" name="PRP"/>
+                    <label end="46" start="44" name="AT0"/>
+                    <label end="51" start="48" name="ORD"/>
+                    <label end="55" start="53" name="DT0"/>
+                    <label end="60" start="57" name="NN2"/>
+                    <label end="63" start="62" name="AV0"/>
+                    <label end="69" start="65" name="AV0"/>
+                    <label end="72" start="71" name="TO0"/>
+                    <label end="80" start="74" name="VVI"/>
+                    <label end="84" start="82" name="PNP"/>
+                    <label end="89" start="86" name="PRP"/>
+                    <label end="97" start="91" name="NN1"/>
+                    <label end="99" start="99" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 09:22:37 PST Tue" status="MANUAL" ID="780869">
+                <layer rank="1" name="FE">
+                    <label cBy="243" feID="208" end="12" start="4" name="Healer"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="12" start="4" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

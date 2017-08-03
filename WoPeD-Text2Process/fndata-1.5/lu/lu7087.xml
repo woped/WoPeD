@@ -1,0 +1,830 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="mole.n" ID="7087" frame="Body_mark" frameID="393" totalAnnotated="12" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="Attachment" name="Attachment"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Body_m" name="Body_mark"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="cause" name="Cause"/>
+            <FE fgColor="000000" bgColor="d0d0d0" type="Peripheral" abbrev="con" name="Constituents"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="Desc" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Poss" name="Possessor"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="typ" name="Type"/>
+        </frame>
+    </header>
+    <definition>COD: a small dark blemish on the skin caused by a high concentration of melanin. </definition>
+    <lexeme POS="N" name="mole"/>
+    <valences>
+        <governor type="Sup" lemma="have">
+            <annoSet ID="1567587"/>
+            <annoSet ID="1567687"/>
+        </governor>
+        <governor type="Sup" lemma="with">
+            <annoSet ID="1567693"/>
+            <annoSet ID="1567721"/>
+        </governor>
+        <governor type="Gov" lemma="find">
+            <annoSet ID="1567763"/>
+        </governor>
+        <FERealization total="6">
+            <FE name="Attachment"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Attachment"/>
+                <annoSet ID="1567697"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[around]" FE="Attachment"/>
+                <annoSet ID="1567601"/>
+            </pattern>
+            <pattern total="4">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Attachment"/>
+                <annoSet ID="1567687"/>
+                <annoSet ID="1567693"/>
+                <annoSet ID="1567705"/>
+                <annoSet ID="1567721"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="12">
+            <FE name="Body_mark"/>
+            <pattern total="12">
+                <valenceUnit GF="" PT="DEN" FE="Body_mark"/>
+                <annoSet ID="1567541"/>
+                <annoSet ID="1567543"/>
+                <annoSet ID="1567587"/>
+                <annoSet ID="1567601"/>
+                <annoSet ID="1567679"/>
+                <annoSet ID="1567683"/>
+                <annoSet ID="1567687"/>
+                <annoSet ID="1567693"/>
+                <annoSet ID="1567697"/>
+                <annoSet ID="1567705"/>
+                <annoSet ID="1567721"/>
+                <annoSet ID="1567763"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="6">
+            <FE name="Descriptor"/>
+            <pattern total="6">
+                <valenceUnit GF="Dep" PT="AJP" FE="Descriptor"/>
+                <annoSet ID="1567601"/>
+                <annoSet ID="1567679"/>
+                <annoSet ID="1567683"/>
+                <annoSet ID="1567687"/>
+                <annoSet ID="1567705"/>
+                <annoSet ID="1567721"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="6">
+            <FE name="Possessor"/>
+            <pattern total="4">
+                <valenceUnit GF="Ext" PT="NP" FE="Possessor"/>
+                <annoSet ID="1567587"/>
+                <annoSet ID="1567687"/>
+                <annoSet ID="1567693"/>
+                <annoSet ID="1567721"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Gen" PT="Poss" FE="Possessor"/>
+                <annoSet ID="1567541"/>
+                <annoSet ID="1567543"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Attachment"/>
+            <FE name="Body_mark"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Attachment"/>
+                <valenceUnit GF="" PT="DEN" FE="Body_mark"/>
+                <annoSet ID="1567697"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Attachment"/>
+            <FE name="Body_mark"/>
+            <FE name="Descriptor"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[around]" FE="Attachment"/>
+                <valenceUnit GF="" PT="DEN" FE="Body_mark"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Descriptor"/>
+                <annoSet ID="1567601"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Attachment"/>
+                <valenceUnit GF="" PT="DEN" FE="Body_mark"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Descriptor"/>
+                <annoSet ID="1567705"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Attachment"/>
+            <FE name="Body_mark"/>
+            <FE name="Descriptor"/>
+            <FE name="Descriptor"/>
+            <FE name="Possessor"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Attachment"/>
+                <valenceUnit GF="" PT="DEN" FE="Body_mark"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Descriptor"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Descriptor"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Possessor"/>
+                <annoSet ID="1567687"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Attachment"/>
+            <FE name="Body_mark"/>
+            <FE name="Descriptor"/>
+            <FE name="Possessor"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Attachment"/>
+                <valenceUnit GF="" PT="DEN" FE="Body_mark"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Descriptor"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Possessor"/>
+                <annoSet ID="1567721"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Attachment"/>
+            <FE name="Body_mark"/>
+            <FE name="Possessor"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Attachment"/>
+                <valenceUnit GF="" PT="DEN" FE="Body_mark"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Possessor"/>
+                <annoSet ID="1567693"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Body_mark"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Body_mark"/>
+                <annoSet ID="1567763"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Body_mark"/>
+            <FE name="Descriptor"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="DEN" FE="Body_mark"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Descriptor"/>
+                <annoSet ID="1567679"/>
+                <annoSet ID="1567683"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Body_mark"/>
+            <FE name="Possessor"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="DEN" FE="Body_mark"/>
+                <valenceUnit GF="Gen" PT="Poss" FE="Possessor"/>
+                <annoSet ID="1567541"/>
+                <annoSet ID="1567543"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Body_mark"/>
+            <FE name="Possessor"/>
+            <FE name="Possessor"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Body_mark"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Possessor"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Possessor"/>
+                <annoSet ID="1567587"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-280-s20-poss">
+        <sentence sentNo="0" aPos="53877432" ID="1058068">
+            <text>Vanished are her healthy pink cheeks , her slightly red winter nose , her mole , her little freckles and blemishes : she is smooth , new made . </text>
+            <annotationSet cDate="01/08/2003 12:43:20 PST Wed" status="UNANN" ID="1567540">
+                <layer rank="1" name="BNC">
+                    <label end="7" start="0" name="NP0"/>
+                    <label end="11" start="9" name="VBB"/>
+                    <label end="15" start="13" name="DPS"/>
+                    <label end="23" start="17" name="AJ0"/>
+                    <label end="28" start="25" name="AJ0"/>
+                    <label end="35" start="30" name="NN2"/>
+                    <label end="37" start="37" name="PUN"/>
+                    <label end="41" start="39" name="PNP"/>
+                    <label end="50" start="43" name="AV0"/>
+                    <label end="54" start="52" name="AJ0"/>
+                    <label end="61" start="56" name="NN1"/>
+                    <label end="66" start="63" name="NN1"/>
+                    <label end="68" start="68" name="PUN"/>
+                    <label end="72" start="70" name="DPS"/>
+                    <label end="77" start="74" name="NN1"/>
+                    <label end="79" start="79" name="PUN"/>
+                    <label end="83" start="81" name="DPS"/>
+                    <label end="90" start="85" name="AJ0"/>
+                    <label end="99" start="92" name="NN2"/>
+                    <label end="103" start="101" name="CJC"/>
+                    <label end="113" start="105" name="NN2-VVZ"/>
+                    <label end="115" start="115" name="PUN"/>
+                    <label end="119" start="117" name="PNP"/>
+                    <label end="122" start="121" name="VBZ"/>
+                    <label end="129" start="124" name="AJ0"/>
+                    <label end="131" start="131" name="PUN"/>
+                    <label end="135" start="133" name="AJ0"/>
+                    <label end="140" start="137" name="VVD-VVN"/>
+                    <label end="142" start="142" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:43:20 PST Wed" status="MANUAL" ID="1567541">
+                <layer rank="1" name="FE">
+                    <label cBy="865" feID="3510" end="72" start="70" name="Possessor"/>
+                    <label cBy="865" feID="3507" end="77" start="74" name="Body_mark"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="72" start="70" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="72" start="70" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="77" start="74" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="83332071" ID="1058069">
+            <text>Louise Kearney 's mole was successfully removed , but the experience has left Louise with a different attitude to sun worshipping . </text>
+            <annotationSet cDate="01/08/2003 12:43:20 PST Wed" status="UNANN" ID="1567542">
+                <layer rank="1" name="BNC">
+                    <label end="5" start="0" name="NP0"/>
+                    <label end="13" start="7" name="NP0"/>
+                    <label end="16" start="15" name="POS"/>
+                    <label end="21" start="18" name="NN1"/>
+                    <label end="25" start="23" name="VBD"/>
+                    <label end="38" start="27" name="AV0"/>
+                    <label end="46" start="40" name="VVD-VVN"/>
+                    <label end="48" start="48" name="PUN"/>
+                    <label end="52" start="50" name="CJC"/>
+                    <label end="56" start="54" name="AT0"/>
+                    <label end="67" start="58" name="NN1"/>
+                    <label end="71" start="69" name="VHZ"/>
+                    <label end="76" start="73" name="VVN"/>
+                    <label end="83" start="78" name="NP0"/>
+                    <label end="88" start="85" name="PRP"/>
+                    <label end="90" start="90" name="AT0"/>
+                    <label end="100" start="92" name="AJ0"/>
+                    <label end="109" start="102" name="NN1"/>
+                    <label end="112" start="111" name="PRP"/>
+                    <label end="116" start="114" name="NN1"/>
+                    <label end="128" start="118" name="NN1-VVG"/>
+                    <label end="130" start="130" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:43:20 PST Wed" status="MANUAL" ID="1567543">
+                <layer rank="1" name="FE">
+                    <label cBy="865" feID="3510" end="16" start="0" name="Possessor"/>
+                    <label cBy="865" feID="3507" end="21" start="18" name="Body_mark"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="16" start="0" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="16" start="0" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="21" start="18" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-290-s20-posscmpd"/>
+    <subCorpus name="N-300-s20-cmpd"/>
+    <subCorpus name="N-330-s20-period">
+        <sentence sentNo="0" aPos="66042812" ID="1058091">
+            <text>You are not necessarily at any more risk of malignant melanoma than someone who has fewer moles . </text>
+            <annotationSet cDate="01/08/2003 12:43:25 PST Wed" status="UNANN" ID="1567586">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="PNP"/>
+                    <label end="6" start="4" name="VBB"/>
+                    <label end="10" start="8" name="XX0"/>
+                    <label end="22" start="12" name="AV0"/>
+                    <label end="25" start="24" name="PRP"/>
+                    <label end="29" start="27" name="DT0"/>
+                    <label end="34" start="31" name="DT0"/>
+                    <label end="39" start="36" name="NN1"/>
+                    <label end="42" start="41" name="PRF"/>
+                    <label end="52" start="44" name="AJ0"/>
+                    <label end="61" start="54" name="NN1"/>
+                    <label end="66" start="63" name="CJS"/>
+                    <label end="74" start="68" name="PNI"/>
+                    <label end="78" start="76" name="PNQ"/>
+                    <label end="82" start="80" name="VHZ"/>
+                    <label end="88" start="84" name="DT0"/>
+                    <label end="94" start="90" name="NN2"/>
+                    <label end="96" start="96" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:43:25 PST Wed" status="MANUAL" ID="1567587">
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="3510" end="74" start="68" name="Possessor"/>
+                    <label cBy="605" feID="3507" end="94" start="90" name="Body_mark"/>
+                    <label cBy="309" feID="3510" end="78" start="76" name="Possessor"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="74" start="68" name="Ext"/>
+                    <label end="78" start="76" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="74" start="68" name="NP"/>
+                    <label end="78" start="76" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other">
+                    <label end="74" start="68" name="Ant"/>
+                    <label end="78" start="76" name="Rel"/>
+                </layer>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="94" start="90" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="82" start="80" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-370-s20-pother">
+        <sentence sentNo="0" aPos="5412782" ID="1058098">
+            <text>A new mole around an existing one can also mean trouble . </text>
+            <annotationSet cDate="01/08/2003 12:43:25 PST Wed" status="UNANN" ID="1567600">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="AT0"/>
+                    <label end="4" start="2" name="AJ0"/>
+                    <label end="9" start="6" name="NN1"/>
+                    <label end="16" start="11" name="PRP"/>
+                    <label end="19" start="18" name="AT0"/>
+                    <label end="28" start="21" name="AJ0"/>
+                    <label end="32" start="30" name="PNI"/>
+                    <label end="36" start="34" name="VM0"/>
+                    <label end="41" start="38" name="AV0"/>
+                    <label end="46" start="43" name="VVI"/>
+                    <label end="54" start="48" name="NN1"/>
+                    <label end="56" start="56" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:43:25 PST Wed" status="MANUAL" ID="1567601">
+                <layer rank="1" name="FE">
+                    <label cBy="865" feID="3507" end="9" start="6" name="Body_mark"/>
+                    <label cBy="865" feID="3508" end="4" start="2" name="Descriptor"/>
+                    <label cBy="865" feID="3506" end="32" start="11" name="Attachment"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="4" start="2" name="Dep"/>
+                    <label end="32" start="11" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="4" start="2" name="AJP"/>
+                    <label end="32" start="11" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="9" start="6" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-380-s20-other"/>
+    <subCorpus name="N-429-s20-lcoll-cancerous">
+        <sentence sentNo="0" aPos="66290125" ID="1058137">
+            <text>About 3,500 cases of malignant melanoma ( cancerous moles ) are diagnosed in Britain every year -- and about 800 people die of the disease . </text>
+            <annotationSet cDate="01/08/2003 12:43:30 PST Wed" status="UNANN" ID="1567678">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="AV0"/>
+                    <label end="10" start="6" name="CRD"/>
+                    <label end="16" start="12" name="NN2"/>
+                    <label end="19" start="18" name="PRF"/>
+                    <label end="29" start="21" name="AJ0"/>
+                    <label end="38" start="31" name="NN1"/>
+                    <label end="40" start="40" name="PUL"/>
+                    <label end="50" start="42" name="AJ0"/>
+                    <label end="56" start="52" name="NN2"/>
+                    <label end="58" start="58" name="PUR"/>
+                    <label end="62" start="60" name="VBB"/>
+                    <label end="72" start="64" name="VVN"/>
+                    <label end="75" start="74" name="PRP"/>
+                    <label end="83" start="77" name="NP0"/>
+                    <label end="89" start="85" name="AT0"/>
+                    <label end="94" start="91" name="NN1"/>
+                    <label end="97" start="96" name="PUN"/>
+                    <label end="101" start="99" name="CJC"/>
+                    <label end="107" start="103" name="AV0"/>
+                    <label end="111" start="109" name="CRD"/>
+                    <label end="118" start="113" name="NN0"/>
+                    <label end="122" start="120" name="VVB"/>
+                    <label end="125" start="124" name="PRF"/>
+                    <label end="129" start="127" name="AT0"/>
+                    <label end="137" start="131" name="NN1"/>
+                    <label end="139" start="139" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:43:30 PST Wed" status="MANUAL" ID="1567679">
+                <layer rank="1" name="FE">
+                    <label cBy="865" feID="3508" end="50" start="42" name="Descriptor"/>
+                    <label cBy="865" feID="3507" end="56" start="52" name="Body_mark"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="50" start="42" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="50" start="42" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="56" start="52" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-429-s20-lcoll-dark">
+        <sentence sentNo="0" aPos="62601957" ID="1058139">
+            <text>When I kissed the dark mole , she laughed again and held the back of my head , tight so I could n't breathe . </text>
+            <annotationSet cDate="01/08/2003 12:43:30 PST Wed" status="UNANN" ID="1567682">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="AVQ-CJS"/>
+                    <label end="5" start="5" name="PNP"/>
+                    <label end="12" start="7" name="VVD"/>
+                    <label end="16" start="14" name="AT0"/>
+                    <label end="21" start="18" name="AJ0"/>
+                    <label end="26" start="23" name="NN1"/>
+                    <label end="28" start="28" name="PUN"/>
+                    <label end="32" start="30" name="PNP"/>
+                    <label end="40" start="34" name="VVD"/>
+                    <label end="46" start="42" name="AV0"/>
+                    <label end="50" start="48" name="CJC"/>
+                    <label end="55" start="52" name="VVD-VVN"/>
+                    <label end="59" start="57" name="AT0"/>
+                    <label end="64" start="61" name="NN1"/>
+                    <label end="67" start="66" name="PRF"/>
+                    <label end="70" start="69" name="DPS"/>
+                    <label end="75" start="72" name="NN1"/>
+                    <label end="77" start="77" name="PUN"/>
+                    <label end="83" start="79" name="AJ0-AV0"/>
+                    <label end="86" start="85" name="CJS"/>
+                    <label end="88" start="88" name="PNP"/>
+                    <label end="94" start="90" name="VM0"/>
+                    <label end="98" start="96" name="XX0"/>
+                    <label end="106" start="100" name="VVI"/>
+                    <label end="108" start="108" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:43:30 PST Wed" status="MANUAL" ID="1567683">
+                <layer rank="1" name="FE">
+                    <label cBy="865" feID="3508" end="21" start="18" name="Descriptor"/>
+                    <label cBy="865" feID="3507" end="26" start="23" name="Body_mark"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="21" start="18" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="21" start="18" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="26" start="23" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-429-s20-lcoll-hairy">
+        <sentence sentNo="0" aPos="341502" ID="1058141">
+            <text>She has a black hairy mole on her chin , and I hate her . </text>
+            <annotationSet cDate="01/08/2003 12:43:30 PST Wed" status="UNANN" ID="1567686">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="PNP"/>
+                    <label end="6" start="4" name="VHZ"/>
+                    <label end="8" start="8" name="AT0"/>
+                    <label end="14" start="10" name="AJ0"/>
+                    <label end="20" start="16" name="AJ0"/>
+                    <label end="25" start="22" name="NN1"/>
+                    <label end="28" start="27" name="PRP"/>
+                    <label end="32" start="30" name="DPS"/>
+                    <label end="37" start="34" name="NN1"/>
+                    <label end="39" start="39" name="PUN"/>
+                    <label end="43" start="41" name="CJC"/>
+                    <label end="45" start="45" name="PNP"/>
+                    <label end="50" start="47" name="VVB"/>
+                    <label end="54" start="52" name="PNP"/>
+                    <label end="56" start="56" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:43:30 PST Wed" status="MANUAL" ID="1567687">
+                <layer rank="1" name="FE">
+                    <label cBy="865" feID="3510" end="2" start="0" name="Possessor"/>
+                    <label cBy="865" feID="3508" end="14" start="10" name="Descriptor"/>
+                    <label cBy="865" feID="3508" end="20" start="16" name="Descriptor"/>
+                    <label cBy="865" feID="3507" end="25" start="22" name="Body_mark"/>
+                    <label cBy="865" feID="3506" end="37" start="27" name="Attachment"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="2" start="0" name="Ext"/>
+                    <label end="14" start="10" name="Dep"/>
+                    <label end="20" start="16" name="Dep"/>
+                    <label end="37" start="27" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="2" start="0" name="NP"/>
+                    <label end="14" start="10" name="AJP"/>
+                    <label end="20" start="16" name="AJP"/>
+                    <label end="37" start="27" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="25" start="22" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="6" start="4" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-429-s20-lcoll-large">
+        <sentence sentNo="0" aPos="63810787" ID="1058144">
+            <text>Two stewards attended them on deck , along with a large , silent sailor with a mole on his left cheek , who followed Stiarkoz everywhere . </text>
+            <annotationSet cDate="01/08/2003 12:43:31 PST Wed" status="UNANN" ID="1567692">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="CRD"/>
+                    <label end="11" start="4" name="NN2"/>
+                    <label end="20" start="13" name="VVD"/>
+                    <label end="25" start="22" name="PNP"/>
+                    <label end="28" start="27" name="PRP"/>
+                    <label end="33" start="30" name="NN1"/>
+                    <label end="35" start="35" name="PUN"/>
+                    <label end="41" start="37" name="PRP"/>
+                    <label end="46" start="43" name="PRP"/>
+                    <label end="48" start="48" name="AT0"/>
+                    <label end="54" start="50" name="AJ0"/>
+                    <label end="56" start="56" name="PUN"/>
+                    <label end="63" start="58" name="AJ0"/>
+                    <label end="70" start="65" name="NN1"/>
+                    <label end="75" start="72" name="PRP"/>
+                    <label end="77" start="77" name="AT0"/>
+                    <label end="82" start="79" name="NN1"/>
+                    <label end="85" start="84" name="PRP"/>
+                    <label end="89" start="87" name="DPS"/>
+                    <label end="94" start="91" name="AJ0"/>
+                    <label end="100" start="96" name="NN1"/>
+                    <label end="102" start="102" name="PUN"/>
+                    <label end="106" start="104" name="PNQ"/>
+                    <label end="115" start="108" name="VVD"/>
+                    <label end="124" start="117" name="NP0"/>
+                    <label end="135" start="126" name="AV0"/>
+                    <label end="137" start="137" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:43:31 PST Wed" status="MANUAL" ID="1567693">
+                <layer rank="1" name="FE">
+                    <label cBy="865" feID="3507" end="82" start="79" name="Body_mark"/>
+                    <label cBy="865" feID="3506" end="100" start="84" name="Attachment"/>
+                    <label cBy="865" feID="3510" end="70" start="48" name="Possessor"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="100" start="84" name="Dep"/>
+                    <label end="70" start="48" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="100" start="84" name="PP"/>
+                    <label end="70" start="48" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="82" start="79" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="75" start="72" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-429-s20-lcoll-raised"/>
+    <subCorpus name="N-429-s20-lcoll-skin">
+        <sentence sentNo="0" aPos="520268" ID="1058146">
+            <text>Malignant melanoma can show itself by a change in the look of a skin mole . </text>
+            <annotationSet cDate="01/08/2003 12:43:31 PST Wed" status="UNANN" ID="1567696">
+                <layer rank="1" name="BNC">
+                    <label end="8" start="0" name="AJ0-NN1"/>
+                    <label end="17" start="10" name="NN1"/>
+                    <label end="21" start="19" name="VM0"/>
+                    <label end="26" start="23" name="VVI"/>
+                    <label end="33" start="28" name="PNX"/>
+                    <label end="36" start="35" name="PRP"/>
+                    <label end="38" start="38" name="AT0"/>
+                    <label end="45" start="40" name="NN1"/>
+                    <label end="48" start="47" name="PRP"/>
+                    <label end="52" start="50" name="AT0"/>
+                    <label end="57" start="54" name="NN1"/>
+                    <label end="60" start="59" name="PRF"/>
+                    <label end="62" start="62" name="AT0"/>
+                    <label end="67" start="64" name="NN1"/>
+                    <label end="72" start="69" name="NN1"/>
+                    <label end="74" start="74" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:43:31 PST Wed" status="MANUAL" ID="1567697">
+                <layer rank="1" name="FE">
+                    <label cBy="865" feID="3506" end="67" start="64" name="Attachment"/>
+                    <label cBy="865" feID="3507" end="72" start="69" name="Body_mark"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="67" start="64" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="67" start="64" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="72" start="69" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-429-s20-lcoll-small">
+        <sentence sentNo="0" aPos="14052935" ID="1058150">
+            <text>It will tend to lie doggo in the light and , because it is flat , it can easily be mistaken for a small mole on the shin . </text>
+            <annotationSet cDate="01/08/2003 12:43:31 PST Wed" status="UNANN" ID="1567704">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="6" start="3" name="VM0"/>
+                    <label end="11" start="8" name="VVI"/>
+                    <label end="14" start="13" name="TO0"/>
+                    <label end="18" start="16" name="VVI"/>
+                    <label end="24" start="20" name="NN1"/>
+                    <label end="27" start="26" name="PRP"/>
+                    <label end="31" start="29" name="AT0"/>
+                    <label end="37" start="33" name="AJ0-NN1"/>
+                    <label end="41" start="39" name="CJC"/>
+                    <label end="43" start="43" name="PUN"/>
+                    <label end="51" start="45" name="CJS"/>
+                    <label end="54" start="53" name="PNP"/>
+                    <label end="57" start="56" name="VBZ"/>
+                    <label end="62" start="59" name="AJ0-AV0"/>
+                    <label end="64" start="64" name="PUN"/>
+                    <label end="67" start="66" name="PNP"/>
+                    <label end="71" start="69" name="VM0"/>
+                    <label end="78" start="73" name="AV0"/>
+                    <label end="81" start="80" name="VBI"/>
+                    <label end="90" start="83" name="VVN"/>
+                    <label end="94" start="92" name="PRP"/>
+                    <label end="96" start="96" name="AT0"/>
+                    <label end="102" start="98" name="AJ0"/>
+                    <label end="107" start="104" name="NN1"/>
+                    <label end="110" start="109" name="PRP"/>
+                    <label end="114" start="112" name="AT0"/>
+                    <label end="119" start="116" name="NN1"/>
+                    <label end="121" start="121" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:43:31 PST Wed" status="MANUAL" ID="1567705">
+                <layer rank="1" name="FE">
+                    <label cBy="865" feID="3507" end="107" start="104" name="Body_mark"/>
+                    <label cBy="865" feID="3506" end="119" start="109" name="Attachment"/>
+                    <label cBy="605" feID="3508" end="102" start="98" name="Descriptor"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="119" start="109" name="Dep"/>
+                    <label end="102" start="98" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="119" start="109" name="PP"/>
+                    <label end="102" start="98" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="107" start="104" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-429-s20-lgov-be">
+        <sentence sentNo="0" aPos="21383045" ID="1058158">
+            <text>She was motherly , with a big mole on her upper lip . </text>
+            <annotationSet cDate="01/08/2003 12:43:32 PST Wed" status="UNANN" ID="1567720">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="PNP"/>
+                    <label end="6" start="4" name="VBD"/>
+                    <label end="15" start="8" name="AJ0"/>
+                    <label end="17" start="17" name="PUN"/>
+                    <label end="22" start="19" name="PRP"/>
+                    <label end="24" start="24" name="AT0"/>
+                    <label end="28" start="26" name="AJ0"/>
+                    <label end="33" start="30" name="NN1"/>
+                    <label end="36" start="35" name="PRP"/>
+                    <label end="40" start="38" name="DPS"/>
+                    <label end="46" start="42" name="AJ0"/>
+                    <label end="50" start="48" name="NN1"/>
+                    <label end="52" start="52" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:43:32 PST Wed" status="MANUAL" ID="1567721">
+                <layer rank="1" name="FE">
+                    <label cBy="865" feID="3507" end="33" start="30" name="Body_mark"/>
+                    <label cBy="865" feID="3508" end="28" start="26" name="Descriptor"/>
+                    <label cBy="865" feID="3506" end="50" start="35" name="Attachment"/>
+                    <label cBy="865" feID="3510" end="2" start="0" name="Possessor"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="28" start="26" name="Dep"/>
+                    <label end="50" start="35" name="Dep"/>
+                    <label end="2" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="28" start="26" name="AJP"/>
+                    <label end="50" start="35" name="PP"/>
+                    <label end="2" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="33" start="30" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="22" start="19" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-429-s20-lgov-find">
+        <sentence sentNo="0" aPos="69789319" ID="1058179">
+            <text>` How about something really radical on the dangers of sunbathing without blocker ? &quot; said Helena , who had just found a mole on her arm which had definitely not been there at the beginning of the summer . </text>
+            <annotationSet cDate="01/08/2003 12:43:35 PST Wed" status="UNANN" ID="1567762">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PUQ"/>
+                    <label end="4" start="2" name="AVQ"/>
+                    <label end="10" start="6" name="AV0"/>
+                    <label end="20" start="12" name="PNI"/>
+                    <label end="27" start="22" name="AV0"/>
+                    <label end="35" start="29" name="AJ0"/>
+                    <label end="38" start="37" name="PRP"/>
+                    <label end="42" start="40" name="AT0"/>
+                    <label end="50" start="44" name="NN2"/>
+                    <label end="53" start="52" name="PRF"/>
+                    <label end="64" start="55" name="VVG"/>
+                    <label end="72" start="66" name="PRP"/>
+                    <label end="80" start="74" name="NN1"/>
+                    <label end="82" start="82" name="PUN"/>
+                    <label end="84" start="84" name="PUQ"/>
+                    <label end="89" start="86" name="VVD"/>
+                    <label end="96" start="91" name="NP0"/>
+                    <label end="98" start="98" name="PUN"/>
+                    <label end="102" start="100" name="PNQ"/>
+                    <label end="106" start="104" name="VHD"/>
+                    <label end="111" start="108" name="AV0"/>
+                    <label end="117" start="113" name="VVN"/>
+                    <label end="119" start="119" name="AT0"/>
+                    <label end="124" start="121" name="NN1"/>
+                    <label end="127" start="126" name="PRP"/>
+                    <label end="131" start="129" name="DPS"/>
+                    <label end="135" start="133" name="NN1"/>
+                    <label end="141" start="137" name="DTQ"/>
+                    <label end="145" start="143" name="VHD"/>
+                    <label end="156" start="147" name="AV0"/>
+                    <label end="160" start="158" name="XX0"/>
+                    <label end="165" start="162" name="VBN"/>
+                    <label end="171" start="167" name="AV0"/>
+                    <label end="174" start="173" name="PRP"/>
+                    <label end="178" start="176" name="AT0"/>
+                    <label end="188" start="180" name="NN1"/>
+                    <label end="191" start="190" name="PRF"/>
+                    <label end="195" start="193" name="AT0"/>
+                    <label end="202" start="197" name="NN1"/>
+                    <label end="204" start="204" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:43:35 PST Wed" status="MANUAL" ID="1567763">
+                <layer rank="1" name="FE">
+                    <label cBy="865" feID="3507" end="124" start="121" name="Body_mark"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="124" start="121" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="117" start="113" name="Gov"/>
+                    <label end="124" start="119" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" POS="V" name="desiccate.v" ID="5918" frame="Cause_to_be_dry" frameID="337" totalAnnotated="3" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="AP" ID="113">
+            <document description="apwsE980217.0408" ID="6443"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Agt" name="Agent"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Core" abbrev="Cause" name="Cause"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Dry" name="Dryee"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Peripheral" abbrev="Dur" name="Duration"/>
+            <FE fgColor="000000" bgColor="808080" type="Peripheral" abbrev="Ins" name="Instrument"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Mnr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Extra-Thematic" abbrev="sub" name="Subregion"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="Temp" name="Temperature"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: remove the moisture from. </definition>
+    <lexeme POS="V" name="desiccate"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Agent"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <annoSet ID="1282512"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Cause"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Cause"/>
+                <annoSet ID="1282518"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Cause"/>
+                <annoSet ID="2041963"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Dryee"/>
+            <pattern total="2">
+                <valenceUnit GF="Obj" PT="NP" FE="Dryee"/>
+                <annoSet ID="1282512"/>
+                <annoSet ID="1282518"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Dryee"/>
+                <annoSet ID="2041963"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="NP" FE="Time"/>
+                <annoSet ID="1282512"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Agent"/>
+            <FE name="Dryee"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Dryee"/>
+                <valenceUnit GF="Dep" PT="NP" FE="Time"/>
+                <annoSet ID="1282512"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Cause"/>
+            <FE name="Dryee"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Cause"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Dryee"/>
+                <annoSet ID="1282518"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Cause"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Dryee"/>
+                <annoSet ID="2041963"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-001-all">
+        <sentence sentNo="0" aPos="7499123" ID="914222">
+            <text>FARMERS WEEKLY 's south-east barometer grower , Ashford-based Peter Maylam , has no winter barley , but was planning to desiccate oilseed rape this week . </text>
+            <annotationSet cDate="01/07/2003 07:18:45 PST Tue" status="UNANN" ID="1282511">
+                <layer rank="1" name="BNC">
+                    <label end="6" start="0" name="NP0"/>
+                    <label end="13" start="8" name="AV0"/>
+                    <label end="16" start="15" name="POS"/>
+                    <label end="27" start="18" name="NN1"/>
+                    <label end="37" start="29" name="AJC"/>
+                    <label end="44" start="39" name="NN1"/>
+                    <label end="46" start="46" name="PUN"/>
+                    <label end="60" start="48" name="AJ0"/>
+                    <label end="66" start="62" name="NP0"/>
+                    <label end="73" start="68" name="NP0"/>
+                    <label end="75" start="75" name="PUN"/>
+                    <label end="79" start="77" name="VHZ"/>
+                    <label end="82" start="81" name="AT0"/>
+                    <label end="89" start="84" name="NN1"/>
+                    <label end="96" start="91" name="NN1"/>
+                    <label end="98" start="98" name="PUN"/>
+                    <label end="102" start="100" name="CJC"/>
+                    <label end="106" start="104" name="VBD"/>
+                    <label end="115" start="108" name="VVG"/>
+                    <label end="118" start="117" name="TO0"/>
+                    <label end="128" start="120" name="VVI"/>
+                    <label end="136" start="130" name="NN1"/>
+                    <label end="141" start="138" name="NN1-VVB"/>
+                    <label end="146" start="143" name="DT0"/>
+                    <label end="151" start="148" name="NN1"/>
+                    <label end="153" start="153" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 07:18:45 PST Tue" status="MANUAL" ID="1282512">
+                <layer rank="1" name="FE">
+                    <label cBy="532" feID="2885" end="73" start="62" name="Agent"/>
+                    <label cBy="532" feID="2886" end="141" start="130" name="Dryee"/>
+                    <label cBy="532" feID="2909" end="151" start="143" name="Time"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="73" start="62" name="Ext"/>
+                    <label end="141" start="130" name="Obj"/>
+                    <label end="151" start="143" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="73" start="62" name="NP"/>
+                    <label end="141" start="130" name="NP"/>
+                    <label end="151" start="143" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="128" start="120" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="49687734" ID="914225">
+            <text>Other absorbent materials are available for bedding , but problems can arise when they are used in breeding cages as they can desiccate the pups . </text>
+            <annotationSet cDate="01/07/2003 07:18:46 PST Tue" status="UNANN" ID="1282517">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="AJ0"/>
+                    <label end="14" start="6" name="AJ0-NN1"/>
+                    <label end="24" start="16" name="NN2"/>
+                    <label end="28" start="26" name="VBB"/>
+                    <label end="38" start="30" name="AJ0"/>
+                    <label end="42" start="40" name="PRP"/>
+                    <label end="50" start="44" name="NN1"/>
+                    <label end="52" start="52" name="PUN"/>
+                    <label end="56" start="54" name="CJC"/>
+                    <label end="65" start="58" name="NN2"/>
+                    <label end="69" start="67" name="VM0"/>
+                    <label end="75" start="71" name="VVI"/>
+                    <label end="80" start="77" name="AVQ-CJS"/>
+                    <label end="85" start="82" name="PNP"/>
+                    <label end="89" start="87" name="VBB"/>
+                    <label end="94" start="91" name="VVN"/>
+                    <label end="97" start="96" name="PRP"/>
+                    <label end="106" start="99" name="NN1-VVG"/>
+                    <label end="112" start="108" name="NN2-VVZ"/>
+                    <label end="115" start="114" name="CJS"/>
+                    <label end="120" start="117" name="PNP"/>
+                    <label end="124" start="122" name="VM0"/>
+                    <label end="134" start="126" name="VVI"/>
+                    <label end="138" start="136" name="AT0"/>
+                    <label end="143" start="140" name="NN2"/>
+                    <label end="145" start="145" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 07:18:46 PST Tue" status="MANUAL" ID="1282518">
+                <layer rank="1" name="FE">
+                    <label cBy="532" feID="2991" end="120" start="117" name="Cause"/>
+                    <label cBy="532" feID="2886" end="143" start="136" name="Dryee"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="120" start="117" name="Ext"/>
+                    <label end="143" start="136" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="120" start="117" name="NP"/>
+                    <label end="143" start="136" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="134" start="126" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="01-T-(1)">
+        <sentence corpID="113" docID="6443" sentNo="1" paragNo="17" aPos="123344349" ID="1296901">
+            <text>Asia 's currency markets , soaked for years in liquidity , have gone as dry as the desert , desiccated by the currency crises sweeping the region .</text>
+            <annotationSet cDate="01/05/2005 02:32:53 PST Wed" status="UNANN" ID="2041962">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="NP"/>
+                    <label end="6" start="5" name="POS"/>
+                    <label end="15" start="8" name="nn"/>
+                    <label end="23" start="17" name="nns"/>
+                    <label end="25" start="25" name=","/>
+                    <label end="32" start="27" name="VVN"/>
+                    <label end="36" start="34" name="in"/>
+                    <label end="42" start="38" name="nns"/>
+                    <label end="45" start="44" name="in"/>
+                    <label end="55" start="47" name="nn"/>
+                    <label end="57" start="57" name=","/>
+                    <label end="62" start="59" name="VHP"/>
+                    <label end="67" start="64" name="VVN"/>
+                    <label end="70" start="69" name="rb"/>
+                    <label end="74" start="72" name="jj"/>
+                    <label end="77" start="76" name="in"/>
+                    <label end="81" start="79" name="dt"/>
+                    <label end="88" start="83" name="nn"/>
+                    <label end="90" start="90" name=","/>
+                    <label end="101" start="92" name="VVN"/>
+                    <label end="104" start="103" name="in"/>
+                    <label end="108" start="106" name="dt"/>
+                    <label end="117" start="110" name="nn"/>
+                    <label end="124" start="119" name="nns"/>
+                    <label end="133" start="126" name="VVG"/>
+                    <label end="137" start="135" name="dt"/>
+                    <label end="144" start="139" name="nn"/>
+                    <label end="146" start="146" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/05/2005 02:32:53 PST Wed" status="MANUAL" ID="2041963">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="101" start="92" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="2991" end="144" start="103" name="Cause"/>
+                    <label cBy="395" feID="2886" end="23" start="0" name="Dryee"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="144" start="103" name="Dep"/>
+                    <label end="23" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="144" start="103" name="PP"/>
+                    <label end="23" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="Metaphor"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

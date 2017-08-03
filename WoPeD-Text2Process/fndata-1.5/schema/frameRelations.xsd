@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+VERSION: 1.3.0, author: Thomas Kleinbauer, kleiba@icsi.berkeley.edu
+
+1. The root element is "frameRelations"
+2. "frameRelations" must have an attribute "XMLCreated" that contains a
+   date/time expression in the format %c as defined in the man pages
+   of the UNIX command 'date'  
+3. "frameRelations" may have zero or more child elements
+   "frameRelationType"  
+4. "frameRelationType" must have an attribute "ID" that contains a
+   non-negative integer value  
+5. "frameRelationType" must have an attribute "name" that contains a
+   string value  
+6. "frameRelationType" must have an attribute "superFrameName" that
+   contains a string value   
+7. "frameRelationType" must have an attribute "subFrameName" that
+   contains a string value   
+8. "frameRelationType" must contain one child element
+   "frameRelations"  which has no attributes
+9. "frameRelations" must contain one or more child elements
+   "frameRelation"  
+10. "frameRelation" must have an attribute "ID" that contains a
+    non-negative integer value
+11. "frameRelation" must have an attribute "superFrameName" that
+    contains a string value
+12. "frameRelation" must have an attribute "subFrameName" that
+    contains a string value
+13. "frameRelation" must have an attribute "supID" that contains a
+    non-negative integer value
+14. "frameRelation" must have an attribute "subID" that contains a
+    non-negative integer value
+15. "frameRelation" must contain zero or more child elements
+    "FERelation" 
+16. "FERelation" must have one an attribute "ID" that contains a
+    non-negative integer value
+17. "FERelation" must have one an attribute "superFEName" that
+    contains a string value
+18. "FERelation" must have one an attribute "subFEName" that
+    contains a string value
+19. "FERelation" must have one an attribute "supID" that
+    contains a non-negative integer value
+20. "FERelation" must have one an attribute "subID" that
+    contains a non-negative integer value
+-->
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:fn="http://framenet.icsi.berkeley.edu"
+            targetNamespace="http://framenet.icsi.berkeley.edu"
+            xmlns="http://framenet.icsi.berkeley.edu"
+            elementFormDefault="qualified">
+
+  <xsd:include schemaLocation="commonTypes.xsd"/>
+  
+  <!-- 1. The root element is "frameRelations" -->
+  <xsd:element name="frameRelations">
+    <xsd:complexType>
+      <xsd:sequence>
+
+	<!-- 3. "frameRelations" may have zero or more child elements
+	     "frameRelationType" -->
+	<xsd:element name="frameRelationType" minOccurs="0"
+		    maxOccurs="unbounded"> 
+	  <xsd:complexType>
+	    <xsd:sequence>
+
+	      <!-- 8. "frameRelationType" must contain one child
+		   element "frameRelations" which has no attributes
+	      -->
+		    <!-- 9. "frameRelations" must contain one or more
+		         child elements "frameRelation" -->
+                <xsd:element name="frameRelation" minOccurs="1"
+                            maxOccurs="unbounded">  
+
+                  <xsd:complexType>
+                    <xsd:sequence>
+
+                      <!-- 15. "frameRelation" must contain zero
+                           or more child elements "FERelation"
+                      -->
+                      <xsd:element name="FERelation" minOccurs="0"
+                                  maxOccurs="unbounded">
+                        <xsd:complexType>
+
+                          <!-- 16. "FERelation" must have one an
+                               attribute "ID" that contains a
+                               non-negative integer value -->
+                          <xsd:attribute name="ID"
+                                        type="fn:IDType"
+                                        use="required"/>
+
+                          <!-- 17. "FERelation" must have one an
+                               attribute "superFEName" that
+                               contains a string value -->
+                          <xsd:attribute name="superFEName"
+                                        type="fn:frameNameType"
+                                        use="required"/>
+
+                          <!-- 18. "FERelation" must have one an
+                               attribute "subFEName" that contains
+                               a string value -->
+                          <xsd:attribute name="subFEName"
+                                        type="fn:frameNameType"
+                                        use="required"/>
+
+                          <!-- 19. "FERelation" must have one an
+                               attribute "supID" that contains a
+                               non-negative integer value -->
+                          <xsd:attribute name="supID"
+                                        type="fn:IDType"
+                                        use="required"/>
+
+                          <!-- 20. "FERelation" must have one an
+                               attribute "subID" that contains a
+                               non-negative integer value -->
+                          <xsd:attribute name="subID"
+                                        type="fn:IDType"
+                                        use="required"/>
+
+                        </xsd:complexType>
+                      </xsd:element>  <!-- FERelation -->
+                    </xsd:sequence>
+
+                    <!-- 10. "frameRelation" must have an
+                         attribute "ID" that contains a
+                         non-negative integer value -->
+                    <xsd:attribute name="ID"
+                                  type="fn:IDType"
+                                  use="required"/>
+
+                    <!-- 11. "frameRelation" must have an
+                         attribute "superFrameName" that contains
+                         a string value -->
+                    <xsd:attribute name="superFrameName"
+                                  type="fn:frameNameType"
+                                  use="required"/> 
+
+                    <!-- 12. "frameRelation" must have an
+                         attribute "subFrameName" that contains a
+                         string value -->
+                    <xsd:attribute name="subFrameName"
+                                  type="fn:frameNameType"
+                                  use="required"/> 
+
+                    <!-- 13. "frameRelation" must have an
+                         attribute "supID" that contains a
+                         non-negative integer value -->
+                    <xsd:attribute name="supID"
+                                  type="fn:IDType"
+                                  use="required"/>
+
+                    <!-- 14. "frameRelation" must have an
+                         attribute "subID" that contains a
+                         non-negative integer value -->
+                    <xsd:attribute name="subID"
+                                  type="fn:IDType"
+                                  use="required"/>
+                  </xsd:complexType>
+
+                </xsd:element>  <!-- frameRelation -->
+	    </xsd:sequence>
+
+	    <!-- 4. "frameRelationType" must have an attribute "ID"
+	         that contains a non-negative integer value -->
+	    <xsd:attribute name="ID" type="fn:IDType"
+			  use="required"/>
+
+	    <!-- 5. "frameRelationType" must have an attribute
+	         "name" that contains a string value -->
+	    <xsd:attribute name="name" type="xsd:string"
+			  use="required"/>
+
+	    <!-- 6. "frameRelationType" must have an attribute
+	         "superFrameName" that contains a string value -->
+	    <xsd:attribute name="superFrameName" type="fn:frameNameType"
+			  use="required"/>
+
+	    <!-- 7. "frameRelationType" must have an attribute
+	         "subFrameName" that contains a string value -->
+	    <xsd:attribute name="subFrameName" type="fn:frameNameType"
+			  use="required"/>
+	  
+	  </xsd:complexType>
+	</xsd:element>  <!-- frameRelationType -->
+      </xsd:sequence>
+
+      <!-- 2. "frameRelations" must have an attribute "XMLCreated" that
+           contains a date/time expression in the format %c as defined
+           in the man pages of the UNIX command 'date' -->
+      <xsd:attribute name="XMLCreated" type="fn:dateTimeType"
+		    use="required"/> 
+    </xsd:complexType>
+  </xsd:element>  <!-- frameRelations -->
+    
+</xsd:schema>

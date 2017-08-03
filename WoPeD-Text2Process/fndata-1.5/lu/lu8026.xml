@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="examine.v" ID="8026" frame="Court_examination" frameID="507" totalAnnotated="4" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Peripheral" abbrev="Dur" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Qu" name="Questioner"/>
+            <FE fgColor="FFFFFF" bgColor="A9A9A9" type="Peripheral" abbrev="" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="" name="Topic"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Wit" name="Witness"/>
+        </frame>
+    </header>
+    <definition>COD: formally question (a defendant or witness) in court. </definition>
+    <lexeme POS="V" name="examine"/>
+    <valences>
+        <FERealization total="4">
+            <FE name="Questioner"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="CNI" FE="Questioner"/>
+                <annoSet ID="1923841"/>
+                <annoSet ID="1923849"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Questioner"/>
+                <annoSet ID="1923843"/>
+                <annoSet ID="1923853"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Witness"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Witness"/>
+                <annoSet ID="1923841"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Obj" PT="NP" FE="Witness"/>
+                <annoSet ID="1923849"/>
+                <annoSet ID="1923853"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Witness"/>
+                <annoSet ID="1923843"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="4">
+            <FE name="Questioner"/>
+            <FE name="Witness"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Questioner"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Witness"/>
+                <annoSet ID="1923841"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Questioner"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Witness"/>
+                <annoSet ID="1923849"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Questioner"/>
+                <valenceUnit GF="" PT="CNI" FE="Witness"/>
+                <annoSet ID="1923843"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Questioner"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Witness"/>
+                <annoSet ID="1923853"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-NP-Tvvn-PPby-(1)"/>
+    <subCorpus name="02-NPwitness-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="350" aPos="0" ID="1238404">
+            <text>The courts will not allow the taking of evidence abroad to develop into a ` roving enquiry &quot; , but in many jurisdictions it is not essential to name in advance all the witnesses to be examined .</text>
+            <annotationSet cDate="07/11/2003 12:07:13 PDT Fri" status="UNANN" ID="1923840">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="9" start="4" name="nns"/>
+                    <label end="14" start="11" name="md"/>
+                    <label end="18" start="16" name="rb"/>
+                    <label end="24" start="20" name="VV"/>
+                    <label end="28" start="26" name="dt"/>
+                    <label end="35" start="30" name="nn"/>
+                    <label end="38" start="37" name="in"/>
+                    <label end="47" start="40" name="nn"/>
+                    <label end="54" start="49" name="rb"/>
+                    <label end="57" start="56" name="to"/>
+                    <label end="65" start="59" name="VV"/>
+                    <label end="70" start="67" name="in"/>
+                    <label end="72" start="72" name="dt"/>
+                    <label end="81" start="76" name="VVG"/>
+                    <label end="89" start="83" name="nn"/>
+                    <label end="93" start="93" name=","/>
+                    <label end="97" start="95" name="cc"/>
+                    <label end="100" start="99" name="in"/>
+                    <label end="105" start="102" name="jj"/>
+                    <label end="119" start="107" name="nns"/>
+                    <label end="122" start="121" name="PP"/>
+                    <label end="125" start="124" name="VBZ"/>
+                    <label end="129" start="127" name="rb"/>
+                    <label end="139" start="131" name="jj"/>
+                    <label end="142" start="141" name="to"/>
+                    <label end="147" start="144" name="VV"/>
+                    <label end="150" start="149" name="rp"/>
+                    <label end="158" start="152" name="nn"/>
+                    <label end="162" start="160" name="pdt"/>
+                    <label end="166" start="164" name="dt"/>
+                    <label end="176" start="168" name="nns"/>
+                    <label end="179" start="178" name="to"/>
+                    <label end="182" start="181" name="vb"/>
+                    <label end="191" start="184" name="VVN"/>
+                    <label end="193" start="193" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/11/2003 12:07:13 PDT Fri" status="MANUAL" ID="1923841">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="191" start="184" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4072" end="176" start="168" name="Witness"/>
+                    <label cBy="618" feID="4071" itype="CNI" name="Questioner"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="176" start="168" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="176" start="168" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="205" aPos="0" ID="1238405">
+            <text>She asked the Secretary of State to hold an inquiry at which parties could be heard and witnesses examined .</text>
+            <annotationSet cDate="07/11/2003 12:07:13 PDT Fri" status="UNANN" ID="1923842">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="PP"/>
+                    <label end="8" start="4" name="VVD"/>
+                    <label end="12" start="10" name="dt"/>
+                    <label end="22" start="14" name="NP"/>
+                    <label end="25" start="24" name="in"/>
+                    <label end="31" start="27" name="NP"/>
+                    <label end="34" start="33" name="to"/>
+                    <label end="39" start="36" name="VV"/>
+                    <label end="42" start="41" name="dt"/>
+                    <label end="50" start="44" name="nn"/>
+                    <label end="53" start="52" name="in"/>
+                    <label end="59" start="55" name="wdt"/>
+                    <label end="67" start="61" name="nns"/>
+                    <label end="73" start="69" name="md"/>
+                    <label end="76" start="75" name="vb"/>
+                    <label end="82" start="78" name="VVN"/>
+                    <label end="86" start="84" name="cc"/>
+                    <label end="96" start="88" name="nns"/>
+                    <label end="105" start="98" name="VVD"/>
+                    <label end="107" start="107" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/11/2003 12:07:13 PDT Fri" status="MANUAL" ID="1923843">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="105" start="98" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4071" end="96" start="88" name="Questioner"/>
+                    <label cBy="618" feID="4072" itype="CNI" name="Witness"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="96" start="88" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="96" start="88" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="03-T-NPwitness-(1)">
+        <sentence corpID="111" docID="421" sentNo="9" paragNo="166" aPos="0" ID="1238408">
+            <text>The second refers to the degree of formality in the physical arrangements and court room atmosphere ; the major obstacle here is seen as the adversarial system of examining and cross-examining witnesses ( JUSTICE , 1987 ) .</text>
+            <annotationSet cDate="07/11/2003 12:07:14 PDT Fri" status="UNANN" ID="1923848">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="9" start="4" name="nn"/>
+                    <label end="16" start="11" name="VVZ"/>
+                    <label end="19" start="18" name="to"/>
+                    <label end="23" start="21" name="dt"/>
+                    <label end="30" start="25" name="nn"/>
+                    <label end="33" start="32" name="in"/>
+                    <label end="43" start="35" name="nn"/>
+                    <label end="46" start="45" name="in"/>
+                    <label end="50" start="48" name="dt"/>
+                    <label end="59" start="52" name="jj"/>
+                    <label end="72" start="61" name="nns"/>
+                    <label end="76" start="74" name="cc"/>
+                    <label end="82" start="78" name="nn"/>
+                    <label end="87" start="84" name="nn"/>
+                    <label end="98" start="89" name="nn"/>
+                    <label end="100" start="100" name=":"/>
+                    <label end="104" start="102" name="dt"/>
+                    <label end="110" start="106" name="jj"/>
+                    <label end="119" start="112" name="nn"/>
+                    <label end="124" start="121" name="rb"/>
+                    <label end="127" start="126" name="VBZ"/>
+                    <label end="132" start="129" name="VVN"/>
+                    <label end="135" start="134" name="in"/>
+                    <label end="139" start="137" name="dt"/>
+                    <label end="151" start="141" name="nn"/>
+                    <label end="158" start="153" name="nn"/>
+                    <label end="161" start="160" name="in"/>
+                    <label end="171" start="163" name="VVG"/>
+                    <label end="175" start="173" name="cc"/>
+                    <label end="191" start="177" name="VVG"/>
+                    <label end="201" start="193" name="nns"/>
+                    <label end="203" start="203" name="("/>
+                    <label end="211" start="205" name="nn"/>
+                    <label end="213" start="213" name=","/>
+                    <label end="218" start="215" name="cd"/>
+                    <label end="220" start="220" name=")"/>
+                    <label end="222" start="222" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/11/2003 12:07:15 PDT Fri" status="MANUAL" ID="1923849">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="171" start="163" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4072" end="201" start="193" name="Witness"/>
+                    <label cBy="618" feID="4071" itype="CNI" name="Questioner"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="201" start="193" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="201" start="193" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="5" paragNo="253" aPos="0" ID="1238410">
+            <text>Should the parties be allowed to examine and cross-examine witnesses ?</text>
+            <annotationSet cDate="07/11/2003 12:07:15 PDT Fri" status="UNANN" ID="1923852">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="0" name="md"/>
+                    <label end="9" start="7" name="dt"/>
+                    <label end="17" start="11" name="nns"/>
+                    <label end="20" start="19" name="vb"/>
+                    <label end="28" start="22" name="VVN"/>
+                    <label end="31" start="30" name="to"/>
+                    <label end="39" start="33" name="VV"/>
+                    <label end="43" start="41" name="cc"/>
+                    <label end="57" start="45" name="VV"/>
+                    <label end="67" start="59" name="nns"/>
+                    <label end="69" start="69" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/11/2003 12:07:15 PDT Fri" status="MANUAL" ID="1923853">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="39" start="33" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4072" end="67" start="59" name="Witness"/>
+                    <label cBy="296" feID="4071" end="17" start="7" name="Questioner"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="67" start="59" name="Obj"/>
+                    <label end="17" start="7" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="67" start="59" name="NP"/>
+                    <label end="17" start="7" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="06-NPjudge,attorney,lawyer-T-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+    <subCorpus name="01-NPprosecution,defence,counsel-T-(2)"/>
+    <subCorpus name="02-T-NPprosecution,defence,counsel-(2)"/>
+    <subCorpus name="other-matched-(2)"/>
+    <subCorpus name="other-unmatched-(2)"/>
+</lexUnit>

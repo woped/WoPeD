@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" POS="A" name="distinguishable.a" ID="15971" frame="Differentiation" frameID="24" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="Orwell" ID="3">
+            <document description="Orwell_1984_p1" ID="7"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Cog" name="Cognizer"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="Phen-pl" name="Phenomena"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Phen-1" name="Phenomenon_1"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Core" abbrev="Phen-2" name="Phenomenon_2"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Core" abbrev="Qual" name="Quality"/>
+        </frame>
+    </header>
+    <definition>FN: able to be separated into separate identities.</definition>
+    <lexeme POS="A" name="distinguishable"/>
+    <semType name="Tendency_grading_LU" ID="91"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Cognizer"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Cognizer"/>
+                <annoSet ID="2600214"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Phenomena"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Phenomena"/>
+                <annoSet ID="2600214"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Cognizer"/>
+            <FE name="Phenomena"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Cognizer"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Phenomena"/>
+                <annoSet ID="2600214"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="manually-added">
+        <sentence corpID="3" docID="7" sentNo="3" paragNo="3" aPos="0" ID="312916">
+            <text>Winston turned a switch and the voice sank somewhat , though the words were still distinguishable .</text>
+            <annotationSet cDate="01/06/2003 10:55:07 PST Mon" status="UNANN" ID="269192">
+                <layer rank="1" name="BNC">
+                    <label end="6" start="0" name="NP0"/>
+                    <label end="13" start="8" name="VVD"/>
+                    <label end="15" start="15" name="AT0"/>
+                    <label end="22" start="17" name="NN1"/>
+                    <label end="26" start="24" name="CJC"/>
+                    <label end="30" start="28" name="AT0"/>
+                    <label end="36" start="32" name="NN1"/>
+                    <label end="41" start="38" name="VVD"/>
+                    <label end="50" start="43" name="AV0"/>
+                    <label end="52" start="52" name="PUN"/>
+                    <label end="59" start="54" name="CJS"/>
+                    <label end="63" start="61" name="AT0"/>
+                    <label end="69" start="65" name="NN2"/>
+                    <label end="74" start="71" name="VBD"/>
+                    <label end="80" start="76" name="AV0"/>
+                    <label end="96" start="82" name="AJ0"/>
+                    <label end="98" start="98" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/30/2010 07:02:34 PDT Fri" status="MANUAL" ID="2600214">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="96" start="82" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="105" end="69" start="61" name="Phenomena"/>
+                    <label cBy="664" feID="102" itype="INI" name="Cognizer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="69" start="61" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="69" start="61" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj">
+                    <label end="74" start="71" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

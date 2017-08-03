@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="04/23/2004 05:42:34 PDT Fri" name="Make_acquaintance" ID="1085" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;&lt;fen&gt;Individuals&lt;/fen&gt; first encounter each other and make introductions at a particular &lt;fen&gt;Time&lt;/fen&gt;, &lt;fen&gt;Place&lt;/fen&gt;, or &lt;fen&gt;Context&lt;/fen&gt;. The &lt;fen&gt;Individuals&lt;/fen&gt; may have known of each other before making introductions. The &lt;fen&gt;Individuals&lt;/fen&gt; may  be separately construed as &lt;fen&gt;Individual_1&lt;/fen&gt; and &lt;fen&gt;Individual_2&lt;/fen&gt;. In some cases, there is a &lt;fen&gt;Explanation&lt;/fen&gt; of the circumstances which lead to the &lt;fen&gt;Individuals&lt;/fen&gt;' meeting. 
+
+
+&lt;ex&gt;Impressed when &lt;fex name="ind1"&gt;he&lt;/fex&gt; first &lt;t&gt;met&lt;/t&gt; &lt;fex name="ind2"&gt;Nixon&lt;/fex&gt;, he had always thought of him as an intelligent man, and believed that Nixon would take a stand for civil rights&lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="ind1"&gt;We&lt;/fex&gt; &lt;t&gt;met&lt;/t&gt; &lt;fex name="ind2"&gt;each other&lt;/fex&gt; &lt;fex name="pla"&gt;in the university&lt;/fex&gt;, worked in the same city and came to KSU together! &lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="inds"&gt;Horatio Nelson and Emma Hamilton&lt;/fex&gt; first &lt;t&gt;met&lt;/t&gt; &lt;fex name="pla"&gt;in Naples&lt;/fex&gt; &lt;fex name="tim"&gt;in September 1793&lt;/fex&gt;&lt;/ex&gt;
+
+&lt;ex&gt;Her name was Jenny and &lt;fex name="ind1"&gt;I&lt;/fex&gt; &lt;t&gt;met&lt;/t&gt; &lt;fex name="ind2"&gt;her&lt;/fex&gt; &lt;fex name="int"&gt;through an online dating service&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;/def-root&gt;</definition>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="04/23/2004 05:54:07 PDT Fri" abbrev="tim" name="Time" ID="6328">
+        <definition>&lt;def-root&gt;The time when the Individuals make each other's acquaintance.
+
+&lt;ex&gt;I &lt;t&gt;met&lt;/t&gt; my wife &lt;fex name="tim"&gt;2 yrs ago&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="04/23/2004 05:56:01 PDT Fri" abbrev="pla" name="Place" ID="6329">
+        <definition>&lt;def-root&gt;The location where the Individuals make each others acquaintance.
+
+&lt;ex&gt;Bill &lt;t&gt;met&lt;/t&gt; his  wife &lt;fex name="pla"&gt;in Poltava, Ukraine&lt;/fex&gt;.&lt;/ex&gt;
+
+
+&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="04/23/2004 05:58:53 PDT Fri" abbrev="inds" name="Individuals" ID="6330">
+        <definition>&lt;def-root&gt;The persons (or in rare cases animals) that make each other's acquaintance.
+
+&lt;ex&gt;&lt;fex name="inds"&gt;My wife and I&lt;/fex&gt; &lt;t&gt;met&lt;/t&gt; in college working in the theatre and we will have been married for 30 years in June 2000.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="04/23/2004 06:00:32 PDT Fri" abbrev="con" name="Context" ID="6331">
+        <definition>&lt;def-root&gt;The Event, frequently a social occasion, during which the Individuals make each other's acquaintance.
+
+&lt;ex&gt;The two first &lt;t&gt;met&lt;/t&gt; &lt;fex name="con"&gt;at a lecture&lt;/fex&gt; in 1851.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="04/23/2004 06:02:12 PDT Fri" abbrev="ind1" name="Individual_1" ID="6332">
+        <definition>&lt;def-root&gt;The semantically more prominent one of the two parties when the Individuals are realized separately.
+
+&lt;ex&gt;&lt;fex name="ind1"&gt;Melissa Hurley&lt;/fex&gt; had never &lt;t&gt;met&lt;/t&gt; her neighbor, Richard Congdon ? the dog owner ? until recently, when she and a reporter knocked on his door.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+        <requiresFE name="Individual_2" ID="6333"/>
+        <excludesFE name="Individuals" ID="6330"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="04/23/2004 06:04:54 PDT Fri" abbrev="ind2" name="Individual_2" ID="6333">
+        <definition>&lt;def-root&gt;The semantically less prominent of the two parties when the &lt;fen&gt;Individuals&lt;/fen&gt; are expressed separately.
+
+&lt;ex&gt; Gossip reports say she either &lt;t&gt;met&lt;/t&gt; &lt;fex name="ind2"&gt;Kennedy&lt;/fex&gt; while helping him shop for suits at Calvin Klein, or was contacted by him after he saw her jogging in a New York park &lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+        <excludesFE name="Individuals" ID="6330"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="04/23/2004 06:13:05 PDT Fri" abbrev="int" name="Intermediary" ID="6334">
+        <definition>&lt;def-root&gt;A person or social group that connects both of the &lt;fen&gt;Individuals&lt;/fen&gt;, with a group member typically introducing the &lt;fen&gt;Individuals&lt;/fen&gt; to each other.
+
+
+&lt;ex&gt;Let's call her Gretchen. I "&lt;t&gt;met&lt;/t&gt;" her &lt;fex name="int"&gt;through a mutual friend (the same fellow who has wanted me to write this column for the past couple years)&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="04/23/2004 06:33:44 PDT Fri" abbrev="exp" name="Explanation" ID="6335">
+        <definition>&lt;def-root&gt;The state of affairs that leads to the &lt;fen&gt;Individuals&lt;/fen&gt;' making each other's acquaintance.
+
+
+&lt;ex&gt;No, I &lt;t&gt;met&lt;/t&gt; him &lt;fex name="exp"&gt;because he was also the teacher for the special science fiction class&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="00008B" coreType="Extra-Thematic" cBy="361" cDate="07/20/2007 12:54:59 PDT Fri" abbrev="Ite" name="Iteration" ID="11912">
+        <definition>&lt;def-root&gt;The frame element Iteration is used for expressions that indicate the number of times an event or state (of the kind denoted by the target in its clause) has taken place or held.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="07/20/2007 12:59:12 PDT Fri" abbrev="" name="Depicitve" ID="11913">
+        <definition>&lt;def-root&gt;This FE describes a participant of the state of affairs introduced by the target as being in some state during the action. The depicted state does not necessarily or usually facilitate or cause the state of affairs reported by the target.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="361" cDate="07/20/2007 01:27:14 PDT Fri" abbrev="Par" name="Particular_iteration" ID="11915">
+        <definition>&lt;def-root&gt;Expressions marked with this extra-thematic FE modify a non-iterative use of the target, and indicate that it is conceived as embedded within an iterated series of similar events or states. &lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Reciprocality</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="meet.v" ID="10452" lemmaID="23890" cBy="605" cDate="04/23/2004 06:24:51 PDT Fri">
+        <definition>COD: make the acquaintance of for the first time</definition>
+        <sentenceCount annotated="48" total="350"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="meet"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="make (someone's) acquaintance.v" ID="10453" lemmaID="49044" cBy="605" cDate="04/23/2004 06:36:50 PDT Fri">
+        <definition>FN: first meet</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="make"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="acquaintance"/>
+    </lexUnit>
+</frame>

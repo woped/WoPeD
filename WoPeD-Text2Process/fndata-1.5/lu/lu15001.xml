@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="V" name="connect.v" ID="15001" frame="Relating_concepts" frameID="2060" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Extra-Thematic" abbrev="cir" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Cs" name="Concepts"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="C1" name="Concept_1"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="C2" name="Concept_2"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Deg" name="Degree"/>
+            <FE fgColor="000000" bgColor="FFA500" type="Core" abbrev="evi" name="Evidence"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="Pov" name="Point_of_view"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Spec" name="Specification"/>
+        </frame>
+    </header>
+    <definition>FN: relate one thing to another</definition>
+    <lexeme POS="V" name="connect"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Concept_1"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Concept_1"/>
+                <annoSet ID="2431039"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Concept_2"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Concept_2"/>
+                <annoSet ID="2431039"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Evidence"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Evidence"/>
+                <annoSet ID="2431039"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Concept_1"/>
+            <FE name="Concept_2"/>
+            <FE name="Evidence"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Concept_1"/>
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Concept_2"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Evidence"/>
+                <annoSet ID="2431039"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-Wstudy,research,scientist-T-(1)"/>
+    <subCorpus name="02-NPstudy,research,scientist-T-(1)"/>
+    <subCorpus name="03-NP-T-NP-PP-(1)"/>
+    <subCorpus name="04-NP-AVP-T-NP-PP-(1)"/>
+    <subCorpus name="05-PP-NP-AVP-T-NP-PP-(1)"/>
+    <subCorpus name="06-NP-T-NP-PP-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="301" aPos="73268541" ID="1492231">
+            <text>David was confident the police had no evidence to connect him with the murder otherwise they would have arrested him by now .</text>
+            <annotationSet cDate="06/26/2008 04:29:40 PDT Thu" status="UNANN" ID="2431038">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="NP"/>
+                    <label end="8" start="6" name="VBD"/>
+                    <label end="18" start="10" name="jj"/>
+                    <label end="22" start="20" name="dt"/>
+                    <label end="29" start="24" name="nn"/>
+                    <label end="33" start="31" name="VHD"/>
+                    <label end="36" start="35" name="dt"/>
+                    <label end="45" start="38" name="nn"/>
+                    <label end="48" start="47" name="to"/>
+                    <label end="56" start="50" name="VV"/>
+                    <label end="60" start="58" name="PP"/>
+                    <label end="65" start="62" name="in"/>
+                    <label end="69" start="67" name="dt"/>
+                    <label end="76" start="71" name="nn"/>
+                    <label end="86" start="78" name="rb"/>
+                    <label end="91" start="88" name="PP"/>
+                    <label end="97" start="93" name="md"/>
+                    <label end="102" start="99" name="VH"/>
+                    <label end="111" start="104" name="VVN"/>
+                    <label end="115" start="113" name="PP"/>
+                    <label end="118" start="117" name="in"/>
+                    <label end="122" start="120" name="rb"/>
+                    <label end="124" start="124" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="06/26/2008 04:29:40 PDT Thu" status="MANUAL" ID="2431039">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="56" start="50" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="12653" end="45" start="35" name="Evidence"/>
+                    <label cBy="597" feID="12650" end="60" start="58" name="Concept_1"/>
+                    <label cBy="597" feID="12651" end="76" start="62" name="Concept_2"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="45" start="35" name="Ext"/>
+                    <label end="60" start="58" name="Obj"/>
+                    <label end="76" start="62" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="45" start="35" name="NP"/>
+                    <label end="60" start="58" name="NP"/>
+                    <label end="76" start="62" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="07-NP-T-NP-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

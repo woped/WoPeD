@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="V" name="sublime.v" ID="5943" frame="Change_of_phase" frameID="336" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Extra-Thematic" abbrev="cir" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="I_state" name="Initial_state"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="0000FF" bgColor="EEE8AA" type="Extra-Thematic" abbrev="Result" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="Spd" name="Speed"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Extra-Thematic" abbrev="sub" name="Subregion"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Und" name="Undergoer"/>
+        </frame>
+    </header>
+    <definition>COD: (with reference to a solid substance) change directly into vapour when heated, typically forming a solid deposit again on cooling.</definition>
+    <lexeme POS="V" name="sublime"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Result"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Result"/>
+                <annoSet ID="1286356"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Undergoer"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Undergoer"/>
+                <annoSet ID="1286356"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Result"/>
+            <FE name="Undergoer"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Result"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Undergoer"/>
+                <annoSet ID="1286356"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-001-all">
+        <sentence sentNo="0" aPos="20254763" ID="916144">
+            <text>The ice sublimed away , leaving the books , dry and undamaged , to be returned to Sudbury . </text>
+            <annotationSet cDate="01/07/2003 07:22:55 PST Tue" status="UNANN" ID="1286355">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="6" start="4" name="NN1"/>
+                    <label end="15" start="8" name="VVD"/>
+                    <label end="20" start="17" name="AV0"/>
+                    <label end="22" start="22" name="PUN"/>
+                    <label end="30" start="24" name="VVG"/>
+                    <label end="34" start="32" name="AT0"/>
+                    <label end="40" start="36" name="NN2"/>
+                    <label end="42" start="42" name="PUN"/>
+                    <label end="46" start="44" name="AJ0"/>
+                    <label end="50" start="48" name="CJC"/>
+                    <label end="60" start="52" name="AJ0"/>
+                    <label end="62" start="62" name="PUN"/>
+                    <label end="65" start="64" name="TO0"/>
+                    <label end="68" start="67" name="VBI"/>
+                    <label end="77" start="70" name="VVN"/>
+                    <label end="80" start="79" name="PRP"/>
+                    <label end="88" start="82" name="NP0"/>
+                    <label end="90" start="90" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 07:22:55 PST Tue" status="MANUAL" ID="1286356">
+                <layer rank="1" name="FE">
+                    <label cBy="532" feID="2883" end="6" start="0" name="Undergoer"/>
+                    <label cBy="532" feID="2884" end="20" start="17" name="Result"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="6" start="0" name="Ext"/>
+                    <label end="20" start="17" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="6" start="0" name="NP"/>
+                    <label end="20" start="17" name="AVP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="15" start="8" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" POS="A" name="lost_(in).a" ID="14906" frame="Mental_stimulus_exp_focus" frameID="2044" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="MASC" ID="150">
+            <document description="lose" ID="19333"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Extra-Thematic" abbrev="cir" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="000000" bgColor="7FFF00" type="Peripheral" abbrev="" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Extra-Thematic" abbrev="ET" name="Empathy_target"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Exp" name="Experiencer"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="Exp" name="Expressor"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Man" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Peripheral" abbrev="Par" name="Parameter"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Extra-Thematic" abbrev="Reas" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Core" abbrev="State" name="State"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Stim" name="Stimulus"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD73" type="Peripheral" abbrev="Tim" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Core" abbrev="Top" name="Topic"/>
+        </frame>
+    </header>
+    <definition>FN: totally absorbed by</definition>
+    <lexeme POS="A" name="lost"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Degree"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Degree"/>
+                <annoSet ID="2526960"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Experiencer"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Experiencer"/>
+                <annoSet ID="2526960"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Stimulus"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Stimulus"/>
+                <annoSet ID="2526960"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Degree"/>
+            <FE name="Experiencer"/>
+            <FE name="Stimulus"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Degree"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Experiencer"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Stimulus"/>
+                <annoSet ID="2526960"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="manually-added">
+        <sentence corpID="150" docID="19333" sentNo="6" paragNo="2" aPos="0" ID="1540620">
+            <text>I can be reading a book and be totally lost in it and think , `` Wow !</text>
+            <annotationSet cDate="12/04/2009 04:08:30 PST Fri" status="UNANN" ID="2524239">
+                <layer rank="1" name="PENN">
+                    <label end="0" start="0" name="PP"/>
+                    <label end="4" start="2" name="md"/>
+                    <label end="7" start="6" name="vb"/>
+                    <label end="15" start="9" name="VVG"/>
+                    <label end="17" start="17" name="dt"/>
+                    <label end="22" start="19" name="nn"/>
+                    <label end="26" start="24" name="cc"/>
+                    <label end="29" start="28" name="vb"/>
+                    <label end="37" start="31" name="rb"/>
+                    <label end="42" start="39" name="VVN"/>
+                    <label end="45" start="44" name="in"/>
+                    <label end="48" start="47" name="PP"/>
+                    <label end="52" start="50" name="cc"/>
+                    <label end="58" start="54" name="VVP"/>
+                    <label end="60" start="60" name=","/>
+                    <label end="63" start="62" name="``"/>
+                    <label end="67" start="65" name="NP"/>
+                    <label end="69" start="69" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL">
+                    <label end="0" start="0" name="NT"/>
+                    <label end="4" start="2" name="NT"/>
+                    <label end="7" start="6" name="NT"/>
+                    <label end="17" start="17" name="NT"/>
+                    <label end="26" start="24" name="NT"/>
+                    <label end="29" start="28" name="NT"/>
+                    <label end="37" start="31" name="NT"/>
+                    <label end="48" start="47" name="NT"/>
+                    <label end="52" start="50" name="NT"/>
+                    <label end="60" start="60" name="NT"/>
+                    <label end="63" start="62" name="NT"/>
+                    <label end="67" start="65" name="NT"/>
+                    <label end="69" start="69" name="NT"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="02/02/2010 01:56:01 PST Tue" status="MANUAL" ID="2526960">
+                <layer rank="1" name="Target">
+                    <label cBy="976" end="42" start="39" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="12411" end="0" start="0" name="Experiencer"/>
+                    <label cBy="589" feID="12414" end="37" start="31" name="Degree"/>
+                    <label cBy="589" feID="12413" end="48" start="47" name="Stimulus"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="0" start="0" name="Ext"/>
+                    <label end="37" start="31" name="Dep"/>
+                    <label end="48" start="47" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="0" start="0" name="NP"/>
+                    <label end="37" start="31" name="AVP"/>
+                    <label end="48" start="47" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj">
+                    <label end="29" start="28" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

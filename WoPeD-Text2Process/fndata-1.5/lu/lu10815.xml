@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" POS="V" name="change.v" ID="10815" frame="Exchange_currency" frameID="1184" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="exr" name="Exchange_rate"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="exs" name="Exchange_service"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="man" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Peripheral" abbrev="mea" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Core" abbrev="ney" name="Money"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="mon" name="Money_owner"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="pla" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="pur" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="src" name="Source_currency"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="sm1" name="Sum_1"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="sm2" name="Sum_2"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Core" abbrev="tar" name="Target_currency"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: to exchange into another currency</definition>
+    <lexeme POS="V" name="change"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Money_owner"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Money_owner"/>
+                <annoSet ID="2400215"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Source_currency"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Source_currency"/>
+                <annoSet ID="2400215"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Target_currency"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[into]" FE="Target_currency"/>
+                <annoSet ID="2400215"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Money_owner"/>
+            <FE name="Source_currency"/>
+            <FE name="Target_currency"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Money_owner"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Source_currency"/>
+                <valenceUnit GF="Dep" PT="PP[into]" FE="Target_currency"/>
+                <annoSet ID="2400215"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-Wsterling,cash,money-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="635" aPos="93816988" ID="1476586">
+            <text>` So now you go and tramp the streets changing your traveller 's cheques into cash and then into traveller 's cheques signed Winterbotham .</text>
+            <annotationSet cDate="05/12/2008 12:58:53 PDT Mon" status="UNANN" ID="2400214">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="2" name="rb"/>
+                    <label end="7" start="5" name="rb"/>
+                    <label end="11" start="9" name="PP"/>
+                    <label end="14" start="13" name="VVP"/>
+                    <label end="18" start="16" name="cc"/>
+                    <label end="24" start="20" name="nn"/>
+                    <label end="28" start="26" name="dt"/>
+                    <label end="36" start="30" name="nns"/>
+                    <label end="45" start="38" name="VVG"/>
+                    <label end="50" start="47" name="PP$"/>
+                    <label end="60" start="52" name="nn"/>
+                    <label end="63" start="62" name="POS"/>
+                    <label end="71" start="65" name="nns"/>
+                    <label end="76" start="73" name="in"/>
+                    <label end="81" start="78" name="nn"/>
+                    <label end="85" start="83" name="cc"/>
+                    <label end="90" start="87" name="rb"/>
+                    <label end="95" start="92" name="in"/>
+                    <label end="105" start="97" name="nn"/>
+                    <label end="108" start="107" name="POS"/>
+                    <label end="116" start="110" name="nns"/>
+                    <label end="123" start="118" name="VVD"/>
+                    <label end="136" start="125" name="NP"/>
+                    <label end="138" start="138" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/12/2008 12:58:53 PDT Mon" status="MANUAL" ID="2400215">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="45" start="38" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="6895" end="71" start="47" name="Source_currency"/>
+                    <label cBy="597" feID="6898" end="81" start="73" name="Target_currency"/>
+                    <label cBy="597" feID="6893" itype="DNI" name="Money_owner"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="71" start="47" name="Obj"/>
+                    <label end="81" start="73" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="71" start="47" name="NP"/>
+                    <label end="81" start="73" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

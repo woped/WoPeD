@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="N" name="Labor Day.n" ID="4995" frame="Commemorative" frameID="261" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="ded" name="Dedicated_entity"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Core" abbrev="Ded_typ" name="Dedicated_type"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Hon" name="Honored_entity"/>
+        </frame>
+    </header>
+    <definition>COD: a public holiday held in honour of working people in some countries on 1 May, or (in the US and Canada) on the first Monday in September. </definition>
+    <lexeme order="1" headword="false" breakBefore="false" POS="N" name="Labor"/>
+    <lexeme order="2" headword="true" breakBefore="false" POS="N" name="Day"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Dedicated_entity"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Dedicated_entity"/>
+                <annoSet ID="1079531"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Dedicated_type"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="2nd" FE="Dedicated_type"/>
+                <annoSet ID="1079531"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Honored_entity"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="2nd" FE="Honored_entity"/>
+                <annoSet ID="1079531"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Dedicated_entity"/>
+            <FE name="Dedicated_type"/>
+            <FE name="Honored_entity"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Dedicated_entity"/>
+                <valenceUnit GF="" PT="2nd" FE="Dedicated_type"/>
+                <valenceUnit GF="" PT="2nd" FE="Honored_entity"/>
+                <annoSet ID="1079531"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-other">
+        <sentence sentNo="0" aPos="44399431" ID="811430">
+            <text>According to Friedersdorf , ` We knew we had to get our bills enacted before the Labor Day recess . &quot; </text>
+            <annotationSet cDate="01/07/2003 03:25:59 PST Tue" status="UNANN" ID="1079529">
+                <layer rank="1" name="BNC">
+                    <label end="8" start="0" name="PRP"/>
+                    <label end="11" start="10" name="PRP"/>
+                    <label end="24" start="13" name="NP0"/>
+                    <label end="26" start="26" name="PUN"/>
+                    <label end="28" start="28" name="PUQ"/>
+                    <label end="31" start="30" name="PNP"/>
+                    <label end="36" start="33" name="VVD"/>
+                    <label end="39" start="38" name="PNP"/>
+                    <label end="43" start="41" name="VHD"/>
+                    <label end="46" start="45" name="TO0"/>
+                    <label end="50" start="48" name="VVI"/>
+                    <label end="54" start="52" name="DPS"/>
+                    <label end="60" start="56" name="NN2"/>
+                    <label end="68" start="62" name="VVD-VVN"/>
+                    <label end="75" start="70" name="PRP"/>
+                    <label end="79" start="77" name="AT0"/>
+                    <label end="85" start="81" name="NN1"/>
+                    <label end="89" start="87" name="NN1"/>
+                    <label end="96" start="91" name="NN1"/>
+                    <label end="98" start="98" name="PUN"/>
+                    <label end="100" start="100" name="PUQ"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:25:59 PST Tue" status="MANUAL" ID="1079531">
+                <layer rank="1" name="Target">
+                    <label cBy="243" end="89" start="81" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="9896" end="89" start="81" name="Dedicated_entity"/>
+                </layer>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Noun"/>
+                <layer rank="2" name="FE">
+                    <label cBy="664" feID="2256" end="85" start="81" name="Honored_entity"/>
+                    <label cBy="664" feID="2257" end="89" start="87" name="Dedicated_type"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

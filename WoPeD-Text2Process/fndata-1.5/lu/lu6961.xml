@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="jailhouse.n" ID="6961" frame="Prison" frameID="387" totalAnnotated="5" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="AP" ID="113">
+            <document description="apwsE950308.0366" ID="450"/>
+            <document description="apwsE951027.0085" ID="451"/>
+            <document description="apwsE950518.0214" ID="475"/>
+            <document description="apwsE941128.0567" ID="477"/>
+            <document description="apwsE941115.0530" ID="483"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Peripheral" abbrev="Inmates" name="Inmates"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Location" name="Location"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="Name" name="Name"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="Operator" name="Operator"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="" name="Part"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="pen" name="Penal_institution"/>
+            <FE fgColor="000000" bgColor="d0d0d0" type="Peripheral" abbrev="Sec" name="Security"/>
+        </frame>
+    </header>
+    <definition>COD:  a prison.</definition>
+    <lexeme POS="N" name="jailhouse"/>
+    <valences>
+        <governor type="Gov" lemma="confession">
+            <annoSet ID="1853139"/>
+        </governor>
+        <governor type="Gov" lemma="get out">
+            <annoSet ID="1853083"/>
+        </governor>
+        <governor type="Gov" lemma="informant">
+            <annoSet ID="1853155"/>
+        </governor>
+        <governor type="Gov" lemma="interview">
+            <annoSet ID="1853143"/>
+        </governor>
+        <FERealization total="1">
+            <FE name="Location"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Location"/>
+                <annoSet ID="1853085"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Penal_institution"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Penal_institution"/>
+                <annoSet ID="1853085"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Location"/>
+            <FE name="Penal_institution"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Location"/>
+                <valenceUnit GF="" PT="DEN" FE="Penal_institution"/>
+                <annoSet ID="1853085"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="02-T-(1)">
+        <sentence corpID="113" docID="450" sentNo="1" paragNo="23" aPos="0" ID="1202971">
+            <text>`` I heard Tyson was getting out of the jailhouse pretty quick , and he said if he gets out today , he 'll whip George tomorrow .</text>
+            <annotationSet cDate="04/15/2003 07:25:17 PDT Tue" status="UNANN" ID="1853082">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="``"/>
+                    <label end="3" start="3" name="PP"/>
+                    <label end="9" start="5" name="VVD"/>
+                    <label end="15" start="11" name="NP"/>
+                    <label end="19" start="17" name="VBD"/>
+                    <label end="27" start="21" name="VVG"/>
+                    <label end="31" start="29" name="rp"/>
+                    <label end="34" start="33" name="in"/>
+                    <label end="38" start="36" name="dt"/>
+                    <label end="48" start="40" name="nn"/>
+                    <label end="55" start="50" name="rb"/>
+                    <label end="61" start="57" name="jj"/>
+                    <label end="63" start="63" name=","/>
+                    <label end="67" start="65" name="cc"/>
+                    <label end="70" start="69" name="PP"/>
+                    <label end="75" start="72" name="VVD"/>
+                    <label end="78" start="77" name="in"/>
+                    <label end="81" start="80" name="PP"/>
+                    <label end="86" start="83" name="VVZ"/>
+                    <label end="90" start="88" name="in"/>
+                    <label end="96" start="92" name="nn"/>
+                    <label end="98" start="98" name=","/>
+                    <label end="101" start="100" name="PP"/>
+                    <label end="105" start="103" name="md"/>
+                    <label end="110" start="107" name="VV"/>
+                    <label end="117" start="112" name="NP"/>
+                    <label end="126" start="119" name="nn"/>
+                    <label end="128" start="128" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/15/2003 07:25:17 PDT Tue" status="MANUAL" ID="1853083">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="48" start="40" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE"/>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="keepS"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="31" start="21" name="Gov"/>
+                    <label end="48" start="33" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="451" sentNo="1" paragNo="7" aPos="0" ID="1202972">
+            <text>`` We are not happy about being released as it was done just to fool Europe , '' Yurtdas told reporters in front of the Ankara jailhouse .</text>
+            <annotationSet cDate="04/15/2003 07:25:17 PDT Tue" status="UNANN" ID="1853084">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="``"/>
+                    <label end="4" start="3" name="PP"/>
+                    <label end="8" start="6" name="vbp"/>
+                    <label end="12" start="10" name="rb"/>
+                    <label end="18" start="14" name="jj"/>
+                    <label end="24" start="20" name="in"/>
+                    <label end="30" start="26" name="nn"/>
+                    <label end="39" start="32" name="VVN"/>
+                    <label end="42" start="41" name="in"/>
+                    <label end="45" start="44" name="PP"/>
+                    <label end="49" start="47" name="VBD"/>
+                    <label end="54" start="51" name="VVN"/>
+                    <label end="59" start="56" name="rb"/>
+                    <label end="62" start="61" name="to"/>
+                    <label end="67" start="64" name="VV"/>
+                    <label end="74" start="69" name="NP"/>
+                    <label end="76" start="76" name=","/>
+                    <label end="79" start="78" name="''"/>
+                    <label end="87" start="81" name="NP"/>
+                    <label end="92" start="89" name="VVD"/>
+                    <label end="102" start="94" name="nns"/>
+                    <label end="105" start="104" name="in"/>
+                    <label end="111" start="107" name="nn"/>
+                    <label end="114" start="113" name="in"/>
+                    <label end="118" start="116" name="dt"/>
+                    <label end="125" start="120" name="NP"/>
+                    <label end="135" start="127" name="nn"/>
+                    <label end="137" start="137" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/15/2003 07:25:18 PDT Tue" status="MANUAL" ID="1853085">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="135" start="127" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3484" end="125" start="120" name="Location"/>
+                    <label cBy="571" feID="9768" end="135" start="127" name="Penal_institution"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="125" start="120" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="125" start="120" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="475" sentNo="1" paragNo="7" aPos="0" ID="1202999">
+            <text>McVeigh 's lawyer has disputed a report that his client made a jailhouse confession .</text>
+            <annotationSet cDate="04/15/2003 07:25:28 PDT Tue" status="UNANN" ID="1853138">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="0" name="NP"/>
+                    <label end="9" start="8" name="POS"/>
+                    <label end="16" start="11" name="nn"/>
+                    <label end="20" start="18" name="VHZ"/>
+                    <label end="29" start="22" name="VVN"/>
+                    <label end="31" start="31" name="dt"/>
+                    <label end="38" start="33" name="nn"/>
+                    <label end="43" start="40" name="in"/>
+                    <label end="47" start="45" name="PP$"/>
+                    <label end="54" start="49" name="nn"/>
+                    <label end="59" start="56" name="VVD"/>
+                    <label end="61" start="61" name="dt"/>
+                    <label end="71" start="63" name="nn"/>
+                    <label end="82" start="73" name="nn"/>
+                    <label end="84" start="84" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/15/2003 07:25:29 PDT Tue" status="MANUAL" ID="1853139">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="71" start="63" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE"/>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="keepS"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="82" start="73" name="Gov"/>
+                    <label end="71" start="63" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="477" sentNo="2" paragNo="21" aPos="0" ID="1203001">
+            <text>I went to bath houses , I went to bars , shopping malls , '' he said in a jailhouse interview broadcast last March on `` Dateline NBC . ''</text>
+            <annotationSet cDate="04/15/2003 07:25:29 PDT Tue" status="UNANN" ID="1853142">
+                <layer rank="1" name="PENN">
+                    <label end="0" start="0" name="PP"/>
+                    <label end="5" start="2" name="VVD"/>
+                    <label end="8" start="7" name="to"/>
+                    <label end="13" start="10" name="nn"/>
+                    <label end="20" start="15" name="nns"/>
+                    <label end="22" start="22" name=","/>
+                    <label end="24" start="24" name="PP"/>
+                    <label end="29" start="26" name="VVD"/>
+                    <label end="32" start="31" name="to"/>
+                    <label end="37" start="34" name="nns"/>
+                    <label end="39" start="39" name=","/>
+                    <label end="48" start="41" name="nn"/>
+                    <label end="54" start="50" name="nns"/>
+                    <label end="56" start="56" name=","/>
+                    <label end="59" start="58" name="''"/>
+                    <label end="62" start="61" name="PP"/>
+                    <label end="67" start="64" name="VVD"/>
+                    <label end="70" start="69" name="in"/>
+                    <label end="72" start="72" name="dt"/>
+                    <label end="82" start="74" name="nn"/>
+                    <label end="92" start="84" name="nn"/>
+                    <label end="102" start="94" name="VVD"/>
+                    <label end="107" start="104" name="jj"/>
+                    <label end="113" start="109" name="NP"/>
+                    <label end="116" start="115" name="in"/>
+                    <label end="119" start="118" name="``"/>
+                    <label end="128" start="121" name="nn"/>
+                    <label end="132" start="130" name="NP"/>
+                    <label end="134" start="134" name="sent"/>
+                    <label end="137" start="136" name="''"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/15/2003 07:25:29 PDT Tue" status="MANUAL" ID="1853143">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="82" start="74" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE"/>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="keepS"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="92" start="84" name="Gov"/>
+                    <label end="82" start="74" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="483" sentNo="1" paragNo="18" aPos="0" ID="1203007">
+            <text>Prosecutor Mike Schneider said the state will show Crumitie talked about his role in the murder with friends , relatives and jailhouse informants .</text>
+            <annotationSet cDate="04/15/2003 07:25:32 PDT Tue" status="UNANN" ID="1853154">
+                <layer rank="1" name="PENN">
+                    <label end="9" start="0" name="nn"/>
+                    <label end="14" start="11" name="NP"/>
+                    <label end="24" start="16" name="NP"/>
+                    <label end="29" start="26" name="VVD"/>
+                    <label end="33" start="31" name="dt"/>
+                    <label end="39" start="35" name="nn"/>
+                    <label end="44" start="41" name="md"/>
+                    <label end="49" start="46" name="VV"/>
+                    <label end="58" start="51" name="NP"/>
+                    <label end="65" start="60" name="VVD"/>
+                    <label end="71" start="67" name="in"/>
+                    <label end="75" start="73" name="PP$"/>
+                    <label end="80" start="77" name="nn"/>
+                    <label end="83" start="82" name="in"/>
+                    <label end="87" start="85" name="dt"/>
+                    <label end="94" start="89" name="nn"/>
+                    <label end="99" start="96" name="in"/>
+                    <label end="107" start="101" name="nns"/>
+                    <label end="109" start="109" name=","/>
+                    <label end="119" start="111" name="nns"/>
+                    <label end="123" start="121" name="cc"/>
+                    <label end="133" start="125" name="nn"/>
+                    <label end="144" start="135" name="nns"/>
+                    <label end="146" start="146" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="04/15/2003 07:25:32 PDT Tue" status="MANUAL" ID="1853155">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="133" start="125" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE"/>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="keepS"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="144" start="135" name="Gov"/>
+                    <label end="133" start="125" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

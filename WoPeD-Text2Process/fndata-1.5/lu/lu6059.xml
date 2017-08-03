@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="peregrination.n" ID="6059" frame="Travel" frameID="343" totalAnnotated="4" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Core" abbrev="Area" name="Area"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Bag" name="Baggage"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="cop" name="Co_participant"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Depict" name="Depictive"/>
+            <FE fgColor="000000" bgColor="EEE8AA" type="Extra-Thematic" abbrev="" name="Descriptor"/>
+            <FE fgColor="000000" bgColor="d0d0d0" type="Core" abbrev="dir" name="Direction"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Peripheral" abbrev="Dist" name="Distance"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Peripheral" abbrev="Dur" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Extra-Thematic" abbrev="Freq" name="Frequency"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Goal" name="Goal"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="Iter" name="Iterations"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core" abbrev="MoT" name="Mode_of_transportation"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Path" name="Path"/>
+            <FE fgColor="000000" bgColor="FFA500" type="Extra-Thematic" abbrev="P_it" name="Period_of_Iterations"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Peripheral" abbrev="" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD7C" type="Extra-Thematic" abbrev="Reason" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="A9A9A9" type="Extra-Thematic" abbrev="Res" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="Src" name="Source"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="Spd" name="Speed"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Trav" name="Traveler"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Extra-Thematic" abbrev="Trvl_mns" name="Travel_means"/>
+        </frame>
+    </header>
+    <definition>COD: travel from place to place</definition>
+    <lexeme POS="N" name="peregrination"/>
+    <valences>
+        <FERealization total="3">
+            <FE name="Area"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Area"/>
+                <annoSet ID="1313754"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Area"/>
+                <annoSet ID="1313748"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Area"/>
+                <annoSet ID="1313746"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Period_of_Iterations"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Period_of_Iterations"/>
+                <annoSet ID="1313754"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Period_of_Iterations"/>
+                <annoSet ID="1313746"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Traveler"/>
+            <pattern total="4">
+                <valenceUnit GF="Gen" PT="Poss" FE="Traveler"/>
+                <annoSet ID="1313746"/>
+                <annoSet ID="1313748"/>
+                <annoSet ID="1313754"/>
+                <annoSet ID="1313760"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Area"/>
+            <FE name="Period_of_Iterations"/>
+            <FE name="Traveler"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Area"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Period_of_Iterations"/>
+                <valenceUnit GF="Gen" PT="Poss" FE="Traveler"/>
+                <annoSet ID="1313754"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Area"/>
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Period_of_Iterations"/>
+                <valenceUnit GF="Gen" PT="Poss" FE="Traveler"/>
+                <annoSet ID="1313746"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Area"/>
+            <FE name="Traveler"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Area"/>
+                <valenceUnit GF="Gen" PT="Poss" FE="Traveler"/>
+                <annoSet ID="1313748"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Traveler"/>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Traveler"/>
+                <annoSet ID="1313760"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-001-all">
+        <sentence sentNo="0" aPos="9594526" ID="929935">
+            <text>His peregrinations of the islands at election time were always diverting public entertainments . </text>
+            <annotationSet cDate="01/07/2003 07:54:33 PST Tue" status="UNANN" ID="1313745">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="DPS"/>
+                    <label end="17" start="4" name="NN2"/>
+                    <label end="20" start="19" name="PRF"/>
+                    <label end="24" start="22" name="AT0"/>
+                    <label end="32" start="26" name="NN2"/>
+                    <label end="35" start="34" name="PRP"/>
+                    <label end="44" start="37" name="NN1"/>
+                    <label end="49" start="46" name="NN1"/>
+                    <label end="54" start="51" name="VBD"/>
+                    <label end="61" start="56" name="AV0"/>
+                    <label end="71" start="63" name="AJ0-VVG"/>
+                    <label end="78" start="73" name="AJ0"/>
+                    <label end="93" start="80" name="NN2"/>
+                    <label end="95" start="95" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 07:54:33 PST Tue" status="MANUAL" ID="1313746">
+                <layer rank="1" name="FE">
+                    <label cBy="532" feID="2949" end="2" start="0" name="Traveler"/>
+                    <label cBy="532" feID="2941" end="32" start="19" name="Area"/>
+                    <label cBy="532" feID="3007" end="49" start="34" name="Period_of_Iterations"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="2" start="0" name="Gen"/>
+                    <label end="32" start="19" name="Dep"/>
+                    <label end="49" start="34" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="2" start="0" name="Poss"/>
+                    <label end="32" start="19" name="PP"/>
+                    <label end="49" start="34" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="17" start="4" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="20658467" ID="929936">
+            <text>Walter and Marjory probably lived at Dundonald Castle and we can presume that before and after their marriage , Robert Bruce would visit the castle on his peregrinations in north and central Ayrshire . </text>
+            <annotationSet cDate="01/07/2003 07:54:33 PST Tue" status="UNANN" ID="1313747">
+                <layer rank="1" name="BNC">
+                    <label end="5" start="0" name="NP0"/>
+                    <label end="9" start="7" name="CJC"/>
+                    <label end="17" start="11" name="NN1-NP0"/>
+                    <label end="26" start="19" name="AV0"/>
+                    <label end="32" start="28" name="VVD-VVN"/>
+                    <label end="35" start="34" name="PRP"/>
+                    <label end="45" start="37" name="NP0"/>
+                    <label end="52" start="47" name="NP0"/>
+                    <label end="56" start="54" name="CJC"/>
+                    <label end="59" start="58" name="PNP"/>
+                    <label end="63" start="61" name="VM0"/>
+                    <label end="71" start="65" name="VVI"/>
+                    <label end="76" start="73" name="CJT"/>
+                    <label end="83" start="78" name="CJS"/>
+                    <label end="87" start="85" name="CJC"/>
+                    <label end="93" start="89" name="CJS-PRP"/>
+                    <label end="99" start="95" name="DPS"/>
+                    <label end="108" start="101" name="NN1"/>
+                    <label end="110" start="110" name="PUN"/>
+                    <label end="117" start="112" name="NP0"/>
+                    <label end="123" start="119" name="NP0"/>
+                    <label end="129" start="125" name="VM0"/>
+                    <label end="135" start="131" name="VVI"/>
+                    <label end="139" start="137" name="AT0"/>
+                    <label end="146" start="141" name="NN1"/>
+                    <label end="149" start="148" name="PRP"/>
+                    <label end="153" start="151" name="DPS"/>
+                    <label end="168" start="155" name="NN2"/>
+                    <label end="171" start="170" name="PRP"/>
+                    <label end="177" start="173" name="NN1"/>
+                    <label end="181" start="179" name="CJC"/>
+                    <label end="189" start="183" name="AJ0"/>
+                    <label end="198" start="191" name="NP0"/>
+                    <label end="200" start="200" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 07:54:33 PST Tue" status="MANUAL" ID="1313748">
+                <layer rank="1" name="FE">
+                    <label cBy="532" feID="2949" end="153" start="151" name="Traveler"/>
+                    <label cBy="532" feID="2941" end="198" start="170" name="Area"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="153" start="151" name="Gen"/>
+                    <label end="198" start="170" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="153" start="151" name="Poss"/>
+                    <label end="198" start="170" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="168" start="155" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="37667237" ID="929939">
+            <text>During his European peregrinations in the 1970s , Winters at one point met up with Marcel Broodthaers in Paris . </text>
+            <annotationSet cDate="01/07/2003 07:54:34 PST Tue" status="UNANN" ID="1313753">
+                <layer rank="1" name="BNC">
+                    <label end="5" start="0" name="PRP"/>
+                    <label end="9" start="7" name="DPS"/>
+                    <label end="18" start="11" name="AJ0"/>
+                    <label end="33" start="20" name="NN2"/>
+                    <label end="36" start="35" name="PRP"/>
+                    <label end="40" start="38" name="AT0"/>
+                    <label end="46" start="42" name="CRD"/>
+                    <label end="48" start="48" name="PUN"/>
+                    <label end="56" start="50" name="NP0"/>
+                    <label end="59" start="58" name="PRP"/>
+                    <label end="63" start="61" name="CRD"/>
+                    <label end="69" start="65" name="NN1"/>
+                    <label end="73" start="71" name="VVD-VVN"/>
+                    <label end="76" start="75" name="AVP"/>
+                    <label end="81" start="78" name="PRP"/>
+                    <label end="88" start="83" name="NP0"/>
+                    <label end="100" start="90" name="VVZ"/>
+                    <label end="103" start="102" name="PRP"/>
+                    <label end="109" start="105" name="NP0"/>
+                    <label end="111" start="111" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 07:54:34 PST Tue" status="MANUAL" ID="1313754">
+                <layer rank="1" name="FE">
+                    <label cBy="532" feID="2949" end="9" start="7" name="Traveler"/>
+                    <label cBy="532" feID="2941" end="18" start="11" name="Area"/>
+                    <label cBy="532" feID="3007" end="46" start="35" name="Period_of_Iterations"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="9" start="7" name="Gen"/>
+                    <label end="18" start="11" name="Dep"/>
+                    <label end="46" start="35" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="9" start="7" name="Poss"/>
+                    <label end="18" start="11" name="AJP"/>
+                    <label end="46" start="35" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="33" start="20" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="88799927" ID="929942">
+            <text>They have been over the greater part of Van Diemen 's Land and the Islands in Bass 's Straits and appear highly gratified with their peregrinations : a government vessel has generally been devoted to their use . </text>
+            <annotationSet cDate="01/07/2003 07:54:34 PST Tue" status="UNANN" ID="1313759">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="PNP"/>
+                    <label end="8" start="5" name="VHB"/>
+                    <label end="13" start="10" name="VBN"/>
+                    <label end="18" start="15" name="PRP"/>
+                    <label end="22" start="20" name="AT0"/>
+                    <label end="30" start="24" name="AJC"/>
+                    <label end="35" start="32" name="NN1"/>
+                    <label end="38" start="37" name="PRF"/>
+                    <label end="42" start="40" name="NP0"/>
+                    <label end="49" start="44" name="NP0"/>
+                    <label end="52" start="51" name="POS"/>
+                    <label end="57" start="54" name="NN1-NP0"/>
+                    <label end="61" start="59" name="CJC"/>
+                    <label end="65" start="63" name="AT0"/>
+                    <label end="73" start="67" name="NN2"/>
+                    <label end="76" start="75" name="PRP"/>
+                    <label end="81" start="78" name="NP0"/>
+                    <label end="84" start="83" name="POS"/>
+                    <label end="92" start="86" name="NN2"/>
+                    <label end="96" start="94" name="CJC"/>
+                    <label end="103" start="98" name="VVB"/>
+                    <label end="110" start="105" name="AV0"/>
+                    <label end="120" start="112" name="VVD-VVN"/>
+                    <label end="125" start="122" name="PRP"/>
+                    <label end="131" start="127" name="DPS"/>
+                    <label end="146" start="133" name="NN2"/>
+                    <label end="148" start="148" name="PUN"/>
+                    <label end="150" start="150" name="AT0"/>
+                    <label end="161" start="152" name="NN0"/>
+                    <label end="168" start="163" name="NN1"/>
+                    <label end="172" start="170" name="VHZ"/>
+                    <label end="182" start="174" name="AV0"/>
+                    <label end="187" start="184" name="VBN"/>
+                    <label end="195" start="189" name="AJ0-VVN"/>
+                    <label end="198" start="197" name="PRP"/>
+                    <label end="204" start="200" name="DPS"/>
+                    <label end="208" start="206" name="NN1"/>
+                    <label end="210" start="210" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 07:54:34 PST Tue" status="MANUAL" ID="1313760">
+                <layer rank="1" name="FE">
+                    <label cBy="532" feID="2949" end="131" start="127" name="Traveler"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="131" start="127" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="131" start="127" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="146" start="133" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

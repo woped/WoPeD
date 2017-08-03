@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" incorporatedFE="Precipitation" POS="V" name="sleet.v" ID="5706" frame="Precipitation" frameID="314" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Extra-Thematic" abbrev="Cause" name="Cause"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Peripheral" abbrev="Dur" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD73" type="Extra-Thematic" abbrev="" name="Frequency"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Precipitation" name="Precipitation"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="Quantity" name="Quantity"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="Rate" name="Rate"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Peripheral" abbrev="Temp" name="Temperature"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Core" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: sleet falls. </definition>
+    <lexeme POS="V" name="sleet"/>
+    <valences>
+        <FERealization total="2">
+            <FE name="Manner"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <annoSet ID="1210637"/>
+                <annoSet ID="1210647"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Place"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="DNI" FE="Place"/>
+                <annoSet ID="1210637"/>
+                <annoSet ID="1210647"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Precipitation"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="INC" FE="Precipitation"/>
+                <annoSet ID="1210637"/>
+                <annoSet ID="1210647"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Time"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="DNI" FE="Time"/>
+                <annoSet ID="1210637"/>
+                <annoSet ID="1210647"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Manner"/>
+            <FE name="Place"/>
+            <FE name="Precipitation"/>
+            <FE name="Time"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <valenceUnit GF="" PT="DNI" FE="Place"/>
+                <valenceUnit GF="" PT="INC" FE="Precipitation"/>
+                <valenceUnit GF="" PT="DNI" FE="Time"/>
+                <annoSet ID="1210637"/>
+                <annoSet ID="1210647"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-001-all">
+        <sentence sentNo="0" aPos="4147213" ID="877877">
+            <text>It was sleeting so hard we could barely see for 30 yards . </text>
+            <annotationSet cDate="01/07/2003 05:56:40 PST Tue" status="UNANN" ID="1210636">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="5" start="3" name="VBD"/>
+                    <label end="14" start="7" name="VVG"/>
+                    <label end="17" start="16" name="AV0"/>
+                    <label end="22" start="19" name="AV0"/>
+                    <label end="25" start="24" name="PNP"/>
+                    <label end="31" start="27" name="VM0"/>
+                    <label end="38" start="33" name="AV0"/>
+                    <label end="42" start="40" name="VVI"/>
+                    <label end="46" start="44" name="PRP"/>
+                    <label end="49" start="48" name="CRD"/>
+                    <label end="55" start="51" name="NN2"/>
+                    <label end="57" start="57" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:56:40 PST Tue" status="MANUAL" ID="1210637">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="2740" end="55" start="16" name="Manner"/>
+                    <label cBy="296" feID="2738" itype="DNI" name="Time"/>
+                    <label cBy="296" feID="2736" itype="DNI" name="Place"/>
+                    <label cBy="309" feID="2733" end="14" start="7" name="Precipitation"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="55" start="16" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="55" start="16" name="AVP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other">
+                    <label end="1" start="0" name="Null"/>
+                </layer>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="14" start="7" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="64109552" ID="877882">
+            <text>It sleeted and rained incessantly . </text>
+            <annotationSet cDate="01/07/2003 05:56:40 PST Tue" status="UNANN" ID="1210646">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="9" start="3" name="VVD"/>
+                    <label end="13" start="11" name="CJC"/>
+                    <label end="20" start="15" name="VVD"/>
+                    <label end="32" start="22" name="AV0"/>
+                    <label end="34" start="34" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:56:40 PST Tue" status="MANUAL" ID="1210647">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="2740" end="32" start="22" name="Manner"/>
+                    <label cBy="296" feID="2738" itype="DNI" name="Time"/>
+                    <label cBy="296" feID="2736" itype="DNI" name="Place"/>
+                    <label cBy="309" feID="2733" end="9" start="3" name="Precipitation"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="32" start="22" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="32" start="22" name="AVP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other">
+                    <label end="1" start="0" name="Null"/>
+                </layer>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="9" start="3" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

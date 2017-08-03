@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" incorporatedFE="Garment" POS="N" name="one-piece.n" ID="3643" frame="Clothing" frameID="134" totalAnnotated="6" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Body_loc" name="Body_location"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="cre" name="Creator"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="Desc" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Gar" name="Garment"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="Mat" name="Material"/>
+            <FE fgColor="000000" bgColor="d0d0d0" type="Peripheral" abbrev="nam" name="Name"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Sty" name="Style"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Subr" name="Subregion"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="tim" name="Time_of_creation"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Use" name="Use"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Peripheral" abbrev="Wear" name="Wearer"/>
+        </frame>
+    </header>
+    <definition>COD: an article of clothing made or consisting of a single piece. </definition>
+    <lexeme POS="N" name="one-piece"/>
+    <valences>
+        <governor type="Gov" lemma="clothe">
+            <annoSet ID="579377"/>
+        </governor>
+        <governor type="Gov" lemma="wear">
+            <annoSet ID="579375"/>
+        </governor>
+        <FERealization total="3">
+            <FE name="Descriptor"/>
+            <pattern total="3">
+                <valenceUnit GF="Dep" PT="AJP" FE="Descriptor"/>
+                <annoSet ID="579359"/>
+                <annoSet ID="579375"/>
+                <annoSet ID="579377"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="6">
+            <FE name="Garment"/>
+            <pattern total="6">
+                <valenceUnit GF="" PT="DEN" FE="Garment"/>
+                <annoSet ID="579359"/>
+                <annoSet ID="579363"/>
+                <annoSet ID="579365"/>
+                <annoSet ID="579367"/>
+                <annoSet ID="579375"/>
+                <annoSet ID="579377"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Wearer"/>
+            <pattern total="2">
+                <valenceUnit GF="Gen" PT="Poss" FE="Wearer"/>
+                <annoSet ID="579367"/>
+                <annoSet ID="579377"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Descriptor"/>
+            <FE name="Garment"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="AJP" FE="Descriptor"/>
+                <valenceUnit GF="" PT="DEN" FE="Garment"/>
+                <annoSet ID="579359"/>
+                <annoSet ID="579375"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Descriptor"/>
+            <FE name="Garment"/>
+            <FE name="Wearer"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Descriptor"/>
+                <valenceUnit GF="" PT="DEN" FE="Garment"/>
+                <valenceUnit GF="Gen" PT="Poss" FE="Wearer"/>
+                <annoSet ID="579377"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Garment"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="DEN" FE="Garment"/>
+                <annoSet ID="579363"/>
+                <annoSet ID="579365"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Garment"/>
+            <FE name="Wearer"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Garment"/>
+                <valenceUnit GF="Gen" PT="Poss" FE="Wearer"/>
+                <annoSet ID="579367"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="piece-N-001-all">
+        <sentence sentNo="0" aPos="31649323" ID="470235">
+            <text>The way it slips down the neck of your new one-piece after you 've crossed your tips and plunged head-first into the stuff . </text>
+            <annotationSet cDate="01/07/2003 05:12:33 PST Tue" status="UNANN" ID="579358">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="6" start="4" name="NN1"/>
+                    <label end="9" start="8" name="PNP"/>
+                    <label end="15" start="11" name="VVZ"/>
+                    <label end="20" start="17" name="AVP-PRP"/>
+                    <label end="24" start="22" name="AT0"/>
+                    <label end="29" start="26" name="NN1"/>
+                    <label end="32" start="31" name="PRF"/>
+                    <label end="37" start="34" name="DPS"/>
+                    <label end="41" start="39" name="AJ0"/>
+                    <label end="51" start="43" name="NN1"/>
+                    <label end="57" start="53" name="CJS-PRP"/>
+                    <label end="61" start="59" name="PNP"/>
+                    <label end="65" start="63" name="VHB"/>
+                    <label end="73" start="67" name="VVN"/>
+                    <label end="78" start="75" name="DPS"/>
+                    <label end="83" start="80" name="NN2"/>
+                    <label end="87" start="85" name="CJC"/>
+                    <label end="95" start="89" name="VVN"/>
+                    <label end="106" start="97" name="AV0"/>
+                    <label end="111" start="108" name="PRP"/>
+                    <label end="115" start="113" name="AT0"/>
+                    <label end="121" start="117" name="NN1"/>
+                    <label end="123" start="123" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:12:33 PST Tue" status="MANUAL" ID="579359">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="873" end="41" start="39" name="Descriptor"/>
+                    <label cBy="669" feID="869" end="51" start="43" name="Garment"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="41" start="39" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="41" start="39" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="51" start="43" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="34748619" ID="470237">
+            <text>LANDED GENTLY : Fergie , now in a one-piece bathing costume , and friend crawl out of their hideaway swimming pool after a refreshing dip </text>
+            <annotationSet cDate="01/07/2003 05:12:33 PST Tue" status="UNANN" ID="579362">
+                <layer rank="1" name="BNC">
+                    <label end="5" start="0" name="NP0"/>
+                    <label end="12" start="7" name="NP0"/>
+                    <label end="14" start="14" name="PUN"/>
+                    <label end="21" start="16" name="NP0"/>
+                    <label end="23" start="23" name="PUN"/>
+                    <label end="27" start="25" name="AV0"/>
+                    <label end="30" start="29" name="PRP"/>
+                    <label end="32" start="32" name="AT0"/>
+                    <label end="42" start="34" name="AJ0-NN1"/>
+                    <label end="50" start="44" name="AJ0-NN1"/>
+                    <label end="58" start="52" name="NN1"/>
+                    <label end="60" start="60" name="PUN"/>
+                    <label end="64" start="62" name="CJC"/>
+                    <label end="71" start="66" name="NN1"/>
+                    <label end="77" start="73" name="NN1-VVB"/>
+                    <label end="81" start="79" name="PRP"/>
+                    <label end="84" start="83" name="PRP"/>
+                    <label end="90" start="86" name="DPS"/>
+                    <label end="99" start="92" name="NN1"/>
+                    <label end="108" start="101" name="AJ0-VVG"/>
+                    <label end="113" start="110" name="NN1"/>
+                    <label end="119" start="115" name="PRP"/>
+                    <label end="121" start="121" name="AT0"/>
+                    <label end="132" start="123" name="AJ0"/>
+                    <label end="136" start="134" name="NN1"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:12:33 PST Tue" status="MANUAL" ID="579363">
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="869" end="42" start="34" name="Garment"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="42" start="34" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="58876870" ID="470238">
+            <text>She shrugged , slipped the one-piece off and kicked off her briefs , then stood there , her hands at her sides , making no effort to cover her nakedness . </text>
+            <annotationSet cDate="01/07/2003 05:12:34 PST Tue" status="UNANN" ID="579364">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="PNP"/>
+                    <label end="11" start="4" name="VVD"/>
+                    <label end="13" start="13" name="PUN"/>
+                    <label end="21" start="15" name="VVD"/>
+                    <label end="25" start="23" name="AT0"/>
+                    <label end="35" start="27" name="NN1"/>
+                    <label end="39" start="37" name="AVP"/>
+                    <label end="43" start="41" name="CJC"/>
+                    <label end="50" start="45" name="VVD"/>
+                    <label end="54" start="52" name="AVP-PRP"/>
+                    <label end="58" start="56" name="DPS"/>
+                    <label end="65" start="60" name="NN2"/>
+                    <label end="67" start="67" name="PUN"/>
+                    <label end="72" start="69" name="AV0"/>
+                    <label end="78" start="74" name="VVD-VVN"/>
+                    <label end="84" start="80" name="AV0"/>
+                    <label end="86" start="86" name="PUN"/>
+                    <label end="90" start="88" name="DPS"/>
+                    <label end="96" start="92" name="NN2"/>
+                    <label end="99" start="98" name="PRP"/>
+                    <label end="103" start="101" name="DPS"/>
+                    <label end="109" start="105" name="NN2"/>
+                    <label end="111" start="111" name="PUN"/>
+                    <label end="118" start="113" name="VVG"/>
+                    <label end="121" start="120" name="AT0"/>
+                    <label end="128" start="123" name="NN1"/>
+                    <label end="131" start="130" name="TO0"/>
+                    <label end="137" start="133" name="VVI"/>
+                    <label end="141" start="139" name="DPS"/>
+                    <label end="151" start="143" name="NN1"/>
+                    <label end="153" start="153" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:12:34 PST Tue" status="MANUAL" ID="579365">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="869" end="35" start="27" name="Garment"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="35" start="27" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="21" start="15" name="Gov"/>
+                    <label end="39" start="37" name="Gov"/>
+                    <label end="35" start="23" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="58879636" ID="470239">
+            <text>Then she took something from the pocket of her one-piece . </text>
+            <annotationSet cDate="01/07/2003 05:12:34 PST Tue" status="UNANN" ID="579366">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="AV0"/>
+                    <label end="7" start="5" name="PNP"/>
+                    <label end="12" start="9" name="VVD"/>
+                    <label end="22" start="14" name="PNI"/>
+                    <label end="27" start="24" name="PRP"/>
+                    <label end="31" start="29" name="AT0"/>
+                    <label end="38" start="33" name="NN1"/>
+                    <label end="41" start="40" name="PRF"/>
+                    <label end="45" start="43" name="DPS"/>
+                    <label end="55" start="47" name="NN1"/>
+                    <label end="57" start="57" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:12:34 PST Tue" status="MANUAL" ID="579367">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="870" end="45" start="43" name="Wearer"/>
+                    <label cBy="669" feID="869" end="55" start="47" name="Garment"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="45" start="43" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="45" start="43" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="55" start="47" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="92040155" ID="470243">
+            <text>I was hanging on to the ledge at the deep end , arms out in the crucifix position when I saw her come out of the ladies &quot; changing rooms wearing a yellow and white striped one-piece . </text>
+            <annotationSet cDate="01/07/2003 05:12:34 PST Tue" status="UNANN" ID="579374">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PNP"/>
+                    <label end="4" start="2" name="VBD"/>
+                    <label end="12" start="6" name="VVG"/>
+                    <label end="15" start="14" name="AVP"/>
+                    <label end="18" start="17" name="PRP"/>
+                    <label end="22" start="20" name="AT0"/>
+                    <label end="28" start="24" name="NN1"/>
+                    <label end="31" start="30" name="PRP"/>
+                    <label end="35" start="33" name="AT0"/>
+                    <label end="40" start="37" name="AJ0"/>
+                    <label end="44" start="42" name="NN1"/>
+                    <label end="46" start="46" name="PUN"/>
+                    <label end="51" start="48" name="NN2"/>
+                    <label end="55" start="53" name="AVP"/>
+                    <label end="58" start="57" name="PRP"/>
+                    <label end="62" start="60" name="AT0"/>
+                    <label end="71" start="64" name="NN1"/>
+                    <label end="80" start="73" name="NN1"/>
+                    <label end="85" start="82" name="AVQ-CJS"/>
+                    <label end="87" start="87" name="PNP"/>
+                    <label end="91" start="89" name="VVD"/>
+                    <label end="95" start="93" name="PNP"/>
+                    <label end="100" start="97" name="VVB"/>
+                    <label end="104" start="102" name="PRP"/>
+                    <label end="107" start="106" name="PRP"/>
+                    <label end="111" start="109" name="AT0"/>
+                    <label end="118" start="113" name="NN2"/>
+                    <label end="120" start="120" name="PUQ"/>
+                    <label end="129" start="122" name="VVG"/>
+                    <label end="135" start="131" name="NN2"/>
+                    <label end="143" start="137" name="VVG"/>
+                    <label end="145" start="145" name="AT0"/>
+                    <label end="152" start="147" name="AJ0"/>
+                    <label end="156" start="154" name="CJC"/>
+                    <label end="162" start="158" name="AJ0"/>
+                    <label end="170" start="164" name="AJ0"/>
+                    <label end="180" start="172" name="NN1"/>
+                    <label end="182" start="182" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:12:34 PST Tue" status="MANUAL" ID="579375">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="873" end="170" start="147" name="Descriptor"/>
+                    <label cBy="669" feID="869" end="180" start="172" name="Garment"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="170" start="147" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="170" start="147" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="180" start="172" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="143" start="137" name="Gov"/>
+                    <label end="180" start="145" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="101033745" ID="470244">
+            <text>Discarding the culotte-shorts , she ran down into the water clad in her olive-green one-piece . </text>
+            <annotationSet cDate="01/07/2003 05:12:34 PST Tue" status="UNANN" ID="579376">
+                <layer rank="1" name="BNC">
+                    <label end="9" start="0" name="VVG"/>
+                    <label end="13" start="11" name="AT0"/>
+                    <label end="28" start="15" name="NN2"/>
+                    <label end="30" start="30" name="PUN"/>
+                    <label end="34" start="32" name="PNP"/>
+                    <label end="38" start="36" name="VVD"/>
+                    <label end="43" start="40" name="AVP"/>
+                    <label end="48" start="45" name="PRP"/>
+                    <label end="52" start="50" name="AT0"/>
+                    <label end="58" start="54" name="NN1"/>
+                    <label end="63" start="60" name="VVD-VVN"/>
+                    <label end="66" start="65" name="PRP"/>
+                    <label end="70" start="68" name="DPS"/>
+                    <label end="82" start="72" name="AJ0"/>
+                    <label end="92" start="84" name="NN1"/>
+                    <label end="94" start="94" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:12:34 PST Tue" status="MANUAL" ID="579377">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="870" end="70" start="68" name="Wearer"/>
+                    <label cBy="669" feID="873" end="82" start="72" name="Descriptor"/>
+                    <label cBy="669" feID="869" end="92" start="84" name="Garment"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="70" start="68" name="Gen"/>
+                    <label end="82" start="72" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="70" start="68" name="Poss"/>
+                    <label end="82" start="72" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="92" start="84" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="63" start="60" name="Gov"/>
+                    <label end="92" start="65" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

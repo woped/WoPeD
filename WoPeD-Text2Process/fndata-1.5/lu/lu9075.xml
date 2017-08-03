@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" POS="N" name="blood-bath.n" ID="9075" frame="Killing" frameID="590" totalAnnotated="4" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="AP" ID="113">
+            <document description="apwsE950825.0255" ID="8078"/>
+            <document description="apwsE951130.0005" ID="8079"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Extra-Thematic" abbrev="ben" name="Beneficiary"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Core" abbrev="" name="Cause"/>
+            <FE fgColor="000000" bgColor="90876C" type="Extra-Thematic" abbrev="" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Extra-Thematic" abbrev="" name="Explanation"/>
+            <FE fgColor="000000" bgColor="FFA500" type="Extra-Thematic" abbrev="" name="Frequency"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Instr" name="Instrument"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Kill" name="Killer"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="Man" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Core" abbrev="" name="Means"/>
+            <FE fgColor="000000" bgColor="7CCD73" type="Extra-Thematic" abbrev="" name="Period_of_iterations"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Loc" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Extra-Thematic" abbrev="" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="" name="Victim"/>
+        </frame>
+    </header>
+    <definition>COD: an event in which many people are killed violently.</definition>
+    <lexeme POS="N" name="blood-bath"/>
+    <valences>
+        <governor type="Gov" lemma="prevent">
+            <annoSet ID="2056420"/>
+        </governor>
+        <governor type="Gov" lemma="prosecute">
+            <annoSet ID="2056422"/>
+        </governor>
+        <FERealization total="1">
+            <FE name="Killer"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="2nd" FE="Killer"/>
+                <annoSet ID="1041870"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Place"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Place"/>
+                <annoSet ID="2056422"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Place"/>
+                <annoSet ID="1041868"/>
+                <annoSet ID="2056420"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Victim"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PPing[between]" FE="Victim"/>
+                <annoSet ID="1041870"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Killer"/>
+            <FE name="Victim"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="2nd" FE="Killer"/>
+                <valenceUnit GF="Dep" PT="PPing[between]" FE="Victim"/>
+                <annoSet ID="1041870"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="3">
+            <FE name="Place"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Place"/>
+                <annoSet ID="2056422"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Place"/>
+                <annoSet ID="1041868"/>
+                <annoSet ID="2056420"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="bath-N-250-ppin">
+        <sentence sentNo="0" aPos="1414501" ID="791601">
+            <text>After the recent blood-bath in Westminster Abbey his heart flipped over and his head swam about . </text>
+            <annotationSet cDate="01/07/2003 02:43:15 PST Tue" status="UNANN" ID="1041867">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="CJS-PRP"/>
+                    <label end="8" start="6" name="AT0"/>
+                    <label end="15" start="10" name="AJ0"/>
+                    <label end="26" start="17" name="NN1"/>
+                    <label end="29" start="28" name="PRP"/>
+                    <label end="41" start="31" name="NP0"/>
+                    <label end="47" start="43" name="NP0"/>
+                    <label end="51" start="49" name="DPS"/>
+                    <label end="57" start="53" name="NN1"/>
+                    <label end="65" start="59" name="VVD"/>
+                    <label end="70" start="67" name="AVP"/>
+                    <label end="74" start="72" name="CJC"/>
+                    <label end="78" start="76" name="DPS"/>
+                    <label end="83" start="80" name="NN1"/>
+                    <label end="88" start="85" name="VVD"/>
+                    <label end="94" start="90" name="AVP"/>
+                    <label end="96" start="96" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:43:15 PST Tue" status="MANUAL" ID="1041868">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="4456" end="47" start="28" name="Place"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="47" start="28" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="47" start="28" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="26" start="17" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="bath-N-340-ppother">
+        <sentence sentNo="0" aPos="47383226" ID="791602">
+            <text>` Derby &quot; matches were , consequently , less blood-baths between warring factions than the turbulent prelude to merciless intra- family taunting . </text>
+            <annotationSet cDate="01/07/2003 02:43:15 PST Tue" status="UNANN" ID="1041869">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PUQ"/>
+                    <label end="6" start="2" name="NN1-NP0"/>
+                    <label end="8" start="8" name="PUQ"/>
+                    <label end="16" start="10" name="NN2"/>
+                    <label end="21" start="18" name="VBD"/>
+                    <label end="23" start="23" name="PUN"/>
+                    <label end="36" start="25" name="AV0"/>
+                    <label end="38" start="38" name="PUN"/>
+                    <label end="43" start="40" name="DT0"/>
+                    <label end="55" start="45" name="NN2"/>
+                    <label end="63" start="57" name="PRP"/>
+                    <label end="71" start="65" name="AJ0-VVG"/>
+                    <label end="80" start="73" name="NN2"/>
+                    <label end="85" start="82" name="CJS"/>
+                    <label end="89" start="87" name="AT0"/>
+                    <label end="99" start="91" name="AJ0"/>
+                    <label end="107" start="101" name="NN1"/>
+                    <label end="110" start="109" name="PRP"/>
+                    <label end="120" start="112" name="AJ0"/>
+                    <label end="127" start="122" name="AJ0-NN1"/>
+                    <label end="134" start="129" name="NN0"/>
+                    <label end="143" start="136" name="NN1-VVG"/>
+                    <label end="145" start="145" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:43:16 PST Tue" status="MANUAL" ID="1041870">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="4451" end="80" start="57" name="Victim"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="80" start="57" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="80" start="57" name="PPing"/>
+                </layer>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="Metaphor"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="55" start="45" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+                <layer rank="2" name="FE">
+                    <label cBy="669" feID="4450" end="80" start="57" name="Killer"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="bath-N-380-other"/>
+    <subCorpus name="01-T-(1)">
+        <sentence corpID="113" docID="8078" sentNo="1" paragNo="3" aPos="85100365" ID="1304129">
+            <text>Mubarak told the London-based Al-Hayat he was willing to take Saddam in as a political refugee `` if this means a solution to the problem of the Iraqi people and would prevent a blood-bath in Iraq . ''</text>
+            <annotationSet cDate="01/15/2005 01:10:49 PST Sat" status="UNANN" ID="2056419">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="0" name="NP"/>
+                    <label end="11" start="8" name="VVD"/>
+                    <label end="15" start="13" name="dt"/>
+                    <label end="28" start="17" name="jj"/>
+                    <label end="37" start="30" name="NP"/>
+                    <label end="40" start="39" name="PP"/>
+                    <label end="44" start="42" name="VBD"/>
+                    <label end="52" start="46" name="jj"/>
+                    <label end="55" start="54" name="to"/>
+                    <label end="60" start="57" name="VV"/>
+                    <label end="67" start="62" name="NP"/>
+                    <label end="70" start="69" name="in"/>
+                    <label end="73" start="72" name="in"/>
+                    <label end="75" start="75" name="dt"/>
+                    <label end="85" start="77" name="jj"/>
+                    <label end="93" start="87" name="nn"/>
+                    <label end="96" start="95" name="``"/>
+                    <label end="99" start="98" name="in"/>
+                    <label end="104" start="101" name="dt"/>
+                    <label end="110" start="106" name="VVZ"/>
+                    <label end="112" start="112" name="dt"/>
+                    <label end="121" start="114" name="nn"/>
+                    <label end="124" start="123" name="to"/>
+                    <label end="128" start="126" name="dt"/>
+                    <label end="136" start="130" name="nn"/>
+                    <label end="139" start="138" name="in"/>
+                    <label end="143" start="141" name="dt"/>
+                    <label end="149" start="145" name="jj"/>
+                    <label end="156" start="151" name="nns"/>
+                    <label end="160" start="158" name="cc"/>
+                    <label end="166" start="162" name="md"/>
+                    <label end="174" start="168" name="VV"/>
+                    <label end="176" start="176" name="dt"/>
+                    <label end="187" start="178" name="nn"/>
+                    <label end="190" start="189" name="in"/>
+                    <label end="195" start="192" name="NP"/>
+                    <label end="197" start="197" name="sent"/>
+                    <label end="200" start="199" name="''"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/15/2005 01:10:50 PST Sat" status="MANUAL" ID="2056420">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="187" start="178" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="4456" end="195" start="189" name="Place"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="195" start="189" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="195" start="189" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="174" start="168" name="Gov"/>
+                    <label end="195" start="176" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="8079" sentNo="1" paragNo="9" aPos="22734038" ID="1304130">
+            <text>A special law then will be adopted to open the way for the two ex-presidents and aides to be prosecuted in connection with the Kwangju blood-bath , they said .</text>
+            <annotationSet cDate="01/15/2005 01:10:50 PST Sat" status="UNANN" ID="2056421">
+                <layer rank="1" name="PENN">
+                    <label end="0" start="0" name="dt"/>
+                    <label end="8" start="2" name="jj"/>
+                    <label end="12" start="10" name="nn"/>
+                    <label end="17" start="14" name="rb"/>
+                    <label end="22" start="19" name="md"/>
+                    <label end="25" start="24" name="vb"/>
+                    <label end="33" start="27" name="VVN"/>
+                    <label end="36" start="35" name="to"/>
+                    <label end="41" start="38" name="VV"/>
+                    <label end="45" start="43" name="dt"/>
+                    <label end="49" start="47" name="nn"/>
+                    <label end="53" start="51" name="in"/>
+                    <label end="57" start="55" name="dt"/>
+                    <label end="61" start="59" name="cd"/>
+                    <label end="75" start="63" name="nns"/>
+                    <label end="79" start="77" name="cc"/>
+                    <label end="85" start="81" name="nns"/>
+                    <label end="88" start="87" name="to"/>
+                    <label end="91" start="90" name="vb"/>
+                    <label end="102" start="93" name="VVN"/>
+                    <label end="105" start="104" name="in"/>
+                    <label end="116" start="107" name="nn"/>
+                    <label end="121" start="118" name="in"/>
+                    <label end="125" start="123" name="dt"/>
+                    <label end="133" start="127" name="NP"/>
+                    <label end="144" start="135" name="nn"/>
+                    <label end="146" start="146" name=","/>
+                    <label end="151" start="148" name="PP"/>
+                    <label end="156" start="153" name="VVD"/>
+                    <label end="158" start="158" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/15/2005 01:10:51 PST Sat" status="MANUAL" ID="2056422">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="144" start="135" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="4456" end="133" start="127" name="Place"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="133" start="127" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="133" start="127" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="102" start="93" name="Gov"/>
+                    <label end="144" start="104" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

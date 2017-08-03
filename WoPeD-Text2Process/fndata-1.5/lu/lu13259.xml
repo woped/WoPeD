@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="acme.n" ID="13259" frame="Extreme_value" frameID="1596" totalAnnotated="5" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Core" abbrev="att" name="Attribute"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Extra-Thematic" abbrev="" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Extra-Thematic" abbrev="" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD73" type="Extra-Thematic" abbrev="" name="Domain"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="ent" name="Entity"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Extra-Thematic" abbrev="" name="Explanation"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="per" name="Period"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="val" name="Value"/>
+        </frame>
+    </header>
+    <definition>COD: the highest point of achievement or excellence.</definition>
+    <lexeme POS="N" name="acme"/>
+    <valences>
+        <FERealization total="2">
+            <FE name="Attribute"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Attribute"/>
+                <annoSet ID="2249823"/>
+                <annoSet ID="2249827"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Entity"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Entity"/>
+                <annoSet ID="2249825"/>
+                <annoSet ID="2249857"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Entity"/>
+                <annoSet ID="2249869"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Period"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Period"/>
+                <annoSet ID="2249869"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Attribute"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Attribute"/>
+                <annoSet ID="2249823"/>
+                <annoSet ID="2249827"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Entity"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Entity"/>
+                <annoSet ID="2249825"/>
+                <annoSet ID="2249857"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Entity"/>
+            <FE name="Period"/>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Entity"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Period"/>
+                <annoSet ID="2249869"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="402" aPos="27666166" ID="1400985">
+            <text>Capitalism specialises in producing useless things , but cigarettes really are the absolute acme of uselessness .</text>
+            <annotationSet cDate="08/31/2006 04:08:31 PDT Thu" status="UNANN" ID="2249822">
+                <layer rank="1" name="PENN">
+                    <label end="9" start="0" name="nn"/>
+                    <label end="21" start="11" name="VVZ"/>
+                    <label end="24" start="23" name="in"/>
+                    <label end="34" start="26" name="VVG"/>
+                    <label end="42" start="36" name="jj"/>
+                    <label end="49" start="44" name="nns"/>
+                    <label end="51" start="51" name=","/>
+                    <label end="55" start="53" name="cc"/>
+                    <label end="66" start="57" name="nns"/>
+                    <label end="73" start="68" name="rb"/>
+                    <label end="77" start="75" name="vbp"/>
+                    <label end="81" start="79" name="dt"/>
+                    <label end="90" start="83" name="jj"/>
+                    <label end="95" start="92" name="nn"/>
+                    <label end="98" start="97" name="in"/>
+                    <label end="110" start="100" name="nn"/>
+                    <label end="112" start="112" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="08/31/2006 04:08:32 PDT Thu" status="MANUAL" ID="2249823">
+                <layer rank="1" name="Target">
+                    <label cBy="303" end="95" start="92" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="8727" end="110" start="97" name="Attribute"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="110" start="97" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="110" start="97" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="118" aPos="72509935" ID="1400986">
+            <text>But the acme of scientific voyages was that of HMS Challenger .</text>
+            <annotationSet cDate="08/31/2006 04:08:32 PDT Thu" status="UNANN" ID="2249824">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="cc"/>
+                    <label end="6" start="4" name="dt"/>
+                    <label end="11" start="8" name="nn"/>
+                    <label end="14" start="13" name="in"/>
+                    <label end="25" start="16" name="jj"/>
+                    <label end="33" start="27" name="nns"/>
+                    <label end="37" start="35" name="VBD"/>
+                    <label end="42" start="39" name="in"/>
+                    <label end="45" start="44" name="in"/>
+                    <label end="49" start="47" name="NP"/>
+                    <label end="60" start="51" name="NP"/>
+                    <label end="62" start="62" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="08/31/2006 04:08:32 PDT Thu" status="MANUAL" ID="2249825">
+                <layer rank="1" name="Target">
+                    <label cBy="303" end="11" start="8" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="8726" end="33" start="13" name="Entity"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="33" start="13" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="33" start="13" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="210" aPos="7673511" ID="1400987">
+            <text>For many years the decision in Prince ( 1875 ) , in effect that the man is strictly liable when the girl is under 16 , has been paraded by academic lawyers as the acme of injustice .</text>
+            <annotationSet cDate="08/31/2006 04:08:32 PDT Thu" status="UNANN" ID="2249826">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="in"/>
+                    <label end="7" start="4" name="jj"/>
+                    <label end="13" start="9" name="nns"/>
+                    <label end="17" start="15" name="dt"/>
+                    <label end="26" start="19" name="nn"/>
+                    <label end="29" start="28" name="in"/>
+                    <label end="36" start="31" name="NP"/>
+                    <label end="38" start="38" name="("/>
+                    <label end="43" start="40" name="cd"/>
+                    <label end="45" start="45" name=")"/>
+                    <label end="47" start="47" name=","/>
+                    <label end="50" start="49" name="in"/>
+                    <label end="57" start="52" name="nn"/>
+                    <label end="62" start="59" name="in"/>
+                    <label end="66" start="64" name="dt"/>
+                    <label end="70" start="68" name="nn"/>
+                    <label end="73" start="72" name="VBZ"/>
+                    <label end="82" start="75" name="rb"/>
+                    <label end="89" start="84" name="jj"/>
+                    <label end="94" start="91" name="wrb"/>
+                    <label end="98" start="96" name="dt"/>
+                    <label end="103" start="100" name="nn"/>
+                    <label end="106" start="105" name="VBZ"/>
+                    <label end="112" start="108" name="in"/>
+                    <label end="115" start="114" name="cd"/>
+                    <label end="117" start="117" name=","/>
+                    <label end="121" start="119" name="VHZ"/>
+                    <label end="126" start="123" name="VBN"/>
+                    <label end="134" start="128" name="VVN"/>
+                    <label end="137" start="136" name="in"/>
+                    <label end="146" start="139" name="jj"/>
+                    <label end="154" start="148" name="nns"/>
+                    <label end="157" start="156" name="in"/>
+                    <label end="161" start="159" name="dt"/>
+                    <label end="166" start="163" name="nn"/>
+                    <label end="169" start="168" name="in"/>
+                    <label end="179" start="171" name="nn"/>
+                    <label end="181" start="181" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="08/31/2006 04:08:32 PDT Thu" status="MANUAL" ID="2249827">
+                <layer rank="1" name="Target">
+                    <label cBy="303" end="166" start="163" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="8727" end="179" start="168" name="Attribute"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="179" start="168" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="179" start="168" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="135" aPos="12094808" ID="1401002">
+            <text>Mammals animals with mammary glands that suckle their young -- were certainly present during the Triassic , and were a continuous if subordinate component of fossil faunas throughout the acme of the dinosaurs .</text>
+            <annotationSet cDate="08/31/2006 04:08:36 PDT Thu" status="UNANN" ID="2249856">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="0" name="nns"/>
+                    <label end="14" start="8" name="nns"/>
+                    <label end="19" start="16" name="in"/>
+                    <label end="27" start="21" name="jj"/>
+                    <label end="34" start="29" name="nns"/>
+                    <label end="39" start="36" name="wdt"/>
+                    <label end="46" start="41" name="VV"/>
+                    <label end="52" start="48" name="PP$"/>
+                    <label end="58" start="54" name="jj"/>
+                    <label end="61" start="60" name=":"/>
+                    <label end="66" start="63" name="VBD"/>
+                    <label end="76" start="68" name="rb"/>
+                    <label end="84" start="78" name="jj"/>
+                    <label end="91" start="86" name="in"/>
+                    <label end="95" start="93" name="dt"/>
+                    <label end="104" start="97" name="jj"/>
+                    <label end="106" start="106" name=","/>
+                    <label end="110" start="108" name="cc"/>
+                    <label end="115" start="112" name="VBD"/>
+                    <label end="117" start="117" name="dt"/>
+                    <label end="128" start="119" name="jj"/>
+                    <label end="131" start="130" name="in"/>
+                    <label end="143" start="133" name="jj"/>
+                    <label end="153" start="145" name="nn"/>
+                    <label end="156" start="155" name="in"/>
+                    <label end="163" start="158" name="jj"/>
+                    <label end="170" start="165" name="nns"/>
+                    <label end="181" start="172" name="in"/>
+                    <label end="185" start="183" name="dt"/>
+                    <label end="190" start="187" name="nn"/>
+                    <label end="193" start="192" name="in"/>
+                    <label end="197" start="195" name="dt"/>
+                    <label end="207" start="199" name="nns"/>
+                    <label end="209" start="209" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="08/31/2006 04:08:37 PDT Thu" status="MANUAL" ID="2249857">
+                <layer rank="1" name="Target">
+                    <label cBy="303" end="190" start="187" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="8726" end="207" start="192" name="Entity"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="207" start="192" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="207" start="192" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="10" paragNo="69" aPos="12078235" ID="1401008">
+            <text>The monoplacophorans really reached their acme in the Cambrian , with curious forms having shapes that have never been paralleled in other molluscs ( Yochelcionella ) .</text>
+            <annotationSet cDate="08/31/2006 04:08:38 PDT Thu" status="UNANN" ID="2249868">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="19" start="4" name="nns"/>
+                    <label end="26" start="21" name="rb"/>
+                    <label end="34" start="28" name="VVD"/>
+                    <label end="40" start="36" name="PP$"/>
+                    <label end="45" start="42" name="nn"/>
+                    <label end="48" start="47" name="in"/>
+                    <label end="52" start="50" name="dt"/>
+                    <label end="61" start="54" name="jj"/>
+                    <label end="63" start="63" name=","/>
+                    <label end="68" start="65" name="in"/>
+                    <label end="76" start="70" name="jj"/>
+                    <label end="82" start="78" name="nns"/>
+                    <label end="89" start="84" name="VHG"/>
+                    <label end="96" start="91" name="VVZ"/>
+                    <label end="101" start="98" name="wdt"/>
+                    <label end="106" start="103" name="VHP"/>
+                    <label end="112" start="108" name="rb"/>
+                    <label end="117" start="114" name="VBN"/>
+                    <label end="128" start="119" name="VVN"/>
+                    <label end="131" start="130" name="in"/>
+                    <label end="137" start="133" name="jj"/>
+                    <label end="146" start="139" name="nns"/>
+                    <label end="148" start="148" name="("/>
+                    <label end="163" start="150" name="NP"/>
+                    <label end="165" start="165" name=")"/>
+                    <label end="167" start="167" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="08/31/2006 04:08:39 PDT Thu" status="MANUAL" ID="2249869">
+                <layer rank="1" name="Target">
+                    <label cBy="303" end="45" start="42" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="8726" end="40" start="36" name="Entity"/>
+                    <label cBy="361" feID="8732" end="61" start="47" name="Period"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="40" start="36" name="Gen"/>
+                    <label end="61" start="47" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="40" start="36" name="Poss"/>
+                    <label end="61" start="47" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" POS="V" name="clang.v" ID="9770" frame="Cause_impact" frameID="395" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Agt" name="Agent"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD73" type="Core" abbrev="Cau" name="Cause"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Peripheral" abbrev="Frc" name="Force"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core" abbrev="Imp2" name="Impactee"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Imp1" name="Impactor"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Imps" name="Impactors"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Ins" name="Instrument"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="P_it" name="Period_of_iterations"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="A9A9A9" type="Extra-Thematic" abbrev="Result" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="Speed" name="Speed"/>
+            <FE fgColor="000000" bgColor="7FFF00" type="Extra-Thematic" abbrev="Sub_l" name="Subregion"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: make or cause to make a clang.</definition>
+    <lexeme POS="V" name="clang"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Agent"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <annoSet ID="461054"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Impactee"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Impactee"/>
+                <annoSet ID="461054"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Impactor"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Impactor"/>
+                <annoSet ID="461054"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Agent"/>
+            <FE name="Impactee"/>
+            <FE name="Impactor"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <valenceUnit GF="" PT="INI" FE="Impactee"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Impactor"/>
+                <annoSet ID="461054"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="NoPattern">
+        <sentence sentNo="0" aPos="8927007" ID="409363">
+            <text>Just then Biff started clanging the iron triangle to summon them together . </text>
+            <annotationSet cDate="01/07/2003 02:47:21 PST Tue" status="UNANN" ID="461053">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="AV0"/>
+                    <label end="8" start="5" name="AV0"/>
+                    <label end="13" start="10" name="NP0"/>
+                    <label end="21" start="15" name="VVD-VVN"/>
+                    <label end="30" start="23" name="VVG"/>
+                    <label end="34" start="32" name="AT0"/>
+                    <label end="39" start="36" name="NN1"/>
+                    <label end="48" start="41" name="NN1"/>
+                    <label end="51" start="50" name="TO0"/>
+                    <label end="58" start="53" name="VVI"/>
+                    <label end="63" start="60" name="PNP"/>
+                    <label end="72" start="65" name="AV0"/>
+                    <label end="74" start="74" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:47:21 PST Tue" status="MANUAL" ID="461054">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="3553" end="13" start="10" name="Agent"/>
+                    <label cBy="103" feID="3544" end="48" start="32" name="Impactor"/>
+                    <label cBy="664" feID="3543" itype="INI" name="Impactee"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="13" start="10" name="Ext"/>
+                    <label end="48" start="32" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="13" start="10" name="NP"/>
+                    <label end="48" start="32" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="30" start="23" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="A" name="chatty.a" ID="5220" frame="Volubility" frameID="44" totalAnnotated="7" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Comp" name="Company"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="jud" name="Judge"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Medium" name="Medium"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Spkr" name="Speaker"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Text" name="Text"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Core" abbrev="Top" name="Topic"/>
+        </frame>
+    </header>
+    <definition>COD: fond of chatting</definition>
+    <lexeme POS="A" name="chatty"/>
+    <valences>
+        <governor type="Sup" lemma="get">
+            <annoSet ID="1116693"/>
+        </governor>
+        <FERealization total="1">
+            <FE name="Company"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Company"/>
+                <annoSet ID="1116693"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Degree"/>
+            <pattern total="3">
+                <valenceUnit GF="Dep" PT="AVP" FE="Degree"/>
+                <annoSet ID="1116623"/>
+                <annoSet ID="1116681"/>
+                <annoSet ID="1116693"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="7">
+            <FE name="Speaker"/>
+            <pattern total="4">
+                <valenceUnit GF="Ext" PT="NP" FE="Speaker"/>
+                <annoSet ID="1116623"/>
+                <annoSet ID="1116645"/>
+                <annoSet ID="1116681"/>
+                <annoSet ID="1116693"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="NP" FE="Speaker"/>
+                <annoSet ID="1116651"/>
+                <annoSet ID="1116679"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[from]" FE="Speaker"/>
+                <annoSet ID="1116633"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Text"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="NP" FE="Text"/>
+                <annoSet ID="1116633"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Company"/>
+            <FE name="Degree"/>
+            <FE name="Speaker"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Company"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Degree"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Speaker"/>
+                <annoSet ID="1116693"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Degree"/>
+            <FE name="Speaker"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="AVP" FE="Degree"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Speaker"/>
+                <annoSet ID="1116623"/>
+                <annoSet ID="1116681"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="3">
+            <FE name="Speaker"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="NP" FE="Speaker"/>
+                <annoSet ID="1116651"/>
+                <annoSet ID="1116679"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Speaker"/>
+                <annoSet ID="1116645"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Speaker"/>
+            <FE name="Text"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[from]" FE="Speaker"/>
+                <valenceUnit GF="Dep" PT="NP" FE="Text"/>
+                <annoSet ID="1116633"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="A-001-all">
+        <sentence sentNo="0" aPos="2624546" ID="830069">
+            <text>Eventually the girl opened up and was very chatty , laughing at [ the neighbourhood policeman ] 's voice , as he was a comical sort , making his hat wobble on his head . </text>
+            <annotationSet cDate="01/07/2003 04:09:09 PST Tue" status="UNANN" ID="1116622">
+                <layer rank="1" name="BNC">
+                    <label end="9" start="0" name="AV0"/>
+                    <label end="13" start="11" name="AT0"/>
+                    <label end="18" start="15" name="NN1"/>
+                    <label end="25" start="20" name="VVD-VVN"/>
+                    <label end="28" start="27" name="AVP"/>
+                    <label end="32" start="30" name="CJC"/>
+                    <label end="36" start="34" name="VBD"/>
+                    <label end="41" start="38" name="AV0"/>
+                    <label end="48" start="43" name="AJ0"/>
+                    <label end="50" start="50" name="PUN"/>
+                    <label end="59" start="52" name="VVG"/>
+                    <label end="62" start="61" name="PRP"/>
+                    <label end="64" start="64" name="PUL"/>
+                    <label end="68" start="66" name="AT0"/>
+                    <label end="82" start="70" name="NN0"/>
+                    <label end="92" start="84" name="NN1"/>
+                    <label end="94" start="94" name="PUR"/>
+                    <label end="97" start="96" name="VBZ"/>
+                    <label end="103" start="99" name="NN1"/>
+                    <label end="105" start="105" name="PUN"/>
+                    <label end="108" start="107" name="CJS"/>
+                    <label end="111" start="110" name="PNP"/>
+                    <label end="115" start="113" name="VBD"/>
+                    <label end="117" start="117" name="AT0"/>
+                    <label end="125" start="119" name="AJ0"/>
+                    <label end="130" start="127" name="NN1"/>
+                    <label end="132" start="132" name="PUN"/>
+                    <label end="139" start="134" name="VVG"/>
+                    <label end="143" start="141" name="DPS"/>
+                    <label end="147" start="145" name="NN1"/>
+                    <label end="154" start="149" name="NN1-VVB"/>
+                    <label end="157" start="156" name="PRP"/>
+                    <label end="161" start="159" name="DPS"/>
+                    <label end="166" start="163" name="NN1"/>
+                    <label end="168" start="168" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 04:09:09 PST Tue" status="MANUAL" ID="1116623">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="187" end="18" start="11" name="Speaker"/>
+                    <label cBy="669" feID="1245" end="41" start="38" name="Degree"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="18" start="11" name="Ext"/>
+                    <label end="41" start="38" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="18" start="11" name="NP"/>
+                    <label end="41" start="38" name="AVP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="48" start="43" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj">
+                    <label end="36" start="34" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="6787248" ID="830074">
+            <text>On the fourth day he received a long chatty letter from Eleanor . </text>
+            <annotationSet cDate="01/07/2003 04:09:09 PST Tue" status="UNANN" ID="1116632">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PRP"/>
+                    <label end="5" start="3" name="AT0"/>
+                    <label end="12" start="7" name="ORD"/>
+                    <label end="16" start="14" name="NN1"/>
+                    <label end="19" start="18" name="PNP"/>
+                    <label end="28" start="21" name="VVD"/>
+                    <label end="30" start="30" name="AT0"/>
+                    <label end="35" start="32" name="AJ0-AV0"/>
+                    <label end="42" start="37" name="AJ0-NN1"/>
+                    <label end="49" start="44" name="NN1"/>
+                    <label end="54" start="51" name="PRP"/>
+                    <label end="62" start="56" name="NP0"/>
+                    <label end="64" start="64" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 04:09:09 PST Tue" status="MANUAL" ID="1116633">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="189" end="49" start="44" name="Text"/>
+                    <label cBy="669" feID="187" end="62" start="51" name="Speaker"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="49" start="44" name="Dep"/>
+                    <label end="62" start="51" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="49" start="44" name="NP"/>
+                    <label end="62" start="51" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="42" start="37" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="22967799" ID="830080">
+            <text>Lula and Claire were talking to her , a sort of duet : Lula was persuasive and chatty , Claire chimed in with sharp ideological comments or scornful snorts : hard cop , soft cop . </text>
+            <annotationSet cDate="01/07/2003 04:09:10 PST Tue" status="UNANN" ID="1116644">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="NN1-NP0"/>
+                    <label end="7" start="5" name="CJC"/>
+                    <label end="14" start="9" name="NN1-NP0"/>
+                    <label end="19" start="16" name="VBD"/>
+                    <label end="27" start="21" name="VVG"/>
+                    <label end="30" start="29" name="PRP"/>
+                    <label end="34" start="32" name="PNP"/>
+                    <label end="36" start="36" name="PUN"/>
+                    <label end="38" start="38" name="AT0"/>
+                    <label end="43" start="40" name="NN1"/>
+                    <label end="46" start="45" name="PRF"/>
+                    <label end="51" start="48" name="NN1"/>
+                    <label end="53" start="53" name="PUN"/>
+                    <label end="58" start="55" name="NP0"/>
+                    <label end="62" start="60" name="VBD"/>
+                    <label end="73" start="64" name="AJ0"/>
+                    <label end="77" start="75" name="CJC"/>
+                    <label end="84" start="79" name="AJ0-NN1"/>
+                    <label end="86" start="86" name="PUN"/>
+                    <label end="93" start="88" name="NP0"/>
+                    <label end="100" start="95" name="VVD"/>
+                    <label end="103" start="102" name="AVP"/>
+                    <label end="108" start="105" name="PRP"/>
+                    <label end="114" start="110" name="AJ0"/>
+                    <label end="126" start="116" name="AJ0"/>
+                    <label end="135" start="128" name="NN2"/>
+                    <label end="138" start="137" name="CJC"/>
+                    <label end="147" start="140" name="AJ0"/>
+                    <label end="154" start="149" name="NN2"/>
+                    <label end="156" start="156" name="PUN"/>
+                    <label end="161" start="158" name="AJ0"/>
+                    <label end="165" start="163" name="NN1"/>
+                    <label end="167" start="167" name="PUN"/>
+                    <label end="172" start="169" name="AJ0"/>
+                    <label end="176" start="174" name="NN1"/>
+                    <label end="178" start="178" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 04:09:10 PST Tue" status="MANUAL" ID="1116645">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="187" end="58" start="55" name="Speaker"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="58" start="55" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="58" start="55" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="84" start="79" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj">
+                    <label end="62" start="60" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="27220547" ID="830083">
+            <text>Do n't expect chatty presenters on a comfy settee just yet . </text>
+            <annotationSet cDate="01/07/2003 04:09:10 PST Tue" status="UNANN" ID="1116650">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="VDB"/>
+                    <label end="5" start="3" name="XX0"/>
+                    <label end="12" start="7" name="VVI"/>
+                    <label end="19" start="14" name="AJ0"/>
+                    <label end="30" start="21" name="NN2"/>
+                    <label end="33" start="32" name="PRP"/>
+                    <label end="35" start="35" name="AT0"/>
+                    <label end="41" start="37" name="AJ0"/>
+                    <label end="48" start="43" name="NN1"/>
+                    <label end="53" start="50" name="AV0"/>
+                    <label end="57" start="55" name="AV0"/>
+                    <label end="59" start="59" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 04:09:10 PST Tue" status="MANUAL" ID="1116651">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="187" end="30" start="21" name="Speaker"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="30" start="21" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="30" start="21" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="19" start="14" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="46692078" ID="830097">
+            <text>The chatty man on the phone had suggested : ` You can tell me what you think about the redecorations &quot; . </text>
+            <annotationSet cDate="01/07/2003 04:09:12 PST Tue" status="UNANN" ID="1116678">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="9" start="4" name="AJ0"/>
+                    <label end="13" start="11" name="NN1"/>
+                    <label end="16" start="15" name="PRP"/>
+                    <label end="20" start="18" name="AT0"/>
+                    <label end="26" start="22" name="NN1"/>
+                    <label end="30" start="28" name="VHD"/>
+                    <label end="40" start="32" name="VVN"/>
+                    <label end="42" start="42" name="PUN"/>
+                    <label end="44" start="44" name="PUQ"/>
+                    <label end="48" start="46" name="PNP"/>
+                    <label end="52" start="50" name="VM0"/>
+                    <label end="57" start="54" name="VVI"/>
+                    <label end="60" start="59" name="PNP"/>
+                    <label end="65" start="62" name="DTQ"/>
+                    <label end="69" start="67" name="PNP"/>
+                    <label end="75" start="71" name="VVB"/>
+                    <label end="81" start="77" name="PRP"/>
+                    <label end="85" start="83" name="AT0"/>
+                    <label end="99" start="87" name="NN2"/>
+                    <label end="101" start="101" name="PUQ"/>
+                    <label end="103" start="103" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 04:09:12 PST Tue" status="MANUAL" ID="1116679">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="187" end="13" start="11" name="Speaker"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="13" start="11" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="13" start="11" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="9" start="4" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="49470502" ID="830098">
+            <text>The Sultan was very chatty . </text>
+            <annotationSet cDate="01/07/2003 04:09:12 PST Tue" status="UNANN" ID="1116680">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="9" start="4" name="NN1-NP0"/>
+                    <label end="13" start="11" name="VBD"/>
+                    <label end="18" start="15" name="AV0"/>
+                    <label end="25" start="20" name="AJ0"/>
+                    <label end="27" start="27" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 04:09:12 PST Tue" status="MANUAL" ID="1116681">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="187" end="9" start="0" name="Speaker"/>
+                    <label cBy="669" feID="1245" end="18" start="15" name="Degree"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="9" start="0" name="Ext"/>
+                    <label end="18" start="15" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="9" start="0" name="NP"/>
+                    <label end="18" start="15" name="AVP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="25" start="20" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj">
+                    <label end="13" start="11" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="59904102" ID="830104">
+            <text>Graham is very shy with most people but he gets quite chatty with Mr Roberts . </text>
+            <annotationSet cDate="01/07/2003 04:09:13 PST Tue" status="UNANN" ID="1116692">
+                <layer rank="1" name="BNC">
+                    <label end="5" start="0" name="NP0"/>
+                    <label end="8" start="7" name="VBZ"/>
+                    <label end="13" start="10" name="AV0"/>
+                    <label end="17" start="15" name="AJ0"/>
+                    <label end="22" start="19" name="PRP"/>
+                    <label end="27" start="24" name="DT0"/>
+                    <label end="34" start="29" name="NN0"/>
+                    <label end="38" start="36" name="CJC"/>
+                    <label end="41" start="40" name="PNP"/>
+                    <label end="46" start="43" name="VVZ"/>
+                    <label end="52" start="48" name="AV0"/>
+                    <label end="59" start="54" name="AJ0"/>
+                    <label end="64" start="61" name="PRP"/>
+                    <label end="67" start="66" name="NP0"/>
+                    <label end="75" start="69" name="NP0"/>
+                    <label end="77" start="77" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 04:09:13 PST Tue" status="MANUAL" ID="1116693">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="187" end="41" start="40" name="Speaker"/>
+                    <label cBy="669" feID="1245" end="52" start="48" name="Degree"/>
+                    <label cBy="669" feID="188" end="75" start="61" name="Company"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="41" start="40" name="Ext"/>
+                    <label end="52" start="48" name="Dep"/>
+                    <label end="75" start="61" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="41" start="40" name="NP"/>
+                    <label end="52" start="48" name="AVP"/>
+                    <label end="75" start="61" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="59" start="54" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj">
+                    <label end="46" start="43" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

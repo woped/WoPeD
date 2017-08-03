@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="stain.v" ID="8530" frame="Processing_materials" frameID="620" totalAnnotated="7" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="" name="Agent"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Core" abbrev="Alt" name="Alterant"/>
+            <FE fgColor="000000" bgColor="d0d0d0" type="Extra-Thematic" abbrev="dim" name="Dimension"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Extra-Thematic" abbrev="" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Mat" name="Material"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="pla" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Pur" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Extra-Thematic" abbrev="Rsn" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Extra-Thematic" abbrev="" name="Subregion"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: apply a colorant to a solid for the purpose of coloring it (darker than it originally was).</definition>
+    <lexeme POS="V" name="stain"/>
+    <valences>
+        <FERealization total="7">
+            <FE name="Agent"/>
+            <pattern total="6">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <annoSet ID="2011485"/>
+                <annoSet ID="2011607"/>
+                <annoSet ID="2011613"/>
+                <annoSet ID="2011707"/>
+                <annoSet ID="2011721"/>
+                <annoSet ID="2011775"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <annoSet ID="2011571"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="7">
+            <FE name="Alterant"/>
+            <pattern total="3">
+                <valenceUnit GF="" PT="INI" FE="Alterant"/>
+                <annoSet ID="2011485"/>
+                <annoSet ID="2011613"/>
+                <annoSet ID="2011707"/>
+            </pattern>
+            <pattern total="4">
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Alterant"/>
+                <annoSet ID="2011571"/>
+                <annoSet ID="2011607"/>
+                <annoSet ID="2011721"/>
+                <annoSet ID="2011775"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="7">
+            <FE name="Material"/>
+            <pattern total="5">
+                <valenceUnit GF="Ext" PT="NP" FE="Material"/>
+                <annoSet ID="2011607"/>
+                <annoSet ID="2011613"/>
+                <annoSet ID="2011707"/>
+                <annoSet ID="2011721"/>
+                <annoSet ID="2011775"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Obj" PT="NP" FE="Material"/>
+                <annoSet ID="2011485"/>
+                <annoSet ID="2011571"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Purpose"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Purpose"/>
+                <annoSet ID="2011613"/>
+                <annoSet ID="2011775"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="5">
+            <FE name="Agent"/>
+            <FE name="Alterant"/>
+            <FE name="Material"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <valenceUnit GF="" PT="INI" FE="Alterant"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Material"/>
+                <annoSet ID="2011707"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <valenceUnit GF="" PT="INI" FE="Alterant"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Material"/>
+                <annoSet ID="2011485"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Alterant"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Material"/>
+                <annoSet ID="2011607"/>
+                <annoSet ID="2011721"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Alterant"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Material"/>
+                <annoSet ID="2011571"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Agent"/>
+            <FE name="Alterant"/>
+            <FE name="Material"/>
+            <FE name="Purpose"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <valenceUnit GF="" PT="INI" FE="Alterant"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Material"/>
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Purpose"/>
+                <annoSet ID="2011613"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Alterant"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Material"/>
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Purpose"/>
+                <annoSet ID="2011775"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-NP-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="310" aPos="47858238" ID="1281641">
+            <text>A new chair of stained glass studies has been created at York University to which Richard Marks , formerly Director of the Brighton Pavilion and Brighton Museums , has just been appointed .</text>
+            <annotationSet cDate="10/18/2004 02:53:09 PDT Mon" status="UNANN" ID="2011484">
+                <layer rank="1" name="PENN">
+                    <label end="0" start="0" name="dt"/>
+                    <label end="4" start="2" name="jj"/>
+                    <label end="10" start="6" name="nn"/>
+                    <label end="13" start="12" name="in"/>
+                    <label end="21" start="15" name="VVN"/>
+                    <label end="27" start="23" name="nn"/>
+                    <label end="35" start="29" name="nns"/>
+                    <label end="39" start="37" name="VHZ"/>
+                    <label end="44" start="41" name="VBN"/>
+                    <label end="52" start="46" name="VVN"/>
+                    <label end="55" start="54" name="in"/>
+                    <label end="60" start="57" name="NP"/>
+                    <label end="71" start="62" name="NP"/>
+                    <label end="74" start="73" name="to"/>
+                    <label end="80" start="76" name="wdt"/>
+                    <label end="88" start="82" name="NP"/>
+                    <label end="94" start="90" name="NP"/>
+                    <label end="96" start="96" name=","/>
+                    <label end="105" start="98" name="rb"/>
+                    <label end="114" start="107" name="NP"/>
+                    <label end="117" start="116" name="in"/>
+                    <label end="121" start="119" name="dt"/>
+                    <label end="130" start="123" name="NP"/>
+                    <label end="139" start="132" name="nn"/>
+                    <label end="143" start="141" name="cc"/>
+                    <label end="152" start="145" name="NP"/>
+                    <label end="160" start="154" name="NPS"/>
+                    <label end="162" start="162" name=","/>
+                    <label end="166" start="164" name="VHZ"/>
+                    <label end="171" start="168" name="rb"/>
+                    <label end="176" start="173" name="VBN"/>
+                    <label end="186" start="178" name="VVN"/>
+                    <label end="188" start="188" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/18/2004 02:53:10 PDT Mon" status="MANUAL" ID="2011485">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="21" start="15" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4330" itype="CNI" name="Agent"/>
+                    <label cBy="618" feID="4343" end="27" start="23" name="Material"/>
+                    <label cBy="382" feID="4331" itype="INI" name="Alterant"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="27" start="23" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="27" start="23" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-T-NP-(1)"/>
+    <subCorpus name="03-T-NP-PP-(1)">
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="606" aPos="48446371" ID="1281684">
+            <text>If you accidentally stain walls with woodworm fluid , leave it for a week or two , and if it still shows , coat it with an aluminium primer before redecorating .</text>
+            <annotationSet cDate="10/18/2004 02:53:43 PDT Mon" status="UNANN" ID="2011570">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="in"/>
+                    <label end="5" start="3" name="PP"/>
+                    <label end="18" start="7" name="rb"/>
+                    <label end="24" start="20" name="VV"/>
+                    <label end="30" start="26" name="nns"/>
+                    <label end="35" start="32" name="in"/>
+                    <label end="44" start="37" name="nn"/>
+                    <label end="50" start="46" name="nn"/>
+                    <label end="52" start="52" name=","/>
+                    <label end="58" start="54" name="VV"/>
+                    <label end="61" start="60" name="PP"/>
+                    <label end="65" start="63" name="in"/>
+                    <label end="67" start="67" name="dt"/>
+                    <label end="72" start="69" name="nn"/>
+                    <label end="75" start="74" name="cc"/>
+                    <label end="79" start="77" name="cd"/>
+                    <label end="81" start="81" name=","/>
+                    <label end="85" start="83" name="cc"/>
+                    <label end="88" start="87" name="in"/>
+                    <label end="91" start="90" name="PP"/>
+                    <label end="97" start="93" name="rb"/>
+                    <label end="103" start="99" name="VVZ"/>
+                    <label end="105" start="105" name=","/>
+                    <label end="110" start="107" name="VV"/>
+                    <label end="113" start="112" name="PP"/>
+                    <label end="118" start="115" name="in"/>
+                    <label end="121" start="120" name="dt"/>
+                    <label end="131" start="123" name="nn"/>
+                    <label end="138" start="133" name="nn"/>
+                    <label end="145" start="140" name="in"/>
+                    <label end="158" start="147" name="VVG"/>
+                    <label end="160" start="160" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/18/2004 02:53:44 PDT Mon" status="MANUAL" ID="2011571">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="24" start="20" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4330" end="5" start="3" name="Agent"/>
+                    <label cBy="618" feID="4343" end="30" start="26" name="Material"/>
+                    <label cBy="618" feID="4331" end="50" start="32" name="Alterant"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="5" start="3" name="Ext"/>
+                    <label end="30" start="26" name="Obj"/>
+                    <label end="50" start="32" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="5" start="3" name="NP"/>
+                    <label end="30" start="26" name="NP"/>
+                    <label end="50" start="32" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="04-T-PP-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="1221" aPos="96443862" ID="1281702">
+            <text>Sections were stained with haematoxyling and eosin .</text>
+            <annotationSet cDate="10/18/2004 02:53:57 PDT Mon" status="UNANN" ID="2011606">
+                <layer rank="1" name="PENN">
+                    <label end="7" start="0" name="nns"/>
+                    <label end="12" start="9" name="VBD"/>
+                    <label end="20" start="14" name="VVN"/>
+                    <label end="25" start="22" name="in"/>
+                    <label end="39" start="27" name="nn"/>
+                    <label end="43" start="41" name="cc"/>
+                    <label end="49" start="45" name="nn"/>
+                    <label end="51" start="51" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/18/2004 02:53:57 PDT Mon" status="MANUAL" ID="2011607">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="20" start="14" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4343" end="7" start="0" name="Material"/>
+                    <label cBy="618" feID="4331" end="49" start="22" name="Alterant"/>
+                    <label cBy="618" feID="4330" itype="CNI" name="Agent"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="7" start="0" name="Ext"/>
+                    <label end="49" start="22" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="7" start="0" name="NP"/>
+                    <label end="49" start="22" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="612" aPos="62784248" ID="1281705">
+            <text>` I even had a piece of the same wood specially stained for you . &quot;</text>
+            <annotationSet cDate="10/18/2004 02:53:59 PDT Mon" status="UNANN" ID="2011612">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="2" name="PP"/>
+                    <label end="7" start="4" name="rb"/>
+                    <label end="11" start="9" name="VHD"/>
+                    <label end="13" start="13" name="dt"/>
+                    <label end="19" start="15" name="nn"/>
+                    <label end="22" start="21" name="in"/>
+                    <label end="26" start="24" name="dt"/>
+                    <label end="31" start="28" name="jj"/>
+                    <label end="36" start="33" name="nn"/>
+                    <label end="46" start="38" name="rb"/>
+                    <label end="54" start="48" name="VVD"/>
+                    <label end="58" start="56" name="in"/>
+                    <label end="62" start="60" name="PP"/>
+                    <label end="64" start="64" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/18/2004 02:53:59 PDT Mon" status="MANUAL" ID="2011613">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="54" start="48" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4343" end="36" start="13" name="Material"/>
+                    <label cBy="618" feID="4330" itype="CNI" name="Agent"/>
+                    <label cBy="618" feID="4344" end="62" start="56" name="Purpose"/>
+                    <label cBy="382" feID="4331" itype="INI" name="Alterant"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="36" start="13" name="Ext"/>
+                    <label end="62" start="56" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="36" start="13" name="NP"/>
+                    <label end="62" start="56" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="05-T-NPglass,wood,shirt-(1)"/>
+    <subCorpus name="06-NPglass,wood-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="5" paragNo="1452" aPos="114314595" ID="1281752">
+            <text>The wood was stained and waxed . &quot;</text>
+            <annotationSet cDate="10/18/2004 02:54:35 PDT Mon" status="UNANN" ID="2011706">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="7" start="4" name="nn"/>
+                    <label end="11" start="9" name="VBD"/>
+                    <label end="19" start="13" name="VVN"/>
+                    <label end="23" start="21" name="cc"/>
+                    <label end="29" start="25" name="VVN"/>
+                    <label end="31" start="31" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/18/2004 02:54:35 PDT Mon" status="MANUAL" ID="2011707">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="19" start="13" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4343" end="7" start="0" name="Material"/>
+                    <label cBy="618" feID="4330" itype="CNI" name="Agent"/>
+                    <label cBy="382" feID="4331" itype="INI" name="Alterant"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="7" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="7" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="872" aPos="68905551" ID="1281759">
+            <text>On either side of this , the wood was stained with a dark varnish .</text>
+            <annotationSet cDate="10/18/2004 02:54:40 PDT Mon" status="UNANN" ID="2011720">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="in"/>
+                    <label end="8" start="3" name="dt"/>
+                    <label end="13" start="10" name="nn"/>
+                    <label end="16" start="15" name="in"/>
+                    <label end="21" start="18" name="dt"/>
+                    <label end="23" start="23" name=","/>
+                    <label end="27" start="25" name="dt"/>
+                    <label end="32" start="29" name="nn"/>
+                    <label end="36" start="34" name="VBD"/>
+                    <label end="44" start="38" name="VVN"/>
+                    <label end="49" start="46" name="in"/>
+                    <label end="51" start="51" name="dt"/>
+                    <label end="56" start="53" name="jj"/>
+                    <label end="64" start="58" name="nn"/>
+                    <label end="66" start="66" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/18/2004 02:54:40 PDT Mon" status="MANUAL" ID="2011721">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="44" start="38" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4343" end="32" start="25" name="Material"/>
+                    <label cBy="618" feID="4331" end="64" start="46" name="Alterant"/>
+                    <label cBy="618" feID="4330" itype="CNI" name="Agent"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="32" start="25" name="Ext"/>
+                    <label end="64" start="46" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="32" start="25" name="NP"/>
+                    <label end="64" start="46" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="07-NPanimate-T-(1)"/>
+    <subCorpus name="other-matched-(1)">
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="1619" aPos="96480565" ID="1281786">
+            <text>One section was stained with haematoxylin and eosin for histological evaluation .</text>
+            <annotationSet cDate="10/18/2004 02:55:03 PDT Mon" status="UNANN" ID="2011774">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="cd"/>
+                    <label end="10" start="4" name="nn"/>
+                    <label end="14" start="12" name="VBD"/>
+                    <label end="22" start="16" name="VVN"/>
+                    <label end="27" start="24" name="in"/>
+                    <label end="40" start="29" name="nn"/>
+                    <label end="44" start="42" name="cc"/>
+                    <label end="50" start="46" name="nn"/>
+                    <label end="54" start="52" name="in"/>
+                    <label end="67" start="56" name="jj"/>
+                    <label end="78" start="69" name="nn"/>
+                    <label end="80" start="80" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/18/2004 02:55:03 PDT Mon" status="MANUAL" ID="2011775">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="22" start="16" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4343" end="10" start="0" name="Material"/>
+                    <label cBy="618" feID="4331" end="50" start="24" name="Alterant"/>
+                    <label cBy="618" feID="4344" end="78" start="52" name="Purpose"/>
+                    <label cBy="382" feID="4330" itype="CNI" name="Agent"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="10" start="0" name="Ext"/>
+                    <label end="50" start="24" name="Dep"/>
+                    <label end="78" start="52" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="10" start="0" name="NP"/>
+                    <label end="50" start="24" name="PP"/>
+                    <label end="78" start="52" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

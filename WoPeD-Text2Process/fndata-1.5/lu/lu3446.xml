@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" incorporatedFE="Accoutrement" POS="N" name="yarmulkah.n" ID="3446" frame="Accoutrements" frameID="158" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Acout" name="Accoutrement"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Body_loc" name="Body_location"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Peripheral" abbrev="cre" name="Creator"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="Desc" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="Mat" name="Material"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="nam" name="Name"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Peripheral" abbrev="Part" name="Part"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="Stl" name="Style"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="tim" name="Time_of_creation"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Use" name="Use"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Peripheral" abbrev="Wear" name="Wearer"/>
+        </frame>
+    </header>
+    <definition>COD: a skullcap worn in public by Orthodox Jewish men or during prayer by other Jewish men.  (listed as yarmulke)</definition>
+    <lexeme POS="N" name="yarmulkah"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Accoutrement"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Accoutrement"/>
+                <annoSet ID="548864"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Wearer"/>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Wearer"/>
+                <annoSet ID="548864"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Accoutrement"/>
+            <FE name="Wearer"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Accoutrement"/>
+                <valenceUnit GF="Gen" PT="Poss" FE="Wearer"/>
+                <annoSet ID="548864"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-001-all">
+        <sentence sentNo="0" aPos="54717353" ID="454974">
+            <text>For the first time I noticed the brothers ' yarmulkes in the somewhat subdued light of the boardroom , plain black skullcaps blending in with the pale glow of the room . </text>
+            <annotationSet cDate="01/07/2003 04:34:26 PST Tue" status="UNANN" ID="548863">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="PRP"/>
+                    <label end="6" start="4" name="AT0"/>
+                    <label end="12" start="8" name="ORD"/>
+                    <label end="17" start="14" name="NN1"/>
+                    <label end="19" start="19" name="PNP"/>
+                    <label end="27" start="21" name="VVD"/>
+                    <label end="31" start="29" name="AT0"/>
+                    <label end="40" start="33" name="NN2"/>
+                    <label end="42" start="42" name="POS"/>
+                    <label end="52" start="44" name="NN2"/>
+                    <label end="55" start="54" name="PRP"/>
+                    <label end="59" start="57" name="AT0"/>
+                    <label end="68" start="61" name="AV0"/>
+                    <label end="76" start="70" name="AJ0"/>
+                    <label end="82" start="78" name="NN1"/>
+                    <label end="85" start="84" name="PRF"/>
+                    <label end="89" start="87" name="AT0"/>
+                    <label end="99" start="91" name="NN1"/>
+                    <label end="101" start="101" name="PUN"/>
+                    <label end="107" start="103" name="AJ0-AV0"/>
+                    <label end="113" start="109" name="AJ0"/>
+                    <label end="123" start="115" name="NN2"/>
+                    <label end="132" start="125" name="VVG"/>
+                    <label end="135" start="134" name="AVP"/>
+                    <label end="140" start="137" name="PRP"/>
+                    <label end="144" start="142" name="AT0"/>
+                    <label end="149" start="146" name="AJ0"/>
+                    <label end="154" start="151" name="NN1"/>
+                    <label end="157" start="156" name="PRF"/>
+                    <label end="161" start="159" name="AT0"/>
+                    <label end="166" start="163" name="NN1"/>
+                    <label end="168" start="168" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 04:34:26 PST Tue" status="MANUAL" ID="548864">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="1283" end="42" start="29" name="Wearer"/>
+                    <label cBy="296" feID="1554" end="52" start="44" name="Accoutrement"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="42" start="29" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="42" start="29" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="52" start="44" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

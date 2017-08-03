@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="V" name="do_something_(with_to).v" ID="14334" frame="Intentionally_affect" frameID="230" totalAnnotated="3" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="ANC_r" ID="164">
+            <document description="written_1%fiction%hargrave%OWP%DAS_09" ID="16929"/>
+            <document description="written_1%fiction%eggan%TheStory" ID="18328"/>
+            <document description="written_1%leisure%blog%Buffy%Natter33-2" ID="21116"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Agt" name="Agent"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Extra-Thematic" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core-Unexpressed" abbrev="eve" name="Event"/>
+            <FE fgColor="00008B" bgColor="FFFF00" type="Extra-Thematic" abbrev="" name="Event_description"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Extra-Thematic" abbrev="Ins" name="Instrument"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Mnr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Pat" name="Patient"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="Reason" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: affect (an entity) by some unspecified action.</definition>
+    <lexeme order="1" headword="true" breakBefore="false" POS="V" name="do"/>
+    <lexeme order="2" headword="false" breakBefore="false" POS="N" name="something"/>
+    <valences>
+        <FERealization total="3">
+            <FE name="Agent"/>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <annoSet ID="2611526"/>
+                <annoSet ID="2611556"/>
+                <annoSet ID="2611572"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Patient"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Patient"/>
+                <annoSet ID="2611526"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Patient"/>
+                <annoSet ID="2611556"/>
+                <annoSet ID="2611572"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="3">
+            <FE name="Agent"/>
+            <FE name="Patient"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Patient"/>
+                <annoSet ID="2611526"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Patient"/>
+                <annoSet ID="2611556"/>
+                <annoSet ID="2611572"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-something-(1)"/>
+    <subCorpus name="02-other-matched-(1)"/>
+    <subCorpus name="03-other-unmatched-(1)"/>
+    <subCorpus name="01-something-(2)"/>
+    <subCorpus name="02-other-matched-(2)">
+        <sentence corpID="164" docID="16929" sentNo="14" paragNo="40" aPos="0" ID="1587688">
+            <text>I would almost rather that Jeremy had the weird and rare genetic condition , or that the monk should be the fall guy , than to think that Louise was doing something to him .</text>
+            <annotationSet cDate="08/27/2010 12:44:18 PDT Fri" status="UNANN" ID="2611525">
+                <layer rank="1" name="PENN">
+                    <label end="0" start="0" name="PRP"/>
+                    <label end="6" start="2" name="md"/>
+                    <label end="13" start="8" name="rb"/>
+                    <label end="20" start="15" name="rb"/>
+                    <label end="25" start="22" name="in"/>
+                    <label end="32" start="27" name="NNP"/>
+                    <label end="36" start="34" name="VBD"/>
+                    <label end="40" start="38" name="dt"/>
+                    <label end="46" start="42" name="jj"/>
+                    <label end="50" start="48" name="cc"/>
+                    <label end="55" start="52" name="jj"/>
+                    <label end="63" start="57" name="jj"/>
+                    <label end="73" start="65" name="nn"/>
+                    <label end="75" start="75" name=","/>
+                    <label end="78" start="77" name="cc"/>
+                    <label end="83" start="80" name="in"/>
+                    <label end="87" start="85" name="dt"/>
+                    <label end="92" start="89" name="nn"/>
+                    <label end="99" start="94" name="md"/>
+                    <label end="102" start="101" name="vb"/>
+                    <label end="106" start="104" name="dt"/>
+                    <label end="111" start="108" name="nn"/>
+                    <label end="115" start="113" name="nn"/>
+                    <label end="117" start="117" name=","/>
+                    <label end="122" start="119" name="in"/>
+                    <label end="125" start="124" name="to"/>
+                    <label end="131" start="127" name="vb"/>
+                    <label end="136" start="133" name="in"/>
+                    <label end="143" start="138" name="NNP"/>
+                    <label end="147" start="145" name="VBD"/>
+                    <label end="153" start="149" name="VBG"/>
+                    <label end="163" start="155" name="nn"/>
+                    <label end="166" start="165" name="to"/>
+                    <label end="170" start="168" name="PRP"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="08/27/2010 12:44:18 PDT Fri" status="MANUAL" ID="2611526">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="163" start="149" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="2000" end="143" start="138" name="Agent"/>
+                    <label cBy="589" feID="2006" end="170" start="165" name="Patient"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="143" start="138" name="Ext"/>
+                    <label end="170" start="165" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="143" start="138" name="NP"/>
+                    <label end="170" start="165" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="164" docID="21116" sentNo="2" paragNo="128" aPos="0" ID="1587703">
+            <text>And if you do something with the stuff you want , and there are consequences .</text>
+            <annotationSet cDate="08/27/2010 12:44:22 PDT Fri" status="UNANN" ID="2611555">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="cc"/>
+                    <label end="5" start="4" name="in"/>
+                    <label end="9" start="7" name="PRP"/>
+                    <label end="12" start="11" name="vbp"/>
+                    <label end="22" start="14" name="nn"/>
+                    <label end="27" start="24" name="in"/>
+                    <label end="31" start="29" name="dt"/>
+                    <label end="37" start="33" name="nn"/>
+                    <label end="41" start="39" name="PRP"/>
+                    <label end="46" start="43" name="vbp"/>
+                    <label end="48" start="48" name=","/>
+                    <label end="52" start="50" name="cc"/>
+                    <label end="58" start="54" name="ex"/>
+                    <label end="62" start="60" name="vbp"/>
+                    <label end="75" start="64" name="nns"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="08/27/2010 12:44:22 PDT Fri" status="MANUAL" ID="2611556">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="22" start="11" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="2000" end="9" start="7" name="Agent"/>
+                    <label cBy="589" feID="2006" end="46" start="24" name="Patient"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="9" start="7" name="Ext"/>
+                    <label end="46" start="24" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="9" start="7" name="NP"/>
+                    <label end="46" start="24" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="164" docID="18328" sentNo="1" paragNo="646" aPos="0" ID="1587711">
+            <text>&quot; The truth is unless we can do something with these plants , they wo n't be globally competitive , &quot; said Mr . Timken , who recently stepped down as chairman of the National Association of Manufacturers .</text>
+            <annotationSet cDate="08/27/2010 12:44:24 PDT Fri" status="UNANN" ID="2611571">
+                <layer rank="1" name="PENN">
+                    <label end="0" start="0" name="''"/>
+                    <label end="4" start="2" name="dt"/>
+                    <label end="10" start="6" name="nn"/>
+                    <label end="13" start="12" name="VBZ"/>
+                    <label end="20" start="15" name="in"/>
+                    <label end="23" start="22" name="PRP"/>
+                    <label end="27" start="25" name="md"/>
+                    <label end="30" start="29" name="vb"/>
+                    <label end="40" start="32" name="nn"/>
+                    <label end="45" start="42" name="in"/>
+                    <label end="51" start="47" name="dt"/>
+                    <label end="58" start="53" name="nns"/>
+                    <label end="60" start="60" name=","/>
+                    <label end="65" start="62" name="PRP"/>
+                    <label end="68" start="67" name="md"/>
+                    <label end="72" start="70" name="rb"/>
+                    <label end="75" start="74" name="vb"/>
+                    <label end="84" start="77" name="rb"/>
+                    <label end="96" start="86" name="jj"/>
+                    <label end="98" start="98" name=","/>
+                    <label end="100" start="100" name="''"/>
+                    <label end="105" start="102" name="VBD"/>
+                    <label end="108" start="107" name="NNP"/>
+                    <label end="117" start="112" name="NNP"/>
+                    <label end="119" start="119" name=","/>
+                    <label end="123" start="121" name="wp"/>
+                    <label end="132" start="125" name="rb"/>
+                    <label end="140" start="134" name="VBD"/>
+                    <label end="145" start="142" name="rb"/>
+                    <label end="148" start="147" name="in"/>
+                    <label end="157" start="150" name="nn"/>
+                    <label end="160" start="159" name="in"/>
+                    <label end="164" start="162" name="dt"/>
+                    <label end="173" start="166" name="NNP"/>
+                    <label end="185" start="175" name="NNP"/>
+                    <label end="188" start="187" name="in"/>
+                    <label end="202" start="190" name="nnps"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="08/27/2010 12:44:25 PDT Fri" status="MANUAL" ID="2611572">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="40" start="29" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="2000" end="23" start="22" name="Agent"/>
+                    <label cBy="589" feID="2006" end="58" start="42" name="Patient"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="23" start="22" name="Ext"/>
+                    <label end="58" start="42" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="23" start="22" name="NP"/>
+                    <label end="58" start="42" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="03-other-unmatched-(2)"/>
+</lexUnit>

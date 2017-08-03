@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Add_Annotation" POS="N" name="henchman.n" ID="8210" frame="Subordinates_and_superiors" frameID="530" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp=1950" ID="18924"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core" abbrev="Sub" name="Subordinate"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Com" name="Superior"/>
+        </frame>
+    </header>
+    <definition>COD: a faithful follower or political supporter, especially one prepared to engage in crime or dishonest practices.</definition>
+    <lexeme POS="N" name="henchman"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Subordinate"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Subordinate"/>
+                <annoSet ID="2581818"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Superior"/>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Superior"/>
+                <annoSet ID="2581818"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Subordinate"/>
+            <FE name="Superior"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Subordinate"/>
+                <valenceUnit GF="Gen" PT="Poss" FE="Superior"/>
+                <annoSet ID="2581818"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-object_of-(1)"/>
+    <subCorpus name="02-subject_of-(1)"/>
+    <subCorpus name="03-a_modifier-(1)"/>
+    <subCorpus name="04-n_modifier+modifies-(1)"/>
+    <subCorpus name="05-and/or-(1)"/>
+    <subCorpus name="06-pp_with-p-(1)"/>
+    <subCorpus name="07-possessor-(1)">
+        <sentence corpID="111" docID="18924" sentNo="3" paragNo="776" aPos="0" ID="1573602">
+            <text>Stalin 's corpse had n't even grown cold before they had taken Beria , the dead leader 's chief henchman and the most powerful chairman the KGB had ever had , dragged him screaming out of a Politburo meeting and shot him .</text>
+            <annotationSet cDate="07/14/2010 05:30:37 PDT Wed" status="UNANN" ID="2581817">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="0" name="NP"/>
+                    <label end="8" start="7" name="POS"/>
+                    <label end="15" start="10" name="nn"/>
+                    <label end="19" start="17" name="VHD"/>
+                    <label end="23" start="21" name="rb"/>
+                    <label end="28" start="25" name="rb"/>
+                    <label end="34" start="30" name="VVN"/>
+                    <label end="39" start="36" name="jj"/>
+                    <label end="46" start="41" name="in"/>
+                    <label end="51" start="48" name="PP"/>
+                    <label end="55" start="53" name="VHD"/>
+                    <label end="61" start="57" name="VVN"/>
+                    <label end="67" start="63" name="NP"/>
+                    <label end="69" start="69" name=","/>
+                    <label end="73" start="71" name="dt"/>
+                    <label end="78" start="75" name="jj"/>
+                    <label end="85" start="80" name="nn"/>
+                    <label end="88" start="87" name="POS"/>
+                    <label end="94" start="90" name="jj"/>
+                    <label end="103" start="96" name="nn"/>
+                    <label end="107" start="105" name="cc"/>
+                    <label end="111" start="109" name="dt"/>
+                    <label end="116" start="113" name="rbs"/>
+                    <label end="125" start="118" name="jj"/>
+                    <label end="134" start="127" name="nn"/>
+                    <label end="138" start="136" name="dt"/>
+                    <label end="142" start="140" name="NP"/>
+                    <label end="146" start="144" name="VHD"/>
+                    <label end="151" start="148" name="rb"/>
+                    <label end="155" start="153" name="VHN"/>
+                    <label end="157" start="157" name=","/>
+                    <label end="165" start="159" name="VVD"/>
+                    <label end="169" start="167" name="PP"/>
+                    <label end="179" start="171" name="VVG"/>
+                    <label end="183" start="181" name="rp"/>
+                    <label end="186" start="185" name="in"/>
+                    <label end="188" start="188" name="dt"/>
+                    <label end="198" start="190" name="NP"/>
+                    <label end="206" start="200" name="nn"/>
+                    <label end="210" start="208" name="cc"/>
+                    <label end="215" start="212" name="VVD"/>
+                    <label end="219" start="217" name="PP"/>
+                    <label end="221" start="221" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/14/2010 05:30:37 PDT Wed" status="MANUAL" ID="2581818">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="103" start="96" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="4141" end="103" start="96" name="Subordinate"/>
+                    <label cBy="589" feID="4140" end="88" start="71" name="Superior"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="88" start="71" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="88" start="71" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="08-pp_of-p-(1)"/>
+    <subCorpus name="09-other-matched-(1)"/>
+    <subCorpus name="10-other-unmatched-(1)"/>
+</lexUnit>

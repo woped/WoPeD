@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="beget.v" ID="5155" frame="Birth" frameID="281" totalAnnotated="4" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Child" name="Child"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Extra-Thematic" abbrev="cir" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Depict" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Core" abbrev="Egg" name="Egg"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Pop" name="Father"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Peripheral" abbrev="man" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Mom" name="Mother"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Core" abbrev="Par" name="Parents"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Extra-Thematic" abbrev="" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: produce (a child). </definition>
+    <lexeme POS="V" name="beget"/>
+    <valences>
+        <FERealization total="4">
+            <FE name="Child"/>
+            <pattern total="4">
+                <valenceUnit GF="Obj" PT="NP" FE="Child"/>
+                <annoSet ID="1098447"/>
+                <annoSet ID="1098463"/>
+                <annoSet ID="1098465"/>
+                <annoSet ID="1098521"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Father"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Father"/>
+                <annoSet ID="1098463"/>
+                <annoSet ID="1098465"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Mother"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Mother"/>
+                <annoSet ID="1098447"/>
+                <annoSet ID="1098521"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Child"/>
+            <FE name="Father"/>
+            <pattern total="2">
+                <valenceUnit GF="Obj" PT="NP" FE="Child"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Father"/>
+                <annoSet ID="1098463"/>
+                <annoSet ID="1098465"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Child"/>
+            <FE name="Mother"/>
+            <pattern total="2">
+                <valenceUnit GF="Obj" PT="NP" FE="Child"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Mother"/>
+                <annoSet ID="1098447"/>
+                <annoSet ID="1098521"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-001-all">
+        <sentence sentNo="0" aPos="3863579" ID="820913">
+            <text>Also there had been a note of incredulity in Vigo 's voice as if he marvelled at such an old goose begetting a swan . </text>
+            <annotationSet cDate="01/07/2003 03:48:17 PST Tue" status="UNANN" ID="1098446">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="AV0"/>
+                    <label end="9" start="5" name="EX0"/>
+                    <label end="13" start="11" name="VHD"/>
+                    <label end="18" start="15" name="VBN"/>
+                    <label end="20" start="20" name="AT0"/>
+                    <label end="25" start="22" name="NN1"/>
+                    <label end="28" start="27" name="PRF"/>
+                    <label end="40" start="30" name="NN1"/>
+                    <label end="43" start="42" name="PRP"/>
+                    <label end="48" start="45" name="NP0"/>
+                    <label end="51" start="50" name="POS"/>
+                    <label end="57" start="53" name="NN1"/>
+                    <label end="60" start="59" name="CJS"/>
+                    <label end="63" start="62" name="CJS"/>
+                    <label end="66" start="65" name="PNP"/>
+                    <label end="76" start="68" name="VVD"/>
+                    <label end="79" start="78" name="PRP"/>
+                    <label end="84" start="81" name="DT0"/>
+                    <label end="87" start="86" name="AT0"/>
+                    <label end="91" start="89" name="AJ0"/>
+                    <label end="97" start="93" name="NN1"/>
+                    <label end="107" start="99" name="VVG"/>
+                    <label end="109" start="109" name="AT0"/>
+                    <label end="114" start="111" name="NN1"/>
+                    <label end="116" start="116" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:48:17 PST Tue" status="MANUAL" ID="1098447">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="2439" end="97" start="86" name="Mother"/>
+                    <label cBy="669" feID="2440" end="114" start="109" name="Child"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="97" start="86" name="Ext"/>
+                    <label end="114" start="109" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="97" start="86" name="NP"/>
+                    <label end="114" start="109" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="107" start="99" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="21279177" ID="820921">
+            <text>In 1238 Alexander III's father promised me the crown but then he married again and begat Alexander , the third of that name , and the up was dashed from my lips . </text>
+            <annotationSet cDate="01/07/2003 03:48:18 PST Tue" status="UNANN" ID="1098462">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PRP"/>
+                    <label end="6" start="3" name="CRD"/>
+                    <label end="16" start="8" name="NP0"/>
+                    <label end="22" start="18" name="CRD"/>
+                    <label end="29" start="24" name="NN1"/>
+                    <label end="38" start="31" name="VVN"/>
+                    <label end="41" start="40" name="PNP"/>
+                    <label end="45" start="43" name="AT0"/>
+                    <label end="51" start="47" name="NN1"/>
+                    <label end="55" start="53" name="CJC"/>
+                    <label end="60" start="57" name="AV0"/>
+                    <label end="63" start="62" name="PNP"/>
+                    <label end="71" start="65" name="VVD"/>
+                    <label end="77" start="73" name="AV0"/>
+                    <label end="81" start="79" name="CJC"/>
+                    <label end="87" start="83" name="VVB"/>
+                    <label end="97" start="89" name="NP0"/>
+                    <label end="99" start="99" name="PUN"/>
+                    <label end="103" start="101" name="AT0"/>
+                    <label end="109" start="105" name="ORD"/>
+                    <label end="112" start="111" name="PRF"/>
+                    <label end="117" start="114" name="DT0"/>
+                    <label end="122" start="119" name="NN1"/>
+                    <label end="124" start="124" name="PUN"/>
+                    <label end="128" start="126" name="CJC"/>
+                    <label end="132" start="130" name="AT0"/>
+                    <label end="135" start="134" name="AVP"/>
+                    <label end="139" start="137" name="VBD"/>
+                    <label end="146" start="141" name="VVN"/>
+                    <label end="151" start="148" name="PRP"/>
+                    <label end="154" start="153" name="DPS"/>
+                    <label end="159" start="156" name="NN2"/>
+                    <label end="161" start="161" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:48:18 PST Tue" status="MANUAL" ID="1098463">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="2440" end="97" start="89" name="Child"/>
+                    <label cBy="669" feID="2441" end="63" start="62" name="Father"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="97" start="89" name="Obj"/>
+                    <label end="63" start="62" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="97" start="89" name="NP"/>
+                    <label end="63" start="62" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="87" start="83" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="21279217" ID="820922">
+            <text>Then Alexander became king , with no living heir and married his French paramour , lusting after her , proclaiming he would beget an heir . </text>
+            <annotationSet cDate="01/07/2003 03:48:18 PST Tue" status="UNANN" ID="1098464">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="AV0"/>
+                    <label end="13" start="5" name="NP0"/>
+                    <label end="20" start="15" name="VVD"/>
+                    <label end="25" start="22" name="NN1"/>
+                    <label end="27" start="27" name="PUN"/>
+                    <label end="32" start="29" name="PRP"/>
+                    <label end="35" start="34" name="AT0"/>
+                    <label end="42" start="37" name="AJ0"/>
+                    <label end="47" start="44" name="NN1"/>
+                    <label end="51" start="49" name="CJC"/>
+                    <label end="59" start="53" name="VVD-VVN"/>
+                    <label end="63" start="61" name="DPS"/>
+                    <label end="70" start="65" name="AJ0-NN1"/>
+                    <label end="79" start="72" name="NN1"/>
+                    <label end="81" start="81" name="PUN"/>
+                    <label end="89" start="83" name="VVG"/>
+                    <label end="95" start="91" name="CJS-PRP"/>
+                    <label end="99" start="97" name="PNP"/>
+                    <label end="101" start="101" name="PUN"/>
+                    <label end="113" start="103" name="VVG"/>
+                    <label end="116" start="115" name="PNP"/>
+                    <label end="122" start="118" name="VM0"/>
+                    <label end="128" start="124" name="VVI"/>
+                    <label end="131" start="130" name="AT0"/>
+                    <label end="136" start="133" name="NN1"/>
+                    <label end="138" start="138" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:48:18 PST Tue" status="MANUAL" ID="1098465">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="2441" end="116" start="115" name="Father"/>
+                    <label cBy="669" feID="2440" end="136" start="130" name="Child"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="116" start="115" name="Ext"/>
+                    <label end="136" start="130" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="116" start="115" name="NP"/>
+                    <label end="136" start="130" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="128" start="124" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="89141215" ID="820950">
+            <text>The many-to-many relationship between the entity PARENT and the entity CHILD is 2:n ( that is , each child has two parents ) ; but a PARENT can beget more than one CHILD . </text>
+            <annotationSet cDate="01/07/2003 03:48:21 PST Tue" status="UNANN" ID="1098520">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="15" start="4" name="DT0"/>
+                    <label end="28" start="17" name="NN1"/>
+                    <label end="36" start="30" name="PRP"/>
+                    <label end="40" start="38" name="AT0"/>
+                    <label end="47" start="42" name="NN1"/>
+                    <label end="54" start="49" name="NN1"/>
+                    <label end="58" start="56" name="CJC"/>
+                    <label end="62" start="60" name="AT0"/>
+                    <label end="69" start="64" name="NN1"/>
+                    <label end="75" start="71" name="NN1"/>
+                    <label end="78" start="77" name="VBZ"/>
+                    <label end="82" start="80" name="UNC"/>
+                    <label end="84" start="84" name="PUL"/>
+                    <label end="89" start="86" name="AV0"/>
+                    <label end="92" start="91" name="AV0"/>
+                    <label end="94" start="94" name="PUN"/>
+                    <label end="99" start="96" name="DT0"/>
+                    <label end="105" start="101" name="NN1"/>
+                    <label end="109" start="107" name="VHZ"/>
+                    <label end="113" start="111" name="CRD"/>
+                    <label end="121" start="115" name="NN2"/>
+                    <label end="123" start="123" name="PUR"/>
+                    <label end="125" start="125" name="PUN"/>
+                    <label end="129" start="127" name="CJC"/>
+                    <label end="131" start="131" name="AT0"/>
+                    <label end="138" start="133" name="NN1"/>
+                    <label end="142" start="140" name="VM0"/>
+                    <label end="148" start="144" name="VVI"/>
+                    <label end="153" start="150" name="AV0"/>
+                    <label end="158" start="155" name="AV0"/>
+                    <label end="162" start="160" name="CRD"/>
+                    <label end="168" start="164" name="NN1"/>
+                    <label end="170" start="170" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:48:21 PST Tue" status="MANUAL" ID="1098521">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="2439" end="138" start="131" name="Mother"/>
+                    <label cBy="669" feID="2440" end="168" start="150" name="Child"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="138" start="131" name="Ext"/>
+                    <label end="168" start="150" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="138" start="131" name="NP"/>
+                    <label end="168" start="150" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="148" start="144" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

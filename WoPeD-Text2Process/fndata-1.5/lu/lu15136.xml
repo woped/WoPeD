@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="V" name="destroy.v" ID="15136" frame="Experiencer_obj" frameID="47" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="Circ" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Exp" name="Experiencer"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Extra-Thematic" abbrev="Exp" name="Explanation"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Extra-Thematic" abbrev="Result" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Stimulus" name="Stimulus"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: cause emotional damage to </definition>
+    <lexeme POS="V" name="destroy"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Experiencer"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Experiencer"/>
+                <annoSet ID="2426035"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Stimulus"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Stimulus"/>
+                <annoSet ID="2426035"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Experiencer"/>
+            <FE name="Stimulus"/>
+            <FE name="Stimulus"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Experiencer"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Stimulus"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Stimulus"/>
+                <annoSet ID="2426035"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="02-NP-T-NPher,him,them-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="2014" aPos="107421882" ID="1489689">
+            <text>She should have left Rome as she 'd planned , she should never have looked into her heart and discovered a truth that could destroy her .</text>
+            <annotationSet cDate="06/23/2008 04:27:32 PDT Mon" status="UNANN" ID="2426034">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="PP"/>
+                    <label end="9" start="4" name="md"/>
+                    <label end="14" start="11" name="VH"/>
+                    <label end="19" start="16" name="VVN"/>
+                    <label end="24" start="21" name="NP"/>
+                    <label end="27" start="26" name="in"/>
+                    <label end="31" start="29" name="PP"/>
+                    <label end="34" start="33" name="VHD"/>
+                    <label end="42" start="36" name="VVN"/>
+                    <label end="44" start="44" name=","/>
+                    <label end="48" start="46" name="PP"/>
+                    <label end="55" start="50" name="md"/>
+                    <label end="61" start="57" name="rb"/>
+                    <label end="66" start="63" name="VH"/>
+                    <label end="73" start="68" name="VVN"/>
+                    <label end="78" start="75" name="in"/>
+                    <label end="82" start="80" name="PP$"/>
+                    <label end="88" start="84" name="nn"/>
+                    <label end="92" start="90" name="cc"/>
+                    <label end="103" start="94" name="VVD"/>
+                    <label end="105" start="105" name="dt"/>
+                    <label end="111" start="107" name="nn"/>
+                    <label end="116" start="113" name="wdt"/>
+                    <label end="122" start="118" name="md"/>
+                    <label end="130" start="124" name="VV"/>
+                    <label end="134" start="132" name="PP"/>
+                    <label end="136" start="136" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="06/23/2008 04:27:33 PDT Mon" status="MANUAL" ID="2426035">
+                <layer rank="1" name="Target">
+                    <label cBy="361" end="130" start="124" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="199" end="111" start="105" name="Stimulus"/>
+                    <label cBy="597" feID="199" end="116" start="113" name="Stimulus"/>
+                    <label cBy="597" feID="198" end="134" start="132" name="Experiencer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="111" start="105" name="Ext"/>
+                    <label end="116" start="113" name="Ext"/>
+                    <label end="134" start="132" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="111" start="105" name="NP"/>
+                    <label end="116" start="113" name="NP"/>
+                    <label end="134" start="132" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other">
+                    <label end="111" start="105" name="Ant"/>
+                    <label end="116" start="113" name="Rel"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="04-NPhe,she,them-T-(1)"/>
+    <subCorpus name="07-NPillusion,dream,confidence-T-(1)"/>
+    <subCorpus name="08-NP-T-NPillusion,dream,confidence-(1)"/>
+    <subCorpus name="09-NP-AVP-T-NP-(1)"/>
+    <subCorpus name="10-NP-T-AVP-NP-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

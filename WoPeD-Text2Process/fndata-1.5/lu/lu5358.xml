@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" POS="V" name="hail.v" ID="5358" frame="Mass_motion" frameID="284" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Area" name="Area"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="dir" name="Direction"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Peripheral" abbrev="Dist" name="Distance"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Dur" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Goal" name="Goal"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Thm" name="Mass_theme"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Peripheral" abbrev="MoT" name="Mode_of_transportation"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Path" name="Path"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="" name="Place"/>
+            <FE fgColor="000000" bgColor="7FFF00" type="Peripheral" abbrev="pur" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="Src" name="Source"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Spd" name="Speed"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: fall destructively in copious quantities.</definition>
+    <lexeme POS="V" name="hail"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Mass_theme"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Mass_theme"/>
+                <annoSet ID="1149026"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Path"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Path"/>
+                <annoSet ID="1149026"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Mass_theme"/>
+            <FE name="Path"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Mass_theme"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Path"/>
+                <annoSet ID="1149026"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-670-s20-pass-by"/>
+    <subCorpus name="V-680-s20-pass"/>
+    <subCorpus name="V-780-s20-ppother"/>
+    <subCorpus name="V-810-s20-pother"/>
+    <subCorpus name="V-820-s20-avpdown">
+        <sentence sentNo="0" aPos="71256120" ID="846267">
+            <text>They hailed down and clinked on the ramparts . </text>
+            <annotationSet cDate="01/07/2003 04:45:51 PST Tue" status="UNANN" ID="1149025">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="PNP"/>
+                    <label end="10" start="5" name="VVD"/>
+                    <label end="15" start="12" name="AVP"/>
+                    <label end="19" start="17" name="CJC"/>
+                    <label end="27" start="21" name="VVD"/>
+                    <label end="30" start="29" name="PRP"/>
+                    <label end="34" start="32" name="AT0"/>
+                    <label end="43" start="36" name="NN2"/>
+                    <label end="45" start="45" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 04:45:51 PST Tue" status="MANUAL" ID="1149026">
+                <layer rank="1" name="FE">
+                    <label cBy="900" feID="2458" end="3" start="0" name="Mass_theme"/>
+                    <label cBy="900" feID="2464" end="15" start="12" name="Path"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="3" start="0" name="Ext"/>
+                    <label end="15" start="12" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="3" start="0" name="NP"/>
+                    <label end="15" start="12" name="AVP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="10" start="5" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-870-s20-avpother"/>
+    <subCorpus name="V-880-s20-intrans-simple"/>
+    <subCorpus name="V-890-s20-intrans-adverb"/>
+    <subCorpus name="V-900-s20-other"/>
+</lexUnit>

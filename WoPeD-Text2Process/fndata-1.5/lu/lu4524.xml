@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="N" name="tie.n" ID="4524" frame="Social_connection" frameID="253" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp=1239" ID="17443"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Core" abbrev="Cnx" name="Connection"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Ind1" name="Individual1"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Ind2" name="Individual2"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Indiv" name="Individuals"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD7C" type="Peripheral" abbrev="Typ" name="Type"/>
+        </frame>
+    </header>
+    <definition>FN: something that serves as a connecting link in a relationship (as a bond of kinship or affection)</definition>
+    <lexeme POS="N" name="tie"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Connection"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Connection"/>
+                <annoSet ID="2583149"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Individual1"/>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Individual1"/>
+                <annoSet ID="2583149"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Individual2"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Individual2"/>
+                <annoSet ID="2583149"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Type"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Type"/>
+                <annoSet ID="2583149"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Connection"/>
+            <FE name="Individual1"/>
+            <FE name="Individual2"/>
+            <FE name="Type"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Connection"/>
+                <valenceUnit GF="Gen" PT="Poss" FE="Individual1"/>
+                <valenceUnit GF="" PT="INI" FE="Individual2"/>
+                <valenceUnit GF="Dep" PT="N" FE="Type"/>
+                <annoSet ID="2583149"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-possessor-(1)">
+        <sentence corpID="111" docID="17443" sentNo="3" paragNo="364" aPos="0" ID="1574266">
+            <text>The author uses this latter column to mention the artist 's family ties , associations with rulers , where they exhibited and how they signed .</text>
+            <annotationSet cDate="07/15/2010 10:42:15 PDT Thu" status="UNANN" ID="2583148">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="9" start="4" name="nn"/>
+                    <label end="14" start="11" name="VVZ"/>
+                    <label end="19" start="16" name="dt"/>
+                    <label end="26" start="21" name="jj"/>
+                    <label end="33" start="28" name="nn"/>
+                    <label end="36" start="35" name="to"/>
+                    <label end="44" start="38" name="VV"/>
+                    <label end="48" start="46" name="dt"/>
+                    <label end="55" start="50" name="nn"/>
+                    <label end="58" start="57" name="POS"/>
+                    <label end="65" start="60" name="nn"/>
+                    <label end="70" start="67" name="nns"/>
+                    <label end="72" start="72" name=","/>
+                    <label end="85" start="74" name="nns"/>
+                    <label end="90" start="87" name="in"/>
+                    <label end="97" start="92" name="nns"/>
+                    <label end="99" start="99" name=","/>
+                    <label end="105" start="101" name="wrb"/>
+                    <label end="110" start="107" name="PP"/>
+                    <label end="120" start="112" name="VVN"/>
+                    <label end="124" start="122" name="cc"/>
+                    <label end="128" start="126" name="wrb"/>
+                    <label end="133" start="130" name="PP"/>
+                    <label end="140" start="135" name="VVD"/>
+                    <label end="142" start="142" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/15/2010 10:42:15 PDT Thu" status="MANUAL" ID="2583149">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="70" start="67" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="3653" end="70" start="67" name="Connection"/>
+                    <label cBy="589" feID="3650" end="58" start="50" name="Individual1"/>
+                    <label cBy="589" feID="3654" end="65" start="60" name="Type"/>
+                    <label cBy="589" feID="3651" itype="INI" name="Individual2"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="58" start="50" name="Gen"/>
+                    <label end="65" start="60" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="58" start="50" name="Poss"/>
+                    <label end="65" start="60" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-other-matched-(1)"/>
+    <subCorpus name="03-other-unmatched-(1)"/>
+</lexUnit>

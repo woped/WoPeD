@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" POS="V" name="swell.v" ID="9502" frame="Cause_change_of_position_on_a_scale" frameID="96" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="" name="Agent"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Core" abbrev="Variable" name="Attribute"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Core" abbrev="Cause" name="Cause"/>
+            <FE fgColor="800080" bgColor="EEE8AA" type="Extra-Thematic" abbrev="Co-Variable" name="Co_Variable"/>
+            <FE fgColor="006400" bgColor="FFFF00" type="Peripheral" abbrev="Difference" name="Difference"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Core" abbrev="Item" name="Item"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Mnr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="Path" name="Path"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FF69B4" bgColor="000000" type="Extra-Thematic" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="000000" bgColor="2E8B57" type="Peripheral" abbrev="Speed" name="Speed"/>
+            <FE fgColor="000000" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Peripheral" abbrev="" name="Value_1"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="" name="Value_2"/>
+        </frame>
+    </header>
+    <definition>COD: become or make greater in intensity, amount, or volume.</definition>
+    <lexeme POS="V" name="swell"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Cause"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Cause"/>
+                <annoSet ID="1761586"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Item"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Item"/>
+                <annoSet ID="1761586"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Value_2"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Value_2"/>
+                <annoSet ID="1761586"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Cause"/>
+            <FE name="Item"/>
+            <FE name="Value_2"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Cause"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Item"/>
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Value_2"/>
+                <annoSet ID="1761586"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-570-np-ppto">
+        <sentence sentNo="0" aPos="43306645" ID="1155619">
+            <text>Useful contributions from the tail swelled the score to 451 , leaving India a distant victory target of 372 . </text>
+            <annotationSet cDate="01/08/2003 04:42:32 PST Wed" status="UNANN" ID="1761585">
+                <layer rank="1" name="BNC">
+                    <label end="5" start="0" name="AJ0"/>
+                    <label end="19" start="7" name="NN2"/>
+                    <label end="24" start="21" name="PRP"/>
+                    <label end="28" start="26" name="AT0"/>
+                    <label end="33" start="30" name="NN1"/>
+                    <label end="41" start="35" name="VVD"/>
+                    <label end="45" start="43" name="AT0"/>
+                    <label end="51" start="47" name="NN1"/>
+                    <label end="54" start="53" name="PRP"/>
+                    <label end="58" start="56" name="CRD"/>
+                    <label end="60" start="60" name="PUN"/>
+                    <label end="68" start="62" name="VVG"/>
+                    <label end="74" start="70" name="NP0"/>
+                    <label end="76" start="76" name="AT0"/>
+                    <label end="84" start="78" name="AJ0"/>
+                    <label end="92" start="86" name="NN1"/>
+                    <label end="99" start="94" name="NN1"/>
+                    <label end="102" start="101" name="PRF"/>
+                    <label end="106" start="104" name="CRD"/>
+                    <label end="108" start="108" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 04:42:32 PST Wed" status="MANUAL" ID="1761586">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="467" end="51" start="43" name="Item"/>
+                    <label cBy="103" feID="463" end="58" start="53" name="Value_2"/>
+                    <label cBy="618" feID="2405" end="33" start="0" name="Cause"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="51" start="43" name="Obj"/>
+                    <label end="58" start="53" name="Dep"/>
+                    <label end="33" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="51" start="43" name="NP"/>
+                    <label end="58" start="53" name="PP"/>
+                    <label end="33" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="41" start="35" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

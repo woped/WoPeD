@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="145" cDate="03/28/2003 03:59:12 PST Fri" name="Processing_materials" ID="620" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Agent&lt;/fen&gt; alters some &lt;fen&gt;Material&lt;/fen&gt; in some useful way by means of some chemical or physical &lt;fen&gt;Alterant&lt;/fen&gt;.  Typically, this involves placing a reagent in contact with the &lt;fen&gt;Material&lt;/fen&gt;, or applying heat, pressure, etc.  Often a specific &lt;fen&gt;Agent&lt;/fen&gt; and/or &lt;fen&gt;Result&lt;/fen&gt; is mentioned. The &lt;fen&gt;Alterant&lt;/fen&gt; is often incorporated in the target, as in &lt;ment&gt;tin.v, galvanize&lt;/ment&gt;.  (The Preserving frame is a special case of Processing_materials, in which the &lt;fen&gt;Material&lt;/fen&gt; is immersed in the &lt;fen&gt;Alterant&lt;/fen&gt; for the Purpose of preventing decay.)  Processing_materials is distinguished from Filling in that the &lt;fen&gt;Material&lt;/fen&gt; in Processing_materials is fundamentally altered (often chemically), rather than simply being covered with a different substance.
+&lt;ex&gt;&lt;fex name="Agent"&gt;Native Americans&lt;/fex&gt; &lt;t&gt;dyed&lt;/t&gt; &lt;fex name="Material"&gt;textiles&lt;/fex&gt; &lt;fex name="Alterant"&gt;with dyes made from cedar strips&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Material"&gt;Watering cans&lt;/fex&gt; are often &lt;t&gt;&lt;fex name="Alterant"&gt;galvanized&lt;/fex&gt;&lt;/t&gt; &lt;fex name="Purpose"&gt;to prevent rust&lt;/fex&gt;.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="145" cDate="03/28/2003 04:08:14 PST Fri" abbrev="" name="Agent" ID="4330">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Agent&lt;/fen&gt; is a person who applies the Process to the Material.&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Core" cBy="145" cDate="03/28/2003 04:12:05 PST Fri" abbrev="Alt" name="Alterant" ID="4331">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Alterant&lt;/fen&gt; causes a change in the &lt;fen&gt;Material&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="04/02/2003 04:33:07 PST Wed" abbrev="Mat" name="Material" ID="4343">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Material&lt;/fen&gt; is altered by the &lt;fen&gt;Agent&lt;/fen&gt; in some useful way.
+&lt;ex&gt;Stu &lt;t&gt;treated&lt;/t&gt; &lt;fex name="Mat"&gt;the lumber&lt;/fex&gt; with magical waterproofing fairydust.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="04/02/2003 04:52:22 PST Wed" abbrev="Pur" name="Purpose" ID="4344">
+        <definition>&lt;def-root&gt;The purpose for which the &lt;fen&gt;Agent&lt;/fen&gt; processes the &lt;fen&gt;Material&lt;/fen&gt;.
+&lt;ex&gt;He &lt;t&gt;treated&lt;/t&gt; the exterior of the house with waterproofing &lt;fex name="Pur"&gt;to protect his valuable peanut butter collection.&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="145" cDate="04/07/2003 10:11:16 PDT Mon" abbrev="" name="Result" ID="4350">
+        <definition>&lt;def-root&gt;The result of the processing action, whether intended or not.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="000000" coreType="Extra-Thematic" cBy="145" cDate="04/07/2003 11:39:48 PDT Mon" abbrev="" name="Duration" ID="4351">
+        <definition>&lt;def-root&gt;The length of time during which the application of the &lt;fen&gt;Alterant&lt;/fen&gt; is applied to the &lt;fen&gt;Material&lt;/fen&gt;&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="145" cDate="04/23/2003 10:17:33 PDT Wed" abbrev="pla" name="Place" ID="4420">
+        <definition>&lt;def-root&gt;The location in which the &lt;fen&gt;Material&lt;/fen&gt;s are processed, often a purpose-built facility such as a tannery or water treatment plant.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="04/23/2003 01:40:14 PDT Wed" abbrev="" name="Time" ID="4421">
+        <definition>&lt;def-root&gt;The point in time or period during which the treatment of the &lt;fen&gt;Material&lt;/fen&gt; takes place.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="04/23/2003 01:42:12 PDT Wed" abbrev="" name="Subregion" ID="4422">
+        <definition>&lt;def-root&gt;The part of the &lt;fen&gt;Material&lt;/fen&gt; which is affected by the process.
+
+&lt;ex&gt;You have to &lt;t&gt;galvanize&lt;/t&gt; the pipes &lt;fex name="Subregion"&gt;only in the interior&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="618" cDate="01/14/2005 10:39:32 PST Fri" abbrev="Rsn" name="Reason" ID="7428">
+        <definition>&lt;def-root&gt;A state of affairs that the &lt;fen&gt;Agent&lt;/fen&gt; is responding to in processing the &lt;fen&gt;Material&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="d0d0d0" fgColor="000000" coreType="Extra-Thematic" cBy="618" cDate="05/09/2005 08:56:52 PDT Mon" abbrev="dim" name="Dimension" ID="7969">
+        <definition>&lt;def-root&gt;The dimension or aspect of the &lt;fen&gt;Material&lt;/fen&gt; that is processed.
+
+&lt;ex&gt;This supernatant was used for neasurement of &lt;fex name="dim"&gt;isotopic&lt;/fex&gt; &lt;t&gt;enrichment&lt;/t&gt; of free leucine.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="07/25/2006 02:46:15 PDT Tue" abbrev="" name="Manner" ID="10416">
+        <definition>&lt;def-root&gt;A holistic description encompassing all the details of an act of processing, often indicated by giving a characteristic of the &lt;fen&gt;Agent&lt;/fen&gt; that affects the action.
+
+&lt;ex&gt;Botulinum can not be &lt;t&gt;weaponized&lt;/t&gt; &lt;fex name="Manner"&gt;the same way&lt;/fex&gt; .&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Intentionally_affect</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Preserving</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Degree_of_processing</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="stain.v" ID="8530" lemmaID="37728" cBy="145" cDate="04/09/2003 05:02:14 PDT Wed">
+        <definition>FN: apply a colorant to a solid for the purpose of coloring it (darker than it originally was).</definition>
+        <sentenceCount annotated="7" total="202"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="stain"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="dye.v" ID="8531" lemmaID="12030" cBy="145" cDate="04/09/2003 05:04:10 PDT Wed">
+        <definition>FN: apply a liquid to a solid (especially fabric) in order to color it (darker than it originally was)</definition>
+        <sentenceCount annotated="18" total="187"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="dye"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="etch.v" ID="8532" lemmaID="13150" cBy="145" cDate="04/09/2003 05:06:31 PDT Wed">
+        <definition>FN: apply a chemical (usually an acid) to a surface to make it rougher.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="etch"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="treat.v" ID="8562" lemmaID="41134" cBy="145" cDate="04/11/2003 09:14:08 PDT Fri">
+        <definition>FN: To apply a chemical to or otherwise process (e.g. with heat or pressure) a material for a particular purpose.</definition>
+        <sentenceCount annotated="11" total="172"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="treat"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="galvanize.v" ID="8580" lemmaID="15851" cBy="664" cDate="04/18/2003 11:59:28 PDT Fri">
+        <definition>COD: coat (iron or steel) with a protective layer of zinc. </definition>
+        <sentenceCount annotated="6" total="150"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="galvanize"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="enrich.v" ID="10645" lemmaID="12818" cBy="605" cDate="06/28/2004 11:39:04 PDT Mon">
+        <definition>COD: increase the proportion of a particular isotope in (an element), especially that of the fissile isotope U-235 in uranium.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="enrich"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="enrichment.n" ID="10646" lemmaID="12819" cBy="605" cDate="06/28/2004 11:39:51 PDT Mon">
+        <definition>FN: the process of increasing the proportion of a particular isotope in (an element), especially that of the fissile isotope U-235 in uranium.</definition>
+        <sentenceCount annotated="15" total="123"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="enrichment"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="process.v" ID="10722" lemmaID="30545" cBy="605" cDate="06/30/2004 12:31:23 PDT Wed">
+        <definition>COD: perform a series of operations to change or preserve.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="process"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="reprocess.v" ID="11439" lemmaID="49824" cBy="664" cDate="12/14/2004 10:56:23 PST Tue">
+        <definition>COD: process (something, especially spent nuclear fuel) again or differently, in order to reuse it.</definition>
+        <sentenceCount annotated="9" total="128"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="reprocess"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="reprocessing.n" ID="11440" lemmaID="49825" cBy="664" cDate="12/14/2004 10:57:21 PST Tue">
+        <definition>FN: the action of taking an industrial product (often spent nuclear fuel rods) and making it useful again or in a different way.</definition>
+        <sentenceCount annotated="7" total="118"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="reprocessing"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="V" name="weaponize.v" ID="12447" lemmaID="50171" cBy="605" cDate="07/14/2005 02:32:37 PDT Thu">
+        <definition>FN: process (a pathogen or chemical) so as to make more deadly and/or virulent</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="weaponize"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="weaponization.n" ID="12448" lemmaID="50172" cBy="605" cDate="07/14/2005 02:38:40 PDT Thu">
+        <definition>FN: processing  (of pathogens or chemicals) so as to make more virulent and/or deadly</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="weaponization"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="spin.v" ID="15058" lemmaID="37325" cBy="597" cDate="06/06/2008 10:31:56 PDT Fri">
+        <definition>FN: process fibers into thread</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="spin"/>
+    </lexUnit>
+</frame>

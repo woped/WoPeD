@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="A" name="prefatory.a" ID="14350" frame="Preliminaries" frameID="1928" totalAnnotated="5" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="age" name="Agent"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Extra-Thematic" abbrev="" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="dom" name="Domain_of_relevance"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="pla" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="pre" name="Preparatory_act"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Core" abbrev="pre_pha" name="Preparatory_phase"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="pur" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: (especially of speech) done initially, as preparation for later exposition.</definition>
+    <lexeme POS="A" name="prefatory"/>
+    <valences>
+        <FERealization total="5">
+            <FE name="Agent"/>
+            <pattern total="4">
+                <valenceUnit GF="" PT="DNI" FE="Agent"/>
+                <annoSet ID="2298953"/>
+                <annoSet ID="2298955"/>
+                <annoSet ID="2298959"/>
+                <annoSet ID="2298961"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Agent"/>
+                <annoSet ID="2298957"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Preparatory_act"/>
+            <pattern total="5">
+                <valenceUnit GF="Head" PT="N" FE="Preparatory_act"/>
+                <annoSet ID="2298953"/>
+                <annoSet ID="2298955"/>
+                <annoSet ID="2298957"/>
+                <annoSet ID="2298959"/>
+                <annoSet ID="2298961"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Purpose"/>
+            <pattern total="4">
+                <valenceUnit GF="" PT="DNI" FE="Purpose"/>
+                <annoSet ID="2298953"/>
+                <annoSet ID="2298955"/>
+                <annoSet ID="2298959"/>
+                <annoSet ID="2298961"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Purpose"/>
+                <annoSet ID="2298957"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="5">
+            <FE name="Agent"/>
+            <FE name="Preparatory_act"/>
+            <FE name="Purpose"/>
+            <pattern total="4">
+                <valenceUnit GF="" PT="DNI" FE="Agent"/>
+                <valenceUnit GF="Head" PT="N" FE="Preparatory_act"/>
+                <valenceUnit GF="" PT="DNI" FE="Purpose"/>
+                <annoSet ID="2298953"/>
+                <annoSet ID="2298955"/>
+                <annoSet ID="2298959"/>
+                <annoSet ID="2298961"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Agent"/>
+                <valenceUnit GF="Head" PT="N" FE="Preparatory_act"/>
+                <valenceUnit GF="" PT="INI" FE="Purpose"/>
+                <annoSet ID="2298957"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+    <subCorpus name="01-T-(2)">
+        <sentence corpID="111" docID="421" sentNo="6" paragNo="296" aPos="61795312" ID="1425566">
+            <text>` Before we retroscend allow me a few prefatory remarks on your pants .</text>
+            <annotationSet cDate="05/29/2007 02:28:51 PDT Tue" status="UNANN" ID="2298952">
+                <layer rank="1" name="PENN">
+                    <label end="7" start="2" name="in"/>
+                    <label end="10" start="9" name="PP"/>
+                    <label end="21" start="12" name="rb"/>
+                    <label end="27" start="23" name="VVP"/>
+                    <label end="30" start="29" name="PP"/>
+                    <label end="32" start="32" name="dt"/>
+                    <label end="36" start="34" name="jj"/>
+                    <label end="46" start="38" name="jj"/>
+                    <label end="54" start="48" name="nns"/>
+                    <label end="57" start="56" name="in"/>
+                    <label end="62" start="59" name="PP$"/>
+                    <label end="68" start="64" name="nns"/>
+                    <label end="70" start="70" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/29/2007 02:28:52 PDT Tue" status="MANUAL" ID="2298953">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="46" start="38" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="11620" end="54" start="48" name="Preparatory_act"/>
+                    <label cBy="618" feID="11621" itype="DNI" name="Purpose"/>
+                    <label cBy="618" feID="11619" itype="DNI" name="Agent"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="54" start="48" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="54" start="48" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="8" paragNo="37" aPos="72173751" ID="1425567">
+            <text>In a prefatory note ` To the Reader &quot; she claimed that her relations were the only people likely to read what she had written .</text>
+            <annotationSet cDate="05/29/2007 02:28:52 PDT Tue" status="UNANN" ID="2298954">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="in"/>
+                    <label end="3" start="3" name="dt"/>
+                    <label end="13" start="5" name="jj"/>
+                    <label end="18" start="15" name="nn"/>
+                    <label end="23" start="22" name="to"/>
+                    <label end="27" start="25" name="dt"/>
+                    <label end="34" start="29" name="NP"/>
+                    <label end="40" start="38" name="PP"/>
+                    <label end="48" start="42" name="VVD"/>
+                    <label end="53" start="50" name="in"/>
+                    <label end="57" start="55" name="PP$"/>
+                    <label end="67" start="59" name="nns"/>
+                    <label end="72" start="69" name="VBD"/>
+                    <label end="76" start="74" name="dt"/>
+                    <label end="81" start="78" name="jj"/>
+                    <label end="88" start="83" name="nns"/>
+                    <label end="95" start="90" name="jj"/>
+                    <label end="98" start="97" name="to"/>
+                    <label end="103" start="100" name="VV"/>
+                    <label end="108" start="105" name="wp"/>
+                    <label end="112" start="110" name="PP"/>
+                    <label end="116" start="114" name="VHD"/>
+                    <label end="124" start="118" name="VVN"/>
+                    <label end="126" start="126" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/29/2007 02:28:52 PDT Tue" status="MANUAL" ID="2298955">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="13" start="5" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="11620" end="18" start="15" name="Preparatory_act"/>
+                    <label cBy="618" feID="11621" itype="DNI" name="Purpose"/>
+                    <label cBy="618" feID="11619" itype="DNI" name="Agent"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="18" start="15" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="18" start="15" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="232" aPos="63863236" ID="1425568">
+            <text>Three further prefatory remarks are necessary .</text>
+            <annotationSet cDate="05/29/2007 02:28:52 PDT Tue" status="UNANN" ID="2298956">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="cd"/>
+                    <label end="12" start="6" name="jj"/>
+                    <label end="22" start="14" name="jj"/>
+                    <label end="30" start="24" name="nns"/>
+                    <label end="34" start="32" name="vbp"/>
+                    <label end="44" start="36" name="jj"/>
+                    <label end="46" start="46" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/29/2007 02:28:52 PDT Tue" status="MANUAL" ID="2298957">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="22" start="14" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="11620" end="30" start="24" name="Preparatory_act"/>
+                    <label cBy="618" feID="11619" itype="INI" name="Agent"/>
+                    <label cBy="618" feID="11621" itype="INI" name="Purpose"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="30" start="24" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="30" start="24" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="14" paragNo="187" aPos="35103576" ID="1425569">
+            <text>Smart went further than any of his predecessors in this attempt to provide , according to his prefatory note , a version ` Adapted to the Divine Service &quot; .</text>
+            <annotationSet cDate="05/29/2007 02:28:52 PDT Tue" status="UNANN" ID="2298958">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="NP"/>
+                    <label end="9" start="6" name="VVD"/>
+                    <label end="17" start="11" name="rbr"/>
+                    <label end="22" start="19" name="in"/>
+                    <label end="26" start="24" name="dt"/>
+                    <label end="29" start="28" name="in"/>
+                    <label end="33" start="31" name="PP$"/>
+                    <label end="46" start="35" name="nns"/>
+                    <label end="49" start="48" name="in"/>
+                    <label end="54" start="51" name="dt"/>
+                    <label end="62" start="56" name="nn"/>
+                    <label end="65" start="64" name="to"/>
+                    <label end="73" start="67" name="VV"/>
+                    <label end="75" start="75" name=","/>
+                    <label end="85" start="77" name="VVG"/>
+                    <label end="88" start="87" name="to"/>
+                    <label end="92" start="90" name="PP$"/>
+                    <label end="102" start="94" name="jj"/>
+                    <label end="107" start="104" name="nn"/>
+                    <label end="109" start="109" name=","/>
+                    <label end="111" start="111" name="dt"/>
+                    <label end="119" start="113" name="nn"/>
+                    <label end="129" start="123" name="VVD"/>
+                    <label end="132" start="131" name="to"/>
+                    <label end="136" start="134" name="dt"/>
+                    <label end="143" start="138" name="NP"/>
+                    <label end="151" start="145" name="NP"/>
+                    <label end="155" start="155" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/29/2007 02:28:52 PDT Tue" status="MANUAL" ID="2298959">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="102" start="94" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="11620" end="107" start="104" name="Preparatory_act"/>
+                    <label cBy="618" feID="11621" itype="DNI" name="Purpose"/>
+                    <label cBy="618" feID="11619" itype="DNI" name="Agent"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="107" start="104" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="107" start="104" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="5" aPos="90652" ID="1425570">
+            <text>And yet the treatment of his characters is not exactly what that prefatory article of his might have led one to expect .</text>
+            <annotationSet cDate="05/29/2007 02:28:52 PDT Tue" status="UNANN" ID="2298960">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="cc"/>
+                    <label end="6" start="4" name="rb"/>
+                    <label end="10" start="8" name="dt"/>
+                    <label end="20" start="12" name="nn"/>
+                    <label end="23" start="22" name="in"/>
+                    <label end="27" start="25" name="PP$"/>
+                    <label end="38" start="29" name="nns"/>
+                    <label end="41" start="40" name="VBZ"/>
+                    <label end="45" start="43" name="rb"/>
+                    <label end="53" start="47" name="rb"/>
+                    <label end="58" start="55" name="wp"/>
+                    <label end="63" start="60" name="dt"/>
+                    <label end="73" start="65" name="jj"/>
+                    <label end="81" start="75" name="nn"/>
+                    <label end="84" start="83" name="in"/>
+                    <label end="88" start="86" name="PP$"/>
+                    <label end="94" start="90" name="nn"/>
+                    <label end="99" start="96" name="VHP"/>
+                    <label end="103" start="101" name="VVN"/>
+                    <label end="107" start="105" name="cd"/>
+                    <label end="110" start="109" name="to"/>
+                    <label end="117" start="112" name="VV"/>
+                    <label end="119" start="119" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/29/2007 02:28:52 PDT Tue" status="MANUAL" ID="2298961">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="73" start="65" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="11620" end="81" start="75" name="Preparatory_act"/>
+                    <label cBy="618" feID="11621" itype="DNI" name="Purpose"/>
+                    <label cBy="618" feID="11619" itype="DNI" name="Agent"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="81" start="75" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="81" start="75" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(2)"/>
+    <subCorpus name="other-unmatched-(2)"/>
+</lexUnit>

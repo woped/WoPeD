@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Document   : semtypes.xsd
+    Created on : 2008-05-23, 12:04 PM
+    Author     : alexcho
+    Description:
+        XML schema for semtypes format
+-->
+
+<!-- NOTES/RULES:
+1. Root element is "semTypes"
+2. "semTypes" has the attribute "XMLCreated" which has the format:
+"DAY_NAME MONTH_NAME HRS:MINS:SECS TIMEZONE YEAR"
+QUESTION: should this be required?
+3. Direct children of root "semTypes" is "semType" (have 0 or more)
+4. "semType" has 3 required attributes (Q: sequential attributes?)
+    4a. "ID", which is a non-negative integer
+    4b. "name", which is a string
+    4c. "abbrev", which is a string (could be identical to name)
+5. "semType" always have the element "definition" 
+6. "definition" is just text
+7. "semType" has the element "superType"
+9. "superType" element has two attibutes
+    9a. "superTypeName", a string
+    9b. "supID", a non-negative integer
+    NOTE: "superTypeName" and "supID" correspond to the same "semType", which is
+    also contained in the XML
+QUESTION: Should <any> or <anyAttribute> be included?
+-->
+
+
+<!-- WARNING: May need to edit URL's and namespaces below -->
+<!-- WARNING: May need to edit contents of semtypes.xml that calls this file 
+for validation -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:fn="http://framenet.icsi.berkeley.edu"
+            targetNamespace="http://framenet.icsi.berkeley.edu"
+            xmlns="http://framenet.icsi.berkeley.edu"
+            elementFormDefault="qualified">
+
+    <xsd:include schemaLocation="commonTypes.xsd"/>
+    
+   <!-- 1. Root element is "semTypes" -->
+    <xsd:element name="semTypes">
+        <xsd:complexType>
+            <xsd:sequence>
+           <!-- 3. Direct children of root "semTypes" is "semType" (have 0 or more) -->
+                <xsd:element name="semType" type="fn:semTypeType"
+                        minOccurs="0" maxOccurs="unbounded"/>
+            </xsd:sequence>
+           <!-- 2. "semTypes" has the attribute "XMLCreated" which has the format:
+                   "DAY_NAME MONTH_NAME HRS:MINS:SECS TIMEZONE YEAR"-->
+            <xsd:attribute name="XMLCreated" type="fn:dateTimeType"/>
+        </xsd:complexType>
+    </xsd:element> <!-- "semTypes" -->
+    
+    <!-- semType element -->
+    <xsd:complexType name="semTypeType">
+        <xsd:sequence>
+                       <!-- 5. "semType" always have the element "definition"  -->  
+                       <!-- 6. "definition" is just text -->
+            <xsd:element name="definition" type="xsd:string"/>
+            <xsd:element name="superType" minOccurs="0" maxOccurs="unbounded"> <!-- Q: Should there be a maxOccurs? -->
+                <xsd:complexType>
+                                <!-- "superType" element has two attibutes
+                                        1. "superTypeName", a string
+                                        2. "supID", a non-negative integer-->
+                    <xsd:attribute name="superTypeName" 
+                                   type="xsd:string" use="required" />
+                    <xsd:attribute name="supID" 
+                                   type="fn:IDType" use="required" />
+                </xsd:complexType>
+            </xsd:element> <!-- "superType" -->
+        </xsd:sequence>
+                   <!-- 4. "semType" has 3 required attributes (Q: sequential attributes?)
+                            4a. "ID", which is a non-negative integer
+                            4b. "name", which is a string
+                            4c. "abbrev", which is a string (could be identical to name) -->
+        <xsd:attribute name="ID" type="fn:IDType" use="required" />
+        <xsd:attribute name="name" type="xsd:string" use="required" />
+        <xsd:attribute name="abbrev" type="xsd:string" use="required" />
+    </xsd:complexType>
+</xsd:schema>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="V" name="resume.v" ID="4434" frame="Process_resume" frameID="148" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="000000" bgColor="FFFF00" type="Peripheral" abbrev="Dur" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Extra-Thematic" abbrev="Freq" name="Frequency"/>
+            <FE fgColor="000000" bgColor="d0d0d0" type="Peripheral" abbrev="Mnr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Process" name="Process"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Reas" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: begin again or continue after a pause or interruption. NB:  The action is not usually resumed at the beginning with this verb, but rather at the point in the Ongoing process where it was interrupted.</definition>
+    <lexeme POS="V" name="resume"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Place"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="NP" FE="Place"/>
+                <annoSet ID="2586669"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Process"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Process"/>
+                <annoSet ID="2586669"/>
+                <annoSet ID="2586673"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Time"/>
+                <annoSet ID="2586673"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Place"/>
+            <FE name="Process"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="NP" FE="Place"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Process"/>
+                <annoSet ID="2586669"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Process"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Process"/>
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Time"/>
+                <annoSet ID="2586673"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="690" aPos="66326812" ID="1576025">
+            <text>The whistling resumed , some way down the road .</text>
+            <annotationSet cDate="07/15/2010 02:13:25 PDT Thu" status="UNANN" ID="2586668">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="12" start="4" name="VVG"/>
+                    <label end="20" start="14" name="VVD"/>
+                    <label end="22" start="22" name=","/>
+                    <label end="27" start="24" name="dt"/>
+                    <label end="31" start="29" name="nn"/>
+                    <label end="36" start="33" name="in"/>
+                    <label end="40" start="38" name="dt"/>
+                    <label end="45" start="42" name="nn"/>
+                    <label end="47" start="47" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/15/2010 02:13:25 PDT Thu" status="MANUAL" ID="2586669">
+                <layer rank="1" name="Target">
+                    <label cBy="571" end="20" start="14" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="571" feID="1175" end="12" start="0" name="Process"/>
+                    <label cBy="571" feID="1176" end="45" start="24" name="Place"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="12" start="0" name="Ext"/>
+                    <label end="45" start="24" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="12" start="0" name="NP"/>
+                    <label end="45" start="24" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="964" aPos="91567791" ID="1576027">
+            <text>Talks were to resume on July 15 .</text>
+            <annotationSet cDate="07/15/2010 02:13:25 PDT Thu" status="UNANN" ID="2586672">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="nns"/>
+                    <label end="9" start="6" name="VBD"/>
+                    <label end="12" start="11" name="to"/>
+                    <label end="19" start="14" name="VV"/>
+                    <label end="22" start="21" name="in"/>
+                    <label end="27" start="24" name="NP"/>
+                    <label end="30" start="29" name="cd"/>
+                    <label end="32" start="32" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/15/2010 02:13:25 PDT Thu" status="MANUAL" ID="2586673">
+                <layer rank="1" name="Target">
+                    <label cBy="571" end="19" start="14" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="571" feID="1175" end="4" start="0" name="Process"/>
+                    <label cBy="571" feID="1178" end="30" start="21" name="Time"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="4" start="0" name="Ext"/>
+                    <label end="30" start="21" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="4" start="0" name="NP"/>
+                    <label end="30" start="21" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

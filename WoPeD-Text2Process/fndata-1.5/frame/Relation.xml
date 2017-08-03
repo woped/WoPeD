@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="12/13/2001 06:19:24 PST Thu" name="Relation" ID="248" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A relation holds between &lt;fen&gt;Entity1&lt;/fen&gt; and &lt;fen&gt;Entity2&lt;/fen&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="09/03/2002 07:35:05 PDT Tue" abbrev="Ent1" name="Entity1" ID="3695">
+        <definition>&lt;def-root&gt;An entity with a relationship to &lt;fen&gt;Entity2&lt;/fen&gt;&lt;/def-root&gt;</definition>
+        <requiresFE name="Entity2" ID="3696"/>
+        <excludesFE name="Entities" ID="7535"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="09/03/2002 07:36:23 PDT Tue" abbrev="Ent2" name="Entity2" ID="3696">
+        <definition>&lt;def-root&gt;The entity with a relationship to &lt;fen&gt;Entity1&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <requiresFE name="Entity1" ID="3695"/>
+        <excludesFE name="Entities" ID="7535"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Core-Unexpressed" cBy="395" cDate="02/28/2005 01:31:21 PST Mon" abbrev="Ents" name="Entities" ID="7535">
+        <definition>&lt;def-root&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core-Unexpressed" cBy="664" cDate="11/12/2008 04:38:17 PST Wed" abbrev="" name="Relation_type" ID="13120">
+        <definition>&lt;def-root&gt;A characterization of the relation that determines what model is active for further reasoning.
+
+&lt;ex&gt;There is a &lt;fex name="Relation_type"&gt;kinship&lt;/fex&gt; &lt;t&gt;relation&lt;/t&gt; between them .&lt;/ex&gt;
+
+&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Accompaniment</relatedFrame>
+        <relatedFrame>Idiosyncrasy</relatedFrame>
+        <relatedFrame>Partitive</relatedFrame>
+        <relatedFrame>Relation_between_individuals</relatedFrame>
+        <relatedFrame>Relative_time</relatedFrame>
+        <relatedFrame>Locative_relation</relatedFrame>
+        <relatedFrame>Trajector-Landmark</relatedFrame>
+        <relatedFrame>Simultaneity</relatedFrame>
+        <relatedFrame>Duration_relation</relatedFrame>
+        <relatedFrame>Sequence</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Needs_SCs" POS="N" name="relation.n" ID="7362" lemmaID="32489" cBy="664" cDate="09/03/2002 07:37:03 PDT Tue">
+        <definition>COD: the way in which two or more people or things are connected or related. </definition>
+        <sentenceCount annotated="3" total="94"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="relation"/>
+    </lexUnit>
+</frame>

@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="A" name="inexpert.a" ID="2722" frame="Expertise" frameID="136" totalAnnotated="5" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="" name="Behavior_product"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Focal_participant" name="Focal_participant"/>
+            <FE fgColor="000000" bgColor="7FFF00" type="Peripheral" abbrev="" name="Judge"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="" name="Knowledge"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Prot" name="Protagonist"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="" name="Role"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Core" abbrev="Skill" name="Skill"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: lacking skill or knowledge</definition>
+    <lexeme POS="A" name="inexpert"/>
+    <valences>
+        <FERealization total="2">
+            <FE name="Behavior_product"/>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="N" FE="Behavior_product"/>
+                <annoSet ID="220225"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Behavior_product"/>
+                <annoSet ID="220229"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Knowledge"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Knowledge"/>
+                <annoSet ID="220203"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Protagonist"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Protagonist"/>
+                <annoSet ID="220203"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Head" PT="N" FE="Protagonist"/>
+                <annoSet ID="220209"/>
+                <annoSet ID="220215"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Skill"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="2nd" FE="Skill"/>
+                <annoSet ID="220209"/>
+                <annoSet ID="220215"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Behavior_product"/>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="N" FE="Behavior_product"/>
+                <annoSet ID="220225"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Behavior_product"/>
+                <annoSet ID="220229"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Knowledge"/>
+            <FE name="Protagonist"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Knowledge"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Protagonist"/>
+                <annoSet ID="220203"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Protagonist"/>
+            <FE name="Skill"/>
+            <pattern total="2">
+                <valenceUnit GF="Head" PT="N" FE="Protagonist"/>
+                <valenceUnit GF="" PT="2nd" FE="Skill"/>
+                <annoSet ID="220209"/>
+                <annoSet ID="220215"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="A-100-ppin">
+        <sentence sentNo="0" aPos="68470055" ID="287645">
+            <text>The first was to put it across to laymen , interested in science but inexpert in it . </text>
+            <annotationSet cDate="01/06/2003 09:56:32 PST Mon" status="UNANN" ID="220202">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="8" start="4" name="ORD"/>
+                    <label end="12" start="10" name="VBD"/>
+                    <label end="15" start="14" name="TO0"/>
+                    <label end="19" start="17" name="VVI"/>
+                    <label end="22" start="21" name="PNP"/>
+                    <label end="29" start="24" name="AV0"/>
+                    <label end="32" start="31" name="PRP"/>
+                    <label end="39" start="34" name="NN2"/>
+                    <label end="41" start="41" name="PUN"/>
+                    <label end="52" start="43" name="AJ0"/>
+                    <label end="55" start="54" name="PRP"/>
+                    <label end="63" start="57" name="NN1"/>
+                    <label end="67" start="65" name="CJC"/>
+                    <label end="76" start="69" name="AJ0"/>
+                    <label end="79" start="78" name="PRP"/>
+                    <label end="82" start="81" name="PNP"/>
+                    <label end="84" start="84" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 09:56:32 PST Mon" status="MANUAL" ID="220203">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="893" end="39" start="34" name="Protagonist"/>
+                    <label cBy="296" feID="895" end="82" start="78" name="Knowledge"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="39" start="34" name="Ext"/>
+                    <label end="82" start="78" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="39" start="34" name="NP"/>
+                    <label end="82" start="78" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="76" start="69" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="A-170-prenom">
+        <sentence sentNo="0" aPos="36122802" ID="287648">
+            <text>Kynaston stepped gingerly over the carpet to Harry , prancing on tiptoe like an inexpert dancer . </text>
+            <annotationSet cDate="01/06/2003 09:56:33 PST Mon" status="UNANN" ID="220208">
+                <layer rank="1" name="BNC">
+                    <label end="7" start="0" name="NN1-NP0"/>
+                    <label end="15" start="9" name="VVD"/>
+                    <label end="24" start="17" name="AV0"/>
+                    <label end="29" start="26" name="PRP"/>
+                    <label end="33" start="31" name="AT0"/>
+                    <label end="40" start="35" name="NN1"/>
+                    <label end="43" start="42" name="TO0"/>
+                    <label end="49" start="45" name="VVI"/>
+                    <label end="51" start="51" name="PUN"/>
+                    <label end="60" start="53" name="VVG"/>
+                    <label end="63" start="62" name="PRP"/>
+                    <label end="70" start="65" name="NN1"/>
+                    <label end="75" start="72" name="PRP"/>
+                    <label end="78" start="77" name="AT0"/>
+                    <label end="87" start="80" name="AJ0"/>
+                    <label end="94" start="89" name="NN1"/>
+                    <label end="96" start="96" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 09:56:33 PST Mon" status="MANUAL" ID="220209">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="893" end="94" start="89" name="Protagonist"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="94" start="89" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="94" start="89" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="87" start="80" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj"/>
+                <layer rank="2" name="FE">
+                    <label cBy="296" feID="894" end="94" start="89" name="Skill"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="58787849" ID="287651">
+            <text>Finn was an inexperienced and inexpert puppeteer . </text>
+            <annotationSet cDate="01/06/2003 09:56:33 PST Mon" status="UNANN" ID="220214">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="NP0"/>
+                    <label end="7" start="5" name="VBD"/>
+                    <label end="10" start="9" name="AT0"/>
+                    <label end="24" start="12" name="AJ0"/>
+                    <label end="28" start="26" name="CJC"/>
+                    <label end="37" start="30" name="AJ0"/>
+                    <label end="47" start="39" name="NN1"/>
+                    <label end="49" start="49" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 09:56:33 PST Mon" status="MANUAL" ID="220215">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="893" end="47" start="39" name="Protagonist"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="47" start="39" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="47" start="39" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="37" start="30" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj"/>
+                <layer rank="2" name="FE">
+                    <label cBy="296" feID="894" end="47" start="39" name="Skill"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="98464976" ID="287656">
+            <text>You have to make sure you 've removed the er tetrodotoxin gland before you start eating , and in fact each year there are deaths in Japan from er inexpert preparation of the Puffer Fish . </text>
+            <annotationSet cDate="01/06/2003 09:56:34 PST Mon" status="UNANN" ID="220224">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="PNP"/>
+                    <label end="7" start="4" name="VHB"/>
+                    <label end="10" start="9" name="TO0"/>
+                    <label end="15" start="12" name="VVI"/>
+                    <label end="20" start="17" name="AJ0-AV0"/>
+                    <label end="24" start="22" name="PNP"/>
+                    <label end="28" start="26" name="VHB"/>
+                    <label end="36" start="30" name="VVN"/>
+                    <label end="40" start="38" name="AT0"/>
+                    <label end="43" start="42" name="UNC"/>
+                    <label end="56" start="45" name="NN1"/>
+                    <label end="62" start="58" name="NN1"/>
+                    <label end="69" start="64" name="CJS-PRP"/>
+                    <label end="73" start="71" name="PNP"/>
+                    <label end="79" start="75" name="VVB"/>
+                    <label end="86" start="81" name="VVG"/>
+                    <label end="88" start="88" name="PUN"/>
+                    <label end="92" start="90" name="CJC"/>
+                    <label end="95" start="94" name="PRP"/>
+                    <label end="100" start="97" name="NN1"/>
+                    <label end="105" start="102" name="DT0"/>
+                    <label end="110" start="107" name="NN1"/>
+                    <label end="116" start="112" name="EX0"/>
+                    <label end="120" start="118" name="VBB"/>
+                    <label end="127" start="122" name="NN2"/>
+                    <label end="130" start="129" name="PRP"/>
+                    <label end="136" start="132" name="NP0"/>
+                    <label end="141" start="138" name="PRP"/>
+                    <label end="144" start="143" name="UNC"/>
+                    <label end="153" start="146" name="AJ0"/>
+                    <label end="165" start="155" name="NN1"/>
+                    <label end="168" start="167" name="PRF"/>
+                    <label end="172" start="170" name="AT0"/>
+                    <label end="179" start="174" name="NN1-NP0"/>
+                    <label end="184" start="181" name="NP0"/>
+                    <label end="186" start="186" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 09:56:34 PST Mon" status="MANUAL" ID="220225">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="1078" end="184" start="155" name="Behavior_product"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="184" start="155" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="184" start="155" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="153" start="146" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="A-180-punct">
+        <sentence sentNo="0" aPos="34084475" ID="287658">
+            <text>Herman 's taxidermy was inexpert , but Ma Katz was desiccated rather than rotten . </text>
+            <annotationSet cDate="01/06/2003 09:56:34 PST Mon" status="UNANN" ID="220228">
+                <layer rank="1" name="BNC">
+                    <label end="5" start="0" name="NP0"/>
+                    <label end="8" start="7" name="POS"/>
+                    <label end="18" start="10" name="NN1"/>
+                    <label end="22" start="20" name="VBD"/>
+                    <label end="31" start="24" name="AJ0"/>
+                    <label end="33" start="33" name="PUN"/>
+                    <label end="37" start="35" name="CJC"/>
+                    <label end="40" start="39" name="NP0"/>
+                    <label end="45" start="42" name="NP0"/>
+                    <label end="49" start="47" name="VBD"/>
+                    <label end="60" start="51" name="VVN"/>
+                    <label end="67" start="62" name="PRP"/>
+                    <label end="72" start="69" name="PRP"/>
+                    <label end="79" start="74" name="AJ0"/>
+                    <label end="81" start="81" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 09:56:34 PST Mon" status="MANUAL" ID="220229">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="1078" end="18" start="0" name="Behavior_product"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="18" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="18" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="31" start="24" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj">
+                    <label end="22" start="20" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="A-190-other"/>
+</lexUnit>

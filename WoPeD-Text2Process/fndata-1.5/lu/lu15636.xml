@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="V" name="exhaust.v" ID="15636" frame="Exhaust_resource" frameID="2220" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp=2305" ID="17808"/>
+            <document description="bncp=1274" ID="19499"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="age" name="Agent"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="man" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="mea" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="pla" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="pur" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="res" name="Resource"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: use up or deplete a resource entirely.</definition>
+    <lexeme POS="V" name="exhaust"/>
+    <valences>
+        <FERealization total="2">
+            <FE name="Agent"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <annoSet ID="2583555"/>
+                <annoSet ID="2583583"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Resource"/>
+            <pattern total="2">
+                <valenceUnit GF="Obj" PT="NP" FE="Resource"/>
+                <annoSet ID="2583555"/>
+                <annoSet ID="2583583"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Agent"/>
+            <FE name="Resource"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Resource"/>
+                <annoSet ID="2583555"/>
+                <annoSet ID="2583583"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-object-(1)">
+        <sentence corpID="111" docID="19499" sentNo="3" paragNo="353" aPos="0" ID="1574469">
+            <text>The personnel director of SBCI Savory Milln , Peter Cole , confirmed that this was his view of headhunters ; he would employ a search firm only when he had exhausted his own supply of personal contacts .</text>
+            <annotationSet cDate="07/15/2010 11:03:26 PDT Thu" status="UNANN" ID="2583554">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="12" start="4" name="nns"/>
+                    <label end="21" start="14" name="nn"/>
+                    <label end="24" start="23" name="in"/>
+                    <label end="29" start="26" name="NP"/>
+                    <label end="36" start="31" name="NP"/>
+                    <label end="42" start="38" name="NP"/>
+                    <label end="44" start="44" name=","/>
+                    <label end="50" start="46" name="NP"/>
+                    <label end="55" start="52" name="NP"/>
+                    <label end="57" start="57" name=","/>
+                    <label end="67" start="59" name="VVD"/>
+                    <label end="72" start="69" name="in"/>
+                    <label end="77" start="74" name="dt"/>
+                    <label end="81" start="79" name="VBD"/>
+                    <label end="85" start="83" name="PP$"/>
+                    <label end="90" start="87" name="nn"/>
+                    <label end="93" start="92" name="in"/>
+                    <label end="105" start="95" name="nns"/>
+                    <label end="107" start="107" name=":"/>
+                    <label end="110" start="109" name="PP"/>
+                    <label end="116" start="112" name="md"/>
+                    <label end="123" start="118" name="VV"/>
+                    <label end="125" start="125" name="dt"/>
+                    <label end="132" start="127" name="nn"/>
+                    <label end="137" start="134" name="nn"/>
+                    <label end="142" start="139" name="rb"/>
+                    <label end="147" start="144" name="wrb"/>
+                    <label end="150" start="149" name="PP"/>
+                    <label end="154" start="152" name="VHD"/>
+                    <label end="164" start="156" name="VVN"/>
+                    <label end="168" start="166" name="PP$"/>
+                    <label end="172" start="170" name="jj"/>
+                    <label end="179" start="174" name="nn"/>
+                    <label end="182" start="181" name="in"/>
+                    <label end="191" start="184" name="jj"/>
+                    <label end="200" start="193" name="nns"/>
+                    <label end="202" start="202" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/15/2010 11:03:27 PDT Thu" status="MANUAL" ID="2583555">
+                <layer rank="1" name="Target">
+                    <label cBy="976" end="164" start="156" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="976" feID="13573" end="150" start="149" name="Agent"/>
+                    <label cBy="976" feID="13572" end="200" start="166" name="Resource"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="150" start="149" name="Ext"/>
+                    <label end="200" start="166" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="150" start="149" name="NP"/>
+                    <label end="200" start="166" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="17808" sentNo="1" paragNo="52" aPos="0" ID="1574483">
+            <text>Over by the fireplace , the headmaster had exhausted his limited store of small talk and had advanced to matters of serious educational concern .</text>
+            <annotationSet cDate="07/15/2010 11:03:30 PDT Thu" status="UNANN" ID="2583582">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="in"/>
+                    <label end="6" start="5" name="in"/>
+                    <label end="10" start="8" name="dt"/>
+                    <label end="20" start="12" name="nn"/>
+                    <label end="22" start="22" name=","/>
+                    <label end="26" start="24" name="dt"/>
+                    <label end="37" start="28" name="nn"/>
+                    <label end="41" start="39" name="VHD"/>
+                    <label end="51" start="43" name="VVN"/>
+                    <label end="55" start="53" name="PP$"/>
+                    <label end="63" start="57" name="jj"/>
+                    <label end="69" start="65" name="nn"/>
+                    <label end="72" start="71" name="in"/>
+                    <label end="78" start="74" name="jj"/>
+                    <label end="83" start="80" name="nn"/>
+                    <label end="87" start="85" name="cc"/>
+                    <label end="91" start="89" name="VHD"/>
+                    <label end="100" start="93" name="VVN"/>
+                    <label end="103" start="102" name="to"/>
+                    <label end="111" start="105" name="nns"/>
+                    <label end="114" start="113" name="in"/>
+                    <label end="122" start="116" name="jj"/>
+                    <label end="134" start="124" name="jj"/>
+                    <label end="142" start="136" name="nn"/>
+                    <label end="144" start="144" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/15/2010 11:03:30 PDT Thu" status="MANUAL" ID="2583583">
+                <layer rank="1" name="Target">
+                    <label cBy="976" end="51" start="43" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="976" feID="13573" end="37" start="24" name="Agent"/>
+                    <label cBy="976" feID="13572" end="83" start="53" name="Resource"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="37" start="24" name="Ext"/>
+                    <label end="83" start="53" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="37" start="24" name="NP"/>
+                    <label end="83" start="53" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-modifier-(1)"/>
+    <subCorpus name="03-other-matched-(1)"/>
+    <subCorpus name="04-other-unmatched-(1)"/>
+</lexUnit>

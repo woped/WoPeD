@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="V" name="give voice.v" ID="12735" frame="Expressing_publicly" frameID="1622" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Peripheral" abbrev="Add" name="Addressee"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Extra-Thematic" abbrev="cir" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="com" name="Communicator"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="con" name="Content"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="exp" name="Explanation"/>
+            <FE fgColor="000000" bgColor="7FFF00" type="Extra-Thematic" abbrev="" name="Frequency"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD7C" type="Extra-Thematic" abbrev="ICause" name="Internal_cause"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Core" abbrev="Medium" name="Medium"/>
+            <FE fgColor="FFFFFF" bgColor="90876C" type="Extra-Thematic" abbrev="par" name="Particular_iteration"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Extra-Thematic" abbrev="Pur" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: express</definition>
+    <lexeme order="1" headword="true" breakBefore="false" POS="V" name="give"/>
+    <lexeme order="2" headword="false" breakBefore="false" POS="N" name="voice"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Communicator"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Communicator"/>
+                <annoSet ID="2132647"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Content"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Content"/>
+                <annoSet ID="2132647"/>
+                <annoSet ID="2132649"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Manner"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Manner"/>
+                <annoSet ID="2132649"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Medium"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Medium"/>
+                <annoSet ID="2132649"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Communicator"/>
+            <FE name="Content"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Communicator"/>
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Content"/>
+                <annoSet ID="2132647"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Content"/>
+            <FE name="Manner"/>
+            <FE name="Medium"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Content"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Manner"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Medium"/>
+                <annoSet ID="2132649"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-Wgive-T-Wto-Wanger,concern,disquiet-(1)">
+        <sentence corpID="111" docID="421" sentNo="5" paragNo="334" aPos="80000155" ID="1342323">
+            <text>In this sense it is significant that , unlike in France and Britain , no politician of note has given voice to the growing disquiet in Germany about the move in Europe towards a Federalist state .</text>
+            <annotationSet cDate="09/03/2005 12:47:57 PDT Sat" status="UNANN" ID="2132646">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="in"/>
+                    <label end="6" start="3" name="dt"/>
+                    <label end="12" start="8" name="nn"/>
+                    <label end="15" start="14" name="PP"/>
+                    <label end="18" start="17" name="VBZ"/>
+                    <label end="30" start="20" name="jj"/>
+                    <label end="35" start="32" name="in"/>
+                    <label end="37" start="37" name=","/>
+                    <label end="44" start="39" name="in"/>
+                    <label end="47" start="46" name="in"/>
+                    <label end="54" start="49" name="NP"/>
+                    <label end="58" start="56" name="cc"/>
+                    <label end="66" start="60" name="NP"/>
+                    <label end="68" start="68" name=","/>
+                    <label end="71" start="70" name="dt"/>
+                    <label end="82" start="73" name="nn"/>
+                    <label end="85" start="84" name="in"/>
+                    <label end="90" start="87" name="nn"/>
+                    <label end="94" start="92" name="VHZ"/>
+                    <label end="100" start="96" name="VVN"/>
+                    <label end="106" start="102" name="nn"/>
+                    <label end="109" start="108" name="to"/>
+                    <label end="113" start="111" name="dt"/>
+                    <label end="121" start="115" name="VVG"/>
+                    <label end="130" start="123" name="nn"/>
+                    <label end="133" start="132" name="in"/>
+                    <label end="141" start="135" name="NP"/>
+                    <label end="147" start="143" name="in"/>
+                    <label end="151" start="149" name="dt"/>
+                    <label end="156" start="153" name="nn"/>
+                    <label end="159" start="158" name="in"/>
+                    <label end="166" start="161" name="NP"/>
+                    <label end="174" start="168" name="in"/>
+                    <label end="176" start="176" name="dt"/>
+                    <label end="187" start="178" name="NP"/>
+                    <label end="193" start="189" name="nn"/>
+                    <label end="195" start="195" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="09/03/2005 12:47:57 PDT Sat" status="AUTO_EDITED" ID="2132647">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="106" start="102" name="Target"/>
+                    <label cBy="605" end="100" start="96" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="8991" end="193" start="108" name="Content"/>
+                    <label cBy="605" feID="8989" end="90" start="70" name="Communicator"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="193" start="108" name="Dep"/>
+                    <label end="90" start="70" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="193" start="108" name="PP"/>
+                    <label end="90" start="70" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-Wgive-Wjj-T-Wto-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="963" aPos="63824596" ID="1342324">
+            <text>A vein pulsed in Richmann 's temple , giving silent voice to his irritation .</text>
+            <annotationSet cDate="09/03/2005 12:47:57 PDT Sat" status="UNANN" ID="2132648">
+                <layer rank="1" name="PENN">
+                    <label end="0" start="0" name="dt"/>
+                    <label end="5" start="2" name="nn"/>
+                    <label end="12" start="7" name="VVN"/>
+                    <label end="15" start="14" name="in"/>
+                    <label end="24" start="17" name="NP"/>
+                    <label end="27" start="26" name="POS"/>
+                    <label end="34" start="29" name="nn"/>
+                    <label end="36" start="36" name=","/>
+                    <label end="43" start="38" name="VVG"/>
+                    <label end="50" start="45" name="jj"/>
+                    <label end="56" start="52" name="nn"/>
+                    <label end="59" start="58" name="to"/>
+                    <label end="63" start="61" name="PP$"/>
+                    <label end="74" start="65" name="nn"/>
+                    <label end="76" start="76" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="09/03/2005 12:47:58 PDT Sat" status="AUTO_EDITED" ID="2132649">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="56" start="52" name="Target"/>
+                    <label cBy="605" end="43" start="38" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="8991" end="74" start="58" name="Content"/>
+                    <label cBy="605" feID="8993" end="50" start="45" name="Manner"/>
+                    <label cBy="303" feID="8997" end="5" start="0" name="Medium"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="74" start="58" name="Dep"/>
+                    <label end="50" start="45" name="Dep"/>
+                    <label end="5" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="74" start="58" name="PP"/>
+                    <label end="50" start="45" name="AJP"/>
+                    <label end="5" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

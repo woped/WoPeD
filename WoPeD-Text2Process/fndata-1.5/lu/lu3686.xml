@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_X-Gov" POS="N" name="viscountcy.n" ID="3686" frame="Political_locales" frameID="195" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Peripheral" abbrev="Constp" name="Constituent_parts"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Peripheral" abbrev="ContP" name="Container_possessor"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="des" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core" abbrev="Lcl" name="Locale"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Name" name="Name"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD7C" type="Peripheral" abbrev="pop" name="Population"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="RelLoc" name="Relative_location"/>
+        </frame>
+    </header>
+    <definition>FN: the jurisdiction of a viscount</definition>
+    <lexeme POS="N" name="viscountcy"/>
+    <valences>
+        <governor type="Gov" lemma="seek">
+            <annoSet ID="593076"/>
+        </governor>
+    </valences>
+    <subCorpus name="N-001-all">
+        <sentence sentNo="0" aPos="67838341" ID="477093">
+            <text>In 1696 Lowther of Lowther , tired of contesting elections , employed his cousin to seek a viscountcy for him from the king . </text>
+            <annotationSet cDate="01/07/2003 05:28:55 PST Tue" status="UNANN" ID="593075">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PRP"/>
+                    <label end="6" start="3" name="CRD"/>
+                    <label end="14" start="8" name="NN1"/>
+                    <label end="17" start="16" name="PRF"/>
+                    <label end="25" start="19" name="NN1-NP0"/>
+                    <label end="27" start="27" name="PUN"/>
+                    <label end="33" start="29" name="AJ0"/>
+                    <label end="36" start="35" name="PRF"/>
+                    <label end="47" start="38" name="AJ0-VVG"/>
+                    <label end="57" start="49" name="NN2"/>
+                    <label end="59" start="59" name="PUN"/>
+                    <label end="68" start="61" name="VVD-VVN"/>
+                    <label end="72" start="70" name="DPS"/>
+                    <label end="79" start="74" name="NN1"/>
+                    <label end="82" start="81" name="TO0"/>
+                    <label end="87" start="84" name="VVI"/>
+                    <label end="89" start="89" name="AT0"/>
+                    <label end="100" start="91" name="NN1"/>
+                    <label end="104" start="102" name="PRP"/>
+                    <label end="108" start="106" name="PNP"/>
+                    <label end="113" start="110" name="PRP"/>
+                    <label end="117" start="115" name="AT0"/>
+                    <label end="122" start="119" name="NN1"/>
+                    <label end="124" start="124" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:28:55 PST Tue" status="MANUAL" ID="593076">
+                <layer rank="1" name="FE"/>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="100" start="91" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="87" start="84" name="Gov"/>
+                    <label end="100" start="89" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

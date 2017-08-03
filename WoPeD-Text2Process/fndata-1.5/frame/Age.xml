@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="02/20/2004 03:45:33 PST Fri" name="Age" ID="972" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Entity&lt;/fen&gt; has existed for a length of time, the &lt;fen&gt;Age&lt;/fen&gt;. The &lt;fen&gt;Age&lt;/fen&gt; can be characterized as a value of the age &lt;fen&gt;Attribute&lt;/fen&gt;, or a &lt;fen&gt;Degree&lt;/fen&gt; modifier may express the deviation of the &lt;fen&gt;Age&lt;/fen&gt; from the norm. The &lt;fen&gt;Expressor&lt;/fen&gt; exhibits qualities of the age of the &lt;fen&gt;Entity&lt;/fen&gt;.
+
+&lt;ex&gt;&lt;fex name="Entity"&gt;This building&lt;/fex&gt; &lt;m&gt;is&lt;/m&gt; &lt;fex name="Age"&gt;twenty thousand years&lt;/fex&gt; &lt;t&gt;old&lt;/t&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="Entity"&gt;My grandpa&lt;/fex&gt; &lt;m&gt;is&lt;/m&gt; &lt;fex name="Degree"&gt;really&lt;/fex&gt; &lt;t&gt;old&lt;/t&gt;&lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="Entity"&gt;Junior&lt;/fex&gt; &lt;m&gt;is&lt;/m&gt; &lt;fex name="Age"&gt;only five weeks&lt;/fex&gt; &lt;t&gt;old&lt;/t&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;A cunning &lt;t&gt;oldish&lt;/t&gt; &lt;fex name="Expressor"&gt;voice&lt;/fex&gt; called out from the crowd.&lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="Entity"&gt;His&lt;/fex&gt; &lt;fex name="Attribute"&gt;&lt;t&gt;age&lt;/t&gt;&lt;/fex&gt; was &lt;fex name="Age"&gt;23&lt;/fex&gt; &lt;fex name="Time"&gt;at the time&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt; &lt;fex name="Entity"&gt;People&lt;/fex&gt; &lt;m&gt;of&lt;/m&gt;  &lt;fex name="Attribute"&gt;&lt;t&gt;age&lt;/t&gt;&lt;/fex&gt; &lt;fex name="Age"&gt;55&lt;/fex&gt; or older should consult their physician. &lt;/ex&gt;
+
+&lt;ex&gt;I have a &lt;fex name="Age"&gt;13-year&lt;/fex&gt;-&lt;t&gt;old&lt;/t&gt; &lt;fex name="Entity"&gt;cousin&lt;/fex&gt;&lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="Entity"&gt;My grandma&lt;/fex&gt; &lt;m&gt;is&lt;/m&gt; &lt;t&gt;old&lt;/t&gt;&lt;/ex&gt;
+
+There are additional patterns that the LUs in this frame occur in which are not licensed by a particular lexical head but by a construction.  Additionally, there are patterns that evoke this frame without any overt lexical head that are part of this frame.
+
+
+&lt;ex&gt;She is 45 years of &lt;t&gt;age&lt;/t&gt;.&lt;/ex&gt;
+&lt;ex&gt;Billy  is 13.&lt;/ex&gt;
+
+
+
+
+&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="02/20/2004 03:45:33 PST Fri" abbrev="Ent" name="Entity" ID="5930">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Entity&lt;/fen&gt; for which a particular age is under consideration.
+
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="02/20/2004 03:45:33 PST Fri" abbrev="Att" name="Attribute" ID="5931">
+        <definition>&lt;def-root&gt;The feature of an &lt;fen&gt;Entity&lt;/fen&gt; which is a function of the amount of time that the &lt;fen&gt;Entity&lt;/fen&gt; has existed.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="02/20/2004 03:45:33 PST Fri" abbrev="Age" name="Age" ID="5932">
+        <definition>&lt;def-root&gt;A quantity or other characterization of the &lt;fen&gt;Entity&lt;/fen&gt;'s age.&lt;/def-root&gt;</definition>
+        <excludesFE name="Degree" ID="5933"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="02/20/2004 03:45:33 PST Fri" abbrev="Deg" name="Degree" ID="5933">
+        <definition>&lt;def-root&gt;A modifier expressing  the deviation of the &lt;fen&gt;Age&lt;/fen&gt; from the norm.&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="02/20/2004 03:45:33 PST Fri" abbrev="Tim" name="Time" ID="5934">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Time&lt;/fen&gt; during which the &lt;fen&gt;Entity&lt;/fen&gt; is at a particular &lt;fen&gt;Age&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="02/20/2004 03:45:33 PST Fri" abbrev="Cir" name="Circumstances" ID="5935">
+        <definition>&lt;def-root&gt;Some specification of the circumstances under which the &lt;fen&gt;Entity&lt;/fen&gt; has a particular &lt;fen&gt;Age&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="07/20/2004 02:25:22 PDT Tue" abbrev="Exp" name="Expressor" ID="6970">
+        <definition>&lt;def-root&gt;The Frame Element &lt;fen&gt;Expressor&lt;/fen&gt; marks expressions that indicate a body part, gesture or other expression of the &lt;fen&gt;Entity&lt;/fen&gt; that reflect its age. 
+
+
+&lt;ex&gt;"Who's there?" she barked. "Ensign Kim, ma'me," the &lt;t&gt;youngish&lt;/t&gt; &lt;fex name="exp"&gt;voice&lt;/fex&gt; of Voyager's young Harry Kim came over the comm line. "&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Entity" ID="5930"/>
+    </FE>
+    <FE bgColor="7CCD73" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="361" cDate="07/05/2007 11:11:25 PDT Thu" abbrev="Des" name="Descriptor" ID="11900">
+        <definition>&lt;def-root&gt;A characteristic of the &lt;fen&gt;Entity&lt;/fen&gt;. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="361" cDate="07/05/2007 11:14:47 PDT Thu" abbrev="Dur" name="Duration" ID="11901">
+        <definition>&lt;def-root&gt;Duration denotes the length of time from the beginning of a continuous situation to its end. In many cases, the continuous situation is a dynamic action which is ongoing, while in others it is simply an undifferentiated state.&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Measurable_attributes</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by">
+        <relatedFrame>People_by_age</relatedFrame>
+        <relatedFrame>Aging</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" incorporatedFE="Attribute" POS="A" name="old.a" ID="10071" lemmaID="26650" cBy="605" cDate="02/20/2004 04:01:03 PST Fri">
+        <definition>FN: having existed for a long time or of a specified age</definition>
+        <sentenceCount annotated="91" total="704"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="old"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Attribute" POS="A" name="ancient.a" ID="10072" lemmaID="1360" cBy="605" cDate="02/20/2004 04:21:01 PST Fri">
+        <definition>COD: very old</definition>
+        <sentenceCount annotated="24" total="218"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="ancient"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Attribute" POS="A" name="young.a" ID="10073" lemmaID="44758" cBy="605" cDate="02/20/2004 04:21:46 PST Fri">
+        <definition>COD: having lived or existed for only a short time; not far advanced in life</definition>
+        <sentenceCount annotated="40" total="370"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="young"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Attribute" POS="A" name="youngish.a" ID="10074" lemmaID="44760" cBy="605" cDate="02/20/2004 04:23:40 PST Fri">
+        <definition>FN: somewhat young</definition>
+        <sentenceCount annotated="29" total="40"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="youngish"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Attribute" POS="A" name="oldish.a" ID="10075" lemmaID="26657" cBy="605" cDate="02/20/2004 04:24:19 PST Fri">
+        <definition>FN: somewhat old</definition>
+        <sentenceCount annotated="6" total="7"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="oldish"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="age.n" ID="11300" lemmaID="772" cBy="303" cDate="11/23/2004 03:12:51 PST Tue">
+        <definition>COD: the length of time that a person or thing has existed.</definition>
+        <sentenceCount annotated="14" total="161"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="age"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Attribute" POS="A" name="new.a" ID="12563" lemmaID="25749" cBy="605" cDate="07/28/2005 05:15:37 PDT Thu">
+        <definition>FN: not existing before</definition>
+        <sentenceCount annotated="17" total="217"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="new"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Attribute" POS="A" name="fresh.a" ID="13763" lemmaID="15439" cBy="361" cDate="02/23/2007 10:16:50 PST Fri">
+        <definition>FN: not previously used; new. </definition>
+        <sentenceCount annotated="20" total="172"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="fresh"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="of.prep" ID="15928" lemmaID="26546" cBy="664" cDate="07/23/2010 06:28:58 PDT Fri">
+        <definition>FN: having (the specified) age.</definition>
+        <sentenceCount annotated="1" total="1"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="of"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="maturity.n" ID="16023" lemmaID="23724" cBy="571" cDate="08/13/2010 05:05:22 PDT Fri">
+        <definition>FN: the state of being fully developed or fully grown. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="maturity"/>
+    </lexUnit>
+</frame>

@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="A" name="blanketed.a" ID="4798" frame="Abounding_with" frameID="262" totalAnnotated="4" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Loc" name="Location"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="Thm" name="Theme"/>
+            <FE fgColor="FFFF00" bgColor="FFA500" type="Peripheral" abbrev="" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: covered (in, with)</definition>
+    <lexeme POS="A" name="blanketed"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Degree"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Degree"/>
+                <annoSet ID="1107905"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Location"/>
+            <pattern total="4">
+                <valenceUnit GF="Ext" PT="NP" FE="Location"/>
+                <annoSet ID="1107877"/>
+                <annoSet ID="1107885"/>
+                <annoSet ID="1107905"/>
+                <annoSet ID="1107909"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Theme"/>
+            <pattern total="3">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Theme"/>
+                <annoSet ID="1107885"/>
+                <annoSet ID="1107905"/>
+                <annoSet ID="1107909"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Theme"/>
+                <annoSet ID="1107877"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Degree"/>
+            <FE name="Location"/>
+            <FE name="Theme"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Degree"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Location"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Theme"/>
+                <annoSet ID="1107905"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="3">
+            <FE name="Location"/>
+            <FE name="Theme"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Location"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Theme"/>
+                <annoSet ID="1107885"/>
+                <annoSet ID="1107909"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Location"/>
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Theme"/>
+                <annoSet ID="1107877"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="A-001-all">
+        <sentence sentNo="0" aPos="17546485" ID="825668">
+            <text>At Rogart the hills were blanketed with autumn-coloured trees , the brown treeless moors beyond ; in hollows of stubby hillocky straths little houses were dotted in isolation . </text>
+            <annotationSet cDate="01/07/2003 03:58:57 PST Tue" status="UNANN" ID="1107876">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PRP"/>
+                    <label end="8" start="3" name="NP0"/>
+                    <label end="12" start="10" name="AT0"/>
+                    <label end="18" start="14" name="NN2"/>
+                    <label end="23" start="20" name="VBD"/>
+                    <label end="33" start="25" name="VVN"/>
+                    <label end="38" start="35" name="PRP"/>
+                    <label end="54" start="40" name="AJ0"/>
+                    <label end="60" start="56" name="NN2"/>
+                    <label end="62" start="62" name="PUN"/>
+                    <label end="66" start="64" name="AT0"/>
+                    <label end="72" start="68" name="AJ0"/>
+                    <label end="81" start="74" name="AJ0"/>
+                    <label end="87" start="83" name="NN2"/>
+                    <label end="94" start="89" name="PRP"/>
+                    <label end="96" start="96" name="PUN"/>
+                    <label end="99" start="98" name="PRP"/>
+                    <label end="107" start="101" name="NN2"/>
+                    <label end="110" start="109" name="PRF"/>
+                    <label end="117" start="112" name="AJ0"/>
+                    <label end="126" start="119" name="AJ0"/>
+                    <label end="134" start="128" name="NN2"/>
+                    <label end="141" start="136" name="AJ0"/>
+                    <label end="148" start="143" name="NN2"/>
+                    <label end="153" start="150" name="VBD"/>
+                    <label end="160" start="155" name="VVN"/>
+                    <label end="163" start="162" name="PRP"/>
+                    <label end="173" start="165" name="NN1"/>
+                    <label end="175" start="175" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:58:58 PST Tue" status="MANUAL" ID="1107877">
+                <layer rank="1" name="FE">
+                    <label cBy="944" feID="2260" end="60" start="35" name="Theme"/>
+                    <label cBy="285" feID="2261" end="18" start="0" name="Location"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="60" start="35" name="Dep"/>
+                    <label end="18" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="60" start="35" name="PP"/>
+                    <label end="18" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="33" start="25" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj">
+                    <label end="23" start="20" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="25881684" ID="825672">
+            <text>The room was blanketed in darkness until Tom removed the blackout curtain . </text>
+            <annotationSet cDate="01/07/2003 03:58:58 PST Tue" status="UNANN" ID="1107884">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="7" start="4" name="NN1"/>
+                    <label end="11" start="9" name="VBD"/>
+                    <label end="21" start="13" name="VVN"/>
+                    <label end="24" start="23" name="PRP"/>
+                    <label end="33" start="26" name="NN1"/>
+                    <label end="39" start="35" name="CJS"/>
+                    <label end="43" start="41" name="NP0"/>
+                    <label end="51" start="45" name="VVD"/>
+                    <label end="55" start="53" name="AT0"/>
+                    <label end="64" start="57" name="NN1"/>
+                    <label end="72" start="66" name="NN1"/>
+                    <label end="74" start="74" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:58:58 PST Tue" status="MANUAL" ID="1107885">
+                <layer rank="1" name="FE">
+                    <label cBy="944" feID="2261" end="7" start="0" name="Location"/>
+                    <label cBy="944" feID="2260" end="33" start="23" name="Theme"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="7" start="0" name="Ext"/>
+                    <label end="33" start="23" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="7" start="0" name="NP"/>
+                    <label end="33" start="23" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="21" start="13" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj">
+                    <label end="11" start="9" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="71003729" ID="825682">
+            <text>At all sites at which there have been landings , manned or otherwise , the lunar surface is almost entirely blanketed in fine dust , with a few stones and boulders here and there . </text>
+            <annotationSet cDate="01/07/2003 03:58:59 PST Tue" status="UNANN" ID="1107904">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PRP"/>
+                    <label end="5" start="3" name="DT0"/>
+                    <label end="11" start="7" name="NN2"/>
+                    <label end="14" start="13" name="PRP"/>
+                    <label end="20" start="16" name="DTQ"/>
+                    <label end="26" start="22" name="AV0"/>
+                    <label end="31" start="28" name="VHB"/>
+                    <label end="36" start="33" name="VBN"/>
+                    <label end="45" start="38" name="NN2"/>
+                    <label end="47" start="47" name="PUN"/>
+                    <label end="54" start="49" name="AJ0"/>
+                    <label end="57" start="56" name="CJC"/>
+                    <label end="67" start="59" name="AV0"/>
+                    <label end="69" start="69" name="PUN"/>
+                    <label end="73" start="71" name="AT0"/>
+                    <label end="79" start="75" name="AJ0"/>
+                    <label end="87" start="81" name="NN1"/>
+                    <label end="90" start="89" name="VBZ"/>
+                    <label end="97" start="92" name="AV0"/>
+                    <label end="106" start="99" name="AV0"/>
+                    <label end="116" start="108" name="VVN"/>
+                    <label end="119" start="118" name="PRP"/>
+                    <label end="124" start="121" name="AJ0"/>
+                    <label end="129" start="126" name="NN1"/>
+                    <label end="131" start="131" name="PUN"/>
+                    <label end="136" start="133" name="PRP"/>
+                    <label end="138" start="138" name="DT0"/>
+                    <label end="142" start="140" name="DT0"/>
+                    <label end="149" start="144" name="NN2"/>
+                    <label end="153" start="151" name="CJC"/>
+                    <label end="162" start="155" name="NN2"/>
+                    <label end="167" start="164" name="AV0"/>
+                    <label end="171" start="169" name="CJC"/>
+                    <label end="177" start="173" name="AV0"/>
+                    <label end="179" start="179" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:58:59 PST Tue" status="MANUAL" ID="1107905">
+                <layer rank="1" name="FE">
+                    <label cBy="285" feID="2261" end="87" start="71" name="Location"/>
+                    <label cBy="285" feID="2271" end="106" start="92" name="Degree"/>
+                    <label cBy="285" feID="2260" end="129" start="118" name="Theme"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="87" start="71" name="Ext"/>
+                    <label end="106" start="92" name="Dep"/>
+                    <label end="129" start="118" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="87" start="71" name="NP"/>
+                    <label end="106" start="92" name="AVP"/>
+                    <label end="129" start="118" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="116" start="108" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj">
+                    <label end="90" start="89" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="75434997" ID="825684">
+            <text>I opened the shuttered window to look out on a countryside blanketed in snow . </text>
+            <annotationSet cDate="01/07/2003 03:58:59 PST Tue" status="UNANN" ID="1107908">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PNP"/>
+                    <label end="7" start="2" name="VVD"/>
+                    <label end="11" start="9" name="AT0"/>
+                    <label end="21" start="13" name="AJ0"/>
+                    <label end="28" start="23" name="NN1"/>
+                    <label end="31" start="30" name="TO0"/>
+                    <label end="36" start="33" name="VVI"/>
+                    <label end="40" start="38" name="AVP"/>
+                    <label end="43" start="42" name="PRP"/>
+                    <label end="45" start="45" name="AT0"/>
+                    <label end="57" start="47" name="NN1"/>
+                    <label end="67" start="59" name="VVD-VVN"/>
+                    <label end="70" start="69" name="PRP"/>
+                    <label end="75" start="72" name="NN1"/>
+                    <label end="77" start="77" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:59:00 PST Tue" status="MANUAL" ID="1107909">
+                <layer rank="1" name="FE">
+                    <label cBy="893" feID="2261" end="57" start="47" name="Location"/>
+                    <label cBy="893" feID="2260" end="75" start="69" name="Theme"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="75" start="69" name="Dep"/>
+                    <label end="57" start="47" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="75" start="69" name="PP"/>
+                    <label end="57" start="47" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="67" start="59" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

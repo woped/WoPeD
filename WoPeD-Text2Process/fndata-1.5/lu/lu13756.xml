@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" POS="N" name="list.n" ID="13756" frame="Text" frameID="298" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="Orwell" ID="3">
+            <document description="Orwell_1984_p1" ID="7"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Peripheral" abbrev="Author" name="Author"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Extra-Thematic" abbrev="Cmpnt" name="Components"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Extra-Thematic" abbrev="Cont_text" name="Containing_text"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Genre" name="Genre"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Extra-Thematic" abbrev="Hon" name="Honoree"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Extra-Thematic" abbrev="Mat" name="Material"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Medium" name="Medium"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Core" abbrev="Text" name="Text"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Extra-Thematic" abbrev="Time" name="Time_of_creation"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Extra-Thematic" abbrev="Title" name="Title"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Top" name="Topic"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Use" name="Use"/>
+        </frame>
+    </header>
+    <definition>COD: a number of connected items or names written consecutively.</definition>
+    <lexeme POS="N" name="list"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Topic"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Topic"/>
+                <annoSet ID="2599882"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Topic"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Topic"/>
+                <annoSet ID="2599882"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="manually-added">
+        <sentence corpID="3" docID="7" sentNo="1" paragNo="3" aPos="0" ID="312914">
+            <text>Inside the flat a fruity voice was reading out a list of figures which had something to do with the production of pig-iron .</text>
+            <annotationSet cDate="01/06/2003 10:55:07 PST Mon" status="UNANN" ID="269190">
+                <layer rank="1" name="BNC">
+                    <label end="5" start="0" name="PRP"/>
+                    <label end="9" start="7" name="AT0"/>
+                    <label end="14" start="11" name="NN1"/>
+                    <label end="16" start="16" name="AT0"/>
+                    <label end="23" start="18" name="AJ0"/>
+                    <label end="29" start="25" name="NN1"/>
+                    <label end="33" start="31" name="VBD"/>
+                    <label end="41" start="35" name="VVG"/>
+                    <label end="45" start="43" name="AVP"/>
+                    <label end="47" start="47" name="AT0"/>
+                    <label end="52" start="49" name="NN1"/>
+                    <label end="55" start="54" name="PRF"/>
+                    <label end="63" start="57" name="NN2"/>
+                    <label end="69" start="65" name="DTQ"/>
+                    <label end="73" start="71" name="VHD"/>
+                    <label end="83" start="75" name="PNI"/>
+                    <label end="86" start="85" name="TO0"/>
+                    <label end="89" start="88" name="VDI"/>
+                    <label end="94" start="91" name="PRP"/>
+                    <label end="98" start="96" name="AT0"/>
+                    <label end="109" start="100" name="NN1"/>
+                    <label end="112" start="111" name="PRF"/>
+                    <label end="121" start="114" name="NN1"/>
+                    <label end="123" start="123" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/27/2010 05:00:59 PDT Tue" status="MANUAL" ID="2599882">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="52" start="49" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="2554" end="121" start="54" name="Topic"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="121" start="54" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="121" start="54" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

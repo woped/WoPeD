@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="New" POS="ADV" name="daily.adv" ID="15356" frame="Frequency" frameID="80" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="A9A9A9" type="Core" abbrev="att" name="Attribute"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Core" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Evnt" name="Event"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Int" name="Interval"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="rat" name="Rate"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Core" abbrev="sal" name="Salient_entity"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="T_span" name="Time_span"/>
+        </frame>
+    </header>
+    <definition>FN: the 24hr interval frequency in which an action is performed. </definition>
+    <lexeme POS="ADV" name="daily"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Rate"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="--" FE="Rate"/>
+                <annoSet ID="2493582"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Rate"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="--" FE="Rate"/>
+                <annoSet ID="2493582"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-NP-VP-T-(1)"/>
+    <subCorpus name="02-NP-T-VP-(1)"/>
+    <subCorpus name="03-T-NP-VP-(1)"/>
+    <subCorpus name="04-T-VP-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+    <subCorpus name="01-NP-VP-T-(2)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="432" aPos="32660587" ID="1524411">
+            <text>A long , rather stark couch held neat piles of clean kandoras and white head scarves which were laid there daily .</text>
+            <annotationSet cDate="06/15/2009 03:05:48 PDT Mon" status="UNANN" ID="2493581">
+                <layer rank="1" name="PENN">
+                    <label end="0" start="0" name="dt"/>
+                    <label end="5" start="2" name="jj"/>
+                    <label end="7" start="7" name=","/>
+                    <label end="14" start="9" name="rb"/>
+                    <label end="20" start="16" name="jj"/>
+                    <label end="26" start="22" name="nn"/>
+                    <label end="31" start="28" name="VVD"/>
+                    <label end="36" start="33" name="jj"/>
+                    <label end="42" start="38" name="nns"/>
+                    <label end="45" start="44" name="in"/>
+                    <label end="51" start="47" name="jj"/>
+                    <label end="60" start="53" name="nns"/>
+                    <label end="64" start="62" name="cc"/>
+                    <label end="70" start="66" name="jj"/>
+                    <label end="75" start="72" name="nn"/>
+                    <label end="83" start="77" name="nn"/>
+                    <label end="89" start="85" name="wdt"/>
+                    <label end="94" start="91" name="VBD"/>
+                    <label end="99" start="96" name="VVN"/>
+                    <label end="105" start="101" name="rb"/>
+                    <label end="111" start="107" name="jj"/>
+                    <label end="113" start="113" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="06/15/2009 03:05:48 PDT Mon" status="MANUAL" ID="2493582">
+                <layer rank="1" name="Target">
+                    <label cBy="225" end="111" start="107" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="225" feID="8921" end="111" start="107" name="Rate"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adv"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-NP-T-VP-(2)"/>
+    <subCorpus name="03-T-NP-VP-(2)"/>
+    <subCorpus name="04-T-VP-(2)"/>
+    <subCorpus name="other-matched-(2)"/>
+    <subCorpus name="other-unmatched-(2)"/>
+</lexUnit>

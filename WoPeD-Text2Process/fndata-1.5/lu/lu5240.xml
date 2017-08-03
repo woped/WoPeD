@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="alias.n" ID="5240" frame="Being_named" frameID="228" totalAnnotated="4" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Core" abbrev="Entity" name="Entity"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Name" name="Name"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Name_source" name="Name_source"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Peripheral" abbrev="Spkr" name="Speaker"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Type" name="Type"/>
+        </frame>
+    </header>
+    <definition>COD:  a false or assumed identity. </definition>
+    <lexeme POS="N" name="alias"/>
+    <valences>
+        <governor type="Gov" lemma="use">
+            <annoSet ID="1117582"/>
+        </governor>
+        <FERealization total="2">
+            <FE name="Entity"/>
+            <pattern total="2">
+                <valenceUnit GF="Gen" PT="Poss" FE="Entity"/>
+                <annoSet ID="1117548"/>
+                <annoSet ID="1117550"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Name"/>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="NP" FE="Name"/>
+                <annoSet ID="1117548"/>
+                <annoSet ID="1117550"/>
+                <annoSet ID="1117642"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="NP" FE="Name"/>
+                <annoSet ID="1117582"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Entity"/>
+            <FE name="Name"/>
+            <pattern total="2">
+                <valenceUnit GF="Gen" PT="Poss" FE="Entity"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Name"/>
+                <annoSet ID="1117548"/>
+                <annoSet ID="1117550"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Name"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="NP" FE="Name"/>
+                <annoSet ID="1117582"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Name"/>
+                <annoSet ID="1117642"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-001-all">
+        <sentence sentNo="0" aPos="4961432" ID="830531">
+            <text>His alias is Owen Money . </text>
+            <annotationSet cDate="01/07/2003 04:10:11 PST Tue" status="UNANN" ID="1117547">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="DPS"/>
+                    <label end="8" start="4" name="NN1"/>
+                    <label end="11" start="10" name="VBZ"/>
+                    <label end="16" start="13" name="NP0"/>
+                    <label end="22" start="18" name="NN1"/>
+                    <label end="24" start="24" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 04:10:11 PST Tue" status="MANUAL" ID="1117548">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="1859" end="2" start="0" name="Entity"/>
+                    <label cBy="669" feID="1858" end="22" start="13" name="Name"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="2" start="0" name="Gen"/>
+                    <label end="22" start="13" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="2" start="0" name="Poss"/>
+                    <label end="22" start="13" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="8" start="4" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="11" start="10" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="8291354" ID="830532">
+            <text>His alias was Ebrahim Ebrahimian , a name variously mis-spelled by the players , which Secord supposed to be Turkish . </text>
+            <annotationSet cDate="01/07/2003 04:10:11 PST Tue" status="UNANN" ID="1117549">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="DPS"/>
+                    <label end="8" start="4" name="NN1"/>
+                    <label end="12" start="10" name="VBD"/>
+                    <label end="20" start="14" name="NN1-NP0"/>
+                    <label end="31" start="22" name="AJ0-NN1"/>
+                    <label end="33" start="33" name="PUN"/>
+                    <label end="35" start="35" name="AT0"/>
+                    <label end="40" start="37" name="NN1"/>
+                    <label end="50" start="42" name="AV0"/>
+                    <label end="62" start="52" name="VVD-VVN"/>
+                    <label end="65" start="64" name="PRP"/>
+                    <label end="69" start="67" name="AT0"/>
+                    <label end="77" start="71" name="NN2"/>
+                    <label end="79" start="79" name="PUN"/>
+                    <label end="85" start="81" name="DTQ"/>
+                    <label end="92" start="87" name="NP0"/>
+                    <label end="101" start="94" name="AJ0"/>
+                    <label end="104" start="103" name="TO0"/>
+                    <label end="107" start="106" name="VBI"/>
+                    <label end="115" start="109" name="AJ0"/>
+                    <label end="117" start="117" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 04:10:11 PST Tue" status="MANUAL" ID="1117550">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="1859" end="2" start="0" name="Entity"/>
+                    <label cBy="303" feID="1858" end="115" start="14" name="Name"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="2" start="0" name="Gen"/>
+                    <label end="115" start="14" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="2" start="0" name="Poss"/>
+                    <label end="115" start="14" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="8" start="4" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="12" start="10" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="31914721" ID="830548">
+            <text>Calton , who also used the alias Hans Schultz , had nearly escaped . </text>
+            <annotationSet cDate="01/07/2003 04:10:13 PST Tue" status="UNANN" ID="1117581">
+                <layer rank="1" name="BNC">
+                    <label end="5" start="0" name="NN1-NP0"/>
+                    <label end="7" start="7" name="PUN"/>
+                    <label end="11" start="9" name="PNQ"/>
+                    <label end="16" start="13" name="AV0"/>
+                    <label end="21" start="18" name="VVD-VVN"/>
+                    <label end="25" start="23" name="AT0"/>
+                    <label end="31" start="27" name="NN1"/>
+                    <label end="36" start="33" name="NP0"/>
+                    <label end="44" start="38" name="NP0"/>
+                    <label end="46" start="46" name="PUN"/>
+                    <label end="50" start="48" name="VHD"/>
+                    <label end="57" start="52" name="AV0"/>
+                    <label end="65" start="59" name="VVN"/>
+                    <label end="67" start="67" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 04:10:13 PST Tue" status="MANUAL" ID="1117582">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="1858" end="44" start="33" name="Name"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="44" start="33" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="44" start="33" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="31" start="27" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="21" start="18" name="Gov"/>
+                    <label end="44" start="23" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="100968212" ID="830578">
+            <text>` So Peter Sebastian is an alias ? &quot; </text>
+            <annotationSet cDate="01/07/2003 04:10:17 PST Tue" status="UNANN" ID="1117641">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PUQ"/>
+                    <label end="3" start="2" name="CJS"/>
+                    <label end="9" start="5" name="NP0"/>
+                    <label end="19" start="11" name="NP0"/>
+                    <label end="22" start="21" name="VBZ"/>
+                    <label end="25" start="24" name="AT0"/>
+                    <label end="31" start="27" name="NN1"/>
+                    <label end="33" start="33" name="PUN"/>
+                    <label end="35" start="35" name="PUQ"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 04:10:17 PST Tue" status="MANUAL" ID="1117642">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="1858" end="19" start="5" name="Name"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="19" start="5" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="19" start="5" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="31" start="27" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun">
+                    <label end="22" start="21" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

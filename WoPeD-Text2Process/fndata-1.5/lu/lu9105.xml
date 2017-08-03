@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="judder.v" ID="9105" frame="Moving_in_place" frameID="670" totalAnnotated="4" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Peripheral" abbrev="" name="Angle"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="" name="Cause"/>
+            <FE fgColor="000000" bgColor="7FFF00" type="Extra-Thematic" abbrev="dep" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Peripheral" abbrev="Dir" name="Direction"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Fix_loc" name="Fixed_location"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="" name="Manner"/>
+            <FE fgColor="000000" bgColor="d0d0d0" type="Extra-Thematic" abbrev="pat" name="Path_shape"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Peripheral" abbrev="Per" name="Periodicity"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Extra-Thematic" abbrev="pur" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="" name="Theme"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD:  shake and vibrate rapidly and forcefully. </definition>
+    <lexeme POS="V" name="judder"/>
+    <valences>
+        <FERealization total="2">
+            <FE name="Direction"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Direction"/>
+                <annoSet ID="1802856"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Direction"/>
+                <annoSet ID="1802864"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Manner"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Manner"/>
+                <annoSet ID="1802854"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Result"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="AJP" FE="Result"/>
+                <annoSet ID="1802834"/>
+                <annoSet ID="1802854"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Theme"/>
+            <pattern total="4">
+                <valenceUnit GF="Ext" PT="NP" FE="Theme"/>
+                <annoSet ID="1802834"/>
+                <annoSet ID="1802854"/>
+                <annoSet ID="1802856"/>
+                <annoSet ID="1802864"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Direction"/>
+            <FE name="Theme"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Direction"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Theme"/>
+                <annoSet ID="1802856"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Direction"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Theme"/>
+                <annoSet ID="1802864"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Manner"/>
+            <FE name="Result"/>
+            <FE name="Theme"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Manner"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Result"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Theme"/>
+                <annoSet ID="1802854"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Result"/>
+            <FE name="Theme"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Result"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Theme"/>
+                <annoSet ID="1802834"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-001-all">
+        <sentence sentNo="0" aPos="25795612" ID="1176345">
+            <text>The doors juddered open to reveal him waiting to greet us . </text>
+            <annotationSet cDate="01/08/2003 05:33:09 PST Wed" status="UNANN" ID="1802833">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="8" start="4" name="NN2"/>
+                    <label end="17" start="10" name="VVD"/>
+                    <label end="22" start="19" name="AJ0-AV0"/>
+                    <label end="25" start="24" name="TO0"/>
+                    <label end="32" start="27" name="VVI"/>
+                    <label end="36" start="34" name="PNP"/>
+                    <label end="44" start="38" name="AJ0-VVG"/>
+                    <label end="47" start="46" name="TO0"/>
+                    <label end="53" start="49" name="VVI"/>
+                    <label end="56" start="55" name="PNP"/>
+                    <label end="58" start="58" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:33:09 PST Wed" status="MANUAL" ID="1802834">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4486" end="8" start="0" name="Theme"/>
+                    <label cBy="618" feID="4780" end="22" start="19" name="Result"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="8" start="0" name="Ext"/>
+                    <label end="22" start="19" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="8" start="0" name="NP"/>
+                    <label end="22" start="19" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="17" start="10" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="63140102" ID="1176355">
+            <text>The doors on the landing behind Cardiff juddered open with a loud clatter . </text>
+            <annotationSet cDate="01/08/2003 05:33:13 PST Wed" status="UNANN" ID="1802853">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="8" start="4" name="NN2"/>
+                    <label end="11" start="10" name="PRP"/>
+                    <label end="15" start="13" name="AT0"/>
+                    <label end="23" start="17" name="NN1"/>
+                    <label end="30" start="25" name="PRP"/>
+                    <label end="38" start="32" name="NP0"/>
+                    <label end="47" start="40" name="VVD"/>
+                    <label end="52" start="49" name="AJ0-AV0"/>
+                    <label end="57" start="54" name="PRP"/>
+                    <label end="59" start="59" name="AT0"/>
+                    <label end="64" start="61" name="AJ0"/>
+                    <label end="72" start="66" name="NN1"/>
+                    <label end="74" start="74" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:33:13 PST Wed" status="MANUAL" ID="1802854">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4486" end="38" start="0" name="Theme"/>
+                    <label cBy="618" feID="4780" end="52" start="49" name="Result"/>
+                    <label cBy="618" feID="4779" end="72" start="54" name="Manner"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="38" start="0" name="Ext"/>
+                    <label end="52" start="49" name="Dep"/>
+                    <label end="72" start="54" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="38" start="0" name="NP"/>
+                    <label end="52" start="49" name="AJP"/>
+                    <label end="72" start="54" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="47" start="40" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="63140315" ID="1176356">
+            <text>The top hinge flew apart and the door began to judder inwards . </text>
+            <annotationSet cDate="01/08/2003 05:33:13 PST Wed" status="UNANN" ID="1802855">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="6" start="4" name="AJ0"/>
+                    <label end="12" start="8" name="NN1"/>
+                    <label end="17" start="14" name="VVD"/>
+                    <label end="23" start="19" name="AV0"/>
+                    <label end="27" start="25" name="CJC"/>
+                    <label end="31" start="29" name="AT0"/>
+                    <label end="36" start="33" name="NN1"/>
+                    <label end="42" start="38" name="VVD"/>
+                    <label end="45" start="44" name="TO0"/>
+                    <label end="52" start="47" name="VVI"/>
+                    <label end="60" start="54" name="AV0"/>
+                    <label end="62" start="62" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:33:13 PST Wed" status="MANUAL" ID="1802856">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4486" end="36" start="29" name="Theme"/>
+                    <label cBy="618" feID="4492" end="60" start="54" name="Direction"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="36" start="29" name="Ext"/>
+                    <label end="60" start="54" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="36" start="29" name="NP"/>
+                    <label end="60" start="54" name="AVP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="52" start="47" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="64935973" ID="1176360">
+            <text>The dispenser hummed as the null-grav units tried to compensate , and the machine juddered to one side . </text>
+            <annotationSet cDate="01/08/2003 05:33:13 PST Wed" status="UNANN" ID="1802863">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="12" start="4" name="NN1"/>
+                    <label end="19" start="14" name="VVD-VVN"/>
+                    <label end="22" start="21" name="PRP"/>
+                    <label end="26" start="24" name="AT0"/>
+                    <label end="36" start="28" name="AJ0"/>
+                    <label end="42" start="38" name="NN2"/>
+                    <label end="48" start="44" name="VVD-VVN"/>
+                    <label end="51" start="50" name="TO0"/>
+                    <label end="62" start="53" name="VVI"/>
+                    <label end="64" start="64" name="PUN"/>
+                    <label end="68" start="66" name="CJC"/>
+                    <label end="72" start="70" name="AT0"/>
+                    <label end="80" start="74" name="NN1"/>
+                    <label end="89" start="82" name="VVD-VVN"/>
+                    <label end="92" start="91" name="PRP"/>
+                    <label end="96" start="94" name="CRD"/>
+                    <label end="101" start="98" name="NN1"/>
+                    <label end="103" start="103" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:33:13 PST Wed" status="MANUAL" ID="1802864">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="4486" end="80" start="70" name="Theme"/>
+                    <label cBy="618" feID="4492" end="101" start="91" name="Direction"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="80" start="70" name="Ext"/>
+                    <label end="101" start="91" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="80" start="70" name="NP"/>
+                    <label end="101" start="91" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="89" start="82" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

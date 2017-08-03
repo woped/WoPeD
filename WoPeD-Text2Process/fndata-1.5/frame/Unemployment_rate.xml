@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="08/11/2005 02:38:21 PDT Thu" name="Unemployment_rate" ID="1606" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;Based on how many &lt;fen&gt;Individuals&lt;/fen&gt; are employed, the &lt;fen&gt;Individuals&lt;/fen&gt; as a whole are described with a &lt;fen&gt;Value&lt;/fen&gt; (either a percentage or absolute number) representing the &lt;fen&gt;Employment&lt;/fen&gt; of the &lt;fen&gt;Individuals&lt;/fen&gt;.
+
+&lt;ex&gt;&lt;fex name="Employment"&gt;&lt;t&gt;Unemployment&lt;/t&gt;&lt;/fex&gt; is down, salaries are up for US chemists.&lt;/ex&gt;
+
+&lt;ex&gt;As a result, the &lt;fex name="Employment"&gt;&lt;t&gt;unemployment&lt;/t&gt;&lt;/fex&gt; &lt;fex name="Individuals"&gt;of Roma&lt;/fex&gt; is very high.&lt;/ex&gt;
+
+&lt;ex&gt;Today's report finds that &lt;fex name="Employment"&gt;&lt;t&gt;unemployment&lt;/t&gt;&lt;/fex&gt; &lt;fex name="Group"&gt;among single mothers&lt;/fex&gt; rose for the first time in six years in 2002. &lt;fex name="Individuals"&gt;DNI&lt;/fex&gt;&lt;/ex&gt;
+
+&lt;ex&gt;In the 1950s and '60s, &lt;fex name="Employment"&gt;&lt;t&gt;joblessness&lt;/t&gt;&lt;/fex&gt; &lt;fex name="Value"&gt;of 6 to 7 percent&lt;/fex&gt; was intense, but now an
+unemployment rate of below 6 percent could be inflationary. &lt;fex name="Individuals"&gt;DNI&lt;/fex&gt;. &lt;/ex&gt;
+
+&lt;ex&gt;The economy was operating at full capacity, traditionally defined as &lt;fex name="Employment"&gt;&lt;t&gt;employment&lt;/t&gt;&lt;/fex&gt; &lt;fex name="Value"&gt;of 96 percent of the civilian labor force&lt;/fex&gt;. &lt;fex name="Individuals"&gt;DNI&lt;/fex&gt;&lt;/ex&gt;
+
+&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="08/11/2005 02:38:21 PDT Thu" abbrev="ind" name="Individuals" ID="8833">
+        <definition>&lt;def-root&gt;The group of people whose employment status is considered.
+
+
+&lt;ex&gt;The high &lt;t&gt;unemployment&lt;/t&gt; &lt;fex name="Individuals"&gt;of the Romany population&lt;/fex&gt; is one of the key issues, which need addressing.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="08/11/2005 02:38:22 PDT Thu" abbrev="emp" name="Employment" ID="8834">
+        <definition>&lt;def-root&gt;The property of a group of &lt;fen&gt;Individuals&lt;/fen&gt; describing how many of them are employed or unemployed.
+
+&lt;ex&gt;The statistics are shocking: &lt;fex name="emp"&gt;&lt;t&gt;unemployment&lt;/t&gt;&lt;/fex&gt; is 57 per cent.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="08/11/2005 02:38:22 PDT Thu" abbrev="val" name="Value" ID="8835">
+        <definition>&lt;def-root&gt;The count or percentage of people among the group of &lt;fen&gt;Individuals&lt;/fen&gt; that are of the specified employment status.
+
+&lt;ex&gt;While current &lt;t&gt;unemployment&lt;/t&gt; &lt;fex name="Value"&gt;of about 6%&lt;/fex&gt; isn't high by historical standards, there's no denying this trend toward job exportation.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="08/11/2005 02:38:22 PDT Thu" abbrev="deg" name="Degree" ID="8836">
+        <definition>&lt;def-root&gt;A modifier expressing  the deviation of the &lt;fen&gt;Value&lt;/fen&gt; from the norm.
+
+&lt;ex&gt;This leads to &lt;fex name="deg"&gt;high&lt;/fex&gt; &lt;t&gt;joblessness&lt;/t&gt; in some pockets.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+        <excludesFE name="Value" ID="8835"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="08/11/2005 02:38:22 PDT Thu" abbrev="" name="Time" ID="8837">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Time&lt;/fen&gt; during which &lt;fen&gt;Employment&lt;/fen&gt; level of the &lt;fen&gt;Individuals&lt;/fen&gt; has a specified &lt;fen&gt;Value&lt;/fen&gt;.
+
+&lt;ex&gt;&lt;fex name="Time"&gt;Last month's&lt;/fex&gt; &lt;t&gt;unemployment&lt;/t&gt; was 5.17 percent on a seasonally-adjusted basis.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="08/11/2005 02:38:22 PDT Thu" abbrev="gro" name="Group" ID="8838">
+        <definition>&lt;def-root&gt;The number or rate of individuals that are either employed or unemployment may be contrasted, implicitly or explicitly, with different groups.
+
+&lt;ex&gt;Ministers believe youth &lt;t&gt;unemployment&lt;/t&gt; &lt;fex name="gro"&gt;among Canada's Aboriginal
+population&lt;/fex&gt; requires special and immediate attention.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="08/11/2005 06:43:02 PDT Thu" abbrev="pla" name="Place" ID="8839">
+        <definition>&lt;def-root&gt;The location where the &lt;fen&gt;Individuals&lt;/fen&gt; under consideration reside.
+
+&lt;ex&gt;A stadium is expected to cost $350 million, and financial woes caused by recession
+and high &lt;t&gt;joblessness&lt;/t&gt; &lt;fex name="pla"&gt;in Oregon&lt;/fex&gt; all but rule out public financing.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Measurable_attributes</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Created" POS="N" name="unemployment.n" ID="12623" lemmaID="42077" cBy="605" cDate="08/11/2005 04:40:00 PDT Thu">
+        <definition>COD: the number or proportion of unemployed people.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="unemployment"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="joblessness.n" ID="12624" lemmaID="50207" cBy="605" cDate="08/11/2005 04:40:42 PDT Thu">
+        <definition>FN: the number or proportion of jobless people.</definition>
+        <sentenceCount annotated="4" total="11"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="joblessness"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="employment.n" ID="12877" lemmaID="12636" cBy="995" cDate="11/02/2005 04:41:16 PST Wed">
+        <definition>FN: as opposed to unemployment, the number or proportion of employed people.</definition>
+        <sentenceCount annotated="17" total="306"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="employment"/>
+    </lexUnit>
+</frame>

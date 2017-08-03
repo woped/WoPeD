@@ -22,8 +22,19 @@
  */
 package org.woped.starter;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.Locale;
+
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+
 import org.apache.log4j.xml.DOMConfigurator;
 import org.woped.config.general.WoPeDGeneralConfiguration;
+import org.woped.core.config.ConfigurationManager;
 import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.core.controller.AbstractViewEvent;
 import org.woped.core.controller.ViewEvent;
@@ -31,41 +42,36 @@ import org.woped.core.utilities.LoggerManager;
 import org.woped.core.utilities.Platform;
 import org.woped.starter.controller.vc.DefaultApplicationMediator;
 import org.woped.starter.utilities.WopedLogger;
-
-import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.util.Locale;
+import org.woped.starter.t2p.WorldModelExecution;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
  *         <br>
  * 
- * This is the starter Class for WoPeD. <br>
- * You need to start WoPeD with this Class, if you want to enable the log.
+ *         This is the starter Class for WoPeD. <br>
+ *         You need to start WoPeD with this Class, if you want to enable the
+ *         log.
  * 
- * 29.04.2003
+ *         29.04.2003
  */
 
 @SuppressWarnings("serial")
 public class RunWoPeD extends JFrame {
-	
-	private static RunWoPeD 				  m_instance = null;
 
-	private 	   String [] 				  m_filesToOpen = null;
-	private        DefaultApplicationMediator m_dam = null;	
-	
-	 /**
-     * 
-     * Main Entry Point. Starts WoPeD and the GUI.
-     *  
-     */
-    public static void main(String[] args) { 	
-    	boolean startDelayed = false;
-    	boolean forceGerman = false;
-    	boolean forceEnglish = false;
+	private static RunWoPeD m_instance = null;
+
+	private String[] m_filesToOpen = null;
+	private DefaultApplicationMediator m_dam = null;
+
+	/**
+	 * 
+	 * Main Entry Point. Starts WoPeD and the GUI.
+	 * 
+	 */
+	public static void main(String[] args) {
+		boolean startDelayed = false;
+		boolean forceGerman = false;
+		boolean forceEnglish = false;
 
 		for (String arg : args) {
 
@@ -79,73 +85,77 @@ public class RunWoPeD extends JFrame {
 				forceEnglish = true;
 			}
 		}
-		
+
 		if (startDelayed || forceGerman || forceEnglish)
 			args = null;
-    	
+
 		if (forceGerman)
 			Locale.setDefault(Locale.GERMANY);
 		if (forceEnglish)
 			Locale.setDefault(Locale.ENGLISH);
-		
-    	m_instance = new RunWoPeD(args);
-    	
+
+		m_instance = new RunWoPeD(args);
+
 		if (startDelayed) {
 			m_instance.WaitForSetupFinished();
 		}
 
-    	SwingUtilities.invokeLater(new Runnable() {
-    		public void run() {
-    			m_instance.run();
-    		}
-    	});
-    }
-	
+		SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				m_instance.run();
+			}
+		});
+	}
+
 	/**
-	 * Constructor 
-	**/
-    private RunWoPeD(String[] args) {
-    	m_filesToOpen = args;
-    	initLogging();
-    	m_dam = new DefaultApplicationMediator(null, new WoPeDGeneralConfiguration());
-    	initUI();
-    }
-    
+	 * Constructor
+	 **/
+	private RunWoPeD(String[] args) {
+		m_filesToOpen = args;
+		initLogging();
+		m_dam = new DefaultApplicationMediator(null, new WoPeDGeneralConfiguration());
+
+		if (ConfigurationManager.getConfiguration().getProcess2TextUse()) {
+
+			(new Thread(new WorldModelExecution())).start();
+
+		}
+
+		initUI();
+	}
+
 	/**
 	 * Initialize GUI
 	 **/
 	private void initUI() {
 		/* If we are running on a Mac, set associated screen menu handlers */
 		if (Platform.isMac()) {
-            OSXAdapter.setOpenFileHandler(new ActionListener() {
-            	public void actionPerformed(ActionEvent e) {
-            		m_filesToOpen = new String[1];
-            		m_filesToOpen[0] = e.getActionCommand();
-                }
-            });
- 
+			OSXAdapter.setOpenFileHandler(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					m_filesToOpen = new String[1];
+					m_filesToOpen[0] = e.getActionCommand();
+				}
+			});
+
 			OSXAdapter.setQuitHandler(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					m_dam.fireViewEvent(new ViewEvent(m_dam,
-							AbstractViewEvent.VIEWEVENTTYPE_GUI,
-							AbstractViewEvent.EXIT));
+					m_dam.fireViewEvent(
+							new ViewEvent(m_dam, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.EXIT));
 
 				}
 			});
 
 			OSXAdapter.setAboutHandler(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					m_dam.fireViewEvent(new ViewEvent(m_dam,
-							AbstractViewEvent.VIEWEVENTTYPE_GUI,
-							AbstractViewEvent.ABOUT));
+					m_dam.fireViewEvent(
+							new ViewEvent(m_dam, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.ABOUT));
 
 				}
 			});
 
 			OSXAdapter.setPreferencesHandler(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					m_dam.fireViewEvent(new ViewEvent(m_dam,
-							AbstractViewEvent.VIEWEVENTTYPE_APPLICATION,
+					m_dam.fireViewEvent(new ViewEvent(m_dam, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION,
 							AbstractViewEvent.CONFIG));
 
 				}
@@ -171,108 +181,105 @@ public class RunWoPeD extends JFrame {
 			UIManager.put("TabbedPane.font", DefaultStaticConfiguration.DEFAULT_BIGLABEL_FONT);
 		}
 	}
-  
+
 	/**
 	 * Init loggers for different WoPeD components
-	**/
+	 **/
 	private void initLogging() {
-    	DOMConfigurator.configure(RunWoPeD.class.getResource("/org/woped/starter/utilities/log4j.xml"));
-	
-    	LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(
-				Constants.GUI_LOGGER)), 
+		DOMConfigurator.configure(RunWoPeD.class.getResource("/org/woped/starter/utilities/log4j.xml"));
+
+		LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(Constants.GUI_LOGGER)),
 				Constants.GUI_LOGGER);
-    	LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(
-				org.woped.editor.Constants.EDITOR_LOGGER)),
+		LoggerManager.register(
+				new WopedLogger(org.apache.log4j.Logger.getLogger(org.woped.editor.Constants.EDITOR_LOGGER)),
 				org.woped.editor.Constants.EDITOR_LOGGER);
-    	LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(
-				org.woped.config.Constants.CONFIG_LOGGER)),
+		LoggerManager.register(
+				new WopedLogger(org.apache.log4j.Logger.getLogger(org.woped.config.Constants.CONFIG_LOGGER)),
 				org.woped.config.Constants.CONFIG_LOGGER);
-    	LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(
-				org.woped.file.Constants.FILE_LOGGER)),
+		LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(org.woped.file.Constants.FILE_LOGGER)),
 				org.woped.file.Constants.FILE_LOGGER);
-    	LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(
-				org.woped.config.Constants.CONFIG_LOGGER)),
+		LoggerManager.register(
+				new WopedLogger(org.apache.log4j.Logger.getLogger(org.woped.config.Constants.CONFIG_LOGGER)),
 				org.woped.config.Constants.CONFIG_LOGGER);
-    	LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(
-				org.woped.core.Constants.CORE_LOGGER)),
-				org.woped.core.Constants.CORE_LOGGER);				
-    	LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(
-				org.woped.quantana.Constants.QUANTANA_LOGGER)),
+		LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(org.woped.core.Constants.CORE_LOGGER)),
+				org.woped.core.Constants.CORE_LOGGER);
+		LoggerManager.register(
+				new WopedLogger(org.apache.log4j.Logger.getLogger(org.woped.quantana.Constants.QUANTANA_LOGGER)),
 				org.woped.quantana.Constants.QUANTANA_LOGGER);
-    	LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(
-				org.woped.qualanalysis.Constants.QUALANALYSIS_LOGGER)),
+		LoggerManager.register(
+				new WopedLogger(
+						org.apache.log4j.Logger.getLogger(org.woped.qualanalysis.Constants.QUALANALYSIS_LOGGER)),
 				org.woped.qualanalysis.Constants.QUALANALYSIS_LOGGER);
-    	LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(
-				org.woped.gui.translations.Constants.TRANSLATIONS_LOGGER)),
-				org.woped.gui.translations.Constants.TRANSLATIONS_LOGGER);  	
-		LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(
-				org.woped.apromore.Constants.APROMORE_LOGGER)), 
+		LoggerManager.register(
+				new WopedLogger(
+						org.apache.log4j.Logger.getLogger(org.woped.gui.translations.Constants.TRANSLATIONS_LOGGER)),
+				org.woped.gui.translations.Constants.TRANSLATIONS_LOGGER);
+		LoggerManager.register(
+				new WopedLogger(org.apache.log4j.Logger.getLogger(org.woped.apromore.Constants.APROMORE_LOGGER)),
 				org.woped.apromore.Constants.APROMORE_LOGGER);
-		LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(
-				org.woped.quantana.dashboard.webserver.Constants.DASHBOARDWEBSRV_LOGGER)), 
+		LoggerManager.register(
+				new WopedLogger(org.apache.log4j.Logger
+						.getLogger(org.woped.quantana.dashboard.webserver.Constants.DASHBOARDWEBSRV_LOGGER)),
 				org.woped.quantana.dashboard.webserver.Constants.DASHBOARDWEBSRV_LOGGER);
-		LoggerManager.register(new WopedLogger(org.apache.log4j.Logger.getLogger(
-				org.woped.quantana.dashboard.storage.Constants.DASHBOARDSTORE_LOGGER)), 
+		LoggerManager.register(
+				new WopedLogger(org.apache.log4j.Logger
+						.getLogger(org.woped.quantana.dashboard.storage.Constants.DASHBOARDSTORE_LOGGER)),
 				org.woped.quantana.dashboard.storage.Constants.DASHBOARDSTORE_LOGGER);
-		
-    	LoggerManager.info(Constants.GUI_LOGGER, "INIT APPLICATION");
-    }
-    
+
+		LoggerManager.info(Constants.GUI_LOGGER, "INIT APPLICATION");
+	}
+
 	/**
 	 * Run WoPeD by starting Default Application Mediator
-	**/
-	private void run() { 			
+	 **/
+	private void run() {
 		try {
 			m_dam.startUI(m_filesToOpen);
-		} 
-    	catch (Exception e) {
-            LoggerManager.error(Constants.GUI_LOGGER, "Could not start WoPeD");
+		} catch (Exception e) {
+			LoggerManager.error(Constants.GUI_LOGGER, "Could not start WoPeD");
 			System.exit(1);
 		}
 	}
-	
+
 	/**
 	 * Wait until WoPeD setup utility has completely terminated
-	**/
+	 **/
 	private void WaitForSetupFinished() {
-		
+
 		try {
 			while (!setupHasFinished()) {
 				Thread.sleep(1000);
 			}
+		} catch (InterruptedException ignored) {
 		}
-		catch(InterruptedException ignored){
-		} 
-				
-		new AskToStartWoPeDUI(this).setVisible(true);	
+
+		new AskToStartWoPeDUI(this).setVisible(true);
 	}
-	
+
 	/**
 	 * Check for process ID of Mac Installer app
-	**/
+	 **/
 	private boolean setupHasFinished() {
 		try {
-			String 	line;	
-			String  pattern;
+			String line;
+			String pattern;
 			Process p;
-			
-		if (Platform.isMac()) {		
+
+			if (Platform.isMac()) {
 				p = Runtime.getRuntime().exec("ps -e");
 				pattern = "Installer";
-				BufferedReader input = new BufferedReader(new InputStreamReader(
-					p.getInputStream()));
+				BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
 				while ((line = input.readLine()) != null) {
 					if (line.contains(pattern))
 						return false;
 				}
-			
+
 				input.close();
 			}
-		} 
-		catch (Exception err) {
+		} catch (Exception err) {
 			err.printStackTrace();
 		}
-		
+
 		return true;
 	}
 }

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" POS="A" name="chance.a" ID="15891" frame="Coincidence" frameID="1812" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="MASC" ID="150">
+            <document description="chance" ID="21990"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="pla" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="soa" name="State_of_affairs"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: random</definition>
+    <lexeme POS="A" name="chance"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="State_of_affairs"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="--" FE="State_of_affairs"/>
+                <annoSet ID="2601399"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="State_of_affairs"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="--" FE="State_of_affairs"/>
+                <annoSet ID="2601399"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="manually-added">
+        <sentence corpID="150" docID="21990" sentNo="8" paragNo="1" aPos="0" ID="1566027">
+            <text>One possibility is that studies report different estimates of the single true relationship between a given pollutant and a health effect due to differences in study design , random chance , or other factors .</text>
+            <annotationSet cDate="06/11/2010 11:00:33 PDT Fri" status="UNANN" ID="2571317">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="cd"/>
+                    <label end="14" start="4" name="nn"/>
+                    <label end="17" start="16" name="VBZ"/>
+                    <label end="30" start="24" name="nns"/>
+                    <label end="37" start="32" name="VV"/>
+                    <label end="47" start="39" name="jj"/>
+                    <label end="57" start="49" name="nns"/>
+                    <label end="60" start="59" name="in"/>
+                    <label end="64" start="62" name="dt"/>
+                    <label end="71" start="66" name="jj"/>
+                    <label end="76" start="73" name="jj"/>
+                    <label end="89" start="78" name="nn"/>
+                    <label end="97" start="91" name="in"/>
+                    <label end="99" start="99" name="dt"/>
+                    <label end="105" start="101" name="VVN"/>
+                    <label end="115" start="107" name="nn"/>
+                    <label end="119" start="117" name="cc"/>
+                    <label end="121" start="121" name="dt"/>
+                    <label end="128" start="123" name="nn"/>
+                    <label end="135" start="130" name="nn"/>
+                    <label end="139" start="137" name="jj"/>
+                    <label end="142" start="141" name="to"/>
+                    <label end="154" start="144" name="nns"/>
+                    <label end="157" start="156" name="in"/>
+                    <label end="163" start="159" name="nn"/>
+                    <label end="170" start="165" name="nn"/>
+                    <label end="172" start="172" name=","/>
+                    <label end="179" start="174" name="jj"/>
+                    <label end="186" start="181" name="nn"/>
+                    <label end="188" start="188" name=","/>
+                    <label end="191" start="190" name="cc"/>
+                    <label end="197" start="193" name="jj"/>
+                    <label end="205" start="199" name="nns"/>
+                    <label end="207" start="207" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL">
+                    <label end="2" start="0" name="NT"/>
+                    <label end="17" start="16" name="NT"/>
+                    <label end="60" start="59" name="NT"/>
+                    <label end="64" start="62" name="NT"/>
+                    <label end="97" start="91" name="NT"/>
+                    <label end="99" start="99" name="NT"/>
+                    <label end="119" start="117" name="NT"/>
+                    <label end="121" start="121" name="NT"/>
+                    <label end="142" start="141" name="NT"/>
+                    <label end="157" start="156" name="NT"/>
+                    <label end="172" start="172" name="NT"/>
+                    <label end="188" start="188" name="NT"/>
+                    <label end="191" start="190" name="NT"/>
+                    <label end="207" start="207" name="NT"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="08/05/2010 04:07:49 PDT Thu" status="MANUAL" ID="2601399">
+                <layer rank="1" name="Target">
+                    <label cBy="571" end="186" start="181" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="571" feID="10707" end="186" start="181" name="State_of_affairs"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

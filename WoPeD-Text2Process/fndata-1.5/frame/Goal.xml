@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="203" cDate="07/14/2004 11:16:07 PDT Wed" name="Goal" ID="1177" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A &lt;fen&gt;Landmark&lt;/fen&gt; (in combination with the image schema evoked by particular targets) serves to pick out the final location of a &lt;fen&gt;Trajector&lt;/fen&gt; in a construed or actual motion event.&lt;/def-root&gt;</definition>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="203" cDate="07/14/2004 11:16:42 PDT Wed" abbrev="lm" name="Landmark" ID="6823">
+        <definition>&lt;def-root&gt;The relatively locatable entity which serves as a basis for determining the location of the &lt;fen&gt;Trajector&lt;/fen&gt; using the &lt;fen&gt;Profiled_region&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Location" ID="54"/>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core-Unexpressed" cBy="203" cDate="07/14/2004 11:17:06 PDT Wed" abbrev="pro" name="Profiled_region" ID="6824">
+        <definition>&lt;def-root&gt;The location (located with respect to the &lt;fen&gt;Landmark&lt;/fen&gt;) which is profiled by the particular image schema pertaining to the locative relation.&lt;/def-root&gt;</definition>
+        <semType name="Goal" ID="153"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Core" cBy="203" cDate="07/14/2004 11:17:23 PDT Wed" abbrev="tr" name="Trajector" ID="6825">
+        <definition>&lt;def-root&gt;The entity which is construed to be in motion, whose location at the end of the construed motion event is in question.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="04/11/2007 04:56:02 PDT Wed" abbrev="" name="Time" ID="11646">
+        <definition>&lt;def-root&gt;The time at which the &lt;fen&gt;Trajector&lt;/fen&gt; is located in the &lt;fen&gt;Profiled_region&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Trajector-Landmark</relatedFrame>
+        <relatedFrame>Locative_relation</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Source_path_goal</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Created" POS="PREP" name="to.prep" ID="10799" lemmaID="40569" cBy="203" cDate="07/14/2004 11:24:10 PDT Wed">
+        <definition>FN: relating a location to a goal of motion</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="to"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="PREP" name="into.prep" ID="14413" lemmaID="20438" cBy="664" cDate="04/11/2007 04:54:48 PDT Wed">
+        <definition></definition>
+        <sentenceCount annotated="4" total="108"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="into"/>
+    </lexUnit>
+</frame>

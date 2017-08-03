@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="V" name="transship.v" ID="7698" frame="Import_export" frameID="422" totalAnnotated="3" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Agt" name="Agent"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Extra-Thematic" abbrev="" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="Src" name="Exporting_area"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Goods" name="Goods"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Goal" name="Importing_area"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Mnr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Peripheral" abbrev="Path" name="Path"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="Reason" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Veh" name="Vehicle"/>
+        </frame>
+    </header>
+    <definition>COD: transfer (cargo) from one ship or other form of transport to another.</definition>
+    <lexeme POS="V" name="transship"/>
+    <valences>
+        <FERealization total="3">
+            <FE name="Agent"/>
+            <pattern total="3">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <annoSet ID="1811837"/>
+                <annoSet ID="1811841"/>
+                <annoSet ID="1811845"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Exporting_area"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Exporting_area"/>
+                <annoSet ID="1811837"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[from]" FE="Exporting_area"/>
+                <annoSet ID="1811841"/>
+                <annoSet ID="1811845"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Goods"/>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="NP" FE="Goods"/>
+                <annoSet ID="1811837"/>
+                <annoSet ID="1811841"/>
+                <annoSet ID="1811845"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Importing_area"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[into]" FE="Importing_area"/>
+                <annoSet ID="1811845"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Agent"/>
+            <FE name="Exporting_area"/>
+            <FE name="Goods"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <valenceUnit GF="" PT="INI" FE="Exporting_area"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Goods"/>
+                <annoSet ID="1811837"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Agent"/>
+            <FE name="Exporting_area"/>
+            <FE name="Goods"/>
+            <FE name="Goods"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <valenceUnit GF="Dep" PT="PP[from]" FE="Exporting_area"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Goods"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Goods"/>
+                <annoSet ID="1811841"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Agent"/>
+            <FE name="Exporting_area"/>
+            <FE name="Goods"/>
+            <FE name="Importing_area"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <valenceUnit GF="Dep" PT="PP[from]" FE="Exporting_area"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Goods"/>
+                <valenceUnit GF="Dep" PT="PP[into]" FE="Importing_area"/>
+                <annoSet ID="1811845"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-001-all">
+        <sentence sentNo="0" aPos="12125946" ID="1180844">
+            <text>Following the opening of the Gloucester-Berkely canal in 1827 , large amounts of grain were transhipped at Gloucester and some of it sent via the Stroudwater Canal to his mills in the Stroud area . </text>
+            <annotationSet cDate="01/08/2003 05:44:05 PST Wed" status="UNANN" ID="1811836">
+                <layer rank="1" name="BNC">
+                    <label end="8" start="0" name="VVG"/>
+                    <label end="12" start="10" name="AT0"/>
+                    <label end="20" start="14" name="NN1"/>
+                    <label end="23" start="22" name="PRF"/>
+                    <label end="27" start="25" name="AT0"/>
+                    <label end="46" start="29" name="NP0"/>
+                    <label end="52" start="48" name="NN1"/>
+                    <label end="55" start="54" name="PRP"/>
+                    <label end="60" start="57" name="CRD"/>
+                    <label end="62" start="62" name="PUN"/>
+                    <label end="68" start="64" name="AJ0"/>
+                    <label end="76" start="70" name="NN2"/>
+                    <label end="79" start="78" name="PRF"/>
+                    <label end="85" start="81" name="NN1"/>
+                    <label end="90" start="87" name="VBD"/>
+                    <label end="102" start="92" name="VVN"/>
+                    <label end="105" start="104" name="PRP"/>
+                    <label end="116" start="107" name="NP0"/>
+                    <label end="120" start="118" name="CJC"/>
+                    <label end="125" start="122" name="DT0"/>
+                    <label end="128" start="127" name="PRF"/>
+                    <label end="131" start="130" name="PNP"/>
+                    <label end="136" start="133" name="VVD"/>
+                    <label end="140" start="138" name="PRP"/>
+                    <label end="144" start="142" name="AT0"/>
+                    <label end="156" start="146" name="NP0"/>
+                    <label end="162" start="158" name="NP0"/>
+                    <label end="165" start="164" name="PRP"/>
+                    <label end="169" start="167" name="DPS"/>
+                    <label end="175" start="171" name="NN2"/>
+                    <label end="178" start="177" name="PRP"/>
+                    <label end="182" start="180" name="AT0"/>
+                    <label end="189" start="184" name="NN1-NP0"/>
+                    <label end="194" start="191" name="NN1"/>
+                    <label end="196" start="196" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:44:06 PST Wed" status="MANUAL" ID="1811837">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3880" itype="CNI" name="Agent"/>
+                    <label cBy="296" feID="3884" end="85" start="64" name="Goods"/>
+                    <label cBy="296" feID="3892" itype="INI" name="Exporting_area"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="85" start="64" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="85" start="64" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="102" start="92" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="43955750" ID="1180846">
+            <text>The regular freighter from Denmark had docked and along the quayside barges were moored , filled with coconuts and spices which had been transshipped from the large Oriental freighters at the Royal group of docks downriver . </text>
+            <annotationSet cDate="01/08/2003 05:44:06 PST Wed" status="UNANN" ID="1811840">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="10" start="4" name="AJ0"/>
+                    <label end="20" start="12" name="NN1"/>
+                    <label end="25" start="22" name="PRP"/>
+                    <label end="33" start="27" name="NP0"/>
+                    <label end="37" start="35" name="VHD"/>
+                    <label end="44" start="39" name="VVN"/>
+                    <label end="48" start="46" name="CJC"/>
+                    <label end="54" start="50" name="PRP"/>
+                    <label end="58" start="56" name="AT0"/>
+                    <label end="67" start="60" name="NN1"/>
+                    <label end="74" start="69" name="NN2"/>
+                    <label end="79" start="76" name="VBD"/>
+                    <label end="86" start="81" name="VVN"/>
+                    <label end="88" start="88" name="PUN"/>
+                    <label end="95" start="90" name="VVD-VVN"/>
+                    <label end="100" start="97" name="PRP"/>
+                    <label end="109" start="102" name="NN2"/>
+                    <label end="113" start="111" name="CJC"/>
+                    <label end="120" start="115" name="NN2-VVZ"/>
+                    <label end="126" start="122" name="DTQ"/>
+                    <label end="130" start="128" name="VHD"/>
+                    <label end="135" start="132" name="VBN"/>
+                    <label end="148" start="137" name="VVN"/>
+                    <label end="153" start="150" name="PRP"/>
+                    <label end="157" start="155" name="AT0"/>
+                    <label end="163" start="159" name="AJ0"/>
+                    <label end="172" start="165" name="AJ0"/>
+                    <label end="183" start="174" name="NN2"/>
+                    <label end="186" start="185" name="PRP"/>
+                    <label end="190" start="188" name="AT0"/>
+                    <label end="196" start="192" name="AJ0"/>
+                    <label end="202" start="198" name="NN0"/>
+                    <label end="205" start="204" name="PRF"/>
+                    <label end="211" start="207" name="NN2"/>
+                    <label end="221" start="213" name="NN1"/>
+                    <label end="223" start="223" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:44:06 PST Wed" status="MANUAL" ID="1811841">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3880" itype="CNI" name="Agent"/>
+                    <label cBy="296" feID="3884" end="120" start="102" name="Goods"/>
+                    <label cBy="296" feID="3892" end="221" start="150" name="Exporting_area"/>
+                    <label cBy="309" feID="3884" end="126" start="122" name="Goods"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="120" start="102" name="Ext"/>
+                    <label end="221" start="150" name="Dep"/>
+                    <label end="126" start="122" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="120" start="102" name="NP"/>
+                    <label end="221" start="150" name="PP"/>
+                    <label end="126" start="122" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other">
+                    <label end="120" start="102" name="Ant"/>
+                    <label end="126" start="122" name="Rel"/>
+                </layer>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="148" start="137" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="72367240" ID="1180848">
+            <text>Coopering was a old term used by the Customs service to describe the illegal traffic of contraband sold and transhipped from larger vessels into small local boats . </text>
+            <annotationSet cDate="01/08/2003 05:44:06 PST Wed" status="UNANN" ID="1811844">
+                <layer rank="1" name="BNC">
+                    <label end="8" start="0" name="NP0"/>
+                    <label end="12" start="10" name="VBD"/>
+                    <label end="14" start="14" name="AT0"/>
+                    <label end="18" start="16" name="AJ0"/>
+                    <label end="23" start="20" name="NN1"/>
+                    <label end="28" start="25" name="VVN"/>
+                    <label end="31" start="30" name="PRP"/>
+                    <label end="35" start="33" name="AT0"/>
+                    <label end="43" start="37" name="NN2"/>
+                    <label end="51" start="45" name="VVB"/>
+                    <label end="54" start="53" name="TO0"/>
+                    <label end="63" start="56" name="VVI"/>
+                    <label end="67" start="65" name="AT0"/>
+                    <label end="75" start="69" name="AJ0"/>
+                    <label end="83" start="77" name="NN1"/>
+                    <label end="86" start="85" name="PRF"/>
+                    <label end="97" start="88" name="NN1"/>
+                    <label end="102" start="99" name="VVD-VVN"/>
+                    <label end="106" start="104" name="CJC"/>
+                    <label end="118" start="108" name="VVD-VVN"/>
+                    <label end="123" start="120" name="PRP"/>
+                    <label end="130" start="125" name="AJC"/>
+                    <label end="138" start="132" name="NN2"/>
+                    <label end="143" start="140" name="PRP"/>
+                    <label end="149" start="145" name="AJ0"/>
+                    <label end="155" start="151" name="AJ0"/>
+                    <label end="161" start="157" name="NN2"/>
+                    <label end="163" start="163" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 05:44:06 PST Wed" status="MANUAL" ID="1811845">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3880" itype="CNI" name="Agent"/>
+                    <label cBy="296" feID="3884" end="97" start="88" name="Goods"/>
+                    <label cBy="296" feID="3892" end="138" start="120" name="Exporting_area"/>
+                    <label cBy="296" feID="3890" end="161" start="140" name="Importing_area"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="97" start="88" name="Ext"/>
+                    <label end="138" start="120" name="Dep"/>
+                    <label end="161" start="140" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="97" start="88" name="NP"/>
+                    <label end="138" start="120" name="PP"/>
+                    <label end="161" start="140" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="118" start="108" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

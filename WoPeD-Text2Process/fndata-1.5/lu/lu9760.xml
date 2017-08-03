@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" POS="V" name="hiss.v" ID="9760" frame="Impact" frameID="311" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Cause" name="Cause"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Extra-Thematic" abbrev="" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Frc" name="Force"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Imp2" name="Impactee"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Imp1" name="Impactor"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Imps" name="Impactors"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="P_it" name="Period_of_Iterations"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="Result" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="Speed" name="Speed"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Peripheral" abbrev="Sub_R" name="Subregion"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: make a sharp sibilant sound as of the letter</definition>
+    <lexeme POS="V" name="hiss"/>
+    <valences>
+        <FERealization total="2">
+            <FE name="Impactee"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[against]" FE="Impactee"/>
+                <annoSet ID="471626"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Impactee"/>
+                <annoSet ID="471630"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Impactor"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Impactor"/>
+                <annoSet ID="471626"/>
+                <annoSet ID="471630"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Impactee"/>
+            <FE name="Impactor"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[against]" FE="Impactee"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Impactor"/>
+                <annoSet ID="471626"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Impactee"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Impactor"/>
+                <annoSet ID="471630"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="NoPattern">
+        <sentence sentNo="0" aPos="77070636" ID="414649">
+            <text>Rain hissed against the tyres , and the beat of the wipers became almost hypnotic . </text>
+            <annotationSet cDate="01/07/2003 02:59:22 PST Tue" status="UNANN" ID="471625">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="NN1"/>
+                    <label end="10" start="5" name="VVD-VVN"/>
+                    <label end="18" start="12" name="PRP"/>
+                    <label end="22" start="20" name="AT0"/>
+                    <label end="28" start="24" name="NN2"/>
+                    <label end="30" start="30" name="PUN"/>
+                    <label end="34" start="32" name="CJC"/>
+                    <label end="38" start="36" name="AT0"/>
+                    <label end="43" start="40" name="NN1"/>
+                    <label end="46" start="45" name="PRF"/>
+                    <label end="50" start="48" name="AT0"/>
+                    <label end="57" start="52" name="NN2"/>
+                    <label end="64" start="59" name="VVD"/>
+                    <label end="71" start="66" name="AV0"/>
+                    <label end="80" start="73" name="AJ0"/>
+                    <label end="82" start="82" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:59:22 PST Tue" status="MANUAL" ID="471626">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="2671" end="3" start="0" name="Impactor"/>
+                    <label cBy="103" feID="2672" end="28" start="12" name="Impactee"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="3" start="0" name="Ext"/>
+                    <label end="28" start="12" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="3" start="0" name="NP"/>
+                    <label end="28" start="12" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="10" start="5" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="63112653" ID="414651">
+            <text>Thunder grumbled somewhere in the sky again and rain hissed at the windows . </text>
+            <annotationSet cDate="01/07/2003 02:59:22 PST Tue" status="UNANN" ID="471629">
+                <layer rank="1" name="BNC">
+                    <label end="6" start="0" name="NN1"/>
+                    <label end="15" start="8" name="VVD"/>
+                    <label end="25" start="17" name="AV0"/>
+                    <label end="28" start="27" name="PRP"/>
+                    <label end="32" start="30" name="AT0"/>
+                    <label end="36" start="34" name="NN1"/>
+                    <label end="42" start="38" name="AV0"/>
+                    <label end="46" start="44" name="CJC"/>
+                    <label end="51" start="48" name="NN1"/>
+                    <label end="58" start="53" name="VVD-VVN"/>
+                    <label end="61" start="60" name="PRP"/>
+                    <label end="65" start="63" name="AT0"/>
+                    <label end="73" start="67" name="NN2"/>
+                    <label end="75" start="75" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:59:22 PST Tue" status="MANUAL" ID="471630">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="2671" end="51" start="48" name="Impactor"/>
+                    <label cBy="103" feID="2672" end="73" start="60" name="Impactee"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="51" start="48" name="Ext"/>
+                    <label end="73" start="60" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="51" start="48" name="NP"/>
+                    <label end="73" start="60" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="58" start="53" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

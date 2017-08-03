@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" POS="N" name="carryall.n" ID="4251" frame="Containers" frameID="78" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="Cons" name="Construction"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Container" name="Container"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="Cont" name="Contents"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Peripheral" abbrev="" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Mat" name="Material"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Own" name="Owner"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="Part" name="Part"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Rel_loc" name="Relative_location"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Peripheral" abbrev="Type" name="Type"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Use" name="Use"/>
+        </frame>
+    </header>
+    <definition>COD: (N. Amer.) a large bag or case. </definition>
+    <lexeme POS="N" name="carryall"/>
+    <semType name="Container" ID="15"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Container"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Container"/>
+                <annoSet ID="847645"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Owner"/>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Owner"/>
+                <annoSet ID="847645"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Use"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Use"/>
+                <annoSet ID="847645"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Container"/>
+            <FE name="Owner"/>
+            <FE name="Use"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Container"/>
+                <valenceUnit GF="Gen" PT="Poss" FE="Owner"/>
+                <valenceUnit GF="Dep" PT="N" FE="Use"/>
+                <annoSet ID="847645"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-001-all">
+        <sentence sentNo="0" aPos="7886709" ID="685067">
+            <text>She burrowed in her equipment carryall . </text>
+            <annotationSet cDate="01/07/2003 10:45:48 PST Tue" status="UNANN" ID="847644">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="PNP"/>
+                    <label end="11" start="4" name="VVD"/>
+                    <label end="14" start="13" name="PRP"/>
+                    <label end="18" start="16" name="DPS"/>
+                    <label end="28" start="20" name="NN1"/>
+                    <label end="37" start="30" name="NN1"/>
+                    <label end="39" start="39" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 10:45:48 PST Tue" status="MANUAL" ID="847645">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="2043" end="18" start="16" name="Owner"/>
+                    <label cBy="296" feID="367" end="37" start="30" name="Container"/>
+                    <label cBy="296" feID="2064" end="28" start="20" name="Use"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="18" start="16" name="Gen"/>
+                    <label end="28" start="20" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="18" start="16" name="Poss"/>
+                    <label end="28" start="20" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="37" start="30" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

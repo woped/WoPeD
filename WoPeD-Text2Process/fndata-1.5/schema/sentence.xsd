@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : sentence.xsd
+    Created on : July 26, 2007, 10:23 PM
+    Author     : jhong
+    Description:
+        XML Schema for FN Sentence Annotation, defined in a separate file
+        so that it can be included for use in both full text and lexunit
+        xml output modes.
+-->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:fn="http://framenet.icsi.berkeley.edu"
+            targetNamespace="http://framenet.icsi.berkeley.edu"
+            xmlns="http://framenet.icsi.berkeley.edu"
+            elementFormDefault="qualified">
+    
+    <!-- 
+      There is a <sentence> element specified.
+      The <sentence> element must contain, first, a <text> element, which in
+      turn can contain only text.  After the <text> element, the <sentence>
+      may contain an arbitrary number of <annotationSet> elements.
+      The <annotationSet> element contains any number of <layer> elements,
+      which in turn contain any number of <label> elements:
+      
+      <sentence>
+          <text> Sample sentence . </text>
+          <annotationSet>
+              <layer>
+                  <label/>
+                  ...
+              </layer>
+              ...
+          </anotationSet>
+          ...
+      </sentence>      
+   -->
+    <xsd:include schemaLocation="commonTypes.xsd"/>
+    <xsd:complexType name="sentenceType">
+        <xsd:sequence>
+            <xsd:element name="text" type="xsd:string"
+                         minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="annotationSet" type="fn:annotationSetType"
+                         minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+        <xsd:attribute name="ID" type="fn:IDType"/>
+        <xsd:attribute name="aPos" type="fn:extSentRefType"/>
+        <xsd:attribute name="paragNo" type="fn:orderType"/>
+        <xsd:attribute name="sentNo" type="fn:orderType"/>
+        <xsd:attribute name="docID" type="fn:IDType"/>
+        <xsd:attribute name="corpID" type="fn:IDType"/>
+    </xsd:complexType>
+    <xsd:complexType name="annotationSetType">
+        <xsd:sequence>
+            <xsd:element name="layer" type="fn:layerType" maxOccurs="unbounded"/>
+        </xsd:sequence>
+        <xsd:attribute name="ID" type="fn:IDType"/>
+        <xsd:attribute name="status" type="xsd:string"/>
+        <xsd:attribute name="frameName" type="xsd:string"/>
+        <xsd:attribute name="frameID" type="fn:IDType"/>
+        <xsd:attribute name="luName" type="xsd:string"/>
+        <xsd:attribute name="luID" type="fn:IDType"/>
+        <xsd:attribute name="cxnName" type="xsd:string"/>
+        <xsd:attribute name="cxnID" type="fn:IDType"/>
+        <xsd:attribute name="cDate" type="fn:dateTimeType"/>
+    </xsd:complexType>
+    <xsd:complexType name="layerType">
+        <xsd:sequence>
+            <xsd:element name="label" type="fn:labelType"
+                         minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+        <xsd:attribute name="name" type="xsd:string" use="required"/>
+        <xsd:attribute name="rank" type="fn:orderType"/>
+    </xsd:complexType>
+    <xsd:complexType name="labelType">
+        <xsd:attribute name="name" type="xsd:string" use="required"/>
+        <xsd:attribute name="start" type="fn:labelSpanType"/>
+        <xsd:attribute name="end" type="fn:labelSpanType"/>
+        <xsd:attribute name="fgColor" type="fn:RGBColorType"/>
+        <xsd:attribute name="bgColor" type="fn:RGBColorType"/>
+        <xsd:attribute name="itype">
+            <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                    <xsd:enumeration value="APos"/>
+                    <xsd:enumeration value="CNI"/>
+                    <xsd:enumeration value="INI"/>
+                    <xsd:enumeration value="DNI"/>
+                    <xsd:enumeration value="INC"/>
+                </xsd:restriction>
+            </xsd:simpleType>
+        </xsd:attribute>
+        <xsd:attribute name="feID" type="xsd:int" use="optional"/>
+        <xsd:attribute name="cBy" type="xsd:string" use="optional"/>
+    </xsd:complexType>
+</xsd:schema>

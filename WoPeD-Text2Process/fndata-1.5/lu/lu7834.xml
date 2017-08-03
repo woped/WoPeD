@@ -1,0 +1,648 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="bike.n" ID="7834" frame="Vehicle" frameID="429" totalAnnotated="11" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="Desc" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Iti" name="Itinerary"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Extra-Thematic" abbrev="Prop" name="Means_of_propulsion"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Poss" name="Possessor"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="use" name="Use"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Core" abbrev="Veh" name="Vehicle"/>
+        </frame>
+    </header>
+    <definition>COD: a bicycle or motorcycle.</definition>
+    <lexeme POS="N" name="bike"/>
+    <valences>
+        <governor type="Gov" lemma="fall">
+            <annoSet ID="1892547"/>
+            <annoSet ID="1892693"/>
+        </governor>
+        <governor type="Gov" lemma="get">
+            <annoSet ID="1892535"/>
+        </governor>
+        <governor type="Gov" lemma="pedal">
+            <annoSet ID="1892641"/>
+        </governor>
+        <governor type="Gov" lemma="race">
+            <annoSet ID="1892477"/>
+        </governor>
+        <governor type="Gov" lemma="remount">
+            <annoSet ID="1892541"/>
+        </governor>
+        <governor type="Gov" lemma="ride">
+            <annoSet ID="1892457"/>
+            <annoSet ID="1892461"/>
+        </governor>
+        <governor type="Gov" lemma="steer">
+            <annoSet ID="1892713"/>
+        </governor>
+        <FERealization total="4">
+            <FE name="Descriptor"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="AJP" FE="Descriptor"/>
+                <annoSet ID="1892581"/>
+                <annoSet ID="1892591"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Gen" PT="Poss" FE="Descriptor"/>
+                <annoSet ID="1892641"/>
+                <annoSet ID="1892693"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Possessor"/>
+            <pattern total="3">
+                <valenceUnit GF="Gen" PT="Poss" FE="Possessor"/>
+                <annoSet ID="1892535"/>
+                <annoSet ID="1892541"/>
+                <annoSet ID="1892581"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="10">
+            <FE name="Vehicle"/>
+            <pattern total="10">
+                <valenceUnit GF="" PT="DEN" FE="Vehicle"/>
+                <annoSet ID="1892457"/>
+                <annoSet ID="1892461"/>
+                <annoSet ID="1892477"/>
+                <annoSet ID="1892535"/>
+                <annoSet ID="1892541"/>
+                <annoSet ID="1892581"/>
+                <annoSet ID="1892591"/>
+                <annoSet ID="1892641"/>
+                <annoSet ID="1892693"/>
+                <annoSet ID="1892713"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Descriptor"/>
+            <FE name="Possessor"/>
+            <FE name="Vehicle"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Descriptor"/>
+                <valenceUnit GF="Gen" PT="Poss" FE="Possessor"/>
+                <valenceUnit GF="" PT="DEN" FE="Vehicle"/>
+                <annoSet ID="1892581"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="3">
+            <FE name="Descriptor"/>
+            <FE name="Vehicle"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Descriptor"/>
+                <valenceUnit GF="" PT="DEN" FE="Vehicle"/>
+                <annoSet ID="1892591"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Gen" PT="Poss" FE="Descriptor"/>
+                <valenceUnit GF="" PT="DEN" FE="Vehicle"/>
+                <annoSet ID="1892641"/>
+                <annoSet ID="1892693"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Possessor"/>
+            <FE name="Vehicle"/>
+            <pattern total="2">
+                <valenceUnit GF="Gen" PT="Poss" FE="Possessor"/>
+                <valenceUnit GF="" PT="DEN" FE="Vehicle"/>
+                <annoSet ID="1892535"/>
+                <annoSet ID="1892541"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="4">
+            <FE name="Vehicle"/>
+            <pattern total="4">
+                <valenceUnit GF="" PT="DEN" FE="Vehicle"/>
+                <annoSet ID="1892457"/>
+                <annoSet ID="1892461"/>
+                <annoSet ID="1892477"/>
+                <annoSet ID="1892713"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-Wride,have,race-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="4317" aPos="0" ID="1222698">
+            <text>And he ca n't even ride a bike …</text>
+            <annotationSet cDate="06/05/2003 11:10:06 PDT Thu" status="UNANN" ID="1892456">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="cc"/>
+                    <label end="5" start="4" name="PP"/>
+                    <label end="8" start="7" name="md"/>
+                    <label end="12" start="10" name="rb"/>
+                    <label end="17" start="14" name="rb"/>
+                    <label end="22" start="19" name="VV"/>
+                    <label end="24" start="24" name="dt"/>
+                    <label end="29" start="26" name="nn"/>
+                    <label end="31" start="31" name="nn"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/05/2003 11:10:06 PDT Thu" status="MANUAL" ID="1892457">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="29" start="26" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3958" end="29" start="26" name="Vehicle"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="22" start="19" name="Gov"/>
+                    <label end="29" start="24" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="10199" aPos="0" ID="1222700">
+            <text>Lee and his pal were riding their bikes along busy Rivacre Road , in fading light on Tuesday afternoon , when the youngster strayed into the path of a Ford Sierra car .</text>
+            <annotationSet cDate="06/05/2003 11:10:06 PDT Thu" status="UNANN" ID="1892460">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="NP"/>
+                    <label end="6" start="4" name="cc"/>
+                    <label end="10" start="8" name="PP$"/>
+                    <label end="14" start="12" name="nn"/>
+                    <label end="19" start="16" name="VBD"/>
+                    <label end="26" start="21" name="VVG"/>
+                    <label end="32" start="28" name="PP$"/>
+                    <label end="38" start="34" name="nns"/>
+                    <label end="44" start="40" name="in"/>
+                    <label end="49" start="46" name="jj"/>
+                    <label end="57" start="51" name="NP"/>
+                    <label end="62" start="59" name="NP"/>
+                    <label end="64" start="64" name=","/>
+                    <label end="67" start="66" name="in"/>
+                    <label end="74" start="69" name="VVG"/>
+                    <label end="80" start="76" name="nn"/>
+                    <label end="83" start="82" name="in"/>
+                    <label end="91" start="85" name="NP"/>
+                    <label end="101" start="93" name="nn"/>
+                    <label end="103" start="103" name=","/>
+                    <label end="108" start="105" name="wrb"/>
+                    <label end="112" start="110" name="dt"/>
+                    <label end="122" start="114" name="nn"/>
+                    <label end="130" start="124" name="VVN"/>
+                    <label end="135" start="132" name="in"/>
+                    <label end="139" start="137" name="dt"/>
+                    <label end="144" start="141" name="nn"/>
+                    <label end="147" start="146" name="in"/>
+                    <label end="149" start="149" name="dt"/>
+                    <label end="154" start="151" name="NP"/>
+                    <label end="161" start="156" name="NP"/>
+                    <label end="165" start="163" name="nn"/>
+                    <label end="167" start="167" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/05/2003 11:10:06 PDT Thu" status="MANUAL" ID="1892461">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="38" start="34" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3958" end="38" start="34" name="Vehicle"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="26" start="21" name="Gov"/>
+                    <label end="38" start="28" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="314" aPos="0" ID="1222708">
+            <text>` Originally I was going to race bikes , &quot; confides Blues .</text>
+            <annotationSet cDate="06/05/2003 11:10:12 PDT Thu" status="UNANN" ID="1892476">
+                <layer rank="1" name="PENN">
+                    <label end="11" start="2" name="rb"/>
+                    <label end="13" start="13" name="PP"/>
+                    <label end="17" start="15" name="VBD"/>
+                    <label end="23" start="19" name="VVG"/>
+                    <label end="26" start="25" name="to"/>
+                    <label end="31" start="28" name="nn"/>
+                    <label end="37" start="33" name="nns"/>
+                    <label end="39" start="39" name=","/>
+                    <label end="50" start="43" name="VVZ"/>
+                    <label end="56" start="52" name="NP"/>
+                    <label end="58" start="58" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/05/2003 11:10:12 PDT Thu" status="MANUAL" ID="1892477">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="37" start="33" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3958" end="37" start="33" name="Vehicle"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="31" start="28" name="Gov"/>
+                    <label end="37" start="33" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-Wmountain,motor,dirt-T-(1)"/>
+    <subCorpus name="03-XPng-gen-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="15" paragNo="102" aPos="0" ID="1222737">
+            <text>He urged the unemployed of the north to ` get on your bike &quot; and look for work , as his window-cleaner father had done in the thirties .</text>
+            <annotationSet cDate="06/05/2003 11:10:24 PDT Thu" status="UNANN" ID="1892534">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="7" start="3" name="VVD"/>
+                    <label end="11" start="9" name="dt"/>
+                    <label end="22" start="13" name="jj"/>
+                    <label end="25" start="24" name="in"/>
+                    <label end="29" start="27" name="dt"/>
+                    <label end="35" start="31" name="nn"/>
+                    <label end="38" start="37" name="to"/>
+                    <label end="44" start="42" name="VV"/>
+                    <label end="47" start="46" name="in"/>
+                    <label end="52" start="49" name="PP$"/>
+                    <label end="57" start="54" name="nn"/>
+                    <label end="63" start="61" name="cc"/>
+                    <label end="68" start="65" name="VV"/>
+                    <label end="72" start="70" name="in"/>
+                    <label end="77" start="74" name="nn"/>
+                    <label end="79" start="79" name=","/>
+                    <label end="82" start="81" name="in"/>
+                    <label end="86" start="84" name="PP$"/>
+                    <label end="101" start="88" name="jjr"/>
+                    <label end="108" start="103" name="nn"/>
+                    <label end="112" start="110" name="VHD"/>
+                    <label end="117" start="114" name="VVN"/>
+                    <label end="120" start="119" name="in"/>
+                    <label end="124" start="122" name="dt"/>
+                    <label end="133" start="126" name="nns"/>
+                    <label end="135" start="135" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/05/2003 11:10:24 PDT Thu" status="MANUAL" ID="1892535">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="57" start="54" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3958" end="57" start="54" name="Vehicle"/>
+                    <label cBy="618" feID="3959" end="52" start="49" name="Possessor"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="52" start="49" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="52" start="49" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="57" start="46" name="X"/>
+                    <label end="44" start="42" name="Gov"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="554" aPos="0" ID="1222740">
+            <text>Deciding to return later , he remounted his bike and returned to his police house .</text>
+            <annotationSet cDate="06/05/2003 11:10:25 PDT Thu" status="UNANN" ID="1892540">
+                <layer rank="1" name="PENN">
+                    <label end="7" start="0" name="VVG"/>
+                    <label end="10" start="9" name="to"/>
+                    <label end="17" start="12" name="VV"/>
+                    <label end="23" start="19" name="rb"/>
+                    <label end="25" start="25" name=","/>
+                    <label end="28" start="27" name="PP"/>
+                    <label end="38" start="30" name="VVD"/>
+                    <label end="42" start="40" name="PP$"/>
+                    <label end="47" start="44" name="nn"/>
+                    <label end="51" start="49" name="cc"/>
+                    <label end="60" start="53" name="VVD"/>
+                    <label end="63" start="62" name="to"/>
+                    <label end="67" start="65" name="PP$"/>
+                    <label end="74" start="69" name="nn"/>
+                    <label end="80" start="76" name="nn"/>
+                    <label end="82" start="82" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/05/2003 11:10:25 PDT Thu" status="MANUAL" ID="1892541">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="47" start="44" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3959" end="42" start="40" name="Possessor"/>
+                    <label cBy="618" feID="3958" end="47" start="44" name="Vehicle"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="42" start="40" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="42" start="40" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="47" start="40" name="X"/>
+                    <label end="38" start="30" name="Gov"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="28" aPos="0" ID="1222743">
+            <text>Against them , Jerry Moffatt , the man who should have won the world championship but fell off his bike .</text>
+            <annotationSet cDate="06/05/2003 11:10:26 PDT Thu" status="UNANN" ID="1892546">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="0" name="in"/>
+                    <label end="11" start="8" name="PP"/>
+                    <label end="13" start="13" name=","/>
+                    <label end="19" start="15" name="NP"/>
+                    <label end="27" start="21" name="NP"/>
+                    <label end="29" start="29" name=","/>
+                    <label end="33" start="31" name="dt"/>
+                    <label end="37" start="35" name="nn"/>
+                    <label end="41" start="39" name="wp"/>
+                    <label end="48" start="43" name="md"/>
+                    <label end="53" start="50" name="VH"/>
+                    <label end="57" start="55" name="VVN"/>
+                    <label end="61" start="59" name="dt"/>
+                    <label end="67" start="63" name="nn"/>
+                    <label end="80" start="69" name="nn"/>
+                    <label end="84" start="82" name="cc"/>
+                    <label end="89" start="86" name="VVD"/>
+                    <label end="93" start="91" name="rp"/>
+                    <label end="97" start="95" name="PP$"/>
+                    <label end="102" start="99" name="nn"/>
+                    <label end="104" start="104" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/05/2003 11:10:26 PDT Thu" status="MANUAL" ID="1892547">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="102" start="99" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE"/>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="102" start="91" name="X"/>
+                    <label end="89" start="86" name="Gov"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="04-T-PPwork,school,park-(1)"/>
+    <subCorpus name="05-Wjj-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="326" aPos="0" ID="1222760">
+            <text>He aimed his red-and-white bike down Decatur Street , towards a small brick pub in the Quarter , searching for his last friend .</text>
+            <annotationSet cDate="06/05/2003 11:10:33 PDT Thu" status="UNANN" ID="1892580">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="7" start="3" name="VVD"/>
+                    <label end="11" start="9" name="PP$"/>
+                    <label end="25" start="13" name="jj"/>
+                    <label end="30" start="27" name="nn"/>
+                    <label end="35" start="32" name="in"/>
+                    <label end="43" start="37" name="NP"/>
+                    <label end="50" start="45" name="NP"/>
+                    <label end="52" start="52" name=","/>
+                    <label end="60" start="54" name="in"/>
+                    <label end="62" start="62" name="dt"/>
+                    <label end="68" start="64" name="jj"/>
+                    <label end="74" start="70" name="nn"/>
+                    <label end="78" start="76" name="nn"/>
+                    <label end="81" start="80" name="in"/>
+                    <label end="85" start="83" name="dt"/>
+                    <label end="93" start="87" name="nn"/>
+                    <label end="95" start="95" name=","/>
+                    <label end="105" start="97" name="VVG"/>
+                    <label end="109" start="107" name="in"/>
+                    <label end="113" start="111" name="PP$"/>
+                    <label end="118" start="115" name="jj"/>
+                    <label end="125" start="120" name="nn"/>
+                    <label end="127" start="127" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/05/2003 11:10:33 PDT Thu" status="MANUAL" ID="1892581">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="30" start="27" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3959" end="11" start="9" name="Possessor"/>
+                    <label cBy="618" feID="3957" end="25" start="13" name="Descriptor"/>
+                    <label cBy="618" feID="3958" end="30" start="27" name="Vehicle"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="11" start="9" name="Gen"/>
+                    <label end="25" start="13" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="11" start="9" name="Poss"/>
+                    <label end="25" start="13" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="136" aPos="0" ID="1222765">
+            <text>The purpose of these tight esses is usually to keep speeds at a safe level , invariably at corners made unsafe by the speed of modern bikes .</text>
+            <annotationSet cDate="06/05/2003 11:10:35 PDT Thu" status="UNANN" ID="1892590">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="10" start="4" name="nn"/>
+                    <label end="13" start="12" name="in"/>
+                    <label end="19" start="15" name="dt"/>
+                    <label end="25" start="21" name="jj"/>
+                    <label end="31" start="27" name="NP"/>
+                    <label end="34" start="33" name="VBZ"/>
+                    <label end="42" start="36" name="rb"/>
+                    <label end="45" start="44" name="to"/>
+                    <label end="50" start="47" name="VV"/>
+                    <label end="57" start="52" name="nns"/>
+                    <label end="60" start="59" name="in"/>
+                    <label end="62" start="62" name="dt"/>
+                    <label end="67" start="64" name="jj"/>
+                    <label end="73" start="69" name="nn"/>
+                    <label end="75" start="75" name=","/>
+                    <label end="86" start="77" name="rb"/>
+                    <label end="89" start="88" name="in"/>
+                    <label end="97" start="91" name="nns"/>
+                    <label end="102" start="99" name="VVD"/>
+                    <label end="109" start="104" name="jj"/>
+                    <label end="112" start="111" name="in"/>
+                    <label end="116" start="114" name="dt"/>
+                    <label end="122" start="118" name="nn"/>
+                    <label end="125" start="124" name="in"/>
+                    <label end="132" start="127" name="jj"/>
+                    <label end="138" start="134" name="nns"/>
+                    <label end="140" start="140" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/05/2003 11:10:35 PDT Thu" status="MANUAL" ID="1892591">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="138" start="134" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3958" end="138" start="134" name="Vehicle"/>
+                    <label cBy="618" feID="3957" end="132" start="127" name="Descriptor"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="132" start="127" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="132" start="127" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="3746" aPos="0" ID="1222790">
+            <text>TONIGHT , as usual , 34-year-old Tony Doyle will be pedalling his bike around an indoor circuit in Europe .</text>
+            <annotationSet cDate="06/05/2003 11:10:44 PDT Thu" status="UNANN" ID="1892640">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="0" name="rb"/>
+                    <label end="8" start="8" name=","/>
+                    <label end="11" start="10" name="in"/>
+                    <label end="17" start="13" name="jj"/>
+                    <label end="19" start="19" name=","/>
+                    <label end="31" start="21" name="jj"/>
+                    <label end="36" start="33" name="NP"/>
+                    <label end="42" start="38" name="NP"/>
+                    <label end="47" start="44" name="md"/>
+                    <label end="50" start="49" name="vb"/>
+                    <label end="60" start="52" name="VBD"/>
+                    <label end="64" start="62" name="PP$"/>
+                    <label end="69" start="66" name="nn"/>
+                    <label end="76" start="71" name="in"/>
+                    <label end="79" start="78" name="dt"/>
+                    <label end="86" start="81" name="jj"/>
+                    <label end="94" start="88" name="nn"/>
+                    <label end="97" start="96" name="in"/>
+                    <label end="104" start="99" name="NP"/>
+                    <label end="106" start="106" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/05/2003 11:10:44 PDT Thu" status="MANUAL" ID="1892641">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="69" start="66" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3957" end="64" start="62" name="Descriptor"/>
+                    <label cBy="618" feID="3958" end="69" start="66" name="Vehicle"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="64" start="62" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="64" start="62" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="60" start="52" name="Gov"/>
+                    <label end="69" start="62" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="535" aPos="0" ID="1222816">
+            <text>` Even if she fell from her bike she could be paralysed , &quot; a shocked Janet was told .</text>
+            <annotationSet cDate="06/05/2003 11:10:54 PDT Thu" status="UNANN" ID="1892692">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="2" name="rb"/>
+                    <label end="8" start="7" name="in"/>
+                    <label end="12" start="10" name="PP"/>
+                    <label end="17" start="14" name="VVD"/>
+                    <label end="22" start="19" name="in"/>
+                    <label end="26" start="24" name="PP$"/>
+                    <label end="31" start="28" name="nn"/>
+                    <label end="35" start="33" name="PP"/>
+                    <label end="41" start="37" name="md"/>
+                    <label end="44" start="43" name="vb"/>
+                    <label end="54" start="46" name="VVN"/>
+                    <label end="56" start="56" name=","/>
+                    <label end="60" start="60" name="dt"/>
+                    <label end="68" start="62" name="jj"/>
+                    <label end="74" start="70" name="NP"/>
+                    <label end="78" start="76" name="VBD"/>
+                    <label end="83" start="80" name="VVN"/>
+                    <label end="85" start="85" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/05/2003 11:10:54 PDT Thu" status="MANUAL" ID="1892693">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="31" start="28" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3957" end="26" start="24" name="Descriptor"/>
+                    <label cBy="618" feID="3958" end="31" start="28" name="Vehicle"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="26" start="24" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="26" start="24" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="31" start="19" name="X"/>
+                    <label end="17" start="14" name="Gov"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-unmatched-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="122" aPos="0" ID="1222826">
+            <text>But at the moment it 's also one of the only ways I can steer the bike , especially in faster corners .</text>
+            <annotationSet cDate="06/05/2003 11:10:58 PDT Thu" status="UNANN" ID="1892712">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="cc"/>
+                    <label end="5" start="4" name="in"/>
+                    <label end="9" start="7" name="dt"/>
+                    <label end="16" start="11" name="nn"/>
+                    <label end="19" start="18" name="PP"/>
+                    <label end="22" start="21" name="VBZ"/>
+                    <label end="27" start="24" name="rb"/>
+                    <label end="31" start="29" name="cd"/>
+                    <label end="34" start="33" name="in"/>
+                    <label end="38" start="36" name="dt"/>
+                    <label end="43" start="40" name="jj"/>
+                    <label end="48" start="45" name="nns"/>
+                    <label end="50" start="50" name="PP"/>
+                    <label end="54" start="52" name="md"/>
+                    <label end="60" start="56" name="VV"/>
+                    <label end="64" start="62" name="dt"/>
+                    <label end="69" start="66" name="nn"/>
+                    <label end="71" start="71" name=","/>
+                    <label end="82" start="73" name="rb"/>
+                    <label end="85" start="84" name="in"/>
+                    <label end="92" start="87" name="jjr"/>
+                    <label end="100" start="94" name="nns"/>
+                    <label end="102" start="102" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/05/2003 11:10:58 PDT Thu" status="MANUAL" ID="1892713">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="69" start="66" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3958" end="69" start="66" name="Vehicle"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="60" start="56" name="Gov"/>
+                    <label end="69" start="62" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

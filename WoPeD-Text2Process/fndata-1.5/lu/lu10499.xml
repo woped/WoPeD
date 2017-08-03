@@ -1,0 +1,1271 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="sin.n" ID="10499" frame="Misdeed" frameID="1100" totalAnnotated="22" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="00008B" bgColor="FFFF00" type="Extra-Thematic" abbrev="" name="Frequency"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Extra-Thematic" abbrev="inj" name="Injured_party"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Extra-Thematic" abbrev="jud" name="Judge"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="man" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="mea" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="mis" name="Misdeed"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Peripheral" abbrev="pla" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="A9A9A9" type="Peripheral" abbrev="pur" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Extra-Thematic" abbrev="sev" name="Severity"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="tim" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="wro" name="Wrongdoer"/>
+        </frame>
+    </header>
+    <definition>COD: an immoral act considered to be a transgression against divine law.</definition>
+    <lexeme POS="N" name="sin"/>
+    <valences>
+        <FERealization total="4">
+            <FE name="Injured_party"/>
+            <pattern total="4">
+                <valenceUnit GF="Dep" PT="PP[against]" FE="Injured_party"/>
+                <annoSet ID="2328119"/>
+                <annoSet ID="2328123"/>
+                <annoSet ID="2328135"/>
+                <annoSet ID="2328139"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Means"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Means"/>
+                <annoSet ID="2328341"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="22">
+            <FE name="Misdeed"/>
+            <pattern total="15">
+                <valenceUnit GF="" PT="DEN" FE="Misdeed"/>
+                <annoSet ID="2328085"/>
+                <annoSet ID="2328119"/>
+                <annoSet ID="2328131"/>
+                <annoSet ID="2328175"/>
+                <annoSet ID="2328177"/>
+                <annoSet ID="2328179"/>
+                <annoSet ID="2328185"/>
+                <annoSet ID="2328201"/>
+                <annoSet ID="2328235"/>
+                <annoSet ID="2328241"/>
+                <annoSet ID="2328251"/>
+                <annoSet ID="2328271"/>
+                <annoSet ID="2328315"/>
+                <annoSet ID="2328341"/>
+                <annoSet ID="2328373"/>
+            </pattern>
+            <pattern total="6">
+                <valenceUnit GF="Ext" PT="NP" FE="Misdeed"/>
+                <annoSet ID="2328123"/>
+                <annoSet ID="2328135"/>
+                <annoSet ID="2328139"/>
+                <annoSet ID="2328157"/>
+                <annoSet ID="2328169"/>
+                <annoSet ID="2328173"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="VPto" FE="Misdeed"/>
+                <annoSet ID="2328089"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Severity"/>
+            <pattern total="3">
+                <valenceUnit GF="Dep" PT="AJP" FE="Severity"/>
+                <annoSet ID="2328085"/>
+                <annoSet ID="2328089"/>
+                <annoSet ID="2328373"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Severity"/>
+                <annoSet ID="2328373"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="17">
+            <FE name="Wrongdoer"/>
+            <pattern total="5">
+                <valenceUnit GF="Gen" PT="Poss" FE="Wrongdoer"/>
+                <annoSet ID="2328085"/>
+                <annoSet ID="2328119"/>
+                <annoSet ID="2328185"/>
+                <annoSet ID="2328201"/>
+                <annoSet ID="2328235"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Wrongdoer"/>
+                <annoSet ID="2328139"/>
+            </pattern>
+            <pattern total="5">
+                <valenceUnit GF="" PT="INI" FE="Wrongdoer"/>
+                <annoSet ID="2328123"/>
+                <annoSet ID="2328135"/>
+                <annoSet ID="2328157"/>
+                <annoSet ID="2328169"/>
+                <annoSet ID="2328173"/>
+            </pattern>
+            <pattern total="5">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Wrongdoer"/>
+                <annoSet ID="2328175"/>
+                <annoSet ID="2328177"/>
+                <annoSet ID="2328179"/>
+                <annoSet ID="2328251"/>
+                <annoSet ID="2328271"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Wrongdoer"/>
+                <annoSet ID="2328089"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="4">
+            <FE name="Injured_party"/>
+            <FE name="Misdeed"/>
+            <FE name="Wrongdoer"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[against]" FE="Injured_party"/>
+                <valenceUnit GF="" PT="DEN" FE="Misdeed"/>
+                <valenceUnit GF="Gen" PT="Poss" FE="Wrongdoer"/>
+                <annoSet ID="2328119"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[against]" FE="Injured_party"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Misdeed"/>
+                <valenceUnit GF="" PT="DNI" FE="Wrongdoer"/>
+                <annoSet ID="2328139"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[against]" FE="Injured_party"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Misdeed"/>
+                <valenceUnit GF="" PT="INI" FE="Wrongdoer"/>
+                <annoSet ID="2328123"/>
+                <annoSet ID="2328135"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Means"/>
+            <FE name="Misdeed"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Means"/>
+                <valenceUnit GF="" PT="DEN" FE="Misdeed"/>
+                <annoSet ID="2328341"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="3">
+            <FE name="Misdeed"/>
+            <pattern total="3">
+                <valenceUnit GF="" PT="DEN" FE="Misdeed"/>
+                <annoSet ID="2328131"/>
+                <annoSet ID="2328241"/>
+                <annoSet ID="2328315"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Misdeed"/>
+            <FE name="Severity"/>
+            <FE name="Severity"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Misdeed"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Severity"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Severity"/>
+                <annoSet ID="2328373"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Misdeed"/>
+            <FE name="Severity"/>
+            <FE name="Wrongdoer"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Misdeed"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Severity"/>
+                <valenceUnit GF="Gen" PT="Poss" FE="Wrongdoer"/>
+                <annoSet ID="2328085"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="VPto" FE="Misdeed"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Severity"/>
+                <valenceUnit GF="" PT="CNI" FE="Wrongdoer"/>
+                <annoSet ID="2328089"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="11">
+            <FE name="Misdeed"/>
+            <FE name="Wrongdoer"/>
+            <pattern total="5">
+                <valenceUnit GF="" PT="DEN" FE="Misdeed"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Wrongdoer"/>
+                <annoSet ID="2328175"/>
+                <annoSet ID="2328177"/>
+                <annoSet ID="2328179"/>
+                <annoSet ID="2328251"/>
+                <annoSet ID="2328271"/>
+            </pattern>
+            <pattern total="3">
+                <valenceUnit GF="" PT="DEN" FE="Misdeed"/>
+                <valenceUnit GF="Gen" PT="Poss" FE="Wrongdoer"/>
+                <annoSet ID="2328185"/>
+                <annoSet ID="2328201"/>
+                <annoSet ID="2328235"/>
+            </pattern>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="NP" FE="Misdeed"/>
+                <valenceUnit GF="" PT="INI" FE="Wrongdoer"/>
+                <annoSet ID="2328157"/>
+                <annoSet ID="2328169"/>
+                <annoSet ID="2328173"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-Wunforgivable,unpardonable,terrible-(1)">
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="517" aPos="67202624" ID="1440164">
+            <text>No need , I submit myself , I own my terrible sin !</text>
+            <annotationSet cDate="07/23/2007 01:09:14 PDT Mon" status="UNANN" ID="2328084">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="dt"/>
+                    <label end="6" start="3" name="nn"/>
+                    <label end="8" start="8" name=","/>
+                    <label end="10" start="10" name="PP"/>
+                    <label end="17" start="12" name="VVP"/>
+                    <label end="24" start="19" name="PP"/>
+                    <label end="26" start="26" name=","/>
+                    <label end="28" start="28" name="PP"/>
+                    <label end="32" start="30" name="VVP"/>
+                    <label end="35" start="34" name="PP$"/>
+                    <label end="44" start="37" name="jj"/>
+                    <label end="48" start="46" name="nn"/>
+                    <label end="50" start="50" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/23/2007 01:09:14 PDT Mon" status="MANUAL" ID="2328085">
+                <layer rank="1" name="Target">
+                    <label cBy="361" end="48" start="46" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="6397" end="35" start="34" name="Wrongdoer"/>
+                    <label cBy="361" feID="6399" end="44" start="37" name="Severity"/>
+                    <label cBy="361" feID="6398" end="48" start="46" name="Misdeed"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="35" start="34" name="Gen"/>
+                    <label end="44" start="37" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="35" start="34" name="Poss"/>
+                    <label end="44" start="37" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="668" aPos="114734524" ID="1440166">
+            <text>To refuse would be a terrible sin .</text>
+            <annotationSet cDate="07/23/2007 01:09:15 PDT Mon" status="UNANN" ID="2328088">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="to"/>
+                    <label end="8" start="3" name="VV"/>
+                    <label end="14" start="10" name="md"/>
+                    <label end="17" start="16" name="vb"/>
+                    <label end="19" start="19" name="dt"/>
+                    <label end="28" start="21" name="jj"/>
+                    <label end="32" start="30" name="nn"/>
+                    <label end="34" start="34" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/23/2007 01:09:15 PDT Mon" status="MANUAL" ID="2328089">
+                <layer rank="1" name="Target">
+                    <label cBy="361" end="32" start="30" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="6398" end="8" start="0" name="Misdeed"/>
+                    <label cBy="361" feID="6399" end="28" start="21" name="Severity"/>
+                    <label cBy="361" feID="6397" itype="CNI" name="Wrongdoer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="8" start="0" name="Dep"/>
+                    <label end="28" start="21" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="8" start="0" name="VPto"/>
+                    <label end="28" start="21" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="17" start="16" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-T-PPagainst-(1)">
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="274" aPos="26693896" ID="1440181">
+            <text>Christians are used to confessing their sins against God and against other humans , but is it really possible to sin against an ideal ?</text>
+            <annotationSet cDate="07/23/2007 01:09:19 PDT Mon" status="UNANN" ID="2328118">
+                <layer rank="1" name="PENN">
+                    <label end="9" start="0" name="nns"/>
+                    <label end="13" start="11" name="vbp"/>
+                    <label end="18" start="15" name="VVN"/>
+                    <label end="21" start="20" name="to"/>
+                    <label end="32" start="23" name="VVG"/>
+                    <label end="38" start="34" name="PP$"/>
+                    <label end="43" start="40" name="nns"/>
+                    <label end="51" start="45" name="in"/>
+                    <label end="55" start="53" name="NP"/>
+                    <label end="59" start="57" name="cc"/>
+                    <label end="67" start="61" name="in"/>
+                    <label end="73" start="69" name="jj"/>
+                    <label end="80" start="75" name="nns"/>
+                    <label end="82" start="82" name=","/>
+                    <label end="86" start="84" name="cc"/>
+                    <label end="89" start="88" name="VBZ"/>
+                    <label end="92" start="91" name="PP"/>
+                    <label end="99" start="94" name="rb"/>
+                    <label end="108" start="101" name="jj"/>
+                    <label end="111" start="110" name="to"/>
+                    <label end="115" start="113" name="nn"/>
+                    <label end="123" start="117" name="in"/>
+                    <label end="126" start="125" name="dt"/>
+                    <label end="132" start="128" name="nn"/>
+                    <label end="134" start="134" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/23/2007 01:09:19 PDT Mon" status="MANUAL" ID="2328119">
+                <layer rank="1" name="Target">
+                    <label cBy="361" end="43" start="40" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="6397" end="38" start="34" name="Wrongdoer"/>
+                    <label cBy="361" feID="6398" end="43" start="40" name="Misdeed"/>
+                    <label cBy="361" feID="6415" end="80" start="45" name="Injured_party"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="38" start="34" name="Gen"/>
+                    <label end="80" start="45" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="38" start="34" name="Poss"/>
+                    <label end="80" start="45" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="51" aPos="26074596" ID="1440183">
+            <text>This practice is a sin against God and man and stunts the growth of forty million people .</text>
+            <annotationSet cDate="07/23/2007 01:09:20 PDT Mon" status="UNANN" ID="2328122">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="dt"/>
+                    <label end="12" start="5" name="nn"/>
+                    <label end="15" start="14" name="VBZ"/>
+                    <label end="17" start="17" name="dt"/>
+                    <label end="21" start="19" name="nn"/>
+                    <label end="29" start="23" name="in"/>
+                    <label end="33" start="31" name="NP"/>
+                    <label end="37" start="35" name="cc"/>
+                    <label end="41" start="39" name="nn"/>
+                    <label end="45" start="43" name="cc"/>
+                    <label end="52" start="47" name="VVZ"/>
+                    <label end="56" start="54" name="dt"/>
+                    <label end="63" start="58" name="nn"/>
+                    <label end="66" start="65" name="in"/>
+                    <label end="72" start="68" name="nn"/>
+                    <label end="80" start="74" name="cd"/>
+                    <label end="87" start="82" name="nns"/>
+                    <label end="89" start="89" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/23/2007 01:09:20 PDT Mon" status="MANUAL" ID="2328123">
+                <layer rank="1" name="Target">
+                    <label cBy="361" end="21" start="19" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="6398" end="12" start="0" name="Misdeed"/>
+                    <label cBy="361" feID="6415" end="41" start="23" name="Injured_party"/>
+                    <label cBy="361" feID="6397" itype="INI" name="Wrongdoer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="12" start="0" name="Ext"/>
+                    <label end="41" start="23" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="12" start="0" name="NP"/>
+                    <label end="41" start="23" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="15" start="14" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="512" aPos="23444998" ID="1440187">
+            <text>The next thing is to make sure that the sin committed against you is not causing you in turn to sin .</text>
+            <annotationSet cDate="07/23/2007 01:09:21 PDT Mon" status="UNANN" ID="2328130">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="7" start="4" name="jj"/>
+                    <label end="13" start="9" name="nn"/>
+                    <label end="16" start="15" name="VBZ"/>
+                    <label end="19" start="18" name="to"/>
+                    <label end="24" start="21" name="VV"/>
+                    <label end="29" start="26" name="jj"/>
+                    <label end="34" start="31" name="in"/>
+                    <label end="38" start="36" name="dt"/>
+                    <label end="42" start="40" name="nn"/>
+                    <label end="52" start="44" name="VVN"/>
+                    <label end="60" start="54" name="in"/>
+                    <label end="64" start="62" name="PP"/>
+                    <label end="67" start="66" name="VBZ"/>
+                    <label end="71" start="69" name="rb"/>
+                    <label end="79" start="73" name="VVG"/>
+                    <label end="83" start="81" name="PP"/>
+                    <label end="86" start="85" name="in"/>
+                    <label end="91" start="88" name="nn"/>
+                    <label end="94" start="93" name="to"/>
+                    <label end="98" start="96" name="nn"/>
+                    <label end="100" start="100" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/23/2007 01:09:21 PDT Mon" status="MANUAL" ID="2328131">
+                <layer rank="1" name="Target">
+                    <label cBy="361" end="42" start="40" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="6398" end="42" start="40" name="Misdeed"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="5" paragNo="305" aPos="34679651" ID="1440189">
+            <text>Giant Despair is the sin against the Holy Ghost ; on the other side , ` Evangelist &quot; , who frequently comes to Christian 's rescue , represents the authority of the Bible .</text>
+            <annotationSet cDate="07/23/2007 01:09:21 PDT Mon" status="UNANN" ID="2328134">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="jj"/>
+                    <label end="12" start="6" name="nn"/>
+                    <label end="15" start="14" name="VBZ"/>
+                    <label end="19" start="17" name="dt"/>
+                    <label end="23" start="21" name="nn"/>
+                    <label end="31" start="25" name="in"/>
+                    <label end="35" start="33" name="dt"/>
+                    <label end="40" start="37" name="NP"/>
+                    <label end="46" start="42" name="nn"/>
+                    <label end="48" start="48" name=":"/>
+                    <label end="51" start="50" name="in"/>
+                    <label end="55" start="53" name="dt"/>
+                    <label end="61" start="57" name="jj"/>
+                    <label end="66" start="63" name="nn"/>
+                    <label end="68" start="68" name=","/>
+                    <label end="81" start="72" name="NP"/>
+                    <label end="85" start="85" name=","/>
+                    <label end="89" start="87" name="wp"/>
+                    <label end="100" start="91" name="rb"/>
+                    <label end="106" start="102" name="VVZ"/>
+                    <label end="109" start="108" name="to"/>
+                    <label end="119" start="111" name="NP"/>
+                    <label end="122" start="121" name="POS"/>
+                    <label end="129" start="124" name="nn"/>
+                    <label end="131" start="131" name=","/>
+                    <label end="142" start="133" name="VVZ"/>
+                    <label end="146" start="144" name="dt"/>
+                    <label end="156" start="148" name="nn"/>
+                    <label end="159" start="158" name="in"/>
+                    <label end="163" start="161" name="dt"/>
+                    <label end="169" start="165" name="NP"/>
+                    <label end="171" start="171" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/23/2007 01:09:22 PDT Mon" status="MANUAL" ID="2328135">
+                <layer rank="1" name="Target">
+                    <label cBy="361" end="23" start="21" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="6398" end="12" start="0" name="Misdeed"/>
+                    <label cBy="361" feID="6415" end="46" start="25" name="Injured_party"/>
+                    <label cBy="361" feID="6397" itype="INI" name="Wrongdoer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="12" start="0" name="Ext"/>
+                    <label end="46" start="25" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="12" start="0" name="NP"/>
+                    <label end="46" start="25" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="15" start="14" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="520474" paragNo="392" aPos="122194948" ID="1440191">
+            <text>Pilate knew that it would be a sin against God .</text>
+            <annotationSet cDate="07/23/2007 01:09:22 PDT Mon" status="UNANN" ID="2328138">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="0" name="NP"/>
+                    <label end="10" start="7" name="VVD"/>
+                    <label end="15" start="12" name="in"/>
+                    <label end="18" start="17" name="PP"/>
+                    <label end="24" start="20" name="md"/>
+                    <label end="27" start="26" name="vb"/>
+                    <label end="29" start="29" name="dt"/>
+                    <label end="33" start="31" name="nn"/>
+                    <label end="41" start="35" name="in"/>
+                    <label end="45" start="43" name="NP"/>
+                    <label end="47" start="47" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/23/2007 01:09:22 PDT Mon" status="MANUAL" ID="2328139">
+                <layer rank="1" name="Target">
+                    <label cBy="361" end="33" start="31" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="6398" end="18" start="17" name="Misdeed"/>
+                    <label cBy="361" feID="6415" end="45" start="35" name="Injured_party"/>
+                    <label cBy="361" feID="6397" itype="DNI" name="Wrongdoer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="18" start="17" name="Ext"/>
+                    <label end="45" start="35" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="18" start="17" name="NP"/>
+                    <label end="45" start="35" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="27" start="26" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="03-Wusury,vanity,sex-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="334" aPos="84075684" ID="1440200">
+            <text>Vanity is a sin . &quot;</text>
+            <annotationSet cDate="07/23/2007 01:09:25 PDT Mon" status="UNANN" ID="2328156">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="0" name="NP"/>
+                    <label end="8" start="7" name="VBZ"/>
+                    <label end="10" start="10" name="dt"/>
+                    <label end="14" start="12" name="nn"/>
+                    <label end="16" start="16" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/23/2007 01:09:25 PDT Mon" status="MANUAL" ID="2328157">
+                <layer rank="1" name="Target">
+                    <label cBy="361" end="14" start="12" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="6398" end="5" start="0" name="Misdeed"/>
+                    <label cBy="361" feID="6397" itype="INI" name="Wrongdoer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="5" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="5" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="8" start="7" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="252" aPos="84068302" ID="1440206">
+            <text>` Sex before marriage is a sin , &quot; he 'd already told her , ` and if I read the Gospels right , sex after as well , unless for the procreation of children . &quot;</text>
+            <annotationSet cDate="07/23/2007 01:09:27 PDT Mon" status="UNANN" ID="2328168">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="2" name="nn"/>
+                    <label end="11" start="6" name="in"/>
+                    <label end="20" start="13" name="nn"/>
+                    <label end="23" start="22" name="VBZ"/>
+                    <label end="25" start="25" name="dt"/>
+                    <label end="29" start="27" name="nn"/>
+                    <label end="31" start="31" name=","/>
+                    <label end="36" start="35" name="PP"/>
+                    <label end="39" start="38" name="VHD"/>
+                    <label end="47" start="41" name="rb"/>
+                    <label end="52" start="49" name="VVN"/>
+                    <label end="56" start="54" name="PP"/>
+                    <label end="58" start="58" name=","/>
+                    <label end="64" start="62" name="cc"/>
+                    <label end="67" start="66" name="in"/>
+                    <label end="69" start="69" name="PP"/>
+                    <label end="74" start="71" name="VVP"/>
+                    <label end="78" start="76" name="dt"/>
+                    <label end="86" start="80" name="nns"/>
+                    <label end="92" start="88" name="nn"/>
+                    <label end="94" start="94" name=","/>
+                    <label end="98" start="96" name="nn"/>
+                    <label end="104" start="100" name="in"/>
+                    <label end="107" start="106" name="rb"/>
+                    <label end="112" start="109" name="rb"/>
+                    <label end="114" start="114" name=","/>
+                    <label end="121" start="116" name="in"/>
+                    <label end="125" start="123" name="in"/>
+                    <label end="129" start="127" name="dt"/>
+                    <label end="141" start="131" name="nn"/>
+                    <label end="144" start="143" name="in"/>
+                    <label end="153" start="146" name="nns"/>
+                    <label end="155" start="155" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/23/2007 01:09:27 PDT Mon" status="MANUAL" ID="2328169">
+                <layer rank="1" name="Target">
+                    <label cBy="361" end="29" start="27" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="6398" end="20" start="2" name="Misdeed"/>
+                    <label cBy="361" feID="6397" itype="INI" name="Wrongdoer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="20" start="2" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="20" start="2" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="23" start="22" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="6" paragNo="37" aPos="19434575" ID="1440208">
+            <text>It was the week that the Church of England 's General Synod had agreed that homosexuality was a sin but had refused to discipline the sinner .</text>
+            <annotationSet cDate="07/23/2007 01:09:27 PDT Mon" status="UNANN" ID="2328172">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="5" start="3" name="VBD"/>
+                    <label end="9" start="7" name="dt"/>
+                    <label end="14" start="11" name="nn"/>
+                    <label end="19" start="16" name="in"/>
+                    <label end="23" start="21" name="dt"/>
+                    <label end="30" start="25" name="NP"/>
+                    <label end="33" start="32" name="in"/>
+                    <label end="41" start="35" name="NP"/>
+                    <label end="44" start="43" name="POS"/>
+                    <label end="52" start="46" name="NP"/>
+                    <label end="58" start="54" name="nn"/>
+                    <label end="62" start="60" name="VHD"/>
+                    <label end="69" start="64" name="VVN"/>
+                    <label end="74" start="71" name="dt"/>
+                    <label end="88" start="76" name="nn"/>
+                    <label end="92" start="90" name="VBD"/>
+                    <label end="94" start="94" name="dt"/>
+                    <label end="98" start="96" name="nn"/>
+                    <label end="102" start="100" name="cc"/>
+                    <label end="106" start="104" name="VHD"/>
+                    <label end="114" start="108" name="VVN"/>
+                    <label end="117" start="116" name="to"/>
+                    <label end="128" start="119" name="nn"/>
+                    <label end="132" start="130" name="dt"/>
+                    <label end="139" start="134" name="nn"/>
+                    <label end="141" start="141" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/23/2007 01:09:28 PDT Mon" status="MANUAL" ID="2328173">
+                <layer rank="1" name="Target">
+                    <label cBy="361" end="98" start="96" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="6398" end="88" start="76" name="Misdeed"/>
+                    <label cBy="361" feID="6397" itype="INI" name="Wrongdoer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="88" start="76" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="88" start="76" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="92" start="90" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="04-T-PPof-(1)">
+        <sentence corpID="111" docID="421" sentNo="6" paragNo="27" aPos="40747050" ID="1440209">
+            <text>It also rejected worship of the saints and relics , pilgrimages , indulgences , and masses for the dead as futile attempts to purge the sins of the deceased or pile up merit for the living .</text>
+            <annotationSet cDate="07/23/2007 01:09:28 PDT Mon" status="UNANN" ID="2328174">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="6" start="3" name="rb"/>
+                    <label end="15" start="8" name="VVD"/>
+                    <label end="23" start="17" name="nn"/>
+                    <label end="26" start="25" name="in"/>
+                    <label end="30" start="28" name="dt"/>
+                    <label end="37" start="32" name="nns"/>
+                    <label end="41" start="39" name="cc"/>
+                    <label end="48" start="43" name="nns"/>
+                    <label end="50" start="50" name=","/>
+                    <label end="62" start="52" name="nns"/>
+                    <label end="64" start="64" name=","/>
+                    <label end="76" start="66" name="nns"/>
+                    <label end="78" start="78" name=","/>
+                    <label end="82" start="80" name="cc"/>
+                    <label end="89" start="84" name="nns"/>
+                    <label end="93" start="91" name="in"/>
+                    <label end="97" start="95" name="dt"/>
+                    <label end="102" start="99" name="nn"/>
+                    <label end="105" start="104" name="in"/>
+                    <label end="112" start="107" name="jj"/>
+                    <label end="121" start="114" name="nns"/>
+                    <label end="124" start="123" name="to"/>
+                    <label end="130" start="126" name="VV"/>
+                    <label end="134" start="132" name="dt"/>
+                    <label end="139" start="136" name="nns"/>
+                    <label end="142" start="141" name="in"/>
+                    <label end="146" start="144" name="dt"/>
+                    <label end="155" start="148" name="jj"/>
+                    <label end="158" start="157" name="cc"/>
+                    <label end="163" start="160" name="VV"/>
+                    <label end="166" start="165" name="rp"/>
+                    <label end="172" start="168" name="nn"/>
+                    <label end="176" start="174" name="in"/>
+                    <label end="180" start="178" name="dt"/>
+                    <label end="187" start="182" name="nn"/>
+                    <label end="189" start="189" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/23/2007 01:09:28 PDT Mon" status="MANUAL" ID="2328175">
+                <layer rank="1" name="Target">
+                    <label cBy="361" end="139" start="136" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="6398" end="139" start="136" name="Misdeed"/>
+                    <label cBy="361" feID="6397" end="155" start="141" name="Wrongdoer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="155" start="141" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="155" start="141" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="8" paragNo="3" aPos="71583999" ID="1440210">
+            <text>Comfort for Beleevers , a pastoral treatise never intended for the press , provoked a storm by declaring that God was in part the author of the sins of the godly .</text>
+            <annotationSet cDate="07/23/2007 01:09:28 PDT Mon" status="UNANN" ID="2328176">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="0" name="nn"/>
+                    <label end="10" start="8" name="in"/>
+                    <label end="20" start="12" name="NP"/>
+                    <label end="22" start="22" name=","/>
+                    <label end="24" start="24" name="dt"/>
+                    <label end="33" start="26" name="jj"/>
+                    <label end="42" start="35" name="nn"/>
+                    <label end="48" start="44" name="rb"/>
+                    <label end="57" start="50" name="VVN"/>
+                    <label end="61" start="59" name="in"/>
+                    <label end="65" start="63" name="dt"/>
+                    <label end="71" start="67" name="nn"/>
+                    <label end="73" start="73" name=","/>
+                    <label end="82" start="75" name="VVD"/>
+                    <label end="84" start="84" name="dt"/>
+                    <label end="90" start="86" name="nn"/>
+                    <label end="93" start="92" name="in"/>
+                    <label end="103" start="95" name="VVG"/>
+                    <label end="108" start="105" name="in"/>
+                    <label end="112" start="110" name="NP"/>
+                    <label end="116" start="114" name="VBD"/>
+                    <label end="119" start="118" name="in"/>
+                    <label end="124" start="121" name="nn"/>
+                    <label end="128" start="126" name="dt"/>
+                    <label end="135" start="130" name="nn"/>
+                    <label end="138" start="137" name="in"/>
+                    <label end="142" start="140" name="dt"/>
+                    <label end="147" start="144" name="nns"/>
+                    <label end="150" start="149" name="in"/>
+                    <label end="154" start="152" name="dt"/>
+                    <label end="160" start="156" name="jj"/>
+                    <label end="162" start="162" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/23/2007 01:09:28 PDT Mon" status="MANUAL" ID="2328177">
+                <layer rank="1" name="Target">
+                    <label cBy="361" end="147" start="144" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="6398" end="147" start="144" name="Misdeed"/>
+                    <label cBy="361" feID="6397" end="160" start="149" name="Wrongdoer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="160" start="149" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="160" start="149" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="778" aPos="51990645" ID="1440211">
+            <text>The flowing blood was the symbol and proof that life had been taken in payment for the sins of the guilty and as a substitute for his own guilt-stained life .</text>
+            <annotationSet cDate="07/23/2007 01:09:28 PDT Mon" status="UNANN" ID="2328178">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="10" start="4" name="jj"/>
+                    <label end="16" start="12" name="nn"/>
+                    <label end="20" start="18" name="VBD"/>
+                    <label end="24" start="22" name="dt"/>
+                    <label end="31" start="26" name="nn"/>
+                    <label end="35" start="33" name="cc"/>
+                    <label end="41" start="37" name="nn"/>
+                    <label end="46" start="43" name="in"/>
+                    <label end="51" start="48" name="nn"/>
+                    <label end="55" start="53" name="VHD"/>
+                    <label end="60" start="57" name="VBN"/>
+                    <label end="66" start="62" name="VVN"/>
+                    <label end="69" start="68" name="in"/>
+                    <label end="77" start="71" name="nn"/>
+                    <label end="81" start="79" name="in"/>
+                    <label end="85" start="83" name="dt"/>
+                    <label end="90" start="87" name="nns"/>
+                    <label end="93" start="92" name="in"/>
+                    <label end="97" start="95" name="dt"/>
+                    <label end="104" start="99" name="jj"/>
+                    <label end="108" start="106" name="cc"/>
+                    <label end="111" start="110" name="in"/>
+                    <label end="113" start="113" name="dt"/>
+                    <label end="124" start="115" name="nn"/>
+                    <label end="128" start="126" name="in"/>
+                    <label end="132" start="130" name="PP$"/>
+                    <label end="136" start="134" name="jj"/>
+                    <label end="150" start="138" name="VVN"/>
+                    <label end="155" start="152" name="nn"/>
+                    <label end="157" start="157" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/23/2007 01:09:29 PDT Mon" status="MANUAL" ID="2328179">
+                <layer rank="1" name="Target">
+                    <label cBy="361" end="90" start="87" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="6398" end="90" start="87" name="Misdeed"/>
+                    <label cBy="361" feID="6397" end="104" start="92" name="Wrongdoer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="104" start="92" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="104" start="92" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="05-Whis,her,their-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="865" aPos="33439209" ID="1440214">
+            <text>In this relationship God forgives his people their sin .</text>
+            <annotationSet cDate="07/23/2007 01:09:29 PDT Mon" status="UNANN" ID="2328184">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="in"/>
+                    <label end="6" start="3" name="dt"/>
+                    <label end="19" start="8" name="nn"/>
+                    <label end="23" start="21" name="NP"/>
+                    <label end="32" start="25" name="VVZ"/>
+                    <label end="36" start="34" name="PP$"/>
+                    <label end="43" start="38" name="nns"/>
+                    <label end="49" start="45" name="PP$"/>
+                    <label end="53" start="51" name="nn"/>
+                    <label end="55" start="55" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/23/2007 01:09:29 PDT Mon" status="MANUAL" ID="2328185">
+                <layer rank="1" name="Target">
+                    <label cBy="361" end="53" start="51" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="6397" end="49" start="45" name="Wrongdoer"/>
+                    <label cBy="361" feID="6398" end="53" start="51" name="Misdeed"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="49" start="45" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="49" start="45" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="6" paragNo="297" aPos="73268154" ID="1440222">
+            <text>It was their sin that had caused the death of John Parker .</text>
+            <annotationSet cDate="07/23/2007 01:09:32 PDT Mon" status="UNANN" ID="2328200">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="5" start="3" name="VBD"/>
+                    <label end="11" start="7" name="PP$"/>
+                    <label end="15" start="13" name="nn"/>
+                    <label end="20" start="17" name="wdt"/>
+                    <label end="24" start="22" name="VHD"/>
+                    <label end="31" start="26" name="VVN"/>
+                    <label end="35" start="33" name="dt"/>
+                    <label end="41" start="37" name="nn"/>
+                    <label end="44" start="43" name="in"/>
+                    <label end="49" start="46" name="NP"/>
+                    <label end="56" start="51" name="NP"/>
+                    <label end="58" start="58" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/23/2007 01:09:32 PDT Mon" status="MANUAL" ID="2328201">
+                <layer rank="1" name="Target">
+                    <label cBy="361" end="15" start="13" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="6397" end="11" start="7" name="Wrongdoer"/>
+                    <label cBy="361" feID="6398" end="15" start="13" name="Misdeed"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="11" start="7" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="11" start="7" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="544" aPos="11019658" ID="1440239">
+            <text>He said something about repenting for your sin .</text>
+            <annotationSet cDate="07/23/2007 01:09:37 PDT Mon" status="UNANN" ID="2328234">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="6" start="3" name="VVD"/>
+                    <label end="16" start="8" name="nn"/>
+                    <label end="22" start="18" name="in"/>
+                    <label end="32" start="24" name="VVG"/>
+                    <label end="36" start="34" name="in"/>
+                    <label end="41" start="38" name="PP$"/>
+                    <label end="45" start="43" name="nn"/>
+                    <label end="47" start="47" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/23/2007 01:09:37 PDT Mon" status="MANUAL" ID="2328235">
+                <layer rank="1" name="Target">
+                    <label cBy="361" end="45" start="43" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="6397" end="41" start="38" name="Wrongdoer"/>
+                    <label cBy="361" feID="6398" end="45" start="43" name="Misdeed"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="41" start="38" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="41" start="38" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="06-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="260" aPos="24041941" ID="1440242">
+            <text>But the sins are there , in small corners , to be hunted out .</text>
+            <annotationSet cDate="07/23/2007 01:09:38 PDT Mon" status="UNANN" ID="2328240">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="cc"/>
+                    <label end="6" start="4" name="dt"/>
+                    <label end="11" start="8" name="nns"/>
+                    <label end="15" start="13" name="vbp"/>
+                    <label end="21" start="17" name="rb"/>
+                    <label end="23" start="23" name=","/>
+                    <label end="26" start="25" name="in"/>
+                    <label end="32" start="28" name="jj"/>
+                    <label end="40" start="34" name="nns"/>
+                    <label end="42" start="42" name=","/>
+                    <label end="45" start="44" name="to"/>
+                    <label end="48" start="47" name="vb"/>
+                    <label end="55" start="50" name="VVN"/>
+                    <label end="59" start="57" name="rp"/>
+                    <label end="61" start="61" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/23/2007 01:09:38 PDT Mon" status="MANUAL" ID="2328241">
+                <layer rank="1" name="Target">
+                    <label cBy="361" end="11" start="8" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="6398" end="11" start="8" name="Misdeed"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="6" paragNo="17" aPos="103151189" ID="1440247">
+            <text>But by the end of the poem , he has become a character of extra-terrestrial proportions , a romantic sufferer carrying on his shoulders the sins of society .</text>
+            <annotationSet cDate="07/23/2007 01:09:39 PDT Mon" status="UNANN" ID="2328250">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="cc"/>
+                    <label end="5" start="4" name="in"/>
+                    <label end="9" start="7" name="dt"/>
+                    <label end="13" start="11" name="nn"/>
+                    <label end="16" start="15" name="in"/>
+                    <label end="20" start="18" name="dt"/>
+                    <label end="25" start="22" name="nn"/>
+                    <label end="27" start="27" name=","/>
+                    <label end="30" start="29" name="PP"/>
+                    <label end="34" start="32" name="VHZ"/>
+                    <label end="41" start="36" name="VVN"/>
+                    <label end="43" start="43" name="dt"/>
+                    <label end="53" start="45" name="nn"/>
+                    <label end="56" start="55" name="in"/>
+                    <label end="74" start="58" name="jj"/>
+                    <label end="86" start="76" name="nns"/>
+                    <label end="88" start="88" name=","/>
+                    <label end="90" start="90" name="dt"/>
+                    <label end="99" start="92" name="jj"/>
+                    <label end="108" start="101" name="nn"/>
+                    <label end="117" start="110" name="VVG"/>
+                    <label end="120" start="119" name="in"/>
+                    <label end="124" start="122" name="PP$"/>
+                    <label end="134" start="126" name="nns"/>
+                    <label end="138" start="136" name="dt"/>
+                    <label end="143" start="140" name="nns"/>
+                    <label end="146" start="145" name="in"/>
+                    <label end="154" start="148" name="nn"/>
+                    <label end="156" start="156" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/23/2007 01:09:40 PDT Mon" status="MANUAL" ID="2328251">
+                <layer rank="1" name="Target">
+                    <label cBy="361" end="143" start="140" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="6398" end="143" start="140" name="Misdeed"/>
+                    <label cBy="361" feID="6397" end="154" start="145" name="Wrongdoer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="154" start="145" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="154" start="145" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="28" paragNo="322" aPos="20164346" ID="1440257">
+            <text>And the sins of the fathers</text>
+            <annotationSet cDate="07/23/2007 01:09:42 PDT Mon" status="UNANN" ID="2328270">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="cc"/>
+                    <label end="6" start="4" name="dt"/>
+                    <label end="11" start="8" name="nns"/>
+                    <label end="14" start="13" name="in"/>
+                    <label end="18" start="16" name="dt"/>
+                    <label end="26" start="20" name="nns"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/23/2007 01:09:42 PDT Mon" status="MANUAL" ID="2328271">
+                <layer rank="1" name="Target">
+                    <label cBy="361" end="11" start="8" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="6397" end="26" start="13" name="Wrongdoer"/>
+                    <label cBy="361" feID="6398" end="11" start="8" name="Misdeed"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="26" start="13" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="26" start="13" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)">
+        <sentence corpID="111" docID="421" sentNo="541206" paragNo="392" aPos="122599784" ID="1440279">
+            <text>We were born in sin as as as David said , and shape in inequity .</text>
+            <annotationSet cDate="07/23/2007 01:09:49 PDT Mon" status="UNANN" ID="2328314">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="6" start="3" name="VBD"/>
+                    <label end="11" start="8" name="VVN"/>
+                    <label end="14" start="13" name="in"/>
+                    <label end="18" start="16" name="nn"/>
+                    <label end="21" start="20" name="rb"/>
+                    <label end="24" start="23" name="rb"/>
+                    <label end="27" start="26" name="in"/>
+                    <label end="33" start="29" name="NP"/>
+                    <label end="38" start="35" name="VVD"/>
+                    <label end="40" start="40" name=","/>
+                    <label end="44" start="42" name="cc"/>
+                    <label end="50" start="46" name="nn"/>
+                    <label end="53" start="52" name="in"/>
+                    <label end="62" start="55" name="nn"/>
+                    <label end="64" start="64" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/23/2007 01:09:49 PDT Mon" status="MANUAL" ID="2328315">
+                <layer rank="1" name="Target">
+                    <label cBy="361" end="18" start="16" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="6398" end="18" start="16" name="Misdeed"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="857" aPos="67750270" ID="1440292">
+            <text>A sin of omission rather than of commission , quite possibly .</text>
+            <annotationSet cDate="07/23/2007 01:09:53 PDT Mon" status="UNANN" ID="2328340">
+                <layer rank="1" name="PENN">
+                    <label end="0" start="0" name="dt"/>
+                    <label end="4" start="2" name="nn"/>
+                    <label end="7" start="6" name="in"/>
+                    <label end="16" start="9" name="nn"/>
+                    <label end="23" start="18" name="rb"/>
+                    <label end="28" start="25" name="in"/>
+                    <label end="31" start="30" name="in"/>
+                    <label end="42" start="33" name="nn"/>
+                    <label end="44" start="44" name=","/>
+                    <label end="50" start="46" name="rb"/>
+                    <label end="59" start="52" name="rb"/>
+                    <label end="61" start="61" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/23/2007 01:09:53 PDT Mon" status="MANUAL" ID="2328341">
+                <layer rank="1" name="Target">
+                    <label cBy="361" end="4" start="2" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="6398" end="4" start="2" name="Misdeed"/>
+                    <label cBy="361" feID="6413" end="16" start="6" name="Means"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="16" start="6" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="16" start="6" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="6" paragNo="303" aPos="24155842" ID="1440308">
+            <text>The greatest sin in the world is to have sex when you do n't want it .</text>
+            <annotationSet cDate="07/23/2007 01:09:59 PDT Mon" status="UNANN" ID="2328372">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="11" start="4" name="jjs"/>
+                    <label end="15" start="13" name="nn"/>
+                    <label end="18" start="17" name="in"/>
+                    <label end="22" start="20" name="dt"/>
+                    <label end="28" start="24" name="nn"/>
+                    <label end="31" start="30" name="VBZ"/>
+                    <label end="34" start="33" name="to"/>
+                    <label end="39" start="36" name="VH"/>
+                    <label end="43" start="41" name="nn"/>
+                    <label end="48" start="45" name="wrb"/>
+                    <label end="52" start="50" name="PP"/>
+                    <label end="55" start="54" name="VVP"/>
+                    <label end="59" start="57" name="rb"/>
+                    <label end="64" start="61" name="VV"/>
+                    <label end="67" start="66" name="PP"/>
+                    <label end="69" start="69" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/23/2007 01:09:59 PDT Mon" status="MANUAL" ID="2328373">
+                <layer rank="1" name="Target">
+                    <label cBy="361" end="15" start="13" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="6399" end="11" start="4" name="Severity"/>
+                    <label cBy="361" feID="6398" end="15" start="13" name="Misdeed"/>
+                    <label cBy="361" feID="6399" end="28" start="17" name="Severity"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="11" start="4" name="Dep"/>
+                    <label end="28" start="17" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="11" start="4" name="AJP"/>
+                    <label end="28" start="17" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

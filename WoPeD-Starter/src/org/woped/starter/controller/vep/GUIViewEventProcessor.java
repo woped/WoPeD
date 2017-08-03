@@ -48,6 +48,7 @@ import org.woped.editor.controller.vc.EditorVC;
 import org.woped.editor.controller.vc.SubprocessEditorVC;
 import org.woped.editor.help.HelpBrowser;
 import org.woped.editor.help.action.LaunchDefaultBrowserAction;
+import org.woped.gui.translations.Messages;
 import org.woped.qualanalysis.service.IQualanalysisService;
 import org.woped.qualanalysis.service.QualAnalysisServiceFactory;
 import org.woped.starter.AboutUI;
@@ -55,7 +56,7 @@ import org.woped.starter.BugReportUI;
 import org.woped.starter.Constants;
 import org.woped.starter.RegistrationUI;
 import org.woped.starter.controller.vc.DefaultApplicationMediator;
-import org.woped.gui.translations.Messages;
+import org.woped.starter.t2p.T2PUI;
 
 /**
  * @author <a href="mailto:slandes@kybeidos.de">Simon Landes </a> <br>
@@ -80,6 +81,18 @@ public class GUIViewEventProcessor extends AbstractEventProcessor
 		}
 		switch (event.getOrder())
 		{
+		case AbstractViewEvent.T2P:				
+			T2PUI t2p;
+			if (getMediator().getUi() != null
+					&& getMediator().getUi().getComponent() instanceof JFrame)
+			{
+				t2p = new T2PUI((JFrame) getMediator().getUi(), getMediator());
+			} else
+			{
+				t2p = new T2PUI(getMediator());
+			}
+			t2p.setVisible(true);
+			break;
 		case AbstractViewEvent.NEW:
 			getMediator().createEditor(true);
 			break;

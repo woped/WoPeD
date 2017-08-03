@@ -1,0 +1,829 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="percolate.v" ID="6026" frame="Fluidic_motion" frameID="345" totalAnnotated="12" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Core" abbrev="Area" name="Area"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Extra-Thematic" abbrev="Cause" name="Cause"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Extra-Thematic" abbrev="confg" name="Configuration"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Depict" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Peripheral" abbrev="Dist" name="Distance"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Peripheral" abbrev="Dur" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Fluid" name="Fluid"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Goal" name="Goal"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Path" name="Path"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD73" type="Peripheral" abbrev="" name="Place"/>
+            <FE fgColor="0000FF" bgColor="EEE8AA" type="Extra-Thematic" abbrev="Result" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="Src" name="Source"/>
+            <FE fgColor="FFFFFF" bgColor="7FFF00" type="Peripheral" abbrev="Spd" name="Speed"/>
+            <FE fgColor="000000" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: filter through a porous surface or substance. </definition>
+    <lexeme POS="V" name="percolate"/>
+    <valences>
+        <FERealization total="12">
+            <FE name="Fluid"/>
+            <pattern total="12">
+                <valenceUnit GF="Ext" PT="NP" FE="Fluid"/>
+                <annoSet ID="1293214"/>
+                <annoSet ID="1293218"/>
+                <annoSet ID="1293222"/>
+                <annoSet ID="1293226"/>
+                <annoSet ID="1293234"/>
+                <annoSet ID="1293236"/>
+                <annoSet ID="1293238"/>
+                <annoSet ID="1293240"/>
+                <annoSet ID="1293250"/>
+                <annoSet ID="1293260"/>
+                <annoSet ID="1293272"/>
+                <annoSet ID="1293276"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="7">
+            <FE name="Goal"/>
+            <pattern total="5">
+                <valenceUnit GF="Dep" PT="PP[into]" FE="Goal"/>
+                <annoSet ID="1293214"/>
+                <annoSet ID="1293218"/>
+                <annoSet ID="1293260"/>
+                <annoSet ID="1293272"/>
+                <annoSet ID="1293276"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Goal"/>
+                <annoSet ID="1293222"/>
+                <annoSet ID="1293240"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="7">
+            <FE name="Path"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[down]" FE="Path"/>
+                <annoSet ID="1293218"/>
+            </pattern>
+            <pattern total="5">
+                <valenceUnit GF="Dep" PT="PP[through]" FE="Path"/>
+                <annoSet ID="1293226"/>
+                <annoSet ID="1293236"/>
+                <annoSet ID="1293238"/>
+                <annoSet ID="1293240"/>
+                <annoSet ID="1293250"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Path"/>
+                <annoSet ID="1293234"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Place"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Place"/>
+                <annoSet ID="1293226"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Source"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[from]" FE="Source"/>
+                <annoSet ID="1293276"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="Sub" FE="Time"/>
+                <annoSet ID="1293250"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="4">
+            <FE name="Fluid"/>
+            <FE name="Goal"/>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="NP" FE="Fluid"/>
+                <valenceUnit GF="Dep" PT="PP[into]" FE="Goal"/>
+                <annoSet ID="1293214"/>
+                <annoSet ID="1293260"/>
+                <annoSet ID="1293272"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Fluid"/>
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Goal"/>
+                <annoSet ID="1293222"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Fluid"/>
+            <FE name="Goal"/>
+            <FE name="Path"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Fluid"/>
+                <valenceUnit GF="Dep" PT="PP[into]" FE="Goal"/>
+                <valenceUnit GF="Dep" PT="PP[down]" FE="Path"/>
+                <annoSet ID="1293218"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Fluid"/>
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Goal"/>
+                <valenceUnit GF="Dep" PT="PP[through]" FE="Path"/>
+                <annoSet ID="1293240"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Fluid"/>
+            <FE name="Goal"/>
+            <FE name="Source"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Fluid"/>
+                <valenceUnit GF="Dep" PT="PP[into]" FE="Goal"/>
+                <valenceUnit GF="Dep" PT="PP[from]" FE="Source"/>
+                <annoSet ID="1293276"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="3">
+            <FE name="Fluid"/>
+            <FE name="Path"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Fluid"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Path"/>
+                <annoSet ID="1293234"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Fluid"/>
+                <valenceUnit GF="Dep" PT="PP[through]" FE="Path"/>
+                <annoSet ID="1293236"/>
+                <annoSet ID="1293238"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Fluid"/>
+            <FE name="Path"/>
+            <FE name="Place"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Fluid"/>
+                <valenceUnit GF="Dep" PT="PP[through]" FE="Path"/>
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Place"/>
+                <annoSet ID="1293226"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Fluid"/>
+            <FE name="Path"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Fluid"/>
+                <valenceUnit GF="Dep" PT="PP[through]" FE="Path"/>
+                <valenceUnit GF="Dep" PT="Sub" FE="Time"/>
+                <annoSet ID="1293250"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-001-all">
+        <sentence sentNo="0" aPos="11445622" ID="919669">
+            <text>In fact there is nothing fixed about such interpretations , because the way the fossils are understood may change over the years , but it is usually some time before new discoveries percolate into the popular presentations . </text>
+            <annotationSet cDate="01/07/2003 07:30:18 PST Tue" status="UNANN" ID="1293213">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PRP"/>
+                    <label end="6" start="3" name="NN1"/>
+                    <label end="12" start="8" name="EX0"/>
+                    <label end="15" start="14" name="VBZ"/>
+                    <label end="23" start="17" name="PNI"/>
+                    <label end="29" start="25" name="VVD-VVN"/>
+                    <label end="35" start="31" name="PRP"/>
+                    <label end="40" start="37" name="DT0"/>
+                    <label end="56" start="42" name="NN2"/>
+                    <label end="58" start="58" name="PUN"/>
+                    <label end="66" start="60" name="CJS"/>
+                    <label end="70" start="68" name="AT0"/>
+                    <label end="74" start="72" name="NN1"/>
+                    <label end="78" start="76" name="AT0"/>
+                    <label end="86" start="80" name="NN2"/>
+                    <label end="90" start="88" name="VBB"/>
+                    <label end="101" start="92" name="VVN"/>
+                    <label end="105" start="103" name="VM0"/>
+                    <label end="112" start="107" name="VVI"/>
+                    <label end="117" start="114" name="AVP-PRP"/>
+                    <label end="121" start="119" name="AT0"/>
+                    <label end="127" start="123" name="NN2"/>
+                    <label end="129" start="129" name="PUN"/>
+                    <label end="133" start="131" name="CJC"/>
+                    <label end="136" start="135" name="PNP"/>
+                    <label end="139" start="138" name="VBZ"/>
+                    <label end="147" start="141" name="AV0"/>
+                    <label end="152" start="149" name="DT0"/>
+                    <label end="157" start="154" name="NN1"/>
+                    <label end="164" start="159" name="CJS-PRP"/>
+                    <label end="168" start="166" name="AJ0"/>
+                    <label end="180" start="170" name="NN2"/>
+                    <label end="190" start="182" name="VVB"/>
+                    <label end="195" start="192" name="PRP"/>
+                    <label end="199" start="197" name="AT0"/>
+                    <label end="207" start="201" name="AJ0"/>
+                    <label end="221" start="209" name="NN2"/>
+                    <label end="223" start="223" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 07:30:19 PST Tue" status="MANUAL" ID="1293214">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2983" end="180" start="166" name="Fluid"/>
+                    <label cBy="618" feID="2979" end="221" start="192" name="Goal"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="180" start="166" name="Ext"/>
+                    <label end="221" start="192" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="180" start="166" name="NP"/>
+                    <label end="221" start="192" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="Metaphor"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="190" start="182" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="11498284" ID="919671">
+            <text>The basic solution is first to restrict the flow of water percolating down into the aquifers by planting trees , preferably native species , on the higher ground . </text>
+            <annotationSet cDate="01/07/2003 07:30:19 PST Tue" status="UNANN" ID="1293217">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="8" start="4" name="AJ0"/>
+                    <label end="17" start="10" name="NN1"/>
+                    <label end="20" start="19" name="VBZ"/>
+                    <label end="26" start="22" name="ORD"/>
+                    <label end="29" start="28" name="TO0"/>
+                    <label end="38" start="31" name="VVI"/>
+                    <label end="42" start="40" name="AT0"/>
+                    <label end="47" start="44" name="NN1"/>
+                    <label end="50" start="49" name="PRF"/>
+                    <label end="56" start="52" name="NN1"/>
+                    <label end="68" start="58" name="VVG"/>
+                    <label end="73" start="70" name="AVP"/>
+                    <label end="78" start="75" name="PRP"/>
+                    <label end="82" start="80" name="AT0"/>
+                    <label end="91" start="84" name="NN2"/>
+                    <label end="94" start="93" name="PRP"/>
+                    <label end="103" start="96" name="AJ0-VVG"/>
+                    <label end="109" start="105" name="NN2"/>
+                    <label end="111" start="111" name="PUN"/>
+                    <label end="122" start="113" name="AV0"/>
+                    <label end="129" start="124" name="AJ0"/>
+                    <label end="137" start="131" name="NN0"/>
+                    <label end="139" start="139" name="PUN"/>
+                    <label end="142" start="141" name="PRP"/>
+                    <label end="146" start="144" name="AT0"/>
+                    <label end="153" start="148" name="AJC"/>
+                    <label end="160" start="155" name="NN1"/>
+                    <label end="162" start="162" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 07:30:19 PST Tue" status="MANUAL" ID="1293218">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2983" end="56" start="52" name="Fluid"/>
+                    <label cBy="618" feID="2980" end="73" start="70" name="Path"/>
+                    <label cBy="618" feID="2979" end="91" start="75" name="Goal"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="56" start="52" name="Ext"/>
+                    <label end="73" start="70" name="Dep"/>
+                    <label end="91" start="75" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="56" start="52" name="NP"/>
+                    <label end="73" start="70" name="PP"/>
+                    <label end="91" start="75" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="68" start="58" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="14253512" ID="919673">
+            <text>Overdone , it can create an unstable , flour-like tilth which will turn to porridge and pan in wet weather , preventing water from percolating to the subsoil . </text>
+            <annotationSet cDate="01/07/2003 07:30:19 PST Tue" status="UNANN" ID="1293221">
+                <layer rank="1" name="BNC">
+                    <label end="7" start="0" name="AJ0-VVN"/>
+                    <label end="9" start="9" name="PUN"/>
+                    <label end="12" start="11" name="PNP"/>
+                    <label end="16" start="14" name="VM0"/>
+                    <label end="23" start="18" name="VVI"/>
+                    <label end="26" start="25" name="AT0"/>
+                    <label end="35" start="28" name="AJ0"/>
+                    <label end="37" start="37" name="PUN"/>
+                    <label end="48" start="39" name="AJ0"/>
+                    <label end="54" start="50" name="NN1"/>
+                    <label end="60" start="56" name="DTQ"/>
+                    <label end="65" start="62" name="VM0"/>
+                    <label end="70" start="67" name="VVI"/>
+                    <label end="73" start="72" name="PRP"/>
+                    <label end="82" start="75" name="NN1"/>
+                    <label end="86" start="84" name="CJC"/>
+                    <label end="90" start="88" name="NN1-VVB"/>
+                    <label end="93" start="92" name="PRP"/>
+                    <label end="97" start="95" name="AJ0"/>
+                    <label end="105" start="99" name="NN1"/>
+                    <label end="107" start="107" name="PUN"/>
+                    <label end="118" start="109" name="AJ0-VVG"/>
+                    <label end="124" start="120" name="NN1"/>
+                    <label end="129" start="126" name="PRP"/>
+                    <label end="141" start="131" name="VVG"/>
+                    <label end="144" start="143" name="PRP"/>
+                    <label end="148" start="146" name="AT0"/>
+                    <label end="156" start="150" name="NN1"/>
+                    <label end="158" start="158" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 07:30:19 PST Tue" status="MANUAL" ID="1293222">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2983" end="124" start="120" name="Fluid"/>
+                    <label cBy="618" feID="2979" end="156" start="143" name="Goal"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="124" start="120" name="Ext"/>
+                    <label end="156" start="143" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="124" start="120" name="NP"/>
+                    <label end="156" start="143" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="141" start="131" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="15158147" ID="919675">
+            <text>The stream bed below is normally dry as the water percolates through at a lower level . </text>
+            <annotationSet cDate="01/07/2003 07:30:19 PST Tue" status="UNANN" ID="1293225">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="9" start="4" name="NN1"/>
+                    <label end="13" start="11" name="NN1"/>
+                    <label end="19" start="15" name="AV0"/>
+                    <label end="22" start="21" name="VBZ"/>
+                    <label end="31" start="24" name="AV0"/>
+                    <label end="35" start="33" name="VVB"/>
+                    <label end="38" start="37" name="PRP"/>
+                    <label end="42" start="40" name="AT0"/>
+                    <label end="48" start="44" name="NN1"/>
+                    <label end="59" start="50" name="VVZ"/>
+                    <label end="67" start="61" name="AVP"/>
+                    <label end="70" start="69" name="PRP"/>
+                    <label end="72" start="72" name="AT0"/>
+                    <label end="78" start="74" name="AJC"/>
+                    <label end="84" start="80" name="NN1"/>
+                    <label end="86" start="86" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 07:30:19 PST Tue" status="MANUAL" ID="1293226">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2983" end="48" start="40" name="Fluid"/>
+                    <label cBy="618" feID="2980" end="67" start="61" name="Path"/>
+                    <label cBy="618" feID="4842" end="84" start="69" name="Place"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="48" start="40" name="Ext"/>
+                    <label end="67" start="61" name="Dep"/>
+                    <label end="84" start="69" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="48" start="40" name="NP"/>
+                    <label end="67" start="61" name="PP"/>
+                    <label end="84" start="69" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="59" start="50" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="18472712" ID="919679">
+            <text>These brines percolated downwards , causing dolomitisation and leaving the pre-existing texture and porosity of the sediments largely unchanged . </text>
+            <annotationSet cDate="01/07/2003 07:30:20 PST Tue" status="UNANN" ID="1293233">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="DT0"/>
+                    <label end="11" start="6" name="NN2"/>
+                    <label end="22" start="13" name="VVD"/>
+                    <label end="32" start="24" name="AV0"/>
+                    <label end="34" start="34" name="PUN"/>
+                    <label end="42" start="36" name="AJ0-VVG"/>
+                    <label end="57" start="44" name="NN1"/>
+                    <label end="61" start="59" name="CJC"/>
+                    <label end="69" start="63" name="VVG"/>
+                    <label end="73" start="71" name="AT0"/>
+                    <label end="86" start="75" name="AJ0-NN1"/>
+                    <label end="94" start="88" name="NN1"/>
+                    <label end="98" start="96" name="CJC"/>
+                    <label end="107" start="100" name="NN1"/>
+                    <label end="110" start="109" name="PRF"/>
+                    <label end="114" start="112" name="AT0"/>
+                    <label end="124" start="116" name="NN2"/>
+                    <label end="132" start="126" name="AV0"/>
+                    <label end="142" start="134" name="AJ0"/>
+                    <label end="144" start="144" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 07:30:20 PST Tue" status="MANUAL" ID="1293234">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2983" end="11" start="0" name="Fluid"/>
+                    <label cBy="618" feID="2980" end="32" start="24" name="Path"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="11" start="0" name="Ext"/>
+                    <label end="32" start="24" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="11" start="0" name="NP"/>
+                    <label end="32" start="24" name="AVP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="22" start="13" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="18475400" ID="919680">
+            <text>As the water percolated through the rocks , the leaching process became less effective and the porosity that was created decreased progressively away from the exposed surfaces . </text>
+            <annotationSet cDate="01/07/2003 07:30:20 PST Tue" status="UNANN" ID="1293235">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="CJS-PRP"/>
+                    <label end="5" start="3" name="AT0"/>
+                    <label end="11" start="7" name="NN1"/>
+                    <label end="22" start="13" name="VVD-VVN"/>
+                    <label end="30" start="24" name="PRP"/>
+                    <label end="34" start="32" name="AT0"/>
+                    <label end="40" start="36" name="NN2"/>
+                    <label end="42" start="42" name="PUN"/>
+                    <label end="46" start="44" name="AT0"/>
+                    <label end="55" start="48" name="AJ0-NN1"/>
+                    <label end="63" start="57" name="NN1"/>
+                    <label end="70" start="65" name="VVD"/>
+                    <label end="75" start="72" name="AV0"/>
+                    <label end="85" start="77" name="AJ0"/>
+                    <label end="89" start="87" name="CJC"/>
+                    <label end="93" start="91" name="AT0"/>
+                    <label end="102" start="95" name="NN1"/>
+                    <label end="107" start="104" name="CJT"/>
+                    <label end="111" start="109" name="VBD"/>
+                    <label end="119" start="113" name="VVN"/>
+                    <label end="129" start="121" name="VVD-VVN"/>
+                    <label end="143" start="131" name="AV0"/>
+                    <label end="148" start="145" name="PRP"/>
+                    <label end="153" start="150" name="PRP"/>
+                    <label end="157" start="155" name="AT0"/>
+                    <label end="165" start="159" name="AJ0"/>
+                    <label end="174" start="167" name="NN2"/>
+                    <label end="176" start="176" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 07:30:20 PST Tue" status="MANUAL" ID="1293236">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2983" end="11" start="3" name="Fluid"/>
+                    <label cBy="618" feID="2980" end="40" start="24" name="Path"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="11" start="3" name="Ext"/>
+                    <label end="40" start="24" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="11" start="3" name="NP"/>
+                    <label end="40" start="24" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="22" start="13" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="19453753" ID="919681">
+            <text>This message has begun to percolate through the corridors of science power . </text>
+            <annotationSet cDate="01/07/2003 07:30:20 PST Tue" status="UNANN" ID="1293237">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="DT0"/>
+                    <label end="11" start="5" name="NN1"/>
+                    <label end="15" start="13" name="VHZ"/>
+                    <label end="21" start="17" name="VVN"/>
+                    <label end="24" start="23" name="TO0"/>
+                    <label end="34" start="26" name="VVI"/>
+                    <label end="42" start="36" name="PRP"/>
+                    <label end="46" start="44" name="AT0"/>
+                    <label end="56" start="48" name="NN2"/>
+                    <label end="59" start="58" name="PRF"/>
+                    <label end="67" start="61" name="NN1"/>
+                    <label end="73" start="69" name="NN1"/>
+                    <label end="75" start="75" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 07:30:20 PST Tue" status="MANUAL" ID="1293238">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2983" end="11" start="0" name="Fluid"/>
+                    <label cBy="618" feID="2980" end="73" start="36" name="Path"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="11" start="0" name="Ext"/>
+                    <label end="73" start="36" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="11" start="0" name="NP"/>
+                    <label end="73" start="36" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="Metaphor"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="34" start="26" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="19466466" ID="919682">
+            <text>Leaking oil and spilled water around the wellhead percolates through to the groundwater , carrying pollutants . </text>
+            <annotationSet cDate="01/07/2003 07:30:20 PST Tue" status="UNANN" ID="1293239">
+                <layer rank="1" name="BNC">
+                    <label end="6" start="0" name="AJ0-VVG"/>
+                    <label end="10" start="8" name="NN1"/>
+                    <label end="14" start="12" name="CJC"/>
+                    <label end="22" start="16" name="AJ0-VVD"/>
+                    <label end="28" start="24" name="NN1"/>
+                    <label end="35" start="30" name="PRP"/>
+                    <label end="39" start="37" name="AT0"/>
+                    <label end="48" start="41" name="NN1"/>
+                    <label end="59" start="50" name="VVZ"/>
+                    <label end="67" start="61" name="AVP"/>
+                    <label end="70" start="69" name="PRP"/>
+                    <label end="74" start="72" name="AT0"/>
+                    <label end="86" start="76" name="NN1"/>
+                    <label end="88" start="88" name="PUN"/>
+                    <label end="97" start="90" name="VVG"/>
+                    <label end="108" start="99" name="NN2"/>
+                    <label end="110" start="110" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 07:30:20 PST Tue" status="MANUAL" ID="1293240">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2983" end="48" start="0" name="Fluid"/>
+                    <label cBy="618" feID="2980" end="67" start="61" name="Path"/>
+                    <label cBy="618" feID="2979" end="86" start="69" name="Goal"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="48" start="0" name="Ext"/>
+                    <label end="67" start="61" name="Dep"/>
+                    <label end="86" start="69" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="48" start="0" name="NP"/>
+                    <label end="67" start="61" name="PP"/>
+                    <label end="86" start="69" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="59" start="50" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="36440952" ID="919687">
+            <text>The original limestone consisted of calcium carbonate , but sometime after it was formed , water rich in dissolved magnesium percolated through the rock . </text>
+            <annotationSet cDate="01/07/2003 07:30:21 PST Tue" status="UNANN" ID="1293249">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="11" start="4" name="AJ0"/>
+                    <label end="21" start="13" name="NN1"/>
+                    <label end="31" start="23" name="VVD-VVN"/>
+                    <label end="34" start="33" name="PRF"/>
+                    <label end="42" start="36" name="NN1"/>
+                    <label end="52" start="44" name="NN1"/>
+                    <label end="54" start="54" name="PUN"/>
+                    <label end="58" start="56" name="CJC"/>
+                    <label end="67" start="60" name="AV0"/>
+                    <label end="73" start="69" name="CJS"/>
+                    <label end="76" start="75" name="PNP"/>
+                    <label end="80" start="78" name="VBD"/>
+                    <label end="87" start="82" name="VVN"/>
+                    <label end="89" start="89" name="PUN"/>
+                    <label end="95" start="91" name="NN1"/>
+                    <label end="100" start="97" name="AJ0"/>
+                    <label end="103" start="102" name="PRP"/>
+                    <label end="113" start="105" name="AJ0"/>
+                    <label end="123" start="115" name="NN1"/>
+                    <label end="134" start="125" name="VVD-VVN"/>
+                    <label end="142" start="136" name="PRP"/>
+                    <label end="146" start="144" name="AT0"/>
+                    <label end="151" start="148" name="NN1"/>
+                    <label end="153" start="153" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 07:30:21 PST Tue" status="MANUAL" ID="1293250">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2983" end="123" start="91" name="Fluid"/>
+                    <label cBy="618" feID="2980" end="151" start="136" name="Path"/>
+                    <label cBy="618" feID="2984" end="87" start="60" name="Time"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="123" start="91" name="Ext"/>
+                    <label end="151" start="136" name="Dep"/>
+                    <label end="87" start="60" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="123" start="91" name="NP"/>
+                    <label end="151" start="136" name="PP"/>
+                    <label end="87" start="60" name="Sub"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="134" start="125" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="45758077" ID="919692">
+            <text>Use the vibrating plate to encourage sand to percolate into fine cracks between blocks . </text>
+            <annotationSet cDate="01/07/2003 07:30:21 PST Tue" status="UNANN" ID="1293259">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="VVB"/>
+                    <label end="6" start="4" name="AT0"/>
+                    <label end="16" start="8" name="AJ0-NN1"/>
+                    <label end="22" start="18" name="NN1"/>
+                    <label end="25" start="24" name="TO0"/>
+                    <label end="35" start="27" name="VVI"/>
+                    <label end="40" start="37" name="NN1"/>
+                    <label end="43" start="42" name="TO0"/>
+                    <label end="53" start="45" name="VVI"/>
+                    <label end="58" start="55" name="PRP"/>
+                    <label end="63" start="60" name="AJ0"/>
+                    <label end="70" start="65" name="NN2"/>
+                    <label end="78" start="72" name="PRP"/>
+                    <label end="85" start="80" name="NN2"/>
+                    <label end="87" start="87" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 07:30:21 PST Tue" status="MANUAL" ID="1293260">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2983" end="40" start="37" name="Fluid"/>
+                    <label cBy="618" feID="2979" end="85" start="55" name="Goal"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="40" start="37" name="Ext"/>
+                    <label end="85" start="55" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="40" start="37" name="NP"/>
+                    <label end="85" start="55" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="53" start="45" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="58009730" ID="919698">
+            <text>Since it may take decades for water to percolate into these aquifers the problem is a long-term one , and bearing in mind the increasing use of artificial fertilizer since the war , one which may return . </text>
+            <annotationSet cDate="01/07/2003 07:30:22 PST Tue" status="UNANN" ID="1293271">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="CJS"/>
+                    <label end="7" start="6" name="PNP"/>
+                    <label end="11" start="9" name="VM0"/>
+                    <label end="16" start="13" name="VVI"/>
+                    <label end="24" start="18" name="NN2"/>
+                    <label end="28" start="26" name="PRP"/>
+                    <label end="34" start="30" name="NN1"/>
+                    <label end="37" start="36" name="TO0"/>
+                    <label end="47" start="39" name="VVI"/>
+                    <label end="52" start="49" name="PRP"/>
+                    <label end="58" start="54" name="DT0"/>
+                    <label end="67" start="60" name="VVZ"/>
+                    <label end="71" start="69" name="AT0"/>
+                    <label end="79" start="73" name="NN1"/>
+                    <label end="82" start="81" name="VBZ"/>
+                    <label end="84" start="84" name="AT0"/>
+                    <label end="94" start="86" name="AJ0"/>
+                    <label end="98" start="96" name="PNI"/>
+                    <label end="100" start="100" name="PUN"/>
+                    <label end="104" start="102" name="CJC"/>
+                    <label end="112" start="106" name="NN1-VVG"/>
+                    <label end="115" start="114" name="PRP"/>
+                    <label end="120" start="117" name="NN1-VVB"/>
+                    <label end="124" start="122" name="AT0"/>
+                    <label end="135" start="126" name="AJ0"/>
+                    <label end="139" start="137" name="NN1"/>
+                    <label end="142" start="141" name="PRF"/>
+                    <label end="153" start="144" name="AJ0"/>
+                    <label end="164" start="155" name="NN1"/>
+                    <label end="170" start="166" name="CJS-PRP"/>
+                    <label end="174" start="172" name="AT0"/>
+                    <label end="178" start="176" name="NN1"/>
+                    <label end="180" start="180" name="PUN"/>
+                    <label end="184" start="182" name="PNI"/>
+                    <label end="190" start="186" name="DTQ"/>
+                    <label end="194" start="192" name="VM0"/>
+                    <label end="201" start="196" name="VVI"/>
+                    <label end="203" start="203" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 07:30:22 PST Tue" status="MANUAL" ID="1293272">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2983" end="34" start="30" name="Fluid"/>
+                    <label cBy="618" feID="2979" end="67" start="49" name="Goal"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="34" start="30" name="Ext"/>
+                    <label end="67" start="49" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="34" start="30" name="NP"/>
+                    <label end="67" start="49" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="47" start="39" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="60301340" ID="919700">
+            <text>The gas had percolated into the hotel basement from a fractured welded joint in an intermediate pressure main situated below street level and belonging to the defendants , a public utility company . </text>
+            <annotationSet cDate="01/07/2003 07:30:22 PST Tue" status="UNANN" ID="1293275">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="6" start="4" name="NN1"/>
+                    <label end="10" start="8" name="VHD"/>
+                    <label end="21" start="12" name="VVN"/>
+                    <label end="26" start="23" name="PRP"/>
+                    <label end="30" start="28" name="AT0"/>
+                    <label end="36" start="32" name="NN1"/>
+                    <label end="45" start="38" name="NN1"/>
+                    <label end="50" start="47" name="PRP"/>
+                    <label end="52" start="52" name="AT0"/>
+                    <label end="62" start="54" name="AJ0"/>
+                    <label end="69" start="64" name="AJ0"/>
+                    <label end="75" start="71" name="AJ0-NN1"/>
+                    <label end="78" start="77" name="PRP"/>
+                    <label end="81" start="80" name="AT0"/>
+                    <label end="94" start="83" name="AJ0"/>
+                    <label end="103" start="96" name="NN1"/>
+                    <label end="108" start="105" name="NN1"/>
+                    <label end="117" start="110" name="VVD-VVN"/>
+                    <label end="123" start="119" name="PRP"/>
+                    <label end="130" start="125" name="NN1"/>
+                    <label end="136" start="132" name="NN1"/>
+                    <label end="140" start="138" name="CJC"/>
+                    <label end="150" start="142" name="VVG"/>
+                    <label end="153" start="152" name="PRP"/>
+                    <label end="157" start="155" name="AT0"/>
+                    <label end="168" start="159" name="NN2"/>
+                    <label end="170" start="170" name="PUN"/>
+                    <label end="172" start="172" name="AT0"/>
+                    <label end="179" start="174" name="AJ0"/>
+                    <label end="187" start="181" name="NN1"/>
+                    <label end="195" start="189" name="NN1"/>
+                    <label end="197" start="197" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 07:30:23 PST Tue" status="MANUAL" ID="1293276">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="2983" end="6" start="0" name="Fluid"/>
+                    <label cBy="618" feID="2979" end="45" start="23" name="Goal"/>
+                    <label cBy="618" feID="2981" end="195" start="47" name="Source"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="6" start="0" name="Ext"/>
+                    <label end="45" start="23" name="Dep"/>
+                    <label end="195" start="47" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="6" start="0" name="NP"/>
+                    <label end="45" start="23" name="PP"/>
+                    <label end="195" start="47" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="21" start="12" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="04/01/2003 07:35:39 PST Tue" name="Endangering" ID="631" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Agent&lt;/fen&gt; or &lt;fen&gt;Cause&lt;/fen&gt; is responsible for placing a &lt;fen&gt;Valued_entity&lt;/fen&gt; at risk. &lt;fen&gt;Endangering_act&lt;/fen&gt;, Place, Time, Reason, and Circumstance may also be specified.
+
+&lt;ex&gt;&lt;fex name="Cause"&gt;His actions&lt;/fex&gt; have &lt;t&gt;imperiled&lt;/t&gt; &lt;fex name="Valued"&gt;his immortal soul&lt;/fex&gt;!&lt;/ex&gt;
+
+&lt;ex&gt;I admit that &lt;fex name="Agent"&gt;I&lt;/fex&gt; &lt;t&gt;endangered&lt;/t&gt; &lt;fex name="Valued_entity"&gt;you all&lt;/fex&gt; &lt;fex name="Endangering_act"&gt;by attracting the killer's notice&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="04/01/2003 07:42:41 PST Tue" abbrev="" name="Cause" ID="4340">
+        <definition>&lt;def-root&gt;An (non-sentient) entity or state of affairs that leads to the peril to the Valued_entity.&lt;/def-root&gt;</definition>
+        <excludesFE name="Agent" ID="4342"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="04/01/2003 07:44:32 PST Tue" abbrev="Valued" name="Valued_entity" ID="4341">
+        <definition>&lt;def-root&gt;The entity which may be negatively impacted as a result of the emperilment.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="04/01/2003 07:49:09 PST Tue" abbrev="Agent" name="Agent" ID="4342">
+        <definition>&lt;def-root&gt;The sentient entity which causes the risk to the &lt;fen&gt;Valued_entity&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="04/18/2003 09:11:48 PDT Fri" abbrev="Mns" name="Endangering_act" ID="4390">
+        <definition>&lt;def-root&gt;The specific event or state of affairs brought about by the &lt;fen&gt;Agent&lt;/fen&gt; or &lt;fen&gt;Cause&lt;/fen&gt; which endangers the &lt;fen&gt;Valued_entity&lt;/fen&gt;.
+
+&lt;ex&gt;The snow &lt;t&gt;endangered&lt;/t&gt; not only the mission but also our lives &lt;fex name="Mns"&gt;by slowing us down&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;His actions &lt;t&gt;imperiled&lt;/t&gt; his immortal soul &lt;fex name="Mns"&gt;by exposing him to demonic influence&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="05/21/2003 10:30:11 PDT Wed" abbrev="Mnr" name="Manner" ID="4500">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Manner&lt;/fen&gt; describes an aspect of the endangering act that is not directly related to the cause, intermediate action, or entity involved.
+&lt;ex&gt;Members of the underground club would frequently &lt;t&gt;endanger&lt;/t&gt; the lives of others &lt;fex name="Manner"&gt;with reckless abandon&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="7CCD73" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/23/2003 01:02:11 PDT Mon" abbrev="Place" name="Place" ID="4653">
+        <definition>&lt;def-root&gt;The location where the &lt;fen&gt;Valued_entity&lt;/fen&gt; is put in danger.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/23/2003 01:05:21 PDT Mon" abbrev="Time" name="Time" ID="4654">
+        <definition>&lt;def-root&gt;The time when the &lt;fen&gt;Valued_entity&lt;/fen&gt; is put in danger.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Endangering_act" ID="4390"/>
+        <memberFE name="Cause" ID="4340"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Transitive_action</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of">
+        <relatedFrame>Being_at_risk</relatedFrame>
+    </frameRelation>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="imperil.v" ID="8503" lemmaID="19153" cBy="664" cDate="04/01/2003 07:50:45 PST Tue">
+        <definition>COD: put into danger</definition>
+        <sentenceCount annotated="5" total="18"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="imperil"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="endanger.v" ID="8504" lemmaID="12714" cBy="664" cDate="04/01/2003 07:52:57 PST Tue">
+        <definition>COD:  put at risk or in danger.</definition>
+        <sentenceCount annotated="19" total="192"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="endanger"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="endangerment.n" ID="8505" lemmaID="47605" cBy="664" cDate="04/01/2003 07:54:43 PST Tue">
+        <definition>FN: the process of putting at risk.</definition>
+        <sentenceCount annotated="0" total="19"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="endangerment"/>
+    </lexUnit>
+    <lexUnit status="Rules_Defined" POS="V" name="jeopardise.v" ID="11704" lemmaID="49887" cBy="605" cDate="03/03/2005 05:54:38 PST Thu">
+        <definition>FN: endanger</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="jeopardise"/>
+    </lexUnit>
+</frame>

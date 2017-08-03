@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="weigh.v" ID="8137" frame="Assessing" frameID="519" totalAnnotated="6" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="" name="Assessor"/>
+            <FE fgColor="000000" bgColor="7CCD73" type="Extra-Thematic" abbrev="" name="Beneficiary"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="" name="Circumstances"/>
+            <FE fgColor="000000" bgColor="d0d0d0" type="Extra-Thematic" abbrev="cop" name="Co_participant"/>
+            <FE fgColor="000000" bgColor="FF69B4" type="Extra-Thematic" abbrev="" name="Degree"/>
+            <FE fgColor="000000" bgColor="FFD700" type="Extra-Thematic" abbrev="" name="Depictive"/>
+            <FE fgColor="000000" bgColor="7FFF00" type="Extra-Thematic" abbrev="" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="Evid" name="Evidence"/>
+            <FE fgColor="000000" bgColor="7CCD7C" type="Extra-Thematic" abbrev="" name="Explanation"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="fea" name="Feature"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Extra-Thematic" abbrev="Fre" name="Frequency"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="" name="Manner"/>
+            <FE fgColor="000000" bgColor="FFA500" type="Peripheral" abbrev="" name="Means"/>
+            <FE fgColor="000000" bgColor="EEE8AA" type="Core" abbrev="Medium" name="Medium"/>
+            <FE fgColor="000000" bgColor="A9A9A9" type="Core" abbrev="met" name="Method"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Phen" name="Phenomenon"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="pla" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Peripheral" abbrev="pur" name="Purpose"/>
+            <FE fgColor="000000" bgColor="90876C" type="Extra-Thematic" abbrev="" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Extra-Thematic" abbrev="sta" name="Standard"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="tim" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Extra-Thematic" abbrev="Pos" name="Value"/>
+        </frame>
+    </header>
+    <definition>FN: to determine the weight of something</definition>
+    <lexeme POS="V" name="weigh"/>
+    <valences>
+        <FERealization total="6">
+            <FE name="Assessor"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="CNI" FE="Assessor"/>
+                <annoSet ID="2059676"/>
+                <annoSet ID="2059752"/>
+            </pattern>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="NP" FE="Assessor"/>
+                <annoSet ID="2059728"/>
+                <annoSet ID="2059938"/>
+                <annoSet ID="2059944"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Assessor"/>
+                <annoSet ID="2059822"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Manner"/>
+            <pattern total="3">
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <annoSet ID="2059752"/>
+                <annoSet ID="2059938"/>
+                <annoSet ID="2059944"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="6">
+            <FE name="Phenomenon"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Phenomenon"/>
+                <annoSet ID="2059752"/>
+                <annoSet ID="2059822"/>
+            </pattern>
+            <pattern total="4">
+                <valenceUnit GF="Obj" PT="NP" FE="Phenomenon"/>
+                <annoSet ID="2059676"/>
+                <annoSet ID="2059728"/>
+                <annoSet ID="2059938"/>
+                <annoSet ID="2059944"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Time"/>
+                <annoSet ID="2059676"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[before]" FE="Time"/>
+                <annoSet ID="2059728"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="3">
+            <FE name="Assessor"/>
+            <FE name="Manner"/>
+            <FE name="Phenomenon"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Assessor"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Phenomenon"/>
+                <annoSet ID="2059752"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Assessor"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Phenomenon"/>
+                <annoSet ID="2059938"/>
+                <annoSet ID="2059944"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Assessor"/>
+            <FE name="Phenomenon"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Assessor"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Phenomenon"/>
+                <annoSet ID="2059822"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Assessor"/>
+            <FE name="Phenomenon"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Assessor"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Phenomenon"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Time"/>
+                <annoSet ID="2059676"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Assessor"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Phenomenon"/>
+                <valenceUnit GF="Dep" PT="PP[before]" FE="Time"/>
+                <annoSet ID="2059728"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="03-T-Wwhether,if,how-(1)"/>
+    <subCorpus name="04-T-NPevidence,thing,advantage-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="3097" aPos="82025751" ID="1305757">
+            <text>Then weigh the evidence which confronts you and decide what help you need , if any .</text>
+            <annotationSet cDate="01/17/2005 10:17:32 PST Mon" status="UNANN" ID="2059675">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="rb"/>
+                    <label end="9" start="5" name="VV"/>
+                    <label end="13" start="11" name="dt"/>
+                    <label end="22" start="15" name="nn"/>
+                    <label end="28" start="24" name="wdt"/>
+                    <label end="38" start="30" name="VVZ"/>
+                    <label end="42" start="40" name="PP"/>
+                    <label end="46" start="44" name="cc"/>
+                    <label end="53" start="48" name="VV"/>
+                    <label end="58" start="55" name="wp"/>
+                    <label end="63" start="60" name="nn"/>
+                    <label end="67" start="65" name="PP"/>
+                    <label end="72" start="69" name="VVP"/>
+                    <label end="74" start="74" name=","/>
+                    <label end="77" start="76" name="in"/>
+                    <label end="81" start="79" name="dt"/>
+                    <label end="83" start="83" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/17/2005 10:17:33 PST Mon" status="MANUAL" ID="2059676">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="9" start="5" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="4110" itype="CNI" name="Assessor"/>
+                    <label cBy="361" feID="7450" end="3" start="0" name="Time"/>
+                    <label cBy="361" feID="4111" end="42" start="11" name="Phenomenon"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="3" start="0" name="Dep"/>
+                    <label end="42" start="11" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="3" start="0" name="AVP"/>
+                    <label end="42" start="11" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="521" aPos="31506871" ID="1305783">
+            <text>He could n't weigh every word before he uttered it , yet spontaneity was dangerous .</text>
+            <annotationSet cDate="01/17/2005 10:17:47 PST Mon" status="UNANN" ID="2059727">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="7" start="3" name="md"/>
+                    <label end="11" start="9" name="rb"/>
+                    <label end="17" start="13" name="VV"/>
+                    <label end="23" start="19" name="dt"/>
+                    <label end="28" start="25" name="nn"/>
+                    <label end="35" start="30" name="in"/>
+                    <label end="38" start="37" name="PP"/>
+                    <label end="46" start="40" name="VVD"/>
+                    <label end="49" start="48" name="PP"/>
+                    <label end="51" start="51" name=","/>
+                    <label end="55" start="53" name="rb"/>
+                    <label end="67" start="57" name="nn"/>
+                    <label end="71" start="69" name="VBD"/>
+                    <label end="81" start="73" name="jj"/>
+                    <label end="83" start="83" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/17/2005 10:17:47 PST Mon" status="MANUAL" ID="2059728">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="17" start="13" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="4110" end="1" start="0" name="Assessor"/>
+                    <label cBy="361" feID="4111" end="28" start="19" name="Phenomenon"/>
+                    <label cBy="361" feID="7450" end="49" start="30" name="Time"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="1" start="0" name="Ext"/>
+                    <label end="28" start="19" name="Obj"/>
+                    <label end="49" start="30" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="1" start="0" name="NP"/>
+                    <label end="28" start="19" name="NP"/>
+                    <label end="49" start="30" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="05-NPevidence,thing,advantage-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="695" aPos="80492297" ID="1305795">
+            <text>The words seemed weighed carefully .</text>
+            <annotationSet cDate="01/17/2005 10:17:54 PST Mon" status="UNANN" ID="2059751">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="8" start="4" name="nns"/>
+                    <label end="15" start="10" name="VVD"/>
+                    <label end="23" start="17" name="VVN"/>
+                    <label end="33" start="25" name="rb"/>
+                    <label end="35" start="35" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/17/2005 10:17:54 PST Mon" status="MANUAL" ID="2059752">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="23" start="17" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="4540" end="33" start="25" name="Manner"/>
+                    <label cBy="361" feID="4110" itype="CNI" name="Assessor"/>
+                    <label cBy="361" feID="4111" end="8" start="0" name="Phenomenon"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="33" start="25" name="Dep"/>
+                    <label end="8" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="33" start="25" name="AVP"/>
+                    <label end="8" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="06-T-PPby,for-(1)"/>
+    <subCorpus name="07-T-PPas-(1)"/>
+    <subCorpus name="08-T-NP-(1)"/>
+    <subCorpus name="09-T-PP-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="239" aPos="102626751" ID="1305830">
+            <text>Environmental concerns weighed by car buyers</text>
+            <annotationSet cDate="01/17/2005 10:18:12 PST Mon" status="UNANN" ID="2059821">
+                <layer rank="1" name="PENN">
+                    <label end="12" start="0" name="jj"/>
+                    <label end="21" start="14" name="nns"/>
+                    <label end="29" start="23" name="VVD"/>
+                    <label end="32" start="31" name="in"/>
+                    <label end="36" start="34" name="nn"/>
+                    <label end="43" start="38" name="nns"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/17/2005 10:18:12 PST Mon" status="MANUAL" ID="2059822">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="29" start="23" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="4111" end="21" start="0" name="Phenomenon"/>
+                    <label cBy="361" feID="4110" end="43" start="31" name="Assessor"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="21" start="0" name="Ext"/>
+                    <label end="43" start="31" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="21" start="0" name="NP"/>
+                    <label end="43" start="31" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="10-T-Wup-(1)"/>
+    <subCorpus name="11-T-NP-Wup-(1)"/>
+    <subCorpus name="12-Wcarefully-(1)">
+        <sentence corpID="111" docID="421" sentNo="65535" paragNo="392" aPos="123743730" ID="1305888">
+            <text>He weighed the evidence very carefully .</text>
+            <annotationSet cDate="01/17/2005 10:18:47 PST Mon" status="UNANN" ID="2059937">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="9" start="3" name="VVD"/>
+                    <label end="13" start="11" name="dt"/>
+                    <label end="22" start="15" name="nn"/>
+                    <label end="27" start="24" name="rb"/>
+                    <label end="37" start="29" name="rb"/>
+                    <label end="39" start="39" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/17/2005 10:18:47 PST Mon" status="MANUAL" ID="2059938">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="9" start="3" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="4110" end="1" start="0" name="Assessor"/>
+                    <label cBy="361" feID="4111" end="22" start="11" name="Phenomenon"/>
+                    <label cBy="361" feID="4540" end="37" start="24" name="Manner"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="1" start="0" name="Ext"/>
+                    <label end="22" start="11" name="Obj"/>
+                    <label end="37" start="24" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="1" start="0" name="NP"/>
+                    <label end="22" start="11" name="NP"/>
+                    <label end="37" start="24" name="AVP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="106" aPos="43030595" ID="1305891">
+            <text>So the University has carefully weighed all the intractable issues and decided the African National Congress and the communist party are the good guys and the Zulus are the bad guys , huh ?</text>
+            <annotationSet cDate="01/17/2005 10:18:48 PST Mon" status="UNANN" ID="2059943">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="in"/>
+                    <label end="5" start="3" name="dt"/>
+                    <label end="16" start="7" name="NP"/>
+                    <label end="20" start="18" name="VHZ"/>
+                    <label end="30" start="22" name="rb"/>
+                    <label end="38" start="32" name="VVN"/>
+                    <label end="42" start="40" name="pdt"/>
+                    <label end="46" start="44" name="dt"/>
+                    <label end="58" start="48" name="jj"/>
+                    <label end="65" start="60" name="nns"/>
+                    <label end="69" start="67" name="cc"/>
+                    <label end="77" start="71" name="VVD"/>
+                    <label end="81" start="79" name="dt"/>
+                    <label end="89" start="83" name="jj"/>
+                    <label end="98" start="91" name="NP"/>
+                    <label end="107" start="100" name="NP"/>
+                    <label end="111" start="109" name="cc"/>
+                    <label end="115" start="113" name="dt"/>
+                    <label end="125" start="117" name="jj"/>
+                    <label end="131" start="127" name="nn"/>
+                    <label end="135" start="133" name="vbp"/>
+                    <label end="139" start="137" name="dt"/>
+                    <label end="144" start="141" name="jj"/>
+                    <label end="149" start="146" name="nns"/>
+                    <label end="153" start="151" name="cc"/>
+                    <label end="157" start="155" name="dt"/>
+                    <label end="163" start="159" name="nn"/>
+                    <label end="167" start="165" name="vbp"/>
+                    <label end="171" start="169" name="dt"/>
+                    <label end="175" start="173" name="jj"/>
+                    <label end="180" start="177" name="nns"/>
+                    <label end="182" start="182" name=","/>
+                    <label end="186" start="184" name="NP"/>
+                    <label end="188" start="188" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/17/2005 10:18:49 PST Mon" status="MANUAL" ID="2059944">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="38" start="32" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="4110" end="16" start="3" name="Assessor"/>
+                    <label cBy="361" feID="4540" end="30" start="22" name="Manner"/>
+                    <label cBy="361" feID="4111" end="65" start="40" name="Phenomenon"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="16" start="3" name="Ext"/>
+                    <label end="30" start="22" name="Dep"/>
+                    <label end="65" start="40" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="16" start="3" name="NP"/>
+                    <label end="30" start="22" name="AVP"/>
+                    <label end="65" start="40" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

@@ -1,0 +1,546 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="10/02/2003 08:20:57 PDT Thu" name="Sounds" ID="850" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;This frame is  concerned with the percepts that vibrations which travel through the air or another medium produce in hearing organs. Sounds are a subtype of sensation. In talking about sounds, speakers often provide information about how the sound was produced. A &lt;fen&gt;Noisy_event&lt;/fen&gt; may be mentioned which gives rise to the sound. Alternatively, the sound may be attributed to a &lt;fen&gt;Sound_source&lt;/fen&gt;, which is construed as a point source emitting the sound. A further possible specification of what gives rise to the sound is for speakers to talk about two physical entities coming into contact by motion, resulting in either friction or impact. 
+&lt;/def-root&gt;</definition>
+    <FE bgColor="FFFF00" fgColor="800080" coreType="Peripheral" cBy="605" cDate="10/02/2003 08:36:56 PDT Thu" abbrev="" name="Noisy_event" ID="5491">
+        <definition>&lt;def-root&gt;An event during which sound is produced.&lt;/def-root&gt;</definition>
+        <excludesFE name="Themes" ID="5495"/>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="10/02/2003 08:37:51 PDT Thu" abbrev="" name="Sound_source" ID="5492">
+        <definition>&lt;def-root&gt;An entity that is construed as a single point source emitting sound.
+
+&lt;ex&gt;He woke up because of the &lt;t&gt;blare&lt;/t&gt; &lt;fex name="Sound_source"&gt;of a car horn&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Themes" ID="5495"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="10/02/2003 08:41:50 PDT Thu" abbrev="" name="Theme" ID="5493">
+        <definition>&lt;def-root&gt;One of  two entities which is construed as moving relative to the other, resulting in either friction or impact. This entity is given greater syntactic prominence--it is either a possessor or an of-complement of the noun phrase head.
+
+&lt;ex&gt;He heard the &lt;t&gt;clang&lt;/t&gt; &lt;fex name="Theme"&gt;of metal&lt;/fex&gt; on metal , and a ricochet whined viciously past his head &lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Physical_object" ID="68"/>
+        <requiresFE name="Ground" ID="5494"/>
+        <excludesFE name="Themes" ID="5495"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="10/02/2003 08:46:13 PDT Thu" abbrev="" name="Ground" ID="5494">
+        <definition>&lt;def-root&gt;An entity construed as stationary on or against which the &lt;fen&gt;Theme&lt;/fen&gt; moves, resulting in either friction or impact. This entity is given less grammatical prominence compared to the &lt;fen&gt;Theme&lt;/fen&gt; and is usually encoded in a spatial prepositional phrase.
+
+&lt;ex&gt;He heard the &lt;t&gt;clang&lt;/t&gt; of metal &lt;fex name="Ground"&gt;on metal&lt;/fex&gt; , and a ricochet whined viciously past his head .&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <requiresFE name="Theme" ID="5493"/>
+        <excludesFE name="Themes" ID="5495"/>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="10/02/2003 08:55:12 PDT Thu" abbrev="" name="Themes" ID="5495">
+        <definition>&lt;def-root&gt;Two entities that are both moving against each other, resulting in either friction or impact.
+
+&lt;ex&gt;The sound of voices and the &lt;t&gt;clink&lt;/t&gt; &lt;fex name="Themes"&gt;of glasses&lt;/fex&gt; was like music to her ears &lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="10/02/2003 08:59:51 PDT Thu" abbrev="" name="Location_of_sound_source" ID="5496">
+        <definition>&lt;def-root&gt;The place from which the sound emanates.
+
+&lt;ex&gt;There followed a small silence that was interrupted by a distant &lt;t&gt;clatter&lt;/t&gt;of metal&lt;fex name=""&gt;from the ward&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="10/02/2003 09:04:53 PDT Thu" abbrev="" name="Place" ID="5497">
+        <definition>&lt;def-root&gt;The location at which sound is produced. This FE differs from Location_of_sound_source in that it does not highlight the sound's spreading from its source to the perceiver's location, which is usually indicated by the preposition "from".
+
+&lt;ex&gt;There was a &lt;t&gt;clatter&lt;/t&gt; of running feet &lt;fex name="Place"&gt;in the street outside&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="10/02/2003 09:09:56 PDT Thu" abbrev="" name="Internal_cause" ID="5498">
+        <definition>&lt;def-root&gt;The noise-making may be prompted by either some outside phenomenon or occurrence, or by an &lt;fen&gt;Internal_cause&lt;/fen&gt;,  that is the mental or emotional state of an animate &lt;fen&gt;Sound_source&lt;/fen&gt;.
+
+&lt;ex&gt;She checked a &lt;t&gt;giggle&lt;/t&gt; &lt;fex name="Internal_cause"&gt;of hysteria&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="10/02/2003 09:17:48 PDT Thu" abbrev="" name="Manner" ID="5499">
+        <definition>&lt;def-root&gt;Certain properties of the sound relating to its production, loudness, etc  may be of lexicographic interest if they describe properties of a sounds as such: loudly, shrilly, etc.
+
+&lt;ex&gt;The Brigadier had heard the &lt;fex name="Manner"&gt;faint&lt;/fex&gt; &lt;t&gt;tinkle&lt;/t&gt; of sheepbells&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="10/02/2003 09:25:34 PDT Thu" abbrev="" name="Component_sound" ID="5500">
+        <definition>&lt;def-root&gt;The sound percept may be characterized in terms of &lt;fen&gt;Component_sound&lt;/fen&gt;s.
+
+&lt;ex&gt;The lunch itself was held in a huge room and there was a constant &lt;t&gt;babble&lt;/t&gt; &lt;fex name="Component_sound"&gt;of noise&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Themes" ID="5495"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="10/06/2003 02:35:59 PDT Mon" abbrev="" name="Degree" ID="5516">
+        <definition>&lt;def-root&gt;Expressions that indicate the loudness of the sound.&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFF00" coreType="Extra-Thematic" cBy="605" cDate="10/06/2003 02:54:10 PDT Mon" abbrev="" name="Reason" ID="5517">
+        <definition>&lt;def-root&gt;This FE idntifies the Reason that the &lt;fen&gt;Sound_source&lt;/fen&gt; produces the sound. Generally, this is some external stimulus that prompts the &lt;fen&gt;Sound_source&lt;/fen&gt; to make noise.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="10/06/2003 03:07:50 PDT Mon" abbrev="" name="Path" ID="5518">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Path&lt;/fen&gt; along which the sound travels away from the &lt;fen&gt;Sound_source&lt;/fen&gt;.
+
+&lt;ex&gt;As he opened the throttle, the roar of the BMW's engine bit into the moan and  &lt;t&gt;howl&lt;/t&gt; of the wind 
+&lt;fex name="Path"&gt;across the culvert's mouth&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Vocalizations</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Perception</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Sound_movement</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also">
+        <relatedFrame>Make_noise</relatedFrame>
+    </frameRelation>
+    <lexUnit status="Created" POS="N" name="babble.n" ID="9590" lemmaID="2562" cBy="605" cDate="10/02/2003 09:33:04 PDT Thu">
+        <definition>COD: the sound of babbling.</definition>
+        <sentenceCount annotated="3" total="6"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="babble"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="bark.n" ID="9624" lemmaID="2911" cBy="605" cDate="10/06/2003 02:10:16 PDT Mon">
+        <definition>COD: the sharp explosive cry of a dog, fox, or seal.</definition>
+        <sentenceCount annotated="23" total="36"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="bark"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="beep.n" ID="9625" lemmaID="3199" cBy="605" cDate="10/06/2003 02:10:31 PDT Mon">
+        <definition>COD: a short, high-pitched sound emitted by electronic equipment or a vehicle horn.</definition>
+        <sentenceCount annotated="11" total="108"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="beep"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="bellow.n" ID="9626" lemmaID="3318" cBy="605" cDate="10/06/2003 02:11:40 PDT Mon">
+        <definition>COD: a loud, deep shout or sound.</definition>
+        <sentenceCount annotated="12" total="149"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="bellow"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="blare.n" ID="9627" lemmaID="3769" cBy="605" cDate="10/06/2003 02:11:58 PDT Mon">
+        <definition>COD: a loud, harsh sound.</definition>
+        <sentenceCount annotated="6" total="14"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="blare"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="blast.n" ID="9628" lemmaID="3778" cBy="605" cDate="10/06/2003 02:12:34 PDT Mon">
+        <definition>COD: a single loud note of a horn or whistle.</definition>
+        <sentenceCount annotated="14" total="182"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="blast"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="bleat.n" ID="9629" lemmaID="3806" cBy="605" cDate="10/06/2003 02:12:55 PDT Mon">
+        <definition>FN: a weak, wavering cry made by, or similar to that made by a sheep or goat</definition>
+        <sentenceCount annotated="6" total="18"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="bleat"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="boom.n" ID="9630" lemmaID="4183" cBy="605" cDate="10/06/2003 02:13:22 PDT Mon">
+        <definition>COD: a loud, deep, resonant sound.</definition>
+        <sentenceCount annotated="8" total="197"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="boom"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="bray.n" ID="9631" lemmaID="4468" cBy="605" cDate="10/06/2003 02:13:43 PDT Mon">
+        <definition>COD: the loud, harsh cry of a donkey.</definition>
+        <sentenceCount annotated="7" total="80"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="bray"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="burble.n" ID="9632" lemmaID="12" cBy="605" cDate="10/06/2003 02:13:54 PDT Mon">
+        <definition>FN: continuous murmuring noise</definition>
+        <sentenceCount annotated="9" total="28"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="burble"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="buzz.n" ID="9633" lemmaID="5089" cBy="605" cDate="10/06/2003 02:14:03 PDT Mon">
+        <definition>COD: a low, continuous humming or murmuring sound, made by or similar to that made by an insect</definition>
+        <sentenceCount annotated="16" total="20"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="buzz"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="cackle.n" ID="9634" lemmaID="5147" cBy="605" cDate="10/06/2003 02:14:11 PDT Mon">
+        <definition>COD: a cackling sound.</definition>
+        <sentenceCount annotated="8" total="37"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="cackle"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="caw.n" ID="9635" lemmaID="5839" cBy="605" cDate="10/06/2003 02:14:21 PDT Mon">
+        <definition>COD: the harsh cry of a rook, crow, or similar bird.</definition>
+        <sentenceCount annotated="1" total="1"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="caw"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="chatter.n" ID="9636" lemmaID="6147" cBy="605" cDate="10/06/2003 02:29:40 PDT Mon">
+        <definition>COD: a series of short quick high-pitched sounds</definition>
+        <sentenceCount annotated="17" total="193"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="chatter"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="cheep.n" ID="9637" lemmaID="6197" cBy="605" cDate="10/06/2003 02:30:37 PDT Mon">
+        <definition>FN: a shrill squeaky cry made by, or similar to that made by a young bird</definition>
+        <sentenceCount annotated="4" total="15"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="cheep"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="chirp.n" ID="9638" lemmaID="6363" cBy="605" cDate="10/06/2003 02:30:48 PDT Mon">
+        <definition>COD: a chirping sound.</definition>
+        <sentenceCount annotated="5" total="15"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="chirp"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="chuckle.n" ID="9639" lemmaID="6479" cBy="605" cDate="10/06/2003 02:31:18 PDT Mon">
+        <definition>COD: a quiet or suppressed laugh.</definition>
+        <sentenceCount annotated="22" total="197"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="chuckle"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="clack.n" ID="9640" lemmaID="6607" cBy="605" cDate="10/06/2003 02:32:33 PDT Mon">
+        <definition>COD: a clacking sound</definition>
+        <sentenceCount annotated="6" total="15"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="clack"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="clang.n" ID="9641" lemmaID="6636" cBy="605" cDate="10/06/2003 02:32:47 PDT Mon">
+        <definition>COD: a loud, resonant metallic sound.</definition>
+        <sentenceCount annotated="18" total="56"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="clang"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="clash.n" ID="9642" lemmaID="6668" cBy="605" cDate="10/06/2003 02:33:03 PDT Mon">
+        <definition>COD: an instance of clashing.</definition>
+        <sentenceCount annotated="4" total="187"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="clash"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="clatter.n" ID="9643" lemmaID="6696" cBy="605" cDate="10/06/2003 02:33:24 PDT Mon">
+        <definition>COD: a loud rattling sound as of hard objects falling or striking each other.</definition>
+        <sentenceCount annotated="78" total="158"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="clatter"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="click.n" ID="9644" lemmaID="6771" cBy="605" cDate="10/06/2003 02:34:29 PDT Mon">
+        <definition>FN: a short, sharp sound as of two metallic or plastic objects coming smartly into contact</definition>
+        <sentenceCount annotated="47" total="120"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="click"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="clink.n" ID="9645" lemmaID="6802" cBy="605" cDate="10/06/2003 02:43:56 PDT Mon">
+        <definition>COD: a sharp ringing sound, such as that made when metal or glass are struck.</definition>
+        <sentenceCount annotated="17" total="26"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="clink"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="coo.n" ID="9646" lemmaID="8242" cBy="605" cDate="10/06/2003 02:44:53 PDT Mon">
+        <definition>COD: a cooing sound.</definition>
+        <sentenceCount annotated="5" total="27"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="coo"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="cough.n" ID="9647" lemmaID="8550" cBy="605" cDate="10/06/2003 02:45:08 PDT Mon">
+        <definition>COD: a sound of coughing</definition>
+        <sentenceCount annotated="10" total="194"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="cough"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="creak.n" ID="9648" lemmaID="8836" cBy="605" cDate="10/06/2003 02:45:49 PDT Mon">
+        <definition>COD: a creaking sound.</definition>
+        <sentenceCount annotated="24" total="69"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="creak"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="crunch.n" ID="9650" lemmaID="9128" cBy="605" cDate="10/06/2003 02:46:22 PDT Mon">
+        <definition>COD: a crunching sound.</definition>
+        <sentenceCount annotated="7" total="195"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="crunch"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="drone.n" ID="9651" lemmaID="11814" cBy="605" cDate="10/06/2003 02:46:48 PDT Mon">
+        <definition>COD: a low continuous humming sound.</definition>
+        <sentenceCount annotated="17" total="144"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="drone"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="gasp.n" ID="9652" lemmaID="15965" cBy="605" cDate="10/06/2003 02:47:15 PDT Mon">
+        <definition>COD: a convulsive catching of breath</definition>
+        <sentenceCount annotated="19" total="200"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="gasp"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="giggle.n" ID="9653" lemmaID="16222" cBy="605" cDate="10/06/2003 03:02:43 PDT Mon">
+        <definition>COD: a laugh of such a kind.</definition>
+        <sentenceCount annotated="14" total="200"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="giggle"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="growl.n" ID="9654" lemmaID="16940" cBy="605" cDate="10/06/2003 03:03:06 PDT Mon">
+        <definition>COD: a growling sound.</definition>
+        <sentenceCount annotated="19" total="125"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="growl"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="grunt.n" ID="9655" lemmaID="16974" cBy="605" cDate="10/06/2003 03:03:31 PDT Mon">
+        <definition>COD: a grunting sound.</definition>
+        <sentenceCount annotated="27" total="200"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="grunt"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="guffaw.n" ID="9656" lemmaID="17012" cBy="605" cDate="10/06/2003 03:03:48 PDT Mon">
+        <definition>COD: a loud and boisterous laugh.</definition>
+        <sentenceCount annotated="13" total="39"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="guffaw"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="gurgle.n" ID="9657" lemmaID="17094" cBy="605" cDate="10/06/2003 03:03:58 PDT Mon">
+        <definition>COD: a gurgling sound.</definition>
+        <sentenceCount annotated="10" total="53"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="gurgle"/>
+    </lexUnit>
+    <lexUnit status="Problem" POS="N" name="hiss.n" ID="9658" lemmaID="18140" cBy="605" cDate="10/06/2003 03:04:16 PDT Mon">
+        <definition>FN: a hissing sound</definition>
+        <sentenceCount annotated="39" total="194"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="hiss"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="hoot.n" ID="9659" lemmaID="18368" cBy="605" cDate="10/06/2003 03:04:45 PDT Mon">
+        <definition>FN: a low musical sound made by an owl or a similar sound made by a horn, siren, etc.</definition>
+        <sentenceCount annotated="14" total="102"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="hoot"/>
+    </lexUnit>
+    <lexUnit status="Problem" POS="N" name="howl.n" ID="9660" lemmaID="18559" cBy="605" cDate="10/06/2003 03:05:02 PDT Mon">
+        <definition>COD: a long doleful cry uttered by an animal such as a dog</definition>
+        <sentenceCount annotated="34" total="196"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="howl"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="hum.n" ID="9662" lemmaID="18615" cBy="605" cDate="10/06/2003 03:14:49 PDT Mon">
+        <definition>COD: a low, steady continuous sound.</definition>
+        <sentenceCount annotated="39" total="200"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="hum"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="mew.n" ID="9663" lemmaID="24148" cBy="605" cDate="10/06/2003 03:15:26 PDT Mon">
+        <definition>COD: a mewing noise.</definition>
+        <sentenceCount annotated="3" total="55"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="mew"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="moan.n" ID="9670" lemmaID="24632" cBy="605" cDate="10/06/2003 03:42:19 PDT Mon">
+        <definition>FN: a long, low sound, typically expressing grief</definition>
+        <sentenceCount annotated="21" total="200"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="moan"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="neigh.n" ID="9671" lemmaID="25652" cBy="605" cDate="10/06/2003 03:42:38 PDT Mon">
+        <definition>COD: a characteristic high whinnying sound made by a horse.</definition>
+        <sentenceCount annotated="1" total="13"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="neigh"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="patter.n" ID="9672" lemmaID="28091" cBy="605" cDate="10/06/2003 03:43:43 PDT Mon">
+        <definition>COD: a repeated light tapping.</definition>
+        <sentenceCount annotated="15" total="19"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="patter"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="peal.n" ID="9673" lemmaID="28167" cBy="605" cDate="10/06/2003 03:45:18 PDT Mon">
+        <definition>FN: a loud sound or succession of sounds, especially of bells or laughter</definition>
+        <sentenceCount annotated="11" total="59"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="peal"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="peep.n" ID="9674" lemmaID="28246" cBy="605" cDate="10/06/2003 03:46:04 PDT Mon">
+        <definition>COD: a weak, high-pitched sound made by a young bird or mammal.</definition>
+        <sentenceCount annotated="2" total="45"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="peep"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="plash.n" ID="9675" lemmaID="29268" cBy="605" cDate="10/06/2003 03:46:14 PDT Mon">
+        <definition>COD: a splashing sound.</definition>
+        <sentenceCount annotated="2" total="3"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="plash"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="plop.n" ID="9676" lemmaID="29409" cBy="605" cDate="10/06/2003 03:46:40 PDT Mon">
+        <definition>COD: a short sound as of a small, solid object dropping into water without a splash. </definition>
+        <sentenceCount annotated="5" total="29"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="plop"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="plunk.n" ID="9677" lemmaID="29462" cBy="605" cDate="10/06/2003 03:47:01 PDT Mon">
+        <definition>COD: a plunking sound.</definition>
+        <sentenceCount annotated="0" total="4"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="plunk"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="purr.n" ID="9678" lemmaID="31251" cBy="605" cDate="10/06/2003 03:47:16 PDT Mon">
+        <definition>COD: a purring sound.</definition>
+        <sentenceCount annotated="12" total="45"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="purr"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="quack.n" ID="9679" lemmaID="31367" cBy="605" cDate="10/06/2003 03:47:35 PDT Mon">
+        <definition>COD: the characteristic harsh sound made by a duck.</definition>
+        <sentenceCount annotated="9" total="77"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="quack"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="rap.n" ID="9680" lemmaID="31811" cBy="605" cDate="10/06/2003 03:47:59 PDT Mon">
+        <definition>FN: the sound of a quick, sharp knock or blow</definition>
+        <sentenceCount annotated="8" total="200"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="rap"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="rasp.n" ID="9681" lemmaID="31853" cBy="605" cDate="10/06/2003 03:48:29 PDT Mon">
+        <definition>COD: a harsh, grating noise.</definition>
+        <sentenceCount annotated="11" total="60"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="rasp"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="roar.n" ID="9682" lemmaID="33396" cBy="605" cDate="10/06/2003 03:48:57 PDT Mon">
+        <definition>COD: a full, deep, prolonged sound as made by a lion, natural force, or engine</definition>
+        <sentenceCount annotated="42" total="200"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="roar"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="rustle.n" ID="9683" lemmaID="33828" cBy="605" cDate="10/06/2003 03:49:18 PDT Mon">
+        <definition>COD: a rustling sound.</definition>
+        <sentenceCount annotated="41" total="49"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="rustle"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="scrape.n" ID="9684" lemmaID="34534" cBy="605" cDate="10/06/2003 03:50:03 PDT Mon">
+        <definition>COD: an act or sound of scraping.</definition>
+        <sentenceCount annotated="9" total="147"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="scrape"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="screech.n" ID="9685" lemmaID="34556" cBy="605" cDate="10/06/2003 03:50:29 PDT Mon">
+        <definition>COD: a loud, harsh, piercing cry or sound. </definition>
+        <sentenceCount annotated="23" total="106"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="screech"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="scrunch.n" ID="9686" lemmaID="34611" cBy="605" cDate="10/06/2003 03:50:45 PDT Mon">
+        <definition>COD: a loud crunching noise</definition>
+        <sentenceCount annotated="0" total="6"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="scrunch"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="sizzle.n" ID="9687" lemmaID="50" cBy="605" cDate="10/06/2003 03:50:56 PDT Mon">
+        <definition>COD: an instance or the sound of sizzling.</definition>
+        <sentenceCount annotated="2" total="25"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="sizzle"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="slap.n" ID="9688" lemmaID="36244" cBy="605" cDate="10/06/2003 03:51:19 PDT Mon">
+        <definition>COD: an act or sound of slapping.</definition>
+        <sentenceCount annotated="18" total="199"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="slap"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="smack.n" ID="9689" lemmaID="36468" cBy="605" cDate="10/06/2003 03:51:48 PDT Mon">
+        <definition>COD: a sharp blow or slap, typically one given with the palm of the hand.</definition>
+        <sentenceCount annotated="1" total="200"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="smack"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="snarl.n" ID="9690" lemmaID="36609" cBy="605" cDate="10/06/2003 03:52:11 PDT Mon">
+        <definition>COD: an act or sound of snarling.</definition>
+        <sentenceCount annotated="8" total="93"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="snarl"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="snigger.n" ID="9691" lemmaID="36646" cBy="605" cDate="10/06/2003 03:52:29 PDT Mon">
+        <definition>COD: a smothered or half-suppressed laugh.</definition>
+        <sentenceCount annotated="11" total="53"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="snigger"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="snore.n" ID="9692" lemmaID="36681" cBy="605" cDate="10/06/2003 03:52:53 PDT Mon">
+        <definition>COD: a snorting or grunting sound in a person's breathing while they are asleep.</definition>
+        <sentenceCount annotated="18" total="59"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="snore"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="snort.n" ID="9693" lemmaID="36685" cBy="605" cDate="10/06/2003 03:53:10 PDT Mon">
+        <definition>FN: an explosive sound made by the sudden forcing of breath through the nose</definition>
+        <sentenceCount annotated="19" total="126"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="snort"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="sob.n" ID="9694" lemmaID="36754" cBy="605" cDate="10/06/2003 03:53:38 PDT Mon">
+        <definition>COD: an act or sound of sobbing.</definition>
+        <sentenceCount annotated="27" total="200"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="sob"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="sough.n" ID="9695" lemmaID="37023" cBy="605" cDate="10/06/2003 03:53:55 PDT Mon">
+        <definition>FN: a moaning, whistling, or rushing sound</definition>
+        <sentenceCount annotated="0" total="8"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="sough"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="squawk.n" ID="9696" lemmaID="37630" cBy="605" cDate="10/06/2003 03:54:06 PDT Mon">
+        <definition>COD: an act of squawking.</definition>
+        <sentenceCount annotated="11" total="34"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="squawk"/>
+    </lexUnit>
+    <lexUnit status="Problem" POS="N" name="squeak.n" ID="9697" lemmaID="37633" cBy="605" cDate="10/06/2003 03:54:25 PDT Mon">
+        <definition>COD: a short, high-pitched sound or cry</definition>
+        <sentenceCount annotated="33" total="168"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="squeak"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="thump.n" ID="9698" lemmaID="40326" cBy="605" cDate="10/06/2003 03:54:48 PDT Mon">
+        <definition>COD: a heavy dull blow or noise</definition>
+        <sentenceCount annotated="28" total="149"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="thump"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="squeal.n" ID="9699" lemmaID="37637" cBy="605" cDate="10/06/2003 03:55:19 PDT Mon">
+        <definition>COD: a long, high-pitched cry or noise</definition>
+        <sentenceCount annotated="24" total="99"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="squeal"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="thunder.n" ID="9700" lemmaID="40331" cBy="605" cDate="10/06/2003 03:55:42 PDT Mon">
+        <definition>COD: a loud rumbling or crashing noise heard after a lightning flash due to the expansion of rapidly heated air.</definition>
+        <sentenceCount annotated="13" total="200"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="thunder"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="tinkle.n" ID="9701" lemmaID="40494" cBy="605" cDate="10/06/2003 03:56:16 PDT Mon">
+        <definition>COD: a tinkling sound.</definition>
+        <sentenceCount annotated="11" total="31"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="tinkle"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="titter.n" ID="9702" lemmaID="40559" cBy="605" cDate="10/06/2003 03:57:03 PDT Mon">
+        <definition>COD: a short, half-suppressed laugh</definition>
+        <sentenceCount annotated="6" total="27"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="titter"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="toll.n" ID="9703" lemmaID="40637" cBy="605" cDate="10/06/2003 03:57:24 PDT Mon">
+        <definition>COD: a single ring of a bell</definition>
+        <sentenceCount annotated="0" total="192"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="toll"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="trumpet.n" ID="9704" lemmaID="41382" cBy="605" cDate="10/06/2003 03:59:32 PDT Mon">
+        <definition>COD:  the loud cry of an elephant</definition>
+        <sentenceCount annotated="0" total="200"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="trumpet"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="tweet.n" ID="9705" lemmaID="41592" cBy="605" cDate="10/06/2003 03:59:54 PDT Mon">
+        <definition>COD: the chirp of a small or young bird.</definition>
+        <sentenceCount annotated="3" total="12"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="tweet"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="twitter.n" ID="9706" lemmaID="41646" cBy="605" cDate="10/06/2003 04:00:02 PDT Mon">
+        <definition>COD: a twittering sound.</definition>
+        <sentenceCount annotated="1" total="10"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="twitter"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="wail.n" ID="9707" lemmaID="43334" cBy="605" cDate="10/06/2003 04:00:17 PDT Mon">
+        <definition>FN: a prolonged high-pitched sound</definition>
+        <sentenceCount annotated="34" total="122"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="wail"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="whimper.n" ID="9708" lemmaID="43978" cBy="605" cDate="10/06/2003 04:00:30 PDT Mon">
+        <definition>FN: a series of low, feeble sounds expressive of fear, pain, or discontent</definition>
+        <sentenceCount annotated="19" total="65"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="whimper"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="whine.n" ID="9709" lemmaID="43985" cBy="605" cDate="10/06/2003 04:00:55 PDT Mon">
+        <definition>COD: a long, high-pitched unpleasant sound.</definition>
+        <sentenceCount annotated="30" total="119"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="whine"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="whinny.n" ID="9710" lemmaID="43988" cBy="605" cDate="10/06/2003 05:37:31 PDT Mon">
+        <definition>COD: a gentle, high-pitched neigh.</definition>
+        <sentenceCount annotated="5" total="10"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="whinny"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="whistle.n" ID="9711" lemmaID="44022" cBy="605" cDate="10/06/2003 05:37:50 PDT Mon">
+        <definition>FN: a clear, high-pitched sound such as the one made by forcing breath through a small hole between partly closed lips, or between one's teeth</definition>
+        <sentenceCount annotated="20" total="200"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="whistle"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="yammer.n" ID="9712" lemmaID="61" cBy="605" cDate="10/06/2003 05:38:49 PDT Mon">
+        <definition>COD: loud and sustained noise.</definition>
+        <sentenceCount annotated="1" total="1"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="yammer"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="yap.n" ID="9713" lemmaID="44656" cBy="605" cDate="10/06/2003 05:39:07 PDT Mon">
+        <definition>COD: a sharp, shrill bark.</definition>
+        <sentenceCount annotated="0" total="4"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="yap"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="yelp.n" ID="9714" lemmaID="44702" cBy="605" cDate="10/06/2003 05:39:18 PDT Mon">
+        <definition>COD: a short sharp cry, especially of pain or alarm.</definition>
+        <sentenceCount annotated="19" total="39"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="yelp"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="yodel.n" ID="9715" lemmaID="44731" cBy="605" cDate="10/06/2003 05:39:34 PDT Mon">
+        <definition>COD: a song or call delivered in such a way.</definition>
+        <sentenceCount annotated="2" total="4"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="yodel"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="yowl.n" ID="9716" lemmaID="44773" cBy="605" cDate="10/06/2003 05:39:41 PDT Mon">
+        <definition>COD: a loud wailing cry of pain or distress</definition>
+        <sentenceCount annotated="3" total="5"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="yowl"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="sound.n" ID="10906" lemmaID="37035" cBy="664" cDate="08/19/2004 04:56:20 PDT Thu">
+        <definition>COD: a thing that can be heard.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="sound"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="noise.n" ID="10907" lemmaID="25976" cBy="664" cDate="08/19/2004 04:57:13 PDT Thu">
+        <definition>COD: a sound, especially one that is loud, unpleasant, or disturbing.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="noise"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="bang.n" ID="10909" lemmaID="2806" cBy="664" cDate="08/19/2004 05:32:11 PDT Thu">
+        <definition>COD: a sudden loud, sharp noise.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="bang"/>
+    </lexUnit>
+</frame>

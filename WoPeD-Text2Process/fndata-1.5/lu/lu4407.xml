@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="ulcer.n" ID="4407" frame="Medical_conditions" frameID="239" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="Orwell" ID="3">
+            <document description="Orwell_1984_p1" ID="7"/>
+        </corpus>
+        <frame>
+            <FE fgColor="000000" bgColor="FFFF00" type="Core" abbrev="" name="Ailment"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="Body_P" name="Body_Part"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="Cause" name="Cause"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Extra-Thematic" abbrev="Name" name="Name"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Pat" name="Patient"/>
+            <FE fgColor="000000" bgColor="7CCD73" type="Peripheral" abbrev="" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Symp" name="Symptom"/>
+        </frame>
+    </header>
+    <definition>COD: an open sore on an external or internal surface of the body, caused by a break in the skin or mucous membrane which fails to heal</definition>
+    <lexeme POS="N" name="ulcer"/>
+    <valences>
+        <governor type="Sup" lemma="have">
+            <annoSet ID="2599853"/>
+        </governor>
+        <FERealization total="1">
+            <FE name="Ailment"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Ailment"/>
+                <annoSet ID="2599853"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Patient"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Patient"/>
+                <annoSet ID="2599853"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Place"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[above]" FE="Place"/>
+                <annoSet ID="2599853"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Ailment"/>
+            <FE name="Patient"/>
+            <FE name="Patient"/>
+            <FE name="Place"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Ailment"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Patient"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Patient"/>
+                <valenceUnit GF="Dep" PT="PP[above]" FE="Place"/>
+                <annoSet ID="2599853"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="manually-added">
+        <sentence corpID="3" docID="7" sentNo="8" paragNo="2" aPos="0" ID="312910">
+            <text>The flat was seven flights up , and Winston , who was thirty-nine and had a varicose ulcer above his right ankle , went slowly , resting several times on the way .</text>
+            <annotationSet cDate="01/06/2003 10:55:06 PST Mon" status="UNANN" ID="269186">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="7" start="4" name="NN1"/>
+                    <label end="11" start="9" name="VBD"/>
+                    <label end="17" start="13" name="CRD"/>
+                    <label end="25" start="19" name="NN2"/>
+                    <label end="28" start="27" name="AVP"/>
+                    <label end="30" start="30" name="PUN"/>
+                    <label end="34" start="32" name="CJC"/>
+                    <label end="42" start="36" name="NP0"/>
+                    <label end="44" start="44" name="PUN"/>
+                    <label end="48" start="46" name="PNQ"/>
+                    <label end="52" start="50" name="VBD"/>
+                    <label end="64" start="54" name="CRD"/>
+                    <label end="68" start="66" name="CJC"/>
+                    <label end="72" start="70" name="VHD"/>
+                    <label end="74" start="74" name="AT0"/>
+                    <label end="83" start="76" name="AJ0"/>
+                    <label end="89" start="85" name="NN1"/>
+                    <label end="95" start="91" name="PRP"/>
+                    <label end="99" start="97" name="DPS"/>
+                    <label end="105" start="101" name="AJ0"/>
+                    <label end="111" start="107" name="NN1"/>
+                    <label end="113" start="113" name="PUN"/>
+                    <label end="118" start="115" name="VVD"/>
+                    <label end="125" start="120" name="AV0"/>
+                    <label end="127" start="127" name="PUN"/>
+                    <label end="135" start="129" name="VVG"/>
+                    <label end="143" start="137" name="DT0"/>
+                    <label end="149" start="145" name="NN2"/>
+                    <label end="152" start="151" name="PRP"/>
+                    <label end="156" start="154" name="AT0"/>
+                    <label end="160" start="158" name="NN1"/>
+                    <label end="162" start="162" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/27/2010 03:04:46 PDT Tue" status="MANUAL" ID="2599853">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="89" start="85" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="12030" end="111" start="91" name="Place"/>
+                    <label cBy="664" feID="9687" end="89" start="85" name="Ailment"/>
+                    <label cBy="664" feID="2094" end="42" start="36" name="Patient"/>
+                    <label cBy="664" feID="2094" end="48" start="46" name="Patient"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="111" start="91" name="Dep"/>
+                    <label end="42" start="36" name="Ext"/>
+                    <label end="48" start="46" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="111" start="91" name="PP"/>
+                    <label end="42" start="36" name="NP"/>
+                    <label end="48" start="46" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other">
+                    <label end="48" start="46" name="Rel"/>
+                    <label end="42" start="36" name="Ant"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="72" start="70" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

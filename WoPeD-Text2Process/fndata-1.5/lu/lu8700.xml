@@ -1,0 +1,882 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="order.v" ID="8700" frame="Sentencing" frameID="297" totalAnnotated="12" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Conv" name="Convict"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Court" name="Court"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD7C" type="Extra-Thematic" abbrev="dep" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Core" abbrev="off" name="Offense"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="pla" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="Sent" name="Sentence"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Core" abbrev="" name="Term_of_sentence"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="tim" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="" name="Type"/>
+        </frame>
+    </header>
+    <definition>FN: force the convict to pay or serve in the prison as punishment  </definition>
+    <lexeme POS="V" name="order"/>
+    <valences>
+        <FERealization total="12">
+            <FE name="Convict"/>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="NP" FE="Convict"/>
+                <annoSet ID="2410478"/>
+                <annoSet ID="2410496"/>
+                <annoSet ID="2410514"/>
+            </pattern>
+            <pattern total="9">
+                <valenceUnit GF="Obj" PT="NP" FE="Convict"/>
+                <annoSet ID="2410444"/>
+                <annoSet ID="2410446"/>
+                <annoSet ID="2410454"/>
+                <annoSet ID="2410468"/>
+                <annoSet ID="2410516"/>
+                <annoSet ID="2410522"/>
+                <annoSet ID="2410538"/>
+                <annoSet ID="2410552"/>
+                <annoSet ID="2410556"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="12">
+            <FE name="Court"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="CNI" FE="Court"/>
+                <annoSet ID="2410478"/>
+                <annoSet ID="2410514"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Court"/>
+                <annoSet ID="2410496"/>
+            </pattern>
+            <pattern total="9">
+                <valenceUnit GF="Ext" PT="NP" FE="Court"/>
+                <annoSet ID="2410444"/>
+                <annoSet ID="2410446"/>
+                <annoSet ID="2410454"/>
+                <annoSet ID="2410468"/>
+                <annoSet ID="2410516"/>
+                <annoSet ID="2410522"/>
+                <annoSet ID="2410538"/>
+                <annoSet ID="2410552"/>
+                <annoSet ID="2410556"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="12">
+            <FE name="Offense"/>
+            <pattern total="11">
+                <valenceUnit GF="" PT="DNI" FE="Offense"/>
+                <annoSet ID="2410444"/>
+                <annoSet ID="2410454"/>
+                <annoSet ID="2410468"/>
+                <annoSet ID="2410478"/>
+                <annoSet ID="2410496"/>
+                <annoSet ID="2410514"/>
+                <annoSet ID="2410516"/>
+                <annoSet ID="2410522"/>
+                <annoSet ID="2410538"/>
+                <annoSet ID="2410552"/>
+                <annoSet ID="2410556"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Offense"/>
+                <annoSet ID="2410446"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="12">
+            <FE name="Sentence"/>
+            <pattern total="11">
+                <valenceUnit GF="Dep" PT="VPto" FE="Sentence"/>
+                <annoSet ID="2410444"/>
+                <annoSet ID="2410446"/>
+                <annoSet ID="2410454"/>
+                <annoSet ID="2410468"/>
+                <annoSet ID="2410478"/>
+                <annoSet ID="2410496"/>
+                <annoSet ID="2410514"/>
+                <annoSet ID="2410522"/>
+                <annoSet ID="2410538"/>
+                <annoSet ID="2410552"/>
+                <annoSet ID="2410556"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="VPed" FE="Sentence"/>
+                <annoSet ID="2410516"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="12">
+            <FE name="Term_of_sentence"/>
+            <pattern total="10">
+                <valenceUnit GF="" PT="INI" FE="Term_of_sentence"/>
+                <annoSet ID="2410444"/>
+                <annoSet ID="2410446"/>
+                <annoSet ID="2410454"/>
+                <annoSet ID="2410478"/>
+                <annoSet ID="2410496"/>
+                <annoSet ID="2410514"/>
+                <annoSet ID="2410522"/>
+                <annoSet ID="2410538"/>
+                <annoSet ID="2410552"/>
+                <annoSet ID="2410556"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Term_of_sentence"/>
+                <annoSet ID="2410468"/>
+                <annoSet ID="2410516"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="12">
+            <FE name="Convict"/>
+            <FE name="Court"/>
+            <FE name="Offense"/>
+            <FE name="Sentence"/>
+            <FE name="Term_of_sentence"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Convict"/>
+                <valenceUnit GF="" PT="CNI" FE="Court"/>
+                <valenceUnit GF="" PT="DNI" FE="Offense"/>
+                <valenceUnit GF="Dep" PT="VPto" FE="Sentence"/>
+                <valenceUnit GF="" PT="INI" FE="Term_of_sentence"/>
+                <annoSet ID="2410478"/>
+                <annoSet ID="2410514"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Convict"/>
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Court"/>
+                <valenceUnit GF="" PT="DNI" FE="Offense"/>
+                <valenceUnit GF="Dep" PT="VPto" FE="Sentence"/>
+                <valenceUnit GF="" PT="INI" FE="Term_of_sentence"/>
+                <annoSet ID="2410496"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Convict"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Court"/>
+                <valenceUnit GF="" PT="DNI" FE="Offense"/>
+                <valenceUnit GF="Dep" PT="VPed" FE="Sentence"/>
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Term_of_sentence"/>
+                <annoSet ID="2410516"/>
+            </pattern>
+            <pattern total="6">
+                <valenceUnit GF="Obj" PT="NP" FE="Convict"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Court"/>
+                <valenceUnit GF="" PT="DNI" FE="Offense"/>
+                <valenceUnit GF="Dep" PT="VPto" FE="Sentence"/>
+                <valenceUnit GF="" PT="INI" FE="Term_of_sentence"/>
+                <annoSet ID="2410444"/>
+                <annoSet ID="2410454"/>
+                <annoSet ID="2410522"/>
+                <annoSet ID="2410538"/>
+                <annoSet ID="2410552"/>
+                <annoSet ID="2410556"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Convict"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Court"/>
+                <valenceUnit GF="" PT="DNI" FE="Offense"/>
+                <valenceUnit GF="Dep" PT="VPto" FE="Sentence"/>
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Term_of_sentence"/>
+                <annoSet ID="2410468"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Convict"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Court"/>
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Offense"/>
+                <valenceUnit GF="Dep" PT="VPto" FE="Sentence"/>
+                <valenceUnit GF="" PT="INI" FE="Term_of_sentence"/>
+                <annoSet ID="2410446"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-Wjudge,court,jail-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="224" aPos="1684533" ID="1481728">
+            <text>However , the judge said that even though the man promised not to do it again , he found such behaviour extremely offensive and ordered him to give £50 to each of the women .</text>
+            <annotationSet cDate="05/27/2008 03:35:16 PDT Tue" status="UNANN" ID="2410443">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="0" name="rb"/>
+                    <label end="8" start="8" name=","/>
+                    <label end="12" start="10" name="dt"/>
+                    <label end="18" start="14" name="nn"/>
+                    <label end="23" start="20" name="VVD"/>
+                    <label end="28" start="25" name="in"/>
+                    <label end="33" start="30" name="rb"/>
+                    <label end="40" start="35" name="in"/>
+                    <label end="44" start="42" name="dt"/>
+                    <label end="48" start="46" name="nn"/>
+                    <label end="57" start="50" name="VVD"/>
+                    <label end="61" start="59" name="rb"/>
+                    <label end="64" start="63" name="to"/>
+                    <label end="67" start="66" name="VV"/>
+                    <label end="70" start="69" name="PP"/>
+                    <label end="76" start="72" name="rb"/>
+                    <label end="78" start="78" name=","/>
+                    <label end="81" start="80" name="PP"/>
+                    <label end="87" start="83" name="VVD"/>
+                    <label end="92" start="89" name="jj"/>
+                    <label end="102" start="94" name="nn"/>
+                    <label end="112" start="104" name="rb"/>
+                    <label end="122" start="114" name="jj"/>
+                    <label end="126" start="124" name="cc"/>
+                    <label end="134" start="128" name="VVD"/>
+                    <label end="138" start="136" name="PP"/>
+                    <label end="141" start="140" name="to"/>
+                    <label end="146" start="143" name="VV"/>
+                    <label end="150" start="148" name="nns"/>
+                    <label end="153" start="152" name="to"/>
+                    <label end="158" start="155" name="dt"/>
+                    <label end="161" start="160" name="in"/>
+                    <label end="165" start="163" name="dt"/>
+                    <label end="171" start="167" name="nns"/>
+                    <label end="173" start="173" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/27/2008 03:35:16 PDT Tue" status="MANUAL" ID="2410444">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="134" start="128" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="3630" end="81" start="80" name="Court"/>
+                    <label cBy="597" feID="3629" end="138" start="136" name="Convict"/>
+                    <label cBy="597" feID="3631" end="171" start="140" name="Sentence"/>
+                    <label cBy="597" feID="6452" itype="DNI" name="Offense"/>
+                    <label cBy="597" feID="4667" itype="INI" name="Term_of_sentence"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="81" start="80" name="Ext"/>
+                    <label end="138" start="136" name="Obj"/>
+                    <label end="171" start="140" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="81" start="80" name="NP"/>
+                    <label end="138" start="136" name="NP"/>
+                    <label end="171" start="140" name="VPto"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="1260" aPos="108452301" ID="1481729">
+            <text>A judge has ordered a fish farm to compensate a group of anglers for ruining their fishing season .</text>
+            <annotationSet cDate="05/27/2008 03:35:17 PDT Tue" status="UNANN" ID="2410445">
+                <layer rank="1" name="PENN">
+                    <label end="0" start="0" name="dt"/>
+                    <label end="6" start="2" name="nn"/>
+                    <label end="10" start="8" name="VHZ"/>
+                    <label end="18" start="12" name="VVN"/>
+                    <label end="20" start="20" name="dt"/>
+                    <label end="25" start="22" name="nn"/>
+                    <label end="30" start="27" name="nn"/>
+                    <label end="33" start="32" name="to"/>
+                    <label end="44" start="35" name="VV"/>
+                    <label end="46" start="46" name="dt"/>
+                    <label end="52" start="48" name="nn"/>
+                    <label end="55" start="54" name="in"/>
+                    <label end="63" start="57" name="nns"/>
+                    <label end="67" start="65" name="in"/>
+                    <label end="75" start="69" name="VVG"/>
+                    <label end="81" start="77" name="PP$"/>
+                    <label end="89" start="83" name="nn"/>
+                    <label end="96" start="91" name="nn"/>
+                    <label end="98" start="98" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/27/2008 03:35:17 PDT Tue" status="MANUAL" ID="2410446">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="18" start="12" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="3630" end="6" start="0" name="Court"/>
+                    <label cBy="597" feID="3629" end="30" start="20" name="Convict"/>
+                    <label cBy="597" feID="3631" end="63" start="32" name="Sentence"/>
+                    <label cBy="597" feID="6452" end="96" start="65" name="Offense"/>
+                    <label cBy="597" feID="4667" itype="INI" name="Term_of_sentence"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="6" start="0" name="Ext"/>
+                    <label end="30" start="20" name="Obj"/>
+                    <label end="63" start="32" name="Dep"/>
+                    <label end="96" start="65" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="6" start="0" name="NP"/>
+                    <label end="30" start="20" name="NP"/>
+                    <label end="63" start="32" name="VPto"/>
+                    <label end="96" start="65" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="1258" aPos="111116825" ID="1481733">
+            <text>Judge William Crawford sentenced her to three months in jail suspended for two years and ordered her to pay £50 costs .</text>
+            <annotationSet cDate="05/27/2008 03:35:17 PDT Tue" status="UNANN" ID="2410453">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="NP"/>
+                    <label end="12" start="6" name="NP"/>
+                    <label end="21" start="14" name="NP"/>
+                    <label end="31" start="23" name="VVD"/>
+                    <label end="35" start="33" name="PP"/>
+                    <label end="38" start="37" name="to"/>
+                    <label end="44" start="40" name="cd"/>
+                    <label end="51" start="46" name="nns"/>
+                    <label end="54" start="53" name="in"/>
+                    <label end="59" start="56" name="nn"/>
+                    <label end="69" start="61" name="VVN"/>
+                    <label end="73" start="71" name="in"/>
+                    <label end="77" start="75" name="cd"/>
+                    <label end="83" start="79" name="nns"/>
+                    <label end="87" start="85" name="cc"/>
+                    <label end="95" start="89" name="VVD"/>
+                    <label end="99" start="97" name="PP"/>
+                    <label end="102" start="101" name="to"/>
+                    <label end="106" start="104" name="VV"/>
+                    <label end="110" start="108" name="jj"/>
+                    <label end="116" start="112" name="nns"/>
+                    <label end="118" start="118" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/27/2008 03:35:18 PDT Tue" status="MANUAL" ID="2410454">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="95" start="89" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="3630" end="21" start="0" name="Court"/>
+                    <label cBy="597" feID="3629" end="99" start="97" name="Convict"/>
+                    <label cBy="597" feID="3631" end="116" start="101" name="Sentence"/>
+                    <label cBy="597" feID="6452" itype="DNI" name="Offense"/>
+                    <label cBy="597" feID="4667" itype="INI" name="Term_of_sentence"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="21" start="0" name="Ext"/>
+                    <label end="99" start="97" name="Obj"/>
+                    <label end="116" start="101" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="21" start="0" name="NP"/>
+                    <label end="99" start="97" name="NP"/>
+                    <label end="116" start="101" name="VPto"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="5737" aPos="111934498" ID="1481740">
+            <text>Judge Angus Stroyan ordered him to pay £21.98 compensation for the shirts , which were bloodstained , and gave him a community service order for 60 hours .</text>
+            <annotationSet cDate="05/27/2008 03:35:19 PDT Tue" status="UNANN" ID="2410467">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="NP"/>
+                    <label end="10" start="6" name="NP"/>
+                    <label end="18" start="12" name="NP"/>
+                    <label end="26" start="20" name="VVD"/>
+                    <label end="30" start="28" name="PP"/>
+                    <label end="33" start="32" name="to"/>
+                    <label end="37" start="35" name="VV"/>
+                    <label end="44" start="39" name="jj"/>
+                    <label end="57" start="46" name="nn"/>
+                    <label end="61" start="59" name="in"/>
+                    <label end="65" start="63" name="dt"/>
+                    <label end="72" start="67" name="nns"/>
+                    <label end="74" start="74" name=","/>
+                    <label end="80" start="76" name="wdt"/>
+                    <label end="85" start="82" name="VBD"/>
+                    <label end="98" start="87" name="jj"/>
+                    <label end="100" start="100" name=","/>
+                    <label end="104" start="102" name="cc"/>
+                    <label end="109" start="106" name="VVD"/>
+                    <label end="113" start="111" name="PP"/>
+                    <label end="115" start="115" name="dt"/>
+                    <label end="125" start="117" name="nn"/>
+                    <label end="133" start="127" name="nn"/>
+                    <label end="139" start="135" name="nn"/>
+                    <label end="143" start="141" name="in"/>
+                    <label end="146" start="145" name="cd"/>
+                    <label end="152" start="148" name="nns"/>
+                    <label end="154" start="154" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/27/2008 03:35:19 PDT Tue" status="MANUAL" ID="2410468">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="26" start="20" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="3630" end="18" start="0" name="Court"/>
+                    <label cBy="597" feID="3629" end="30" start="28" name="Convict"/>
+                    <label cBy="597" feID="3631" end="139" start="32" name="Sentence"/>
+                    <label cBy="597" feID="4667" end="152" start="141" name="Term_of_sentence"/>
+                    <label cBy="597" feID="6452" itype="DNI" name="Offense"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="18" start="0" name="Ext"/>
+                    <label end="30" start="28" name="Obj"/>
+                    <label end="139" start="32" name="Dep"/>
+                    <label end="152" start="141" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="18" start="0" name="NP"/>
+                    <label end="30" start="28" name="NP"/>
+                    <label end="139" start="32" name="VPto"/>
+                    <label end="152" start="141" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="3235" aPos="111174736" ID="1481745">
+            <text>McCutcheon was also ordered to pay court costs of £420 .</text>
+            <annotationSet cDate="05/27/2008 03:35:19 PDT Tue" status="UNANN" ID="2410477">
+                <layer rank="1" name="PENN">
+                    <label end="9" start="0" name="NP"/>
+                    <label end="13" start="11" name="VBD"/>
+                    <label end="18" start="15" name="rb"/>
+                    <label end="26" start="20" name="VVN"/>
+                    <label end="29" start="28" name="to"/>
+                    <label end="33" start="31" name="VV"/>
+                    <label end="39" start="35" name="nn"/>
+                    <label end="45" start="41" name="nns"/>
+                    <label end="48" start="47" name="in"/>
+                    <label end="53" start="50" name="nn"/>
+                    <label end="55" start="55" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/27/2008 03:35:20 PDT Tue" status="MANUAL" ID="2410478">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="26" start="20" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="3629" end="9" start="0" name="Convict"/>
+                    <label cBy="597" feID="3631" end="53" start="28" name="Sentence"/>
+                    <label cBy="597" feID="4667" itype="INI" name="Term_of_sentence"/>
+                    <label cBy="597" feID="3630" itype="CNI" name="Court"/>
+                    <label cBy="597" feID="6452" itype="DNI" name="Offense"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="9" start="0" name="Ext"/>
+                    <label end="53" start="28" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="9" start="0" name="NP"/>
+                    <label end="53" start="28" name="VPto"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="2288" aPos="111835498" ID="1481754">
+            <text>Mr Tom Finnegan was also ordered by a judge at Darlington county court to pay rent arrears of £2,400 .</text>
+            <annotationSet cDate="05/27/2008 03:35:21 PDT Tue" status="UNANN" ID="2410495">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="NP"/>
+                    <label end="5" start="3" name="NP"/>
+                    <label end="14" start="7" name="NP"/>
+                    <label end="18" start="16" name="VBD"/>
+                    <label end="23" start="20" name="rb"/>
+                    <label end="31" start="25" name="VVN"/>
+                    <label end="34" start="33" name="in"/>
+                    <label end="36" start="36" name="dt"/>
+                    <label end="42" start="38" name="nn"/>
+                    <label end="45" start="44" name="in"/>
+                    <label end="56" start="47" name="NP"/>
+                    <label end="63" start="58" name="nn"/>
+                    <label end="69" start="65" name="nn"/>
+                    <label end="72" start="71" name="to"/>
+                    <label end="76" start="74" name="VV"/>
+                    <label end="81" start="78" name="nn"/>
+                    <label end="89" start="83" name="nns"/>
+                    <label end="92" start="91" name="in"/>
+                    <label end="99" start="94" name="nn"/>
+                    <label end="101" start="101" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/27/2008 03:35:21 PDT Tue" status="MANUAL" ID="2410496">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="31" start="25" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="3629" end="14" start="0" name="Convict"/>
+                    <label cBy="597" feID="3630" end="69" start="33" name="Court"/>
+                    <label cBy="597" feID="3631" end="99" start="71" name="Sentence"/>
+                    <label cBy="597" feID="6452" itype="DNI" name="Offense"/>
+                    <label cBy="597" feID="4667" itype="INI" name="Term_of_sentence"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="14" start="0" name="Ext"/>
+                    <label end="69" start="33" name="Dep"/>
+                    <label end="99" start="71" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="14" start="0" name="NP"/>
+                    <label end="69" start="33" name="PP"/>
+                    <label end="99" start="71" name="VPto"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="1317" aPos="108666281" ID="1481763">
+            <text>Jamie Ray , another American , was jailed for 4 years and also ordered to be deported .</text>
+            <annotationSet cDate="05/27/2008 03:35:23 PDT Tue" status="UNANN" ID="2410513">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="NP"/>
+                    <label end="8" start="6" name="NP"/>
+                    <label end="10" start="10" name=","/>
+                    <label end="18" start="12" name="dt"/>
+                    <label end="27" start="20" name="NP"/>
+                    <label end="29" start="29" name=","/>
+                    <label end="33" start="31" name="VBD"/>
+                    <label end="40" start="35" name="VVN"/>
+                    <label end="44" start="42" name="in"/>
+                    <label end="46" start="46" name="cd"/>
+                    <label end="52" start="48" name="nns"/>
+                    <label end="56" start="54" name="cc"/>
+                    <label end="61" start="58" name="rb"/>
+                    <label end="69" start="63" name="VVN"/>
+                    <label end="72" start="71" name="to"/>
+                    <label end="75" start="74" name="vb"/>
+                    <label end="84" start="77" name="VVD"/>
+                    <label end="86" start="86" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/27/2008 03:35:23 PDT Tue" status="MANUAL" ID="2410514">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="69" start="63" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="3629" end="27" start="0" name="Convict"/>
+                    <label cBy="597" feID="3631" end="84" start="71" name="Sentence"/>
+                    <label cBy="597" feID="6452" itype="DNI" name="Offense"/>
+                    <label cBy="597" feID="3630" itype="CNI" name="Court"/>
+                    <label cBy="597" feID="4667" itype="INI" name="Term_of_sentence"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="27" start="0" name="Ext"/>
+                    <label end="84" start="71" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="27" start="0" name="NP"/>
+                    <label end="84" start="71" name="VPto"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="4757" aPos="112585097" ID="1481764">
+            <text>He gave him no time to pay and ordered he be jailed for up to the alternative of 14 days .</text>
+            <annotationSet cDate="05/27/2008 03:35:23 PDT Tue" status="UNANN" ID="2410515">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="6" start="3" name="VVD"/>
+                    <label end="10" start="8" name="PP"/>
+                    <label end="13" start="12" name="dt"/>
+                    <label end="18" start="15" name="nn"/>
+                    <label end="21" start="20" name="to"/>
+                    <label end="25" start="23" name="VV"/>
+                    <label end="29" start="27" name="cc"/>
+                    <label end="37" start="31" name="VVD"/>
+                    <label end="40" start="39" name="PP"/>
+                    <label end="43" start="42" name="vb"/>
+                    <label end="50" start="45" name="VVN"/>
+                    <label end="54" start="52" name="in"/>
+                    <label end="57" start="56" name="rb"/>
+                    <label end="60" start="59" name="to"/>
+                    <label end="64" start="62" name="dt"/>
+                    <label end="76" start="66" name="nn"/>
+                    <label end="79" start="78" name="in"/>
+                    <label end="82" start="81" name="cd"/>
+                    <label end="87" start="84" name="nns"/>
+                    <label end="89" start="89" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/27/2008 03:35:24 PDT Tue" status="MANUAL" ID="2410516">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="37" start="31" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="3630" end="1" start="0" name="Court"/>
+                    <label cBy="597" feID="3629" end="40" start="39" name="Convict"/>
+                    <label cBy="597" feID="3631" end="50" start="42" name="Sentence"/>
+                    <label cBy="597" feID="4667" end="87" start="52" name="Term_of_sentence"/>
+                    <label cBy="597" feID="6452" itype="DNI" name="Offense"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="1" start="0" name="Ext"/>
+                    <label end="40" start="39" name="Obj"/>
+                    <label end="50" start="42" name="Dep"/>
+                    <label end="87" start="52" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="1" start="0" name="NP"/>
+                    <label end="40" start="39" name="NP"/>
+                    <label end="50" start="42" name="VPed"/>
+                    <label end="87" start="52" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="719" aPos="33682615" ID="1481767">
+            <text>Instead of a 15-year jail sentence , Mr Justice Nolan ordered him to Rampton under the Mental Health Act .</text>
+            <annotationSet cDate="05/27/2008 03:35:24 PDT Tue" status="UNANN" ID="2410521">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="0" name="rb"/>
+                    <label end="9" start="8" name="in"/>
+                    <label end="11" start="11" name="dt"/>
+                    <label end="19" start="13" name="jj"/>
+                    <label end="24" start="21" name="nn"/>
+                    <label end="33" start="26" name="nn"/>
+                    <label end="35" start="35" name=","/>
+                    <label end="38" start="37" name="NP"/>
+                    <label end="46" start="40" name="NP"/>
+                    <label end="52" start="48" name="NP"/>
+                    <label end="60" start="54" name="VVD"/>
+                    <label end="64" start="62" name="PP"/>
+                    <label end="67" start="66" name="to"/>
+                    <label end="75" start="69" name="NP"/>
+                    <label end="81" start="77" name="in"/>
+                    <label end="85" start="83" name="dt"/>
+                    <label end="92" start="87" name="jj"/>
+                    <label end="99" start="94" name="NP"/>
+                    <label end="103" start="101" name="NP"/>
+                    <label end="105" start="105" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/27/2008 03:35:24 PDT Tue" status="MANUAL" ID="2410522">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="60" start="54" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="3630" end="52" start="37" name="Court"/>
+                    <label cBy="597" feID="3629" end="64" start="62" name="Convict"/>
+                    <label cBy="597" feID="3631" end="75" start="66" name="Sentence"/>
+                    <label cBy="597" feID="4667" itype="INI" name="Term_of_sentence"/>
+                    <label cBy="597" feID="6452" itype="DNI" name="Offense"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="52" start="37" name="Ext"/>
+                    <label end="64" start="62" name="Obj"/>
+                    <label end="75" start="66" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="52" start="37" name="NP"/>
+                    <label end="64" start="62" name="NP"/>
+                    <label end="75" start="66" name="VPto"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="6833" aPos="111965130" ID="1481775">
+            <text>Judge David Bryant sentenced him to nine months imprisonment suspended for two years and ordered him to pay £200 costs .</text>
+            <annotationSet cDate="05/27/2008 03:35:26 PDT Tue" status="UNANN" ID="2410537">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="NP"/>
+                    <label end="10" start="6" name="NP"/>
+                    <label end="17" start="12" name="NP"/>
+                    <label end="27" start="19" name="VVD"/>
+                    <label end="31" start="29" name="PP"/>
+                    <label end="34" start="33" name="to"/>
+                    <label end="39" start="36" name="cd"/>
+                    <label end="46" start="41" name="nns"/>
+                    <label end="59" start="48" name="nn"/>
+                    <label end="69" start="61" name="VVN"/>
+                    <label end="73" start="71" name="in"/>
+                    <label end="77" start="75" name="cd"/>
+                    <label end="83" start="79" name="nns"/>
+                    <label end="87" start="85" name="cc"/>
+                    <label end="95" start="89" name="VVD"/>
+                    <label end="99" start="97" name="PP"/>
+                    <label end="102" start="101" name="to"/>
+                    <label end="106" start="104" name="VV"/>
+                    <label end="111" start="108" name="jj"/>
+                    <label end="117" start="113" name="nns"/>
+                    <label end="119" start="119" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/27/2008 03:35:26 PDT Tue" status="MANUAL" ID="2410538">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="95" start="89" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="3630" end="17" start="0" name="Court"/>
+                    <label cBy="597" feID="3629" end="99" start="97" name="Convict"/>
+                    <label cBy="597" feID="3631" end="117" start="101" name="Sentence"/>
+                    <label cBy="597" feID="4667" itype="INI" name="Term_of_sentence"/>
+                    <label cBy="597" feID="6452" itype="DNI" name="Offense"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="17" start="0" name="Ext"/>
+                    <label end="99" start="97" name="Obj"/>
+                    <label end="117" start="101" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="17" start="0" name="NP"/>
+                    <label end="99" start="97" name="NP"/>
+                    <label end="117" start="101" name="VPto"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="1265" aPos="111116984" ID="1481782">
+            <text>Judge Angus Stroyan QC sentenced him to six months imprisonment suspended for 15 months and ordered Gregory , of Bevanlee Road , South Bank , Middlesbrough , to pay £60 costs .</text>
+            <annotationSet cDate="05/27/2008 03:35:28 PDT Tue" status="UNANN" ID="2410551">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="NP"/>
+                    <label end="10" start="6" name="NP"/>
+                    <label end="18" start="12" name="NP"/>
+                    <label end="21" start="20" name="NP"/>
+                    <label end="31" start="23" name="VVD"/>
+                    <label end="35" start="33" name="PP"/>
+                    <label end="38" start="37" name="to"/>
+                    <label end="42" start="40" name="cd"/>
+                    <label end="49" start="44" name="nns"/>
+                    <label end="62" start="51" name="nn"/>
+                    <label end="72" start="64" name="VVN"/>
+                    <label end="76" start="74" name="in"/>
+                    <label end="79" start="78" name="cd"/>
+                    <label end="86" start="81" name="nns"/>
+                    <label end="90" start="88" name="cc"/>
+                    <label end="98" start="92" name="VVD"/>
+                    <label end="106" start="100" name="NP"/>
+                    <label end="108" start="108" name=","/>
+                    <label end="111" start="110" name="in"/>
+                    <label end="120" start="113" name="NP"/>
+                    <label end="125" start="122" name="NP"/>
+                    <label end="127" start="127" name=","/>
+                    <label end="133" start="129" name="NP"/>
+                    <label end="138" start="135" name="NP"/>
+                    <label end="140" start="140" name=","/>
+                    <label end="154" start="142" name="NP"/>
+                    <label end="156" start="156" name=","/>
+                    <label end="159" start="158" name="to"/>
+                    <label end="163" start="161" name="VV"/>
+                    <label end="167" start="165" name="jj"/>
+                    <label end="173" start="169" name="nns"/>
+                    <label end="175" start="175" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/27/2008 03:35:28 PDT Tue" status="MANUAL" ID="2410552">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="98" start="92" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="3630" end="18" start="0" name="Court"/>
+                    <label cBy="597" feID="3629" end="154" start="100" name="Convict"/>
+                    <label cBy="597" feID="3631" end="173" start="158" name="Sentence"/>
+                    <label cBy="597" feID="6452" itype="DNI" name="Offense"/>
+                    <label cBy="597" feID="4667" itype="INI" name="Term_of_sentence"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="18" start="0" name="Ext"/>
+                    <label end="154" start="100" name="Obj"/>
+                    <label end="173" start="158" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="18" start="0" name="NP"/>
+                    <label end="154" start="100" name="NP"/>
+                    <label end="173" start="158" name="VPto"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="1434" aPos="111668907" ID="1481784">
+            <text>Judge William Hannah sentenced Francis , of Caroline Street , Hetton-le-Hole , to four months imprisonment suspended for two years and ordered him to pay £500 compensation .</text>
+            <annotationSet cDate="05/27/2008 03:35:28 PDT Tue" status="UNANN" ID="2410555">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="NP"/>
+                    <label end="12" start="6" name="NP"/>
+                    <label end="19" start="14" name="NP"/>
+                    <label end="29" start="21" name="VVD"/>
+                    <label end="37" start="31" name="NP"/>
+                    <label end="39" start="39" name=","/>
+                    <label end="42" start="41" name="in"/>
+                    <label end="51" start="44" name="NP"/>
+                    <label end="58" start="53" name="NP"/>
+                    <label end="60" start="60" name=","/>
+                    <label end="75" start="62" name="NP"/>
+                    <label end="77" start="77" name=","/>
+                    <label end="80" start="79" name="to"/>
+                    <label end="85" start="82" name="cd"/>
+                    <label end="92" start="87" name="nns"/>
+                    <label end="105" start="94" name="nn"/>
+                    <label end="115" start="107" name="VVN"/>
+                    <label end="119" start="117" name="in"/>
+                    <label end="123" start="121" name="cd"/>
+                    <label end="129" start="125" name="nns"/>
+                    <label end="133" start="131" name="cc"/>
+                    <label end="141" start="135" name="VVD"/>
+                    <label end="145" start="143" name="PP"/>
+                    <label end="148" start="147" name="to"/>
+                    <label end="152" start="150" name="VV"/>
+                    <label end="157" start="154" name="jj"/>
+                    <label end="170" start="159" name="nn"/>
+                    <label end="172" start="172" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/27/2008 03:35:29 PDT Tue" status="MANUAL" ID="2410556">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="141" start="135" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="3630" end="19" start="0" name="Court"/>
+                    <label cBy="597" feID="3629" end="145" start="143" name="Convict"/>
+                    <label cBy="597" feID="3631" end="170" start="147" name="Sentence"/>
+                    <label cBy="597" feID="6452" itype="DNI" name="Offense"/>
+                    <label cBy="597" feID="4667" itype="INI" name="Term_of_sentence"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="19" start="0" name="Ext"/>
+                    <label end="145" start="143" name="Obj"/>
+                    <label end="170" start="147" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="19" start="0" name="NP"/>
+                    <label end="145" start="143" name="NP"/>
+                    <label end="170" start="147" name="VPto"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

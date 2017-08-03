@@ -1,0 +1,530 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="starve.v" ID="14971" frame="Prevent_from_having" frameID="2056" totalAnnotated="7" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Age" name="Agent"/>
+            <FE fgColor="000000" bgColor="A9A9A9" type="Extra-Thematic" abbrev="" name="Containing_event"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Dur" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Extra-Thematic" abbrev="Exp" name="Explanation"/>
+            <FE fgColor="000000" bgColor="FF00FF" type="Extra-Thematic" abbrev="" name="Frequency"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Core" abbrev="Pre" name="Preventing_cause"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Pro" name="Protagonist"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="Pur" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Core" abbrev="Event" name="State_of_affairs"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: render someone totally without a desired possession or state-of-affairs.</definition>
+    <lexeme POS="V" name="starve"/>
+    <valences>
+        <FERealization total="2">
+            <FE name="Agent"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <annoSet ID="2406204"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Agent"/>
+                <annoSet ID="2406064"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Containing_event"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[during]" FE="Containing_event"/>
+                <annoSet ID="2406120"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Explanation"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[after]" FE="Explanation"/>
+                <annoSet ID="2406212"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Preventing_cause"/>
+            <pattern total="4">
+                <valenceUnit GF="" PT="CNI" FE="Preventing_cause"/>
+                <annoSet ID="2406120"/>
+                <annoSet ID="2406178"/>
+                <annoSet ID="2406212"/>
+                <annoSet ID="2406246"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Preventing_cause"/>
+                <annoSet ID="2406186"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="7">
+            <FE name="Protagonist"/>
+            <pattern total="7">
+                <valenceUnit GF="Ext" PT="NP" FE="Protagonist"/>
+                <annoSet ID="2406064"/>
+                <annoSet ID="2406120"/>
+                <annoSet ID="2406178"/>
+                <annoSet ID="2406186"/>
+                <annoSet ID="2406204"/>
+                <annoSet ID="2406212"/>
+                <annoSet ID="2406246"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="7">
+            <FE name="State_of_affairs"/>
+            <pattern total="7">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="State_of_affairs"/>
+                <annoSet ID="2406064"/>
+                <annoSet ID="2406120"/>
+                <annoSet ID="2406178"/>
+                <annoSet ID="2406186"/>
+                <annoSet ID="2406204"/>
+                <annoSet ID="2406212"/>
+                <annoSet ID="2406246"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Agent"/>
+            <FE name="Protagonist"/>
+            <FE name="State_of_affairs"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Protagonist"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="State_of_affairs"/>
+                <annoSet ID="2406204"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Agent"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Protagonist"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="State_of_affairs"/>
+                <annoSet ID="2406064"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Containing_event"/>
+            <FE name="Preventing_cause"/>
+            <FE name="Protagonist"/>
+            <FE name="Protagonist"/>
+            <FE name="State_of_affairs"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[during]" FE="Containing_event"/>
+                <valenceUnit GF="" PT="CNI" FE="Preventing_cause"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Protagonist"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Protagonist"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="State_of_affairs"/>
+                <annoSet ID="2406120"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Explanation"/>
+            <FE name="Preventing_cause"/>
+            <FE name="Protagonist"/>
+            <FE name="State_of_affairs"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[after]" FE="Explanation"/>
+                <valenceUnit GF="" PT="CNI" FE="Preventing_cause"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Protagonist"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="State_of_affairs"/>
+                <annoSet ID="2406212"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="3">
+            <FE name="Preventing_cause"/>
+            <FE name="Protagonist"/>
+            <FE name="State_of_affairs"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="CNI" FE="Preventing_cause"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Protagonist"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="State_of_affairs"/>
+                <annoSet ID="2406178"/>
+                <annoSet ID="2406246"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Preventing_cause"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Protagonist"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="State_of_affairs"/>
+                <annoSet ID="2406186"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="02-T-NP-PP-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="337" aPos="9588821" ID="1479539">
+            <text>North Tyneside council says it is too starved of funds by central government to do much .</text>
+            <annotationSet cDate="05/21/2008 11:50:13 PDT Wed" status="UNANN" ID="2406063">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="NP"/>
+                    <label end="13" start="6" name="NP"/>
+                    <label end="21" start="15" name="nn"/>
+                    <label end="26" start="23" name="VVZ"/>
+                    <label end="29" start="28" name="PP"/>
+                    <label end="32" start="31" name="VBZ"/>
+                    <label end="36" start="34" name="rb"/>
+                    <label end="44" start="38" name="VVN"/>
+                    <label end="47" start="46" name="in"/>
+                    <label end="53" start="49" name="nns"/>
+                    <label end="56" start="55" name="in"/>
+                    <label end="64" start="58" name="jj"/>
+                    <label end="75" start="66" name="nn"/>
+                    <label end="78" start="77" name="to"/>
+                    <label end="81" start="80" name="VV"/>
+                    <label end="86" start="83" name="rb"/>
+                    <label end="88" start="88" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/21/2008 11:50:13 PDT Wed" status="MANUAL" ID="2406064">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="44" start="38" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="12607" end="29" start="28" name="Protagonist"/>
+                    <label cBy="597" feID="12603" end="53" start="46" name="State_of_affairs"/>
+                    <label cBy="597" feID="12606" end="75" start="55" name="Agent"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="29" start="28" name="Ext"/>
+                    <label end="53" start="46" name="Dep"/>
+                    <label end="75" start="55" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="29" start="28" name="NP"/>
+                    <label end="53" start="46" name="PP"/>
+                    <label end="75" start="55" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="05-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="292" aPos="110551385" ID="1479567">
+            <text>The Government 's finance initiative targets developers which have been starved of public and private sector cash during the recession .</text>
+            <annotationSet cDate="05/21/2008 11:50:19 PDT Wed" status="UNANN" ID="2406119">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="13" start="4" name="nn"/>
+                    <label end="16" start="15" name="POS"/>
+                    <label end="24" start="18" name="nn"/>
+                    <label end="35" start="26" name="nn"/>
+                    <label end="43" start="37" name="VVZ"/>
+                    <label end="54" start="45" name="nns"/>
+                    <label end="60" start="56" name="wdt"/>
+                    <label end="65" start="62" name="VHP"/>
+                    <label end="70" start="67" name="VBN"/>
+                    <label end="78" start="72" name="VVN"/>
+                    <label end="81" start="80" name="in"/>
+                    <label end="88" start="83" name="jj"/>
+                    <label end="92" start="90" name="cc"/>
+                    <label end="100" start="94" name="jj"/>
+                    <label end="107" start="102" name="nn"/>
+                    <label end="112" start="109" name="nn"/>
+                    <label end="119" start="114" name="in"/>
+                    <label end="123" start="121" name="dt"/>
+                    <label end="133" start="125" name="nn"/>
+                    <label end="135" start="135" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/21/2008 11:50:19 PDT Wed" status="MANUAL" ID="2406120">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="78" start="72" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="12607" end="54" start="45" name="Protagonist"/>
+                    <label cBy="597" feID="12607" end="60" start="56" name="Protagonist"/>
+                    <label cBy="597" feID="12603" end="112" start="80" name="State_of_affairs"/>
+                    <label cBy="597" feID="12602" itype="CNI" name="Preventing_cause"/>
+                    <label cBy="597" feID="12664" end="133" start="114" name="Containing_event"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="54" start="45" name="Ext"/>
+                    <label end="60" start="56" name="Ext"/>
+                    <label end="112" start="80" name="Dep"/>
+                    <label end="133" start="114" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="54" start="45" name="NP"/>
+                    <label end="60" start="56" name="NP"/>
+                    <label end="112" start="80" name="PP"/>
+                    <label end="133" start="114" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other">
+                    <label end="60" start="56" name="Rel"/>
+                    <label end="54" start="45" name="Ant"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="4" aPos="38004078" ID="1479596">
+            <text>And the ban will stay in place as long as the coastal strip is starved of much needed rain .</text>
+            <annotationSet cDate="05/21/2008 11:50:24 PDT Wed" status="UNANN" ID="2406177">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="cc"/>
+                    <label end="6" start="4" name="dt"/>
+                    <label end="10" start="8" name="nn"/>
+                    <label end="15" start="12" name="md"/>
+                    <label end="20" start="17" name="VV"/>
+                    <label end="23" start="22" name="in"/>
+                    <label end="29" start="25" name="nn"/>
+                    <label end="32" start="31" name="in"/>
+                    <label end="37" start="34" name="jj"/>
+                    <label end="40" start="39" name="in"/>
+                    <label end="44" start="42" name="dt"/>
+                    <label end="52" start="46" name="jj"/>
+                    <label end="58" start="54" name="nn"/>
+                    <label end="61" start="60" name="VBZ"/>
+                    <label end="69" start="63" name="VVN"/>
+                    <label end="72" start="71" name="in"/>
+                    <label end="77" start="74" name="jj"/>
+                    <label end="84" start="79" name="jj"/>
+                    <label end="89" start="86" name="nn"/>
+                    <label end="91" start="91" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/21/2008 11:50:24 PDT Wed" status="MANUAL" ID="2406178">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="69" start="63" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="12607" end="58" start="42" name="Protagonist"/>
+                    <label cBy="597" feID="12603" end="89" start="71" name="State_of_affairs"/>
+                    <label cBy="597" feID="12602" itype="CNI" name="Preventing_cause"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="58" start="42" name="Ext"/>
+                    <label end="89" start="71" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="58" start="42" name="NP"/>
+                    <label end="89" start="71" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="274" aPos="108842379" ID="1479600">
+            <text>The birth was so difficult and took so long that she was starved of oxygen and had to be delivered by emergency caesarian .</text>
+            <annotationSet cDate="05/21/2008 11:50:25 PDT Wed" status="UNANN" ID="2406185">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="8" start="4" name="nn"/>
+                    <label end="12" start="10" name="VBD"/>
+                    <label end="15" start="14" name="rb"/>
+                    <label end="25" start="17" name="jj"/>
+                    <label end="29" start="27" name="cc"/>
+                    <label end="34" start="31" name="VVD"/>
+                    <label end="37" start="36" name="rb"/>
+                    <label end="42" start="39" name="rb"/>
+                    <label end="47" start="44" name="in"/>
+                    <label end="51" start="49" name="PP"/>
+                    <label end="55" start="53" name="VBD"/>
+                    <label end="63" start="57" name="VVN"/>
+                    <label end="66" start="65" name="in"/>
+                    <label end="73" start="68" name="nn"/>
+                    <label end="77" start="75" name="cc"/>
+                    <label end="81" start="79" name="VHD"/>
+                    <label end="84" start="83" name="to"/>
+                    <label end="87" start="86" name="vb"/>
+                    <label end="97" start="89" name="VVN"/>
+                    <label end="100" start="99" name="in"/>
+                    <label end="110" start="102" name="nn"/>
+                    <label end="120" start="112" name="jj"/>
+                    <label end="122" start="122" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/21/2008 11:50:25 PDT Wed" status="MANUAL" ID="2406186">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="63" start="57" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="12607" end="51" start="49" name="Protagonist"/>
+                    <label cBy="597" feID="12603" end="73" start="65" name="State_of_affairs"/>
+                    <label cBy="597" feID="12602" itype="DNI" name="Preventing_cause"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="51" start="49" name="Ext"/>
+                    <label end="73" start="65" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="51" start="49" name="NP"/>
+                    <label end="73" start="65" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="7" paragNo="92" aPos="32513558" ID="1479609">
+            <text>Certain governments established their own papers and then saw to it that any opposition papers were starved of the advertising they needed in order to stay in business .</text>
+            <annotationSet cDate="05/21/2008 11:50:27 PDT Wed" status="UNANN" ID="2406203">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="0" name="jj"/>
+                    <label end="18" start="8" name="nns"/>
+                    <label end="30" start="20" name="VVD"/>
+                    <label end="36" start="32" name="PP$"/>
+                    <label end="40" start="38" name="jj"/>
+                    <label end="47" start="42" name="nns"/>
+                    <label end="51" start="49" name="cc"/>
+                    <label end="56" start="53" name="rb"/>
+                    <label end="60" start="58" name="VVD"/>
+                    <label end="63" start="62" name="to"/>
+                    <label end="66" start="65" name="PP"/>
+                    <label end="71" start="68" name="in"/>
+                    <label end="75" start="73" name="dt"/>
+                    <label end="86" start="77" name="nn"/>
+                    <label end="93" start="88" name="nns"/>
+                    <label end="98" start="95" name="VBD"/>
+                    <label end="106" start="100" name="VVN"/>
+                    <label end="109" start="108" name="in"/>
+                    <label end="113" start="111" name="dt"/>
+                    <label end="125" start="115" name="nn"/>
+                    <label end="130" start="127" name="PP"/>
+                    <label end="137" start="132" name="VVD"/>
+                    <label end="140" start="139" name="in"/>
+                    <label end="146" start="142" name="nn"/>
+                    <label end="149" start="148" name="to"/>
+                    <label end="154" start="151" name="VV"/>
+                    <label end="157" start="156" name="in"/>
+                    <label end="166" start="159" name="nn"/>
+                    <label end="168" start="168" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/21/2008 11:50:27 PDT Wed" status="MANUAL" ID="2406204">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="106" start="100" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="12607" end="93" start="73" name="Protagonist"/>
+                    <label cBy="597" feID="12603" end="166" start="108" name="State_of_affairs"/>
+                    <label cBy="597" feID="12606" itype="CNI" name="Agent"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="93" start="73" name="Ext"/>
+                    <label end="166" start="108" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="93" start="73" name="NP"/>
+                    <label end="166" start="108" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="9169" aPos="36497747" ID="1479613">
+            <text>Mary Moore , 17 , of Chatham , Kent , was starved of oxygen after doctors failed to diagnose her presence in the womb .</text>
+            <annotationSet cDate="05/21/2008 11:50:28 PDT Wed" status="UNANN" ID="2406211">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="NP"/>
+                    <label end="9" start="5" name="NP"/>
+                    <label end="11" start="11" name=","/>
+                    <label end="14" start="13" name="cd"/>
+                    <label end="16" start="16" name=","/>
+                    <label end="19" start="18" name="in"/>
+                    <label end="27" start="21" name="NP"/>
+                    <label end="29" start="29" name=","/>
+                    <label end="34" start="31" name="NP"/>
+                    <label end="36" start="36" name=","/>
+                    <label end="40" start="38" name="VBD"/>
+                    <label end="48" start="42" name="VVN"/>
+                    <label end="51" start="50" name="in"/>
+                    <label end="58" start="53" name="nn"/>
+                    <label end="64" start="60" name="in"/>
+                    <label end="72" start="66" name="nns"/>
+                    <label end="79" start="74" name="VVN"/>
+                    <label end="82" start="81" name="to"/>
+                    <label end="91" start="84" name="VV"/>
+                    <label end="95" start="93" name="PP$"/>
+                    <label end="104" start="97" name="nn"/>
+                    <label end="107" start="106" name="in"/>
+                    <label end="111" start="109" name="dt"/>
+                    <label end="116" start="113" name="nn"/>
+                    <label end="118" start="118" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/21/2008 11:50:28 PDT Wed" status="MANUAL" ID="2406212">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="48" start="42" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="12607" end="34" start="0" name="Protagonist"/>
+                    <label cBy="597" feID="12603" end="58" start="50" name="State_of_affairs"/>
+                    <label cBy="597" feID="12610" end="116" start="60" name="Explanation"/>
+                    <label cBy="597" feID="12602" itype="CNI" name="Preventing_cause"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="34" start="0" name="Ext"/>
+                    <label end="58" start="50" name="Dep"/>
+                    <label end="116" start="60" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="34" start="0" name="NP"/>
+                    <label end="58" start="50" name="PP"/>
+                    <label end="116" start="60" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="178" aPos="7006872" ID="1479630">
+            <text>Even the government bodies were starved of money .</text>
+            <annotationSet cDate="05/21/2008 11:50:31 PDT Wed" status="UNANN" ID="2406245">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="rb"/>
+                    <label end="7" start="5" name="dt"/>
+                    <label end="18" start="9" name="nn"/>
+                    <label end="25" start="20" name="nns"/>
+                    <label end="30" start="27" name="VBD"/>
+                    <label end="38" start="32" name="VVN"/>
+                    <label end="41" start="40" name="in"/>
+                    <label end="47" start="43" name="nn"/>
+                    <label end="49" start="49" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/21/2008 11:50:31 PDT Wed" status="MANUAL" ID="2406246">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="38" start="32" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="12607" end="25" start="5" name="Protagonist"/>
+                    <label cBy="597" feID="12603" end="47" start="40" name="State_of_affairs"/>
+                    <label cBy="597" feID="12602" itype="CNI" name="Preventing_cause"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="25" start="5" name="Ext"/>
+                    <label end="47" start="40" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="25" start="5" name="NP"/>
+                    <label end="47" start="40" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="A" name="meritorious.a" ID="7330" frame="Praiseworthiness" frameID="399" totalAnnotated="6" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="Beh" name="Behavior"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Eval" name="Evaluee"/>
+            <FE fgColor="000000" bgColor="7FFF00" type="Peripheral" abbrev="" name="Judge"/>
+        </frame>
+    </header>
+    <definition>COD: deserving reward or praise</definition>
+    <lexeme POS="A" name="meritorious"/>
+    <valences>
+        <FERealization total="4">
+            <FE name="Behavior"/>
+            <pattern total="3">
+                <valenceUnit GF="Head" PT="N" FE="Behavior"/>
+                <annoSet ID="1692509"/>
+                <annoSet ID="1692513"/>
+                <annoSet ID="1692519"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="VPto" FE="Behavior"/>
+                <annoSet ID="1692533"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Degree"/>
+            <pattern total="4">
+                <valenceUnit GF="Dep" PT="AVP" FE="Degree"/>
+                <annoSet ID="1692509"/>
+                <annoSet ID="1692521"/>
+                <annoSet ID="1692523"/>
+                <annoSet ID="1692533"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Evaluee"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Evaluee"/>
+                <annoSet ID="1692521"/>
+                <annoSet ID="1692523"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Behavior"/>
+            <pattern total="2">
+                <valenceUnit GF="Head" PT="N" FE="Behavior"/>
+                <annoSet ID="1692513"/>
+                <annoSet ID="1692519"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Behavior"/>
+            <FE name="Degree"/>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="N" FE="Behavior"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Degree"/>
+                <annoSet ID="1692509"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="VPto" FE="Behavior"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Degree"/>
+                <annoSet ID="1692533"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Degree"/>
+            <FE name="Evaluee"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="AVP" FE="Degree"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Evaluee"/>
+                <annoSet ID="1692521"/>
+                <annoSet ID="1692523"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="A-001-all">
+        <sentence sentNo="0" aPos="7422823" ID="1120687">
+            <text>THE captain of the USS Vincennes , which shot down the Iranian airbus , has been awarded a medal for ` exceptionally meritorious conduct &quot; . </text>
+            <annotationSet cDate="01/08/2003 03:15:02 PST Wed" status="UNANN" ID="1692508">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="10" start="4" name="NN1"/>
+                    <label end="13" start="12" name="PRF"/>
+                    <label end="17" start="15" name="AT0"/>
+                    <label end="21" start="19" name="NP0"/>
+                    <label end="31" start="23" name="NP0"/>
+                    <label end="33" start="33" name="PUN"/>
+                    <label end="39" start="35" name="DTQ"/>
+                    <label end="44" start="41" name="VVD"/>
+                    <label end="49" start="46" name="AVP"/>
+                    <label end="53" start="51" name="AT0"/>
+                    <label end="61" start="55" name="AJ0"/>
+                    <label end="68" start="63" name="NN1"/>
+                    <label end="70" start="70" name="PUN"/>
+                    <label end="74" start="72" name="VHZ"/>
+                    <label end="79" start="76" name="VBN"/>
+                    <label end="87" start="81" name="VVN"/>
+                    <label end="89" start="89" name="AT0"/>
+                    <label end="95" start="91" name="NN1"/>
+                    <label end="99" start="97" name="PRP"/>
+                    <label end="101" start="101" name="PUQ"/>
+                    <label end="115" start="103" name="AV0"/>
+                    <label end="127" start="117" name="AJ0"/>
+                    <label end="135" start="129" name="NN1"/>
+                    <label end="137" start="137" name="PUQ"/>
+                    <label end="139" start="139" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 03:15:02 PST Wed" status="MANUAL" ID="1692509">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3609" end="115" start="103" name="Degree"/>
+                    <label cBy="618" feID="3593" end="135" start="129" name="Behavior"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="115" start="103" name="Dep"/>
+                    <label end="135" start="129" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="115" start="103" name="AVP"/>
+                    <label end="135" start="129" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="127" start="117" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="20199010" ID="1120689">
+            <text>THE AWARD for meritorious service under adverse conditions at a scientific conference goes to Charles Weissman of the University of Zurich who gave a keynote address at the recent recombinant DNA congress in Philadelphia . </text>
+            <annotationSet cDate="01/08/2003 03:15:02 PST Wed" status="UNANN" ID="1692512">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="8" start="4" name="NN1"/>
+                    <label end="12" start="10" name="PRP"/>
+                    <label end="24" start="14" name="AJ0"/>
+                    <label end="32" start="26" name="NN1"/>
+                    <label end="38" start="34" name="PRP"/>
+                    <label end="46" start="40" name="AJ0"/>
+                    <label end="57" start="48" name="NN2"/>
+                    <label end="60" start="59" name="PRP"/>
+                    <label end="62" start="62" name="AT0"/>
+                    <label end="73" start="64" name="AJ0"/>
+                    <label end="84" start="75" name="NN1"/>
+                    <label end="89" start="86" name="VVZ"/>
+                    <label end="92" start="91" name="PRP"/>
+                    <label end="100" start="94" name="NP0"/>
+                    <label end="109" start="102" name="NN1"/>
+                    <label end="112" start="111" name="PRF"/>
+                    <label end="116" start="114" name="AT0"/>
+                    <label end="127" start="118" name="NN1"/>
+                    <label end="130" start="129" name="PRF"/>
+                    <label end="137" start="132" name="NP0"/>
+                    <label end="141" start="139" name="PNQ"/>
+                    <label end="146" start="143" name="VVD"/>
+                    <label end="148" start="148" name="AT0"/>
+                    <label end="156" start="150" name="NN1"/>
+                    <label end="164" start="158" name="NN1"/>
+                    <label end="167" start="166" name="PRP"/>
+                    <label end="171" start="169" name="AT0"/>
+                    <label end="178" start="173" name="AJ0"/>
+                    <label end="190" start="180" name="AJ0-NN1"/>
+                    <label end="194" start="192" name="NN1"/>
+                    <label end="203" start="196" name="NN0"/>
+                    <label end="206" start="205" name="PRP"/>
+                    <label end="219" start="208" name="NP0"/>
+                    <label end="221" start="221" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 03:15:02 PST Wed" status="MANUAL" ID="1692513">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3593" end="84" start="26" name="Behavior"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="84" start="26" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="84" start="26" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="24" start="14" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="28121641" ID="1120692">
+            <text>And nine unnamed UDR soldiers have been given honours ranging from a CBE to Mentions-in-Despatches in awards for gallant or meritorious service . </text>
+            <annotationSet cDate="01/08/2003 03:15:03 PST Wed" status="UNANN" ID="1692518">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="CJC"/>
+                    <label end="7" start="4" name="CRD"/>
+                    <label end="15" start="9" name="AJ0"/>
+                    <label end="19" start="17" name="NN1"/>
+                    <label end="28" start="21" name="NN2"/>
+                    <label end="33" start="30" name="VHB"/>
+                    <label end="38" start="35" name="VBN"/>
+                    <label end="44" start="40" name="VVN"/>
+                    <label end="52" start="46" name="NN2"/>
+                    <label end="60" start="54" name="VVG"/>
+                    <label end="65" start="62" name="PRP"/>
+                    <label end="67" start="67" name="AT0"/>
+                    <label end="71" start="69" name="NN1"/>
+                    <label end="74" start="73" name="PRP"/>
+                    <label end="97" start="76" name="NN2"/>
+                    <label end="100" start="99" name="PRP"/>
+                    <label end="107" start="102" name="NN2"/>
+                    <label end="111" start="109" name="PRP"/>
+                    <label end="119" start="113" name="AJ0-NN1"/>
+                    <label end="122" start="121" name="CJC"/>
+                    <label end="134" start="124" name="AJ0"/>
+                    <label end="142" start="136" name="NN1"/>
+                    <label end="144" start="144" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 03:15:03 PST Wed" status="MANUAL" ID="1692519">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3593" end="142" start="136" name="Behavior"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="142" start="136" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="142" start="136" name="N"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="134" start="124" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="40518264" ID="1120693">
+            <text>Indeed , he points out that traditionally the IEEE has not been swayed by big name support if it feels another technology is more meritorious . </text>
+            <annotationSet cDate="01/08/2003 03:15:03 PST Wed" status="UNANN" ID="1692520">
+                <layer rank="1" name="BNC">
+                    <label end="5" start="0" name="AV0"/>
+                    <label end="7" start="7" name="PUN"/>
+                    <label end="10" start="9" name="PNP"/>
+                    <label end="17" start="12" name="VVZ"/>
+                    <label end="21" start="19" name="AVP"/>
+                    <label end="26" start="23" name="CJT-DT0"/>
+                    <label end="40" start="28" name="AV0"/>
+                    <label end="44" start="42" name="AT0"/>
+                    <label end="49" start="46" name="NN0"/>
+                    <label end="53" start="51" name="VHZ"/>
+                    <label end="57" start="55" name="XX0"/>
+                    <label end="62" start="59" name="VBN"/>
+                    <label end="69" start="64" name="VVN"/>
+                    <label end="72" start="71" name="PRP"/>
+                    <label end="76" start="74" name="AJ0"/>
+                    <label end="81" start="78" name="NN1"/>
+                    <label end="89" start="83" name="NN1"/>
+                    <label end="92" start="91" name="CJS"/>
+                    <label end="95" start="94" name="PNP"/>
+                    <label end="101" start="97" name="VVZ"/>
+                    <label end="109" start="103" name="DT0"/>
+                    <label end="120" start="111" name="NN1"/>
+                    <label end="123" start="122" name="VBZ"/>
+                    <label end="128" start="125" name="AV0"/>
+                    <label end="140" start="130" name="AJ0"/>
+                    <label end="142" start="142" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 03:15:03 PST Wed" status="MANUAL" ID="1692521">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3592" end="120" start="103" name="Evaluee"/>
+                    <label cBy="618" feID="3609" end="128" start="125" name="Degree"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="120" start="103" name="Ext"/>
+                    <label end="128" start="125" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="120" start="103" name="NP"/>
+                    <label end="128" start="125" name="AVP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="140" start="130" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj">
+                    <label end="123" start="122" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="42405190" ID="1120694">
+            <text>In America recalcitrant administrators who implement the regulation of industry with excessive enthusiasm are noticed , and quickly purchased for private sector employment if they are exceptionally meritorious . </text>
+            <annotationSet cDate="01/08/2003 03:15:03 PST Wed" status="UNANN" ID="1692522">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PRP"/>
+                    <label end="9" start="3" name="NP0"/>
+                    <label end="22" start="11" name="AJ0-NN1"/>
+                    <label end="37" start="24" name="NN2"/>
+                    <label end="41" start="39" name="PNQ"/>
+                    <label end="51" start="43" name="VVB"/>
+                    <label end="55" start="53" name="AT0"/>
+                    <label end="66" start="57" name="NN1"/>
+                    <label end="69" start="68" name="PRF"/>
+                    <label end="78" start="71" name="NN1"/>
+                    <label end="83" start="80" name="PRP"/>
+                    <label end="93" start="85" name="AJ0"/>
+                    <label end="104" start="95" name="NN1"/>
+                    <label end="108" start="106" name="VBB"/>
+                    <label end="116" start="110" name="VVN"/>
+                    <label end="118" start="118" name="PUN"/>
+                    <label end="122" start="120" name="CJC"/>
+                    <label end="130" start="124" name="AV0"/>
+                    <label end="140" start="132" name="VVD-VVN"/>
+                    <label end="144" start="142" name="PRP"/>
+                    <label end="152" start="146" name="AJ0"/>
+                    <label end="159" start="154" name="NN1"/>
+                    <label end="170" start="161" name="NN1"/>
+                    <label end="173" start="172" name="CJS"/>
+                    <label end="178" start="175" name="PNP"/>
+                    <label end="182" start="180" name="VBB"/>
+                    <label end="196" start="184" name="AV0"/>
+                    <label end="208" start="198" name="AJ0"/>
+                    <label end="210" start="210" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 03:15:03 PST Wed" status="MANUAL" ID="1692523">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3592" end="178" start="175" name="Evaluee"/>
+                    <label cBy="618" feID="3609" end="196" start="184" name="Degree"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="178" start="175" name="Ext"/>
+                    <label end="196" start="184" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="178" start="175" name="NP"/>
+                    <label end="196" start="184" name="AVP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="208" start="198" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj">
+                    <label end="182" start="180" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="88625440" ID="1120699">
+            <text>To kill it with two blows is less meritorious ! &quot; </text>
+            <annotationSet cDate="01/08/2003 03:15:04 PST Wed" status="UNANN" ID="1692532">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="TO0"/>
+                    <label end="6" start="3" name="VVI"/>
+                    <label end="9" start="8" name="PNP"/>
+                    <label end="14" start="11" name="PRP"/>
+                    <label end="18" start="16" name="CRD"/>
+                    <label end="24" start="20" name="NN2"/>
+                    <label end="27" start="26" name="VBZ"/>
+                    <label end="32" start="29" name="AV0"/>
+                    <label end="44" start="34" name="AJ0"/>
+                    <label end="46" start="46" name="PUN"/>
+                    <label end="48" start="48" name="PUQ"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 03:15:04 PST Wed" status="MANUAL" ID="1692533">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="3593" end="24" start="0" name="Behavior"/>
+                    <label cBy="618" feID="3609" end="32" start="29" name="Degree"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="24" start="0" name="Ext"/>
+                    <label end="32" start="29" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="24" start="0" name="VPto"/>
+                    <label end="32" start="29" name="AVP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="44" start="34" name="Target"/>
+                </layer>
+                <layer rank="1" name="Adj">
+                    <label end="27" start="26" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

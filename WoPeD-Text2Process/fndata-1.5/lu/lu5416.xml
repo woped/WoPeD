@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" POS="N" name="tetralogy.n" ID="5416" frame="Text" frameID="298" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Peripheral" abbrev="Author" name="Author"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Extra-Thematic" abbrev="Cmpnt" name="Components"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Extra-Thematic" abbrev="Cont_text" name="Containing_text"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Genre" name="Genre"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Extra-Thematic" abbrev="Hon" name="Honoree"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Extra-Thematic" abbrev="Mat" name="Material"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Medium" name="Medium"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Core" abbrev="Text" name="Text"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Extra-Thematic" abbrev="Time" name="Time_of_creation"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Extra-Thematic" abbrev="Title" name="Title"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Top" name="Topic"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Use" name="Use"/>
+        </frame>
+    </header>
+    <definition>COD: a group of four related literary or operatic works. </definition>
+    <lexeme POS="N" name="tetralogy"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Genre"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Genre"/>
+                <annoSet ID="1156422"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Text"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Text"/>
+                <annoSet ID="1156422"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Genre"/>
+            <FE name="Text"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Genre"/>
+                <valenceUnit GF="" PT="DEN" FE="Text"/>
+                <annoSet ID="1156422"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-001-all">
+        <sentence sentNo="0" aPos="67601510" ID="850617">
+            <text>In 1938 White published The Sword in the Stone , the first instalment of what was to become an Arthurian tetralogy entitled The Once and Future King . </text>
+            <annotationSet cDate="01/07/2003 04:55:00 PST Tue" status="UNANN" ID="1156421">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PRP"/>
+                    <label end="6" start="3" name="CRD"/>
+                    <label end="12" start="8" name="NP0"/>
+                    <label end="22" start="14" name="VVD"/>
+                    <label end="26" start="24" name="AT0"/>
+                    <label end="32" start="28" name="NN1-NP0"/>
+                    <label end="35" start="34" name="PRP"/>
+                    <label end="39" start="37" name="AT0"/>
+                    <label end="45" start="41" name="NN1-NP0"/>
+                    <label end="47" start="47" name="PUN"/>
+                    <label end="51" start="49" name="AT0"/>
+                    <label end="57" start="53" name="ORD"/>
+                    <label end="68" start="59" name="NN1"/>
+                    <label end="71" start="70" name="PRF"/>
+                    <label end="76" start="73" name="DTQ"/>
+                    <label end="80" start="78" name="VBD"/>
+                    <label end="83" start="82" name="TO0"/>
+                    <label end="90" start="85" name="VVI"/>
+                    <label end="93" start="92" name="AT0"/>
+                    <label end="103" start="95" name="AJ0"/>
+                    <label end="113" start="105" name="NN1"/>
+                    <label end="122" start="115" name="VVD-VVN"/>
+                    <label end="126" start="124" name="AT0"/>
+                    <label end="131" start="128" name="AV0"/>
+                    <label end="135" start="133" name="CJC"/>
+                    <label end="142" start="137" name="AJ0"/>
+                    <label end="147" start="144" name="NN1"/>
+                    <label end="149" start="149" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 04:55:00 PST Tue" status="MANUAL" ID="1156422">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="2550" end="103" start="95" name="Genre"/>
+                    <label cBy="669" feID="2545" end="113" start="105" name="Text"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="103" start="95" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="103" start="95" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="113" start="105" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

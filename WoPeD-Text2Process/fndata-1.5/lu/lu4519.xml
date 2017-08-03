@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="V" name="link.v" ID="4519" frame="Make_cognitive_connection" frameID="252" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="000000" bgColor="7FFF00" type="Extra-Thematic" abbrev="" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Cog" name="Cognizer"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Core" abbrev="Concepts" name="Concepts"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Core" abbrev="Concept1" name="Concept_1"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Core" abbrev="Concept2" name="Concept_2"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="Evid" name="Evidence"/>
+            <FE fgColor="000000" bgColor="FFA500" type="Extra-Thematic" abbrev="Fre" name="Frequency"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Pla" name="Place"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Peripheral" abbrev="Tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: make, form, or suggest a link with or between.</definition>
+    <lexeme POS="V" name="link"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Cognizer"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Cognizer"/>
+                <annoSet ID="2593432"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Concept_1"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Concept_1"/>
+                <annoSet ID="2593432"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Concept_2"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Concept_2"/>
+                <annoSet ID="2593432"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Cognizer"/>
+            <FE name="Concept_1"/>
+            <FE name="Concept_2"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Cognizer"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Concept_1"/>
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Concept_2"/>
+                <annoSet ID="2593432"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-NP-T-NP-(1)"/>
+    <subCorpus name="02-NP-T-NP-PPwith-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="33" aPos="47273344" ID="1579407">
+            <text>Seminars link film with cultural identity</text>
+            <annotationSet cDate="07/16/2010 03:48:05 PDT Fri" status="UNANN" ID="2593431">
+                <layer rank="1" name="PENN">
+                    <label end="7" start="0" name="nns"/>
+                    <label end="12" start="9" name="VVP"/>
+                    <label end="17" start="14" name="nn"/>
+                    <label end="22" start="19" name="in"/>
+                    <label end="31" start="24" name="jj"/>
+                    <label end="40" start="33" name="nn"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/16/2010 03:48:05 PDT Fri" status="MANUAL" ID="2593432">
+                <layer rank="1" name="Target">
+                    <label cBy="571" end="12" start="9" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="571" feID="2193" end="7" start="0" name="Cognizer"/>
+                    <label cBy="571" feID="2190" end="17" start="14" name="Concept_1"/>
+                    <label cBy="571" feID="2191" end="40" start="19" name="Concept_2"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="7" start="0" name="Ext"/>
+                    <label end="17" start="14" name="Obj"/>
+                    <label end="40" start="19" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="7" start="0" name="NP"/>
+                    <label end="17" start="14" name="NP"/>
+                    <label end="40" start="19" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="03-T-PPwith-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

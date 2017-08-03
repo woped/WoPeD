@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="N" name="pattern.n" ID="15335" frame="Pattern" frameID="2133" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFF00" bgColor="00008B" type="Peripheral" abbrev="Desc" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Ents" name="Entities"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Peripheral" abbrev="Name" name="Name"/>
+        </frame>
+    </header>
+    <definition>FN: a configuration of entities, concrete or abstract</definition>
+    <lexeme POS="N" name="pattern"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Descriptor"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Descriptor"/>
+                <annoSet ID="2584721"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Entities"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Entities"/>
+                <annoSet ID="2584721"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Descriptor"/>
+            <FE name="Entities"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Descriptor"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Entities"/>
+                <annoSet ID="2584721"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-PPOF-(1)">
+        <sentence corpID="111" docID="421" sentNo="6" paragNo="25" aPos="43933189" ID="1575051">
+            <text>These different patterns of inheritance are bound to have an effect upon the relationships between siblings .</text>
+            <annotationSet cDate="07/15/2010 12:56:04 PDT Thu" status="UNANN" ID="2584720">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="dt"/>
+                    <label end="14" start="6" name="jj"/>
+                    <label end="23" start="16" name="nns"/>
+                    <label end="26" start="25" name="in"/>
+                    <label end="38" start="28" name="nn"/>
+                    <label end="42" start="40" name="vbp"/>
+                    <label end="48" start="44" name="VVN"/>
+                    <label end="51" start="50" name="to"/>
+                    <label end="56" start="53" name="VH"/>
+                    <label end="59" start="58" name="dt"/>
+                    <label end="66" start="61" name="nn"/>
+                    <label end="71" start="68" name="in"/>
+                    <label end="75" start="73" name="dt"/>
+                    <label end="89" start="77" name="nns"/>
+                    <label end="97" start="91" name="in"/>
+                    <label end="106" start="99" name="nns"/>
+                    <label end="108" start="108" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/15/2010 12:56:04 PDT Thu" status="MANUAL" ID="2584721">
+                <layer rank="1" name="Target">
+                    <label cBy="571" end="23" start="16" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="571" feID="13169" end="38" start="25" name="Entities"/>
+                    <label cBy="571" feID="13171" end="14" start="6" name="Descriptor"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="38" start="25" name="Dep"/>
+                    <label end="14" start="6" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="38" start="25" name="PP"/>
+                    <label end="14" start="6" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-Wwavy-T-(1)"/>
+    <subCorpus name="03-Wcrisscrossed-T-(1)"/>
+    <subCorpus name="04-Wcheckered-T-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

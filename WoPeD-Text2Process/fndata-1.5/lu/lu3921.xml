@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="slosh.v" ID="3921" frame="Self_motion" frameID="64" totalAnnotated="5" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Core" abbrev="Area" name="Area"/>
+            <FE fgColor="000000" bgColor="FF0000" type="Extra-Thematic" abbrev="" name="Concessive"/>
+            <FE fgColor="000000" bgColor="A52A2A" type="Extra-Thematic" abbrev="coo" name="Coordinated_event"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Extra-Thematic" abbrev="Thm_c" name="Cotheme"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="000000" bgColor="d0d0d0" type="Core" abbrev="dir" name="Direction"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Peripheral" abbrev="Dist" name="Distance"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Peripheral" abbrev="Dur" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="90876C" type="Extra-Thematic" abbrev="ext" name="External_cause"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Goal" name="Goal"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Extra-Thematic" abbrev="Cause" name="Internal_cause"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Path" name="Path"/>
+            <FE fgColor="000000" bgColor="FF00FF" type="Peripheral" abbrev="" name="Path_shape"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="A9A9A9" type="Extra-Thematic" abbrev="" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD73" type="Extra-Thematic" abbrev="Result" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="SMov" name="Self_mover"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="Src" name="Source"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="Spd" name="Speed"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: move through liquid with a splashing sound</definition>
+    <lexeme POS="V" name="slosh"/>
+    <valences>
+        <FERealization total="3">
+            <FE name="Area"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="AVP" FE="Area"/>
+                <annoSet ID="1602871"/>
+                <annoSet ID="1602897"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Area"/>
+                <annoSet ID="1602871"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[about]" FE="Area"/>
+                <annoSet ID="1602915"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Depictive"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Depictive"/>
+                <annoSet ID="1602897"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Path"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[through]" FE="Path"/>
+                <annoSet ID="1602897"/>
+                <annoSet ID="1602919"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Self_mover"/>
+            <pattern total="4">
+                <valenceUnit GF="Ext" PT="NP" FE="Self_mover"/>
+                <annoSet ID="1602871"/>
+                <annoSet ID="1602897"/>
+                <annoSet ID="1602913"/>
+                <annoSet ID="1602919"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Self_mover"/>
+                <annoSet ID="1602915"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Source"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[out]" FE="Source"/>
+                <annoSet ID="1602913"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Area"/>
+            <FE name="Area"/>
+            <FE name="Self_mover"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Area"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Area"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Self_mover"/>
+                <annoSet ID="1602871"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Area"/>
+            <FE name="Depictive"/>
+            <FE name="Path"/>
+            <FE name="Self_mover"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Area"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Depictive"/>
+                <valenceUnit GF="Dep" PT="PP[through]" FE="Path"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Self_mover"/>
+                <annoSet ID="1602897"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Area"/>
+            <FE name="Self_mover"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[about]" FE="Area"/>
+                <valenceUnit GF="" PT="CNI" FE="Self_mover"/>
+                <annoSet ID="1602915"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Path"/>
+            <FE name="Self_mover"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[through]" FE="Path"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Self_mover"/>
+                <annoSet ID="1602919"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Self_mover"/>
+            <FE name="Source"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Self_mover"/>
+                <valenceUnit GF="Dep" PT="PP[out]" FE="Source"/>
+                <annoSet ID="1602913"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-001-all">
+        <sentence sentNo="0" aPos="5562781" ID="1075733">
+            <text>People had been very cold and were sloshing about in the mud from the day before . </text>
+            <annotationSet cDate="01/08/2003 01:26:14 PST Wed" status="UNANN" ID="1602870">
+                <layer rank="1" name="BNC">
+                    <label end="5" start="0" name="NN0"/>
+                    <label end="9" start="7" name="VHD"/>
+                    <label end="14" start="11" name="VBN"/>
+                    <label end="19" start="16" name="AJ0-AV0"/>
+                    <label end="24" start="21" name="AJ0-NN1"/>
+                    <label end="28" start="26" name="CJC"/>
+                    <label end="33" start="30" name="VBD"/>
+                    <label end="42" start="35" name="VVG"/>
+                    <label end="48" start="44" name="AVP"/>
+                    <label end="51" start="50" name="PRP"/>
+                    <label end="55" start="53" name="AT0"/>
+                    <label end="59" start="57" name="NN1"/>
+                    <label end="64" start="61" name="PRP"/>
+                    <label end="68" start="66" name="AT0"/>
+                    <label end="72" start="70" name="NN1"/>
+                    <label end="79" start="74" name="PRP"/>
+                    <label end="81" start="81" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 01:26:14 PST Wed" status="MANUAL" ID="1602871">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="285" end="5" start="0" name="Self_mover"/>
+                    <label cBy="618" feID="291" end="48" start="44" name="Area"/>
+                    <label cBy="618" feID="291" end="79" start="50" name="Area"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="5" start="0" name="Ext"/>
+                    <label end="48" start="44" name="Dep"/>
+                    <label end="79" start="50" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="5" start="0" name="NP"/>
+                    <label end="48" start="44" name="AVP"/>
+                    <label end="79" start="50" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="42" start="35" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="41146749" ID="1075746">
+            <text>The floors of these little hellholes are awash with stinking chemical waste , through which workers slosh around in rubber boots . </text>
+            <annotationSet cDate="01/08/2003 01:26:16 PST Wed" status="UNANN" ID="1602896">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="9" start="4" name="NN2"/>
+                    <label end="12" start="11" name="PRF"/>
+                    <label end="18" start="14" name="DT0"/>
+                    <label end="25" start="20" name="AJ0"/>
+                    <label end="35" start="27" name="NN2"/>
+                    <label end="39" start="37" name="VBB"/>
+                    <label end="45" start="41" name="AJ0"/>
+                    <label end="50" start="47" name="PRP"/>
+                    <label end="59" start="52" name="AJ0-VVG"/>
+                    <label end="68" start="61" name="AJ0-NN1"/>
+                    <label end="74" start="70" name="NN1"/>
+                    <label end="76" start="76" name="PUN"/>
+                    <label end="84" start="78" name="PRP"/>
+                    <label end="90" start="86" name="DTQ"/>
+                    <label end="98" start="92" name="NN2"/>
+                    <label end="104" start="100" name="VVB"/>
+                    <label end="111" start="106" name="AVP"/>
+                    <label end="114" start="113" name="PRP"/>
+                    <label end="121" start="116" name="AJ0"/>
+                    <label end="127" start="123" name="NN2"/>
+                    <label end="129" start="129" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 01:26:16 PST Wed" status="MANUAL" ID="1602897">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="291" end="111" start="106" name="Area"/>
+                    <label cBy="618" feID="285" end="98" start="92" name="Self_mover"/>
+                    <label cBy="618" feID="287" end="74" start="52" name="Path"/>
+                    <label cBy="618" feID="1982" end="127" start="113" name="Depictive"/>
+                    <label cBy="309" feID="287" end="90" start="78" name="Path"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="111" start="106" name="Dep"/>
+                    <label end="74" start="52" name="Dep"/>
+                    <label end="98" start="92" name="Ext"/>
+                    <label end="127" start="113" name="Dep"/>
+                    <label end="90" start="78" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="111" start="106" name="AVP"/>
+                    <label end="74" start="52" name="PP"/>
+                    <label end="98" start="92" name="NP"/>
+                    <label end="127" start="113" name="PP"/>
+                    <label end="90" start="78" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other">
+                    <label end="74" start="52" name="Ant"/>
+                    <label end="90" start="86" name="Rel"/>
+                </layer>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="104" start="100" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="70299279" ID="1075754">
+            <text>She sat up , and sloshed out of the tank . </text>
+            <annotationSet cDate="01/08/2003 01:26:17 PST Wed" status="UNANN" ID="1602912">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="PNP"/>
+                    <label end="6" start="4" name="VVD"/>
+                    <label end="9" start="8" name="AVP"/>
+                    <label end="11" start="11" name="PUN"/>
+                    <label end="15" start="13" name="CJC"/>
+                    <label end="23" start="17" name="VVD-VVN"/>
+                    <label end="27" start="25" name="PRP"/>
+                    <label end="30" start="29" name="PRP"/>
+                    <label end="34" start="32" name="AT0"/>
+                    <label end="39" start="36" name="NN1"/>
+                    <label end="41" start="41" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 01:26:17 PST Wed" status="MANUAL" ID="1602913">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="285" end="2" start="0" name="Self_mover"/>
+                    <label cBy="618" feID="286" end="39" start="25" name="Source"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="2" start="0" name="Ext"/>
+                    <label end="39" start="25" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="2" start="0" name="NP"/>
+                    <label end="39" start="25" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="23" start="17" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="72448571" ID="1075755">
+            <text>A great deal of effort and sloshing about is suggested by the drawing . </text>
+            <annotationSet cDate="01/08/2003 01:26:17 PST Wed" status="UNANN" ID="1602914">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="AT0"/>
+                    <label end="6" start="2" name="AJ0"/>
+                    <label end="11" start="8" name="NN1"/>
+                    <label end="14" start="13" name="PRF"/>
+                    <label end="21" start="16" name="NN1"/>
+                    <label end="25" start="23" name="CJC"/>
+                    <label end="34" start="27" name="VVG"/>
+                    <label end="40" start="36" name="AVP-PRP"/>
+                    <label end="43" start="42" name="VBZ"/>
+                    <label end="53" start="45" name="VVN"/>
+                    <label end="56" start="55" name="PRP"/>
+                    <label end="60" start="58" name="AT0"/>
+                    <label end="68" start="62" name="NN1"/>
+                    <label end="70" start="70" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 01:26:17 PST Wed" status="MANUAL" ID="1602915">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="291" end="40" start="36" name="Area"/>
+                    <label cBy="618" feID="285" itype="CNI" name="Self_mover"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="40" start="36" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="40" start="36" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="34" start="27" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="79221567" ID="1075757">
+            <text>They sloshed through the mudholes and stepping stones of the twilight subway , nudging each other with a staccato of Derek questions and Alex answers until city grey daylight . </text>
+            <annotationSet cDate="01/08/2003 01:26:17 PST Wed" status="UNANN" ID="1602918">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="PNP"/>
+                    <label end="11" start="5" name="VVD"/>
+                    <label end="19" start="13" name="PRP"/>
+                    <label end="23" start="21" name="AT0"/>
+                    <label end="32" start="25" name="NN2"/>
+                    <label end="36" start="34" name="CJC"/>
+                    <label end="45" start="38" name="AJ0-VVG"/>
+                    <label end="52" start="47" name="NN2"/>
+                    <label end="55" start="54" name="PRF"/>
+                    <label end="59" start="57" name="AT0"/>
+                    <label end="68" start="61" name="NN1"/>
+                    <label end="75" start="70" name="NN1"/>
+                    <label end="77" start="77" name="PUN"/>
+                    <label end="85" start="79" name="VVG"/>
+                    <label end="90" start="87" name="PNX"/>
+                    <label end="96" start="92" name="PNX"/>
+                    <label end="101" start="98" name="PRP"/>
+                    <label end="103" start="103" name="AT0"/>
+                    <label end="112" start="105" name="NN1"/>
+                    <label end="115" start="114" name="PRF"/>
+                    <label end="121" start="117" name="NP0"/>
+                    <label end="131" start="123" name="NN2"/>
+                    <label end="135" start="133" name="CJC"/>
+                    <label end="140" start="137" name="NP0"/>
+                    <label end="148" start="142" name="NN2-VVZ"/>
+                    <label end="154" start="150" name="CJS-PRP"/>
+                    <label end="159" start="156" name="NN1"/>
+                    <label end="164" start="161" name="AJ0"/>
+                    <label end="173" start="166" name="NN1"/>
+                    <label end="175" start="175" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 01:26:17 PST Wed" status="MANUAL" ID="1602919">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="285" end="3" start="0" name="Self_mover"/>
+                    <label cBy="618" feID="287" end="75" start="13" name="Path"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="3" start="0" name="Ext"/>
+                    <label end="75" start="13" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="3" start="0" name="NP"/>
+                    <label end="75" start="13" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="11" start="5" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

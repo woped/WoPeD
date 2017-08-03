@@ -335,4 +335,4 @@ public class AboutUI extends JDialog
         return buttonPanel;
     }
     
-} // @jve:visual-info decl-index=0 visual-constraint="0,0"
+}

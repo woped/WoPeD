@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" POS="V" name="read.v" ID="15711" frame="Categorization" frameID="21" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="MASC" ID="150">
+            <document description="read" ID="19335"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Cat" name="Category"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Cog" name="Cognizer"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Extra-Thematic" abbrev="" name="Concessive"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Core" abbrev="Crit" name="Criteria"/>
+            <FE fgColor="000000" bgColor="008000" type="Extra-Thematic" abbrev="" name="Explanation"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Item" name="Item"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Tm" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: to interpret in a certain way</definition>
+    <lexeme POS="V" name="read"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Category"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Category"/>
+                <annoSet ID="2533839"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Cognizer"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Cognizer"/>
+                <annoSet ID="2533839"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Item"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Item"/>
+                <annoSet ID="2533839"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Category"/>
+            <FE name="Cognizer"/>
+            <FE name="Item"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Category"/>
+                <valenceUnit GF="" PT="CNI" FE="Cognizer"/>
+                <valenceUnit GF="" PT="DNI" FE="Item"/>
+                <annoSet ID="2533839"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="manually-added">
+        <sentence corpID="150" docID="19335" sentNo="2" paragNo="2" aPos="0" ID="1540716">
+            <text>The ferry timetable runs on a winter ( read curtailed ) service until the first week in May .</text>
+            <annotationSet cDate="12/04/2009 04:43:40 PST Fri" status="UNANN" ID="2524335">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="8" start="4" name="nn"/>
+                    <label end="18" start="10" name="nn"/>
+                    <label end="23" start="20" name="VVZ"/>
+                    <label end="26" start="25" name="in"/>
+                    <label end="28" start="28" name="dt"/>
+                    <label end="35" start="30" name="nn"/>
+                    <label end="37" start="37" name="("/>
+                    <label end="42" start="39" name="VV"/>
+                    <label end="52" start="44" name="VVN"/>
+                    <label end="54" start="54" name=")"/>
+                    <label end="62" start="56" name="nn"/>
+                    <label end="68" start="64" name="in"/>
+                    <label end="72" start="70" name="dt"/>
+                    <label end="78" start="74" name="jj"/>
+                    <label end="83" start="80" name="nn"/>
+                    <label end="86" start="85" name="in"/>
+                    <label end="90" start="88" name="NP"/>
+                    <label end="92" start="92" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER">
+                    <label end="35" start="30" name="date"/>
+                    <label end="90" start="88" name="date"/>
+                </layer>
+                <layer rank="1" name="WSL">
+                    <label end="2" start="0" name="NT"/>
+                    <label end="26" start="25" name="NT"/>
+                    <label end="28" start="28" name="NT"/>
+                    <label end="37" start="37" name="NT"/>
+                    <label end="54" start="54" name="NT"/>
+                    <label end="68" start="64" name="NT"/>
+                    <label end="72" start="70" name="NT"/>
+                    <label end="86" start="85" name="NT"/>
+                    <label end="90" start="88" name="NT"/>
+                    <label end="92" start="92" name="NT"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="03/17/2010 12:04:17 PDT Wed" status="MANUAL" ID="2533839">
+                <layer rank="1" name="Target">
+                    <label cBy="976" end="42" start="39" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="976" feID="92" itype="CNI" name="Cognizer"/>
+                    <label cBy="976" feID="94" end="52" start="44" name="Category"/>
+                    <label cBy="976" feID="93" itype="DNI" name="Item"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="52" start="44" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="52" start="44" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

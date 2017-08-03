@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="V" name="kid.v" ID="5166" frame="Birth" frameID="281" totalAnnotated="3" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Child" name="Child"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Extra-Thematic" abbrev="cir" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Depict" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Core" abbrev="Egg" name="Egg"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Pop" name="Father"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Peripheral" abbrev="man" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Mom" name="Mother"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Core" abbrev="Par" name="Parents"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Extra-Thematic" abbrev="" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: (of a goat) give birth.</definition>
+    <lexeme POS="V" name="kid"/>
+    <valences>
+        <FERealization total="3">
+            <FE name="Child"/>
+            <pattern total="3">
+                <valenceUnit GF="" PT="INI" FE="Child"/>
+                <annoSet ID="1101439"/>
+                <annoSet ID="1101441"/>
+                <annoSet ID="1101443"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Mother"/>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="NP" FE="Mother"/>
+                <annoSet ID="1101439"/>
+                <annoSet ID="1101441"/>
+                <annoSet ID="1101443"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Time"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Time"/>
+                <annoSet ID="1101439"/>
+                <annoSet ID="1101443"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Child"/>
+            <FE name="Mother"/>
+            <FE name="Mother"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Child"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Mother"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Mother"/>
+                <annoSet ID="1101441"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Child"/>
+            <FE name="Mother"/>
+            <FE name="Time"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="INI" FE="Child"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Mother"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Time"/>
+                <annoSet ID="1101439"/>
+                <annoSet ID="1101443"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-429-s20-lcoll-after"/>
+    <subCorpus name="V-429-s20-lcoll-goat">
+        <sentence sentNo="0" aPos="48101456" ID="822449">
+            <text>Those with dairy goats may need to have some goats kidding in the autumn to obtain good supplies of milk in winter . </text>
+            <annotationSet cDate="01/07/2003 03:51:29 PST Tue" status="UNANN" ID="1101438">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="DT0"/>
+                    <label end="9" start="6" name="PRP"/>
+                    <label end="15" start="11" name="NN1"/>
+                    <label end="21" start="17" name="NN2"/>
+                    <label end="25" start="23" name="VM0"/>
+                    <label end="30" start="27" name="VVI"/>
+                    <label end="33" start="32" name="TO0"/>
+                    <label end="38" start="35" name="VHI"/>
+                    <label end="43" start="40" name="DT0"/>
+                    <label end="49" start="45" name="NN2"/>
+                    <label end="57" start="51" name="VVG"/>
+                    <label end="60" start="59" name="PRP"/>
+                    <label end="64" start="62" name="AT0"/>
+                    <label end="71" start="66" name="NN1"/>
+                    <label end="74" start="73" name="TO0"/>
+                    <label end="81" start="76" name="VVI"/>
+                    <label end="86" start="83" name="AJ0"/>
+                    <label end="95" start="88" name="NN2"/>
+                    <label end="98" start="97" name="PRF"/>
+                    <label end="103" start="100" name="NN1"/>
+                    <label end="106" start="105" name="PRP"/>
+                    <label end="113" start="108" name="NN1"/>
+                    <label end="115" start="115" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:51:29 PST Tue" status="MANUAL" ID="1101439">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="2439" end="49" start="40" name="Mother"/>
+                    <label cBy="296" feID="2443" end="71" start="59" name="Time"/>
+                    <label cBy="296" feID="2440" itype="INI" name="Child"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="49" start="40" name="Ext"/>
+                    <label end="71" start="59" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="49" start="40" name="NP"/>
+                    <label end="71" start="59" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="57" start="51" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="48102365" ID="822450">
+            <text>Goatlings can be inseminated as well as goats which have kidded before . </text>
+            <annotationSet cDate="01/07/2003 03:51:29 PST Tue" status="UNANN" ID="1101440">
+                <layer rank="1" name="BNC">
+                    <label end="8" start="0" name="NN2"/>
+                    <label end="12" start="10" name="VM0"/>
+                    <label end="15" start="14" name="VBI"/>
+                    <label end="27" start="17" name="VVN"/>
+                    <label end="30" start="29" name="AV0"/>
+                    <label end="35" start="32" name="AV0"/>
+                    <label end="38" start="37" name="CJS"/>
+                    <label end="44" start="40" name="NN2-VVZ"/>
+                    <label end="50" start="46" name="DTQ"/>
+                    <label end="55" start="52" name="VHB"/>
+                    <label end="62" start="57" name="VVN"/>
+                    <label end="69" start="64" name="PRP"/>
+                    <label end="71" start="71" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:51:29 PST Tue" status="MANUAL" ID="1101441">
+                <layer rank="1" name="FE">
+                    <label cBy="296" feID="2440" itype="INI" name="Child"/>
+                    <label cBy="605" feID="2439" end="44" start="40" name="Mother"/>
+                    <label cBy="605" feID="2439" end="50" start="46" name="Mother"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="44" start="40" name="Ext"/>
+                    <label end="50" start="46" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="44" start="40" name="NP"/>
+                    <label end="50" start="46" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other">
+                    <label end="44" start="40" name="Ant"/>
+                    <label end="50" start="46" name="Rel"/>
+                </layer>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="62" start="57" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-730-s20-ppin">
+        <sentence sentNo="0" aPos="48101545" ID="822451">
+            <text>Changing abruptly to the shorter , natural day-length in March brings the goats into season between April and June to kid in September to November . </text>
+            <annotationSet cDate="01/07/2003 03:51:29 PST Tue" status="UNANN" ID="1101442">
+                <layer rank="1" name="BNC">
+                    <label end="7" start="0" name="VVG"/>
+                    <label end="16" start="9" name="AV0"/>
+                    <label end="19" start="18" name="PRP"/>
+                    <label end="23" start="21" name="AT0"/>
+                    <label end="31" start="25" name="AJC"/>
+                    <label end="33" start="33" name="PUN"/>
+                    <label end="41" start="35" name="AJ0"/>
+                    <label end="52" start="43" name="NN1"/>
+                    <label end="55" start="54" name="PRP"/>
+                    <label end="61" start="57" name="NP0"/>
+                    <label end="68" start="63" name="VVZ"/>
+                    <label end="72" start="70" name="AT0"/>
+                    <label end="78" start="74" name="NN2"/>
+                    <label end="83" start="80" name="PRP"/>
+                    <label end="90" start="85" name="NN1"/>
+                    <label end="98" start="92" name="PRP"/>
+                    <label end="104" start="100" name="NP0"/>
+                    <label end="108" start="106" name="CJC"/>
+                    <label end="113" start="110" name="NP0"/>
+                    <label end="116" start="115" name="TO0"/>
+                    <label end="120" start="118" name="VVI"/>
+                    <label end="123" start="122" name="PRP"/>
+                    <label end="133" start="125" name="NP0"/>
+                    <label end="136" start="135" name="PRP"/>
+                    <label end="145" start="138" name="NP0"/>
+                    <label end="147" start="147" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 03:51:29 PST Tue" status="MANUAL" ID="1101443">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="2439" end="78" start="70" name="Mother"/>
+                    <label cBy="669" feID="2443" end="145" start="122" name="Time"/>
+                    <label cBy="296" feID="2440" itype="INI" name="Child"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="78" start="70" name="Ext"/>
+                    <label end="145" start="122" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="78" start="70" name="NP"/>
+                    <label end="145" start="122" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="120" start="118" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-780-s20-ppother"/>
+    <subCorpus name="V-810-s20-pother"/>
+    <subCorpus name="V-880-s20-intrans-simple"/>
+    <subCorpus name="V-890-s20-intrans-adverb"/>
+    <subCorpus name="V-900-s20-other"/>
+</lexUnit>

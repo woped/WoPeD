@@ -1,0 +1,814 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" incorporatedFE="Source" POS="V" name="shoplift.v" ID="2064" frame="Theft" frameID="94" totalAnnotated="11" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="AP" ID="113">
+            <document description="apwsE960221.0424" ID="7058"/>
+            <document description="apwsE970228.0398" ID="7063"/>
+            <document description="apwsE950713.0395" ID="7070"/>
+            <document description="apwsE950913.0213" ID="7087"/>
+        </corpus>
+        <frame>
+            <FE fgColor="000000" bgColor="00BFFF" type="Extra-Thematic" abbrev="Freq" name="Frequency"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="Goods" name="Goods"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Inst" name="Instrument"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Mnr" name="Manner"/>
+            <FE fgColor="000000" bgColor="7FFF00" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Perp" name="Perpetrator"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Peripheral" abbrev="Reas" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Core" abbrev="Src" name="Source"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Vict" name="Victim"/>
+        </frame>
+    </header>
+    <definition>FN: to steal goods from a store while pretending to be a customer.</definition>
+    <lexeme POS="V" name="shoplift"/>
+    <valences>
+        <FERealization total="11">
+            <FE name="Goods"/>
+            <pattern total="6">
+                <valenceUnit GF="" PT="INI" FE="Goods"/>
+                <annoSet ID="75911"/>
+                <annoSet ID="75913"/>
+                <annoSet ID="75915"/>
+                <annoSet ID="75919"/>
+                <annoSet ID="75927"/>
+                <annoSet ID="2052804"/>
+            </pattern>
+            <pattern total="5">
+                <valenceUnit GF="Obj" PT="NP" FE="Goods"/>
+                <annoSet ID="75907"/>
+                <annoSet ID="75909"/>
+                <annoSet ID="2052738"/>
+                <annoSet ID="2052748"/>
+                <annoSet ID="2052764"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="11">
+            <FE name="Perpetrator"/>
+            <pattern total="11">
+                <valenceUnit GF="Ext" PT="NP" FE="Perpetrator"/>
+                <annoSet ID="75907"/>
+                <annoSet ID="75909"/>
+                <annoSet ID="75911"/>
+                <annoSet ID="75913"/>
+                <annoSet ID="75915"/>
+                <annoSet ID="75919"/>
+                <annoSet ID="75927"/>
+                <annoSet ID="2052738"/>
+                <annoSet ID="2052748"/>
+                <annoSet ID="2052764"/>
+                <annoSet ID="2052804"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Place"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Place"/>
+                <annoSet ID="2052804"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Purpose"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="VPto" FE="Purpose"/>
+                <annoSet ID="2052748"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Reason"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Reason"/>
+                <annoSet ID="75911"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="Sub" FE="Reason"/>
+                <annoSet ID="75927"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="11">
+            <FE name="Source"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="2nd" FE="Source"/>
+                <annoSet ID="2052804"/>
+            </pattern>
+            <pattern total="8">
+                <valenceUnit GF="" PT="INC" FE="Source"/>
+                <annoSet ID="75907"/>
+                <annoSet ID="75911"/>
+                <annoSet ID="75913"/>
+                <annoSet ID="75915"/>
+                <annoSet ID="75919"/>
+                <annoSet ID="75927"/>
+                <annoSet ID="2052738"/>
+                <annoSet ID="2052748"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[from]" FE="Source"/>
+                <annoSet ID="75909"/>
+                <annoSet ID="2052764"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Time"/>
+                <annoSet ID="2052748"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Goods"/>
+            <FE name="Perpetrator"/>
+            <FE name="Perpetrator"/>
+            <FE name="Place"/>
+            <FE name="Source"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Goods"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Perpetrator"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Perpetrator"/>
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Place"/>
+                <valenceUnit GF="" PT="2nd" FE="Source"/>
+                <annoSet ID="2052804"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Goods"/>
+            <FE name="Perpetrator"/>
+            <FE name="Perpetrator"/>
+            <FE name="Source"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Goods"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Perpetrator"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Perpetrator"/>
+                <valenceUnit GF="" PT="INC" FE="Source"/>
+                <annoSet ID="75915"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Goods"/>
+            <FE name="Perpetrator"/>
+            <FE name="Purpose"/>
+            <FE name="Source"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Goods"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Perpetrator"/>
+                <valenceUnit GF="Dep" PT="VPto" FE="Purpose"/>
+                <valenceUnit GF="" PT="INC" FE="Source"/>
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Time"/>
+                <annoSet ID="2052748"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Goods"/>
+            <FE name="Perpetrator"/>
+            <FE name="Reason"/>
+            <FE name="Source"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Goods"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Perpetrator"/>
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Reason"/>
+                <valenceUnit GF="" PT="INC" FE="Source"/>
+                <annoSet ID="75911"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Goods"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Perpetrator"/>
+                <valenceUnit GF="Dep" PT="Sub" FE="Reason"/>
+                <valenceUnit GF="" PT="INC" FE="Source"/>
+                <annoSet ID="75927"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="6">
+            <FE name="Goods"/>
+            <FE name="Perpetrator"/>
+            <FE name="Source"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="INI" FE="Goods"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Perpetrator"/>
+                <valenceUnit GF="" PT="INC" FE="Source"/>
+                <annoSet ID="75913"/>
+                <annoSet ID="75919"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Obj" PT="NP" FE="Goods"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Perpetrator"/>
+                <valenceUnit GF="" PT="INC" FE="Source"/>
+                <annoSet ID="75907"/>
+                <annoSet ID="2052738"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Obj" PT="NP" FE="Goods"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Perpetrator"/>
+                <valenceUnit GF="Dep" PT="PP[from]" FE="Source"/>
+                <annoSet ID="75909"/>
+                <annoSet ID="2052764"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-690-trans-other">
+        <sentence sentNo="0" aPos="33479379" ID="214663">
+            <text>He was older so I listened to him , so I 'd shoplift all these things and give them to him . &quot; </text>
+            <annotationSet cDate="01/06/2003 07:12:51 PST Mon" status="UNANN" ID="75906">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="5" start="3" name="VBD"/>
+                    <label end="11" start="7" name="AJC"/>
+                    <label end="14" start="13" name="CJS"/>
+                    <label end="16" start="16" name="PNP"/>
+                    <label end="25" start="18" name="VVD"/>
+                    <label end="28" start="27" name="PRP"/>
+                    <label end="32" start="30" name="PNP"/>
+                    <label end="34" start="34" name="PUN"/>
+                    <label end="37" start="36" name="CJS"/>
+                    <label end="39" start="39" name="PNP"/>
+                    <label end="42" start="41" name="VM0"/>
+                    <label end="51" start="44" name="VVI"/>
+                    <label end="55" start="53" name="DT0"/>
+                    <label end="61" start="57" name="DT0"/>
+                    <label end="68" start="63" name="NN2"/>
+                    <label end="72" start="70" name="CJC"/>
+                    <label end="77" start="74" name="VVI"/>
+                    <label end="82" start="79" name="PNP"/>
+                    <label end="85" start="84" name="PRP"/>
+                    <label end="89" start="87" name="PNP"/>
+                    <label end="91" start="91" name="PUN"/>
+                    <label end="93" start="93" name="PUQ"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 07:12:51 PST Mon" status="MANUAL" ID="75907">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="451" end="39" start="39" name="Perpetrator"/>
+                    <label cBy="669" feID="453" end="68" start="53" name="Goods"/>
+                    <label cBy="589" feID="454" end="51" start="44" name="Source"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="39" start="39" name="Ext"/>
+                    <label end="68" start="53" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="39" start="39" name="NP"/>
+                    <label end="68" start="53" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="51" start="44" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="6755721" ID="214664">
+            <text>He did however manage to shoplift vitamins and minerals galore from his local health store . </text>
+            <annotationSet cDate="01/06/2003 07:12:51 PST Mon" status="UNANN" ID="75908">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="5" start="3" name="VDD"/>
+                    <label end="13" start="7" name="AV0"/>
+                    <label end="20" start="15" name="VVI"/>
+                    <label end="23" start="22" name="TO0"/>
+                    <label end="32" start="25" name="VVI"/>
+                    <label end="41" start="34" name="NN2"/>
+                    <label end="45" start="43" name="CJC"/>
+                    <label end="54" start="47" name="NN2"/>
+                    <label end="61" start="56" name="AJ0"/>
+                    <label end="66" start="63" name="PRP"/>
+                    <label end="70" start="68" name="DPS"/>
+                    <label end="76" start="72" name="AJ0"/>
+                    <label end="83" start="78" name="NN1"/>
+                    <label end="89" start="85" name="NN1"/>
+                    <label end="91" start="91" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 07:12:51 PST Mon" status="MANUAL" ID="75909">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="451" end="1" start="0" name="Perpetrator"/>
+                    <label cBy="669" feID="454" end="89" start="63" name="Source"/>
+                    <label cBy="669" feID="453" end="61" start="34" name="Goods"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="1" start="0" name="Ext"/>
+                    <label end="89" start="63" name="Dep"/>
+                    <label end="61" start="34" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="1" start="0" name="NP"/>
+                    <label end="89" start="63" name="PP"/>
+                    <label end="61" start="34" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="32" start="25" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-780-ppother">
+        <sentence sentNo="0" aPos="33479363" ID="214665">
+            <text>` This boy who lived next door to me taught me how to shoplift for him . </text>
+            <annotationSet cDate="01/06/2003 07:12:51 PST Mon" status="UNANN" ID="75910">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PUQ"/>
+                    <label end="5" start="2" name="DT0"/>
+                    <label end="9" start="7" name="NN1"/>
+                    <label end="13" start="11" name="PNQ"/>
+                    <label end="19" start="15" name="VVD"/>
+                    <label end="24" start="21" name="ORD"/>
+                    <label end="29" start="26" name="NN1"/>
+                    <label end="32" start="31" name="PRP"/>
+                    <label end="35" start="34" name="PNP"/>
+                    <label end="42" start="37" name="VVD"/>
+                    <label end="45" start="44" name="PNP"/>
+                    <label end="49" start="47" name="AVQ"/>
+                    <label end="52" start="51" name="TO0"/>
+                    <label end="61" start="54" name="VVI"/>
+                    <label end="65" start="63" name="PRP"/>
+                    <label end="69" start="67" name="PNP"/>
+                    <label end="71" start="71" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 07:12:51 PST Mon" status="MANUAL" ID="75911">
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="451" end="45" start="44" name="Perpetrator"/>
+                    <label cBy="395" feID="1746" end="69" start="63" name="Reason"/>
+                    <label cBy="395" feID="453" itype="INI" name="Goods"/>
+                    <label cBy="589" feID="454" end="61" start="54" name="Source"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="45" start="44" name="Ext"/>
+                    <label end="69" start="63" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="45" start="44" name="NP"/>
+                    <label end="69" start="63" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="61" start="54" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="89706691" ID="214666">
+            <text>Psychiatrist Dr Gerald Silverman runs kleptomania therapy groups ( for people who can not control their desires to steal ) , and claims most of his patients shoplift due to emotional worries or personal problems . </text>
+            <annotationSet cDate="01/06/2003 07:12:51 PST Mon" status="UNANN" ID="75912">
+                <layer rank="1" name="BNC">
+                    <label end="11" start="0" name="NN1-NP0"/>
+                    <label end="14" start="13" name="NP0"/>
+                    <label end="21" start="16" name="NP0"/>
+                    <label end="31" start="23" name="NP0"/>
+                    <label end="36" start="33" name="VVZ"/>
+                    <label end="48" start="38" name="NN1"/>
+                    <label end="56" start="50" name="NN1"/>
+                    <label end="63" start="58" name="NN2"/>
+                    <label end="65" start="65" name="PUL"/>
+                    <label end="69" start="67" name="PRP"/>
+                    <label end="76" start="71" name="NN0"/>
+                    <label end="80" start="78" name="PNQ"/>
+                    <label end="84" start="82" name="VM0"/>
+                    <label end="88" start="86" name="XX0"/>
+                    <label end="96" start="90" name="VVI"/>
+                    <label end="102" start="98" name="DPS"/>
+                    <label end="110" start="104" name="NN2"/>
+                    <label end="113" start="112" name="TO0"/>
+                    <label end="119" start="115" name="VVI"/>
+                    <label end="121" start="121" name="PUR"/>
+                    <label end="123" start="123" name="PUN"/>
+                    <label end="127" start="125" name="CJC"/>
+                    <label end="134" start="129" name="VVZ"/>
+                    <label end="139" start="136" name="DT0"/>
+                    <label end="142" start="141" name="PRF"/>
+                    <label end="146" start="144" name="DPS"/>
+                    <label end="155" start="148" name="NN2"/>
+                    <label end="164" start="157" name="VVB"/>
+                    <label end="168" start="166" name="PRP"/>
+                    <label end="171" start="170" name="PRP"/>
+                    <label end="181" start="173" name="AJ0"/>
+                    <label end="189" start="183" name="NN2"/>
+                    <label end="192" start="191" name="CJC"/>
+                    <label end="201" start="194" name="AJ0"/>
+                    <label end="210" start="203" name="NN2"/>
+                    <label end="212" start="212" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 07:12:51 PST Mon" status="MANUAL" ID="75913">
+                <layer rank="1" name="FE">
+                    <label cBy="153" feID="451" end="155" start="136" name="Perpetrator"/>
+                    <label cBy="296" feID="453" itype="INI" name="Goods"/>
+                    <label cBy="589" feID="454" end="164" start="157" name="Source"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="155" start="136" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="155" start="136" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="164" start="157" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-880-intrans-simple">
+        <sentence sentNo="0" aPos="17121638" ID="214667">
+            <text>Campbell focuses on girl shoplifters , but it should be stressed that other females who shoplift , perhaps pensioners or single parents , might do so for more basic material needs . </text>
+            <annotationSet cDate="01/06/2003 07:12:51 PST Mon" status="UNANN" ID="75914">
+                <layer rank="1" name="BNC">
+                    <label end="7" start="0" name="NP0"/>
+                    <label end="15" start="9" name="VVZ"/>
+                    <label end="18" start="17" name="PRP"/>
+                    <label end="23" start="20" name="NN1"/>
+                    <label end="35" start="25" name="NN2"/>
+                    <label end="37" start="37" name="PUN"/>
+                    <label end="41" start="39" name="CJC"/>
+                    <label end="44" start="43" name="PNP"/>
+                    <label end="51" start="46" name="VM0"/>
+                    <label end="54" start="53" name="VBI"/>
+                    <label end="63" start="56" name="VVN"/>
+                    <label end="68" start="65" name="CJT-DT0"/>
+                    <label end="74" start="70" name="AJ0"/>
+                    <label end="82" start="76" name="NN2"/>
+                    <label end="86" start="84" name="PNQ"/>
+                    <label end="95" start="88" name="VVB"/>
+                    <label end="97" start="97" name="PUN"/>
+                    <label end="105" start="99" name="AV0"/>
+                    <label end="116" start="107" name="NN2"/>
+                    <label end="119" start="118" name="CJC"/>
+                    <label end="126" start="121" name="AJ0"/>
+                    <label end="134" start="128" name="NN2"/>
+                    <label end="136" start="136" name="PUN"/>
+                    <label end="142" start="138" name="VM0"/>
+                    <label end="145" start="144" name="VDI"/>
+                    <label end="148" start="147" name="AV0"/>
+                    <label end="152" start="150" name="PRP"/>
+                    <label end="157" start="154" name="DT0"/>
+                    <label end="163" start="159" name="AJ0"/>
+                    <label end="172" start="165" name="NN1"/>
+                    <label end="178" start="174" name="NN2-VVZ"/>
+                    <label end="180" start="180" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 07:12:52 PST Mon" status="MANUAL" ID="75915">
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="451" end="82" start="70" name="Perpetrator"/>
+                    <label cBy="605" feID="451" end="86" start="84" name="Perpetrator"/>
+                    <label cBy="605" feID="453" itype="INI" name="Goods"/>
+                    <label cBy="589" feID="454" end="95" start="88" name="Source"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="82" start="70" name="Ext"/>
+                    <label end="86" start="84" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="82" start="70" name="NP"/>
+                    <label end="86" start="84" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other">
+                    <label end="82" start="70" name="Ant"/>
+                    <label end="86" start="84" name="Rel"/>
+                </layer>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="95" start="88" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-900-other">
+        <sentence sentNo="0" aPos="22966688" ID="214669">
+            <text>At least she only robbed bins and doorsteps , she did n't shoplift . </text>
+            <annotationSet cDate="01/06/2003 07:12:52 PST Mon" status="UNANN" ID="75918">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="AV0"/>
+                    <label end="7" start="3" name="AV0"/>
+                    <label end="11" start="9" name="PNP"/>
+                    <label end="16" start="13" name="AV0"/>
+                    <label end="23" start="18" name="AJ0-VVD"/>
+                    <label end="28" start="25" name="NN2"/>
+                    <label end="32" start="30" name="CJC"/>
+                    <label end="42" start="34" name="NN2-VVZ"/>
+                    <label end="44" start="44" name="PUN"/>
+                    <label end="48" start="46" name="PNP"/>
+                    <label end="52" start="50" name="VDD"/>
+                    <label end="56" start="54" name="XX0"/>
+                    <label end="65" start="58" name="VVI"/>
+                    <label end="67" start="67" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 07:12:52 PST Mon" status="MANUAL" ID="75919">
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="451" end="48" start="46" name="Perpetrator"/>
+                    <label cBy="605" feID="453" itype="INI" name="Goods"/>
+                    <label cBy="589" feID="454" end="65" start="58" name="Source"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="48" start="46" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="48" start="46" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="65" start="58" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="106621198" ID="214673">
+            <text>` Younger kids shoplift because they see things they ca n't afford . </text>
+            <annotationSet cDate="01/06/2003 07:12:52 PST Mon" status="UNANN" ID="75926">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PUQ"/>
+                    <label end="8" start="2" name="AJC"/>
+                    <label end="13" start="10" name="NN2"/>
+                    <label end="22" start="15" name="VVB"/>
+                    <label end="30" start="24" name="CJS"/>
+                    <label end="35" start="32" name="PNP"/>
+                    <label end="39" start="37" name="VVB"/>
+                    <label end="46" start="41" name="NN2"/>
+                    <label end="51" start="48" name="PNP"/>
+                    <label end="54" start="53" name="VM0"/>
+                    <label end="58" start="56" name="XX0"/>
+                    <label end="65" start="60" name="VVI"/>
+                    <label end="67" start="67" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 07:12:52 PST Mon" status="MANUAL" ID="75927">
+                <layer rank="1" name="FE">
+                    <label cBy="303" feID="451" end="13" start="2" name="Perpetrator"/>
+                    <label cBy="303" feID="1746" end="65" start="24" name="Reason"/>
+                    <label cBy="303" feID="453" itype="INI" name="Goods"/>
+                    <label cBy="589" feID="454" end="22" start="15" name="Source"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="13" start="2" name="Ext"/>
+                    <label end="65" start="24" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="13" start="2" name="NP"/>
+                    <label end="65" start="24" name="Sub"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="22" start="15" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="01-T-(1)">
+        <sentence corpID="113" docID="7058" sentNo="1" paragNo="22" aPos="104178208" ID="1302288">
+            <text>She was cited by the police for shoplifting a dlrs 15 ring , arrested on marijuana possession charges in spring 1994 and admitted to two drug rehabiliation clinics .</text>
+            <annotationSet cDate="01/11/2005 01:08:39 PST Tue" status="UNANN" ID="2052737">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="PP"/>
+                    <label end="6" start="4" name="VBD"/>
+                    <label end="12" start="8" name="VVN"/>
+                    <label end="15" start="14" name="in"/>
+                    <label end="19" start="17" name="dt"/>
+                    <label end="26" start="21" name="nn"/>
+                    <label end="30" start="28" name="in"/>
+                    <label end="42" start="32" name="VVG"/>
+                    <label end="44" start="44" name="dt"/>
+                    <label end="49" start="46" name="nns"/>
+                    <label end="52" start="51" name="cd"/>
+                    <label end="57" start="54" name="nn"/>
+                    <label end="59" start="59" name=","/>
+                    <label end="68" start="61" name="VVN"/>
+                    <label end="71" start="70" name="in"/>
+                    <label end="81" start="73" name="nn"/>
+                    <label end="92" start="83" name="nn"/>
+                    <label end="100" start="94" name="nns"/>
+                    <label end="103" start="102" name="in"/>
+                    <label end="110" start="105" name="nn"/>
+                    <label end="115" start="112" name="cd"/>
+                    <label end="119" start="117" name="cc"/>
+                    <label end="128" start="121" name="VVD"/>
+                    <label end="131" start="130" name="to"/>
+                    <label end="135" start="133" name="cd"/>
+                    <label end="140" start="137" name="nn"/>
+                    <label end="154" start="142" name="nn"/>
+                    <label end="162" start="156" name="nns"/>
+                    <label end="164" start="164" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/11/2005 01:08:39 PST Tue" status="MANUAL" ID="2052738">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="42" start="32" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="451" end="2" start="0" name="Perpetrator"/>
+                    <label cBy="605" feID="453" end="57" start="44" name="Goods"/>
+                    <label cBy="589" feID="454" end="42" start="32" name="Source"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="2" start="0" name="Ext"/>
+                    <label end="57" start="44" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="2" start="0" name="NP"/>
+                    <label end="57" start="44" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="7063" sentNo="1" paragNo="4" aPos="116917393" ID="1302293">
+            <text>Annick Grippon , 36 , of Niort , 90 kilometers ( 55 miles ) from Poitiers , had admitted shoplifting meat and sausages on several occasions to feed her three-year-old son and teenage daughter .</text>
+            <annotationSet cDate="01/11/2005 01:08:42 PST Tue" status="UNANN" ID="2052747">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="0" name="NP"/>
+                    <label end="13" start="7" name="NP"/>
+                    <label end="15" start="15" name=","/>
+                    <label end="18" start="17" name="cd"/>
+                    <label end="20" start="20" name=","/>
+                    <label end="23" start="22" name="in"/>
+                    <label end="29" start="25" name="NP"/>
+                    <label end="31" start="31" name=","/>
+                    <label end="34" start="33" name="cd"/>
+                    <label end="45" start="36" name="nns"/>
+                    <label end="47" start="47" name="("/>
+                    <label end="50" start="49" name="cd"/>
+                    <label end="56" start="52" name="nns"/>
+                    <label end="58" start="58" name=")"/>
+                    <label end="63" start="60" name="in"/>
+                    <label end="72" start="65" name="NP"/>
+                    <label end="74" start="74" name=","/>
+                    <label end="78" start="76" name="VHD"/>
+                    <label end="87" start="80" name="VVN"/>
+                    <label end="99" start="89" name="VVG"/>
+                    <label end="104" start="101" name="nn"/>
+                    <label end="108" start="106" name="cc"/>
+                    <label end="117" start="110" name="nns"/>
+                    <label end="120" start="119" name="in"/>
+                    <label end="128" start="122" name="jj"/>
+                    <label end="138" start="130" name="nns"/>
+                    <label end="141" start="140" name="to"/>
+                    <label end="146" start="143" name="VV"/>
+                    <label end="150" start="148" name="PP$"/>
+                    <label end="165" start="152" name="jj"/>
+                    <label end="169" start="167" name="nn"/>
+                    <label end="173" start="171" name="cc"/>
+                    <label end="181" start="175" name="jj"/>
+                    <label end="190" start="183" name="nn"/>
+                    <label end="192" start="192" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/11/2005 01:08:42 PST Tue" status="MANUAL" ID="2052748">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="99" start="89" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="451" end="74" start="0" name="Perpetrator"/>
+                    <label cBy="605" feID="453" end="117" start="101" name="Goods"/>
+                    <label cBy="605" feID="1747" end="138" start="119" name="Time"/>
+                    <label cBy="605" feID="1745" end="190" start="140" name="Purpose"/>
+                    <label cBy="589" feID="454" end="99" start="89" name="Source"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="74" start="0" name="Ext"/>
+                    <label end="117" start="101" name="Obj"/>
+                    <label end="138" start="119" name="Dep"/>
+                    <label end="190" start="140" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="74" start="0" name="NP"/>
+                    <label end="117" start="101" name="NP"/>
+                    <label end="138" start="119" name="PP"/>
+                    <label end="190" start="140" name="VPto"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="113" docID="7070" sentNo="1" paragNo="14" aPos="74589701" ID="1302301">
+            <text>Martin Suazo , suspected of shoplifting jeans from a downtown boutique , was shot while apprehended in May .</text>
+            <annotationSet cDate="01/11/2005 01:08:47 PST Tue" status="UNANN" ID="2052763">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="0" name="NP"/>
+                    <label end="11" start="7" name="NP"/>
+                    <label end="13" start="13" name=","/>
+                    <label end="23" start="15" name="VVN"/>
+                    <label end="26" start="25" name="in"/>
+                    <label end="38" start="28" name="VVG"/>
+                    <label end="44" start="40" name="nns"/>
+                    <label end="49" start="46" name="in"/>
+                    <label end="51" start="51" name="dt"/>
+                    <label end="60" start="53" name="jj"/>
+                    <label end="69" start="62" name="nn"/>
+                    <label end="71" start="71" name=","/>
+                    <label end="75" start="73" name="VBD"/>
+                    <label end="80" start="77" name="VVN"/>
+                    <label end="86" start="82" name="in"/>
+                    <label end="98" start="88" name="VVN"/>
+                    <label end="101" start="100" name="in"/>
+                    <label end="105" start="103" name="NP"/>
+                    <label end="107" start="107" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/11/2005 01:08:47 PST Tue" status="MANUAL" ID="2052764">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="38" start="28" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="451" end="11" start="0" name="Perpetrator"/>
+                    <label cBy="605" feID="453" end="44" start="40" name="Goods"/>
+                    <label cBy="605" feID="454" end="69" start="46" name="Source"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="11" start="0" name="Ext"/>
+                    <label end="44" start="40" name="Obj"/>
+                    <label end="69" start="46" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="11" start="0" name="NP"/>
+                    <label end="44" start="40" name="NP"/>
+                    <label end="69" start="46" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)">
+        <sentence corpID="113" docID="7087" sentNo="1" paragNo="10" aPos="90143830" ID="1302321">
+            <text>Olympic security director Bill Rathburn helped secure the release of two Armenian wrestlers who were charged with shoplifting at Rich 's department store in Lenox Square Mall .</text>
+            <annotationSet cDate="01/11/2005 01:09:00 PST Tue" status="UNANN" ID="2052803">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="0" name="NP"/>
+                    <label end="15" start="8" name="nn"/>
+                    <label end="24" start="17" name="nn"/>
+                    <label end="29" start="26" name="NP"/>
+                    <label end="38" start="31" name="NP"/>
+                    <label end="45" start="40" name="VVD"/>
+                    <label end="52" start="47" name="VV"/>
+                    <label end="56" start="54" name="dt"/>
+                    <label end="64" start="58" name="nn"/>
+                    <label end="67" start="66" name="in"/>
+                    <label end="71" start="69" name="cd"/>
+                    <label end="80" start="73" name="jj"/>
+                    <label end="90" start="82" name="nns"/>
+                    <label end="94" start="92" name="wp"/>
+                    <label end="99" start="96" name="VBD"/>
+                    <label end="107" start="101" name="VVN"/>
+                    <label end="112" start="109" name="in"/>
+                    <label end="124" start="114" name="VVG"/>
+                    <label end="127" start="126" name="in"/>
+                    <label end="132" start="129" name="NP"/>
+                    <label end="135" start="134" name="POS"/>
+                    <label end="146" start="137" name="nn"/>
+                    <label end="152" start="148" name="nn"/>
+                    <label end="155" start="154" name="in"/>
+                    <label end="161" start="157" name="NP"/>
+                    <label end="168" start="163" name="NP"/>
+                    <label end="173" start="170" name="NP"/>
+                    <label end="175" start="175" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/11/2005 01:09:00 PST Tue" status="MANUAL" ID="2052804">
+                <layer rank="1" name="Target">
+                    <label cBy="395" end="124" start="114" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="451" end="90" start="69" name="Perpetrator"/>
+                    <label cBy="605" feID="451" end="94" start="92" name="Perpetrator"/>
+                    <label cBy="605" feID="1744" end="173" start="126" name="Place"/>
+                    <label cBy="618" feID="453" itype="INI" name="Goods"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="90" start="69" name="Ext"/>
+                    <label end="94" start="92" name="Ext"/>
+                    <label end="173" start="126" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="90" start="69" name="NP"/>
+                    <label end="94" start="92" name="NP"/>
+                    <label end="173" start="126" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other">
+                    <label end="90" start="69" name="Ant"/>
+                    <label end="94" start="92" name="Rel"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+                <layer rank="2" name="FE">
+                    <label cBy="605" feID="454" end="173" start="126" name="Source"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

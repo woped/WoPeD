@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="731" cDate="02/07/2001 04:12:18 PST Wed" name="Operate_vehicle" ID="65" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;The words in this frame describe motion involving a &lt;fen&gt;Vehicle&lt;/fen&gt; and someone who controls it, the &lt;fen&gt;Driver&lt;/fen&gt;. Some words normally allow the &lt;fen&gt;Vehicle&lt;/fen&gt; to be expressed as a separate constituent.
+&lt;ex&gt;&lt;fex name="Driver"&gt;Tim&lt;/fex&gt; &lt;t&gt;drove&lt;/t&gt; &lt;fex name="Vehicle"&gt;his car&lt;/fex&gt; &lt;fex name="Path"&gt;all the way across North America&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Driver"&gt;Tom&lt;/fex&gt; &lt;t&gt;paddled&lt;/t&gt; &lt;fex name="Vehicle"&gt;my canoe&lt;/fex&gt; &lt;fex name="Path"&gt;across the Canadian border&lt;/fex&gt;.&lt;/ex&gt; 
+Other words in this domain are based on the names of vehicles, and do not normally allow the &lt;fen&gt;Vehicle&lt;/fen&gt; to be expressed as a separate constituent.
+&lt;ex&gt;&lt;fex name="Driver"&gt;The group&lt;/fex&gt; &lt;t&gt;biked&lt;/t&gt; all the way across the country.&lt;/ex&gt; 
+However, a separate &lt;fen&gt;Vehicle&lt;/fen&gt; constituent can occur if it adds information not included in the verb.
+&lt;ex&gt;&lt;fex name="Driver"&gt;Tim&lt;/fex&gt; &lt;t&gt;biked&lt;/t&gt; across the country &lt;fex name="Vehicle"&gt;on an old 10-speed&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:18 PST Wed" abbrev="Driv" name="Driver" ID="292">
+        <definition>&lt;def-root&gt;This is the being, typically human, that controls the &lt;fen&gt;Vehicle&lt;/fen&gt; as it moves. 
+&lt;ex&gt;&lt;fex name="Driver"&gt;Kim&lt;/fex&gt; &lt;t&gt;drove&lt;/t&gt; my old car cross-country.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:18 PST Wed" abbrev="Veh" name="Vehicle" ID="294">
+        <definition>&lt;def-root&gt;This is the means of conveyance controlled by the &lt;fen&gt;Driver&lt;/fen&gt;.  It may move in any way or medium.  With verbs, &lt;fen&gt;Vehicle&lt;/fen&gt; is usually expressed as Object: 
+&lt;ex&gt;I &lt;t&gt;drove&lt;/t&gt; &lt;fex name="Vehicle"&gt;my car&lt;/fex&gt; to Canada.&lt;/ex&gt; &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:18 PST Wed" abbrev="Src" name="Source" ID="295">
+        <definition>&lt;def-root&gt;Any expression which implies a definite starting-point of motion expresses the frame element &lt;fen&gt;Source&lt;/fen&gt;. In prepositional phrases, the prepositional object expresses the starting point of motion.  With particles, the starting point of motion is understood from context. 
+&lt;ex&gt;Kim &lt;t&gt;drove&lt;/t&gt; &lt;fex name="Source"&gt;out of town&lt;/fex&gt;.&lt;/ex&gt; 
+&lt;ex&gt;Kim &lt;t&gt;drove&lt;/t&gt; &lt;fex name="Source"&gt;away&lt;/fex&gt;.&lt;/ex&gt; &lt;/def-root&gt;</definition>
+        <semType name="Source" ID="151"/>
+        <excludesFE name="Area" ID="300"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:18 PST Wed" abbrev="Path" name="Path" ID="296">
+        <definition>&lt;def-root&gt;Any description of a trajectory of motion which is neither a &lt;fen&gt;Source&lt;/fen&gt; nor a &lt;fen&gt;Goal&lt;/fen&gt; expresses the frame element &lt;fen&gt;Path&lt;/fen&gt;. This includes directional expressions and "middle of path'' expressions, e.g.:
+&lt;ex&gt;The bikers &lt;t&gt;rode&lt;/t&gt; &lt;fex name="Path"&gt;through the desert&lt;/fex&gt;.&lt;/ex&gt; &lt;/def-root&gt;</definition>
+        <excludesFE name="Area" ID="300"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:18 PST Wed" abbrev="Goal" name="Goal" ID="297">
+        <definition>&lt;def-root&gt;Any expression which tells where the moving object(s) ends up as a result of the motion expresses the frame element &lt;fen&gt;Goal&lt;/fen&gt;. Some particles imply the existence of a &lt;fen&gt;Goal&lt;/fen&gt; which is understood in the context of utterance. 
+&lt;ex&gt;Kim &lt;t&gt;drove&lt;/t&gt; &lt;fex name="Goal"&gt;into the parking lot&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;Kim &lt;t&gt;drove&lt;/t&gt; &lt;fex name="Goal"&gt;in&lt;/fex&gt;.&lt;/ex&gt; &lt;/def-root&gt;</definition>
+        <semType name="Goal" ID="153"/>
+        <excludesFE name="Area" ID="300"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="731" cDate="02/07/2001 04:12:18 PST Wed" abbrev="Manr" name="Manner" ID="298">
+        <definition>&lt;def-root&gt;Any expression which describes a property of motion which is not directly related to the trajectory of motion expresses the frame element &lt;fen&gt;Manner&lt;/fen&gt;. Descriptions of steadiness, grace, and other things count as &lt;fen&gt;Manner&lt;/fen&gt; expressions.  
+&lt;ex&gt;The bikers &lt;t&gt;rode&lt;/t&gt; &lt;fex name="Manner"&gt;recklessly&lt;/fex&gt; through the desert.&lt;/ex&gt; &lt;ex&gt;The bikers &lt;t&gt;rode&lt;/t&gt; &lt;fex name="Manner"&gt;haltingly&lt;/fex&gt; over the rough terrain.&lt;/ex&gt; &lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="731" cDate="02/07/2001 04:12:18 PST Wed" abbrev="Dist" name="Distance" ID="299">
+        <definition>&lt;def-root&gt;Any expression which characterizes the extent of motion expresses the frame element &lt;fen&gt;Distance&lt;/fen&gt;.
+&lt;ex&gt;The bikers &lt;t&gt;rode&lt;/t&gt; &lt;fex name="Dist"&gt;hundreds of miles&lt;/fex&gt;.&lt;/ex&gt; &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:19 PST Wed" abbrev="Area" name="Area" ID="300">
+        <definition>&lt;def-root&gt;This frame element is used for expressions which describe a general area in which motion takes place when the motion is understood to be irregular and not to consist of a single linear path. Locative setting adjuncts of motion expressions may also be assigned this frame element.
+&lt;ex&gt;The bikers &lt;t&gt;rode&lt;/t&gt; &lt;fex name="Area"&gt;all over the place&lt;/fex&gt;.&lt;/ex&gt; &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="09/17/2001 06:09:43 PDT Mon" abbrev="Dep" name="Depictive" ID="1930">
+        <definition>&lt;def-root&gt;The state of the &lt;fen&gt;Driver&lt;/fen&gt; or &lt;fen&gt;Vehicle&lt;/fen&gt; during the Transportation.
+&lt;ex&gt;I was &lt;t&gt;flying&lt;/t&gt; &lt;fex name="Dep"&gt;blind&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;Murray &lt;t&gt;drove&lt;/t&gt; the car, &lt;fex name="Dep"&gt;still unpainted&lt;/fex&gt;, right through the store front.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="09/17/2001 06:09:43 PDT Mon" abbrev="Evnt" name="Event" ID="1931">
+        <definition>&lt;def-root&gt;An event that the &lt;fen&gt;Driver&lt;/fen&gt; is also participating in while directing the &lt;fen&gt;Vehicle&lt;/fen&gt;.
+&lt;ex&gt;How long have you &lt;t&gt;flown&lt;/t&gt; &lt;fex name="Event"&gt;combat missions&lt;/fex&gt;?&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="09/17/2001 06:09:43 PDT Mon" abbrev="Mns" name="Means" ID="1932">
+        <definition>&lt;def-root&gt;The action performed by the &lt;fen&gt;Driver&lt;/fen&gt; by which the &lt;fen&gt;Driver&lt;/fen&gt; achieves directed Transportation.
+&lt;ex&gt;I managed to &lt;t&gt;bike&lt;/t&gt; home &lt;fex name="Mns"&gt;by holding the left handlebar in my teeth&lt;/fex&gt;!&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="09/17/2001 06:09:43 PDT Mon" abbrev="Result" name="Result" ID="1933">
+        <definition>&lt;def-root&gt;Result of the &lt;fen&gt;Driver&lt;/fen&gt;'s action.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="09/17/2001 06:10:28 PDT Mon" abbrev="Thm_c" name="Cotheme" ID="1935">
+        <definition>&lt;def-root&gt;This is a second moving object, expressed as a PP headed by &lt;ment&gt;with&lt;/ment&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="7CCD73" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="06/03/2003 11:41:33 PDT Tue" abbrev="Spd" name="Speed" ID="4522">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Speed&lt;/fen&gt; is the rate at which the &lt;fen&gt;Vehicle&lt;/fen&gt; moves.&lt;/def-root&gt;</definition>
+        <semType name="Speed" ID="234"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="06/03/2003 12:05:30 PDT Tue" abbrev="Rte" name="Route" ID="4523">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Route&lt;/fen&gt; is the road or path that the &lt;fen&gt;Vehicle&lt;/fen&gt; regularly travels on.
+&lt;ex&gt;United Airlines &lt;t&gt;flies&lt;/t&gt; &lt;fex name="Route"&gt;the London-New York route&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="618" cDate="07/31/2003 02:23:47 PDT Thu" abbrev="Cond" name="Circumstances" ID="4891">
+        <definition>&lt;def-root&gt;This FE indicates the &lt;fen&gt;Circumstances&lt;/fen&gt; under which the operation of the &lt;fen&gt;Vehicle&lt;/fen&gt; takes place.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="08/04/2003 03:39:22 PDT Mon" abbrev="Place" name="Place" ID="4898">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Place&lt;/fen&gt; describes the location of a more specific motion (which has &lt;fen&gt;Source&lt;/fen&gt;, &lt;fen&gt;Path&lt;/fen&gt; or &lt;fen&gt;Goal&lt;/fen&gt;).&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Peripheral" cBy="309" cDate="10/02/2003 11:36:48 PDT Thu" abbrev="Dur" name="Duration" ID="5320">
+        <definition>&lt;def-root&gt;The length  of the time interval during which the &lt;fen&gt;Driver&lt;/fen&gt; operates the &lt;fen&gt;Vehicle&lt;/fen&gt;.
+
+&lt;ex&gt;Henry would &lt;t&gt;bike&lt;/t&gt; through  the woods&lt;fex name="Duration"&gt;for hours&lt;/fex&gt; in all kinds of weather&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="309" cDate="10/02/2003 11:36:49 PDT Thu" abbrev="Time" name="Time" ID="5321">
+        <definition>&lt;def-root&gt;The  &lt;fen&gt;Time&lt;/fen&gt; when the &lt;fen&gt;Driver&lt;/fen&gt; operates the &lt;fen&gt;Vehicle&lt;/fen&gt;
+
+&lt;ex&gt;&lt;fex name="Time"&gt;Yesterday&lt;/fex&gt;, Smithers &lt;t&gt;paddled&lt;/t&gt; his boat across the lake and back&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="309" cDate="10/02/2003 11:48:06 PDT Thu" abbrev="Degr" name="Degree" ID="5470">
+        <definition>&lt;def-root&gt;The extent to which the Vehicle crosses a boundary or the extent to which the Vehicle completes a course.
+
+&lt;ex&gt;Sylvie &lt;t&gt;paddled&lt;/t&gt; &lt;fex name="Degree"&gt;completely&lt;/fex&gt; around the breakwater&lt;/ex&gt;
+&lt;ex&gt;Eugene&lt;t&gt;drove&lt;/t&gt; &lt;fex name="Degree"&gt;completely&lt;/fex&gt; off the highway and turned the engine off&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="A9A9A9" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/07/2005 09:34:05 PST Wed" abbrev="pur" name="Purpose" ID="9628">
+        <definition>&lt;def-root&gt;The state-of-affairs that the &lt;fen&gt;Driver&lt;/fen&gt; tries to bring about by the way that they direct the &lt;fen&gt;Vehicle&lt;/fen&gt;.
+
+&lt;ex&gt;I &lt;t&gt;bike&lt;/t&gt; to work &lt;fex name="pur"&gt;to save money&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="7CCD7C" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="361" cDate="12/04/2006 03:39:26 PST Mon" abbrev="" name="Particular_iteration" ID="10923">
+        <definition>&lt;def-root&gt;Expressions marked with this extra-thematic FE modify a non-iterative use of the target, and indicate that it is conceived as embedded within an iterated series of similar events or states. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="EEE8AA" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="12/04/2006 03:44:57 PST Mon" abbrev="" name="Explanation" ID="10926">
+        <definition>&lt;def-root&gt;The reason for which the Operate_vehicle event occurs.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="12/04/2006 03:47:02 PST Mon" abbrev="" name="Frequency" ID="10928">
+        <definition>&lt;def-root&gt;"How often" the Operate_vehicle event occurs.&lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Source" ID="295"/>
+        <memberFE name="Path" ID="296"/>
+        <memberFE name="Goal" ID="297"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Operating_a_system</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on">
+        <relatedFrame>Use_vehicle</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Motion</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Piracy</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also">
+        <relatedFrame>Motion</relatedFrame>
+    </frameRelation>
+    <lexUnit status="Insufficient_Attestations" incorporatedFE="Vehicle" POS="V" name="balloon.v" ID="1265" lemmaID="2754" cBy="731" cDate="02/08/2001 01:29:35 PST Thu">
+        <definition>FN: move by operating a balloon</definition>
+        <sentenceCount annotated="0" total="24"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="balloon"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Vehicle" POS="V" name="bicycle.v" ID="1266" lemmaID="3515" cBy="731" cDate="02/08/2001 01:29:35 PST Thu">
+        <definition>COD: ride a bicycle</definition>
+        <sentenceCount annotated="12" total="48"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="bicycle"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Vehicle" POS="V" name="bike.v" ID="1267" lemmaID="3555" cBy="731" cDate="02/08/2001 01:29:35 PST Thu">
+        <definition>COD: ride a bicycle or motorcycle.</definition>
+        <sentenceCount annotated="7" total="68"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="bike"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Vehicle" POS="V" name="boat.v" ID="1268" lemmaID="4013" cBy="731" cDate="02/08/2001 01:29:35 PST Thu">
+        <definition>COD: travel in a boat.</definition>
+        <sentenceCount annotated="5" total="51"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="boat"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Vehicle" POS="V" name="canoe.v" ID="1269" lemmaID="5392" cBy="731" cDate="02/08/2001 01:29:35 PST Thu">
+        <definition>COD: travel in or paddle a canoe.</definition>
+        <sentenceCount annotated="19" total="93"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="canoe"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" incorporatedFE="Vehicle" POS="V" name="caravan.v" ID="1270" lemmaID="5492" cBy="731" cDate="02/08/2001 01:29:35 PST Thu">
+        <definition>FN: (of a group) to travel in a line of separate vehicles</definition>
+        <sentenceCount annotated="1" total="7"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="caravan"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Vehicle" POS="V" name="cycle.v" ID="1273" lemmaID="9396" cBy="731" cDate="02/08/2001 01:29:36 PST Thu">
+        <definition>COD: ride a bicycle</definition>
+        <sentenceCount annotated="79" total="333"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="cycle"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="motor.v" ID="1278" lemmaID="25032" cBy="731" cDate="02/08/2001 01:29:36 PST Thu">
+        <definition>COD: travel in a car.</definition>
+        <sentenceCount annotated="33" total="183"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="motor"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="paddle.v" ID="1279" lemmaID="27500" cBy="731" cDate="02/08/2001 01:29:36 PST Thu">
+        <definition>COD: propel (a boat or canoe) with a paddle or paddles.</definition>
+        <sentenceCount annotated="43" total="229"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="paddle"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Vehicle" POS="V" name="parachute.v" ID="1280" lemmaID="27746" cBy="731" cDate="02/08/2001 01:29:36 PST Thu">
+        <definition>COD: drop or cause to drop by parachute.</definition>
+        <sentenceCount annotated="4" total="58"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="parachute"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="pedal.v" ID="1281" lemmaID="28213" cBy="731" cDate="02/08/2001 01:29:36 PST Thu">
+        <definition>COD: move (a bicycle, pedalo, etc.) by working the pedals.</definition>
+        <sentenceCount annotated="33" total="158"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="pedal"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="punt.v" ID="1282" lemmaID="31184" cBy="731" cDate="02/08/2001 01:29:36 PST Thu">
+        <definition>COD: travel or convey in a punt.</definition>
+        <sentenceCount annotated="7" total="32"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="punt"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Vehicle" POS="V" name="raft.v" ID="1283" lemmaID="31687" cBy="731" cDate="02/08/2001 01:29:37 PST Thu">
+        <definition>COD: travel or transport on or as if on a raft</definition>
+        <sentenceCount annotated="6" total="66"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="raft"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="row.v" ID="1285" lemmaID="33650" cBy="731" cDate="02/08/2001 01:29:37 PST Thu">
+        <definition>COD: propel (a boat) with oars</definition>
+        <sentenceCount annotated="47" total="390"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="row"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Vehicle" POS="V" name="skate.v" ID="1287" lemmaID="36099" cBy="731" cDate="02/08/2001 01:29:37 PST Thu">
+        <definition>COD: move on ice skates or roller skates in a gliding fashion.</definition>
+        <sentenceCount annotated="20" total="76"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="skate"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Vehicle" POS="V" name="sledge.v" ID="1288" lemmaID="36291" cBy="731" cDate="02/08/2001 01:29:37 PST Thu">
+        <definition>COD: ride or carry on a sledge</definition>
+        <sentenceCount annotated="5" total="40"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="sledge"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="tack.v" ID="1289" lemmaID="39364" cBy="731" cDate="02/08/2001 01:29:37 PST Thu">
+        <definition>FN: to follow a course against the wind when sailing</definition>
+        <sentenceCount annotated="7" total="236"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="tack"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="taxi.v" ID="1290" lemmaID="39633" cBy="731" cDate="02/08/2001 01:29:37 PST Thu">
+        <definition>COD: (with reference to an aircraft) move or cause to move slowly along the ground before take-off or after landing.</definition>
+        <sentenceCount annotated="12" total="42"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="taxi"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" incorporatedFE="Vehicle" POS="V" name="toboggan.v" ID="1291" lemmaID="40589" cBy="731" cDate="02/08/2001 01:29:37 PST Thu">
+        <definition>COD: ride on a toboggan.</definition>
+        <sentenceCount annotated="3" total="7"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="toboggan"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="cruise.v" ID="8858" lemmaID="9119" cBy="296" cDate="06/16/2003 12:35:56 PDT Mon">
+        <definition>FN: control a vehicle to move smoothly and in an efficient manner</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="cruise"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="drive.v" ID="8863" lemmaID="11795" cBy="296" cDate="06/16/2003 01:02:36 PDT Mon">
+        <definition>COD: operate and control the direction and speed of a motor vehicle. </definition>
+        <sentenceCount annotated="34" total="261"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="drive"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="ride.v" ID="8880" lemmaID="33217" cBy="296" cDate="06/16/2003 01:58:14 PDT Mon">
+        <definition>COD: sit on and control the movement of (a horse, bicycle, or motorcycle). </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="ride"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="sail.v" ID="8882" lemmaID="33959" cBy="296" cDate="06/17/2003 09:24:12 PDT Tue">
+        <definition>FN: operate and control the motion of a watercraft.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="sail"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="fly.v" ID="9740" lemmaID="14858" cBy="605" cDate="10/13/2003 08:52:16 PDT Mon">
+        <definition>COD: control the flight of (an aircraft)</definition>
+        <sentenceCount annotated="13" total="220"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="fly"/>
+    </lexUnit>
+</frame>

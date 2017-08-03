@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" POS="N" name="contraction.n" ID="1648" frame="Cause_expansion" frameID="77" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Agt" name="Agent"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="" name="Cause"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Extra-Thematic" abbrev="Co_Var" name="Co_Variable"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="Dim" name="Dimension"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD73" type="Extra-Thematic" abbrev="" name="Elapsed_time"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="Grp" name="Group"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Peripheral" abbrev="Initial" name="Initial_size"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Inst" name="Instrument"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Item" name="Item"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Speed" name="Rate"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Peripheral" abbrev="Reas" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="Result" name="Result_size"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Sizec" name="Size_change"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: the process of contracting [decreasing in size, number, or range]. </definition>
+    <lexeme POS="N" name="contraction"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Agent"/>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Agent"/>
+                <annoSet ID="11587"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Item"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Item"/>
+                <annoSet ID="11587"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Agent"/>
+            <FE name="Item"/>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Agent"/>
+                <valenceUnit GF="" PT="INI" FE="Item"/>
+                <annoSet ID="11587"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-250-ppin"/>
+    <subCorpus name="N-250-ppof"/>
+    <subCorpus name="N-280-poss">
+        <sentence sentNo="0" aPos="72223219" ID="79511">
+            <text>My contractions started at midnight -- not very considerate bearing in mind how much I need my sleep . </text>
+            <annotationSet cDate="01/06/2003 06:03:46 PST Mon" status="UNANN" ID="11586">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="DPS"/>
+                    <label end="14" start="3" name="NN2"/>
+                    <label end="22" start="16" name="VVD-VVN"/>
+                    <label end="25" start="24" name="PRP"/>
+                    <label end="34" start="27" name="NN1"/>
+                    <label end="37" start="36" name="PUN"/>
+                    <label end="41" start="39" name="XX0"/>
+                    <label end="46" start="43" name="AV0"/>
+                    <label end="58" start="48" name="AJ0"/>
+                    <label end="66" start="60" name="NN1"/>
+                    <label end="69" start="68" name="PRP"/>
+                    <label end="74" start="71" name="NN1"/>
+                    <label end="78" start="76" name="AVQ"/>
+                    <label end="83" start="80" name="AV0"/>
+                    <label end="85" start="85" name="PNP"/>
+                    <label end="90" start="87" name="VVB"/>
+                    <label end="93" start="92" name="DPS"/>
+                    <label end="99" start="95" name="VVI"/>
+                    <label end="101" start="101" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/06/2003 06:03:46 PST Mon" status="MANUAL" ID="11587">
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="361" end="1" start="0" name="Agent"/>
+                    <label cBy="664" feID="362" itype="INI" name="Item"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="1" start="0" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="1" start="0" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="sense3"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="731" end="14" start="3" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="N-300-cmpd"/>
+    <subCorpus name="N-340-ppother"/>
+    <subCorpus name="N-370-pother"/>
+    <subCorpus name="N-380-other"/>
+    <subCorpus name="01-T-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

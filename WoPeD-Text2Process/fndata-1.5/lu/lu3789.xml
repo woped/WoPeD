@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" POS="N" name="crosswalk.n" ID="3789" frame="Roadways" frameID="203" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="A_e" name="Abundant_entities"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Char" name="Characteristic"/>
+            <FE fgColor="FFFFFF" bgColor="A9A9A9" type="Peripheral" abbrev="Dir" name="Direction"/>
+            <FE fgColor="9400D3" bgColor="d0d0d0" type="Peripheral" abbrev="EPs" name="Endpoints"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="F_use" name="Frequency_of_use"/>
+            <FE fgColor="000000" bgColor="9F79EE" type="Peripheral" abbrev="Goal" name="Goal"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Length" name="Length"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="Mat" name="Material"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Name" name="Name"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD73" type="Peripheral" abbrev="par" name="Part"/>
+            <FE fgColor="90876C" bgColor="000000" type="Peripheral" abbrev="Pat" name="Path"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="rel" name="Relative_location"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Road" name="Roadway"/>
+            <FE fgColor="EEE8AA" bgColor="A52A2A" type="Peripheral" abbrev="Src" name="Source"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Peripheral" abbrev="Use" name="Use"/>
+        </frame>
+    </header>
+    <definition>COD: a pedestrian crossing</definition>
+    <lexeme POS="N" name="crosswalk"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Relative_location"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Relative_location"/>
+                <annoSet ID="616944"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Roadway"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Roadway"/>
+                <annoSet ID="616944"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Relative_location"/>
+            <FE name="Roadway"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Relative_location"/>
+                <valenceUnit GF="" PT="DEN" FE="Roadway"/>
+                <annoSet ID="616944"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="N-001-all">
+        <sentence sentNo="0" aPos="44940440" ID="505577">
+            <text>They put the device on 200 pennants suspended from utility poles , and paint it directly on crosswalks in the downtown area . </text>
+            <annotationSet cDate="01/07/2003 05:58:24 PST Tue" status="UNANN" ID="616943">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="PNP"/>
+                    <label end="7" start="5" name="VVD"/>
+                    <label end="11" start="9" name="AT0"/>
+                    <label end="18" start="13" name="NN1"/>
+                    <label end="21" start="20" name="PRP"/>
+                    <label end="25" start="23" name="CRD"/>
+                    <label end="34" start="27" name="NN2"/>
+                    <label end="44" start="36" name="VVD-VVN"/>
+                    <label end="49" start="46" name="PRP"/>
+                    <label end="57" start="51" name="NN1"/>
+                    <label end="63" start="59" name="NN2"/>
+                    <label end="65" start="65" name="PUN"/>
+                    <label end="69" start="67" name="CJC"/>
+                    <label end="75" start="71" name="VVB"/>
+                    <label end="78" start="77" name="PNP"/>
+                    <label end="87" start="80" name="AV0"/>
+                    <label end="90" start="89" name="PRP"/>
+                    <label end="101" start="92" name="NN2"/>
+                    <label end="104" start="103" name="PRP"/>
+                    <label end="108" start="106" name="AT0"/>
+                    <label end="117" start="110" name="AJ0"/>
+                    <label end="122" start="119" name="NN1"/>
+                    <label end="124" start="124" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 05:58:24 PST Tue" status="MANUAL" ID="616944">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="1657" end="101" start="92" name="Roadway"/>
+                    <label cBy="589" feID="3515" end="122" start="103" name="Relative_location"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="122" start="103" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="122" start="103" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="101" start="92" name="Target"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>
