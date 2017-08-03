@@ -60,7 +60,7 @@ public class ApromoreProcessList {
 	private Filter userFilter;
 
 	public ApromoreProcessList(ApromoreAccess aproAccess, JDialog frame,
-			AbstractApplicationMediator mediator) {
+							   AbstractApplicationMediator mediator) {
 		this.aproAccess = aproAccess;
 		this.frame = frame;
 		this.mediator = mediator;
@@ -79,7 +79,7 @@ public class ApromoreProcessList {
 						JOptionPane.ERROR_MESSAGE);
 				return false;
 			}
-			aproAccess.importProcess(ind);
+			aproAccess.importProcess(ind, false, true);
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null,
 					Messages.getString("Apromore.UI.Error.Import"),
@@ -91,7 +91,7 @@ public class ApromoreProcessList {
 		return beautify;
 	}
 
-	public boolean importAction(boolean beautify) {
+	public boolean importAction(boolean beautify, boolean edgesToPlaces, boolean tasksToTransitions) {
 
 		int ind = table.getSelectedRow();
 		try {
@@ -99,7 +99,7 @@ public class ApromoreProcessList {
 				String processName = (String) table.getModel().getValueAt(ind + 1,
 						0);
 				PNMLImport pLoader = new PNMLImport(mediator);
-				ByteArrayInputStream is = aproAccess.importProcess(ind);
+				ByteArrayInputStream is = aproAccess.importProcess(ind, edgesToPlaces, tasksToTransitions);
 
 				if (pLoader.run(is, processName + ".pnml")) {
 					LoggerManager
@@ -137,14 +137,14 @@ public class ApromoreProcessList {
 		try {
 			if (ind != -1) {
 				new PNMLImport(mediator);
-				aproAccess.importProcess(ind);
+				aproAccess.importProcess(ind,false,true);
 			} else {
 				JOptionPane.showMessageDialog(null,
 						Messages.getString("Apromore.UI.Error.NoRowSelected"),
 						Messages.getString("Apromore.UI.Error.Title"),
 						JOptionPane.ERROR_MESSAGE);
 				return false;
-				
+
 			}
 		} catch (Exception ex) {
 			JOptionPane.showMessageDialog(null,
@@ -261,7 +261,7 @@ public class ApromoreProcessList {
 	}
 
 	public void exportAction(String owner, String folder, String name,
-			String version) {
+							 String version) {
 		try {
 
 			ByteArrayOutputStream os = new ByteArrayOutputStream();
@@ -280,7 +280,7 @@ public class ApromoreProcessList {
 	}
 
 	public void updateAction(Integer id, String username, String nativeType,
-			String processName, String newVersionNumber) throws Exception {
+							 String processName, String newVersionNumber) throws Exception {
 
 		ByteArrayOutputStream os = new ByteArrayOutputStream();
 		PNMLExport pExport = new PNMLExport(mediator);
@@ -363,7 +363,7 @@ public class ApromoreProcessList {
 						if (entry.getValue(6).toString()
 								.equals(filterFolder[i])
 								|| filterFolder[i]
-										.equalsIgnoreCase(ApromoreFoldertree.TOP_NODE_NAME)) {
+								.equalsIgnoreCase(ApromoreFoldertree.TOP_NODE_NAME)) {
 							found = true;
 							break;
 						} else {

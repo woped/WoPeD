@@ -9,8 +9,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.BorderFactory;
-import javax.swing.JPanel;
+import javax.swing.*;
+
+import org.jdesktop.swingx.JXCollapsiblePane;
 
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.file.apromore.worker.ImportWorker;
@@ -20,9 +21,14 @@ import org.woped.gui.translations.Messages;
 public class ApromoreImportFrame extends AbstractApromoreFrame {
 
 	private ImportWorker importWorker = null;
+	private JXCollapsiblePane cp;
+	private JCheckBox edgesToPlacesCP;
+	private JCheckBox tasksToTransitionsCP;
+	private JCheckBox optimizeCP;
+	private JToggleButton toggleButton;
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = -2682701694108230125L;
 
@@ -46,6 +52,19 @@ public class ApromoreImportFrame extends AbstractApromoreFrame {
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.anchor = GridBagConstraints.NORTHWEST;
 		c.insets = new Insets(5, 0, 5, 0); // Abstand nach oben/unten von 10px
+
+		c.gridy = 3;
+		getContentPane().add(getCollapsiblePane(), c);
+
+		c.gridy = 2;
+		c.fill = GridBagConstraints.NONE;
+		c.insets = new Insets(5,25,5,0);
+		getContentPane().add(getToggleButton(), c);
+
+		c.insets = new Insets(5,0,5,0);
+		c.gridy = 4;
+		c.fill = GridBagConstraints.HORIZONTAL;
+
 		getContentPane().add(getButtonPanel(), c);
 		getContentPane().addMouseListener(new MouseAdapter() {
 			@Override
@@ -107,6 +126,73 @@ public class ApromoreImportFrame extends AbstractApromoreFrame {
 		return importButton;
 	}
 
+	private JXCollapsiblePane getCollapsiblePane() {
+
+		if (cp == null){
+
+			cp = new JXCollapsiblePane(new FlowLayout(FlowLayout.CENTER));
+			cp.setCollapsed(true);
+
+			cp.getContentPane().add(getEdgesToPlacesCheckbox());
+			cp.getContentPane().add(getTaskToTransitionCheckbox());
+			cp.getContentPane().add(getOptimizeCheckbox());
+
+		}
+
+		return cp;
+	}
+
+	private JToggleButton getToggleButton() {
+
+		if (toggleButton == null){
+
+			Action toggleAction = cp.getActionMap().get(JXCollapsiblePane.TOGGLE_ACTION);
+			toggleAction.putValue(JXCollapsiblePane.COLLAPSE_ICON, UIManager.getIcon("Tree.expandedIcon"));
+			toggleAction.putValue(JXCollapsiblePane.EXPAND_ICON, UIManager.getIcon("Tree.collapsedIcon"));
+
+			toggleButton = new JToggleButton(toggleAction);
+			toggleButton.setText("");
+		}
+
+		return toggleButton;
+	}
+
+	private JCheckBox getEdgesToPlacesCheckbox(){
+
+		if (edgesToPlacesCP == null){
+			edgesToPlacesCP = new JCheckBox();
+			edgesToPlacesCP.setText(Messages.getString("Import.TreatEdgesAsPlaces"));
+		}
+		return edgesToPlacesCP;
+	}
+
+	private JCheckBox getTaskToTransitionCheckbox(){
+
+		if (tasksToTransitionsCP == null){
+			tasksToTransitionsCP = new JCheckBox();
+			tasksToTransitionsCP.setText(Messages.getString("Import.TreatTasksAsTransitions"));
+			tasksToTransitionsCP.setSelected(true);
+		}
+		return tasksToTransitionsCP;
+	}
+
+	private JCheckBox getOptimizeCheckbox(){
+
+		if (optimizeCP == null){
+			optimizeCP = new JCheckBox();
+			optimizeCP.setText(Messages.getString("Import.optimizeLayout"));
+		}
+		return optimizeCP;
+	}
+
+	private boolean isTasksToTransitions(){
+		return optimizeCP.isSelected();
+	}
+
+	private boolean isEdgesToPlaces(){
+		return edgesToPlacesCP.isSelected();
+	}
+
 	protected void loadImport() {
 		getWopedPorgressBar().setIndeterminate(false);
 		setButtons(true);
@@ -118,7 +204,7 @@ public class ApromoreImportFrame extends AbstractApromoreFrame {
 					importWorker.cancel(true);
 				}
 
-				importWorker = new ImportWorker(ApromoreImportFrame.this);
+				importWorker = new ImportWorker(ApromoreImportFrame.this, isEdgesToPlaces(), isTasksToTransitions());
 				importWorker.execute();
 			}
 		};
