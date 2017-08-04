@@ -6,7 +6,7 @@
 	<filter token="wopedversion" value="${WOPEDVERSION}${SNAPSHOT}" />
 	<filter token="builtstamp" value="${DSTAMP}" />
 
-	<target name="makedistribution" depends="makedir, setversion, makesubprojects, copyfiles, buildjar, makeWindowsInstaller" />
+	<target name="makedistribution" depends="makedir, setversion, makesubprojects, copyfiles, buildjar, makeWindowsInstaller, makeLinuxInstaller" />
 
 	<target name="clean">
 		<delete dir="dist" />
@@ -18,6 +18,7 @@
 		<mkdir dir="dist/lib" />
 		<mkdir dir="dist/nets" />
 		<mkdir dir="dist/launch" />
+		<mkdir dir="dist/izpack" />
 		<mkdir dir="dist/doc" />
 		<mkdir dir="dist/doc/html" />
 		<mkdir dir="dist/doc/html/de" />
@@ -142,6 +143,10 @@
 			<fileset file="../WoPeD-Starter/doc/html/images/icons/tango/*.*" />
 		</copy>
 
+		<copy todir="dist/izpack">
+			<fileset dir="build-tools/setup/izpack" />
+		</copy>
+		
 		<copy todir="dist/launch">
 			<fileset dir="build-tools/launcher/Windows" />
 			<fileset file="build-tools/setup/Windows/*.ico" />
@@ -208,7 +213,7 @@
 			<arg line="/c java -jar launch4j.jar buildexe.xml" />
 		</exec>
 		<exec dir="dist" executable="cmd">
-			<arg line="/c java -jar ../../WoPeD-IZPack/lib/compiler.jar install.xml -o launch/WoPeD-install-windows.jar" />
+			<arg line="/c java -jar izpack/lib/compiler.jar install.xml -o launch/WoPeD-install-windows.jar" />
 		</exec>
 
 		<exec dir="dist/launch" executable="cmd">
@@ -216,7 +221,18 @@
 		</exec>
 
 		<zip destfile="installers/WoPeD-install-windows-${WOPEDVERSION}${SNAPSHOT}.zip" basedir="dist/launch" includes="WoPeD-install-windows.exe" />
-
+	</target>
+	
+	<target name="makeLinuxInstaller">
+		<jar destfile="dist/WoPeD.jar" basedir="dist/run" manifest="dist/MANIFEST.mf" />
+		<tar destfile="installers/WoPeD-install-linux-${WOPEDVERSION}${SNAPSHOT}.tgz" compression="gzip">
+			<tarfileset dir="dist" mode="755">
+				<include name="WoPeD-install-linux" />
+			</tarfileset>
+			<tarfileset dir="dist">
+				<include name="WoPeD-install-linux.jar" />
+			</tarfileset>
+		</tar>
 	</target>
 
 	<target name="purge">
