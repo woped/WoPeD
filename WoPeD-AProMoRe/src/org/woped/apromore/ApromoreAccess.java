@@ -7,12 +7,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.UnknownHostException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
+import java.util.concurrent.CopyOnWriteArraySet;
 
 import javax.swing.JOptionPane;
 import javax.xml.soap.MessageFactory;
@@ -23,8 +19,9 @@ import org.apromore.manager.client.ManagerService;
 import org.apromore.manager.client.ManagerServiceClient;
 import org.apromore.model.ExportFormatResultType;
 import org.apromore.model.FolderType;
-import org.apromore.model.ProcessSummariesType;
 import org.apromore.model.ProcessSummaryType;
+import org.apromore.model.SummariesType;
+import org.apromore.model.SummaryType;
 import org.apromore.model.UserType;
 import org.apromore.model.VersionSummaryType;
 import org.apromore.plugin.property.RequestParameterType;
@@ -57,7 +54,7 @@ public class ApromoreAccess {
 	private SaajSoapMessageFactory soapMsgFactory;
 	private WebServiceTemplate wsTemp;
 	private ManagerService managerService;
-	private ProcessSummariesType processSummaries;
+	private SummariesType processSummaries;
 	private List<ProcessSummaryType> processList;
 
 	private ApromoreServer[] servers = null;
@@ -178,11 +175,11 @@ public class ApromoreAccess {
 		processList = new ArrayList<ProcessSummaryType>();
 		for (FolderType folder : folderForUser) {
 			processSummaries = managerService.readProcessSummaries(folder.getId(), null);
-			List<ProcessSummaryType> processesWithoutFolder = processSummaries.getProcessSummary();
-			for (ProcessSummaryType pst : processesWithoutFolder) {
-				pst.setFolder(folder);
+			for (SummaryType summary : processSummaries.getSummary()) {
+				ProcessSummaryType process = (ProcessSummaryType)summary;
+				process.setFolder(folder);
+				processList.add(process);
 			}
-			processList.addAll(processesWithoutFolder);
 		}
 		String[][] s = new String[processList.size()][7];
 
@@ -211,11 +208,11 @@ public class ApromoreAccess {
 				if ((processList.get(i).getName().toLowerCase().contains(name.toLowerCase())
 						|| name.equalsIgnoreCase(""))
 						&& (processList.get(i).getOriginalNativeType().toLowerCase().contains(type.toLowerCase())
-								|| type.equalsIgnoreCase(""))
+						|| type.equalsIgnoreCase(""))
 						&& (processList.get(i).getOwner().toLowerCase().contains(owner.toLowerCase())
-								|| owner.equalsIgnoreCase(""))
+						|| owner.equalsIgnoreCase(""))
 						&& (processList.get(i).getDomain().toLowerCase().contains(domain.toLowerCase())
-								|| domain.equalsIgnoreCase(""))
+						|| domain.equalsIgnoreCase(""))
 						&& ((id == null) || id.equals("" + processList.get(i).getId())))
 					j++;
 			}
@@ -232,11 +229,11 @@ public class ApromoreAccess {
 				if ((processList.get(i).getName().toLowerCase().contains(name.toLowerCase())
 						|| name.equalsIgnoreCase(""))
 						&& (processList.get(i).getOriginalNativeType().toLowerCase().contains(type.toLowerCase())
-								|| type.equalsIgnoreCase(""))
+						|| type.equalsIgnoreCase(""))
 						&& (processList.get(i).getOwner().toLowerCase().contains(owner.toLowerCase())
-								|| owner.equalsIgnoreCase(""))
+						|| owner.equalsIgnoreCase(""))
 						&& (processList.get(i).getDomain().toLowerCase().contains(domain.toLowerCase())
-								|| domain.equalsIgnoreCase(""))
+						|| domain.equalsIgnoreCase(""))
 						&& ((id == null) || id.equals("" + processList.get(i).getId()))) {
 					s[k][0] = "" + processList.get(i).getName();
 					s[k][1] = "" + processList.get(i).getId();
@@ -263,11 +260,15 @@ public class ApromoreAccess {
 		return s;
 	}
 
-	public ByteArrayInputStream importProcess(int id) throws Exception {
+	public ByteArrayInputStream importProcess(int id, boolean edgesToPlaces, boolean tasksToTransitions) throws Exception {
 
 		ProcessSummaryType p = processList.get(id);
 		ExportFormatResultType exf = null;
-		final Set<RequestParameterType<?>> noCanoniserParameters = Collections.emptySet();
+		final Set<RequestParameterType<?>> noCanoniserParameters = new CopyOnWriteArraySet<>();
+		RequestParameterType<?> rptTasks = new RequestParameterType<>("isCpfTaskPnmlTransition", tasksToTransitions);
+		//RequestParameterType<?> rptEdges = new RequestParameterType<>("isCpfTaskPnmlTransition", edgesToPlaces);
+		noCanoniserParameters.add(rptTasks);
+		//noCanoniserParameters.add(rptEdges); --> Probleme beim Hinzufügen des zweiten Parameters
 		String inputString;
 
 		exf = managerService.exportFormat(p.getId(), p.getName(), "MAIN", p.getLastVersion(), "PNML 1.3.2",
@@ -282,7 +283,7 @@ public class ApromoreAccess {
 	}
 
 	public void exportProcess(String userName, String folder, String processName, ByteArrayOutputStream os,
-			String domain, String version, boolean makePublic) throws Exception {
+							  String domain, String version, boolean makePublic) throws Exception {
 
 		UserType user = managerService.readUserByUsername(userName);
 		List<FolderType> folders = managerService.getWorkspaceFolderTree(user.getId());
@@ -304,7 +305,7 @@ public class ApromoreAccess {
 	}
 
 	public void updateProcess(Integer id, String username, String nativeType, String processName,
-			String newVersionNumber, ByteArrayOutputStream os) throws Exception {
+							  String newVersionNumber, ByteArrayOutputStream os) throws Exception {
 
 		ProcessSummaryType p = null;
 		for (ProcessSummaryType process : processList) {
@@ -386,5 +387,4 @@ public class ApromoreAccess {
 
 		}
 	}
-
 }

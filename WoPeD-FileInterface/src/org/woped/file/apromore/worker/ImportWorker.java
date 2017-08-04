@@ -11,9 +11,13 @@ public class ImportWorker extends SwingWorker<Boolean, Void> {
 
 	private AbstractApromoreFrame parent;
 	private boolean importSuccess = false;
+	private boolean edgesToPlaces;
+	private boolean tasksToTransitions;
 
-	public ImportWorker(AbstractApromoreFrame parent) {
+	public ImportWorker(AbstractApromoreFrame parent, boolean edgesToPlaces, boolean tasksToTransitions) {
 		this.parent = parent;
+		this.edgesToPlaces = edgesToPlaces;
+		this.tasksToTransitions = tasksToTransitions;
 	}
 
 	@Override
@@ -35,7 +39,7 @@ public class ImportWorker extends SwingWorker<Boolean, Void> {
 			public void run() {
 
 				parent.setImporting(false);
-				boolean succees = parent.getProcessList().importAction(false);
+				boolean succees = parent.getProcessList().importAction(false, edgesToPlaces, tasksToTransitions);
 
 				try {
 					get();
