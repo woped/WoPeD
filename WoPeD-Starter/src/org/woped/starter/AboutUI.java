@@ -130,9 +130,9 @@ public class AboutUI extends JDialog
     {    	
        	String[] aboutArgs       = { Messages.getWoPeDVersionWithTimestamp() };
        	String   aboutText       = "<html><p>" + Messages.getStringReplaced("About.Text", aboutArgs) +
-       								"<br />" + 
        								Messages.getString("About.Members") +
        								Messages.getString("About.Thanks") +
+       								Messages.getString("About.ThankedNames") +
        								"</p></html>";
        	String   javaText 		 = "<html><p><b>" + Messages.getString("About.Java") + ": </b>" + System.getProperty("java.version") + "</p><br /></html>";
        	
