@@ -1,0 +1,23 @@
+OUTPUT:
+
+I told Mary that John eats beans.
+
+END:
+
+DSYNTS:
+
+"tell" [ class:"verb" inflection:"inv" morpheme:"told" tense:"past" ]
+(
+  I  "I" [ class:"personal_pronoun" number:"sg" person:"1st" ]
+  II  "Mary" [ class:"proper_noun" ]
+  III  "THAT" [ ]
+  (
+    II  "eat" [ class:"verb" ]
+    (
+      I  "John" [ class:"proper_noun" ]
+      II  "bean" [ class:"common_noun" number:"pl" ]
+    )
+  )
+)
+
+END:
