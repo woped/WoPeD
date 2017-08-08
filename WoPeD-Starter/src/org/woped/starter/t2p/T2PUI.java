@@ -23,7 +23,6 @@
 package org.woped.starter.t2p;
 
 import java.awt.BorderLayout;
-import java.awt.Button;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -78,7 +77,6 @@ public class T2PUI extends JDialog {
 
 	private JScrollPane t2pPanel = null;
 	private JPanel buttonPanel = null;
-	private JPanel logoPanel = null;
 	private JPanel textPanel = null;
 
 	private ApplicationMediator mediator;
@@ -191,7 +189,7 @@ public class T2PUI extends JDialog {
 
 			btnGenerate.setMnemonic(KeyEvent.VK_A);
 			btnGenerate.setIcon(new ImageIcon(getClass().getResource(Messages.getString("Action.ShowAbout.Icon"))));
-			btnGenerate.setText("Generate"); // TODO: config auslagern
+			btnGenerate.setText(Messages.getString("T2PUI.Button.Generate.Text")); 
 			c1.gridy = 0;
 			c1.gridx = 0;
 			c1.insets = new Insets(10, 10, 10, 10);
@@ -207,7 +205,7 @@ public class T2PUI extends JDialog {
 			});
 
 			btnErase.setMnemonic(KeyEvent.VK_L);
-			btnErase.setText("Delete"); // Properties
+			btnErase.setText(Messages.getString("T2PUI.Button.Clear.Text")); 
 			btnErase.setIcon(new ImageIcon(getClass().getResource(Messages.getString("T2P.Icon.Delete"))));
 			c1.gridy = 0;
 			c1.gridx = 1;
@@ -224,7 +222,7 @@ public class T2PUI extends JDialog {
 
 			btnUpload.setMnemonic(KeyEvent.VK_C);
 			btnUpload.setIcon(new ImageIcon(getClass().getResource(Messages.getString("Button.Import.Icon"))));
-			btnUpload.setText("Upload"); // Properties
+			btnUpload.setText(Messages.getString("T2PUI.Button.Upload.Text")); 
 			c1.gridy = 0;
 			c1.gridx = 2;
 			c1.insets = new Insets(10, 10, 10, 10);
@@ -241,7 +239,7 @@ public class T2PUI extends JDialog {
 
 			};
 
-			int value = JOptionPane.showOptionDialog(null,
+			JOptionPane.showOptionDialog(null,
 					Messages.getStringReplaced("Action.Confirm.T2P.Empty.TextArea.Text", null),
 					Messages.getString("Action.Confirm.T2P.Empty.TextArea.Title"), JOptionPane.YES_NO_CANCEL_OPTION,
 					JOptionPane.ERROR_MESSAGE, null, textMessages, textMessages[0]);
@@ -251,7 +249,7 @@ public class T2PUI extends JDialog {
 
 			};
 
-			int value = JOptionPane.showOptionDialog(null,
+			JOptionPane.showOptionDialog(null,
 					Messages.getStringReplaced("Action.Confirm.T2P.NotLoad.TextArea.Text", null),
 					Messages.getString("Action.Confirm.T2P.NotLoad.TextArea.Title"), JOptionPane.YES_NO_CANCEL_OPTION,
 					JOptionPane.ERROR_MESSAGE, null, textMessages, textMessages[0]);
