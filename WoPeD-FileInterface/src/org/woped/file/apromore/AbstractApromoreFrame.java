@@ -24,7 +24,7 @@ import org.woped.core.config.ConfigurationManager;
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.editor.controller.ApplicationMediator;
 import org.woped.file.apromore.processList.ApromoreProcessList;
-import org.woped.file.apromore.tree.ApromoreFoldertree;
+import org.woped.file.apromore.tree.ApromoreFolderTree;
 import org.woped.file.apromore.worker.ProcessListWorker;
 import org.woped.gui.lookAndFeel.WopedButton;
 import org.woped.gui.lookAndFeel.WopedProgressBar;
@@ -33,7 +33,7 @@ import org.woped.gui.translations.Messages;
 /**
  * Abstract Class for Apromore Im/Export- Frames
  * 
- * @author David Rahäuser Abstract Class-Template for Apromore In/Export
+ * @author David Rahï¿½user Abstract Class-Template for Apromore In/Export
  *
  */
 public abstract class AbstractApromoreFrame extends JDialog {
@@ -63,7 +63,7 @@ public abstract class AbstractApromoreFrame extends JDialog {
 	protected JPanel createFolderPanel;
 	protected WopedButton createFolderButton;
 	protected JTextField textInput;
-	protected ApromoreFoldertree tree;
+	protected ApromoreFolderTree tree;
 	protected boolean firsttime = true;
 
 	public AbstractApromoreFrame(AbstractApplicationMediator mediator) {
@@ -181,9 +181,9 @@ public abstract class AbstractApromoreFrame extends JDialog {
 
 	}
 
-	private ApromoreFoldertree getApromoreFoldertree() {
+	private ApromoreFolderTree getApromoreFoldertree() {
 		if (tree == null) {
-			tree = new ApromoreFoldertree(this);
+			tree = new ApromoreFolderTree(this);
 		}
 		return tree;
 	}

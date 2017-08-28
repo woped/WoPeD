@@ -22,9 +22,9 @@ public class ApromoreImportFrame extends AbstractApromoreFrame {
 
 	private ImportWorker importWorker = null;
 	private JXCollapsiblePane cp;
-	private JCheckBox edgesToPlacesCP;
-	private JCheckBox tasksToTransitionsCP;
-	private JCheckBox optimizeCP;
+	private JCheckBox edgesToPlacesCheckBox;
+	private JCheckBox tasksToTransitionsCheckBox;
+	private JCheckBox optimizeCheckBox;
 	private JToggleButton toggleButton;
 
 	/**
@@ -151,7 +151,7 @@ public class ApromoreImportFrame extends AbstractApromoreFrame {
 			toggleAction.putValue(JXCollapsiblePane.EXPAND_ICON, UIManager.getIcon("Tree.collapsedIcon"));
 
 			toggleButton = new JToggleButton(toggleAction);
-			toggleButton.setText("");
+			toggleButton.setText(Messages.getString("Apromore.UI.Import.Options"));
 		}
 
 		return toggleButton;
@@ -159,38 +159,38 @@ public class ApromoreImportFrame extends AbstractApromoreFrame {
 
 	private JCheckBox getEdgesToPlacesCheckbox(){
 
-		if (edgesToPlacesCP == null){
-			edgesToPlacesCP = new JCheckBox();
-			edgesToPlacesCP.setText(Messages.getString("Import.TreatEdgesAsPlaces"));
+		if (edgesToPlacesCheckBox == null){
+			edgesToPlacesCheckBox = new JCheckBox();
+			edgesToPlacesCheckBox.setText(Messages.getString("Apromore.UI.Import.TreatEdgesAsPlaces"));
 		}
-		return edgesToPlacesCP;
+		return edgesToPlacesCheckBox;
 	}
 
 	private JCheckBox getTaskToTransitionCheckbox(){
 
-		if (tasksToTransitionsCP == null){
-			tasksToTransitionsCP = new JCheckBox();
-			tasksToTransitionsCP.setText(Messages.getString("Import.TreatTasksAsTransitions"));
-			tasksToTransitionsCP.setSelected(true);
+		if (tasksToTransitionsCheckBox == null){
+			tasksToTransitionsCheckBox = new JCheckBox();
+			tasksToTransitionsCheckBox.setText(Messages.getString("Apromore.UI.Import.TreatTasksAsTransitions"));
+			tasksToTransitionsCheckBox.setSelected(true);
 		}
-		return tasksToTransitionsCP;
+		return tasksToTransitionsCheckBox;
 	}
 
 	private JCheckBox getOptimizeCheckbox(){
 
-		if (optimizeCP == null){
-			optimizeCP = new JCheckBox();
-			optimizeCP.setText(Messages.getString("Import.optimizeLayout"));
+		if (optimizeCheckBox == null){
+			optimizeCheckBox = new JCheckBox();
+			optimizeCheckBox.setText(Messages.getString("Apromore.UI.Import.OptimizeLayout"));
 		}
-		return optimizeCP;
+		return optimizeCheckBox;
 	}
 
 	private boolean isTasksToTransitions(){
-		return optimizeCP.isSelected();
+		return getTaskToTransitionCheckbox().isSelected();
 	}
 
 	private boolean isEdgesToPlaces(){
-		return edgesToPlacesCP.isSelected();
+		return getEdgesToPlacesCheckbox().isSelected();
 	}
 
 	protected void loadImport() {

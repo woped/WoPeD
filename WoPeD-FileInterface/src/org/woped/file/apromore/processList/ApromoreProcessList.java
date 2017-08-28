@@ -28,7 +28,7 @@ import org.woped.editor.controller.ApplicationMediator;
 import org.woped.editor.controller.vc.EditorVC;
 import org.woped.file.PNMLExport;
 import org.woped.file.PNMLImport;
-import org.woped.file.apromore.tree.ApromoreFoldertree;
+import org.woped.file.apromore.tree.ApromoreFolderTree;
 import org.woped.gui.translations.Messages;
 
 /**
@@ -41,7 +41,7 @@ public class ApromoreProcessList {
 			Messages.getString("Apromore.UI.Type"),
 			Messages.getString("Apromore.UI.Domain"),
 			Messages.getString("Apromore.UI.Version"),
-			Messages.getString("Apromore.UI.Foldername") };
+			Messages.getString("Apromore.UI.FolderName") };
 
 	private JDialog frame = null;
 	private JCheckBox beautifyCheckBox = null;
@@ -173,12 +173,11 @@ public class ApromoreProcessList {
 			filterHeader = new TableFilterHeader(table, AutoChoices.ENABLED);
 
 			String[] defaultList = new String[1];
-			defaultList[0] = ApromoreFoldertree.TOP_NODE_NAME;
+			defaultList[0] = ApromoreFolderTree.TOP_NODE_NAME;
 			setFilter(defaultList);
 			TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(
 					tabModel);
 			sorter.setComparator(1, new Comparator<String>() {
-
 				@Override
 				public int compare(String o1, String o2) {
 					return Integer.parseInt(o1) - Integer.parseInt(o2);
@@ -234,30 +233,11 @@ public class ApromoreProcessList {
 			tabModel.addRow(new String[tabModel.getColumnCount()]);
 			for (String[] s : rowData) {
 
-				if (ApromoreProcessList.this.getBeautifyCheckBox().isSelected()) {
-					if (s[3].toLowerCase().contains("pnml")) {
-
-						if (!s[0].equals("")) {
-							tabModel.addRow(s);
-						}
-
-					}
-				} else {
-					if (!s[0].equals("")) {
-						tabModel.addRow(s);
-					}
-
+				if (!s[0].equals("")) {
+					tabModel.addRow(s);
 				}
 			}
 		}
-	}
-
-	public JCheckBox getBeautifyCheckBox() {
-		if (beautifyCheckBox == null) {
-			beautifyCheckBox = new JCheckBox(
-					Messages.getString("Apromore.UI.Beautify"));
-		}
-		return beautifyCheckBox;
 	}
 
 	public void exportAction(String owner, String folder, String name,
@@ -363,7 +343,7 @@ public class ApromoreProcessList {
 						if (entry.getValue(6).toString()
 								.equals(filterFolder[i])
 								|| filterFolder[i]
-								.equalsIgnoreCase(ApromoreFoldertree.TOP_NODE_NAME)) {
+								.equalsIgnoreCase(ApromoreFolderTree.TOP_NODE_NAME)) {
 							found = true;
 							break;
 						} else {

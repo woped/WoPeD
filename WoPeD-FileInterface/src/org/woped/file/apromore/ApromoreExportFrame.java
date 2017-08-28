@@ -106,7 +106,7 @@ public class ApromoreExportFrame extends AbstractApromoreFrame {
 	}
 
 	/**
-	 * Aktuallisiert die Prozess-Datenfelder mit dem ausgewählten
+	 * Aktuallisiert die Prozess-Datenfelder mit dem ausgewï¿½hlten
 	 * Tabellenelement
 	 */
 	private void updateDataFields() {
@@ -351,7 +351,7 @@ public class ApromoreExportFrame extends AbstractApromoreFrame {
 	private JLabel getProcessFolderLabel() {
 		if (processFolderLabel == null) {
 			processFolderLabel = new JLabel(
-					Messages.getString("Apromore.UI.Foldername"));
+					Messages.getString("Apromore.UI.FolderName"));
 		}
 		return processFolderLabel;
 	}
