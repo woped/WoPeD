@@ -186,7 +186,7 @@ public class ApromoreImportFrame extends AbstractApromoreFrame {
 	}
 
 	private boolean isTasksToTransitions(){
-		return optimizeCP.isSelected();
+		return tasksToTransitionsCP.isSelected();
 	}
 
 	private boolean isEdgesToPlaces(){
