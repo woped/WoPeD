@@ -200,16 +200,16 @@
 		<jar destfile="dist/WoPeD-classes-${WOPEDVERSION}${SNAPSHOT}.jar" manifest="dist/MANIFEST.mf">
 			<fileset dir="../WoPeD-AProMoRe/bin" />
 			<fileset dir="../WoPeD-BPELExport/bin" />
+			<fileset dir="../WoPeD-Configuration/bin" />
 			<fileset dir="../WoPeD-Core/bin" />
 			<fileset dir="../WoPeD-Editor/bin" />
 			<fileset dir="../WoPeD-FileInterface/bin" />
 			<fileset dir="../WoPeD-Flamingo/bin" />
+			<fileset dir="../WoPeD-GUI/bin" />
 			<fileset dir="../WoPeD-ProcessMetrics/bin" />
 			<fileset dir="../WoPeD-QualAnalysis/bin" />
 			<fileset dir="../WoPeD-QuantAnalysis/bin" />
 			<fileset dir="../WoPeD-Starter/bin" />
-			<fileset dir="../WoPeD-GUI/bin" />
-			<fileset dir="../WoPeD-Configuration/bin" />
 		</jar>
 	</target>
 
@@ -260,15 +260,10 @@
 		
 	<target name="makeLinuxInstaller">
 		<try>
-			<tar destfile="installers/WoPeD-install-linux-${WOPEDVERSION}${SNAPSHOT}.tgz" compression="gzip">
-				<tarfileset dir="dist" mode="755">
-					<include name="WoPeD-install-linux" />
-				</tarfileset>
-				<tarfileset dir="dist">
-					<include name="WoPeD-install-linux.jar" />
-				</tarfileset>
-			</tar>
-			
+			<jar destfile="dist/launch/WoPeD.jar" basedir="dist/run" manifest="dist/MANIFEST.mf" />
+			<exec dir="dist" executable="cmd">
+				<arg line="/c java -jar ../../WoPeD-IZPack/lib/compiler.jar install.xml -o launch/WoPeD-install-linux.jar" />
+			</exec>			
 		    <catch>
 			  	<echo>Not running on Linux</echo>
 		    </catch>

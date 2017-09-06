@@ -25,8 +25,12 @@ import processing.WordNetWrapper;
 
 import javax.swing.JRadioButton;
 
-public class GUI extends JFrame {
+public class T2PGUI extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField processDescription;
 	private JButton btnTransform;
@@ -44,7 +48,7 @@ public class GUI extends JFrame {
 			EventQueue.invokeLater(new Runnable() {
 				public void run() {
 					try {
-						GUI frame = new GUI();
+						T2PGUI frame = new T2PGUI();
 						frame.setVisible(true);
 					} catch (Exception e) {
 						e.printStackTrace();
@@ -159,7 +163,7 @@ public class GUI extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public GUI() {
+	public T2PGUI() {
 		init = new Initiator();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle("Text2Model");

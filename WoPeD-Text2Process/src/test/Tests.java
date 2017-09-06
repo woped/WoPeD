@@ -1,17 +1,17 @@
 package test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
 
-import gui.GUI;
+import gui.T2PGUI;
 
 public class Tests {
 	List<File> resultFiles = new ArrayList<File>();
@@ -55,7 +55,7 @@ public class Tests {
 			
 			File resultFile = new File(args[2].replace("output=", ""));
 			
-			GUI.main(args);
+			T2PGUI.main(args);
 			
 			// compare results
 			boolean equal = true;

@@ -149,10 +149,10 @@ public class ConfProcess2TextPanel extends AbstractConfPanel {
 		c.gridy = 1;
 		contentPanel.add(getSettingsPanel(), c);
 		
-		c.weightx = 1;
+/*		c.weightx = 1;
 		c.gridx = 0;
 		c.gridy = 3;
-		contentPanel.add(getSettingsPanel_T2P(), c);
+		contentPanel.add(getSettingsPanel_T2P(), c);*/
 
 
 		// dummy

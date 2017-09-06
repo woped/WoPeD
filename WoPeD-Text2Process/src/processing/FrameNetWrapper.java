@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 import net.didion.jwnl.data.POS;
 
 import etc.Constants;
-import gui.GUI;
+import gui.T2PGUI;
 import transform.SearchUtils;
 import worldModel.Action;
 import worldModel.SpecifiedElement;
@@ -54,7 +54,7 @@ public class FrameNetWrapper {
 			
 			long _start = System.currentTimeMillis();
 			
-			String path = GUI.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+			String path = T2PGUI.class.getProtectionDomain().getCodeSource().getLocation().getPath();
 			path = (new File(path)).getParentFile().getPath();
 			try {
 				path = URLDecoder.decode(path, "UTF-8");

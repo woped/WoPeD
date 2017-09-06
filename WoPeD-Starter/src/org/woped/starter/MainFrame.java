@@ -412,9 +412,9 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
         p2tMenu.addMenuItem(Messages.getString("P2T.text")).addAction(m_mediator, ActionFactory.ACTIONID_P2T, AbstractViewEvent.P2T);
         osxAnalyzeMenu.addSubMenu(p2tMenu);
         
-        OSXMenu t2pMenu = new OSXMenu(Messages.getString("T2P.openT2P.text"));
+/*        OSXMenu t2pMenu = new OSXMenu(Messages.getString("T2P.openT2P.text"));
 		t2pMenu.addMenuItem(Messages.getString("T2P.text")).addAction(m_mediator, ActionFactory.ACTIONID_T2P, AbstractViewEvent.T2P);
-		osxAnalyzeMenu.addSubMenu(t2pMenu);
+		osxAnalyzeMenu.addSubMenu(t2pMenu);*/
         
         
         menuAdapter.addMenu(osxAnalyzeMenu);
@@ -941,7 +941,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
             p2tBand.startGroup();
 
             p2tBand.addCommandButton(getP2TButton(), RibbonElementPriority.TOP);
-            p2tBand.addCommandButton(getT2PButton(), RibbonElementPriority.TOP);
+//            p2tBand.addCommandButton(getT2PButton(), RibbonElementPriority.TOP);
         }
 
         return p2tBand;
@@ -1543,7 +1543,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
         return p2tButton;
     }
     
-    private JCommandButton getT2PButton() {
+ /*   private JCommandButton getT2PButton() {
 		if (t2pButton == null) {
 			t2pButton = new JCommandButton(Messages.getString("T2P.text"), new T2P()); //T2P
 			t2pButton.addActionListener(new ActionButtonListener(m_mediator, ActionFactory.ACTIONID_T2P, AbstractViewEvent.T2P, t2pButton));
@@ -1554,7 +1554,7 @@ public class MainFrame extends JRibbonFrame implements IUserInterface {
 
 		return t2pButton;
 	}
-
+*/
     private JCommandButton getChangeOrientationButton() {
 
         if (changeOrientationButton == null) {

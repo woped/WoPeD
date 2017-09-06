@@ -33,7 +33,7 @@ import net.didion.jwnl.data.list.PointerTargetTree;
 import net.didion.jwnl.dictionary.Dictionary;
 
 import etc.Constants;
-import gui.GUI;
+import gui.T2PGUI;
 import transform.ListUtils;
 import worldModel.Action;
 
@@ -48,8 +48,10 @@ public class WordNetWrapper {
 		long _start = System.currentTimeMillis();
 
 		// get the path where the jar file is located
-		String path = GUI.class.getProtectionDomain().getCodeSource().getLocation().getPath();
-		path = (new File(path)).getParentFile().getPath();
+//		String path = T2PGUI.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+//		path = (new File(path)).getParentFile().getPath();
+		String path = System.getProperty("user.home");
+		
 		try {
 			path = URLDecoder.decode(path, "UTF-8");
 		} catch (UnsupportedEncodingException e2) {
