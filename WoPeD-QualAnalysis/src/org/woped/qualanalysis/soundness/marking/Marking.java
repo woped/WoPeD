@@ -1,5 +1,6 @@
 package org.woped.qualanalysis.soundness.marking;
 
+import de.hpi.bpt.process.petri.Place;
 import org.woped.core.utilities.ShortLexStringComparator;
 import org.woped.qualanalysis.soundness.algorithms.generic.INode;
 import org.woped.qualanalysis.soundness.datamodel.PlaceNode;
@@ -413,10 +414,10 @@ public class Marking implements IMarking {
         StringBuilder result = new StringBuilder();
         result.append("(");
 
-        SortedMap<String, Integer> placeIds = getSortedIdIndexMap();
-        for (String id : placeIds.keySet()) {
+        SortedMap<PlaceNode, Integer> placeIds = getSortedIdIndexMap();
+        for (PlaceNode p : placeIds.keySet()) {
 
-            int pos = placeIds.get(id);
+            int pos = placeIds.get(p);
             if (tokens[pos] == 0 && !placeUnlimited[pos]) continue;
 
             if (result.length() == 1) result.append(" ");
@@ -450,9 +451,9 @@ public class Marking implements IMarking {
     public String asTokenVectorString() {
         StringBuilder result = new StringBuilder();
         result.append("(");
-        SortedMap<String, Integer> idIndexMap = getSortedIdIndexMap();
-        for (String id : idIndexMap.keySet()) {
-            int pos = idIndexMap.get(id);
+        SortedMap<PlaceNode, Integer> idIndexMap = getSortedIdIndexMap();
+        for (PlaceNode p : idIndexMap.keySet()) {
+            int pos = idIndexMap.get(p);
 
             if (result.length() == 1) result.append(" ");
 
@@ -469,10 +470,10 @@ public class Marking implements IMarking {
         return result.toString();
     }
 
-    private SortedMap<String, Integer> getSortedIdIndexMap() {
-        SortedMap<String, Integer> placeIds = new TreeMap<>(new ShortLexStringComparator());
+    private SortedMap<PlaceNode, Integer> getSortedIdIndexMap() {
+        SortedMap<PlaceNode, Integer> placeIds = new TreeMap<>(new PlaceNodeComparator());
         for (int i = 0; i < places.length; i++) {
-            placeIds.put(places[i].getName(), i);
+            placeIds.put(places[i], i);
         }
         return placeIds;
     }

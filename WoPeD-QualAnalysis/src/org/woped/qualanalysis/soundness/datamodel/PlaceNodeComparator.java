@@ -58,6 +58,14 @@ public class PlaceNodeComparator implements Comparator<PlaceNode> {
      */
     @Override
     public int compare(PlaceNode o1, PlaceNode o2) {
-        return this.comparator.compare(o1.getName(), o2.getName());
+
+        // Compare names
+        int result = this.comparator.compare(o1.getName(), o2.getName());
+
+        if (result == 0) {
+            result = this.comparator.compare(o1.getId(), o2.getId());
+        }
+
+        return result;
     }
 }

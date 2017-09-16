@@ -50,4 +50,16 @@ public class PlaceNodeComparatorTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void compare_nodesWithSameName_returnsNodeWithLowerId()throws Exception{
+
+        PlaceNode node1 = new PlaceNode(0,0,"p2", "test", "p2");
+        PlaceNode node2 = new PlaceNode(0,0,"p1", "test", "p1");
+
+        int expected = -1;
+        int actual = cut.compare(node2, node1);
+
+        assertEquals(expected, actual);
+    }
 }
