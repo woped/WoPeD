@@ -78,7 +78,8 @@ public class ArcPropertyEditor extends JDialog {
         this.setResizable(false);
         this.getContentPane().add(getContentPanel(), BorderLayout.NORTH);
         this.getContentPane().add(getButtonPanel(), BorderLayout.SOUTH);
-        this.setLocation(new Point(position.x + 50, position.y));
+        this.setLocation(new Point(position.x, position.y));
+        this.setAlwaysOnTop(true);
         this.pack();
 
         // setup default keys

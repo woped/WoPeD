@@ -133,7 +133,7 @@ public class EditorEventProcessor extends AbstractEventProcessor {
                     AbstractPetriNetElementModel element = null;
 
                     if ( cell instanceof ArcModel ) {
-                        new ArcPropertyEditor((JFrame) getMediator().getUi(), (Point) editor.getLastMousePosition(), (ArcModel) cell, editor);
+                        new ArcPropertyEditor((JFrame) getMediator().getUi(), (Point) MouseInfo.getPointerInfo().getLocation(), (ArcModel) cell, editor);
                     }
 
                     if ( cell instanceof TriggerModel ) {

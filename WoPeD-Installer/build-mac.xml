@@ -236,38 +236,25 @@
 		</try>
 	</target>
 		
-	<target name="makeWindowsInstaller">
-		<try>
-			<jar destfile="dist/launch/WoPeD.jar" basedir="dist/run" manifest="dist/MANIFEST.mf" />
-			<exec dir="dist/launch" executable="cmd">
-				<arg line="/c java -jar launch4j.jar buildexe.xml" />
-			</exec>
-			<exec dir="dist" executable="cmd">
-				<arg line="/c java -jar ../../WoPeD-IZPack/lib/compiler.jar install.xml -o launch/WoPeD-install-windows.jar" />
-			</exec>
-
-			<exec dir="dist/launch" executable="cmd">
-				<arg line="/c java -jar launch4j.jar buildsetup.xml" />
-			</exec>
-
-			<zip destfile="installers/WoPeD-install-windows-${WOPEDVERSION}${SNAPSHOT}.zip" basedir="dist/launch" includes="WoPeD-install-windows.exe" />
-
-		    <catch>
-			  <echo>Not running on Windows</echo>
-		    </catch>
-		</try>
+	<target name="makeWindowsInstaller">		
+		<jar destfile="dist/launch/WoPeD.jar" basedir="dist/run" manifest="dist/MANIFEST.mf" />
+		<exec dir="dist/launch" executable="cmd">
+			<arg line="/c java -jar launch4j.jar buildexe.xml" />
+		</exec>
+		<exec dir="dist" executable="cmd">
+			<arg line="/c java -jar ../build-tools/setup/izpack/lib/compiler.jar install.xml -o launch/WoPeD-install-windows.jar" />
+		</exec>
+		<exec dir="dist/launch" executable="cmd">
+			<arg line="/c java -jar launch4j.jar buildsetup.xml" />
+		</exec>
+		<zip destfile="installers/WoPeD-install-windows-${WOPEDVERSION}${SNAPSHOT}.zip" basedir="dist/launch" includes="WoPeD-install-windows.exe" />
 	</target>
 		
 	<target name="makeLinuxInstaller">
-		<try>
-			<jar destfile="dist/launch/WoPeD.jar" basedir="dist/run" manifest="dist/MANIFEST.mf" />
-			<exec dir="dist" executable="cmd">
-				<arg line="/c java -jar ../../WoPeD-IZPack/lib/compiler.jar install.xml -o launch/WoPeD-install-linux.jar" />
-			</exec>			
-		    <catch>
-			  	<echo>Not running on Linux</echo>
-		    </catch>
-		</try>
+		<jar destfile="dist/launch/WoPeD.jar" basedir="dist/run" manifest="dist/MANIFEST.mf" />
+		<exec dir="dist" executable="/usr/bin/java">
+			<arg line=" -jar ../build-tools/setup/izpack/lib/compiler.jar install.xml -o ../installers/WoPeD-install-linux-${WOPEDVERSION}${SNAPSHOT}.jar" />
+		</exec>
 	</target>
 		
 	<target name="makeMacInstaller">

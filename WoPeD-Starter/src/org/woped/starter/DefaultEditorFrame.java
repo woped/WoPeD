@@ -140,8 +140,6 @@ public class DefaultEditorFrame extends JInternalFrame implements IEditorFrame
             }
         }
 
-//        m_paraPhrasingPanel.setParaphrasingListeners();
-
         setTitle(m_editor.getName());
 
         this.pack();
