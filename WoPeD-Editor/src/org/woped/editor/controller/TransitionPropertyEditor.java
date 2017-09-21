@@ -77,7 +77,7 @@ public class TransitionPropertyEditor extends JDialog implements
 	private JPanel contentPanel = null;
 	private JPanel bpelContentPanel = null;
 	private JPanel bpelPanel = null;
-	private JTabbedPane tabPane = null;
+//	private JTabbedPane tabPane = null;
 	private JPanel activityChoosePanel = null;
 
 	private JComboBox<BPELadditionalPanel> activityChooseComboBox = null;
@@ -183,30 +183,30 @@ public class TransitionPropertyEditor extends JDialog implements
 		this.editor = editor;
 		this.setVisible(false);
 		initialize();
-		this.setSize(650, 640);
+		this.setSize(640, 600);
 		this.setLocationRelativeTo(null); // center dialog on screen
 		this.setVisible(true);
 	}
 
 	private void initialize() {
 		this.setTitle(Messages.getString("Transition.Properties"));
-		this.getContentPane().add(getTabbedPane(), BorderLayout.NORTH);
+		this.getContentPane().add(getContentPanel(), BorderLayout.NORTH);
 		this.getContentPane().add(getButtonPanel(), BorderLayout.SOUTH);
 		this.oldTime = serviceTimeTextField.getText();
 		this.oldTimeUnit = serviceTimeComboBox.getSelectedItem().toString();
 		getNameTextField().requestFocus();
 	}
 
-	private JTabbedPane getTabbedPane() {
+/*	private JTabbedPane getTabbedPane() {
 		if (tabPane == null) {
 			tabPane = new JTabbedPane();
 			tabPane.addTab(Messages.getString("Transition.Properties.General"),
 					getContentPanel());
-			tabPane.addTab(Messages.getString("Transition.Properties.BPEL"),
-					getBPELContentPanel());
+//			tabPane.addTab(Messages.getString("Transition.Properties.BPEL"),
+//					getBPELContentPanel());
 		}
 		return tabPane;
-	}
+	}*/
 
 	// ********************main panel 1: ContentPanel********************
 
@@ -1972,7 +1972,7 @@ public class TransitionPropertyEditor extends JDialog implements
 	}
 
 	public void repaintTabPane() {
-		tabPane.repaint();
+		repaint();
 	}
 	
 	private void transformTransition(int nodeType, int operatorType)
