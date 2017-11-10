@@ -1735,7 +1735,7 @@ public class TransitionPropertyEditor extends JDialog implements
 					String selectedRole = getRoleComboxBoxModel().getSelectedItem().toString();
 					String selectedGroup = getGroupComboxBoxModel().getSelectedItem().toString();
 
-					((BPELadditionalPanel) activityChooseComboBox.getSelectedItem()).saveInfomation();
+	//				((BPELadditionalPanel) activityChooseComboBox.getSelectedItem()).saveInfomation();
 
 					if (selectedRole.equals(ROLE_NONE) && selectedGroup.equals(GROUP_NONE) || !selectedRole.equals(ROLE_NONE) && !selectedGroup.equals(GROUP_NONE)) {
 						apply();
