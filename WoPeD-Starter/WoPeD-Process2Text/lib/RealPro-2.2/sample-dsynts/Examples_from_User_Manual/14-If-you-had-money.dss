@@ -1,0 +1,29 @@
+OUTPUT:
+
+If you had money I would do anything for you.
+
+END:
+
+DSYNTS:
+
+"DO" [ mood:"cond" ]
+(
+  I  "<PRONOUN>" [ number:"sg" person:"1st" pro:"pro" ]
+  II  "anything" [ class:"indefinite_pronoun" ]
+  (
+    ATTR  "FOR" [ ]
+    (
+      II  "<PRONOUN>" [ number:"sg" person:"2nd" pro:"pro" ]
+    )
+  )
+  ATTR  "IF" [ starting_point:"+" ]
+  (
+    II  "HAVE" [ tense:"past" ]
+    (
+      I  "<PRONOUN>" [ number:"sg" person:"2nd" pro:"pro" ]
+      II  "money" [ class:"common_noun" uncountable:"+" ]
+    )
+  )
+)
+
+END:
