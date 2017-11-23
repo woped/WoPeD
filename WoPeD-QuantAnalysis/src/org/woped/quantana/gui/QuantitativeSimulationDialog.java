@@ -1415,8 +1415,10 @@ public class QuantitativeSimulationDialog extends JDialog implements
 			for (int i = 0; i < getSimulator().getLog().size(); i++) {
 				logDlg.addLine(getSimulator().getLog().get(i));
 			}
+			logDlg.setXESLog(getSimulator().getXESLog());
 			// clear the array with the log enties
-			getSimulator().getLog().clear();
+			// getSimulator().getLog().clear();
+			// getSimulator().getXESLog().clear();
 			logDlg.configTxt();
 			logDlg.setVisible(true);
 		}

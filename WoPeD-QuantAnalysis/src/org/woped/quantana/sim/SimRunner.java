@@ -14,6 +14,9 @@ import org.woped.quantana.resourcealloc.ResourceUtilization;
 import umontreal.iro.lecuyer.rng.MRG32k3a;
 import umontreal.iro.lecuyer.rng.RandomStream;
 
+import org.woped.quantana.sim.SimLog;
+import org.woped.quantana.sim.SimLogEvent;
+
 
 public class SimRunner implements Runnable{
 	public static final int Q_FIFO = 0;
@@ -50,6 +53,7 @@ public class SimRunner implements Runnable{
 	ArrayList<SimServer> queueingServers = new ArrayList<SimServer>();
 	SimDistributionLogger distLogger = null;	
 	ArrayList<String> log = new ArrayList<String>();
+	SimLog xesLog = new SimLog();
 	
 	private ArrayList<ActivityPanel> actPanelList = new ArrayList<ActivityPanel>();
 
@@ -169,6 +173,7 @@ public class SimRunner implements Runnable{
 		avgSvc = 0;
 		avgRunTime = 0;
 		log.clear();
+		xesLog.clear();
 		
 		eventList = new PriorityQueue<SimulatorEvent>();
 			SimulatorEvent.reset();
@@ -580,7 +585,8 @@ public class SimRunner implements Runnable{
 					Messages.getString("QuantAna.Simulation.Log.AtTime") + String.format(" %.2f", runtime) + "; CASE_" + caseid + " " +
 					Messages.getString("QuantAna.Simulation.Log.ServiceTime") + String.format(" %.2f", svctime)+ " " +
 					Messages.getString("QuantAna.Simulation.Log.WaitTime") + String.format(" %.2f", wttime)+"\n");
-
+			xesLog.addEvent(caseid, new SimLogEvent(task, res, runtime, svctime));
+			
 //			log.add("RES "+res+" an TASK '"+task+"' um "+
 //					String.format("%.2f", runtime)+" gebunden; CASE_"+caseid+" Bedienzeit "+
 //					String.format("%.2f", svctime)+" Wartezeit "+
@@ -589,6 +595,10 @@ public class SimRunner implements Runnable{
 	
 	public ArrayList<String> getLog(){
 		return log;
+	}
+	
+	public SimLog getXESLog(){
+		return xesLog;
 	}
 	
 }
