@@ -55,16 +55,12 @@ Download and Run
 Download the latest version via the WoPeD website www.woped.org.
 
 For Microsoft Windows, download WoPeD-install-windows-@wopedversion@.zip, 
-unpack it with an archiving tool and run the contained executable 
+unpack it with an archiving tool and launch the contained executable 
 WoPeD-install.exe.  
 
-For Linux, download WoPeD-install-linux-@wopedversion@.tgz, unpack and 
-decompress it with the tar utility. Then launch the contained executable 
-WoPeD-install. 
+For Linux, download and launch WoPeD-install-linux-@wopedversion@.jar. 
 
-For MacOS, download WoPeD-install-macos-@wopedversion@.dmg, double-click on it
-to mount the image and launch the contained package file 
-WoPeD-install-macos.pkg. 
+For MacOS, download and launch WoPeD-install-macos-@wopedversion@.pkg.
 
 In all three cases, a setup wizard appears and will guide you through 
 the installation process, letting you choose several installation
