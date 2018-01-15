@@ -1330,6 +1330,8 @@ public class TransitionPropertyEditor extends JDialog implements
 			c.gridwidth = 1;
 			c.insets = new Insets(5, 5, 5, 0);
 			resourcePanel.add(getNumResourcesTextField(), c);
+			
+			this.setResourceTriggerGUI(this.getTriggerResourceRadioButton().isSelected());
 		}
 
 		return resourcePanel;
@@ -1883,6 +1885,18 @@ public class TransitionPropertyEditor extends JDialog implements
 		getEditor().updateNet();
 	}
 
+	private void setResourceTriggerGUI(boolean b) {
+		getResourceRoleComboBox().setEnabled(b);
+		getResourceGroupComboBox().setEnabled(b);
+		getNumResourcesLabel().setEnabled(b);
+		getResourceRoleLabel().setEnabled(b);
+		getResourceGroupLabel().setEnabled(b);
+		getNumResourcesTextField().setEnabled(b);
+		getserviceTimeLabel().setEnabled(b);
+		getserviceTimeTextfield().setEnabled(b);
+		getserviceTimeComboBox().setEnabled(b);
+	}
+
 	/*
 	 * 
 	 */
@@ -1890,28 +1904,10 @@ public class TransitionPropertyEditor extends JDialog implements
 		if (e.getActionCommand().equals(TRIGGER_MESSAGE) || e.getActionCommand().equals(TRIGGER_NONE) ||
 				e.getActionCommand().equals(TRIGGER_TIME)) {
 			// Disable all elements
-			getResourceRoleComboBox().setEnabled(false);
-			getResourceGroupComboBox().setEnabled(false);
-			getNumResourcesLabel().setEnabled(false);
-			getResourceRoleLabel().setEnabled(false);
-			getResourceGroupLabel().setEnabled(false);
-			getNumResourcesTextField().setEnabled(false);
-			getserviceTimeLabel().setEnabled(false);
-			getserviceTimeTextfield().setEnabled(false);
-			getserviceTimeComboBox().setEnabled(false);
-
+			setResourceTriggerGUI(false);
 		} else {
 			// Enable all elements for resource triggered transition
-			getResourceRoleComboBox().setEnabled(true);
-			getResourceGroupComboBox().setEnabled(true);
-			getResourceRoleLabel().setEnabled(true);
-			getResourceGroupLabel().setEnabled(true);
-			getNumResourcesLabel().setEnabled(true);
-			getNumResourcesTextField().setEnabled(true);
-			getserviceTimeLabel().setEnabled(true);
-			getserviceTimeTextfield().setEnabled(true);
-			getserviceTimeComboBox().setEnabled(true);
-
+			setResourceTriggerGUI(true);
 		}
 
 		if (transition.getToolSpecific().isSubprocess()
