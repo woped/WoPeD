@@ -142,7 +142,8 @@ private T2PStanfordWrapper f_stanford = new T2PStanfordWrapper();
         	
         	exp.addPools(f_pools);
         	exp.end();
-        	exp.export(outputFile);
+        	//exp.export(outputFile);
+			System.out.println(exp.export());
         } else {
         	// epc: new (Text2EPC)
         	EPCModelBuilder _builder = new EPCModelBuilder(this);
@@ -165,7 +166,8 @@ private T2PStanfordWrapper f_stanford = new T2PStanfordWrapper();
             exp.addConnectors(and, or, xor);
             exp.addFlows(rep.getFlows());
             exp.end();
-            exp.export(outputFile);
+            //exp.export(outputFile);
+			System.out.println(exp.export());
         }
         
 	}

@@ -90,6 +90,13 @@ public class BPMNExporter extends Exporter{
 			    e.printStackTrace();
 			    }
 	}
+
+	public String export(){
+
+			String outText = bpmn.toString();
+			return outText;
+	}
+
 	
 	public void addLanes(ArrayList<Lane> lanes){
 		bpmn.append("\n<laneSet id=\"4711\">");

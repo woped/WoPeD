@@ -55,6 +55,10 @@ public class EPCExporter extends Exporter{
 			    e.printStackTrace();
 			    }
 	}
+
+	public String export(){
+		return epml.toString();
+	}
 	
 	public void addFunctions(ArrayList<Function> functions){
 		for (Function f : functions){
