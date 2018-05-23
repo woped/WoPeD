@@ -11,7 +11,7 @@ public class PetrinetBuilderTest {
     public static void main(String [] args){
 
         /**** Mock WorldModel ****/
-        /*WorldModelBuilder WMBuilder = new WorldModelBuilder("The manager finishes the document. If he likes it, he sends it to the office. Otherwise he throws it in the bin."));
+        /*WorldModelBuilder WMBuilder = new WorldModelBuilder("The manager finishes the document. If he likes it, he sends it to the office. Otherwise he throws it in the bin.");
         PetrinetBuilder PNBuilder = new PetrinetBuilder(WMBuilder.buildWorldModel(true));*/
 
         /**** Build WorldModel ****/

@@ -1,5 +1,6 @@
 package TextToWorldModel;
 
+import de.saar.coli.salsa.reiter.framenet.FrameElement;
 import edu.stanford.nlp.ling.Word;
 import etc.TextToProcess;
 import gui.Initiator;
@@ -7,10 +8,8 @@ import processing.FrameNetWrapper;
 import processing.WordNetWrapper;
 import text.T2PSentence;
 import text.Text;
-import worldModel.Action;
-import worldModel.Actor;
-import worldModel.Resource;
-import worldModel.WorldModel;
+import transform.DummyAction;
+import worldModel.*;
 
 import java.util.ArrayList;
 
@@ -32,6 +31,14 @@ public class WorldModelBuilder {
         }
     }
 
+    private WorldModel buildWorldModel(){
+        WordNetWrapper.init();
+        FrameNetWrapper.init();
+        TextToProcess t2p= new TextToProcess();
+        WorldModel processWM = t2p.getWorldModel(processText);
+        return processWM;
+    }
+
     private WorldModel buildWorldModelMock(){
         //create text representation of the mock WorldModel
         String [][] mockText = {{"The", "manager", "finishes", "the", "documents","."},
@@ -45,6 +52,7 @@ public class WorldModelBuilder {
             }
             mockTextT2P.addSentence(new T2PSentence(WordList));
         }
+
         // create mock WorldModel
         WorldModel mockWM = new WorldModel();
 
@@ -84,21 +92,74 @@ public class WorldModelBuilder {
         }
 
         //add actions
-        Action[] act = new Action [1];
-        act[0] = new Action(mockTextT2P.getSentence(0),3 ,"finish");
+        Action[] act = new Action [5];
+        act[0] = new Action(mockTextT2P.getSentence(0),3 ,"finishes");
+        act[0].setBaseForm("finish");
         act[0].setActorFrom(a[0]);
         act[0].setObject(r[0]);
-
+        act[1] = new Action(mockTextT2P.getSentence(1),3 ,"likes");
+        act[1].setBaseForm("like");
+        act[1].setActorFrom(a[1]);
+        act[1].setObject(r[1]);
+        act[1].setMarker("if");
+        act[2] = new Action(mockTextT2P.getSentence(1),7,"sends");
+        act[2].setBaseForm("send");
+        act[2].setActorFrom(a[2]);
+        act[2].setObject(r[2]);
+        act[2].setPreAdvMod("then",0);
+            Specifier s1 =new Specifier(mockTextT2P.getSentence(1),11,"to the office");
+            s1.setSpecifierType(Specifier.SpecifierType.PP);
+            s1.setPhraseType(FrameNetWrapper.PhraseType.CORE);
+            s1.setHeadWord("to");
+            s1.setObject(a[3]);
+            //s1.setFrameElement(new FrameElement()); //TODO add FrameElement
+        act[2].addSpecifiers(s1);
+        act[3] = new Action(mockTextT2P.getSentence(2),3,"throws");
+        act[3].setBaseForm("throw");
+        act[3].setActorFrom(a[4]);
+        act[3].setObject(r[3]);
+        act[3].setPreAdvMod("otherwise",1);
+            Specifier s2 =new Specifier(mockTextT2P.getSentence(2),7,"in the bin");
+            s2.setSpecifierType(Specifier.SpecifierType.PP);
+            s2.setPhraseType(FrameNetWrapper.PhraseType.CORE);
+            s2.setHeadWord("in");
+            s2.setObject(r[4]);
+        //s1.setFrameElement(new FrameElement()); //TODO add FrameElement
+        act[3].addSpecifiers(s2);
+        act[4]= new DummyAction();
         for (int i = 0;i<act.length;i++){
             mockWM.addAction(act[i]);
         }
+
+        //add flows
+        Flow [] f=new Flow[3];
+        f[0] = new Flow(mockTextT2P.getSentence(0));
+        f[0].setDirection(Flow.FlowDirection.split);
+        f[0].setType(Flow.FlowType.sequence);
+        f[0].setSingleObject(new DummyAction());
+            ArrayList<Action> mo1 = new ArrayList<Action>();
+            mo1.add(act[0]);
+        f[0].setMultipleObjects(mo1);
+        f[1] = new Flow(mockTextT2P.getSentence(1));
+        f[1].setDirection(Flow.FlowDirection.split);
+        f[1].setType(Flow.FlowType.choice);
+        f[1].setSingleObject(act[0]);
+        ArrayList<Action> mo2 = new ArrayList<Action>();
+        mo2.add(act[1]);
+        mo2.add(act[3]);
+        f[1].setMultipleObjects(mo2);
+        f[2] = new Flow(mockTextT2P.getSentence(2));
+        f[2].setDirection(Flow.FlowDirection.split);
+        f[2].setType(Flow.FlowType.sequence);
+        f[2].setSingleObject(act[1]);
+        ArrayList<Action> mo3 = new ArrayList<Action>();
+        mo3.add(act[2]);
+        f[2
+                ].setMultipleObjects(mo3);
+
+        for (int i = 0;i<f.length;i++){
+            mockWM.addFlow(f[i]);
+        }
         return mockWM;
-    }
-    private WorldModel buildWorldModel(){
-        WordNetWrapper.init();
-        FrameNetWrapper.init();
-        TextToProcess t2p= new TextToProcess();
-        WorldModel processWM = t2p.getWorldModel(processText);
-        return processWM;
     }
 }
