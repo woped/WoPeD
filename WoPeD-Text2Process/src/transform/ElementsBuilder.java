@@ -67,6 +67,7 @@ public class ElementsBuilder {
 
 	public static Action createAction(T2PSentence origin, List<Tree> fullSentence, TreeGraphNode node,Collection<TypedDependency> dependencies,boolean active) {
 		Action _result = new Action(origin,node.index(),node.value());
+		_result.setBaseForm(WordNetWrapper.getBaseForm(node.value()));
 		//search for an auxiliary verb
 		String _aux = getAuxiliaries(node, dependencies);
 		if(_aux.length() > 0)
@@ -259,6 +260,7 @@ public class ElementsBuilder {
 			index = SearchUtils.getIndex(fullSentence, vpHead.getLeaves());
 		}		
 		Action _result = new Action(origin,index,PrintUtils.toString(_verbParts));
+		_result.setBaseForm(WordNetWrapper.getBaseForm(PrintUtils.toString(_verbParts)));
 		//extracting further information and specifiers
 		extractSBARSpecifier(origin, fullSentence, _result, vpHead,null);		
 		//determineLinkedActions
