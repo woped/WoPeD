@@ -131,7 +131,7 @@ public class WordNetWrapper {
 			}
 		}
 		f_dictionary = Dictionary.getInstance();
-
+/*
 		try {
 			for (String s : Constants.f_acceptedAMODforLoops) {
 				IndexWord _iw = f_dictionary.lookupIndexWord(POS.ADJECTIVE, s);
@@ -157,7 +157,7 @@ public class WordNetWrapper {
 
 		} catch (JWNLException e) {
 			e.printStackTrace();
-		}
+		} */
 		System.out.println("Loaded WordNet in " + (System.currentTimeMillis() - _start) + "ms.");
 	}
 
@@ -402,7 +402,7 @@ public class WordNetWrapper {
 	}
 
 	/**
-	 * @param lowerCase
+	 //* @param lowerCase
 	 * @return
 	 */
 	public static boolean isMetaActor(String fullNoun, String noun) {
@@ -438,7 +438,7 @@ public class WordNetWrapper {
 	}
 
 	/**
-	 * @param name
+	 * //@param name
 	 * @return
 	 */
 	public static boolean canBeDataObject(String fullNoun, String noun) {
@@ -452,4 +452,5 @@ public class WordNetWrapper {
 		}
 		return false;
 	}
+
 }
