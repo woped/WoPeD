@@ -21,7 +21,7 @@ import java.util.*;
 public class WordNetInitializer {
 
     //wordnet source directory
-    private File wnDir = new File ("WoPeD-Text2Process/NLPTools/dict");
+    private File wnDir = new File ("WoPeD-Text2Process/NLPTools/WordNet/dict");
 
     //dictionary instance
     public final IRAMDictionary dict = new RAMDictionary (wnDir , ILoadPolicy.NO_LOAD );
