@@ -31,7 +31,6 @@ public class Constants {
 //	public static final boolean DEBUG_EXTRACTION_FINAL = true;
 //	public static final boolean DEBUG_FRAME_ASSIGNMENT = true;
 	
-	
 	public static ArrayList<String> f_relativeResolutionTags = new ArrayList<String>(2);
 	public static ArrayList<String> f_relativeResolutionWords = new ArrayList<String>(2);
 	
@@ -107,12 +106,41 @@ public class Constants {
 		
 		f_relativeResolutionWords.add("someone");
 		//f_relativeResolutionWords.add("somebody");
-		
+
+		//edited by jana
 		f_acceptedAMODforLoops.add("next");
 		f_acceptedAMODforLoops.add("back");
 		f_acceptedAMODforLoops.add("again");
-		
+		f_acceptedAMODforLoops.add("following");
+		f_acceptedAMODforLoops.add("once again");
+		f_acceptedAMODforLoops.add("adjacent");
+		f_acceptedAMODforLoops.add("side by side");
+		f_acceptedAMODforLoops.add("future");
+		f_acceptedAMODforLoops.add("succeeding");
+		f_acceptedAMODforLoops.add("hind");
+		f_acceptedAMODforLoops.add("hinder");
+		f_acceptedAMODforLoops.add("backwards");
+		f_acceptedAMODforLoops.add("backward");
+		f_acceptedAMODforLoops.add("rearward");
+		f_acceptedAMODforLoops.add("rearwards");
+		f_acceptedAMODforLoops.add("once more");
+		f_acceptedAMODforLoops.add("over again");
+
+
+
+
+
+
+		//edited by jana
 		f_acceptedForForwardLink.add("finally");
+		f_acceptedForForwardLink.add("eventually");
+		f_acceptedForForwardLink.add("ultimately");
+		f_acceptedForForwardLink.add("in the end");
+		f_acceptedForForwardLink.add("at last");
+		f_acceptedForForwardLink.add("at long last");
+		f_acceptedForForwardLink.add("lastly");
+		f_acceptedForForwardLink.add("in conclusion");
+
 		
 		f_wantedDeterminers.add("a");
 		f_wantedDeterminers.add("an");
@@ -122,11 +150,17 @@ public class Constants {
 		f_realActorDeterminers.add("person");
 		f_realActorDeterminers.add("social_group");
 		f_realActorDeterminers.add("software system");
-		
+
+		//edited by jana
 		f_dataObjectDeterminers.add("written_material");
 		f_dataObjectDeterminers.add("record");
 		f_dataObjectDeterminers.add("message");
 		f_dataObjectDeterminers.add("design");
+		f_dataObjectDeterminers.add("sheet");
+		f_dataObjectDeterminers.add("data");
+		f_dataObjectDeterminers.add("list");
+		f_dataObjectDeterminers.add("email");
+		f_dataObjectDeterminers.add("file");
 		
 		f_metaActorsDeterminers.add("step");
 		f_metaActorsDeterminers.add("process");
