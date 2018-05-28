@@ -7,6 +7,7 @@ import edu.mit.jwi.data.ILoadPolicy;
 import edu.mit.jwi.item.*;
 
 import etc.Constants;
+import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import processing.ProcessingUtils;
 import text.T2PSentence;
@@ -20,17 +21,23 @@ import java.util.*;
 public class WordNetInitializer {
 
     //wordnet source directory
-    private static File wnDir = new File ("WoPeD-Text2Process/NLPTools/dict");
+    private File wnDir = new File ("WoPeD-Text2Process/NLPTools/dict");
 
     //dictionary instance
-    private static final IRAMDictionary dict = new RAMDictionary (wnDir , ILoadPolicy.NO_LOAD );
+    public final IRAMDictionary dict = new RAMDictionary (wnDir , ILoadPolicy.NO_LOAD );
+    public IRAMDictionary getDict() {
+        return dict;
+    }
+    public IRAMDictionary getInstance(){
+        return dict;
+    }
 
     //lists with static words created via wordnet
-    private static ArrayList<String> f_acceptedAMODList = new ArrayList<>();
-    private static ArrayList<String> acceptedForwardLinkList = new ArrayList<>();
+    private  ArrayList<String> f_acceptedAMODList = new ArrayList<>();
+    private  ArrayList<String> acceptedForwardLinkList = new ArrayList<>();
 
     //actually opening and loading the dictionary
-    public static void init () {
+    public  void init () {
 
         try {
             // construct the dictionary object and open it
@@ -58,12 +65,10 @@ public class WordNetInitializer {
         fillconstLists();
     }
 
-    public static IRAMDictionary getInstance(){
-        return dict;
-    }
+
 
     //tracking for test purposes!!!
-    private static void trek ( IDictionary dict ){
+    private void trek ( IDictionary dict ){
         int tickNext = 0;
         int tickSize = 20000;
         int seen = 0;
@@ -85,7 +90,7 @@ public class WordNetInitializer {
     }
 
     //initialize the constant lists via wordnet
-    private static void fillconstLists(){
+    private void fillconstLists(){
 
         try {
             for (String s : Constants.f_acceptedAMODforLoops) {
@@ -117,7 +122,7 @@ public class WordNetInitializer {
     }
 
     //helper methods for filling lists
-    private static void addAllLemmas(IIndexWord _iw, List<String> list) throws Exception {
+    private void addAllLemmas(IIndexWord _iw, List<String> list) throws Exception {
         // get the synset
         List <IWordID> wordIDs = _iw.getWordIDs();
         for (IWordID wi : wordIDs){
@@ -133,7 +138,7 @@ public class WordNetInitializer {
 
         }
     }
-    private static void addLemmas(ISynset syn, List<String> list) {
+    private void addLemmas(ISynset syn, List<String> list) {
         for (IWord word : syn.getWords()) {
             String _str = word.getLemma();
             if (_str.indexOf('(') > 0) {
@@ -143,15 +148,18 @@ public class WordNetInitializer {
             list.add(_str);
         }
     }
-    public static ArrayList<String> getAcceptedForwardLinkList() {
+    public ArrayList<String> getAcceptedForwardLinkList() {
         return acceptedForwardLinkList;
     }
-    public static boolean isAMODAcceptedForLinking(String value) {
+    public boolean isAMODAcceptedForLinking(String value) {
         return f_acceptedAMODList.contains(value);
     }
 
+
     //functionality
-    public static boolean isAnimate(String noun) {
+
+    //checks whether a noun is a animate_thing
+    public boolean isAnimate(String noun) {
        try {
             IIndexWord _idw = dict.getIndexWord(noun, POS.NOUN);
             return checkHypernymTree(_idw, ListUtils.getList("animate_thing"));
@@ -160,7 +168,18 @@ public class WordNetInitializer {
         }
         return false;
     }
-    public static boolean canBePersonOrSystem(String fullNoun, String mainNoun) {
+    //checks whether a noun can be a group_action
+    public boolean canBeGroupAction(String mainNoun) {
+        try {
+            IIndexWord _idw = dict.getIndexWord(mainNoun, POS.NOUN);
+            return checkHypernymTree(_idw, ListUtils.getList("group_action"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    //checks wether a thing is a person or a system
+    public  boolean canBePersonOrSystem(String fullNoun, String mainNoun) {
         try {
             if (Constants.f_personCorrectorList.contains(fullNoun)) {
                 return true;
@@ -177,16 +196,8 @@ public class WordNetInitializer {
         }
         return false;
     }
-    public static boolean canBeGroupAction(String mainNoun) {
-        try {
-            IIndexWord _idw = dict.getIndexWord(mainNoun, POS.NOUN);
-            return checkHypernymTree(_idw, ListUtils.getList("group_action"));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-    public static boolean isTimePeriod(String mainNoun) {
+    //checks wether a noun is a timeperiod
+    public  boolean isTimePeriod(String mainNoun) {
         try {
             IIndexWord _idw = dict.getIndexWord(mainNoun, POS.NOUN);
             return checkHypernymTree(_idw, ListUtils.getList("time_period"));
@@ -195,7 +206,8 @@ public class WordNetInitializer {
         }
         return false;
     }
-    public static boolean isInteractionVerb(Action a) {
+    //checks wether verb is an interaction verb
+    public  boolean isInteractionVerb(Action a) {
         String _verb = getBaseForm(a.getName());
         if (Constants.f_interactionVerbs.contains(_verb)) {
             return true;
@@ -221,9 +233,10 @@ public class WordNetInitializer {
         }
         return false;
     }
-    private static boolean checkHypernymTree(IIndexWord idw, List<String> wordsToCHeck) throws Exception {
+    //helpers
+    private  boolean checkHypernymTree(IIndexWord idw, List<String> wordsToCHeck) {
         if (idw != null) {
-            System.out.println("checking senses of: "+ idw.getLemma());
+            //System.out.println("checking senses of: "+ idw.getLemma());
 
             List<IWordID> wordIDs = idw.getWordIDs();
             for (IWordID wi : wordIDs) {
@@ -232,27 +245,36 @@ public class WordNetInitializer {
 
                 //ignore instances
                 List<ISynsetID> _pts = syn.getRelatedSynsets(Pointer.HYPERNYM_INSTANCE);
-                if (!_pts.equals(0)) { //review! Typen inkompatibel
+                if (!_pts.isEmpty()) {
                     continue;
                 }
-                if (canBe(syn, wordsToCHeck, new LinkedList<>())) {
-                    return true;
+                try{
+                    if (canBe(syn, wordsToCHeck, new LinkedList<>())) {
+                        return true;
+                    }
+                }catch(Exception e){
+                        e.printStackTrace();
                 }
 
             }
         }
         return false;
     }
-    private static boolean canBe(ISynset s, List<String> lookFor, LinkedList<ISynset> checked) throws Exception {
+    private  boolean canBe(ISynset s, List<String> lookFor, LinkedList<ISynset> checked) throws Exception {
+
         if (!checked.contains(s)) {
             checked.add(s); // to avoid circles
             for (String lf : lookFor) {
-                if (s.getWords().contains(lf)){ //review beinhaltet keinen Typ String
-                    return true;
+                List<IWord> words = s.getWords();
+
+                for (IWord w : words){
+                    if (w.getLemma().equals(lf)) {
+                        return true;
+                    }
                 }
             }
 
-            List<ISynsetID> _pts = s.getRelatedSynsets(Pointer.HYPERNYM_INSTANCE);
+            List<ISynsetID> _pts = s.getRelatedSynsets(Pointer.HYPERNYM);
             for (ISynsetID p : _pts) {
                 if (canBe(dict.getSynset(p), lookFor, checked)) {
                     return true;
@@ -261,7 +283,8 @@ public class WordNetInitializer {
         }
         return false;
     }
-    public static String deriveVerb(String noun) {
+
+    public  String deriveVerb(String noun) {
         try {
             IIndexWord _idw = dict.getIndexWord(noun, POS.NOUN);
             if (_idw == null) {
@@ -273,8 +296,15 @@ public class WordNetInitializer {
 
             for (IWordID wi : _idw.getWordIDs()) {
                 IWord word = dict.getWord(wi);
+                System.out.println( "dev:" + word.getRelatedWords(Pointer.DERIVATIONALLY_RELATED).toString());
                 ISynset syn = word.getSynset();
+                for(IWord w : syn.getWords()){
+                    System.out.println( "word:" +  w.getRelatedWords(Pointer.DERIVATIONALLY_RELATED).toString());
+                }
+                syn.getWords();
+                System.out.println(syn.toString());
                 List<ISynsetID> synsets = syn.getRelatedSynsets(Pointer.DERIVATIONALLY_RELATED);
+                System.out.println(synsets.toString());
 
                 for (ISynsetID s : synsets) {
                     if (s.getPOS() == POS.VERB) {
@@ -310,7 +340,7 @@ public class WordNetInitializer {
         }
     }*/
 
-    public static boolean isWeakAction(Action a) {
+    public  boolean isWeakAction(Action a) {
         if (isWeakVerb(a.getName())) {
             if (a.getXcomp() == null || isWeakVerb(a.getXcomp().getVerb())) {
                 return true;
@@ -318,13 +348,13 @@ public class WordNetInitializer {
         }
         return false;
     }
-    public static boolean isWeakVerb(String v) {
+    public  boolean isWeakVerb(String v) {
         return Constants.f_weakVerbs.contains(getBaseForm(v));
     }
-    public static String getBaseForm(String verb) {
+    public  String getBaseForm(String verb) {
         return getBaseForm(verb, true, POS.VERB);
     }
-    public static String getBaseForm(String verb, boolean keepAuxiliaries, POS pos) {
+    public  String getBaseForm(String verb, boolean keepAuxiliaries, POS pos) {
         String[] _parts = verb.split(" "); // verb can contain auxiliary verbs
         // (to acquire)
         try {
@@ -345,7 +375,8 @@ public class WordNetInitializer {
         }
         return verb;
     }
-    public static boolean isMetaActor(String fullNoun, String noun) {
+
+    public boolean isMetaActor(String fullNoun, String noun) {
         if (!Constants.f_personCorrectorList.contains(fullNoun)) {
             try {
                 IIndexWord _idw = dict.getIndexWord(fullNoun, POS.NOUN);
@@ -358,7 +389,7 @@ public class WordNetInitializer {
         }
         return false;
     }
-    public static boolean isVerbOfType(String verb, String type) {
+    public boolean isVerbOfType(String verb, String type) {
         try {
             IIndexWord _idw = dict.getIndexWord(verb, POS.VERB);
             return checkHypernymTree(_idw, ListUtils.getList(type));
@@ -367,7 +398,7 @@ public class WordNetInitializer {
         }
         return false;
     }
-    public static boolean canBeDataObject(String fullNoun, String noun) {
+    public boolean canBeDataObject(String fullNoun, String noun) {
         try {
             IIndexWord _idw = dict.getIndexWord(fullNoun, POS.NOUN);
 
@@ -384,18 +415,23 @@ public class WordNetInitializer {
 
     //test method
     public static void main (String[] args) {
-        WordNetInitializer.init();
-        WordNetInitializer.getInstance();
-        System.out.println(WordNetInitializer.acceptedForwardLinkList);
-        System.out.println(WordNetInitializer.f_acceptedAMODList);
+        WordNetInitializer wni = new WordNetInitializer();
+        wni.init();
+        System.out.println(wni.acceptedForwardLinkList);
+        System.out.println(wni.f_acceptedAMODList);
 
-        System.out.println(isAnimate("human"));
-        System.out.println(canBeGroupAction("talk"));
-        System.out.println(isTimePeriod("5 minutes"));
+
+        System.out.println("animate" + wni.isAnimate("woman")); //läuft
+        System.out.println(wni.canBeGroupAction("exchange")); //läuft
+        System.out.println(wni.canBePersonOrSystem("Lisa", "she")); //läuft, aber schlecht
+        System.out.println("time: " + wni.isTimePeriod("day")); //läuft, mittel gut
+
         T2PSentence s = new T2PSentence(2);
-        Action a = new Action(s,4 , "talk");
-        System.out.println(isInteractionVerb(a));
-        System.out.println(deriveVerb("talking"));
+        Action a = new Action(s,4 , "send");
+        System.out.println(wni.isInteractionVerb(a)); //läuft, aber rulebased!
+
+
+        //System.out.println(wni.deriveVerb("talking"));
 
     }
 
