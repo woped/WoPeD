@@ -17,11 +17,12 @@ import java.util.*;
 public class WordNetInitializer {
 
     //wordnet source directory
-    private static File wnDir = new File ("WoPeD-Text2Process/NLPTools/dict");
+    private static final File wnDir = new File ("WoPeD-Text2Process/NLPTools/WordNet/dict");
     //wordnet initializer instance
     private static WordNetInitializer wni;
+
     //dictionary instance
-    public static final IRAMDictionary dict = new RAMDictionary (wnDir , ILoadPolicy.NO_LOAD );
+    private static final IRAMDictionary dict = new RAMDictionary (wnDir , ILoadPolicy.NO_LOAD );
 
     private WordNetInitializer(){
 
@@ -40,7 +41,7 @@ public class WordNetInitializer {
     }
 
     //actually opening and loading the dictionary
-    public static void init () {
+    private static void init () {
 
         try {
             // construct the dictionary object and open it

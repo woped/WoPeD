@@ -278,7 +278,6 @@ public class WordNetFunctionality {
         System.out.println(wnf.isVerbOfType("run", "move"));
         System.out.println(wnf.canBeDataObject("email", "text"));
 
-
         /**** Mock WorldModel ****/
         WorldModelBuilder WMBuilder = new WorldModelBuilder("He begin and finishes the document. If he likes it, he sends it to the office. Otherwise he throws it in the bin.");
         WorldModel test = WMBuilder.buildWorldModel(true);
