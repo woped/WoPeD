@@ -3,7 +3,6 @@ package TextToWorldModel;
 import de.saar.coli.salsa.reiter.framenet.FrameElement;
 import edu.stanford.nlp.ling.Word;
 import etc.TextToProcess;
-import gui.Initiator;
 import processing.FrameNetWrapper;
 import processing.WordNetWrapper;
 import text.T2PSentence;

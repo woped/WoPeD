@@ -1,19 +1,22 @@
 package org.woped.t2p;
 
-import gui.Initiator;
+import TextToWorldModel.WorldModelBuilder;
+
 
 public class WorldModelExecution implements Runnable {
 
-	static Initiator init = null;
-
+	static WorldModelBuilder WMBuilder = null;
+	public WorldModelExecution(String ProcessDescriptionText){
+		WMBuilder= new WorldModelBuilder(ProcessDescriptionText);
+	}
 	public void run() {
 		//System.out.println("Hello from a thread!");
-		init = new Initiator();
+
 
 	}
 
-	public static Initiator getInitiator() {
-		return init;
+	public static WorldModelBuilder getWorldModelBuilder() {
+		return WMBuilder;
 	}
 
 }

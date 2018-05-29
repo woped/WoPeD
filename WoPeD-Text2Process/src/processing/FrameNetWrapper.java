@@ -53,8 +53,9 @@ public class FrameNetWrapper {
 		try {
 			
 			long _start = System.currentTimeMillis();
-			
-			String path = GUI.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+
+			String path= FrameNetWrapper.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+
 			path = (new File(path)).getParentFile().getPath();
 			try {
 				path = URLDecoder.decode(path, "UTF-8");
