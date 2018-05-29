@@ -1,8 +1,8 @@
 package TextToWorldModel;
 
+import ToolWrapper.StanfordParserFunctionality;
 import edu.stanford.nlp.ling.Word;
 import processing.FrameNetWrapper;
-import processing.T2PStanfordWrapper;
 import processing.WordNetWrapper;
 import text.T2PSentence;
 import text.Text;
@@ -17,7 +17,7 @@ public class WorldModelBuilder {
     private String processText;
     private Text parsedText;
     private TextAnalyzer analyzer = new TextAnalyzer();
-    private T2PStanfordWrapper stanford = new T2PStanfordWrapper();
+    private StanfordParserFunctionality stanford = new StanfordParserFunctionality();
 
     public WorldModelBuilder(String processText){
         this.processText = processText;
