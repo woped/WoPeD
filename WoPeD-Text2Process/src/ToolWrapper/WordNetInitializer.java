@@ -8,7 +8,7 @@ import edu.mit.jwi.RAMDictionary;
 import edu.mit.jwi.data.ILoadPolicy;
 import edu.mit.jwi.item.*;
 
-import etc.Constants;
+import TextToWorldModel.Constants;
 
 import java.io.File;
 import java.io.IOException;

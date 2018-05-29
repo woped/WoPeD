@@ -14,8 +14,7 @@ import java.util.logging.Logger;
 
 import net.didion.jwnl.data.POS;
 
-import etc.Constants;
-import gui.GUI;
+import TextToWorldModel.Constants;
 import transform.SearchUtils;
 import worldModel.Action;
 import worldModel.SpecifiedElement;

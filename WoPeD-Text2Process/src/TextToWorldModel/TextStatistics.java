@@ -1,7 +1,7 @@
 /**
  * modified taken from https://github.com/FabianFriedrich/Text2Process
  */
-package etc;
+package TextToWorldModel;
 
 public class TextStatistics {
 	

@@ -13,8 +13,8 @@ import java.util.Map.Entry;
 
 import net.didion.jwnl.data.POS;
 
-import etc.Constants;
-import etc.SentenceWordID;
+import TextToWorldModel.Constants;
+import TextToWorldModel.SentenceWordID;
 import processing.ProcessingUtils;
 import processing.WordNetWrapper;
 import processing.FrameNetWrapper.PhraseType;

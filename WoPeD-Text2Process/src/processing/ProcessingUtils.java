@@ -3,7 +3,7 @@
  */
 package processing;
 
-import etc.Constants;
+import TextToWorldModel.Constants;
 import worldModel.Action;
 import worldModel.Actor;
 import worldModel.ExtractedObject;

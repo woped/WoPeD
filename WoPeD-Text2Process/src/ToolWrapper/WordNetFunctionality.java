@@ -3,7 +3,7 @@ package ToolWrapper;
 import TextToWorldModel.WorldModelBuilder;
 import edu.mit.jwi.IRAMDictionary;
 import edu.mit.jwi.item.*;
-import etc.Constants;
+import TextToWorldModel.Constants;
 import org.apache.commons.lang3.StringUtils;
 import processing.ProcessingUtils;
 import transform.ListUtils;

@@ -7,8 +7,6 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
@@ -32,8 +30,7 @@ import net.didion.jwnl.data.Word;
 import net.didion.jwnl.data.list.PointerTargetTree;
 import net.didion.jwnl.dictionary.Dictionary;
 
-import etc.Constants;
-import gui.GUI;
+import TextToWorldModel.Constants;
 import transform.ListUtils;
 import worldModel.Action;
 

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import etc.Constants;
+import TextToWorldModel.Constants;
 import processing.FrameNetWrapper;
 import processing.ProcessingUtils;
 import processing.WordNetWrapper;

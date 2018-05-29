@@ -1,13 +1,13 @@
 package TextToWorldModel;
 
-import de.saar.coli.salsa.reiter.framenet.FrameElement;
 import edu.stanford.nlp.ling.Word;
-import etc.TextToProcess;
 import processing.FrameNetWrapper;
+import processing.T2PStanfordWrapper;
 import processing.WordNetWrapper;
 import text.T2PSentence;
 import text.Text;
 import transform.DummyAction;
+import transform.TextAnalyzer;
 import worldModel.*;
 
 import java.util.ArrayList;
@@ -15,6 +15,9 @@ import java.util.ArrayList;
 public class WorldModelBuilder {
 
     private String processText;
+    private Text parsedText;
+    private TextAnalyzer analyzer = new TextAnalyzer();
+    private T2PStanfordWrapper stanford = new T2PStanfordWrapper();
 
     public WorldModelBuilder(String processText){
         this.processText = processText;
@@ -30,11 +33,23 @@ public class WorldModelBuilder {
         }
     }
 
+    public TextStatistics getTextStatistics() {
+        TextStatistics _result = new TextStatistics();
+        _result.setNumberOfSentences(parsedText.getSize());
+        _result.setAvgSentenceLength(parsedText.getAvgSentenceLength());
+        _result.setNumOfReferences(analyzer.getNumberOfReferences());
+        _result.setNumOfLinks(analyzer.getNumberOfLinks());
+        return _result;
+    }
+
     private WorldModel buildWorldModel(){
         WordNetWrapper.init();
         FrameNetWrapper.init();
-        TextToProcess t2p= new TextToProcess();
-        WorldModel processWM = t2p.getWorldModel(processText);
+
+        parsedText = stanford.createText(processText);
+        analyzer.clear();
+        analyzer.analyze(parsedText);
+        WorldModel processWM= analyzer.getWorld();
         return processWM;
     }
 
