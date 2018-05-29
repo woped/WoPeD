@@ -157,7 +157,7 @@ public class RegistrationUI extends JDialog {
 					String javaVersion = System.getProperty("java.version").replace(" ", "");
 					String wopedVersion = Messages.getString("Application.Version".replace(" ", ""));
 					String url = Messages.getString("Registration.ServerURL") + 
-							     "?java=" + javaVersion + "&os=" + osVersion + "&woped=" + wopedVersion;
+							     "/?java=" + javaVersion + "&os=" + osVersion + "&woped=" + wopedVersion;
 					new LaunchDefaultBrowserAction(url, registerButton).displayURL();
 					ConfigurationManager.getConfiguration().setRegistered(true);
 					VisualController.getInstance().propertyChange(new PropertyChangeEvent(this, "Registration", null, null));

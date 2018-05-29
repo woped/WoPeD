@@ -170,44 +170,49 @@ public class RunWoPeD extends JFrame {
 		/* If we are running on a Mac, set associated screen menu handlers */
 		if (Platform.isMac()) {
 
-			/* Alternative code for Java 10 */
-  			/*OSXHandler.setAboutHandler(this, getClass().getDeclaredMethod("about", new Class[]{EventObject.class}));
-            	OSXHandler.setQuitHandler(this, getClass().getDeclaredMethod("quit", new Class[]{EventObject.class, Object.class}));
-            	OSXHandler.setPreferencesHandler(this, getClass().getDeclaredMethod("preferences", new Class[]{EventObject.class}));
-            	OSXHandler.setFileHandler(this, getClass().getDeclaredMethod("openDocument", new Class[]{java.util.ArrayList.class}));         	
-			*/ 
-			
-			/* Code for Java 8 */
-            	OSXAdapter.setOpenFileHandler(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					m_filesToOpen = new String[1];
-					m_filesToOpen[0] = e.getActionCommand();
-				}
-			});
+			if (System.getProperty("java.version").equals("10.0.1")) {
+				/* Alternative code for Java 10 */
+				OSXHandler.setAboutHandler(this,
+						getClass().getDeclaredMethod("about", new Class[] { EventObject.class }));
+				OSXHandler.setQuitHandler(this,
+						getClass().getDeclaredMethod("quit", new Class[] { EventObject.class, Object.class }));
+				OSXHandler.setPreferencesHandler(this,
+						getClass().getDeclaredMethod("preferences", new Class[] { EventObject.class }));
+				OSXHandler.setFileHandler(this,
+						getClass().getDeclaredMethod("openDocument", new Class[] { java.util.ArrayList.class }));
+			} else {
+				/* Code for Java 8 */
+				OSXAdapter.setOpenFileHandler(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						m_filesToOpen = new String[1];
+						m_filesToOpen[0] = e.getActionCommand();
+					}
+				});
 
-			OSXAdapter.setQuitHandler(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					m_dam.fireViewEvent(
-							new ViewEvent(m_dam, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.EXIT));
+				OSXAdapter.setQuitHandler(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						m_dam.fireViewEvent(
+								new ViewEvent(m_dam, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.EXIT));
 
-				}
-			});
+					}
+				});
 
-			OSXAdapter.setAboutHandler(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					m_dam.fireViewEvent(
-							new ViewEvent(m_dam, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.ABOUT));
+				OSXAdapter.setAboutHandler(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						m_dam.fireViewEvent(
+								new ViewEvent(m_dam, AbstractViewEvent.VIEWEVENTTYPE_GUI, AbstractViewEvent.ABOUT));
 
-				}
-			});
+					}
+				});
 
-			OSXAdapter.setPreferencesHandler(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					m_dam.fireViewEvent(new ViewEvent(m_dam, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION,
-							AbstractViewEvent.CONFIG));
+				OSXAdapter.setPreferencesHandler(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						m_dam.fireViewEvent(new ViewEvent(m_dam, AbstractViewEvent.VIEWEVENTTYPE_APPLICATION,
+								AbstractViewEvent.CONFIG));
 
-				}
-			});
+					}
+				});
+			}
 		}
 
 		System.setProperty("apple.laf.useScreenMenuBar", "true");
