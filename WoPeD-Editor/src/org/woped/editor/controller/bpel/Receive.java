@@ -4,7 +4,7 @@ import org.oasisOpen.docs.wsbpel.x20.process.executable.TReceive;
 
 /**
  * 
- * @author Frank Schüler
+ * @author Frank SchÃ¼ler
  * 
  */
 /**

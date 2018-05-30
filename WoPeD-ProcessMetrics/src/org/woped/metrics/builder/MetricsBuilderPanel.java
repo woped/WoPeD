@@ -64,47 +64,47 @@ public class MetricsBuilderPanel extends javax.swing.JPanel {
 	private static final long serialVersionUID = 3514711132769580063L;
 	
 	// Button name constants
-	public static final String IMPORT_BTN 		= "importBtn";
-	public static final String EXPORT_BTN 		= "exportBtn";
-	public static final String CHECK_BTN 		= "checkBtn";
-	public static final String SAVE_BTN 		= "saveBtn";
-	public static final String EXIT_BTN 		= "exitBtn";
-	public static final String NEW_BTN 			= "newBtn";
-	public static final String FUNC_BTN 		= "funcBtn";
-	public static final String SAVE_TAB2_BTN 	= "saveTab2Btn";
-	public static final String EXIT_TAB2_BTN 	= "exitTab2Btn";
-	public static final String DELETE_TAB2_BTN 	= "deleteBtn";
-	public static final String SAVE_GROUP_BTN   = "saveGrBtn";
-	public static final String NEW_GROUP_BTN    = "newGrBtn";
-	public static final String CLEAR_GROUP_BTN  = "clearGrBtn";
-	public static final String EXIT_GROUP_BTN   = "exitGrBtn";
-	public static final String ADD_TAB2_BTN		= "addRowBtn";
-	public static final Object[] DEFAULT_CELL_VALUES = { null, "-infinity", "infinity" };	
+	protected static final String IMPORT_BTN 		= "importBtn";
+	protected static final String EXPORT_BTN 		= "exportBtn";
+	protected static final String CHECK_BTN 		= "checkBtn";
+	protected static final String SAVE_BTN 		= "saveBtn";
+	protected static final String EXIT_BTN 		= "exitBtn";
+	protected static final String NEW_BTN 			= "newBtn";
+	protected static final String FUNC_BTN 		= "funcBtn";
+	protected static final String SAVE_TAB2_BTN 	= "saveTab2Btn";
+	protected static final String EXIT_TAB2_BTN 	= "exitTab2Btn";
+	protected static final String DELETE_TAB2_BTN 	= "deleteBtn";
+	protected static final String SAVE_GROUP_BTN   = "saveGrBtn";
+	protected static final String NEW_GROUP_BTN    = "newGrBtn";
+	protected static final String CLEAR_GROUP_BTN  = "clearGrBtn";
+	protected static final String EXIT_GROUP_BTN   = "exitGrBtn";
+	protected static final String ADD_TAB2_BTN		= "addRowBtn";
+	protected static final Object[] DEFAULT_CELL_VALUES = { null, "-infinity", "infinity" };
 	
 	private static final Color COLOR_DEACTIVATED = new Color(220,220,220);
 
 	// List name constants
-	public static final String ALGORITHM_LIST 			= "algorimthList";
-	public static final String VARIABLE_LIST 			= "variableList";
-	public static final String ALGORITHM_LIST_TAB2		= "algorithmListTab2";
-	public static final String VARIABLE_LIST_TAB2		= "variableListTab2";
+	protected static final String ALGORITHM_LIST 			= "algorimthList";
+	protected static final String VARIABLE_LIST 			= "variableList";
+	protected static final String ALGORITHM_LIST_TAB2		= "algorithmListTab2";
+	protected static final String VARIABLE_LIST_TAB2		= "variableListTab2";
 
-	public static JTextField jMetricsFormulaTextField;
-	public static JList jAlgorithmListTab1;
-	public static JList jAlgorithmListTab2;
-	public static JList jAlgorithmListTab3;
-	public static JList jVariableListTab1;
-	public static JList jVariableListTab2;
-	public static JList jVariableListTab3;
-	public static JTextField jMetricsNameTextField;
-	public static JTextField jMetricsDescriptionTextField;
-	public static JTextField jMetricsIDTextField;
-	public static JTextField jMetricsFilePathTextField;
-	public static WopedButton deleteRowButton;
+	protected static JTextField jMetricsFormulaTextField;
+	protected static JList jAlgorithmListTab1;
+	protected static JList jAlgorithmListTab2;
+	protected static JList jAlgorithmListTab3;
+	protected static JList jVariableListTab1;
+	protected static JList jVariableListTab2;
+	protected static JList jVariableListTab3;
+	protected static JTextField jMetricsNameTextField;
+	protected static JTextField jMetricsDescriptionTextField;
+	protected static JTextField jMetricsIDTextField;
+	protected static JTextField jMetricsFilePathTextField;
+	protected static WopedButton deleteRowButton;
 	public static CustomTableModel model;
-	public static JTextField jMetricsLowThresholdTextField;
-	public static JTextField jMetricsHighThresholdTextField;
-	public static JComboBox jComboBoxColor;
+	protected static JTextField jMetricsLowThresholdTextField;
+	protected static JTextField jMetricsHighThresholdTextField;
+	protected static JComboBox jComboBoxColor;
 
 	// Private Members
 	private JTabbedPane jTabbedPane;

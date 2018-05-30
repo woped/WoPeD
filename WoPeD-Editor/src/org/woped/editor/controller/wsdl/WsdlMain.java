@@ -2,9 +2,9 @@ package org.woped.editor.controller.wsdl;
 
 
 /*
- *	Eine Beispiel-Main Datei, die die Repr‰sentation einer WSDL-Datei ausliest.
- *	--> Auf jeden Fall wieder zu lˆschen!
- *		Selbiges gilt f¸r die Datei Test-Files.example.wsdl
+ *	Eine Beispiel-Main Datei, die die Repr√§sentation einer WSDL-Datei ausliest.
+ *	--> Auf jeden Fall wieder zu l√∂schen!
+ *		Selbiges gilt f√ºr die Datei Test-Files.example.wsdl
  */
 
 public class WsdlMain {

@@ -133,12 +133,12 @@ public class PDFTextParser {
 			    String totalOutput = "";
 			    while ((str = in.readLine()) != null) {
 			    	c++;
-			    	str = str.replaceAll("ä", "Š");
-			    	str = str.replaceAll("ö", "š");
-			    	str = str.replaceAll("ü", "Ÿ");
-			    	str = str.replaceAll("\\\\\"a", "Š");
-			    	str = str.replaceAll("\\\\\"u", "Ÿ");
-			    	str = str.replaceAll("\\\\\"o", "š");
+			    	str = str.replaceAll("Ã¤", "Å ");
+			    	str = str.replaceAll("Ã¶", "Å¡");
+			    	str = str.replaceAll("Ã¼", "Å¸");
+			    	str = str.replaceAll("\\\\\"a", "Å ");
+			    	str = str.replaceAll("\\\\\"u", "Å¸");
+			    	str = str.replaceAll("\\\\\"o", "Å¡");
 			    	
 			    	if (str.contains("Verb: ")) {
 //			    		System.out.println(filenr + " " + str.substring(str.indexOf("Verb: ")+6,str.length()));

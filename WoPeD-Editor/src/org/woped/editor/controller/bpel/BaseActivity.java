@@ -4,7 +4,7 @@ import org.oasisOpen.docs.wsbpel.x20.process.executable.TActivity;
 
 /**
  * 
- * @author Frank Sch¸ler, Alexander Roﬂwog
+ * @author Frank Sch√ºler, Alexander Ro√üwog
  *
  * @param <E>
  */

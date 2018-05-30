@@ -16,7 +16,7 @@ import org.oasisOpen.docs.wsbpel.x20.process.executable.TWait;
 import org.oasisOpen.docs.wsbpel.x20.process.executable.TWhile;
 
 /**
- * @author Frank Schüler
+ * @author Frank SchÃ¼ler
  * 
  */
 public class WhileTransition extends TerminalElement<TWhile>
@@ -25,7 +25,7 @@ public class WhileTransition extends TerminalElement<TWhile>
 	private AbstractElement<?>	begin;
 
 	/**
-	 * @param data
+	 * @param
 	 */
 	public WhileTransition(AbstractElement<?> Begin)
 	{

@@ -5,7 +5,7 @@ import org.oasisOpen.docs.wsbpel.x20.process.executable.TCopy;
 
 /**
  * 
- * @author Alexander Rosswog, Frank Sch�ler(redesign)
+ * @author Alexander Roßwog, Frank Schüler (redesign)
  * 
  * 
  *

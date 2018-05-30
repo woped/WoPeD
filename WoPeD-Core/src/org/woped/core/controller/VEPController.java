@@ -2,7 +2,6 @@ package org.woped.core.controller;
 
 import org.woped.core.Constants;
 import org.woped.core.utilities.LoggerManager;
-import sun.rmi.runtime.Log;
 
 import java.util.Collection;
 import java.util.HashMap;

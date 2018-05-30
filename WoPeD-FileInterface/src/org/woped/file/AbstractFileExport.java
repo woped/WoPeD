@@ -27,8 +27,8 @@ import org.woped.core.utilities.FileFilterImpl;
 /**
  * @author lai
  * 
- * Folgendes auswählen, um die Schablone für den erstellten Typenkommentar zu
- * ändern: Fenster&gt;Benutzervorgaben&gt;Java&gt;Codegenerierung&gt;Code und
+ * Folgendes auswÃ¤hlen, um die Schablone fÃ¼r den erstellten Typenkommentar zu
+ * Ã„ndern: Fenster > Benutzervorgaben > Java > Codegenerierung > Code und
  * Kommentare
  */
 public abstract class AbstractFileExport

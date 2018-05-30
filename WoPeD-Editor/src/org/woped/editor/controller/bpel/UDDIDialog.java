@@ -12,7 +12,7 @@ import java.awt.*;
 import java.awt.event.*;
 /**
  * 
- * @author Alexander Rosswog
+ * @author Alexander Roßwog
  * 
  * This is the dialog which enables the user to choose a webservice and import
  * the according wsdl-url to the partner-link-site

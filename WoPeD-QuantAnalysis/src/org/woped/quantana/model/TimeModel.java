@@ -57,11 +57,11 @@ public class TimeModel {
 	}
 	
 	public TimeModel(int unit, double multiple, double[] cvValues){
-		// Explizite Angabe der Umrechnungsfaktoren für 
+		// Explizite Angabe der Umrechnungsfaktoren fÃ¼r
 		// spezifische Anwendungen
 		
-		// Das Array entält genau 5 Werte für aufsteigende Folge
-		// von Umrechnungsfaktoren von der größeren zur direkt
+		// Das Array entÃ¤lt genau 5 Werte fÃ¼r aufsteigende Folge
+		// von Umrechnungsfaktoren von der grÃ¶ÃŸeren zur direkt
 		// folgenden kleineren Einheit
 		
 		stdUnit = unit;

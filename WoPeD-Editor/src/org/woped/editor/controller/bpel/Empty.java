@@ -4,7 +4,7 @@ import org.oasisOpen.docs.wsbpel.x20.process.executable.TEmpty;
 
 /**
  * 
- * @author Alexander Rosswog, Frank Sch�ler
+ * @author Alexander Roßwog, Frank Schüler
  *
  */
 public class Empty extends BaseActivity<TEmpty>

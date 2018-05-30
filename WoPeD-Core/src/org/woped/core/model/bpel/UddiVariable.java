@@ -1,7 +1,7 @@
 package org.woped.core.model.bpel;
 
 /*
- * @author: Alexander Roﬂwog
+ * @author: Alexander Ro√üwog
  */
 
 public class UddiVariable 

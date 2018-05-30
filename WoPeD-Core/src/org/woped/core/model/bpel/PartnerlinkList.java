@@ -6,7 +6,7 @@ import org.oasisOpen.docs.wsbpel.x20.process.executable.TPartnerLinks;
 
 /**
  *
- * @author Frank Schüler
+ * @author Frank SchÃ¼ler
  *
  */
 public class PartnerlinkList {

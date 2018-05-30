@@ -9,7 +9,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.JTextField;
 
 /**
- * @author Frank Schüler
+ * @author Frank SchÃ¼ler
  * 
  */
 public class IntegerFilter implements IEvaluationFilter {

@@ -4,7 +4,7 @@ import org.oasisOpen.docs.wsbpel.x20.process.executable.TActivity;
 import org.woped.core.model.petrinet.ANDJoinOperatorTransitionModel;
 
 /**
- * @author Frank SChüler
+ * @author Frank SchÃ¼ler
  *
  * This class reprasents the And-Join-Transition at a petrinet.
  * 

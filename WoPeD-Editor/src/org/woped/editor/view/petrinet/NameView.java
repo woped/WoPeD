@@ -75,7 +75,7 @@ public class NameView extends AbstractElementView {
 
 		public void paint(Graphics g) {
 
-			/* Trigger hinzufügen */
+			/* Trigger hinzufÃ¼gen */
 			int b = borderWidth;
 			Graphics2D g2 = (Graphics2D) g;
 			Dimension d = getSize();

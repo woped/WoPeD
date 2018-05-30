@@ -9,7 +9,7 @@ import java.awt.event.KeyListener;
 import javax.swing.JTextField;
 
 /**
- * @author Frank Schüler
+ * @author Frank SchÃ¼ler
  * 
  * Discription
  * 
