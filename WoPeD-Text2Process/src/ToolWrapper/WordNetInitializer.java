@@ -8,18 +8,21 @@ import edu.mit.jwi.data.ILoadPolicy;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 
 public class WordNetInitializer {
 
     //wordnet source directory
-    private static final File wnDir = new File ("WoPeD-Text2Process/NLPTools/WordNet/dict");
+    private static File wnDir;
     //wordnet initializer instance
     private static WordNetInitializer wni;
     //dictionary instance
-    private static final IRAMDictionary dict = new RAMDictionary (wnDir , ILoadPolicy.NO_LOAD );
+    private static IRAMDictionary dict;// = new RAMDictionary (wnDir , ILoadPolicy.NO_LOAD );
 
     private WordNetInitializer(){
-
+        URL WordNetpath =WordNetInitializer.class.getResource("/WordNet/dict");
+        wnDir = new File(WordNetpath.getPath());
+        dict = new RAMDictionary (wnDir , ILoadPolicy.NO_LOAD );
     }
 
     //getter
