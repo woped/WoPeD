@@ -3,7 +3,6 @@
  */
 package transform;
 
-import processing.WordNetWrapper;
 import worldModel.Action;
 
 public class DummyAction extends Action{

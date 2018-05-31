@@ -4,6 +4,7 @@
 package processing;
 
 import TextToWorldModel.Constants;
+import ToolWrapper.WordNetFunctionality;
 import worldModel.Action;
 import worldModel.Actor;
 import worldModel.ExtractedObject;
@@ -126,7 +127,8 @@ public class ProcessingUtils {
 	 * @return
 	 */
 	public static String get3rdPsing(String name) {
-		String _base = WordNetWrapper.getBaseForm(name);
+		WordNetFunctionality wnf = new WordNetFunctionality();
+		String _base = wnf.getBaseForm(name);
 		if(Constants.f_weakVerbTo3rdPSing.containsKey(_base)) {
 			return Constants.f_weakVerbTo3rdPSing.get(_base);
 		}
