@@ -8,9 +8,9 @@ import java.util.Collection;
 import java.util.List;
 
 import TextToWorldModel.Constants;
+import ToolWrapper.WordNetFunctionality;
 import processing.FrameNetWrapper;
 import processing.ProcessingUtils;
-import processing.WordNetWrapper;
 import text.T2PSentence;
 import worldModel.Action;
 import worldModel.Actor;
@@ -28,15 +28,16 @@ public class ElementsBuilder {
 	public static Actor createActor(T2PSentence origin, List<Tree> fullSentence, TreeGraphNode node,Collection<TypedDependency> dependencies) {
 		Actor _a = null;					
 		String _fullNoun = getFullNoun(node, dependencies);
-		if(!WordNetWrapper.canBePersonOrSystem(_fullNoun, node.value().toLowerCase())) {		
+		WordNetFunctionality wnf = new WordNetFunctionality();
+		if(!wnf.canBePersonOrSystem(_fullNoun, node.value().toLowerCase())) {
 			//try to extract the real actor here?
-			if(node.parent().value().equals("CD") || WordNetWrapper.canBeGroupAction(node.value())) { //one of the physicians
+			if(node.parent().value().equals("CD") || wnf.canBeGroupAction(node.value())) { //one of the physicians
 				List<TypedDependency> _preps = SearchUtils.findDependency("prep", dependencies);
 				for(TypedDependency spec: _preps) {
 					if(Constants.f_realActorPPIndicators.contains(spec.reln().getSpecific()) && spec.gov().equals(node)) {
 						//possible candidate of the real actor
 						_fullNoun = getFullNoun(spec.dep(), dependencies);
-						if(WordNetWrapper.canBePersonOrSystem(_fullNoun,spec.dep().value())) {
+						if(wnf.canBePersonOrSystem(_fullNoun,spec.dep().value())) {
 							_a = createActorInternal(origin, fullSentence, spec.dep(),dependencies);
 							break;
 						}					
@@ -58,8 +59,9 @@ public class ElementsBuilder {
 			 List<Tree> fullSentence, TreeGraphNode node,
 			Collection<TypedDependency> dependencies) {
 		Actor _a = new Actor(origin,node.index(),node.value().toLowerCase());
+		WordNetFunctionality wnf = new WordNetFunctionality();
 		determineNounSpecifiers(origin, fullSentence, node, dependencies, _a);
-		if(WordNetWrapper.isMetaActor(getFullNoun(node, dependencies),node.value())) {
+		if(wnf.isMetaActor(getFullNoun(node, dependencies),node.value())) {
 			_a.setMetaActor(true);
 		}	
 		return _a;
@@ -67,7 +69,8 @@ public class ElementsBuilder {
 
 	public static Action createAction(T2PSentence origin, List<Tree> fullSentence, TreeGraphNode node,Collection<TypedDependency> dependencies,boolean active) {
 		Action _result = new Action(origin,node.index(),node.value());
-		_result.setBaseForm(WordNetWrapper.getBaseForm(node.value()));
+		WordNetFunctionality wnf = new WordNetFunctionality();
+		_result.setBaseForm(wnf.getBaseForm(node.value()));
 		//search for an auxiliary verb
 		String _aux = getAuxiliaries(node, dependencies);
 		if(_aux.length() > 0)
@@ -260,7 +263,8 @@ public class ElementsBuilder {
 			index = SearchUtils.getIndex(fullSentence, vpHead.getLeaves());
 		}		
 		Action _result = new Action(origin,index,PrintUtils.toString(_verbParts));
-		_result.setBaseForm(WordNetWrapper.getBaseForm(PrintUtils.toString(_verbParts)));
+		WordNetFunctionality wnf = new WordNetFunctionality();
+		_result.setBaseForm(wnf.getBaseForm(PrintUtils.toString(_verbParts)));
 		//extracting further information and specifiers
 		extractSBARSpecifier(origin, fullSentence, _result, vpHead,null);		
 		//determineLinkedActions
@@ -309,8 +313,9 @@ public class ElementsBuilder {
 	public static ExtractedObject createObject(T2PSentence origin, List<Tree> fullSentence, TreeGraphNode node,Collection<TypedDependency> dependencies) {
 		String _fullNoun = getFullNoun(node, dependencies);
 		//TODO systems should be marked so a reference resolution of resources can refer to them
-		if(WordNetWrapper.canBePersonOrSystem(_fullNoun, node.value().toLowerCase()) || ProcessingUtils.canBePersonPronoun(node.value())) {
-			Actor _a = createActorInternal(origin, fullSentence, node, dependencies);	
+		WordNetFunctionality wnf = new WordNetFunctionality();
+		if(wnf.canBePersonOrSystem(_fullNoun, node.value().toLowerCase()) || ProcessingUtils.canBePersonPronoun(node.value())) {
+			Actor _a = createActorInternal(origin, fullSentence, node, dependencies);
 			_a.setSubjectRole(false);			
 			if(Constants.DEBUG_EXTRACTION) System.out.println("Identified object: "+_a);
 			return _a;

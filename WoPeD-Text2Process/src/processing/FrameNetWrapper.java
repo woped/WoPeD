@@ -12,7 +12,8 @@ import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import net.didion.jwnl.data.POS;
+import ToolWrapper.WordNetFunctionality;
+import edu.mit.jwi.item.POS;
 
 import TextToWorldModel.Constants;
 import transform.SearchUtils;
@@ -132,7 +133,8 @@ public class FrameNetWrapper {
 		}else {
 			HashMap<FrameElement,Integer> _countMap = new HashMap<FrameElement, Integer>();
 			boolean _verb = element instanceof Action;
-			String _baseForm = WordNetWrapper.getBaseForm(element.getName(), false, _verb?POS.VERB:POS.NOUN);
+			WordNetFunctionality wnf = new WordNetFunctionality();
+			String _baseForm = wnf.getBaseForm(element.getName(), false, _verb?POS.VERB:POS.NOUN);
 			if(_verb && ((Action)element).getPrt()!=null) {
 				_baseForm += " "+((Action)element).getPrt();
 			}

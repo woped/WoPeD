@@ -1,9 +1,9 @@
 package TextToWorldModel;
 
 import ToolWrapper.StanfordParserFunctionality;
+import ToolWrapper.WordNetInitializer;
 import edu.stanford.nlp.ling.Word;
 import processing.FrameNetWrapper;
-import processing.WordNetWrapper;
 import text.T2PSentence;
 import text.Text;
 import transform.DummyAction;
@@ -43,7 +43,7 @@ public class WorldModelBuilder {
     }
 
     private WorldModel buildWorldModel(){
-        WordNetWrapper.init();
+        WordNetInitializer.getInstance();
         FrameNetWrapper.init();
 
         parsedText = stanford.createText(processText);

@@ -11,12 +11,13 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map.Entry;
 
-import net.didion.jwnl.data.POS;
+import ToolWrapper.WordNetFunctionality;
+import edu.mit.jwi.item.POS;
 
 import TextToWorldModel.Constants;
 import TextToWorldModel.SentenceWordID;
 import processing.ProcessingUtils;
-import processing.WordNetWrapper;
+
 import processing.FrameNetWrapper.PhraseType;
 import text.T2PSentence;
 import text.Text;
@@ -127,7 +128,7 @@ public class TextAnalyzer {
 	private ActionLinkType determineLinkType(Action linkSource, Action linkTarget) {
 		if("if".equals(linkSource.getMarker())) {
 			for(Specifier spec:linkSource.getSpecifiers()) {
-				if(SearchUtils.startsWithAny(spec.getPhrase(), WordNetWrapper.getAcceptedForwardLinkList())) {
+				if(SearchUtils.startsWithAny(spec.getPhrase(), Constants.f_acceptedForForwardLink)) {
 					return ActionLinkType.FORWARD;
 				}
 			}
@@ -141,7 +142,7 @@ public class TextAnalyzer {
 		}else {
 			//has no "if"
 			//check if it can be a loop
-			if(WordNetWrapper.isAMODAcceptedForLinking(linkSource.getMod())){
+			if(Constants.f_acceptedAMODforLoops.contains(linkSource.getMod())){
 				return ActionLinkType.LOOP;
 			}
 			//also check certain specifiers
@@ -150,7 +151,7 @@ public class TextAnalyzer {
 				_toCheck.addAll(linkSource.getObject().getSpecifiers(SpecifierType.AMOD));
 			
 			for(Specifier spec:_toCheck) {
-				if(WordNetWrapper.isAMODAcceptedForLinking(spec.getName()) ){
+				if(Constants.f_acceptedForForwardLink.contains(spec.getName())){
 					return ActionLinkType.LOOP;
 				}
 			}
@@ -228,8 +229,9 @@ public class TextAnalyzer {
 	 */
 	private boolean exObEquals(ExtractedObject _from1, ExtractedObject _from2) {
 		if(_from1.getName().endsWith("s") == _from2.getName().endsWith("s")) { //check plural (EX5.txt)
-			String _name1 = WordNetWrapper.getBaseForm(_from1.getName(),false,POS.NOUN);
-			String _name2 = WordNetWrapper.getBaseForm(_from2.getName(),false,POS.NOUN);
+			WordNetFunctionality wnf = new WordNetFunctionality();
+			String _name1 = wnf.getBaseForm(_from1.getName(),false,POS.NOUN);
+			String _name2 = wnf.getBaseForm(_from2.getName(),false,POS.NOUN);
 			if(_name1.equals(_name2)) {
 				//checking if the "no" determiner is equal
 				if("no".equals(_from1.getDeterminer()) || "no".equals(_from2.getDeterminer())){
@@ -271,7 +273,7 @@ public class TextAnalyzer {
 			if(headWord.length()!=0 && !headWord.equals(spec1.getHeadWord())) {
 				continue;
 			}
-			if(!WordNetWrapper.isAMODAcceptedForLinking(spec1.getName())) {
+			if(!Constants.f_acceptedAMODforLoops.contains(spec1.getName())){
 				for(Specifier spec2:_from2.getSpecifiers(toCheck)) {
 					if(spec1.getName().equals(spec2.getName())) {
 						continue outer;
@@ -303,7 +305,7 @@ public class TextAnalyzer {
 				_check = true;
 			}
 			if(_check) {
-				if(!WordNetWrapper.isAMODAcceptedForLinking(spec1.getName())) {
+				if(!Constants.f_acceptedAMODforLoops.contains(spec1.getName())){
 					for(Specifier spec2:_from2.getSpecifiers(toCheck)) {
 						if(spec1.getName().equals(spec2.getName())) {
 							continue outer;
@@ -1036,7 +1038,8 @@ public class TextAnalyzer {
 	private void merge(Action a, Action b, boolean copyOnly) {
 		Action _main = null;
 		Action _mergeMe = null;
-		if(WordNetWrapper.isWeakAction(a)) {
+		WordNetFunctionality wnf = new WordNetFunctionality();
+		if(wnf.isWeakAction(a)) {
 			//merging a into b
 			_mergeMe = a;
 			_main = b;
@@ -1090,7 +1093,8 @@ public class TextAnalyzer {
 	 */
 	private boolean canBeMerged(Action a, Action b,boolean onlyShareProps) {
 		if(onlyShareProps || (a.isNegated() == b.isNegated())) {
-			if((WordNetWrapper.isWeakAction(a) ) || (WordNetWrapper.isWeakAction(b))) {
+			WordNetFunctionality wnf = new WordNetFunctionality();
+			if((wnf.isWeakAction(a) ) || (wnf.isWeakAction(b))) {
 				if((a.getMarker()==null && b.getMarker()==null) || a.getMarker().equals(b.getMarker())) {
 					if(a.getActorFrom() == null || a.getActorFrom().needsResolve() || a.getActorFrom().isMetaActor() ||
 					   b.getActorFrom() == null || b.getActorFrom().needsResolve() || b.getActorFrom().isMetaActor()) {
