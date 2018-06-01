@@ -10,14 +10,14 @@ import static org.junit.Assert.assertEquals;
 public class UTWordnet {
 
     @Test
-    public void evaluateWornetInvocation() throws IOException {
+    public void evaluateWordnetInvocation() throws IOException {
 
-       /*
-        /***check Initialiaztion***
+
+        /***check Initialiaztion***/
         WordNetInitializer wni= WordNetInitializer.getInstance();
         assertEquals("WorNet Initialization Issue: Not initialized.",true, wni!=null);
 
-        /***check Functionality***
+        /***check Functionality***/
         WordNetFunctionality wnf = new WordNetFunctionality();
 
         assertEquals("WorNet Functionality Issue: wnf can not be received.",true, wnf!=null);
@@ -30,7 +30,7 @@ public class UTWordnet {
         assertEquals( "WordNet Functionality Issue: Problem with 'isVerbOfType()'." , true , wnf.isVerbOfType("run", "move") == true);
         assertEquals( "WordNet Functionality Issue: Problem with 'canBeDataObject()'." , true , wnf.canBeDataObject("email", "text") == true);
 
-        */
+
     }
 
 }
