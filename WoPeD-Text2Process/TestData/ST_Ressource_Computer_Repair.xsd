@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="TestInstance" type="TestInstanceType"/>
+  <xs:complexType name="ActorType" mixed="true">
+    <xs:sequence>
+      <xs:element type="xs:string" name="name" minOccurs="0"/>
+      <xs:element type="xs:string" name="executesAction" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="id" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="TestInstanceType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="PlainTextDescription"/>
+      <xs:element type="WorldModelType" name="WorldModel"/>
+      <xs:element type="PetriNetType" name="PetriNet"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ResourcesType">
+    <xs:sequence>
+      <xs:element type="ResourceType" name="Resource"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="followingActionsType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="followingAction"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="WorldModelType">
+    <xs:sequence>
+      <xs:element type="ActionsType" name="Actions"/>
+      <xs:element type="ActorsType" name="Actors"/>
+      <xs:element type="ResourcesType" name="Resources"/>
+      <xs:element type="FlowsType" name="Flows"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ActionType">
+    <xs:sequence>
+      <xs:element name="Name">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="bring"/>
+            <xs:enumeration value="check"/>
+            <xs:enumeration value="hand out"/>
+            <xs:enumeration value="decide"/>
+            <xs:enumeration value="take home"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="id" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="ActorsType">
+    <xs:sequence>
+      <xs:element type="ActorType" name="Actor" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PetriNetType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="Places"/>
+      <xs:element type="xs:string" name="Transitions"/>
+      <xs:element type="xs:string" name="Arcs"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FlowsType">
+    <xs:sequence>
+      <xs:element type="FlowType" name="Flow"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ResourceType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="name"/>
+      <xs:element type="xs:string" name="isPartOfAction"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="id"/>
+  </xs:complexType>
+  <xs:complexType name="FlowType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="previousAction"/>
+      <xs:element type="followingActionsType" name="followingActions"/>
+      <xs:element type="xs:string" name="direction"/>
+      <xs:element type="xs:string" name="type"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ActionsType">
+    <xs:sequence>
+      <xs:element type="ActionType" name="Action" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
