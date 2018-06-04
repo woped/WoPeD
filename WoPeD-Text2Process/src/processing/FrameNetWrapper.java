@@ -43,7 +43,7 @@ public class FrameNetWrapper {
 		UNKNOWN
 	}
 	
-	private static String f_frameNetHome = "/fndata-1.5/";
+	private static String f_frameNetHome = "/NLPTools/FrameNet/fndata-1.5/";
 	private static FrameNet f_frameNet;
 	private static AnnotationCorpus f_corpus;
 	private static boolean generateButton = false;
