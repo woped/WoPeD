@@ -20,7 +20,7 @@ public class WordNetInitializer {
     private static IRAMDictionary dict;// = new RAMDictionary (wnDir , ILoadPolicy.NO_LOAD );
 
     private WordNetInitializer(){
-        URL WordNetpath =WordNetInitializer.class.getResource("/WordNet/dict");
+        URL WordNetpath = WordNetInitializer.class.getResource("/WordNet/dict");
         wnDir = new File(WordNetpath.getPath());
         dict = new RAMDictionary (wnDir , ILoadPolicy.NO_LOAD );
     }

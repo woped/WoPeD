@@ -263,28 +263,4 @@ public class WordNetFunctionality {
         }
         return verb;
     }
-
-
-
-    public static void main (String[] args) {
-        WordNetFunctionality wnf = new WordNetFunctionality();
-
-        System.out.println("animate: " + wnf.isAnimate("woman"));
-        System.out.println("group action: " + wnf.canBeGroupAction("exchange"));
-        System.out.println("is person or system: " + wnf.canBePersonOrSystem("Lisa", "she"));
-        System.out.println("time: " + wnf.isTimePeriod("day"));
-        System.out.println(wnf.deriveVerb("speaker"));
-        System.out.println(wnf.isWeakVerb("be"));
-        System.out.println(wnf.isVerbOfType("run", "move"));
-        System.out.println(wnf.canBeDataObject("email", "text"));
-
-        /**** Mock WorldModel ****/
-        WorldModelBuilder WMBuilder = new WorldModelBuilder("He begin and finishes the document. If he likes it, he sends it to the office. Otherwise he throws it in the bin.");
-        WorldModel test = WMBuilder.buildWorldModel(true);
-        List<Action> a = test.getActions();
-
-        System.out.println(wnf.isWeakAction(a.get(0)));
-        System.out.println(wnf.getBaseForm("does"));
-        System.out.println(wnf.isMetaActor("step", "task"));
-    }
 }
