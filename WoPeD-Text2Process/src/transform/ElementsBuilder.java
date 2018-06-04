@@ -8,8 +8,8 @@ import java.util.Collection;
 import java.util.List;
 
 import TextToWorldModel.Constants;
+import ToolWrapper.FrameNetFunctionality;
 import ToolWrapper.WordNetFunctionality;
-import processing.FrameNetWrapper;
 import processing.ProcessingUtils;
 import text.T2PSentence;
 import worldModel.Action;
@@ -485,7 +485,8 @@ public class ElementsBuilder {
 							//TODO add conjunct elements							
 						}
 						_sp.setHeadWord(_specific);
-						FrameNetWrapper.determineSpecifierFrameElement(element, _sp);
+						FrameNetFunctionality fnf = new FrameNetFunctionality();
+						fnf.determineSpecifierFrameElement(element, _sp);
 						element.addSpecifiers(_sp);				
 				}
 				}

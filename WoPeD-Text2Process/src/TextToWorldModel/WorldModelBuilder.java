@@ -1,9 +1,10 @@
 package TextToWorldModel;
 
+import ToolWrapper.FrameNetFunctionality;
+import ToolWrapper.FrameNetInitializer;
 import ToolWrapper.StanfordParserFunctionality;
 import ToolWrapper.WordNetInitializer;
 import edu.stanford.nlp.ling.Word;
-import processing.FrameNetWrapper;
 import text.T2PSentence;
 import text.Text;
 import transform.DummyAction;
@@ -44,7 +45,7 @@ public class WorldModelBuilder {
 
     private WorldModel buildWorldModel(){
         WordNetInitializer.getInstance();
-        FrameNetWrapper.init();
+        FrameNetInitializer.getInstance();
 
         parsedText = stanford.createText(processText);
         analyzer.clear();
@@ -123,7 +124,7 @@ public class WorldModelBuilder {
         act[2].setPreAdvMod("then",0);
             Specifier s1 =new Specifier(mockTextT2P.getSentence(1),11,"to the office");
             s1.setSpecifierType(Specifier.SpecifierType.PP);
-            s1.setPhraseType(FrameNetWrapper.PhraseType.CORE);
+            s1.setPhraseType(FrameNetFunctionality.PhraseType.CORE);
             s1.setHeadWord("to");
             s1.setObject(a[3]);
             //s1.setFrameElement(new FrameElement()); //TODO add FrameElement
@@ -135,7 +136,7 @@ public class WorldModelBuilder {
         act[3].setPreAdvMod("otherwise",1);
             Specifier s2 =new Specifier(mockTextT2P.getSentence(2),7,"in the bin");
             s2.setSpecifierType(Specifier.SpecifierType.PP);
-            s2.setPhraseType(FrameNetWrapper.PhraseType.CORE);
+            s2.setPhraseType(FrameNetFunctionality.PhraseType.CORE);
             s2.setHeadWord("in");
             s2.setObject(r[4]);
         //s1.setFrameElement(new FrameElement()); //TODO add FrameElement

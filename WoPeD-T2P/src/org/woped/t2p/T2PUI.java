@@ -46,6 +46,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+import ToolWrapper.FrameNetFunctionality;
+import ToolWrapper.FrameNetInitializer;
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.IEditor;
 import org.woped.editor.controller.ApplicationMediator;
@@ -54,7 +56,6 @@ import org.woped.file.PNMLImport;
 import org.woped.gui.lookAndFeel.WopedButton;
 import org.woped.gui.translations.Messages;
 
-import processing.FrameNetWrapper;
 import worldModel.WorldModel;
 
 /**
@@ -246,7 +247,7 @@ public class T2PUI extends JDialog {
 					Messages.getString("Action.Confirm.T2P.Empty.TextArea.Title"), JOptionPane.YES_NO_CANCEL_OPTION,
 					JOptionPane.ERROR_MESSAGE, null, textMessages, textMessages[0]);
 
-		} else if (!FrameNetWrapper.getGenrateButton()) {
+		} else if (!FrameNetInitializer.getGenrateButton()) {
 			String textMessages[] = { Messages.getString("Dialog.Ok"),
 
 			};

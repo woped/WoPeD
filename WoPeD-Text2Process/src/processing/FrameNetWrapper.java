@@ -1,6 +1,6 @@
 /**
  * modified taken from https://github.com/FabianFriedrich/Text2Process
- */
+
 package processing;
 
 import java.io.File;
@@ -180,7 +180,7 @@ public class FrameNetWrapper {
 	/**
 	 * @param _best
 	 * @return
-	 */
+	 *
 	private static PhraseType toPT(FrameElement fe) {
 		switch(fe.getCoreType()) {
 			case Core: return PhraseType.CORE;
@@ -191,4 +191,5 @@ public class FrameNetWrapper {
 		}
 	}
 
-}
+}*/
+

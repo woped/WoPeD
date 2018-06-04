@@ -18,7 +18,7 @@ import TextToWorldModel.Constants;
 import TextToWorldModel.SentenceWordID;
 import processing.ProcessingUtils;
 
-import processing.FrameNetWrapper.PhraseType;
+import ToolWrapper.FrameNetFunctionality.PhraseType;
 import text.T2PSentence;
 import text.Text;
 import transform.ConjunctionElement.ConjunctionType;
