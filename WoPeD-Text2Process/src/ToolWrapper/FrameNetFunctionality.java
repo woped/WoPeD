@@ -4,11 +4,11 @@ import TextToWorldModel.Constants;
 import de.saar.coli.salsa.reiter.framenet.*;
 import de.saar.coli.salsa.reiter.framenet.fncorpus.*;
 import edu.mit.jwi.item.POS;
-import processing.FrameNetWrapper;
 import transform.SearchUtils;
 import worldModel.Action;
 import worldModel.SpecifiedElement;
 import worldModel.Specifier;
+import ToolWrapper.FrameNetFunctionality.PhraseType;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -61,7 +61,7 @@ public class FrameNetFunctionality {
 
     public static void determineSpecifierFrameElement(SpecifiedElement element, Specifier spec) {
         if("of".equals(spec.getHeadWord()) && !(element instanceof Action)){
-            spec.setPhraseType(FrameNetWrapper.PhraseType.GENITIVE);
+            spec.setPhraseType(PhraseType.GENITIVE);
         }else {
             HashMap<FrameElement,Integer> _countMap = new HashMap<FrameElement, Integer>();
             boolean _verb = element instanceof Action;
@@ -93,7 +93,7 @@ public class FrameNetFunctionality {
             }
             FrameElement _best = (FrameElement) SearchUtils.getMaxCountElement(_countMap);
             if(_best == null) {
-                spec.setPhraseType(FrameNetWrapper.PhraseType.UNKNOWN);
+                spec.setPhraseType(PhraseType.UNKNOWN);
             }else {
                 spec.setPhraseType(toPT(_best));
                 spec.setFrameElement(_best);
@@ -109,13 +109,13 @@ public class FrameNetFunctionality {
         }
     }
 
-    private static FrameNetWrapper.PhraseType toPT(FrameElement fe) {
+    private static PhraseType toPT(FrameElement fe) {
         switch(fe.getCoreType()) {
-            case Core: return FrameNetWrapper.PhraseType.CORE;
-            case Core_Unexpressed: return FrameNetWrapper.PhraseType.CORE;
-            case Extra_Thematic: return FrameNetWrapper.PhraseType.EXTRA_THEMATIC;
-            case Peripheral: return FrameNetWrapper.PhraseType.PERIPHERAL;
-            default: return FrameNetWrapper.PhraseType.UNKNOWN;
+            case Core: return PhraseType.CORE;
+            case Core_Unexpressed: return PhraseType.CORE;
+            case Extra_Thematic: return PhraseType.EXTRA_THEMATIC;
+            case Peripheral: return PhraseType.PERIPHERAL;
+            default: return PhraseType.UNKNOWN;
         }
     }
 }

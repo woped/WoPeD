@@ -4,7 +4,6 @@ import de.saar.coli.salsa.reiter.framenet.DatabaseReader;
 import de.saar.coli.salsa.reiter.framenet.FNDatabaseReader;
 import de.saar.coli.salsa.reiter.framenet.FrameNet;
 import de.saar.coli.salsa.reiter.framenet.fncorpus.AnnotationCorpus;
-import processing.FrameNetWrapper;
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;
@@ -15,7 +14,7 @@ import java.util.logging.Logger;
 public class FrameNetInitializer {
 
     //framenet source directory
-    private static String f_frameNetHome = "/fndata-1.5/";
+    private static String f_frameNetHome = "/NLPTools/FrameNet/fndata-1.5/";
     //framenet initializer instance
     private static FrameNetInitializer fni;
     //framenet instance (dictionary)
@@ -28,7 +27,7 @@ public class FrameNetInitializer {
     private FrameNetInitializer (){
         f_frameNet = new FrameNet();
 
-        String path = FrameNetWrapper.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+        String path = FrameNetInitializer.class.getProtectionDomain().getCodeSource().getLocation().getPath();
         path = (new File(path)).getParentFile().getPath();
 
         try {
