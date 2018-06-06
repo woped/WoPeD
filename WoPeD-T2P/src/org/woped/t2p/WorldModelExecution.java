@@ -5,17 +5,13 @@ import TextToWorldModel.WorldModelBuilder;
 
 public class WorldModelExecution implements Runnable {
 
-	static WorldModelBuilder WMBuilder = null;
-	public WorldModelExecution(String ProcessDescriptionText){
-		WMBuilder= new WorldModelBuilder(ProcessDescriptionText);
-	}
+	static WorldModelBuilderWrapper WMBuilder = null;
 	public void run() {
 		//System.out.println("Hello from a thread!");
-
-
+		WMBuilder = new WorldModelBuilderWrapper();
 	}
 
-	public static WorldModelBuilder getWorldModelBuilder() {
+	public static WorldModelBuilderWrapper getWorldModelBuilder() {
 		return WMBuilder;
 	}
 

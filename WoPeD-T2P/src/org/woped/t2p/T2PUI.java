@@ -268,8 +268,8 @@ public class T2PUI extends JDialog {
 
 			if (value == (JOptionPane.YES_OPTION)) {
 
-				WorldModelExecution WMex = new WorldModelExecution(textArea.getText());
-				WorldModel world = WMex.getWorldModelBuilder().buildWorldModel(false);
+				WorldModelExecution WMex = new WorldModelExecution();
+				WorldModel world = WMex.getWorldModelBuilder().getWorldModel(textArea.getText());
 
 				InterpetWorldModel interpreter = new InterpetWorldModel();
 
