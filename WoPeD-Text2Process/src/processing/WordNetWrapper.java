@@ -7,8 +7,6 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
@@ -32,8 +30,7 @@ import net.didion.jwnl.data.Word;
 import net.didion.jwnl.data.list.PointerTargetTree;
 import net.didion.jwnl.dictionary.Dictionary;
 
-import etc.Constants;
-import gui.T2PGUI;
+import TextToWorldModel.Constants;
 import transform.ListUtils;
 import worldModel.Action;
 
@@ -48,10 +45,8 @@ public class WordNetWrapper {
 		long _start = System.currentTimeMillis();
 
 		// get the path where the jar file is located
-//		String path = T2PGUI.class.getProtectionDomain().getCodeSource().getLocation().getPath();
-//		path = (new File(path)).getParentFile().getPath();
-		String path = System.getProperty("user.home");
-		
+		String path = WordNetWrapper.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+		path = (new File(path)).getParentFile().getPath();
 		try {
 			path = URLDecoder.decode(path, "UTF-8");
 		} catch (UnsupportedEncodingException e2) {
@@ -133,7 +128,7 @@ public class WordNetWrapper {
 			}
 		}
 		f_dictionary = Dictionary.getInstance();
-
+/*
 		try {
 			for (String s : Constants.f_acceptedAMODforLoops) {
 				IndexWord _iw = f_dictionary.lookupIndexWord(POS.ADJECTIVE, s);
@@ -159,7 +154,7 @@ public class WordNetWrapper {
 
 		} catch (JWNLException e) {
 			e.printStackTrace();
-		}
+		} */
 		System.out.println("Loaded WordNet in " + (System.currentTimeMillis() - _start) + "ms.");
 	}
 
@@ -404,7 +399,7 @@ public class WordNetWrapper {
 	}
 
 	/**
-	 * @param lowerCase
+	 //* @param lowerCase
 	 * @return
 	 */
 	public static boolean isMetaActor(String fullNoun, String noun) {
@@ -440,7 +435,7 @@ public class WordNetWrapper {
 	}
 
 	/**
-	 * @param name
+	 * //@param name
 	 * @return
 	 */
 	public static boolean canBeDataObject(String fullNoun, String noun) {
@@ -454,4 +449,5 @@ public class WordNetWrapper {
 		}
 		return false;
 	}
+
 }

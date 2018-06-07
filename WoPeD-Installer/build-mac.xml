@@ -38,7 +38,7 @@
 		<mkdir dir="dist/run" />
 		<mkdir dir="dist/run/org" />
 		<mkdir dir="dist/run/org/woped" />
-		<mkdir dir="dist/run/org/woped/gui" />
+		<mkdir dir="dist/run/org/woped/starter" />
 	</target>
 
 	<target name="setversion">
@@ -51,7 +51,7 @@
 
 	<target name="copyfiles">
 		<copy todir="dist/nets" file="build-tools/Example.pnml" />
-		<copy todir="dist/run/org/woped/gui">
+		<copy todir="dist/run/org/woped/starter">
 			<fileset dir="../WoPeD-Starter/bin/org/woped/starter">
 				<include name="RunWoPeD*.class" />
 			</fileset>
@@ -216,6 +216,9 @@
 	<target name="makeWindowsInstallerOnMac">
 		<try>
 			<jar destfile="dist/launch/WoPeD.jar" basedir="dist/run" manifest="dist/MANIFEST.mf" />
+			<copy todir="dist/launch">
+				<fileset file="dist/WoPeD-classes-${WOPEDVERSION}${SNAPSHOT}.jar" />
+			</copy>
 			<exec dir="dist/launch" executable="/bin/sh">
 				<arg line="buildexeOnMac" />
 			</exec> 

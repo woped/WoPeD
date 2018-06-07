@@ -3,7 +3,6 @@
  */
 package worldModel;
 
-import processing.WordNetWrapper;
 import text.T2PSentence;
 
 public class Action extends SpecifiedElement{
@@ -47,9 +46,12 @@ public class Action extends SpecifiedElement{
 	 */
 	public Action(T2PSentence origin, int wordInSentece, String verb) {
 		super(origin,wordInSentece,verb);
-		f_baseForm = WordNetWrapper.getBaseForm(verb);
 	}
-	
+
+	public void setBaseForm(String verbBaseForm){
+		f_baseForm = verbBaseForm;
+	}
+
 	public Action clone() {
 		Action _clone = new Action(getOrigin(),getWordIndex(),getName());
 		_clone.f_baseForm = f_baseForm;

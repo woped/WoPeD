@@ -15,10 +15,12 @@ public class DummyAction extends Action{
 	 */
 	public DummyAction(Action action) {
 		super(action.getOrigin(), action.getWordIndex()+1, "Dummy Node");
+		setBaseForm("Dummy Node");
 	}
 
 	public DummyAction() {
 		super(null, -1, "Dummy Node");
+		setBaseForm("Dummy Node");
 	}
 
 	

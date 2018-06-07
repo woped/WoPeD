@@ -11,7 +11,7 @@ import java.util.List;
 
 
 
-import etc.Constants;
+import TextToWorldModel.Constants;
 import processing.ProcessingUtils;
 import text.T2PSentence;
 import tools.Configuration;
