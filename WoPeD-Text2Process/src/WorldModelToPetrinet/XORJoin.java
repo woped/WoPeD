@@ -17,7 +17,7 @@ public class XORJoin {
         this.originID=originID;
         transID = new Transition("",false,false,"").getTransID();
         for(int i=0;i<sourceCount;i++){
-            Transition source = new Transition("choice",false,true,"");
+            Transition source = new Transition("",false,true,"");
             source.setPartOfGateway(i+1,transID);
             source.setOperatorType(OperatorTransitionModel.XOR_JOIN_TYPE);
             source.setOrientationCode(3);

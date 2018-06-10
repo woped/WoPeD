@@ -18,9 +18,9 @@ public class UTXORJoin {
             "<place id=\"p2\"><name><text>p2</text><graphics><offset x=\"0\" y=\"0\"/></graphics></name><graphics><position x=\"0\" y=\"0\"/><dimension x=\"40\" y=\"40\"/></graphics></place>\n" +
             "<place id=\"p3\"><name><text>p3</text><graphics><offset x=\"0\" y=\"0\"/></graphics></name><graphics><position x=\"0\" y=\"0\"/><dimension x=\"40\" y=\"40\"/></graphics></place>\n" +
             "<place id=\"p4\"><name><text>p4</text><graphics><offset x=\"0\" y=\"0\"/></graphics></name><graphics><position x=\"0\" y=\"0\"/><dimension x=\"40\" y=\"40\"/></graphics></place>\n" +
-            "<transition id=\"t1_op_1\"><name><text>choice</text><graphics><offset x=\"0\" y=\"0\"/></graphics></name><graphics><position x=\"0\" y=\"0\"/><dimension x=\"40\" y=\"40\"/></graphics><toolspecific tool=\"WoPeD\" version=\"1.0\"><operator id=\"t1\" type=\"105\"/><time>0</time><timeUnit>1</timeUnit><orientation>3</orientation></toolspecific></transition>\n" +
-            "<transition id=\"t1_op_2\"><name><text>choice</text><graphics><offset x=\"0\" y=\"0\"/></graphics></name><graphics><position x=\"0\" y=\"0\"/><dimension x=\"40\" y=\"40\"/></graphics><toolspecific tool=\"WoPeD\" version=\"1.0\"><operator id=\"t1\" type=\"105\"/><time>0</time><timeUnit>1</timeUnit><orientation>3</orientation></toolspecific></transition>\n" +
-            "<transition id=\"t1_op_3\"><name><text>choice</text><graphics><offset x=\"0\" y=\"0\"/></graphics></name><graphics><position x=\"0\" y=\"0\"/><dimension x=\"40\" y=\"40\"/></graphics><toolspecific tool=\"WoPeD\" version=\"1.0\"><operator id=\"t1\" type=\"105\"/><time>0</time><timeUnit>1</timeUnit><orientation>3</orientation></toolspecific></transition>\n" +
+            "<transition id=\"t1_op_1\"><name><text/><graphics><offset x=\"0\" y=\"0\"/></graphics></name><graphics><position x=\"0\" y=\"0\"/><dimension x=\"40\" y=\"40\"/></graphics><toolspecific tool=\"WoPeD\" version=\"1.0\"><operator id=\"t1\" type=\"105\"/><time>0</time><timeUnit>1</timeUnit><orientation>3</orientation></toolspecific></transition>\n" +
+            "<transition id=\"t1_op_2\"><name><text/><graphics><offset x=\"0\" y=\"0\"/></graphics></name><graphics><position x=\"0\" y=\"0\"/><dimension x=\"40\" y=\"40\"/></graphics><toolspecific tool=\"WoPeD\" version=\"1.0\"><operator id=\"t1\" type=\"105\"/><time>0</time><timeUnit>1</timeUnit><orientation>3</orientation></toolspecific></transition>\n" +
+            "<transition id=\"t1_op_3\"><name><text/><graphics><offset x=\"0\" y=\"0\"/></graphics></name><graphics><position x=\"0\" y=\"0\"/><dimension x=\"40\" y=\"40\"/></graphics><toolspecific tool=\"WoPeD\" version=\"1.0\"><operator id=\"t1\" type=\"105\"/><time>0</time><timeUnit>1</timeUnit><orientation>3</orientation></toolspecific></transition>\n" +
             "<arc id=\"a1\" source=\"p2\" target=\"t1\"><inscription><text>1</text><graphics><offset x=\"500.0\" y=\"-12.0\"/></graphics></inscription><toolspecific tool=\"WoPeD\" version=\"1.0\"><probability>1.0</probability><displayProbabilityOn>false</displayProbabilityOn><displayProbabilityPosition x=\"500.0\" y=\"12.0\"/></toolspecific></arc>\n" +
             "<arc id=\"a2\" source=\"t1\" target=\"p1\"><inscription><text>1</text><graphics><offset x=\"500.0\" y=\"-12.0\"/></graphics></inscription><toolspecific tool=\"WoPeD\" version=\"1.0\"><probability>1.0</probability><displayProbabilityOn>false</displayProbabilityOn><displayProbabilityPosition x=\"500.0\" y=\"12.0\"/></toolspecific></arc>\n" +
             "<arc id=\"a3\" source=\"p3\" target=\"t1\"><inscription><text>1</text><graphics><offset x=\"500.0\" y=\"-12.0\"/></graphics></inscription><toolspecific tool=\"WoPeD\" version=\"1.0\"><probability>1.0</probability><displayProbabilityOn>false</displayProbabilityOn><displayProbabilityPosition x=\"500.0\" y=\"12.0\"/></toolspecific></arc>\n" +
@@ -47,7 +47,6 @@ public class UTXORJoin {
 
         XORJoin xj = new XORJoin(sources.size(),"");
         xj.addXORJoinToPetriNet(pn,sources,target);
-
         assertEquals("XOR Join did not create exspected PNML.", true,pn.getPNML().equals(exspectedPNML));
     }
 }
