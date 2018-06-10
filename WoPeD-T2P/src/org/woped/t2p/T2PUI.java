@@ -36,6 +36,9 @@ import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 
 import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
@@ -48,6 +51,7 @@ import javax.swing.JTextArea;
 
 import ToolWrapper.FrameNetFunctionality;
 import ToolWrapper.FrameNetInitializer;
+import WorldModelToPetrinet.PetrinetBuilder;
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.IEditor;
 import org.woped.editor.controller.ApplicationMediator;
@@ -271,16 +275,21 @@ public class T2PUI extends JDialog {
 				WorldModelExecution WMex = new WorldModelExecution();
 				WorldModel world = WMex.getWorldModelBuilder().getWorldModel(textArea.getText());
 
-				InterpetWorldModel interpreter = new InterpetWorldModel();
+			/*	InterpetWorldModel interpreter = new InterpetWorldModel();
 
 				PNMLGenerator generator = new PNMLGenerator();
 				generator.init();
 				generator.createDummyPlace();
 				generator.setTransition(interpreter.getTextTrans(world.getActions()));
-				generator.setArc();
+				generator.setArc();*/
+
+				PetrinetBuilder PNBuilder = new PetrinetBuilder(world);
 
 				PNMLImport pnmlImport = new PNMLImport(mediator);
-				pnmlImport.run(generator.after(), Messages.getString("Document.T2P.Output"), true);
+				String PNML = PNBuilder.buildPNML();
+				InputStream stream = new ByteArrayInputStream(PNML.getBytes(StandardCharsets.UTF_8));
+
+				pnmlImport.run(stream, Messages.getString("Document.T2P.Output"), true);
 
 				IEditor[] editor = pnmlImport.getEditor();
 
