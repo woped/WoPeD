@@ -5,12 +5,9 @@ import java.util.Iterator;
 import java.util.List;
 
 import transform.DummyAction;
-import worldModel.Action;
-import worldModel.Flow;
+import worldModel.*;
 import worldModel.Flow.FlowDirection;
 import worldModel.Flow.FlowType;
-import worldModel.SpecifiedElement;
-import worldModel.WorldModel;
 
 public class PetrinetBuilder {
     private WorldModel processWM;
@@ -115,6 +112,15 @@ public class PetrinetBuilder {
         return a.getName().equals("Dummy Node");
     }
 
+    private String generateTransitionLabel(Action a) {
+        String transitionlabel="";
+        if(a.getMarker()!=null)
+            transitionlabel+= a.getMarker()+" ";
+        transitionlabel+=a.getVerb()+" ";
+        if(a.getCop()!=null)
+            transitionlabel+= a.getCop();
+        return transitionlabel;
+    }
     private String getOriginID(SpecifiedElement element){
         if(isDummyAction((Action) element)){
             DummyAction d= (DummyAction) element;
@@ -183,15 +189,24 @@ public class PetrinetBuilder {
 
     private Transition createTransition(Action a, boolean isGateway){
         boolean hasResource =a.getObject() != null;
-        Transition t = new Transition(a.getVerb(),hasResource,isGateway, getOriginID(a));
+        Transition t = new Transition(generateTransitionLabel(a),hasResource,isGateway, getOriginID(a));
         if(a.getObject()!=null)
             t.setResourceName(a.getObject().getName());
         if(a.getActorFrom()!=null){
             if(a.getActorFrom().getReference()!=null){
-                t.setOrganizationalUnitName(a.getActorFrom().getReference().getName());
+                if(a.getActorFrom().getReference().getSpecifiers(Specifier.SpecifierType.NN).size()>0){
+                    t.setOrganizationalUnitName(a.getActorFrom().getReference().getSpecifiers(Specifier.SpecifierType.NN).get(0).getName());
+                }else{
+                    t.setOrganizationalUnitName(a.getActorFrom().getReference().getName());
+                }
                 t.setRoleName(a.getActorFrom().getReference().getName());
             }else if(a.getActorFrom()!=null){
-                t.setOrganizationalUnitName(a.getActorFrom().getName());
+                if(a.getActorFrom().getSpecifiers(Specifier.SpecifierType.NN).size()>0){
+                    t.setOrganizationalUnitName(a.getActorFrom().getSpecifiers(Specifier.SpecifierType.NN).get(0).getName());
+                }else{
+                    t.setOrganizationalUnitName(a.getActorFrom().getName());
+                }
+
                 t.setRoleName(a.getActorFrom().getName());
             }
         }
