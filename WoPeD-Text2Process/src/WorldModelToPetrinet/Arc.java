@@ -12,21 +12,26 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-public class Arc {
+public class Arc extends PetriNetElement{
 
     String arcID;
     static int id = 1;
     double offsetX = 500.0, offsetY = -12.0;
     String source, target, text = "1";
 
-    public Arc(String source, String target) {
-
+    public Arc(String source, String target, String originID){
+        super(originID);
         arcID = "a" + id;
         id++;
 
         this.source = source;
         this.target = target;
 
+    }
+
+    public static void resetStaticContext(){
+        //TODO replace by ID handler -> Thread Safeness
+        id=1;
     }
 
     public String toString(){
@@ -87,6 +92,9 @@ public class Arc {
 
             // Get the String value of final xml document
             arcXMLStringValue = writer.getBuffer().toString();
+
+            //TODO Bad Design -> improve
+            arcXMLStringValue = arcXMLStringValue.substring(arcXMLStringValue.indexOf('\n')+1);
 
 
         } catch (Exception e) {

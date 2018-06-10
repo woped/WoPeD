@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import transform.DummyAction;
 import worldModel.Action;
 import worldModel.Flow;
 import worldModel.Flow.FlowDirection;
 import worldModel.Flow.FlowType;
+import worldModel.SpecifiedElement;
 import worldModel.WorldModel;
 
 public class PetrinetBuilder {
@@ -25,8 +27,11 @@ public class PetrinetBuilder {
     private Place place;
     private Arc arc;
 
+    private PetriNet petriNet;
+
     public PetrinetBuilder(WorldModel processWM) {
         this.processWM = processWM;
+        petriNet= new PetriNet();
     }
 
     public String buildPNML() {
@@ -48,12 +53,211 @@ public class PetrinetBuilder {
          * Was fehlt: Transitions nach dem XOR richtig an die 2 places, die ich mir gemerkt habe, anh‰ngen. Auﬂerdem sollten wieder nachfolgende places
          * erstellt + gemerkt werden und alles durch arcs verbunden werden.
          * */
+        buildPetriNetfromWM();
+        String PNML= petriNet.getPNML();
 
-        return getTransitionsFromWM() + getPlaces() + getArcs();
+        return PNML;
     }
 
+    private void buildPetriNetfromWM(){
+        flowsFromWM = processWM.getFlows();
+        iteratorFlows = flowsFromWM.iterator();
+        while (iteratorFlows.hasNext()) {
+            Flow nextFlow = iteratorFlows.next();
+            if(nextFlow.getMultipleObjects().size()==1){
+                createSequence(nextFlow);
+            }else{
+                //Gateway
+                if(nextFlow.getDirection().equals(FlowDirection.split)){
+                    createSplit(nextFlow);
+                }
+                if(nextFlow.getDirection().equals(FlowDirection.join)){
+                   createJoin(nextFlow);
+                }
+            }
+        }
+
+        // Sanitize to Workflownet
+        List<Place> sinks = petriNet.getAllSinks();
+        if(sinks.size()>1)
+            petriNet.unifySinks(sinks);
+        List<Place> sources = petriNet.getAllSources();
+        if(sources.size()>1)
+            petriNet.unifySources(sources);
+    }
+
+
+    private void createJoin(Flow f){
+
+        List<Place> sources=  getSourcePlaceForJoinFlow(f);
+
+        Place target=new Place(false,getOriginID(f.getSingleObject()));
+        petriNet.add(target);
+        Transition t = createTransition(f.getSingleObject(),false);
+        petriNet.add(t);
+
+        Place singletarget = new Place(false,getOriginID(f.getSingleObject()));
+        petriNet.add(singletarget);
+        petriNet.add(new Arc(target.getPlaceID(),t.getTransID(),getOriginID(f.getSingleObject())));
+        petriNet.add(new Arc(t.getTransID(),singletarget.getPlaceID(),getOriginID(f.getSingleObject())));
+
+
+        if(f.getType().equals(FlowType.concurrency)){
+            ANDJoin aj = new ANDJoin("",false,"");
+            aj.addANDJoinToPetriNet(petriNet,sources,target);
+        }else{
+            XORJoin xj = new XORJoin(sources.size(),"");
+            xj.addXORJoinToPetriNet(petriNet,sources,target);
+        }
+    }
+
+    private boolean isDummyAction(Action a){
+        return a.getName().equals("Dummy Node");
+    }
+
+    private String getOriginID(SpecifiedElement element){
+        if(isDummyAction((Action) element)){
+            DummyAction d= (DummyAction) element;
+            return ""+d.getDummyID();
+        }else{
+            int sentenceID = element.getOrigin().getID();
+            int wordIndex = element.getWordIndex();
+            String originID= "Dummy"+sentenceID+wordIndex;
+            return originID;
+        }
+
+    }
+
+    private boolean artifactsExist(Action a){
+        Iterator<Place> i = petriNet.getPlaceList().iterator();
+        while(i.hasNext()){
+            if(i.next().getOriginID().equals(getOriginID(a))){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private Place getExistingPlace(Action a){
+        Iterator<Place> i = petriNet.getPlaceList().iterator();
+        while(i.hasNext()){
+            Place p = i.next();
+            if(p.getOriginID().equals(getOriginID(a))){
+                return p;
+            }
+        }
+        //if not found
+        return null;
+    }
+
+    private Place getSourcePlaceForSplitFlow(Flow f){
+            Place p;
+            if(artifactsExist(f.getSingleObject())){
+                p= getExistingPlace(f.getSingleObject());
+            }else{
+                p=new Place(false,getOriginID(f.getSingleObject()));
+                petriNet.add(p);
+            }
+      //  }
+        return p;
+    }
+
+    private List<Place> getSourcePlaceForJoinFlow(Flow f){
+        ArrayList<Place> sources= new ArrayList<Place>();
+        Iterator<Action> i = f.getMultipleObjects().iterator();
+        while(i.hasNext()){
+            Action a= i.next();
+            Place p;
+
+                if(artifactsExist(a)){
+                    p= getExistingPlace(a);
+                }else{
+                    p=new Place(false,getOriginID(a));
+                    petriNet.add(p);
+            }
+            sources.add(p);
+        }
+
+        return sources;
+    }
+
+    private Transition createTransition(Action a, boolean isGateway){
+        boolean hasResource =a.getObject() != null;
+        Transition t = new Transition(a.getVerb(),hasResource,isGateway, getOriginID(a));
+        if(a.getObject()!=null)
+            t.setResourceName(a.getObject().getName());
+        if(a.getActorFrom()!=null){
+            if(a.getActorFrom().getReference()!=null){
+                t.setOrganizationalUnitName(a.getActorFrom().getReference().getName());
+                t.setRoleName(a.getActorFrom().getReference().getName());
+            }else if(a.getActorFrom()!=null){
+                t.setOrganizationalUnitName(a.getActorFrom().getName());
+                t.setRoleName(a.getActorFrom().getName());
+            }
+        }
+
+
+        return t;
+    }
+
+    private void createSequence(Flow f){
+
+        //check refers (apparently) to a bug during WorldModel Creation: Sequences among Equal Actions are created -> Inconsistency
+        if(!getOriginID(f.getMultipleObjects().get(0)).equals(getOriginID(f.getSingleObject()))){
+            boolean initiallyFound = artifactsExist(f.getSingleObject());
+            Place p1= getSourcePlaceForSplitFlow(f);
+            if(!initiallyFound){
+                Place p0= new Place(true,"");
+                petriNet.add(p0);
+                Transition t0= createTransition(f.getSingleObject(),false);
+                petriNet.add(t0);
+                petriNet.add(new Arc(p0.getPlaceID(),t0.getTransID(),""));
+                petriNet.add(new Arc(t0.getTransID(),p1.getPlaceID(),getOriginID(f.getSingleObject())));
+            }
+            Transition t1= createTransition(f.getMultipleObjects().get(0),false);
+            petriNet.add(t1);
+            Place p2 = new Place(false,getOriginID(f.getMultipleObjects().get(0)));
+            petriNet.add(p2);
+            Arc a1 = new Arc(p1.getPlaceID(),t1.getTransID(),getOriginID(f.getMultipleObjects().get(0)));
+            Arc a2 = new Arc(t1.getTransID(),p2.getPlaceID(),getOriginID(f.getMultipleObjects().get(0)));
+            petriNet.add(a1);
+            petriNet.add(a2);
+        }
+    }
+
+    private void createSplit(Flow f){
+        Place p1= getSourcePlaceForSplitFlow(f);
+        List<Action> splitList = f.getMultipleObjects();
+        ArrayList<Place> targetPlaces = new ArrayList<Place>();
+        Iterator<Action> i = splitList.iterator();
+        //Place targetPlace = new Place(false,getOriginID(f.getSingleObject()));
+        while(i.hasNext()){
+
+            Action a = i.next();
+            Place targetPlace = new Place(false,"");
+            targetPlaces.add(targetPlace);
+            petriNet.add(targetPlace);
+
+            Transition t = createTransition(a,false);
+            petriNet.add(t);
+            Place p2= new Place(false, getOriginID(a));
+            petriNet.add(p2);
+            petriNet.add(new Arc(targetPlace.getPlaceID(),t.getTransID(),getOriginID(a)));
+            petriNet.add(new Arc(t.getTransID(),p2.getPlaceID(),getOriginID(a)));
+        }
+        if(f.getType().equals(FlowType.concurrency)){
+            ANDSplit as=new ANDSplit("",false,"");
+            as.addANDSplitToPetriNet(petriNet,p1,targetPlaces);
+        }else if(f.getType().equals(FlowType.choice)||f.getType().equals(FlowType.multiChoice) ||f.getType().equals(FlowType.iteration)){
+            XORSplit xs = new XORSplit(splitList.size(),"");
+            xs.addXORSplitToPetriNet(petriNet,p1,targetPlaces);
+        }
+
+    }
+
+
     // Get XML String with all transitions
-    private String getTransitionsFromWM() {
+    /*private String getTransitionsFromWM() {
 
         flowsFromWM = processWM.getFlows();
         iteratorFlows = flowsFromWM.iterator();
@@ -104,7 +308,10 @@ public class PetrinetBuilder {
 
         }
 
-        return xml.toString();
+        return xml.toString() .replace(",", "")  //remove the commas
+                .replace("[", "")  //remove the right bracket
+                .replace("]", "")  //remove the left bracket
+                .trim();
     }
 
     // Get XML String with all places
@@ -123,7 +330,10 @@ public class PetrinetBuilder {
 
             i++;
         }
-        return places.toString();
+        return places.toString() .replace(",", "")  //remove the commas
+                .replace("[", "")  //remove the right bracket
+                .replace("]", "")  //remove the left bracket
+                .trim();
     }
 
     // Get XML String with all arcs
@@ -230,6 +440,9 @@ public class PetrinetBuilder {
             }
 
         }
-        return finalXML.toString();//"";// arcs.toString() + "\n" + transitionsFromWM.toString() + "\n" + places.toString();
-    }
+        return finalXML.toString() .replace(",", "")  //remove the commas
+                .replace("[", "")  //remove the right bracket
+                .replace("]", "")  //remove the left bracket
+                .trim();//"";// arcs.toString() + "\n" + transitionsFromWM.toString() + "\n" + places.toString();
+    }*/
 }

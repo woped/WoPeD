@@ -10,18 +10,23 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-    public class Place {
+    public class Place extends PetriNetElement {
         String text;
         String placeID;
         int XposPlace = 0, YposPlace = 0, XposText = 0, YposText = 0, dimensionX = 40, dimensionY = 40;
         static int ID = 1;
         boolean hasMarking = false;
 
-        public Place(boolean hasMarking) {
+        public Place(boolean hasMarking, String originID) {
+            super(originID);
             placeID = "p" + ID;
             text = "p" + ID;
             ID++;
             this.hasMarking = hasMarking;
+        }
+        public static void resetStaticContext(){
+            //TODO replace by ID handler -> Thread Safeness
+            ID=1;
         }
 
         public String getText() {
@@ -82,6 +87,8 @@ import org.w3c.dom.Element;
                 transformer.transform(new DOMSource(doc), new StreamResult(writer));
                 // Get the String value of final xml document
                 placeXMLStringValue = writer.getBuffer().toString();
+                //TODO Bad Design -> improve
+                placeXMLStringValue = placeXMLStringValue.substring(placeXMLStringValue.indexOf('\n')+1);
             } catch (Exception e) {
                 e.printStackTrace();
             }

@@ -12,18 +12,36 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-public class Transition {
+public class Transition extends PetriNetElement {
 
     String textofTrans, roleName, organizationalUnitName ="default", resourceName;
     static int id = 1,  i = 1;
     String transID, idGateway;
-    int textPositionX = 0, textPositionY = 0, transPositionX = 0, transPositionY = 0, triggerPositionX = 0,
-            triggerPositionY = 0, resourcePositionX = 0, resourcePositionY = 0, actorPositionX = 0, actorPositionY = 0,
-            dimensionX = 40, dimensionY = 40, triggerType = 200, triggerDimensionX = 24, triggerDimensionY = 22,
-            resourceDimensionX = 60, resourceDimensionY = 22, operatorType;
+    int textPositionX = 0;
+    int textPositionY = 0;
+    int transPositionX = 0;
+    int transPositionY = 0;
+    int triggerPositionX = 0;
+    int triggerPositionY = 0;
+    int resourcePositionX = 0;
+    int resourcePositionY = 0;
+    int actorPositionX = 0;
+    int actorPositionY = 0;
+    int dimensionX = 40;
+    int dimensionY = 40;
+    int triggerType = 200;
+    int triggerDimensionX = 24;
+    int triggerDimensionY = 22;
+    int resourceDimensionX = 60;
+    int resourceDimensionY = 22;
+    int operatorType;
+
+
+    int orientationCode=1;
     boolean hasResource = false, isGateway = false;
 
-    public Transition(String text, boolean hasResource, boolean isGateway) {
+    public Transition(String text, boolean hasResource, boolean isGateway, String originID) {
+        super(originID);
         this.textofTrans = text;
         this.hasResource = hasResource;
         this.isGateway = isGateway;
@@ -33,15 +51,29 @@ public class Transition {
         id++;
 
         // if Gateway, set ID of Gateway
-        if (isGateway == true) {
+/*        if (isGateway == true) {
 
             idGateway = transID + "_op_" + i;
             i++;
 
             id = i;
 
-        }
+        }*/
 
+    }
+
+    public void setOrientationCode(int orientationCode) {
+        this.orientationCode = orientationCode;
+    }
+
+    public static void resetStaticContext(){
+        //TODO replace by ID handler -> Thread Safeness
+        id=1;
+    }
+
+    public void setPartOfGateway(int subID,String transID){
+        idGateway=transID+"_op_"+subID;
+        this.transID=transID;
     }
 
     // getter and setter for role
@@ -201,7 +233,7 @@ public class Transition {
             toolSpecific.appendChild(timeUnit);
 
             Element orientation = doc.createElement("orientation");
-            orientation.appendChild(doc.createTextNode("1"));
+            orientation.appendChild(doc.createTextNode(""+orientationCode));
             toolSpecific.appendChild(orientation);
 
             // Transform Document to XML String
@@ -212,6 +244,9 @@ public class Transition {
 
             // Get the String value of final xml document
             transitionXMLStringValue = writer.getBuffer().toString();
+
+            //TODO Bad Design -> improve
+            transitionXMLStringValue = transitionXMLStringValue.substring(transitionXMLStringValue.indexOf('\n')+1);
 
         } catch (Exception e) {
             e.printStackTrace();
