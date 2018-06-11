@@ -76,11 +76,21 @@ public class PetrinetBuilder {
 
         // Sanitize to Workflownet
         List<Place> sinks = petriNet.getAllSinks();
-        if(sinks.size()>1)
+        if(sinks.size()>1){
             petriNet.unifySinks(sinks);
+        }
+        else{
+            sinks.get(0).setText("end");
+        }
         List<Place> sources = petriNet.getAllSources();
-        if(sources.size()>1)
+        if(sources.size()>1){
             petriNet.unifySources(sources);
+        }else{
+            sources.get(0).setText("start");
+            sources.get(0).hasMarking=true;
+        }
+
+
     }
 
 
@@ -114,11 +124,15 @@ public class PetrinetBuilder {
 
     private String generateTransitionLabel(Action a) {
         String transitionlabel="";
-        if(a.getMarker()!=null)
-            transitionlabel+= a.getMarker()+" ";
-        transitionlabel+=a.getVerb()+" ";
-        if(a.getCop()!=null)
-            transitionlabel+= a.getCop();
+        if(isDummyAction(a)){
+            transitionlabel+="";
+        }else {
+            if (a.getMarker() != null)
+                transitionlabel += a.getMarker() + " ";
+            transitionlabel += a.getVerb() + " ";
+            if (a.getCop() != null)
+                transitionlabel += a.getCop();
+        }
         return transitionlabel;
     }
     private String getOriginID(SpecifiedElement element){
@@ -222,7 +236,7 @@ public class PetrinetBuilder {
             boolean initiallyFound = artifactsExist(f.getSingleObject());
             Place p1= getSourcePlaceForSplitFlow(f);
             if(!initiallyFound){
-                Place p0= new Place(true,"");
+                Place p0= new Place(false,"");
                 petriNet.add(p0);
                 Transition t0= createTransition(f.getSingleObject(),false);
                 petriNet.add(t0);

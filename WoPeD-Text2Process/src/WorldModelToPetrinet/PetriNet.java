@@ -156,6 +156,8 @@ public class PetriNet {
         Iterator<Place> i = sources.iterator();
         Transition t = new Transition("startprocess",false,false,"");
         Place source = new Place(false,"");
+        source.setText("start");
+        source.hasMarking=true;
         Arc a1= new Arc(source.getPlaceID(),t.getTransID(),"");
         while(i.hasNext()){
             Place p = i.next();
@@ -172,6 +174,7 @@ public class PetriNet {
         Iterator<Place> i = sinks.iterator();
         Place sink = new Place(false,"");
         placeList.add(sink);
+        sink.setText("end");
         XORJoin xj= new XORJoin(sinks.size(),"");
         xj.addXORJoinToPetriNet(this,sinks,sink);
     }
