@@ -43,8 +43,11 @@ public class FrameNetInitializer {
     //getter
     public static FrameNetInitializer getInstance(){
         if(fni == null){
-            fni = new FrameNetInitializer();
-            init();
+            synchronized (FrameNetInitializer.class) {
+                if(fni == null){
+                    fni = new FrameNetInitializer();
+                }
+            }
         }
         return fni;
     }
