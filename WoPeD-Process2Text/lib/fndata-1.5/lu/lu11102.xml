@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="tally.n" ID="11102" frame="Amounting_to" frameID="602" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core" abbrev="" name="Attribute"/>
+            <FE fgColor="000000" bgColor="2E8B57" type="Extra-Thematic" abbrev="" name="Frequency"/>
+            <FE fgColor="FFFFFF" bgColor="A9A9A9" type="Core" abbrev="num" name="Numbers"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Peripheral" abbrev="TS" name="Time_span"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Val" name="Value"/>
+        </frame>
+    </header>
+    <definition>COD:  a current score or amount.</definition>
+    <lexeme POS="N" name="tally"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Attribute"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Attribute"/>
+                <annoSet ID="2546371"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Numbers"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[from]" FE="Numbers"/>
+                <annoSet ID="2546371"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Value"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="2nd" FE="Value"/>
+                <annoSet ID="2546371"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Attribute"/>
+            <FE name="Numbers"/>
+            <FE name="Value"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Attribute"/>
+                <valenceUnit GF="Dep" PT="PP[from]" FE="Numbers"/>
+                <valenceUnit GF="" PT="2nd" FE="Value"/>
+                <annoSet ID="2546371"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-Wand-(2)"/>
+    <subCorpus name="02-T-Wof-(2)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="1029" aPos="10560685" ID="1551805">
+            <text>Saturday 's quintet gave him the remarkable tally of 15 wins from the 35 races run on the Flat in Ireland in 1992 .</text>
+            <annotationSet cDate="05/17/2010 05:02:21 PDT Mon" status="UNANN" ID="2546370">
+                <layer rank="1" name="PENN">
+                    <label end="7" start="0" name="NP"/>
+                    <label end="10" start="9" name="POS"/>
+                    <label end="18" start="12" name="nn"/>
+                    <label end="23" start="20" name="VVD"/>
+                    <label end="27" start="25" name="PP"/>
+                    <label end="31" start="29" name="dt"/>
+                    <label end="42" start="33" name="jj"/>
+                    <label end="48" start="44" name="nn"/>
+                    <label end="51" start="50" name="in"/>
+                    <label end="54" start="53" name="cd"/>
+                    <label end="59" start="56" name="nns"/>
+                    <label end="64" start="61" name="in"/>
+                    <label end="68" start="66" name="dt"/>
+                    <label end="71" start="70" name="cd"/>
+                    <label end="77" start="73" name="nns"/>
+                    <label end="81" start="79" name="VVN"/>
+                    <label end="84" start="83" name="in"/>
+                    <label end="88" start="86" name="dt"/>
+                    <label end="93" start="90" name="NP"/>
+                    <label end="96" start="95" name="in"/>
+                    <label end="104" start="98" name="NP"/>
+                    <label end="107" start="106" name="in"/>
+                    <label end="112" start="109" name="cd"/>
+                    <label end="114" start="114" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/17/2010 05:02:21 PDT Mon" status="MANUAL" ID="2546371">
+                <layer rank="1" name="Target">
+                    <label cBy="571" end="48" start="44" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="571" feID="4312" end="59" start="50" name="Attribute"/>
+                    <label cBy="571" feID="7003" end="77" start="61" name="Numbers"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="59" start="50" name="Dep"/>
+                    <label end="77" start="61" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="59" start="50" name="PP"/>
+                    <label end="77" start="61" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+                <layer rank="2" name="FE">
+                    <label cBy="571" feID="4310" end="59" start="50" name="Value"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(2)"/>
+    <subCorpus name="other-unmatched-(2)"/>
+</lexUnit>

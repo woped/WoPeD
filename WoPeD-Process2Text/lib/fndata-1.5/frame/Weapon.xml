@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="11/25/2002 06:31:15 PST Mon" name="Weapon" ID="426" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A &lt;fen&gt;Weapon&lt;/fen&gt; is an artifact created specifically to cause harm or damage.  In some cases, a &lt;fen&gt;Use&lt;/fen&gt;, &lt;fen&gt;Material&lt;/fen&gt; of construction, &lt;fen&gt;Part&lt;/fen&gt; or &lt;fen&gt;Type&lt;/fen&gt; may be more narrowly specified.
+&lt;ex&gt;Did you, or did you not, &lt;gov&gt;fire&lt;/gov&gt; &lt;x&gt;this &lt;fex name="Weapon"&gt;&lt;t&gt;gun&lt;/t&gt;&lt;/fex&gt;&lt;/x&gt; with intent to harm my client?&lt;/ex&gt;
+&lt;ex&gt;Cyra tried to &lt;gov&gt;swing&lt;/gov&gt; &lt;x&gt;&lt;fex name="Wld"&gt;her&lt;/fex&gt; &lt;fex name="Weapon"&gt;&lt;t&gt;sword&lt;/t&gt;&lt;/fex&gt;&lt;/x&gt; to parry, but it was to heavy.&lt;/ex&gt;
+&lt;ex&gt;I investigated a specialist &lt;x&gt;&lt;fex name="Mat"&gt;precious metal&lt;/fex&gt; &lt;fex name="Weapon"&gt;&lt;t&gt;firearms&lt;/t&gt;&lt;/fex&gt;&lt;/x&gt; &lt;gov&gt;manufacturer&lt;/gov&gt;.&lt;/ex&gt;
+&lt;ex&gt;My neighbor, a member of the NRA since birth, has got an &lt;fex name="Type"&gt;AK-47&lt;/fex&gt; &lt;fex name="Type"&gt;fully automatic&lt;/fex&gt; &lt;fex name="Use"&gt;assault&lt;/fex&gt; &lt;fex name="Weapon"&gt;&lt;t&gt;rifle&lt;/t&gt;&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;Let 's just say that he 's the kind of guy who likes &lt;t&gt;&lt;fex name="Wep"&gt;guns&lt;/fex&gt;&lt;/t&gt; &lt;fex name="Part"&gt;with hair triggers&lt;/fex&gt;.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="11/25/2002 06:33:16 PST Mon" abbrev="Wep" name="Weapon" ID="3919">
+        <definition>&lt;def-root&gt;An entity prototypically used by a &lt;fen&gt;Wielder&lt;/fen&gt; to cause damage.
+&lt;ex&gt;They used to shoot these long-range &lt;fex name="Wep"&gt;&lt;t&gt;rifles&lt;/t&gt;&lt;/fex&gt; with scopes and hit targets a mile away.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Artifact" ID="61"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="11/25/2002 06:34:39 PST Mon" abbrev="Use" name="Use" ID="3920">
+        <definition>&lt;def-root&gt;The type of activity that the &lt;fen&gt;Weapon&lt;/fen&gt; is generally involved in.  Often this can be considered a kind of &lt;fen&gt;Type&lt;/fen&gt; specification also.
+&lt;ex&gt;a &lt;fex name="Use"&gt;dueling&lt;/fex&gt; &lt;t&gt;pistol&lt;/t&gt;&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Use"&gt;anti-personnell&lt;/fex&gt; &lt;t&gt;mines&lt;/t&gt;&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Use"&gt;deer&lt;/fex&gt; &lt;t&gt;rifle&lt;/t&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="11/25/2002 06:36:28 PST Mon" abbrev="Typ" name="Type" ID="3921">
+        <definition>&lt;def-root&gt;This FE indicates what subtype of the general category the &lt;fen&gt;Weapon&lt;/fen&gt; belongs to.
+&lt;ex&gt;Most people don't keep &lt;fex name="Typ"&gt;bastard&lt;/fex&gt; &lt;t&gt;swords&lt;/t&gt; in their livingrooms.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A9A9A9" fgColor="000000" coreType="Peripheral" cBy="664" cDate="12/05/2002 03:18:28 PST Thu" abbrev="Mat" name="Material" ID="3956">
+        <definition>&lt;def-root&gt;The substance that makes up the &lt;fen&gt;Weapon&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/06/2002 11:49:27 PST Fri" abbrev="Wld" name="Wielder" ID="3963">
+        <definition>&lt;def-root&gt;The person (or other sentient entity) that is using the &lt;fen&gt;Weapon&lt;/fen&gt;.
+&lt;ex&gt;Reluctantly, he slid &lt;fex name="Wld"&gt;his&lt;/fex&gt; &lt;t&gt;guns&lt;/t&gt; back into their holsters.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/06/2002 01:11:43 PST Fri" abbrev="Part" name="Part" ID="3964">
+        <definition>&lt;def-root&gt;This FE identifies a part of the &lt;fen&gt;Weapon&lt;/fen&gt;.  This includes permanent, obligatory parts and mere attachments.
+&lt;ex&gt;I bought a &lt;t&gt;rifle&lt;/t&gt; &lt;fex name="Part"&gt;with a 2000-yard scope&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;They practiced on &lt;t&gt;swords&lt;/t&gt; &lt;fex name="Part"&gt;with wooden blades&lt;/fex&gt; first.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="11/04/2004 04:53:19 PST Thu" abbrev="nam" name="Name" ID="7207">
+        <definition>&lt;def-root&gt;The term used to refer to an &lt;fen&gt;Weapon&lt;/fen&gt;.
+
+&lt;ex&gt;The &lt;t&gt;sword&lt;/t&gt; &lt;fex name="nam"&gt;Wirikidor&lt;/fex&gt; was inadvertently cursed.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="11/04/2004 04:55:11 PST Thu" abbrev="tim" name="Time_of_creation" ID="7208">
+        <definition>&lt;def-root&gt;The time at which a &lt;fen&gt;Weapon&lt;/fen&gt; comes into existence.
+
+&lt;ex&gt;The &lt;fex name="tim"&gt;fourth millennium BC&lt;/fex&gt; &lt;t&gt;spear&lt;/t&gt; has stimulated a lot of controversy.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="11/04/2004 05:03:43 PST Thu" abbrev="cre" name="Creator" ID="7209">
+        <definition>&lt;def-root&gt;The individual or group responsible for the creation of the &lt;fen&gt;Weapon&lt;/fen&gt;.
+
+&lt;ex&gt;&lt;fex name="cre"&gt;Colt&lt;/fex&gt; &lt;t&gt;pistols&lt;/t&gt; are, for some reason, considerably more likely to be missold in this fashion.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="01/24/2006 06:16:44 PST Tue" abbrev="dep" name="Descriptor" ID="9880">
+        <definition>&lt;def-root&gt;A description or characteristic of the &lt;fen&gt;Weapon&lt;/fen&gt;.
+
+&lt;ex&gt;He prefers to use a &lt;fex name="Descriptor"&gt;heavy&lt;/fex&gt; &lt;t&gt;bow&lt;/t&gt; for long-distance combat.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Artifact</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Bearing_arms</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="N" name="rifle.n" ID="7774" lemmaID="33238" cBy="664" cDate="11/25/2002 06:38:22 PST Mon">
+        <definition>FN: a gun with a long barrel in which spiral grooves are cut so as to cause the bullet to spin as it flies out</definition>
+        <sentenceCount annotated="21" total="366"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="rifle"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="pistol.n" ID="7775" lemmaID="29134" cBy="664" cDate="11/25/2002 06:38:35 PST Mon">
+        <definition>FN: a small gun, designed to be fired with one hand</definition>
+        <sentenceCount annotated="46" total="295"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="pistol"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="six-shooter.n" ID="7776" lemmaID="36077" cBy="664" cDate="11/25/2002 06:38:52 PST Mon">
+        <definition>FN: a pistol with a revolving chamber holding six bullets</definition>
+        <sentenceCount annotated="2" total="2"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="six-shooter"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="firearm.n" ID="7777" lemmaID="14433" cBy="664" cDate="11/25/2002 06:39:06 PST Mon">
+        <definition>COD: a rifle, pistol, or other portable gun.</definition>
+        <sentenceCount annotated="16" total="142"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="firearm"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="gun.n" ID="7779" lemmaID="17072" cBy="664" cDate="11/25/2002 06:39:36 PST Mon">
+        <definition>FN: a weapon which fires projectiles at high velocity, usually metal bullets propelled by explosives burned within the barrel of the gun</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="gun"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="cannon.n" ID="7780" lemmaID="5385" cBy="664" cDate="11/25/2002 06:39:47 PST Mon">
+        <definition>FN: a large-caliber, heavy gun</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="cannon"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="bomb.n" ID="7781" lemmaID="4097" cBy="664" cDate="11/25/2002 06:40:02 PST Mon">
+        <definition>FN: a destructive device containing explosives, usually used in warfare</definition>
+        <sentenceCount annotated="27" total="268"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="bomb"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="warhead.n" ID="7782" lemmaID="43440" cBy="664" cDate="11/25/2002 06:40:20 PST Mon">
+        <definition>FN: explosives, noxious chemicals, etc. mounted on a missile or artillery shell, usually with some triggering mechanism</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="warhead"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="sword.n" ID="7783" lemmaID="39211" cBy="664" cDate="11/25/2002 06:40:36 PST Mon">
+        <definition>COD: a weapon with a long metal blade and a hilt with a handguard, used for thrusting or striking and often worn as part of ceremonial dress.</definition>
+        <sentenceCount annotated="32" total="523"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="sword"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="knife.n" ID="7785" lemmaID="21418" cBy="664" cDate="11/25/2002 06:45:46 PST Mon">
+        <definition>COD:  a cutting instrument consisting of a blade fixed into a handle. NB:  some instances of knives are meant to be weapons, others are meant to have a different purpose, such as cutting a particular substrate.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="knife"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="gat.n" ID="7786" lemmaID="15977" cBy="664" cDate="11/25/2002 06:49:13 PST Mon">
+        <definition>FN: (slang) a pistol</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="gat"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="AK-47.n" ID="7787" lemmaID="46201" cBy="664" cDate="11/25/2002 06:50:03 PST Mon">
+        <definition>FN: a Soviet-designed rifle capable of semiautomatic and automatic fire.</definition>
+        <sentenceCount annotated="6" total="9"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="AK-47"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="grenade.n" ID="7788" lemmaID="16812" cBy="664" cDate="11/25/2002 06:51:36 PST Mon">
+        <definition>FN: a small bomb, thrown from the hand at an opponent simultaneously releasing a triggering device</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="grenade"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="crossbow.n" ID="7789" lemmaID="9024" cBy="664" cDate="11/25/2002 06:54:09 PST Mon">
+        <definition>FN: a bow attached to a stock which holds the arrow, which is release by means of a trigger</definition>
+        <sentenceCount annotated="4" total="77"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="crossbow"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="machine-gun.n" ID="7790" lemmaID="23073" cBy="664" cDate="11/25/2002 06:55:05 PST Mon">
+        <definition>FN: a gun designed to fire a series of bullets rapidly and automatically</definition>
+        <sentenceCount annotated="4" total="21"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="machine-gun"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="shotgun.n" ID="7791" lemmaID="46202" cBy="664" cDate="11/25/2002 06:56:48 PST Mon">
+        <definition>FN: a gun which fires many small pellets from a large cartridge</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="shotgun"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="shooter.n" ID="7792" lemmaID="46203" cBy="664" cDate="11/25/2002 06:59:12 PST Mon">
+        <definition>COD: a gun.</definition>
+        <sentenceCount annotated="4" total="52"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="shooter"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="flame-thrower.n" ID="7793" lemmaID="14598" cBy="664" cDate="11/25/2002 07:05:08 PST Mon">
+        <definition>FN: a weapon which shoots out a stream of burning liquid</definition>
+        <sentenceCount annotated="5" total="13"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="flame-thrower"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="weapon.n" ID="7794" lemmaID="43628" cBy="664" cDate="11/25/2002 07:07:28 PST Mon">
+        <definition>FN: a device intended to injure opponents or harm opponents' property in a conflict (offensive weapons) or to protect against such an attack (defensive weapons)</definition>
+        <sentenceCount annotated="27" total="311"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="weapon"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="handgun.n" ID="7821" lemmaID="17347" cBy="664" cDate="12/09/2002 04:11:07 PST Mon">
+        <definition>FN: a small gun, designed to be fired with one hand</definition>
+        <sentenceCount annotated="11" total="88"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="handgun"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="club.n" ID="7822" lemmaID="6911" cBy="664" cDate="12/09/2002 04:11:56 PST Mon">
+        <definition>FN: a heavy rod, often having a thick end and a thinner handle, used as a weapon</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="club"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="twenty-two.n" ID="7823" lemmaID="46211" cBy="664" cDate="12/09/2002 04:42:32 PST Mon">
+        <definition>FN: a twenty-two caliber rifle</definition>
+        <sentenceCount annotated="1" total="100"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="twenty-two"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="forty-four.n" ID="7826" lemmaID="46212" cBy="664" cDate="12/10/2002 02:27:36 PST Tue">
+        <definition>FN: a gun firing bullets whose diameter is 0.44 inches.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="forty-four"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="missile.n" ID="7827" lemmaID="24561" cBy="664" cDate="12/10/2002 03:29:12 PST Tue">
+        <definition>FN: a weapon consisting of a rocket carrying a warhead</definition>
+        <sentenceCount annotated="35" total="345"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="missile"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="garrotte.n" ID="7828" lemmaID="15938" cBy="664" cDate="12/10/2002 03:31:15 PST Tue">
+        <definition>FN: a weapon used for strangling the opponent, usually of cord or rope</definition>
+        <sentenceCount annotated="8" total="15"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="garrotte"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="revolver.n" ID="8255" lemmaID="33136" cBy="840" cDate="01/30/2003 04:54:07 PST Thu">
+        <definition>COD: a pistol with revolving chambers enabling several shots to be fired without reloading</definition>
+        <sentenceCount annotated="15" total="75"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="revolver"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="weaponry.n" ID="8558" lemmaID="43630" cBy="664" cDate="04/10/2003 02:42:08 PDT Thu">
+        <definition>FN: a collection (or the general class) of artifacts used to inflict damage or harm.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="weaponry"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="Scud-B missile.n" ID="10633" lemmaID="49223" cBy="605" cDate="06/28/2004 09:33:21 PDT Mon">
+        <definition>FN: a mobile, liquid-fueled, single-stage missile of Russian design</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="Scud-B"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="missile"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="arsenal.n" ID="10634" lemmaID="1993" cBy="605" cDate="06/28/2004 09:39:11 PDT Mon">
+        <definition>COD: a store of weapons and ammunition</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="arsenal"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="chemical weapon.n" ID="10635" lemmaID="49225" cBy="605" cDate="06/28/2004 09:42:22 PDT Mon">
+        <definition>FN: a weapon that produces its effect by the release of a toxic or noxious substance</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="chemical"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="weapon"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="ballistic missile.n" ID="10636" lemmaID="49226" cBy="605" cDate="06/28/2004 09:46:40 PDT Mon">
+        <definition>FN: a guided missile or rocket which can be steered only during the propulsion phase </definition>
+        <sentenceCount annotated="11" total="70"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="ballistic"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="missile"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="biological weapon.n" ID="10637" lemmaID="49227" cBy="605" cDate="06/28/2004 09:49:25 PDT Mon">
+        <definition>FN: a weapon that produces its effect by the release of biological agents such as bacteria or viruses which cause disease in the targeted population</definition>
+        <sentenceCount annotated="0" total="1"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="biological"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="weapon"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="nuclear weapon.n" ID="10652" lemmaID="49242" cBy="605" cDate="06/29/2004 07:56:19 PDT Tue">
+        <definition>FN: a weapon deriving its destructive power from the rapid, uncontrolled release of nuclear energy</definition>
+        <sentenceCount annotated="8" total="106"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="nuclear"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="weapon"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="mustard gas.n" ID="10653" lemmaID="49243" cBy="605" cDate="06/29/2004 08:01:56 PDT Tue">
+        <definition>COD: a colourless oily liquid whose vapour is a powerful irritant and vesicant, used in chemical weapons</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="mustard"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="gas"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="CW.n" ID="10654" lemmaID="49244" cBy="605" cDate="06/29/2004 08:05:55 PDT Tue">
+        <definition>FN: a (chemical) weapon that produces its effect by the release of a toxic or noxious substance</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="CW"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="BW.n" ID="10655" lemmaID="49245" cBy="605" cDate="06/29/2004 08:06:36 PDT Tue">
+        <definition>FN: a (biological) weapon that produces its effect by the release of biological agents such as bacteria or viruses which cause disease in the targeted population</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="BW"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="WMD.n" ID="10704" lemmaID="49294" cBy="605" cDate="06/30/2004 11:50:19 PDT Wed">
+        <definition>FN: weapon of mass destruction</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="WMD"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="weapon of mass destruction.n" ID="10707" lemmaID="49297" cBy="605" cDate="06/30/2004 11:53:45 PDT Wed">
+        <definition>FN: weapons that are capable of a high order of destruction and/or of being used in such a manner as to destroy large numbers of people.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="weapon"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="PREP" name="of"/>
+        <lexeme order="3" headword="false" breakBefore="false" POS="N" name="mass"/>
+        <lexeme order="4" headword="false" breakBefore="false" POS="N" name="destruction"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="mine.n" ID="11197" lemmaID="24373" cBy="618" cDate="11/18/2004 10:23:21 PST Thu">
+        <definition>COD: a type of bomb placed on or in the ground or water, which detonates on contact</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="mine"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="spear.n" ID="11311" lemmaID="37208" cBy="618" cDate="11/23/2004 03:24:35 PST Tue">
+        <definition>COD: a metal weapon with a pointed tip and a long shaft, used for thrusting or throwing. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="spear"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="bow.n" ID="11328" lemmaID="4331" cBy="618" cDate="11/24/2004 01:51:49 PST Wed">
+        <definition>FN: a long, thin resilient object fitted with a string and used to propel arrows.</definition>
+        <sentenceCount annotated="27" total="122"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="bow"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="explosive.a" ID="11415" lemmaID="13579" cBy="395" cDate="12/13/2004 02:56:44 PST Mon">
+        <definition>FN: Having a tendancy to explode.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="explosive"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="explosive.n" ID="11416" lemmaID="13578" cBy="395" cDate="12/13/2004 03:03:32 PST Mon">
+        <definition>FN: substance, especially a prepared chemical, that explodes or causes explosion.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="explosive"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Weapon" POS="N" name="plastic explosive.n" ID="11425" lemmaID="49814" cBy="664" cDate="12/13/2004 03:40:40 PST Mon">
+        <definition>COD: a putty-like explosive capable of being moulded by hand.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="plastic"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="explosive"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="dynamite.n" ID="11790" lemmaID="12042" cBy="395" cDate="04/08/2005 05:08:20 PDT Fri">
+        <definition>COD: a high explosive consisting of nitroglycerine mixed with an absorbent material.  [Chem]</definition>
+        <sentenceCount annotated="10" total="88"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="dynamite"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="nuclear.a" ID="12170" lemmaID="26237" cBy="618" cDate="06/02/2005 06:47:32 PDT Thu">
+        <definition>COD: possessing or involving nuclear weapons</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="nuclear"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="Scud-B.n" ID="12330" lemmaID="50110" cBy="303" cDate="06/23/2005 03:15:51 PDT Thu">
+        <definition>FN: a mobile, liquid-fueled, single-stage missile of Russian design</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="Scud-B"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="Scud-C missile.n" ID="12334" lemmaID="50111" cBy="303" cDate="06/23/2005 03:44:30 PDT Thu">
+        <definition>FN: a later version of the Scud-B missile; had extended range at the cost of greatdly reduced warhead size and accuracy</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="Scud-C"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="missile"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="atomic weapon.n" ID="12422" lemmaID="50160" cBy="618" cDate="07/08/2005 12:50:18 PDT Fri">
+        <definition>FN: a weapon powered by nuclear reactions.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="atomic"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="weapon"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="ordnance.n" ID="12458" lemmaID="26925" cBy="605" cDate="07/15/2005 03:55:40 PDT Fri">
+        <definition>COD: mounted guns; cannon</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="ordnance"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="arms.n" ID="12651" lemmaID="1955" cBy="618" cDate="08/22/2005 10:49:07 PDT Mon">
+        <definition>COD: weapons; armaments.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="arms"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="artillery.n" ID="12652" lemmaID="2026" cBy="618" cDate="08/22/2005 10:50:00 PDT Mon">
+        <definition>COD: large-calibre guns used in warfare on land.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="artillery"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="shell.n" ID="12706" lemmaID="35472" cBy="618" cDate="08/24/2005 10:36:50 PDT Wed">
+        <definition>COD: an explosive artillery projectile or bomb.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="shell"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="atomic bomb.n" ID="13085" lemmaID="50331" cBy="303" cDate="01/13/2006 03:12:50 PST Fri">
+        <definition>FN: a bomb powered by nuclear reactions</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="atomic"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="bomb"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="biological.a" ID="13357" lemmaID="3633" cBy="618" cDate="07/11/2006 02:36:51 PDT Tue">
+        <definition>COD: relating to, involving, or denoting the use of micro-organisms or toxins of biological origin as weapons of war.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="biological"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="chemical.a" ID="13358" lemmaID="6224" cBy="618" cDate="07/11/2006 02:41:49 PDT Tue">
+        <definition>COD: relating to or denoting the use of poison gas or other chemicals as weapons of war.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="chemical"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="nerve gas.n" ID="13429" lemmaID="50412" cBy="303" cDate="08/08/2006 03:23:19 PDT Tue">
+        <definition>COD: a poisonous vapour which disrupts the transmission of nerve impulses, causing death or disablement.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="nerve"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="gas"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="strategic.a" ID="14026" lemmaID="38279" cBy="361" cDate="03/22/2007 02:34:32 PDT Thu">
+        <definition>COD: (of bombing or weapons) done or for use against an enemy's territory or infrastructure.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="strategic"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="strategic nuclear weapon.n" ID="14027" lemmaID="50562" cBy="361" cDate="03/22/2007 02:36:18 PDT Thu">
+        <definition>FN: a weapon deriving its destructive power from the rapid, uncontrolled release of nuclear energy for use against an enemy's territory or infrastructure.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="strategic_nuclear_weapon"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="icbm.n" ID="14159" lemmaID="18830" cBy="361" cDate="03/26/2007 12:56:59 PDT Mon">
+        <definition>FN: an intercontinental ballistic missile</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="icbm"/>
+    </lexUnit>
+</frame>

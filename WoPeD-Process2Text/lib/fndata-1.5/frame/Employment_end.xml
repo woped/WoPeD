@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="10/16/2003 02:25:48 PDT Thu" name="Employment_end" ID="872" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;This is a non-perspectivized frame representing the final stage of the Employment_scenario, in which the relationship between the &lt;fen&gt;Employer&lt;/fen&gt; and the &lt;fen&gt;Employee&lt;/fen&gt; comes to an end.  There are two different ways in which the relation ends, represented in the Firing frame (in which the &lt;fen&gt;Employer&lt;/fen&gt; is agentive) and the Quitting frame (in which the &lt;fen&gt;Employee&lt;/fen&gt; is agentive).
+
+&lt;/def-root&gt;</definition>
+    <semType name="Non-Lexical Frame" ID="16"/>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="10/16/2003 04:03:14 PDT Thu" abbrev="" name="Employee" ID="5581">
+        <definition>&lt;def-root&gt;The person whose employment relationship with an &lt;fen&gt;Employer&lt;/fen&gt; ends.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="10/16/2003 04:04:52 PDT Thu" abbrev="" name="Employer" ID="5584">
+        <definition>&lt;def-root&gt;The person (or institution) whose employ the &lt;fen&gt;Employee&lt;/fen&gt; leaves.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="10/16/2003 04:15:26 PDT Thu" abbrev="" name="Manner" ID="5596">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Manner&lt;/fen&gt; in which an employment relationship between an &lt;fen&gt;Employer&lt;/fen&gt; and an &lt;fen&gt;Employee&lt;/fen&gt; ends.&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="10/16/2003 04:17:48 PDT Thu" abbrev="" name="Place" ID="5599">
+        <definition>&lt;def-root&gt;This FE identifies the place where the &lt;fen&gt;Employer&lt;/fen&gt;/&lt;fen&gt;Employee&lt;/fen&gt; relationship is ended.
+&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="10/16/2003 04:23:23 PDT Thu" abbrev="" name="Position" ID="5602">
+        <definition>&lt;def-root&gt;The label given to a particular type of employment.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="10/16/2003 04:54:58 PDT Thu" abbrev="" name="Time" ID="5609">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Time&lt;/fen&gt; when the &lt;fen&gt;Employer&lt;/fen&gt;/&lt;fen&gt;Employee&lt;/fen&gt; relationship ceases.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Position" ID="5602"/>
+        <memberFE name="Employee" ID="5581"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Firing</relatedFrame>
+        <relatedFrame>Quitting</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of">
+        <relatedFrame>Employment_scenario</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by">
+        <relatedFrame>Employment_continue</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+</frame>

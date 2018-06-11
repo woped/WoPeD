@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="618" cDate="01/28/2003 11:34:48 PST Tue" name="Suspiciousness" ID="531" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;In this frame, an &lt;fen&gt;Entity&lt;/fen&gt; or &lt;fen&gt;Behavior&lt;/fen&gt; is suspicious or otherwise subject to question.  The general implication is that the &lt;fen&gt;Entity&lt;/fen&gt; or &lt;fen&gt;Behavior&lt;/fen&gt; provides evidence for some (as yet unproven) socially undesirable conclusion about a (usually implicit) &lt;fen&gt;Social_actor&lt;/fen&gt;.  (Such conclusions often include the idea that some individual is lying, or that a crime was committed.)
+&lt;ex&gt;We found some &lt;t&gt;suspicious&lt;/t&gt; &lt;fex name="Entity"&gt;checks&lt;/fex&gt; lying on his desk.&lt;/ex&gt;
+&lt;ex&gt;It &lt;m&gt;was&lt;/m&gt; rather &lt;t&gt;suspicious&lt;/t&gt; &lt;fex name="soc"&gt;of you&lt;/fex&gt; &lt;fex name="Behavior"&gt;to leave the party just before the police arrived&lt;/fex&gt;.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="01/28/2003 11:35:50 PST Tue" abbrev="Act" name="Behavior" ID="4142">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Behavior&lt;/fen&gt; is the state of affairs or action of the social actor that is regarded as susipcious. &lt;/def-root&gt;</definition>
+        <excludesFE name="Entity" ID="14180"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="05/21/2003 05:03:24 PDT Wed" abbrev="Deg" name="Degree" ID="4501">
+        <definition>&lt;def-root&gt;The extent to which the &lt;fen&gt;Behavior&lt;/fen&gt; is suspicious.
+&lt;ex&gt;That looks like &lt;fex name="Degree"&gt;very&lt;/fex&gt; &lt;t&gt;suspicious&lt;/t&gt; activity.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="12/08/2005 09:34:35 PST Thu" abbrev="soc" name="Social_actor" ID="9718">
+        <definition>&lt;def-root&gt;An individual that is suspected of wrongdoing because of the &lt;fen&gt;Behavior&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <excludesFE name="Entity" ID="14180"/>
+    </FE>
+    <FE bgColor="7FFF00" fgColor="000000" coreType="Peripheral" cBy="303" cDate="06/07/2006 04:59:04 PDT Wed" abbrev="" name="Judge" ID="10268">
+        <definition>&lt;def-root&gt;The individual whose point of view is taken in assigning the judgment denoted by the target.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="571" cDate="08/26/2010 10:04:24 PDT Thu" abbrev="Ent" name="Entity" ID="14180">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Entity&lt;/fen&gt; metonymically stands in for a &lt;fen&gt;Behavior&lt;/fen&gt; that saliently involves the &lt;fen&gt;Entity&lt;/fen&gt;. &lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Social_actor" ID="9718"/>
+        <memberFE name="Behavior" ID="4142"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Social_behavior_evaluation</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="A" name="suspect.a" ID="8224" lemmaID="39033" cBy="618" cDate="01/28/2003 12:01:08 PST Tue">
+        <definition>COD: possibly dangerous or false.</definition>
+        <sentenceCount annotated="15" total="167"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="suspect"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="suspicious.a" ID="8225" lemmaID="39040" cBy="618" cDate="01/28/2003 12:02:30 PST Tue">
+        <definition>FN: arousing a feeling that something may be dangerous or may indicate criminal or unlawful behavior</definition>
+        <sentenceCount annotated="49" total="49"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="suspicious"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="questionable.a" ID="8226" lemmaID="31488" cBy="618" cDate="01/28/2003 12:07:14 PST Tue">
+        <definition>COD: of suspect morality, honesty, value, etc.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="questionable"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="fishy.a" ID="8227" lemmaID="14517" cBy="618" cDate="01/28/2003 12:07:57 PST Tue">
+        <definition>COD: arousing feelings of doubt or suspicion.</definition>
+        <sentenceCount annotated="16" total="78"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="fishy"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="dubious.a" ID="8228" lemmaID="11885" cBy="618" cDate="01/28/2003 12:08:48 PST Tue">
+        <definition>COD: not to be relied upon.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="dubious"/>
+    </lexUnit>
+</frame>

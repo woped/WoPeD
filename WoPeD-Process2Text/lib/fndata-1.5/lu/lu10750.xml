@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" POS="A" name="alleged.a" ID="10750" frame="Unattributed_information" frameID="1154" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="Pickett" ID="2">
+            <document description="cjf001" ID="6"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Extra-Thematic" abbrev="" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Extra-Thematic" abbrev="" name="Explanation"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="rep" name="Reported_fact"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: having been claimed to exist or occur by unmentioned sources</definition>
+    <lexeme POS="A" name="alleged"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Reported_fact"/>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="N" FE="Reported_fact"/>
+                <annoSet ID="2600215"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Reported_fact"/>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="N" FE="Reported_fact"/>
+                <annoSet ID="2600215"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="manually-added">
+        <sentence corpID="2" docID="6" sentNo="1" paragNo="1" aPos="0" ID="239738">
+            <text>Alleged White House gunman Robert Pickett was arraigned Wednesday at a federal court in Washington and ordered held without bond .</text>
+            <annotationSet cDate="01/06/2003 08:08:38 PST Mon" status="UNANN" ID="125957">
+                <layer rank="1" name="BNC">
+                    <label end="6" start="0" name="AJ0"/>
+                    <label end="12" start="8" name="NP0"/>
+                    <label end="18" start="14" name="NN1"/>
+                    <label end="25" start="20" name="NN1"/>
+                    <label end="32" start="27" name="NP0"/>
+                    <label end="40" start="34" name="NP0"/>
+                    <label end="44" start="42" name="VBD"/>
+                    <label end="54" start="46" name="AJ0"/>
+                    <label end="64" start="56" name="NP0"/>
+                    <label end="67" start="66" name="PRP"/>
+                    <label end="69" start="69" name="AT0"/>
+                    <label end="77" start="71" name="AJ0"/>
+                    <label end="83" start="79" name="NN1"/>
+                    <label end="86" start="85" name="PRP"/>
+                    <label end="97" start="88" name="NP0"/>
+                    <label end="101" start="99" name="CJC"/>
+                    <label end="109" start="103" name="VVD"/>
+                    <label end="114" start="111" name="VVN"/>
+                    <label end="122" start="116" name="PRP"/>
+                    <label end="127" start="124" name="NN1"/>
+                    <label end="129" start="129" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/30/2010 07:07:04 PDT Fri" status="MANUAL" ID="2600215">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="6" start="0" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="6676" end="25" start="8" name="Reported_fact"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="25" start="8" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="25" start="8" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

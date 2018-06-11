@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="296" cDate="08/15/2002 11:50:33 PDT Thu" name="Feeling" ID="396" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;In this frame an &lt;fen&gt;Experiencer&lt;/fen&gt; experiences an &lt;fen&gt;Emotion&lt;/fen&gt; or is in an &lt;fen&gt;Emotional_state&lt;/fen&gt;. There can also be an &lt;fen&gt;Evaluation&lt;/fen&gt; of the internal experiential state.  
+&lt;ex&gt;&lt;fex name="Experiencer"&gt;John&lt;/fex&gt; &lt;t&gt;feels&lt;/t&gt; &lt;fex name="Emotion"&gt;anger towards his mother&lt;/fex&gt;.&lt;/ex&gt; 
+&lt;ex&gt;&lt;fex name="Experiencer"&gt;Martha&lt;/fex&gt; &lt;t&gt;feels&lt;/t&gt; &lt;fex name="Emotional_state"&gt;angry&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Experiencer"&gt;Dr. Hibbert&lt;/fex&gt; &lt;t&gt;feels&lt;/t&gt; &lt;fex name="Evaluation"&gt;good&lt;/fex&gt;.&lt;/ex&gt;
+Inalienably possessed aspects of the &lt;fen&gt;Experiencer&lt;/fen&gt; frequently stand in for the &lt;fen&gt;Experiencer&lt;/fen&gt;. 
+&lt;ex&gt;&lt;fex name="Experiencer"&gt;Her heart&lt;/fex&gt; &lt;t&gt;felt&lt;/t&gt; &lt;fex name="Emotional_state"&gt;angry&lt;/fex&gt;.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="08/15/2002 12:07:43 PDT Thu" abbrev="Exp" name="Experiencer" ID="3554">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Experiencer&lt;/fen&gt; experiences the &lt;fen&gt;Emotion&lt;/fen&gt; or is in the &lt;fen&gt;Emotional_state&lt;/fen&gt;.
+&lt;ex&gt;After two pints, &lt;fex name="Exp"&gt;he&lt;/fex&gt; &lt;t&gt;felt&lt;/t&gt; &lt;fex name="Eval"&gt;a bit better&lt;/fex&gt; and Ted arrived.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="08/15/2002 12:09:06 PDT Thu" abbrev="Emot" name="Emotion" ID="3555">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Emotion&lt;/fen&gt; is the feeling that the &lt;fen&gt;Experiencer&lt;/fen&gt; experiences.
+&lt;ex&gt;&lt;fex name="Exp"&gt;Patients&lt;/fex&gt; &lt;t&gt;experience&lt;/t&gt; &lt;fex name="Emot"&gt;high anxiety levels&lt;/fex&gt; at time of admission to hospital.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="08/15/2002 12:09:42 PDT Thu" abbrev="Emo_s" name="Emotional_state" ID="3556">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Emotional_state&lt;/fen&gt; is the state the &lt;fen&gt;Experiencer&lt;/fen&gt; is in.
+&lt;ex&gt;Her heart was galloping so fast that &lt;fex name="Exp"&gt;she&lt;/fex&gt; &lt;t&gt;felt&lt;/t&gt; &lt;fex name="Emo_s"&gt;quite giddy with happiness&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="08/15/2002 12:10:43 PDT Thu" abbrev="Eval" name="Evaluation" ID="3559">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Evaluation&lt;/fen&gt; is a negative or positive assessment of the &lt;fen&gt;Experiencer&lt;/fen&gt; regarding his or her &lt;fen&gt;Emotional_state&lt;/fen&gt;.
+&lt;ex&gt;&lt;fex name="Exp"&gt;Max&lt;/fex&gt; was &lt;t&gt;feeling&lt;/t&gt; &lt;fex name="Eval"&gt;worse than he'd ever felt in his life&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="361" cDate="10/03/2007 12:29:28 PDT Wed" abbrev="" name="Cause" ID="11984">
+        <definition>&lt;def-root&gt;The thing or state-of-affairs that leads to the &lt;fen&gt;Experiencer&lt;/fen&gt; feeling the &lt;fen&gt;Emotion&lt;/fen&gt; or &lt;fen&gt;Emotional_state&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Emotional_state" ID="3556"/>
+        <memberFE name="Evaluation" ID="3559"/>
+        <memberFE name="Emotion" ID="3555"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Emotions</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="experience.v" ID="7255" lemmaID="13538" cBy="296" cDate="08/15/2002 12:21:03 PDT Thu">
+        <definition>COD: feel (an emotion). </definition>
+        <sentenceCount annotated="21" total="183"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="experience"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="full.a" ID="7256" lemmaID="15634" cBy="296" cDate="08/15/2002 12:32:14 PDT Thu">
+        <definition>FN: experiencing an emotion</definition>
+        <sentenceCount annotated="21" total="280"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="full"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="feel.v" ID="7257" lemmaID="14126" cBy="296" cDate="08/15/2002 12:37:05 PDT Thu">
+        <definition>FN: experience an emotion.</definition>
+        <sentenceCount annotated="49" total="479"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="feel"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="feelings.n" ID="10300" lemmaID="14131" cBy="445" cDate="03/11/2004 02:15:11 PST Thu">
+        <definition>COD:  emotional responses or tendencies to respond.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="feelings"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="emotion.n" ID="10301" lemmaID="12605" cBy="445" cDate="03/11/2004 02:25:07 PST Thu">
+        <definition>COD: a strong feeling, such as joy, anger, or sadness.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="emotion"/>
+    </lexUnit>
+</frame>

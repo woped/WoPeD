@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" POS="V" name="obligate.v" ID="12208" frame="Imposing_obligation" frameID="1494" totalAnnotated="5" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="con" name="Condition"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core" abbrev="dut" name="Duty"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="man" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="mea" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="obl" name="Obligator"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="pla" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Core" abbrev="pri" name="Principle"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="pur" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Core" abbrev="Resp" name="Responsible_party"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Core" abbrev="sit" name="Situation"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: compel legally or morally.</definition>
+    <lexeme POS="V" name="obligate"/>
+    <valences>
+        <FERealization total="5">
+            <FE name="Duty"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Duty"/>
+                <annoSet ID="2474964"/>
+            </pattern>
+            <pattern total="4">
+                <valenceUnit GF="Dep" PT="VPto" FE="Duty"/>
+                <annoSet ID="2474952"/>
+                <annoSet ID="2474956"/>
+                <annoSet ID="2474968"/>
+                <annoSet ID="2474970"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Obligator"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Obligator"/>
+                <annoSet ID="2474964"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Obligator"/>
+                <annoSet ID="2474956"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Principle"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="DNI" FE="Principle"/>
+                <annoSet ID="2474952"/>
+                <annoSet ID="2474970"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Principle"/>
+                <annoSet ID="2474968"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Purpose"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[as]" FE="Purpose"/>
+                <annoSet ID="2474952"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Responsible_party"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Responsible_party"/>
+                <annoSet ID="2474964"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Responsible_party"/>
+                <annoSet ID="2474956"/>
+            </pattern>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="NP" FE="Responsible_party"/>
+                <annoSet ID="2474952"/>
+                <annoSet ID="2474968"/>
+                <annoSet ID="2474970"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Duty"/>
+            <FE name="Obligator"/>
+            <FE name="Responsible_party"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Duty"/>
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Obligator"/>
+                <valenceUnit GF="" PT="CNI" FE="Responsible_party"/>
+                <annoSet ID="2474964"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="VPto" FE="Duty"/>
+                <valenceUnit GF="" PT="CNI" FE="Obligator"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Responsible_party"/>
+                <annoSet ID="2474956"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Duty"/>
+            <FE name="Principle"/>
+            <FE name="Purpose"/>
+            <FE name="Responsible_party"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="VPto" FE="Duty"/>
+                <valenceUnit GF="" PT="DNI" FE="Principle"/>
+                <valenceUnit GF="Dep" PT="PP[as]" FE="Purpose"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Responsible_party"/>
+                <annoSet ID="2474952"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Duty"/>
+            <FE name="Principle"/>
+            <FE name="Responsible_party"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="VPto" FE="Duty"/>
+                <valenceUnit GF="" PT="DNI" FE="Principle"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Responsible_party"/>
+                <annoSet ID="2474970"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="VPto" FE="Duty"/>
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Principle"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Responsible_party"/>
+                <annoSet ID="2474968"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="25" aPos="7983094" ID="1514399">
+            <text>Retailing Daily , for instance , declared : ` We are obligated to work on obsolescence as our contribution to a healthy , growing society . &quot;</text>
+            <annotationSet cDate="05/25/2009 10:05:16 PDT Mon" status="UNANN" ID="2474951">
+                <layer rank="1" name="PENN">
+                    <label end="8" start="0" name="VVG"/>
+                    <label end="14" start="10" name="NP"/>
+                    <label end="16" start="16" name=","/>
+                    <label end="20" start="18" name="in"/>
+                    <label end="29" start="22" name="nn"/>
+                    <label end="31" start="31" name=","/>
+                    <label end="40" start="33" name="VVD"/>
+                    <label end="42" start="42" name=":"/>
+                    <label end="47" start="46" name="PP"/>
+                    <label end="51" start="49" name="vbp"/>
+                    <label end="61" start="53" name="VVN"/>
+                    <label end="64" start="63" name="to"/>
+                    <label end="69" start="66" name="VV"/>
+                    <label end="72" start="71" name="in"/>
+                    <label end="85" start="74" name="nn"/>
+                    <label end="88" start="87" name="in"/>
+                    <label end="92" start="90" name="PP$"/>
+                    <label end="105" start="94" name="nn"/>
+                    <label end="108" start="107" name="to"/>
+                    <label end="110" start="110" name="dt"/>
+                    <label end="118" start="112" name="jj"/>
+                    <label end="120" start="120" name=","/>
+                    <label end="128" start="122" name="VVG"/>
+                    <label end="136" start="130" name="nn"/>
+                    <label end="138" start="138" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/25/2009 10:05:16 PDT Mon" status="MANUAL" ID="2474952">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="61" start="53" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="8148" end="47" start="46" name="Responsible_party"/>
+                    <label cBy="589" feID="8149" end="85" start="63" name="Duty"/>
+                    <label cBy="589" feID="10467" end="136" start="87" name="Purpose"/>
+                    <label cBy="589" feID="8156" itype="DNI" name="Principle"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="47" start="46" name="Ext"/>
+                    <label end="85" start="63" name="Dep"/>
+                    <label end="136" start="87" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="47" start="46" name="NP"/>
+                    <label end="85" start="63" name="VPto"/>
+                    <label end="136" start="87" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="374" aPos="112376277" ID="1514401">
+            <text>Suggestions of obligating the unemployed to work for their benefits are quite in keeping for a Government which has done virtually everything else it can to ensure that millions of Britons will work for derisory incomes .</text>
+            <annotationSet cDate="05/25/2009 10:05:16 PDT Mon" status="UNANN" ID="2474955">
+                <layer rank="1" name="PENN">
+                    <label end="10" start="0" name="nns"/>
+                    <label end="13" start="12" name="in"/>
+                    <label end="24" start="15" name="VVG"/>
+                    <label end="28" start="26" name="dt"/>
+                    <label end="39" start="30" name="jj"/>
+                    <label end="42" start="41" name="to"/>
+                    <label end="47" start="44" name="VV"/>
+                    <label end="51" start="49" name="in"/>
+                    <label end="57" start="53" name="PP$"/>
+                    <label end="66" start="59" name="nns"/>
+                    <label end="70" start="68" name="vbp"/>
+                    <label end="76" start="72" name="rb"/>
+                    <label end="79" start="78" name="in"/>
+                    <label end="87" start="81" name="VVG"/>
+                    <label end="91" start="89" name="in"/>
+                    <label end="93" start="93" name="dt"/>
+                    <label end="104" start="95" name="nn"/>
+                    <label end="110" start="106" name="wdt"/>
+                    <label end="114" start="112" name="VHZ"/>
+                    <label end="119" start="116" name="VVN"/>
+                    <label end="129" start="121" name="rb"/>
+                    <label end="140" start="131" name="nn"/>
+                    <label end="145" start="142" name="rb"/>
+                    <label end="148" start="147" name="PP"/>
+                    <label end="152" start="150" name="md"/>
+                    <label end="155" start="154" name="to"/>
+                    <label end="162" start="157" name="VV"/>
+                    <label end="167" start="164" name="in"/>
+                    <label end="176" start="169" name="nns"/>
+                    <label end="179" start="178" name="in"/>
+                    <label end="187" start="181" name="nns"/>
+                    <label end="192" start="189" name="md"/>
+                    <label end="197" start="194" name="VV"/>
+                    <label end="201" start="199" name="in"/>
+                    <label end="210" start="203" name="jj"/>
+                    <label end="218" start="212" name="nns"/>
+                    <label end="220" start="220" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/25/2009 10:05:17 PDT Mon" status="MANUAL" ID="2474956">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="24" start="15" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="8148" end="39" start="26" name="Responsible_party"/>
+                    <label cBy="589" feID="8149" end="66" start="41" name="Duty"/>
+                    <label cBy="589" feID="8154" itype="CNI" name="Obligator"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="39" start="26" name="Obj"/>
+                    <label end="66" start="41" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="39" start="26" name="NP"/>
+                    <label end="66" start="41" name="VPto"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="26" aPos="94905735" ID="1514405">
+            <text>These set limits to the level of contributions with the aim to prevent candidates from becoming obligated to special interest groups .</text>
+            <annotationSet cDate="05/25/2009 10:05:17 PDT Mon" status="UNANN" ID="2474963">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="dt"/>
+                    <label end="8" start="6" name="VVN"/>
+                    <label end="15" start="10" name="nns"/>
+                    <label end="18" start="17" name="to"/>
+                    <label end="22" start="20" name="dt"/>
+                    <label end="28" start="24" name="nn"/>
+                    <label end="31" start="30" name="in"/>
+                    <label end="45" start="33" name="nns"/>
+                    <label end="50" start="47" name="in"/>
+                    <label end="54" start="52" name="dt"/>
+                    <label end="58" start="56" name="nn"/>
+                    <label end="61" start="60" name="to"/>
+                    <label end="69" start="63" name="VV"/>
+                    <label end="80" start="71" name="nns"/>
+                    <label end="85" start="82" name="in"/>
+                    <label end="94" start="87" name="VVG"/>
+                    <label end="104" start="96" name="VVN"/>
+                    <label end="107" start="106" name="to"/>
+                    <label end="115" start="109" name="jj"/>
+                    <label end="124" start="117" name="nn"/>
+                    <label end="131" start="126" name="nns"/>
+                    <label end="133" start="133" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/25/2009 10:05:17 PDT Mon" status="MANUAL" ID="2474964">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="104" start="96" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="8154" end="131" start="106" name="Obligator"/>
+                    <label cBy="589" feID="8149" itype="INI" name="Duty"/>
+                    <label cBy="589" feID="8148" itype="CNI" name="Responsible_party"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="131" start="106" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="131" start="106" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="32" aPos="106275729" ID="1514407">
+            <text>They disagreed whether they were obligated by the correct theory of legislation to enforce the most literal or the most sensible reading of the statute in the absence of any reliable evidence about what Congress actually intended .</text>
+            <annotationSet cDate="05/25/2009 10:05:17 PDT Mon" status="UNANN" ID="2474967">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="PP"/>
+                    <label end="13" start="5" name="VVD"/>
+                    <label end="21" start="15" name="in"/>
+                    <label end="26" start="23" name="PP"/>
+                    <label end="31" start="28" name="VBD"/>
+                    <label end="41" start="33" name="VVN"/>
+                    <label end="44" start="43" name="in"/>
+                    <label end="48" start="46" name="dt"/>
+                    <label end="56" start="50" name="jj"/>
+                    <label end="63" start="58" name="nn"/>
+                    <label end="66" start="65" name="in"/>
+                    <label end="78" start="68" name="nn"/>
+                    <label end="81" start="80" name="to"/>
+                    <label end="89" start="83" name="VV"/>
+                    <label end="93" start="91" name="dt"/>
+                    <label end="98" start="95" name="rbs"/>
+                    <label end="106" start="100" name="jj"/>
+                    <label end="109" start="108" name="cc"/>
+                    <label end="113" start="111" name="dt"/>
+                    <label end="118" start="115" name="rbs"/>
+                    <label end="127" start="120" name="jj"/>
+                    <label end="135" start="129" name="nn"/>
+                    <label end="138" start="137" name="in"/>
+                    <label end="142" start="140" name="dt"/>
+                    <label end="150" start="144" name="nn"/>
+                    <label end="153" start="152" name="in"/>
+                    <label end="157" start="155" name="dt"/>
+                    <label end="165" start="159" name="nn"/>
+                    <label end="168" start="167" name="in"/>
+                    <label end="172" start="170" name="dt"/>
+                    <label end="181" start="174" name="jj"/>
+                    <label end="190" start="183" name="nn"/>
+                    <label end="196" start="192" name="in"/>
+                    <label end="201" start="198" name="wdt"/>
+                    <label end="210" start="203" name="NP"/>
+                    <label end="219" start="212" name="rb"/>
+                    <label end="228" start="221" name="VVD"/>
+                    <label end="230" start="230" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/25/2009 10:05:18 PDT Mon" status="MANUAL" ID="2474968">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="41" start="33" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="8148" end="26" start="23" name="Responsible_party"/>
+                    <label cBy="589" feID="8156" end="78" start="43" name="Principle"/>
+                    <label cBy="589" feID="8149" end="228" start="80" name="Duty"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="26" start="23" name="Ext"/>
+                    <label end="78" start="43" name="Dep"/>
+                    <label end="228" start="80" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="26" start="23" name="NP"/>
+                    <label end="78" start="43" name="PP"/>
+                    <label end="228" start="80" name="VPto"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="127" aPos="58311617" ID="1514408">
+            <text>The taxpayer , assuming the validity of the statute as I believe it is entitled to do , considers itself obligated to pay .</text>
+            <annotationSet cDate="05/25/2009 10:05:18 PDT Mon" status="UNANN" ID="2474969">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="11" start="4" name="nn"/>
+                    <label end="13" start="13" name=","/>
+                    <label end="22" start="15" name="VVG"/>
+                    <label end="26" start="24" name="dt"/>
+                    <label end="35" start="28" name="nn"/>
+                    <label end="38" start="37" name="in"/>
+                    <label end="42" start="40" name="dt"/>
+                    <label end="50" start="44" name="nn"/>
+                    <label end="53" start="52" name="in"/>
+                    <label end="55" start="55" name="PP"/>
+                    <label end="63" start="57" name="VVP"/>
+                    <label end="66" start="65" name="PP"/>
+                    <label end="69" start="68" name="VBZ"/>
+                    <label end="78" start="71" name="VVN"/>
+                    <label end="81" start="80" name="to"/>
+                    <label end="84" start="83" name="VV"/>
+                    <label end="86" start="86" name=","/>
+                    <label end="96" start="88" name="VVZ"/>
+                    <label end="103" start="98" name="PP"/>
+                    <label end="113" start="105" name="VVD"/>
+                    <label end="116" start="115" name="to"/>
+                    <label end="120" start="118" name="VV"/>
+                    <label end="122" start="122" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/25/2009 10:05:18 PDT Mon" status="MANUAL" ID="2474970">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="113" start="105" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="8148" end="103" start="98" name="Responsible_party"/>
+                    <label cBy="589" feID="8149" end="120" start="115" name="Duty"/>
+                    <label cBy="589" feID="8156" itype="DNI" name="Principle"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="103" start="98" name="Ext"/>
+                    <label end="120" start="115" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="103" start="98" name="NP"/>
+                    <label end="120" start="115" name="VPto"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

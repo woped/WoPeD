@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="203" cDate="07/08/2004 03:04:11 PDT Thu" name="Trajector-Landmark" ID="1160" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;Basic Image Schema: contains a (more) profiled element, the &lt;fen&gt;Trajector&lt;/fen&gt;, and an un- or less profiled element, the &lt;fen&gt;Landmark&lt;/fen&gt;.  In combination with a schematically-defined &lt;fen&gt;Profiled_region&lt;/fen&gt; (with a pre-defined relationship to the &lt;fen&gt;Landmark&lt;/fen&gt;), the &lt;fen&gt;Landmark&lt;/fen&gt; serves as the basis for understanding the status or location of the &lt;fen&gt;Trajector&lt;/fen&gt;.  
+
+This schema essentially establishes a point-of-view or focus.  &lt;ment&gt;above.prep&lt;/ment&gt; and &lt;ment&gt;below.prep&lt;/ment&gt; both make use of the verticality schema, but are differentiated by whether the &lt;fen&gt;Landmark&lt;/fen&gt; is associated with the upper region and the &lt;fen&gt;Profiled_region&lt;/fen&gt; with the lower or vice-versa.
+
+&lt;ex&gt;&lt;fex name="Trajector"&gt;The cat&lt;/fex&gt; &lt;t&gt;in&lt;/t&gt; &lt;fex name="Landmark"&gt;the shed&lt;/fex&gt; purred violently .&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Trajector"&gt;The shed&lt;/fex&gt; &lt;t&gt;around&lt;/t&gt; &lt;fex name="Landmark"&gt;the cat&lt;/fex&gt; shook .&lt;/ex&gt;
+&lt;ex&gt;We 'll have to &lt;fex name="Trajector"&gt;leave&lt;/fex&gt; &lt;t&gt;before&lt;/t&gt; &lt;fex name="Landmark"&gt;noon&lt;/fex&gt; .&lt;/ex&gt;
+&lt;ex&gt;In the 1990s , though , &lt;fex name="Trajector"&gt;the rate at which DNA could be read&lt;/fex&gt; revved &lt;t&gt;into&lt;/t&gt; &lt;fex name="Landmark"&gt;high gear&lt;/fex&gt; .&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+    <semType name="Non-Lexical Frame" ID="16"/>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Core" cBy="203" cDate="07/08/2004 03:08:11 PDT Thu" abbrev="tr" name="Trajector" ID="6741">
+        <definition>&lt;def-root&gt;The entity whose status or location is (generally) unknown, and whose status or location is established by examining the &lt;fen&gt;Profiled_region&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="203" cDate="07/08/2004 03:09:09 PDT Thu" abbrev="lm" name="Landmark" ID="6742">
+        <definition>&lt;def-root&gt;The entity, generally presupposed, whose status or location is known or knowable and which thus serves as a basis for understanding the status or location of the &lt;fen&gt;Trajector&lt;/fen&gt; by locating it in a &lt;fen&gt;Profiled_region&lt;/fen&gt; which has a particular relation to the &lt;fen&gt;Landmark&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core-Unexpressed" cBy="203" cDate="07/14/2004 10:25:54 PDT Wed" abbrev="pro" name="Profiled_region" ID="6812">
+        <definition>&lt;def-root&gt;The region which has a particular shape, orientation, size, and location (literal or metaphorical) with respect to the &lt;fen&gt;Landmark&lt;/fen&gt;.  The shape of the &lt;fen&gt;Profiled_region&lt;/fen&gt; is virtually always incorporated in the target.  This shaped region usually includes the location of the &lt;fen&gt;Landmark&lt;/fen&gt;, as seen with &lt;ment&gt;in.prep, at.prep, on.prep&lt;/ment&gt;, but may also do exactly the opposite, as with &lt;ment&gt;away from.prep&lt;/ment&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Relation</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Containment_relation_IS</relatedFrame>
+        <relatedFrame>Goal</relatedFrame>
+        <relatedFrame>Locative_relation</relatedFrame>
+        <relatedFrame>Time_vector</relatedFrame>
+        <relatedFrame>Temporal_collocation</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+</frame>

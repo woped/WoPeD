@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="12/01/2003 07:47:56 PST Mon" name="Cause_fluidic_motion" ID="920" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Agent&lt;/fen&gt; or a &lt;fen&gt;Cause&lt;/fen&gt; causes a &lt;fen&gt;Fluid&lt;/fen&gt; to move from a &lt;fen&gt;Source&lt;/fen&gt; to a &lt;fen&gt;Goal&lt;/fen&gt; along a &lt;fen&gt;Path&lt;/fen&gt; or within an &lt;fen&gt;Area&lt;/fen&gt;.
+
+&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="12/01/2003 07:49:06 PST Mon" abbrev="" name="Agent" ID="5802">
+        <definition>&lt;def-root&gt;The animate protagonist who causes the &lt;fen&gt;Fluid&lt;/fen&gt; to move.
+
+&lt;ex&gt;What happens if &lt;fex name="Agent"&gt;we&lt;/fex&gt; &lt;t&gt;drip&lt;/t&gt; acid on this compound?&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+        <excludesFE name="Cause" ID="5803"/>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="12/01/2003 07:53:07 PST Mon" abbrev="" name="Cause" ID="5803">
+        <definition>&lt;def-root&gt;An event or force that causes the &lt;fen&gt;Fluid&lt;/fen&gt; to move.
+
+&lt;ex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="12/01/2003 07:54:51 PST Mon" abbrev="" name="Fluid" ID="5804">
+        <definition>&lt;def-root&gt;The entity that changes location and moves in a fluidic way. It is not necessarily in a liquid state but is construed that way.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="12/01/2003 08:01:03 PST Mon" abbrev="" name="Source" ID="5805">
+        <definition>&lt;def-root&gt;The location that the &lt;fen&gt;Fluid&lt;/fen&gt; occupies initially.&lt;/def-root&gt;</definition>
+        <semType name="Source" ID="151"/>
+        <excludesFE name="Area" ID="5808"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="12/01/2003 08:02:08 PST Mon" abbrev="" name="Goal" ID="5806">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Goal&lt;/fen&gt; is the location the &lt;fen&gt;Fluid&lt;/fen&gt; ends up in as a result  of the motion
+
+&lt;ex&gt;Why did  you &lt;t&gt;squirt&lt;/t&gt; juice &lt;fex name="Goal"&gt;onto my chair&lt;/fex&gt;?&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Goal" ID="153"/>
+        <excludesFE name="Area" ID="5808"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="12/01/2003 08:03:10 PST Mon" abbrev="" name="Path" ID="5807">
+        <definition>&lt;def-root&gt;The trajectory along which the Fluid moves, exclusive of the &lt;fen&gt;Source&lt;/fen&gt; and &lt;fen&gt;Goal&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <excludesFE name="Area" ID="5808"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="12/01/2003 08:06:10 PST Mon" abbrev="" name="Area" ID="5808">
+        <definition>&lt;def-root&gt;The setting in which the &lt;fen&gt;Fluid&lt;/fen&gt;'s movement takes place along an unspecified &lt;fen&gt;Path&lt;/fen&gt;.
+
+&lt;ex&gt; I &lt;t&gt;splattered&lt;/t&gt; red paint &lt;fex name="Area"&gt; nearby&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="12/01/2003 08:07:45 PST Mon" abbrev="" name="Manner" ID="5809">
+        <definition>&lt;def-root&gt; Any description of the event which is not covered by more specific FEs, including epistemic modification (probably, presumably, mysteriously), force (hard, softly), secondary effects (quietly, loudly), and general descriptions comparing events (the same way). With agentive uses, it may indicate salient characteristics of an Agent that also affect the action (presumptuously, coldly, deliberately, eagerly, carefully).
+
+&lt;ex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="12/01/2003 08:13:21 PST Mon" abbrev="" name="Time" ID="5810">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Time&lt;/fen&gt; when the fluidic motion event is caused.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="d0d0d0" fgColor="0000FF" coreType="Extra-Thematic" cBy="605" cDate="12/01/2003 08:14:30 PST Mon" abbrev="" name="Reason" ID="5811">
+        <definition>&lt;def-root&gt;A state of affairs that the &lt;fen&gt;Agent&lt;/fen&gt; is responding to in causing the &lt;fen&gt;Fluid&lt;/fen&gt; to move.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="12/01/2003 09:07:12 PST Mon" abbrev="" name="Result" ID="5812">
+        <definition>&lt;def-root&gt;A state of the &lt;fen&gt;Fluid&lt;/fen&gt; that results from the motion event.&lt;/def-root&gt;</definition>
+        <excludesFE name="Area" ID="5808"/>
+    </FE>
+    <FE bgColor="A9A9A9" fgColor="FFFFFF" coreType="Peripheral" cBy="439" cDate="08/13/2004 03:42:57 PDT Fri" abbrev="pla" name="Place" ID="7005">
+        <definition>&lt;def-root&gt;The location where the motion takes place.
+
+&lt;ex&gt;I &lt;t&gt;spattered&lt;/t&gt; the egg all over the floor &lt;fex name="pla"&gt;in the kitchen&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/08/2005 02:20:25 PST Thu" abbrev="ins" name="Instrument" ID="9675">
+        <definition>&lt;def-root&gt;The entity manipulated by the &lt;fen&gt;Agent&lt;/fen&gt; which causes the &lt;fen&gt;Fluid&lt;/fen&gt; to move.&lt;/def-root&gt;</definition>
+        <semType name="Physical_entity" ID="70"/>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/08/2005 02:22:09 PST Thu" abbrev="mea" name="Means" ID="9676">
+        <definition>&lt;def-root&gt;An action of the &lt;fen&gt;Agent&lt;/fen&gt; which brings about the motion of the &lt;fen&gt;Fluid&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/08/2005 02:34:24 PST Thu" abbrev="pur" name="Purpose" ID="9678">
+        <definition>&lt;def-root&gt;The state-of-affairs that the &lt;fen&gt;Agent&lt;/fen&gt; is attempting to bring about by causing motion. &lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/08/2005 02:35:57 PST Thu" abbrev="dis" name="Distance" ID="9679">
+        <definition>&lt;def-root&gt;The distance travelled by the &lt;fen&gt;Fluid&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Goal" ID="5806"/>
+        <memberFE name="Path" ID="5807"/>
+        <memberFE name="Source" ID="5805"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Cause_motion</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of">
+        <relatedFrame>Fluidic_motion</relatedFrame>
+    </frameRelation>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="spatter.v" ID="9960" lemmaID="37195" cBy="605" cDate="12/01/2003 08:11:39 PST Mon">
+        <definition>FN: splash liquid in drops</definition>
+        <sentenceCount annotated="29" total="76"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="spatter"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="splatter.v" ID="9961" lemmaID="37395" cBy="605" cDate="12/01/2003 08:12:01 PST Mon">
+        <definition>FN: splash (a sticky or viscous liquid) in a messy fashion.</definition>
+        <sentenceCount annotated="6" total="72"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="splatter"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="splash.v" ID="9962" lemmaID="37389" cBy="605" cDate="12/01/2003 08:12:19 PST Mon">
+        <definition>COD: make (liquid) strike or fall on something in drops</definition>
+        <sentenceCount annotated="17" total="202"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="splash"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="spray.v" ID="9963" lemmaID="37517" cBy="605" cDate="12/01/2003 08:12:45 PST Mon">
+        <definition>COD: apply (liquid) in a spray</definition>
+        <sentenceCount annotated="23" total="207"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="spray"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="squirt.v" ID="9964" lemmaID="37667" cBy="605" cDate="12/01/2003 09:06:48 PST Mon">
+        <definition>COD: (with reference to a liquid) be or cause to be ejected in a thin jet from a small opening. </definition>
+        <sentenceCount annotated="14" total="91"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="squirt"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="pump.v" ID="9973" lemmaID="31137" cBy="605" cDate="12/01/2003 10:18:12 PST Mon">
+        <definition>COD: force (liquid, gas, etc.) to move by or as if by means of a pump.</definition>
+        <sentenceCount annotated="17" total="256"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="pump"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="drip.v" ID="11119" lemmaID="11788" cBy="303" cDate="11/09/2004 04:57:13 PST Tue">
+        <definition>COD: fall in small drops</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="drip"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="sprinkle.v" ID="12042" lemmaID="37545" cBy="303" cDate="05/07/2005 05:31:42 PDT Sat">
+        <definition>FN: shoot or drip in drops</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="sprinkle"/>
+    </lexUnit>
+</frame>

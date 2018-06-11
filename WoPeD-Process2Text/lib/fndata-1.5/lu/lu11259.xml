@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="N" name="roommate.n" ID="11259" frame="People_by_residence" frameID="1143" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="age" name="Age"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="des" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="90876C" type="Peripheral" abbrev="eth" name="Ethnicity"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="ind" name="Indicated_resident"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="kno" name="Known_resident"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="loc" name="Location"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="per" name="Persistent_characteristic"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Core" abbrev="res" name="Residents"/>
+        </frame>
+    </header>
+    <definition>COD:  a person occupying the same room, flat, or house as another.</definition>
+    <lexeme POS="N" name="roommate"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Indicated_resident"/>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="N" FE="Indicated_resident"/>
+                <annoSet ID="2585719"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Known_resident"/>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Known_resident"/>
+                <annoSet ID="2585719"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Indicated_resident"/>
+            <FE name="Known_resident"/>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="N" FE="Indicated_resident"/>
+                <valenceUnit GF="Gen" PT="Poss" FE="Known_resident"/>
+                <annoSet ID="2585719"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-Wmy,our,his-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="6" paragNo="28" aPos="58052321" ID="1575550">
+            <text>My roommate Chris took to feeding these animals other comb jellies , and delighted in watching Beroe ` snarf up &quot; the other jellyfish .</text>
+            <annotationSet cDate="07/15/2010 01:32:13 PDT Thu" status="UNANN" ID="2585718">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP$"/>
+                    <label end="10" start="3" name="nn"/>
+                    <label end="16" start="12" name="NP"/>
+                    <label end="21" start="18" name="VVD"/>
+                    <label end="24" start="23" name="to"/>
+                    <label end="32" start="26" name="VVG"/>
+                    <label end="38" start="34" name="dt"/>
+                    <label end="46" start="40" name="nns"/>
+                    <label end="52" start="48" name="jj"/>
+                    <label end="57" start="54" name="nns"/>
+                    <label end="65" start="59" name="nns"/>
+                    <label end="67" start="67" name=","/>
+                    <label end="71" start="69" name="cc"/>
+                    <label end="81" start="73" name="VVN"/>
+                    <label end="84" start="83" name="in"/>
+                    <label end="93" start="86" name="VVG"/>
+                    <label end="99" start="95" name="NP"/>
+                    <label end="107" start="103" name="NP"/>
+                    <label end="110" start="109" name="in"/>
+                    <label end="116" start="114" name="dt"/>
+                    <label end="122" start="118" name="jj"/>
+                    <label end="132" start="124" name="nn"/>
+                    <label end="134" start="134" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/15/2010 01:32:13 PDT Thu" status="MANUAL" ID="2585719">
+                <layer rank="1" name="Target">
+                    <label cBy="571" end="10" start="3" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="571" feID="6586" end="16" start="12" name="Indicated_resident"/>
+                    <label cBy="571" feID="6584" end="1" start="0" name="Known_resident"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="16" start="12" name="Head"/>
+                    <label end="1" start="0" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="16" start="12" name="N"/>
+                    <label end="1" start="0" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-Wnew,old-T-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

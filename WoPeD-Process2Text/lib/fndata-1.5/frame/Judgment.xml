@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="731" cDate="02/07/2001 04:11:56 PST Wed" name="Judgment" ID="28" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A &lt;fen&gt;Cognizer&lt;/fen&gt; makes a judgment about an &lt;fen&gt;Evaluee&lt;/fen&gt;. The judgment may be positive (e.g. &lt;ment&gt;respect&lt;/ment&gt;) or negative (e.g. &lt;ment&gt;condemn&lt;/ment&gt;), and this information is recorded in the semantic types Positive and Negative on the Lexical Units of this frame. There may be a specific &lt;fen&gt;Reason&lt;/fen&gt; for the &lt;fen&gt;Cognizer&lt;/fen&gt;'s judgment, or there may be a capacity or &lt;fen&gt;Role&lt;/fen&gt; in which the &lt;fen&gt;Evaluee&lt;/fen&gt; is judged. 
+&lt;ex&gt;&lt;/ex&gt;
+This frame is distinct from the Judgment_communication frame in that this frame does not involve the Cognizer communicating his or her judgment to an Addressee.  
+&lt;ex&gt;JUDGMENT:  She &lt;t&gt;admired&lt;/t&gt; Einstein for his character.&lt;/ex&gt;
+&lt;ex&gt;JUDGMENT_COMMUNICATION:  She &lt;t&gt;accused&lt;/t&gt; Einstein of collusion.&lt;/ex&gt;
+&lt;ex&gt;&lt;/ex&gt;
+Currently, however, some lexical units and annotation for both remain in this frame.&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:11:56 PST Wed" abbrev="Cog" name="Cognizer" ID="115">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Cognizer&lt;/fen&gt; makes the judgment. This role is typically expressed as the External Argument (or in a &lt;ment&gt;by&lt;/ment&gt;-PP in passives).
+&lt;ex&gt;&lt;fex name="Cognizer"&gt;The boss&lt;/fex&gt; &lt;t&gt;appreciates&lt;/t&gt; you for your diligence.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Cognizer"&gt;The boss&lt;/fex&gt; is very &lt;t&gt;appreciative&lt;/t&gt; of my work.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:11:57 PST Wed" abbrev="Eval" name="Evaluee" ID="116">
+        <definition>&lt;def-root&gt;Evaluee is the person or thing about whom/which a judgment is made. With verbs this FE is typically expressed as Object: 
+&lt;ex&gt;The boss &lt;t&gt;appreciates&lt;/t&gt; &lt;fex name="Eval"&gt;you&lt;/fex&gt; for your diligence. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:11:57 PST Wed" abbrev="Reas" name="Reason" ID="117">
+        <definition>&lt;def-root&gt;Typically, there is a constituent expressing the &lt;t&gt;Reason&lt;/t&gt; for the Judge's judgment. It is usually a &lt;ment&gt;for&lt;/ment&gt;-PP, e.g.
+&lt;ex&gt;I &lt;t&gt;admire&lt;/t&gt; you &lt;fex name="Reason"&gt;for your intellect&lt;/fex&gt;.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="731" cDate="02/07/2001 04:11:57 PST Wed" abbrev="Role" name="Role" ID="118">
+        <definition>&lt;def-root&gt; &lt;fen&gt;Role&lt;/fen&gt; is used for the capacity in which the&lt;fen&gt;Evaluee&lt;/fen&gt; is judged, and is expressed in &lt;ment&gt;as&lt;/ment&gt;-PPs.
+&lt;ex&gt;I &lt;t&gt;admire&lt;/t&gt; you &lt;fex name="Role"&gt;as a composer&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:11:57 PST Wed" abbrev="Exr" name="Expressor" ID="119">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Expressor&lt;/fen&gt; is the body part or action by a body part that conveys the judgment made by the &lt;fen&gt;Cognizer&lt;/fen&gt;. 
+&lt;ex&gt;She viewed him with an &lt;t&gt;appreciative&lt;/t&gt; &lt;fex name="Expressor"&gt;gaze&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/25/2001 12:34:27 PDT Mon" abbrev="Degr" name="Degree" ID="1064">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Degree&lt;/fen&gt; to which the judging occurs.&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="06/25/2001 12:34:28 PDT Mon" abbrev="Depict" name="Depictive" ID="1065">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Depictive&lt;/fen&gt; identifies any expression describing the state of a participant in the event.
+&lt;ex&gt;We &lt;t&gt;admire&lt;/t&gt; him , &lt;fex name="Depict"&gt;certain that he is a great leader&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/25/2001 12:34:28 PDT Mon" abbrev="Manr" name="Manner" ID="1068">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Manner&lt;/fen&gt; of judging.&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/25/2001 12:34:28 PDT Mon" abbrev="Mns" name="Means" ID="1069">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Means&lt;/fen&gt; by which the &lt;fen&gt;Cognizer&lt;/fen&gt; judges the &lt;fen&gt;Evaluee&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="243" cDate="09/18/2002 04:35:25 PDT Wed" abbrev="Top" name="Topic" ID="3720">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Topic&lt;/fen&gt; identifies the entity to which the proposition or propositions conveyed relate. 
+&lt;ex&gt;Jon was &lt;t&gt;disapproving&lt;/t&gt;  &lt;fex name="Topic"&gt;about Madie's managerial style&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="06/06/2003 02:10:20 PDT Fri" abbrev="" name="Extent_of_acclaim" ID="4546">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Extent_of_acclaim&lt;/fen&gt; is a description of the number or locales of the &lt;fen&gt;Cognizer&lt;/fen&gt;s.
+&lt;ex&gt;&lt;fex name="Evaluee"&gt;The proposal&lt;/fex&gt; &lt;m&gt;gained&lt;/m&gt;&lt;fex name="Extent_of_acclaim"&gt;widespread&lt;/fex&gt; &lt;t&gt;approbation&lt;/t&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="00008B" coreType="Extra-Thematic" cBy="361" cDate="10/30/2007 12:49:39 PDT Tue" abbrev="" name="Result" ID="12036">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Result&lt;/fen&gt; of the judgement event.&lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Expressor" ID="119"/>
+        <memberFE name="Cognizer" ID="115"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Emotions</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Judgment_communication</relatedFrame>
+        <relatedFrame>Regard</relatedFrame>
+        <relatedFrame>Praiseworthiness</relatedFrame>
+        <relatedFrame>Exemplar</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="FN1_Sent" POS="N" name="admiration.n" ID="278" lemmaID="526" cBy="731" cDate="02/08/2001 01:27:52 PST Thu">
+        <definition>FN: positive response (emotional or spoken) to the good qualities of someone or something</definition>
+        <sentenceCount annotated="31" total="140"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="admiration"/>
+        <semType name="Positive_judgment" ID="13"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="admire.v" ID="279" lemmaID="527" cBy="731" cDate="02/08/2001 01:27:52 PST Thu">
+        <definition>COD: regard with respect or warm approval</definition>
+        <sentenceCount annotated="98" total="272"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="admire"/>
+        <semType name="Positive_judgment" ID="13"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="A" name="admiring.a" ID="280" lemmaID="529" cBy="731" cDate="02/08/2001 01:27:52 PST Thu">
+        <definition>FN: feeling admiration</definition>
+        <sentenceCount annotated="17" total="28"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="admiring"/>
+        <semType name="Positive_judgment" ID="13"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="applaud.v" ID="284" lemmaID="1727" cBy="731" cDate="02/08/2001 01:27:53 PST Thu">
+        <definition>COD: show approval by clapping.</definition>
+        <sentenceCount annotated="35" total="163"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="applaud"/>
+        <semType name="Positive_judgment" ID="13"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="appreciate.v" ID="285" lemmaID="1754" cBy="731" cDate="02/08/2001 01:27:53 PST Thu">
+        <definition>FN: value somebody or something for a quality possessed</definition>
+        <sentenceCount annotated="25" total="300"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="appreciate"/>
+        <semType name="Positive_judgment" ID="13"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="appreciation.n" ID="286" lemmaID="1755" cBy="731" cDate="02/08/2001 01:27:53 PST Thu">
+        <definition>FN: Perceptive recognition of value, significance or qualities.</definition>
+        <sentenceCount annotated="29" total="162"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="appreciation"/>
+        <semType name="Positive_judgment" ID="13"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="approbation.n" ID="287" lemmaID="1772" cBy="731" cDate="02/08/2001 01:27:53 PST Thu">
+        <definition>COD: approval; praise.</definition>
+        <sentenceCount annotated="15" total="40"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="approbation"/>
+        <semType name="Positive_judgment" ID="13"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="A" name="approving.a" ID="288" lemmaID="7" cBy="731" cDate="02/08/2001 01:27:54 PST Thu">
+        <definition>FN: to be in a state of having judged something as good or right, to authorise</definition>
+        <sentenceCount annotated="11" total="28"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="approving"/>
+        <semType name="Positive_judgment" ID="13"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="blame.n" ID="291" lemmaID="3749" cBy="731" cDate="02/08/2001 01:27:54 PST Thu">
+        <definition>COD:  responsibility for a fault or wrong.</definition>
+        <sentenceCount annotated="37" total="60"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="blame"/>
+        <semType name="Negative_judgment" ID="14"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="blame.v" ID="292" lemmaID="3750" cBy="731" cDate="02/08/2001 01:27:54 PST Thu">
+        <definition>COD: assign responsibility for a fault or wrong to.</definition>
+        <sentenceCount annotated="117" total="358"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="blame"/>
+        <semType name="Negative_judgment" ID="14"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="contempt.n" ID="308" lemmaID="8040" cBy="731" cDate="02/08/2001 01:27:56 PST Thu">
+        <definition>COD: the feeling that a person or a thing is worthless or beneath consideration</definition>
+        <sentenceCount annotated="31" total="145"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="contempt"/>
+        <semType name="Negative_judgment" ID="14"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="A" name="contemptuous.a" ID="309" lemmaID="8043" cBy="731" cDate="02/08/2001 01:27:56 PST Thu">
+        <definition>FN: expressing contempt</definition>
+        <sentenceCount annotated="38" total="79"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="contemptuous"/>
+        <semType name="Negative_judgment" ID="14"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="critical.a" ID="310" lemmaID="8974" cBy="731" cDate="02/08/2001 01:27:56 PST Thu">
+        <definition>COD: expressing adverse or disapproving comments or judgements</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="critical"/>
+        <semType name="Negative_judgment" ID="14"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="damnation.n" ID="314" lemmaID="9515" cBy="731" cDate="02/08/2001 01:27:56 PST Thu">
+        <definition>COD: condemnation to eternal punishment in hell</definition>
+        <sentenceCount annotated="4" total="29"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="damnation"/>
+        <semType name="Negative_judgment" ID="14"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="deplore.v" ID="321" lemmaID="10226" cBy="731" cDate="02/08/2001 01:27:57 PST Thu">
+        <definition>COD:  feel or express strong disapproval of.</definition>
+        <sentenceCount annotated="31" total="113"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="deplore"/>
+        <semType name="Negative_judgment" ID="14"/>
+    </lexUnit>
+    <lexUnit status="Problem" POS="A" name="derisive.a" ID="325" lemmaID="10286" cBy="731" cDate="02/08/2001 01:27:57 PST Thu">
+        <definition>COD: expressing contempt or ridicule.</definition>
+        <sentenceCount annotated="0" total="76"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="derisive"/>
+        <semType name="Negative_judgment" ID="14"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="disapproval.n" ID="326" lemmaID="10804" cBy="731" cDate="02/08/2001 01:27:57 PST Thu">
+        <definition>FN: the act or state of disapproving</definition>
+        <sentenceCount annotated="35" total="106"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="disapproval"/>
+        <semType name="Negative_judgment" ID="14"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="disapprove.v" ID="327" lemmaID="10805" cBy="731" cDate="02/08/2001 01:27:57 PST Thu">
+        <definition>COD: have or express an unfavourable opinion.</definition>
+        <sentenceCount annotated="27" total="90"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="disapprove"/>
+        <semType name="Negative_judgment" ID="14"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="A" name="disapproving.a" ID="328" lemmaID="10806" cBy="731" cDate="02/08/2001 01:27:57 PST Thu">
+        <definition>FN: expressing disapproval</definition>
+        <sentenceCount annotated="19" total="54"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="disapproving"/>
+        <semType name="Negative_judgment" ID="14"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="disdain.n" ID="329" lemmaID="10924" cBy="731" cDate="02/08/2001 01:27:58 PST Thu">
+        <definition>COD: the feeling that someone or something is unworthy of one's consideration or respect.</definition>
+        <sentenceCount annotated="28" total="88"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="disdain"/>
+        <semType name="Negative_judgment" ID="14"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="disdain.v" ID="330" lemmaID="10925" cBy="731" cDate="02/08/2001 01:27:58 PST Thu">
+        <definition>COD: consider or reject with the feeling that someone or something is unworthy of one's consideration or respect</definition>
+        <sentenceCount annotated="18" total="58"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="disdain"/>
+        <semType name="Negative_judgment" ID="14"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="A" name="disdainful.a" ID="331" lemmaID="10926" cBy="731" cDate="02/08/2001 01:27:58 PST Thu">
+        <definition>FN: full of or expressing disdain</definition>
+        <sentenceCount annotated="16" total="53"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="disdainful"/>
+        <semType name="Negative_judgment" ID="14"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="disrespect.n" ID="335" lemmaID="11143" cBy="731" cDate="02/08/2001 01:27:58 PST Thu">
+        <definition>COD: lack of respect or courtesy. </definition>
+        <sentenceCount annotated="22" total="63"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="disrespect"/>
+        <semType name="Negative_judgment" ID="14"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="esteem.n" ID="336" lemmaID="13138" cBy="731" cDate="02/08/2001 01:27:58 PST Thu">
+        <definition>COD:  respect and admiration. </definition>
+        <sentenceCount annotated="31" total="131"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="esteem"/>
+        <semType name="Positive_judgment" ID="13"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="esteem.v" ID="337" lemmaID="13139" cBy="731" cDate="02/08/2001 01:27:58 PST Thu">
+        <definition>COD:  respect and admire. </definition>
+        <sentenceCount annotated="17" total="89"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="esteem"/>
+        <semType name="Positive_judgment" ID="13"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="fault.n" ID="339" lemmaID="14045" cBy="731" cDate="02/08/2001 01:27:59 PST Thu">
+        <definition>COD: an unattractive or unsatisfactory feature</definition>
+        <sentenceCount annotated="52" total="128"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="fault"/>
+        <semType name="Negative_judgment" ID="14"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="fault.v" ID="340" lemmaID="14046" cBy="731" cDate="02/08/2001 01:27:59 PST Thu">
+        <definition>COD: criticize for inadequacy or mistakes.</definition>
+        <sentenceCount annotated="41" total="59"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="fault"/>
+        <semType name="Negative_judgment" ID="14"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="mock.v" ID="342" lemmaID="24648" cBy="731" cDate="02/08/2001 01:27:59 PST Thu">
+        <definition>COD:  tease scornfully; ridicule</definition>
+        <sentenceCount annotated="37" total="163"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="mock"/>
+        <semType name="Negative_judgment" ID="14"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="A" name="reproachful.a" ID="354" lemmaID="32748" cBy="731" cDate="02/08/2001 01:28:00 PST Thu">
+        <definition>COD: full of reproach towards (someone)</definition>
+        <sentenceCount annotated="13" total="37"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="reproachful"/>
+        <semType name="Negative_judgment" ID="14"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="scorn.n" ID="362" lemmaID="34488" cBy="731" cDate="02/08/2001 01:28:01 PST Thu">
+        <definition>COD: contempt or disdain expressed openly</definition>
+        <sentenceCount annotated="32" total="119"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="scorn"/>
+        <semType name="Negative_judgment" ID="14"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="scorn.v" ID="363" lemmaID="34489" cBy="731" cDate="02/08/2001 01:28:01 PST Thu">
+        <definition>COD: express scorn for</definition>
+        <sentenceCount annotated="28" total="122"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="scorn"/>
+        <semType name="Negative_judgment" ID="14"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="A" name="scornful.a" ID="364" lemmaID="34490" cBy="731" cDate="02/08/2001 01:28:01 PST Thu">
+        <definition>FN: full of or expressing scorn</definition>
+        <sentenceCount annotated="26" total="71"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="scornful"/>
+        <semType name="Negative_judgment" ID="14"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="stigma.n" ID="365" lemmaID="38047" cBy="731" cDate="02/08/2001 01:28:01 PST Thu">
+        <definition>COD: a mark of disgrace associated with a particular circumstance, quality, or person.</definition>
+        <sentenceCount annotated="29" total="88"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="stigma"/>
+        <semType name="Negative_judgment" ID="14"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="stigmatize.v" ID="366" lemmaID="53" cBy="731" cDate="02/08/2001 01:28:01 PST Thu">
+        <definition>COD: regard as worthy of disgrace.</definition>
+        <sentenceCount annotated="31" total="40"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="stigmatize"/>
+        <semType name="Negative_judgment" ID="14"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="stricture.n" ID="367" lemmaID="38339" cBy="731" cDate="02/08/2001 01:28:01 PST Thu">
+        <definition>COD:  a sternly critical remark</definition>
+        <sentenceCount annotated="12" total="99"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="stricture"/>
+        <semType name="Negative_judgment" ID="14"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="A" name="uncritical.a" ID="370" lemmaID="41898" cBy="731" cDate="02/08/2001 01:28:02 PST Thu">
+        <definition>COD: not expressing criticism or using one's critical faculties.</definition>
+        <sentenceCount annotated="12" total="44"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="uncritical"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="exalt.v" ID="4116" lemmaID="13325" cBy="605" cDate="09/28/2001 09:35:02 PDT Fri">
+        <definition>COD: praise or regard highly. </definition>
+        <sentenceCount annotated="4" total="71"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="exalt"/>
+        <semType name="Positive_judgment" ID="13"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="prize.v" ID="4118" lemmaID="30507" cBy="605" cDate="09/28/2001 09:45:08 PDT Fri">
+        <definition>COD: value highly.</definition>
+        <sentenceCount annotated="12" total="113"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="prize"/>
+        <semType name="Positive_judgment" ID="13"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="boo.v" ID="4119" lemmaID="4143" cBy="605" cDate="09/28/2001 09:55:35 PDT Fri">
+        <definition>COD: show disapproval or contempt.</definition>
+        <sentenceCount annotated="13" total="75"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="boo"/>
+        <semType name="Negative_judgment" ID="14"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="revere.v" ID="4120" lemmaID="33083" cBy="605" cDate="09/28/2001 09:58:51 PDT Fri">
+        <definition>COD: respect or admire deeply. </definition>
+        <sentenceCount annotated="15" total="97"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="revere"/>
+        <semType name="Positive_judgment" ID="13"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="reverence.n" ID="4121" lemmaID="33084" cBy="605" cDate="09/28/2001 10:04:01 PDT Fri">
+        <definition>COD: deep respect.</definition>
+        <sentenceCount annotated="8" total="149"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="reverence"/>
+        <semType name="Positive_judgment" ID="13"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="mockery.n" ID="4122" lemmaID="24652" cBy="605" cDate="09/28/2001 10:12:02 PDT Fri">
+        <definition>COD: mass noun ridicule</definition>
+        <sentenceCount annotated="9" total="114"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="mockery"/>
+        <semType name="Negative_judgment" ID="14"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="exaltation.n" ID="4159" lemmaID="13326" cBy="605" cDate="10/03/2001 04:25:08 PDT Wed">
+        <definition>COD: the action of exalting.</definition>
+        <sentenceCount annotated="5" total="34"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="exaltation"/>
+        <semType name="Positive_judgment" ID="13"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="accolade.n" ID="4167" lemmaID="281" cBy="605" cDate="10/03/2001 06:12:02 PDT Wed">
+        <definition>COD: something granted as a special honour or in recognition of merit.</definition>
+        <sentenceCount annotated="12" total="120"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="accolade"/>
+        <semType name="Positive_judgment" ID="13"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="vilification.n" ID="5237" lemmaID="43034" cBy="669" cDate="03/14/2002 03:00:21 PST Thu">
+        <definition>COD: the  of speaking or writing about someone in a abusively disparaging manner. </definition>
+        <sentenceCount annotated="6" total="19"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="vilification"/>
+        <semType name="Positive_judgment" ID="13"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="value.v" ID="8500" lemmaID="42681" cBy="664" cDate="04/01/2003 06:36:44 PST Tue">
+        <definition>COD: consider to be important or beneficial</definition>
+        <sentenceCount annotated="30" total="169"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="value"/>
+        <semType name="Positive_judgment" ID="13"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="respect.n" ID="8501" lemmaID="32885" cBy="664" cDate="04/01/2003 07:19:40 PST Tue">
+        <definition>COD: a feeling of deep admiration for someone elicited by their qualities or achievements.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="respect"/>
+        <semType name="Positive_judgment" ID="13"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="respect.v" ID="8502" lemmaID="32886" cBy="664" cDate="04/01/2003 07:20:52 PST Tue">
+        <definition>COD: feel or have respect for.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="respect"/>
+        <semType name="Positive_judgment" ID="13"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="deify.v" ID="8970" lemmaID="9997" cBy="296" cDate="06/25/2003 04:21:15 PDT Wed">
+        <definition>COD: make into or worship as a god. </definition>
+        <sentenceCount annotated="8" total="25"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="deify"/>
+        <semType name="Positive_judgment" ID="13"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="reproach.n" ID="8971" lemmaID="32745" cBy="296" cDate="06/25/2003 04:24:33 PDT Wed">
+        <definition>FN: a feeling of disapproval or disappointment. </definition>
+        <sentenceCount annotated="21" total="73"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="reproach"/>
+        <semType name="Negative_judgment" ID="14"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="reprehensible.a" ID="10798" lemmaID="32722" cBy="664" cDate="07/13/2004 11:24:25 PDT Tue">
+        <definition>COD: deserving censure or condemnation</definition>
+        <sentenceCount annotated="11" total="35"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="reprehensible"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="appreciative.a" ID="11191" lemmaID="1756" cBy="303" cDate="11/18/2004 05:51:11 PST Thu">
+        <definition>COD:  feeling or showing gratitude or pleasure. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="appreciative"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="set store.v" ID="12416" lemmaID="50158" cBy="664" cDate="07/07/2005 04:04:50 PDT Thu">
+        <definition>COD: consider to be of a particular degree of importance</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="set"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="store"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="accuse.v" ID="12854" lemmaID="327" cBy="995" cDate="10/26/2005 05:01:35 PDT Wed">
+        <definition>COD: claim that someone has done something wrong.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="accuse"/>
+        <semType name="Negative_judgment" ID="14"/>
+    </lexUnit>
+</frame>

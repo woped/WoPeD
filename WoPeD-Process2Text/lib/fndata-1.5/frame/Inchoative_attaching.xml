@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="04/15/2002 05:02:25 PDT Mon" name="Inchoative_attaching" ID="306" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Item&lt;/fen&gt; comes to be attached to a &lt;fen&gt;Goal&lt;/fen&gt;, with a &lt;fen&gt;Connector&lt;/fen&gt; forming a bond between the &lt;fen&gt;Handle&lt;/fen&gt; of the &lt;fen&gt;Item&lt;/fen&gt; and the &lt;fen&gt;Goal&lt;/fen&gt; (or some part of it). Alternatively, multiple &lt;fen&gt;Items&lt;/fen&gt; may form a bond between each other.
+
+&lt;ex&gt;According to plan, &lt;fex name="Item"&gt;the front part of the hull&lt;/fex&gt; &lt;fex name="Manner"&gt;quietly&lt;/fex&gt; &lt;t&gt;attached&lt;/t&gt; &lt;fex name="Goal"&gt;to the docking gear&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="Items"&gt;The cells&lt;/fex&gt; &lt;t&gt;bind&lt;/t&gt; &lt;fex name="Result"&gt;together&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="7CCD73" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="04/15/2002 05:02:53 PDT Mon" abbrev="Conn" name="Connector" ID="2623">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Connector&lt;/fen&gt; identifies the  instrument used to attach, usually in a &lt;ment&gt;with&lt;/ment&gt;-PP.
+
+&lt;ex&gt;The remoras &lt;t&gt;attach&lt;/t&gt; to the whale &lt;fex name="Connector"&gt;with their strong jaws&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="04/15/2002 05:02:53 PDT Mon" abbrev="Handle" name="Handle" ID="2624">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Handle&lt;/fen&gt; identifies the point of attachment on the &lt;fen&gt;Goal&lt;/fen&gt; to which the &lt;fen&gt;Item&lt;/fen&gt; attaches.
+
+&lt;ex&gt;The remoras &lt;t&gt;attach&lt;/t&gt; &lt;fex name="Handle"&gt;by the mouth&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="04/15/2002 05:02:53 PDT Mon" abbrev="Item" name="Item" ID="2625">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Item&lt;/fen&gt; identifies the entity that comes to be attached to the &lt;fen&gt;Goal&lt;/fen&gt;.
+
+&lt;ex&gt;&lt;fex name="Item"&gt;Remoras&lt;/fex&gt; &lt;t&gt;attached&lt;/t&gt; to the dolphins.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <requiresFE name="Goal" ID="2627"/>
+        <excludesFE name="Items" ID="2626"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="04/15/2002 05:02:53 PDT Mon" abbrev="Items" name="Items" ID="2626">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Items&lt;/fen&gt; identifies the plural items that are tied together, resulting in their mutual attachment.
+
+&lt;ex&gt;&lt;fex name="Items"&gt;The cells&lt;/fex&gt; &lt;t&gt;bind&lt;/t&gt; together.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="04/15/2002 05:02:53 PDT Mon" abbrev="Goal" name="Goal" ID="2627">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Goal&lt;/fen&gt; identifies the location to which the first &lt;fen&gt;Item&lt;/fen&gt; is attached.
+
+&lt;ex&gt;The remoras &lt;t&gt;attach&lt;/t&gt; &lt;fex name="Goal"&gt;to the underside of the whale&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Goal" ID="153"/>
+        <requiresFE name="Item" ID="2625"/>
+        <excludesFE name="Items" ID="2626"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="04/15/2002 05:02:53 PDT Mon" abbrev="Result" name="Result" ID="2628">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Result&lt;/fen&gt; of an attaching event.
+
+&lt;ex&gt;The cells &lt;t&gt;bind&lt;/t&gt; &lt;fex name="Result"&gt;together&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="243" cDate="03/15/2004 01:58:54 PST Mon" abbrev="Mnr" name="Manner" ID="6151">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Manner&lt;/fen&gt; in which an &lt;fen&gt;Item&lt;/fen&gt; comes to be attached to a &lt;fen&gt;Goal&lt;/fen&gt;.
+
+&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Item" ID="2625"/>
+        <memberFE name="Items" ID="2626"/>
+        <memberFE name="Goal" ID="2627"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of">
+        <relatedFrame>Being_attached</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Needs_SCs" POS="V" name="agglutinate.v" ID="5579" lemmaID="788" cBy="664" cDate="04/15/2002 06:34:45 PDT Mon">
+        <definition>COD: firmly stick or be stuck together to form a mass</definition>
+        <sentenceCount annotated="1" total="1"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="agglutinate"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="V" name="bind.v" ID="5580" lemmaID="3611" cBy="664" cDate="04/15/2002 06:34:45 PDT Mon">
+        <definition>COD: tie or fasten (something) tightly together</definition>
+        <sentenceCount annotated="4" total="4"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="bind"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="V" name="fasten.v" ID="5581" lemmaID="13992" cBy="664" cDate="04/15/2002 06:34:45 PDT Mon">
+        <definition>FN: become fixed.</definition>
+        <sentenceCount annotated="2" total="2"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="fasten"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="V" name="moor.v" ID="5582" lemmaID="24885" cBy="664" cDate="04/15/2002 06:34:45 PDT Mon">
+        <definition>COD: make fast (a boat) by attaching it by cable or rope to the shore or to an anchor</definition>
+        <sentenceCount annotated="3" total="3"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="moor"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="attach.v" ID="7825" lemmaID="2279" cBy="605" cDate="12/10/2002 01:48:56 PST Tue">
+        <definition>FN: to become attached</definition>
+        <sentenceCount annotated="9" total="294"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="attach"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="take hold.v" ID="9196" lemmaID="48266" cBy="618" cDate="08/04/2003 02:51:48 PDT Mon">
+        <definition>FN: become fast.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="take"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="hold"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="stick.v" ID="11370" lemmaID="45303" cBy="618" cDate="12/06/2004 01:52:20 PST Mon">
+        <definition>FN: become adhered to something.</definition>
+        <sentenceCount annotated="13" total="239"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="stick"/>
+    </lexUnit>
+</frame>

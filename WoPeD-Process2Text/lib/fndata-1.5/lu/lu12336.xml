@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="N" name="condition.n" ID="12336" frame="Terms_of_agreement" frameID="1531" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp=2566" ID="20183"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="agr" name="Agreement"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Extra-Thematic" abbrev="scr" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="des" name="Desired_state_of_affairs"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="par" name="Party"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core" abbrev="reg" name="Regulated_entity"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="req" name="Requirements"/>
+        </frame>
+    </header>
+    <definition>COD: a state of affairs that must exist before something else is possible.</definition>
+    <lexeme POS="N" name="condition"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Desired_state_of_affairs"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Desired_state_of_affairs"/>
+                <annoSet ID="2578811"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Requirements"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Requirements"/>
+                <annoSet ID="2578811"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Desired_state_of_affairs"/>
+            <FE name="Requirements"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Desired_state_of_affairs"/>
+                <valenceUnit GF="" PT="DEN" FE="Requirements"/>
+                <annoSet ID="2578811"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-pp_for-p-(1)"/>
+    <subCorpus name="02-Wrepayment+Wwithdrawal-(1)">
+        <sentence corpID="111" docID="20183" sentNo="3" paragNo="1112" aPos="0" ID="1572095">
+            <text>Talks between Israel and Lebanon focused on conditions for a possible Israeli withdrawal from southern Lebanon .</text>
+            <annotationSet cDate="07/14/2010 12:56:11 PDT Wed" status="UNANN" ID="2578810">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="nns"/>
+                    <label end="12" start="6" name="in"/>
+                    <label end="19" start="14" name="NP"/>
+                    <label end="23" start="21" name="cc"/>
+                    <label end="31" start="25" name="NP"/>
+                    <label end="39" start="33" name="VVD"/>
+                    <label end="42" start="41" name="in"/>
+                    <label end="53" start="44" name="nns"/>
+                    <label end="57" start="55" name="in"/>
+                    <label end="59" start="59" name="dt"/>
+                    <label end="68" start="61" name="jj"/>
+                    <label end="76" start="70" name="jj"/>
+                    <label end="87" start="78" name="nn"/>
+                    <label end="92" start="89" name="in"/>
+                    <label end="101" start="94" name="jj"/>
+                    <label end="109" start="103" name="NP"/>
+                    <label end="111" start="111" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/14/2010 12:56:11 PDT Wed" status="MANUAL" ID="2578811">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="53" start="44" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="8341" end="53" start="44" name="Requirements"/>
+                    <label cBy="589" feID="8342" end="109" start="55" name="Desired_state_of_affairs"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="109" start="55" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="109" start="55" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="03-other-matched-(1)"/>
+    <subCorpus name="04-other-unmatched-(1)"/>
+</lexUnit>

@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" POS="N" name="joblessness.n" ID="12624" frame="Unemployment_rate" frameID="1606" totalAnnotated="4" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp=1376" ID="19512"/>
+            <document description="bncp=1871" ID="19780"/>
+            <document description="bncp=354" ID="19960"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Core" abbrev="deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Core" abbrev="emp" name="Employment"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="gro" name="Group"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="ind" name="Individuals"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="pla" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Extra-Thematic" abbrev="" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="val" name="Value"/>
+        </frame>
+    </header>
+    <definition>FN: the number or proportion of jobless people.</definition>
+    <lexeme POS="N" name="joblessness"/>
+    <valences>
+        <governor type="Sup" lemma="at">
+            <annoSet ID="2535457"/>
+        </governor>
+        <FERealization total="4">
+            <FE name="Employment"/>
+            <pattern total="4">
+                <valenceUnit GF="" PT="DEN" FE="Employment"/>
+                <annoSet ID="2535439"/>
+                <annoSet ID="2535449"/>
+                <annoSet ID="2535451"/>
+                <annoSet ID="2535457"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Group"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[among]" FE="Group"/>
+                <annoSet ID="2535457"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Individuals"/>
+            <pattern total="3">
+                <valenceUnit GF="" PT="DNI" FE="Individuals"/>
+                <annoSet ID="2535449"/>
+                <annoSet ID="2535451"/>
+                <annoSet ID="2535457"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Individuals"/>
+                <annoSet ID="2535439"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Time"/>
+                <annoSet ID="2535439"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Value"/>
+            <pattern total="1">
+                <valenceUnit GF="Quant" PT="Num" FE="Value"/>
+                <annoSet ID="2535457"/>
+            </pattern>
+            <pattern total="3">
+                <valenceUnit GF="" PT="INI" FE="Value"/>
+                <annoSet ID="2535439"/>
+                <annoSet ID="2535449"/>
+                <annoSet ID="2535451"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Employment"/>
+            <FE name="Group"/>
+            <FE name="Individuals"/>
+            <FE name="Value"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Employment"/>
+                <valenceUnit GF="Dep" PT="PP[among]" FE="Group"/>
+                <valenceUnit GF="" PT="DNI" FE="Individuals"/>
+                <valenceUnit GF="Quant" PT="Num" FE="Value"/>
+                <annoSet ID="2535457"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Employment"/>
+            <FE name="Individuals"/>
+            <FE name="Time"/>
+            <FE name="Value"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Employment"/>
+                <valenceUnit GF="Dep" PT="N" FE="Individuals"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Time"/>
+                <valenceUnit GF="" PT="INI" FE="Value"/>
+                <annoSet ID="2535439"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Employment"/>
+            <FE name="Individuals"/>
+            <FE name="Value"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="DEN" FE="Employment"/>
+                <valenceUnit GF="" PT="DNI" FE="Individuals"/>
+                <valenceUnit GF="" PT="INI" FE="Value"/>
+                <annoSet ID="2535449"/>
+                <annoSet ID="2535451"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-object_of-(1)"/>
+    <subCorpus name="02-a_modifier-(1)">
+        <sentence corpID="111" docID="19960" sentNo="1" paragNo="230" aPos="0" ID="1546377">
+            <text>Mr Jencks argues that while long-term male joblessness and unwed parenthood have got worse , school drop-out rates have improved ; and the number of violent crimes ( other than homicide ) and the proportion of the population on welfare are at least not getting worse .</text>
+            <annotationSet cDate="03/25/2010 03:31:00 PDT Thu" status="UNANN" ID="2535438">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="NP"/>
+                    <label end="8" start="3" name="NP"/>
+                    <label end="15" start="10" name="VVZ"/>
+                    <label end="20" start="17" name="in"/>
+                    <label end="26" start="22" name="in"/>
+                    <label end="36" start="28" name="jj"/>
+                    <label end="41" start="38" name="jj"/>
+                    <label end="53" start="43" name="nn"/>
+                    <label end="57" start="55" name="cc"/>
+                    <label end="63" start="59" name="jj"/>
+                    <label end="74" start="65" name="nn"/>
+                    <label end="79" start="76" name="VHP"/>
+                    <label end="83" start="81" name="VVN"/>
+                    <label end="89" start="85" name="jjr"/>
+                    <label end="91" start="91" name=","/>
+                    <label end="98" start="93" name="nn"/>
+                    <label end="107" start="100" name="nn"/>
+                    <label end="113" start="109" name="nns"/>
+                    <label end="118" start="115" name="VHP"/>
+                    <label end="127" start="120" name="VVN"/>
+                    <label end="129" start="129" name=":"/>
+                    <label end="133" start="131" name="cc"/>
+                    <label end="137" start="135" name="dt"/>
+                    <label end="144" start="139" name="nn"/>
+                    <label end="147" start="146" name="in"/>
+                    <label end="155" start="149" name="jj"/>
+                    <label end="162" start="157" name="nns"/>
+                    <label end="164" start="164" name="("/>
+                    <label end="170" start="166" name="jj"/>
+                    <label end="175" start="172" name="in"/>
+                    <label end="184" start="177" name="nn"/>
+                    <label end="186" start="186" name=")"/>
+                    <label end="190" start="188" name="cc"/>
+                    <label end="194" start="192" name="dt"/>
+                    <label end="205" start="196" name="nn"/>
+                    <label end="208" start="207" name="in"/>
+                    <label end="212" start="210" name="dt"/>
+                    <label end="223" start="214" name="nn"/>
+                    <label end="226" start="225" name="in"/>
+                    <label end="234" start="228" name="nn"/>
+                    <label end="238" start="236" name="vbp"/>
+                    <label end="241" start="240" name="in"/>
+                    <label end="247" start="243" name="jjs"/>
+                    <label end="251" start="249" name="rb"/>
+                    <label end="259" start="253" name="VVG"/>
+                    <label end="265" start="261" name="jjr"/>
+                    <label end="267" start="267" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="03/25/2010 03:31:00 PDT Thu" status="MANUAL" ID="2535439">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="53" start="43" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="8834" end="53" start="43" name="Employment"/>
+                    <label cBy="589" feID="8833" end="41" start="38" name="Individuals"/>
+                    <label cBy="589" feID="8835" itype="INI" name="Value"/>
+                    <label cBy="589" feID="8837" end="36" start="28" name="Time"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="41" start="38" name="Dep"/>
+                    <label end="36" start="28" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="41" start="38" name="N"/>
+                    <label end="36" start="28" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="03-and/or-(1)"/>
+    <subCorpus name="04-pp_through-p-(1)">
+        <sentence corpID="111" docID="19780" sentNo="3" paragNo="171" aPos="0" ID="1546382">
+            <text>Neo-classical models of the labour market contend that equilibriating mechanisms such as migration should work to eradicate spatial variations in unemployment ( Gleave and Palmer , 1980 ) , but the continuation of wide regional variations in rates of joblessness through the 1980s suggests that these mechanisms are not working very efficiently ( Gleave and Sellens , 1984 ; Green et al. , 1986 ) .</text>
+            <annotationSet cDate="03/25/2010 03:31:02 PDT Thu" status="UNANN" ID="2535448">
+                <layer rank="1" name="PENN">
+                    <label end="12" start="0" name="jj"/>
+                    <label end="19" start="14" name="nns"/>
+                    <label end="22" start="21" name="in"/>
+                    <label end="26" start="24" name="dt"/>
+                    <label end="33" start="28" name="nn"/>
+                    <label end="40" start="35" name="nn"/>
+                    <label end="48" start="42" name="VVP"/>
+                    <label end="53" start="50" name="in"/>
+                    <label end="68" start="55" name="jj"/>
+                    <label end="79" start="70" name="nns"/>
+                    <label end="84" start="81" name="jj"/>
+                    <label end="87" start="86" name="in"/>
+                    <label end="97" start="89" name="nn"/>
+                    <label end="104" start="99" name="md"/>
+                    <label end="109" start="106" name="VV"/>
+                    <label end="112" start="111" name="to"/>
+                    <label end="122" start="114" name="VV"/>
+                    <label end="130" start="124" name="jj"/>
+                    <label end="141" start="132" name="nns"/>
+                    <label end="144" start="143" name="in"/>
+                    <label end="157" start="146" name="nn"/>
+                    <label end="159" start="159" name="("/>
+                    <label end="166" start="161" name="NP"/>
+                    <label end="170" start="168" name="cc"/>
+                    <label end="177" start="172" name="NP"/>
+                    <label end="179" start="179" name=","/>
+                    <label end="184" start="181" name="cd"/>
+                    <label end="186" start="186" name=")"/>
+                    <label end="188" start="188" name=","/>
+                    <label end="192" start="190" name="cc"/>
+                    <label end="196" start="194" name="dt"/>
+                    <label end="209" start="198" name="nn"/>
+                    <label end="212" start="211" name="in"/>
+                    <label end="217" start="214" name="jj"/>
+                    <label end="226" start="219" name="jj"/>
+                    <label end="237" start="228" name="nns"/>
+                    <label end="240" start="239" name="in"/>
+                    <label end="246" start="242" name="nns"/>
+                    <label end="249" start="248" name="in"/>
+                    <label end="261" start="251" name="nn"/>
+                    <label end="269" start="263" name="in"/>
+                    <label end="273" start="271" name="dt"/>
+                    <label end="279" start="275" name="nns"/>
+                    <label end="288" start="281" name="VVZ"/>
+                    <label end="293" start="290" name="in"/>
+                    <label end="299" start="295" name="dt"/>
+                    <label end="310" start="301" name="nns"/>
+                    <label end="314" start="312" name="vbp"/>
+                    <label end="318" start="316" name="rb"/>
+                    <label end="326" start="320" name="VVG"/>
+                    <label end="331" start="328" name="rb"/>
+                    <label end="343" start="333" name="rb"/>
+                    <label end="345" start="345" name="("/>
+                    <label end="352" start="347" name="NP"/>
+                    <label end="356" start="354" name="cc"/>
+                    <label end="364" start="358" name="NP"/>
+                    <label end="366" start="366" name=","/>
+                    <label end="371" start="368" name="cd"/>
+                    <label end="373" start="373" name=":"/>
+                    <label end="379" start="375" name="NP"/>
+                    <label end="382" start="381" name="NP"/>
+                    <label end="386" start="384" name="NP"/>
+                    <label end="388" start="388" name=","/>
+                    <label end="393" start="390" name="cd"/>
+                    <label end="395" start="395" name=")"/>
+                    <label end="397" start="397" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="03/25/2010 03:31:02 PDT Thu" status="MANUAL" ID="2535449">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="261" start="251" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="8834" end="261" start="251" name="Employment"/>
+                    <label cBy="589" feID="8833" itype="DNI" name="Individuals"/>
+                    <label cBy="589" feID="8835" itype="INI" name="Value"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="05-other-matched-(1)"/>
+    <subCorpus name="06-other-unmatched-(1)">
+        <sentence corpID="111" docID="19780" sentNo="5" paragNo="184" aPos="0" ID="1546383">
+            <text>In London , for instance , the most severely affected boroughs like Hackney and Tower Hamlets , with male unemployment rates of over 28 per cent in 1986 , had already seen sharp rises in joblessness between 1971 and 1981 , which had driven more people to work outside the boroughs of residence and brought a marked fall in the numbers of women in paid work ( Townsend el al. , 1987 ) .</text>
+            <annotationSet cDate="03/25/2010 03:31:02 PDT Thu" status="UNANN" ID="2535450">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="in"/>
+                    <label end="8" start="3" name="NP"/>
+                    <label end="10" start="10" name=","/>
+                    <label end="14" start="12" name="in"/>
+                    <label end="23" start="16" name="nn"/>
+                    <label end="25" start="25" name=","/>
+                    <label end="29" start="27" name="dt"/>
+                    <label end="34" start="31" name="rbs"/>
+                    <label end="43" start="36" name="rb"/>
+                    <label end="52" start="45" name="VVN"/>
+                    <label end="61" start="54" name="nns"/>
+                    <label end="66" start="63" name="in"/>
+                    <label end="74" start="68" name="NP"/>
+                    <label end="78" start="76" name="cc"/>
+                    <label end="84" start="80" name="NP"/>
+                    <label end="92" start="86" name="NP"/>
+                    <label end="94" start="94" name=","/>
+                    <label end="99" start="96" name="in"/>
+                    <label end="104" start="101" name="jj"/>
+                    <label end="117" start="106" name="nn"/>
+                    <label end="123" start="119" name="nns"/>
+                    <label end="126" start="125" name="in"/>
+                    <label end="131" start="128" name="in"/>
+                    <label end="134" start="133" name="cd"/>
+                    <label end="138" start="136" name="in"/>
+                    <label end="143" start="140" name="nn"/>
+                    <label end="146" start="145" name="in"/>
+                    <label end="151" start="148" name="cd"/>
+                    <label end="153" start="153" name=","/>
+                    <label end="157" start="155" name="VHD"/>
+                    <label end="165" start="159" name="rb"/>
+                    <label end="170" start="167" name="VVN"/>
+                    <label end="176" start="172" name="jj"/>
+                    <label end="182" start="178" name="nns"/>
+                    <label end="185" start="184" name="in"/>
+                    <label end="197" start="187" name="nn"/>
+                    <label end="205" start="199" name="in"/>
+                    <label end="210" start="207" name="cd"/>
+                    <label end="214" start="212" name="cc"/>
+                    <label end="219" start="216" name="cd"/>
+                    <label end="221" start="221" name=","/>
+                    <label end="227" start="223" name="wdt"/>
+                    <label end="231" start="229" name="VHD"/>
+                    <label end="238" start="233" name="VVN"/>
+                    <label end="243" start="240" name="jjr"/>
+                    <label end="250" start="245" name="nns"/>
+                    <label end="253" start="252" name="to"/>
+                    <label end="258" start="255" name="VV"/>
+                    <label end="266" start="260" name="in"/>
+                    <label end="270" start="268" name="dt"/>
+                    <label end="279" start="272" name="nns"/>
+                    <label end="282" start="281" name="in"/>
+                    <label end="292" start="284" name="nn"/>
+                    <label end="296" start="294" name="cc"/>
+                    <label end="304" start="298" name="VVD"/>
+                    <label end="306" start="306" name="dt"/>
+                    <label end="313" start="308" name="jj"/>
+                    <label end="318" start="315" name="nn"/>
+                    <label end="321" start="320" name="in"/>
+                    <label end="325" start="323" name="dt"/>
+                    <label end="333" start="327" name="nns"/>
+                    <label end="336" start="335" name="in"/>
+                    <label end="342" start="338" name="nns"/>
+                    <label end="345" start="344" name="in"/>
+                    <label end="350" start="347" name="VVN"/>
+                    <label end="355" start="352" name="nn"/>
+                    <label end="357" start="357" name="("/>
+                    <label end="366" start="359" name="NP"/>
+                    <label end="369" start="368" name="nn"/>
+                    <label end="373" start="371" name="nn"/>
+                    <label end="375" start="375" name=","/>
+                    <label end="380" start="377" name="cd"/>
+                    <label end="382" start="382" name=")"/>
+                    <label end="384" start="384" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="03/25/2010 03:31:03 PDT Thu" status="MANUAL" ID="2535451">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="197" start="187" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="8834" end="197" start="187" name="Employment"/>
+                    <label cBy="589" feID="8833" itype="DNI" name="Individuals"/>
+                    <label cBy="589" feID="8835" itype="INI" name="Value"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="19512" sentNo="3" paragNo="458" aPos="0" ID="1546386">
+            <text>At 14.1% , joblessness among men is higher than its previous peak .</text>
+            <annotationSet cDate="03/25/2010 03:31:03 PDT Thu" status="UNANN" ID="2535456">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="in"/>
+                    <label end="7" start="3" name="cd"/>
+                    <label end="9" start="9" name=","/>
+                    <label end="21" start="11" name="nn"/>
+                    <label end="27" start="23" name="in"/>
+                    <label end="31" start="29" name="nns"/>
+                    <label end="34" start="33" name="VBZ"/>
+                    <label end="41" start="36" name="jjr"/>
+                    <label end="46" start="43" name="in"/>
+                    <label end="50" start="48" name="PP$"/>
+                    <label end="59" start="52" name="jj"/>
+                    <label end="64" start="61" name="nn"/>
+                    <label end="66" start="66" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="03/25/2010 03:31:03 PDT Thu" status="MANUAL" ID="2535457">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="21" start="11" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="8835" end="7" start="3" name="Value"/>
+                    <label cBy="589" feID="8834" end="21" start="11" name="Employment"/>
+                    <label cBy="589" feID="8838" end="31" start="23" name="Group"/>
+                    <label cBy="589" feID="8833" itype="DNI" name="Individuals"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="7" start="3" name="Quant"/>
+                    <label end="31" start="23" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="7" start="3" name="Num"/>
+                    <label end="31" start="23" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="1" start="0" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

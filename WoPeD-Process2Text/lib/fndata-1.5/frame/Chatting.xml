@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="11/26/2003 03:11:04 PST Wed" name="Chatting" ID="910" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A group of people (the &lt;fen&gt;Interlocutors&lt;/fen&gt; or &lt;fen&gt;Interlocutor_1&lt;/fen&gt; and &lt;fen&gt;Interlocutor_2&lt;/fen&gt; together) have a conversation.  No person is construed as only a speaker or only an addressee. Rather, it is understood that both (or all) participants do some speaking and some listening--the process is understood to be symmetrical or reciprocal.  In this frame, the purpose of the conversation is generally social, rather than specifically to decide something or exchange information, or to quarrel (see Discussion and Quarreling).
+
+&lt;ex&gt;If you ain't got nothin' better to do, &lt;fex name="Interlocutor_1"&gt;I&lt;/fex&gt; 'd like to &lt;t&gt;shoot&lt;/t&gt; &lt;t&gt;the&lt;/t&gt; &lt;t&gt;breeze&lt;/t&gt; &lt;fex name="Interlocutor_2"&gt;with you&lt;/fex&gt; &lt;fex name="Duration"&gt;for a couple&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Interlocutors"&gt;We&lt;/fex&gt; used to &lt;t&gt;chat&lt;/t&gt; &lt;fex name="Topic"&gt;about everything&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <semType name="Human" ID="80"/>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="11/26/2003 03:16:07 PST Wed" abbrev="" name="Interlocutors" ID="5781">
+        <definition>&lt;def-root&gt;The group of individuals involved in chatting.&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="11/26/2003 03:17:41 PST Wed" abbrev="" name="Interlocutor_1" ID="5782">
+        <definition>&lt;def-root&gt;The individual or individuals that form the more prominent (i.e. agentive) party of a conversation, as compared with &lt;fen&gt;Interlocutor_2&lt;/fen&gt;. That is, &lt;fen&gt;Interlocutor_1&lt;/fen&gt; is generally encoded as the External Argument of verbs, and peripheral FEs that do not make reference to the event itself generally make reference to &lt;fen&gt;Interlocutor_1&lt;/fen&gt;.  Thus a &lt;fen&gt;Purpose&lt;/fen&gt; (or &lt;fen&gt;Means&lt;/fen&gt;, &lt;fen&gt;Depictive&lt;/fen&gt;, or &lt;fen&gt;Manner&lt;/fen&gt;) is construed to be that of &lt;fen&gt;Interlocutor_1&lt;/fen&gt;, not necessarily that of &lt;fen&gt;Interlocutor_2&lt;/fen&gt; or the group of &lt;fen&gt;Interlocutors&lt;/fen&gt; as a whole.
+
+&lt;ex&gt;&lt;fex name="Interlocutor_1"&gt;We&lt;/fex&gt; &lt;t&gt;chatted&lt;/t&gt; with the guards to distract them from the heist going on right behind them.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+        <excludesFE name="Interlocutors" ID="5781"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="11/26/2003 03:54:48 PST Wed" abbrev="" name="Interlocutor_2" ID="5783">
+        <definition>&lt;def-root&gt;The semantically (and grammatically) less prominent group of participants in a conversation.  It is generally encoded within a prepositional phrase (e.g. headed by &lt;ment&gt;with&lt;/ment&gt;).  
+
+&lt;ex&gt;I gossiped &lt;fex name="Interlocutor_2"&gt;with the rest of the choir&lt;/fex&gt; for a little while.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+        <requiresFE name="Interlocutor_1" ID="5782"/>
+        <excludesFE name="Interlocutors" ID="5781"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="11/26/2003 04:25:00 PST Wed" abbrev="" name="Duration" ID="5784">
+        <definition>&lt;def-root&gt;The length of time that the chatting goes on.
+
+&lt;ex&gt;They &lt;t&gt;yakked&lt;/t&gt; &lt;fex name="Duration"&gt;for hours&lt;/fex&gt;!&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="11/26/2003 04:44:35 PST Wed" abbrev="" name="Topic" ID="5785">
+        <definition>&lt;def-root&gt;The general subject that the statements of the &lt;fen&gt;Interlocutors&lt;/fen&gt; in the conversation pertain to.
+
+&lt;ex&gt;Oh, we &lt;t&gt;gossiped&lt;/t&gt; &lt;fex name="Topic"&gt;about the management shakedown&lt;/fex&gt; a bit.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A9A9A9" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="11/26/2003 05:02:46 PST Wed" abbrev="" name="Language" ID="5786">
+        <definition>&lt;def-root&gt;The language(s) or dialect(s) that a conversation is conducted in.
+
+&lt;ex&gt;They exchanged &lt;t&gt;gossip&lt;/t&gt; &lt;fex name="Language"&gt;in French&lt;/fex&gt; while I sat by, completely ignored.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="11/26/2003 05:07:07 PST Wed" abbrev="MOC" name="Means_of_communication" ID="5788">
+        <definition>&lt;def-root&gt;The device used by the &lt;fen&gt;Interlocutors&lt;/fen&gt; to communicate.
+
+&lt;ex&gt;Don't get excited--after a short &lt;fex name="MOC"&gt;telephone&lt;/fex&gt; &lt;t&gt;chat&lt;/t&gt; with a broker, you 'll have your money.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="11/26/2003 05:55:18 PST Wed" abbrev="" name="Purpose" ID="5789">
+        <definition>&lt;def-root&gt;What the &lt;fen&gt;Interlocutors&lt;/fen&gt; (or &lt;fen&gt;Interlocutor_1&lt;/fen&gt;) hope to accomplish by chatting.
+
+&lt;ex&gt;We &lt;t&gt;shot&lt;/t&gt; &lt;t&gt;the&lt;/t&gt; &lt;t&gt;breeze&lt;/t&gt; for a couple of hours &lt;fex name="Purpose"&gt;just to pass the time&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="11/26/2003 06:02:43 PST Wed" abbrev="" name="Time" ID="5790">
+        <definition>&lt;def-root&gt;The time at which a chat takes place.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="11/26/2003 06:03:46 PST Wed" abbrev="" name="Place" ID="5791">
+        <definition>&lt;def-root&gt;The location where a chat takes place.
+
+&lt;ex&gt;A bit of lunch-time &lt;t&gt;conversation&lt;/t&gt; &lt;fex name="Place"&gt;on the veranda&lt;/fex&gt; would not be amiss, I hope?&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="11/26/2003 06:16:05 PST Wed" abbrev="" name="Means" ID="5792">
+        <definition>&lt;def-root&gt;The way that the &lt;fen&gt;Interlocutors&lt;/fen&gt; succeed in having a conversation.
+
+&lt;ex&gt;Though some of the fellas couldn't hear anymore, we &lt;t&gt;chatted&lt;/t&gt; with them &lt;fex name="Means"&gt;by sharing a typewriter&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="11/26/2003 06:20:52 PST Wed" abbrev="" name="Manner" ID="5793">
+        <definition>&lt;def-root&gt;Any description of the conversation which is not covered by more specific FEs, including secondary effects (quietly, loudly), and general descriptions comparing events (the same way). It may also indicate salient characteristics of the &lt;fen&gt;Interlocutors&lt;/fen&gt; (or &lt;fen&gt;Interlocutor_1&lt;/fen&gt;) that also affect the action (presumptuously, coldly, deliberately, eagerly, carefully). &lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="7CCD7C" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="11/26/2003 06:43:55 PST Wed" abbrev="" name="Depictive" ID="5794">
+        <definition>&lt;def-root&gt;A description of the state of the &lt;fen&gt;Interlocutors&lt;/fen&gt; (or &lt;fen&gt;Interlocutor_1&lt;/fen&gt;) during the conversation.
+
+&lt;ex&gt;We &lt;t&gt;talked&lt;/t&gt; for a few minutes, &lt;fex name="Depictive"&gt;uncertain about why we were bothering&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Reciprocality</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Discussion</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Statement</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="chat.v" ID="9950" lemmaID="6143" cBy="664" cDate="11/26/2003 03:19:35 PST Wed">
+        <definition>COD: talk in a friendly and informal way. </definition>
+        <sentenceCount annotated="38" total="198"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="chat"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="badinage.n" ID="9965" lemmaID="2668" cBy="664" cDate="12/01/2003 09:44:12 PST Mon">
+        <definition>COD: witty conversation. </definition>
+        <sentenceCount annotated="3" total="12"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="badinage"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="banter.n" ID="9966" lemmaID="2844" cBy="664" cDate="12/01/2003 09:44:24 PST Mon">
+        <definition>COD: the playful and friendly exchange of teasing remarks. </definition>
+        <sentenceCount annotated="9" total="15"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="banter"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="chat.n" ID="9967" lemmaID="6142" cBy="664" cDate="12/01/2003 09:44:36 PST Mon">
+        <definition>COD: an informal conversation. </definition>
+        <sentenceCount annotated="28" total="205"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="chat"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="chit-chat.n" ID="9968" lemmaID="6374" cBy="664" cDate="12/01/2003 09:45:11 PST Mon">
+        <definition>COD: mass noun inconsequential conversation. </definition>
+        <sentenceCount annotated="5" total="32"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="chit-chat"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="colloquy.n" ID="9969" lemmaID="7198" cBy="664" cDate="12/01/2003 09:46:33 PST Mon">
+        <definition>COD: a formal conference or conversation.</definition>
+        <sentenceCount annotated="4" total="8"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="colloquy"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="conversation.n" ID="9972" lemmaID="8190" cBy="664" cDate="12/01/2003 10:05:44 PST Mon">
+        <definition>COD: an informal spoken exchange of news and ideas between two or more people.</definition>
+        <sentenceCount annotated="34" total="496"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="conversation"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="converse.v" ID="9974" lemmaID="8196" cBy="664" cDate="12/01/2003 10:25:51 PST Mon">
+        <definition>COD: engage in conversation.</definition>
+        <sentenceCount annotated="32" total="78"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="converse"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="speak.v" ID="9978" lemmaID="37202" cBy="664" cDate="12/02/2003 12:05:38 PST Tue">
+        <definition>COD: say something</definition>
+        <sentenceCount annotated="30" total="438"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="speak"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="talk.v" ID="9979" lemmaID="39433" cBy="664" cDate="12/02/2003 12:06:28 PST Tue">
+        <definition>COD: speak in order to give information or express ideas or feelings; converse or communicate by speech. </definition>
+        <sentenceCount annotated="38" total="434"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="talk"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="joke.v" ID="9980" lemmaID="21027" cBy="664" cDate="12/02/2003 12:07:39 PST Tue">
+        <definition>COD: say something to cause amusement</definition>
+        <sentenceCount annotated="20" total="115"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="joke"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="gossip.n" ID="9981" lemmaID="16588" cBy="664" cDate="12/02/2003 12:07:58 PST Tue">
+        <definition>COD: casual conversation or unsubstantiated reports about other people</definition>
+        <sentenceCount annotated="30" total="236"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="gossip"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="gossip.v" ID="9982" lemmaID="16589" cBy="664" cDate="12/02/2003 12:08:27 PST Tue">
+        <definition>COD: engage in gossip.</definition>
+        <sentenceCount annotated="38" total="83"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="gossip"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="gab.v" ID="9983" lemmaID="45198" cBy="664" cDate="12/02/2003 12:08:43 PST Tue">
+        <definition>COD: talk at length. </definition>
+        <sentenceCount annotated="3" total="8"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="gab"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="shoot the breeze.v" ID="11137" lemmaID="49675" cBy="303" cDate="11/12/2004 01:26:44 PST Fri">
+        <definition>COD: have a casual conversation</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="shoot"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ART" name="the"/>
+        <lexeme order="3" headword="false" breakBefore="false" POS="N" name="breeze"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="yak.v" ID="11138" lemmaID="44648" cBy="303" cDate="11/12/2004 01:29:52 PST Fri">
+        <definition>COD:  talk at length about trivial or boring subjects.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="yak"/>
+    </lexUnit>
+</frame>

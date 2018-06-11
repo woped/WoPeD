@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="618" cDate="03/23/2006 08:59:59 PST Thu" name="Execute_plan" ID="1726" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Agent&lt;/fen&gt; acts according to a &lt;em&gt;Plan&lt;/em&gt;, carrying it out (or taking steps to carry it out). In some cases, the &lt;fen&gt;Agent&lt;/fen&gt; is a focal participant in the &lt;fen&gt;Plan&lt;/fen&gt;, although a separate &lt;fen&gt;Focal_participant&lt;/fen&gt; may also be mentioned. The &lt;fen&gt;Plan&lt;/fen&gt; may be specified for the &lt;fen&gt;Duration&lt;/fen&gt; for which it is in effect.
+
+&lt;ex&gt;Health authorities say &lt;fex name="Agent"&gt;they&lt;/fex&gt; have &lt;m&gt;put&lt;/m&gt; &lt;fex name="Plan"&gt;measures&lt;/fex&gt; &lt;m&gt;into&lt;/m&gt; &lt;t&gt;effect&lt;/t&gt; &lt;fex name="Place"&gt;in all ports of entry and in centers of provinces&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Agent"&gt;Channing House&lt;/fex&gt; has recently &lt;t&gt;implemented&lt;/t&gt; &lt;fex name="Plan"&gt;a new dining program for residents on pureed diets&lt;/fex&gt;.&lt;/ex&gt;
+
+Note: the phrase &lt;em&gt;(put) in effect&lt;/em&gt; is in the Being_in_effect frame.&lt;/def-root&gt;</definition>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="03/23/2006 09:00:00 PST Thu" abbrev="pla" name="Plan" ID="9954">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Plan&lt;/fen&gt; is a goal or purpose that the &lt;fen&gt;Agent&lt;/fen&gt; carries out.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="03/23/2006 09:00:01 PST Thu" abbrev="dur" name="Duration" ID="9955">
+        <definition>&lt;def-root&gt;The length of time for which the &lt;fen&gt;Plan&lt;/fen&gt; is or is not in effect.&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="03/23/2006 09:00:01 PST Thu" abbrev="tim" name="Time" ID="9956">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Time&lt;/fen&gt; at which the Agent puts the &lt;fen&gt;Plan&lt;/fen&gt; into effect.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="03/23/2006 09:00:01 PST Thu" abbrev="place" name="Place" ID="9957">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Place&lt;/fen&gt; at which the &lt;fen&gt;Plan&lt;/fen&gt; is or is not operational.
+
+[CHANGE: or, place where agent puts into effect? 2 fes?]&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="d0d0d0" fgColor="000000" coreType="Extra-Thematic" cBy="618" cDate="03/23/2006 09:00:01 PST Thu" abbrev="cir" name="Circumstances" ID="9958">
+        <definition>&lt;def-root&gt;The state-of-affairs under which the Agent puts the &lt;fen&gt;Plan&lt;/fen&gt; into effect.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="618" cDate="03/23/2006 09:00:01 PST Thu" abbrev="exp" name="Explanation" ID="9959">
+        <definition>&lt;def-root&gt;A cause, reason, or other explanation for the implementation of the &lt;fen&gt;Plan&lt;/fen&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="618" cDate="03/23/2006 09:00:01 PST Thu" abbrev="foc" name="Focal_participant" ID="9960">
+        <definition>&lt;def-root&gt;The individual or group who is obligated to follow the &lt;fen&gt;Plan&lt;/fen&gt;.
+
+[CHANGE: may only be relevant for "implemented the policy for residents of florida only"]&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="03/23/2006 09:04:36 PST Thu" abbrev="Age" name="Agent" ID="9961">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Agent&lt;/fen&gt;, often an institution or governmental organization, puts a &lt;fen&gt;Plan&lt;/fen&gt; into effect. The Agent is generally a primary participant in the &lt;fen&gt;Plan&lt;/fen&gt;, but a separate &lt;fen&gt;Focal_participant&lt;/fen&gt; may be specified.&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="03/23/2006 12:04:25 PST Thu" abbrev="man" name="Manner" ID="9962">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Manner&lt;/fen&gt; describes some state of the &lt;fen&gt;Agent&lt;/fen&gt;, or provides additional characterization of the event of executing the plan.&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="03/23/2006 12:05:54 PST Thu" abbrev="mea" name="Means" ID="9963">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Means&lt;/fen&gt; is an intermediate action done by the &lt;fen&gt;Agent&lt;/fen&gt; in order to execute the &lt;fen&gt;Plan&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="03/23/2006 12:08:00 PST Thu" abbrev="pur" name="Purpose" ID="9965">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Purpose&lt;/fen&gt; for which the &lt;fen&gt;Agent&lt;/fen&gt; executes the &lt;fen&gt;Plan&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="000000" coreType="Extra-Thematic" cBy="303" cDate="07/10/2006 12:34:41 PDT Mon" abbrev="Deg" name="Degree" ID="10350">
+        <definition>&lt;def-root&gt;This FE describes how fully the &lt;fen&gt;Plan&lt;/fen&gt; was executed.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="000000" coreType="Core" cBy="303" cDate="08/01/2006 04:44:04 PDT Tue" abbrev="Med" name="Medium" ID="10431">
+        <definition>&lt;def-root&gt;This FE describes the medium through which a plan was executed.  It may occur in the same syntactic position as the Agent.
+&lt;ex&gt;The policy will be &lt;t&gt;implemented&lt;/t&gt; &lt;fex name="Medium"&gt;by a new computer system&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="90876C" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="303" cDate="08/01/2006 05:07:14 PDT Tue" abbrev="Out" name="Outcome" ID="10432">
+        <definition>&lt;def-root&gt;The Outcome is the failure or success of executing the plan. 
+&lt;ex&gt;We &lt;t&gt;implemented&lt;/t&gt; the new approach &lt;fex name="Outcome"&gt;with astounding results&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Medium" ID="10431"/>
+        <memberFE name="Agent" ID="9961"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Intentionally_act</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Enforcing</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also">
+        <relatedFrame>Being_in_effect</relatedFrame>
+    </frameRelation>
+    <lexUnit status="Finished_Initial" POS="V" name="implement.v" ID="13136" lemmaID="19188" cBy="618" cDate="03/23/2006 09:15:11 PST Thu">
+        <definition>COD: put into effect.</definition>
+        <sentenceCount annotated="26" total="295"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="implement"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="implementation.n" ID="13359" lemmaID="19189" cBy="618" cDate="07/11/2006 04:24:55 PDT Tue">
+        <definition>FN: the act of implementing a plan.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="implementation"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="effect_((into_effect)).n" ID="13425" lemmaID="50092" cBy="618" cDate="08/07/2006 01:29:38 PDT Mon">
+        <definition>COD: the state of being or becoming operative.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="effect"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="institute.v" ID="14982" lemmaID="20187" cBy="597" cDate="04/29/2008 12:34:19 PDT Tue">
+        <definition>FN: implement something</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="institute"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="force_((into_force)).n" ID="14985" lemmaID="15020" cBy="597" cDate="04/30/2008 02:35:24 PDT Wed">
+        <definition>FN: into effect</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="force"/>
+    </lexUnit>
+</frame>

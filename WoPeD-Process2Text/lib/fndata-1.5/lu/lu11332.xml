@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="N" name="border.n" ID="11332" frame="Boundary" frameID="329" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp=2237" ID="17833"/>
+            <document description="bncp=2571" ID="19210"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Bound" name="Boundary"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Ents" name="Entities"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="Ent" name="Entity"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Peripheral" abbrev="rel_loc" name="Relative_location"/>
+        </frame>
+    </header>
+    <definition>COD: a line separating two countries or other areas.</definition>
+    <lexeme POS="N" name="border"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Entities"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[between]" FE="Entities"/>
+                <annoSet ID="2596973"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Entity"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Entity"/>
+                <annoSet ID="2596999"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Relative_location"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Relative_location"/>
+                <annoSet ID="2596999"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Entities"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[between]" FE="Entities"/>
+                <annoSet ID="2596973"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Entity"/>
+            <FE name="Relative_location"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Entity"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Relative_location"/>
+                <annoSet ID="2596999"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-pp_between-p-(1)">
+        <sentence corpID="111" docID="19210" sentNo="1" paragNo="845" aPos="0" ID="1581146">
+            <text>The Kazakh-brokered agreement had called for a ceasefire along the border between the two former Soviet republics .</text>
+            <annotationSet cDate="07/20/2010 02:13:17 PDT Tue" status="UNANN" ID="2596972">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="18" start="4" name="jj"/>
+                    <label end="28" start="20" name="nn"/>
+                    <label end="32" start="30" name="VHD"/>
+                    <label end="39" start="34" name="VVN"/>
+                    <label end="43" start="41" name="in"/>
+                    <label end="45" start="45" name="dt"/>
+                    <label end="55" start="47" name="nn"/>
+                    <label end="61" start="57" name="in"/>
+                    <label end="65" start="63" name="dt"/>
+                    <label end="72" start="67" name="nn"/>
+                    <label end="80" start="74" name="in"/>
+                    <label end="84" start="82" name="dt"/>
+                    <label end="88" start="86" name="cd"/>
+                    <label end="95" start="90" name="jj"/>
+                    <label end="102" start="97" name="jj"/>
+                    <label end="112" start="104" name="nns"/>
+                    <label end="114" start="114" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/20/2010 02:13:18 PDT Tue" status="MANUAL" ID="2596973">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="72" start="67" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="3680" end="112" start="74" name="Entities"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="112" start="74" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="112" start="74" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-pp_of-p-(1)">
+        <sentence corpID="111" docID="17833" sentNo="6" paragNo="8" aPos="0" ID="1581159">
+            <text>Before his reign the site would have been on the southernmost borders of the empire ; when he died it was at the empire 's heart .</text>
+            <annotationSet cDate="07/20/2010 02:13:20 PDT Tue" status="UNANN" ID="2596998">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="0" name="in"/>
+                    <label end="9" start="7" name="PP$"/>
+                    <label end="15" start="11" name="nn"/>
+                    <label end="19" start="17" name="dt"/>
+                    <label end="24" start="21" name="nn"/>
+                    <label end="30" start="26" name="md"/>
+                    <label end="35" start="32" name="VH"/>
+                    <label end="40" start="37" name="VBN"/>
+                    <label end="43" start="42" name="in"/>
+                    <label end="47" start="45" name="dt"/>
+                    <label end="60" start="49" name="jj"/>
+                    <label end="68" start="62" name="nns"/>
+                    <label end="71" start="70" name="in"/>
+                    <label end="75" start="73" name="dt"/>
+                    <label end="82" start="77" name="nn"/>
+                    <label end="84" start="84" name=":"/>
+                    <label end="89" start="86" name="wrb"/>
+                    <label end="92" start="91" name="PP"/>
+                    <label end="97" start="94" name="VVD"/>
+                    <label end="100" start="99" name="PP"/>
+                    <label end="104" start="102" name="VBD"/>
+                    <label end="107" start="106" name="in"/>
+                    <label end="111" start="109" name="dt"/>
+                    <label end="118" start="113" name="nn"/>
+                    <label end="121" start="120" name="POS"/>
+                    <label end="127" start="123" name="nn"/>
+                    <label end="129" start="129" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/20/2010 02:13:20 PDT Tue" status="MANUAL" ID="2596999">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="68" start="62" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="3679" end="82" start="70" name="Entity"/>
+                    <label cBy="589" feID="14040" end="60" start="49" name="Relative_location"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="82" start="70" name="Dep"/>
+                    <label end="60" start="49" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="82" start="70" name="PP"/>
+                    <label end="60" start="49" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="03-other-matched-(1)"/>
+    <subCorpus name="04-other-unmatched-(1)"/>
+</lexUnit>

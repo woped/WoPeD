@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="N" name="juice.n" ID="12357" frame="Electricity" frameID="1535" totalAnnotated="6" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <corpus name="MASC" ID="150">
+            <document description="juice" ID="22069"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="des" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core" abbrev="ele" name="Electricity"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="sou" name="Source"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Extra-Thematic" abbrev="use" name="Use"/>
+        </frame>
+    </header>
+    <definition>COD: electrical energy.</definition>
+    <lexeme POS="N" name="juice"/>
+    <valences>
+        <FERealization total="2">
+            <FE name="Descriptor"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Descriptor"/>
+                <annoSet ID="2597929"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Descriptor"/>
+                <annoSet ID="2597922"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="6">
+            <FE name="Electricity"/>
+            <pattern total="6">
+                <valenceUnit GF="" PT="DEN" FE="Electricity"/>
+                <annoSet ID="2354865"/>
+                <annoSet ID="2466804"/>
+                <annoSet ID="2468222"/>
+                <annoSet ID="2597922"/>
+                <annoSet ID="2597925"/>
+                <annoSet ID="2597929"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Descriptor"/>
+            <FE name="Electricity"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Descriptor"/>
+                <valenceUnit GF="" PT="DEN" FE="Electricity"/>
+                <annoSet ID="2597929"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Descriptor"/>
+                <valenceUnit GF="" PT="DEN" FE="Electricity"/>
+                <annoSet ID="2597922"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="4">
+            <FE name="Electricity"/>
+            <pattern total="4">
+                <valenceUnit GF="" PT="DEN" FE="Electricity"/>
+                <annoSet ID="2354865"/>
+                <annoSet ID="2466804"/>
+                <annoSet ID="2468222"/>
+                <annoSet ID="2597925"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-Wmore,less,enough-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="5" paragNo="476" aPos="45747489" ID="1453562">
+            <text>Yes , power-hungry peripherals are becoming rarer by the minute , but as expandability is an important criterion for file servers , it 's important that you have a PSU that can dish out enough juice .</text>
+            <annotationSet cDate="12/12/2007 04:04:39 PST Wed" status="UNANN" ID="2354864">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="uh"/>
+                    <label end="4" start="4" name=","/>
+                    <label end="17" start="6" name="jj"/>
+                    <label end="29" start="19" name="nns"/>
+                    <label end="33" start="31" name="vbp"/>
+                    <label end="42" start="35" name="VVG"/>
+                    <label end="48" start="44" name="jjr"/>
+                    <label end="51" start="50" name="in"/>
+                    <label end="55" start="53" name="dt"/>
+                    <label end="62" start="57" name="nn"/>
+                    <label end="64" start="64" name=","/>
+                    <label end="68" start="66" name="cc"/>
+                    <label end="71" start="70" name="in"/>
+                    <label end="85" start="73" name="nn"/>
+                    <label end="88" start="87" name="VBZ"/>
+                    <label end="91" start="90" name="dt"/>
+                    <label end="101" start="93" name="jj"/>
+                    <label end="111" start="103" name="nn"/>
+                    <label end="115" start="113" name="in"/>
+                    <label end="120" start="117" name="nn"/>
+                    <label end="128" start="122" name="nns"/>
+                    <label end="130" start="130" name=","/>
+                    <label end="133" start="132" name="PP"/>
+                    <label end="136" start="135" name="VBZ"/>
+                    <label end="146" start="138" name="jj"/>
+                    <label end="151" start="148" name="in"/>
+                    <label end="155" start="153" name="PP"/>
+                    <label end="160" start="157" name="VHP"/>
+                    <label end="162" start="162" name="dt"/>
+                    <label end="166" start="164" name="nn"/>
+                    <label end="171" start="168" name="wdt"/>
+                    <label end="175" start="173" name="md"/>
+                    <label end="180" start="177" name="VV"/>
+                    <label end="184" start="182" name="rp"/>
+                    <label end="191" start="186" name="jj"/>
+                    <label end="197" start="193" name="nn"/>
+                    <label end="199" start="199" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="12/12/2007 04:04:40 PST Wed" status="MANUAL" ID="2354865">
+                <layer rank="1" name="Target">
+                    <label cBy="361" end="197" start="193" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="8354" end="197" start="193" name="Electricity"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-unmatched-(2)">
+        <sentence corpID="111" docID="421" sentNo="189" paragNo="4" aPos="37838758" ID="1510325">
+            <text>Of engines giving extra juice . &quot;</text>
+            <annotationSet cDate="04/10/2009 11:19:31 PDT Fri" status="UNANN" ID="2466803">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="in"/>
+                    <label end="9" start="3" name="nns"/>
+                    <label end="16" start="11" name="VVG"/>
+                    <label end="22" start="18" name="jj"/>
+                    <label end="28" start="24" name="nn"/>
+                    <label end="30" start="30" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="04/10/2009 11:19:31 PDT Fri" status="MANUAL" ID="2466804">
+                <layer rank="1" name="Target">
+                    <label cBy="145" end="28" start="24" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="8354" end="28" start="24" name="Electricity"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="01-Wbattery,generate,provide-(3)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="520" aPos="45750178" ID="1511034">
+            <text>If it detects any sudden absence of juice , it automatically kicks in with its battery , allowing you to shut down gracefully with no loss of data .</text>
+            <annotationSet cDate="04/20/2009 12:10:37 PDT Mon" status="UNANN" ID="2468221">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="in"/>
+                    <label end="4" start="3" name="PP"/>
+                    <label end="12" start="6" name="VVZ"/>
+                    <label end="16" start="14" name="dt"/>
+                    <label end="23" start="18" name="jj"/>
+                    <label end="31" start="25" name="nn"/>
+                    <label end="34" start="33" name="in"/>
+                    <label end="40" start="36" name="nn"/>
+                    <label end="42" start="42" name=","/>
+                    <label end="45" start="44" name="PP"/>
+                    <label end="59" start="47" name="rb"/>
+                    <label end="65" start="61" name="VVZ"/>
+                    <label end="68" start="67" name="in"/>
+                    <label end="73" start="70" name="in"/>
+                    <label end="77" start="75" name="PP$"/>
+                    <label end="85" start="79" name="nn"/>
+                    <label end="87" start="87" name=","/>
+                    <label end="96" start="89" name="VVG"/>
+                    <label end="100" start="98" name="PP"/>
+                    <label end="103" start="102" name="to"/>
+                    <label end="108" start="105" name="VV"/>
+                    <label end="113" start="110" name="rp"/>
+                    <label end="124" start="115" name="rb"/>
+                    <label end="129" start="126" name="in"/>
+                    <label end="132" start="131" name="dt"/>
+                    <label end="137" start="134" name="nn"/>
+                    <label end="140" start="139" name="in"/>
+                    <label end="145" start="142" name="nns"/>
+                    <label end="147" start="147" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="04/20/2009 12:10:37 PDT Mon" status="MANUAL" ID="2468222">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="40" start="36" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="8354" end="40" start="36" name="Electricity"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-unmatched-(3)"/>
+    <subCorpus name="manually-added">
+        <sentence corpID="150" docID="22069" sentNo="4" paragNo="3" aPos="0" ID="1570783">
+            <text>After all , those murders were carried out in a financial work setting ; it did n't have the juice of a high school for TV producers .</text>
+            <annotationSet cDate="06/30/2010 01:58:57 PDT Wed" status="UNANN" ID="2576832">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="in"/>
+                    <label end="8" start="6" name="dt"/>
+                    <label end="10" start="10" name=","/>
+                    <label end="16" start="12" name="dt"/>
+                    <label end="24" start="18" name="nns"/>
+                    <label end="29" start="26" name="VBD"/>
+                    <label end="37" start="31" name="VVN"/>
+                    <label end="41" start="39" name="rp"/>
+                    <label end="44" start="43" name="in"/>
+                    <label end="46" start="46" name="dt"/>
+                    <label end="56" start="48" name="jj"/>
+                    <label end="61" start="58" name="nn"/>
+                    <label end="69" start="63" name="nn"/>
+                    <label end="71" start="71" name=":"/>
+                    <label end="74" start="73" name="PP"/>
+                    <label end="78" start="76" name="VVD"/>
+                    <label end="82" start="80" name="rb"/>
+                    <label end="87" start="84" name="VH"/>
+                    <label end="91" start="89" name="dt"/>
+                    <label end="97" start="93" name="nn"/>
+                    <label end="100" start="99" name="in"/>
+                    <label end="102" start="102" name="dt"/>
+                    <label end="107" start="104" name="jj"/>
+                    <label end="114" start="109" name="nn"/>
+                    <label end="118" start="116" name="in"/>
+                    <label end="121" start="120" name="nn"/>
+                    <label end="131" start="123" name="nns"/>
+                    <label end="133" start="133" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL">
+                    <label end="4" start="0" name="NT"/>
+                    <label end="8" start="6" name="NT"/>
+                    <label end="10" start="10" name="NT"/>
+                    <label end="16" start="12" name="NT"/>
+                    <label end="29" start="26" name="NT"/>
+                    <label end="41" start="39" name="NT"/>
+                    <label end="44" start="43" name="NT"/>
+                    <label end="46" start="46" name="NT"/>
+                    <label end="71" start="71" name="NT"/>
+                    <label end="74" start="73" name="NT"/>
+                    <label end="78" start="76" name="NT"/>
+                    <label end="82" start="80" name="NT"/>
+                    <label end="91" start="89" name="NT"/>
+                    <label end="100" start="99" name="NT"/>
+                    <label end="102" start="102" name="NT"/>
+                    <label end="118" start="116" name="NT"/>
+                    <label end="133" start="133" name="NT"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/21/2010 04:37:22 PDT Wed" status="MANUAL" ID="2597922">
+                <layer rank="1" name="Target">
+                    <label cBy="571" end="97" start="93" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="571" feID="8354" end="97" start="93" name="Electricity"/>
+                    <label cBy="571" feID="8356" end="114" start="99" name="Descriptor"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="114" start="99" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="114" start="99" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="Metaphor"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="150" docID="22069" sentNo="4" paragNo="5" aPos="0" ID="1570803">
+            <text>A Time story says the electric - car movement is running out of juice .</text>
+            <annotationSet cDate="06/30/2010 01:59:04 PDT Wed" status="UNANN" ID="2576852">
+                <layer rank="1" name="PENN">
+                    <label end="0" start="0" name="dt"/>
+                    <label end="5" start="2" name="NP"/>
+                    <label end="11" start="7" name="nn"/>
+                    <label end="16" start="13" name="VVZ"/>
+                    <label end="20" start="18" name="dt"/>
+                    <label end="29" start="22" name="jj"/>
+                    <label end="31" start="31" name=":"/>
+                    <label end="35" start="33" name="nn"/>
+                    <label end="44" start="37" name="nn"/>
+                    <label end="47" start="46" name="VBZ"/>
+                    <label end="55" start="49" name="VVG"/>
+                    <label end="59" start="57" name="rp"/>
+                    <label end="62" start="61" name="in"/>
+                    <label end="68" start="64" name="nn"/>
+                    <label end="70" start="70" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER">
+                    <label end="5" start="2" name="organization"/>
+                </layer>
+                <layer rank="1" name="WSL">
+                    <label end="0" start="0" name="NT"/>
+                    <label end="5" start="2" name="NT"/>
+                    <label end="20" start="18" name="NT"/>
+                    <label end="31" start="31" name="NT"/>
+                    <label end="47" start="46" name="NT"/>
+                    <label end="59" start="57" name="NT"/>
+                    <label end="62" start="61" name="NT"/>
+                    <label end="70" start="70" name="NT"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/21/2010 04:42:31 PDT Wed" status="MANUAL" ID="2597925">
+                <layer rank="1" name="Target">
+                    <label cBy="571" end="68" start="64" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="571" feID="8354" end="68" start="64" name="Electricity"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="Metaphor"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="150" docID="22069" sentNo="3" paragNo="10" aPos="0" ID="1570852">
+            <text>The other , Ronald Radosh , had described it as `` heavy and plodding , without any real juice to it . ''</text>
+            <annotationSet cDate="06/30/2010 01:59:21 PDT Wed" status="UNANN" ID="2576901">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="8" start="4" name="jj"/>
+                    <label end="10" start="10" name=","/>
+                    <label end="17" start="12" name="NP"/>
+                    <label end="24" start="19" name="NP"/>
+                    <label end="26" start="26" name=","/>
+                    <label end="30" start="28" name="VHD"/>
+                    <label end="40" start="32" name="VVN"/>
+                    <label end="43" start="42" name="PP"/>
+                    <label end="46" start="45" name="in"/>
+                    <label end="49" start="48" name="``"/>
+                    <label end="55" start="51" name="jj"/>
+                    <label end="59" start="57" name="cc"/>
+                    <label end="68" start="61" name="VVG"/>
+                    <label end="70" start="70" name=","/>
+                    <label end="78" start="72" name="in"/>
+                    <label end="82" start="80" name="dt"/>
+                    <label end="87" start="84" name="jj"/>
+                    <label end="93" start="89" name="nn"/>
+                    <label end="96" start="95" name="to"/>
+                    <label end="99" start="98" name="PP"/>
+                    <label end="101" start="101" name="sent"/>
+                    <label end="104" start="103" name="''"/>
+                </layer>
+                <layer rank="1" name="NER">
+                    <label end="24" start="12" name="person"/>
+                </layer>
+                <layer rank="1" name="WSL">
+                    <label end="2" start="0" name="NT"/>
+                    <label end="10" start="10" name="NT"/>
+                    <label end="17" start="12" name="NT"/>
+                    <label end="24" start="19" name="NT"/>
+                    <label end="26" start="26" name="NT"/>
+                    <label end="30" start="28" name="NT"/>
+                    <label end="43" start="42" name="NT"/>
+                    <label end="46" start="45" name="NT"/>
+                    <label end="49" start="48" name="NT"/>
+                    <label end="59" start="57" name="NT"/>
+                    <label end="70" start="70" name="NT"/>
+                    <label end="78" start="72" name="NT"/>
+                    <label end="82" start="80" name="NT"/>
+                    <label end="96" start="95" name="NT"/>
+                    <label end="99" start="98" name="NT"/>
+                    <label end="101" start="101" name="NT"/>
+                    <label end="104" start="103" name="NT"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/21/2010 04:48:39 PDT Wed" status="MANUAL" ID="2597929">
+                <layer rank="1" name="Target">
+                    <label cBy="571" end="93" start="89" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="571" feID="8354" end="93" start="89" name="Electricity"/>
+                    <label cBy="571" feID="8356" end="87" start="84" name="Descriptor"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="87" start="84" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="87" start="84" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="Metaphor"/>
+                </layer>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

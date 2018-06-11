@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="10/24/2002 03:16:11 PDT Thu" name="Collaboration" ID="418" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;&lt;fen&gt;Partner_1&lt;/fen&gt; and &lt;fen&gt;Partner_2&lt;/fen&gt; or a group of &lt;fen&gt;Partners&lt;/fen&gt;  work together in some &lt;fen&gt;Undertaking&lt;/fen&gt;. The &lt;fen&gt;Partners&lt;/fen&gt; are taken to be of equal status even when expressed disjointly. 
+
+&lt;ex&gt; &lt;fex name="Partner_1"&gt;CSTR&lt;/fex&gt; &lt;fex name="Manner"&gt;actively&lt;/fex&gt; &lt;t&gt;collaborates&lt;/t&gt; &lt;fex name="Partner_2"&gt;with the Departments of Artificial Intelligence  and Physics&lt;/fex&gt;. &lt;/ex&gt;
+&lt;ex&gt; &lt;fex name="Partners"&gt;Tom and  the American composer Steve Riche&lt;/fex&gt; have &lt;fex name="Time"&gt;recently&lt;/fex&gt; &lt;t&gt;collaborated&lt;/t&gt; &lt;fex name="Undertaking"&gt;on a piece of elevator music&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="10/24/2002 03:22:14 PDT Thu" abbrev="Partner-1" name="Partner_1" ID="3851">
+        <definition>&lt;def-root&gt;When the parties in a collaboration are expressed separately, this Frame Element marks constituents that express the one that is grammatically more prominent, i.e., the one that is the subject of an active clause.
+
+&lt;ex&gt; &lt;fex name="Partner_1"&gt;Smithers&lt;/fex&gt; &lt;t&gt;collaborated&lt;/t&gt; with Chief Wiggum &lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Human" ID="80"/>
+        <requiresFE name="Partner_2" ID="3852"/>
+        <excludesFE name="Partners" ID="3855"/>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="10/24/2002 03:32:39 PDT Thu" abbrev="Partner-2" name="Partner_2" ID="3852">
+        <definition>&lt;def-root&gt;This Frame element marks constituents expressing the grammatically  less prominent, typically oblique, party in a collaboration.
+
+&lt;ex&gt; Britain is &lt;t&gt;collaborating&lt;/t&gt; &lt;fex name="Partner_2"&gt;with France and West Germany&lt;/fex&gt; in the development of anti-tank missiles&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Human" ID="80"/>
+        <requiresFE name="Partner_1" ID="3851"/>
+        <excludesFE name="Partners" ID="3855"/>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="10/24/2002 03:34:37 PDT Thu" abbrev="Undertaking" name="Undertaking" ID="3853">
+        <definition>&lt;def-root&gt;This frame element marks constituents that express the project in which the &lt;fen&gt;Partners&lt;/fen&gt; are collaborating.
+
+
+&lt;ex&gt; The two artists &lt;t&gt;collaborated&lt;/t&gt; &lt;fex name="Undertaking"&gt;on a mosaic&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="10/24/2002 03:35:32 PDT Thu" abbrev="Manr" name="Manner" ID="3854">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Manner&lt;/fen&gt; in which &lt;fen&gt;Partner_1&lt;/fen&gt; collaborates with &lt;fen&gt;Partner_2&lt;/fen&gt; or in which the &lt;fen&gt;Partners&lt;/fen&gt; collaborate.&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="10/24/2002 03:37:47 PDT Thu" abbrev="Partners" name="Partners" ID="3855">
+        <definition>&lt;def-root&gt;This frame element marks expressions that express the parties that work together in an &lt;fen&gt;Undertaking&lt;/fen&gt;.
+
+&lt;ex&gt; &lt;fex name="Partners"&gt;Smithers and Chief Wiggum&lt;/fex&gt; &lt;t&gt;collaborated&lt;/t&gt; well &lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Human" ID="80"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="10/24/2002 03:45:03 PDT Thu" abbrev="Time" name="Time" ID="3856">
+        <definition>&lt;def-root&gt;This FE identifies the time when the &lt;fen&gt;Partners&lt;/fen&gt; are engaged in their collaboration.
+
+&lt;ex&gt;&lt;fex name="Time"&gt;Last year&lt;/fex&gt; some of my colleagues collaborated in the design of a theme-park.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="10/24/2002 03:47:20 PDT Thu" abbrev="Place" name="Place" ID="3857">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Place&lt;/fen&gt; where the collaboration occurs.
+
+&lt;ex&gt; &lt;fex name="Place"&gt;In New Braunfels&lt;/fex&gt; Paul and John &lt;t&gt;collaborated&lt;/t&gt; in the design of a new Guggenheim &lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="11/01/2002 08:33:02 PST Fri" abbrev="Dur" name="Duration" ID="3870">
+        <definition>&lt;def-root&gt;This FE identifies the amount of time the &lt;fen&gt;Partners&lt;/fen&gt; collaborate.&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="05/23/2003 03:28:01 PDT Fri" abbrev="" name="Degree" ID="4505">
+        <definition>&lt;def-root&gt;This FE marks expressions that indicate to what extent the &lt;fen&gt;Partners&lt;/fen&gt; are cooperating.
+
+&lt;ex&gt;The French government &lt;t&gt;cooperated&lt;/t&gt; &lt;fex name="Degree"&gt;fully&lt;/fex&gt; with the New Zealand police.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/08/2005 11:52:54 PST Thu" abbrev="mea" name="Means" ID="9749">
+        <definition>&lt;def-root&gt;The action taken by the &lt;fen&gt;Partners&lt;/fen&gt; that lets them accomplish the collaboration.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Reciprocality</relatedFrame>
+        <relatedFrame>Intentionally_act</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="collaborate.v" ID="7636" lemmaID="7152" cBy="605" cDate="10/24/2002 03:52:10 PDT Thu">
+        <definition>COD:  work jointly on an activity or project</definition>
+        <sentenceCount annotated="11" total="18"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="collaborate"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="partner.v" ID="7638" lemmaID="27930" cBy="605" cDate="10/24/2002 03:54:01 PDT Thu">
+        <definition>COD: associate as partners</definition>
+        <sentenceCount annotated="5" total="57"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="partner"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="collaborator.n" ID="7640" lemmaID="7157" cBy="605" cDate="10/24/2002 05:13:43 PDT Thu">
+        <definition>FN: a person whith whom someone works on a joint project</definition>
+        <sentenceCount annotated="22" total="120"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="collaborator"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Partner_1" POS="N" name="partner.n" ID="7641" lemmaID="27929" cBy="605" cDate="10/24/2002 05:14:00 PDT Thu">
+        <definition>FN: somebody who takes part in an undertaking with one or more other people</definition>
+        <sentenceCount annotated="14" total="282"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="partner"/>
+    </lexUnit>
+    <lexUnit status="Rules_Defined" POS="A" name="in_cahoots.a" ID="7642" lemmaID="46176" cBy="605" cDate="10/24/2002 05:29:20 PDT Thu">
+        <definition>COD: colluding or conspiring together secretly</definition>
+        <sentenceCount annotated="8" total="11"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="in"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="cahoots"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="conspire.v" ID="7643" lemmaID="7949" cBy="605" cDate="10/24/2002 05:31:29 PDT Thu">
+        <definition>COD: make secret plans jointly to commit an unlawful or harmful act</definition>
+        <sentenceCount annotated="18" total="117"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="conspire"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="collaboration.n" ID="7644" lemmaID="7153" cBy="605" cDate="10/24/2002 05:32:29 PDT Thu">
+        <definition>FN: the act of working together with someone</definition>
+        <sentenceCount annotated="48" total="290"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="collaboration"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="associate.n" ID="7646" lemmaID="2170" cBy="605" cDate="10/24/2002 05:37:06 PDT Thu">
+        <definition>COD: a partner or companion in business or at work</definition>
+        <sentenceCount annotated="31" total="214"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="associate"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="confederate.n" ID="7647" lemmaID="7704" cBy="605" cDate="10/24/2002 05:38:16 PDT Thu">
+        <definition>COD: an accomplice or fellow worker</definition>
+        <sentenceCount annotated="7" total="18"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="confederate"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="conspiracy.n" ID="7713" lemmaID="7945" cBy="605" cDate="11/13/2002 05:44:54 PST Wed">
+        <definition>COD: the action of conspiring</definition>
+        <sentenceCount annotated="25" total="243"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="conspiracy"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="collude.v" ID="7715" lemmaID="7199" cBy="605" cDate="11/13/2002 06:10:19 PST Wed">
+        <definition>COD: come to a secret understanding; conspire</definition>
+        <sentenceCount annotated="17" total="70"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="collude"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="collusion.n" ID="7716" lemmaID="7200" cBy="605" cDate="11/13/2002 06:13:24 PST Wed">
+        <definition>COD: secret or illegal cooperation in order to cheat or deceive others</definition>
+        <sentenceCount annotated="34" total="149"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="collusion"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="team_up.v" ID="8444" lemmaID="47544" cBy="618" cDate="03/23/2003 11:54:53 PST Sun">
+        <definition>COD: come together as a team to achieve a common goal</definition>
+        <sentenceCount annotated="24" total="194"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="team"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="up"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="cooperate.v" ID="8885" lemmaID="47985" cBy="618" cDate="06/17/2003 11:36:41 PDT Tue">
+        <definition>COD: work jointly towards the same end.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="cooperate"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="cooperation.n" ID="10715" lemmaID="49305" cBy="605" cDate="06/30/2004 12:05:32 PDT Wed">
+        <definition>COD: the action or process of cooperating.</definition>
+        <sentenceCount annotated="50" total="453"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="cooperation"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="affiliated.a" ID="13441" lemmaID="50415" cBy="303" cDate="08/09/2006 06:39:10 PDT Wed">
+        <definition>FN: connected to an organization or entity.  </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="affiliated"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="in league.a" ID="14703" lemmaID="50802" cBy="597" cDate="01/25/2008 11:48:36 PST Fri">
+        <definition>FN: to be collaborating with another</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="in"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="league"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="ADV" name="jointly.adv" ID="14706" lemmaID="21023" cBy="597" cDate="01/25/2008 01:15:12 PST Fri">
+        <definition>FN: done in collaboration or conjunction with another entity</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="jointly"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="work together.v" ID="15075" lemmaID="50911" cBy="361" cDate="06/06/2008 03:44:33 PDT Fri">
+        <definition>FN: endeavor to complete a task in a partnered relationship.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="work"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="together"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="ADV" name="together.adv" ID="15232" lemmaID="40610" cBy="361" cDate="08/05/2008 01:27:20 PDT Tue">
+        <definition>FN: with the combined efforts of one another</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="together"/>
+    </lexUnit>
+</frame>

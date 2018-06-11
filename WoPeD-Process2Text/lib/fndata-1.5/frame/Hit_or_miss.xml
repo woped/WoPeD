@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="03/24/2007 03:24:56 PDT Sat" name="Hit_or_miss" ID="1902" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Agent&lt;/fen&gt; succeeds or fails to interact perceptually or physically with the &lt;fen&gt;Target&lt;/fen&gt; or &lt;fen&gt;Target_location&lt;/fen&gt;.  The &lt;fen&gt;Instrument&lt;/fen&gt; which is used to interact with the &lt;fen&gt;Target&lt;/fen&gt; may stand in metonymically for the &lt;fen&gt;Agent&lt;/fen&gt;.
+
+&lt;ex&gt;At first &lt;fex name="Agent"&gt;he&lt;/fex&gt; shot &lt;fex name="Degree"&gt;very&lt;/fex&gt; &lt;t&gt;wide&lt;/t&gt; &lt;fex name="Target"&gt;of his target&lt;/fex&gt; .&lt;/ex&gt;
+&lt;ex&gt;Because I programmed the scope wrong , &lt;fex name="Agent"&gt;I&lt;/fex&gt; kept &lt;t&gt;missing&lt;/t&gt; &lt;fex name="Target"&gt;Jupiter&lt;/fex&gt; .&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Agent"&gt;She&lt;/fex&gt; scored two &lt;t&gt;hits&lt;/t&gt; &lt;fex name="Target_location"&gt;on the deer 's left side&lt;/fex&gt; .&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="03/24/2007 03:24:56 PDT Sat" abbrev="Agt" name="Agent" ID="11334">
+        <definition>&lt;def-root&gt;The individual who tries to interact with the &lt;fen&gt;Target&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core-Unexpressed" cBy="664" cDate="03/24/2007 03:24:56 PDT Sat" abbrev="Goal" name="Target" ID="11335">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Target&lt;/fen&gt; is the entity located in an indirectly accessible location relative to the &lt;fen&gt;Agent&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="03/24/2007 03:24:56 PDT Sat" abbrev="Otcm" name="Outcome" ID="11336">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Outcome&lt;/fen&gt; is the failure or success of an attempt at interaction, incorporated in the LUs of the frame.
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="03/24/2007 03:24:56 PDT Sat" abbrev="Means" name="Means" ID="11337">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Means&lt;/fen&gt; by which the &lt;fen&gt;Agent&lt;/fen&gt; achieves a &lt;fen&gt;Purpose&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="03/24/2007 03:24:56 PDT Sat" abbrev="Degr" name="Degree" ID="11338">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Degree&lt;/fen&gt; to which the interaction takes place at the &lt;fen&gt;Target_location&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="03/24/2007 03:24:56 PDT Sat" abbrev="Time" name="Time" ID="11339">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Time&lt;/fen&gt; when something hits or misses.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="03/24/2007 03:24:56 PDT Sat" abbrev="Dep" name="Depictive" ID="11340">
+        <definition>&lt;def-root&gt;A description of the &lt;fen&gt;Agent&lt;/fen&gt; during the event.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="03/24/2007 03:24:56 PDT Sat" abbrev="Place" name="Place" ID="11341">
+        <definition>&lt;def-root&gt;The place where the &lt;fen&gt;Agent&lt;/fen&gt; manages or fails to interact with the &lt;fen&gt;Target&lt;/fen&gt;.
+&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="03/24/2007 03:24:56 PDT Sat" abbrev="man" name="Manner" ID="11342">
+        <definition>&lt;def-root&gt;Any description of how the details of the event compare to others, either generally (&lt;ment&gt;the same way&lt;/ment&gt;), or in terms of a state of the &lt;fen&gt;Agent&lt;/fen&gt; which influences the event (&lt;ment&gt;carelessly&lt;/ment&gt;).&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="90876C" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="03/24/2007 03:24:56 PDT Sat" abbrev="" name="Purpose" ID="11344">
+        <definition>&lt;def-root&gt;The reason for which the &lt;fen&gt;Agent&lt;/fen&gt; attempts to interact with the &lt;fen&gt;Target&lt;/fen&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="EEE8AA" fgColor="000000" coreType="Extra-Thematic" cBy="664" cDate="03/24/2007 03:24:56 PDT Sat" abbrev="" name="Particular_iteration" ID="11345">
+        <definition>&lt;def-root&gt;Expressions marked with this extra-thematic FE modify a non-iterative use of the target, and indicate that it is conceived as embedded within an iterated series of similar events or states. In addition, most expressions of &lt;fen&gt;Particular_iteration&lt;/fen&gt; indicate which instance of the series is being referred to.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="000000" coreType="Extra-Thematic" cBy="664" cDate="03/24/2007 03:24:56 PDT Sat" abbrev="" name="Circumstances" ID="11346">
+        <definition>&lt;def-root&gt;The state of the world (at a particular time and place) which contextualizes the hitting or missing of the &lt;fen&gt;Agent&lt;/fen&gt; but is not conceived of as caused by it.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="03/24/2007 03:24:56 PDT Sat" abbrev="" name="Instrument" ID="11347">
+        <definition>&lt;def-root&gt;The object manipulated by the &lt;fen&gt;Agent&lt;/fen&gt; in order to interact with the &lt;fen&gt;Target&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="03/24/2007 03:24:56 PDT Sat" abbrev="targ_loc" name="Target_location" ID="11348">
+        <definition>&lt;def-root&gt;The location that the &lt;fen&gt;Agent&lt;/fen&gt; is attempting to access using the &lt;fen&gt;Instrument&lt;/fen&gt;.
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="000000" coreType="Extra-Thematic" cBy="664" cDate="03/24/2007 04:19:45 PDT Sat" abbrev="" name="Iterations" ID="11349">
+        <definition>&lt;def-root&gt;The number of times that the &lt;fen&gt;Agent&lt;/fen&gt; hits or misses the &lt;fen&gt;Target&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="03/24/2007 06:00:41 PDT Sat" abbrev="" name="Deviation" ID="11366">
+        <definition>&lt;def-root&gt;The distance of the actual location from the &lt;fen&gt;Target_location&lt;/fen&gt;. &lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Agent" ID="11334"/>
+        <memberFE name="Instrument" ID="11347"/>
+    </FEcoreSet>
+    <FEcoreSet>
+        <memberFE name="Target" ID="11335"/>
+        <memberFE name="Target_location" ID="11348"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Success_or_failure</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Hit_target</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of">
+        <relatedFrame>Attempt_distant_interaction_scenario</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by">
+        <relatedFrame>Aiming</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Needs_SCs" POS="V" name="hit.v" ID="14116" lemmaID="18154" cBy="664" cDate="03/24/2007 03:35:31 PDT Sat">
+        <definition>COD: strike (a target).</definition>
+        <sentenceCount annotated="1" total="90"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="hit"/>
+    </lexUnit>
+    <lexUnit status="Rules_Defined" POS="V" name="miss.v" ID="14117" lemmaID="24557" cBy="664" cDate="03/24/2007 03:35:40 PDT Sat">
+        <definition>COD: fail to hit, reach, or come into contact with.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="miss"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="ADV" name="wide.adv" ID="14118" lemmaID="44130" cBy="664" cDate="03/24/2007 03:35:59 PDT Sat">
+        <definition>COD: far from a particular point or mark.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="wide"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="hit.n" ID="14119" lemmaID="18153" cBy="664" cDate="03/24/2007 03:38:48 PDT Sat">
+        <definition>COD: an instance of hitting or being hit.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="hit"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="bullseye.n" ID="14120" lemmaID="50578" cBy="664" cDate="03/24/2007 03:39:13 PDT Sat">
+        <definition>COD: the centre of the target in sports such as archery and darts.  </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="bullseye"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="hole in one.n" ID="14122" lemmaID="50580" cBy="664" cDate="03/24/2007 03:40:43 PDT Sat">
+        <definition>COD: a shot that enters the hole from the tee.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="hole"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="PREP" name="in"/>
+        <lexeme order="3" headword="false" breakBefore="false" POS="N" name="one"/>
+    </lexUnit>
+</frame>

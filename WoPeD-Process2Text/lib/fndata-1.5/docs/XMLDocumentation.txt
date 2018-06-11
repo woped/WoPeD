@@ -1,0 +1,434 @@
+XML Release Notes for r1.5
+
+Release 1.5 features significant changes to the FrameNet XML formats.
+For the sake of clarity, this document is presented as a description
+of the new format more than as a description of changes relative to
+the old format.  Where changes in information content have occured,
+however, those will be highlighted.  We begin with an overview of
+features that apply generally across the different types of FrameNet
+XML documents, and then move on to those pertaining to particular
+document types.  The following is a brief table of contents:
+
+I.   Migration from DTD to XML Schema (XSD)
+
+II.  Replacement of static HTML with dynamic XSLT/Javascript reports
+     A. Supported web browsers
+     B. Unsupported web browsers
+     C. Issue with IE on Windows XP SP2+ or Windows Vista
+
+III. UTF-8 character encoding
+     A. BNC SGML entity translation
+
+IV.  Notes on particular document types
+     A. Frame reports
+     B. LU/LE reports
+     C. Fulltext reports
+     D. Frame relations report
+     E. Semantic types report
+     F. Meta-relations report
+
+V.   XML Diffs
+
+---------------------------------------------------------------------
+
+I. Migration from DTD to XML Schema (XSD)
+
+As of this release, FrameNet has migrated from DTD to XML Schema (XSD)
+for the purpose of XML schema definition.  An XSD file is provided for
+every XML document type included in this release.  The following
+definition files can be found in the top-level /schema directory:
+
+commonTypes.xsd      XSD files containing schema elements used
+header.xsd           by more than one XSD file.  These are not
+sentence.xsd         directly referenced by XML documents but are
+                     instead included by other XSD files.
+
+frame.xsd            XSD files for the 5 types of FrameNet XML data
+frameRelations.xsd   reports.
+fullText.xsd
+lexUnit.xsd
+semTypes.xsd
+
+frameIndex.xsd       XSD files for the three index files.
+luIndex.xsd
+fulltextIndex.xsd
+
+The code used to generate documents in these formats is auto-generated
+from the XSD files.  In addition, all our XML documents are validated
+according to these schema.  Users wishing to confirm validation can do
+so with any sufficiently up-to-date validator (must support XSD
+inclusion).
+
+Rather than outlining the structure of each of the XML document types
+here, we refer users to the XML Schema files provided with this
+release.
+
+---------------------------------------------------------------------
+
+II.  Replacement of static HTML with dynamic XSLT/Javascript reports
+
+Unlike earlier data releases, the current release does not include
+HTML versions of our documents.  Instead, each browsable XML document
+links to an XSLT stylesheet which uses a combination of XSLT and
+Javascript to dynamically render a visually user-friendly report. The
+processing is done client-side in the web browser.
+
+The user can view the dynamically generated report by going to File >
+Open File ... on a supported browser, and selecting an XML report.
+Good places to start are the indexes in the root of the data
+distribution.
+
+The following are some advantanges of this approach compared to static
+HTML:
+
+- Synchronization: because we no longer generate two versions of the
+  same report, there is no possibility of the two versions being
+  different.
+
+- Dynamic reports: certain reports have dynamic capabilities that were
+  previously only available either through server-side scripting on
+  the FrameNet public website or in internal (i.e. non-released)
+  server-side dynamic reports.
+
+- More information in the XML: because all information needed to
+  generate the human-friendly reports is included in the XML, users
+  have more information to work with for their own development.  For
+  example, in earlier releases, indexes were only provided in HTML
+  form.  Since in this release, they are XML, they can be more
+  reliably searched.
+
+- A smaller data release bundle: the HTML reports in release 1.3
+  occupied approximately 100MB of disk space.
+
+However, because XSLT/Javascript is a relatively recent technological
+development, standardization and support varies across browser types.
+
+The XSLT stylesheets are located in the same directory as its
+corresponding document type.  This relationship is required due to a
+configuration default on Firefox.  Users wishing to relocate the XSLT
+stylesheet relative to the XML reports may run into issues with
+Firefox.  Users copying or relocating XML files should take care to
+also copy the XSL file if they intend to view the dynamic reports.
+
+
+A. Supported web browsers
+
+The following are brower/platform combinations that have been tested
+and verified:
+
+Red Hat EL5: Firefox 3.0.16, 3.6.7
+Ubuntu 9.10: Firefox 3.5.9
+Windows XP: Firefox 3.6.3; IE 8.0.600**
+Windows Vista SP2: Firefox 3.0.14, 3.6.3; IE 8.0.6001**
+Windows 7: Firefox 3.6.3, IE 8.0.7600
+Mac OS X: Firefox 3.5.2; Safari 4.0.5, 5.0.1
+
+**For IE on Windows XP SP2+ and Vista, please see subsection C below.
+
+
+B. Unsupported web browsers
+
+The following are reasonably popular browsers that are not supported:
+
+Google Chrome: (on all platforms)
+- Reports an error saying that an unsafe URL load attempt is being made.
+- We consider this to be a bug in Chrome:
+     http://code.google.com/p/chromium/issues/detail?id=39616
+- This error only affects the opening of files from the local file-system.
+  If users set up a web server and access the XML files via http, Chrome
+  works fine.
+
+Opera: (on all platforms)
+- Works except for the Lexical entry report and the Fulltext reports
+- This appears to be due to a bug in Opera's rendering of HTML framesets
+
+
+C. Issue with IE on Windows XP SP2+ or Windows Vista
+
+When XML files are opened with IE on Windows XP SP2 or Vista, users
+will receive the following error message:
+
+"The XML page cannot be displayed: Cannot view XML input using XSL
+style sheet. Please correct the error and then click the Refresh
+button, or try again later. | Access is denied."
+
+This problem does not affect Windows 7 users.  The recommended
+(easiest) work-around for users of Windows XP SP2 and Vista is to use
+Firefox instead of IE.
+
+A detailed explanation of the cause of this problem, and alternate
+work-arounds is provided below:
+
+In Windows XP SP2+ and Windows Vista, Microsoft implemented a policy
+where files downloaded from the internet (any non local source) get
+marked with an NTFS named data stream called "Zone.Marking".  This
+stream contains the location where the file was downloaded. For
+example, if you download the Google Toolbar Installer, the executable
+would have the following Zone.Marking stream:
+
+[ ZoneTransfer ]
+ZoneUri=http://toolbar.google.com/data/
+en/big/current/GoogleToolbarInstaller.exe
+
+Each time you launch an executable (or script) from Explorer that has
+this named data stream, either on the same machine or from a network
+share, the security warning mentioned above is displayed.
+
+There are several options you can take to delete these streams from
+files.
+
+1.  Delete all streams with a Windows Sysinternals utility Streams
+    (http://technet.microsoft.com/en-us/sysinternals/bb897440.aspx)
+    Note that occasionally streams are used for other purposes than
+    zone marking, so there could be a problem with deleting all
+    streams.
+
+2.  Delete all streams with a non NTFS partition/drive.  Zone marking
+    is not used outside of NTFS, so moving the files to a FAT
+    partition (on a USB thumb drive, for example) and back will clear
+    the zone marking.  Same caveat as above.
+
+3.  Delete only Zone.Identifier streams using a program such as
+    AlternateStreamView
+    (http://www.nirsoft.net/utils/alternate_data_streams.html). You
+    can delete all streams marked "/:Zone.Identifier:$DATA/" for the
+    selected files to get rid of the security blocks.
+
+4. Clear the zone marking on each file individually
+   (properties->unblock button)
+
+A last option would be to turn off zone marking globally.  This is
+detailed here: http://www.petri.co.il/unblock-files-windows-vista.htm
+
+---------------------------------------------------------------------
+
+III. UTF-8 character encoding
+
+A number of users reported problems with the encoding of non-ASCII
+characters in the text of certain sentences.  For example, in some
+sentences, the pound character (£) appears as a y with an accute
+accent (ý).  In collaboration with DAC, this issue has largely been
+addressed.  Details are below.
+
+First, we have verified that the text of all sentences in our XML data
+release contain only valid Unicode characters.  This is to say that
+even where characters are incorrect, as in the example mentioned in
+the previous paragraph, they are valid Unicode (UTF-8) byte sequences.
+
+After filtering non-ASCII characters, DAC compared the sentence text
+in a previous data release to those in the World Edition of the BNC
+via regular expression pattern-matching. Of approximates 150k total
+sentences, DAC found that approximately 9000 did not match at all,
+3200 matched one sentence non-exactly, and 2200 matched multiple
+sentences non-exactly.  The remaining sentences matched a sentence in
+the BNC exactly.
+
+Based on the information sent to us from DAC, we fixed 3300 sentences
+from the unique non-exact match and the multiple non-exact match
+categories (i.e. 3300 out of 5400).  The majority of sentences in
+DAC's multiple match category were due to the sentence being short or
+duplicated in the corpus, and did not contain corrupted characters.
+If we estimate the corruption rate based on DACs findings at 2.3%
+(assume that all the non-exact one sentences matches contain corrupted
+characters), we would expect there to be still something on the order
+of 200 sentences remaining in our data, if sentences containing bad
+characters is uniformly distributed, which is on the order of .1%.
+
+We have determined that the corrupt characters came from incomplete
+Unicode support and legacy code in our import pipeline, which was
+originally put into place before Unicode was widely adopted.  We plan
+to revamp the import pipeline, as well as fix the remaining estimated
+.1% of sentences containing corrupted characters by the next data
+release.
+
+A. BNC SGML entity translation
+
+The British National Corpus uses a number of SGML entities that have
+no standardized UTF-8 counterpart.  Those entities have been
+translated as follows:
+
+    &bquo;    ->      &ldquo; 
+    &equo;    ->      &rdquo;
+    &scedil;  ->      LATIN SMALL LETTER S WITH CEDILLA
+    &tcedil;  ->      LATIN SMALL LETTER T WITH CEDILLA
+    &lsqb;    ->      [ 
+    &rsqb;    ->      ]
+    &Bgr;     ->      &Beta;
+    &bgr;     ->      &beta;
+    &rehy;    ->      - 
+    &dollar;  ->      $
+    &agr;     ->      &alpha;
+    &egr;     ->      &epsilon;
+    &Egr;     ->      &Epsilon;
+    &mgr;     ->      &mu;
+    &dgr;     ->      &delta;
+    &Dgr;     ->      &Delta;
+    &khgr;    ->      &chi;
+    &phgr;    ->      &phi;
+    &lgr;     ->      &lambda;
+    &ggr;     ->      &gamma;
+    &rgr;     ->      &rho;
+    &cir;     ->      WHITE CIRCLE
+    &ccaron;  ->      LATIN SMALL LETTER C WITH CARON
+    &ecaron;  ->      LATIN SMALL LETTER E WITH CARON
+    &ncaron;  ->      LATIN SMALL LETTER N WITH CARON
+    &rcaron;  ->      LATIN SMALL LETTER R WITH CARON
+    &zcaron;  ->      LATIN SMALL LETTER Z WITH CARON
+    &Zcaron;  ->      LATIN CAPITAL LETTER Z WITH CARON
+    &ins;     ->      &Prime;
+    &ft;      ->      &prime;
+    &amacr;   ->      LATIN SMALL LETTER A WITH MACRON
+    &lcub;    ->      {
+    &rcub;    ->      }
+    &cacute;  ->      LATIN SMALL LETTER C WITH ACUTE
+    &nacute;  ->      LATIN SMALL LETTER N WITH ACUTE
+    &Sacute;  ->      LATIN CAPITAL LETTER S WITH ACUTE
+    &verbar;  ->      |
+    &sol;     ->      /      
+    &shilling;  ->    /      
+    &frac18;  ->      VULGAR FRACTION ONE EIGHTH
+    &frac38;  ->      VULGAR FRACTION THREE EIGHTHS
+    &dstrok;  ->      LATIN SMALL LETTER D WITH STROKE
+    &plus;    ->      +
+    &commat;  ->      @
+    &scirc;   ->      LATIN SMALL LETTER S WITH CIRCUMFLEX
+    &Ycirc;   ->      LATIN CAPITAL LETTER Y WITH CIRCUMFLEX
+    &ape;     ->      ALMOST EQUAL OR EQUAL TO
+
+Sentences containing these characters may have appeared in earlier
+releases with a gap or a ? in place of the correct character. This
+problem has been largely fixed in this release.
+
+---------------------------------------------------------------------
+
+IV.  Notes on particular document types
+
+Apart from the functional changes described above, a couple general
+principles have been applied over all the XML formats.  First, we have
+standardized on intercapping rather than dash-separation for both
+element and attribute names.  The first letter of the element of
+attribute is lowercase.  An exception is that all letters of
+acronymns, initialisms, and standard abbreviations will always be
+capitalized.  This principle has not been applied to file or directory
+names in the data release.  Specifically, users may find that index
+files, which are named after the directory they index, break this
+pattern, due to directory names being consistently lower case.
+
+Previous formats implemented a scheme whereby possibly many tags of
+the same type were grouped within a container whose name was the
+plural form of name of its constituents. For example, all the <label>
+tags were contained in a <labels> container. This scheme was
+determined to be unnecessary, making the files more difficult to parse
+programmatically, and not much easier either for humans to read.  In
+this release, container elements deemed unnecessary have been removed.
+
+
+A. Frame reports
+
+The most readily noticeable change to the frame report is that it has
+been split into separate files such that there is one XML file per
+frame.  Along with this change, an XML frame index has been added to
+facilitate searching.
+
+Frame and FE definitions in the previous version of the frames XML
+report were processed so that FE markup appears in a more readable
+way.  The effect of this stripping, however, was that the definitions
+in the XML contained less information than that in the corresponding
+HTML reports.  As of this release, the Frame and FE definitions in the
+XML contain all the information in our database.  This also enables
+the new XSLT/Javascript view generation system to display the
+equivalent of the old HTML reports from the data in the XML, without
+reference back to our database.
+
+Formerly, the HTML frame reports included a section in which frame
+relations pertinent to that frame where listed, along with the name of
+the related frame.  This information is now contained in the XML.
+
+Coreness Set, or CoreSet, information, which was not available in
+earlier XML formats, has been added to the frame XML report. It is
+also displayed in the XSLT/Javascript views.
+
+FE elements may now optionally contain <requiresFE> and <excludesFE>
+elements which encode the requires and excludes relations between FEs
+in the same frame.
+
+
+B. LU/LE reports
+
+Earlier versions of the FrameNet data provided two types of XML
+reports (annotation and lexical entry) for each lexical unit, each
+with a corresponding HTML view.  The content in these two types have
+been merged into a single XML document type, from which both views are
+now generated.
+
+XML annotation reports are no longer provided as two versions where
+one contains part of speech tags and the other doesn't. We now provide
+only the version which contains the POS tags.  Furthermore, POS tags
+are presented as labels on layers in annotation sets in the same way
+that FrameNet annotation is presented.  Thus, no special parsing is
+necessary to read POS labels.
+
+The XML format has also been changed to increase consistency between
+lexicographic and fulltext annotation reports.  For example, in
+earlier releases, <sentence> elements in the lexicographic reports
+were contained inside <annotationSet> elements, whereas in fulltext
+reports <annotationSet> elements were contained inside <sentence>
+elements.  In the new format, <annotationSet> elements are contained
+in <sentence> elements in both types of XML.  This simplifies the
+parsing of these XML formats, as users can use the same <sentence>
+parser to parse sentences found in either document type.
+
+The format has been augmented with a header which contains information
+about the sources of the sentences found in the report (corpus,
+document, etc.)  Most of the information that is currently there is
+not useful as document meta-data was not preserved for a large portion
+of the duration of the FrameNet project. However, we intend to remedy
+this in the future, and this change represents a step in that
+direction.
+
+
+C. Fulltext reports
+
+Starting with this release, the fulltext reports are broken up, one
+file per doecument.  The main purpose of this change was to make file
+sizes more manageable.  The fulltext reports now also include POS tags
+and annotation on the Word Status Layer (WSL).
+
+To increase consistency with the other annotation report type
+(lexicographic), the fulltext annotation report now places document
+meta-data (corpus name, document name) in a header.  This allows
+<sentence> elements to be listed under the document root, which also
+simplifies parsing.
+
+
+D. Frame relations report
+
+The information content of this report has not changed.  The XML
+format has been changed slightly: elements have been renamed to
+conform to the same scheme used by the rest of the XML documents, and
+unnecessary container elements have been removed.
+
+
+E. Semantic types report
+
+No changes worth mentioning have been made to the semantic types
+report.
+
+
+F. Meta-relations report
+
+Meta relations have been removed, and this report has been
+discontinued.
+
+
+---------------------------------------------------------------------
+
+V.  XML Diffs
+
+Due to the large-scale changes made to the XML formats, we have
+decided to release R1.5 without providing diffs to the previous
+release.  We are currently investigating 3rd party XML diff solutions.
+As of yet we are undecided as to if or how we will support this
+functionality.  Users affected by the absence of diffs in the release
+are encouraged to contact us.
+

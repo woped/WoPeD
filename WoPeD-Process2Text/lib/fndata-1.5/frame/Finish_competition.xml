@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="08/15/2003 07:55:30 PDT Fri" name="Finish_competition" ID="798" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A &lt;fen&gt;Competition&lt;/fen&gt; comes to an end, with a &lt;fen&gt;Competitor&lt;/fen&gt; tying, winning, or losing against an &lt;fen&gt;Opponent&lt;/fen&gt; (or opponents) according to their &lt;fen&gt;Score&lt;/fen&gt;.  (In the symmetrical situation of a tie, the &lt;fen&gt;Competitor&lt;/fen&gt; and &lt;fen&gt;Opponent&lt;/fen&gt; may be jointly mentioned as &lt;fen&gt;Competitors&lt;/fen&gt;.)  According to the &lt;fen&gt;Score&lt;/fen&gt; that the &lt;fen&gt;Competitor&lt;/fen&gt; and &lt;fen&gt;Opponent&lt;/fen&gt; have achieved, they may receive a &lt;fen&gt;Rank&lt;/fen&gt; or a &lt;fen&gt;Prize&lt;/fen&gt;.  The &lt;fen&gt;Margin&lt;/fen&gt; may also be mentioned.
+
+&lt;ex&gt;Unbelievable--&lt;fex name="Competitor"&gt;he&lt;/fex&gt; &lt;t&gt;lost&lt;/t&gt; &lt;fex name="Prize"&gt;the gold medal&lt;/fex&gt; &lt;fex name="Margin"&gt;by just .02 points&lt;/fex&gt;!&lt;/ex&gt;
+&lt;ex&gt;Looks like it will came to a &lt;t&gt;draw&lt;/t&gt; &lt;fex name="Competitors"&gt;between Woods and Stephenson&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="10/17/2003 09:46:17 PDT Fri" abbrev="" name="Competitor" ID="5664">
+        <definition>&lt;def-root&gt;The individual involved in the &lt;fen&gt;Competition&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+        <excludesFE name="Competitors" ID="5666"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="10/17/2003 09:47:20 PDT Fri" abbrev="" name="Opponent" ID="5665">
+        <definition>&lt;def-root&gt;The individual that the &lt;fen&gt;Competitor&lt;/fen&gt; has been competing against.&lt;/def-root&gt;</definition>
+        <requiresFE name="Competitor" ID="5664"/>
+        <excludesFE name="Competitors" ID="5666"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="10/17/2003 09:48:32 PDT Fri" abbrev="" name="Competitors" ID="5666">
+        <definition>&lt;def-root&gt;The individuals who compete against each other.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="10/17/2003 09:49:15 PDT Fri" abbrev="" name="Score" ID="5667">
+        <definition>&lt;def-root&gt;A quantity whereby progress is measured during the game, and Rank and &lt;fen&gt;Prize&lt;/fen&gt;s are awarded to the &lt;fen&gt;Competitors&lt;/fen&gt; afterward.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="10/17/2003 09:52:48 PDT Fri" abbrev="mar" name="Margin" ID="5668">
+        <definition>&lt;def-root&gt;The amount by which the &lt;fen&gt;Competitor&lt;/fen&gt;'s and &lt;fen&gt;Opponent&lt;/fen&gt;'s &lt;fen&gt;Score&lt;/fen&gt;s differ.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="10/17/2003 09:54:10 PDT Fri" abbrev="" name="Rank" ID="5669">
+        <definition>&lt;def-root&gt;The rank (according to &lt;fen&gt;Score&lt;/fen&gt;) that a &lt;fen&gt;Competitor&lt;/fen&gt; acheives.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="10/17/2003 09:55:01 PDT Fri" abbrev="" name="Prize" ID="5670">
+        <definition>&lt;def-root&gt;A socially and/or monetarily significant entity which is given to a &lt;fen&gt;Competitor&lt;/fen&gt; according to &lt;fen&gt;Score&lt;/fen&gt; or &lt;fen&gt;Rank&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="10/17/2003 09:57:01 PDT Fri" abbrev="" name="Competition" ID="5671">
+        <definition>&lt;def-root&gt;The event in which the &lt;fen&gt;Competitors&lt;/fen&gt; compete with each other.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="10/17/2003 10:01:55 PDT Fri" abbrev="" name="Means" ID="5672">
+        <definition>&lt;def-root&gt;An action of the &lt;fen&gt;Competitor&lt;/fen&gt; that results in the outcome of the &lt;fen&gt;Competition&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="10/17/2003 10:02:46 PDT Fri" abbrev="" name="Manner" ID="5673">
+        <definition>&lt;def-root&gt;Any description of the &lt;fen&gt;Competition&lt;/fen&gt; which is not covered by more specific FEs, including epistemic modification (probably, presumably, mysteriously), secondary effects (quietly, loudly), and general descriptions comparing events (the same way). It may also indicate salient characteristics of a &lt;fen&gt;Competitor&lt;/fen&gt; that also affect their action (presumptuously, coldly, deliberately, eagerly, carefully). &lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="10/17/2003 10:05:00 PDT Fri" abbrev="" name="Time" ID="5674">
+        <definition>&lt;def-root&gt;The time at which the &lt;fen&gt;Competition&lt;/fen&gt; takes place.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="10/17/2003 10:05:44 PDT Fri" abbrev="" name="Place" ID="5675">
+        <definition>&lt;def-root&gt;The location at which the &lt;fen&gt;Competition&lt;/fen&gt; takes place.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="A9A9A9" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="10/17/2003 10:06:51 PDT Fri" abbrev="" name="Venue" ID="5676">
+        <definition>&lt;def-root&gt;This FE is for the named venue of a competition, particularly when the place has been built for the purpose of a competition.
+&lt;ex&gt;The Mets &lt;t&gt;won&lt;/t&gt; against the Yankees  &lt;fex name="Venue"&gt;at Shea Stadium&lt;/fex&gt;.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="90876C" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="03/19/2007 03:12:30 PDT Mon" abbrev="Par" name="Particular_iteration" ID="11237">
+        <definition>&lt;def-root&gt;Expressions marked with this extra-thematic FE modify a non-iterative use of the target, and indicate that it is conceived as embedded within an iterated series of similar events or states. &lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Finish_game</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in">
+        <relatedFrame>Win_prize</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Uses">
+        <relatedFrame>Success_or_failure</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Win_prize</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of">
+        <relatedFrame>Competition</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Created" POS="N" name="win.n" ID="9827" lemmaID="44197" cBy="664" cDate="10/17/2003 10:10:13 PDT Fri">
+        <definition>COD: a victory, especially in a game or contest</definition>
+        <sentenceCount annotated="89" total="460"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="win"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="victorious.a" ID="9829" lemmaID="42998" cBy="664" cDate="10/17/2003 10:14:42 PDT Fri">
+        <definition>COD: having won a victory; triumphant</definition>
+        <sentenceCount annotated="24" total="111"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="victorious"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="winner.n" ID="9830" lemmaID="44258" cBy="664" cDate="10/17/2003 10:15:10 PDT Fri">
+        <definition>COD: a person or thing that wins.</definition>
+        <sentenceCount annotated="86" total="525"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="winner"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="victory.n" ID="9831" lemmaID="43000" cBy="664" cDate="10/17/2003 10:19:55 PDT Fri">
+        <definition>COD: an act of defeating an enemy or opponent in a battle, game, or competition.</definition>
+        <sentenceCount annotated="59" total="478"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="victory"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="lose.v" ID="9832" lemmaID="22797" cBy="664" cDate="10/17/2003 10:21:56 PDT Fri">
+        <definition>COD:  fail to win.</definition>
+        <sentenceCount annotated="20" total="232"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="lose"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="loss.n" ID="9833" lemmaID="22799" cBy="664" cDate="10/17/2003 10:22:52 PDT Fri">
+        <definition>COD: a defeat in sport.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="loss"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="tie.v" ID="9834" lemmaID="40394" cBy="664" cDate="10/17/2003 10:24:05 PDT Fri">
+        <definition>COD:  achieve the same score or ranking as another competitor. </definition>
+        <sentenceCount annotated="6" total="208"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="tie"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="tie.n" ID="9835" lemmaID="40393" cBy="664" cDate="10/17/2003 10:25:21 PDT Fri">
+        <definition>COD:  a result in a game or match in which two or more competitors have tied</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="tie"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="victor.n" ID="9836" lemmaID="42993" cBy="664" cDate="10/17/2003 10:29:21 PDT Fri">
+        <definition>COD: a person who defeats an enemy or opponent in a battle, game, or competition</definition>
+        <sentenceCount annotated="34" total="152"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="victor"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="draw.n" ID="11186" lemmaID="11713" cBy="303" cDate="11/18/2004 04:10:57 PST Thu">
+        <definition>COD: a game or match that ends with the scores even.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="draw"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="V" name="show.v" ID="15237" lemmaID="35686" cBy="597" cDate="08/15/2008 10:49:04 PDT Fri">
+        <definition>FN: to finish third in a race</definition>
+        <sentenceCount annotated="0" total="75"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="show"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="win.v" ID="15569" lemmaID="44198" cBy="976" cDate="12/15/2009 02:47:09 PST Tue">
+        <definition>FN: be victorious</definition>
+        <sentenceCount annotated="21" total="21"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="win"/>
+    </lexUnit>
+</frame>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="08/21/2001 07:54:01 PDT Tue" name="Commerce_goods-transfer" ID="211" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;The subframe of the Commercial_transaction in which the Seller gives the Goods to the Buyer (in exchange for the Money).&lt;/def-root&gt;</definition>
+    <semType name="Non-Lexical Frame" ID="16"/>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="08/21/2001 07:56:24 PDT Tue" abbrev="Byr" name="Buyer" ID="1699">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Buyer&lt;/fen&gt; wants the &lt;fen&gt;Goods&lt;/fen&gt; and offers &lt;fen&gt;Money&lt;/fen&gt; to a &lt;fen&gt;Seller&lt;/fen&gt; in exchange for them.
+&lt;ex&gt;&lt;fex name="Buyer"&gt;Jess&lt;/fex&gt; &lt;t&gt;bought&lt;/t&gt; a coat.&lt;/ex&gt;
+&lt;ex&gt;Lee &lt;t&gt;sold&lt;/t&gt; a textbook &lt;fex name="Buyer"&gt;to Abby&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Exchangers" ID="7224"/>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="08/21/2001 07:56:24 PDT Tue" abbrev="Gds" name="Goods" ID="1700">
+        <definition>&lt;def-root&gt;The FE Goods is anything (including labor or time, for example) which is exchanged for Money in a transaction. 
+&lt;ex&gt;Kim &lt;t&gt;bought&lt;/t&gt; &lt;fex name="Goods"&gt;the sweater&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;Kim &lt;t&gt;sold&lt;/t&gt; &lt;fex name="Goods"&gt;the sweater&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="08/21/2001 07:56:24 PDT Tue" abbrev="Mns" name="Means" ID="1701">
+        <definition>&lt;def-root&gt;The means by which a commercial transaction occurs.
+Abby &lt;t&gt;bought&lt;/t&gt; the car &lt;fex name="Means"&gt;with cash&lt;/fex&gt;.
+Robin &lt;t&gt;paid&lt;/t&gt; for the car &lt;fex name="Means"&gt;by check&lt;/fex&gt;.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="006400" coreType="Core" cBy="664" cDate="08/21/2001 07:56:24 PDT Tue" abbrev="Mny" name="Money" ID="1702">
+        <definition>&lt;def-root&gt;Money is the thing given in exchange for Goods in a transaction.
+&lt;ex&gt;Pat &lt;t&gt;paid&lt;/t&gt; &lt;fex name="Money"&gt;14 dollars&lt;/fex&gt; for a movie ticket.&lt;/ex&gt;
+&lt;ex&gt;Sam &lt;t&gt;sold&lt;/t&gt; the car &lt;fex name="Money"&gt;for $12,000&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="08/21/2001 07:56:24 PDT Tue" abbrev="Rate" name="Rate" ID="1703">
+        <definition>&lt;def-root&gt;In some cases, price or payment is described per unit of Goods.
+&lt;ex&gt;The manager &lt;t&gt;pays&lt;/t&gt; the paper boys &lt;fex name="Rate"&gt;five dollars an hour&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="08/21/2001 07:56:24 PDT Tue" abbrev="Slr" name="Seller" ID="1704">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Seller&lt;/fen&gt; has possession of the &lt;fen&gt;Goods&lt;/fen&gt; and exchanges them for &lt;fen&gt;Money&lt;/fen&gt; from a &lt;fen&gt;Buyer&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <excludesFE name="Exchangers" ID="7224"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="08/21/2001 07:56:24 PDT Tue" abbrev="Unit" name="Unit" ID="1705">
+        <definition>&lt;def-root&gt;This FE is any unit in which goods or services can be measured.
+Generally, it occurs in a &lt;ment&gt;by&lt;/ment&gt;-PP. 
+&lt;ex&gt;Bob &lt;t&gt;sells&lt;/t&gt; peppers &lt;fex name="Unit"&gt;by the pound&lt;/fex&gt;. &lt;/ex&gt;
+&lt;ex&gt;Lee &lt;t&gt;buys&lt;/t&gt; potatoes &lt;fex name="Unit"&gt;by the pound&lt;/fex&gt;. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="08/21/2001 08:07:06 PDT Tue" abbrev="Time" name="Time" ID="1709">
+        <definition>&lt;def-root&gt;When the event occurs.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="08/21/2001 08:07:22 PDT Tue" abbrev="Place" name="Place" ID="1710">
+        <definition>&lt;def-root&gt;Where the event takes place.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="08/21/2001 08:51:26 PDT Tue" abbrev="Reas" name="Reason" ID="1743">
+        <definition>&lt;def-root&gt;The Reason for which an event occurs.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="d0d0d0" fgColor="000000" coreType="Peripheral" cBy="309" cDate="08/02/2004 10:32:26 PDT Mon" abbrev="" name="Manner" ID="6986">
+        <definition>&lt;def-root&gt;A description of the transfer not covered by more specific FEs, including secondary effects (&lt;ment&gt;quietly, loudly&lt;/ment&gt;) and general descriptions comparing events (&lt;ment&gt;the same way&lt;/ment&gt;). In addition, it may indicate salient characteristics of a &lt;fen&gt;Buyer&lt;/fen&gt;, &lt;fen&gt;Seller&lt;/fen&gt;, or &lt;fen&gt;Exchangers&lt;/fen&gt; that also affect the action (&lt;ment&gt;presumptuously, coldly, deliberately, eagerly, carefully&lt;/ment&gt;).&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="000000" coreType="Peripheral" cBy="309" cDate="08/02/2004 10:32:26 PDT Mon" abbrev="" name="Purpose" ID="6987">
+        <definition>&lt;def-root&gt;The state-of-affairs that the &lt;fen&gt;Buyer&lt;/fen&gt;, &lt;fen&gt;Seller&lt;/fen&gt;, or &lt;fen&gt;Exchangers&lt;/fen&gt; wish to bring about by participating in the exchange.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="11/15/2004 10:41:21 PST Mon" abbrev="exch" name="Exchangers" ID="7224">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Buyer&lt;/fen&gt; and &lt;fen&gt;Seller&lt;/fen&gt; considered jointly.&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Transfer</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in">
+        <relatedFrame>Commerce_buy</relatedFrame>
+        <relatedFrame>Commerce_sell</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Product_delivery</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of">
+        <relatedFrame>Commercial_transaction</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+</frame>

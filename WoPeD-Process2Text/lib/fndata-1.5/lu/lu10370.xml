@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" incorporatedFE="Attribute" POS="A" name="cold.a" ID="10370" frame="Ambient_temperature" frameID="1052" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="Orwell" ID="3">
+            <document description="Orwell_1984_p1" ID="7"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Core" abbrev="att" name="Attribute"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="con" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Core" abbrev="deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="pl" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="tem" name="Temperature"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Core" abbrev="tim" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="" name="Weather"/>
+        </frame>
+    </header>
+    <definition>FN: having an environment with a low temperature</definition>
+    <lexeme POS="A" name="cold"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Attribute"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="--" FE="Attribute"/>
+                <annoSet ID="1992373"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="N" FE="Time"/>
+                <annoSet ID="1992373"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Attribute"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="--" FE="Attribute"/>
+                <valenceUnit GF="Head" PT="N" FE="Time"/>
+                <annoSet ID="1992373"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="manually-added">
+        <sentence corpID="3" docID="7" sentNo="1" paragNo="1" aPos="0" ID="312901">
+            <text>It was a bright cold day in April , and the clocks were striking thirteen .</text>
+            <annotationSet cDate="01/06/2003 10:55:06 PST Mon" status="UNANN" ID="269177">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="5" start="3" name="VBD"/>
+                    <label end="7" start="7" name="AT0"/>
+                    <label end="14" start="9" name="AJ0"/>
+                    <label end="19" start="16" name="AJ0"/>
+                    <label end="23" start="21" name="NN1"/>
+                    <label end="26" start="25" name="PRP"/>
+                    <label end="32" start="28" name="NP0"/>
+                    <label end="34" start="34" name="PUN"/>
+                    <label end="38" start="36" name="CJC"/>
+                    <label end="42" start="40" name="AT0"/>
+                    <label end="49" start="44" name="NN2"/>
+                    <label end="54" start="51" name="VBD"/>
+                    <label end="63" start="56" name="VVG"/>
+                    <label end="72" start="65" name="CRD"/>
+                    <label end="74" start="74" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/20/2004 12:55:47 PDT Tue" status="MANUAL" ID="1992373">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="19" start="16" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="6192" end="23" start="21" name="Time"/>
+                    <label cBy="589" feID="6189" end="19" start="16" name="Attribute"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="23" start="21" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="23" start="21" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

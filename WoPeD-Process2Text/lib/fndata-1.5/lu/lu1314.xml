@@ -1,0 +1,721 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="FN1_Sent" POS="V" name="spy.v" ID="1314" frame="Perception_active" frameID="66" totalAnnotated="11" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Core-Unexpressed" abbrev="BodP" name="Body_part"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="State" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Core-Unexpressed" abbrev="Dir" name="Direction"/>
+            <FE fgColor="000000" bgColor="d0d0d0" type="Peripheral" abbrev="Dur" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Extra-Thematic" abbrev="exp" name="Expected_entity"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Peripheral" abbrev="Ground" name="Ground"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="Loc_Perc" name="Location_of_perceiver"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="000000" bgColor="7FFF00" type="Peripheral" abbrev="O_m" name="Obscuring_medium"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="per" name="Perceiver_agentive"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Phen" name="Phenomenon"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="State" name="State"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: observe furtively</definition>
+    <lexeme POS="V" name="spy"/>
+    <semType name="Visual_modality" ID="94"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Depictive"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Depictive"/>
+                <annoSet ID="451418"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Direction"/>
+            <pattern total="4">
+                <valenceUnit GF="Dep" PT="PP[through]" FE="Direction"/>
+                <annoSet ID="451184"/>
+                <annoSet ID="451192"/>
+                <annoSet ID="451196"/>
+                <annoSet ID="451418"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[along]" FE="Direction"/>
+                <annoSet ID="451304"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Location_of_perceiver"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[from]" FE="Location_of_perceiver"/>
+                <annoSet ID="451184"/>
+                <annoSet ID="451292"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="11">
+            <FE name="Perceiver_agentive"/>
+            <pattern total="11">
+                <valenceUnit GF="Ext" PT="NP" FE="Perceiver_agentive"/>
+                <annoSet ID="451102"/>
+                <annoSet ID="451136"/>
+                <annoSet ID="451150"/>
+                <annoSet ID="451168"/>
+                <annoSet ID="451184"/>
+                <annoSet ID="451192"/>
+                <annoSet ID="451196"/>
+                <annoSet ID="451292"/>
+                <annoSet ID="451304"/>
+                <annoSet ID="451378"/>
+                <annoSet ID="451418"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="9">
+            <FE name="Phenomenon"/>
+            <pattern total="2">
+                <valenceUnit GF="Obj" PT="NP" FE="Phenomenon"/>
+                <annoSet ID="451378"/>
+                <annoSet ID="451418"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Phenomenon"/>
+                <annoSet ID="451192"/>
+                <annoSet ID="451304"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Phenomenon"/>
+                <annoSet ID="451292"/>
+            </pattern>
+            <pattern total="4">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Phenomenon"/>
+                <annoSet ID="451102"/>
+                <annoSet ID="451136"/>
+                <annoSet ID="451150"/>
+                <annoSet ID="451168"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Depictive"/>
+            <FE name="Direction"/>
+            <FE name="Perceiver_agentive"/>
+            <FE name="Phenomenon"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Depictive"/>
+                <valenceUnit GF="Dep" PT="PP[through]" FE="Direction"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Perceiver_agentive"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Phenomenon"/>
+                <annoSet ID="451418"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Direction"/>
+            <FE name="Location_of_perceiver"/>
+            <FE name="Perceiver_agentive"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[through]" FE="Direction"/>
+                <valenceUnit GF="Dep" PT="PP[from]" FE="Location_of_perceiver"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Perceiver_agentive"/>
+                <annoSet ID="451184"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Direction"/>
+            <FE name="Perceiver_agentive"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[through]" FE="Direction"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Perceiver_agentive"/>
+                <annoSet ID="451196"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Direction"/>
+            <FE name="Perceiver_agentive"/>
+            <FE name="Phenomenon"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[along]" FE="Direction"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Perceiver_agentive"/>
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Phenomenon"/>
+                <annoSet ID="451304"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[through]" FE="Direction"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Perceiver_agentive"/>
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Phenomenon"/>
+                <annoSet ID="451192"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Location_of_perceiver"/>
+            <FE name="Perceiver_agentive"/>
+            <FE name="Phenomenon"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[from]" FE="Location_of_perceiver"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Perceiver_agentive"/>
+                <valenceUnit GF="" PT="INI" FE="Phenomenon"/>
+                <annoSet ID="451292"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="5">
+            <FE name="Perceiver_agentive"/>
+            <FE name="Phenomenon"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Perceiver_agentive"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Phenomenon"/>
+                <annoSet ID="451378"/>
+            </pattern>
+            <pattern total="4">
+                <valenceUnit GF="Ext" PT="NP" FE="Perceiver_agentive"/>
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Phenomenon"/>
+                <annoSet ID="451102"/>
+                <annoSet ID="451136"/>
+                <annoSet ID="451150"/>
+                <annoSet ID="451168"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-480-swh"/>
+    <subCorpus name="V-680-pass"/>
+    <subCorpus name="V-730-ppamongst"/>
+    <subCorpus name="V-730-pparound"/>
+    <subCorpus name="V-730-ppin"/>
+    <subCorpus name="V-730-ppinto"/>
+    <subCorpus name="V-730-ppon">
+        <sentence sentNo="0" aPos="11705494" ID="404387">
+            <text>Both sides were spying on each other quite openly in the course of which many aggressive situations had occurred with loss of spy aircraft and their crews . </text>
+            <annotationSet cDate="01/07/2003 02:36:10 PST Tue" status="UNANN" ID="451101">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="DT0"/>
+                    <label end="9" start="5" name="NN2"/>
+                    <label end="14" start="11" name="VBD"/>
+                    <label end="21" start="16" name="VVG"/>
+                    <label end="24" start="23" name="PRP"/>
+                    <label end="29" start="26" name="PNX"/>
+                    <label end="35" start="31" name="PNX"/>
+                    <label end="41" start="37" name="AV0"/>
+                    <label end="48" start="43" name="AV0"/>
+                    <label end="51" start="50" name="PRP"/>
+                    <label end="55" start="53" name="AT0"/>
+                    <label end="62" start="57" name="NN1"/>
+                    <label end="65" start="64" name="PRF"/>
+                    <label end="71" start="67" name="DTQ"/>
+                    <label end="76" start="73" name="DT0"/>
+                    <label end="87" start="78" name="AJ0"/>
+                    <label end="98" start="89" name="NN2"/>
+                    <label end="102" start="100" name="VHD"/>
+                    <label end="111" start="104" name="VVN"/>
+                    <label end="116" start="113" name="PRP"/>
+                    <label end="121" start="118" name="NN1"/>
+                    <label end="124" start="123" name="PRF"/>
+                    <label end="128" start="126" name="NN1"/>
+                    <label end="137" start="130" name="NN0"/>
+                    <label end="141" start="139" name="CJC"/>
+                    <label end="147" start="143" name="DPS"/>
+                    <label end="153" start="149" name="NN2"/>
+                    <label end="155" start="155" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:36:10 PST Tue" status="MANUAL" ID="451102">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="301" end="9" start="0" name="Perceiver_agentive"/>
+                    <label cBy="103" feID="302" end="35" start="23" name="Phenomenon"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="9" start="0" name="Ext"/>
+                    <label end="35" start="23" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="9" start="0" name="NP"/>
+                    <label end="35" start="23" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="21" start="16" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="88598095" ID="404404">
+            <text>My own wife spies on me . </text>
+            <annotationSet cDate="01/07/2003 02:36:12 PST Tue" status="UNANN" ID="451135">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="DPS"/>
+                    <label end="5" start="3" name="DT0"/>
+                    <label end="10" start="7" name="NN1"/>
+                    <label end="16" start="12" name="NN2-VVZ"/>
+                    <label end="19" start="18" name="PRP"/>
+                    <label end="22" start="21" name="PNP"/>
+                    <label end="24" start="24" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:36:12 PST Tue" status="MANUAL" ID="451136">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="301" end="10" start="0" name="Perceiver_agentive"/>
+                    <label cBy="103" feID="302" end="22" start="18" name="Phenomenon"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="10" start="0" name="Ext"/>
+                    <label end="22" start="18" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="10" start="0" name="NP"/>
+                    <label end="22" start="18" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="16" start="12" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="19024847" ID="404411">
+            <text>Apparently Ziegfeld spied on rehearsals by watching through a peephole in the wall . </text>
+            <annotationSet cDate="01/07/2003 02:36:13 PST Tue" status="UNANN" ID="451149">
+                <layer rank="1" name="BNC">
+                    <label end="9" start="0" name="NP0"/>
+                    <label end="18" start="11" name="NP0"/>
+                    <label end="24" start="20" name="VVD"/>
+                    <label end="27" start="26" name="PRP"/>
+                    <label end="38" start="29" name="NN2"/>
+                    <label end="41" start="40" name="PRP"/>
+                    <label end="50" start="43" name="VVG"/>
+                    <label end="58" start="52" name="PRP"/>
+                    <label end="60" start="60" name="AT0"/>
+                    <label end="69" start="62" name="NN1"/>
+                    <label end="72" start="71" name="PRP"/>
+                    <label end="76" start="74" name="AT0"/>
+                    <label end="81" start="78" name="NN1"/>
+                    <label end="83" start="83" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:36:13 PST Tue" status="MANUAL" ID="451150">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="301" end="18" start="11" name="Perceiver_agentive"/>
+                    <label cBy="103" feID="302" end="38" start="26" name="Phenomenon"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="18" start="11" name="Ext"/>
+                    <label end="38" start="26" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="18" start="11" name="NP"/>
+                    <label end="38" start="26" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="24" start="20" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="87358640" ID="404420">
+            <text>I told you that somebody had been spying on Topaz , then on Bobbie and me . </text>
+            <annotationSet cDate="01/07/2003 02:36:14 PST Tue" status="UNANN" ID="451167">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PNP"/>
+                    <label end="5" start="2" name="VVD"/>
+                    <label end="9" start="7" name="PNP"/>
+                    <label end="14" start="11" name="CJT"/>
+                    <label end="23" start="16" name="PNI"/>
+                    <label end="27" start="25" name="VHD"/>
+                    <label end="32" start="29" name="VBN"/>
+                    <label end="39" start="34" name="VVG"/>
+                    <label end="42" start="41" name="PRP"/>
+                    <label end="48" start="44" name="NP0"/>
+                    <label end="50" start="50" name="PUN"/>
+                    <label end="55" start="52" name="AV0"/>
+                    <label end="58" start="57" name="PRP"/>
+                    <label end="65" start="60" name="NP0"/>
+                    <label end="69" start="67" name="CJC"/>
+                    <label end="72" start="71" name="PNP"/>
+                    <label end="74" start="74" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:36:14 PST Tue" status="MANUAL" ID="451168">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="301" end="23" start="16" name="Perceiver_agentive"/>
+                    <label cBy="103" feID="302" end="72" start="41" name="Phenomenon"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="23" start="16" name="Ext"/>
+                    <label end="72" start="41" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="23" start="16" name="NP"/>
+                    <label end="72" start="41" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="39" start="34" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-730-ppthrough">
+        <sentence sentNo="0" aPos="39077342" ID="404428">
+            <text>Carnelian , spying through the eye-screen from wherever , had immediately begun withdrawing the hydra into the warp of Chaos to save it from extinction . </text>
+            <annotationSet cDate="01/07/2003 02:36:15 PST Tue" status="UNANN" ID="451183">
+                <layer rank="1" name="BNC">
+                    <label end="8" start="0" name="NN1-NP0"/>
+                    <label end="10" start="10" name="PUN"/>
+                    <label end="17" start="12" name="VVG"/>
+                    <label end="25" start="19" name="PRP"/>
+                    <label end="29" start="27" name="AT0"/>
+                    <label end="40" start="31" name="AJ0-NN1"/>
+                    <label end="45" start="42" name="PRP"/>
+                    <label end="54" start="47" name="AVQ"/>
+                    <label end="56" start="56" name="PUN"/>
+                    <label end="60" start="58" name="VHD"/>
+                    <label end="72" start="62" name="AV0"/>
+                    <label end="78" start="74" name="VVN"/>
+                    <label end="90" start="80" name="VVG"/>
+                    <label end="94" start="92" name="AT0"/>
+                    <label end="100" start="96" name="NN1"/>
+                    <label end="105" start="102" name="PRP"/>
+                    <label end="109" start="107" name="AT0"/>
+                    <label end="114" start="111" name="NN1"/>
+                    <label end="117" start="116" name="PRF"/>
+                    <label end="123" start="119" name="NN1"/>
+                    <label end="126" start="125" name="TO0"/>
+                    <label end="131" start="128" name="VVI"/>
+                    <label end="134" start="133" name="PNP"/>
+                    <label end="139" start="136" name="PRP"/>
+                    <label end="150" start="141" name="NN1"/>
+                    <label end="152" start="152" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:36:15 PST Tue" status="MANUAL" ID="451184">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="301" end="8" start="0" name="Perceiver_agentive"/>
+                    <label cBy="103" feID="305" end="40" start="19" name="Direction"/>
+                    <label cBy="103" feID="304" end="54" start="42" name="Location_of_perceiver"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="8" start="0" name="Ext"/>
+                    <label end="40" start="19" name="Dep"/>
+                    <label end="54" start="42" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="8" start="0" name="NP"/>
+                    <label end="40" start="19" name="PP"/>
+                    <label end="54" start="42" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="17" start="12" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="22228398" ID="404432">
+            <text>Irene felt increasingly outside the marriage and started ` spying through the window &quot; at the more complex-seeming Bosinney . </text>
+            <annotationSet cDate="01/07/2003 02:36:15 PST Tue" status="UNANN" ID="451191">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="NP0"/>
+                    <label end="9" start="6" name="VVD"/>
+                    <label end="22" start="11" name="AV0"/>
+                    <label end="30" start="24" name="PRP"/>
+                    <label end="34" start="32" name="AT0"/>
+                    <label end="43" start="36" name="NN1"/>
+                    <label end="47" start="45" name="CJC"/>
+                    <label end="55" start="49" name="VVD-VVN"/>
+                    <label end="57" start="57" name="PUQ"/>
+                    <label end="64" start="59" name="VVG"/>
+                    <label end="72" start="66" name="PRP"/>
+                    <label end="76" start="74" name="AT0"/>
+                    <label end="83" start="78" name="NN1"/>
+                    <label end="85" start="85" name="PUQ"/>
+                    <label end="88" start="87" name="PRP"/>
+                    <label end="92" start="90" name="AT0"/>
+                    <label end="97" start="94" name="DT0"/>
+                    <label end="113" start="99" name="AJ0"/>
+                    <label end="122" start="115" name="NN1-NP0"/>
+                    <label end="124" start="124" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:36:15 PST Tue" status="MANUAL" ID="451192">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="301" end="4" start="0" name="Perceiver_agentive"/>
+                    <label cBy="103" feID="305" end="83" start="66" name="Direction"/>
+                    <label cBy="103" feID="302" end="122" start="87" name="Phenomenon"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="4" start="0" name="Ext"/>
+                    <label end="83" start="66" name="Dep"/>
+                    <label end="122" start="87" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="4" start="0" name="NP"/>
+                    <label end="83" start="66" name="PP"/>
+                    <label end="122" start="87" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="64" start="59" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="22228170" ID="404434">
+            <text>The more complicated feel they can not be contained ` in such a small room &quot; and then start ` spying through the window &quot; . </text>
+            <annotationSet cDate="01/07/2003 02:36:16 PST Tue" status="UNANN" ID="451195">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="7" start="4" name="DT0"/>
+                    <label end="19" start="9" name="AJ0-VVN"/>
+                    <label end="24" start="21" name="NN1-VVB"/>
+                    <label end="29" start="26" name="PNP"/>
+                    <label end="33" start="31" name="VM0"/>
+                    <label end="37" start="35" name="XX0"/>
+                    <label end="40" start="39" name="VBI"/>
+                    <label end="50" start="42" name="VVN"/>
+                    <label end="52" start="52" name="PUQ"/>
+                    <label end="55" start="54" name="PRP"/>
+                    <label end="60" start="57" name="DT0"/>
+                    <label end="62" start="62" name="AT0"/>
+                    <label end="68" start="64" name="AJ0"/>
+                    <label end="73" start="70" name="NN1"/>
+                    <label end="75" start="75" name="PUQ"/>
+                    <label end="79" start="77" name="CJC"/>
+                    <label end="84" start="81" name="AV0"/>
+                    <label end="90" start="86" name="VVB"/>
+                    <label end="92" start="92" name="PUQ"/>
+                    <label end="99" start="94" name="VVG"/>
+                    <label end="107" start="101" name="PRP"/>
+                    <label end="111" start="109" name="AT0"/>
+                    <label end="118" start="113" name="NN1"/>
+                    <label end="120" start="120" name="PUQ"/>
+                    <label end="122" start="122" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:36:16 PST Tue" status="MANUAL" ID="451196">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="301" end="19" start="0" name="Perceiver_agentive"/>
+                    <label cBy="103" feID="305" end="118" start="101" name="Direction"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="19" start="0" name="Ext"/>
+                    <label end="118" start="101" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="19" start="0" name="NP"/>
+                    <label end="118" start="101" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="99" start="94" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-730-ppto"/>
+    <subCorpus name="V-780-ppother"/>
+    <subCorpus name="V-810-pother">
+        <sentence sentNo="0" aPos="21353731" ID="404482">
+            <text>A pallid sun appeared like a nosy neighbour spying from behind lace curtains . </text>
+            <annotationSet cDate="01/07/2003 02:36:24 PST Tue" status="UNANN" ID="451291">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="AT0"/>
+                    <label end="7" start="2" name="AJ0"/>
+                    <label end="11" start="9" name="NN1"/>
+                    <label end="20" start="13" name="VVD-VVN"/>
+                    <label end="25" start="22" name="PRP"/>
+                    <label end="27" start="27" name="AT0"/>
+                    <label end="32" start="29" name="AJ0"/>
+                    <label end="42" start="34" name="NN1"/>
+                    <label end="49" start="44" name="VVG"/>
+                    <label end="54" start="51" name="PRP"/>
+                    <label end="61" start="56" name="PRP"/>
+                    <label end="66" start="63" name="NN1-VVB"/>
+                    <label end="75" start="68" name="NN2-VVZ"/>
+                    <label end="77" start="77" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:36:24 PST Tue" status="MANUAL" ID="451292">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="301" end="42" start="27" name="Perceiver_agentive"/>
+                    <label cBy="103" feID="304" end="75" start="51" name="Location_of_perceiver"/>
+                    <label cBy="153" feID="302" itype="INI" name="Phenomenon"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="42" start="27" name="Ext"/>
+                    <label end="75" start="51" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="42" start="27" name="NP"/>
+                    <label end="75" start="51" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="Metaphor"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="49" start="44" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-820-avpalong">
+        <sentence sentNo="0" aPos="26939401" ID="404488">
+            <text>Felix spied along the length of his leg at the sock . </text>
+            <annotationSet cDate="01/07/2003 02:36:25 PST Tue" status="UNANN" ID="451303">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="NP0"/>
+                    <label end="10" start="6" name="VVD"/>
+                    <label end="16" start="12" name="AVP-PRP"/>
+                    <label end="20" start="18" name="AT0"/>
+                    <label end="27" start="22" name="NN1"/>
+                    <label end="30" start="29" name="PRF"/>
+                    <label end="34" start="32" name="DPS"/>
+                    <label end="38" start="36" name="NN1"/>
+                    <label end="41" start="40" name="PRP"/>
+                    <label end="45" start="43" name="AT0"/>
+                    <label end="50" start="47" name="NN1"/>
+                    <label end="52" start="52" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:36:25 PST Tue" status="MANUAL" ID="451304">
+                <layer rank="1" name="FE">
+                    <label cBy="103" feID="301" end="4" start="0" name="Perceiver_agentive"/>
+                    <label cBy="103" feID="305" end="38" start="12" name="Direction"/>
+                    <label cBy="103" feID="302" end="50" start="40" name="Phenomenon"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="4" start="0" name="Ext"/>
+                    <label end="38" start="12" name="Dep"/>
+                    <label end="50" start="40" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="4" start="0" name="NP"/>
+                    <label end="38" start="12" name="PP"/>
+                    <label end="50" start="40" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="10" start="6" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="V-820-avpon"/>
+    <subCorpus name="V-820-avpout"/>
+    <subCorpus name="V-860-avpon-p"/>
+    <subCorpus name="V-890-intrans-adverb"/>
+    <subCorpus name="V-900-other">
+        <sentence sentNo="0" aPos="9731800" ID="404525">
+            <text>In 10 minutes we had spied the whole Countrywatch patch . </text>
+            <annotationSet cDate="01/07/2003 02:36:29 PST Tue" status="UNANN" ID="451377">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PRP"/>
+                    <label end="4" start="3" name="CRD"/>
+                    <label end="12" start="6" name="NN2"/>
+                    <label end="15" start="14" name="PNP"/>
+                    <label end="19" start="17" name="VHD"/>
+                    <label end="25" start="21" name="VVN"/>
+                    <label end="29" start="27" name="AT0"/>
+                    <label end="35" start="31" name="AJ0"/>
+                    <label end="48" start="37" name="NN1"/>
+                    <label end="54" start="50" name="NN1"/>
+                    <label end="56" start="56" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:36:29 PST Tue" status="MANUAL" ID="451378">
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="301" end="15" start="14" name="Perceiver_agentive"/>
+                    <label cBy="268" feID="302" end="54" start="27" name="Phenomenon"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="15" start="14" name="Ext"/>
+                    <label end="54" start="27" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="15" start="14" name="NP"/>
+                    <label end="54" start="27" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="25" start="21" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="57672366" ID="404545">
+            <text>After spying him through the kitchen window with Mrs Files , so much himself , so much not Francis , I thought I did n't want to see him at all . </text>
+            <annotationSet cDate="01/07/2003 02:36:31 PST Tue" status="UNANN" ID="451417">
+                <layer rank="1" name="BNC">
+                    <label end="4" start="0" name="PRP"/>
+                    <label end="11" start="6" name="VVG"/>
+                    <label end="15" start="13" name="PNP"/>
+                    <label end="23" start="17" name="PRP"/>
+                    <label end="27" start="25" name="AT0"/>
+                    <label end="35" start="29" name="NN1"/>
+                    <label end="42" start="37" name="NN1"/>
+                    <label end="47" start="44" name="PRP"/>
+                    <label end="51" start="49" name="NP0"/>
+                    <label end="57" start="53" name="NP0"/>
+                    <label end="59" start="59" name="PUN"/>
+                    <label end="62" start="61" name="CJS"/>
+                    <label end="67" start="64" name="DT0"/>
+                    <label end="75" start="69" name="PNX"/>
+                    <label end="77" start="77" name="PUN"/>
+                    <label end="80" start="79" name="CJS"/>
+                    <label end="85" start="82" name="AV0"/>
+                    <label end="89" start="87" name="XX0"/>
+                    <label end="97" start="91" name="NP0"/>
+                    <label end="99" start="99" name="PUN"/>
+                    <label end="101" start="101" name="PNP"/>
+                    <label end="109" start="103" name="VVD"/>
+                    <label end="111" start="111" name="PNP"/>
+                    <label end="115" start="113" name="VDD"/>
+                    <label end="119" start="117" name="XX0"/>
+                    <label end="124" start="121" name="VVI"/>
+                    <label end="127" start="126" name="TO0"/>
+                    <label end="131" start="129" name="VVI"/>
+                    <label end="135" start="133" name="PNP"/>
+                    <label end="138" start="137" name="AV0"/>
+                    <label end="142" start="140" name="AV0"/>
+                    <label end="144" start="144" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 02:36:31 PST Tue" status="MANUAL" ID="451418">
+                <layer rank="1" name="FE">
+                    <label cBy="268" feID="302" end="15" start="13" name="Phenomenon"/>
+                    <label cBy="268" feID="305" end="42" start="17" name="Direction"/>
+                    <label cBy="268" feID="306" end="57" start="44" name="Depictive"/>
+                    <label cBy="618" feID="301" end="101" start="101" name="Perceiver_agentive"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="15" start="13" name="Obj"/>
+                    <label end="42" start="17" name="Dep"/>
+                    <label end="57" start="44" name="Dep"/>
+                    <label end="101" start="101" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="15" start="13" name="NP"/>
+                    <label end="42" start="17" name="PP"/>
+                    <label end="57" start="44" name="PP"/>
+                    <label end="101" start="101" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="11" start="6" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

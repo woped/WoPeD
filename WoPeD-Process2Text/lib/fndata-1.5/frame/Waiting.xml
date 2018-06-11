@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="07/14/2005 04:13:37 PDT Thu" name="Waiting" ID="1561" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A &lt;fen&gt;Protagonist&lt;/fen&gt; delays a planned action because they cannot or do not want to proceed until an &lt;fen&gt;Expected_event&lt;/fen&gt; occurs. The &lt;fen&gt;Expected_event&lt;/fen&gt; may be evoked by reference to a &lt;fen&gt;Salient_entity&lt;/fen&gt; that participates in it.  If a &lt;fen&gt;Salient_entity&lt;/fen&gt; is expressed, the &lt;fen&gt;Expected_event&lt;/fen&gt; is typically the arrival of the &lt;fen&gt;Salient_entity&lt;/fen&gt; at the &lt;fen&gt;Place&lt;/fen&gt; where the &lt;fen&gt;Protagonist&lt;/fen&gt; is located. 
+
+&lt;ex&gt;&lt;fex name="pro"&gt;The cat&lt;/fex&gt; &lt;t&gt;waited&lt;/t&gt; &lt;fex name="pla"&gt;on top of the washer&lt;/fex&gt; &lt;fex name="Time"&gt;as Elmer popped the lid off the can of cat food&lt;/fex&gt; and then pounded the can's contents onto the plate&lt;/ex&gt;
+
+&lt;ex&gt;The family was furious that &lt;fex name="pro"&gt;their 84-year-old dad&lt;/fex&gt; had to &lt;t&gt;wait&lt;/t&gt; &lt;fex name="dur"&gt;52 hours&lt;/fex&gt; &lt;fex name="pla"&gt;in the emergency room&lt;/fex&gt;.&lt;/ex&gt;
+
+Although in both frames a Protagonist/Agent is not performing some desired action for some period of time, the use of wait.v in this frame is different from that in Holding_off_on in that Waiting prominently portrays a future event that will allow the Protagonist to proceed (with doing something), whereas Holding_off_on does not necessarily imply that there is some event or state-of-affairs that will allow the Agent to proceed, rather focussing on the action that the Agent is not yet taking.
+
+&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="07/14/2005 04:14:55 PDT Thu" abbrev="pro" name="Protagonist" ID="8487">
+        <definition>&lt;def-root&gt;The sentient being who cannot proceed with their planned activities until a Salient_entity has arrived or an Expected_event has occurred.
+
+&lt;ex&gt;&lt;fex name="pro"&gt;He&lt;/fex&gt; politely &lt;t&gt;waited&lt;/t&gt;, hat in hand, until he could speak.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="07/14/2005 04:15:24 PDT Thu" abbrev="sal" name="Salient_entity" ID="8488">
+        <definition>&lt;def-root&gt;A concrete or abstract entity that the &lt;fen&gt;Protagonist&lt;/fen&gt; expects to participate in an &lt;fen&gt;Expected_event&lt;/fen&gt;, typically that of arriving at the &lt;fen&gt;Place&lt;/fen&gt; of the &lt;fen&gt;Protagonist&lt;/fen&gt;.
+
+&lt;ex&gt;In busier times several passengers are &lt;t&gt;waiting&lt;/t&gt; &lt;fex name="sal"&gt;for the train&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Expected_event" ID="8493"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="07/14/2005 04:15:54 PDT Thu" abbrev="tim" name="Time" ID="8489">
+        <definition>&lt;def-root&gt;The time period during which the &lt;fen&gt;Protagonist&lt;/fen&gt; is waiting.
+
+&lt;ex&gt;At least 17 ships were &lt;t&gt;waiting&lt;/t&gt; &lt;fex name="Time"&gt;yesterday&lt;/fex&gt; to come up the river.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="07/14/2005 04:16:44 PDT Thu" abbrev="pla" name="Place" ID="8490">
+        <definition>&lt;def-root&gt;The location in which the &lt;fen&gt;Protagonist&lt;/fen&gt; is waiting.
+
+&lt;ex&gt;Reporters are &lt;t&gt;waiting&lt;/t&gt; &lt;fex name="pla"&gt;outside the State Guesthouse&lt;/fex&gt; for the talks to start .&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="07/14/2005 04:18:01 PDT Thu" abbrev="dur" name="Duration" ID="8491">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Duration&lt;/fen&gt; denotes the length of time from the beginning of the waiting to its end.
+
+&lt;ex&gt;He &lt;t&gt;waited&lt;/t&gt; &lt;fex name="dur"&gt;for three hours&lt;/fex&gt; this night, but no one showed up.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="07/14/2005 04:19:45 PDT Thu" abbrev="man" name="Manner" ID="8492">
+        <definition>&lt;def-root&gt;Any description of the waiting event which is not covered by more specific FEs, including general descriptions comparing events (&lt;ment&gt;the same way&lt;/ment&gt;) and salient characteristics of the &lt;fen&gt;Protagonist&lt;/fen&gt; that also affect the action (&lt;ment&gt;patiently&lt;/ment&gt;, &lt;ment&gt;anxiously&lt;/ment&gt;).
+
+&lt;ex&gt;She &lt;t&gt;waited&lt;/t&gt; &lt;fex name="man"&gt;tensely&lt;/fex&gt; for him to appear&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="07/14/2005 04:24:26 PDT Thu" abbrev="exp_e" name="Expected_event" ID="8493">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Expected_event&lt;/fen&gt; is an event that needs to take place or a state that needs to begin to hold before the &lt;fen&gt;Protagonist&lt;/fen&gt; can proceed with their planned activities.
+
+&lt;ex&gt;She did n't &lt;t&gt;wait&lt;/t&gt; &lt;fex name="exp_e"&gt;for a reply&lt;/fex&gt;, but spelled out the answer herself.&lt;/ex&gt;
+&lt;ex&gt;Then you have to &lt;t&gt;wait&lt;/t&gt; about thirty seconds &lt;fex name="exp_e"&gt;for there to be enough charge for a second jolt&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="07/14/2005 04:27:36 PDT Thu" abbrev="end" name="End_point" ID="8494">
+        <definition>&lt;def-root&gt;The point in time, defined either as a clock time or in terms of an event that takes place, at which the &lt;fen&gt;Protagonist&lt;/fen&gt; ends the waiting.
+
+
+&lt;ex&gt; I am willing to &lt;t&gt;wait&lt;/t&gt; for him &lt;fex name="end"&gt;until 10 o'clock&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="07/14/2005 04:38:37 PDT Thu" abbrev="exp" name="Explanation" ID="8496">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Explanation&lt;/fen&gt; denotes a proposition from which the occurrence of the waiting event logically follows.
+
+&lt;ex&gt;I &lt;t&gt;waited&lt;/t&gt; for your brother to give me advice &lt;fex name="Explanation"&gt;because I wasn't sure I was actually going to do this crazy thing&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="90876C" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="07/14/2005 05:14:14 PDT Thu" abbrev="dep" name="Depictive" ID="8497">
+        <definition>&lt;def-root&gt;This FE describes the &lt;fen&gt;Protagonist&lt;/fen&gt; as being in some state during the waiting.
+
+
+&lt;ex&gt;We &lt;t&gt;waited&lt;/t&gt; &lt;fex name="dep"&gt;with a smile on our faces and a chortle in our hearts&lt;/fex&gt; when the race organizers handed out the first weather charts.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="07/14/2005 05:17:49 PDT Thu" abbrev="pur" name="Purpose" ID="8498">
+        <definition>&lt;def-root&gt;An action that the &lt;fen&gt;Protagonist&lt;/fen&gt; intends to accomplish by waiting. 
+
+&lt;ex&gt;Cussing under his breath, he said he went back outside and &lt;t&gt;waited&lt;/t&gt; quietly &lt;fex name="pur"&gt;in order to avoid further argument&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="EEE8AA" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="06/09/2006 11:26:45 PDT Fri" abbrev="" name="Co_participant" ID="10269">
+        <definition>&lt;def-root&gt;Co_participant is an entity that participates in a coordinated way in the same event as the primary protagonist, regardless of whether the protagonist, and hence the Co_participant, is more agent- or more undergoer-like.&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Change_event_time</relatedFrame>
+        <relatedFrame>Intentionally_act</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="wait.v" ID="12449" lemmaID="43348" cBy="605" cDate="07/14/2005 04:26:42 PDT Thu">
+        <definition>COD: stay where one is or delay action until a particular time or occurrence.</definition>
+        <sentenceCount annotated="23" total="261"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="wait"/>
+    </lexUnit>
+</frame>

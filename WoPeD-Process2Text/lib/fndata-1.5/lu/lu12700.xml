@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="New" POS="N" name="adhesion.n" ID="12700" frame="Being_attached" frameID="307" totalAnnotated="5" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="7CCD73" type="Core" abbrev="Conn" name="Connector"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="State" name="Dependent_state"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="Goal" name="Goal"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="Handle" name="Handle"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Item" name="Item"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Items" name="Items"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Mnr" name="Manner"/>
+        </frame>
+    </header>
+    <definition>FN: the state of adhering.</definition>
+    <lexeme POS="N" name="adhesion"/>
+    <valences>
+        <governor type="Ctrlr" lemma="help">
+            <annoSet ID="2453651"/>
+        </governor>
+        <FERealization total="1">
+            <FE name="Connector"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Connector"/>
+                <annoSet ID="2453651"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Goal"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Goal"/>
+                <annoSet ID="2453651"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Goal"/>
+                <annoSet ID="2453585"/>
+            </pattern>
+            <pattern total="3">
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Goal"/>
+                <annoSet ID="2453601"/>
+                <annoSet ID="2453603"/>
+                <annoSet ID="2453623"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Item"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="N" FE="Item"/>
+                <annoSet ID="2453603"/>
+                <annoSet ID="2453651"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Item"/>
+                <annoSet ID="2453585"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Item"/>
+                <annoSet ID="2453601"/>
+                <annoSet ID="2453623"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Manner"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Manner"/>
+                <annoSet ID="2453601"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Connector"/>
+            <FE name="Goal"/>
+            <FE name="Item"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Connector"/>
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Goal"/>
+                <valenceUnit GF="Dep" PT="N" FE="Item"/>
+                <annoSet ID="2453651"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="3">
+            <FE name="Goal"/>
+            <FE name="Item"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Goal"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Item"/>
+                <annoSet ID="2453585"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Goal"/>
+                <valenceUnit GF="Dep" PT="N" FE="Item"/>
+                <annoSet ID="2453603"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Goal"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Item"/>
+                <annoSet ID="2453623"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Goal"/>
+            <FE name="Item"/>
+            <FE name="Manner"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Goal"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Item"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Manner"/>
+                <annoSet ID="2453601"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-NP-T-NP-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="283" aPos="46230955" ID="1503712">
+            <text>This will help the adhesion of the gum strip to the paper fibres , so eliminating later buckling .</text>
+            <annotationSet cDate="10/20/2008 11:44:54 PDT Mon" status="UNANN" ID="2453584">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="dt"/>
+                    <label end="8" start="5" name="md"/>
+                    <label end="13" start="10" name="VV"/>
+                    <label end="17" start="15" name="dt"/>
+                    <label end="26" start="19" name="nn"/>
+                    <label end="29" start="28" name="in"/>
+                    <label end="33" start="31" name="dt"/>
+                    <label end="37" start="35" name="nn"/>
+                    <label end="43" start="39" name="nn"/>
+                    <label end="46" start="45" name="to"/>
+                    <label end="50" start="48" name="dt"/>
+                    <label end="56" start="52" name="nn"/>
+                    <label end="63" start="58" name="nns"/>
+                    <label end="65" start="65" name=","/>
+                    <label end="68" start="67" name="rb"/>
+                    <label end="80" start="70" name="VVG"/>
+                    <label end="86" start="82" name="rb"/>
+                    <label end="95" start="88" name="VVG"/>
+                    <label end="97" start="97" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="10/20/2008 11:44:54 PDT Mon" status="MANUAL" ID="2453585">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="26" start="19" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="976" feID="2631" end="43" start="28" name="Item"/>
+                    <label cBy="976" feID="2633" end="63" start="45" name="Goal"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="43" start="28" name="Dep"/>
+                    <label end="63" start="45" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="43" start="28" name="AJP"/>
+                    <label end="63" start="45" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="458" aPos="96770962" ID="1503720">
+            <text>To examine the function of Β 1 integrins on DMJ or DNJ treated HT-29 cells , we assayed the direct adhesion of treated and untreated cells to extracellular matrix components .</text>
+            <annotationSet cDate="10/20/2008 11:44:55 PDT Mon" status="UNANN" ID="2453600">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="to"/>
+                    <label end="9" start="3" name="VV"/>
+                    <label end="13" start="11" name="dt"/>
+                    <label end="22" start="15" name="nn"/>
+                    <label end="25" start="24" name="in"/>
+                    <label end="27" start="27" name="jj"/>
+                    <label end="29" start="29" name="cd"/>
+                    <label end="39" start="31" name="nns"/>
+                    <label end="42" start="41" name="in"/>
+                    <label end="46" start="44" name="NP"/>
+                    <label end="49" start="48" name="cc"/>
+                    <label end="53" start="51" name="NP"/>
+                    <label end="61" start="55" name="VVD"/>
+                    <label end="67" start="63" name="cd"/>
+                    <label end="73" start="69" name="nns"/>
+                    <label end="75" start="75" name=","/>
+                    <label end="78" start="77" name="PP"/>
+                    <label end="86" start="80" name="VVD"/>
+                    <label end="90" start="88" name="dt"/>
+                    <label end="97" start="92" name="jj"/>
+                    <label end="106" start="99" name="nn"/>
+                    <label end="109" start="108" name="in"/>
+                    <label end="117" start="111" name="VVN"/>
+                    <label end="121" start="119" name="cc"/>
+                    <label end="131" start="123" name="jj"/>
+                    <label end="137" start="133" name="nns"/>
+                    <label end="140" start="139" name="to"/>
+                    <label end="154" start="142" name="jj"/>
+                    <label end="161" start="156" name="nn"/>
+                    <label end="172" start="163" name="nns"/>
+                    <label end="174" start="174" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="10/20/2008 11:44:56 PDT Mon" status="MANUAL" ID="2453601">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="106" start="99" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="976" feID="6150" end="97" start="92" name="Manner"/>
+                    <label cBy="976" feID="2631" end="137" start="108" name="Item"/>
+                    <label cBy="976" feID="2633" end="172" start="139" name="Goal"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="97" start="92" name="Dep"/>
+                    <label end="137" start="108" name="Dep"/>
+                    <label end="172" start="139" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="97" start="92" name="AJP"/>
+                    <label end="137" start="108" name="PP"/>
+                    <label end="172" start="139" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="176" aPos="17708201" ID="1503721">
+            <text>The earliest finding is the platelet adhesion to collagen fibres followed by aggregation and formation of a platelet plug .</text>
+            <annotationSet cDate="10/20/2008 11:44:56 PDT Mon" status="UNANN" ID="2453602">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="11" start="4" name="jjs"/>
+                    <label end="19" start="13" name="nn"/>
+                    <label end="22" start="21" name="VBZ"/>
+                    <label end="26" start="24" name="dt"/>
+                    <label end="35" start="28" name="nn"/>
+                    <label end="44" start="37" name="nn"/>
+                    <label end="47" start="46" name="to"/>
+                    <label end="56" start="49" name="nn"/>
+                    <label end="63" start="58" name="nns"/>
+                    <label end="72" start="65" name="VVN"/>
+                    <label end="75" start="74" name="in"/>
+                    <label end="87" start="77" name="nn"/>
+                    <label end="91" start="89" name="cc"/>
+                    <label end="101" start="93" name="nn"/>
+                    <label end="104" start="103" name="in"/>
+                    <label end="106" start="106" name="dt"/>
+                    <label end="115" start="108" name="nn"/>
+                    <label end="120" start="117" name="nn"/>
+                    <label end="122" start="122" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="10/20/2008 11:44:56 PDT Mon" status="MANUAL" ID="2453603">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="44" start="37" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="976" feID="2631" end="35" start="28" name="Item"/>
+                    <label cBy="976" feID="2633" end="63" start="46" name="Goal"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="35" start="28" name="Dep"/>
+                    <label end="63" start="46" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="35" start="28" name="N"/>
+                    <label end="63" start="46" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-T-NP-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="450" aPos="22366437" ID="1503731">
+            <text>One great challenge in producing new dental materials is the achievement and maintenance of adhesion of these biomaterials to vital tissues .</text>
+            <annotationSet cDate="10/20/2008 11:44:57 PDT Mon" status="UNANN" ID="2453622">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="cd"/>
+                    <label end="8" start="4" name="jj"/>
+                    <label end="18" start="10" name="nn"/>
+                    <label end="21" start="20" name="in"/>
+                    <label end="31" start="23" name="VVG"/>
+                    <label end="35" start="33" name="jj"/>
+                    <label end="42" start="37" name="jj"/>
+                    <label end="52" start="44" name="nns"/>
+                    <label end="55" start="54" name="VBZ"/>
+                    <label end="59" start="57" name="dt"/>
+                    <label end="71" start="61" name="nn"/>
+                    <label end="75" start="73" name="cc"/>
+                    <label end="87" start="77" name="nn"/>
+                    <label end="90" start="89" name="in"/>
+                    <label end="99" start="92" name="nn"/>
+                    <label end="102" start="101" name="in"/>
+                    <label end="108" start="104" name="dt"/>
+                    <label end="121" start="110" name="nns"/>
+                    <label end="124" start="123" name="to"/>
+                    <label end="130" start="126" name="jj"/>
+                    <label end="138" start="132" name="nns"/>
+                    <label end="140" start="140" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="10/20/2008 11:44:57 PDT Mon" status="MANUAL" ID="2453623">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="99" start="92" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="976" feID="2631" end="121" start="101" name="Item"/>
+                    <label cBy="976" feID="2633" end="138" start="123" name="Goal"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="121" start="101" name="Dep"/>
+                    <label end="138" start="123" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="121" start="101" name="PP"/>
+                    <label end="138" start="123" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="111" aPos="101481771" ID="1503745">
+            <text>However , the oil helps pollen adhesion on other insects and this may be important in ` buzz &quot; flowers as well .</text>
+            <annotationSet cDate="10/20/2008 11:45:00 PDT Mon" status="UNANN" ID="2453650">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="0" name="rb"/>
+                    <label end="8" start="8" name=","/>
+                    <label end="12" start="10" name="dt"/>
+                    <label end="16" start="14" name="nn"/>
+                    <label end="22" start="18" name="VVZ"/>
+                    <label end="29" start="24" name="nn"/>
+                    <label end="38" start="31" name="nn"/>
+                    <label end="41" start="40" name="in"/>
+                    <label end="47" start="43" name="jj"/>
+                    <label end="55" start="49" name="nns"/>
+                    <label end="59" start="57" name="cc"/>
+                    <label end="64" start="61" name="dt"/>
+                    <label end="68" start="66" name="md"/>
+                    <label end="71" start="70" name="vb"/>
+                    <label end="81" start="73" name="jj"/>
+                    <label end="84" start="83" name="in"/>
+                    <label end="91" start="88" name="jj"/>
+                    <label end="101" start="95" name="nns"/>
+                    <label end="104" start="103" name="rb"/>
+                    <label end="109" start="106" name="rb"/>
+                    <label end="111" start="111" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="10/20/2008 11:45:00 PDT Mon" status="MANUAL" ID="2453651">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="38" start="31" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="976" feID="2629" end="16" start="10" name="Connector"/>
+                    <label cBy="976" feID="2631" end="29" start="24" name="Item"/>
+                    <label cBy="976" feID="2633" end="55" start="40" name="Goal"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="16" start="10" name="Ext"/>
+                    <label end="29" start="24" name="Dep"/>
+                    <label end="55" start="40" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="16" start="10" name="NP"/>
+                    <label end="29" start="24" name="N"/>
+                    <label end="55" start="40" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="22" start="18" name="Ctrlr"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

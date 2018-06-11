@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Add_Annotation" POS="A" name="idiosyncratic.a" ID="10130" frame="Idiosyncrasy" frameID="982" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp=1308" ID="17482"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Ent2" name="Entity"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Id" name="Idiosyncrasy"/>
+        </frame>
+    </header>
+    <definition>FN: peculiar to a particular entity</definition>
+    <lexeme POS="A" name="idiosyncratic"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Degree"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Degree"/>
+                <annoSet ID="2581000"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Entity"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Entity"/>
+                <annoSet ID="2581000"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Idiosyncrasy"/>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="N" FE="Idiosyncrasy"/>
+                <annoSet ID="2581000"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Degree"/>
+            <FE name="Entity"/>
+            <FE name="Idiosyncrasy"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Degree"/>
+                <valenceUnit GF="" PT="DNI" FE="Entity"/>
+                <valenceUnit GF="Head" PT="N" FE="Idiosyncrasy"/>
+                <annoSet ID="2581000"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-modifier-(1)">
+        <sentence corpID="111" docID="17482" sentNo="1" paragNo="135" aPos="0" ID="1573193">
+            <text>This very idiosyncratic approach to a hallowed concept was typical of the man .</text>
+            <annotationSet cDate="07/14/2010 04:49:12 PDT Wed" status="UNANN" ID="2580999">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="dt"/>
+                    <label end="8" start="5" name="rb"/>
+                    <label end="22" start="10" name="jj"/>
+                    <label end="31" start="24" name="nn"/>
+                    <label end="34" start="33" name="to"/>
+                    <label end="36" start="36" name="dt"/>
+                    <label end="45" start="38" name="jj"/>
+                    <label end="53" start="47" name="nn"/>
+                    <label end="57" start="55" name="VBD"/>
+                    <label end="65" start="59" name="jj"/>
+                    <label end="68" start="67" name="in"/>
+                    <label end="72" start="70" name="dt"/>
+                    <label end="76" start="74" name="nn"/>
+                    <label end="78" start="78" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/14/2010 04:49:12 PDT Wed" status="MANUAL" ID="2581000">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="22" start="10" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="5979" end="8" start="5" name="Degree"/>
+                    <label cBy="589" feID="5977" end="31" start="24" name="Idiosyncrasy"/>
+                    <label cBy="589" feID="5978" itype="DNI" name="Entity"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="8" start="5" name="Dep"/>
+                    <label end="31" start="24" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="8" start="5" name="AVP"/>
+                    <label end="31" start="24" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-modifies-(1)"/>
+    <subCorpus name="03-pp_about-p-(1)"/>
+    <subCorpus name="04-infin_comp-(1)"/>
+    <subCorpus name="05-pp_as-p-(1)"/>
+    <subCorpus name="06-pp_in-p-(1)"/>
+    <subCorpus name="07-and/or-(1)"/>
+    <subCorpus name="08-other-matched-(1)"/>
+    <subCorpus name="09-other-unmatched-(1)"/>
+</lexUnit>

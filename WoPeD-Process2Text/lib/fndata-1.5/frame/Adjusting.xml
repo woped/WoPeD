@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="145" cDate="04/08/2005 05:23:53 PDT Fri" name="Adjusting" ID="1376" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Agent&lt;/fen&gt; changes a &lt;fen&gt;Part&lt;/fen&gt; of a complex entity with regard to some &lt;fen&gt;Feature&lt;/fen&gt; in order to achieve some &lt;fen&gt;Imposed_purpose&lt;/fen&gt; affected by the &lt;fen&gt;Feature&lt;/fen&gt;.  The complex entity is often a device or mechanism, but may also be an abstract entity such as the economy.  Also, the full entity may be used in place of the &lt;fen&gt;Part&lt;/fen&gt;.
+
+&lt;ex&gt;&lt;fex name="Agent"&gt;I&lt;/fex&gt; need to &lt;t&gt;adjust&lt;/t&gt; &lt;fex name="Part"&gt;the thermostat&lt;/fex&gt; &lt;fex name="Final_value"&gt;to around 80 degrees&lt;/fex&gt; &lt;fex name="Time"&gt;when she visits&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;It didn't work the first time , so &lt;fex name="Agent"&gt;she&lt;/fex&gt; had to &lt;t&gt;tweak&lt;/t&gt; &lt;fex name="Part"&gt;the oven&lt;/fex&gt; &lt;fex name="Degree"&gt;a little&lt;/fex&gt; .&lt;/ex&gt;
+&lt;ex&gt;Greenspan expressed confidence that the &lt;fex name="Time"&gt;current&lt;/fex&gt; &lt;t&gt;calibration&lt;/t&gt; &lt;fex name="Feature"&gt;of interest rates&lt;/fex&gt; was not an overcompensation .&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="145" cDate="04/08/2005 05:26:18 PDT Fri" abbrev="Agt" name="Agent" ID="7712">
+        <definition>&lt;def-root&gt;The individual that controls the value of a &lt;fen&gt;Feature&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="145" cDate="04/08/2005 05:29:56 PDT Fri" abbrev="" name="Part" ID="7713">
+        <definition>&lt;def-root&gt;The part of the complex entity which is changed in the process of adjusting.
+&lt;ex&gt;She &lt;t&gt;adjusted&lt;/t&gt; &lt;fex name="Part"&gt;the injectors&lt;/fex&gt; to make the mixture leaner.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Core" cBy="145" cDate="04/08/2005 05:36:54 PDT Fri" abbrev="" name="Feature" ID="7714">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Feature&lt;/fen&gt; with respect to which the &lt;fen&gt;Part&lt;/fen&gt; is adjusted.
+&lt;ex&gt;She &lt;t&gt;adjusted&lt;/t&gt; &lt;fex name="Feature"&gt;the temperature of the oven&lt;/fex&gt; &lt;fex name="Purpose"&gt;so that the pie crust would brown a little&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Peripheral" cBy="145" cDate="04/08/2005 05:42:33 PDT Fri" abbrev="imp" name="Imposed_purpose" ID="7715">
+        <definition>&lt;def-root&gt;The state of the &lt;fen&gt;Part&lt;/fen&gt; with respect to the &lt;fen&gt;Feature&lt;/fen&gt; that the &lt;fen&gt;Agent&lt;/fen&gt; brings about by making the adjustment.
+
+&lt;ex&gt;You should &lt;t&gt;adjust&lt;/t&gt; the antenna &lt;fex name="imp"&gt;to poke outside the bag&lt;/fex&gt;.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/07/2005 07:03:13 PST Wed" abbrev="mea" name="Means" ID="9619">
+        <definition>&lt;def-root&gt;The action performed by the &lt;fen&gt;Agent&lt;/fen&gt; which affects the &lt;fen&gt;Part&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/07/2005 07:17:17 PST Wed" abbrev="pla" name="Place" ID="9621">
+        <definition>&lt;def-root&gt;The location where the adjusting takes place.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/07/2005 07:17:47 PST Wed" abbrev="tim" name="Time" ID="9622">
+        <definition>&lt;def-root&gt;The time at which the adjusting occurs.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/07/2005 07:18:18 PST Wed" abbrev="" name="Final_value" ID="9623">
+        <definition>&lt;def-root&gt;The value associated with the &lt;fen&gt;Feature&lt;/fen&gt; that the system ends up in.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/07/2005 07:20:47 PST Wed" abbrev="ins" name="Instrument" ID="9624">
+        <definition>&lt;def-root&gt;An entity manipulated by the &lt;fen&gt;Agent&lt;/fen&gt; to adjust the &lt;fen&gt;Part&lt;/fen&gt; and &lt;fen&gt;Feature&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Physical_entity" ID="70"/>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/07/2005 07:22:36 PST Wed" abbrev="pur" name="Purpose" ID="9625">
+        <definition>&lt;def-root&gt;The state-of-affairs that the &lt;fen&gt;Agent&lt;/fen&gt; hopes to bring about by adjusting.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="A9A9A9" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/07/2005 07:24:58 PST Wed" abbrev="man" name="Manner" ID="9626">
+        <definition>&lt;def-root&gt;Any description of the adjustment act which is not covered by more specific FEs, including secondary effects (&lt;ment&gt;quietly, loudly&lt;/ment&gt;), and general descriptions comparing events (&lt;ment&gt;the same way&lt;/ment&gt;). In addition, it may indicate salient characteristics of the &lt;fen&gt;Agent&lt;/fen&gt; that also affect the action (&lt;ment&gt;presumptuously, coldly, deliberately, eagerly, carefully&lt;/ment&gt;). 
+
+&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="04/14/2006 12:51:18 PDT Fri" abbrev="deg" name="Degree" ID="10041">
+        <definition>&lt;def-root&gt;A characterization of the amount that the &lt;fen&gt;Final_value&lt;/fen&gt; and Initial_value differ.
+
+&lt;ex&gt;Do n't &lt;t&gt;adjust&lt;/t&gt; the pressure &lt;fex name="deg"&gt;by more than two PSI&lt;/fex&gt; .&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="361" cDate="09/27/2006 12:53:36 PDT Wed" abbrev="" name="Circumstances" ID="10634">
+        <definition>&lt;def-root&gt;Circumstances describe the state of the world (at a particular time and place) which is specifically independent of the event itself and any of its participants. &lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Intentionally_affect</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Cause_change</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="adjust.v" ID="11793" lemmaID="508" cBy="145" cDate="04/08/2005 05:49:39 PDT Fri">
+        <definition>FN: to change the location of some part or the degree of some quanity by a (relatively) small amount, especially in order to cause some system to function better</definition>
+        <sentenceCount annotated="14" total="246"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="adjust"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="adjustment.n" ID="11794" lemmaID="511" cBy="145" cDate="04/08/2005 05:51:45 PDT Fri">
+        <definition>FN: A (relatively) small change made in some part of a complex system made in order to cause it to function better.</definition>
+        <sentenceCount annotated="27" total="276"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="adjustment"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="tweak.v" ID="11795" lemmaID="41584" cBy="145" cDate="04/08/2005 05:53:25 PDT Fri">
+        <definition>FN: to change the location of some part or the degree of some quanity by a very small amount, especially in order to cause some system to function better</definition>
+        <sentenceCount annotated="11" total="113"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="tweak"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="tweak.n" ID="11796" lemmaID="41583" cBy="145" cDate="04/08/2005 05:55:23 PDT Fri">
+        <definition>FN: A very small change made in some part of a complex system made in order to cause it to function better.</definition>
+        <sentenceCount annotated="3" total="28"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="tweak"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="calibrate.v" ID="11797" lemmaID="5219" cBy="145" cDate="04/08/2005 05:57:10 PDT Fri">
+        <definition>FN: To adjust something to make it accord with a standard or norm.</definition>
+        <sentenceCount annotated="10" total="97"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="calibrate"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="calibration.n" ID="11798" lemmaID="5220" cBy="145" cDate="04/08/2005 06:05:19 PDT Fri">
+        <definition>FN: the act of adjusting something so that it will accord with a norm or standard.</definition>
+        <sentenceCount annotated="17" total="128"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="calibration"/>
+    </lexUnit>
+</frame>

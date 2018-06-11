@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="731" cDate="02/07/2001 04:12:10 PST Wed" name="Cause_motion" ID="55" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Agent&lt;/fen&gt; causes a &lt;fen&gt;Theme&lt;/fen&gt; to undergo directed motion.  The motion may be described with respect to a &lt;fen&gt;Source&lt;/fen&gt;, &lt;fen&gt;Path&lt;/fen&gt; and/or &lt;fen&gt;Goal&lt;/fen&gt;. In contrast with Placing, the &lt;fen&gt;Goal&lt;/fen&gt; of motion is not emphasized.  For many of these words (cast.v, throw.v, chuck.v, etc.), the &lt;fen&gt;Agent&lt;/fen&gt; has control of the &lt;fen&gt;Theme&lt;/fen&gt; only at the &lt;fen&gt;Source&lt;/fen&gt; of motion, and does not experience overall motion.  
+For others (e.g. drag.v, push.v, shove.v, etc.) the &lt;fen&gt;Agent&lt;/fen&gt; has control of the &lt;fen&gt;Theme&lt;/fen&gt; throughout the motion; for these words, the &lt;fen&gt;Theme&lt;/fen&gt; is resistant to motion due to some friction with the surface along which they move.  (They thus differ from the words of the Carrying frame in that they are supported by this surface, rather than a Carrier.)
+
+This frame contrasts with the following frames which talk about an &lt;fen&gt;Agent&lt;/fen&gt; changing a &lt;fen&gt;Theme&lt;/fen&gt;'s position with respect to a landmark (either &lt;fen&gt;Source&lt;/fen&gt; or &lt;fen&gt;Goal&lt;/fen&gt;):
+
+&lt;ex&gt;&lt;/ex&gt;In Placing, the figure (&lt;fen&gt;Theme&lt;/fen&gt;) is profiled as the object, and ends up on the ground (&lt;fen&gt;Goal&lt;/fen&gt;).
+ 
+&lt;ex&gt;Joyce &lt;t&gt;placed&lt;/t&gt; &lt;fex name="Theme"&gt;the flowers&lt;/fex&gt; &lt;fex name="Goal"&gt;onto the bed&lt;/fex&gt;.&lt;/ex&gt;
+
+In Filling, the ground (&lt;fen&gt;Goal&lt;/fen&gt;) is profiled as the object, and the figure (&lt;fen&gt;Theme&lt;/fen&gt;) ends up on the ground (Goal).
+ 
+&lt;ex&gt;John &lt;t&gt;filled&lt;/t&gt; &lt;fex name="Goal"&gt;the box&lt;/fex&gt; &lt;fex name="Theme"&gt;with old toys&lt;/fex&gt;.&lt;/ex&gt;
+
+In Removing, the figure (&lt;fen&gt;Theme&lt;/fen&gt;) is profiled, and is removed from the ground (&lt;fen&gt;Source&lt;/fen&gt;).
+ 
+&lt;ex&gt;Jennifer &lt;t&gt;removed&lt;/t&gt; &lt;fex name="Theme"&gt;the flowers&lt;/fex&gt; &lt;fex name="Source"&gt;from the bed&lt;/fex&gt;.&lt;/ex&gt;
+
+In Emptying, the ground (&lt;fen&gt;Source&lt;/fen&gt;) is profiled and the figure (&lt;fen&gt;Theme&lt;/fen&gt;) is removed from it.
+ 
+&lt;ex&gt;Jason &lt;t&gt;emptied&lt;/t&gt; &lt;fex name="Source"&gt;the box&lt;/fex&gt; &lt;fex name="Theme"&gt;of the old toys&lt;/fex&gt; .&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:10 PST Wed" abbrev="Agt" name="Agent" ID="228">
+        <definition>&lt;def-root&gt;The the &lt;fen&gt;Agent&lt;/fen&gt; is the one whose action causes the motion of a &lt;fen&gt;Theme&lt;/fen&gt;.  The &lt;fen&gt;Agent&lt;/fen&gt; is generally realized as the External Argument.
+
+&lt;ex&gt;&lt;fex name="Agent"&gt;Pat&lt;/fex&gt; &lt;t&gt;threw&lt;/t&gt; the china at the wall.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:11 PST Wed" abbrev="Thm" name="Theme" ID="229">
+        <definition>&lt;def-root&gt;The FE &lt;fen&gt;Theme&lt;/fen&gt; is generally an NP Object.
+
+&lt;ex&gt;Pat &lt;t&gt;threw&lt;/t&gt; &lt;fex name="Theme"&gt;the china&lt;/fex&gt; at the wall.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Physical_object" ID="68"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:11 PST Wed" abbrev="Src" name="Source" ID="230">
+        <definition>&lt;def-root&gt;The FE&lt;fen&gt;Source&lt;/fen&gt; is the starting point of motion.
+
+&lt;ex&gt;Pat dragged the box &lt;fex name="Source"&gt;out of the cupboard&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Source" ID="151"/>
+        <excludesFE name="Area" ID="234"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:11 PST Wed" abbrev="Path" name="Path" ID="231">
+        <definition>&lt;def-root&gt;The FE &lt;fen&gt;Path&lt;/fen&gt; is any description of a trajectory of motion which is neither a &lt;fen&gt;Source&lt;/fen&gt; nor &lt;fen&gt;Goal&lt;/fen&gt;.
+
+&lt;ex&gt;I &lt;t&gt;pushed&lt;/t&gt; the trolley &lt;fex name="Path"&gt;along the street&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Area" ID="234"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:11 PST Wed" abbrev="Goal" name="Goal" ID="232">
+        <definition>&lt;def-root&gt;The FE &lt;fen&gt;Goal&lt;/fen&gt; is the point at which the &lt;fen&gt;Theme&lt;/fen&gt; ends up as a result of the motion.
+
+&lt;ex&gt;Kim &lt;t&gt;threw&lt;/t&gt; the cat &lt;fex name="Goal"&gt;into the garden&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Goal" ID="153"/>
+        <excludesFE name="Area" ID="234"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Peripheral" cBy="731" cDate="02/07/2001 04:12:11 PST Wed" abbrev="Dist" name="Distance" ID="233">
+        <definition>&lt;def-root&gt;The FE &lt;fen&gt;Distance&lt;/fen&gt; is any expression characterizing the extent of motion of the &lt;fen&gt;Theme&lt;/fen&gt;.
+
+&lt;ex&gt;Pat &lt;t&gt;threw&lt;/t&gt; the Javelin &lt;fex name="Distance"&gt;50 meters&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:11 PST Wed" abbrev="Area" name="Area" ID="234">
+        <definition>&lt;def-root&gt;The FE &lt;fen&gt;Area&lt;/fen&gt; is used for expressions which describe a general area in which motion takes place when the motion is understood to be irregular or not to consist of a single, linear path. Locative setting adjuncts may also be assigned this frame element.
+
+&lt;ex&gt;Kim &lt;t&gt;pushed&lt;/t&gt; the lawnmower &lt;fex name="Area"&gt;around the garden&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="11/05/2001 04:20:34 PST Mon" abbrev="Dep" name="Depictive" ID="2099">
+        <definition>&lt;def-root&gt;The state of a participant during the action
+&lt;ex&gt;We &lt;t&gt;pushed&lt;/t&gt; the cart around, &lt;fex name="Depictive"&gt;gleeful&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="11/05/2001 04:21:33 PST Mon" abbrev="Degr" name="Degree" ID="2102">
+        <definition>&lt;def-root&gt;Degree to which event occurs&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="08/28/2002 06:17:07 PDT Wed" abbrev="Mns" name="Means" ID="3665">
+        <definition>&lt;def-root&gt;The FE &lt;fen&gt;Means&lt;/fen&gt; indicates the action that is taken that results in the motion of the &lt;fen&gt;Theme&lt;/fen&gt;
+&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="08/28/2002 06:20:32 PDT Wed" abbrev="Manr" name="Manner" ID="3666">
+        <definition>&lt;def-root&gt;The FE &lt;fen&gt;Manner&lt;/fen&gt; is any expression which describes a property of the motion of the &lt;fen&gt;Theme&lt;/fen&gt; which is not directly related to the trajectory of motion. Descriptions of steadiness, grace, and other things count as &lt;fen&gt;Manner&lt;/fen&gt; expressions.  
+&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="08/27/2003 07:03:55 PDT Wed" abbrev="" name="Subregion" ID="4990">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Subregion&lt;/fen&gt; identifies the part of the &lt;fen&gt;Theme&lt;/fen&gt; that makes contact with the resulting location. When &lt;fen&gt;Subregion&lt;/fen&gt; is expressed, there usually is no &lt;fen&gt;Goal&lt;/fen&gt; expressed.
+
+&lt;ex&gt;The horse &lt;t&gt;pitched&lt;/t&gt; the rider &lt;fex name="Subregion"&gt;on his head&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="7CCD7C" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="08/28/2003 02:09:25 PDT Thu" abbrev="Cse" name="Cause" ID="4991">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Cause&lt;/fen&gt; marks expressions that indicate some non-intentional, typically non-human, force that causes the &lt;fen&gt;Theme&lt;/fen&gt; to be set in motion.
+
+&lt;ex&gt;&lt;fex name="Cause"&gt;The storm&lt;/fex&gt; &lt;t&gt;tossed&lt;/t&gt; the sailor from the boat&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Agent" ID="228"/>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Peripheral" cBy="309" cDate="10/02/2003 11:36:56 PDT Thu" abbrev="Ins" name="Instrument" ID="5388">
+        <definition>&lt;def-root&gt;An entity saliently involved in the transmission of force from an &lt;fen&gt;Agent&lt;/fen&gt; to a &lt;fen&gt;Theme&lt;/fen&gt;.  It may be the &lt;fen&gt;Agent&lt;/fen&gt;'s bodypart, or some kind of device.
+
+&lt;ex&gt;When passing a basketball, you should &lt;t&gt;throw&lt;/t&gt; &lt;fex name="Ins"&gt;with bath hands&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;/def-root&gt;</definition>
+        <semType name="Physical_entity" ID="70"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="309" cDate="10/02/2003 11:36:56 PDT Thu" abbrev="Place" name="Place" ID="5389">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Place&lt;/fen&gt; is the general area that provides a setting for a specific motion (with &lt;fen&gt;Source&lt;/fen&gt;, &lt;fen&gt;Path&lt;/fen&gt;, or &lt;fen&gt;Goal&lt;/fen&gt;).&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="309" cDate="10/02/2003 11:36:56 PDT Thu" abbrev="Time" name="Time" ID="5390">
+        <definition>&lt;def-root&gt;The time at which the motion of the &lt;fen&gt;Theme&lt;/fen&gt; occurs.
+
+&lt;ex&gt;We &lt;t&gt;shoved&lt;/t&gt; half of the cargo overboard &lt;fex name="Time"&gt;on the 29th&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="d0d0d0" fgColor="0000FF" coreType="Core" cBy="605" cDate="10/11/2003 07:25:37 PDT Sat" abbrev="" name="Result" ID="5532">
+        <definition>&lt;def-root&gt;A resultant state that the &lt;fen&gt;Theme&lt;/fen&gt; is in at the end of its motion.
+
+&lt;ex&gt;The fireman &lt;t&gt;dragged&lt;/t&gt; the injured driver &lt;fex name="Result"&gt;clear&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Area" ID="234"/>
+    </FE>
+    <FE bgColor="7CCD73" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="10/11/2003 07:42:28 PDT Sat" abbrev="" name="Handle" ID="5533">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Agent&lt;/fen&gt;'s manipulation of the &lt;fen&gt;Theme&lt;/fen&gt; may be further specified as being localized to some part of the &lt;fen&gt;Theme&lt;/fen&gt;, a &lt;fen&gt;Handle&lt;/fen&gt;. The &lt;fen&gt;Handle&lt;/fen&gt; is usually expressed as a PP&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Core" cBy="203" cDate="08/27/2004 03:46:55 PDT Fri" abbrev="Initial_State" name="Initial_State" ID="7031">
+        <definition>&lt;def-root&gt;A previous state that the &lt;fen&gt;Theme&lt;/fen&gt; was in before the beginning of its motion.
+
+&lt;ex&gt;Paul &lt;t&gt;pulled&lt;/t&gt; Fran upright &lt;fex name="Initial_State"&gt;from her sitting position&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Area" ID="234"/>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="000000" coreType="Extra-Thematic" cBy="597" cDate="06/11/2008 11:13:49 PDT Wed" abbrev="" name="Explanation" ID="12756">
+        <definition>&lt;def-root&gt;This FE denotes a proposition from which the main clause logically follows.&lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Initial_State" ID="7031"/>
+        <memberFE name="Goal" ID="232"/>
+        <memberFE name="Path" ID="231"/>
+        <memberFE name="Source" ID="230"/>
+        <memberFE name="Result" ID="5532"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Transitive_action</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Cause_fluidic_motion</relatedFrame>
+        <relatedFrame>Shoot_projectiles</relatedFrame>
+        <relatedFrame>Passing</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Bringing</relatedFrame>
+        <relatedFrame>Gathering_up</relatedFrame>
+        <relatedFrame>Ingestion</relatedFrame>
+        <relatedFrame>Excreting</relatedFrame>
+        <relatedFrame>Shoot_projectiles</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)">
+        <relatedFrame>Placing</relatedFrame>
+        <relatedFrame>Removing</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Needs_SCs" POS="V" name="cast.v" ID="948" lemmaID="5676" cBy="731" cDate="02/08/2001 01:28:56 PST Thu">
+        <definition>FN: send forth by throwing</definition>
+        <sentenceCount annotated="0" total="2"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="cast"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="catapult.v" ID="949" lemmaID="5722" cBy="731" cDate="02/08/2001 01:28:56 PST Thu">
+        <definition>COD: hurl or launch with or as if with a catapult.</definition>
+        <sentenceCount annotated="16" total="86"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="catapult"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="chuck.v" ID="950" lemmaID="6476" cBy="731" cDate="02/08/2001 01:28:56 PST Thu">
+        <definition>COD: throw (something) carelessly or casually</definition>
+        <sentenceCount annotated="33" total="250"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="chuck"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="drag.v" ID="951" lemmaID="11678" cBy="731" cDate="02/08/2001 01:28:57 PST Thu">
+        <definition>COD: pull along forcefully, roughly, or with difficulty</definition>
+        <sentenceCount annotated="54" total="898"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="drag"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="fling.v" ID="952" lemmaID="14718" cBy="731" cDate="02/08/2001 01:28:57 PST Thu">
+        <definition>COD: throw forcefully; hurl</definition>
+        <sentenceCount annotated="62" total="590"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="fling"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="hurl.v" ID="954" lemmaID="18693" cBy="731" cDate="02/08/2001 01:28:57 PST Thu">
+        <definition>COD: throw or impel with great force</definition>
+        <sentenceCount annotated="39" total="308"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="hurl"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="nudge.v" ID="955" lemmaID="26242" cBy="731" cDate="02/08/2001 01:28:57 PST Thu">
+        <definition>FN: push gently or gradually</definition>
+        <sentenceCount annotated="5" total="199"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="nudge"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="pitch.v" ID="956" lemmaID="29142" cBy="731" cDate="02/08/2001 01:28:57 PST Thu">
+        <definition>COD: throw heavily or roughly</definition>
+        <sentenceCount annotated="17" total="362"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="pitch"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="press.v" ID="957" lemmaID="30313" cBy="731" cDate="02/08/2001 01:28:57 PST Thu">
+        <definition>COD: move or cause to move into a position of contact with something by exerting continuous physical force</definition>
+        <sentenceCount annotated="42" total="728"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="press"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="push.v" ID="958" lemmaID="31272" cBy="731" cDate="02/08/2001 01:28:57 PST Thu">
+        <definition>COD: exert force on (someone or something) in order to move them away from oneself</definition>
+        <sentenceCount annotated="103" total="1437"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="push"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="shove.v" ID="959" lemmaID="35679" cBy="731" cDate="02/08/2001 01:28:57 PST Thu">
+        <definition>COD: push roughly</definition>
+        <sentenceCount annotated="45" total="314"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="shove"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="throw.v" ID="960" lemmaID="40303" cBy="731" cDate="02/08/2001 01:28:57 PST Thu">
+        <definition>COD: propel with force through the air by a rapid movement of the arm and hand</definition>
+        <sentenceCount annotated="121" total="1315"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="throw"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="thrust.v" ID="961" lemmaID="40313" cBy="731" cDate="02/08/2001 01:28:57 PST Thu">
+        <definition>COD: push suddenly or violently in the specified direction</definition>
+        <sentenceCount annotated="57" total="514"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="thrust"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="toss.v" ID="962" lemmaID="40800" cBy="731" cDate="02/08/2001 01:28:57 PST Thu">
+        <definition>COD:  throw lightly or casually</definition>
+        <sentenceCount annotated="64" total="461"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="toss"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="tug.v" ID="963" lemmaID="41452" cBy="731" cDate="02/08/2001 01:28:58 PST Thu">
+        <definition>COD: pull (something) hard or suddenly.</definition>
+        <sentenceCount annotated="39" total="271"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="tug"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="yank.v" ID="964" lemmaID="44653" cBy="731" cDate="02/08/2001 01:28:58 PST Thu">
+        <definition>COD: pull with a jerk.</definition>
+        <sentenceCount annotated="31" total="101"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="yank"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="scoot.v" ID="10904" lemmaID="34469" cBy="664" cDate="08/19/2004 04:47:31 PDT Thu">
+        <definition>FN: push or pull along a surface against resistance, generally causing it to move only a short distance.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="scoot"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="draw.v" ID="10905" lemmaID="11714" cBy="664" cDate="08/19/2004 04:51:43 PDT Thu">
+        <definition>COD: pull or move (something) in a specified direction.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="draw"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="run.v" ID="11008" lemmaID="33776" cBy="664" cDate="09/21/2004 12:08:47 PDT Tue">
+        <definition>FN: cause to move while in light contact. [Generally of the fingers, tongue, or some entity manipulated by the hand.]</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="run"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="slide.v" ID="11009" lemmaID="36336" cBy="664" cDate="09/21/2004 12:11:11 PDT Tue">
+        <definition>FN: cause to move along a surface, generally horizontally. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="slide"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="V" name="pull.v" ID="11121" lemmaID="31106" cBy="303" cDate="11/09/2004 05:55:03 PST Tue">
+        <definition>COD: exert force on so as to cause movement towards oneself or the origin of the force.</definition>
+        <sentenceCount annotated="3" total="130"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="pull"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="drive.v" ID="12055" lemmaID="11795" cBy="303" cDate="05/09/2005 05:10:59 PDT Mon">
+        <definition>COD: propel or carry along by force in a specified direction.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="drive"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="move.v" ID="12056" lemmaID="25100" cBy="303" cDate="05/09/2005 05:22:36 PDT Mon">
+        <definition>FN: cause (something) to move</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="move"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="force.v" ID="12057" lemmaID="15021" cBy="303" cDate="05/09/2005 05:23:56 PDT Mon">
+        <definition>COD: push into a specified position using force.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="force"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="haul.v" ID="12058" lemmaID="17562" cBy="303" cDate="05/09/2005 05:25:40 PDT Mon">
+        <definition>COD: pull or drag with effort or force.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="haul"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="attract.v" ID="14418" lemmaID="2314" cBy="361" cDate="04/11/2007 06:22:19 PDT Wed">
+        <definition>COD: draw or bring in by offering something of interest or advantage.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="attract"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="knock.v" ID="15048" lemmaID="21438" cBy="597" cDate="06/05/2008 05:28:00 PDT Thu">
+        <definition>FN: to push suddenly on something</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="knock"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="punt.v" ID="15050" lemmaID="31184" cBy="597" cDate="06/05/2008 05:30:33 PDT Thu">
+        <definition>FN: to kick something as if it were a football</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="punt"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="roll.v" ID="15053" lemmaID="33454" cBy="597" cDate="06/06/2008 10:14:01 PDT Fri">
+        <definition>FN: to rotate something on an axis</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="roll"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="jerk.v" ID="15083" lemmaID="20904" cBy="597" cDate="06/09/2008 04:25:00 PDT Mon">
+        <definition>FN: pull quickly and forcefully</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="jerk"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="propel.v" ID="15089" lemmaID="30745" cBy="361" cDate="06/10/2008 11:29:18 PDT Tue">
+        <definition>FN: cause to move by means of some force</definition>
+        <sentenceCount annotated="20" total="175"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="propel"/>
+    </lexUnit>
+    <lexUnit status="Add_Annotation" POS="V" name="launch.v" ID="15094" lemmaID="21828" cBy="597" cDate="06/10/2008 02:45:45 PDT Tue">
+        <definition>FN: hurl</definition>
+        <sentenceCount annotated="3" total="123"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="launch"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="stick.v" ID="15120" lemmaID="45303" cBy="597" cDate="06/16/2008 01:31:49 PDT Mon">
+        <definition>FN: thrust a typically sharp object in some direction or through something</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="stick"/>
+    </lexUnit>
+</frame>

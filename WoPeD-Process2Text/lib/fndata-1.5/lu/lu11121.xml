@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="V" name="pull.v" ID="11121" frame="Cause_motion" frameID="55" totalAnnotated="3" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Agt" name="Agent"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Core" abbrev="Area" name="Area"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD7C" type="Core" abbrev="Cse" name="Cause"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Extra-Thematic" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Peripheral" abbrev="Dist" name="Distance"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Extra-Thematic" abbrev="" name="Explanation"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Goal" name="Goal"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD73" type="Extra-Thematic" abbrev="" name="Handle"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Core" abbrev="Initial_State" name="Initial_State"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Ins" name="Instrument"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Path" name="Path"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="0000FF" bgColor="d0d0d0" type="Core" abbrev="" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Core" abbrev="Src" name="Source"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Extra-Thematic" abbrev="" name="Subregion"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Thm" name="Theme"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: exert force on so as to cause movement towards oneself or the origin of the force.</definition>
+    <lexeme POS="V" name="pull"/>
+    <valences>
+        <FERealization total="3">
+            <FE name="Agent"/>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <annoSet ID="2554604"/>
+                <annoSet ID="2554614"/>
+                <annoSet ID="2554618"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Initial_State"/>
+            <pattern total="3">
+                <valenceUnit GF="Dep" PT="PP[from]" FE="Initial_State"/>
+                <annoSet ID="2554604"/>
+                <annoSet ID="2554614"/>
+                <annoSet ID="2554618"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Theme"/>
+            <pattern total="3">
+                <valenceUnit GF="Obj" PT="NP" FE="Theme"/>
+                <annoSet ID="2554604"/>
+                <annoSet ID="2554614"/>
+                <annoSet ID="2554618"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="3">
+            <FE name="Agent"/>
+            <FE name="Initial_State"/>
+            <FE name="Theme"/>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <valenceUnit GF="Dep" PT="PP[from]" FE="Initial_State"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Theme"/>
+                <annoSet ID="2554604"/>
+                <annoSet ID="2554614"/>
+                <annoSet ID="2554618"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-Wupright-(1)"/>
+    <subCorpus name="02-T-PPfrom-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="1631" aPos="96032486" ID="1555922">
+            <text>I pulled the little guy from my pocket and set him down on my desk .</text>
+            <annotationSet cDate="05/19/2010 01:34:01 PDT Wed" status="UNANN" ID="2554603">
+                <layer rank="1" name="PENN">
+                    <label end="0" start="0" name="PP"/>
+                    <label end="7" start="2" name="VVD"/>
+                    <label end="11" start="9" name="dt"/>
+                    <label end="18" start="13" name="jj"/>
+                    <label end="22" start="20" name="nn"/>
+                    <label end="27" start="24" name="in"/>
+                    <label end="30" start="29" name="PP$"/>
+                    <label end="37" start="32" name="nn"/>
+                    <label end="41" start="39" name="cc"/>
+                    <label end="45" start="43" name="VV"/>
+                    <label end="49" start="47" name="PP"/>
+                    <label end="54" start="51" name="rp"/>
+                    <label end="57" start="56" name="in"/>
+                    <label end="60" start="59" name="PP$"/>
+                    <label end="65" start="62" name="nn"/>
+                    <label end="67" start="67" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/19/2010 01:34:01 PDT Wed" status="MANUAL" ID="2554604">
+                <layer rank="1" name="Target">
+                    <label cBy="571" end="7" start="2" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="571" feID="228" end="0" start="0" name="Agent"/>
+                    <label cBy="571" feID="229" end="22" start="9" name="Theme"/>
+                    <label cBy="571" feID="7031" end="37" start="24" name="Initial_State"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="0" start="0" name="Ext"/>
+                    <label end="22" start="9" name="Obj"/>
+                    <label end="37" start="24" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="0" start="0" name="NP"/>
+                    <label end="22" start="9" name="NP"/>
+                    <label end="37" start="24" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="1118" aPos="66699827" ID="1555927">
+            <text>She pulled a handkerchief from her handbag on her lap , dabbed at her nose .</text>
+            <annotationSet cDate="05/19/2010 01:34:02 PDT Wed" status="UNANN" ID="2554613">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="PP"/>
+                    <label end="9" start="4" name="VVD"/>
+                    <label end="11" start="11" name="dt"/>
+                    <label end="24" start="13" name="nn"/>
+                    <label end="29" start="26" name="in"/>
+                    <label end="33" start="31" name="PP$"/>
+                    <label end="41" start="35" name="nn"/>
+                    <label end="44" start="43" name="in"/>
+                    <label end="48" start="46" name="PP$"/>
+                    <label end="52" start="50" name="nn"/>
+                    <label end="54" start="54" name=","/>
+                    <label end="61" start="56" name="VVN"/>
+                    <label end="64" start="63" name="in"/>
+                    <label end="68" start="66" name="PP$"/>
+                    <label end="73" start="70" name="nn"/>
+                    <label end="75" start="75" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/19/2010 01:34:02 PDT Wed" status="MANUAL" ID="2554614">
+                <layer rank="1" name="Target">
+                    <label cBy="571" end="9" start="4" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="571" feID="228" end="2" start="0" name="Agent"/>
+                    <label cBy="571" feID="229" end="24" start="11" name="Theme"/>
+                    <label cBy="571" feID="7031" end="52" start="26" name="Initial_State"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="2" start="0" name="Ext"/>
+                    <label end="24" start="11" name="Obj"/>
+                    <label end="52" start="26" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="2" start="0" name="NP"/>
+                    <label end="24" start="11" name="NP"/>
+                    <label end="52" start="26" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="9" paragNo="162" aPos="73257650" ID="1555929">
+            <text>Dexter pulled a packet of cigarettes from his leather blouson and offered her one .</text>
+            <annotationSet cDate="05/19/2010 01:34:02 PDT Wed" status="UNANN" ID="2554617">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="0" name="NP"/>
+                    <label end="12" start="7" name="VVD"/>
+                    <label end="14" start="14" name="dt"/>
+                    <label end="21" start="16" name="nn"/>
+                    <label end="24" start="23" name="in"/>
+                    <label end="35" start="26" name="nns"/>
+                    <label end="40" start="37" name="in"/>
+                    <label end="44" start="42" name="PP$"/>
+                    <label end="52" start="46" name="nn"/>
+                    <label end="60" start="54" name="nn"/>
+                    <label end="64" start="62" name="cc"/>
+                    <label end="72" start="66" name="VVD"/>
+                    <label end="76" start="74" name="PP$"/>
+                    <label end="80" start="78" name="nn"/>
+                    <label end="82" start="82" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/19/2010 01:34:02 PDT Wed" status="MANUAL" ID="2554618">
+                <layer rank="1" name="Target">
+                    <label cBy="571" end="12" start="7" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="571" feID="228" end="5" start="0" name="Agent"/>
+                    <label cBy="571" feID="229" end="35" start="14" name="Theme"/>
+                    <label cBy="571" feID="7031" end="60" start="37" name="Initial_State"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="5" start="0" name="Ext"/>
+                    <label end="35" start="14" name="Obj"/>
+                    <label end="60" start="37" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="5" start="0" name="NP"/>
+                    <label end="35" start="14" name="NP"/>
+                    <label end="60" start="37" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

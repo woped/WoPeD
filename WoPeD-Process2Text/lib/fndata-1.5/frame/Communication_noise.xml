@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="731" cDate="02/07/2001 04:12:02 PST Wed" name="Communication_noise" ID="39" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;This frame contains words for types of noise which can be used to characterize verbal communication.  It inherits from Communication (possibly more specifically Communication_manner) and the Sound_emission frame (which simply characterizes basic sounds of whatever source, including those made by animals and inanimate objects).  As such, it involves a &lt;fen&gt;Speaker&lt;/fen&gt; who produces noise and thus communicates a &lt;fen&gt;Message&lt;/fen&gt; to an &lt;fen&gt;Addressee&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:02 PST Wed" abbrev="Spkr" name="Speaker" ID="162">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Speaker&lt;/fen&gt; is the sentient entity that delivers the &lt;fen&gt;Message&lt;/fen&gt;.
+
+&lt;ex&gt;&lt;fex name="Speaker"&gt;Kim&lt;/fex&gt; &lt;t&gt;whined&lt;/t&gt; that it wasn't fair.&lt;/ex&gt; &lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Peripheral" cBy="731" cDate="02/07/2001 04:12:02 PST Wed" abbrev="Add" name="Addressee" ID="163">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Addressee&lt;/fen&gt; refers to the one toward whom the Communication_noise is directed.  &lt;fen&gt;Addressee&lt;/fen&gt; generally occurs in &lt;ment&gt;to&lt;/ment&gt; or &lt;ment&gt;at&lt;/ment&gt; PPs.
+
+&lt;ex&gt;Kim &lt;t&gt;whined&lt;/t&gt; &lt;fex name="Addressee"&gt;to Jess&lt;/fex&gt; that it wasn't fair.&lt;/ex&gt;
+&lt;ex&gt;Jess &lt;t&gt;screamed&lt;/t&gt; &lt;fex name="Addressee"&gt;at Kim&lt;/fex&gt; to be quiet.&lt;/ex&gt; &lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:02 PST Wed" abbrev="Msg" name="Message" ID="164">
+        <definition>&lt;def-root&gt;Message has a number of different realizations in this frame, including &lt;ment&gt;that&lt;/ment&gt;-clauses, direct quotes, infinitival complements, &lt;ment&gt;for-to&lt;/ment&gt; phrases, and NP Objects.
+&lt;ex&gt;Kim &lt;t&gt;whined&lt;/t&gt; &lt;fex name="Message"&gt;that it wasn't fair&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Message"&gt;"Get moving!"&lt;/fex&gt; Jess &lt;t&gt;growled&lt;/t&gt;.&lt;/ex&gt;
+&lt;ex&gt;Jess &lt;t&gt;growled&lt;/t&gt; at me &lt;fex name="Message"&gt;to get moving&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;Jess &lt;t&gt;growled&lt;/t&gt; &lt;fex name="Message"&gt;for me to get moving&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;Jess &lt;t&gt;growled&lt;/t&gt; &lt;fex name="Message"&gt;an order&lt;/fex&gt;.&lt;/ex&gt;
+Quoted &lt;fen&gt;Message&lt;/fen&gt;s may either precede or follow the External Argument and verb, or may be discontinuous.
+&lt;ex&gt;&lt;fex name="Msg"&gt;"Get moving!"&lt;/fex&gt;Jess &lt;t&gt;growled&lt;/t&gt;.&lt;/ex&gt;
+&lt;ex&gt;Jess &lt;t&gt;growled&lt;/t&gt; angrily &lt;fex name="Msg"&gt;"Get moving!"&lt;/fex&gt;&lt;/ex&gt;
+&lt;ex&gt;"For goodness sake," Jess &lt;t&gt;growled&lt;/t&gt;, &lt;fex name="Msg"&gt;"get moving!"&lt;/fex&gt;&lt;/ex&gt; &lt;/def-root&gt;</definition>
+        <semType name="Message" ID="56"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:02 PST Wed" abbrev="Top" name="Topic" ID="165">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Topic&lt;/fen&gt; occurs in PP Complements, usually headed by &lt;ment&gt;about&lt;/ment&gt;.
+
+&lt;ex&gt;Kim &lt;t&gt;howled&lt;/t&gt; &lt;fex name="Topic"&gt;about the unfairness of it all&lt;/fex&gt;.&lt;/ex&gt; &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Peripheral" cBy="731" cDate="02/07/2001 04:12:03 PST Wed" abbrev="Medium" name="Medium" ID="166">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Medium&lt;/fen&gt; is used for a physical entity or channel that transmits the &lt;fen&gt;Message&lt;/fen&gt;. It is normally expressed as a PP Complement headed by &lt;ment&gt;on&lt;/ment&gt; or &lt;ment&gt;in&lt;/ment&gt;.
+
+&lt;ex&gt;Pat &lt;t&gt;screamed&lt;/t&gt; something &lt;fex name="Medium"&gt;in Spanish&lt;/fex&gt;.&lt;/ex&gt; &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="07/17/2001 01:53:24 PDT Tue" abbrev="Dep" name="Depictive" ID="1449">
+        <definition>&lt;def-root&gt;This FE identifies the state of the &lt;fen&gt;Speaker&lt;/fen&gt; during the communication.
+
+&lt;ex&gt;"Get outta here!" he &lt;t&gt;barked&lt;/t&gt; &lt;fex name="Dep"&gt;unflinching&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="07/17/2001 01:53:26 PDT Tue" abbrev="Manr" name="Manner" ID="1450">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Manner&lt;/fen&gt; describes the manner or style in which the Communication_noise is delivered.
+
+&lt;ex&gt;"Huh!" he &lt;t&gt;grunted&lt;/t&gt; &lt;fex name="Manner"&gt;disbelievingly&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;`"Long , dark hair" he &lt;t&gt;murmured&lt;/t&gt; &lt;fex name="Manner"&gt;thoughtfully&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="07/17/2001 01:56:43 PDT Tue" abbrev="ICause" name="Internal_cause" ID="1457">
+        <definition>&lt;def-root&gt;The Communication_noise may be prompted by either some outside phenomenon or occurrence, or by an &lt;fen&gt;Internal_cause&lt;/fen&gt;, the &lt;fen&gt;Speaker&lt;/fen&gt;'s mental or emotional state.  &lt;fen&gt;Internal_cause&lt;/fen&gt; is expressed in a PP Complement.
+
+&lt;ex&gt;Kim &lt;t&gt;growled&lt;/t&gt; at Tim &lt;fex name="Internal_cause"&gt;in frustration&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="07/17/2001 01:58:42 PDT Tue" abbrev="Degr" name="Degree" ID="1458">
+        <definition>&lt;def-root&gt;Degree to which event occurs&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="08/30/2002 06:56:52 PDT Fri" abbrev="Mns" name="Means" ID="3671">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Means&lt;/fen&gt; by which the &lt;fen&gt;Speaker&lt;/fen&gt; communicates.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="07/28/2003 01:23:29 PDT Mon" abbrev="" name="Voice" ID="4849">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Voice&lt;/fen&gt; describes the &lt;fex name=""&gt;Speaker'&lt;/fex&gt;s utterance or other message-encoded production.
+&lt;ex&gt;&lt;fex name="Voice"&gt;John's voice&lt;/fex&gt; &lt;t&gt;bellowed&lt;/t&gt; for her to be quiet.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="309" cDate="10/02/2003 11:36:50 PDT Thu" abbrev="" name="Place" ID="5330">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Place&lt;/fen&gt; where an event occurs.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="309" cDate="10/02/2003 11:36:50 PDT Thu" abbrev="Rsn" name="Reason" ID="5331">
+        <definition>&lt;def-root&gt;This FE idenitifes the &lt;fen&gt;Reason&lt;/fen&gt; for which an event occurs.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="145" cDate="10/27/2003 01:13:00 PST Mon" abbrev="Rever" name="Reversive" ID="5700">
+        <definition>&lt;def-root&gt;This FE indicates that the communication act denoted by the target is in response to an earlier communication act in which the roles of Speaker and Addressee were reversed. This is conceptually akin to the Communication_response frame in which the targets themselves denote the responsive nature of the act. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Peripheral" cBy="309" cDate="05/12/2005 09:23:45 PDT Thu" abbrev="Time" name="Time" ID="7970">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Time&lt;/fen&gt; where the Communication noise event occurs.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Topic" ID="165"/>
+        <memberFE name="Message" ID="164"/>
+    </FEcoreSet>
+    <FEcoreSet>
+        <memberFE name="Speaker" ID="162"/>
+        <memberFE name="Voice" ID="4849"/>
+        <memberFE name="Medium" ID="166"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Communication</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Make_noise</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="FN1_Sent" POS="N" name="babble.n" ID="567" lemmaID="2562" cBy="731" cDate="02/08/2001 01:28:21 PST Thu">
+        <definition>COD: foolish, excited, or confused talk.</definition>
+        <sentenceCount annotated="14" total="73"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="babble"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="bark.v" ID="568" lemmaID="2913" cBy="731" cDate="02/08/2001 01:28:21 PST Thu">
+        <definition>COD: utter (a command or question) abruptly or aggressively</definition>
+        <sentenceCount annotated="23" total="222"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="bark"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="bawl.v" ID="569" lemmaID="3067" cBy="731" cDate="02/08/2001 01:28:21 PST Thu">
+        <definition>COD: shout out noisily or angrily</definition>
+        <sentenceCount annotated="32" total="129"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="bawl"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="bellow.v" ID="570" lemmaID="3317" cBy="731" cDate="02/08/2001 01:28:21 PST Thu">
+        <definition>COD: emit a loud, deep roar, typically in pain or anger.</definition>
+        <sentenceCount annotated="34" total="174"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="bellow"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="bleat.v" ID="571" lemmaID="3807" cBy="731" cDate="02/08/2001 01:28:21 PST Thu">
+        <definition>COD: speak or complain in a weak or foolish way.</definition>
+        <sentenceCount annotated="19" total="56"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="bleat"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="bray.v" ID="573" lemmaID="4469" cBy="731" cDate="02/08/2001 01:28:22 PST Thu">
+        <definition>FN: issue a loud, harsh cry.</definition>
+        <sentenceCount annotated="5" total="36"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="bray"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="burble.v" ID="574" lemmaID="4951" cBy="731" cDate="02/08/2001 01:28:22 PST Thu">
+        <definition>COD: speak unintelligibly and at unnecessary length.</definition>
+        <sentenceCount annotated="10" total="41"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="burble"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="cackle.v" ID="575" lemmaID="5148" cBy="731" cDate="02/08/2001 01:28:22 PST Thu">
+        <definition>COD: talk inconsequentially and at length.</definition>
+        <sentenceCount annotated="10" total="66"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="cackle"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="chirp.v" ID="576" lemmaID="6364" cBy="731" cDate="02/08/2001 01:28:22 PST Thu">
+        <definition>COD: say something in a lively and cheerful way.</definition>
+        <sentenceCount annotated="14" total="41"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="chirp"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="chirrup.v" ID="577" lemmaID="6369" cBy="731" cDate="02/08/2001 01:28:22 PST Thu">
+        <definition>COD: make repeated short high-pitched sounds. </definition>
+        <sentenceCount annotated="6" total="17"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="chirrup"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="chuckle.v" ID="578" lemmaID="6480" cBy="731" cDate="02/08/2001 01:28:22 PST Thu">
+        <definition>COD: laugh quietly or inwardly. </definition>
+        <sentenceCount annotated="27" total="133"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="chuckle"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="cluck.v" ID="579" lemmaID="6918" cBy="731" cDate="02/08/2001 01:28:22 PST Thu">
+        <definition>COD: express fussy concern about.</definition>
+        <sentenceCount annotated="9" total="43"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="cluck"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="coo.v" ID="580" lemmaID="8243" cBy="731" cDate="02/08/2001 01:28:22 PST Thu">
+        <definition>COD: (of a person) speak in a soft gentle voice.</definition>
+        <sentenceCount annotated="16" total="70"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="coo"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="croak.v" ID="581" lemmaID="8981" cBy="731" cDate="02/08/2001 01:28:22 PST Thu">
+        <definition>COD: utter a croak. </definition>
+        <sentenceCount annotated="19" total="100"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="croak"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="croon.v" ID="582" lemmaID="9004" cBy="731" cDate="02/08/2001 01:28:23 PST Thu">
+        <definition>COD: hum, sing, or speak in a soft, low voice.</definition>
+        <sentenceCount annotated="12" total="68"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="croon"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="crow.v" ID="583" lemmaID="9088" cBy="731" cDate="02/08/2001 01:28:23 PST Thu">
+        <definition>COD: utter its characteristic loud cry. </definition>
+        <sentenceCount annotated="21" total="106"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="crow"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="cry.v" ID="584" lemmaID="9151" cBy="731" cDate="02/08/2001 01:28:23 PST Thu">
+        <definition>COD: shout or scream loudly. </definition>
+        <sentenceCount annotated="36" total="301"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="cry"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="drone.v" ID="585" lemmaID="11815" cBy="731" cDate="02/08/2001 01:28:23 PST Thu">
+        <definition>COD: make a continuous low humming sound. </definition>
+        <sentenceCount annotated="14" total="83"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="drone"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="gasp.v" ID="586" lemmaID="15966" cBy="731" cDate="02/08/2001 01:28:23 PST Thu">
+        <definition>COD: catch one's breath with an open mouth, owing to pain or astonishment. </definition>
+        <sentenceCount annotated="32" total="125"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="gasp"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="grate.v" ID="587" lemmaID="16719" cBy="731" cDate="02/08/2001 01:28:23 PST Thu">
+        <definition>COD: make an unpleasant rasping sound. </definition>
+        <sentenceCount annotated="18" total="108"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="grate"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="groan.v" ID="588" lemmaID="16878" cBy="731" cDate="02/08/2001 01:28:23 PST Thu">
+        <definition>COD: make a deep inarticulate sound in response to pain or despair. </definition>
+        <sentenceCount annotated="38" total="170"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="groan"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="growl.v" ID="589" lemmaID="16941" cBy="731" cDate="02/08/2001 01:28:23 PST Thu">
+        <definition>COD: say something in a low grating voice.</definition>
+        <sentenceCount annotated="32" total="160"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="growl"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="grunt.v" ID="590" lemmaID="16975" cBy="731" cDate="02/08/2001 01:28:23 PST Thu">
+        <definition>COD: make a low, short guttural sound. </definition>
+        <sentenceCount annotated="28" total="143"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="grunt"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="gurgle.v" ID="591" lemmaID="17095" cBy="731" cDate="02/08/2001 01:28:23 PST Thu">
+        <definition>COD: make a hollow bubbling sound. </definition>
+        <sentenceCount annotated="9" total="60"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="gurgle"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="hiss.v" ID="592" lemmaID="18141" cBy="731" cDate="02/08/2001 01:28:23 PST Thu">
+        <definition>COD: make a sharp sibilant sound as of the letter s, often as a sign of disapproval or derision. </definition>
+        <sentenceCount annotated="23" total="191"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="hiss"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="hoot.v" ID="593" lemmaID="18369" cBy="731" cDate="02/08/2001 01:28:24 PST Thu">
+        <definition>COD: express loud scornful disapproval of something.</definition>
+        <sentenceCount annotated="4" total="80"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="hoot"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="howl.v" ID="594" lemmaID="18560" cBy="731" cDate="02/08/2001 01:28:24 PST Thu">
+        <definition>COD: make a howling sound. </definition>
+        <sentenceCount annotated="13" total="157"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="howl"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="moan.v" ID="595" lemmaID="24633" cBy="731" cDate="02/08/2001 01:28:24 PST Thu">
+        <definition>COD: utter or make a moan.</definition>
+        <sentenceCount annotated="40" total="208"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="moan"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="murmur.v" ID="596" lemmaID="25248" cBy="731" cDate="02/08/2001 01:28:24 PST Thu">
+        <definition>COD: say something in a murmur (low, continuous sound)</definition>
+        <sentenceCount annotated="66" total="242"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="murmur"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="purr.v" ID="597" lemmaID="31252" cBy="731" cDate="02/08/2001 01:28:24 PST Thu">
+        <definition>FN: to speak in a manner that resembles a cat's purr</definition>
+        <sentenceCount annotated="9" total="107"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="purr"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="rap.v" ID="598" lemmaID="31812" cBy="731" cDate="02/08/2001 01:28:24 PST Thu">
+        <definition>COD: say something sharply or suddenly.</definition>
+        <sentenceCount annotated="19" total="149"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="rap"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="rasp.v" ID="599" lemmaID="31854" cBy="731" cDate="02/08/2001 01:28:24 PST Thu">
+        <definition>COD: make a harsh, grating noise. </definition>
+        <sentenceCount annotated="17" total="84"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="rasp"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="rattle.v" ID="600" lemmaID="31897" cBy="731" cDate="02/08/2001 01:28:24 PST Thu">
+        <definition>COD: make or cause to make a rapid succession of short, sharp knocking or clinking sounds. </definition>
+        <sentenceCount annotated="6" total="70"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="rattle"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="roar.v" ID="601" lemmaID="33397" cBy="731" cDate="02/08/2001 01:28:24 PST Thu">
+        <definition>COD: make or utter a roar. </definition>
+        <sentenceCount annotated="12" total="13"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="roar"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="rumble.v" ID="602" lemmaID="33753" cBy="731" cDate="02/08/2001 01:28:24 PST Thu">
+        <definition>COD: make a continuous deep, resonant sound. </definition>
+        <sentenceCount annotated="15" total="150"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="rumble"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="scream.v" ID="603" lemmaID="34553" cBy="731" cDate="02/08/2001 01:28:24 PST Thu">
+        <definition>COD: make a long, loud, piercing cry or sound, especially expressing extreme emotion or pain. </definition>
+        <sentenceCount annotated="73" total="346"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="scream"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="screech.v" ID="604" lemmaID="34557" cBy="731" cDate="02/08/2001 01:28:24 PST Thu">
+        <definition>COD: make a screech. </definition>
+        <sentenceCount annotated="25" total="108"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="screech"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="shriek.v" ID="605" lemmaID="35719" cBy="731" cDate="02/08/2001 01:28:25 PST Thu">
+        <definition>COD: utter a high-pitched piercing sound, cry, or words. </definition>
+        <sentenceCount annotated="34" total="154"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="shriek"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="shrill.v" ID="606" lemmaID="35723" cBy="731" cDate="02/08/2001 01:28:25 PST Thu">
+        <definition>COD: utter or send out (a song, complaint, etc.) shrilly</definition>
+        <sentenceCount annotated="10" total="43"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="shrill"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="snarl.v" ID="607" lemmaID="36610" cBy="731" cDate="02/08/2001 01:28:25 PST Thu">
+        <definition>COD: say something aggressively.</definition>
+        <sentenceCount annotated="34" total="152"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="snarl"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="snort.v" ID="608" lemmaID="36686" cBy="731" cDate="02/08/2001 01:28:25 PST Thu">
+        <definition>COD: make a snort. </definition>
+        <sentenceCount annotated="24" total="126"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="snort"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="splutter.v" ID="609" lemmaID="37429" cBy="731" cDate="02/08/2001 01:28:25 PST Thu">
+        <definition>COD: say in a rapid indistinct way.</definition>
+        <sentenceCount annotated="24" total="115"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="splutter"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="sputter.v" ID="610" lemmaID="37584" cBy="731" cDate="02/08/2001 01:28:25 PST Thu">
+        <definition>COD: speak in a series of incoherent bursts.</definition>
+        <sentenceCount annotated="4" total="17"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="sputter"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="squawk.v" ID="611" lemmaID="37631" cBy="731" cDate="02/08/2001 01:28:25 PST Thu">
+        <definition>COD: say something in a loud, discordant tone.</definition>
+        <sentenceCount annotated="14" total="70"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="squawk"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="squeak.v" ID="612" lemmaID="37634" cBy="731" cDate="02/08/2001 01:28:25 PST Thu">
+        <definition>COD: say something in a high-pitched tone.</definition>
+        <sentenceCount annotated="23" total="108"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="squeak"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="squeal.v" ID="613" lemmaID="37638" cBy="731" cDate="02/08/2001 01:28:25 PST Thu">
+        <definition>COD: say something in a high-pitched, excited tone.</definition>
+        <sentenceCount annotated="16" total="93"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="squeal"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="thunder.v" ID="614" lemmaID="40332" cBy="731" cDate="02/08/2001 01:28:26 PST Thu">
+        <definition>COD: speak loudly, angrily, and forcefully, especially to protest:</definition>
+        <sentenceCount annotated="18" total="116"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="thunder"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="V" name="titter.v" ID="615" lemmaID="40558" cBy="731" cDate="02/08/2001 01:28:26 PST Thu">
+        <definition>COD: give a titter. </definition>
+        <sentenceCount annotated="2" total="53"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="titter"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="trill.v" ID="616" lemmaID="41235" cBy="731" cDate="02/08/2001 01:28:26 PST Thu">
+        <definition>FN: speak producing a quavering or warbling sound; sing or pronounce with a trill</definition>
+        <sentenceCount annotated="12" total="46"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="trill"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="trumpet.v" ID="617" lemmaID="41383" cBy="731" cDate="02/08/2001 01:28:26 PST Thu">
+        <definition>COD: proclaim widely or loudly.</definition>
+        <sentenceCount annotated="16" total="102"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="trumpet"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="twitter.v" ID="618" lemmaID="41647" cBy="731" cDate="02/08/2001 01:28:26 PST Thu">
+        <definition>COD:  talk rapidly in a nervous or trivial way.</definition>
+        <sentenceCount annotated="6" total="31"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="twitter"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="wail.v" ID="619" lemmaID="43335" cBy="731" cDate="02/08/2001 01:28:26 PST Thu">
+        <definition>COD: manifest or feel deep sorrow for; lament.</definition>
+        <sentenceCount annotated="29" total="136"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="wail"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="warble.v" ID="620" lemmaID="43426" cBy="731" cDate="02/08/2001 01:28:26 PST Thu">
+        <definition>FN: speak in a trilling or quavering voice</definition>
+        <sentenceCount annotated="6" total="28"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="warble"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="wheeze.v" ID="621" lemmaID="43894" cBy="731" cDate="02/08/2001 01:28:26 PST Thu">
+        <definition>FN: speak with a whistling or rattling sound in the chest</definition>
+        <sentenceCount annotated="9" total="78"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="wheeze"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="whimper.v" ID="622" lemmaID="43979" cBy="731" cDate="02/08/2001 01:28:26 PST Thu">
+        <definition>FN: communicate fear, pain or discontent making a series of low, feeble sounds</definition>
+        <sentenceCount annotated="16" total="97"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="whimper"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="whine.v" ID="623" lemmaID="43986" cBy="731" cDate="02/08/2001 01:28:26 PST Thu">
+        <definition>COD: complain in a feeble or petulant way.</definition>
+        <sentenceCount annotated="32" total="128"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="whine"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="whoop.v" ID="624" lemmaID="44082" cBy="731" cDate="02/08/2001 01:28:26 PST Thu">
+        <definition>COD: give or make a whoop.</definition>
+        <sentenceCount annotated="5" total="64"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="whoop"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="yell.v" ID="625" lemmaID="44693" cBy="731" cDate="02/08/2001 01:28:27 PST Thu">
+        <definition>COD: shout in a loud or piercing way.</definition>
+        <sentenceCount annotated="66" total="294"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="yell"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="yelp.v" ID="626" lemmaID="44701" cBy="731" cDate="02/08/2001 01:28:27 PST Thu">
+        <definition>FN: communicate or speak with yelps</definition>
+        <sentenceCount annotated="11" total="43"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="yelp"/>
+    </lexUnit>
+</frame>

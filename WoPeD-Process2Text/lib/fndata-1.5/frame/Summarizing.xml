@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="618" cDate="03/17/2006 11:16:54 PST Fri" name="Summarizing" ID="1722" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A &lt;fen&gt;Communicator&lt;/fen&gt; processes some information (either from textual or real-world/perceptual sources) regarding a &lt;fen&gt;State_of_affairs&lt;/fen&gt; into a concise form (a summary) that contains the essential content in briefer form, and communicates this summary to an &lt;fen&gt;Addressee&lt;/fen&gt;, or records it in a &lt;fen&gt;Medium&lt;/fen&gt;. The &lt;fen&gt;State_of_affairs&lt;/fen&gt; may be represented directly (e.g., outline &lt;ment&gt;what happened&lt;/ment&gt;, &lt;ment&gt;the situation abroad&lt;/ment&gt;), or as a textual source (summarizing &lt;ment&gt;the documents&lt;/ment&gt;), or metonymically as some focal entity (a synopsis &lt;ment&gt;of the candidates&lt;/ment&gt;).
+
+&lt;ex&gt;&lt;fex name="Communicator"&gt;Frank&lt;/fex&gt; has already &lt;t&gt;summarized&lt;/t&gt; &lt;fex name="State_of_affairs"&gt;some of the reactions&lt;/fex&gt; &lt;fex name="med"&gt;on his weblog&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="com"&gt;Director Van Auken&lt;/fex&gt; &lt;ment&gt;gave&lt;/ment&gt; a brief informational &lt;t&gt;synopsis&lt;/t&gt; &lt;fex name="sta"&gt;of each applicant&lt;/fex&gt;. &lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Communicator"&gt;He&lt;/fex&gt; &lt;t&gt;boiled&lt;/t&gt; &lt;t&gt;down&lt;/t&gt; &lt;fex name="State_of_affairs"&gt;the argument for domestic wiretapping&lt;/fex&gt; in one plainspoken and effective, if also deceptive, line...&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Communicator"&gt;You&lt;/fex&gt; should be able to &lt;t&gt;summarize&lt;/t&gt; &lt;fex name="State_of_affairs"&gt;your findings&lt;/fex&gt; &lt;fex name="Addressee"&gt;to a lay audience&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Medium"&gt;In her materials&lt;/fex&gt;, &lt;fex name="Communicator"&gt;she&lt;/fex&gt; also &lt;t&gt;outlined&lt;/t&gt; &lt;fex name="State_of_affairs"&gt;the situation and major problems facing the company&lt;/fex&gt;.&lt;/ex&gt;
+
+Some LUs, such as &lt;ment&gt;summarize&lt;/ment&gt; and &lt;ment&gt;synopsis&lt;/ment&gt; entail a preexisting body of information that has been processed into a briefer form by the &lt;fen&gt;Communicator&lt;/fen&gt;. Others, such as &lt;ment&gt;outline&lt;/ment&gt; and &lt;ment&gt;blueprint&lt;/ment&gt; are compatible with, but do not entail, a preexisting, fully fleshed-out concept. E.g.,
+
+&lt;ex&gt;&lt;fex name="Medium"&gt;Her book&lt;/fex&gt; &lt;t&gt;outlines&lt;/t&gt; &lt;fex name="State_of_affairs"&gt;a new proposal for handling grammaticalization&lt;/fex&gt;, though she doesn't flesh it out entirely.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="03/23/2006 04:07:25 PST Thu" abbrev="com" name="Communicator" ID="9966">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Communicator&lt;/fen&gt; creates and communicates the summary of the Information.&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="03/23/2006 04:08:37 PST Thu" abbrev="add" name="Addressee" ID="9967">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Communicator&lt;/fen&gt; communicates the summary to the &lt;fen&gt;Addressee&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="03/23/2006 04:10:06 PST Thu" abbrev="sta" name="State_of_affairs" ID="9968">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;State_of_affairs&lt;/fen&gt; is summarized by the &lt;fen&gt;Communicator&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="03/23/2006 04:11:05 PST Thu" abbrev="med" name="Medium" ID="9969">
+        <definition>&lt;def-root&gt;The textual or other &lt;fen&gt;Medium&lt;/fen&gt; through which the &lt;fen&gt;Communicator&lt;/fen&gt; summarizes.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/02/2006 07:25:01 PDT Fri" abbrev="sum" name="Summary" ID="10223">
+        <definition>&lt;def-root&gt;The content that results from the summarization.
+
+&lt;ex&gt;She &lt;t&gt;summarized&lt;/t&gt; our involvement &lt;fex name="sum"&gt;as a "qualified success"&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;Aston &lt;t&gt;boiled&lt;/t&gt;the situation &lt;t&gt;down&lt;/t&gt; &lt;fex name="sum"&gt;to one word: FUBAR&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/02/2006 07:29:50 PDT Fri" abbrev="tim" name="Time" ID="10224">
+        <definition>&lt;def-root&gt;The time at which the &lt;fen&gt;Communicator&lt;/fen&gt; makes the &lt;fen&gt;Summary&lt;/fen&gt;.
+
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/02/2006 07:30:40 PDT Fri" abbrev="pla" name="Place" ID="10225">
+        <definition>&lt;def-root&gt;The location where the &lt;fen&gt;Communicator&lt;/fen&gt; communicates.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/02/2006 07:31:42 PDT Fri" abbrev="man" name="Manner" ID="10227">
+        <definition>&lt;def-root&gt;Any description of the details of the action beyond the identity of the participants and the setting, especially descriptions of the &lt;fen&gt;Communicator&lt;/fen&gt; that affect the action.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/02/2006 07:33:45 PDT Fri" abbrev="mea" name="Means" ID="10228">
+        <definition>&lt;def-root&gt;An action performed by the &lt;fen&gt;Communicator&lt;/fen&gt; that brings about the communication.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/02/2006 07:35:18 PDT Fri" abbrev="pur" name="Purpose" ID="10229">
+        <definition>&lt;def-root&gt;The state-of-affairs that the &lt;fen&gt;Communicator&lt;/fen&gt; is attempting to bring about by communicating.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A9A9A9" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/02/2006 07:37:37 PDT Fri" abbrev="dur" name="Duration" ID="10230">
+        <definition>&lt;def-root&gt;The amount of time taken by the &lt;fen&gt;Communicator&lt;/fen&gt; in creating and conveying the &lt;fen&gt;Summary&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="000000" coreType="Extra-Thematic" cBy="597" cDate="06/04/2008 02:43:55 PDT Wed" abbrev="" name="Containing_event" ID="12704">
+        <definition>&lt;def-root&gt;This FE denotes an event that occurs or state of affairs that holds at a time that includes the time during which the event or state of affairs reported by the target occurs and of which it is taken to be a part.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="EEE8AA" fgColor="000000" coreType="Extra-Thematic" cBy="597" cDate="06/04/2008 02:49:13 PDT Wed" abbrev="" name="Circumstances" ID="12705">
+        <definition>&lt;def-root&gt;Circumstances describe the state of the world (at a particular time and place) which is specifically independent of the event itself and any of its participants.&lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Medium" ID="9969"/>
+        <memberFE name="Communicator" ID="9966"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Communication</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="summarize.v" ID="13119" lemmaID="50342" cBy="618" cDate="03/17/2006 11:46:52 PST Fri">
+        <definition>FN: give a discription of the main point(s) of something.</definition>
+        <sentenceCount annotated="20" total="170"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="summarize"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="synopsis.n" ID="13124" lemmaID="39293" cBy="618" cDate="03/21/2006 05:18:26 PST Tue">
+        <definition>COD: a brief summary of something.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="synopsis"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="boil down.v" ID="13125" lemmaID="50345" cBy="618" cDate="03/21/2006 05:20:46 PST Tue">
+        <definition>FN: give a concise summary.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="boil"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="PREP" name="down"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="outline.v" ID="13126" lemmaID="27109" cBy="618" cDate="03/21/2006 05:48:06 PST Tue">
+        <definition>COD: give a summary of.</definition>
+        <sentenceCount annotated="20" total="170"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="outline"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="sum up.v" ID="14889" lemmaID="50855" cBy="597" cDate="03/31/2008 03:44:24 PDT Mon">
+        <definition>FN: to summarize a State_or_affairs (note: this is the transitive usage e.g. "I'll sum up what he said...")</definition>
+        <sentenceCount annotated="20" total="110"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="sum"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="PREP" name="up"/>
+    </lexUnit>
+</frame>

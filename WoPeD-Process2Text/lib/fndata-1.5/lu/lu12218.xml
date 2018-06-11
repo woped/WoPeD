@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Add_Annotation" POS="V" name="acquiesce.v" ID="12218" frame="Giving_in" frameID="1497" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp=1806" ID="22144"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="cap" name="Capitulator"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="com" name="Compeller"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Extra-Thematic" abbrev="exp" name="Explanation"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core" abbrev="for" name="Force"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="iss" name="Issue"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="man" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="pla" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="d0d0d0" type="Peripheral" abbrev="pur" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Core" abbrev="res" name="Resultant_action"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: accept or consent to something without protest</definition>
+    <lexeme POS="V" name="acquiesce"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Capitulator"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Capitulator"/>
+                <annoSet ID="2582857"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Issue"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Issue"/>
+                <annoSet ID="2582857"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Resultant_action"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="2nd" FE="Resultant_action"/>
+                <annoSet ID="2582857"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Capitulator"/>
+            <FE name="Issue"/>
+            <FE name="Resultant_action"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Capitulator"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Issue"/>
+                <valenceUnit GF="" PT="2nd" FE="Resultant_action"/>
+                <annoSet ID="2582857"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-modifier-(1)"/>
+    <subCorpus name="02-pp_in-p-(1)">
+        <sentence corpID="111" docID="22144" sentNo="2" paragNo="30" aPos="0" ID="1574120">
+            <text>Thorpe J. decided that the mother had not established that the father had acquiesced in the removal or retention of the children .</text>
+            <annotationSet cDate="07/15/2010 10:22:10 PDT Thu" status="UNANN" ID="2582856">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="0" name="NP"/>
+                    <label end="8" start="7" name="NP"/>
+                    <label end="16" start="10" name="VVD"/>
+                    <label end="21" start="18" name="in"/>
+                    <label end="25" start="23" name="dt"/>
+                    <label end="32" start="27" name="nn"/>
+                    <label end="36" start="34" name="VHD"/>
+                    <label end="40" start="38" name="rb"/>
+                    <label end="52" start="42" name="VVN"/>
+                    <label end="57" start="54" name="in"/>
+                    <label end="61" start="59" name="dt"/>
+                    <label end="68" start="63" name="nn"/>
+                    <label end="72" start="70" name="VHD"/>
+                    <label end="83" start="74" name="VVD"/>
+                    <label end="86" start="85" name="in"/>
+                    <label end="90" start="88" name="dt"/>
+                    <label end="98" start="92" name="nn"/>
+                    <label end="101" start="100" name="cc"/>
+                    <label end="111" start="103" name="nn"/>
+                    <label end="114" start="113" name="in"/>
+                    <label end="118" start="116" name="dt"/>
+                    <label end="127" start="120" name="nns"/>
+                    <label end="129" start="129" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/15/2010 10:22:10 PDT Thu" status="MANUAL" ID="2582857">
+                <layer rank="1" name="Target">
+                    <label cBy="976" end="83" start="74" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="976" feID="8189" end="68" start="59" name="Capitulator"/>
+                    <label cBy="976" feID="8190" end="127" start="85" name="Issue"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="68" start="59" name="Ext"/>
+                    <label end="127" start="85" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="68" start="59" name="NP"/>
+                    <label end="127" start="85" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+                <layer rank="2" name="FE">
+                    <label cBy="976" feID="8204" end="127" start="88" name="Resultant_action"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="03-other-matched-(1)"/>
+    <subCorpus name="04-other-unmatched-(1)"/>
+</lexUnit>

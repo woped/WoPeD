@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="669" cDate="02/12/2002 03:25:43 PST Tue" name="Cooking_creation" ID="268" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;This frame describes food and meal preparation.  A &lt;fen&gt;Cook&lt;/fen&gt; creates a &lt;fen&gt;Produced_food&lt;/fen&gt; from (raw) &lt;fen&gt;Ingredients&lt;/fen&gt;.  The &lt;fen&gt;Heating_Instrument&lt;/fen&gt; and/or the &lt;fen&gt;Container&lt;/fen&gt; may also be specified.
+
+&lt;fex name="Cook"&gt;Caitlin&lt;/fex&gt; &lt;t&gt;baked&lt;/t&gt; &lt;fex name="Food"&gt;some cookies&lt;/fex&gt; &lt;fex name="Ingredients"&gt;from the pre-packaged dough&lt;/fex&gt;.
+&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="669" cDate="02/12/2002 03:26:32 PST Tue" abbrev="Cook" name="Cook" ID="2298">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Cook&lt;/fen&gt;  prepares the &lt;fen&gt;Produced_food&lt;/fen&gt;.
+&lt;ex&gt;&lt;fex name="Cook"&gt;Drew&lt;/fex&gt; &lt;t&gt;cooked&lt;/t&gt; dinner&lt;/ex&gt; for his friends.
+&lt;ex&gt;&lt;fex name="Cook"&gt;Drew&lt;/fex&gt; &lt;t&gt;baked&lt;/t&gt; an apple pie.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Core" cBy="669" cDate="02/12/2002 03:26:37 PST Tue" abbrev="Food" name="Produced_food" ID="2299">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Produced_food&lt;/fen&gt; is the result of a &lt;fen&gt;Cook&lt;/fen&gt;'s efforts.
+&lt;ex&gt;Drew &lt;t&gt;prepared&lt;/t&gt; &lt;fex name="Food"&gt;dinner&lt;/fex&gt; for his friends.&lt;/ex&gt;
+&lt;ex&gt;Drew &lt;t&gt;baked&lt;/t&gt; &lt;fex name="Food"&gt;an apple pie&lt;/fex&gt; for dessert.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Peripheral" cBy="669" cDate="02/12/2002 03:26:51 PST Tue" abbrev="Heat_instr" name="Heating_Instrument" ID="2300">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Heating_Instrument&lt;/fen&gt;  with which the &lt;fen&gt;Cook&lt;/fen&gt; prepares the &lt;fen&gt;Food&lt;/fen&gt;.
+&lt;ex&gt;Drew  &lt;t&gt;prepared&lt;/t&gt; vegetable soup &lt;fex name="Heat_instr"&gt;in a crock pot&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Physical_entity" ID="70"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Peripheral" cBy="669" cDate="02/12/2002 03:27:18 PST Tue" abbrev="Container" name="Container" ID="2302">
+        <definition>&lt;def-root&gt;This FE identifes the &lt;fen&gt;Container&lt;/fen&gt; that holds the food being produced.
+&lt;ex&gt;&lt;t&gt;Bake&lt;/t&gt; the quiche &lt;fex name="Container"&gt;in a pie tin&lt;/fex&gt;.&lt;/ex&gt;
+
+Things that apply the heat directly are &lt;fen&gt;Heating_Instrument&lt;/fen&gt;s, e.g. &lt;ment&gt;crock-pot&lt;/ment&gt;,  &lt;ment&gt;electric griddle&lt;/ment&gt;. &lt;/def-root&gt;</definition>
+        <semType name="Container" ID="15"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="669" cDate="02/12/2002 03:27:27 PST Tue" abbrev="Place" name="Place" ID="2303">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Place&lt;/fen&gt; where the cooking creation occurs.
+
+&lt;ex&gt;Drew &lt;t&gt;prepared&lt;/t&gt; the soup &lt;fex name="Place"&gt; in the kitchen&lt;/fex&gt;.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Peripheral" cBy="669" cDate="02/12/2002 03:27:29 PST Tue" abbrev="Mns" name="Means" ID="2304">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Means&lt;/fen&gt; by which the cooking creation is performed.
+&lt;ex&gt;Drew &lt;t&gt;prepared&lt;/t&gt; the soup &lt;fex name="Means"&gt; by throwing some vegetables into a pot of water&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="669" cDate="02/12/2002 03:27:42 PST Tue" abbrev="Purp" name="Purpose" ID="2305">
+        <definition>&lt;def-root&gt;This FE identifies the  &lt;fen&gt;Purpose&lt;/fen&gt; for which the cooking creation is performed.
+
+&lt;ex&gt;Drew &lt;t&gt;baked&lt;/t&gt; an apple pie &lt;fex name="Purp"&gt;to show Patty he was sorry&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="669" cDate="02/12/2002 03:27:44 PST Tue" abbrev="Rec" name="Recipient" ID="2306">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Recipient&lt;/fen&gt; identifies the person for whom the food has been prepared.
+
+&lt;ex&gt;Drew &lt;t&gt;baked&lt;/t&gt; an apple pie &lt;fex name="Rec"&gt;for Patty.&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="669" cDate="02/12/2002 03:27:51 PST Tue" abbrev="Time" name="Time" ID="2307">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Time&lt;/fen&gt; when the cooking creation occurs.
+&lt;ex&gt;Drew &lt;t&gt;baked&lt;/t&gt; an apple pie &lt;fex name="Time"&gt;at six int he morning&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="669" cDate="02/12/2002 03:27:53 PST Tue" abbrev="Degr" name="Degree" ID="2308">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Degree&lt;/fen&gt; to which an event occurs.&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="669" cDate="02/12/2002 03:27:55 PST Tue" abbrev="Manr" name="Manner" ID="2309">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Manner&lt;/fen&gt; in which the cooking creation performed.
+
+&lt;ex&gt;Drew &lt;t&gt;prepared&lt;/t&gt; dinner &lt;fex name="Manner"&gt;hastily&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Peripheral" cBy="669" cDate="02/12/2002 03:56:11 PST Tue" abbrev="Ingr" name="Ingredients" ID="2311">
+        <definition>&lt;def-root&gt;The Ingredients  which are altered by 
+The &lt;fen&gt;Cook&lt;/fen&gt; alters &lt;fen&gt;Ingredients&lt;/fen&gt; to create the &lt;fen&gt;Produced_food&lt;/fen&gt;.
+&lt;ex&gt;Drew &lt;t&gt;baked&lt;/t&gt; a pie &lt;fex name="Ingr"&gt;with apples, nuts, and raisins.&lt;/fex&gt;&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Intentionally_create</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Apply_heat</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also">
+        <relatedFrame>Apply_heat</relatedFrame>
+    </frameRelation>
+    <lexUnit status="Finished_Initial" POS="V" name="concoct.v" ID="4890" lemmaID="7633" cBy="669" cDate="02/13/2002 12:21:55 PST Wed">
+        <definition>COD: make a dish or meal by combining ingredients</definition>
+        <sentenceCount annotated="5" total="88"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="concoct"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="cook up.v" ID="4891" lemmaID="45456" cBy="669" cDate="02/13/2002 12:25:05 PST Wed">
+        <definition>FN: make something to eat</definition>
+        <sentenceCount annotated="4" total="263"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="cook"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="up"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="whip_up.v" ID="4892" lemmaID="45457" cBy="669" cDate="02/13/2002 12:35:57 PST Wed">
+        <definition>COD:  make or prepare something, especially food, very quickly</definition>
+        <sentenceCount annotated="5" total="269"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="whip"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="up"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="cook.v" ID="4893" lemmaID="8245" cBy="669" cDate="02/13/2002 12:44:09 PST Wed">
+        <definition>COD: prepare food by mixing, combining, and heating the ingredients. </definition>
+        <sentenceCount annotated="24" total="339"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="cook"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="prepare.v" ID="4894" lemmaID="30239" cBy="669" cDate="02/13/2002 12:45:23 PST Wed">
+        <definition>COD: make food ready for cooking or eating</definition>
+        <sentenceCount annotated="12" total="391"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="prepare"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="make.v" ID="4895" lemmaID="23215" cBy="669" cDate="02/13/2002 12:58:04 PST Wed">
+        <definition>FN: produce a meal or a component of a meal</definition>
+        <sentenceCount annotated="21" total="476"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="make"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="bake.v" ID="4896" lemmaID="2710" cBy="669" cDate="02/13/2002 12:59:50 PST Wed">
+        <definition>COD: cook food by dry heat without direct exposure to a flame, typically in an oven</definition>
+        <sentenceCount annotated="15" total="272"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="bake"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="put together.v" ID="4897" lemmaID="45407" cBy="669" cDate="02/13/2002 01:13:54 PST Wed">
+        <definition>FN: make food by mixing ingredients; mix ingredients</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="together"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="put"/>
+    </lexUnit>
+</frame>

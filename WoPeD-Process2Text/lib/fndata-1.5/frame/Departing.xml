@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="731" cDate="02/07/2001 04:12:12 PST Wed" name="Departing" ID="57" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An object (the &lt;fen&gt;Theme&lt;/fen&gt;) moves away from a &lt;fen&gt;Source&lt;/fen&gt;. The &lt;fen&gt;Source&lt;/fen&gt; may be expressed or it may be understood from context, but its existence is always implied by the departing word itself. 
+
+&lt;ex&gt;&lt;fex name="Theme"&gt;The plane&lt;/fex&gt; &lt;t&gt;leaves&lt;/t&gt; &lt;fex name="Time"&gt;at seven&lt;/fex&gt;.&lt;fex name="Source"&gt;DNI&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="Theme"&gt;His&lt;/fex&gt; &lt;t&gt;departure&lt;/t&gt; &lt;fex name="Source"&gt;from the dock&lt;/fex&gt; was delayed by hundreds of tearful farewells.&lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="Theme"&gt;We all&lt;/fex&gt; &lt;t&gt;exited&lt;/t&gt; &lt;fex name="Source"&gt;the room&lt;/fex&gt; &lt;fex name="Speed"&gt;slowly&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:12 PST Wed" abbrev="Thm" name="Theme" ID="243">
+        <definition>&lt;def-root&gt;This is the object which moves. It may be an entity which moves under its own power, but it need not be. &lt;ex&gt;&lt;fex name="Theme"&gt;The officer&lt;/fex&gt; &lt;t&gt;left&lt;/t&gt; the house.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Physical_object" ID="68"/>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:12 PST Wed" abbrev="Src" name="Source" ID="244">
+        <definition>&lt;def-root&gt;All the verbs in this frame express some change of location, away from one place and to another. Any constituent that expresses the initial position of the &lt;fen&gt;Theme&lt;/fen&gt;, before the change of location, is tagged with &lt;fen&gt;Source&lt;/fen&gt;. Often the &lt;fen&gt;Source&lt;/fen&gt; is understood from context. &lt;ex&gt;The woman &lt;t&gt;left&lt;/t&gt;. &lt;fex name="Source"&gt;DNI&lt;/fex&gt;&lt;/ex&gt; &lt;ex&gt;The woman &lt;t&gt;left&lt;/t&gt; &lt;fex name="Source"&gt;the house&lt;/fex&gt;.&lt;/ex&gt;&lt;ex&gt;We &lt;t&gt;departed&lt;/t&gt; &lt;fex name="Source"&gt;from New York&lt;/fex&gt; on Friday.&lt;/ex&gt; &lt;/def-root&gt;</definition>
+        <semType name="Location" ID="54"/>
+    </FE>
+    <FE bgColor="7CCD73" fgColor="FFFFFF" coreType="Peripheral" cBy="731" cDate="02/07/2001 04:12:12 PST Wed" abbrev="Path" name="Path" ID="245">
+        <definition>&lt;def-root&gt;Any description of the trajectory of the departure which is neither a &lt;fen&gt;Source&lt;/fen&gt; nor a &lt;fen&gt;Goal&lt;/fen&gt; expresses the frame element &lt;fen&gt;Path&lt;/fen&gt;.  In this frame, &lt;fen&gt;Path&lt;/fen&gt; expressions almost always have a sense meaning 'via'. 
+&lt;ex&gt;Spiderman &lt;t&gt;left&lt;/t&gt; &lt;fex name="Path"&gt;through the window&lt;/fex&gt;.&lt;/ex&gt; &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Peripheral" cBy="731" cDate="02/07/2001 04:12:12 PST Wed" abbrev="Goal" name="Goal" ID="246">
+        <definition>&lt;def-root&gt;This FE labels any expression which tells where the &lt;fen&gt;Theme&lt;/fen&gt; ends up, or would end up, as a result of departing from the &lt;fen&gt;Source&lt;/fen&gt;. &lt;ex&gt;Our visitors &lt;t&gt;left&lt;/t&gt; &lt;fex name="Goal"&gt;for Los Angeles&lt;/fex&gt;.&lt;/ex&gt; &lt;/def-root&gt;</definition>
+        <semType name="Goal" ID="153"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="731" cDate="02/07/2001 04:12:12 PST Wed" abbrev="Manr" name="Manner" ID="247">
+        <definition>&lt;def-root&gt;Any expression which describes a property of motion which is not directly related to the trajectory of motion expresses the frame element &lt;fen&gt;Manner&lt;/fen&gt;. Descriptions of steadiness, grace, and many other things count as &lt;fen&gt;Manner&lt;/fen&gt; expressions, though &lt;fen&gt;Speed&lt;/fen&gt; and &lt;fen&gt;Means&lt;/fen&gt; should be tagged using the more specific FE labels. &lt;ex&gt;The messenger &lt;t&gt;left&lt;/t&gt; the room &lt;fex name="Manner"&gt;clumsily&lt;/fex&gt;.&lt;/ex&gt; &lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="09/17/2001 04:37:48 PDT Mon" abbrev="Mns" name="Means" ID="1883">
+        <definition>&lt;def-root&gt;The action of the &lt;fen&gt;Theme&lt;/fen&gt; which results in its departure. &lt;ex&gt;He &lt;t&gt;retreated&lt;/t&gt; from his opponent &lt;fex name="Means"&gt;by taking a quick leap backwards&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="09/17/2001 04:38:05 PDT Mon" abbrev="Spd" name="Speed" ID="1885">
+        <definition>&lt;def-root&gt;This frame element labels words or phrases that describe how quickly the &lt;fen&gt;Theme&lt;/fen&gt; is moving. &lt;ex&gt;He &lt;fex name="Speed"&gt;quickly&lt;/fex&gt; &lt;t&gt;exited&lt;/t&gt; the crowded terminal.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Speed" ID="234"/>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="09/17/2001 04:38:52 PDT Mon" abbrev="MoT" name="Mode_of_transportation" ID="1886">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Mode_of_transportation&lt;/fen&gt; expresses how the motion of the &lt;fen&gt;Theme&lt;/fen&gt; is effected, by its body or by a vehicle which holds and conveys the &lt;fen&gt;Theme&lt;/fen&gt;. Vehicles can move in any way and in any medium. 
+
+In this frame, &lt;fen&gt;Mode_of_transportation&lt;/fen&gt; is often expressed obliquely in a prepositional phrase headed by 'in' or 'by'.
+
+&lt;ex&gt;We &lt;t&gt;set&lt;/t&gt; &lt;t&gt;out&lt;/t&gt; &lt;fex name="Mode_of_transportation"&gt;by boat&lt;/fex&gt; for Nova Scotia.
+&lt;/ex&gt;&lt;ex&gt;Wilbur &lt;t&gt;departed&lt;/t&gt; &lt;fex name="Mode_of_transportation"&gt;on foot&lt;/fex&gt; for London.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="09/17/2001 04:39:44 PDT Mon" abbrev="Thm_c" name="Cotheme" ID="1887">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Cotheme&lt;/fen&gt; is the second moving object, expressed as a prepositional phrase generally headed by 'with' or 'along with'. 
+&lt;ex&gt;He &lt;t&gt;left&lt;/t&gt; &lt;fex name="Cotheme"&gt;along with John&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="000000" coreType="Peripheral" cBy="664" cDate="09/17/2001 04:39:56 PDT Mon" abbrev="Dist" name="Distance" ID="1888">
+        <definition>&lt;def-root&gt;The distance that the &lt;fen&gt;Theme&lt;/fen&gt; has traveled. &lt;ex&gt;He &lt;t&gt;withdrew&lt;/t&gt; &lt;fex name="Distance"&gt;a little&lt;/fex&gt; from her. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="05/23/2002 03:14:59 PDT Thu" abbrev="Time" name="Time" ID="2852">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Time&lt;/fen&gt; at which the departure takes place.&lt;ex&gt;We &lt;t&gt;left&lt;/t&gt; &lt;fex name="Time"&gt;in the morning&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="296" cDate="08/21/2002 01:49:16 PDT Wed" abbrev="Freq" name="Frequency" ID="3601">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Frequency&lt;/fen&gt; is the rate at which each &lt;fen&gt;Theme&lt;/fen&gt; departs.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="296" cDate="08/21/2002 01:51:21 PDT Wed" abbrev="Jour" name="Journey" ID="3602">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Journey&lt;/fen&gt; is the trip or expedition on which the &lt;fen&gt;Theme&lt;/fen&gt; embarks. &lt;ex&gt;&lt;fex name="Theme"&gt;Mr. Burns&lt;/fex&gt; &lt;t&gt;departed&lt;/t&gt; &lt;fex name="Journey"&gt;on a hunting expedition&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="08/21/2002 02:03:18 PDT Wed" abbrev="pla" name="Place" ID="3603">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Place&lt;/fen&gt; is the location in which the departing takes place.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="296" cDate="08/21/2002 02:10:40 PDT Wed" abbrev="Dep" name="Depictive" ID="3604">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Depictive&lt;/fen&gt; identifies a phrase which describes the &lt;fen&gt;Theme&lt;/fen&gt; at the time of departing.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="296" cDate="08/22/2002 09:32:14 PDT Thu" abbrev="Reas" name="Reason" ID="3605">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Reason&lt;/fen&gt; is the motivation or explanation for why the &lt;fen&gt;Theme&lt;/fen&gt; departs.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="06/24/2003 10:16:50 PDT Tue" abbrev="" name="Purpose" ID="4660">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Purpose&lt;/fen&gt; for which the &lt;fen&gt;Theme&lt;/fen&gt; departs from the &lt;fen&gt;Source&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="d0d0d0" fgColor="000000" coreType="Extra-Thematic" cBy="664" cDate="11/21/2005 02:19:26 PST Mon" abbrev="dur" name="Duration_of_end_state" ID="9429">
+        <definition>&lt;def-root&gt;The length of time that the &lt;fen&gt;Theme&lt;/fen&gt; stays away from the &lt;fen&gt;Source&lt;/fen&gt; location.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="EEE8AA" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="04/27/2006 12:01:18 PDT Thu" abbrev="Ite" name="Iteration" ID="10060">
+        <definition>&lt;def-root&gt;The frame element Iteration is used for expressions that indicate the number of times an event or state (of the kind denoted by the target in its clause) has taken place or held.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFD700" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="04/27/2006 02:17:41 PDT Thu" abbrev="Cir" name="Circumstances" ID="10061">
+        <definition>&lt;def-root&gt;Circumstances describe the state of the world (at a particular time and place) which is specifically independent of the event itself and any of its participants.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="7FFF00" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="05/04/2006 01:21:12 PDT Thu" abbrev="Ree" name="Re_encoding" ID="10074">
+        <definition>&lt;def-root&gt;This FE presents the current frame as an integral part of a larger conceptualization expressed by another frame. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="90876C" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="05/04/2006 01:25:50 PDT Thu" abbrev="Con" name="Containing_event" ID="10075">
+        <definition>&lt;def-root&gt;This FE denotes an event that occurs or state of affairs that holds at a time that includes the time during which the event or state of affairs reported by the target occurs and of which it is taken to be a part.
+
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="05/04/2006 01:30:00 PDT Thu" abbrev="Exp" name="Explanation" ID="10076">
+        <definition>&lt;def-root&gt;The Explanation denotes a proposition from which the main clause (headed by the target) logically follows. This often means that the Explanation causes the target's proposition, but not in all cases. &lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="7CCD7C" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="03/22/2007 10:04:39 PDT Thu" abbrev="Eve" name="Event_description" ID="11241">
+        <definition>&lt;def-root&gt;This FE describes of the state of affairs denoted by the Departing event as role fillers in other frames; the state of affairs reported Departing event is understood to play a role in the state of affairs of the modifier. &lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Eventive_affecting</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Escaping</relatedFrame>
+        <relatedFrame>Quitting_a_place</relatedFrame>
+        <relatedFrame>Visitor_departure</relatedFrame>
+        <relatedFrame>Visiting_scenario_departing</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Motion</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Disembarking</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of">
+        <relatedFrame>Traversing</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes">
+        <relatedFrame>Arriving</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="FN1_Sent" POS="V" name="decamp.v" ID="980" lemmaID="9747" cBy="731" cDate="02/08/2001 01:29:00 PST Thu">
+        <definition>COD: depart suddenly or secretly.</definition>
+        <sentenceCount annotated="14" total="36"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="decamp"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="depart.v" ID="983" lemmaID="10201" cBy="731" cDate="02/08/2001 01:29:00 PST Thu">
+        <definition>COD:  leave, especially in order to start a journey</definition>
+        <sentenceCount annotated="78" total="279"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="depart"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="departure.n" ID="984" lemmaID="10206" cBy="731" cDate="02/08/2001 01:29:00 PST Thu">
+        <definition>COD: the action of departing.</definition>
+        <sentenceCount annotated="29" total="206"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="departure"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="disappear.v" ID="987" lemmaID="10795" cBy="731" cDate="02/08/2001 01:29:00 PST Thu">
+        <definition>COD: cease to be visible</definition>
+        <sentenceCount annotated="123" total="623"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="disappear"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="disappearance.n" ID="988" lemmaID="10796" cBy="731" cDate="02/08/2001 01:29:00 PST Thu">
+        <definition>COD: the act of ceasing to be visible</definition>
+        <sentenceCount annotated="17" total="99"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="disappearance"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="escape.n" ID="991" lemmaID="13087" cBy="731" cDate="02/08/2001 01:29:01 PST Thu">
+        <definition>COD: an act of escaping.</definition>
+        <sentenceCount annotated="45" total="214"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="escape"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="escape.v" ID="992" lemmaID="13088" cBy="731" cDate="02/08/2001 01:29:01 PST Thu">
+        <definition>COD: break free from confinement or control</definition>
+        <sentenceCount annotated="47" total="520"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="escape"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="V" name="vamoose.v" ID="998" lemmaID="42687" cBy="731" cDate="02/08/2001 01:29:01 PST Thu">
+        <definition>COD: depart hurriedly.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="vamoose"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="vanish.v" ID="999" lemmaID="42700" cBy="731" cDate="02/08/2001 01:29:01 PST Thu">
+        <definition>COD: disappear suddenly and completely.</definition>
+        <sentenceCount annotated="69" total="269"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="vanish"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="V" name="skedaddle.v" ID="4030" lemmaID="36107" cBy="605" cDate="09/19/2001 10:02:36 PDT Wed">
+        <definition>COD: (no obj. informal) depart quickly or hurriedly. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="skedaddle"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="exit.v" ID="4031" lemmaID="13483" cBy="605" cDate="09/19/2001 10:06:02 PDT Wed">
+        <definition>COD: go out of or leave a place.</definition>
+        <sentenceCount annotated="37" total="299"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="exit"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="set off.v" ID="4951" lemmaID="45469" cBy="664" cDate="02/19/2002 03:09:56 PST Tue">
+        <definition>COD: (support verb set) begin a journey. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="set"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="off"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="leave.v" ID="8622" lemmaID="21967" cBy="605" cDate="04/23/2003 06:41:54 PDT Wed">
+        <definition>COD: go away from</definition>
+        <sentenceCount annotated="70" total="270"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="leave"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="emerge.v" ID="9104" lemmaID="12579" cBy="664" cDate="07/14/2003 12:03:50 PDT Mon">
+        <definition>FN: come out (from a hidden position).</definition>
+        <sentenceCount annotated="36" total="463"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="emerge"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="set out.v" ID="9841" lemmaID="48501" cBy="309" cDate="10/20/2003 03:40:53 PDT Mon">
+        <definition>COD: begin a journey</definition>
+        <sentenceCount annotated="52" total="551"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="set"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="out"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="exit.n" ID="10125" lemmaID="13484" cBy="445" cDate="02/26/2004 02:33:48 PST Thu">
+        <definition>COD: an act of leaving.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="exit"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="exodus.n" ID="11762" lemmaID="13486" cBy="605" cDate="03/24/2005 01:06:48 PST Thu">
+        <definition>COD: a mass departure of people, especially emigrants.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="exodus"/>
+    </lexUnit>
+</frame>

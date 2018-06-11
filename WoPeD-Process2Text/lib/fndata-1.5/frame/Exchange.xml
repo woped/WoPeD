@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="07/09/2004 10:48:10 PDT Fri" name="Exchange" ID="1170" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;Two parties, the &lt;fen&gt;Exchangers&lt;/fen&gt;, each give and receive from the other &lt;fen&gt;Themes&lt;/fen&gt;. The parties are also construable separately as &lt;fen&gt;Exchanger_1&lt;/fen&gt; and &lt;fen&gt;Exchanger_2&lt;/fen&gt;,  in which case the &lt;fen&gt;Themes&lt;/fen&gt; may be construed separately, too, as &lt;fen&gt;Theme_1&lt;/fen&gt; and &lt;fen&gt;Theme_2&lt;/fen&gt;.
+
+
+&lt;ex&gt;&lt;fex name="ex1"&gt;They&lt;/fex&gt; &lt;t&gt;swapped&lt;/t&gt; &lt;fex name="thm1"&gt;the island&lt;/fex&gt; &lt;fex name="ex2"&gt;with the Neapolitan government of the day&lt;/fex&gt; &lt;fex name="thm2"&gt;for the much smaller Capri&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;Then &lt;fex name="exs"&gt;the teams&lt;/fex&gt; &lt;t&gt;swapped&lt;/t&gt; &lt;fex name="thms"&gt;their draftees&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;We &lt;t&gt;exchanged&lt;/t&gt; &lt;fex name="thms"&gt;addresses&lt;/fex&gt; and he told us that next year when we are in Aruba we will visit with his family there. &lt;/ex&gt;
+
+
+&lt;ex&gt;&lt;/ex&gt;
+
+Notice that this frame is to be differentiated from the Replacing frame, where there is no notion of trade between two parties and the focus is only on the relationship between two items that successively fulfill a function or participate in a relation.
+&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="07/09/2004 10:48:10 PDT Fri" abbrev="ex1" name="Exchanger_1" ID="6782">
+        <definition>&lt;def-root&gt;In cases where the &lt;fen&gt;Exchangers&lt;/fen&gt; involved in a conversation are
+construed as two separate groups with different levels of
+volitionality or control, this FE identifies the conversational
+participant with greater semantic and syntactic prominence, as
+compared with &lt;fen&gt;Exchanger_2&lt;/fen&gt;. That is, &lt;fen&gt;Exchanger_1&lt;/fen&gt; is generally
+encoded as Subject, and peripheral FEs that do not make reference
+to the event itself generally make reference to &lt;fen&gt;Exchanger_1&lt;/fen&gt;. Thus
+a &lt;fen&gt;Purpose&lt;/fen&gt; (or &lt;fen&gt;Means&lt;/fen&gt;, &lt;fen&gt;Depictive&lt;/fen&gt;, or &lt;fen&gt;Manner&lt;/fen&gt;) is construed to be that
+of &lt;fen&gt;Exchanger_1&lt;/fen&gt;, not necessarily that of &lt;fen&gt;Exchanger_2&lt;/fen&gt; or the group
+of &lt;fen&gt;Exchangers&lt;/fen&gt; as a whole.
+&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+        <requiresFE name="Exchanger_2" ID="6788"/>
+        <excludesFE name="Exchangers" ID="6789"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="07/09/2004 10:48:10 PDT Fri" abbrev="Place" name="Place" ID="6783">
+        <definition>&lt;def-root&gt;This FE identifies the place where the exchange occurs.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="07/09/2004 10:48:10 PDT Fri" abbrev="Purp" name="Purpose" ID="6784">
+        <definition>&lt;def-root&gt;This FE identifies the purpose for which &lt;fen&gt;Exchanger_1&lt;/fen&gt; or the &lt;fen&gt;Exchangers&lt;/fen&gt; make the trade.
+
+&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="07/09/2004 10:48:10 PDT Fri" abbrev="tim" name="Time" ID="6785">
+        <definition>&lt;def-root&gt;This FE identifies the time when the exchange takes place.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="07/09/2004 10:48:10 PDT Fri" abbrev="Means" name="Means" ID="6786">
+        <definition>&lt;def-root&gt;This FE identifies the Means by which &lt;fen&gt;Exchanger_1&lt;/fen&gt; or the &lt;fen&gt;Exchangers&lt;/fen&gt; effect the trade.
+
+&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="07/09/2004 10:48:10 PDT Fri" abbrev="man" name="Manner" ID="6787">
+        <definition>&lt;def-root&gt;Any description of the exchange act which is not covered by more specific FEs, including secondary effects (&lt;ment&gt;quietly, loudly&lt;/ment&gt;), and general descriptions comparing events (&lt;ment&gt;the same way&lt;/ment&gt;). In addition, it may indicate salient characteristics of &lt;fen&gt;Exchanger_1&lt;/fen&gt; or &lt;fen&gt;Exchangers&lt;/fen&gt; that also affect the action (&lt;ment&gt;presumptuously, coldly, deliberately, eagerly, carefully&lt;/ment&gt;). 
+
+&lt;ex&gt;Theodosia and Felix &lt;fex name="man"&gt;carefully&lt;/fex&gt; &lt;t&gt;exchanged&lt;/t&gt; their bunches of flowers.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="7CCD7C" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="07/09/2004 11:00:17 PDT Fri" abbrev="ex2" name="Exchanger_2" ID="6788">
+        <definition>&lt;def-root&gt;In cases where the &lt;fen&gt;Exchangers&lt;/fen&gt; involved in a conversation are
+construed as two separate groups with different levels of
+volitionality or control, &lt;fen&gt;Exchanger_2&lt;/fen&gt; refers to the semantically
+and grammatically less prominent group. It is generally encoded
+within a prepositional phrase (e.g. headed by with). Note that it
+is possible for a single role to correspond to multiple referents.
+For example, if the prepositional object in the example below were
+plural, we would still assign it the single role &lt;fen&gt;Exchanger_2&lt;/fen&gt;.
+
+
+&lt;ex&gt;The &lt;t&gt;trade&lt;/t&gt; &lt;fex name="ex2"&gt;with Cuba&lt;/fex&gt; went exactly as planned. &lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+        <requiresFE name="Exchanger_1" ID="6782"/>
+        <excludesFE name="Exchangers" ID="6789"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="07/09/2004 11:02:56 PDT Fri" abbrev="exs" name="Exchangers" ID="6789">
+        <definition>&lt;def-root&gt;In some sentences both participants are expressed by the Subject, and there is no 'with'-phrase (cf example 1). In sentences like this, the Subject is assigned the FE role &lt;fen&gt;Exchangers&lt;/fen&gt;. In such sentences, the Subject always denotes more than one person, and it is understood that the reciprocal communication takes place between these two (or more) people. The Subject may denote two or more people either through conjunction, as in example 1, or through plurality, as in example 2, or by denoting a group, as in example 3. In each of these cases the FE &lt;fen&gt;Exchangers&lt;/fen&gt; is assigned. Notice that for nouns in the Exchange frame, it is possible for the &lt;fen&gt;Exchangers&lt;/fen&gt; role to be expressed by a prepositional phrase as in example 4.
+
+
+&lt;ex&gt;&lt;fex name="exs"&gt;Smithers and Kornfeldt&lt;/fex&gt; &lt;t&gt;traded&lt;/t&gt; Pez dispensers.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="exs"&gt;My neighbors&lt;/fex&gt; &lt;t&gt;swapped&lt;/t&gt;lawn mowers .&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="exs"&gt;The group&lt;/fex&gt; &lt;t&gt;exchanged&lt;/t&gt; phone numbers.&lt;/ex&gt;
+&lt;ex&gt;The prisoner &lt;t&gt;exchange&lt;/t&gt; &lt;fex name="exs"&gt;between North and South Dakota&lt;/fex&gt; went bad somehow.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+        <requiresFE name="Themes" ID="6793"/>
+    </FE>
+    <FE bgColor="d0d0d0" fgColor="9400D3" coreType="Extra-Thematic" cBy="605" cDate="07/09/2004 11:09:19 PDT Fri" abbrev="dep" name="Depictive" ID="6790">
+        <definition>&lt;def-root&gt;The state of &lt;fen&gt;Exchanger_1&lt;/fen&gt; or &lt;fen&gt;Exchangers&lt;/fen&gt; during the exchange.
+
+&lt;ex&gt;Howell &lt;t&gt;traded&lt;/t&gt; brooms with Susanne, &lt;fex name="dep"&gt;uncertain of whether she would prefer his&lt;/fex&gt;.  &lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="07/09/2004 11:47:48 PDT Fri" abbrev="thm1" name="Theme_1" ID="6791">
+        <definition>&lt;def-root&gt;The item that begins in the possession of &lt;fen&gt;Exchanger_1&lt;/fen&gt;.
+
+
+&lt;ex&gt; I tucked the pistol between my belt and tunic top (how I wish I had kept it, but I later &lt;t&gt;swapped&lt;/t&gt; &lt;fex name="thm1"&gt;it&lt;/fex&gt; with a Canadian for some cigarettes.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <requiresFE name="Theme_2" ID="6792"/>
+        <excludesFE name="Themes" ID="6793"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="07/09/2004 12:01:01 PDT Fri" abbrev="thm2" name="Theme_2" ID="6792">
+        <definition>&lt;def-root&gt;The item that begins in the possession of &lt;fen&gt;Exchanger_2&lt;/fen&gt;.
+
+&lt;ex&gt; The organization bought the property in 1999, then &lt;t&gt;swapped&lt;/t&gt; it with the BLM &lt;fex name="thm2"&gt;for about 100 parcels in 10 counties ranging in size from one to 920 acres&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <requiresFE name="Theme_1" ID="6791"/>
+        <excludesFE name="Themes" ID="6793"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="07/09/2004 12:04:27 PDT Fri" abbrev="thms" name="Themes" ID="6793">
+        <definition>&lt;def-root&gt;The items which change possession between the &lt;fen&gt;Exchangers&lt;/fen&gt;.
+
+&lt;ex&gt;They &lt;t&gt;swapped&lt;/t&gt; &lt;fex name="thms"&gt;guitars&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="7FFF00" fgColor="000000" coreType="Extra-Thematic" cBy="597" cDate="05/09/2008 01:04:24 PDT Fri" abbrev="" name="Frequency" ID="12630">
+        <definition>&lt;def-root&gt;This frame element denotes how often the &lt;fen&gt;Exchangers&lt;/fen&gt; trade &lt;fen&gt;Themes&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="000000" coreType="Extra-Thematic" cBy="597" cDate="05/09/2008 02:26:28 PDT Fri" abbrev="" name="Period_of_iterations" ID="12631">
+        <definition>&lt;def-root&gt;The length of time from when the event denoted by the target began to be repeated to when it stopped.&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Intentionally_act</relatedFrame>
+        <relatedFrame>Reciprocality</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Transfer_scenario</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Exchange_currency</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="exchange.v" ID="10784" lemmaID="13366" cBy="605" cDate="07/09/2004 12:12:40 PDT Fri">
+        <definition>COD: give something and receive something else, especially of the same kind, in return.</definition>
+        <sentenceCount annotated="12" total="170"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="exchange"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="trade.v" ID="10785" lemmaID="40911" cBy="605" cDate="07/09/2004 12:13:16 PDT Fri">
+        <definition>FN: exchange</definition>
+        <sentenceCount annotated="6" total="80"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="trade"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="swap.v" ID="10786" lemmaID="39079" cBy="605" cDate="07/09/2004 12:14:10 PDT Fri">
+        <definition>COD: to give in trade</definition>
+        <sentenceCount annotated="10" total="170"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="swap"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="exchange.n" ID="10787" lemmaID="13365" cBy="605" cDate="07/09/2004 12:15:21 PDT Fri">
+        <definition>COD: an act or the action of exchanging.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="exchange"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="swap.n" ID="10788" lemmaID="39078" cBy="605" cDate="07/09/2004 12:24:42 PDT Fri">
+        <definition>COD: an act of exchanging one thing for another.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="swap"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="trade.n" ID="10789" lemmaID="40910" cBy="605" cDate="07/09/2004 12:25:17 PDT Fri">
+        <definition>COD: a transfer; an exchange.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="trade"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="switch.v" ID="13314" lemmaID="39191" cBy="303" cDate="06/21/2006 06:19:19 PDT Wed">
+        <definition>COD: exchange.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="switch"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="change.v" ID="13862" lemmaID="6040" cBy="361" cDate="02/26/2007 12:04:56 PST Mon">
+        <definition>FN: to exchange</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="change"/>
+    </lexUnit>
+</frame>

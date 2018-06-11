@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="09/27/2001 06:55:39 PDT Thu" name="Process_completed_state" ID="234" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A &lt;fen&gt;Process&lt;/fen&gt; is finished and can no longer proceed.&lt;/def-root&gt;</definition>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="05/10/2002 02:25:31 PDT Fri" abbrev="Place" name="Place" ID="2761">
+        <definition>&lt;def-root&gt;Where the event takes place.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="05/10/2002 02:25:33 PDT Fri" abbrev="Proc" name="Process" ID="2762">
+        <definition>&lt;def-root&gt;This FE identifies the name of the &lt;fen&gt;Process&lt;/fen&gt; that occurs.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="05/10/2002 02:25:37 PDT Fri" abbrev="Time" name="Time" ID="2763">
+        <definition>&lt;def-root&gt;When the event occurs.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>State</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Activity_done_state</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of">
+        <relatedFrame>Process</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by">
+        <relatedFrame>Process_end</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Created" POS="A" name="done.a" ID="5764" lemmaID="11484" cBy="664" cDate="05/10/2002 02:21:15 PDT Fri">
+        <definition>COD: no longer happening or existing. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="done"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="finished.a" ID="5765" lemmaID="14421" cBy="664" cDate="05/10/2002 02:24:24 PDT Fri">
+        <definition>FN: brought to an end</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="finished"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="complete.a" ID="5766" lemmaID="7494" cBy="664" cDate="05/10/2002 02:24:40 PDT Fri">
+        <definition>COD: having run its full course; finished. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="complete"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="A" name="over.a" ID="5767" lemmaID="27193" cBy="664" cDate="05/10/2002 02:31:26 PDT Fri">
+        <definition>COD: finished. </definition>
+        <sentenceCount annotated="0" total="38"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="over"/>
+    </lexUnit>
+</frame>

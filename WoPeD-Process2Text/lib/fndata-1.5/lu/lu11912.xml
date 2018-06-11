@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" incorporatedFE="Connector" POS="V" name="yoke.v" ID="11912" frame="Attaching" frameID="197" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Agent" name="Agent"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD73" type="Core" abbrev="Conn" name="Connector"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="000000" bgColor="EEE8AA" type="Extra-Thematic" abbrev="" name="Duration"/>
+            <FE fgColor="000000" bgColor="FF69B4" type="Extra-Thematic" abbrev="" name="Frequency"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="Goal" name="Goal"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="Handle" name="Handle"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Ins" name="Instrument"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Item" name="Item"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core" abbrev="Items" name="Items"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Mnr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Extra-Thematic" abbrev="" name="Period_of_iterations"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Result" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: attach with a crosspiece</definition>
+    <lexeme POS="V" name="yoke"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Agent"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <annoSet ID="2174560"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Connector"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INC" FE="Connector"/>
+                <annoSet ID="2174560"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Goal"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Goal"/>
+                <annoSet ID="2174560"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Item"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Item"/>
+                <annoSet ID="2174560"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Agent"/>
+            <FE name="Connector"/>
+            <FE name="Goal"/>
+            <FE name="Item"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <valenceUnit GF="" PT="INC" FE="Connector"/>
+                <valenceUnit GF="" PT="INI" FE="Goal"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Item"/>
+                <annoSet ID="2174560"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-(1)"/>
+    <subCorpus name="other-matched-(1)">
+        <sentence corpID="111" docID="421" sentNo="5" paragNo="386" aPos="68209777" ID="1363294">
+            <text>You can not yoke the dragonfly and make it drive the corn-mill .</text>
+            <annotationSet cDate="05/26/2006 04:10:50 PDT Fri" status="UNANN" ID="2174559">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="PP"/>
+                    <label end="6" start="4" name="md"/>
+                    <label end="10" start="8" name="rb"/>
+                    <label end="15" start="12" name="VV"/>
+                    <label end="19" start="17" name="dt"/>
+                    <label end="29" start="21" name="nn"/>
+                    <label end="33" start="31" name="cc"/>
+                    <label end="38" start="35" name="VV"/>
+                    <label end="41" start="40" name="PP"/>
+                    <label end="47" start="43" name="VV"/>
+                    <label end="51" start="49" name="dt"/>
+                    <label end="61" start="53" name="nn"/>
+                    <label end="63" start="63" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/26/2006 04:10:50 PDT Fri" status="MANUAL" ID="2174560">
+                <layer rank="1" name="Target">
+                    <label cBy="303" end="15" start="12" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="1605" end="2" start="0" name="Agent"/>
+                    <label cBy="361" feID="1606" end="29" start="17" name="Item"/>
+                    <label cBy="361" feID="2195" itype="INI" name="Goal"/>
+                    <label cBy="589" feID="2196" end="15" start="12" name="Connector"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="2" start="0" name="Ext"/>
+                    <label end="29" start="17" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="2" start="0" name="NP"/>
+                    <label end="29" start="17" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

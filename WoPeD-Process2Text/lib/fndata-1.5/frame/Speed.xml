@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="02/18/2004 02:34:22 PST Wed" name="Speed" ID="966" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Entity&lt;/fen&gt; is capable of motion at a particular &lt;fen&gt;Speed&lt;/fen&gt; or actually in motion  at a particular &lt;fen&gt;Speed&lt;/fen&gt;.
+
+&lt;ex&gt;&lt;fex name="Entity"&gt;The car&lt;/fex&gt; went by &lt;fex name="Degree"&gt;real&lt;/fex&gt;  &lt;t&gt;fast&lt;/t&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="Entity"&gt;The car&lt;/fex&gt; &lt;m&gt;is&lt;/m&gt; &lt;fex name="Degree"&gt;really&lt;/fex&gt; &lt;t&gt;fast&lt;/t&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;Oh yeah, &lt;fex name="Entity"&gt;Maseratis&lt;/fex&gt; &lt;m&gt;are&lt;/m&gt; &lt;t&gt;fast&lt;/t&gt;! &lt;fex name="Degree"&gt;INI&lt;/fex&gt;&lt;/ex&gt;
+
+&lt;ex&gt;The &lt;t&gt;speed&lt;/t&gt; &lt;fex name="Entity"&gt;of the car&lt;/fex&gt; was &lt;fex name="Speed"&gt;25 mph&lt;/fex&gt; &lt;fex name="Time"&gt;when it ran into the obstacle&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="02/18/2004 02:34:22 PST Wed" abbrev="Ent" name="Entity" ID="5902">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Entity&lt;/fen&gt; whose &lt;fen&gt;Speed&lt;/fen&gt; is under consideration.
+
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="02/18/2004 02:34:22 PST Wed" abbrev="Att" name="Attribute" ID="5903">
+        <definition>&lt;def-root&gt;The feature of an &lt;fen&gt;Entity&lt;/fen&gt; which is a function of the distance that the &lt;fen&gt;Entity&lt;/fen&gt; moves in a given duration. With the adjectives of this frame this Frame Element is generally incorporated.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="02/18/2004 02:34:22 PST Wed" abbrev="Spe" name="Speed" ID="5904">
+        <definition>&lt;def-root&gt;A quantity or other characterization of the &lt;fen&gt;Entity&lt;/fen&gt;'s speed.&lt;/def-root&gt;</definition>
+        <semType name="Speed" ID="234"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="02/18/2004 02:34:22 PST Wed" abbrev="Deg" name="Degree" ID="5905">
+        <definition>&lt;def-root&gt;A modifier expressing  the deviation of the &lt;fen&gt;Speed&lt;/fen&gt; from the norm.&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+        <excludesFE name="Speed" ID="5904"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="02/18/2004 02:34:22 PST Wed" abbrev="Tim" name="Time" ID="5906">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Time&lt;/fen&gt; during which the &lt;fen&gt;Entity&lt;/fen&gt; is in the state of having  a particular &lt;fen&gt;Speed&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="02/18/2004 02:34:22 PST Wed" abbrev="Cir" name="Circumstances" ID="5907">
+        <definition>&lt;def-root&gt;Some specification of the &lt;fen&gt;Circumstances&lt;/fen&gt; under which the &lt;fen&gt;Entity&lt;/fen&gt; has a particular &lt;fen&gt;Speed&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="361" cDate="05/23/2008 03:17:50 PDT Fri" abbrev="Exp" name="Explanation" ID="12668">
+        <definition>&lt;def-root&gt;The reason why the &lt;fen&gt;Entity&lt;/fen&gt; or &lt;fen&gt;Attribute&lt;/fen&gt; is ata certain speed.&lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Attribute" ID="5903"/>
+        <memberFE name="Entity" ID="5902"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Measurable_attributes</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" incorporatedFE="Attribute" POS="A" name="fast.a" ID="10038" lemmaID="13990" cBy="605" cDate="02/18/2004 04:03:23 PST Wed">
+        <definition>COD: moving or capable of moving at high speed</definition>
+        <sentenceCount annotated="12" total="215"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="fast"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Attribute" POS="A" name="quick.a" ID="10039" lemmaID="31503" cBy="605" cDate="02/18/2004 04:04:46 PST Wed">
+        <definition>FN: moving fast</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="quick"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Attribute" POS="A" name="speedy.a" ID="10040" lemmaID="37278" cBy="605" cDate="02/18/2004 04:06:27 PST Wed">
+        <definition>COD: moving quickly</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="speedy"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="speed.n" ID="10041" lemmaID="37265" cBy="605" cDate="02/18/2004 04:07:26 PST Wed">
+        <definition>COD: the rate at which someone or something moves or operates or is able to move or operate</definition>
+        <sentenceCount annotated="11" total="129"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="speed"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Attribute" POS="A" name="breakneck.a" ID="11978" lemmaID="49978" cBy="605" cDate="04/28/2005 10:40:11 PDT Thu">
+        <definition>COD: dangerously or extremely fast</definition>
+        <sentenceCount annotated="7" total="33"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="breakneck"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="rate.n" ID="13290" lemmaID="31864" cBy="303" cDate="06/21/2006 12:07:42 PDT Wed">
+        <definition>COD: the speed with which something moves, happens, or changes.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="rate"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="pace.n" ID="13291" lemmaID="27468" cBy="303" cDate="06/21/2006 12:08:50 PDT Wed">
+        <definition>COD: speed or rate of motion, development, or change.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="pace"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="ADV" name="quickly.adv" ID="14973" lemmaID="50876" cBy="597" cDate="04/28/2008 02:41:34 PDT Mon">
+        <definition>FN: in a fast manner</definition>
+        <sentenceCount annotated="2" total="2"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="quickly"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" incorporatedFE="Attribute" POS="A" name="rapid.a" ID="14974" lemmaID="31821" cBy="597" cDate="04/28/2008 02:41:44 PDT Mon">
+        <definition>FN: moving at a high speed</definition>
+        <sentenceCount annotated="6" total="183"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="rapid"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="ADV" name="rapidly.adv" ID="14975" lemmaID="31823" cBy="597" cDate="04/28/2008 02:42:04 PDT Mon">
+        <definition>FN: quickly</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="rapidly"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="ADV" name="speedily.adv" ID="14976" lemmaID="37269" cBy="597" cDate="04/28/2008 02:43:35 PDT Mon">
+        <definition>FN: in a rapid manner</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="speedily"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="smart.a" ID="16042" lemmaID="36489" cBy="976" cDate="08/27/2010 01:50:24 PDT Fri">
+        <definition>FN: brisk and quick</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="smart"/>
+    </lexUnit>
+</frame>

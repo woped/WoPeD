@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="03/24/2007 05:07:06 PDT Sat" name="Accuracy" ID="1903" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Agent&lt;/fen&gt; is involved in an activity whose degree of success is dependent on a parameter of the action matching a particular set of values of a continuous variable or variables (e.g. quantity, location, time).  
+
+The &lt;fen&gt;Agent&lt;/fen&gt;, or metonymically the &lt;fen&gt;Instrument&lt;/fen&gt; or &lt;fen&gt;Means&lt;/fen&gt; action, is described in terms of the actual or expected &lt;fen&gt;Deviation&lt;/fen&gt; between the location, time, or quantity in the activity and the location, time, or quantity which is necessary for the intended event.
+
+&lt;ex&gt;&lt;fex name="Instrument"&gt;The Longview Rangefinder&lt;/fex&gt; is &lt;t&gt;accurate&lt;/t&gt; &lt;fex name="Deviation"&gt;to within one foot per hundred yards&lt;/fex&gt; .&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Means"&gt;His estimate&lt;/fex&gt; was &lt;t&gt;off&lt;/t&gt; &lt;fex name="Deviation"&gt;by an order of magnitude&lt;/fex&gt; .&lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="Agent"&gt;The fork truck operator&lt;/fex&gt; must be &lt;fex name="Degree"&gt;fairly&lt;/fex&gt; &lt;t&gt;accurate&lt;/t&gt; &lt;fex name="Means"&gt;in his aim&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;The &lt;t&gt;precision&lt;/t&gt; &lt;fex name="Means"&gt;of the daily measurements&lt;/fex&gt; is dependent on a number of factors.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="03/24/2007 05:07:07 PDT Sat" abbrev="Agt" name="Agent" ID="11350">
+        <definition>&lt;def-root&gt;The individual who tries to interact with the &lt;fen&gt;Target&lt;/fen&gt;.
+
+&lt;ex&gt;&lt;fex name="Agent"&gt;The mailman&lt;/fex&gt; is very &lt;t&gt;exact&lt;/t&gt; about addresses -- he has to be .&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="03/24/2007 05:07:07 PDT Sat" abbrev="" name="Target" ID="11351">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Target&lt;/fen&gt; is the entity whose attributes (esp. position) the &lt;fen&gt;Agent&lt;/fen&gt; is attempting to match in an action.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="03/24/2007 05:07:07 PDT Sat" abbrev="Otcm" name="Outcome" ID="11352">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Outcome&lt;/fen&gt; is the failure or success of an attempt at interaction, incorporated in the LUs of the frame.
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="03/24/2007 05:07:07 PDT Sat" abbrev="Means" name="Means" ID="11353">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Means&lt;/fen&gt; by which the &lt;fen&gt;Agent&lt;/fen&gt; attempts to hit a &lt;fen&gt;Target_value&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="03/24/2007 05:07:07 PDT Sat" abbrev="Degr" name="Degree" ID="11354">
+        <definition>&lt;def-root&gt;How closely the expected or actual location that the &lt;fen&gt;Instrument&lt;/fen&gt; interacts with corresponds to the &lt;fen&gt;Target_value&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="03/24/2007 05:07:07 PDT Sat" abbrev="Time" name="Time" ID="11355">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Time&lt;/fen&gt; when something hits or misses.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="03/24/2007 05:07:07 PDT Sat" abbrev="Place" name="Place" ID="11357">
+        <definition>&lt;def-root&gt;The place where the &lt;fen&gt;Agent&lt;/fen&gt; manages or fails to interact with the &lt;fen&gt;Target&lt;/fen&gt;.
+&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="03/24/2007 05:07:07 PDT Sat" abbrev="" name="Instrument" ID="11362">
+        <definition>&lt;def-root&gt;The object manipulated by the &lt;fen&gt;Agent&lt;/fen&gt; in order to interact with the &lt;fen&gt;Target&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="03/24/2007 05:07:07 PDT Sat" abbrev="targ_loc" name="Target_value" ID="11363">
+        <definition>&lt;def-root&gt;The value or values for a parameter that match the &lt;fen&gt;Agent&lt;/fen&gt;'s intent.
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="03/24/2007 08:32:12 PDT Sat" abbrev="" name="Deviation" ID="11367">
+        <definition>&lt;def-root&gt;Expected or actual deviation from the &lt;fen&gt;Target_value&lt;/fen&gt;.
+
+&lt;ex&gt;For this they would need a thermometer &lt;t&gt;accurate&lt;/t&gt; &lt;fex name="Deviation"&gt;to within a microkelvin&lt;/fex&gt;. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="361" cDate="05/14/2007 06:12:22 PDT Mon" abbrev="" name="Domain" ID="11732">
+        <definition>&lt;def-root&gt;The particular aspect or domain in which something is accurate. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="00008B" coreType="Extra-Thematic" cBy="361" cDate="07/10/2007 12:45:01 PDT Tue" abbrev="cir" name="Circumstances" ID="11902">
+        <definition>&lt;def-root&gt;Circumstances describe the state of the world (at a particular time and place) which is specifically independent of the event itself and any of its participants. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="361" cDate="07/10/2007 12:57:23 PDT Tue" abbrev="fre" name="Frequency" ID="11903">
+        <definition>&lt;def-root&gt;How often the &lt;fen&gt;Agent&lt;/fen&gt;, &lt;fen&gt;Means&lt;/fen&gt;, or &lt;fen&gt;Instrument&lt;/fen&gt; is accurate. &lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Inclination</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Success_or_failure</relatedFrame>
+        <relatedFrame>Measurable_attributes</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="A" name="accurate.a" ID="14125" lemmaID="319" cBy="664" cDate="03/24/2007 05:48:17 PDT Sat">
+        <definition>COD: capable of or successful in reaching the intended target</definition>
+        <sentenceCount annotated="25" total="222"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="accurate"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="on.prep" ID="14126" lemmaID="26702" cBy="664" cDate="03/24/2007 05:48:41 PDT Sat">
+        <definition>FN: of a correct reading</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="on"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="PREP" name="off.prep" ID="14127" lemmaID="26549" cBy="664" cDate="03/24/2007 05:48:53 PDT Sat">
+        <definition>FN: not of the correct reading</definition>
+        <sentenceCount annotated="0" total="134"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="off"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="inaccurate.a" ID="14128" lemmaID="19305" cBy="664" cDate="03/24/2007 05:49:22 PDT Sat">
+        <definition>COD: not accurate</definition>
+        <sentenceCount annotated="21" total="182"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="inaccurate"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="accuracy.n" ID="14129" lemmaID="318" cBy="664" cDate="03/24/2007 05:49:35 PDT Sat">
+        <definition>FN: the precision of an instrument</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="accuracy"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="inaccuracy.n" ID="14131" lemmaID="50581" cBy="664" cDate="03/24/2007 05:50:14 PDT Sat">
+        <definition>FN: a failure to reach the correct reading </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="inaccuracy"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="exact.a" ID="14132" lemmaID="13314" cBy="664" cDate="03/24/2007 05:50:52 PDT Sat">
+        <definition>COD: accurate or correct in all details</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="exact"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="precise.a" ID="14133" lemmaID="30095" cBy="664" cDate="03/24/2007 05:51:12 PDT Sat">
+        <definition>COD: marked by exactness and accuracy of expression or detail.</definition>
+        <sentenceCount annotated="22" total="266"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="precise"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="precision.n" ID="14134" lemmaID="30098" cBy="664" cDate="03/24/2007 05:51:24 PDT Sat">
+        <definition>COD: refinement in a measurement or specification, especially as represented by the number of digits given.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="precision"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="ADV" name="accurately.adv" ID="14135" lemmaID="320" cBy="664" cDate="03/24/2007 08:40:32 PDT Sat">
+        <definition>FN: with precision</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="accurately"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="ADV" name="inaccurately.adv" ID="14136" lemmaID="19306" cBy="664" cDate="03/24/2007 08:40:54 PDT Sat">
+        <definition>FN: without precision</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="inaccurately"/>
+    </lexUnit>
+</frame>

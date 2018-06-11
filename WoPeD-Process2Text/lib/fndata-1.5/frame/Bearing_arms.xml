@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="01/13/2003 05:24:37 PST Mon" name="Bearing_arms" ID="470" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A &lt;fen&gt;Protagonist&lt;/fen&gt; has (or does not have) a &lt;fen&gt;Weapon&lt;/fen&gt;.  The &lt;fen&gt;Degree&lt;/fen&gt; to which the &lt;fen&gt;Protagonist&lt;/fen&gt; is armed may also be described.  The &lt;fen&gt;Protagonist&lt;/fen&gt; is normally a human but may be a device that has subsidiary weapons. 
+&lt;ex&gt;Apparently, &lt;fex name="Protagonist"&gt;the suspect&lt;/fex&gt; &lt;m&gt;is&lt;/m&gt; &lt;t&gt;armed&lt;/t&gt; &lt;fex name="Weapon"&gt;with a shotgun&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;After she pulled the .45 from her sock drawer, &lt;fex name="Protagonist"&gt;she&lt;/fex&gt; &lt;m&gt;felt&lt;/m&gt; &lt;fex name="Degree"&gt;well enough&lt;/fex&gt; &lt;t&gt;armed&lt;/t&gt; &lt;fex name="Degree"&gt;to face anyone coming in&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Protagonist"&gt;The Tomahawk missile&lt;/fex&gt; &lt;t&gt;packs&lt;/t&gt; a lot of heat .&lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="Protagonist"&gt;An individual with a right-to-carry license&lt;/fex&gt; may continue to &lt;t&gt;carry&lt;/t&gt; in a "school zone" in compliance with existing state and local laws. &lt;fex name="Weapon"&gt;INI&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="01/13/2003 05:35:10 PST Mon" abbrev="" name="Degree" ID="4000">
+        <definition>&lt;def-root&gt;The amount of Weapons that the Protagonist has (relative to some standard).
+&lt;ex&gt;He is very &lt;fex name="Degree"&gt;well&lt;/fex&gt; &lt;t&gt;armed&lt;/t&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="01/13/2003 05:35:45 PST Mon" abbrev="" name="Weapon" ID="4001">
+        <definition>&lt;def-root&gt;The destructive device that the &lt;fen&gt;Protagonist&lt;/fen&gt; has with them.&lt;/def-root&gt;</definition>
+        <semType name="Artifact" ID="61"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="01/13/2003 05:37:22 PST Mon" abbrev="" name="Protagonist" ID="4002">
+        <definition>&lt;def-root&gt;The individual that possesses a &lt;fen&gt;Weapon&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="07/30/2010 07:11:30 PDT Fri" abbrev="pla" name="Place" ID="14102">
+        <definition>&lt;def-root&gt;The location where a &lt;fen&gt;Protagonist&lt;/fen&gt; carries a &lt;fen&gt;Weapon&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="07/30/2010 07:12:35 PDT Fri" abbrev="tim" name="Time" ID="14103">
+        <definition>&lt;def-root&gt;The time at which the &lt;fen&gt;Protagonist&lt;/fen&gt; carries a &lt;fen&gt;Weapon&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>State</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Weapon</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Shooting_scenario</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="A" name="armed.a" ID="7930" lemmaID="1940" cBy="664" cDate="01/14/2003 02:42:29 PST Tue">
+        <definition>FN: carryiing or equipped with weapons</definition>
+        <sentenceCount annotated="19" total="271"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="armed"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="unarmed.a" ID="7933" lemmaID="41794" cBy="664" cDate="01/14/2003 02:43:36 PST Tue">
+        <definition>COD: not equipped with or carrying weapons</definition>
+        <sentenceCount annotated="14" total="100"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="unarmed"/>
+        <semType name="Negative" ID="99"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="weaponless.a" ID="8006" lemmaID="43629" cBy="296" cDate="01/16/2003 12:47:12 PST Thu">
+        <definition>FN: without weapons</definition>
+        <sentenceCount annotated="4" total="4"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="weaponless"/>
+        <semType name="Negative" ID="99"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="bear arms.v" ID="9132" lemmaID="48230" cBy="664" cDate="07/21/2003 04:51:33 PDT Mon">
+        <definition>FN: have weapons on one's person.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="bear"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="arms"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="V" name="pack.v" ID="9809" lemmaID="27482" cBy="145" cDate="10/17/2003 04:40:13 PDT Fri">
+        <definition>FN: to carry (a firearm). "He was packing heat, ready for them to jump him." "She used to pack a derringer in her bodice."</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="pack"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="carry.v" ID="12574" lemmaID="5613" cBy="605" cDate="07/29/2005 02:03:42 PDT Fri">
+        <definition>FN: have a firearm on one's person </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="carry"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Weapon" POS="A" name="nuclear.a" ID="12575" lemmaID="26237" cBy="605" cDate="07/29/2005 02:16:24 PDT Fri">
+        <definition>FN: possessing nuclear weapons.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="nuclear"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Weapon" POS="N" name="gunman.n" ID="13130" lemmaID="17078" cBy="664" cDate="03/21/2006 11:07:25 PST Tue">
+        <definition>COD: a man who uses a gun to commit a crime or terrorist act.</definition>
+        <sentenceCount annotated="1" total="1"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="gunman"/>
+        <semType name="Agentive_noun" ID="102"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="draw.v" ID="15546" lemmaID="11714" cBy="589" cDate="10/29/2009 03:44:21 PDT Thu">
+        <definition>FN: to pull out (a weapon)</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="draw"/>
+    </lexUnit>
+</frame>

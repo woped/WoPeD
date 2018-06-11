@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="731" cDate="02/07/2001 04:12:19 PST Wed" name="Perception_active" ID="66" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;This frame contains perception words whose perceivers intentionally direct their attention to some entity or phenomenon in order to have a perceptual experience.  For this reason we call the perceiver role in this frame &lt;fen&gt;Perceiver_agentive&lt;/fen&gt;.  
+
+&lt;ex&gt;&lt;fex name="per"&gt;She&lt;/fex&gt; &lt;t&gt;gazed&lt;/t&gt; &lt;fex name="Phenomenon"&gt;upon him&lt;/fex&gt; &lt;fex name="Manner"&gt;fondly&lt;/fex&gt;.&lt;/ex&gt;
+
+Comparing the Perception_active frame to the Perception_experience frame, we note that for some modalities there are different lexical items in each frame.  For instance, whereas Perception_active contains the verb phrase &lt;ment&gt;look at&lt;/ment&gt;, Perception_experience contains &lt;ment&gt;see&lt;/ment&gt;.   For other sense modalities, we find the same lexical item in both frames.  To illustrate, consider the verb &lt;ment&gt;smell&lt;/ment&gt;.
+
+This first sentence exemplifies the Perception_active use of the verb &lt;ment&gt;smell&lt;/ment&gt;:&lt;ex&gt;&lt;t&gt;Smell&lt;/t&gt; &lt;fex name="Phenomenon"&gt;this&lt;/fex&gt; &lt;fex name="Purpose"&gt;to see if it's fresh&lt;/fex&gt;.&lt;fex name="Perceiver_agentive"&gt;CNI&lt;/fex&gt;&lt;/ex&gt;
+This second sentence exemplifies its Perception_experience sense:
+&lt;ex&gt;I &lt;t&gt;smell&lt;/t&gt; something rotten.&lt;/ex&gt;
+ &lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:19 PST Wed" abbrev="per" name="Perceiver_agentive" ID="301">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Perceiver_agentive&lt;/fen&gt; performs some action in order to have a perceptual experience. It is expressed as an External Argument: 
+&lt;ex&gt;&lt;fex name="Perceiver_agentive"&gt;The waiter&lt;/fex&gt; &lt;t&gt;smelled&lt;/t&gt; the milk to see if it was fresh.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:19 PST Wed" abbrev="Phen" name="Phenomenon" ID="302">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Phenomenon&lt;/fen&gt; indicates the entity or phenomenon to which the &lt;fen&gt;Perceiver_agentive&lt;/fen&gt; directs his or her attention in order to have a perceptual experience. Typically, it is expressed as an Object with verbs.
+ &lt;ex&gt;The waiter &lt;t&gt;smelled&lt;/t&gt; &lt;fex name="Phenomenon"&gt;the milk&lt;/fex&gt; to see if it was fresh.&lt;/ex&gt;
+&lt;ex&gt;The policeman &lt;t&gt;watched&lt;/t&gt; &lt;fex name="Phenomenon"&gt;him&lt;/fex&gt; &lt;fex name="Phenomenon"&gt;run out the door&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Core-Unexpressed" cBy="731" cDate="02/07/2001 04:12:19 PST Wed" abbrev="BodP" name="Body_part" ID="303">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Body_part&lt;/fen&gt; identifies the part of the body used as a sensory organ of the &lt;fen&gt;Perceiver_agentive&lt;/fen&gt;, typically expressed in a &lt;ment&gt;with&lt;/ment&gt;-PP.
+&lt;ex&gt;You should &lt;t&gt;feel&lt;/t&gt; the water &lt;fex name="Body_part"&gt;with your toes&lt;/fex&gt; before jumping in.&lt;/ex&gt;
+This frame element occurs infrequently in this frame, because most of the target words intrinsically imply what part of the body is used (e.g. smelling must be done with the nose). However, the verb &lt;ment&gt;feel&lt;/ment&gt; does take  this frame element, because touch is not localized on the body the same way as other modalities .  &lt;fen&gt;Body_part&lt;/fen&gt; may be expressed in other modalities when it adds specificity to what is implied by the target word in question.
+
+&lt;ex&gt;I was now able to breathe properly and started to &lt;t&gt;feel&lt;/t&gt; over my body &lt;fex name="BodP"&gt;with both hands&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;I &lt;t&gt;looked&lt;/t&gt; at the wreckage &lt;fex name="Body_part"&gt;with my good eye&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Body_part" ID="10"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="731" cDate="02/07/2001 04:12:19 PST Wed" abbrev="Loc_Perc" name="Location_of_perceiver" ID="304">
+        <definition>&lt;def-root&gt;This FE is the position of the Perceiver during the act of perception.  Typically, it is expressed in a &lt;ment&gt;from&lt;/ment&gt;-PP.
+&lt;ex&gt;We &lt;t&gt;watched&lt;/t&gt; the parade &lt;fex name="Loc_Perc"&gt;from the roof&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Core-Unexpressed" cBy="731" cDate="02/07/2001 04:12:19 PST Wed" abbrev="Dir" name="Direction" ID="305">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Direction&lt;/fen&gt; is used for all path-like expressions that describe how the perceiver's attention is directed during the act of perception, with the exception of those indicating the location of the &lt;fen&gt;Perceiver_agentive&lt;/fen&gt; (which would be marked &lt;fen&gt;Location_of_perceiver&lt;/fen&gt;)
+
+&lt;ex&gt;The detective &lt;t&gt;looked&lt;/t&gt; &lt;fex name="Direction"&gt;across the street&lt;/fex&gt; at the suspect.&lt;/ex&gt;
+&lt;ex&gt;The detective &lt;t&gt;listened&lt;/t&gt; &lt;fex name="Direction"&gt;through the wall&lt;/fex&gt; to their conversation.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="731" cDate="02/07/2001 04:12:19 PST Wed" abbrev="State" name="Depictive" ID="306">
+        <definition>&lt;def-root&gt;&lt;fen&gt;State&lt;/fen&gt; is used for predicate expressions that apply to the &lt;fen&gt;Phenomenon&lt;/fen&gt;, providing some information about the state it is in while the perceiver's attention is directed to it: &lt;ex&gt;The detective &lt;t&gt;watched&lt;/t&gt; the suspect &lt;fex name="Depictive"&gt;fleeing&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;Pat &lt;t&gt;tasted&lt;/t&gt; the cookie dough &lt;fex name="Depictive"&gt;raw&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="731" cDate="02/07/2001 04:12:19 PST Wed" abbrev="State" name="State" ID="307">
+        <definition>&lt;def-root&gt;&lt;fen&gt;State&lt;/fen&gt; is the location, activity, or other characteristic of the &lt;fen&gt;Phenomenon&lt;/fen&gt;.
+
+&lt;ex&gt;I &lt;t&gt;tasted&lt;/t&gt; the soup &lt;fex name="State"&gt;in the fridge&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;I &lt;t&gt;stared&lt;/t&gt; at the man &lt;fex name="State"&gt;running out the door&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="731" cDate="02/07/2001 04:12:20 PST Wed" abbrev="Manr" name="Manner" ID="308">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Manner&lt;/fen&gt; expressions may be of lexicographic interest if they describe properties of active perception as such: &lt;ment&gt;closely&lt;/ment&gt;, &lt;ment&gt;carefully&lt;/ment&gt;, etc. 
+&lt;ex&gt;Dan &lt;t&gt;looked&lt;/t&gt; at the inscription &lt;fex name="Manr"&gt;carefully&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Peripheral" cBy="268" cDate="05/29/2003 11:20:03 PDT Thu" abbrev="Mns" name="Means" ID="4507">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Means&lt;/fen&gt; indicates the tool or method the &lt;fen&gt;Perceiver_agentive&lt;/fen&gt; is using to actively perceive the &lt;fen&gt;Phenomenon&lt;/fen&gt;.  May be confused with &lt;fen&gt;Direction&lt;/fen&gt; in cases with &lt;ment&gt;through&lt;/ment&gt;-PP, but is referring more to the instrument used than the path used.
+
+&lt;ex&gt;Joann &lt;t&gt;peeked&lt;/t&gt; at John &lt;fex name="Mns"&gt;through the binoculars&lt;/fex&gt;&lt;/ex&gt;
+&lt;ex&gt;You can &lt;t&gt;observe&lt;/t&gt; distant galaxies &lt;fex name="Mns"&gt;with a good telescope&lt;/fex&gt;. &lt;/ex&gt;
+&lt;ex&gt;He &lt;t&gt;observed&lt;/t&gt; babies &lt;fex name="Mns"&gt;using ultrasound&lt;/fex&gt; and discovered that each showed a preference for one or the other thumb.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="07/21/2003 12:31:12 PDT Mon" abbrev="Tim" name="Time" ID="4806">
+        <definition>&lt;def-root&gt;When the activity of attempting to perceive occurs.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="07/21/2003 12:33:51 PDT Mon" abbrev="Purp" name="Purpose" ID="4807">
+        <definition>&lt;def-root&gt;Some action that the &lt;fen&gt;Perceiver_agentive&lt;/fen&gt; is trying to accomplish by directing their own attention.
+
+&lt;ex&gt;She &lt;t&gt;listened&lt;/t&gt; to the music &lt;fex name="Purp"&gt;to find out if it was actually written by Satan&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="07/21/2003 12:53:36 PDT Mon" abbrev="" name="Place" ID="4808">
+        <definition>&lt;def-root&gt;The general location within which the act of perception takes place.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="d0d0d0" fgColor="000000" coreType="Peripheral" cBy="303" cDate="10/01/2004 01:12:16 PDT Fri" abbrev="Dur" name="Duration" ID="7160">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Duration&lt;/fen&gt; of  time for which the Perception takes place.
+
+&lt;ex&gt;I  &lt;t&gt;WATCH&lt;/t&gt; them &lt;fex name="Dur"&gt;for quite a while&lt;/fex&gt; .&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="11/17/2004 11:03:40 PST Wed" abbrev="exp" name="Expected_entity" ID="7231">
+        <definition>&lt;def-root&gt;An entity or state-of-affairs that the &lt;fen&gt;Perceiver_agentive&lt;/fen&gt; hopes, fears, or expects to find within the &lt;fen&gt;Phenomenon&lt;/fen&gt;.
+
+&lt;ex&gt;&lt;t&gt;Watch&lt;/t&gt; &lt;fex name="exp"&gt;for little errors with hand position&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;While Bertha was n't looking, he carefully &lt;t&gt;smelt&lt;/t&gt; the soup &lt;fex name="exp"&gt;for any trace of the poison&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Peripheral" cBy="597" cDate="10/15/2008 01:05:06 PDT Wed" abbrev="Ground" name="Ground" ID="13083">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Ground&lt;/fen&gt; is the perceptual background against which the &lt;fen&gt;Phenomenon&lt;/fen&gt; is experienced by the &lt;fen&gt;Perceiver_agentive&lt;/fen&gt;. 
+
+ &lt;ex&gt;Kim &lt;t&gt;looked&lt;/t&gt; at the cloud &lt;fex name="Ground"&gt;against the blue sky&lt;/fex&gt;.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="7FFF00" fgColor="000000" coreType="Peripheral" cBy="597" cDate="10/15/2008 01:12:46 PDT Wed" abbrev="O_m" name="Obscuring_medium" ID="13084">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Obscuring_medium&lt;/fen&gt; is the medium through which the &lt;fen&gt;Phenomenon&lt;/fen&gt; makes itself perceivable to the &lt;fen&gt;Perceiver_agentive&lt;/fen&gt;.  This is similar to the &lt;fen&gt;Direction&lt;/fen&gt;, but occurs in the opposite direction and implies a movement of the &lt;fen&gt;Phenomenon&lt;/fen&gt;.
+
+&lt;ex&gt;I &lt;t&gt;eavesdropped&lt;/t&gt; on them &lt;fex name="Obscuring_medium"&gt;through the wall&lt;/fex&gt;&lt;/ex&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Perceiver_agentive" ID="301"/>
+        <memberFE name="Body_part" ID="303"/>
+    </FEcoreSet>
+    <FEcoreSet>
+        <memberFE name="Direction" ID="305"/>
+        <memberFE name="Phenomenon" ID="302"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Perception</relatedFrame>
+        <relatedFrame>Intentionally_act</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Touring</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Attention</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Scrutiny</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="attend.v" ID="1292" lemmaID="2292" cBy="731" cDate="02/08/2001 01:29:37 PST Thu">
+        <definition>FN: perceive, note</definition>
+        <sentenceCount annotated="4" total="140"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="attend"/>
+        <semType name="Sensory_modality" ID="92"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="eavesdrop.v" ID="1294" lemmaID="12149" cBy="731" cDate="02/08/2001 01:29:38 PST Thu">
+        <definition>COD: secretly listen to a conversation</definition>
+        <sentenceCount annotated="11" total="87"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="eavesdrop"/>
+        <semType name="Auditory_modality" ID="93"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="feel.v" ID="1295" lemmaID="14126" cBy="731" cDate="02/08/2001 01:29:38 PST Thu">
+        <definition>COD: perceive, examine, or search by touch.</definition>
+        <sentenceCount annotated="14" total="405"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="feel"/>
+        <semType name="Tactile_modality" ID="96"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="gaze.n" ID="1296" lemmaID="16017" cBy="731" cDate="02/08/2001 01:29:38 PST Thu">
+        <definition>COD:  a steady intent look</definition>
+        <sentenceCount annotated="33" total="215"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="gaze"/>
+        <semType name="Visual_modality" ID="94"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="gaze.v" ID="1297" lemmaID="16018" cBy="731" cDate="02/08/2001 01:29:38 PST Thu">
+        <definition>COD: look steadily and intently</definition>
+        <sentenceCount annotated="52" total="563"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="gaze"/>
+        <semType name="Visual_modality" ID="94"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="glance.n" ID="1298" lemmaID="16293" cBy="731" cDate="02/08/2001 01:29:38 PST Thu">
+        <definition>COD: a brief or hurried look</definition>
+        <sentenceCount annotated="34" total="324"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="glance"/>
+        <semType name="Visual_modality" ID="94"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="glance.v" ID="1299" lemmaID="16294" cBy="731" cDate="02/08/2001 01:29:38 PST Thu">
+        <definition>COD: take a brief or hurried look.</definition>
+        <sentenceCount annotated="61" total="692"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="glance"/>
+        <semType name="Visual_modality" ID="94"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="listen.v" ID="1300" lemmaID="22494" cBy="731" cDate="02/08/2001 01:29:38 PST Thu">
+        <definition>COD: give one's attention to a sound; make an effort to hear something</definition>
+        <sentenceCount annotated="20" total="217"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="listen"/>
+        <semType name="Auditory_modality" ID="93"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="look.n" ID="1301" lemmaID="22737" cBy="731" cDate="02/08/2001 01:29:38 PST Thu">
+        <definition>COD: the act of directing one's gaze in a specified direction</definition>
+        <sentenceCount annotated="62" total="471"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="look"/>
+        <semType name="Visual_modality" ID="94"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="look.v" ID="1302" lemmaID="22738" cBy="731" cDate="02/08/2001 01:29:38 PST Thu">
+        <definition>COD: direct one's gaze in a specified direction</definition>
+        <sentenceCount annotated="109" total="1240"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="look"/>
+        <semType name="Visual_modality" ID="94"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="observation.n" ID="1303" lemmaID="26431" cBy="731" cDate="02/08/2001 01:29:38 PST Thu">
+        <definition>COD: the action or process of closely observing or monitoring</definition>
+        <sentenceCount annotated="15" total="212"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="observation"/>
+        <semType name="Visual_modality" ID="94"/>
+    </lexUnit>
+    <lexUnit status="Problem" POS="V" name="observe.v" ID="1304" lemmaID="26434" cBy="731" cDate="02/08/2001 01:29:39 PST Thu">
+        <definition>COD: notice; perceive; watch intently</definition>
+        <sentenceCount annotated="34" total="441"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="observe"/>
+        <semType name="Visual_modality" ID="94"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="palpate.v" ID="1305" lemmaID="27622" cBy="731" cDate="02/08/2001 01:29:39 PST Thu">
+        <definition>COD: examine (a part of the body) by touch, especially for medical purposes.</definition>
+        <sentenceCount annotated="9" total="17"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="palpate"/>
+        <semType name="Tactile_modality" ID="96"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="peek.n" ID="1306" lemmaID="28238" cBy="731" cDate="02/08/2001 01:29:39 PST Thu">
+        <definition>COD: a quick or furtive look</definition>
+        <sentenceCount annotated="15" total="45"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="peek"/>
+        <semType name="Visual_modality" ID="94"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="peek.v" ID="1307" lemmaID="28239" cBy="731" cDate="02/08/2001 01:29:39 PST Thu">
+        <definition>COD: look quickly or furtively.</definition>
+        <sentenceCount annotated="17" total="72"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="peek"/>
+        <semType name="Visual_modality" ID="94"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="peep.v" ID="1308" lemmaID="28247" cBy="731" cDate="02/08/2001 01:29:39 PST Thu">
+        <definition>COD: look quickly and furtively</definition>
+        <sentenceCount annotated="51" total="202"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="peep"/>
+        <semType name="Visual_modality" ID="94"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="peer.v" ID="1309" lemmaID="28253" cBy="731" cDate="02/08/2001 01:29:39 PST Thu">
+        <definition>COD: look with difficulty or concentration.</definition>
+        <sentenceCount annotated="54" total="541"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="peer"/>
+        <semType name="Visual_modality" ID="94"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="savour.v" ID="1310" lemmaID="48" cBy="731" cDate="02/08/2001 01:29:39 PST Thu">
+        <definition>COD: appreciate and enjoy the taste of (good food or drink)</definition>
+        <sentenceCount annotated="21" total="131"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="savor"/>
+        <semType name="Gustatory_modality" ID="97"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="smell.v" ID="1311" lemmaID="36506" cBy="731" cDate="02/08/2001 01:29:39 PST Thu">
+        <definition>COD: sniff at (something) in order to ascertain its odour</definition>
+        <sentenceCount annotated="15" total="189"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="smell"/>
+        <semType name="Olfactory_modality" ID="95"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="sniff.n" ID="1312" lemmaID="36637" cBy="731" cDate="02/08/2001 01:29:39 PST Thu">
+        <definition>FN: the action of drawing air audibly through the nose, especially for smelling</definition>
+        <sentenceCount annotated="7" total="54"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="sniff"/>
+        <semType name="Olfactory_modality" ID="95"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="sniff.v" ID="1313" lemmaID="36638" cBy="731" cDate="02/08/2001 01:29:39 PST Thu">
+        <definition>FN: smell or inhale (something) deliberately</definition>
+        <sentenceCount annotated="29" total="153"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="sniff"/>
+        <semType name="Olfactory_modality" ID="95"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="spy.v" ID="1314" lemmaID="37588" cBy="731" cDate="02/08/2001 01:29:39 PST Thu">
+        <definition>COD: observe furtively</definition>
+        <sentenceCount annotated="11" total="113"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="spy"/>
+        <semType name="Visual_modality" ID="94"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="stare.n" ID="1315" lemmaID="37819" cBy="731" cDate="02/08/2001 01:29:39 PST Thu">
+        <definition>COD: a fixed look at someone or something with the eyes wide open</definition>
+        <sentenceCount annotated="21" total="187"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="stare"/>
+        <semType name="Visual_modality" ID="94"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="stare.v" ID="1316" lemmaID="37820" cBy="731" cDate="02/08/2001 01:29:40 PST Thu">
+        <definition>COD: look fixedly at someone or something with the eyes wide open</definition>
+        <sentenceCount annotated="52" total="633"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="stare"/>
+        <semType name="Visual_modality" ID="94"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="taste.n" ID="1317" lemmaID="39581" cBy="731" cDate="02/08/2001 01:29:40 PST Thu">
+        <definition>COD: the sensation of flavour perceived in the mouth on contact with a substance</definition>
+        <sentenceCount annotated="8" total="326"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="taste"/>
+        <semType name="Gustatory_modality" ID="97"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="taste.v" ID="1318" lemmaID="39582" cBy="731" cDate="02/08/2001 01:29:40 PST Thu">
+        <definition>COD: sample or test the flavour of</definition>
+        <sentenceCount annotated="22" total="232"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="taste"/>
+        <semType name="Gustatory_modality" ID="97"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="view.v" ID="1319" lemmaID="43016" cBy="731" cDate="02/08/2001 01:29:40 PST Thu">
+        <definition>COD: look at or inspect</definition>
+        <sentenceCount annotated="29" total="483"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="view"/>
+        <semType name="Visual_modality" ID="94"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="watch.v" ID="1320" lemmaID="43529" cBy="731" cDate="02/08/2001 01:29:40 PST Thu">
+        <definition>COD: look at attentively</definition>
+        <sentenceCount annotated="137" total="708"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="watch"/>
+        <semType name="Visual_modality" ID="94"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="squint.v" ID="8089" lemmaID="37657" cBy="605" cDate="01/21/2003 03:30:03 PST Tue">
+        <definition>COD: look at someone or something with partly closed eyes</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="squint"/>
+        <semType name="Visual_modality" ID="94"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="admire.v" ID="8707" lemmaID="527" cBy="605" cDate="05/23/2003 02:00:33 PDT Fri">
+        <definition>COD: look at with pleasure</definition>
+        <sentenceCount annotated="18" total="162"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="admire"/>
+        <semType name="Visual_modality" ID="94"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="eye.v" ID="10188" lemmaID="13718" cBy="445" cDate="03/04/2004 03:24:09 PST Thu">
+        <definition>COD: to look at closely or with interest.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="eye"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="gape.v" ID="13235" lemmaID="15902" cBy="303" cDate="06/19/2006 12:50:48 PDT Mon">
+        <definition>COD: stare with one's mouth open wide in amazement or wonder.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="gape"/>
+    </lexUnit>
+    <lexUnit status="Rules_Defined" POS="V" name="gawk.v" ID="13236" lemmaID="16010" cBy="303" cDate="06/19/2006 12:58:05 PDT Mon">
+        <definition>COD:  stare openly and stupidly.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="gawk"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="goggle.v" ID="13237" lemmaID="16481" cBy="303" cDate="06/19/2006 12:58:35 PDT Mon">
+        <definition>COD: look with wide open eyes, typically in amazement or wonder.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="goggle"/>
+    </lexUnit>
+</frame>

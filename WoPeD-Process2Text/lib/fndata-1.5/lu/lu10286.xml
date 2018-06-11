@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="ADV" name="first.adv" ID="10286" frame="First_experience" frameID="1027" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="cxt" name="Context"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="exp" name="Experience"/>
+        </frame>
+    </header>
+    <definition>COD: for the first time</definition>
+    <lexeme POS="ADV" name="first"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Experience"/>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="Sub" FE="Experience"/>
+                <annoSet ID="2606976"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Experience"/>
+            <FE name="Experience"/>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="Sub" FE="Experience"/>
+                <valenceUnit GF="Head" PT="Sub" FE="Experience"/>
+                <annoSet ID="2606976"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-Wvvn-(1)"/>
+    <subCorpus name="03-NP-Wbe-T-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="2308" aPos="36778964" ID="1585553">
+            <text>Queen fans were devastated when Barcelona -- a Top Ten hit when first released five years ago -- was controversially elbowed out as the Games 's theme song by Amigos Para Siempre ( Friends For Life ) .</text>
+            <annotationSet cDate="08/16/2010 03:01:48 PDT Mon" status="UNANN" ID="2606975">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="nn"/>
+                    <label end="9" start="6" name="nns"/>
+                    <label end="14" start="11" name="VBD"/>
+                    <label end="25" start="16" name="VVN"/>
+                    <label end="30" start="27" name="wrb"/>
+                    <label end="40" start="32" name="NP"/>
+                    <label end="43" start="42" name=":"/>
+                    <label end="45" start="45" name="dt"/>
+                    <label end="49" start="47" name="jj"/>
+                    <label end="53" start="51" name="cd"/>
+                    <label end="57" start="55" name="VVP"/>
+                    <label end="62" start="59" name="wrb"/>
+                    <label end="68" start="64" name="jj"/>
+                    <label end="77" start="70" name="VVD"/>
+                    <label end="82" start="79" name="cd"/>
+                    <label end="88" start="84" name="nns"/>
+                    <label end="92" start="90" name="rb"/>
+                    <label end="95" start="94" name=":"/>
+                    <label end="99" start="97" name="VBD"/>
+                    <label end="115" start="101" name="rb"/>
+                    <label end="123" start="117" name="VVN"/>
+                    <label end="127" start="125" name="rp"/>
+                    <label end="130" start="129" name="in"/>
+                    <label end="134" start="132" name="dt"/>
+                    <label end="140" start="136" name="NPS"/>
+                    <label end="143" start="142" name="POS"/>
+                    <label end="149" start="145" name="nn"/>
+                    <label end="154" start="151" name="nn"/>
+                    <label end="157" start="156" name="in"/>
+                    <label end="164" start="159" name="nns"/>
+                    <label end="169" start="166" name="NP"/>
+                    <label end="177" start="171" name="NP"/>
+                    <label end="179" start="179" name="("/>
+                    <label end="187" start="181" name="NPS"/>
+                    <label end="191" start="189" name="in"/>
+                    <label end="196" start="193" name="NP"/>
+                    <label end="198" start="198" name=")"/>
+                    <label end="200" start="200" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="08/16/2010 03:01:48 PDT Mon" status="MANUAL" ID="2606976">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="68" start="64" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="6122" end="62" start="45" name="Experience"/>
+                    <label cBy="589" feID="6122" end="92" start="70" name="Experience"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="62" start="45" name="Head"/>
+                    <label end="92" start="70" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="62" start="45" name="Sub"/>
+                    <label end="92" start="70" name="Sub"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adv"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

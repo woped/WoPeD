@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" POS="V" name="ready.v" ID="11357" frame="Activity_prepare" frameID="170" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Act" name="Activity"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Agent" name="Agent"/>
+            <FE fgColor="000000" bgColor="EEE8AA" type="Extra-Thematic" abbrev="" name="Beneficiary"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Peripheral" abbrev="" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Depict" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Peripheral" abbrev="Dur" name="Duration"/>
+            <FE fgColor="00008B" bgColor="7FFF00" type="Extra-Thematic" abbrev="" name="Event_description"/>
+            <FE fgColor="000000" bgColor="FF69B4" type="Extra-Thematic" abbrev="" name="Iteration"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Mnr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Means" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: to get ready (for an activity).  </definition>
+    <lexeme POS="V" name="ready"/>
+    <valences>
+        <FERealization total="2">
+            <FE name="Activity"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Activity"/>
+                <annoSet ID="2156341"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="VPto" FE="Activity"/>
+                <annoSet ID="2239805"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Agent"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <annoSet ID="2156341"/>
+                <annoSet ID="2239805"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Activity"/>
+            <FE name="Agent"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Activity"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <annoSet ID="2156341"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="VPto" FE="Activity"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Agent"/>
+                <annoSet ID="2239805"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-PPfor-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="285" aPos="28067623" ID="1354180">
+            <text>The next day , fresh chip butties and burgers in hand , we readied for the weekend 's big attraction : a copy of a New Generation episode , not due to be shown here for months .</text>
+            <annotationSet cDate="04/28/2006 01:15:22 PDT Fri" status="UNANN" ID="2156340">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="7" start="4" name="jj"/>
+                    <label end="11" start="9" name="nn"/>
+                    <label end="13" start="13" name=","/>
+                    <label end="19" start="15" name="jj"/>
+                    <label end="24" start="21" name="nn"/>
+                    <label end="32" start="26" name="nns"/>
+                    <label end="36" start="34" name="cc"/>
+                    <label end="44" start="38" name="nns"/>
+                    <label end="47" start="46" name="in"/>
+                    <label end="52" start="49" name="nn"/>
+                    <label end="54" start="54" name=","/>
+                    <label end="57" start="56" name="PP"/>
+                    <label end="65" start="59" name="VVD"/>
+                    <label end="69" start="67" name="in"/>
+                    <label end="73" start="71" name="dt"/>
+                    <label end="81" start="75" name="nn"/>
+                    <label end="84" start="83" name="POS"/>
+                    <label end="88" start="86" name="jj"/>
+                    <label end="99" start="90" name="nn"/>
+                    <label end="101" start="101" name=":"/>
+                    <label end="103" start="103" name="dt"/>
+                    <label end="108" start="105" name="nn"/>
+                    <label end="111" start="110" name="in"/>
+                    <label end="113" start="113" name="dt"/>
+                    <label end="117" start="115" name="NP"/>
+                    <label end="128" start="119" name="NP"/>
+                    <label end="136" start="130" name="nn"/>
+                    <label end="138" start="138" name=","/>
+                    <label end="142" start="140" name="rb"/>
+                    <label end="146" start="144" name="jj"/>
+                    <label end="149" start="148" name="to"/>
+                    <label end="152" start="151" name="vb"/>
+                    <label end="158" start="154" name="VVN"/>
+                    <label end="163" start="160" name="rb"/>
+                    <label end="167" start="165" name="in"/>
+                    <label end="174" start="169" name="nns"/>
+                    <label end="176" start="176" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="04/28/2006 01:15:22 PDT Fri" status="AUTO_EDITED" ID="2156341">
+                <layer rank="1" name="Target">
+                    <label cBy="303" end="65" start="59" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="2556" end="57" start="56" name="Agent"/>
+                    <label cBy="361" feID="2557" end="174" start="67" name="Activity"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="57" start="56" name="Ext"/>
+                    <label end="174" start="67" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="57" start="56" name="NP"/>
+                    <label end="174" start="67" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="03-Whe,she,it-T-(1)"/>
+    <subCorpus name="06-NP-T-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+    <subCorpus name="01-T-Wto-(2)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="484" aPos="41306435" ID="1395977">
+            <text>Just as the armies readied to set out , a battered ship limped into harbour .</text>
+            <annotationSet cDate="08/14/2006 05:51:44 PDT Mon" status="UNANN" ID="2239804">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="rb"/>
+                    <label end="6" start="5" name="in"/>
+                    <label end="10" start="8" name="dt"/>
+                    <label end="17" start="12" name="nns"/>
+                    <label end="25" start="19" name="VVD"/>
+                    <label end="28" start="27" name="to"/>
+                    <label end="32" start="30" name="VV"/>
+                    <label end="36" start="34" name="rp"/>
+                    <label end="38" start="38" name=","/>
+                    <label end="40" start="40" name="dt"/>
+                    <label end="49" start="42" name="jj"/>
+                    <label end="54" start="51" name="nn"/>
+                    <label end="61" start="56" name="VVN"/>
+                    <label end="66" start="63" name="in"/>
+                    <label end="74" start="68" name="nn"/>
+                    <label end="76" start="76" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="08/14/2006 05:51:44 PDT Mon" status="MANUAL" ID="2239805">
+                <layer rank="1" name="Target">
+                    <label cBy="303" end="25" start="19" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="2556" end="17" start="8" name="Agent"/>
+                    <label cBy="361" feID="2557" end="36" start="27" name="Activity"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="17" start="8" name="Ext"/>
+                    <label end="36" start="27" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="17" start="8" name="NP"/>
+                    <label end="36" start="27" name="VPto"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(2)"/>
+    <subCorpus name="other-unmatched-(2)"/>
+</lexUnit>

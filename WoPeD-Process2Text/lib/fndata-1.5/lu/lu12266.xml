@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="N" name="stockpile.n" ID="12266" frame="Store" frameID="1511" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp=796" ID="19171"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Extra-Thematic" abbrev="des" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Core" abbrev="pos" name="Possessor"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Core" abbrev="res" name="Resource"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="sup" name="Supply"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="use" name="Use"/>
+        </frame>
+    </header>
+    <definition>COD: a large accumulated stock of goods or materials.</definition>
+    <lexeme POS="N" name="stockpile"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Descriptor"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="VPing" FE="Descriptor"/>
+                <annoSet ID="2581918"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Possessor"/>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Possessor"/>
+                <annoSet ID="2581918"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Resource"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Resource"/>
+                <annoSet ID="2581918"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Supply"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Supply"/>
+                <annoSet ID="2581918"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Use"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Use"/>
+                <annoSet ID="2581918"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Descriptor"/>
+            <FE name="Possessor"/>
+            <FE name="Resource"/>
+            <FE name="Supply"/>
+            <FE name="Use"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="VPing" FE="Descriptor"/>
+                <valenceUnit GF="Gen" PT="Poss" FE="Possessor"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Resource"/>
+                <valenceUnit GF="" PT="DEN" FE="Supply"/>
+                <valenceUnit GF="" PT="DNI" FE="Use"/>
+                <annoSet ID="2581918"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-plutonium-(1)">
+        <sentence corpID="111" docID="19171" sentNo="2" paragNo="443" aPos="0" ID="1573651">
+            <text>The UK 's growing stockpile of plutonium is being stored in preparation for the development of a commercial fast breeder which is unlikely to take place until well into the next century , if at all .</text>
+            <annotationSet cDate="07/14/2010 05:53:12 PDT Wed" status="UNANN" ID="2581917">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="5" start="4" name="NP"/>
+                    <label end="8" start="7" name="POS"/>
+                    <label end="16" start="10" name="VVG"/>
+                    <label end="26" start="18" name="nn"/>
+                    <label end="29" start="28" name="in"/>
+                    <label end="39" start="31" name="nn"/>
+                    <label end="42" start="41" name="VBZ"/>
+                    <label end="48" start="44" name="nn"/>
+                    <label end="55" start="50" name="VVN"/>
+                    <label end="58" start="57" name="in"/>
+                    <label end="70" start="60" name="nn"/>
+                    <label end="74" start="72" name="in"/>
+                    <label end="78" start="76" name="dt"/>
+                    <label end="90" start="80" name="nn"/>
+                    <label end="93" start="92" name="in"/>
+                    <label end="95" start="95" name="dt"/>
+                    <label end="106" start="97" name="jj"/>
+                    <label end="111" start="108" name="jj"/>
+                    <label end="119" start="113" name="nn"/>
+                    <label end="125" start="121" name="wdt"/>
+                    <label end="128" start="127" name="VBZ"/>
+                    <label end="137" start="130" name="jj"/>
+                    <label end="140" start="139" name="to"/>
+                    <label end="145" start="142" name="VV"/>
+                    <label end="151" start="147" name="nn"/>
+                    <label end="157" start="153" name="in"/>
+                    <label end="162" start="159" name="rb"/>
+                    <label end="167" start="164" name="in"/>
+                    <label end="171" start="169" name="dt"/>
+                    <label end="176" start="173" name="jj"/>
+                    <label end="184" start="178" name="nn"/>
+                    <label end="186" start="186" name=","/>
+                    <label end="189" start="188" name="in"/>
+                    <label end="192" start="191" name="in"/>
+                    <label end="196" start="194" name="dt"/>
+                    <label end="198" start="198" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/14/2010 05:53:12 PDT Wed" status="MANUAL" ID="2581918">
+                <layer rank="1" name="Target">
+                    <label cBy="773" end="26" start="18" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="773" feID="8227" end="39" start="28" name="Resource"/>
+                    <label cBy="773" feID="8463" end="16" start="10" name="Descriptor"/>
+                    <label cBy="773" feID="8228" itype="DNI" name="Use"/>
+                    <label cBy="773" feID="8226" end="26" start="18" name="Supply"/>
+                    <label cBy="589" feID="8229" end="8" start="0" name="Possessor"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="39" start="28" name="Dep"/>
+                    <label end="16" start="10" name="Dep"/>
+                    <label end="8" start="0" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="39" start="28" name="PP"/>
+                    <label end="16" start="10" name="VPing"/>
+                    <label end="8" start="0" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-other-matched-(1)"/>
+    <subCorpus name="03-other-unmatched-(1)"/>
+</lexUnit>

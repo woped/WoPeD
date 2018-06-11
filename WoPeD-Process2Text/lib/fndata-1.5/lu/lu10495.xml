@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="reprobate.n" ID="10495" frame="People_by_morality" frameID="1102" totalAnnotated="4" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Peripheral" abbrev="Age" name="Age"/>
+            <FE fgColor="000000" bgColor="FFA500" type="Peripheral" abbrev="coa" name="Context_of_acquaintance"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="desc" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Eth" name="Ethnicity"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="fie" name="Field"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="Ori" name="Origin"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Peripheral" abbrev="Pers_char" name="Persistent_characteristic"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="per" name="Person"/>
+        </frame>
+    </header>
+    <definition>COD: an unprincipled person. </definition>
+    <lexeme POS="N" name="reprobate"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Descriptor"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="Sinterrog" FE="Descriptor"/>
+                <annoSet ID="1963637"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Persistent_characteristic"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Persistent_characteristic"/>
+                <annoSet ID="1963659"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Persistent_characteristic"/>
+                <annoSet ID="1963647"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Person"/>
+            <pattern total="3">
+                <valenceUnit GF="" PT="DEN" FE="Person"/>
+                <annoSet ID="1963637"/>
+                <annoSet ID="1963655"/>
+                <annoSet ID="1963659"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Person"/>
+                <annoSet ID="1963647"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Descriptor"/>
+            <FE name="Person"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="Sinterrog" FE="Descriptor"/>
+                <valenceUnit GF="" PT="DEN" FE="Person"/>
+                <annoSet ID="1963637"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Persistent_characteristic"/>
+            <FE name="Person"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Persistent_characteristic"/>
+                <valenceUnit GF="" PT="DEN" FE="Person"/>
+                <annoSet ID="1963659"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Persistent_characteristic"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Person"/>
+                <annoSet ID="1963647"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Person"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Person"/>
+                <annoSet ID="1963655"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="5" paragNo="256" aPos="0" ID="1258325">
+            <text>In them he presents himself as a ` pickle &quot; , that is as a self-confessed reprobate , who made good .</text>
+            <annotationSet cDate="05/25/2004 05:59:12 PDT Tue" status="UNANN" ID="1963636">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="in"/>
+                    <label end="6" start="3" name="PP"/>
+                    <label end="9" start="8" name="PP"/>
+                    <label end="18" start="11" name="VVZ"/>
+                    <label end="26" start="20" name="PP"/>
+                    <label end="29" start="28" name="in"/>
+                    <label end="31" start="31" name="dt"/>
+                    <label end="40" start="35" name="nn"/>
+                    <label end="44" start="44" name=","/>
+                    <label end="49" start="46" name="wdt"/>
+                    <label end="52" start="51" name="VBZ"/>
+                    <label end="55" start="54" name="rb"/>
+                    <label end="57" start="57" name="dt"/>
+                    <label end="72" start="59" name="jj"/>
+                    <label end="82" start="74" name="nn"/>
+                    <label end="84" start="84" name=","/>
+                    <label end="88" start="86" name="wp"/>
+                    <label end="93" start="90" name="VVD"/>
+                    <label end="98" start="95" name="jj"/>
+                    <label end="100" start="100" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="05/25/2004 05:59:13 PDT Tue" status="MANUAL" ID="1963637">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="82" start="74" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="203" feID="6407" end="98" start="86" name="Descriptor"/>
+                    <label cBy="203" feID="6405" end="82" start="74" name="Person"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="98" start="86" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="98" start="86" name="Sinterrog"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="421" aPos="0" ID="1258330">
+            <text>George III went mad , George IV was a reprobate of singularly little governmental gravitas and William IV was a nonentity .</text>
+            <annotationSet cDate="05/25/2004 05:59:17 PDT Tue" status="UNANN" ID="1963646">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="0" name="NP"/>
+                    <label end="9" start="7" name="NP"/>
+                    <label end="14" start="11" name="VVD"/>
+                    <label end="18" start="16" name="jj"/>
+                    <label end="20" start="20" name=","/>
+                    <label end="27" start="22" name="NP"/>
+                    <label end="30" start="29" name="NP"/>
+                    <label end="34" start="32" name="VBD"/>
+                    <label end="36" start="36" name="dt"/>
+                    <label end="46" start="38" name="nn"/>
+                    <label end="49" start="48" name="in"/>
+                    <label end="60" start="51" name="rb"/>
+                    <label end="67" start="62" name="jj"/>
+                    <label end="80" start="69" name="jj"/>
+                    <label end="89" start="82" name="nns"/>
+                    <label end="93" start="91" name="cc"/>
+                    <label end="101" start="95" name="NP"/>
+                    <label end="104" start="103" name="NP"/>
+                    <label end="108" start="106" name="VBD"/>
+                    <label end="110" start="110" name="dt"/>
+                    <label end="120" start="112" name="nn"/>
+                    <label end="122" start="122" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="05/25/2004 05:59:18 PDT Tue" status="MANUAL" ID="1963647">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="46" start="38" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="203" feID="6405" end="30" start="22" name="Person"/>
+                    <label cBy="203" feID="6406" end="89" start="48" name="Persistent_characteristic"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="30" start="22" name="Ext"/>
+                    <label end="89" start="48" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="30" start="22" name="NP"/>
+                    <label end="89" start="48" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="34" start="32" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="11" paragNo="247" aPos="0" ID="1258334">
+            <text>Yanto and his gang of faithful followers regarded Sharpness and dockland as their stamping ground , while Nigger and his crowd of reprobates guarded the juvenile world of Berkeley .</text>
+            <annotationSet cDate="05/25/2004 05:59:22 PDT Tue" status="UNANN" ID="1963654">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="NP"/>
+                    <label end="8" start="6" name="cc"/>
+                    <label end="12" start="10" name="PP$"/>
+                    <label end="17" start="14" name="nn"/>
+                    <label end="20" start="19" name="in"/>
+                    <label end="29" start="22" name="jj"/>
+                    <label end="39" start="31" name="nns"/>
+                    <label end="48" start="41" name="VVN"/>
+                    <label end="58" start="50" name="nn"/>
+                    <label end="62" start="60" name="cc"/>
+                    <label end="71" start="64" name="nn"/>
+                    <label end="74" start="73" name="in"/>
+                    <label end="80" start="76" name="PP$"/>
+                    <label end="89" start="82" name="VVG"/>
+                    <label end="96" start="91" name="nn"/>
+                    <label end="98" start="98" name=","/>
+                    <label end="104" start="100" name="in"/>
+                    <label end="111" start="106" name="nn"/>
+                    <label end="115" start="113" name="cc"/>
+                    <label end="119" start="117" name="PP$"/>
+                    <label end="125" start="121" name="nn"/>
+                    <label end="128" start="127" name="in"/>
+                    <label end="139" start="130" name="nns"/>
+                    <label end="147" start="141" name="VVD"/>
+                    <label end="151" start="149" name="dt"/>
+                    <label end="160" start="153" name="jj"/>
+                    <label end="166" start="162" name="nn"/>
+                    <label end="169" start="168" name="in"/>
+                    <label end="178" start="171" name="NP"/>
+                    <label end="180" start="180" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="05/25/2004 05:59:23 PDT Tue" status="MANUAL" ID="1963655">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="139" start="130" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="203" feID="6405" end="139" start="130" name="Person"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="217" aPos="0" ID="1258336">
+            <text>After all , even a hardened reprobate like myself must have some standards to adhere to .</text>
+            <annotationSet cDate="05/25/2004 05:59:25 PDT Tue" status="UNANN" ID="1963658">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="in"/>
+                    <label end="8" start="6" name="dt"/>
+                    <label end="10" start="10" name=","/>
+                    <label end="15" start="12" name="rb"/>
+                    <label end="17" start="17" name="dt"/>
+                    <label end="26" start="19" name="jj"/>
+                    <label end="36" start="28" name="nn"/>
+                    <label end="41" start="38" name="in"/>
+                    <label end="48" start="43" name="PP"/>
+                    <label end="53" start="50" name="md"/>
+                    <label end="58" start="55" name="VH"/>
+                    <label end="63" start="60" name="dt"/>
+                    <label end="73" start="65" name="nns"/>
+                    <label end="76" start="75" name="to"/>
+                    <label end="83" start="78" name="VV"/>
+                    <label end="86" start="85" name="to"/>
+                    <label end="88" start="88" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="05/25/2004 05:59:25 PDT Tue" status="MANUAL" ID="1963659">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="36" start="28" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="203" feID="6406" end="26" start="19" name="Persistent_characteristic"/>
+                    <label cBy="203" feID="6405" end="36" start="28" name="Person"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="26" start="19" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="26" start="19" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

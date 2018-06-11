@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="03/24/2007 02:33:06 PDT Sat" name="Aiming" ID="1901" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Agent&lt;/fen&gt; adjusts an &lt;fen&gt;Instrument&lt;/fen&gt; to enable it to interact directly with a difficult-to-access &lt;fen&gt;Target_location&lt;/fen&gt;.  Usually, there is a &lt;fen&gt;Targeted&lt;/fen&gt; entity at the &lt;fen&gt;Target_location&lt;/fen&gt; which is mentioned in its place.
+
+&lt;ex&gt;If &lt;fex name="Agent"&gt;you&lt;/fex&gt; &lt;t&gt;aim&lt;/t&gt; &lt;fex name="Instrument"&gt;your weapons&lt;/fex&gt; &lt;fex name="Target_location"&gt;somewhere else&lt;/fex&gt; , I 'll be more likely to talk .&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Means"&gt;The sortie&lt;/fex&gt; &lt;t&gt;targeted&lt;/t&gt; primarily &lt;fex name="Targeted"&gt;resupply points&lt;/fex&gt; , but these included several civilian areas . &lt;fex name="Instrument"&gt;INI&lt;/fex&gt;&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Agent"&gt;A good marksman&lt;/fex&gt; still should take &lt;t&gt;aim&lt;/t&gt; &lt;fex name="Duration"&gt;for a moment&lt;/fex&gt; &lt;fex name="Time"&gt;before each shot&lt;/fex&gt; . &lt;fex name="Instrument"&gt;INI&lt;/fex&gt; &lt;fex name="Target_location"&gt;INI&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="03/24/2007 02:33:06 PDT Sat" abbrev="Agt" name="Agent" ID="11318">
+        <definition>&lt;def-root&gt;The individual that manipulates the &lt;fen&gt;Instrument&lt;/fen&gt; to enable interaction with the &lt;fen&gt;Targeted&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="000000" coreType="Core" cBy="664" cDate="03/24/2007 02:33:06 PDT Sat" abbrev="Goal" name="Targeted" ID="11319">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Targeted&lt;/fen&gt; is the entity located in an indirectly accessible location relative to the &lt;fen&gt;Agent&lt;/fen&gt;.
+
+&lt;ex&gt;I tried to &lt;t&gt;target&lt;/t&gt; &lt;fex name="Targeted"&gt;his left thigh&lt;/fex&gt; .&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Target_location" ID="11332"/>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="03/24/2007 02:33:06 PDT Sat" abbrev="Otcm" name="Outcome" ID="11320">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Outcome&lt;/fen&gt; is the failure or success of an attempt.
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="03/24/2007 02:33:06 PDT Sat" abbrev="Means" name="Means" ID="11321">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Means&lt;/fen&gt; by which the aiming is achieved.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="03/24/2007 02:33:06 PDT Sat" abbrev="Time" name="Time" ID="11323">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Time&lt;/fen&gt; when the &lt;fen&gt;Agent&lt;/fen&gt; takes aim.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="03/24/2007 02:33:06 PDT Sat" abbrev="Dep" name="Depictive" ID="11324">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Depictive&lt;/fen&gt; is a phrase which describes the &lt;fen&gt;Agent&lt;/fen&gt; during the event.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="03/24/2007 02:33:06 PDT Sat" abbrev="Place" name="Place" ID="11325">
+        <definition>&lt;def-root&gt;The place where the &lt;fen&gt;Agent&lt;/fen&gt; aims at the &lt;fen&gt;Targeted&lt;/fen&gt;.
+&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="03/24/2007 02:33:06 PDT Sat" abbrev="man" name="Manner" ID="11326">
+        <definition>&lt;def-root&gt;Any generalized description of the details of the event in terms of comparison to another event or what would be expected of the details given some state of the &lt;fen&gt;Agent&lt;/fen&gt;.
+
+&lt;ex&gt;She took &lt;fex name="Manner"&gt;careful&lt;/fex&gt; &lt;t&gt;aim&lt;/t&gt; before shooting .&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="03/24/2007 02:33:06 PDT Sat" abbrev="dur" name="Duration" ID="11327">
+        <definition>&lt;def-root&gt;The time peiod over which the adjustment of the &lt;fen&gt;Instrument&lt;/fen&gt; takes place.&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="90876C" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="03/24/2007 02:33:06 PDT Sat" abbrev="" name="Purpose" ID="11328">
+        <definition>&lt;def-root&gt;The reason for which the &lt;fen&gt;Agent&lt;/fen&gt; attempts to interact with the &lt;fen&gt;Targeted&lt;/fen&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="EEE8AA" fgColor="000000" coreType="Extra-Thematic" cBy="664" cDate="03/24/2007 02:33:07 PDT Sat" abbrev="" name="Particular_iteration" ID="11329">
+        <definition>&lt;def-root&gt;Expressions marked with this extra-thematic FE modify a non-iterative use of the target, and indicate that it is conceived as embedded within an iterated series of similar events or states. In addition, most expressions of &lt;fen&gt;Particular_iteration&lt;/fen&gt; indicate which instance of the series is being referred to.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="000000" coreType="Extra-Thematic" cBy="664" cDate="03/24/2007 02:33:07 PDT Sat" abbrev="" name="Circumstances" ID="11330">
+        <definition>&lt;def-root&gt;The state of the world (at a particular time and place) which is independent of the the aiming of the &lt;fen&gt;Agent&lt;/fen&gt;, but contextualizes it.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="03/24/2007 02:33:07 PDT Sat" abbrev="Ins" name="Instrument" ID="11331">
+        <definition>&lt;def-root&gt;The object manipulated by the &lt;fen&gt;Agent&lt;/fen&gt; in order to interact with the &lt;fen&gt;Targeted&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Physical_entity" ID="70"/>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="03/24/2007 02:52:26 PDT Sat" abbrev="tar" name="Target_location" ID="11332">
+        <definition>&lt;def-root&gt;The location that the &lt;fen&gt;Agent&lt;/fen&gt; wishes to ready the &lt;fen&gt;Instrument&lt;/fen&gt; to access.
+
+&lt;ex&gt;If you &lt;t&gt;target&lt;/t&gt; &lt;fex name="Target_location"&gt;towards the bridge&lt;/fex&gt; , make sure to avoid the church .&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="597" cDate="10/01/2007 04:25:52 PDT Mon" abbrev="" name="Location_of_protagonist" ID="11981">
+        <definition>&lt;def-root&gt;The location from which the proto-agent acts or perceives.  This does not include the location of a thing which is affected or perceived in the event.
+
+&lt;ex&gt;With remote drones , you can &lt;t&gt;target&lt;/t&gt; Moscow &lt;fex name=""&gt;from your own living room&lt;/fex&gt; .&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Instrument" ID="11331"/>
+        <memberFE name="Agent" ID="11318"/>
+    </FEcoreSet>
+    <FEcoreSet>
+        <memberFE name="Target_location" ID="11332"/>
+        <memberFE name="Targeted" ID="11319"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Manipulation</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of">
+        <relatedFrame>Attempt_distant_interaction_scenario</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes">
+        <relatedFrame>Hit_or_miss</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="aim.v" ID="14111" lemmaID="864" cBy="664" cDate="03/24/2007 02:44:35 PDT Sat">
+        <definition>COD: point (a weapon or camera) at a target.</definition>
+        <sentenceCount annotated="46" total="257"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="aim"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="target.v" ID="14112" lemmaID="49768" cBy="664" cDate="03/24/2007 02:44:46 PDT Sat">
+        <definition>COD: select as an object of attention or attack.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="target"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="aim.n" ID="14113" lemmaID="50577" cBy="664" cDate="03/24/2007 02:45:24 PDT Sat">
+        <definition>COD: the aiming of a weapon or missile.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="aim"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Targeted" POS="N" name="target.n" ID="14114" lemmaID="39547" cBy="664" cDate="03/24/2007 02:45:38 PDT Sat">
+        <definition>COD: a person, object, or place selected as the aim of an attack.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="target"/>
+        <semType name="Physical_object" ID="68"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="direct.v" ID="14115" lemmaID="10748" cBy="664" cDate="03/24/2007 02:47:23 PDT Sat">
+        <definition>COD: aim (something) in a particular direction.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="direct"/>
+    </lexUnit>
+</frame>

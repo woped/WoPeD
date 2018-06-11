@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="669" cDate="04/22/2002 04:23:25 PDT Mon" name="Dead_or_alive" ID="310" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A &lt;fen&gt;Protagonist&lt;/fen&gt; is in the dynamic, maintained state of being alive or has exited this state.&lt;/def-root&gt;</definition>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="04/25/2002 05:38:47 PDT Thu" abbrev="Cause" name="Cause" ID="2676">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Cause&lt;/fen&gt; identifies any object or event that brings about the death of the &lt;fen&gt;Protagonist&lt;/fen&gt;.
+
+&lt;ex&gt;Within hours, Frank was &lt;t&gt;dead&lt;/t&gt; &lt;fex name="Cause"&gt;of exposure&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="04/25/2002 05:38:51 PDT Thu" abbrev="Degr" name="Degree" ID="2677">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Degree&lt;/fen&gt; to which a &lt;fen&gt;Protagonist&lt;/fen&gt; is dead or alive.&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="04/25/2002 05:39:35 PDT Thu" abbrev="Prot" name="Protagonist" ID="2679">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Protagonist&lt;/fen&gt; identifies the being or entity that is  dead or alive.
+&lt;ex&gt;&lt;fex name="Prot"&gt;Frank&lt;/fex&gt; was &lt;t&gt;dead&lt;/t&gt;.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Core" cBy="669" cDate="04/26/2002 11:49:31 PDT Fri" abbrev="Fig" name="Figure" ID="2680">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Figure&lt;/fen&gt; or form being described by the target.
+
+&lt;ex&gt;Frank's &lt;t&gt;dead&lt;/t&gt; &lt;fex name="Figure"&gt;body&lt;/fex&gt; was apalling.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Protagonist" ID="2679"/>
+        <memberFE name="Figure" ID="2680"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>State</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Resurrection</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of">
+        <relatedFrame>Cycle_of_life_and_death</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="A" name="deceased.a" ID="5607" lemmaID="9760" cBy="669" cDate="04/22/2002 04:24:00 PDT Mon">
+        <definition>COD: recently dead</definition>
+        <sentenceCount annotated="16" total="117"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="deceased"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="lifeless.a" ID="5609" lemmaID="22274" cBy="669" cDate="04/22/2002 05:21:05 PDT Mon">
+        <definition>COD: dead or apparently dead. </definition>
+        <sentenceCount annotated="4" total="103"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="lifeless"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="dead.a" ID="5643" lemmaID="9661" cBy="664" cDate="04/25/2002 05:42:55 PDT Thu">
+        <definition>COD: no longer alive. </definition>
+        <sentenceCount annotated="26" total="366"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="dead"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="alive.a" ID="5644" lemmaID="1015" cBy="664" cDate="04/25/2002 05:43:05 PDT Thu">
+        <definition>COD: living, not dead. </definition>
+        <sentenceCount annotated="30" total="295"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="alive"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="undead.a" ID="5646" lemmaID="45657" cBy="664" cDate="04/25/2002 05:43:39 PDT Thu">
+        <definition>COD: technically dead but still animate. </definition>
+        <sentenceCount annotated="4" total="13"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="undead"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="undead.n" ID="5647" lemmaID="45658" cBy="664" cDate="04/25/2002 05:44:07 PDT Thu">
+        <definition>FN: a creture that is technically dead but still animate</definition>
+        <sentenceCount annotated="5" total="13"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="undead"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="N" name="living.n" ID="5648" lemmaID="22569" cBy="664" cDate="04/25/2002 05:58:50 PDT Thu">
+        <definition>FN: the human beings who are alive</definition>
+        <sentenceCount annotated="3" total="64"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="living"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="N" name="dead.n" ID="7216" lemmaID="9663" cBy="296" cDate="08/13/2002 03:28:31 PDT Tue">
+        <definition>FN: those human beings who are dead</definition>
+        <sentenceCount annotated="0" total="2"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="dead"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="living.a" ID="12771" lemmaID="22570" cBy="605" cDate="09/22/2005 03:36:13 PDT Thu">
+        <definition>FN: possessing life</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="living"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="nonliving.a" ID="13914" lemmaID="50537" cBy="361" cDate="03/02/2007 12:50:05 PST Fri">
+        <definition>FN: not alive</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="nonliving"/>
+    </lexUnit>
+</frame>

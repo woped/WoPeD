@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="N" name="mail.n" ID="12634" frame="Sent_items" frameID="1609" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp=1742" ID="20115"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Extra-Thematic" abbrev="des" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="Goal" name="Goal"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Rec" name="Recipient"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="snd" name="Sender"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="sen" name="Sent_item"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Peripheral" abbrev="Source" name="Source"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Extra-Thematic" abbrev="Time" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="tra" name="Transport_means"/>
+        </frame>
+    </header>
+    <definition>COD:  letters and parcels sent by post.</definition>
+    <lexeme POS="N" name="mail"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Recipient"/>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Recipient"/>
+                <annoSet ID="2584386"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Sent_item"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Sent_item"/>
+                <annoSet ID="2584386"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Recipient"/>
+            <FE name="Sent_item"/>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Recipient"/>
+                <valenceUnit GF="" PT="DEN" FE="Sent_item"/>
+                <annoSet ID="2584386"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-object_of-(1)">
+        <sentence corpID="111" docID="20115" sentNo="5" paragNo="12" aPos="0" ID="1574884">
+            <text>Charles , eating his toast , opening his mail , had suddenly exclaimed with a parody of fury , ` Christ , it 's the Venables again ! ''</text>
+            <annotationSet cDate="07/15/2010 12:11:42 PDT Thu" status="UNANN" ID="2584385">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="0" name="NP"/>
+                    <label end="8" start="8" name=","/>
+                    <label end="15" start="10" name="VVG"/>
+                    <label end="19" start="17" name="PP$"/>
+                    <label end="25" start="21" name="nn"/>
+                    <label end="27" start="27" name=","/>
+                    <label end="35" start="29" name="VVG"/>
+                    <label end="39" start="37" name="PP$"/>
+                    <label end="44" start="41" name="nn"/>
+                    <label end="46" start="46" name=","/>
+                    <label end="50" start="48" name="VHD"/>
+                    <label end="59" start="52" name="rb"/>
+                    <label end="69" start="61" name="VVN"/>
+                    <label end="74" start="71" name="in"/>
+                    <label end="76" start="76" name="dt"/>
+                    <label end="83" start="78" name="nn"/>
+                    <label end="86" start="85" name="in"/>
+                    <label end="91" start="88" name="nn"/>
+                    <label end="93" start="93" name=","/>
+                    <label end="102" start="97" name="NP"/>
+                    <label end="104" start="104" name=","/>
+                    <label end="107" start="106" name="PP"/>
+                    <label end="110" start="109" name="VBZ"/>
+                    <label end="114" start="112" name="dt"/>
+                    <label end="123" start="116" name="nns"/>
+                    <label end="129" start="125" name="rb"/>
+                    <label end="131" start="131" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/15/2010 12:11:42 PDT Thu" status="MANUAL" ID="2584386">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="44" start="41" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="8868" end="39" start="37" name="Recipient"/>
+                    <label cBy="589" feID="8862" end="44" start="41" name="Sent_item"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="39" start="37" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="39" start="37" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-n_modifier-(1)"/>
+    <subCorpus name="03-and/or-(1)"/>
+    <subCorpus name="04-other-matched-(1)"/>
+    <subCorpus name="05-other-unmatched-(1)"/>
+</lexUnit>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="04/30/2002 01:41:15 PDT Tue" name="Detaining" ID="313" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;The &lt;fen&gt;Authorities&lt;/fen&gt; hold a &lt;fen&gt;Suspect&lt;/fen&gt; under suspicion of having committed a crime (&lt;fen&gt;Charges&lt;/fen&gt;). The &lt;fen&gt;Holding_Location&lt;/fen&gt; and period of detention (&lt;fen&gt;Duration&lt;/fen&gt;) may also be specified. &lt;ex&gt;&lt;fex name="Authorities"&gt;The police&lt;/fex&gt; &lt;t&gt;held&lt;/t&gt; &lt;fex name="Suspect"&gt;Mr. Smith&lt;/fex&gt; &lt;fex name="Holding_Location"&gt;in the slammer&lt;/fex&gt; &lt;fex name="Charges"&gt;on charges of killing his lawyer&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="04/30/2002 01:42:09 PDT Tue" abbrev="Auth" name="Authorities" ID="2702">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Authorities&lt;/fen&gt; hold the &lt;fen&gt;Suspect&lt;/fen&gt; in custody.&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="04/30/2002 01:42:09 PDT Tue" abbrev="Chg" name="Charges" ID="2703">
+        <definition>&lt;def-root&gt;This FE identifies the crime with which the &lt;fen&gt;Suspect&lt;/fen&gt;is charged.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="04/30/2002 01:42:09 PDT Tue" abbrev="P" name="Place" ID="2704">
+        <definition>&lt;def-root&gt;Where the detaining place.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="04/30/2002 01:42:09 PDT Tue" abbrev="Susp" name="Suspect" ID="2705">
+        <definition>&lt;def-root&gt;This FE identifies the person who is taken into custody and held, under suspicion of having committed a crime.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="04/30/2002 01:42:09 PDT Tue" abbrev="T" name="Time" ID="2706">
+        <definition>&lt;def-root&gt;When the detaining occurs.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="04/30/2002 01:45:29 PDT Tue" abbrev="Hold_L" name="Holding_Location" ID="2708">
+        <definition>&lt;def-root&gt;This FE identifies the place where the &lt;fen&gt;Suspect&lt;/fen&gt; is confined. &lt;ex&gt;&lt;fex name="Suspect"&gt;Marge&lt;/fex&gt; was under &lt;t&gt;arrest&lt;/t&gt; &lt;fex name="Hold_L"&gt;in the county jail&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Goal" ID="153"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="04/30/2002 01:57:26 PDT Tue" abbrev="Dur" name="Duration" ID="2721">
+        <definition>&lt;def-root&gt;This FE identifies the length of time that the &lt;fen&gt;Suspect&lt;/fen&gt; spends in confinement.&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="05/01/2002 06:39:35 PDT Wed" abbrev="Basis" name="Legal_basis" ID="2727">
+        <definition>&lt;def-root&gt;This FE identifies the law, act, or precedent that allows the &lt;fen&gt;Authorities&lt;/fen&gt;
+ to detain the &lt;fen&gt;Suspect&lt;/fen&gt;. &lt;ex&gt;&lt;fex name="Authorities"&gt;The government&lt;/fex&gt; &lt;t&gt;held&lt;/t&gt; &lt;fex name="Suspect"&gt;him&lt;/fex&gt; &lt;fex name="Basis"&gt;under the Why Not Act&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="669" cDate="05/02/2002 02:01:30 PDT Thu" abbrev="Purp" name="Purpose" ID="2731">
+        <definition>&lt;def-root&gt;This FE identifies the purpose for which the &lt;fen&gt;Authorities&lt;/fen&gt; detain a &lt;fen&gt;Suspect&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="669" cDate="05/02/2002 02:44:18 PDT Thu" abbrev="State" name="Dependent_state" ID="2732">
+        <definition>&lt;def-root&gt;This FE identifies the state of the &lt;fen&gt;Suspect&lt;/fen&gt; being held. &lt;ex&gt;&lt;fex name="Suspect"&gt;Snake&lt;/fex&gt; was &lt;t&gt;held&lt;/t&gt; &lt;fex name="Dependent_state"&gt;in communicado&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Inhibit_movement</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Releasing_from_custody</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="N" name="custody.n" ID="5682" lemmaID="9349" cBy="664" cDate="04/30/2002 01:46:01 PDT Tue">
+        <definition>FN: imprisonment before a trial</definition>
+        <sentenceCount annotated="13" total="347"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="custody"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="PREP" name="under_arrest.prep" ID="5683" lemmaID="45668" cBy="664" cDate="04/30/2002 01:52:07 PDT Tue">
+        <definition>FN: having been taken into custody</definition>
+        <sentenceCount annotated="7" total="90"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="arrest"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="under"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="hold.v" ID="5684" lemmaID="45669" cBy="664" cDate="04/30/2002 01:55:01 PDT Tue">
+        <definition>COD: keep or detain. </definition>
+        <sentenceCount annotated="14" total="598"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="hold"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="detain.v" ID="5685" lemmaID="10416" cBy="664" cDate="04/30/2002 01:55:13 PDT Tue">
+        <definition>COD: keep (someone) in official custody. </definition>
+        <sentenceCount annotated="33" total="241"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="detain"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="intern.v" ID="5686" lemmaID="20362" cBy="664" cDate="04/30/2002 05:28:56 PDT Tue">
+        <definition>COD: confine as a prisoner. </definition>
+        <sentenceCount annotated="13" total="68"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="intern"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="internment.n" ID="5687" lemmaID="20378" cBy="664" cDate="04/30/2002 05:29:06 PDT Tue">
+        <definition>FN: the act of confining, especially during war</definition>
+        <sentenceCount annotated="15" total="113"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="internment"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="on the loose.prep" ID="7851" lemmaID="46224" cBy="840" cDate="12/25/2002 07:34:37 PST Wed">
+        <definition>COD: having escaped from confinement. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="on"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ART" name="the"/>
+        <lexeme order="3" headword="false" breakBefore="false" POS="V" name="loose"/>
+        <semType name="Negative" ID="99"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="at large.a" ID="9360" lemmaID="48320" cBy="618" cDate="08/29/2003 10:10:35 PDT Fri">
+        <definition>COD: escaped or not yet captured.</definition>
+        <sentenceCount annotated="18" total="201"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="at"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="A" name="large"/>
+        <semType name="Negative" ID="99"/>
+    </lexUnit>
+</frame>

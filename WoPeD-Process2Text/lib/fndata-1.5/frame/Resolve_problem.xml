@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="618" cDate="06/22/2005 05:47:35 PDT Wed" name="Resolve_problem" ID="1523" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Agent&lt;/fen&gt; resolves an outstanding &lt;fen&gt;Problem&lt;/fen&gt; by finding its solution, explanation, answer, etc.  Alternatively, some non-agentive &lt;fen&gt;Cause&lt;/fen&gt; may resolve the &lt;fen&gt;Problem&lt;/fen&gt;.  The &lt;fen&gt;Means&lt;/fen&gt;, &lt;fen&gt;Degree&lt;/fen&gt;, &lt;fen&gt;Time&lt;/fen&gt; and &lt;fen&gt;Place&lt;/fen&gt; may also be expressed.
+
+&lt;ex&gt;As it turns out, &lt;fex name="cau"&gt;putting all of my eggs in one basket&lt;/fex&gt; &lt;fex name="deg"&gt;completely&lt;/fex&gt; &lt;t&gt;solved&lt;/t&gt; &lt;fex name="pro"&gt;all of my problems&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="age"&gt;Students&lt;/fex&gt; &lt;fex name="tim"&gt;finally&lt;/fex&gt; &lt;t&gt;worked&lt;/t&gt; &lt;t&gt;through&lt;/t&gt; &lt;fex name="pro"&gt;all of the difficult problems&lt;/fex&gt; &lt;fex name="mea"&gt;by working together&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="06/22/2005 06:11:33 PDT Wed" abbrev="age" name="Agent" ID="8310">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Agent&lt;/fen&gt; finds the solution or explanation to the outstanding mystery or &lt;fen&gt;Problem&lt;/fen&gt;.
+
+&lt;ex&gt;If &lt;fex name="age"&gt;we&lt;/fex&gt; have not been able to &lt;t&gt;resolve&lt;/t&gt; a problem to your satisfaction, please email us.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+        <excludesFE name="Cause" ID="8312"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="06/22/2005 06:31:20 PDT Wed" abbrev="pro" name="Problem" ID="8311">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Problem&lt;/fen&gt; is the predicament or mystery that is resolved.
+
+&lt;ex&gt;Likewise, once the students &lt;t&gt;worked&lt;/t&gt; &lt;t&gt;through&lt;/t&gt; &lt;fex name="pro"&gt;the problem&lt;/fex&gt; and obtained their results, their next assignment would be to publish these to the web.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="06/22/2005 06:33:41 PDT Wed" abbrev="cau" name="Cause" ID="8312">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Cause&lt;/fen&gt; is the non-Agentive event or state of affairs that brings about the resolution of the &lt;fen&gt;Problem&lt;/fen&gt;.
+
+&lt;ex&gt;First, &lt;fex name="cau"&gt;the Tripartite Agreement of 1979&lt;/fex&gt; actually &lt;t&gt;solved&lt;/t&gt; the only significant friction between the two countries.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="06/22/2005 06:36:20 PDT Wed" abbrev="mea" name="Means" ID="8313">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Means&lt;/fen&gt; is an intermediate action taken by the &lt;fen&gt;Agent&lt;/fen&gt; in order to resolve the &lt;fen&gt;Problem&lt;/fen&gt;.
+
+&lt;ex&gt;I &lt;t&gt;fixed&lt;/t&gt; the floorplate issue &lt;fex name="mea"&gt;by shaving off the excess stock around the floorplate that was keeping it from closing&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="06/22/2005 06:42:06 PDT Wed" abbrev="tim" name="Time" ID="8314">
+        <definition>&lt;def-root&gt;This FE indicates the &lt;fen&gt;Time&lt;/fen&gt; at which the &lt;fen&gt;Problem&lt;/fen&gt; is resolved.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="7FFF00" fgColor="000000" coreType="Peripheral" cBy="618" cDate="06/22/2005 06:43:16 PDT Wed" abbrev="pla" name="Place" ID="8315">
+        <definition>&lt;def-root&gt;This FE indicates the location at which the &lt;fen&gt;Problem&lt;/fen&gt; is resolved.
+
+&lt;ex&gt;A group of international scientists &lt;t&gt;solved&lt;/t&gt; the fundamental particle hierarchy question &lt;fex name="pla"&gt;at an underground accelerator&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="06/22/2005 06:48:57 PDT Wed" abbrev="deg" name="Degree" ID="8316">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Degree&lt;/fen&gt; to which the &lt;fen&gt;Agent&lt;/fen&gt; or &lt;fen&gt;Cause&lt;/fen&gt; resolves the problem.
+
+&lt;ex&gt;Our plan, I believe, wil &lt;fex name="deg"&gt;completely&lt;/fex&gt; &lt;t&gt;resolve&lt;/t&gt; all outstanding questions.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="000000" coreType="Peripheral" cBy="303" cDate="07/07/2005 02:52:32 PDT Thu" abbrev="" name="Manner" ID="8417">
+        <definition>&lt;def-root&gt;Any description of the resolution, such as secondary effects ( &lt;ment&gt;quietly&lt;/ment&gt; ) or comparisons of events ( &lt;ment&gt;the same way&lt;/ment&gt; ).  In agentive cases,  &lt;fen&gt;Manner&lt;/fen&gt; may also describe salient characteristics of the &lt;fen&gt;Agent&lt;/fen&gt; which affect the action.
+
+( &lt;ment&gt;carefully&lt;/ment&gt;, &lt;ment&gt;dilligently&lt;/ment&gt;, &lt;ment&gt;deliberately&lt;/ment&gt; etc. )&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="d0d0d0" fgColor="000000" coreType="Extra-Thematic" cBy="303" cDate="07/11/2005 02:48:36 PDT Mon" abbrev="Res" name="Resultant_Situation" ID="8441">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Resultant_Situation&lt;/fen&gt; is any situation which arises as a result of resolving a &lt;fen&gt;Problem&lt;/fen&gt; .  
+
+&lt;ex&gt;The question was : could the situation be &lt;t&gt;resolved&lt;/t&gt; by improving the integration of the thought and design processes , &lt;fex name="Resultant_Situation"&gt;so that what was built better achieved what was intended&lt;/fex&gt; ?&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="000000" coreType="Extra-Thematic" cBy="303" cDate="07/11/2005 03:47:10 PDT Mon" abbrev="" name="Outcome" ID="8462">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Outcome&lt;/fen&gt; is the failure or success of resolving a &lt;fen&gt;Problem&lt;/fen&gt; .
+
+&lt;ex&gt;This issue must have been raised before and BSM would presumably be gratified to see the situation &lt;fex name="Outcome"&gt;successfully&lt;/fex&gt; &lt;t&gt;resolved&lt;/t&gt; , once and for all .&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="303" cDate="07/11/2005 04:36:34 PDT Mon" abbrev="Con" name="Containing_Event" ID="8464">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Containing_Event&lt;/fen&gt; denotes an event or state of affairs that occurs or holds at a time that includes the time during which the resolution of the &lt;fen&gt;Problem&lt;/fen&gt; occurs. 
+
+&lt;ex&gt;There are tricky design and methodological issues which would need to be worked out , as foreshadowed earlier in this paper and by no means fully &lt;t&gt;resolved&lt;/t&gt; &lt;fex name="Con"&gt;in the preliminary study&lt;/fex&gt; .&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="303" cDate="07/12/2005 03:06:15 PDT Tue" abbrev="Cir" name="Circumstances" ID="8471">
+        <definition>&lt;def-root&gt;Some specification of the circumstances under which the &lt;fen&gt;Problem&lt;/fen&gt; is resolved.
+
+&lt;ex&gt;Such issues can only be &lt;t&gt;resolved&lt;/t&gt; &lt;fex name="Cir"&gt;at local level&lt;/fex&gt; .&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="000000" coreType="Peripheral" cBy="303" cDate="07/12/2005 06:16:31 PDT Tue" abbrev="Inst" name="Instrument" ID="8472">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Instrument&lt;/fen&gt; is an entity used for resolving the &lt;fen&gt;Problem&lt;/fen&gt; . 
+
+
+&lt;ex&gt;&lt;fex name="Inst"&gt;Using modern computers&lt;/fex&gt; , many practical elastic and other problems may be &lt;t&gt;solved&lt;/t&gt; by manipulation of this matrix .&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="000000" coreType="Extra-Thematic" cBy="303" cDate="07/13/2005 01:31:08 PDT Wed" abbrev="Ben" name="Beneficiary" ID="8475">
+        <definition>&lt;def-root&gt;This FE applies to participants that derive a benefit from the resolution of a &lt;fen&gt;Problem&lt;/fen&gt; .  
+
+&lt;ex&gt;I wanted you to believe that I was as grateful as you that the baby had died and &lt;t&gt;solved&lt;/t&gt; the problem &lt;fex name="Ben"&gt;for us&lt;/fex&gt; of concealing the birth .&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A9A9A9" fgColor="FFFFFF" coreType="Peripheral" cBy="303" cDate="07/13/2005 02:40:39 PDT Wed" abbrev="Dur" name="Duration" ID="8476">
+        <definition>&lt;def-root&gt;This FE identifies the length of time taken to resolve a &lt;fen&gt;Problem&lt;/fen&gt; .
+
+The government &lt;t&gt;resolved&lt;/t&gt; the beach ball crisis &lt;fex name="Dur"&gt;in just 22 hours&lt;/fex&gt;. &lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="800080" fgColor="000000" coreType="Extra-Thematic" cBy="303" cDate="07/21/2005 04:47:58 PDT Thu" abbrev="" name="Role" ID="8681">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Role&lt;/fen&gt; is used for the capacity in which the &lt;fen&gt;Agent&lt;/fen&gt; resolves a &lt;fen&gt;Problem&lt;/fen&gt; or the role of the &lt;fen&gt;Problem&lt;/fen&gt; in being resolved, and is expressed in &lt;ment&gt;as&lt;/ment&gt;-PPs.
+
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="000000" coreType="Extra-Thematic" cBy="303" cDate="07/22/2005 03:22:45 PDT Fri" abbrev="Freq" name="Frequency" ID="8682">
+        <definition>&lt;def-root&gt; &lt;fen&gt;Frequency&lt;/fen&gt; describes how often the &lt;fen&gt;Agent&lt;/fen&gt; or &lt;fen&gt;Cause&lt;/fen&gt; resolves this problem. 
+
+&lt;ex&gt;Unfortunately , when such influences are considered as explanations of the results of free-running experiments , the following problems have &lt;fex name="Freq"&gt;never&lt;/fex&gt; been satisfactorily &lt;t&gt;dealt&lt;/t&gt; with.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="000000" coreType="Peripheral" cBy="303" cDate="07/22/2005 03:58:01 PDT Fri" abbrev="" name="Medium" ID="8683">
+        <definition>&lt;def-root&gt;This FE identifies the physical or abstract setting in which the &lt;fen&gt;Problem&lt;/fen&gt; is resolved.
+
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="90876C" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="303" cDate="07/27/2005 12:03:43 PDT Wed" abbrev="" name="Co_participant" ID="8721">
+        <definition>&lt;def-root&gt;A person who participates in resolving a &lt;fen&gt;Problem&lt;/fen&gt; along with the &lt;fen&gt;Agent&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/06/2005 07:27:20 PST Tue" abbrev="pur" name="Purpose" ID="9575">
+        <definition>&lt;def-root&gt;The state of affairs that the &lt;fen&gt;Agent&lt;/fen&gt; is trying to bring about by solving the &lt;fen&gt;Problem&lt;/fen&gt; in the specified way.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Intentionally_act</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by">
+        <relatedFrame>Confronting_problem</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="resolve.v" ID="12315" lemmaID="32870" cBy="618" cDate="06/22/2005 05:57:06 PDT Wed">
+        <definition>COD: settle or find a solution to.</definition>
+        <sentenceCount annotated="52" total="303"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="resolve"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="solve.v" ID="12316" lemmaID="36898" cBy="618" cDate="06/22/2005 05:57:34 PDT Wed">
+        <definition>COD: find an answer to, explanation for, or way of dealing with (a problem or mystery).</definition>
+        <sentenceCount annotated="60" total="389"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="solve"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="work through.v" ID="12317" lemmaID="50105" cBy="618" cDate="06/22/2005 05:58:19 PDT Wed">
+        <definition>FN: solve, especially a difficult problem requiring several steps.</definition>
+        <sentenceCount annotated="11" total="201"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="work"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="PREP" name="through"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="deal.v" ID="12318" lemmaID="9681" cBy="618" cDate="06/22/2005 06:01:27 PDT Wed">
+        <definition>FN: take action to resolve a problem.</definition>
+        <sentenceCount annotated="69" total="534"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="deal"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="fix.v" ID="12319" lemmaID="14547" cBy="618" cDate="06/22/2005 06:10:20 PDT Wed">
+        <definition>FN: solve a problem so that a state of normalcy returns.</definition>
+        <sentenceCount annotated="12" total="137"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="fix"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="clear up.v" ID="12325" lemmaID="50108" cBy="618" cDate="06/22/2005 06:55:40 PDT Wed">
+        <definition>COD: solve or explain something.</definition>
+        <sentenceCount annotated="14" total="165"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="clear"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="up"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="do something about.v" ID="13227" lemmaID="50372" cBy="303" cDate="06/19/2006 11:51:03 PDT Mon">
+        <definition>FN: go about resolving a problem</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="do"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="something"/>
+        <lexeme order="3" headword="false" breakBefore="false" POS="ADV" name="about"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="address.v" ID="13884" lemmaID="468" cBy="361" cDate="02/27/2007 03:39:48 PST Tue">
+        <definition>COD: think about and begin to deal with.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="address"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="handle.v" ID="15648" lemmaID="17357" cBy="618" cDate="02/22/2010 11:18:53 PST Mon">
+        <definition>FN: solve a problem.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="handle"/>
+    </lexUnit>
+</frame>

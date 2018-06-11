@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="01/26/2005 01:54:07 PST Wed" name="Traversing" ID="1310" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A &lt;fen&gt;Theme&lt;/fen&gt; changes location with respect to a salient &lt;fen&gt;Path&lt;/fen&gt; location.&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="01/26/2005 01:54:07 PST Wed" abbrev="Thm" name="Theme" ID="7455">
+        <definition>&lt;def-root&gt;This is the object which moves. In many sentences this FE will be expressed as something which moves under its own power. However, this FE is not &lt;ment&gt;required&lt;/ment&gt; to be an animate mover, so it is different from Self_mover. 
+&lt;ex&gt;&lt;fex name="Theme"&gt;Kim&lt;/fex&gt; &lt;t&gt;crossed&lt;/t&gt; through the woods.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Physical_object" ID="68"/>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="01/26/2005 01:54:07 PST Wed" abbrev="Src" name="Source" ID="7456">
+        <definition>&lt;def-root&gt;Any expression which implies a definite starting-point of motion expresses the frame element &lt;fen&gt;Source&lt;/fen&gt;. In prepositional phrases, the prepositional object expresses the starting point of motion. In particles, the starting point of motion is understood from context. 
+
+&lt;ex&gt;The cat &lt;t&gt;crossed&lt;/t&gt; the street &lt;fex name="Source"&gt;from her yard&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;/def-root&gt;</definition>
+        <semType name="Source" ID="151"/>
+        <excludesFE name="Area" ID="7462"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="01/26/2005 01:54:07 PST Wed" abbrev="Path" name="Path" ID="7457">
+        <definition>&lt;def-root&gt;Any description of a trajectory of motion which is neither a &lt;fen&gt;Source&lt;/fen&gt; nor a &lt;fen&gt;Goal&lt;/fen&gt; (see below) expresses the frame element &lt;fen&gt;Path&lt;/fen&gt;, including directional expressions: 
+
+&lt;ex&gt;The bikers &lt;t&gt;crisscrossed&lt;/t&gt; &lt;fex name="Path"&gt;through the desert&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;The cyclist &lt;t&gt;ascended&lt;/t&gt; &lt;fex name="Path"&gt;towards the gate&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Area" ID="7462"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="01/26/2005 01:54:07 PST Wed" abbrev="Goal" name="Goal" ID="7458">
+        <definition>&lt;def-root&gt;Any expression which tells where the &lt;fen&gt;Theme&lt;/fen&gt; ends up as a result of the motion expresses the frame element Goal. 
+
+&lt;ex&gt;The children &lt;t&gt;hopped&lt;/t&gt; &lt;fex name="Goal"&gt;into the neighbor's yard&lt;/fex&gt;.&lt;/ex&gt;
+
+Some particles imply the existence of a Goal which is understood in the context of utterance: 
+&lt;ex&gt;The children &lt;t&gt;hopped&lt;/t&gt; &lt;fex name="Goal"&gt;over&lt;/fex&gt; and sat down.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Goal" ID="153"/>
+        <excludesFE name="Area" ID="7462"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="01/26/2005 01:54:08 PST Wed" abbrev="Manr" name="Manner" ID="7460">
+        <definition>&lt;def-root&gt;Any expression which describes a property of motion which is not directly related to the trajectory of motion expresses the frame element &lt;fen&gt;Manner&lt;/fen&gt;. Descriptions of speed, steadiness, grace, means of motion, and other things count as &lt;fen&gt;Manner&lt;/fen&gt; expressions.  
+&lt;ex&gt;The bikers &lt;t&gt;crossed&lt;/t&gt; &lt;fex name="Manner"&gt;furiously&lt;/fex&gt; through the desert.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="000000" coreType="Core" cBy="664" cDate="01/26/2005 01:54:08 PST Wed" abbrev="Dist" name="Distance" ID="7461">
+        <definition>&lt;def-root&gt;Any expression which characterizes the extent of motion expresses the frame element &lt;fen&gt;Distance&lt;/fen&gt;. 
+&lt;ex&gt;I &lt;t&gt;leaped&lt;/t&gt; &lt;fex name="Distance"&gt;twenty feet&lt;/fex&gt; before slipping and falling.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="01/26/2005 01:54:08 PST Wed" abbrev="Area" name="Area" ID="7462">
+        <definition>&lt;def-root&gt;This frame element is used for expressions which describe a general area in which motion takes place when the motion is understood to be irregular and not to consist of a single linear path.  
+&lt;ex&gt;The bikers &lt;t&gt;crisscrossed&lt;/t&gt; &lt;fex name="Area"&gt;the desert&lt;/fex&gt;.&lt;/ex&gt;
+Note that this FE should not be used for any locational modifier which would occur just as naturally with a non-motion predicate, like speech.
+
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="01/26/2005 01:54:08 PST Wed" abbrev="Degr" name="Degree" ID="7463">
+        <definition>&lt;def-root&gt;Degree to which event occurs&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="01/26/2005 01:54:08 PST Wed" abbrev="Mns" name="Means" ID="7464">
+        <definition>&lt;def-root&gt;An event involving the &lt;fen&gt;Theme&lt;/fen&gt; that results in the &lt;fen&gt;Theme&lt;/fen&gt; moving in the specified way.
+&lt;ex&gt;The less experienced mountaneers &lt;t&gt;ascended&lt;/t&gt; &lt;fex name="Mns"&gt;by crawling&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="01/26/2005 01:54:08 PST Wed" abbrev="Spd" name="Speed" ID="7467">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Speed&lt;/fen&gt; is the rate at which the &lt;fen&gt;Theme&lt;/fen&gt; moves.&lt;/def-root&gt;</definition>
+        <semType name="Speed" ID="234"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="000000" coreType="Extra-Thematic" cBy="664" cDate="01/26/2005 01:54:08 PST Wed" abbrev="Thm_c" name="Cotheme" ID="7468">
+        <definition>&lt;def-root&gt;This is the second moving object, expressed as a direct object or an oblique: 
+
+&lt;ex&gt;The squirrel &lt;t&gt;leaped&lt;/t&gt; &lt;fex name="Cotheme"&gt;after it&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="01/26/2005 01:54:08 PST Wed" abbrev="Dep-Und" name="Depictive" ID="7469">
+        <definition>&lt;def-root&gt;Depictive phrase describing the actor of an action
+
+&lt;ex&gt;We &lt;t&gt;crisscrossed&lt;/t&gt; the country &lt;fex name="Depictive"&gt;naked&lt;/fex&gt;&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="01/26/2005 01:54:08 PST Wed" abbrev="" name="Place" ID="7471">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Place&lt;/fen&gt; is where the motion (which is specified by a &lt;fen&gt;Source&lt;/fen&gt;, &lt;fen&gt;Path&lt;/fen&gt; or &lt;fen&gt;Goal&lt;/fen&gt;) is located.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="90876C" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="01/26/2005 01:54:08 PST Wed" abbrev="PS" name="Path_shape" ID="7472">
+        <definition>&lt;def-root&gt;The configuration formed by the entire &lt;fen&gt;Path&lt;/fen&gt; of the &lt;fen&gt;Theme&lt;/fen&gt;, taken simultaneously.
+&lt;ex&gt;He &lt;t&gt;circled&lt;/t&gt; downward &lt;fex name="PS"&gt;in a spiral&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="01/26/2005 01:54:08 PST Wed" abbrev="dir" name="Direction" ID="7473">
+        <definition>&lt;def-root&gt;The direction in which the &lt;fen&gt;Theme&lt;/fen&gt; goes.
+
+&lt;ex&gt;The frogs &lt;t&gt;jumped&lt;/t&gt; &lt;fex name="dir"&gt;down&lt;/fex&gt; through the meadow.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Area" ID="7462"/>
+    </FE>
+    <FE bgColor="A9A9A9" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="01/26/2005 01:54:08 PST Wed" abbrev="tim" name="Time" ID="7474">
+        <definition>&lt;def-root&gt;The time at which the motion takes place.
+
+&lt;ex&gt;They &lt;t&gt;crisscrossed&lt;/t&gt; the country &lt;fex name="tim"&gt;in April&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="90876C" fgColor="000000" coreType="Extra-Thematic" cBy="664" cDate="01/26/2005 01:54:08 PST Wed" abbrev="pur" name="Purpose" ID="7475">
+        <definition>&lt;def-root&gt;The state-of-affairs that the &lt;fen&gt;Theme&lt;/fen&gt; wishes to bring about.
+
+&lt;ex&gt;The participants &lt;t&gt;circled&lt;/t&gt; around &lt;fex name="pur"&gt;in order to avoid the house.&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="01/31/2005 12:02:30 PST Mon" abbrev="veh" name="Vehicle" ID="7476">
+        <definition>&lt;def-root&gt;The device or bodypart that serves to move the &lt;fen&gt;Theme&lt;/fen&gt;.
+
+&lt;ex&gt;We &lt;t&gt;crossed&lt;/t&gt; the river &lt;fex name="veh"&gt;by boat&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;Bravo company broke an axle while trying to &lt;t&gt;jump&lt;/t&gt; a ditch &lt;fex name="veh"&gt;in a Humvee&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="11/01/2005 11:41:57 PST Tue" abbrev="dur" name="Duration" ID="9161">
+        <definition>&lt;def-root&gt;The length of time that the &lt;fen&gt;Theme&lt;/fen&gt; spends in motion.
+
+&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="7FFF00" fgColor="000000" coreType="Extra-Thematic" cBy="664" cDate="11/01/2005 06:58:49 PST Tue" abbrev="res" name="Result" ID="9162">
+        <definition>&lt;def-root&gt;The state of the &lt;fen&gt;Theme&lt;/fen&gt; at the end of the event.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A9A9A9" fgColor="000000" coreType="Extra-Thematic" cBy="664" cDate="11/03/2005 06:03:23 PST Thu" abbrev="exp" name="Explanation" ID="9163">
+        <definition>&lt;def-root&gt;A factor which explains the particular motion or manner of motion of the &lt;fen&gt;Theme&lt;/fen&gt;.
+
+&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="000000" coreType="Extra-Thematic" cBy="664" cDate="11/03/2005 07:39:46 PST Thu" abbrev="" name="Reciprocation" ID="9165">
+        <definition>&lt;def-root&gt;An event paired with the motion, which explains why the motion is expected. In particular,  or an action that&lt;fen&gt;Reciprocation&lt;/fen&gt; is used to indicate an action that is being rewarded or punished by the motion, is paired with the motion as the other side of an agreement.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="11/07/2005 02:33:34 PST Mon" abbrev="con" name="Containing_event" ID="9166">
+        <definition>&lt;def-root&gt;An event that occurs or state of affairs that holds at the time the Traversing occurs and which the Traversing is taken to be a part of.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="11/07/2005 06:05:40 PST Mon" abbrev="fre" name="Frequency" ID="9169">
+        <definition>&lt;def-root&gt;The number of times that an action occurs in a given time.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="000000" coreType="Extra-Thematic" cBy="664" cDate="11/08/2005 12:32:47 PST Tue" abbrev="ree" name="Re_encoding" ID="9171">
+        <definition>&lt;def-root&gt;A larger conceptualization that includes the Traversing as an integral part. The Traversing expressed by the target typically corresponds to a Means action in this larger conceptualization. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="000000" coreType="Extra-Thematic" cBy="664" cDate="11/08/2005 05:45:58 PST Tue" abbrev="consec" name="Consecutive" ID="9172">
+        <definition>&lt;def-root&gt;An unexpected event that affects some agent (usually the Theme), which is enabled by, and occurs after, the Traversing.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="800080" fgColor="000000" coreType="Extra-Thematic" cBy="664" cDate="11/08/2005 06:04:24 PST Tue" abbrev="cir" name="Circumstances" ID="9174">
+        <definition>&lt;def-root&gt;The state of the world (at a particular time and place) which is specifically independent of the Traversing event itself and any of its participants, and is merely peripherally related to the event as a whole.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="7CCD73" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="11/09/2005 07:20:14 PST Wed" abbrev="end" name="Endpoints" ID="9181">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Source&lt;/fen&gt; and &lt;fen&gt;Goal&lt;/fen&gt; of either a single or a repeated motion taken together as &lt;fen&gt;Endpoints&lt;/fen&gt; of the &lt;fen&gt;Path&lt;/fen&gt;.
+
+&lt;ex&gt;A large plastic "football" wildly &lt;t&gt;passed&lt;/t&gt; &lt;fex name="Endpoints"&gt;between goal posts&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="000000" coreType="Extra-Thematic" cBy="664" cDate="11/10/2005 02:53:30 PST Thu" abbrev="coo" name="Coordinated_event" ID="9196">
+        <definition>&lt;def-root&gt;The label &lt;fen&gt;Coordinated_event&lt;/fen&gt; is to be used for phrases denoting an event-it does not allow states-that the Traversing is rhythmically aligned with. The &lt;fen&gt;Coordinated_event&lt;/fen&gt; is conceived of as independent: it would occur regardless of the event expressed by the target, which is not even an incidental or optional sub-part of the &lt;fen&gt;Coordinated_event&lt;/fen&gt;. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="000000" coreType="Extra-Thematic" cBy="664" cDate="11/21/2005 02:25:53 PST Mon" abbrev="per" name="Period_of_iterations" ID="9431">
+        <definition>&lt;def-root&gt;The time period within which the motion event occurs repeatedly.
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="361" cDate="08/16/2006 02:18:29 PDT Wed" abbrev="" name="Event_description" ID="10506">
+        <definition>&lt;def-root&gt;In general, this FE is used for phrases that describe the clause of the target as a whole. There are two somewhat distinct subgroups of sentence modifiers that cover this function.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="EEE8AA" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="08/16/2006 02:23:36 PDT Wed" abbrev="" name="Iteration" ID="10507">
+        <definition>&lt;def-root&gt;The frame element Iteration is used for expressions that indicate the number of times an event or state (of the kind denoted by the target in its clause) has taken place or held.&lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Path" ID="7457"/>
+        <memberFE name="Path_shape" ID="7472"/>
+        <memberFE name="Direction" ID="7473"/>
+        <memberFE name="Source" ID="7456"/>
+        <memberFE name="Goal" ID="7458"/>
+        <memberFE name="Distance" ID="7461"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Motion</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Intentional_traversing</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Path_shape</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Openness</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)">
+        <relatedFrame>Departing</relatedFrame>
+        <relatedFrame>Arriving</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Created" POS="V" name="traverse.v" ID="11517" lemmaID="41107" cBy="664" cDate="01/31/2005 12:32:30 PST Mon">
+        <definition>FN: travel across or through.</definition>
+        <sentenceCount annotated="37" total="37"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="traverse"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="skirt.v" ID="11522" lemmaID="36173" cBy="664" cDate="01/31/2005 12:47:03 PST Mon">
+        <definition>COD: go around or past the edge of</definition>
+        <sentenceCount annotated="13" total="13"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="skirt"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="mount.v" ID="11526" lemmaID="25061" cBy="664" cDate="01/31/2005 01:05:57 PST Mon">
+        <definition>COD: climb up or on to; ascend. </definition>
+        <sentenceCount annotated="5" total="5"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="mount"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="descent.n" ID="11533" lemmaID="10315" cBy="664" cDate="01/31/2005 01:24:52 PST Mon">
+        <definition>FN: the action of coming down (something).</definition>
+        <sentenceCount annotated="13" total="13"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="descent"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="descend.v" ID="11534" lemmaID="10312" cBy="664" cDate="01/31/2005 01:25:43 PST Mon">
+        <definition>COD: move downward</definition>
+        <sentenceCount annotated="31" total="32"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="descend"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="cross.v" ID="11535" lemmaID="9016" cBy="664" cDate="01/31/2005 01:27:19 PST Mon">
+        <definition>FN: go to the other side of (a bridge or obstacle).</definition>
+        <sentenceCount annotated="59" total="60"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="cross"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Path_shape" POS="V" name="crisscross.v" ID="11536" lemmaID="8968" cBy="664" cDate="01/31/2005 01:29:52 PST Mon">
+        <definition>COD: move or travel around (a place) by going back and forth repeatedly.</definition>
+        <sentenceCount annotated="13" total="72"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="crisscross"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="N" name="ascent.n" ID="11540" lemmaID="2054" cBy="664" cDate="01/31/2005 01:33:27 PST Mon">
+        <definition>FN: the process of climbing up (an inclined entity).</definition>
+        <sentenceCount annotated="2" total="2"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="ascent"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="ascend.v" ID="11541" lemmaID="2048" cBy="664" cDate="01/31/2005 01:34:33 PST Mon">
+        <definition>FN: climb up.</definition>
+        <sentenceCount annotated="13" total="14"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="ascend"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="jump.v" ID="12873" lemmaID="21138" cBy="995" cDate="11/02/2005 03:33:50 PST Wed">
+        <definition>COD: pass over by jumping.</definition>
+        <sentenceCount annotated="4" total="58"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="jump"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="pass.v" ID="12878" lemmaID="27946" cBy="664" cDate="11/03/2005 08:03:07 PST Thu">
+        <definition>COD: go past or across; leave behind or on one side in proceeding.</definition>
+        <sentenceCount annotated="10" total="130"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="pass"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="circle.v" ID="12893" lemmaID="6546" cBy="664" cDate="11/11/2005 06:24:16 PST Fri">
+        <definition>FN: move in a circle around</definition>
+        <sentenceCount annotated="22" total="209"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="circle"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="hop.v" ID="12982" lemmaID="18375" cBy="664" cDate="11/22/2005 11:26:34 PST Tue">
+        <definition>COD: jump over.</definition>
+        <sentenceCount annotated="6" total="61"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="hop"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="leap.v" ID="12983" lemmaID="21941" cBy="664" cDate="11/22/2005 11:27:06 PST Tue">
+        <definition>COD: jump across.</definition>
+        <sentenceCount annotated="12" total="124"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="leap"/>
+    </lexUnit>
+</frame>

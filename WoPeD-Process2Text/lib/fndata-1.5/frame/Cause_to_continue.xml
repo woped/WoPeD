@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="03/30/2004 04:55:00 PST Tue" name="Cause_to_continue" ID="1060" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Agent&lt;/fen&gt; causes a &lt;fen&gt;Process&lt;/fen&gt; or &lt;fen&gt;State&lt;/fen&gt; to continue.
+
+&lt;ex&gt; &lt;fex name="agt"&gt;The goaltenders&lt;/fex&gt; &lt;t&gt;kept&lt;/t&gt; &lt;fex name="pro"&gt;the game&lt;/fex&gt; going &lt;fex name="mns"&gt;with terrific saves&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="03/30/2004 05:02:43 PST Tue" abbrev="agt" name="Agent" ID="6210">
+        <definition>&lt;def-root&gt;The individual who causes the Process to continue or the State to be maintained.
+
+&lt;ex&gt;&lt;fex name="agt"&gt;Smithers&lt;/fex&gt; &lt;t&gt;kept&lt;/t&gt; the food warm&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+        <excludesFE name="Cause" ID="6215"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="03/30/2004 05:18:33 PST Tue" abbrev="pro" name="Process" ID="6211">
+        <definition>&lt;def-root&gt;A &lt;fen&gt;Process&lt;/fen&gt; that is maintained by the &lt;fen&gt;Agent&lt;/fen&gt;.
+
+&lt;ex&gt;The soot in the air  &lt;t&gt;kept&lt;/t&gt; &lt;fex name="pro"&gt;it&lt;/fex&gt; &lt;fex name="pro"&gt;raining&lt;/fex&gt; for weeks&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="State" ID="6212"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="03/30/2004 05:20:13 PST Tue" abbrev="sta" name="State" ID="6212">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;State&lt;/fen&gt; that the &lt;fen&gt;Agent&lt;/fen&gt; maintains.
+
+&lt;ex&gt;We need to &lt;t&gt;keep&lt;/t&gt; &lt;fex name="sta"&gt;China&lt;/fex&gt; &lt;fex name="sta"&gt;British&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="03/30/2004 05:22:58 PST Tue" abbrev="dur" name="Duration" ID="6213">
+        <definition>&lt;def-root&gt;The length of time for which the &lt;fen&gt;Agent&lt;/fen&gt; maintain the &lt;fen&gt;State&lt;/fen&gt; or &lt;fen&gt;Process&lt;/fen&gt;.
+
+
+&lt;ex&gt; I responded quickly to the relaxed, calm atmosphere and found answers to questions that had &lt;t&gt;kept&lt;/t&gt; me on edge &lt;fex name="dur"&gt;for years&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="03/30/2004 05:25:50 PST Tue" abbrev="mns" name="Means" ID="6214">
+        <definition>&lt;def-root&gt;The event by which an &lt;fen&gt;Agent&lt;/fen&gt; or &lt;fen&gt;Cause&lt;/fen&gt; maintains the &lt;fen&gt;State&lt;/fen&gt; or &lt;fen&gt;Process&lt;/fen&gt;.
+
+&lt;ex&gt;The car did not break down, though it &lt;t&gt;kept&lt;/t&gt; me on edge &lt;fex name="mns"&gt;by making a funny noise all the way&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="7CCD7C" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="03/30/2004 05:27:56 PST Tue" abbrev="cau" name="Cause" ID="6215">
+        <definition>&lt;def-root&gt;An event that causes the &lt;fen&gt;Process&lt;/fen&gt; or &lt;fen&gt;State&lt;/fen&gt; to be maintained.
+
+
+&lt;ex&gt;&lt;fex name="cau"&gt;The storm&lt;/fex&gt; &lt;t&gt;kept&lt;/t&gt; us in all the next day.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="03/30/2004 05:47:07 PST Tue" abbrev="pur" name="Purpose" ID="6216">
+        <definition>&lt;def-root&gt;An action that the &lt;fen&gt;Agent&lt;/fen&gt; intends to accomplish by maintaining the &lt;fen&gt;State&lt;/fen&gt; or &lt;fen&gt;Process&lt;/fen&gt;.
+
+&lt;ex&gt;On my Toshiba I had shrunk the Windows partition and &lt;t&gt;kept&lt;/t&gt; it there &lt;fex name="pur"&gt;for use via the dual boot&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="03/30/2004 05:50:22 PST Tue" abbrev="ins" name="Instrument" ID="6217">
+        <definition>&lt;def-root&gt;An entity directed by the &lt;fen&gt;Agent&lt;/fen&gt; that maintain the &lt;fen&gt;State&lt;/fen&gt; or &lt;fen&gt;Process&lt;/fen&gt;.
+
+&lt;ex&gt;The third time I &lt;t&gt;kept&lt;/t&gt; the engine going &lt;fex name="ins"&gt;with the accelerator pedal&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Physical_entity" ID="70"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="01/03/2006 05:38:06 PST Tue" abbrev="tim" name="Time" ID="9816">
+        <definition>&lt;def-root&gt;The time at which the &lt;fen&gt;Process&lt;/fen&gt; continues.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="01/03/2006 05:39:19 PST Tue" abbrev="man" name="Manner" ID="9817">
+        <definition>&lt;def-root&gt;Any description of the event which is not covered by more specific FEs, including secondary effects (quietly, loudly), and general descriptions comparing events (the same way). It may also indicate salient characteristics of an &lt;fen&gt;Agent&lt;/fen&gt; that also affect the action (presumptuously, coldly, deliberately, eagerly, carefully). &lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="01/03/2006 05:39:59 PST Tue" abbrev="pla" name="Place" ID="9818">
+        <definition>&lt;def-root&gt;The location at which the &lt;fen&gt;Process&lt;/fen&gt; continues.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Transitive_action</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of">
+        <relatedFrame>Process_continue</relatedFrame>
+        <relatedFrame>State_continue</relatedFrame>
+    </frameRelation>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="keep.v" ID="10380" lemmaID="21234" cBy="605" cDate="03/30/2004 05:55:54 PST Tue">
+        <definition>FN: cause to continue in a specificied state or process</definition>
+        <sentenceCount annotated="20" total="230"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="keep"/>
+    </lexUnit>
+</frame>

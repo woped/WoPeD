@@ -46,7 +46,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-import org.woped.core.config.DefaultStaticConfiguration;
 import org.woped.editor.action.DisposeWindowAction;
 import org.woped.editor.help.action.LaunchDefaultBrowserAction;
 import org.woped.gui.lookAndFeel.WopedButton;
@@ -57,282 +56,266 @@ import org.woped.gui.translations.Messages;
  *         <br>
  *         TODO: DOCUMENTATION (tfreytag)
  * 
- * 17.01.2005
+ *         17.01.2005
  */
 
 @SuppressWarnings("serial")
-public class AboutUI extends JDialog
-{
-    private JLabel              logoLabel       = null;
-    private JLabel              aboutTextLabel  = null;
-    private JLabel              javaTextLabel   = null;
-    private JLabel              homepageLabel   = null;
-    private JLabel              mailtoLabel     = null;
-    private JLabel              sfLabel         = null;
-    private JLabel              icLabel         = null;    
-    private WopedButton             closeButton     = null;
-    private WopedButton             aboutButton     = null;
-    private WopedButton             changelogButton = null;
+public class AboutUI extends JDialog {
+	private JLabel logoLabel = null;
+	private JLabel aboutTextLabel = null;
+	private JLabel javaTextLabel = null;
+	private JLabel homepageLabel = null;
+	private JLabel mailtoLabel = null;
+	private JLabel sfLabel = null;
+	private JLabel icLabel = null;
+	private WopedButton closeButton = null;
+	private WopedButton aboutButton = null;
+	private WopedButton changelogButton = null;
 
-    private JScrollPane         aboutPanel      = null;
-    private JScrollPane         changeLogPanel  = null;
-    private JPanel              buttonPanel     = null;
+	private JScrollPane aboutPanel = null;
+	private JScrollPane changeLogPanel = null;
+	private JPanel buttonPanel = null;
 
-    public AboutUI()
-    {
-        this(null);
-    }
+	public AboutUI() {
+		this(null);
+	}
 
-    /**
-     * Constructor for AboutUI.
-     * 
-     * @param owner
-     * @throws HeadlessException
-     */
-    public AboutUI(Frame owner) throws HeadlessException
-    {
-        super(owner, true);
-        initialize();
-    }
+	/**
+	 * Constructor for AboutUI.
+	 * 
+	 * @param owner
+	 * @throws HeadlessException
+	 */
+	public AboutUI(Frame owner) throws HeadlessException {
+		super(owner, true);
+		initialize();
+	}
 
-    /*
-     * public static void main(String[] args) { new AboutUI(null); }
-     */
-    /**
-     * This method initializes and layouts the about information
-     * 
-     * @return void
-     */
-    private void initialize()
-    {
-        this.setVisible(false);
-        this.getContentPane().setLayout(new BorderLayout());
-        this.setUndecorated(false);
-        this.setResizable(false);
-        this.getContentPane().add(getAboutPanel(), BorderLayout.NORTH);
-        this.getContentPane().add(getButtonPanel(), BorderLayout.SOUTH);
-        this.setTitle(Messages.getTitle("Action.ShowAbout"));
-        this.pack();
+	/*
+	 * public static void main(String[] args) { new AboutUI(null); }
+	 */
+	/**
+	 * This method initializes and layouts the about information
+	 * 
+	 * @return void
+	 */
+	private void initialize() {
+		this.setVisible(false);
+		this.getContentPane().setLayout(new BorderLayout());
+		this.setUndecorated(false);
+		this.setResizable(false);
+		this.getContentPane().add(getAboutPanel(), BorderLayout.NORTH);
+		this.getContentPane().add(getButtonPanel(), BorderLayout.SOUTH);
+		this.setTitle(Messages.getTitle("Action.ShowAbout"));
+		this.pack();
 
-        if (getOwner() != null)
-        {
-            this.setLocation(getOwner().getX() + ((getOwner().getWidth() - this.getWidth()) / 2), getOwner().getY() + ((getOwner().getHeight() - this.getHeight()) / 2));
-        } else
-        {
-            Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-            this.setLocation((screenSize.width - this.getWidth()) / 2, (screenSize.height - this.getHeight()) / 2);
-        }
+		if (getOwner() != null) {
+			this.setLocation(getOwner().getX() + ((getOwner().getWidth() - this.getWidth()) / 2),
+					getOwner().getY() + ((getOwner().getHeight() - this.getHeight()) / 2));
+		} else {
+			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+			this.setLocation((screenSize.width - this.getWidth()) / 2, (screenSize.height - this.getHeight()) / 2);
+		}
 
-        this.setSize(this.getWidth(), this.getHeight());
-    }
+		this.setSize(this.getWidth(), this.getHeight());
+	}
 
-    private JScrollPane getAboutPanel()
-    {    	
-       	String[] aboutArgs       = { Messages.getWoPeDVersionWithTimestamp() };
-       	String   aboutText       = "<html><p>" + Messages.getStringReplaced("About.Text", aboutArgs) +
-       								Messages.getString("About.Members") +
-       								Messages.getString("About.Thanks") +
-       								Messages.getString("About.ThankedNames") +
-       								"</p></html>";
-       	String   javaText 		 = "<html><p><b>" + Messages.getString("About.Java") + ": </b>" + System.getProperty("java.version") + "</p><br /></html>";
-       	
-       	if (aboutPanel == null)
-        {
-            JPanel panel = new JPanel();
-            panel.setLayout(new GridBagLayout());
-            GridBagConstraints c = new GridBagConstraints();
+	private JScrollPane getAboutPanel() {
+		String[] aboutArgs = { Messages.getWoPeDVersionWithTimestamp() };
+		String aboutText = "<html><p>" + Messages.getStringReplaced("About.Text", aboutArgs)
+				+ Messages.getString("About.Members") + Messages.getString("About.Thanks") + "</p></html>";
+		String javaText = "<html><p><b>" + Messages.getString("About.Java") + ": </b>"
+				+ System.getProperty("java.version") + "</p></html>";
 
-            c.gridx = 0;
-            c.gridy = 0;
-            c.anchor = GridBagConstraints.CENTER;
-            c.insets = new Insets(10, 10, 10, 10);
-            logoLabel = new JLabel(new ImageIcon(getClass().getResource(Messages.getString("Window.About.Image"))));
-            panel.add(logoLabel, c);
+		if (aboutPanel == null) {
+			JPanel panel = new JPanel();
+			panel.setLayout(new GridBagLayout());
+			GridBagConstraints c = new GridBagConstraints();
 
-            c.gridy = 1;
-            c.insets = new Insets(0, 10, 0, 10);
-            c.anchor = GridBagConstraints.WEST;
-            javaTextLabel = new JLabel(aboutText);
-            panel.add(javaTextLabel, c);
+			c.gridx = 0;
+			c.gridy = 0;
+			c.anchor = GridBagConstraints.CENTER;
+			c.insets = new Insets(10, 10, 10, 10);
+			logoLabel = new JLabel(new ImageIcon(getClass().getResource(Messages.getString("Window.About.Image"))));
+			panel.add(logoLabel, c);
 
-            c.gridy = 2;
-            c.insets = new Insets(0, 10, 0, 10);
-            c.anchor = GridBagConstraints.WEST;
-            aboutTextLabel = new JLabel(javaText);
-            panel.add(aboutTextLabel, c);
+			c.gridy = 1;
+			c.insets = new Insets(0, 10, 0, 10);
+			c.anchor = GridBagConstraints.WEST;
+			javaTextLabel = new JLabel(javaText);
+			panel.add(javaTextLabel, c);
 
-            c.gridy = 3;
-            c.insets = new Insets(0, 10, 0, 10);
-            homepageLabel = new JLabel("<html><p>" + Messages.getString("About.Homepage") + "</p></html>");
-            homepageLabel.addMouseListener(new LaunchDefaultBrowserAction(Messages.getString("About.Homepage.Link"), homepageLabel));
-            panel.add(homepageLabel, c);
+			c.gridy = 2;
+			c.insets = new Insets(0, 10, 0, 10);
+			c.anchor = GridBagConstraints.WEST;
+			aboutTextLabel = new JLabel(aboutText);
+			panel.add(aboutTextLabel, c);
 
-            c.gridy = 4;
-            c.insets = new Insets(0, 10, 0, 10);
-            mailtoLabel = new JLabel("<html><p>" + Messages.getString("About.Email") + "</p></html>");
-            mailtoLabel.addMouseListener(new LaunchDefaultBrowserAction(Messages.getString("About.Email.Link"), mailtoLabel));
-            panel.add(mailtoLabel, c);
+			c.gridy = 3;
+			c.insets = new Insets(0, 10, 0, 10);
+			homepageLabel = new JLabel("<html><p>" + Messages.getString("About.Homepage") + "</p></html>");
+			homepageLabel.addMouseListener(
+					new LaunchDefaultBrowserAction(Messages.getString("About.Homepage.Link"), homepageLabel));
+			panel.add(homepageLabel, c);
 
-            c.gridy = 5;
-            c.insets = new Insets(0, 10, 0, 10);
-            sfLabel = new JLabel("<html><p>" + Messages.getString("About.Development") + "</p></html>");
-            sfLabel.addMouseListener(new LaunchDefaultBrowserAction(Messages.getString("About.Development.Link"), sfLabel));
-            panel.add(sfLabel, c);
+			c.gridy = 4;
+			c.insets = new Insets(0, 10, 0, 10);
+			mailtoLabel = new JLabel("<html><p>" + Messages.getString("About.Email") + "</p></html>");
+			mailtoLabel.addMouseListener(
+					new LaunchDefaultBrowserAction(Messages.getString("About.Email.Link"), mailtoLabel));
+			panel.add(mailtoLabel, c);
 
-            c.gridy = 6;
-            c.insets = new Insets(0, 10, 0, 10);
-            icLabel = new JLabel("<html><p>" + Messages.getString("About.Iconset") + "</p></html>");
-            icLabel.addMouseListener(new LaunchDefaultBrowserAction(Messages.getString("About.Iconset.Link"), icLabel));
-            panel.add(icLabel, c);
+			c.gridy = 5;
+			c.insets = new Insets(0, 10, 0, 10);
+			sfLabel = new JLabel("<html><p>" + Messages.getString("About.Development") + "</p></html>");
+			sfLabel.addMouseListener(
+					new LaunchDefaultBrowserAction(Messages.getString("About.Development.Link"), sfLabel));
+			panel.add(sfLabel, c);
 
-            aboutPanel = new JScrollPane(panel);
-        }
-        return aboutPanel;
-    }
+			c.gridy = 6;
+			c.insets = new Insets(0, 10, 0, 10);
+			icLabel = new JLabel("<html><p>" + Messages.getString("About.Iconset") + "</p></html>");
+			icLabel.addMouseListener(new LaunchDefaultBrowserAction(Messages.getString("About.Iconset.Link"), icLabel));
+			panel.add(icLabel, c);
 
-    private JScrollPane getChangeLogPanel() throws IOException
-    {
-        if (changeLogPanel == null) {
-        	
-        	// Try to find the current working directory where Changelog.txt is located
- 			String changeLog = "";
- 			URL main = AboutUI.class.getResource("RunWoPeD.class");
- 			File file = new File(main.getPath());  
- 			String path = file.getAbsolutePath();
- 			
- 			// Check if we are running WoPeD from a jar file
- 			if (path.contains("!")) {
- 				int pos = path.indexOf("WoPeD-classes");
-  				if (pos > -1) {
-  					// Remove URL prefix
-  					int ff = path.indexOf("file:") + 5;
-  	 				path = path.substring(ff);
- 					path = path.substring(0, pos - ff);
- 					path = path.replace("%20", " ");
- 				}
- 			}
- 			else {
- 				// Running inside Eclipse, no jar file, go to folder directly
- 				int pos = path.indexOf("WoPeD-Starter");
- 				if (pos > -1) {
- 					path = path.substring(0, pos);
- 					path += "WoPeD-Installer" + File.separator + "build-tools";
- 				}
- 			}
-        	
-        	path += File.separator + "Changelog.txt";
-        	
-        	try {
-        		int c;
-            	FileReader f = new FileReader(path);
-            	while ((c = f.read()) != -1) {
-            		changeLog += (char)c;
-            	}
-            	f.close();
-            } 
-        	catch (IOException e) {
-            	changeLog = path + " not found";
-            }
+			aboutPanel = new JScrollPane(panel);
+		}
+		return aboutPanel;
+	}
 
-            JPanel panel = new JPanel();
-            panel.setLayout(new GridBagLayout());
-            GridBagConstraints c1 = new GridBagConstraints();
-            c1.gridy = 0;
-            c1.gridx = 0;
-            c1.insets = new Insets(5, 5, 5, 5);
-            c1.anchor = GridBagConstraints.WEST;
-            
-            JTextArea text = new JTextArea();
-            text.setBackground(panel.getBackground());
-            text.append(changeLog);
-            text.setCaretPosition(0);
-            text.setFont(DefaultStaticConfiguration.DEFAULT_LABEL_FONT);
-            panel.add(text, c1);
-            JPanel panel2 = new JPanel(new FlowLayout(FlowLayout.LEFT));
-            panel2.add(panel);
-            changeLogPanel = new JScrollPane(panel2);
-            changeLogPanel.setPreferredSize(getAboutPanel().getSize());
-        }
-        return changeLogPanel;
-    }
+	private JScrollPane getChangeLogPanel() throws IOException {
+		if (changeLogPanel == null) {
 
-    private JPanel getButtonPanel()
-    {
-        if (buttonPanel == null)
-        {
-            buttonPanel = new JPanel();
-            buttonPanel.setLayout(new GridBagLayout());
-            GridBagConstraints c1 = new GridBagConstraints();
+			// Try to find the current working directory where Changelog.txt is
+			// located
+			String changeLog = "";
+			URL main = AboutUI.class.getResource("RunWoPeD.class");
+			File file = new File(main.getPath());
+			String path = file.getAbsolutePath();
 
-            /* About Button */
-            aboutButton = new WopedButton(new AbstractAction()
-            {
-                public void actionPerformed(ActionEvent arg0)
-                {
-                    try {
+			// Check if we are running WoPeD from a jar file
+			if (path.contains("!")) {
+				int pos = path.indexOf("WoPeD-classes");
+				if (pos > -1) {
+					// Remove URL prefix
+					int ff = path.indexOf("file:") + 5;
+					path = path.substring(ff);
+					path = path.substring(0, pos - ff);
+					path = path.replace("%20", " ");
+				}
+			} else {
+				// Running inside Eclipse, no jar file, go to folder directly
+				int pos = path.indexOf("WoPeD-Starter");
+				if (pos > -1) {
+					path = path.substring(0, pos);
+					path += "WoPeD-Installer" + File.separator + "build-tools";
+				}
+			}
+
+			path += File.separator + "Changelog.txt";
+
+			try {
+				int c;
+				FileReader f = new FileReader(path);
+				while ((c = f.read()) != -1) {
+					changeLog += (char) c;
+				}
+				f.close();
+			} catch (IOException e) {
+				changeLog = path + " not found";
+			}
+
+			JPanel panel = new JPanel();
+			panel.setLayout(new GridBagLayout());
+			GridBagConstraints c1 = new GridBagConstraints();
+			c1.gridy = 0;
+			c1.gridx = 0;
+			c1.insets = new Insets(5, 5, 5, 5);
+			c1.anchor = GridBagConstraints.WEST;
+
+			JTextArea text = new JTextArea();
+			text.setBackground(panel.getBackground());
+			text.append(changeLog);
+			panel.add(text, c1);
+			JPanel panel2 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+			panel2.add(panel);
+			changeLogPanel = new JScrollPane(panel2);
+			changeLogPanel.setPreferredSize(getAboutPanel().getSize());
+		}
+		return changeLogPanel;
+	}
+
+	private JPanel getButtonPanel() {
+		if (buttonPanel == null) {
+			buttonPanel = new JPanel();
+			buttonPanel.setLayout(new GridBagLayout());
+			GridBagConstraints c1 = new GridBagConstraints();
+
+			/* About Button */
+			aboutButton = new WopedButton(new AbstractAction() {
+				public void actionPerformed(ActionEvent arg0) {
+					try {
 						getContentPane().remove(getChangeLogPanel());
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-                    getContentPane().add(getAboutPanel(), BorderLayout.CENTER, 0);
-                    aboutButton.setEnabled(false);
-                    changelogButton.setEnabled(true);
-                    pack();
-                    repaint();
-                }
-            });
+					getContentPane().add(getAboutPanel(), BorderLayout.CENTER, 0);
+					aboutButton.setEnabled(false);
+					changelogButton.setEnabled(true);
+					pack();
+					repaint();
+				}
+			});
 
-            aboutButton.setMnemonic(KeyEvent.VK_A);
-            aboutButton.setIcon(new ImageIcon(getClass().getResource(Messages.getString("Action.ShowAbout.Icon"))));
-            aboutButton.setText(Messages.getString("Action.ShowAbout.Title"));
-            aboutButton.setEnabled(false);
-            c1.gridy = 0;
-            c1.gridx = 0;
-            c1.insets = new Insets(10, 10, 10, 10);
-            c1.anchor = GridBagConstraints.WEST;
-            buttonPanel.add(aboutButton, c1);
+			aboutButton.setMnemonic(KeyEvent.VK_A);
+			aboutButton.setIcon(new ImageIcon(getClass().getResource(Messages.getString("Action.ShowAbout.Icon"))));
+			aboutButton.setText(Messages.getString("Action.ShowAbout.Title"));
+			aboutButton.setEnabled(false);
+			c1.gridy = 0;
+			c1.gridx = 0;
+			c1.insets = new Insets(10, 10, 10, 10);
+			c1.anchor = GridBagConstraints.WEST;
+			buttonPanel.add(aboutButton, c1);
 
-            /* Changelog Button */
-            changelogButton = new WopedButton(new AbstractAction()
-            {
-                public void actionPerformed(ActionEvent arg0)
-                {
-                    getContentPane().remove(getAboutPanel());
-                    try {
+			/* Changelog Button */
+			changelogButton = new WopedButton(new AbstractAction() {
+				public void actionPerformed(ActionEvent arg0) {
+					getContentPane().remove(getAboutPanel());
+					try {
 						getContentPane().add(getChangeLogPanel(), BorderLayout.CENTER, 0);
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-                    aboutButton.setEnabled(true);
-                    changelogButton.setEnabled(false);
-                    pack();
-                    repaint();
-                }
-            });
+					aboutButton.setEnabled(true);
+					changelogButton.setEnabled(false);
+					pack();
+					repaint();
+				}
+			});
 
-            changelogButton.setMnemonic(KeyEvent.VK_L);
-            changelogButton.setText(Messages.getString("Window.About.Versions"));
-            changelogButton.setIcon(Messages.getImageIcon("Window.About.Versions"));
-            c1.gridy = 0;
-            c1.gridx = 1;
-            c1.insets = new Insets(0, 0, 0, 0);
-            c1.anchor = GridBagConstraints.CENTER;
-            buttonPanel.add(changelogButton, c1);
+			changelogButton.setMnemonic(KeyEvent.VK_L);
+			changelogButton.setText(Messages.getString("Window.About.Versions"));
+			changelogButton.setIcon(Messages.getImageIcon("Window.About.Versions"));
+			c1.gridy = 0;
+			c1.gridx = 1;
+			c1.insets = new Insets(0, 0, 0, 0);
+			c1.anchor = GridBagConstraints.CENTER;
+			buttonPanel.add(changelogButton, c1);
 
-            /* Close Button */
-            closeButton = new WopedButton(new DisposeWindowAction());
-            closeButton.setMnemonic(KeyEvent.VK_C);
-            closeButton.requestFocus();
+			/* Close Button */
+			closeButton = new WopedButton(new DisposeWindowAction());
+			closeButton.setMnemonic(KeyEvent.VK_C);
+			closeButton.requestFocus();
 
-            c1.gridy = 0;
-            c1.gridx = 2;
-            c1.insets = new Insets(10, 10, 10, 10);
-            c1.anchor = GridBagConstraints.EAST;
-            buttonPanel.add(closeButton, c1);
-        }
-        return buttonPanel;
-    }
-    
-}
+			c1.gridy = 0;
+			c1.gridx = 2;
+			c1.insets = new Insets(10, 10, 10, 10);
+			c1.anchor = GridBagConstraints.EAST;
+			buttonPanel.add(closeButton, c1);
+		}
+		return buttonPanel;
+	}
+
+} // @jve:visual-info decl-index=0 visual-constraint="0,0"

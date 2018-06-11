@@ -13,9 +13,16 @@ public class DummyAction extends Action{
 	 * @param wordInSentece
 	 * @param verb
 	 */
+
+	private static int id=1;
+	private int dummyID;
+
+
 	public DummyAction(Action action) {
 		super(action.getOrigin(), action.getWordIndex()+1, "Dummy Node");
 		setBaseForm("Dummy Node");
+		dummyID=id;
+		id++;
 	}
 
 	public DummyAction() {
@@ -23,5 +30,12 @@ public class DummyAction extends Action{
 		setBaseForm("Dummy Node");
 	}
 
+	public int getDummyID() {
+		return dummyID;
+	}
+
+	public static void resetStaticContext(){
+	    id=0;
+    }
 	
 }

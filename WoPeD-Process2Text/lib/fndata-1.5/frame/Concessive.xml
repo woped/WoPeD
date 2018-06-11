@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="07/13/2009 02:59:03 PDT Mon" name="Concessive" ID="2150" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A speaker marks a &lt;fen&gt;Statement&lt;/fen&gt; as being or implying a contradiction to the &lt;fen&gt;Main_statement&lt;/fen&gt;.  Some LUs specify the &lt;fen&gt;Main_statement&lt;/fen&gt;, others the &lt;fen&gt;Statement&lt;/fen&gt;, as referring to the preceding discourse (i.e. DNI), while yet others are conjunctions joining the two.
+
+&lt;ex&gt;&lt;t&gt;Although&lt;/t&gt; &lt;fex name="Statement"&gt;she had some trouble&lt;/fex&gt; , &lt;fex name="Main_statement"&gt;she was able to finish about two hours early&lt;/fex&gt; .&lt;/ex&gt;
+&lt;ex&gt;&lt;t&gt;Nevertheless&lt;/t&gt; , &lt;fex name="Main_statement"&gt;we did win&lt;/fex&gt; . &lt;fex name="Statement"&gt;DNI&lt;/fex&gt; &lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Statement"&gt;I wanted to come&lt;/fex&gt; , &lt;t&gt;but&lt;/t&gt; &lt;fex name="Main_statement"&gt;I did n't remember where the party was&lt;/fex&gt; . &lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="07/13/2009 02:59:03 PDT Mon" abbrev="Msg" name="Statement" ID="13302">
+        <definition>&lt;def-root&gt;A proposition or set of propositions that the speaker wants the addressee to believe or take for granted. 
+&lt;/def-root&gt;</definition>
+        <semType name="Message" ID="56"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="07/13/2009 02:59:03 PDT Mon" abbrev="Top" name="Topic" ID="13303">
+        <definition>&lt;def-root&gt;An entity which metonymically stands in for an associated &lt;fen&gt;Statement&lt;/fen&gt;.
+
+&lt;ex&gt;She got married &lt;t&gt;in spite of&lt;/t&gt; &lt;fex name="Top"&gt;him&lt;/fex&gt; .&lt;/ex&gt;
+&lt;ex&gt;&lt;t&gt;Despite&lt;/t&gt; &lt;fex name="Topic"&gt;her&lt;/fex&gt; , they finished on time .&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Statement" ID="13302"/>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="07/13/2009 03:23:19 PDT Mon" abbrev="" name="Main_statement" ID="13312">
+        <definition>&lt;def-root&gt;The statement that the speaker wishes to contradict part of without denying overall validity.&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Communication</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Created" POS="PREP" name="despite.prep" ID="15421" lemmaID="10377" cBy="664" cDate="07/13/2009 03:26:35 PDT Mon">
+        <definition>In spite of</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="despite"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="in spite of.prep" ID="15423" lemmaID="51000" cBy="664" cDate="07/13/2009 04:46:25 PDT Mon">
+        <definition>in spite of </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="in"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="spite"/>
+        <lexeme order="3" headword="false" breakBefore="false" POS="PREP" name="of"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="SCON" name="though.scon" ID="15424" lemmaID="51001" cBy="664" cDate="07/13/2009 04:48:09 PDT Mon">
+        <definition>in spite of the fact that</definition>
+        <sentenceCount annotated="2" total="2"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="SCON" name="though"/>
+    </lexUnit>
+    <lexUnit status="Rules_Defined" POS="SCON" name="although.scon" ID="15425" lemmaID="51002" cBy="664" cDate="07/13/2009 04:48:58 PDT Mon">
+        <definition>in spite of the fact that</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="SCON" name="although"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="ADV" name="to be fair.adv" ID="15427" lemmaID="51004" cBy="664" cDate="07/13/2009 04:50:58 PDT Mon">
+        <definition></definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="to"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="V" name="be"/>
+        <lexeme order="3" headword="false" breakBefore="false" POS="A" name="fair"/>
+    </lexUnit>
+    <lexUnit status="Rules_Defined" POS="ADV" name="nevertheless.adv" ID="15428" lemmaID="25748" cBy="664" cDate="07/13/2009 05:00:51 PDT Mon">
+        <definition>in spite of it</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="nevertheless"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="C" name="but.c" ID="15429" lemmaID="5053" cBy="664" cDate="07/13/2009 05:02:31 PDT Mon">
+        <definition>except for the fact that</definition>
+        <sentenceCount annotated="1" total="1"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="C" name="but"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="ADV" name="however.adv" ID="15430" lemmaID="18555" cBy="664" cDate="07/13/2009 05:10:45 PDT Mon">
+        <definition>in spit of that</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="however"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="SCON" name="while.scon" ID="15431" lemmaID="51005" cBy="664" cDate="07/13/2009 05:12:47 PDT Mon">
+        <definition>when on the other hand</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="SCON" name="while"/>
+    </lexUnit>
+</frame>

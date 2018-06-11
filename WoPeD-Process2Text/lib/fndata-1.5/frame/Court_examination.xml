@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="01/16/2003 03:15:16 PST Thu" name="Court_examination" ID="507" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A &lt;fen&gt;Questioner&lt;/fen&gt; asks a &lt;fen&gt;Witness&lt;/fen&gt; (or defendant) questions in the context of a court procedure.
+&lt;ex&gt;&lt;fex name="Questioner"&gt;We&lt;/fex&gt; 'd like to &lt;t&gt;cross-examine&lt;/t&gt; &lt;fex name="Witness"&gt;the witness&lt;/fex&gt; if we can.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="01/16/2003 03:26:49 PST Thu" abbrev="Qu" name="Questioner" ID="4071">
+        <definition>&lt;def-root&gt;The individual that asks a &lt;fen&gt;Witness&lt;/fen&gt; questions.&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="01/16/2003 03:27:07 PST Thu" abbrev="Wit" name="Witness" ID="4072">
+        <definition>&lt;def-root&gt;A person who is present in a courtroom in order to give some form of evidence, has been sworn in, and is being examined by a &lt;fen&gt;Questioner&lt;/fen&gt;.
+&lt;ex&gt;You have leave to &lt;t&gt;examine&lt;/t&gt; &lt;fex name="Wit"&gt;the witness.&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="05/05/2003 08:29:18 PDT Mon" abbrev="" name="Topic" ID="4472">
+        <definition>&lt;def-root&gt;The subject matter to which the examination pertains.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A9A9A9" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="05/05/2003 08:36:34 PDT Mon" abbrev="" name="Time" ID="4473">
+        <definition>&lt;def-root&gt;When the examination occurs.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="05/05/2003 08:37:21 PDT Mon" abbrev="" name="Place" ID="4474">
+        <definition>&lt;def-root&gt;Where the examination takes place.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="05/05/2003 08:38:22 PDT Mon" abbrev="" name="Manner" ID="4475">
+        <definition>&lt;def-root&gt;The manner in which the questioner examines the witness.
+&lt;ex&gt;The defense attorneys &lt;t&gt;cross-examined&lt;/t&gt; the prosecution's witnesses &lt;fex name="Manner"&gt;harshly&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="618" cDate="05/05/2003 09:12:10 PDT Mon" abbrev="" name="Purpose" ID="4476">
+        <definition>&lt;def-root&gt;The purpose of the examination.
+&lt;ex&gt;The defense &lt;t&gt;examined&lt;/t&gt; their own client &lt;fex name="Purpose"&gt;in order to show the jury her compassionate side&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="05/05/2003 09:17:52 PDT Mon" abbrev="" name="Means" ID="4477">
+        <definition>&lt;def-root&gt;The means by which the &lt;fen&gt;Questioner&lt;/fen&gt; examines the &lt;fen&gt;Witness&lt;/fen&gt;.
+&lt;ex&gt;Many attorneys &lt;t&gt;cross-examine&lt;/t&gt; witnesses &lt;fex name="Means"&gt;by asking misleading and often confrontational questions&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="07/11/2003 12:27:08 PDT Fri" abbrev="Dur" name="Duration" ID="4755">
+        <definition>&lt;def-root&gt;How long the examination takes place.
+&lt;ex&gt;The gruelling &lt;fex name="Dur"&gt;two-hour&lt;/fex&gt; &lt;t&gt;cross-examination&lt;/t&gt; revealed much new information regarding the murder.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Questioning</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of">
+        <relatedFrame>Trial</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes">
+        <relatedFrame>Jury_deliberation</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="examine.v" ID="8026" lemmaID="13331" cBy="664" cDate="01/16/2003 03:53:29 PST Thu">
+        <definition>COD: formally question (a defendant or witness) in court. </definition>
+        <sentenceCount annotated="4" total="186"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="examine"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="cross-examine.v" ID="8028" lemmaID="9040" cBy="664" cDate="01/16/2003 03:55:52 PST Thu">
+        <definition>COD:  question (a witness called by the other party) in a court of law to check or extend testimony already given</definition>
+        <sentenceCount annotated="21" total="157"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="cross-examine"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="cross.n" ID="8030" lemmaID="9015" cBy="664" cDate="01/16/2003 03:58:08 PST Thu">
+        <definition>FN: short for cross-examination. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="cross"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="cross-examination.n" ID="8031" lemmaID="9039" cBy="664" cDate="01/16/2003 04:00:18 PST Thu">
+        <definition>FN: an event in court procedure in which a witness is questioned to further examine statements that they made when they were questioned by the other party.</definition>
+        <sentenceCount annotated="26" total="151"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="cross-examination"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="examination.n" ID="8091" lemmaID="13330" cBy="618" cDate="01/21/2003 03:44:41 PST Tue">
+        <definition>COD: the formal questioning of a defendant or witness in court.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="examination"/>
+    </lexUnit>
+</frame>

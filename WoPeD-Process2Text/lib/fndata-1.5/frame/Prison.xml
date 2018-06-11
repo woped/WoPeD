@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="08/01/2002 04:03:43 PDT Thu" name="Prison" ID="387" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;This Frame deals with &lt;fen&gt;Penal_institution&lt;/fen&gt;s. They are run by an &lt;fen&gt;Operator&lt;/fen&gt; and may be intended to hold certain kinds of &lt;fen&gt;Inmates&lt;/fen&gt;.  &lt;fen&gt;Penal_institution&lt;/fen&gt;s may have a special &lt;fen&gt;Name&lt;/fen&gt; and their &lt;fen&gt;Location&lt;/fen&gt; may also be indicated.&lt;/def-root&gt;</definition>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="08/01/2002 04:25:50 PDT Thu" abbrev="Operator" name="Operator" ID="3481">
+        <definition>&lt;def-root&gt;The Frame Element &lt;fen&gt;Operator&lt;/fen&gt; marks expressions that indicate which level of government operates the Penal Institution.
+
+&lt;ex&gt;Smithers had to serve time in &lt;fex name="Operator"&gt;prison&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="08/01/2002 04:28:09 PDT Thu" abbrev="Inmates" name="Inmates" ID="3482">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Inmates&lt;/fen&gt; marks expressions that indicate the group of people a Penal Institution is intended to hold.
+
+&lt;ex&gt;Monica served time in the Tennessee &lt;t&gt;Prison&lt;/t&gt; &lt;fex name="Inmates"&gt;for Women&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="08/01/2002 04:39:35 PDT Thu" abbrev="Name" name="Name" ID="3483">
+        <definition>&lt;def-root&gt;This FE marks expressions that are the &lt;fen&gt;Name&lt;/fen&gt; of a Penal Institution.
+
+&lt;ex&gt;Kolimov visited the &lt;fex name="Name"&gt;Willy C. Peterson&lt;/fex&gt; State &lt;t&gt;Prison&lt;/t&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="08/01/2002 04:45:07 PDT Thu" abbrev="Location" name="Location" ID="3484">
+        <definition>&lt;def-root&gt;This FE marks expressions that indicate the &lt;fen&gt;Location&lt;/fen&gt; of the Penal Institution.
+
+&lt;ex&gt;Carruthers spent three years in &lt;fex name="Location"&gt;Fort Pulaski&lt;/fex&gt; State &lt;t&gt;Prison&lt;/t&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Location" ID="54"/>
+    </FE>
+    <FE bgColor="d0d0d0" fgColor="000000" coreType="Peripheral" cBy="618" cDate="04/16/2003 08:56:53 PDT Wed" abbrev="Sec" name="Security" ID="4371">
+        <definition>&lt;def-root&gt;The level of security maintained at the prison.
+&lt;ex&gt;He was held in a &lt;fex name="Sec"&gt;maximum security&lt;/fex&gt; &lt;t&gt;Prison&lt;/t&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="12/09/2005 05:30:21 PST Fri" abbrev="pen" name="Penal_institution" ID="9768">
+        <definition>&lt;def-root&gt;The locale which serves to confine individuals, generally for the purpose of punishment.&lt;/def-root&gt;</definition>
+        <semType name="Goal" ID="153"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/09/2005 05:33:19 PST Fri" abbrev="" name="Part" ID="9769">
+        <definition>&lt;def-root&gt;A subpart of the &lt;fen&gt;Penal_institution&lt;/fen&gt;.
+
+&lt;ex&gt;You really expect me to run a &lt;t&gt;prison&lt;/t&gt; &lt;fex name="Part"&gt;with only ten cells&lt;/fex&gt;?&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Locale_by_use</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Inhibit_movement</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="N" name="penitentiary.n" ID="6958" lemmaID="28328" cBy="605" cDate="08/01/2002 04:08:17 PDT Thu">
+        <definition>COD: a prison for people convicted of serious crimes. </definition>
+        <sentenceCount annotated="5" total="11"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="penitentiary"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="jail.n" ID="6959" lemmaID="20809" cBy="605" cDate="08/01/2002 04:09:52 PDT Thu">
+        <definition>COD: a place for the confinement of people accused or convicted of a crime.</definition>
+        <sentenceCount annotated="49" total="301"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="jail"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="prison.n" ID="6960" lemmaID="30485" cBy="605" cDate="08/01/2002 04:10:36 PDT Thu">
+        <definition>COD: a building for the confinement of criminals or those awaiting trial. </definition>
+        <sentenceCount annotated="30" total="217"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="prison"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="jailhouse.n" ID="6961" lemmaID="45975" cBy="605" cDate="08/01/2002 04:12:27 PDT Thu">
+        <definition>COD:  a prison.</definition>
+        <sentenceCount annotated="5" total="87"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="jailhouse"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="slammer.n" ID="6962" lemmaID="45976" cBy="605" cDate="08/01/2002 04:13:16 PDT Thu">
+        <definition>COD: prison. </definition>
+        <sentenceCount annotated="0" total="7"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="slammer"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="stockade.n" ID="6964" lemmaID="38106" cBy="605" cDate="08/01/2002 04:13:59 PDT Thu">
+        <definition>COD: a military prison.</definition>
+        <sentenceCount annotated="2" total="50"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="stockade"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="pen.n" ID="6965" lemmaID="28290" cBy="605" cDate="08/01/2002 04:14:56 PDT Thu">
+        <definition>COD: short for penitentiary </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="pen"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="joint.n" ID="6966" lemmaID="21020" cBy="605" cDate="08/01/2002 04:16:25 PDT Thu">
+        <definition>COD: prison.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="joint"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="correctional institution.n" ID="6968" lemmaID="45980" cBy="605" cDate="08/01/2002 04:19:01 PDT Thu">
+        <definition>FN: a prison</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="correctional"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="institution"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="brig.n" ID="7006" lemmaID="4601" cBy="605" cDate="08/02/2002 04:52:53 PDT Fri">
+        <definition>COD: a prison, especially on a warship [Mil]</definition>
+        <sentenceCount annotated="4" total="10"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="brig"/>
+    </lexUnit>
+</frame>

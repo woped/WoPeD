@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="New" POS="N" name="temperature.n" ID="11313" frame="Ambient_temperature" frameID="1052" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp=2558" ID="19421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Core" abbrev="att" name="Attribute"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="con" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Core" abbrev="deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="pl" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="tem" name="Temperature"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Core" abbrev="tim" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="" name="Weather"/>
+        </frame>
+    </header>
+    <definition>FN: the degree of heat of outside air</definition>
+    <lexeme POS="N" name="temperature"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Attribute"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Attribute"/>
+                <annoSet ID="2567203"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Place"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Place"/>
+                <annoSet ID="2567203"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Temperature"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Temperature"/>
+                <annoSet ID="2567203"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Attribute"/>
+            <FE name="Place"/>
+            <FE name="Temperature"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Attribute"/>
+                <valenceUnit GF="" PT="DNI" FE="Place"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Temperature"/>
+                <annoSet ID="2567203"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-pp_of-p-(1)">
+        <sentence corpID="111" docID="19421" sentNo="5" paragNo="840" aPos="0" ID="1562226">
+            <text>Fighting also broke out on the Bari dockside , where approximately 3,000 deportees were held under guard in temperatures of 35 degrees Centigrade .</text>
+            <annotationSet cDate="06/02/2010 03:28:17 PDT Wed" status="UNANN" ID="2567202">
+                <layer rank="1" name="PENN">
+                    <label end="7" start="0" name="NP"/>
+                    <label end="12" start="9" name="rb"/>
+                    <label end="18" start="14" name="VVD"/>
+                    <label end="22" start="20" name="rp"/>
+                    <label end="25" start="24" name="in"/>
+                    <label end="29" start="27" name="dt"/>
+                    <label end="34" start="31" name="NP"/>
+                    <label end="43" start="36" name="nn"/>
+                    <label end="45" start="45" name=","/>
+                    <label end="51" start="47" name="wrb"/>
+                    <label end="65" start="53" name="rb"/>
+                    <label end="71" start="67" name="cd"/>
+                    <label end="81" start="73" name="nns"/>
+                    <label end="86" start="83" name="VBD"/>
+                    <label end="91" start="88" name="VVN"/>
+                    <label end="97" start="93" name="in"/>
+                    <label end="103" start="99" name="nn"/>
+                    <label end="106" start="105" name="in"/>
+                    <label end="119" start="108" name="nns"/>
+                    <label end="122" start="121" name="in"/>
+                    <label end="125" start="124" name="cd"/>
+                    <label end="133" start="127" name="nns"/>
+                    <label end="144" start="135" name="jj"/>
+                    <label end="146" start="146" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="06/02/2010 03:28:17 PDT Wed" status="MANUAL" ID="2567203">
+                <layer rank="1" name="Target">
+                    <label cBy="571" end="119" start="108" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="571" feID="6190" end="144" start="121" name="Temperature"/>
+                    <label cBy="571" feID="6189" end="119" start="108" name="Attribute"/>
+                    <label cBy="571" feID="6188" itype="DNI" name="Place"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="144" start="121" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="144" start="121" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-pp_above-p-(1)"/>
+    <subCorpus name="03-pp_in-p-(1)"/>
+    <subCorpus name="04-other-matched-(1)"/>
+    <subCorpus name="05-other-unmatched-(1)"/>
+</lexUnit>

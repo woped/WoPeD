@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" POS="V" name="hafta.v" ID="13054" frame="Required_event" frameID="1381" totalAnnotated="3" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Extra-Thematic" abbrev="cir" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="exp" name="Explanation"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="neg" name="Negative_consequences"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="pla" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="pur" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="req" name="Required_situation"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: have to</definition>
+    <lexeme POS="V" name="hafta"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Negative_consequences"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="Sub" FE="Negative_consequences"/>
+                <annoSet ID="1569179"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Required_situation"/>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="NP" FE="Required_situation"/>
+                <annoSet ID="1569173"/>
+                <annoSet ID="1569175"/>
+                <annoSet ID="1569179"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="VPbrst" FE="Required_situation"/>
+                <annoSet ID="1569173"/>
+                <annoSet ID="1569179"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="VPbrst" FE="Required_situation"/>
+                <annoSet ID="1569175"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Negative_consequences"/>
+            <FE name="Required_situation"/>
+            <FE name="Required_situation"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="Sub" FE="Negative_consequences"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Required_situation"/>
+                <valenceUnit GF="Dep" PT="VPbrst" FE="Required_situation"/>
+                <annoSet ID="1569179"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Required_situation"/>
+            <FE name="Required_situation"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Required_situation"/>
+                <valenceUnit GF="Dep" PT="VPbrst" FE="Required_situation"/>
+                <annoSet ID="1569173"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Required_situation"/>
+                <valenceUnit GF="Obj" PT="VPbrst" FE="Required_situation"/>
+                <annoSet ID="1569175"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-001-all">
+        <sentence sentNo="0" aPos="30544833" ID="1058884">
+            <text>` We 're going to hafta give a big coffee party for the auto buyer from Henderson and Company , so make it a nice one . &quot; </text>
+            <annotationSet cDate="01/08/2003 12:45:11 PST Wed" status="UNANN" ID="1569172">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PUQ"/>
+                    <label end="3" start="2" name="PNP"/>
+                    <label end="7" start="5" name="VBB"/>
+                    <label end="13" start="9" name="VVG"/>
+                    <label end="16" start="15" name="PRP"/>
+                    <label end="22" start="18" name="NN1"/>
+                    <label end="27" start="24" name="VVB"/>
+                    <label end="29" start="29" name="AT0"/>
+                    <label end="33" start="31" name="AJ0"/>
+                    <label end="40" start="35" name="NN1"/>
+                    <label end="46" start="42" name="NN0"/>
+                    <label end="50" start="48" name="PRP"/>
+                    <label end="54" start="52" name="AT0"/>
+                    <label end="59" start="56" name="NN1"/>
+                    <label end="65" start="61" name="NN1"/>
+                    <label end="70" start="67" name="PRP"/>
+                    <label end="80" start="72" name="NP0"/>
+                    <label end="84" start="82" name="CJC"/>
+                    <label end="92" start="86" name="NN0"/>
+                    <label end="94" start="94" name="PUN"/>
+                    <label end="97" start="96" name="AV0"/>
+                    <label end="102" start="99" name="VVB"/>
+                    <label end="105" start="104" name="PNP"/>
+                    <label end="107" start="107" name="AT0"/>
+                    <label end="112" start="109" name="AJ0"/>
+                    <label end="116" start="114" name="PNI"/>
+                    <label end="118" start="118" name="PUN"/>
+                    <label end="120" start="120" name="PUQ"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:45:11 PST Wed" status="MANUAL" ID="1569173">
+                <layer rank="1" name="FE">
+                    <label cBy="532" feID="7752" end="3" start="2" name="Required_situation"/>
+                    <label cBy="532" feID="7752" end="92" start="24" name="Required_situation"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="3" start="2" name="Ext"/>
+                    <label end="92" start="24" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="3" start="2" name="NP"/>
+                    <label end="92" start="24" name="VPbrst"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="22" start="18" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="30554611" ID="1058885">
+            <text>` We hafta have a picture of a Mr Boyd Stych as well . &quot; </text>
+            <annotationSet cDate="01/08/2003 12:45:11 PST Wed" status="UNANN" ID="1569174">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="PUQ"/>
+                    <label end="3" start="2" name="PNP"/>
+                    <label end="9" start="5" name="NN1"/>
+                    <label end="14" start="11" name="VHB"/>
+                    <label end="16" start="16" name="AT0"/>
+                    <label end="24" start="18" name="NN1"/>
+                    <label end="27" start="26" name="PRF"/>
+                    <label end="29" start="29" name="AT0"/>
+                    <label end="32" start="31" name="NP0"/>
+                    <label end="37" start="34" name="NP0"/>
+                    <label end="43" start="39" name="NP0"/>
+                    <label end="46" start="45" name="AV0"/>
+                    <label end="51" start="48" name="AV0"/>
+                    <label end="53" start="53" name="PUN"/>
+                    <label end="55" start="55" name="PUQ"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:45:11 PST Wed" status="MANUAL" ID="1569175">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="7752" end="3" start="2" name="Required_situation"/>
+                    <label cBy="618" feID="7752" end="51" start="11" name="Required_situation"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="3" start="2" name="Ext"/>
+                    <label end="51" start="11" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="3" start="2" name="NP"/>
+                    <label end="51" start="11" name="VPbrst"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="9" start="5" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="83691476" ID="1058887">
+            <text>Y'know , flower child , we 're gon na hafta stop meetin' like this , or folks 'll start talkin' &quot; </text>
+            <annotationSet cDate="01/08/2003 12:45:11 PST Wed" status="UNANN" ID="1569178">
+                <layer rank="1" name="BNC">
+                    <label end="5" start="0" name="NN1-NP0"/>
+                    <label end="7" start="7" name="PUN"/>
+                    <label end="14" start="9" name="NN1"/>
+                    <label end="20" start="16" name="NN1"/>
+                    <label end="22" start="22" name="PUN"/>
+                    <label end="25" start="24" name="PNP"/>
+                    <label end="29" start="27" name="VBB"/>
+                    <label end="33" start="31" name="VVG"/>
+                    <label end="36" start="35" name="TO0"/>
+                    <label end="42" start="38" name="NN1"/>
+                    <label end="47" start="44" name="NN1-VVB"/>
+                    <label end="55" start="49" name="NN1-VVG"/>
+                    <label end="60" start="57" name="PRP"/>
+                    <label end="65" start="62" name="DT0"/>
+                    <label end="67" start="67" name="PUN"/>
+                    <label end="70" start="69" name="CJC"/>
+                    <label end="76" start="72" name="NN2"/>
+                    <label end="80" start="78" name="VM0"/>
+                    <label end="86" start="82" name="VVI"/>
+                    <label end="94" start="88" name="VVG"/>
+                    <label end="96" start="96" name="PUQ"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/08/2003 12:45:11 PST Wed" status="MANUAL" ID="1569179">
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="7752" end="25" start="24" name="Required_situation"/>
+                    <label cBy="618" feID="7752" end="65" start="44" name="Required_situation"/>
+                    <label cBy="618" feID="7753" end="94" start="69" name="Negative_consequences"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="25" start="24" name="Ext"/>
+                    <label end="65" start="44" name="Dep"/>
+                    <label end="94" start="69" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="25" start="24" name="NP"/>
+                    <label end="65" start="44" name="VPbrst"/>
+                    <label end="94" start="69" name="Sub"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="42" start="38" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

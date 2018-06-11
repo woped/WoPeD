@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="06/15/2001 05:15:52 PDT Fri" name="Process_start" ID="133" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Event&lt;/fen&gt; begins at a certain &lt;fen&gt;Time&lt;/fen&gt; and &lt;fen&gt;Place&lt;/fen&gt;. &lt;fen&gt;Reason&lt;/fen&gt; may also be indicated.  NB:  Refer to Event frame.&lt;/def-root&gt;</definition>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core-Unexpressed" cBy="664" cDate="06/15/2001 05:17:39 PDT Fri" abbrev="Evnt" name="Event" ID="857">
+        <definition>&lt;def-root&gt;Name of the &lt;fen&gt;Event&lt;/fen&gt; which occurs.
+&lt;ex&gt; &lt;fex name="Evnt"&gt;The crying&lt;/fex&gt; &lt;t&gt;began&lt;/t&gt; after sunset.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/15/2001 05:17:39 PDT Fri" abbrev="Place" name="Place" ID="858">
+        <definition>&lt;def-root&gt;Where the &lt;fen&gt;Event&lt;/fen&gt; takes place.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="06/15/2001 05:17:39 PDT Fri" abbrev="Reas" name="Reason" ID="859">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Reason&lt;/fen&gt; for which an &lt;fen&gt;Event&lt;/fen&gt; occurs.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/15/2001 05:17:39 PDT Fri" abbrev="Time" name="Time" ID="860">
+        <definition>&lt;def-root&gt;When the &lt;fen&gt;Event&lt;/fen&gt; occurs.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="06/28/2001 02:47:14 PDT Thu" abbrev="First" name="Initial_subevent" ID="1148">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Initial_subevent&lt;/fen&gt; of the &lt;fen&gt;Event&lt;/fen&gt;.&lt;ex&gt;The service &lt;t&gt;began&lt;/t&gt; &lt;fex name="First"&gt;with a prayer&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="06/28/2001 04:22:15 PDT Thu" abbrev="Depict" name="Depictive" ID="1150">
+        <definition>&lt;def-root&gt;Depictive phrase describing the actor of an action.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/28/2001 04:22:15 PDT Thu" abbrev="Manr" name="Manner" ID="1152">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Manner&lt;/fen&gt; in which an action is performed.&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="06/28/2001 04:22:16 PDT Thu" abbrev="Result" name="Result" ID="1154">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Result&lt;/fen&gt; of the &lt;fen&gt;Event&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="309" cDate="10/02/2003 11:36:54 PDT Thu" abbrev="Dur" name="Duration" ID="5364">
+        <definition>&lt;def-root&gt;The period of time for which the Process is ongoing after it has started.
+
+&lt;ex&gt;In three instances, violence &lt;t&gt;erupted&lt;/t&gt; &lt;fex name="Duration"&gt;for brief periods&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="309" cDate="10/02/2003 11:36:54 PDT Thu" abbrev="Freq" name="Frequency" ID="5365">
+        <definition>&lt;def-root&gt;The number of times that the specified type of Event begins.
+
+&lt;ex&gt;Clashes &lt;t&gt;broke&lt;/t&gt; &lt;t&gt;out&lt;/t&gt; &lt;fex name="Frequency"&gt;twice&lt;/fex&gt; because Kenneth had been arrested.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Event</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Activity_start</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of">
+        <relatedFrame>Process</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes">
+        <relatedFrame>Process_continue</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Preceded by">
+        <relatedFrame>Process_initial_state</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inchoative of">
+        <relatedFrame>Process_continue</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Created" POS="V" name="start.v" ID="2655" lemmaID="37840" cBy="664" cDate="06/15/2001 05:20:53 PDT Fri">
+        <definition>FN: begin</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="start"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="begin.v" ID="2656" lemmaID="3235" cBy="664" cDate="06/15/2001 06:05:42 PDT Fri">
+        <definition>COD: perform or undergo the first part of (an action or activity).</definition>
+        <sentenceCount annotated="42" total="610"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="begin"/>
+    </lexUnit>
+    <lexUnit status="In_Use" POS="V" name="commence.v" ID="2720" lemmaID="7330" cBy="664" cDate="06/21/2001 06:35:53 PDT Thu">
+        <definition>COD: begin</definition>
+        <sentenceCount annotated="21" total="335"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="commence"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="erupt.v" ID="4408" lemmaID="13078" cBy="664" cDate="11/05/2001 06:49:51 PST Mon">
+        <definition>COD:  break out suddenly </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="erupt"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="break out.v" ID="4409" lemmaID="45279" cBy="664" cDate="11/05/2001 06:52:18 PST Mon">
+        <definition>COD: 1. [under break #1] (of fighting or another undesirable thing) start suddenly. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="break"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="out"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="commencement.n" ID="4410" lemmaID="7331" cBy="664" cDate="11/05/2001 06:56:51 PST Mon">
+        <definition>COD: the beginning of something. </definition>
+        <sentenceCount annotated="14" total="122"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="commencement"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="incipient.a" ID="4411" lemmaID="19417" cBy="664" cDate="11/05/2001 06:57:55 PST Mon">
+        <definition>COD: in an initial stage; beginning to happen or develop. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="incipient"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="onset.n" ID="4412" lemmaID="26743" cBy="664" cDate="11/05/2001 06:58:44 PST Mon">
+        <definition>COD: the beginning of something, especially something unpleasant. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="onset"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="nascent.a" ID="4413" lemmaID="25460" cBy="664" cDate="11/05/2001 06:59:33 PST Mon">
+        <definition>COD: just coming into existence and beginning to display signs of future potential. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="nascent"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="eruption.n" ID="4414" lemmaID="13079" cBy="664" cDate="11/05/2001 07:00:29 PST Mon">
+        <definition>COD: an act or instance or erupting. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="eruption"/>
+    </lexUnit>
+</frame>

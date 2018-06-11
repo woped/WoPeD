@@ -36,6 +36,9 @@ import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 
 import javax.swing.AbstractAction;
 import javax.swing.ImageIcon;
@@ -46,6 +49,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+import ToolWrapper.FrameNetFunctionality;
+import ToolWrapper.FrameNetInitializer;
+import WorldModelToPetrinet.PetrinetBuilder;
 import org.woped.core.controller.AbstractApplicationMediator;
 import org.woped.core.controller.IEditor;
 import org.woped.editor.controller.ApplicationMediator;
@@ -54,7 +60,6 @@ import org.woped.file.PNMLImport;
 import org.woped.gui.lookAndFeel.WopedButton;
 import org.woped.gui.translations.Messages;
 
-import processing.FrameNetWrapper;
 import worldModel.WorldModel;
 
 /**
@@ -246,7 +251,7 @@ public class T2PUI extends JDialog {
 					Messages.getString("Action.Confirm.T2P.Empty.TextArea.Title"), JOptionPane.YES_NO_CANCEL_OPTION,
 					JOptionPane.ERROR_MESSAGE, null, textMessages, textMessages[0]);
 
-		} else if (!FrameNetWrapper.getGenrateButton()) {
+		} else if (!FrameNetInitializer.getGenrateButton()) {
 			String textMessages[] = { Messages.getString("Dialog.Ok"),
 
 			};
@@ -267,19 +272,24 @@ public class T2PUI extends JDialog {
 
 			if (value == (JOptionPane.YES_OPTION)) {
 
-				WorldModelExecution WMex = new WorldModelExecution(textArea.getText());
-				WorldModel world = WMex.getWorldModelBuilder().buildWorldModel(false);
+				WorldModelExecution WMex = new WorldModelExecution();
+				WorldModel world = WMex.getWorldModelBuilder().getWorldModel(textArea.getText());
 
-				InterpetWorldModel interpreter = new InterpetWorldModel();
+			/*	InterpetWorldModel interpreter = new InterpetWorldModel();
 
 				PNMLGenerator generator = new PNMLGenerator();
 				generator.init();
 				generator.createDummyPlace();
 				generator.setTransition(interpreter.getTextTrans(world.getActions()));
-				generator.setArc();
+				generator.setArc();*/
+
+				PetrinetBuilder PNBuilder = new PetrinetBuilder(world);
 
 				PNMLImport pnmlImport = new PNMLImport(mediator);
-				pnmlImport.run(generator.after(), Messages.getString("Document.T2P.Output"), true);
+				String PNML = PNBuilder.buildPNML();
+				InputStream stream = new ByteArrayInputStream(PNML.getBytes(StandardCharsets.UTF_8));
+
+				pnmlImport.run(stream, Messages.getString("Document.T2P.Output"), true);
 
 				IEditor[] editor = pnmlImport.getEditor();
 

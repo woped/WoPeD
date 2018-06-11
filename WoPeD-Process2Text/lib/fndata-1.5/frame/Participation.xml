@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="06/28/2004 07:32:48 PDT Mon" name="Participation" ID="1144" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Event&lt;/fen&gt; with multiple &lt;fen&gt;Participants&lt;/fen&gt; takes place. It can be presented either symmetrically with &lt;fen&gt;Participants&lt;/fen&gt; or asymmetrically, giving &lt;fen&gt;Participant_1&lt;/fen&gt; greater prominence over &lt;fen&gt;Participant_2&lt;/fen&gt;. If the &lt;fen&gt;Event&lt;/fen&gt; is engaged in intentionally, then there is typically a shared &lt;fen&gt;Purpose&lt;/fen&gt; between the &lt;fen&gt;Participants&lt;/fen&gt;. It is, however, possible that an expressed &lt;fen&gt;Purpose&lt;/fen&gt; only applies to &lt;fen&gt;Participant_1&lt;/fen&gt;.
+
+
+&lt;ex&gt;MATAC looks forward to &lt;fex name="par1"&gt;your&lt;/fex&gt; &lt;t&gt;participation&lt;/t&gt; &lt;fex name="eve"&gt;in helping promote telework in the Mid-Atlantic region&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt; FOAP provides &lt;t&gt;participants&lt;/t&gt; with comprehensive clerical skills. &lt;fex name="eve"&gt;DNI&lt;/fex&gt;&lt;/ex&gt;
+&lt;ex&gt; FOAP provides &lt;fex name="par"&gt;participants&lt;/fex&gt; with comprehensive clerical skills. &lt;/ex&gt;
+
+
+&lt;ex&gt;&lt;fex name="par1"&gt;Our eight-year-old son&lt;/fex&gt; &lt;m&gt;was&lt;/m&gt; &lt;fex name="tim"&gt;recently&lt;/fex&gt; 
+&lt;fex name="deg"&gt;peripherally&lt;/fex&gt; &lt;t&gt;involved&lt;/t&gt; &lt;fex name="eve"&gt;in an incident which resulted in him being threatened with the strap&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;A New York press agent must scramble when &lt;fex name="par1"&gt;his major client&lt;/fex&gt; &lt;m&gt;becomes&lt;/m&gt; &lt;t&gt;embroiled&lt;/t&gt; &lt;fex name="eve"&gt;in a huge scandal&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="Time"&gt;In his time as a first-team all-league player&lt;/fex&gt;, &lt;fex name="Participant_1"&gt;Rife&lt;/fex&gt; &lt;m&gt;was&lt;/m&gt; &lt;t&gt;in&lt;/t&gt; &lt;fex name="Event"&gt;on 86 solo tackles&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="06/28/2004 07:37:02 PDT Mon" abbrev="par" name="Participants" ID="6596">
+        <definition>&lt;def-root&gt;The individuals or entities that have been participants in an &lt;fen&gt;Event&lt;/fen&gt;.
+
+&lt;ex&gt;Thereafter, &lt;fex name="par"&gt;everybody&lt;/fex&gt; &lt;t&gt;participated&lt;/t&gt; in the 17 May parade ending in the Nordic Club.&lt;/ex&gt;
+
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="06/28/2004 07:39:02 PDT Mon" abbrev="par1" name="Participant_1" ID="6597">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Participant_1&lt;/fen&gt; is the grammatically more prominent participant in an &lt;fen&gt;Event&lt;/fen&gt; with multiple &lt;fen&gt;Participants&lt;/fen&gt;.
+
+&lt;ex&gt;Last year, &lt;fex name="par1"&gt;Bill&lt;/fex&gt; &lt;t&gt;participated&lt;/t&gt; in the Montana State University Earth Systems Science distance learning course in the Atmosphere Unit.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Participants" ID="6596"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="06/28/2004 07:40:47 PDT Mon" abbrev="par2" name="Participant_2" ID="6598">
+        <definition>&lt;def-root&gt;A grammatically less prominent participant of an &lt;fen&gt;Event&lt;/fen&gt; with multiple &lt;fen&gt;Participants&lt;/fen&gt;.
+
+&lt;ex&gt;The Second Amended Complaint alleges that Andrew S. Pitt ("Pitt"), Conectisys Corporation ("Conectisys" or the "Company"), and BM
+Capital Corp. &lt;t&gt;participated&lt;/t&gt; &lt;fex name="par2"&gt;with Zaman and Smith Benton&lt;/fex&gt; in a fraudulent and manipulative trading scheme.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Participants" ID="6596"/>
+    </FE>
+    <FE bgColor="d0d0d0" fgColor="0000FF" coreType="Core" cBy="605" cDate="06/28/2004 07:45:28 PDT Mon" abbrev="eve" name="Event" ID="6599">
+        <definition>&lt;def-root&gt;An &lt;fen&gt;Event&lt;/fen&gt; with multiple &lt;fen&gt;Participants&lt;/fen&gt;, who may or may not be involved intentionally.
+
+&lt;ex&gt;Some who &lt;t&gt;participated&lt;/t&gt; &lt;fex name="eve"&gt;in D-Day&lt;/fex&gt; are finally ready to talk about it&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+        <excludesFE name="Institution" ID="7431"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="06/28/2004 07:47:40 PDT Mon" abbrev="tim" name="Time" ID="6600">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Time&lt;/fen&gt; when the multiple-participant &lt;fen&gt;Event&lt;/fen&gt; occurs.
+
+&lt;ex&gt;A survey of students who &lt;t&gt;participated&lt;/t&gt; &lt;fex name="tim"&gt;last year&lt;/fex&gt; showed that 61 percent would be the
+first in their family to attend college.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="06/28/2004 07:49:13 PDT Mon" abbrev="pla" name="Place" ID="6601">
+        <definition>&lt;def-root&gt;The location where the &lt;fen&gt;Event&lt;/fen&gt; involving multiple &lt;fen&gt;Participants&lt;/fen&gt; occurs.
+
+&lt;ex&gt;The most exciting tours for Mr. Osako were when he &lt;t&gt;participated&lt;/t&gt;  &lt;fex name="pla"&gt;in France, Belgium, Holland, Cuba and Japan&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="06/28/2004 07:51:00 PDT Mon" abbrev="man" name="Manner" ID="6602">
+        <definition>&lt;def-root&gt;Any description of the Event (or state) which is not covered by more specific FEs, including epistemic modification (probably, presumably, mysteriously), secondary effects (quietly, loudly), and general descriptions comparing events (the same way). When the &lt;fen&gt;Participants&lt;/fen&gt; are understood agentively frames, it may indicate salient characteristics of them that also affect the action (deliberately, eagerly). 
+
+&lt;ex&gt;He had performed well on the varsity wrestling team and &lt;t&gt;participated&lt;/t&gt; &lt;fex name="man"&gt;eagerly&lt;/fex&gt; in student government&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="06/28/2004 07:53:20 PDT Mon" abbrev="pur" name="Purpose" ID="6603">
+        <definition>&lt;def-root&gt;An action that the &lt;fen&gt;Participants&lt;/fen&gt; or &lt;t&gt;Participant_1&lt;/t&gt; intend to accomplish by performing the action indicated by the &lt;fen&gt;Event&lt;/fen&gt;.
+
+&lt;ex&gt;Mahoney &lt;t&gt;participated&lt;/t&gt; &lt;fex name="pur"&gt;in order to protest racism in the United States in general&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="06/28/2004 07:57:20 PDT Mon" abbrev="mea" name="Means" ID="6604">
+        <definition>&lt;def-root&gt;An intentional action performed by &lt;fen&gt;Participant_1&lt;/fen&gt; or the &lt;fen&gt;Participants&lt;/fen&gt; that contributes to bringing off the &lt;fen&gt;Event&lt;/fen&gt;. 
+
+&lt;ex&gt;WICS-TV &lt;t&gt;participated&lt;/t&gt; &lt;fex name="mea"&gt;by handing out pamphlets, corporate job opening lists and other information regarding employment opportunities within the broadcasting field&lt;/fex&gt;. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFF00" coreType="Peripheral" cBy="605" cDate="06/28/2004 08:12:50 PDT Mon" abbrev="deg" name="Degree_of_involvement" ID="6605">
+        <definition>&lt;def-root&gt;The extent to which &lt;fen&gt;Participant_1&lt;/fen&gt; contributes to the &lt;fen&gt;Event&lt;/fen&gt;'s coming off.
+
+
+&lt;ex&gt;We built a new hospital here in 1991, but I was on the board then and only &lt;fex name="deg"&gt;peripherally&lt;/fex&gt; &lt;t&gt;involved&lt;/t&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="01/14/2005 02:30:49 PST Fri" abbrev="ins" name="Institution" ID="7431">
+        <definition>&lt;def-root&gt;A group, location, or institution conventionally associated with an &lt;fen&gt;Event&lt;/fen&gt;.
+
+&lt;ex&gt;Several of the countries were unable to &lt;t&gt;participate&lt;/t&gt; &lt;fex name="ins"&gt;in the market&lt;/fex&gt; .&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="000000" coreType="Peripheral" cBy="303" cDate="01/14/2005 04:04:41 PST Fri" abbrev="" name="Duration" ID="7432">
+        <definition>&lt;def-root&gt;This FE describes the length of time for which participation occurs (usually appears as a for-PP)&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Event</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Withdraw_from_participation</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="participate.v" ID="10627" lemmaID="27904" cBy="605" cDate="06/28/2004 08:03:32 PDT Mon">
+        <definition>COD: take part.</definition>
+        <sentenceCount annotated="41" total="311"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="participate"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="participant.n" ID="10628" lemmaID="27903" cBy="605" cDate="06/28/2004 08:04:12 PDT Mon">
+        <definition>FN: somebody who participates in an event</definition>
+        <sentenceCount annotated="45" total="255"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="participant"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="participation.n" ID="10629" lemmaID="27905" cBy="605" cDate="06/28/2004 08:04:54 PDT Mon">
+        <definition>FN: the act of participating in a process  or the state of participating in a relationship</definition>
+        <sentenceCount annotated="31" total="380"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="participation"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="involved.a" ID="10630" lemmaID="20570" cBy="605" cDate="06/28/2004 08:07:24 PDT Mon">
+        <definition>FN: engaged as a (willing or unwilling) participant</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="involved"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="involvement.n" ID="10631" lemmaID="20571" cBy="605" cDate="06/28/2004 08:08:33 PDT Mon">
+        <definition>FN: the state of participating in an event with multiple participants</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="involvement"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="embroiled.a" ID="10632" lemmaID="49222" cBy="605" cDate="06/28/2004 08:25:38 PDT Mon">
+        <definition>FN: deeply involved in a conflict or difficult situation.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="embroiled"/>
+    </lexUnit>
+    <lexUnit status="New" POS="N" name="player.n" ID="11590" lemmaID="29318" cBy="618" cDate="02/22/2005 02:24:24 PST Tue">
+        <definition>COD: a person that is involved and influential in an activity.</definition>
+        <sentenceCount annotated="24" total="201"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="player"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="entangled.a" ID="11724" lemmaID="49894" cBy="664" cDate="03/03/2005 10:31:02 PST Thu">
+        <definition>FN: participating involuntarily, without the ability to stop participating at once</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="entangled"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="entanglement.n" ID="11725" lemmaID="12842" cBy="664" cDate="03/03/2005 10:34:23 PST Thu">
+        <definition>FN: involuntary involvement in a complex affair such that rapid extrication is impossible.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="entanglement"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="in.prep" ID="12704" lemmaID="50235" cBy="605" cDate="08/23/2005 06:16:59 PDT Tue">
+        <definition>FN: taking part in</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="in"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="take part.v" ID="13302" lemmaID="50385" cBy="303" cDate="06/21/2006 02:21:00 PDT Wed">
+        <definition>COD:  join in or be involved in an activity.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="take"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="part"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="party.n" ID="13356" lemmaID="27940" cBy="618" cDate="07/10/2006 03:30:34 PDT Mon">
+        <definition>FN: a participant in an event.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="party"/>
+    </lexUnit>
+</frame>

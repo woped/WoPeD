@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="11/07/2002 06:56:24 PST Thu" name="Import_export" ID="422" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Agent&lt;/fen&gt; moves &lt;fen&gt;Goods&lt;/fen&gt; (or some other useful item) from an &lt;fen&gt;Exporting_area&lt;/fen&gt;, across a boundary or border to a different area, the &lt;fen&gt;Importing_area&lt;/fen&gt;.  The &lt;fen&gt;Path&lt;/fen&gt; along which the &lt;fen&gt;Goods&lt;/fen&gt; pass may also be indicated. Depending on the lexical unit, the &lt;fen&gt;Agent&lt;/fen&gt; 's point of view may be centered on the &lt;fen&gt;Exporting_area&lt;/fen&gt; at the beginning of the process (e.g. &lt;ment&gt;export&lt;/ment&gt;) or on the &lt;fen&gt;Importing_area&lt;/fen&gt; and the end of the process (e.g. &lt;ment&gt;import&lt;/ment&gt;) or on the &lt;fen&gt;Path&lt;/fen&gt; (e.g. &lt;ment&gt;transship&lt;/ment&gt;). In some sentences, a constituent which encodes the &lt;fen&gt;Agent&lt;/fen&gt; FE also encodes information about the &lt;fen&gt;Exporting_area&lt;/fen&gt;, &lt;fen&gt;Path&lt;/fen&gt;, or &lt;fen&gt;Importing_area&lt;/fen&gt;.
+
+&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="11/08/2002 02:56:28 PST Fri" abbrev="Agt" name="Agent" ID="3880">
+        <definition>&lt;def-root&gt;The conscious entity, generally a person, that moves the &lt;fen&gt;Goods&lt;/fen&gt;.  
+&lt;ex&gt;&lt;fex name="Agent"&gt;Bath and Bodyworks&lt;/fex&gt; &lt;t&gt;imports&lt;/t&gt; all of its soaps from Scotland.&lt;/ex&gt;
+Very often, an &lt;fen&gt;Exporting_area&lt;/fen&gt;, &lt;fen&gt;Importing_area&lt;/fen&gt;, or &lt;fen&gt;Path&lt;/fen&gt; will metonymically stand in for the person or persons directly responsible for the movement of the &lt;fen&gt;Goods&lt;/fen&gt;.  In such cases the constituent should be labeled &lt;fen&gt;Agent&lt;/fen&gt; on the first layer and with the appropriate locational FE on the second layer.
+&lt;ex&gt;&lt;fex name="Agent"&gt;The U.S.&lt;/fex&gt; &lt;t&gt;exports&lt;/t&gt; most of its peanut products.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="11/08/2002 02:56:28 PST Fri" abbrev="Veh" name="Vehicle" ID="3881">
+        <definition>&lt;def-root&gt;An mobile entity directed by the &lt;fen&gt;Agent&lt;/fen&gt; that holds the &lt;fen&gt;Goods&lt;/fen&gt; and moves them along from the &lt;fen&gt;Exporting_area&lt;/fen&gt; to the &lt;fen&gt;Importing_area&lt;/fen&gt;. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="11/08/2002 02:56:28 PST Fri" abbrev="Mnr" name="Manner" ID="3882">
+        <definition>&lt;def-root&gt;Any description of the event which is not covered by more specific FEs, including epistemic modification (probably, presumably, mysteriously), force (hard, softly), secondary effects (quietly, loudly), and general descriptions comparing events (the same way). It may also indicate salient characteristics of an &lt;fen&gt;Agent&lt;/fen&gt; that also affect the action (presumptuously, coldly, deliberately, eagerly, carefully). &lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="11/08/2002 02:56:28 PST Fri" abbrev="Mns" name="Means" ID="3883">
+        <definition>&lt;def-root&gt;An intentional action performed by the &lt;fen&gt;Agent&lt;/fen&gt; that accomplishes the action indicated by the target. &lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="11/08/2002 02:56:28 PST Fri" abbrev="Goods" name="Goods" ID="3884">
+        <definition>&lt;def-root&gt;The items of value whose location is changing.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="11/08/2002 02:56:28 PST Fri" abbrev="Purp" name="Purpose" ID="3886">
+        <definition>&lt;def-root&gt;This FE identifies the purpose for which the &lt;fen&gt;Agent&lt;/fen&gt; moves the &lt;fen&gt;Goods&lt;/fen&gt;.
+
+&lt;ex&gt;Some department stores &lt;t&gt;import&lt;/t&gt; expensive items &lt;fex name="Purpose"&gt;to please their higher-paying customers&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="11/08/2002 02:56:28 PST Fri" abbrev="Reason" name="Reason" ID="3887">
+        <definition>&lt;def-root&gt;A state of affairs that the &lt;fen&gt;Agent&lt;/fen&gt; is responding to in performing the action.
+&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="11/08/2002 02:56:28 PST Fri" abbrev="Time" name="Time" ID="3888">
+        <definition>&lt;def-root&gt;This FE identifies the time when the &lt;fen&gt;Agent&lt;/fen&gt; moves the &lt;fen&gt;Goods&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="11/08/2002 02:57:25 PST Fri" abbrev="Dep" name="Depictive" ID="3889">
+        <definition>&lt;def-root&gt;This FE identifies the state of a participant during the action
+&lt;ex&gt;Kazakhstan &lt;t&gt;exported&lt;/t&gt; the petroleum, &lt;fex name="Depictive"&gt;gleeful&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="11/08/2002 02:57:34 PST Fri" abbrev="Goal" name="Importing_area" ID="3890">
+        <definition>&lt;def-root&gt;The FE &lt;fen&gt;Importing_area&lt;/fen&gt; is the place that the &lt;fen&gt;Goods&lt;/fen&gt; end up as a result of motion.
+
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="11/08/2002 02:57:36 PST Fri" abbrev="Path" name="Path" ID="3891">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Path&lt;/fen&gt; identifies the location of the &lt;fen&gt;Goods&lt;/fen&gt; during transit, i.e. after leaving the &lt;fen&gt;Exporting_area&lt;/fen&gt; and before reaching the &lt;fen&gt;Importing_area&lt;/fen&gt;.
+
+&lt;ex&gt;The &lt;t&gt;exportation&lt;/t&gt; of goods &lt;fex name="Path"&gt;across state lines&lt;/fex&gt; is strictly prohibited.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="11/08/2002 02:57:37 PST Fri" abbrev="Src" name="Exporting_area" ID="3892">
+        <definition>&lt;def-root&gt;The place where the &lt;fen&gt;Goods&lt;/fen&gt; are initially, before the action.
+
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="02/20/2007 12:05:26 PST Tue" abbrev="" name="Descriptor" ID="11060">
+        <definition>&lt;def-root&gt;This Frame Element is used for a characteristic or description of the &lt;fen&gt;Goods&lt;/fen&gt;. Note that &lt;fen&gt;Descriptor&lt;/fen&gt; is not an FE of the same character as other FEs.  Specifically, rather than filling a slot, it identifies a modifier of its head noun. &lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Exporting_area" ID="3892"/>
+        <memberFE name="Importing_area" ID="3890"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Intentionally_affect</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Importing</relatedFrame>
+        <relatedFrame>Exporting</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Needs_SCs" POS="V" name="transship.v" ID="7698" lemmaID="46192" cBy="664" cDate="11/08/2002 04:53:20 PST Fri">
+        <definition>COD: transfer (cargo) from one ship or other form of transport to another.</definition>
+        <sentenceCount annotated="3" total="6"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="transship"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="import.v" ID="7699" lemmaID="19206" cBy="664" cDate="11/08/2002 05:03:58 PST Fri">
+        <definition>COD: bring (goods or services) into a country from abroad.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="import"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="exporter.n" ID="7703" lemmaID="13589" cBy="664" cDate="11/08/2002 05:12:21 PST Fri">
+        <definition>FN: a person or (metonymically) a place that moves goods to another region.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="exporter"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="importer.n" ID="7704" lemmaID="19211" cBy="664" cDate="11/08/2002 05:14:06 PST Fri">
+        <definition>FN: a person or (metonymically) a place that moves goods into a region.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="importer"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="import_((entity)).n" ID="7705" lemmaID="19205" cBy="664" cDate="11/08/2002 05:16:25 PST Fri">
+        <definition>COD: an imported commodity, article, or service.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="import"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="export_((entity)).n" ID="7706" lemmaID="13585" cBy="664" cDate="11/08/2002 05:16:47 PST Fri">
+        <definition>COD:  an exported commodity, article, or service.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="export"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="import_((act)).n" ID="7707" lemmaID="19205" cBy="664" cDate="11/08/2002 05:17:05 PST Fri">
+        <definition>COD: the action or process of importing.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="import"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="export_((act)).n" ID="7709" lemmaID="13585" cBy="664" cDate="11/08/2002 05:19:41 PST Fri">
+        <definition>COD: the exporting of goods or services. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="export"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="importation.n" ID="7711" lemmaID="19210" cBy="664" cDate="11/08/2002 05:21:10 PST Fri">
+        <definition>FN: the action of moving goods into an area.</definition>
+        <sentenceCount annotated="11" total="94"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="importation"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="trans-shipping.n" ID="7712" lemmaID="46194" cBy="664" cDate="11/08/2002 05:23:56 PST Fri">
+        <definition>FN: the act of transferring cargo to move it towards its ultimate destination.</definition>
+        <sentenceCount annotated="0" total="2"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="trans-shipping"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="export.v" ID="11189" lemmaID="13586" cBy="303" cDate="11/18/2004 05:30:21 PST Thu">
+        <definition>COD: send (goods or services) to another country for sale.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="export"/>
+    </lexUnit>
+</frame>

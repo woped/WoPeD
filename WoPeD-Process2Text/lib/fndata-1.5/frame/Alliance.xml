@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="07/18/2005 07:54:12 PDT Mon" name="Alliance" ID="1574" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;After having worked separately for some time, two or more organizational or individual &lt;fen&gt;Members&lt;/fen&gt; are now organized in an &lt;fen&gt;Alliance&lt;/fen&gt; so that they may better pursue some common &lt;fen&gt;Purpose&lt;/fen&gt;s.  The formerly separate &lt;fen&gt;Members&lt;/fen&gt; may be presented separately as &lt;fen&gt;Member_1&lt;/fen&gt; and &lt;fen&gt;Member_2&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="07/18/2005 07:54:12 PDT Mon" abbrev="all" name="Alliance" ID="8613">
+        <definition>&lt;def-root&gt;The entity of which the individuals are &lt;fen&gt;Members&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Group" ID="76"/>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="07/18/2005 07:54:12 PDT Mon" abbrev="mem" name="Members" ID="8614">
+        <definition>&lt;def-root&gt;The persons or groups belonging to the &lt;fen&gt;Alliance&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Human" ID="80"/>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="07/18/2005 07:54:12 PDT Mon" abbrev="" name="Purpose" ID="8615">
+        <definition>&lt;def-root&gt;The reason for which an &lt;fen&gt;Alliance&lt;/fen&gt; is formed.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="07/18/2005 07:54:12 PDT Mon" abbrev="per" name="Period_of_existence" ID="8616">
+        <definition>&lt;def-root&gt;The interval during which the &lt;fen&gt;Alliance&lt;/fen&gt; exists.
+
+&lt;ex&gt;Hezbollah was founded in 1982 in response to the Israeli invasion of Lebanon,
+and subsumed members of the &lt;fex name="per"&gt;1980s&lt;/fex&gt; &lt;t&gt;coalition&lt;/t&gt; of groups known as Islamic Jihad.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="07/18/2005 08:00:50 PDT Mon" abbrev="me1" name="Member_1" ID="8617">
+        <definition>&lt;def-root&gt;That group or individual which has joined the &lt;fen&gt;Alliance&lt;/fen&gt; which is grammatically more prominent when the &lt;fen&gt;Members&lt;/fen&gt; are presented separately.
+
+&lt;ex&gt;&lt;fex name="me1"&gt;Our&lt;/fex&gt; &lt;t&gt;alliance&lt;/t&gt; with Japan is the cornerstone of Asia-Pacific security strategy.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Members" ID="8614"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="07/18/2005 08:11:38 PDT Mon" abbrev="me2" name="Member_2" ID="8618">
+        <definition>&lt;def-root&gt;That group or individual which has joined the &lt;fen&gt;Alliance&lt;/fen&gt; which is grammatically less  prominent when the &lt;fen&gt;Members&lt;/fen&gt; are presented separately.
+
+&lt;ex&gt;Thanks in part to their &lt;t&gt;coalition&lt;/t&gt; &lt;fex name="me2"&gt;with McCoy&lt;/fex&gt;, but thanks also to their seniority and the knowledge of some of their leaders, they hold considerable influence &lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+        <excludesFE name="Members" ID="8614"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="07/18/2005 08:14:14 PDT Mon" abbrev="des" name="Descriptor" ID="8619">
+        <definition>&lt;def-root&gt;A characterization of some property of the &lt;fen&gt;Alliance&lt;/fen&gt;.
+
+&lt;ex&gt;The two leaders enjoy an &lt;fex name="Descriptor"&gt;uneasy&lt;/fex&gt; &lt;t&gt;alliance&lt;/t&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Organization</relatedFrame>
+        <relatedFrame>Competition</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="N" name="alliance.n" ID="12499" lemmaID="1047" cBy="605" cDate="07/18/2005 08:05:24 PDT Mon">
+        <definition>COD: a union or association formed for mutual benefit</definition>
+        <sentenceCount annotated="18" total="180"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="alliance"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="coalition.n" ID="12500" lemmaID="6959" cBy="605" cDate="07/18/2005 08:06:42 PDT Mon">
+        <definition>COD: a temporary alliance, especially of political parties forming a government.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="coalition"/>
+    </lexUnit>
+</frame>

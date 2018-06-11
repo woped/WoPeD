@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="243" cDate="10/28/2001 04:10:24 PST Sun" name="Medical_conditions" ID="239" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;Words in this frame name medical conditions or diseases that a patient suffers from, is being treated for, may be cured of, or die of.  The condition or disease may be described in a variety of ways, including the part or area of the body (&lt;fen&gt;Body_Part&lt;/fen&gt;) affected by the condition (e.g. liver cancer, cardiovascular disease), the &lt;fen&gt;Cause&lt;/fen&gt; of the condition (e.g. bacterial meningitis, viral pneumonia), a prominent &lt;fen&gt;Symptom&lt;/fen&gt; of the condition (e.g. asymptomatic stenosis, blue ear disease), the &lt;fen&gt;Patient&lt;/fen&gt; or population (originally) affected by the condition (e.g. bovine tuberculosis, juvenile diabetes), or the (proper) &lt;fen&gt;Name&lt;/fen&gt; used to identify the condition (e.g. Munchausen Syndrome, Lou Gehrig's Disease).  Annotation in this frame is done in respect to the name of the condition or disease.
+
+&lt;ex&gt;John  died of  &lt;fex name="Body_P"&gt;pancreatic&lt;/fex&gt; &lt;t&gt;cancer&lt;/t&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="243" cDate="10/28/2001 06:48:40 PST Sun" abbrev="Pat" name="Patient" ID="2094">
+        <definition>&lt;def-root&gt;This FE is used for the patient, entity, or population (originally) affected by the condition or illness.
+
+&lt;ex&gt;&lt;fex name="Patient"&gt;juvenile&lt;/fex&gt; &lt;t&gt;diabetes&lt;/t&gt;&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Patient"&gt;Dutch Elm&lt;/fex&gt; &lt;t&gt;disease&lt;/t&gt;&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Patient"&gt;Legionnaire's&lt;/fex&gt; &lt;t&gt;disease&lt;/t&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Living_thing" ID="66"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Peripheral" cBy="243" cDate="10/28/2001 06:50:42 PST Sun" abbrev="Body_P" name="Body_Part" ID="2095">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Body_Part&lt;/fen&gt; is used for the part or area of the body affected by the condition or disease.
+&lt;ex&gt;&lt;fex name="Body_P"&gt;cardiovascular&lt;/fex&gt; &lt;t&gt;disease&lt;/t&gt;&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Body_P"&gt;liver&lt;/fex&gt; &lt;t&gt;disease&lt;/t&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Peripheral" cBy="243" cDate="12/30/2001 02:30:42 PST Sun" abbrev="Cause" name="Cause" ID="2208">
+        <definition>&lt;def-root&gt;This FE is used for the cause of a condition or disease.
+&lt;ex&gt;&lt;fex name="Cause"&gt;bacterial&lt;/fex&gt; &lt;t&gt;meningitis&lt;/t&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="243" cDate="12/30/2001 02:44:00 PST Sun" abbrev="Symp" name="Symptom" ID="2209">
+        <definition>&lt;def-root&gt;This FE is used for a prominent symptom of the condition or disease.
+
+&lt;ex&gt;&lt;fex name="Symptom"&gt;asymptomatic&lt;/fex&gt; &lt;t&gt;stenosis&lt;/t&gt;&lt;/ex&gt;
+&lt;ex&gt;I have a &lt;t&gt;cold&lt;/t&gt; &lt;fex name="Symptom"&gt;with a really bad cough&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="243" cDate="08/26/2002 04:34:57 PDT Mon" abbrev="Name" name="Name" ID="3613">
+        <definition>&lt;def-root&gt;This FE is used for the &lt;fen&gt;Name&lt;/fen&gt; that identifies the condition or disease.
+
+&lt;ex&gt;&lt;fex name="Name"&gt;Munchausen&lt;/fex&gt; &lt;t&gt;Syndrome&lt;/t&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="000000" coreType="Core" cBy="303" cDate="12/08/2005 03:16:10 PST Thu" abbrev="" name="Ailment" ID="9687">
+        <definition>&lt;def-root&gt;FN: Any medical problem.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="01/20/2006 12:07:11 PST Fri" abbrev="deg" name="Degree" ID="9870">
+        <definition>&lt;def-root&gt;The extent to which the &lt;fen&gt;Ailment&lt;/fen&gt; diverges from the norm.
+
+&lt;ex&gt;I am &lt;fex name="Degree"&gt;very&lt;/fex&gt; &lt;t&gt;sick&lt;/t&gt;.&lt;/ex&gt;
+
+Since the degree of involvement with an &lt;fen&gt;Ailment&lt;/fen&gt; is equivalent to how negative the experience of the &lt;fen&gt;Patient&lt;/fen&gt; is, in many cases, &lt;fen&gt;Degree&lt;/fen&gt; is expressed by a negative descriptor.
+
+&lt;ex&gt;It seems that he does have &lt;fex name="Degree"&gt;very severe&lt;/fex&gt; &lt;t&gt;eczema&lt;/t&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="7CCD73" fgColor="000000" coreType="Peripheral" cBy="361" cDate="10/29/2007 04:01:15 PDT Mon" abbrev="" name="Place" ID="12030">
+        <definition>&lt;def-root&gt;The location where the &lt;fen&gt;Ailment&lt;/fen&gt; is effecting the &lt;fen&gt;Patient&lt;/fen&gt;s.&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Gradable_attributes</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Observable_body_parts</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Recovery</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="acromegaly.n" ID="4349" lemmaID="45258" cBy="243" cDate="10/28/2001 04:22:28 PST Sun">
+        <definition>COD: abnormal growth of the hands, feet, and face, caused by overproduction of growth hormone by the pituitary gland</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="acromegaly"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="amnesia.n" ID="4352" lemmaID="1258" cBy="243" cDate="10/28/2001 04:32:29 PST Sun">
+        <definition>COD: a partial or total loss of memory</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="amnesia"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Ailment" POS="N" name="arthritis.n" ID="4353" lemmaID="2008" cBy="243" cDate="10/28/2001 04:37:05 PST Sun">
+        <definition>COD: a disease causing painful inflammation and stiffness of the joints</definition>
+        <sentenceCount annotated="20" total="139"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="arthritis"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="anorexia.n" ID="4354" lemmaID="1494" cBy="243" cDate="10/28/2001 04:38:27 PST Sun">
+        <definition>COD: lack of appetite for food, in particular also anorexia nervosa an emotional disorder characterized by an obsessive desire to lose weight by refusing to eat</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="anorexia"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="asphyxia.n" ID="4355" lemmaID="2112" cBy="243" cDate="10/28/2001 04:39:53 PST Sun">
+        <definition>COD: a condition arising when the body is deprived of oxygen, causing unconsciousness or death</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="asphyxia"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Ailment" POS="N" name="asthma.n" ID="4356" lemmaID="2192" cBy="243" cDate="10/28/2001 04:42:56 PST Sun">
+        <definition>COD: a respiratory condition marked by attacks of spasm in the bronchi of the lungs, causing difficulty in breathing and usually associated with allergic reaction</definition>
+        <sentenceCount annotated="20" total="149"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="asthma"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="bronchitis.n" ID="4357" lemmaID="4696" cBy="243" cDate="10/28/2001 04:43:57 PST Sun">
+        <definition>COD: inflammation of the mucous membrane in the bronchial tubes, typically with spasm of bronchial muscle and coughing</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="bronchitis"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="cancer.n" ID="4358" lemmaID="5340" cBy="243" cDate="10/28/2001 04:45:29 PST Sun">
+        <definition>COD: a disease caused by an uncontrolled division of abnormal cells in a part of the body. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="cancer"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="candida.n" ID="4359" lemmaID="45261" cBy="243" cDate="10/28/2001 04:47:20 PST Sun">
+        <definition>COD: a yeast-like parasitic fungus that sometimes causes thrush</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="candida"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="cataract.n" ID="4360" lemmaID="5723" cBy="243" cDate="10/28/2001 04:50:28 PST Sun">
+        <definition>COD: a medical condition in which the lens of the eye becomes progressively opaque, resulting in blurred vision</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="cataract"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="cholangitis.n" ID="4361" lemmaID="45262" cBy="243" cDate="10/28/2001 04:52:27 PST Sun">
+        <definition>FN: inflammation of the bile ducts.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="cholangitis"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="cholecystitis.n" ID="4362" lemmaID="45263" cBy="243" cDate="10/28/2001 04:55:26 PST Sun">
+        <definition>FN: inflammation of the gallbladder, usually caused by the presence of gallstones.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="cholecystitis"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="cholera.n" ID="4363" lemmaID="6411" cBy="243" cDate="10/28/2001 04:57:24 PST Sun">
+        <definition>COD: an infectious and often fatal bacterial disease of the small intestine, typically contracted from infected water supplies and causing severe vomiting and diarrhoea</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="cholera"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="cirrhosis.n" ID="4364" lemmaID="6579" cBy="243" cDate="10/28/2001 04:59:33 PST Sun">
+        <definition>COD: a chronic liver disease marked by degeneration of cells, inflammation, and thickening of tissue</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="cirrhosis"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="cold.n" ID="4365" lemmaID="7137" cBy="243" cDate="10/28/2001 05:00:41 PST Sun">
+        <definition>COD: a common infection in which the mucous membrane of the nose and throat becomes inflamed, causing running at the nose and sneezing</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="cold"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="colitis.n" ID="4366" lemmaID="7151" cBy="243" cDate="10/28/2001 05:02:02 PST Sun">
+        <definition>COD: inflammation of the lining of the colon</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="colitis"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="conjunctivitis.n" ID="4367" lemmaID="7838" cBy="243" cDate="10/28/2001 05:02:52 PST Sun">
+        <definition>COD: inflammation of the conjunctiva</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="conjunctivitis"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="cryptosporidiosis.n" ID="4368" lemmaID="45264" cBy="243" cDate="10/28/2001 05:04:41 PST Sun">
+        <definition>FN: a diarrheal disease caused by a microscopic parasite (Cryptosporidium parvum).</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="cryptosporidiosis"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="diarrhea.n" ID="4369" lemmaID="45265" cBy="243" cDate="10/28/2001 05:08:06 PST Sun">
+        <definition>COD: a condition in which faeces are discharged from the bowels frequently and in a liquid form</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="diarrhoea"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="depression.n" ID="4370" lemmaID="10259" cBy="243" cDate="10/28/2001 05:09:42 PST Sun">
+        <definition>COD: severe despondency and dejection, especially when long-lasting</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="depression"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="dermatitis.n" ID="4371" lemmaID="10295" cBy="243" cDate="10/28/2001 05:11:19 PST Sun">
+        <definition>COD: inflammation of the skin as a result of irritation by or allergic reaction to an external agent</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="dermatitis"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="diabetes.n" ID="4372" lemmaID="10536" cBy="243" cDate="10/28/2001 05:12:20 PST Sun">
+        <definition>COD: a disorder of the metabolism causing excessive thirst and the production of large amounts of urine</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="diabetes"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="diphtheria.n" ID="4373" lemmaID="10733" cBy="243" cDate="10/28/2001 05:13:40 PST Sun">
+        <definition>COD: a serious bacterial disease causing inflammation of the mucous membranes and formation of a false membrane in the throat which hinders breathing and swallowing</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="diphtheria"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="diverticulosis.n" ID="4374" lemmaID="45266" cBy="243" cDate="10/28/2001 05:14:53 PST Sun">
+        <definition>COD: a condition in which diverticula are present in the intestine without signs of inflammation</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="diverticulosis"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="dysmenorrhoea.n" ID="4375" lemmaID="45267" cBy="243" cDate="10/28/2001 05:16:52 PST Sun">
+        <definition>COD: painful menstruation</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="dysmenorrhoea"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="eczema.n" ID="4376" lemmaID="12208" cBy="243" cDate="10/28/2001 05:18:36 PST Sun">
+        <definition>COD: a medical condition in which patches of skin become rough and inflamed with blisters which cause itching and bleeding</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="eczema"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Ailment" POS="N" name="flu.n" ID="4377" lemmaID="14807" cBy="243" cDate="10/28/2001 05:19:59 PST Sun">
+        <definition>COD: influenza or any similar, milder infection</definition>
+        <sentenceCount annotated="18" total="264"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="flu"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="influenza.n" ID="4378" lemmaID="19886" cBy="243" cDate="10/28/2001 05:21:22 PST Sun">
+        <definition>COD: a highly contagious viral infection of the respiratory passages causing fever, severe aching, and coughing</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="influenza"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="hepatitis.n" ID="4379" lemmaID="17873" cBy="243" cDate="10/28/2001 05:25:23 PST Sun">
+        <definition>COD: a disease characterized by inflammation of the liver</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="hepatitis"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="hernia.n" ID="4380" lemmaID="17936" cBy="243" cDate="10/28/2001 05:26:48 PST Sun">
+        <definition>COD: a condition in which part of an organ (most commonly, the intestine) is displaced and protrudes through the wall of the cavity containing it</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="hernia"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="hypertension.n" ID="4381" lemmaID="45269" cBy="243" cDate="10/28/2001 05:27:42 PST Sun">
+        <definition>COD: abnormally high blood pressure</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="hypertension"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="hypoglycaemia.n" ID="4382" lemmaID="45270" cBy="243" cDate="10/28/2001 05:29:43 PST Sun">
+        <definition>COD:  deficiency of glucose in the bloodstream</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="hypoglycaemia"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="illness.n" ID="4383" lemmaID="18977" cBy="243" cDate="10/28/2001 05:30:33 PST Sun">
+        <definition>COD: a disease or period of sickness</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="illness"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="disease.n" ID="4384" lemmaID="10928" cBy="243" cDate="10/28/2001 05:31:31 PST Sun">
+        <definition>COD: a disorder of structure or function in a human, animal, or plant, especially one that produces specific symptoms or that affects a specific part</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="disease"/>
+    </lexUnit>
+    <lexUnit status="New" POS="N" name="sickness.n" ID="4385" lemmaID="35799" cBy="243" cDate="10/28/2001 05:32:27 PST Sun">
+        <definition>COD: the state of being ill</definition>
+        <sentenceCount annotated="12" total="104"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="sickness"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="infection.n" ID="4386" lemmaID="19825" cBy="243" cDate="10/28/2001 05:34:35 PST Sun">
+        <definition>COD: an infectious disease</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="infection"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Ailment" POS="N" name="jaundice.n" ID="4387" lemmaID="20849" cBy="243" cDate="10/28/2001 05:35:25 PST Sun">
+        <definition>COD: yellowing of the skin due to an excess of bile pigments in the blood</definition>
+        <sentenceCount annotated="20" total="70"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="jaundice"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Ailment" POS="N" name="leprosy.n" ID="4388" lemmaID="22105" cBy="243" cDate="10/28/2001 05:36:40 PST Sun">
+        <definition>COD:  a contagious bacterial disease that affects the skin, mucous membranes, and nerves, causing discoloration and lumps on the skin and, in severe cases, disfigurement and deformities</definition>
+        <sentenceCount annotated="20" total="116"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="leprosy"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="leukemia.n" ID="4389" lemmaID="45271" cBy="243" cDate="10/28/2001 05:39:50 PST Sun">
+        <definition>COD:  a malignant progressive disease in which the bone marrow and other blood-forming organs produce increased numbers of immature or abnormal leucocytes, suppressing the production of normal blood cells</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="leukemia"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="malaria.n" ID="4390" lemmaID="23237" cBy="243" cDate="10/28/2001 05:42:10 PST Sun">
+        <definition>COD: a mosquito-borne intermittent and remittent fever endemic to warmer regions and caused by a protozoan parasite (genus Plasmodium)</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="malaria"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="measles.n" ID="4391" lemmaID="23817" cBy="243" cDate="10/28/2001 05:42:57 PST Sun">
+        <definition>COD: an infectious viral disease causing fever and a red rash, typically occurring in childhood</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="measles"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="meningitis.n" ID="4392" lemmaID="23975" cBy="243" cDate="10/28/2001 05:43:50 PST Sun">
+        <definition>COD: a disease in which there is inflammation of the meninges, caused by viral or bacterial infection</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="meningitis"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="menorrhagia.n" ID="4393" lemmaID="45272" cBy="243" cDate="10/28/2001 05:45:23 PST Sun">
+        <definition>COD: abnormally heavy bleeding at menstruation</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="menorrhagia"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="polio.n" ID="4394" lemmaID="29596" cBy="243" cDate="10/28/2001 05:46:45 PST Sun">
+        <definition>COD: short for poliomyelitis</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="polio"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="psoriasis.n" ID="4395" lemmaID="30989" cBy="243" cDate="10/28/2001 05:47:33 PST Sun">
+        <definition>COD: a skin disease marked by red, itchy, scaly patches</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="psoriasis"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="pyelonephritis.n" ID="4396" lemmaID="45273" cBy="243" cDate="10/28/2001 05:51:46 PST Sun">
+        <definition>FN: infection of the kidneys.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="pyelonephritis"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="rosacea.n" ID="4397" lemmaID="45274" cBy="243" cDate="10/28/2001 05:53:01 PST Sun">
+        <definition>COD:  a condition in which certain facial blood vessels enlarge, giving the cheeks and nose a flushed appearance</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="rosacea"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="schizophrenia.n" ID="4398" lemmaID="34405" cBy="243" cDate="10/28/2001 05:54:11 PST Sun">
+        <definition>COD: a long-term mental disorder of a type involving a breakdown in the relation between thought, emotion, and behaviour, leading to faulty perception, inappropriate actions and feelings, and withdrawal from reality into fantasy and delusion</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="schizophrenia"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="sciatica.n" ID="4399" lemmaID="34440" cBy="243" cDate="10/28/2001 06:02:40 PST Sun">
+        <definition>COD: pain affecting the back, hip, and outer side of the leg, caused by compression of a spinal nerve root in the lower back</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="sciatica"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="shock.n" ID="4400" lemmaID="35586" cBy="243" cDate="10/28/2001 06:04:22 PST Sun">
+        <definition>COD: an acute medical condition associated with a fall in blood pressure, caused by loss of blood, severe burns, sudden emotional stress, etc.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="shock"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="stress.n" ID="4401" lemmaID="38321" cBy="243" cDate="10/28/2001 06:05:33 PST Sun">
+        <definition>COD: a state of mental, emotional, or other strain</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="stress"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="strongylosis.n" ID="4402" lemmaID="45277" cBy="243" cDate="10/28/2001 06:06:54 PST Sun">
+        <definition>FN: infestation of strongyle worms.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="strongylosis"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="syphilis.n" ID="4403" lemmaID="39306" cBy="243" cDate="10/28/2001 06:25:27 PST Sun">
+        <definition>COD: a sexually transmitted bacterial disease, progressing if untreated from infection of the genitals via the skin and mucous membranes to the bones, muscles, and brain</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="syphilis"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="tetanus.n" ID="4404" lemmaID="39969" cBy="243" cDate="10/28/2001 06:26:42 PST Sun">
+        <definition>COD: a bacterial disease causing rigidity and spasms of the voluntary muscles</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="tetanus"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="tuberculosis.n" ID="4405" lemmaID="41434" cBy="243" cDate="10/28/2001 06:27:39 PST Sun">
+        <definition>COD: an infectious bacterial disease characterized by the growth of nodules (tubercles) in the tissues, especially the lungs</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="tuberculosis"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="tumor.n" ID="4406" lemmaID="45278" cBy="243" cDate="10/28/2001 06:30:45 PST Sun">
+        <definition>COD: a swelling of a part of the body, generally without inflammation, caused by an abnormal growth of tissue, whether benign or malignant</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="tumor"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="ulcer.n" ID="4407" lemmaID="41734" cBy="243" cDate="10/28/2001 06:33:22 PST Sun">
+        <definition>COD: an open sore on an external or internal surface of the body, caused by a break in the skin or mucous membrane which fails to heal</definition>
+        <sentenceCount annotated="1" total="1"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="ulcer"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="rubella.n" ID="4559" lemmaID="33694" cBy="243" cDate="12/18/2001 04:38:42 PST Tue">
+        <definition>COD: a contagious viral disease, with symptoms like mild measles; German measles</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="rubella"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="mumps.n" ID="4560" lemmaID="25220" cBy="243" cDate="12/18/2001 05:38:57 PST Tue">
+        <definition>COD: a viral disease mainly affecting children, causing swelling of the parotid salivary glands of the face</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="mumps"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="bacterial meningitis.n" ID="4809" lemmaID="45432" cBy="243" cDate="02/05/2002 10:48:41 PST Tue">
+        <definition>FN: an infection of the fluid of a person's spinal cord and the fluid that surrounds the brain caused by a bacteria (as opposed to a virus)</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="bacterial"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="meningitis"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="German measles.n" ID="4970" lemmaID="45471" cBy="243" cDate="02/20/2002 05:08:45 PST Wed">
+        <definition>COD: another term for rubella.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="german"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="measles"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="ailment.n" ID="10361" lemmaID="862" cBy="445" cDate="03/18/2004 02:36:40 PST Thu">
+        <definition>COD: a minor illness.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="ailment"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="wound.n" ID="10362" lemmaID="44543" cBy="445" cDate="03/18/2004 02:38:56 PST Thu">
+        <definition>COD: an injury to living tissue caused by a cut, blow, or other impact.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="wound"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="affliction.n" ID="10363" lemmaID="694" cBy="445" cDate="03/18/2004 02:39:36 PST Thu">
+        <definition>FN: ailment.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="affliction"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="condition.n" ID="10364" lemmaID="7671" cBy="445" cDate="03/18/2004 02:47:26 PST Thu">
+        <definition>COD: an illness or medical problem.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="condition"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="syndrome.n" ID="11239" lemmaID="39288" cBy="303" cDate="11/19/2004 04:25:27 PST Fri">
+        <definition>FN: an illness characterized by a group of symptoms occurring together.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="syndrome"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Ailment" POS="N" name="stenosis.n" ID="11240" lemmaID="49713" cBy="303" cDate="11/19/2004 04:30:55 PST Fri">
+        <definition>COD: the abnormal narrowing of a passage in the body.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="stenosis"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="sick.a" ID="13088" lemmaID="35786" cBy="664" cDate="01/23/2006 01:30:29 PST Mon">
+        <definition>COD: affected by physical or mental illness.</definition>
+        <sentenceCount annotated="21" total="220"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="sick"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="ill.a" ID="13089" lemmaID="18940" cBy="664" cDate="01/23/2006 01:31:18 PST Mon">
+        <definition>COD: not in full health; unwell.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="ill"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="unwell.a" ID="13090" lemmaID="42435" cBy="664" cDate="01/23/2006 01:31:55 PST Mon">
+        <definition>COD: ill.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="unwell"/>
+    </lexUnit>
+    <lexUnit status="New" POS="N" name="health.n" ID="13091" lemmaID="17669" cBy="664" cDate="01/23/2006 01:33:30 PST Mon">
+        <definition>COD: the state of being free from illness or injury.</definition>
+        <sentenceCount annotated="9" total="207"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="health"/>
+        <semType name="Negative" ID="99"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="plague.n" ID="13920" lemmaID="29216" cBy="361" cDate="03/02/2007 02:18:26 PST Fri">
+        <definition>COD: a contagious bacterial disease characterized by fever and delirium, typically with the formation of buboes (see bubonic plague) and sometimes infection of the lungs (pneumonic plague).  </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="plague"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="malnourishment.n" ID="14521" lemmaID="50720" cBy="361" cDate="08/15/2007 12:43:41 PDT Wed">
+        <definition>FN: the state of not being poorly nourished becuase of lack of food. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="malnourishment"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="malnutrition.n" ID="14555" lemmaID="50740" cBy="361" cDate="10/24/2007 11:52:44 PDT Wed">
+        <definition>FN: the affliction of being undernourished</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="malnutrition"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="paraplegic.a" ID="14760" lemmaID="27796" cBy="597" cDate="02/01/2008 12:12:39 PST Fri">
+        <definition>FN: being paralyzed from the waist down</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="paraplegic"/>
+    </lexUnit>
+    <lexUnit status="New" POS="A" name="healthy.a" ID="15263" lemmaID="17673" cBy="597" cDate="11/19/2008 05:00:54 PST Wed">
+        <definition>FN: in good health; not ill</definition>
+        <sentenceCount annotated="7" total="160"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="healthy"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="AIDS.n" ID="15302" lemmaID="50980" cBy="597" cDate="02/11/2009 12:19:42 PST Wed">
+        <definition>COD: a disease, caused by a virus transmitted in body fluids, in which there is a severe loss of cellular immunity leaving the sufferer susceptible to infection and malignancy</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="AIDS"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="Alzheimer's.n" ID="15303" lemmaID="50981" cBy="597" cDate="02/11/2009 12:20:38 PST Wed">
+        <definition>COD: a form of progressive mental deterioration due to generalized degeneration of the brain, occurring in middle or old age.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="Alzheimer's"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Ailment" POS="N" name="disorder.n" ID="15355" lemmaID="11058" cBy="589" cDate="06/15/2009 12:05:16 PDT Mon">
+        <definition>COD: a disruption of normal physical or mental functions</definition>
+        <sentenceCount annotated="20" total="120"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="disorder"/>
+    </lexUnit>
+</frame>

@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="11/22/2002 02:05:22 PST Fri" name="Attack" ID="424" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Assailant&lt;/fen&gt; physically attacks a &lt;fen&gt;Victim&lt;/fen&gt; (which is usually but not always sentient), causing or intending to cause the &lt;fen&gt;Victim&lt;/fen&gt; physical damage.   A &lt;fen&gt;Weapon&lt;/fen&gt; used by the &lt;fen&gt;Assailant&lt;/fen&gt; may also be mentioned, in addition to the usual &lt;fen&gt;Place&lt;/fen&gt;, &lt;fen&gt;Time&lt;/fen&gt;, &lt;fen&gt;Purpose&lt;/fen&gt;, &lt;fen&gt;Reason&lt;/fen&gt;, etc.  Sometimes a location is used metonymically to stand for the &lt;fen&gt;Assailant&lt;/fen&gt; or the &lt;fen&gt;Victim&lt;/fen&gt;, and in such cases the &lt;fen&gt;Place&lt;/fen&gt; FE will be annotated on a second FE layer.
+
+&lt;ex&gt;&lt;fex name="Time"&gt;As soon as he stepped out of the bar&lt;/fex&gt; &lt;fex name="Victim"&gt;he&lt;/fex&gt; was &lt;t&gt;set&lt;/t&gt; &lt;fex name="Victim"&gt;upon&lt;/fex&gt; &lt;fex name="Assailant"&gt;by four men in ski-masks&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;Is &lt;fex name="Asl"&gt;he&lt;/fex&gt; &lt;t&gt;invading&lt;/t&gt; &lt;fex name="Victim"&gt;Iraq&lt;/fex&gt; &lt;fex name="Purp"&gt;just to cover other shortcomings&lt;/fex&gt;?&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Time"&gt;Then&lt;/fex&gt; &lt;fex name="Assailant"&gt;Jon-O's forces&lt;/fex&gt; &lt;t&gt;ambushed&lt;/t&gt; &lt;fex name="Victim"&gt;them&lt;/fex&gt; &lt;fex name="Place"&gt;on the left flank&lt;/fex&gt; &lt;fex name="Source"&gt;from a line of low hills&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="11/22/2002 02:12:37 PST Fri" abbrev="Vic" name="Victim" ID="3905">
+        <definition>&lt;def-root&gt;This FE is the being or entity that is injured by the &lt;fen&gt;Assailant&lt;/fen&gt;'s attack.
+&lt;ex&gt;The mysterious fighter &lt;t&gt;attacked&lt;/t&gt; &lt;fex name="Victim"&gt;the guardsmen&lt;/fex&gt; with a sabre.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="11/22/2002 02:14:16 PST Fri" abbrev="Wep" name="Weapon" ID="3906">
+        <definition>&lt;def-root&gt;An entity used by the &lt;fen&gt;Assailant&lt;/fen&gt; to cause damage to the &lt;fen&gt;Victim&lt;/fen&gt;.
+&lt;ex&gt;The mysterious fighter &lt;t&gt;attacked&lt;/t&gt; the guardsmen &lt;fex name="Weapon"&gt;with a sabre&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Physical_entity" ID="70"/>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="11/22/2002 02:15:43 PST Fri" abbrev="Asl" name="Assailant" ID="3907">
+        <definition>&lt;def-root&gt;The person (or other self-directed entity) that is attempting physical harm to the &lt;fen&gt;Victim&lt;/fen&gt;.
+&lt;ex&gt;&lt;fex name="Assailant"&gt;The mysterious fighter&lt;/fex&gt; &lt;t&gt;attacked&lt;/t&gt; the guardsmen with a sabre.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="11/22/2002 02:17:52 PST Fri" abbrev="Mnr" name="Manner" ID="3908">
+        <definition>&lt;def-root&gt;Any description of the event which is not covered by more specific FEs, including epistemic modification (probably, presumably, mysteriously), force (hard, softly), secondary effects (quietly, loudly), and general descriptions comparing events (the same way). It may also indicate salient characteristics of an &lt;fen&gt;Assailant&lt;/fen&gt; that also affect the action (presumptuously, coldly, deliberately, eagerly, carefully). &lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="11/22/2002 02:17:52 PST Fri" abbrev="Mns" name="Means" ID="3909">
+        <definition>&lt;def-root&gt;An intentional action performed by the &lt;fen&gt;Assailant&lt;/fen&gt; that accomplishes the assault. 
+&lt;ex&gt;&lt;fex name="Assailant"&gt;Japanese&lt;/fex&gt; &lt;t&gt;ambushed&lt;/t&gt; &lt;fex name="Victim"&gt;Americans&lt;/fex&gt; &lt;fex name="Means"&gt;by bombing Pearl Harbor&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="11/22/2002 02:17:52 PST Fri" abbrev="Place" name="Place" ID="3910">
+        <definition>&lt;def-root&gt;This FE identifies the place where the &lt;fen&gt;Assailant&lt;/fen&gt; makes an assault on the &lt;fen&gt;Victim&lt;/fen&gt;.
+&lt;ex&gt;&lt;fex name="Time"&gt;Then&lt;/fex&gt; &lt;fex name="Assailant"&gt;Jon-O's forces&lt;/fex&gt; &lt;t&gt;ambushed&lt;/t&gt; &lt;fex name="Victim"&gt;them&lt;/fex&gt; &lt;fex name="Place"&gt;on the left flank&lt;/fex&gt; &lt;fex name="Source"&gt;from a line of low hills&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="11/22/2002 02:17:52 PST Fri" abbrev="Purp" name="Purpose" ID="3911">
+        <definition>&lt;def-root&gt;This FE identifies the purpose for which an &lt;fen&gt;Assailant&lt;/fen&gt; attacks the &lt;fen&gt;Victim&lt;/fen&gt;.
+&lt;ex&gt;John &lt;t&gt;assaulted&lt;/t&gt; Thibault &lt;fex name="Purpose"&gt;to prove his manhood&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="11/22/2002 02:17:52 PST Fri" abbrev="Reason" name="Reason" ID="3912">
+        <definition>&lt;def-root&gt;A state of affairs that the &lt;fen&gt;Assailant&lt;/fen&gt; is responding to that leads them to make an assault on the &lt;fen&gt;Victim&lt;/fen&gt;.
+&lt;ex&gt;&lt;fex name="Assailant"&gt;Gloria&lt;/fex&gt; &lt;t&gt;attacked&lt;/t&gt; &lt;fex name="Victim"&gt;Michael&lt;/fex&gt; &lt;fex name="Reason"&gt;for the cause of Justice&lt;/fex&gt;.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="11/22/2002 02:17:52 PST Fri" abbrev="Time" name="Time" ID="3913">
+        <definition>&lt;def-root&gt;This FE identifies the time when the &lt;fen&gt;Assailant&lt;/fen&gt; attacks the &lt;fen&gt;Victim&lt;/fen&gt;.
+&lt;ex&gt;&lt;fex name="Time"&gt;As soon as he stepped out of the bar&lt;/fex&gt; &lt;fex name="Victim"&gt;he&lt;/fex&gt; was &lt;t&gt;set&lt;/t&gt; &lt;fex name="Victim"&gt;upon&lt;/fex&gt; &lt;fex name="Assailant"&gt;by four men in ski-masks&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="11/25/2002 06:15:54 PST Mon" abbrev="Src" name="Source" ID="3918">
+        <definition>&lt;def-root&gt;The starting-point of the motion of the &lt;fen&gt;Assailant&lt;/fen&gt; or projectiles of the &lt;fen&gt;Assailant&lt;/fen&gt; as they move toward the the &lt;fen&gt;Place&lt;/fen&gt; that the &lt;fen&gt;Victim&lt;/fen&gt; is occupying in the attack.  In prepositional phrases, the prepositional object expresses the starting point of motion.  With particles, the starting point of motion is understood from context.
+&lt;/def-root&gt;</definition>
+        <semType name="Source" ID="151"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="618" cDate="06/25/2003 12:32:09 PDT Wed" abbrev="Dep" name="Depictive" ID="4689">
+        <definition>&lt;def-root&gt;This FE is used for any &lt;fen&gt;Depictive&lt;/fen&gt; phrase describeing the state of the &lt;fen&gt;Assailant&lt;/fen&gt; or &lt;fen&gt;Victim&lt;/fen&gt; while the Attack occurs.
+&lt;ex&gt;They &lt;t&gt;attacked&lt;/t&gt; us &lt;fex name="Depictive"&gt;in large numbers&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="EEE8AA" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="06/01/2006 09:56:36 PDT Thu" abbrev="" name="Re_encoding" ID="10164">
+        <definition>&lt;def-root&gt;This FE presents the current frame as an integral part of a larger conceptualization expressed by another frame. The frame expressed by the target typically corresponds to a Means action within the frame expressed by the Re_encoding, but not necessarily. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A9A9A9" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="06/01/2006 10:06:31 PDT Thu" abbrev="" name="Result" ID="10166">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Result&lt;/fen&gt; of the attack on the &lt;fen&gt;Victim&lt;/fen&gt; by the &lt;fen&gt;Assailant&lt;/fen&gt;. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="361" cDate="06/01/2006 10:12:38 PDT Thu" abbrev="" name="Containing_event" ID="10167">
+        <definition>&lt;def-root&gt;This FE denotes an event that occurs or state of affairs that holds at a time that includes the time during which the event or state of affairs reported by the target occurs and of which it is taken to be a part.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="06/01/2006 10:47:01 PDT Thu" abbrev="" name="Explanation" ID="10168">
+        <definition>&lt;def-root&gt;The Explanation denotes a proposition from which the main clause (headed by the target) logically follows. This often means that the Explanation causes the target's proposition, but not in all cases. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFD700" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="06/01/2006 11:13:03 PDT Thu" abbrev="" name="Particular iteration" ID="10169">
+        <definition>&lt;def-root&gt;Expressions marked with this extra-thematic FE modify a non-iterative use of the target, and indicate that it is conceived as embedded within an iterated series of similar events or states. In addition, most expressions of Particular_iteration indicate which instance of the series is being referred to.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="7CCD73" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="06/01/2006 11:17:24 PDT Thu" abbrev="" name="Circumstances" ID="10170">
+        <definition>&lt;def-root&gt;Circumstances describe the state of the world (at a particular time and place) which is specifically independent of the event itself and any of its participants. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="90876C" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="361" cDate="06/01/2006 02:00:25 PDT Thu" abbrev="" name="Iteration" ID="10172">
+        <definition>&lt;def-root&gt;The frame element Iteration is used for expressions that indicate the number of times an event or state (of the kind denoted by the target in its clause) has taken place or held.
+Form: once, twice, Cardinal expression + /it times, /it lots/a lot &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="361" cDate="06/06/2006 12:43:54 PDT Tue" abbrev="" name="Event_description" ID="10244">
+        <definition>&lt;def-root&gt;In general, this FE is used for phrases that describe the clause of the target as a whole. There are two somewhat distinct subgroups of sentence modifiers that cover this function.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A9A9A9" fgColor="FFFFFF" coreType="Peripheral" cBy="361" cDate="03/16/2007 12:56:02 PDT Fri" abbrev="" name="Path" ID="11216">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Path&lt;/fen&gt; refers to (a part of) the ground over which the &lt;fen&gt;Assailant&lt;/fen&gt; travels. &lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Intentionally_affect</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Besieging</relatedFrame>
+        <relatedFrame>Invading</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on">
+        <relatedFrame>Hostile_encounter</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Defend</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="attack.v" ID="7742" lemmaID="2283" cBy="664" cDate="11/22/2002 02:27:38 PST Fri">
+        <definition>COD:  take aggressive action against.</definition>
+        <sentenceCount annotated="24" total="130"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="attack"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="assault.v" ID="7743" lemmaID="2131" cBy="664" cDate="11/22/2002 02:27:49 PST Fri">
+        <definition>COD: make an assault on. </definition>
+        <sentenceCount annotated="21" total="207"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="assault"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="assault.n" ID="7744" lemmaID="2130" cBy="664" cDate="11/22/2002 02:28:01 PST Fri">
+        <definition>COD:  a violent attack.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="assault"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="attack.n" ID="7745" lemmaID="2282" cBy="664" cDate="11/22/2002 02:28:15 PST Fri">
+        <definition>COD:  an instance of attacking.</definition>
+        <sentenceCount annotated="13" total="133"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="attack"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="V" name="fall_(upon).v" ID="7746" lemmaID="13870" cBy="664" cDate="11/22/2002 02:29:39 PST Fri">
+        <definition>FN: attack suddenly and forcefully. (used only with PP-upon/on)</definition>
+        <sentenceCount annotated="0" total="140"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="fall"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="incursion.n" ID="7758" lemmaID="19563" cBy="664" cDate="11/25/2002 04:03:41 PST Mon">
+        <definition>COD:  an invasion or attack, especially a sudden or brief one.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="incursion"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="offensive.n" ID="7760" lemmaID="26558" cBy="664" cDate="11/25/2002 04:04:28 PST Mon">
+        <definition>COD:  a military campaign of attack.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="offensive"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="onset.n" ID="7761" lemmaID="26743" cBy="664" cDate="11/25/2002 04:04:45 PST Mon">
+        <definition>COD:  a military attack.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="onset"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="strike.n" ID="7762" lemmaID="38349" cBy="664" cDate="11/25/2002 04:05:09 PST Mon">
+        <definition>COD:  a sudden attack, typically a military one.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="strike"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="onslaught.n" ID="7763" lemmaID="26748" cBy="664" cDate="11/25/2002 04:05:26 PST Mon">
+        <definition>COD:  a fierce or destructive attack.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="onslaught"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="V" name="charge.v" ID="7764" lemmaID="6091" cBy="664" cDate="11/25/2002 04:05:44 PST Mon">
+        <definition>COD:  rush forward in attack. </definition>
+        <sentenceCount annotated="0" total="190"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="charge"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="charge.n" ID="7765" lemmaID="6090" cBy="664" cDate="11/25/2002 04:05:56 PST Mon">
+        <definition>COD: a headlong rush forward, typically in attack.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="charge"/>
+    </lexUnit>
+    <lexUnit status="Problem" POS="V" name="invade.v" ID="7766" lemmaID="20501" cBy="664" cDate="11/25/2002 04:06:20 PST Mon">
+        <definition>COD:  enter (a country) as or with an army so as to subjugate or occupy it.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="invade"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="lay_(into).v" ID="7767" lemmaID="21875" cBy="664" cDate="11/25/2002 04:08:36 PST Mon">
+        <definition>COD:  attack violently.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="lay"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="set_(upon).v" ID="7768" lemmaID="35224" cBy="664" cDate="11/25/2002 04:09:41 PST Mon">
+        <definition>COD:  attack (someone) violently. (NB:  used only with PP-upon/on.)</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="set"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="storm.v" ID="7769" lemmaID="38208" cBy="664" cDate="11/25/2002 04:11:15 PST Mon">
+        <definition>COD:  (of troops) suddenly attack and capture (a place).</definition>
+        <sentenceCount annotated="12" total="185"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="storm"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="strike.v" ID="7770" lemmaID="38350" cBy="664" cDate="11/25/2002 05:38:04 PST Mon">
+        <definition>COD: attack suddenly. </definition>
+        <sentenceCount annotated="5" total="270"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="strike"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="ambush.v" ID="7771" lemmaID="1219" cBy="664" cDate="11/25/2002 06:13:03 PST Mon">
+        <definition>FN: attack unexpectedly from a concealed position.</definition>
+        <sentenceCount annotated="11" total="85"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="ambush"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="ambush.n" ID="7772" lemmaID="1218" cBy="664" cDate="11/25/2002 06:14:41 PST Mon">
+        <definition>COD:  a surprise attack by people lying in wait in a concealed position.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="ambush"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="jump.v" ID="7773" lemmaID="21138" cBy="664" cDate="11/25/2002 06:28:23 PST Mon">
+        <definition>COD:  attack suddenly and unexpectedly.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="jump"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="assail.v" ID="11876" lemmaID="2124" cBy="303" cDate="04/18/2005 05:50:48 PDT Mon">
+        <definition>COD: make a concerted or violent attack on.</definition>
+        <sentenceCount annotated="9" total="70"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="assail"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="raid.v" ID="11878" lemmaID="31709" cBy="303" cDate="04/18/2005 06:05:53 PDT Mon">
+        <definition>FN: conduct a surprise attack</definition>
+        <sentenceCount annotated="19" total="168"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="raid"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="bomb.v" ID="12379" lemmaID="4098" cBy="618" cDate="07/01/2005 12:22:05 PDT Fri">
+        <definition>COD: attack with a bomb or bombs.</definition>
+        <sentenceCount annotated="15" total="113"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="bomb"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="bombing.n" ID="12380" lemmaID="50135" cBy="618" cDate="07/01/2005 12:24:28 PDT Fri">
+        <definition>COD: the act of attacking with a bomb or bombs.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="bombing"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="raid.n" ID="12781" lemmaID="31708" cBy="664" cDate="10/11/2005 04:21:00 PDT Tue">
+        <definition>COD: a rapid surprise attack on people or premises.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="raid"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="attacker.n" ID="13355" lemmaID="2284" cBy="618" cDate="07/10/2006 02:07:38 PDT Mon">
+        <definition>FN: individual who makes an attack.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="attacker"/>
+        <semType name="Agentive_noun" ID="102"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="offensive.a" ID="13750" lemmaID="26559" cBy="361" cDate="02/21/2007 11:54:06 PST Wed">
+        <definition>COD: (of a military operation or weapon) involved or used in active attack.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="offensive"/>
+    </lexUnit>
+    <lexUnit status="Problem" POS="N" name="invader.n" ID="13999" lemmaID="20502" cBy="361" cDate="03/16/2007 03:14:02 PDT Fri">
+        <definition>FN: One who invades. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="invader"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="infiltrate.v" ID="14710" lemmaID="19849" cBy="597" cDate="01/25/2008 02:14:04 PST Fri">
+        <definition>FN: to sneak across enemy lines with the intention of spying or attacking</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="infiltrate"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="infiltration.n" ID="14711" lemmaID="19850" cBy="597" cDate="01/25/2008 02:16:28 PST Fri">
+        <definition>FN: the event of infiltrating</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="infiltration"/>
+    </lexUnit>
+</frame>

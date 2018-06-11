@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="03/25/2002 06:16:46 PST Mon" name="Cause_to_wake" ID="293" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Agent&lt;/fen&gt; or &lt;fen&gt;Cause&lt;/fen&gt; causes a &lt;fen&gt;Sleeper&lt;/fen&gt; to transition from the &lt;fen&gt;Sleep_state&lt;/fen&gt; to wakeful consciousness.&lt;/def-root&gt;</definition>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="03/25/2002 06:17:15 PST Mon" abbrev="Place" name="Place" ID="2518">
+        <definition>&lt;def-root&gt;Where the event takes place.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="03/25/2002 06:17:15 PST Mon" abbrev="Slpr" name="Sleeper" ID="2519">
+        <definition>&lt;def-root&gt;The person or being that is sleeping.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="03/25/2002 06:17:15 PST Mon" abbrev="Time" name="Time" ID="2520">
+        <definition>&lt;def-root&gt;When the event occurs.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="03/26/2002 05:10:37 PST Tue" abbrev="Agt" name="Agent" ID="2530">
+        <definition>&lt;def-root&gt;The Agent is the person performing the intentional act.&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="03/26/2002 05:10:39 PST Tue" abbrev="Ins" name="Instrument" ID="2531">
+        <definition>&lt;def-root&gt;This FE identifies the Instrument with which an Agent intentionally affects a Patient.&lt;/def-root&gt;</definition>
+        <semType name="Physical_entity" ID="70"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="03/26/2002 05:10:41 PST Tue" abbrev="Mns" name="Means" ID="2532">
+        <definition>&lt;def-root&gt;This FE identifies the Means by which an Agent intentionally affects a Patient.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="03/26/2002 05:10:58 PST Tue" abbrev="Purp" name="Purpose" ID="2533">
+        <definition>&lt;def-root&gt;This FE identifies the purpose for which an &lt;fen&gt;Agent&lt;/fen&gt; wakes the &lt;fen&gt;Sleeper&lt;/fen&gt;.
+&lt;ex&gt;John &lt;t&gt;roused&lt;/t&gt; her &lt;fex name="Purpose"&gt;to irritate her&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="03/26/2002 05:11:03 PST Tue" abbrev="Reason" name="Reason" ID="2534">
+        <definition>&lt;def-root&gt;This FE identifies the Reason for which an intentional act is performed.
+Mary &lt;t&gt;woke&lt;/t&gt; him &lt;fex name="Reason"&gt;because he looked troubled&lt;/fex&gt;.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="04/02/2002 10:18:06 PST Tue" abbrev="Cause" name="Cause" ID="2536">
+        <definition>&lt;def-root&gt;An animate or inanimate entity, a force, or event that produces an effect. Volitionality is not a necessary characteristic of Causes. 
+&lt;ex&gt;&lt;fex name="Cause"&gt;The rain&lt;/fex&gt; &lt;t&gt;woke&lt;/t&gt; me.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Cause"&gt;The smell of cooking&lt;/fex&gt; &lt;t&gt;woke&lt;/t&gt; the children.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Agent" ID="2530"/>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="04/02/2002 10:18:57 PST Tue" abbrev="" name="Sleep_state" ID="2537">
+        <definition>&lt;def-root&gt;This describes the state out of which the Sleeper is awakened.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="08/28/2002 05:42:31 PDT Wed" abbrev="Mnr" name="Manner" ID="3664">
+        <definition>&lt;def-root&gt;Any description of the event (or state) which is not covered by more specific FEs, including epistemic modification (probably, presumably, mysteriously), force (hard, softly), secondary effects (quietly, loudly), and general descriptions comparing events (the same way).  It may also indicate salient characteristics of an &lt;fen&gt;Agent&lt;/fen&gt; that also affect the action (presumptuously, coldly, deliberately, eagerly, carefully). &lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="309" cDate="10/02/2003 11:36:59 PDT Thu" abbrev="Degr" name="Degree" ID="5415">
+        <definition>&lt;def-root&gt;The degree to which the &lt;fen&gt;Sleeper&lt;/fen&gt; ends up awake.
+
+&lt;ex&gt;I couldn't manage to &lt;t&gt;rouse&lt;/t&gt; him &lt;fex name="Degr"&gt;completely&lt;/fex&gt;, he could only mumble.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Transitive_action</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="wake_up.v" ID="5328" lemmaID="45568" cBy="664" cDate="03/25/2002 06:47:54 PST Mon">
+        <definition>COD: cause to emerge from a state of sleep</definition>
+        <sentenceCount annotated="11" total="482"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="wake"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="up"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="wake.v" ID="5329" lemmaID="43355" cBy="664" cDate="03/25/2002 06:49:41 PST Mon">
+        <definition>COD: emerge or cause to emerge from a state of sleep; stop sleeping. </definition>
+        <sentenceCount annotated="40" total="518"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="wake"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="awaken.v" ID="5331" lemmaID="2508" cBy="664" cDate="03/25/2002 06:57:09 PST Mon">
+        <definition>COD: stop or cause to stop sleeping. </definition>
+        <sentenceCount annotated="20" total="182"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="awaken"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="rouse.v" ID="5332" lemmaID="33636" cBy="664" cDate="03/25/2002 07:01:29 PST Mon">
+        <definition>COD: bring out of sleep; awaken. </definition>
+        <sentenceCount annotated="16" total="201"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="rouse"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="get_up.v" ID="5333" lemmaID="45569" cBy="664" cDate="03/25/2002 07:02:39 PST Mon">
+        <definition>FN: cause to rise from bed after sleeping</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="get"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="up"/>
+    </lexUnit>
+</frame>

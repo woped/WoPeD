@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="731" cDate="02/07/2001 04:12:28 PST Wed" name="Relative_time" ID="81" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;These words relate to the relative ordering of two events or times.  There are two major types of relations evoked by the words of this frame.  
+&lt;ex&gt;&lt;/ex&gt;
+Some of the words (e.g. &lt;ment&gt;follow.v, antecedent.a, previous.a&lt;/ment&gt;) describe the (definitively) stative relationship between two events (the &lt;fen&gt;Landmark_occasion&lt;/fen&gt; and the &lt;fen&gt;Focal_occasion&lt;/fen&gt;).  This first type will be moved to the Time_vector frame.
+
+&lt;ex&gt;&lt;t&gt;After&lt;/t&gt; &lt;fex name="Landmark_occasion"&gt;she arrived&lt;/fex&gt; , &lt;fex name="Focal_occasion"&gt;she laid out her papers on the desk&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;The &lt;t&gt;following&lt;/t&gt; &lt;fex name="Focal_occasion"&gt;morning&lt;/fex&gt;, she tried to figure out what it meant . &lt;fex name="Landmark_occasion"&gt;DNI&lt;/fex&gt;&lt;/ex&gt;
+
+&lt;ex&gt;&lt;/ex&gt;
+Others (e.g. &lt;ment&gt;belated.a, early.a&lt;/ment&gt;) refer to the change or deviation of an event from the &lt;fen&gt;Landmark_occasion&lt;/fen&gt; (which is expected or usual at a particular time) to the &lt;fen&gt;Focal_occasion&lt;/fen&gt; (which occurs at a different time).  Quite often, a &lt;fen&gt;Focal_participant&lt;/fen&gt; who is saliently involved in the &lt;fen&gt;Focal_occasion&lt;/fen&gt; stands in for the occasion.
+
+&lt;ex&gt;&lt;fex name="Focal_occasion"&gt;My flight&lt;/fex&gt; is &lt;t&gt;early&lt;/t&gt; &lt;fex name="Interval"&gt;by 20 minutes&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Focal_participant"&gt;I&lt;/fex&gt; 'm &lt;t&gt;late&lt;/t&gt; &lt;fex name="Landmark_occasion"&gt;for my departure&lt;/fex&gt; !&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:28 PST Wed" abbrev="FEv" name="Focal_occasion" ID="373">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Focal_occasion&lt;/fen&gt; is the event which is  being located in time with respect to some other event: The &lt;fen&gt;Focal_occasion&lt;/fen&gt; is profiled, in contrast to the &lt;fen&gt;Landmark_occasion&lt;/fen&gt;, which is backgrounded.  &lt;ex&gt;&lt;fex name="FEv"&gt;Hours of eating and drinking&lt;/fex&gt; &lt;t&gt;followed&lt;/t&gt; the wedding ceremony.&lt;/ex&gt;
+&lt;ex&gt;Her &lt;t&gt;belated&lt;/t&gt; &lt;fex name="Focal_occasion"&gt;party&lt;/fex&gt; was still a success.&lt;/ex&gt;
+&lt;ex&gt;During the &lt;t&gt;previous&lt;/t&gt; &lt;fex name="Focal_occasion"&gt;week&lt;/fex&gt;, he had eaten 5 mangoes.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:28 PST Wed" abbrev="REv" name="Landmark_occasion" ID="374">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Landmark_occasion&lt;/fen&gt; is the event  with respect to which the &lt;fen&gt;Focal_occasion&lt;/fen&gt; is located. 
+&lt;ex&gt;Hours of eating and drinking &lt;t&gt;followed&lt;/t&gt; &lt;fex name="Landmark_occasion"&gt;the wedding ceremony&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="731" cDate="02/07/2001 04:12:28 PST Wed" abbrev="Int" name="Interval" ID="375">
+        <definition>&lt;def-root&gt;Frequently, the Interval between the Reference and Focal Occasions is expressed: The article in the Times &lt;fex name="Interval"&gt;closely&lt;/fex&gt; &lt;t&gt;followed&lt;/t&gt; the singer's announcement that he was retiring. &lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="09/17/2001 05:19:37 PDT Mon" abbrev="Degr" name="Degree" ID="1904">
+        <definition>&lt;def-root&gt;Degree to which event occurs&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="09/17/2001 05:19:37 PDT Mon" abbrev="Manr" name="Manner" ID="1905">
+        <definition>&lt;def-root&gt;Manner of performing an action&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="296" cDate="08/21/2002 10:39:05 PDT Wed" abbrev="Reas" name="Reason" ID="3596">
+        <definition>&lt;def-root&gt;This FE is used for the &lt;fen&gt;Reason&lt;/fen&gt; or explanation for the &lt;fen&gt;Focal_occasion&lt;/fen&gt; being early or late.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="06/09/2003 03:14:45 PDT Mon" abbrev="" name="Focal_participant" ID="4586">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Focal_participant&lt;/fen&gt; is the participant in the &lt;fen&gt;Focal_occasion&lt;/fen&gt; which is profiled as being in a relation of relative time to the &lt;fen&gt;Landmark_occasion&lt;/fen&gt;.
+
+&lt;ex&gt;&lt;fex name="Focal_participant"&gt;We&lt;/fex&gt; were &lt;t&gt;late&lt;/t&gt; &lt;fex name="Landmark_occasion"&gt;for dinner&lt;/fex&gt;.&lt;/ex&gt;
+
+
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Focal_occasion" ID="373"/>
+        <memberFE name="Focal_participant" ID="4586"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Relation</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="FN1_Sent" POS="A" name="antecedent.a" ID="1743" lemmaID="1516" cBy="731" cDate="02/08/2001 01:30:22 PST Thu">
+        <definition>FN: preceding in time.</definition>
+        <sentenceCount annotated="12" total="57"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="antecedent"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="A" name="belated.a" ID="1744" lemmaID="3275" cBy="731" cDate="02/08/2001 01:30:22 PST Thu">
+        <definition>COD: coming late or too late. </definition>
+        <sentenceCount annotated="17" total="29"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="belated"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="A" name="early.a" ID="1747" lemmaID="12080" cBy="731" cDate="02/08/2001 01:30:22 PST Thu">
+        <definition>COD: before the usual or expected time. </definition>
+        <sentenceCount annotated="5" total="186"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="early"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="follow.v" ID="1748" lemmaID="14927" cBy="731" cDate="02/08/2001 01:30:22 PST Thu">
+        <definition>COD: come after in time or order. </definition>
+        <sentenceCount annotated="18" total="417"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="follow"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="A" name="following.a" ID="1749" lemmaID="14930" cBy="731" cDate="02/08/2001 01:30:22 PST Thu">
+        <definition>COD: next in time or order. </definition>
+        <sentenceCount annotated="13" total="64"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="following"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="A" name="late.a" ID="1750" lemmaID="21773" cBy="731" cDate="02/08/2001 01:30:22 PST Thu">
+        <definition>COD: acting, arriving, or happening after the expected or usual time. </definition>
+        <sentenceCount annotated="8" total="281"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="late"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="A" name="overdue.a" ID="1751" lemmaID="27258" cBy="731" cDate="02/08/2001 01:30:22 PST Thu">
+        <definition>COD: past the time when due. </definition>
+        <sentenceCount annotated="27" total="94"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="overdue"/>
+        <semType name="Negative_judgment" ID="14"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="precede.v" ID="1753" lemmaID="30064" cBy="731" cDate="02/08/2001 01:30:23 PST Thu">
+        <definition>COD: come or go before in time, order, or position. </definition>
+        <sentenceCount annotated="29" total="237"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="precede"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="A" name="preceding.a" ID="1754" lemmaID="30069" cBy="731" cDate="02/08/2001 01:30:23 PST Thu">
+        <definition>FN: previous, prior</definition>
+        <sentenceCount annotated="28" total="84"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="preceding"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="predate.v" ID="1755" lemmaID="39" cBy="731" cDate="02/08/2001 01:30:23 PST Thu">
+        <definition>COD: exist or occur at a date earlier than. </definition>
+        <sentenceCount annotated="12" total="56"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="predate"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="A" name="premature.a" ID="1756" lemmaID="30207" cBy="731" cDate="02/08/2001 01:30:23 PST Thu">
+        <definition>COD: occurring or done before the proper time. </definition>
+        <sentenceCount annotated="27" total="95"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="premature"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="A" name="previous.a" ID="1757" lemmaID="30394" cBy="731" cDate="02/08/2001 01:30:23 PST Thu">
+        <definition>FN: occurring before in time.</definition>
+        <sentenceCount annotated="31" total="177"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="previous"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="A" name="prior.a" ID="1758" lemmaID="30479" cBy="731" cDate="02/08/2001 01:30:23 PST Thu">
+        <definition>COD: existing or coming before in time, order, or importance. </definition>
+        <sentenceCount annotated="13" total="81"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="prior"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="A" name="punctual.a" ID="1759" lemmaID="31154" cBy="731" cDate="02/08/2001 01:30:23 PST Thu">
+        <definition>COD: happening or doing something at the appointed time. </definition>
+        <sentenceCount annotated="13" total="44"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="punctual"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="A" name="subsequent.a" ID="1760" lemmaID="38581" cBy="731" cDate="02/08/2001 01:30:23 PST Thu">
+        <definition>COD: coming after something in time. </definition>
+        <sentenceCount annotated="28" total="110"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="subsequent"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="A" name="tardy.a" ID="1761" lemmaID="39545" cBy="731" cDate="02/08/2001 01:30:23 PST Thu">
+        <definition>COD: delaying or delayed beyond the right or expected time; late. </definition>
+        <sentenceCount annotated="18" total="27"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="tardy"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="come on heels.v" ID="10427" lemmaID="49018" cBy="605" cDate="04/13/2004 04:33:20 PDT Tue">
+        <definition>FN: follow soon after</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="come"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="PREP" name="on"/>
+        <lexeme order="3" headword="false" breakBefore="false" POS="N" name="heels"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="ADV" name="ahead.adv" ID="11630" lemmaID="850" cBy="605" cDate="03/01/2005 03:02:39 PST Tue">
+        <definition>COD: earlier than planned or expected.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="ahead"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="ADV" name="behind.adv" ID="11631" lemmaID="3260" cBy="605" cDate="03/01/2005 03:03:44 PST Tue">
+        <definition>COD: later than planned or expected.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="behind"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="ADV" name="later.adv" ID="11640" lemmaID="49796" cBy="605" cDate="03/01/2005 03:14:21 PST Tue">
+        <definition>COD: at a time in the near future; afterwards.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="later"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="after.prep" ID="11746" lemmaID="746" cBy="664" cDate="03/14/2005 04:20:02 PST Mon">
+        <definition>COD: in the time following (an event or another period of time).</definition>
+        <sentenceCount annotated="1" total="1"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="after"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="ADV" name="sooner.adv" ID="11799" lemmaID="49922" cBy="145" cDate="04/09/2005 12:06:00 PDT Sat">
+        <definition>FN: at a time before a landmark time</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="sooner"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="ADV" name="sooner rather than later.adv" ID="11807" lemmaID="49926" cBy="145" cDate="04/10/2005 03:33:26 PDT Sun">
+        <definition>FN: at a time nearer to the POV time (due to urgency)</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="sooner"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="rather"/>
+        <lexeme order="3" headword="false" breakBefore="false" POS="PREP" name="than"/>
+        <lexeme order="4" headword="false" breakBefore="false" POS="ADV" name="later"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="ADV" name="subsequently.adv" ID="12311" lemmaID="38582" cBy="605" cDate="06/22/2005 02:54:50 PDT Wed">
+        <definition>FN: later</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="subsequently"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="erstwhile.a" ID="12549" lemmaID="50196" cBy="605" cDate="07/27/2005 08:52:35 PDT Wed">
+        <definition>COD: former</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="erstwhile"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="ADV" name="as.adv" ID="13228" lemmaID="2045" cBy="303" cDate="06/19/2006 12:04:32 PDT Mon">
+        <definition>FN: occuring simultaneously.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="as"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="simultaneous.a" ID="13296" lemmaID="35963" cBy="303" cDate="06/21/2006 01:36:57 PDT Wed">
+        <definition>COD: occurring, operating, or done at the same time.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="simultaneous"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="ADV" name="simultaneously.adv" ID="13297" lemmaID="35964" cBy="303" cDate="06/21/2006 01:37:30 PDT Wed">
+        <definition>FN: occurring at the same time.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="simultaneously"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="in parallel.a" ID="13298" lemmaID="50384" cBy="303" cDate="06/21/2006 01:51:20 PDT Wed">
+        <definition>COD: occurring or existing at the same time or in a similar way; corresponding.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="in"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="A" name="parallel"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="C" name="while.c" ID="13300" lemmaID="43974" cBy="303" cDate="06/21/2006 02:02:57 PDT Wed">
+        <definition>COD: at the same time as.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="C" name="while"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="recent.a" ID="13771" lemmaID="32099" cBy="361" cDate="02/23/2007 12:41:46 PST Fri">
+        <definition>COD: having happened or been done lately; belonging to a period of time not long ago.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="recent"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="last.a" ID="13865" lemmaID="21763" cBy="361" cDate="02/26/2007 03:18:01 PST Mon">
+        <definition>COD: most recent in time; latest.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="last"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="past.a" ID="13868" lemmaID="27983" cBy="361" cDate="02/26/2007 03:30:56 PST Mon">
+        <definition>COD: gone by in time and no longer existing.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="past"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="ADV" name="on time.adv" ID="14220" lemmaID="50610" cBy="664" cDate="03/28/2007 09:32:06 PDT Wed">
+        <definition>COD: punctually.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="on"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="time"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="ADV" name="punctually.adv" ID="14222" lemmaID="31156" cBy="664" cDate="03/28/2007 10:54:37 PDT Wed">
+        <definition>FN: in accord with the expected or required time.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="punctually"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="punctuality.n" ID="14223" lemmaID="31155" cBy="664" cDate="03/28/2007 10:55:41 PDT Wed">
+        <definition>FN: degree or fact of being in accord with the expected or required time.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="punctuality"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="next.a" ID="14603" lemmaID="25789" cBy="361" cDate="10/26/2007 01:02:13 PDT Fri">
+        <definition>FN: the following</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="next"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="latest.a" ID="14794" lemmaID="50828" cBy="361" cDate="02/20/2008 01:37:13 PST Wed">
+        <definition>FN: most recent</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="latest"/>
+    </lexUnit>
+</frame>

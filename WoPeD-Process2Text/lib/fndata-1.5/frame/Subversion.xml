@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="04/30/2004 05:15:14 PDT Fri" name="Subversion" ID="1090" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A  &lt;fen&gt;Counter_actor&lt;/fen&gt; or &lt;fen&gt;Cause&lt;/fen&gt;  impedes an &lt;fen&gt;Agent&lt;/fen&gt; in an &lt;fen&gt;Activity&lt;/fen&gt; or impedes the unfolding or continuation of a &lt;fen&gt;State_of_affairs&lt;/fen&gt;. The opposing force applies without first being noticed, often in a secret or an underhanded fashion.
+
+&lt;ex&gt;However, as this story goes on the Queen of Sodom has &lt;fex name="cou"&gt;a brother who&lt;/fex&gt;
+plans to &lt;t&gt;undermine&lt;/t&gt; &lt;fex name="age"&gt;his sister&lt;/fex&gt; and take the throne of Sodom.&lt;/ex&gt;
+
+&lt;ex&gt; Diotrephes withstood John's words, and would not submit to his authority; in fact, &lt;fex name="cou"&gt;he&lt;/fex&gt; &lt;t&gt;undermined&lt;/t&gt; &lt;fex name="soa"&gt;John's authority&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt; I don't want to get a reputation for punishing disagreement. On the other
+hand, &lt;fex name="cou"&gt;he&lt;/fex&gt; &lt;t&gt;undercut&lt;/t&gt; &lt;fex name="age"&gt;me&lt;/fex&gt; &lt;fex name="deg"&gt;pretty badly&lt;/fex&gt; and I can't just let it slide.&lt;/ex&gt;
+
+&lt;/def-root&gt;</definition>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="04/30/2004 05:25:24 PDT Fri" abbrev="cau" name="Cause" ID="6370">
+        <definition>&lt;def-root&gt;An event or state_of_Affairs that successfully impedes an &lt;fen&gt;Agent&lt;/fen&gt; or a State_of_affairs.
+
+&lt;ex&gt;&lt;fex name="cau"&gt;This failure&lt;/fex&gt; &lt;t&gt;undermines&lt;/t&gt; governmental authority&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="04/30/2004 05:30:31 PDT Fri" abbrev="cou" name="Counter_actor" ID="6371">
+        <definition>&lt;def-root&gt;A person who intentionally or not acts in such a way that an &lt;fen&gt;Agent&lt;/fen&gt; or State_of_affairs is impeded.
+
+&lt;ex&gt;Tory rebels queued to warn that &lt;fex name="cou"&gt;they&lt;/fex&gt; would&lt;t&gt;sabotage&lt;/t&gt; efforts to put the treaty through Parliament .&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Cause" ID="6370"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="04/30/2004 05:32:10 PDT Fri" abbrev="age" name="Agent" ID="6372">
+        <definition>&lt;def-root&gt;A person who is intentionally engaged in some &lt;fen&gt;Activity&lt;/fen&gt; and who is impeded in that &lt;fen&gt;Activity&lt;/fen&gt;.
+
+&lt;ex&gt;If he is really &lt;t&gt;undermining&lt;/t&gt; &lt;fex name="age"&gt;me&lt;/fex&gt;, then he is a fine friend.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+        <requiresFE name="Activity" ID="6373"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="04/30/2004 05:34:12 PDT Fri" abbrev="act" name="Activity" ID="6373">
+        <definition>&lt;def-root&gt;An &lt;fen&gt;Activity&lt;/fen&gt; that is being impeded.
+
+&lt;ex&gt;The Dominican Republic was widely held to have &lt;t&gt;undermined&lt;/t&gt; &lt;fex name="act"&gt;its own efforts to become a full member of CARICOM&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="05/03/2004 02:10:00 PDT Mon" abbrev="soa" name="State_of_affairs" ID="6375">
+        <definition>&lt;def-root&gt;A state or event that is ongoing and whose continuance or unfolding is impeded.
+
+
+&lt;ex&gt;Whenever I try to quit they all try to &lt;t&gt;sabotage&lt;/t&gt; &lt;fex name="soa"&gt;my efforts&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Activity" ID="6373"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="05/03/2004 02:19:27 PDT Mon" abbrev="deg" name="Degree" ID="6378">
+        <definition>&lt;def-root&gt;The extent to which the &lt;fen&gt;Cause&lt;/fen&gt; or &lt;fen&gt;Counter_actor&lt;/fen&gt; impede the &lt;fen&gt;Agent&lt;/fen&gt; or the &lt;fen&gt;State_of_affairs&lt;/fen&gt;.
+
+&lt;ex&gt;The so-called advantage of a Premier being able to determine an election date is
+&lt;fex name="deg"&gt;totally&lt;/fex&gt; &lt;t&gt;undermined&lt;/t&gt; by speculation surrounding the date for the next election.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/07/2005 11:37:45 PST Wed" abbrev="pur" name="Purpose" ID="9658">
+        <definition>&lt;def-root&gt;The state-of-affairs that the &lt;fen&gt;Counter_actor&lt;/fen&gt; hopes will result from his undermining.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/07/2005 11:38:53 PST Wed" abbrev="pla" name="Place" ID="9659">
+        <definition>&lt;def-root&gt;The location where the &lt;fen&gt;Counter_actor&lt;/fen&gt; subverts an &lt;fen&gt;Activity&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="A9A9A9" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/07/2005 11:40:39 PST Wed" abbrev="tim" name="Time" ID="9660">
+        <definition>&lt;def-root&gt;The time at which the &lt;fen&gt;Counter_actor&lt;/fen&gt; or &lt;fen&gt;Cause&lt;/fen&gt; works agains the &lt;fen&gt;Agent&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/07/2005 11:43:49 PST Wed" abbrev="man" name="Manner" ID="9661">
+        <definition>&lt;def-root&gt;Any description of the intentional act which is not covered by more specific FEs, including secondary effects (&lt;ment&gt;quietly, loudly&lt;/ment&gt;), and general descriptions comparing events (&lt;ment&gt;the same way&lt;/ment&gt;). In addition, it may indicate salient characteristics of a &lt;fen&gt;Counter_actor&lt;/fen&gt; that also affect the action (&lt;ment&gt;presumptuously, coldly, deliberately, eagerly, carefully&lt;/ment&gt;). 
+
+&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="000000" coreType="Extra-Thematic" cBy="597" cDate="06/06/2008 01:24:05 PDT Fri" abbrev="" name="Frequency" ID="12733">
+        <definition>&lt;def-root&gt;This FE denotes the number of times the &lt;fen&gt;Counter_actor&lt;/fen&gt; or &lt;fen&gt;Cause&lt;/fen&gt; subverts the &lt;fen&gt;Agent&lt;/fen&gt; per unit of time.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="000000" coreType="Extra-Thematic" cBy="597" cDate="06/06/2008 01:25:58 PDT Fri" abbrev="" name="Iteration" ID="12734">
+        <definition>&lt;def-root&gt;This FE denotes the number of times the subversion event has occurred.&lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Agent" ID="6372"/>
+        <memberFE name="Activity" ID="6373"/>
+        <memberFE name="Cause" ID="6370"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Thwarting</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Created" POS="V" name="sabotage.v" ID="10470" lemmaID="33865" cBy="605" cDate="04/30/2004 05:22:37 PDT Fri">
+        <definition>COD: deliberately destroy or obstruct, especially for political or military advantag</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="sabotage"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="undermine.v" ID="10471" lemmaID="41972" cBy="605" cDate="04/30/2004 05:23:36 PDT Fri">
+        <definition>COD: damage or weaken, especially gradually or insidiously.</definition>
+        <sentenceCount annotated="21" total="150"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="undermine"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="undercut.v" ID="10472" lemmaID="41939" cBy="605" cDate="04/30/2004 05:24:50 PDT Fri">
+        <definition>COD: weaken; undermine</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="undercut"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="subvert.v" ID="10477" lemmaID="38641" cBy="605" cDate="05/05/2004 03:42:06 PDT Wed">
+        <definition>COD: undermine the power and authority of (an established system or institution).</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="subvert"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="subversion.n" ID="10478" lemmaID="38636" cBy="605" cDate="05/05/2004 03:43:30 PDT Wed">
+        <definition>FN: an attempt to overthrow or undermine a social construct, typically a government or political system, by forces working secretly from within</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="subversion"/>
+    </lexUnit>
+</frame>

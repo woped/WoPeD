@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" incorporatedFE="Rank" POS="N" name="rank.n" ID="11800" frame="Rank" frameID="1377" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="ite" name="Item"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="" name="Rank"/>
+        </frame>
+    </header>
+    <definition>FN: a level within a hierarchy of merit</definition>
+    <lexeme POS="N" name="rank"/>
+    <valences>
+        <FERealization total="2">
+            <FE name="Item"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Item"/>
+                <annoSet ID="2587683"/>
+                <annoSet ID="2587687"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Rank"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="AJP" FE="Rank"/>
+                <annoSet ID="2587683"/>
+                <annoSet ID="2587687"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Item"/>
+            <FE name="Rank"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Item"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Rank"/>
+                <annoSet ID="2587683"/>
+                <annoSet ID="2587687"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-Whigh,low-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="188" aPos="49630638" ID="1576532">
+            <text>By the fifteenth century the higher ranks of the nobility had taken over again .</text>
+            <annotationSet cDate="07/15/2010 02:59:21 PDT Thu" status="UNANN" ID="2587682">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="in"/>
+                    <label end="5" start="3" name="dt"/>
+                    <label end="15" start="7" name="jj"/>
+                    <label end="23" start="17" name="nn"/>
+                    <label end="27" start="25" name="dt"/>
+                    <label end="34" start="29" name="jjr"/>
+                    <label end="40" start="36" name="nns"/>
+                    <label end="43" start="42" name="in"/>
+                    <label end="47" start="45" name="dt"/>
+                    <label end="56" start="49" name="nn"/>
+                    <label end="60" start="58" name="VHD"/>
+                    <label end="66" start="62" name="VVN"/>
+                    <label end="71" start="68" name="rp"/>
+                    <label end="77" start="73" name="rb"/>
+                    <label end="79" start="79" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/15/2010 02:59:21 PDT Thu" status="MANUAL" ID="2587683">
+                <layer rank="1" name="Target">
+                    <label cBy="571" end="40" start="36" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="571" feID="7716" end="34" start="29" name="Rank"/>
+                    <label cBy="571" feID="9618" end="56" start="42" name="Item"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="34" start="29" name="Dep"/>
+                    <label end="56" start="42" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="34" start="29" name="AJP"/>
+                    <label end="56" start="42" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="11" paragNo="195" aPos="49632565" ID="1576534">
+            <text>Others still were from the very lowest ranks of the Church who preferred the more exciting life of the camp .</text>
+            <annotationSet cDate="07/15/2010 02:59:22 PDT Thu" status="UNANN" ID="2587686">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="0" name="nns"/>
+                    <label end="11" start="7" name="rb"/>
+                    <label end="16" start="13" name="VBD"/>
+                    <label end="21" start="18" name="in"/>
+                    <label end="25" start="23" name="dt"/>
+                    <label end="30" start="27" name="rb"/>
+                    <label end="37" start="32" name="jjs"/>
+                    <label end="43" start="39" name="nns"/>
+                    <label end="46" start="45" name="in"/>
+                    <label end="50" start="48" name="dt"/>
+                    <label end="57" start="52" name="NP"/>
+                    <label end="61" start="59" name="wp"/>
+                    <label end="71" start="63" name="VVD"/>
+                    <label end="75" start="73" name="dt"/>
+                    <label end="80" start="77" name="rbr"/>
+                    <label end="89" start="82" name="jj"/>
+                    <label end="94" start="91" name="nn"/>
+                    <label end="97" start="96" name="in"/>
+                    <label end="101" start="99" name="dt"/>
+                    <label end="106" start="103" name="nn"/>
+                    <label end="108" start="108" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/15/2010 02:59:22 PDT Thu" status="MANUAL" ID="2587687">
+                <layer rank="1" name="Target">
+                    <label cBy="571" end="43" start="39" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="571" feID="7716" end="37" start="32" name="Rank"/>
+                    <label cBy="571" feID="9618" end="57" start="45" name="Item"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="37" start="32" name="Dep"/>
+                    <label end="57" start="45" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="37" start="32" name="AJP"/>
+                    <label end="57" start="45" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="V" name="dress up.v" ID="10982" frame="Dressing" frameID="1211" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="bod" name="Body_location"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="clo" name="Clothing"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="Duration" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="man" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="pur" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="Reason" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Extra-Thematic" abbrev="Result" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="tim" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="wea" name="Wearer"/>
+        </frame>
+    </header>
+    <definition>COD:  dress in smart or formal clothes, or in a special costume.</definition>
+    <lexeme order="1" headword="true" breakBefore="false" POS="V" name="dress"/>
+    <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="up"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Clothing"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Clothing"/>
+                <annoSet ID="2005476"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Wearer"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Wearer"/>
+                <annoSet ID="2005476"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Clothing"/>
+            <FE name="Wearer"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Clothing"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Wearer"/>
+                <annoSet ID="2005476"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="coll-uniform">
+        <sentence sentNo="0" aPos="47190778" ID="460065">
+            <text>People sent their daughters to Cambridge School , dressing them up in the toffee-brown and pale uniform Elizabeth Jarvis had selected . </text>
+            <annotationSet cDate="01/07/2003 04:47:10 PST Tue" status="UNANN" ID="559018">
+                <layer rank="1" name="BNC">
+                    <label end="5" start="0" name="NN0"/>
+                    <label end="10" start="7" name="VVD"/>
+                    <label end="16" start="12" name="DPS"/>
+                    <label end="26" start="18" name="NN2"/>
+                    <label end="29" start="28" name="PRP"/>
+                    <label end="39" start="31" name="NP0"/>
+                    <label end="46" start="41" name="NN1"/>
+                    <label end="48" start="48" name="PUN"/>
+                    <label end="57" start="50" name="VVG"/>
+                    <label end="62" start="59" name="PNP"/>
+                    <label end="65" start="64" name="AVP"/>
+                    <label end="68" start="67" name="PRP"/>
+                    <label end="72" start="70" name="AT0"/>
+                    <label end="85" start="74" name="AJ0"/>
+                    <label end="89" start="87" name="CJC"/>
+                    <label end="94" start="91" name="NN1-VVB"/>
+                    <label end="102" start="96" name="AJ0-NN1"/>
+                    <label end="112" start="104" name="NP0"/>
+                    <label end="119" start="114" name="NP0"/>
+                    <label end="123" start="121" name="VHD"/>
+                    <label end="132" start="125" name="VVN"/>
+                    <label end="134" start="134" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="09/24/2004 09:28:24 PDT Fri" status="AUTO_APP" ID="2005476">
+                <layer rank="1" name="Target">
+                    <label cBy="309" end="57" start="50" name="Target"/>
+                    <label cBy="309" end="65" start="64" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="309" feID="7074" end="132" start="67" name="Clothing"/>
+                    <label cBy="309" feID="7073" end="62" start="59" name="Wearer"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="132" start="67" name="Dep"/>
+                    <label end="62" start="59" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="132" start="67" name="PP"/>
+                    <label end="62" start="59" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="589" cDate="03/05/2010 02:10:49 PST Fri" name="Assemble" ID="2237" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;In this frame a group of &lt;fen&gt;Individuals&lt;/fen&gt; intentionally come together to form a &lt;fen&gt;Group&lt;/fen&gt;.  Alternatively, a grammatically more prominent &lt;fen&gt;Party_1&lt;/fen&gt; assembles with a &lt;fen&gt;Party_2&lt;/fen&gt;, expressed as an oblique phrase.  If this asymmetric construal is chosen, &lt;fen&gt;Purpose&lt;/fen&gt; only relates to &lt;fen&gt;Party_1&lt;/fen&gt;.  
+&lt;ex&gt;&lt;fex name="Individuals"&gt;We&lt;/fex&gt; &lt;t&gt;assembled&lt;/t&gt; &lt;fex name="Place"&gt;in the courtyard&lt;/fex&gt; &lt;fex name="Purpose"&gt;to talk about our future plans&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Group"&gt;Our study group&lt;/fex&gt; is &lt;t&gt;convening&lt;/t&gt; &lt;fex name="Place"&gt;outside&lt;/fex&gt; &lt;fex name="Time"&gt;today&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Party_1"&gt;The Dodgers&lt;/fex&gt; &lt;t&gt;meet&lt;/t&gt; &lt;fex name="Party_2"&gt;the San Francisco Giants&lt;/fex&gt; &lt;fex name="Time"&gt;tomorrow&lt;/fex&gt; &lt;fex name="Place"&gt;at Dodger Stadium&lt;/fex&gt;.&lt;/ex&gt; &lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="589" cDate="03/05/2010 02:44:25 PST Fri" abbrev="" name="Individuals" ID="13640">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Individuals&lt;/fen&gt; are self-movers who intentionally assemble together.&lt;/def-root&gt;</definition>
+        <excludesFE name="Party_2" ID="13643"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="589" cDate="03/05/2010 02:44:48 PST Fri" abbrev="" name="Group" ID="13641">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Group&lt;/fen&gt; describes the resulting formation of the &lt;fen&gt;Individuals&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <excludesFE name="Party_1" ID="13642"/>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="000000" coreType="Core" cBy="589" cDate="03/05/2010 02:46:00 PST Fri" abbrev="" name="Party_1" ID="13642">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Party_1&lt;/fen&gt; is the grammatically more prominent participant in the assembling event.  It can refer to either a single individual or a larger party separate from &lt;fen&gt;Party_2&lt;/fen&gt; previous to the assembling.&lt;/def-root&gt;</definition>
+        <requiresFE name="Party_2" ID="13643"/>
+        <excludesFE name="Individuals" ID="13640"/>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Core" cBy="589" cDate="03/05/2010 02:46:19 PST Fri" abbrev="" name="Party_2" ID="13643">
+        <definition>&lt;def-root&gt;A grammatically less prominent participant in the assembling event.  It can refer to either a single individual or a larger party separate from &lt;fen&gt;Party_1&lt;/fen&gt; previous to the assembling.&lt;/def-root&gt;</definition>
+        <excludesFE name="Group" ID="13641"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="589" cDate="03/05/2010 02:48:10 PST Fri" abbrev="" name="Manner" ID="13644">
+        <definition>&lt;def-root&gt;Any description of the assembling which is not covered by more specific FEs, including secondary effects (&lt;ment&gt;quietly, loudly&lt;/ment&gt;), and general descriptions comparing events (&lt;ment&gt;the same way&lt;/ment&gt;). In addition, it may indicate salient characteristics of the &lt;fen&gt;Individuals&lt;/fen&gt; or &lt;fen&gt;Group&lt;/fen&gt; that also affect the action (&lt;ment&gt;presumptuously, coldly, eagerly, carefully&lt;/ment&gt;). &lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Peripheral" cBy="589" cDate="03/05/2010 02:48:20 PST Fri" abbrev="" name="Place" ID="13645">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Place&lt;/fen&gt; is where the assembling occurs.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="EEE8AA" fgColor="000000" coreType="Peripheral" cBy="589" cDate="03/05/2010 02:48:26 PST Fri" abbrev="" name="Means" ID="13646">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Means&lt;/fen&gt; descibes the way in which the &lt;fen&gt;Individuals&lt;/fen&gt; accomplish the assembling.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="589" cDate="03/05/2010 02:48:31 PST Fri" abbrev="" name="Time" ID="13647">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Time&lt;/fen&gt; is when the assembling occurs.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="7FFF00" fgColor="000000" coreType="Peripheral" cBy="589" cDate="03/05/2010 02:48:36 PST Fri" abbrev="" name="Purpose" ID="13648">
+        <definition>&lt;def-root&gt;An action that the &lt;fen&gt;Group&lt;/fen&gt; plans to engage in upon assembly.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Group" ID="13641"/>
+        <memberFE name="Individuals" ID="13640"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Come_together</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Intentionally_act</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes">
+        <relatedFrame>Meet_with</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Needs_SCs" POS="V" name="meet.v" ID="15667" lemmaID="23890" cBy="589" cDate="03/08/2010 02:55:26 PST Mon">
+        <definition>FN: to intentionally come together for some collective purpose</definition>
+        <sentenceCount annotated="4" total="4"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="meet"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="assemble.v" ID="15719" lemmaID="2137" cBy="589" cDate="03/19/2010 02:16:17 PDT Fri">
+        <definition>FN: to intentionally gather together</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="assemble"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="convene.v" ID="15720" lemmaID="8175" cBy="589" cDate="03/19/2010 02:17:50 PDT Fri">
+        <definition>FN: to assemble for a public purpose</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="convene"/>
+    </lexUnit>
+</frame>

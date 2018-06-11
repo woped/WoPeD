@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="07/07/2003 01:10:35 PDT Mon" name="Forming_relationships" ID="723" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;&lt;fen&gt;Partner_1&lt;/fen&gt; interacts with Partner_2 (also collectively expressible as &lt;fen&gt;Partners&lt;/fen&gt;) to change their social relationship.  
+
+&lt;ex&gt;&lt;fex name="Partner_1"&gt;I&lt;/fex&gt; &lt;t&gt;befriended&lt;/t&gt; &lt;fex name="Partner_2"&gt;the little pony&lt;/fex&gt; by giving him a piece of apple.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="07/07/2003 02:25:39 PDT Mon" abbrev="" name="Partner_1" ID="4732">
+        <definition>&lt;def-root&gt;The individual who comes to form a relationship with Partner_2. &lt;/def-root&gt;</definition>
+        <semType name="Human" ID="80"/>
+        <requiresFE name="Partner_2" ID="4733"/>
+        <excludesFE name="Partners" ID="4734"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="07/07/2003 02:31:02 PDT Mon" abbrev="" name="Partner_2" ID="4733">
+        <definition>&lt;def-root&gt;The individual whose relationship with &lt;fen&gt;Partner_1&lt;/fen&gt; changes.&lt;/def-root&gt;</definition>
+        <semType name="Human" ID="80"/>
+        <requiresFE name="Partner_1" ID="4732"/>
+        <excludesFE name="Partners" ID="4734"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="07/07/2003 02:32:19 PDT Mon" abbrev="" name="Partners" ID="4734">
+        <definition>&lt;def-root&gt;The individuals whose relationship is changing.&lt;/def-root&gt;</definition>
+        <semType name="Human" ID="80"/>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="07/07/2003 02:46:58 PDT Mon" abbrev="" name="Means" ID="4735">
+        <definition>&lt;def-root&gt;The action that &lt;fen&gt;Partner_1&lt;/fen&gt; or the &lt;fen&gt;Partners&lt;/fen&gt; take in order to bring about the change in the relationship.
+
+&lt;ex&gt;In the old days, a man could &lt;t&gt;divorce&lt;/t&gt; his wife &lt;fex name="Means"&gt;just by saying "I divorce you" three times&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="07/07/2003 03:46:04 PDT Mon" abbrev="" name="Time" ID="4736">
+        <definition>&lt;def-root&gt;The time when the relationship changes.
+
+&lt;ex&gt;She &lt;t&gt;married&lt;/t&gt; Stephen &lt;fex name="Time"&gt;last summer&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="07/07/2003 07:58:13 PDT Mon" abbrev="" name="Manner" ID="4737">
+        <definition>&lt;def-root&gt;Any description of the event including secondary effects (quietly, loudly), and general descriptions comparing events (the same way). It may also indicate salient characteristics of the &lt;fen&gt;Partner_1&lt;/fen&gt; or &lt;fen&gt;Partners&lt;/fen&gt; that also affect the action (presumptuously, coldly, deliberately, eagerly, carefully). &lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="07/08/2003 04:10:59 PDT Tue" abbrev="Dep" name="Depictive" ID="4742">
+        <definition>&lt;def-root&gt;A salient state of &lt;fen&gt;Partner_1&lt;/fen&gt;, &lt;fen&gt;Partner_2&lt;/fen&gt;, or &lt;fen&gt;Partners&lt;/fen&gt; which affects the perception of the formation of relationship.
+
+&lt;ex&gt;I &lt;t&gt;befriended&lt;/t&gt; her &lt;fex name="Dep"&gt;unaware of her past&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="07/08/2003 05:05:55 PDT Tue" abbrev="Dur" name="Duration_of_final_state" ID="4743">
+        <definition>&lt;def-root&gt;The length of time that the changed relationship status lasts.
+
+&lt;ex&gt;Ekaterina &lt;t&gt;befriended&lt;/t&gt; him &lt;fex name="Dur"&gt;for a short while&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="000000" coreType="Peripheral" cBy="618" cDate="07/17/2003 11:31:16 PDT Thu" abbrev="Place" name="Place" ID="4794">
+        <definition>&lt;def-root&gt;Where the relationship is formed.
+&lt;ex&gt;We &lt;t&gt;married&lt;/t&gt; &lt;fex name="Place"&gt;in a gazebo&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/08/2005 06:38:17 PST Thu" abbrev="pur" name="Purpose" ID="9709">
+        <definition>&lt;def-root&gt;The state-of-affairs that the &lt;fen&gt;Partners&lt;/fen&gt; or &lt;fen&gt;Partner_1&lt;/fen&gt; hope to bring about by changing their status.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="361" cDate="05/08/2007 05:09:42 PDT Tue" abbrev="epi" name="Epistemic_stance" ID="11720">
+        <definition>&lt;def-root&gt;?Formally? and ?officially? plus maybe ?technically? and ?in law.? This FE indicates the legal- or "by rule" domain within which the Forming_relationship event is true or operational. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="361" cDate="05/08/2007 05:11:34 PDT Tue" abbrev="" name="Frequency" ID="11721">
+        <definition>&lt;def-root&gt;How often the Forming_relationship event occurs.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="361" cDate="05/08/2007 05:13:15 PDT Tue" abbrev="cir" name="Circumstances" ID="11722">
+        <definition>&lt;def-root&gt;Circumstances describe the state of the world (at a particular time and place) which is specifically independent of the event itself and any of its participants. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="05/08/2007 05:16:02 PDT Tue" abbrev="exp" name="Explanation" ID="11723">
+        <definition>&lt;def-root&gt;The Explanation denotes a proposition from which the main clause (headed by the target) logically follows. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="90876C" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="05/08/2007 05:19:17 PDT Tue" abbrev="ite" name="Iteration" ID="11724">
+        <definition>&lt;def-root&gt;The frame element Iteration is used for expressions that indicate the number of times an event or state (of the kind denoted by the target in its clause) has taken place or held.&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Intentionally_act</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of">
+        <relatedFrame>Personal_relationship</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="befriend.v" ID="8998" lemmaID="3222" cBy="664" cDate="07/07/2003 02:39:38 PDT Mon">
+        <definition>FN: make into a friend.</definition>
+        <sentenceCount annotated="13" total="31"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="befriend"/>
+    </lexUnit>
+    <lexUnit status="Problem" POS="V" name="woo.v" ID="9008" lemmaID="44400" cBy="664" cDate="07/09/2003 01:13:05 PDT Wed">
+        <definition>COD:  try to gain the love of (a woman).</definition>
+        <sentenceCount annotated="44" total="142"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="woo"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="betrothal.n" ID="9015" lemmaID="3462" cBy="664" cDate="07/09/2003 02:14:16 PDT Wed">
+        <definition>FN: the promising of one person to wed another.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="betrothal"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="betroth.v" ID="9023" lemmaID="3461" cBy="664" cDate="07/09/2003 02:25:36 PDT Wed">
+        <definition>FN: to promise someone in marriage to someone else.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="betroth"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="divorce.n" ID="9024" lemmaID="11322" cBy="664" cDate="07/09/2003 02:29:04 PDT Wed">
+        <definition>COD:  the legal dissolution of a marriage.</definition>
+        <sentenceCount annotated="11" total="61"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="divorce"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="divorce.v" ID="9025" lemmaID="11323" cBy="664" cDate="07/09/2003 02:29:52 PDT Wed">
+        <definition>COD: legally dissolve one's marriage with.</definition>
+        <sentenceCount annotated="35" total="189"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="divorce"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="leave.v" ID="9026" lemmaID="21967" cBy="664" cDate="07/09/2003 02:30:50 PDT Wed">
+        <definition>COD: abandon (a spouse or partner).</definition>
+        <sentenceCount annotated="18" total="222"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="leave"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="marriage.n" ID="9027" lemmaID="23540" cBy="664" cDate="07/09/2003 02:31:50 PDT Wed">
+        <definition>COD: the formal union of a man and a woman, typically as recognized by law, by which they become husband and wife.</definition>
+        <sentenceCount annotated="11" total="11"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="marriage"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="marry.v" ID="9028" lemmaID="23547" cBy="664" cDate="07/09/2003 02:32:39 PDT Wed">
+        <definition>COD: take as one's wife or husband in marriage.</definition>
+        <sentenceCount annotated="32" total="153"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="marry"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="marry_(into).v" ID="9029" lemmaID="23547" cBy="664" cDate="07/09/2003 02:33:44 PDT Wed">
+        <definition>COD: become a member of (a family) by marriage.</definition>
+        <sentenceCount annotated="12" total="139"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="marry"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="separate.v" ID="9030" lemmaID="35117" cBy="664" cDate="07/09/2003 02:44:50 PDT Wed">
+        <definition>COD: stop living together as a couple. </definition>
+        <sentenceCount annotated="11" total="200"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="separate"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="separation.n" ID="9031" lemmaID="35122" cBy="664" cDate="07/09/2003 02:47:04 PDT Wed">
+        <definition>FN: act in which a couple (generally married) ceases to cohabitate.</definition>
+        <sentenceCount annotated="29" total="167"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="separation"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="tie the knot.v" ID="9032" lemmaID="48132" cBy="664" cDate="07/09/2003 02:54:48 PDT Wed">
+        <definition>FN: to get married</definition>
+        <sentenceCount annotated="10" total="28"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="tie"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ART" name="the"/>
+        <lexeme order="3" headword="false" breakBefore="false" POS="N" name="knot"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="wed.v" ID="9033" lemmaID="43667" cBy="664" cDate="07/09/2003 02:55:58 PDT Wed">
+        <definition>COD: marry. </definition>
+        <sentenceCount annotated="16" total="45"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="wed"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="wedding.n" ID="9034" lemmaID="43672" cBy="664" cDate="07/09/2003 03:25:59 PDT Wed">
+        <definition>COD: a marriage ceremony, especially one including the associated celebrations.</definition>
+        <sentenceCount annotated="23" total="302"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="wedding"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="N" name="marriage_(into).n" ID="9035" lemmaID="23540" cBy="664" cDate="07/09/2003 04:28:55 PDT Wed">
+        <definition>FN: establishing a family relationship with by means of wedding the kin of.</definition>
+        <sentenceCount annotated="1" total="1"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="marriage"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="N" name="engagement.n" ID="9039" lemmaID="12760" cBy="664" cDate="07/09/2003 06:38:05 PDT Wed">
+        <definition>COD: a formal agreement to get married.</definition>
+        <sentenceCount annotated="3" total="3"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="engagement"/>
+    </lexUnit>
+</frame>

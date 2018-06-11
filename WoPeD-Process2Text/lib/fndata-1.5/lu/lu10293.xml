@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="A" name="same.a" ID="10293" frame="Identicality" frameID="1029" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="ci" name="Current_instance"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="pc" name="Previous_context"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="pi" name="Previous_instance"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="soi" name="Set_of_instances"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="tp" name="Type"/>
+        </frame>
+    </header>
+    <definition>COD:  referring to a person or thing just mentioned</definition>
+    <lexeme POS="A" name="same"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Current_instance"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="2nd" FE="Current_instance"/>
+                <annoSet ID="2580111"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Previous_context"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[as]" FE="Previous_context"/>
+                <annoSet ID="2580111"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Previous_instance"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Previous_instance"/>
+                <annoSet ID="2580111"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Type"/>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="N" FE="Type"/>
+                <annoSet ID="2580111"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Current_instance"/>
+            <FE name="Previous_context"/>
+            <FE name="Previous_instance"/>
+            <FE name="Type"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="2nd" FE="Current_instance"/>
+                <valenceUnit GF="Dep" PT="PP[as]" FE="Previous_context"/>
+                <valenceUnit GF="" PT="DNI" FE="Previous_instance"/>
+                <valenceUnit GF="Head" PT="N" FE="Type"/>
+                <annoSet ID="2580111"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="03-T-NP-(1)"/>
+    <subCorpus name="other-matched-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="201" aPos="3900948" ID="1572750">
+            <text>This uses the same 1272 cc engine as the G40 but without the unique G-lader blower .</text>
+            <annotationSet cDate="07/14/2010 03:54:00 PDT Wed" status="UNANN" ID="2580110">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="dt"/>
+                    <label end="8" start="5" name="VVZ"/>
+                    <label end="12" start="10" name="dt"/>
+                    <label end="17" start="14" name="jj"/>
+                    <label end="22" start="19" name="cd"/>
+                    <label end="25" start="24" name="jj"/>
+                    <label end="32" start="27" name="nn"/>
+                    <label end="35" start="34" name="in"/>
+                    <label end="39" start="37" name="dt"/>
+                    <label end="43" start="41" name="nn"/>
+                    <label end="47" start="45" name="cc"/>
+                    <label end="55" start="49" name="in"/>
+                    <label end="59" start="57" name="dt"/>
+                    <label end="66" start="61" name="jj"/>
+                    <label end="74" start="68" name="nn"/>
+                    <label end="81" start="76" name="nn"/>
+                    <label end="83" start="83" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/14/2010 03:54:00 PDT Wed" status="MANUAL" ID="2580111">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="17" start="14" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="6127" end="32" start="19" name="Type"/>
+                    <label cBy="589" feID="6130" end="43" start="34" name="Previous_context"/>
+                    <label cBy="589" feID="6129" itype="DNI" name="Previous_instance"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="32" start="19" name="Head"/>
+                    <label end="43" start="34" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="32" start="19" name="N"/>
+                    <label end="43" start="34" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+                <layer rank="2" name="FE">
+                    <label cBy="589" feID="6128" end="43" start="10" name="Current_instance"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

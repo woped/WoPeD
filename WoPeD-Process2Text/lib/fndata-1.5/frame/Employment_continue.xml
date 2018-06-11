@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="10/16/2003 02:23:31 PDT Thu" name="Employment_continue" ID="871" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;This is a non-perspectivized frame representing the middle stage of the Employment_scenario, in which there is a stable employment relationship between the &lt;fen&gt;Employee&lt;/fen&gt; and the &lt;fen&gt;Employer&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    <semType name="Non-Lexical Frame" ID="16"/>
+    <semType name="Non-perspectivalized_frame" ID="52"/>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="10/16/2003 04:02:14 PDT Thu" abbrev="" name="Employee" ID="5580">
+        <definition>&lt;def-root&gt;The person who is obligated to perform some &lt;fen&gt;Task&lt;/fen&gt; in order to receive &lt;fen&gt;Compensation&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="10/16/2003 04:04:06 PDT Thu" abbrev="" name="Employer" ID="5583">
+        <definition>&lt;def-root&gt;The person (or institution) that gives &lt;fen&gt;Compensation&lt;/fen&gt; to an &lt;fen&gt;Employee&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="10/16/2003 04:07:50 PDT Thu" abbrev="" name="Compensation" ID="5586">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Compensation&lt;/fen&gt; is the payment that the &lt;fen&gt;Employee&lt;/fen&gt; receives for performing a &lt;fen&gt;Task&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="10/16/2003 04:09:33 PDT Thu" abbrev="" name="Duration" ID="5589">
+        <definition>&lt;def-root&gt;This FE identifies the amount of time for which the &lt;fen&gt;Employee&lt;/fen&gt; continues in employ.&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="10/16/2003 04:12:23 PDT Thu" abbrev="" name="Field" ID="5592">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Field&lt;/fen&gt; in which one works.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="10/16/2003 04:14:44 PDT Thu" abbrev="" name="Manner" ID="5595">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Manner&lt;/fen&gt; in which the relationship between an &lt;fen&gt;Employer&lt;/fen&gt;  and an &lt;fen&gt;Employee&lt;/fen&gt; develops.&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="10/16/2003 04:16:49 PDT Thu" abbrev="" name="Place" ID="5598">
+        <definition>&lt;def-root&gt;This FE identifies the place where the &lt;fen&gt;Employee&lt;/fen&gt; works for the &lt;fen&gt;Employer&lt;/fen&gt;.
+&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="10/16/2003 04:22:57 PDT Thu" abbrev="" name="Position" ID="5601">
+        <definition>&lt;def-root&gt;The label given to a particular type of employment.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="10/16/2003 04:52:20 PDT Thu" abbrev="" name="Task" ID="5605">
+        <definition>&lt;def-root&gt;Task identifies the action that the &lt;fen&gt;Employee&lt;/fen&gt; is obligated to do for the &lt;fen&gt;Employer&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="10/16/2003 04:54:37 PDT Thu" abbrev="" name="Time" ID="5608">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Time&lt;/fen&gt; when an &lt;fen&gt;Employer&lt;/fen&gt; employs the &lt;fen&gt;Employee&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in">
+        <relatedFrame>Being_employed</relatedFrame>
+        <relatedFrame>Employing</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of">
+        <relatedFrame>Employment_scenario</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes">
+        <relatedFrame>Employment_end</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Preceded by">
+        <relatedFrame>Employment_start</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+</frame>

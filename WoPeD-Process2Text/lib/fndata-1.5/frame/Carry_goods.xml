@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="618" cDate="11/22/2006 05:02:45 PST Wed" name="Carry_goods" ID="1850" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A Distributor sells, lends, or otherwise distributes a class of Goods. In the prototypical case, the Distributor is a retailer who generally keeps some type of Goods on site for the purpose of selling it to a buyer. Extensions include lending Goods (e.g., libraries, movie rental outlets), organization-internal distribution (as in a hospital), or other non-commercial distribution centers. The Goods are constrained to be a type of item (e.g., &lt;ment&gt;canned goods&lt;/ment&gt;, &lt;ment&gt;antique dressers&lt;/ment&gt;) rather than a particular or unique item (e.g., &lt;ment&gt;Smith's last self-portrait&lt;/ment&gt;, &lt;ment&gt;that guitar I saw here last week&lt;/ment&gt;). Note that a Distributor may &lt;ment&gt;carry&lt;/ment&gt; some particular goods, but may not have it &lt;ment&gt;on hand&lt;/ment&gt; at that exact moment.&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="11/22/2006 05:08:34 PST Wed" abbrev="dis" name="Distributor" ID="10849">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Distributor&lt;/fen&gt; maintains a store of &lt;fen&gt;Goods&lt;/fen&gt; for the purpose of selling or otherwise distributing them.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="11/22/2006 05:09:00 PST Wed" abbrev="goo" name="Goods" ID="10850">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Goods&lt;/fen&gt; are kept on hand and distributed by the &lt;fen&gt;Distributor&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="11/22/2006 05:15:43 PST Wed" abbrev="tim" name="Time" ID="10851">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Time&lt;/fen&gt; when the &lt;fen&gt;Distributor&lt;/fen&gt; carries the &lt;fen&gt;Goods&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="11/22/2006 05:16:18 PST Wed" abbrev="pla" name="Place" ID="10852">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Place&lt;/fen&gt; indicates where the carrying of &lt;fen&gt;Goods&lt;/fen&gt; occurs.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="11/22/2006 05:18:33 PST Wed" abbrev="man" name="Manner" ID="10854">
+        <definition>&lt;def-root&gt;Any description of the storing of goods which is not covered by more specific FEs, including general descriptions comparing events (&lt;ment&gt;the same way&lt;/ment&gt;) and salient characteristics of a &lt;fen&gt;Distributor&lt;/fen&gt; that also affect the action (&lt;ment&gt;deliberately&lt;/ment&gt;, &lt;ment&gt;carefully&lt;/ment&gt;).&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="11/27/2006 01:15:06 PST Mon" abbrev="dur" name="Duration" ID="10855">
+        <definition>&lt;def-root&gt;This FE indicates the length of time that the &lt;fen&gt;Distributor&lt;/fen&gt; carries the &lt;fen&gt;Goods&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="01/03/2007 04:00:44 PST Wed" abbrev="Fre" name="Frequency" ID="10944">
+        <definition>&lt;def-root&gt;This frame element is defined as the number of times an event occurs per some unit of time. A Frequency expression answers the question how often. &lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Storing</relatedFrame>
+        <relatedFrame>Commerce_sell</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="carry.v" ID="13680" lemmaID="5613" cBy="618" cDate="11/22/2006 05:18:15 PST Wed">
+        <definition>COD: keep a regular stock of.</definition>
+        <sentenceCount annotated="5" total="210"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="carry"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="stock.v" ID="13681" lemmaID="38104" cBy="618" cDate="11/22/2006 05:19:43 PST Wed">
+        <definition>COD: have or keep a stock of</definition>
+        <sentenceCount annotated="11" total="216"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="stock"/>
+    </lexUnit>
+</frame>

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="06/21/2002 11:35:05 PDT Fri" name="Compatibility" ID="360" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;&lt;fen&gt;Item-1&lt;/fen&gt; and &lt;fen&gt;Item-2&lt;/fen&gt; are compatible with each other if they can exist or function together in some context without problems, conflict, or other undesirable situation.  The set of &lt;fen&gt;Item-1&lt;/fen&gt; and &lt;fen&gt;Item-2&lt;/fen&gt; may be expressed jointly as &lt;fen&gt;Items&lt;/fen&gt;. The &lt;fen&gt;Degree&lt;/fen&gt; to which the Items are compatible may also be indicated, as may be a &lt;fen&gt;Parameter&lt;/fen&gt; along whose lines the &lt;fen&gt;Items&lt;/fen&gt; are compatible.
+&lt;ex&gt; Make sure &lt;fex name="Item-1"&gt;your site&lt;/fex&gt; is &lt;t&gt;compatible&lt;/t&gt; &lt;fex name="Item-2"&gt;with any browser&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Items"&gt;Our software applications&lt;/fex&gt;  are &lt;t&gt;compatible&lt;/t&gt;. &lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="06/24/2002 01:03:46 PDT Mon" abbrev="Item-1" name="Item_1" ID="3191">
+        <definition>&lt;def-root&gt;The Frame Element &lt;fen&gt;Item_1&lt;/fen&gt; marks the grammatically more prominent of the two entities, i.e.the subject in active clauses, when they are expressed separately.
+
+&lt;ex&gt;&lt;fex name="Item_1"&gt;That technology&lt;/fex&gt; turned out not to be &lt;t&gt;compatible&lt;/t&gt; with the existing devices&lt;/ex&gt;
+
+&lt;/def-root&gt;</definition>
+        <requiresFE name="Item_2" ID="3192"/>
+        <excludesFE name="Items" ID="3193"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="06/24/2002 02:28:10 PDT Mon" abbrev="Item-2" name="Item_2" ID="3192">
+        <definition>&lt;def-root&gt;The Frame Element &lt;fen&gt;Item_2&lt;/fen&gt;marks the grammatically less prominent of the &lt;fen&gt;Items&lt;/fen&gt; when they are expressed separately.
+
+&lt;ex&gt;My computer is not &lt;t&gt;compatible&lt;/t&gt; &lt;fex name="Item_2"&gt;with my new printer&lt;/fex&gt;. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <requiresFE name="Item_1" ID="3191"/>
+        <excludesFE name="Items" ID="3193"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="06/24/2002 02:30:55 PDT Mon" abbrev="Items" name="Items" ID="3193">
+        <definition>&lt;def-root&gt;This FE is used when the &lt;fen&gt;Items&lt;/fen&gt; are expressed jointly in a phrase, either a plural or a coordinated NP.
+
+&lt;ex&gt;&lt;fex name="Items"&gt;Your socks&lt;/fex&gt; don't &lt;t&gt;match&lt;/t&gt;.&lt;/ex&gt;
+&lt;ex&gt; &lt;fex name="Items"&gt;Creationism and Evolutionary Theory&lt;/fex&gt;  don't &lt;t&gt;jibe&lt;/t&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="06/24/2002 02:33:53 PDT Mon" abbrev="Degr" name="Degree" ID="3194">
+        <definition>&lt;def-root&gt;This Frame Element is used for expressions that indicate the extent to which two &lt;fen&gt;Items&lt;/fen&gt; are compatible.
+&lt;ex&gt;These devices are &lt;fex name="Degree"&gt;absolutely&lt;/fex&gt; &lt;t&gt;compatible&lt;/t&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="06/24/2002 02:49:28 PDT Mon" abbrev="Prmtr" name="Parameter" ID="3195">
+        <definition>&lt;def-root&gt;This Frame Element is used for expressions that indicate a &lt;fen&gt;Parameter&lt;/fen&gt; or respect in which the &lt;fen&gt;Items&lt;/fen&gt; are said to be compatible, not in conflict.
+
+&lt;ex&gt;The two applications are &lt;t&gt;compatible&lt;/t&gt; &lt;fex name="Parameter"&gt;in their essential features&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Gradable_attributes</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="A" name="compatible.a" ID="6222" lemmaID="7449" cBy="605" cDate="06/21/2002 03:22:47 PDT Fri">
+        <definition>COD: able to exist or be used together without problems or conflict. </definition>
+        <sentenceCount annotated="56" total="268"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="compatible"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="incompatible.a" ID="6223" lemmaID="19460" cBy="605" cDate="06/21/2002 03:23:51 PDT Fri">
+        <definition>COD: not able to exist or be used together. </definition>
+        <sentenceCount annotated="71" total="210"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="incompatible"/>
+        <semType name="Negative" ID="99"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="incompatibility.n" ID="6224" lemmaID="19459" cBy="605" cDate="06/21/2002 03:25:58 PDT Fri">
+        <definition>FN: the state of not being able to exist or be used together</definition>
+        <sentenceCount annotated="29" total="108"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="incompatibility"/>
+        <semType name="Negative" ID="99"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="compatibility.n" ID="6225" lemmaID="7448" cBy="605" cDate="06/21/2002 03:26:49 PDT Fri">
+        <definition>FN: the state of being able to exist or be used together</definition>
+        <sentenceCount annotated="39" total="247"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="compatibility"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="harmonize.v" ID="6226" lemmaID="17494" cBy="605" cDate="06/21/2002 03:27:09 PDT Fri">
+        <definition>FN: be harmonious</definition>
+        <sentenceCount annotated="12" total="81"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="harmonize"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="congruent.a" ID="6227" lemmaID="7810" cBy="605" cDate="06/21/2002 03:37:01 PDT Fri">
+        <definition>COD: in agreement or harmony</definition>
+        <sentenceCount annotated="11" total="32"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="congruent"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="A" name="congruous.a" ID="6228" lemmaID="7813" cBy="605" cDate="06/21/2002 03:37:37 PDT Fri">
+        <definition>COD: in agreement or harmony. </definition>
+        <sentenceCount annotated="2" total="4"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="congruous"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="consonant.a" ID="6229" lemmaID="7938" cBy="605" cDate="06/21/2002 03:38:21 PDT Fri">
+        <definition>COD: in agreement or harmony with. </definition>
+        <sentenceCount annotated="8" total="57"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="consonant"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="dovetail.v" ID="6230" lemmaID="11598" cBy="605" cDate="06/21/2002 03:42:02 PDT Fri">
+        <definition>COD: fit together easily or conveniently. </definition>
+        <sentenceCount annotated="7" total="17"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="dovetail"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="V" name="jibe.v" ID="6231" lemmaID="45769" cBy="605" cDate="06/21/2002 03:46:55 PDT Fri">
+        <definition>COD: be in accordance; agree. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="jibe"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="square.v" ID="6232" lemmaID="37608" cBy="605" cDate="06/21/2002 03:48:37 PDT Fri">
+        <definition>COD: be compatible</definition>
+        <sentenceCount annotated="13" total="102"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="square"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="V" name="comport.v" ID="6247" lemmaID="7520" cBy="605" cDate="06/24/2002 04:05:16 PDT Mon">
+        <definition>COD: accord with; agree with</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="comport"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="rhyme.v" ID="6248" lemmaID="33182" cBy="605" cDate="06/24/2002 04:11:01 PDT Mon">
+        <definition>COD: of a word, syllable, or line) have or end with a sound that corresponds to another. </definition>
+        <sentenceCount annotated="7" total="49"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="rhyme"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="accord.v" ID="6251" lemmaID="295" cBy="605" cDate="06/24/2002 04:21:26 PDT Mon">
+        <definition>COD: be harmonious or consistent </definition>
+        <sentenceCount annotated="14" total="122"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="accord"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="agree.v" ID="6252" lemmaID="835" cBy="605" cDate="06/25/2002 02:43:01 PDT Tue">
+        <definition>COD: be consistent with.</definition>
+        <sentenceCount annotated="17" total="305"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="agree"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="cohere.v" ID="6253" lemmaID="7101" cBy="605" cDate="06/25/2002 06:19:07 PDT Tue">
+        <definition>COD: of an argument or theory) be logically consistent</definition>
+        <sentenceCount annotated="6" total="20"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="cohere"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="consistent.a" ID="6254" lemmaID="7923" cBy="605" cDate="06/25/2002 06:19:55 PDT Tue">
+        <definition>COD: congruous or in agreement. </definition>
+        <sentenceCount annotated="38" total="271"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="consistent"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="harmony.n" ID="6461" lemmaID="17495" cBy="605" cDate="07/05/2002 05:05:19 PDT Fri">
+        <definition>COD: agreement or accord.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="harmony"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="V" name="go.v" ID="6507" lemmaID="16426" cBy="605" cDate="07/08/2002 06:40:37 PDT Mon">
+        <definition>COD: be harmonious, complementary, or matching</definition>
+        <sentenceCount annotated="0" total="43"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="go"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="clash.v" ID="9431" lemmaID="6669" cBy="605" cDate="09/11/2003 06:46:37 PDT Thu">
+        <definition>COD: be incompatible</definition>
+        <sentenceCount annotated="37" total="176"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="clash"/>
+        <semType name="Negative" ID="99"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="match.v" ID="11147" lemmaID="23663" cBy="303" cDate="11/12/2004 04:46:37 PST Fri">
+        <definition>COD: correspond or cause to correspond in some essential respect; make or be harmonious.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="match"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="at variance.prep" ID="12322" lemmaID="50107" cBy="605" cDate="06/22/2005 06:42:20 PDT Wed">
+        <definition>FN: being inconsistent (with)</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="at"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="variance"/>
+        <semType name="Negative" ID="99"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Item_2" POS="A" name="biocompatible.a" ID="12382" lemmaID="50134" cBy="618" cDate="07/01/2005 12:51:10 PDT Fri">
+        <definition>FN: able to be absorbed by living tissue without causing adverse effects, e.g., by releasing toxins.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="biocompatible"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="conflict.v" ID="13102" lemmaID="7743" cBy="664" cDate="01/25/2006 05:20:49 PST Wed">
+        <definition>COD: be incompatible or at variance with.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="conflict"/>
+        <semType name="Negative" ID="99"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="conflicting.a" ID="13388" lemmaID="7744" cBy="618" cDate="07/24/2006 05:53:40 PDT Mon">
+        <definition>COD: be incompatible or at variance with.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="conflicting"/>
+    </lexUnit>
+</frame>

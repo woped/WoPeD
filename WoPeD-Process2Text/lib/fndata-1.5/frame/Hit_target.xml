@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="01/14/2003 03:16:15 PST Tue" name="Hit_target" ID="485" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Agent&lt;/fen&gt; causes the ballistic motion of a projectile and its subsequent impact on a &lt;fen&gt;Target&lt;/fen&gt;.
+
+&lt;ex&gt;It looks like &lt;fex name="Agent"&gt;he&lt;/fex&gt; &lt;t&gt;hit&lt;/t&gt; &lt;fex name="Target"&gt;the bull's-eye&lt;/fex&gt; &lt;fex name="ins"&gt;with his first arrow&lt;/fex&gt;!&lt;/ex&gt;
+
+&lt;ex&gt;If &lt;fex name="Agent"&gt;he&lt;/fex&gt; &lt;t&gt;shot&lt;/t&gt; &lt;fex name="Target"&gt;her&lt;/fex&gt;, he is fully culpable whether he meant to or not.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="01/14/2003 03:17:37 PST Tue" abbrev="" name="Target" ID="4025">
+        <definition>&lt;def-root&gt;The entity which is hit by a Projectile directed by the Agent.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="01/14/2003 03:17:54 PST Tue" abbrev="" name="Agent" ID="4026">
+        <definition>&lt;def-root&gt;The individual that directs the Projectile such that it impacts the Target.&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/08/2005 11:01:25 PST Thu" abbrev="pur" name="Purpose" ID="9723">
+        <definition>&lt;def-root&gt;The state-of-affairs that the &lt;fen&gt;Agent&lt;/fen&gt; hopes to bring about by hitting the &lt;fen&gt;Target&lt;/fen&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/08/2005 11:02:20 PST Thu" abbrev="tim" name="Time" ID="9724">
+        <definition>&lt;def-root&gt;The time at which the &lt;fen&gt;Agent&lt;/fen&gt; hits the &lt;fen&gt;Target&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/08/2005 11:02:56 PST Thu" abbrev="pla" name="Place" ID="9725">
+        <definition>&lt;def-root&gt;The location where the event happens.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="12/08/2005 11:03:54 PST Thu" abbrev="sub" name="Subregion" ID="9726">
+        <definition>&lt;def-root&gt;The part of the &lt;fen&gt;Target&lt;/fen&gt; hit by the &lt;fen&gt;Agent&lt;/fen&gt;.
+
+&lt;ex&gt;He &lt;t&gt;shot&lt;/t&gt; me &lt;fex name="Subregion"&gt;in the arm&lt;/fex&gt;!&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/08/2005 11:05:23 PST Thu" abbrev="mea" name="Means" ID="9727">
+        <definition>&lt;def-root&gt;The action performed by the &lt;fen&gt;Agent&lt;/fen&gt; that accomplishes hitting the &lt;fen&gt;Target&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/08/2005 11:06:11 PST Thu" abbrev="ins" name="Instrument" ID="9728">
+        <definition>&lt;def-root&gt;The entity, most often ammunition or a firearm, which the &lt;fen&gt;Agent&lt;/fen&gt; manipulates to hit the &lt;fen&gt;Target&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Physical_entity" ID="70"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/08/2005 11:13:05 PST Thu" abbrev="man" name="Manner" ID="9729">
+        <definition>&lt;def-root&gt;Any description of the intentional act which is not covered by more specific FEs, including secondary effects (&lt;ment&gt;quietly, loudly&lt;/ment&gt;), and general descriptions comparing events (&lt;ment&gt;the same way&lt;/ment&gt;). In addition, it may indicate salient characteristics of an &lt;fen&gt;Agent&lt;/fen&gt; that also affect the action (&lt;ment&gt;presumptuously, coldly, deliberately, eagerly, carefully&lt;/ment&gt;). &lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Intentionally_affect</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Shoot_projectiles</relatedFrame>
+        <relatedFrame>Cause_impact</relatedFrame>
+        <relatedFrame>Shooting_scenario</relatedFrame>
+        <relatedFrame>Hit_or_miss</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Needs_SCs" POS="V" name="shoot.v" ID="7951" lemmaID="35615" cBy="296" cDate="01/15/2003 12:13:28 PST Wed">
+        <definition>FN: to fire a gun such that another object is impacted by a bullet.</definition>
+        <sentenceCount annotated="2" total="113"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="shoot"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="hit.v" ID="7952" lemmaID="18154" cBy="296" cDate="01/15/2003 12:15:56 PST Wed">
+        <definition>COD: strike (a target). </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="hit"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="pick off.v" ID="7985" lemmaID="47085" cBy="296" cDate="01/15/2003 03:12:18 PST Wed">
+        <definition>FN: shoot</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="pick"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="off"/>
+    </lexUnit>
+</frame>

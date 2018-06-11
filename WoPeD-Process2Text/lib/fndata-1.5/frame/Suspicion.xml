@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="618" cDate="01/15/2003 01:40:41 PST Wed" name="Suspicion" ID="503" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A person or group, the &lt;fen&gt;Authority&lt;/fen&gt;, believes that another person, the &lt;fen&gt;Suspect&lt;/fen&gt; is a participant in a criminal &lt;fen&gt;Incident&lt;/fen&gt;.
+
+&lt;ex&gt;&lt;fex name="Authority"&gt;The police&lt;/fex&gt; &lt;t&gt;suspect&lt;/t&gt; &lt;fex name="Suspect"&gt;Noah Rogers&lt;/fex&gt; 
+&lt;fex name="Incident"&gt;of aiding the robbery last night at Shop-n-drive&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="01/15/2003 01:58:59 PST Wed" abbrev="Aut" name="Authority" ID="4049">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Authority&lt;/fen&gt; is the group or person who suspects the &lt;fen&gt;Suspect&lt;/fen&gt; of criminal activity.&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="01/15/2003 02:17:24 PST Wed" abbrev="Sus" name="Suspect" ID="4050">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Suspect&lt;/fen&gt; is the target of the &lt;fen&gt;Authority&lt;/fen&gt;'s suspicion.&lt;/def-root&gt;</definition>
+        <semType name="Goal" ID="153"/>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="01/15/2003 02:18:15 PST Wed" abbrev="Inc" name="Incident" ID="4051">
+        <definition>&lt;def-root&gt;The (typically criminal) &lt;fen&gt;Incident&lt;/fen&gt; in which the &lt;fen&gt;Suspect&lt;/fen&gt; is suspected of being involved.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="01/17/2003 12:09:53 PST Fri" abbrev="Time" name="Time" ID="4074">
+        <definition>&lt;def-root&gt;When the suspecting takes place.
+&lt;ex&gt;Jakobson was placed &lt;t&gt;under&lt;/t&gt; &lt;t&gt;suspicion&lt;/t&gt; &lt;fex name="Time"&gt;last week&lt;/fex&gt; .&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Time"&gt;At that time&lt;/fex&gt;, the police &lt;t&gt;suspected&lt;/t&gt; no one.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Criminal_investigation</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Needs_SCs" POS="V" name="suspect.v" ID="7975" lemmaID="39032" cBy="618" cDate="01/15/2003 02:20:20 PST Wed">
+        <definition>COD: believe (someone) to be guilty of a crime or offence, without certain proof.</definition>
+        <sentenceCount annotated="1" total="93"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="suspect"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="PREP" name="under suspicion.prep" ID="8014" lemmaID="47114" cBy="618" cDate="01/16/2003 02:24:34 PST Thu">
+        <definition>FN: be (of a person) suspected of involvement in a crime.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="under"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="suspicion"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="suspect.n" ID="8071" lemmaID="39031" cBy="618" cDate="01/20/2003 01:58:17 PST Mon">
+        <definition>COD: a person suspected of a crime or offence.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="suspect"/>
+    </lexUnit>
+</frame>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="N" name="fink.n" ID="10503" frame="People_by_morality" frameID="1102" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Peripheral" abbrev="Age" name="Age"/>
+            <FE fgColor="000000" bgColor="FFA500" type="Peripheral" abbrev="coa" name="Context_of_acquaintance"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="desc" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Eth" name="Ethnicity"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="fie" name="Field"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="Ori" name="Origin"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Peripheral" abbrev="Pers_char" name="Persistent_characteristic"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="per" name="Person"/>
+        </frame>
+    </header>
+    <definition>COD: an unpleasant or contemptible person.</definition>
+    <lexeme POS="N" name="fink"/>
+    <valences>
+        <governor type="Sup" lemma="have">
+            <annoSet ID="1964407"/>
+        </governor>
+        <FERealization total="2">
+            <FE name="Person"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Person"/>
+                <annoSet ID="1964405"/>
+                <annoSet ID="1964407"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Person"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Person"/>
+                <annoSet ID="1964405"/>
+                <annoSet ID="1964407"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="1067" aPos="0" ID="1258709">
+            <text>` No doubt about it , the guy was a fink and a hoodlum , &quot; I said , ` and worse . &quot;</text>
+            <annotationSet cDate="05/25/2004 07:40:09 PDT Tue" status="UNANN" ID="1964404">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="2" name="dt"/>
+                    <label end="9" start="5" name="nn"/>
+                    <label end="15" start="11" name="in"/>
+                    <label end="18" start="17" name="PP"/>
+                    <label end="20" start="20" name=","/>
+                    <label end="24" start="22" name="dt"/>
+                    <label end="28" start="26" name="nn"/>
+                    <label end="32" start="30" name="VBD"/>
+                    <label end="34" start="34" name="dt"/>
+                    <label end="39" start="36" name="nn"/>
+                    <label end="43" start="41" name="cc"/>
+                    <label end="45" start="45" name="dt"/>
+                    <label end="53" start="47" name="nn"/>
+                    <label end="55" start="55" name=","/>
+                    <label end="59" start="59" name="PP"/>
+                    <label end="64" start="61" name="VVD"/>
+                    <label end="66" start="66" name=","/>
+                    <label end="72" start="70" name="cc"/>
+                    <label end="78" start="74" name="jjr"/>
+                    <label end="80" start="80" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="05/25/2004 07:40:09 PDT Tue" status="MANUAL" ID="1964405">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="39" start="36" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="203" feID="6405" end="28" start="22" name="Person"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="28" start="22" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="28" start="22" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="32" start="30" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="8" paragNo="322" aPos="0" ID="1258710">
+            <text>He 's a fink . ”</text>
+            <annotationSet cDate="05/25/2004 07:40:10 PDT Tue" status="UNANN" ID="1964406">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="4" start="3" name="VBZ"/>
+                    <label end="6" start="6" name="dt"/>
+                    <label end="11" start="8" name="nn"/>
+                    <label end="13" start="13" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="05/25/2004 07:40:10 PDT Tue" status="MANUAL" ID="1964407">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="11" start="8" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="203" feID="6405" end="1" start="0" name="Person"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="1" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="1" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="4" start="3" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

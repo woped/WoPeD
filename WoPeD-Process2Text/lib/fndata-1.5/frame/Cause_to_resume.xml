@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="145" cDate="04/08/2005 04:04:53 PDT Fri" name="Cause_to_resume" ID="1372" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An agent acts so as to cause some process to begin again after an interruption or suspension. &lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="145" cDate="04/08/2005 04:06:52 PDT Fri" abbrev="age" name="Agent" ID="7701">
+        <definition>&lt;def-root&gt;A sentient being acts with the intention of causing a process to begin again.
+&lt;ex&gt;&lt;fex name="Agent"&gt;The driver&lt;/fex&gt; &lt;t&gt;restarted&lt;/t&gt; the truck after it stalled.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="145" cDate="04/08/2005 04:10:04 PDT Fri" abbrev="pro" name="Process" ID="7702">
+        <definition>&lt;def-root&gt;The process which begins again after a suspension.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Core" cBy="145" cDate="04/08/2005 04:11:16 PDT Fri" abbrev="hia" name="Hiatus" ID="7703">
+        <definition>&lt;def-root&gt;The period of time during which the process is suspended.
+&lt;ex&gt;The two countries &lt;t&gt;revived&lt;/t&gt; &lt;fex name="Process"&gt;diplomatic relations&lt;/fex&gt; &lt;fex name="Hiatus"&gt;after a lull of five years&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="145" cDate="04/08/2005 04:21:17 PDT Fri" abbrev="" name="Time" ID="7704">
+        <definition>&lt;def-root&gt;The time at which the process is restarted.
+&lt;ex&gt;This state &lt;t&gt;reinstated&lt;/t&gt; &lt;fex name="Process"&gt;the death penalty&lt;/fex&gt; &lt;fex name="Time"&gt;in 1975&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Core" cBy="145" cDate="04/08/2005 04:29:44 PDT Fri" abbrev="cau" name="Cause" ID="7705">
+        <definition>&lt;def-root&gt;An animate or inanimate entity, a force, or event that causes the process to resume. Volitionality is not a necessary characteristic of Causes.
+
+&lt;ex&gt;&lt;fex name="Cause"&gt;The spring rains&lt;/fex&gt; &lt;t&gt;restarted&lt;/t&gt; &lt;fex name="Process"&gt;the flow of the stream&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Agent" ID="7701"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="04/11/2005 10:23:03 PDT Mon" abbrev="pla" name="Place" ID="7736">
+        <definition>&lt;def-root&gt;The location where the &lt;fen&gt;Agent&lt;/fen&gt; causes the &lt;fen&gt;Process&lt;/fen&gt; to resume.
+
+&lt;ex&gt;The two nations &lt;t&gt;revived&lt;/t&gt; relations &lt;fex name="pla"&gt;in Geneva&lt;/fex&gt; during the latest round of talks.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="04/11/2005 10:34:34 PDT Mon" abbrev="mea" name="Means" ID="7738">
+        <definition>&lt;def-root&gt;The intentional act performed by the &lt;fen&gt;Agent&lt;/fen&gt; that results in the resumption of the &lt;fen&gt;Process&lt;/fen&gt;.
+
+&lt;ex&gt;He managed to &lt;t&gt;revive&lt;/t&gt; the controversy &lt;fex name="mea"&gt;by leaking the story to several tabloid magazines&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="04/11/2005 10:38:29 PDT Mon" abbrev="man" name="Manner" ID="7739">
+        <definition>&lt;def-root&gt;A description of the manner in which the &lt;fen&gt;Agent&lt;/fen&gt; causes the resumption of the &lt;fen&gt;Process&lt;/fen&gt;.
+
+&lt;ex&gt;Japanese banks have been &lt;fex name="man"&gt;rapidly&lt;/fex&gt; &lt;t&gt;reviving&lt;/t&gt; business activity.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="04/11/2005 10:42:25 PDT Mon" abbrev="dur" name="Duration_of_final_state" ID="7740">
+        <definition>&lt;def-root&gt;The length of time for which the &lt;fen&gt;Process&lt;/fen&gt; continues after being started by the &lt;fen&gt;Agent&lt;/fen&gt;.
+
+&lt;ex&gt;The project was &lt;t&gt;restarted&lt;/t&gt; &lt;fex name="dur"&gt;for several weeks&lt;/fex&gt; before it was permanently abandoned.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Transitive_action</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of">
+        <relatedFrame>Process_resume</relatedFrame>
+    </frameRelation>
+    <frameRelation type="See also"/>
+    <lexUnit status="Created" POS="V" name="revive.v" ID="11788" lemmaID="33121" cBy="145" cDate="04/08/2005 04:43:18 PDT Fri">
+        <definition>FN: To cause to begin again after a period of inactivity.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="revive"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="restart.v" ID="11812" lemmaID="49828" cBy="618" cDate="04/11/2005 09:55:07 PDT Mon">
+        <definition>FN: cause to start again, after a period of inactivity.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="restart"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="reinstate.v" ID="11813" lemmaID="32463" cBy="618" cDate="04/11/2005 10:22:24 PDT Mon">
+        <definition>FN: bring a process back into an active state.</definition>
+        <sentenceCount annotated="10" total="126"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="reinstate"/>
+    </lexUnit>
+</frame>

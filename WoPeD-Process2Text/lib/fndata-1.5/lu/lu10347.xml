@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="V" name="remain.v" ID="10347" frame="Left_to_do" frameID="1041" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="agt" name="Agent"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="pro" name="Process"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="rem" name="Remainder"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Peripheral" abbrev="tm" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: be left after others or other parts have been dealt with</definition>
+    <lexeme POS="V" name="remain"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Process"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="VPto" FE="Process"/>
+                <annoSet ID="2594183"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Remainder"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Remainder"/>
+                <annoSet ID="2594183"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Process"/>
+            <FE name="Remainder"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="VPto" FE="Process"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Remainder"/>
+                <annoSet ID="2594183"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="02-NP-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="156" aPos="20675566" ID="1579782">
+            <text>But it remains to be seen whether that will prove a significant omission .</text>
+            <annotationSet cDate="07/16/2010 04:27:37 PDT Fri" status="UNANN" ID="2594182">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="cc"/>
+                    <label end="5" start="4" name="PP"/>
+                    <label end="13" start="7" name="VVZ"/>
+                    <label end="16" start="15" name="to"/>
+                    <label end="19" start="18" name="vb"/>
+                    <label end="24" start="21" name="VVN"/>
+                    <label end="32" start="26" name="in"/>
+                    <label end="37" start="34" name="dt"/>
+                    <label end="42" start="39" name="md"/>
+                    <label end="48" start="44" name="VV"/>
+                    <label end="50" start="50" name="dt"/>
+                    <label end="62" start="52" name="jj"/>
+                    <label end="71" start="64" name="nn"/>
+                    <label end="73" start="73" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/16/2010 04:27:38 PDT Fri" status="MANUAL" ID="2594183">
+                <layer rank="1" name="Target">
+                    <label cBy="571" end="13" start="7" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="571" feID="6169" end="5" start="4" name="Remainder"/>
+                    <label cBy="571" feID="6168" end="71" start="15" name="Process"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="5" start="4" name="Ext"/>
+                    <label end="71" start="15" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="5" start="4" name="NP"/>
+                    <label end="71" start="15" name="VPto"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

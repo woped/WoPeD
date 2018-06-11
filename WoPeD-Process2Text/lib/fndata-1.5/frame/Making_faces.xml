@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="08/15/2003 07:33:15 PDT Fri" name="Making_faces" ID="794" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Agent&lt;/fen&gt; makes a particular facial expression, generally in response to some &lt;fen&gt;Internal_cause&lt;/fen&gt; (generally an emotional state).  Sometimes the &lt;fen&gt;Body_part&lt;/fen&gt; involved in the expression is mentioned in lieu of the &lt;fen&gt;Agent&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="10/12/2003 07:19:08 PDT Sun" abbrev="" name="Agent" ID="5544">
+        <definition>&lt;def-root&gt;The individual that assumes a particular facial expression.&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="10/12/2003 07:20:45 PDT Sun" abbrev="" name="Internal_cause" ID="5545">
+        <definition>&lt;def-root&gt;The emotion or other mental state that leads the &lt;fen&gt;Agent&lt;/fen&gt; to assume a facial expression.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="10/12/2003 07:24:26 PDT Sun" abbrev="" name="Body_part" ID="5547">
+        <definition>&lt;def-root&gt;The particular part of the face that the &lt;fen&gt;Agent&lt;/fen&gt; moves into a facial expression.&lt;/def-root&gt;</definition>
+        <semType name="Body_part" ID="10"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="10/12/2003 07:30:16 PDT Sun" abbrev="" name="Degree" ID="5548">
+        <definition>&lt;def-root&gt;The amount to which the expression on the face of the &lt;fen&gt;Agent&lt;/fen&gt; matches the prototypical image for the indicated facial expression.&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="10/12/2003 07:32:08 PDT Sun" abbrev="" name="Manner" ID="5549">
+        <definition>&lt;def-root&gt;Any description of the event which is not covered by more specific FEs, including epistemic modification (probably, presumably, mysteriously), force (hard, softly), secondary effects (quietly, loudly), and general descriptions comparing events (the same way). It may also indicate salient characteristics of the &lt;fen&gt;Agent&lt;/fen&gt; that also affect the action (presumptuously, coldly, deliberately, eagerly, carefully). &lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="10/12/2003 07:33:43 PDT Sun" abbrev="" name="Intended_perceiver" ID="5550">
+        <definition>&lt;def-root&gt;The individual that the &lt;fen&gt;Agent&lt;/fen&gt; intends to see the facial expression; often the &lt;fen&gt;Intended_perceiver&lt;/fen&gt; is also the focus of the emotional &lt;fen&gt;Internal_cause&lt;/fen&gt; of the &lt;fen&gt;Agent&lt;/fen&gt;.
+
+&lt;ex&gt;Why don't you &lt;t&gt;smile&lt;/t&gt; &lt;fex name="Intended_perceiver"&gt;at me&lt;/fex&gt; more often?&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="10/12/2003 07:36:56 PDT Sun" abbrev="" name="Time" ID="5551">
+        <definition>&lt;def-root&gt;The point in time at which the change in facial_expression takes place.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="10/17/2003 08:53:05 PDT Fri" abbrev="" name="Location_of_expressor" ID="5659">
+        <definition>&lt;def-root&gt;The location relative to some viewer (often the &lt;fen&gt;Intended_perceiver&lt;/fen&gt;) at which the &lt;fen&gt;Agent&lt;/fen&gt; makes an expression.
+
+&lt;ex&gt;He &lt;t&gt;smiled&lt;/t&gt; up at me &lt;fex name="Location_of_expressor"&gt;from the bottom of the well&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="10/17/2003 08:57:59 PDT Fri" abbrev="" name="Path_of_gaze" ID="5660">
+        <definition>&lt;def-root&gt;A path expression that describes a line from the &lt;fen&gt;Agent&lt;/fen&gt; to the &lt;fen&gt;Intended_perceiver&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="10/17/2003 09:04:37 PDT Fri" abbrev="" name="Cognate_event" ID="5661">
+        <definition>&lt;def-root&gt;The facial expression of the &lt;fen&gt;Agent&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="10/17/2003 09:17:57 PDT Fri" abbrev="" name="Depictive" ID="5662">
+        <definition>&lt;def-root&gt;The state of the &lt;fen&gt;Agent&lt;/fen&gt; during the event.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="10/17/2003 09:18:31 PDT Fri" abbrev="" name="External_cause" ID="5663">
+        <definition>&lt;def-root&gt;An event experienced by the &lt;fen&gt;Agent&lt;/fen&gt; that leads them to make an expression.&lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Agent" ID="5544"/>
+        <memberFE name="Body_part" ID="5547"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Facial_expression</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Created" POS="V" name="frown.v" ID="9733" lemmaID="15568" cBy="664" cDate="10/12/2003 07:52:24 PDT Sun">
+        <definition>COD: furrow one's brows in an expression indicating disapproval, displeasure, or concentration.</definition>
+        <sentenceCount annotated="31" total="176"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="frown"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="grimace.v" ID="9734" lemmaID="16842" cBy="664" cDate="10/12/2003 07:53:09 PDT Sun">
+        <definition>FN: contort one's face in an expressive way</definition>
+        <sentenceCount annotated="33" total="79"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="grimace"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="grin.v" ID="9735" lemmaID="16850" cBy="664" cDate="10/12/2003 07:53:28 PDT Sun">
+        <definition>COD: smile broadly</definition>
+        <sentenceCount annotated="67" total="268"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="grin"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="pout.v" ID="9736" lemmaID="29979" cBy="664" cDate="10/12/2003 07:54:32 PDT Sun">
+        <definition>COD: push one's lips or bottom lip forward as an expression of petulant annoyance or in order to make oneself look sexually attractive. </definition>
+        <sentenceCount annotated="21" total="63"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="pout"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="scowl.v" ID="9737" lemmaID="34519" cBy="664" cDate="10/12/2003 07:55:30 PDT Sun">
+        <definition>COD: frown in an angry or bad-tempered way.</definition>
+        <sentenceCount annotated="25" total="78"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="scowl"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="smile.v" ID="9738" lemmaID="36514" cBy="664" cDate="10/12/2003 07:56:13 PDT Sun">
+        <definition>COD: form one's features into a pleased, friendly, or amused expression, with the corners of the mouth turned up.</definition>
+        <sentenceCount annotated="76" total="318"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="smile"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="smirk.v" ID="9739" lemmaID="36520" cBy="664" cDate="10/12/2003 07:57:30 PDT Sun">
+        <definition>COD: smile in an irritatingly smug or silly way.</definition>
+        <sentenceCount annotated="23" total="60"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="smirk"/>
+    </lexUnit>
+</frame>

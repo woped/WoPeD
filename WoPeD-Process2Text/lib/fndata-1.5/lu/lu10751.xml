@@ -1,0 +1,1565 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="A" name="toxic.a" ID="10751" frame="Toxic_substance" frameID="1163" totalAnnotated="26" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Peripheral" abbrev="bod" name="Body_part"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="con" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Extra-Thematic" abbrev="" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Extra-Thematic" abbrev="Reas" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="tox" name="Toxic_substance"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Core" abbrev="toxs" name="Toxin_source"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="typ" name="Type"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="vic" name="Victim"/>
+        </frame>
+    </header>
+    <definition>COD: poisonous</definition>
+    <lexeme POS="A" name="toxic"/>
+    <valences>
+        <FERealization total="4">
+            <FE name="Circumstances"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Circumstances"/>
+                <annoSet ID="2010447"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Circumstances"/>
+                <annoSet ID="2010405"/>
+                <annoSet ID="2010555"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Circumstances"/>
+                <annoSet ID="2010489"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="10">
+            <FE name="Degree"/>
+            <pattern total="10">
+                <valenceUnit GF="Dep" PT="AVP" FE="Degree"/>
+                <annoSet ID="2010405"/>
+                <annoSet ID="2010419"/>
+                <annoSet ID="2010437"/>
+                <annoSet ID="2010463"/>
+                <annoSet ID="2010499"/>
+                <annoSet ID="2010507"/>
+                <annoSet ID="2010519"/>
+                <annoSet ID="2010547"/>
+                <annoSet ID="2010565"/>
+                <annoSet ID="2010629"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="26">
+            <FE name="Toxic_substance"/>
+            <pattern total="14">
+                <valenceUnit GF="Ext" PT="NP" FE="Toxic_substance"/>
+                <annoSet ID="2010403"/>
+                <annoSet ID="2010405"/>
+                <annoSet ID="2010411"/>
+                <annoSet ID="2010419"/>
+                <annoSet ID="2010437"/>
+                <annoSet ID="2010447"/>
+                <annoSet ID="2010455"/>
+                <annoSet ID="2010463"/>
+                <annoSet ID="2010481"/>
+                <annoSet ID="2010489"/>
+                <annoSet ID="2010547"/>
+                <annoSet ID="2010555"/>
+                <annoSet ID="2010557"/>
+                <annoSet ID="2010565"/>
+            </pattern>
+            <pattern total="11">
+                <valenceUnit GF="Head" PT="N" FE="Toxic_substance"/>
+                <annoSet ID="2010397"/>
+                <annoSet ID="2010441"/>
+                <annoSet ID="2010499"/>
+                <annoSet ID="2010507"/>
+                <annoSet ID="2010519"/>
+                <annoSet ID="2010627"/>
+                <annoSet ID="2010629"/>
+                <annoSet ID="2010657"/>
+                <annoSet ID="2010663"/>
+                <annoSet ID="2010697"/>
+                <annoSet ID="2010731"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="NP" FE="Toxic_substance"/>
+                <annoSet ID="2010399"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="26">
+            <FE name="Victim"/>
+            <pattern total="6">
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Victim"/>
+                <annoSet ID="2010403"/>
+                <annoSet ID="2010411"/>
+                <annoSet ID="2010447"/>
+                <annoSet ID="2010455"/>
+                <annoSet ID="2010463"/>
+                <annoSet ID="2010481"/>
+            </pattern>
+            <pattern total="19">
+                <valenceUnit GF="" PT="INI" FE="Victim"/>
+                <annoSet ID="2010397"/>
+                <annoSet ID="2010399"/>
+                <annoSet ID="2010405"/>
+                <annoSet ID="2010419"/>
+                <annoSet ID="2010437"/>
+                <annoSet ID="2010441"/>
+                <annoSet ID="2010499"/>
+                <annoSet ID="2010507"/>
+                <annoSet ID="2010519"/>
+                <annoSet ID="2010547"/>
+                <annoSet ID="2010555"/>
+                <annoSet ID="2010557"/>
+                <annoSet ID="2010565"/>
+                <annoSet ID="2010627"/>
+                <annoSet ID="2010629"/>
+                <annoSet ID="2010657"/>
+                <annoSet ID="2010663"/>
+                <annoSet ID="2010697"/>
+                <annoSet ID="2010731"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="2nd" FE="Victim"/>
+                <annoSet ID="2010489"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Circumstances"/>
+            <FE name="Degree"/>
+            <FE name="Toxic_substance"/>
+            <FE name="Victim"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Circumstances"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Degree"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Toxic_substance"/>
+                <valenceUnit GF="" PT="INI" FE="Victim"/>
+                <annoSet ID="2010405"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="3">
+            <FE name="Circumstances"/>
+            <FE name="Toxic_substance"/>
+            <FE name="Victim"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Circumstances"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Toxic_substance"/>
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Victim"/>
+                <annoSet ID="2010447"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Circumstances"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Toxic_substance"/>
+                <valenceUnit GF="" PT="INI" FE="Victim"/>
+                <annoSet ID="2010555"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Circumstances"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Toxic_substance"/>
+                <valenceUnit GF="" PT="2nd" FE="Victim"/>
+                <annoSet ID="2010489"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="9">
+            <FE name="Degree"/>
+            <FE name="Toxic_substance"/>
+            <FE name="Victim"/>
+            <pattern total="4">
+                <valenceUnit GF="Dep" PT="AVP" FE="Degree"/>
+                <valenceUnit GF="Head" PT="N" FE="Toxic_substance"/>
+                <valenceUnit GF="" PT="INI" FE="Victim"/>
+                <annoSet ID="2010499"/>
+                <annoSet ID="2010507"/>
+                <annoSet ID="2010519"/>
+                <annoSet ID="2010629"/>
+            </pattern>
+            <pattern total="4">
+                <valenceUnit GF="Dep" PT="AVP" FE="Degree"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Toxic_substance"/>
+                <valenceUnit GF="" PT="INI" FE="Victim"/>
+                <annoSet ID="2010419"/>
+                <annoSet ID="2010437"/>
+                <annoSet ID="2010547"/>
+                <annoSet ID="2010565"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Degree"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Toxic_substance"/>
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Victim"/>
+                <annoSet ID="2010463"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Toxic_substance"/>
+            <FE name="Toxic_substance"/>
+            <FE name="Victim"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Toxic_substance"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Toxic_substance"/>
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Victim"/>
+                <annoSet ID="2010455"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="12">
+            <FE name="Toxic_substance"/>
+            <FE name="Victim"/>
+            <pattern total="7">
+                <valenceUnit GF="Head" PT="N" FE="Toxic_substance"/>
+                <valenceUnit GF="" PT="INI" FE="Victim"/>
+                <annoSet ID="2010397"/>
+                <annoSet ID="2010441"/>
+                <annoSet ID="2010627"/>
+                <annoSet ID="2010657"/>
+                <annoSet ID="2010663"/>
+                <annoSet ID="2010697"/>
+                <annoSet ID="2010731"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="NP" FE="Toxic_substance"/>
+                <valenceUnit GF="" PT="INI" FE="Victim"/>
+                <annoSet ID="2010399"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Toxic_substance"/>
+                <valenceUnit GF="" PT="INI" FE="Victim"/>
+                <annoSet ID="2010557"/>
+            </pattern>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="NP" FE="Toxic_substance"/>
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Victim"/>
+                <annoSet ID="2010403"/>
+                <annoSet ID="2010411"/>
+                <annoSet ID="2010481"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-NPwaste|chemical|substance|gas|fume|metal|material|emission|mix|algae|pollu">
+        <sentence corpID="111" docID="421" sentNo="65535" paragNo="392" aPos="124355050" ID="1281097">
+            <text>Coca-Cola which hopes to build a new plant in Banbury says it ca n't rule out the possibility that it will use a toxic chemical in the canning process at the factory .</text>
+            <annotationSet cDate="10/18/2004 01:45:23 PDT Mon" status="UNANN" ID="2010396">
+                <layer rank="1" name="PENN">
+                    <label end="8" start="0" name="NP"/>
+                    <label end="14" start="10" name="wdt"/>
+                    <label end="20" start="16" name="VVZ"/>
+                    <label end="23" start="22" name="to"/>
+                    <label end="29" start="25" name="VV"/>
+                    <label end="31" start="31" name="dt"/>
+                    <label end="35" start="33" name="jj"/>
+                    <label end="41" start="37" name="nn"/>
+                    <label end="44" start="43" name="in"/>
+                    <label end="52" start="46" name="NP"/>
+                    <label end="57" start="54" name="VVZ"/>
+                    <label end="60" start="59" name="PP"/>
+                    <label end="63" start="62" name="md"/>
+                    <label end="67" start="65" name="rb"/>
+                    <label end="72" start="69" name="VV"/>
+                    <label end="76" start="74" name="rp"/>
+                    <label end="80" start="78" name="dt"/>
+                    <label end="92" start="82" name="nn"/>
+                    <label end="97" start="94" name="in"/>
+                    <label end="100" start="99" name="PP"/>
+                    <label end="105" start="102" name="md"/>
+                    <label end="109" start="107" name="VV"/>
+                    <label end="111" start="111" name="dt"/>
+                    <label end="117" start="113" name="jj"/>
+                    <label end="126" start="119" name="nn"/>
+                    <label end="129" start="128" name="in"/>
+                    <label end="133" start="131" name="dt"/>
+                    <label end="141" start="135" name="nn"/>
+                    <label end="149" start="143" name="nn"/>
+                    <label end="152" start="151" name="in"/>
+                    <label end="156" start="154" name="dt"/>
+                    <label end="164" start="158" name="nn"/>
+                    <label end="166" start="166" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/18/2004 01:45:24 PDT Mon" status="MANUAL" ID="2010397">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="117" start="113" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="6764" end="126" start="119" name="Toxic_substance"/>
+                    <label cBy="589" feID="6750" itype="INI" name="Victim"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="126" start="119" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="126" start="119" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="120" aPos="109148652" ID="1281098">
+            <text>Alan Dimmer died this March after removing oil and grease from components at the KAB car seating factory in Northampton , using a vat full of toxic chemical .</text>
+            <annotationSet cDate="10/18/2004 01:45:25 PDT Mon" status="UNANN" ID="2010398">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="NP"/>
+                    <label end="10" start="5" name="NP"/>
+                    <label end="15" start="12" name="VVD"/>
+                    <label end="20" start="17" name="dt"/>
+                    <label end="26" start="22" name="NP"/>
+                    <label end="32" start="28" name="in"/>
+                    <label end="41" start="34" name="VVG"/>
+                    <label end="45" start="43" name="nn"/>
+                    <label end="49" start="47" name="cc"/>
+                    <label end="56" start="51" name="nn"/>
+                    <label end="61" start="58" name="in"/>
+                    <label end="72" start="63" name="nns"/>
+                    <label end="75" start="74" name="in"/>
+                    <label end="79" start="77" name="dt"/>
+                    <label end="83" start="81" name="nn"/>
+                    <label end="87" start="85" name="nn"/>
+                    <label end="95" start="89" name="nn"/>
+                    <label end="103" start="97" name="nn"/>
+                    <label end="106" start="105" name="in"/>
+                    <label end="118" start="108" name="NP"/>
+                    <label end="120" start="120" name=","/>
+                    <label end="126" start="122" name="VVG"/>
+                    <label end="128" start="128" name="dt"/>
+                    <label end="132" start="130" name="nn"/>
+                    <label end="137" start="134" name="jj"/>
+                    <label end="140" start="139" name="in"/>
+                    <label end="146" start="142" name="jj"/>
+                    <label end="155" start="148" name="nn"/>
+                    <label end="157" start="157" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/18/2004 01:45:25 PDT Mon" status="AUTO_EDITED" ID="2010399">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="146" start="142" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="6764" end="155" start="148" name="Toxic_substance"/>
+                    <label cBy="589" feID="6750" itype="INI" name="Victim"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="155" start="148" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="155" start="148" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-NP-Wbe,become-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="28" aPos="95200847" ID="1281100">
+            <text>As this herbicide is toxic to a wide range of weed species , only one spraying would be needed to control the weeds in such a crop .</text>
+            <annotationSet cDate="10/18/2004 01:45:26 PDT Mon" status="UNANN" ID="2010402">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="in"/>
+                    <label end="6" start="3" name="dt"/>
+                    <label end="16" start="8" name="nn"/>
+                    <label end="19" start="18" name="VBZ"/>
+                    <label end="25" start="21" name="jj"/>
+                    <label end="28" start="27" name="to"/>
+                    <label end="30" start="30" name="dt"/>
+                    <label end="35" start="32" name="jj"/>
+                    <label end="41" start="37" name="nn"/>
+                    <label end="44" start="43" name="in"/>
+                    <label end="49" start="46" name="nn"/>
+                    <label end="57" start="51" name="nns"/>
+                    <label end="59" start="59" name=","/>
+                    <label end="64" start="61" name="rb"/>
+                    <label end="68" start="66" name="cd"/>
+                    <label end="77" start="70" name="VVG"/>
+                    <label end="83" start="79" name="md"/>
+                    <label end="86" start="85" name="vb"/>
+                    <label end="93" start="88" name="VVN"/>
+                    <label end="96" start="95" name="to"/>
+                    <label end="104" start="98" name="VV"/>
+                    <label end="108" start="106" name="dt"/>
+                    <label end="114" start="110" name="nns"/>
+                    <label end="117" start="116" name="in"/>
+                    <label end="122" start="119" name="pdt"/>
+                    <label end="124" start="124" name="dt"/>
+                    <label end="129" start="126" name="nn"/>
+                    <label end="131" start="131" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/18/2004 01:45:27 PDT Mon" status="AUTO_EDITED" ID="2010403">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="25" start="21" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="6764" end="16" start="3" name="Toxic_substance"/>
+                    <label cBy="618" feID="6750" end="57" start="27" name="Victim"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="16" start="3" name="Ext"/>
+                    <label end="57" start="27" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="16" start="3" name="NP"/>
+                    <label end="57" start="27" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj">
+                    <label end="19" start="18" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="1515" aPos="7972729" ID="1281101">
+            <text>Methanol is particularly toxic by skin contact ( giving service implications ) , and unpleasant stuff like formaldehyde is produced as alcohols burn .</text>
+            <annotationSet cDate="10/18/2004 01:45:27 PDT Mon" status="UNANN" ID="2010404">
+                <layer rank="1" name="PENN">
+                    <label end="7" start="0" name="nn"/>
+                    <label end="10" start="9" name="VBZ"/>
+                    <label end="23" start="12" name="rb"/>
+                    <label end="29" start="25" name="jj"/>
+                    <label end="32" start="31" name="in"/>
+                    <label end="37" start="34" name="nn"/>
+                    <label end="45" start="39" name="nn"/>
+                    <label end="47" start="47" name="("/>
+                    <label end="54" start="49" name="VVG"/>
+                    <label end="62" start="56" name="nn"/>
+                    <label end="75" start="64" name="nns"/>
+                    <label end="77" start="77" name=")"/>
+                    <label end="79" start="79" name=","/>
+                    <label end="83" start="81" name="cc"/>
+                    <label end="94" start="85" name="jj"/>
+                    <label end="100" start="96" name="nn"/>
+                    <label end="105" start="102" name="in"/>
+                    <label end="118" start="107" name="nn"/>
+                    <label end="121" start="120" name="VBZ"/>
+                    <label end="130" start="123" name="VVN"/>
+                    <label end="133" start="132" name="in"/>
+                    <label end="142" start="135" name="nns"/>
+                    <label end="147" start="144" name="VVP"/>
+                    <label end="149" start="149" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/18/2004 01:45:27 PDT Mon" status="AUTO_EDITED" ID="2010405">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="29" start="25" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="6764" end="7" start="0" name="Toxic_substance"/>
+                    <label cBy="618" feID="6752" end="23" start="12" name="Degree"/>
+                    <label cBy="618" feID="6769" end="45" start="31" name="Circumstances"/>
+                    <label cBy="618" feID="6750" itype="INI" name="Victim"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="7" start="0" name="Ext"/>
+                    <label end="23" start="12" name="Dep"/>
+                    <label end="45" start="31" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="7" start="0" name="NP"/>
+                    <label end="23" start="12" name="AVP"/>
+                    <label end="45" start="31" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj">
+                    <label end="10" start="9" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="86" aPos="23077327" ID="1281104">
+            <text>Once aluminium passes into the water system it is toxic to fish , and may find its way into human drinking systems .</text>
+            <annotationSet cDate="10/18/2004 01:45:29 PDT Mon" status="UNANN" ID="2010410">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="rb"/>
+                    <label end="13" start="5" name="nn"/>
+                    <label end="20" start="15" name="VVZ"/>
+                    <label end="25" start="22" name="in"/>
+                    <label end="29" start="27" name="dt"/>
+                    <label end="35" start="31" name="nn"/>
+                    <label end="42" start="37" name="nn"/>
+                    <label end="45" start="44" name="PP"/>
+                    <label end="48" start="47" name="VBZ"/>
+                    <label end="54" start="50" name="jj"/>
+                    <label end="57" start="56" name="to"/>
+                    <label end="62" start="59" name="nn"/>
+                    <label end="64" start="64" name=","/>
+                    <label end="68" start="66" name="cc"/>
+                    <label end="72" start="70" name="md"/>
+                    <label end="77" start="74" name="VV"/>
+                    <label end="81" start="79" name="PP$"/>
+                    <label end="85" start="83" name="nn"/>
+                    <label end="90" start="87" name="in"/>
+                    <label end="96" start="92" name="jj"/>
+                    <label end="105" start="98" name="nn"/>
+                    <label end="113" start="107" name="nns"/>
+                    <label end="115" start="115" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/18/2004 01:45:29 PDT Mon" status="AUTO_EDITED" ID="2010411">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="54" start="50" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="6764" end="45" start="44" name="Toxic_substance"/>
+                    <label cBy="618" feID="6750" end="62" start="56" name="Victim"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="45" start="44" name="Ext"/>
+                    <label end="62" start="56" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="45" start="44" name="NP"/>
+                    <label end="62" start="56" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj">
+                    <label end="48" start="47" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="873" aPos="6550482" ID="1281108">
+            <text>The reason why aluminium is so toxic is that living things mistake it for iron .</text>
+            <annotationSet cDate="10/18/2004 01:45:33 PDT Mon" status="UNANN" ID="2010418">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="9" start="4" name="nn"/>
+                    <label end="13" start="11" name="wrb"/>
+                    <label end="23" start="15" name="nn"/>
+                    <label end="26" start="25" name="VBZ"/>
+                    <label end="29" start="28" name="rb"/>
+                    <label end="35" start="31" name="jj"/>
+                    <label end="38" start="37" name="VBZ"/>
+                    <label end="43" start="40" name="in"/>
+                    <label end="50" start="45" name="VVG"/>
+                    <label end="57" start="52" name="nns"/>
+                    <label end="65" start="59" name="VV"/>
+                    <label end="68" start="67" name="PP"/>
+                    <label end="72" start="70" name="in"/>
+                    <label end="77" start="74" name="nn"/>
+                    <label end="79" start="79" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/18/2004 01:45:33 PDT Mon" status="AUTO_EDITED" ID="2010419">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="35" start="31" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="6764" end="23" start="15" name="Toxic_substance"/>
+                    <label cBy="618" feID="6752" end="29" start="28" name="Degree"/>
+                    <label cBy="618" feID="6750" itype="INI" name="Victim"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="23" start="15" name="Ext"/>
+                    <label end="29" start="28" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="23" start="15" name="NP"/>
+                    <label end="29" start="28" name="AVP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj">
+                    <label end="26" start="25" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="56" aPos="12145277" ID="1281117">
+            <text>Because oxygen is so reactive , it is potentially extremely toxic .</text>
+            <annotationSet cDate="10/18/2004 01:45:39 PDT Mon" status="UNANN" ID="2010436">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="0" name="in"/>
+                    <label end="13" start="8" name="nn"/>
+                    <label end="16" start="15" name="VBZ"/>
+                    <label end="19" start="18" name="rb"/>
+                    <label end="28" start="21" name="jj"/>
+                    <label end="30" start="30" name=","/>
+                    <label end="33" start="32" name="PP"/>
+                    <label end="36" start="35" name="VBZ"/>
+                    <label end="48" start="38" name="rb"/>
+                    <label end="58" start="50" name="rb"/>
+                    <label end="64" start="60" name="jj"/>
+                    <label end="66" start="66" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/18/2004 01:45:39 PDT Mon" status="AUTO_EDITED" ID="2010437">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="64" start="60" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="6764" end="33" start="32" name="Toxic_substance"/>
+                    <label cBy="618" feID="6752" end="58" start="50" name="Degree"/>
+                    <label cBy="618" feID="6750" itype="INI" name="Victim"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="33" start="32" name="Ext"/>
+                    <label end="58" start="50" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="33" start="32" name="NP"/>
+                    <label end="58" start="50" name="AVP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj">
+                    <label end="36" start="35" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="365" aPos="102430965" ID="1281119">
+            <text>Residents are concerned that toxic waste may be dumped .</text>
+            <annotationSet cDate="10/18/2004 01:45:40 PDT Mon" status="UNANN" ID="2010440">
+                <layer rank="1" name="PENN">
+                    <label end="8" start="0" name="nns"/>
+                    <label end="12" start="10" name="vbp"/>
+                    <label end="22" start="14" name="VVN"/>
+                    <label end="27" start="24" name="in"/>
+                    <label end="33" start="29" name="jj"/>
+                    <label end="39" start="35" name="nn"/>
+                    <label end="43" start="41" name="md"/>
+                    <label end="46" start="45" name="vb"/>
+                    <label end="53" start="48" name="VVN"/>
+                    <label end="55" start="55" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/18/2004 01:45:40 PDT Mon" status="MANUAL" ID="2010441">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="33" start="29" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="6764" end="39" start="35" name="Toxic_substance"/>
+                    <label cBy="618" feID="6750" itype="INI" name="Victim"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="39" start="35" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="39" start="35" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="03-T-Wto-NP-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="1136" aPos="96436822" ID="1281122">
+            <text>It is thus well documented that when ingested gliadin and PT-gliadin are toxic to coeliac patients .</text>
+            <annotationSet cDate="10/18/2004 01:45:42 PDT Mon" status="UNANN" ID="2010446">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="4" start="3" name="VBZ"/>
+                    <label end="9" start="6" name="rb"/>
+                    <label end="14" start="11" name="rb"/>
+                    <label end="25" start="16" name="VVN"/>
+                    <label end="30" start="27" name="in"/>
+                    <label end="35" start="32" name="wrb"/>
+                    <label end="44" start="37" name="VVN"/>
+                    <label end="52" start="46" name="nn"/>
+                    <label end="56" start="54" name="cc"/>
+                    <label end="67" start="58" name="nn"/>
+                    <label end="71" start="69" name="vbp"/>
+                    <label end="77" start="73" name="jj"/>
+                    <label end="80" start="79" name="to"/>
+                    <label end="88" start="82" name="jj"/>
+                    <label end="97" start="90" name="nns"/>
+                    <label end="99" start="99" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/18/2004 01:45:42 PDT Mon" status="AUTO_EDITED" ID="2010447">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="77" start="73" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="6764" end="67" start="46" name="Toxic_substance"/>
+                    <label cBy="618" feID="6769" end="44" start="32" name="Circumstances"/>
+                    <label cBy="618" feID="6750" end="97" start="79" name="Victim"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="67" start="46" name="Ext"/>
+                    <label end="44" start="32" name="Dep"/>
+                    <label end="97" start="79" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="67" start="46" name="NP"/>
+                    <label end="44" start="32" name="AVP"/>
+                    <label end="97" start="79" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj">
+                    <label end="71" start="69" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="460" aPos="25498981" ID="1281126">
+            <text>Certainly , dog loos are an option , but many are extremely expensive , or not 100 per cent safe , containing chemicals which can be toxic to people , pets and soil .</text>
+            <annotationSet cDate="10/18/2004 01:45:45 PDT Mon" status="UNANN" ID="2010454">
+                <layer rank="1" name="PENN">
+                    <label end="8" start="0" name="rb"/>
+                    <label end="10" start="10" name=","/>
+                    <label end="14" start="12" name="nn"/>
+                    <label end="19" start="16" name="nns"/>
+                    <label end="23" start="21" name="vbp"/>
+                    <label end="26" start="25" name="dt"/>
+                    <label end="33" start="28" name="nn"/>
+                    <label end="35" start="35" name=","/>
+                    <label end="39" start="37" name="cc"/>
+                    <label end="44" start="41" name="jj"/>
+                    <label end="48" start="46" name="vbp"/>
+                    <label end="58" start="50" name="rb"/>
+                    <label end="68" start="60" name="jj"/>
+                    <label end="70" start="70" name=","/>
+                    <label end="73" start="72" name="cc"/>
+                    <label end="77" start="75" name="rb"/>
+                    <label end="81" start="79" name="cd"/>
+                    <label end="85" start="83" name="in"/>
+                    <label end="90" start="87" name="nn"/>
+                    <label end="95" start="92" name="jj"/>
+                    <label end="97" start="97" name=","/>
+                    <label end="108" start="99" name="VVG"/>
+                    <label end="118" start="110" name="nns"/>
+                    <label end="124" start="120" name="wdt"/>
+                    <label end="128" start="126" name="md"/>
+                    <label end="131" start="130" name="vb"/>
+                    <label end="137" start="133" name="jj"/>
+                    <label end="140" start="139" name="to"/>
+                    <label end="147" start="142" name="nns"/>
+                    <label end="149" start="149" name=","/>
+                    <label end="154" start="151" name="nns"/>
+                    <label end="158" start="156" name="cc"/>
+                    <label end="163" start="160" name="nn"/>
+                    <label end="165" start="165" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/18/2004 01:45:46 PDT Mon" status="AUTO_EDITED" ID="2010455">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="137" start="133" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="6764" end="118" start="110" name="Toxic_substance"/>
+                    <label cBy="618" feID="6750" end="163" start="139" name="Victim"/>
+                    <label cBy="309" feID="6764" end="124" start="120" name="Toxic_substance"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="118" start="110" name="Ext"/>
+                    <label end="163" start="139" name="Dep"/>
+                    <label end="124" start="120" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="118" start="110" name="NP"/>
+                    <label end="163" start="139" name="PP"/>
+                    <label end="124" start="120" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other">
+                    <label end="118" start="110" name="Ant"/>
+                    <label end="124" start="120" name="Rel"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj">
+                    <label end="131" start="130" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="43" aPos="23073616" ID="1281130">
+            <text>High level waste remains active for 250,000 years and is highly toxic to most life forms .</text>
+            <annotationSet cDate="10/18/2004 01:45:48 PDT Mon" status="UNANN" ID="2010462">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="jj"/>
+                    <label end="9" start="5" name="nn"/>
+                    <label end="15" start="11" name="nn"/>
+                    <label end="23" start="17" name="VVZ"/>
+                    <label end="30" start="25" name="jj"/>
+                    <label end="34" start="32" name="in"/>
+                    <label end="42" start="36" name="cd"/>
+                    <label end="48" start="44" name="nns"/>
+                    <label end="52" start="50" name="cc"/>
+                    <label end="55" start="54" name="VBZ"/>
+                    <label end="62" start="57" name="rb"/>
+                    <label end="68" start="64" name="jj"/>
+                    <label end="71" start="70" name="to"/>
+                    <label end="76" start="73" name="rbs"/>
+                    <label end="81" start="78" name="nn"/>
+                    <label end="87" start="83" name="nns"/>
+                    <label end="89" start="89" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/18/2004 01:45:48 PDT Mon" status="AUTO_EDITED" ID="2010463">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="68" start="64" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="6752" end="62" start="57" name="Degree"/>
+                    <label cBy="618" feID="6764" end="15" start="0" name="Toxic_substance"/>
+                    <label cBy="618" feID="6750" end="87" start="70" name="Victim"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="62" start="57" name="Dep"/>
+                    <label end="15" start="0" name="Ext"/>
+                    <label end="87" start="70" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="62" start="57" name="AVP"/>
+                    <label end="15" start="0" name="NP"/>
+                    <label end="87" start="70" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj">
+                    <label end="55" start="54" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="564" aPos="59472407" ID="1281139">
+            <text>Alcohol is toxic to the ovaries and the testes .</text>
+            <annotationSet cDate="10/18/2004 01:45:55 PDT Mon" status="UNANN" ID="2010480">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="0" name="nn"/>
+                    <label end="9" start="8" name="VBZ"/>
+                    <label end="15" start="11" name="jj"/>
+                    <label end="18" start="17" name="to"/>
+                    <label end="22" start="20" name="dt"/>
+                    <label end="30" start="24" name="nns"/>
+                    <label end="34" start="32" name="cc"/>
+                    <label end="38" start="36" name="dt"/>
+                    <label end="45" start="40" name="nns"/>
+                    <label end="47" start="47" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/18/2004 01:45:56 PDT Mon" status="AUTO_EDITED" ID="2010481">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="15" start="11" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="6764" end="6" start="0" name="Toxic_substance"/>
+                    <label cBy="618" feID="6750" end="45" start="17" name="Victim"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="6" start="0" name="Ext"/>
+                    <label end="45" start="17" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="6" start="0" name="NP"/>
+                    <label end="45" start="17" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj">
+                    <label end="9" start="8" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="04-T-Win-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="46" aPos="967494" ID="1281143">
+            <text>You should not exceed this amount because iron can be toxic in certain individuals .</text>
+            <annotationSet cDate="10/18/2004 01:45:58 PDT Mon" status="UNANN" ID="2010488">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="PP"/>
+                    <label end="9" start="4" name="md"/>
+                    <label end="13" start="11" name="rb"/>
+                    <label end="20" start="15" name="VV"/>
+                    <label end="25" start="22" name="dt"/>
+                    <label end="32" start="27" name="nn"/>
+                    <label end="40" start="34" name="in"/>
+                    <label end="45" start="42" name="nn"/>
+                    <label end="49" start="47" name="md"/>
+                    <label end="52" start="51" name="vb"/>
+                    <label end="58" start="54" name="jj"/>
+                    <label end="61" start="60" name="in"/>
+                    <label end="69" start="63" name="jj"/>
+                    <label end="81" start="71" name="nns"/>
+                    <label end="83" start="83" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/18/2004 01:45:58 PDT Mon" status="MANUAL" ID="2010489">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="58" start="54" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="6764" end="45" start="42" name="Toxic_substance"/>
+                    <label cBy="618" feID="6769" end="81" start="60" name="Circumstances"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="45" start="42" name="Ext"/>
+                    <label end="81" start="60" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="45" start="42" name="NP"/>
+                    <label end="81" start="60" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj">
+                    <label end="52" start="51" name="Cop"/>
+                </layer>
+                <layer rank="2" name="FE">
+                    <label cBy="618" feID="6750" end="81" start="60" name="Victim"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="05-Whighly,very,extremely-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="15" aPos="10654566" ID="1281148">
+            <text>Highly toxic pollutants could be safely disposed of by burning them under water , Prof Keith Bartle , of Leeds University , told the conference .</text>
+            <annotationSet cDate="10/18/2004 01:46:01 PDT Mon" status="UNANN" ID="2010498">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="0" name="rb"/>
+                    <label end="11" start="7" name="jj"/>
+                    <label end="22" start="13" name="nns"/>
+                    <label end="28" start="24" name="md"/>
+                    <label end="31" start="30" name="vb"/>
+                    <label end="38" start="33" name="rb"/>
+                    <label end="47" start="40" name="VVN"/>
+                    <label end="50" start="49" name="in"/>
+                    <label end="53" start="52" name="in"/>
+                    <label end="61" start="55" name="VVG"/>
+                    <label end="66" start="63" name="PP"/>
+                    <label end="72" start="68" name="in"/>
+                    <label end="78" start="74" name="nn"/>
+                    <label end="80" start="80" name=","/>
+                    <label end="85" start="82" name="NP"/>
+                    <label end="91" start="87" name="NP"/>
+                    <label end="98" start="93" name="NP"/>
+                    <label end="100" start="100" name=","/>
+                    <label end="103" start="102" name="in"/>
+                    <label end="109" start="105" name="NP"/>
+                    <label end="120" start="111" name="NP"/>
+                    <label end="122" start="122" name=","/>
+                    <label end="127" start="124" name="VVD"/>
+                    <label end="131" start="129" name="dt"/>
+                    <label end="142" start="133" name="nn"/>
+                    <label end="144" start="144" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/18/2004 01:46:01 PDT Mon" status="AUTO_EDITED" ID="2010499">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="11" start="7" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="6752" end="5" start="0" name="Degree"/>
+                    <label cBy="618" feID="6764" end="22" start="13" name="Toxic_substance"/>
+                    <label cBy="618" feID="6750" itype="INI" name="Victim"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="5" start="0" name="Dep"/>
+                    <label end="22" start="13" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="5" start="0" name="AVP"/>
+                    <label end="22" start="13" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="404" aPos="102765880" ID="1281152">
+            <text>Around 230 tons of &quot; highly toxic chemicals &quot; have been illegally exported from Germany to Ukraine since the beginning of this year and the German authorities have been aware of the transports , Greenpeace has claimed .</text>
+            <annotationSet cDate="10/18/2004 01:46:04 PDT Mon" status="UNANN" ID="2010506">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="0" name="in"/>
+                    <label end="9" start="7" name="cd"/>
+                    <label end="14" start="11" name="nns"/>
+                    <label end="17" start="16" name="in"/>
+                    <label end="26" start="21" name="rb"/>
+                    <label end="32" start="28" name="jj"/>
+                    <label end="42" start="34" name="nns"/>
+                    <label end="49" start="46" name="VHP"/>
+                    <label end="54" start="51" name="VBN"/>
+                    <label end="64" start="56" name="rb"/>
+                    <label end="73" start="66" name="VVN"/>
+                    <label end="78" start="75" name="in"/>
+                    <label end="86" start="80" name="NP"/>
+                    <label end="89" start="88" name="to"/>
+                    <label end="97" start="91" name="NP"/>
+                    <label end="103" start="99" name="in"/>
+                    <label end="107" start="105" name="dt"/>
+                    <label end="117" start="109" name="nn"/>
+                    <label end="120" start="119" name="in"/>
+                    <label end="125" start="122" name="dt"/>
+                    <label end="130" start="127" name="nn"/>
+                    <label end="134" start="132" name="cc"/>
+                    <label end="138" start="136" name="dt"/>
+                    <label end="145" start="140" name="jj"/>
+                    <label end="157" start="147" name="nns"/>
+                    <label end="162" start="159" name="VHP"/>
+                    <label end="167" start="164" name="VBN"/>
+                    <label end="173" start="169" name="jj"/>
+                    <label end="176" start="175" name="in"/>
+                    <label end="180" start="178" name="dt"/>
+                    <label end="191" start="182" name="nns"/>
+                    <label end="193" start="193" name=","/>
+                    <label end="204" start="195" name="NP"/>
+                    <label end="208" start="206" name="VHZ"/>
+                    <label end="216" start="210" name="VVN"/>
+                    <label end="218" start="218" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/18/2004 01:46:04 PDT Mon" status="AUTO_EDITED" ID="2010507">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="32" start="28" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="6752" end="26" start="21" name="Degree"/>
+                    <label cBy="618" feID="6764" end="42" start="34" name="Toxic_substance"/>
+                    <label cBy="618" feID="6750" itype="INI" name="Victim"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="26" start="21" name="Dep"/>
+                    <label end="42" start="34" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="26" start="21" name="AVP"/>
+                    <label end="42" start="34" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="896" aPos="109177452" ID="1281158">
+            <text>Test results show that some very toxic chemicals have in the past been put into the shaft .</text>
+            <annotationSet cDate="10/18/2004 01:46:09 PDT Mon" status="UNANN" ID="2010518">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="nn"/>
+                    <label end="11" start="5" name="nns"/>
+                    <label end="16" start="13" name="VVP"/>
+                    <label end="21" start="18" name="in"/>
+                    <label end="26" start="23" name="dt"/>
+                    <label end="31" start="28" name="rb"/>
+                    <label end="37" start="33" name="jj"/>
+                    <label end="47" start="39" name="nns"/>
+                    <label end="52" start="49" name="VHP"/>
+                    <label end="55" start="54" name="in"/>
+                    <label end="59" start="57" name="dt"/>
+                    <label end="64" start="61" name="nn"/>
+                    <label end="69" start="66" name="VBN"/>
+                    <label end="73" start="71" name="VVN"/>
+                    <label end="78" start="75" name="in"/>
+                    <label end="82" start="80" name="dt"/>
+                    <label end="88" start="84" name="nn"/>
+                    <label end="90" start="90" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/18/2004 01:46:09 PDT Mon" status="AUTO_EDITED" ID="2010519">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="37" start="33" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="6752" end="31" start="28" name="Degree"/>
+                    <label cBy="618" feID="6764" end="47" start="39" name="Toxic_substance"/>
+                    <label cBy="589" feID="6750" itype="INI" name="Victim"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="31" start="28" name="Dep"/>
+                    <label end="47" start="39" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="31" start="28" name="AVP"/>
+                    <label end="47" start="39" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="1697" aPos="33656864" ID="1281172">
+            <text>It is a very serious situation because the gases are extremely toxic .</text>
+            <annotationSet cDate="10/18/2004 01:46:21 PDT Mon" status="UNANN" ID="2010546">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="4" start="3" name="VBZ"/>
+                    <label end="6" start="6" name="dt"/>
+                    <label end="11" start="8" name="rb"/>
+                    <label end="19" start="13" name="jj"/>
+                    <label end="29" start="21" name="nn"/>
+                    <label end="37" start="31" name="in"/>
+                    <label end="41" start="39" name="dt"/>
+                    <label end="47" start="43" name="nns"/>
+                    <label end="51" start="49" name="vbp"/>
+                    <label end="61" start="53" name="rb"/>
+                    <label end="67" start="63" name="jj"/>
+                    <label end="69" start="69" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/18/2004 01:46:21 PDT Mon" status="AUTO_EDITED" ID="2010547">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="67" start="63" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="6764" end="47" start="39" name="Toxic_substance"/>
+                    <label cBy="618" feID="6752" end="61" start="53" name="Degree"/>
+                    <label cBy="618" feID="6750" itype="INI" name="Victim"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="47" start="39" name="Ext"/>
+                    <label end="61" start="53" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="47" start="39" name="NP"/>
+                    <label end="61" start="53" name="AVP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj">
+                    <label end="51" start="49" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="06-T-PPby-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="312" aPos="102669247" ID="1281176">
+            <text>It is toxic by inhalation or ingestion and can be absorbed through the skin .</text>
+            <annotationSet cDate="10/18/2004 01:46:24 PDT Mon" status="UNANN" ID="2010554">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="4" start="3" name="VBZ"/>
+                    <label end="10" start="6" name="jj"/>
+                    <label end="13" start="12" name="in"/>
+                    <label end="24" start="15" name="nn"/>
+                    <label end="27" start="26" name="cc"/>
+                    <label end="37" start="29" name="nn"/>
+                    <label end="41" start="39" name="cc"/>
+                    <label end="45" start="43" name="md"/>
+                    <label end="48" start="47" name="vb"/>
+                    <label end="57" start="50" name="VVN"/>
+                    <label end="65" start="59" name="in"/>
+                    <label end="69" start="67" name="dt"/>
+                    <label end="74" start="71" name="nn"/>
+                    <label end="76" start="76" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/18/2004 01:46:24 PDT Mon" status="AUTO_EDITED" ID="2010555">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="10" start="6" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="6764" end="1" start="0" name="Toxic_substance"/>
+                    <label cBy="618" feID="6750" itype="INI" name="Victim"/>
+                    <label cBy="618" feID="6769" end="37" start="12" name="Circumstances"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="1" start="0" name="Ext"/>
+                    <label end="37" start="12" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="1" start="0" name="NP"/>
+                    <label end="37" start="12" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)">
+        <sentence corpID="111" docID="421" sentNo="5" paragNo="809" aPos="11399494" ID="1281177">
+            <text>If the compounds are toxic , though , the off-gases may have to be collected and treated , probably by passing them through a granular activated carbon absorber .</text>
+            <annotationSet cDate="10/18/2004 01:46:25 PDT Mon" status="UNANN" ID="2010556">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="in"/>
+                    <label end="5" start="3" name="dt"/>
+                    <label end="15" start="7" name="nns"/>
+                    <label end="19" start="17" name="vbp"/>
+                    <label end="25" start="21" name="jj"/>
+                    <label end="27" start="27" name=","/>
+                    <label end="34" start="29" name="rb"/>
+                    <label end="36" start="36" name=","/>
+                    <label end="40" start="38" name="dt"/>
+                    <label end="50" start="42" name="nns"/>
+                    <label end="54" start="52" name="md"/>
+                    <label end="59" start="56" name="VH"/>
+                    <label end="62" start="61" name="to"/>
+                    <label end="65" start="64" name="vb"/>
+                    <label end="75" start="67" name="VVN"/>
+                    <label end="79" start="77" name="cc"/>
+                    <label end="87" start="81" name="VVN"/>
+                    <label end="89" start="89" name=","/>
+                    <label end="98" start="91" name="rb"/>
+                    <label end="101" start="100" name="in"/>
+                    <label end="109" start="103" name="VVG"/>
+                    <label end="114" start="111" name="PP"/>
+                    <label end="122" start="116" name="in"/>
+                    <label end="124" start="124" name="dt"/>
+                    <label end="133" start="126" name="jj"/>
+                    <label end="143" start="135" name="VVN"/>
+                    <label end="150" start="145" name="nn"/>
+                    <label end="159" start="152" name="nn"/>
+                    <label end="161" start="161" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/18/2004 01:46:25 PDT Mon" status="AUTO_EDITED" ID="2010557">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="25" start="21" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="6764" end="15" start="3" name="Toxic_substance"/>
+                    <label cBy="618" feID="6750" itype="INI" name="Victim"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="15" start="3" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="15" start="3" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj">
+                    <label end="19" start="17" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="246" aPos="102714518" ID="1281181">
+            <text>As well as its impact on the ozone layer , the gas is highly toxic , having been found to be the cause of 34 deaths in California alone since 1974 .</text>
+            <annotationSet cDate="10/18/2004 01:46:28 PDT Mon" status="UNANN" ID="2010564">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="rb"/>
+                    <label end="6" start="3" name="rb"/>
+                    <label end="9" start="8" name="in"/>
+                    <label end="13" start="11" name="PP$"/>
+                    <label end="20" start="15" name="nn"/>
+                    <label end="23" start="22" name="in"/>
+                    <label end="27" start="25" name="dt"/>
+                    <label end="33" start="29" name="nn"/>
+                    <label end="39" start="35" name="nn"/>
+                    <label end="41" start="41" name=","/>
+                    <label end="45" start="43" name="dt"/>
+                    <label end="49" start="47" name="nn"/>
+                    <label end="52" start="51" name="VBZ"/>
+                    <label end="59" start="54" name="rb"/>
+                    <label end="65" start="61" name="jj"/>
+                    <label end="67" start="67" name=","/>
+                    <label end="79" start="76" name="VBN"/>
+                    <label end="85" start="81" name="VVN"/>
+                    <label end="88" start="87" name="to"/>
+                    <label end="91" start="90" name="vb"/>
+                    <label end="95" start="93" name="dt"/>
+                    <label end="101" start="97" name="nn"/>
+                    <label end="104" start="103" name="in"/>
+                    <label end="107" start="106" name="cd"/>
+                    <label end="114" start="109" name="nns"/>
+                    <label end="117" start="116" name="in"/>
+                    <label end="128" start="119" name="NP"/>
+                    <label end="134" start="130" name="rb"/>
+                    <label end="140" start="136" name="in"/>
+                    <label end="145" start="142" name="cd"/>
+                    <label end="147" start="147" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/18/2004 01:46:29 PDT Mon" status="AUTO_EDITED" ID="2010565">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="65" start="61" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="6764" end="49" start="43" name="Toxic_substance"/>
+                    <label cBy="618" feID="6752" end="59" start="54" name="Degree"/>
+                    <label cBy="618" feID="6750" itype="INI" name="Victim"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="49" start="43" name="Ext"/>
+                    <label end="59" start="54" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="49" start="43" name="NP"/>
+                    <label end="59" start="54" name="AVP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj">
+                    <label end="52" start="51" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="297" aPos="37949613" ID="1281212">
+            <text>And there are several toxic butterflies , like the monarch , which have their harmless mimics , such as the viceroy .</text>
+            <annotationSet cDate="10/18/2004 01:46:48 PDT Mon" status="UNANN" ID="2010626">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="cc"/>
+                    <label end="8" start="4" name="ex"/>
+                    <label end="12" start="10" name="vbp"/>
+                    <label end="20" start="14" name="jj"/>
+                    <label end="26" start="22" name="jj"/>
+                    <label end="38" start="28" name="nns"/>
+                    <label end="40" start="40" name=","/>
+                    <label end="45" start="42" name="in"/>
+                    <label end="49" start="47" name="dt"/>
+                    <label end="57" start="51" name="nn"/>
+                    <label end="59" start="59" name=","/>
+                    <label end="65" start="61" name="wdt"/>
+                    <label end="70" start="67" name="VHP"/>
+                    <label end="76" start="72" name="PP$"/>
+                    <label end="85" start="78" name="jj"/>
+                    <label end="92" start="87" name="nns"/>
+                    <label end="94" start="94" name=","/>
+                    <label end="99" start="96" name="jj"/>
+                    <label end="102" start="101" name="in"/>
+                    <label end="106" start="104" name="dt"/>
+                    <label end="114" start="108" name="nn"/>
+                    <label end="116" start="116" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/18/2004 01:46:48 PDT Mon" status="MANUAL" ID="2010627">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="26" start="22" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="6764" end="38" start="28" name="Toxic_substance"/>
+                    <label cBy="618" feID="6750" itype="INI" name="Victim"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="38" start="28" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="38" start="28" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="251" aPos="37944289" ID="1281213">
+            <text>The octopus kills its prey , mainly small crabs , by biting them and injecting highly toxic saliva into the wound .</text>
+            <annotationSet cDate="10/18/2004 01:46:49 PDT Mon" status="UNANN" ID="2010628">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="10" start="4" name="nn"/>
+                    <label end="16" start="12" name="VVZ"/>
+                    <label end="20" start="18" name="PP$"/>
+                    <label end="25" start="22" name="nn"/>
+                    <label end="27" start="27" name=","/>
+                    <label end="34" start="29" name="rb"/>
+                    <label end="40" start="36" name="jj"/>
+                    <label end="46" start="42" name="nns"/>
+                    <label end="48" start="48" name=","/>
+                    <label end="51" start="50" name="in"/>
+                    <label end="58" start="53" name="VVG"/>
+                    <label end="63" start="60" name="PP"/>
+                    <label end="67" start="65" name="cc"/>
+                    <label end="77" start="69" name="VVG"/>
+                    <label end="84" start="79" name="rb"/>
+                    <label end="90" start="86" name="jj"/>
+                    <label end="97" start="92" name="nn"/>
+                    <label end="102" start="99" name="in"/>
+                    <label end="106" start="104" name="dt"/>
+                    <label end="112" start="108" name="nn"/>
+                    <label end="114" start="114" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/18/2004 01:46:49 PDT Mon" status="AUTO_EDITED" ID="2010629">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="90" start="86" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="6752" end="84" start="79" name="Degree"/>
+                    <label cBy="618" feID="6764" end="97" start="92" name="Toxic_substance"/>
+                    <label cBy="618" feID="6750" itype="INI" name="Victim"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="84" start="79" name="Dep"/>
+                    <label end="97" start="92" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="84" start="79" name="AVP"/>
+                    <label end="97" start="92" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-unmatched-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="704" aPos="108072575" ID="1281227">
+            <text>Residents of the Shetland Isles are now under threat from toxic fumes released in the oil tanker crash .</text>
+            <annotationSet cDate="10/18/2004 01:46:59 PDT Mon" status="UNANN" ID="2010656">
+                <layer rank="1" name="PENN">
+                    <label end="8" start="0" name="nns"/>
+                    <label end="11" start="10" name="in"/>
+                    <label end="15" start="13" name="dt"/>
+                    <label end="24" start="17" name="NP"/>
+                    <label end="30" start="26" name="NP"/>
+                    <label end="34" start="32" name="vbp"/>
+                    <label end="38" start="36" name="rb"/>
+                    <label end="44" start="40" name="in"/>
+                    <label end="51" start="46" name="nn"/>
+                    <label end="56" start="53" name="in"/>
+                    <label end="62" start="58" name="jj"/>
+                    <label end="68" start="64" name="nns"/>
+                    <label end="77" start="70" name="VVN"/>
+                    <label end="80" start="79" name="in"/>
+                    <label end="84" start="82" name="dt"/>
+                    <label end="88" start="86" name="nn"/>
+                    <label end="95" start="90" name="nn"/>
+                    <label end="101" start="97" name="nn"/>
+                    <label end="103" start="103" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/18/2004 01:46:59 PDT Mon" status="MANUAL" ID="2010657">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="62" start="58" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="6764" end="101" start="64" name="Toxic_substance"/>
+                    <label cBy="618" feID="6750" itype="INI" name="Victim"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="101" start="64" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="101" start="64" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="398" aPos="64109585" ID="1281230">
+            <text>The substances were dispensed by an Indian ethnic practitioner , or hakim , as a treatment for eczema and were found to contain toxic amounts of inorganic arsenic and mercury .</text>
+            <annotationSet cDate="10/18/2004 01:47:00 PDT Mon" status="UNANN" ID="2010662">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="13" start="4" name="nns"/>
+                    <label end="18" start="15" name="VBD"/>
+                    <label end="28" start="20" name="VVN"/>
+                    <label end="31" start="30" name="in"/>
+                    <label end="34" start="33" name="dt"/>
+                    <label end="41" start="36" name="jj"/>
+                    <label end="48" start="43" name="jj"/>
+                    <label end="61" start="50" name="nn"/>
+                    <label end="63" start="63" name=","/>
+                    <label end="66" start="65" name="cc"/>
+                    <label end="72" start="68" name="nn"/>
+                    <label end="74" start="74" name=","/>
+                    <label end="77" start="76" name="in"/>
+                    <label end="79" start="79" name="dt"/>
+                    <label end="89" start="81" name="nn"/>
+                    <label end="93" start="91" name="in"/>
+                    <label end="100" start="95" name="nn"/>
+                    <label end="104" start="102" name="cc"/>
+                    <label end="109" start="106" name="VBD"/>
+                    <label end="115" start="111" name="VVN"/>
+                    <label end="118" start="117" name="to"/>
+                    <label end="126" start="120" name="VV"/>
+                    <label end="132" start="128" name="jj"/>
+                    <label end="140" start="134" name="nns"/>
+                    <label end="143" start="142" name="in"/>
+                    <label end="153" start="145" name="jj"/>
+                    <label end="161" start="155" name="nn"/>
+                    <label end="165" start="163" name="cc"/>
+                    <label end="173" start="167" name="nn"/>
+                    <label end="175" start="175" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/18/2004 01:47:01 PDT Mon" status="MANUAL" ID="2010663">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="132" start="128" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="6764" end="173" start="134" name="Toxic_substance"/>
+                    <label cBy="618" feID="6750" itype="INI" name="Victim"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="173" start="134" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="173" start="134" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="169" aPos="82548613" ID="1281247">
+            <text>` Green &quot; pest control techniques include the electronic detection of rodents and special services which reduce or completely eliminate the use of toxic materials .</text>
+            <annotationSet cDate="10/18/2004 01:47:10 PDT Mon" status="UNANN" ID="2010696">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="2" name="NP"/>
+                    <label end="13" start="10" name="nn"/>
+                    <label end="21" start="15" name="nn"/>
+                    <label end="32" start="23" name="nns"/>
+                    <label end="40" start="34" name="VVP"/>
+                    <label end="44" start="42" name="dt"/>
+                    <label end="55" start="46" name="jj"/>
+                    <label end="65" start="57" name="nn"/>
+                    <label end="68" start="67" name="in"/>
+                    <label end="76" start="70" name="nns"/>
+                    <label end="80" start="78" name="cc"/>
+                    <label end="88" start="82" name="jj"/>
+                    <label end="97" start="90" name="nns"/>
+                    <label end="103" start="99" name="wdt"/>
+                    <label end="110" start="105" name="VVP"/>
+                    <label end="113" start="112" name="cc"/>
+                    <label end="124" start="115" name="rb"/>
+                    <label end="134" start="126" name="VV"/>
+                    <label end="138" start="136" name="dt"/>
+                    <label end="142" start="140" name="nn"/>
+                    <label end="145" start="144" name="in"/>
+                    <label end="151" start="147" name="jj"/>
+                    <label end="161" start="153" name="nns"/>
+                    <label end="163" start="163" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/18/2004 01:47:10 PDT Mon" status="MANUAL" ID="2010697">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="151" start="147" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="6750" itype="INI" name="Victim"/>
+                    <label cBy="618" feID="6764" end="161" start="153" name="Toxic_substance"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="161" start="153" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="161" start="153" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="184" aPos="109252889" ID="1281264">
+            <text>Dense toxic smoke poured from the burning building at Brimscombe near Stroud in Gloucestershire early today .</text>
+            <annotationSet cDate="10/18/2004 01:47:22 PDT Mon" status="UNANN" ID="2010730">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="jj"/>
+                    <label end="10" start="6" name="jj"/>
+                    <label end="16" start="12" name="nn"/>
+                    <label end="23" start="18" name="VVN"/>
+                    <label end="28" start="25" name="in"/>
+                    <label end="32" start="30" name="dt"/>
+                    <label end="40" start="34" name="nn"/>
+                    <label end="49" start="42" name="nn"/>
+                    <label end="52" start="51" name="in"/>
+                    <label end="63" start="54" name="NP"/>
+                    <label end="68" start="65" name="in"/>
+                    <label end="75" start="70" name="NP"/>
+                    <label end="78" start="77" name="in"/>
+                    <label end="94" start="80" name="NP"/>
+                    <label end="100" start="96" name="jj"/>
+                    <label end="106" start="102" name="nn"/>
+                    <label end="108" start="108" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/18/2004 01:47:22 PDT Mon" status="MANUAL" ID="2010731">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="10" start="6" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="6764" end="16" start="12" name="Toxic_substance"/>
+                    <label cBy="618" feID="6750" itype="INI" name="Victim"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="16" start="12" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="16" start="12" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

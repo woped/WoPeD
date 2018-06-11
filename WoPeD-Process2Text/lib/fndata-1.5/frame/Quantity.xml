@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="07/26/2001 03:35:57 PDT Thu" name="Quantity" ID="189" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;This frame contains transparent nouns (and some adjectives) denoting quantities of a &lt;fen&gt;Mass&lt;/fen&gt; or of &lt;fen&gt;Individuals&lt;/fen&gt;. As opposed to aggregate words such as group, set, these &lt;fen&gt;Quantity&lt;/fen&gt; do not have a status as Wholes on their own. Initially, at least, we annotate both &lt;fen&gt;Quantity&lt;/fen&gt; of &lt;fen&gt;Mass&lt;/fen&gt;es and of &lt;fen&gt;Individuals&lt;/fen&gt; in this frame, though we may split the frame along these lines later on. 
+
+&lt;ex&gt;He found them in the &lt;fex name="Quantity"&gt;&lt;t&gt;deluge&lt;/t&gt;&lt;/fex&gt; &lt;fex name="Individuals"&gt;of papers&lt;/fex&gt; on his desk.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="07/27/2001 10:39:53 PDT Fri" abbrev="Qua" name="Quantity" ID="1550">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Quantity&lt;/fen&gt;-denoting &lt;t&gt;Target&lt;/t&gt; word. &lt;ex&gt;I had a &lt;t&gt;&lt;fex name="Quantity"&gt;heap&lt;/fex&gt;&lt;/t&gt; of troubles.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Quantity" ID="59"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="07/27/2001 10:40:09 PDT Fri" abbrev="M" name="Mass" ID="1551">
+        <definition>&lt;def-root&gt;A substance that is being quantified.
+&lt;ex&gt;A &lt;t&gt;modicum&lt;/t&gt; &lt;fex name="M"&gt;of seepage on the floor&lt;/fex&gt; is to be expected.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="07/27/2001 10:40:26 PDT Fri" abbrev="Ind" name="Individuals" ID="1552">
+        <definition>&lt;def-root&gt;A collection of entities.
+&lt;ex&gt;A &lt;t&gt;number&lt;/t&gt; &lt;fex name="Ind"&gt;of concerned citizens&lt;/fex&gt; have raised objections.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Mass" ID="1551"/>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="07/27/2001 10:40:48 PDT Fri" abbrev="" name="Q_Prop" ID="1553">
+        <definition>&lt;def-root&gt;A property of the &lt;fen&gt;Quantity&lt;/fen&gt;.
+
+&lt;ex&gt;John bought a &lt;fex name="Q_Prop"&gt;large&lt;/fex&gt; &lt;fex name="Quantity"&gt;&lt;t&gt;heap&lt;/t&gt;&lt;/fex&gt; &lt;fex name="Individuals"&gt;of old National Geograhics&lt;/fex&gt; at the flea market.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="361" cDate="08/06/2007 02:59:36 PDT Mon" abbrev="Deg" name="Degree" ID="11951">
+        <definition>&lt;def-root&gt;This frame element selects some gradable attribute and modifies the expected value for it.&lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Mass" ID="1551"/>
+        <memberFE name="Individuals" ID="1552"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Relational_quantity</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on">
+        <relatedFrame>Measure_scenario</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="N" name="oodles.n" ID="3318" lemmaID="26757" cBy="605" cDate="07/27/2001 10:41:03 PDT Fri">
+        <definition>COD: a very great number or amount</definition>
+        <sentenceCount annotated="7" total="11"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="oodles"/>
+        <semType name="Transparent Noun" ID="9"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="pile.n" ID="3319" lemmaID="28996" cBy="605" cDate="07/27/2001 10:41:45 PDT Fri">
+        <definition>COD: a large amount</definition>
+        <sentenceCount annotated="41" total="202"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="pile"/>
+        <semType name="Transparent Noun" ID="9"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="ton.n" ID="3320" lemmaID="40662" cBy="605" cDate="07/27/2001 10:41:54 PDT Fri">
+        <definition>COD: a large number or amount</definition>
+        <sentenceCount annotated="29" total="214"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="ton"/>
+        <semType name="Transparent Noun" ID="9"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="heap.n" ID="3321" lemmaID="17674" cBy="605" cDate="07/27/2001 10:42:15 PDT Fri">
+        <definition>COD: a large amount or number</definition>
+        <sentenceCount annotated="10" total="66"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="heap"/>
+        <semType name="Transparent Noun" ID="9"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="load.n" ID="3322" lemmaID="22577" cBy="605" cDate="07/27/2001 10:42:37 PDT Fri">
+        <definition>COD: a lot of. </definition>
+        <sentenceCount annotated="52" total="251"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="load"/>
+        <semType name="Transparent Noun" ID="9"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="modicum.n" ID="3323" lemmaID="24691" cBy="605" cDate="07/27/2001 10:43:09 PDT Fri">
+        <definition>COD: a small quantity of something</definition>
+        <sentenceCount annotated="6" total="47"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="modicum"/>
+        <semType name="Transparent Noun" ID="9"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="mite.n" ID="3324" lemmaID="24605" cBy="605" cDate="07/27/2001 10:43:21 PDT Fri">
+        <definition>COD: a very small amount</definition>
+        <sentenceCount annotated="4" total="39"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="mite"/>
+        <semType name="Transparent Noun" ID="9"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="mass.n" ID="3325" lemmaID="23610" cBy="605" cDate="07/27/2001 10:43:37 PDT Fri">
+        <definition>COD: a large number of people or objects gathered together. </definition>
+        <sentenceCount annotated="21" total="270"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="mass"/>
+        <semType name="Transparent Noun" ID="9"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="scads.n" ID="3326" lemmaID="34287" cBy="605" cDate="07/27/2001 10:51:15 PDT Fri">
+        <definition>COD: a large number or quantity. </definition>
+        <sentenceCount annotated="3" total="4"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="scads"/>
+        <semType name="Transparent Noun" ID="9"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="hundreds.n" ID="3327" lemmaID="45011" cBy="605" cDate="07/27/2001 11:27:18 PDT Fri">
+        <definition>COD: an unspecified large number</definition>
+        <sentenceCount annotated="19" total="176"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="hundreds"/>
+        <semType name="Transparent Noun" ID="9"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="thousands.n" ID="3328" lemmaID="45012" cBy="605" cDate="07/27/2001 11:31:37 PDT Fri">
+        <definition>COD: an unspecified large number</definition>
+        <sentenceCount annotated="27" total="178"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="thousands"/>
+        <semType name="Transparent Noun" ID="9"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="millions.n" ID="3329" lemmaID="45013" cBy="605" cDate="07/27/2001 11:36:05 PDT Fri">
+        <definition>COD: a very large number or amount</definition>
+        <sentenceCount annotated="27" total="176"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="millions"/>
+        <semType name="Transparent Noun" ID="9"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="billions.n" ID="3330" lemmaID="45014" cBy="605" cDate="07/27/2001 11:38:37 PDT Fri">
+        <definition>COD: a very large number or amount</definition>
+        <sentenceCount annotated="24" total="161"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="billion"/>
+        <semType name="Transparent Noun" ID="9"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="dozens.n" ID="3331" lemmaID="45015" cBy="605" cDate="07/27/2001 11:43:11 PDT Fri">
+        <definition>FN: an indefinitely large number</definition>
+        <sentenceCount annotated="19" total="153"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="dozens"/>
+        <semType name="Transparent Noun" ID="9"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="shitload.n" ID="3332" lemmaID="45016" cBy="605" cDate="07/27/2001 11:46:06 PDT Fri">
+        <definition>COD: a large amount or number</definition>
+        <sentenceCount annotated="1" total="1"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="shitload"/>
+        <semType name="Transparent Noun" ID="9"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="abundance.n" ID="3333" lemmaID="226" cBy="605" cDate="07/27/2001 12:22:34 PDT Fri">
+        <definition>COD: a very large quantity of something</definition>
+        <sentenceCount annotated="23" total="212"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="abundance"/>
+        <semType name="Transparent Noun" ID="9"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="myriad.n" ID="3335" lemmaID="25347" cBy="605" cDate="07/27/2001 01:07:35 PDT Fri">
+        <definition>COD: an indefinitely great number</definition>
+        <sentenceCount annotated="13" total="72"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="myriad"/>
+        <semType name="Transparent Noun" ID="9"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="plethora.n" ID="3336" lemmaID="29387" cBy="605" cDate="07/27/2001 01:12:14 PDT Fri">
+        <definition>COD: an excess of</definition>
+        <sentenceCount annotated="14" total="112"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="plethora"/>
+        <semType name="Transparent Noun" ID="9"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="quantity.n" ID="3337" lemmaID="31423" cBy="605" cDate="07/27/2001 01:44:44 PDT Fri">
+        <definition>COD: a certain amount or number</definition>
+        <sentenceCount annotated="33" total="293"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="quantity"/>
+        <semType name="Transparent Noun" ID="9"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="number.n" ID="3338" lemmaID="26257" cBy="605" cDate="07/27/2001 01:45:48 PDT Fri">
+        <definition>COD: a quantity or amount</definition>
+        <sentenceCount annotated="41" total="290"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="number"/>
+        <semType name="Transparent Noun" ID="9"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="pinch.n" ID="3339" lemmaID="29042" cBy="605" cDate="07/27/2001 03:35:59 PDT Fri">
+        <definition>COD: an amount of an ingredient that can be held between fingers and thumb. </definition>
+        <sentenceCount annotated="28" total="117"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="pinch"/>
+        <semType name="Transparent Noun" ID="9"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="ounce.n" ID="3342" lemmaID="27039" cBy="605" cDate="07/27/2001 04:07:18 PDT Fri">
+        <definition>COD: a very small amount</definition>
+        <sentenceCount annotated="11" total="110"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="ounce"/>
+        <semType name="Transparent Noun" ID="9"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="touch.n" ID="3343" lemmaID="40818" cBy="605" cDate="07/27/2001 04:20:36 PDT Fri">
+        <definition>COD: a small amount</definition>
+        <sentenceCount annotated="28" total="137"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="touch"/>
+        <semType name="Transparent Noun" ID="9"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="measure.n" ID="3369" lemmaID="23822" cBy="605" cDate="07/30/2001 02:33:20 PDT Mon">
+        <definition>COD: a certain amount or degree</definition>
+        <sentenceCount annotated="25" total="204"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="measure"/>
+        <semType name="Transparent Noun" ID="9"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="amount.n" ID="3381" lemmaID="1275" cBy="605" cDate="07/30/2001 03:53:18 PDT Mon">
+        <definition>COD: a quantity</definition>
+        <sentenceCount annotated="47" total="240"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="amount"/>
+        <semType name="Transparent Noun" ID="9"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="scores.n" ID="3419" lemmaID="45027" cBy="605" cDate="08/01/2001 08:42:15 PDT Wed">
+        <definition>COD: a large amount or number</definition>
+        <sentenceCount annotated="16" total="150"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="scores"/>
+        <semType name="Transparent Noun" ID="9"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="degree.n" ID="3420" lemmaID="9988" cBy="605" cDate="08/01/2001 08:48:24 PDT Wed">
+        <definition>COD: the amount, level, or extent to which something happens or is present</definition>
+        <sentenceCount annotated="29" total="249"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="degree"/>
+        <semType name="Transparent Noun" ID="9"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="avalanche.n" ID="3836" lemmaID="2462" cBy="605" cDate="08/27/2001 04:52:39 PDT Mon">
+        <definition>COD: an overwhelming deluge</definition>
+        <sentenceCount annotated="13" total="95"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="avalanche"/>
+        <semType name="Transparent Noun" ID="9"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="deluge.n" ID="3837" lemmaID="10070" cBy="605" cDate="08/27/2001 04:53:38 PDT Mon">
+        <definition>COD: a great quantity of something arriving at the same time</definition>
+        <sentenceCount annotated="14" total="86"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="deluge"/>
+        <semType name="Transparent Noun" ID="9"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="torrent.n" ID="3838" lemmaID="40778" cBy="605" cDate="08/27/2001 04:57:55 PDT Mon">
+        <definition>COD: an overwhelmingly copious outpouring</definition>
+        <sentenceCount annotated="26" total="142"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="torrent"/>
+        <semType name="Transparent Noun" ID="9"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="flood.n" ID="3839" lemmaID="14752" cBy="605" cDate="08/27/2001 05:02:52 PDT Mon">
+        <definition>COD: an overwhelming quantity of things or people appearing at once</definition>
+        <sentenceCount annotated="22" total="157"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="flood"/>
+        <semType name="Transparent Noun" ID="9"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="trickle.n" ID="3840" lemmaID="41210" cBy="605" cDate="08/27/2001 05:08:49 PDT Mon">
+        <definition>COD: a small group or number of people or things moving slowly.</definition>
+        <sentenceCount annotated="19" total="121"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="trickle"/>
+        <semType name="Transparent Noun" ID="9"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="stream.n" ID="3841" lemmaID="38301" cBy="605" cDate="08/27/2001 05:17:44 PDT Mon">
+        <definition>COD: a continuous flow of liquid, air, gas, people, or things</definition>
+        <sentenceCount annotated="30" total="210"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="stream"/>
+        <semType name="Transparent Noun" ID="9"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="wave.n" ID="3842" lemmaID="43587" cBy="605" cDate="08/27/2001 05:31:44 PDT Mon">
+        <definition>COD: a sudden occurrence of or increase in a specified phenomenon or emotion</definition>
+        <sentenceCount annotated="32" total="238"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="wave"/>
+        <semType name="Transparent Noun" ID="9"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="raft.n" ID="7451" lemmaID="31686" cBy="605" cDate="09/25/2002 04:17:38 PDT Wed">
+        <definition>FN: a large number or amount of something</definition>
+        <sentenceCount annotated="10" total="124"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="raft"/>
+        <semType name="Transparent Noun" ID="9"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="mountain.n" ID="11729" lemmaID="49895" cBy="664" cDate="03/03/2005 10:41:43 PST Thu">
+        <definition>COD: a large pile or quantity of something.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="mountain"/>
+        <semType name="Transparent Noun" ID="9"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="handful.n" ID="11730" lemmaID="49896" cBy="664" cDate="03/03/2005 10:42:34 PST Thu">
+        <definition>COD: a small number or amount.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="handful"/>
+        <semType name="Transparent Noun" ID="9"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="a lot.n" ID="13232" lemmaID="50373" cBy="303" cDate="06/19/2006 12:27:31 PDT Mon">
+        <definition>FN: a large quantity</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ART" name="a"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="lot"/>
+        <semType name="Transparent Noun" ID="9"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="few.n" ID="13276" lemmaID="14240" cBy="303" cDate="06/19/2006 05:57:50 PDT Mon">
+        <definition>COD: a small number of</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="few"/>
+        <semType name="Transparent Noun" ID="9"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="many.n" ID="13277" lemmaID="50381" cBy="303" cDate="06/19/2006 05:58:02 PDT Mon">
+        <definition>COD: a large number of.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="many"/>
+        <semType name="Transparent Noun" ID="9"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="several.n" ID="13339" lemmaID="50390" cBy="618" cDate="07/06/2006 04:33:18 PDT Thu">
+        <definition>COD: more than two but not many.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="several"/>
+        <semType name="Transparent Noun" ID="9"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="several.a" ID="13368" lemmaID="50402" cBy="618" cDate="07/14/2006 02:33:55 PDT Fri">
+        <definition>COD: more than two but not many.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="several"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="few.a" ID="13369" lemmaID="50403" cBy="618" cDate="07/14/2006 02:34:51 PDT Fri">
+        <definition>COD: not many.</definition>
+        <sentenceCount annotated="20" total="140"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="few"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="ART" name="a few.art" ID="13370" lemmaID="50404" cBy="618" cDate="07/14/2006 02:42:32 PDT Fri">
+        <definition>COD: a small number of.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ART" name="a"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="A" name="few"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="any.a" ID="13745" lemmaID="50504" cBy="361" cDate="02/13/2007 12:40:52 PST Tue">
+        <definition>COD: one or some of a thing or number of things, no matter how much or how many.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="any"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="many.a" ID="13746" lemmaID="50505" cBy="361" cDate="02/14/2007 11:43:10 PST Wed">
+        <definition>COD: a large number of</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="many"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="all.a" ID="13747" lemmaID="50506" cBy="361" cDate="02/14/2007 11:47:15 PST Wed">
+        <definition>COD: the whole quantity</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="all"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="numerous.a" ID="13751" lemmaID="26278" cBy="361" cDate="02/22/2007 11:04:49 PST Thu">
+        <definition>COD: many</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="numerous"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="a bit.a" ID="13797" lemmaID="50513" cBy="664" cDate="02/24/2007 11:13:06 PST Sat">
+        <definition>COD: a small piece, quantity, or extent of something.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ART" name="a"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="bit"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="no.a" ID="13869" lemmaID="50522" cBy="361" cDate="02/26/2007 03:32:45 PST Mon">
+        <definition>COD: not any. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="no"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="multiple.a" ID="13874" lemmaID="25196" cBy="361" cDate="02/26/2007 04:31:37 PST Mon">
+        <definition>COD: having or involving several parts or elements.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="multiple"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="dose.n" ID="14165" lemmaID="11531" cBy="361" cDate="03/27/2007 11:30:26 PDT Tue">
+        <definition>COD: a quantity of a medicine or drug taken at one time.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="dose"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="a little.n" ID="14733" lemmaID="50815" cBy="597" cDate="01/25/2008 04:36:40 PST Fri">
+        <definition>FN: a small amount</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ART" name="a"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="A" name="little"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="both.a" ID="14734" lemmaID="50816" cBy="597" cDate="01/25/2008 04:45:03 PST Fri">
+        <definition>FN: the whole quantity, when the set is limited to two</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="both"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="smattering.n" ID="15231" lemmaID="36501" cBy="361" cDate="08/05/2008 01:23:35 PDT Tue">
+        <definition>FN: a small amount of</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="smattering"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="fair.a" ID="15420" lemmaID="13840" cBy="589" cDate="07/13/2009 10:24:36 PDT Mon">
+        <definition>FN: a considerable size</definition>
+        <sentenceCount annotated="15" total="15"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="fair"/>
+    </lexUnit>
+</frame>

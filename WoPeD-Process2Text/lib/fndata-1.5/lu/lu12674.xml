@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" incorporatedFE="Location" POS="N" name="home.n" ID="12674" frame="Expected_location_of_person" frameID="1619" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp=2313" ID="18900"/>
+            <document description="bncp=211" ID="18946"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Extra-Thematic" abbrev="dur" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="loc" name="Location"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="per" name="Person"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: to or at one's home.</definition>
+    <lexeme POS="N" name="home"/>
+    <valences>
+        <governor type="Ctrlr" lemma="come">
+            <annoSet ID="2605356"/>
+        </governor>
+        <governor type="Ctrlr" lemma="return">
+            <annoSet ID="2605350"/>
+        </governor>
+        <FERealization total="1">
+            <FE name="Duration"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Duration"/>
+                <annoSet ID="2605356"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Person"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Person"/>
+                <annoSet ID="2605350"/>
+                <annoSet ID="2605356"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Duration"/>
+            <FE name="Person"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Duration"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Person"/>
+                <annoSet ID="2605356"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Person"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Person"/>
+                <annoSet ID="2605350"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-Wcome+Wreturn+Wleave-(1)">
+        <sentence corpID="111" docID="18900" sentNo="3" paragNo="403" aPos="0" ID="1584753">
+            <text>I returned home .</text>
+            <annotationSet cDate="08/13/2010 01:54:20 PDT Fri" status="UNANN" ID="2605349">
+                <layer rank="1" name="PENN">
+                    <label end="0" start="0" name="PP"/>
+                    <label end="9" start="2" name="VVD"/>
+                    <label end="14" start="11" name="nn"/>
+                    <label end="16" start="16" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="08/13/2010 01:54:20 PDT Fri" status="MANUAL" ID="2605350">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="14" start="11" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="8947" end="0" start="0" name="Person"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="0" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="0" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="9" start="2" name="Ctrlr"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="18946" sentNo="2" paragNo="675" aPos="0" ID="1584756">
+            <text>She was coming home for three whole weeks and by the time she left for London again the exam results would be nearly due .</text>
+            <annotationSet cDate="08/13/2010 01:54:21 PDT Fri" status="UNANN" ID="2605355">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="PP"/>
+                    <label end="6" start="4" name="VBD"/>
+                    <label end="13" start="8" name="VVG"/>
+                    <label end="18" start="15" name="nn"/>
+                    <label end="22" start="20" name="in"/>
+                    <label end="28" start="24" name="cd"/>
+                    <label end="34" start="30" name="jj"/>
+                    <label end="40" start="36" name="nns"/>
+                    <label end="44" start="42" name="cc"/>
+                    <label end="47" start="46" name="in"/>
+                    <label end="51" start="49" name="dt"/>
+                    <label end="56" start="53" name="nn"/>
+                    <label end="60" start="58" name="PP"/>
+                    <label end="65" start="62" name="VVD"/>
+                    <label end="69" start="67" name="in"/>
+                    <label end="76" start="71" name="NP"/>
+                    <label end="82" start="78" name="rb"/>
+                    <label end="86" start="84" name="dt"/>
+                    <label end="91" start="88" name="nn"/>
+                    <label end="99" start="93" name="nns"/>
+                    <label end="105" start="101" name="md"/>
+                    <label end="108" start="107" name="vb"/>
+                    <label end="115" start="110" name="rb"/>
+                    <label end="119" start="117" name="jj"/>
+                    <label end="121" start="121" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="08/13/2010 01:54:21 PDT Fri" status="MANUAL" ID="2605356">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="18" start="15" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="8947" end="2" start="0" name="Person"/>
+                    <label cBy="589" feID="8951" end="40" start="20" name="Duration"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="2" start="0" name="Ext"/>
+                    <label end="40" start="20" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="2" start="0" name="NP"/>
+                    <label end="40" start="20" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="13" start="8" name="Ctrlr"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-pp_at-p-(1)"/>
+    <subCorpus name="03-object_of-(1)"/>
+    <subCorpus name="04-pp_from-p-(1)"/>
+    <subCorpus name="05-pp_in-p-(1)"/>
+    <subCorpus name="06-pp_on-p-(1)"/>
+    <subCorpus name="07-other-matched-(1)"/>
+    <subCorpus name="08-other-unmatched-(1)"/>
+</lexUnit>

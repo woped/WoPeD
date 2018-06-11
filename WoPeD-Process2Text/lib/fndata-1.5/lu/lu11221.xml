@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="N" name="leg.n" ID="11221" frame="Shaped_part" frameID="970" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp=2588" ID="19812"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Orientation" name="Orientation"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="" name="Part"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="" name="Part_Prop"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="" name="Whole"/>
+        </frame>
+    </header>
+    <definition>COD: a long, thin support or prop, especially of a chair or table.</definition>
+    <lexeme POS="N" name="leg"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Part"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Part"/>
+                <annoSet ID="2583833"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Part_Prop"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Part_Prop"/>
+                <annoSet ID="2583833"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Whole"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Whole"/>
+                <annoSet ID="2583833"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Part"/>
+            <FE name="Part_Prop"/>
+            <FE name="Whole"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Part"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Part_Prop"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Whole"/>
+                <annoSet ID="2583833"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-Wtripod-(1)">
+        <sentence corpID="111" docID="19812" sentNo="2" paragNo="1494" aPos="0" ID="1574608">
+            <text>I looked at the splintered stick Bobbie had used to hit Jules and slowly recognised it for what it was : the broken leg of a camera tripod .</text>
+            <annotationSet cDate="07/15/2010 11:21:08 PDT Thu" status="UNANN" ID="2583832">
+                <layer rank="1" name="PENN">
+                    <label end="0" start="0" name="PP"/>
+                    <label end="7" start="2" name="VVD"/>
+                    <label end="10" start="9" name="in"/>
+                    <label end="14" start="12" name="dt"/>
+                    <label end="25" start="16" name="VVN"/>
+                    <label end="31" start="27" name="VVP"/>
+                    <label end="38" start="33" name="NP"/>
+                    <label end="42" start="40" name="VHD"/>
+                    <label end="47" start="44" name="VVN"/>
+                    <label end="50" start="49" name="to"/>
+                    <label end="54" start="52" name="VV"/>
+                    <label end="60" start="56" name="NP"/>
+                    <label end="64" start="62" name="cc"/>
+                    <label end="71" start="66" name="rb"/>
+                    <label end="82" start="73" name="VVD"/>
+                    <label end="85" start="84" name="PP"/>
+                    <label end="89" start="87" name="in"/>
+                    <label end="94" start="91" name="wp"/>
+                    <label end="97" start="96" name="PP"/>
+                    <label end="101" start="99" name="VBD"/>
+                    <label end="103" start="103" name=":"/>
+                    <label end="107" start="105" name="dt"/>
+                    <label end="114" start="109" name="jj"/>
+                    <label end="118" start="116" name="nn"/>
+                    <label end="121" start="120" name="in"/>
+                    <label end="123" start="123" name="dt"/>
+                    <label end="130" start="125" name="nn"/>
+                    <label end="137" start="132" name="nn"/>
+                    <label end="139" start="139" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/15/2010 11:21:08 PDT Thu" status="MANUAL" ID="2583833">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="118" start="116" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="5922" end="114" start="109" name="Part_Prop"/>
+                    <label cBy="589" feID="5921" end="137" start="120" name="Whole"/>
+                    <label cBy="589" feID="5920" end="118" start="116" name="Part"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="114" start="109" name="Dep"/>
+                    <label end="137" start="120" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="114" start="109" name="AJP"/>
+                    <label end="137" start="120" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-other-matched-(1)"/>
+    <subCorpus name="03-other-unmatched-(1)"/>
+</lexUnit>

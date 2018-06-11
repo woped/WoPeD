@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" POS="V" name="sop.v" ID="12086" frame="Cause_to_be_wet" frameID="309" totalAnnotated="3" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Agt" name="Agent"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Core" abbrev="Cause" name="Cause"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD73" type="Extra-Thematic" abbrev="" name="Explanation"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Ins" name="Instrument"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Liq" name="Liquid"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Mnr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Extra-Thematic" abbrev="sub" name="Subregion"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Und" name="Undergoer"/>
+        </frame>
+    </header>
+    <definition>COD:  soak up liquid.</definition>
+    <lexeme POS="V" name="sop"/>
+    <valences>
+        <FERealization total="3">
+            <FE name="Cause"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Cause"/>
+                <annoSet ID="2248417"/>
+                <annoSet ID="2248419"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Cause"/>
+                <annoSet ID="2248395"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Liquid"/>
+            <pattern total="2">
+                <valenceUnit GF="Obj" PT="NP" FE="Liquid"/>
+                <annoSet ID="2248417"/>
+                <annoSet ID="2248419"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Liquid"/>
+                <annoSet ID="2248395"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Undergoer"/>
+            <pattern total="3">
+                <valenceUnit GF="" PT="2nd" FE="Undergoer"/>
+                <annoSet ID="2248395"/>
+                <annoSet ID="2248417"/>
+                <annoSet ID="2248419"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="3">
+            <FE name="Cause"/>
+            <FE name="Liquid"/>
+            <FE name="Undergoer"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Cause"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Liquid"/>
+                <valenceUnit GF="" PT="2nd" FE="Undergoer"/>
+                <annoSet ID="2248417"/>
+                <annoSet ID="2248419"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Cause"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Liquid"/>
+                <valenceUnit GF="" PT="2nd" FE="Undergoer"/>
+                <annoSet ID="2248395"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="03-T-Wup-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="149" aPos="75076167" ID="1400271">
+            <text>` Most of it was sopped up by the double thickness of the collar at the back but it soaked down through .</text>
+            <annotationSet cDate="08/30/2006 02:06:45 PDT Wed" status="UNANN" ID="2248394">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="2" name="jjs"/>
+                    <label end="8" start="7" name="in"/>
+                    <label end="11" start="10" name="PP"/>
+                    <label end="15" start="13" name="VBD"/>
+                    <label end="22" start="17" name="VVN"/>
+                    <label end="25" start="24" name="rp"/>
+                    <label end="28" start="27" name="in"/>
+                    <label end="32" start="30" name="dt"/>
+                    <label end="39" start="34" name="jj"/>
+                    <label end="49" start="41" name="nn"/>
+                    <label end="52" start="51" name="in"/>
+                    <label end="56" start="54" name="dt"/>
+                    <label end="63" start="58" name="nn"/>
+                    <label end="66" start="65" name="in"/>
+                    <label end="70" start="68" name="dt"/>
+                    <label end="75" start="72" name="rb"/>
+                    <label end="79" start="77" name="cc"/>
+                    <label end="82" start="81" name="PP"/>
+                    <label end="89" start="84" name="VVD"/>
+                    <label end="94" start="91" name="rp"/>
+                    <label end="102" start="96" name="in"/>
+                    <label end="104" start="104" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="08/30/2006 02:06:45 PDT Wed" status="MANUAL" ID="2248395">
+                <layer rank="1" name="Target">
+                    <label cBy="361" end="22" start="17" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="2990" end="75" start="27" name="Cause"/>
+                    <label cBy="361" feID="2647" end="11" start="2" name="Liquid"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="75" start="27" name="Dep"/>
+                    <label end="11" start="2" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="75" start="27" name="PP"/>
+                    <label end="11" start="2" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+                <layer rank="2" name="FE">
+                    <label cBy="361" feID="2648" end="75" start="27" name="Undergoer"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="04-T-NP-(1)"/>
+    <subCorpus name="05-T-(1)"/>
+    <subCorpus name="01-T-Wwine,juice-(2)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="299" aPos="84468805" ID="1400282">
+            <text>Beneath his glass lay a sheet of paper , sopping up wine .</text>
+            <annotationSet cDate="08/30/2006 02:15:03 PDT Wed" status="UNANN" ID="2248416">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="0" name="in"/>
+                    <label end="10" start="8" name="PP$"/>
+                    <label end="16" start="12" name="nn"/>
+                    <label end="20" start="18" name="VVD"/>
+                    <label end="22" start="22" name="dt"/>
+                    <label end="28" start="24" name="nn"/>
+                    <label end="31" start="30" name="in"/>
+                    <label end="37" start="33" name="nn"/>
+                    <label end="39" start="39" name=","/>
+                    <label end="47" start="41" name="VVG"/>
+                    <label end="50" start="49" name="in"/>
+                    <label end="55" start="52" name="nn"/>
+                    <label end="57" start="57" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="08/30/2006 02:15:04 PDT Wed" status="MANUAL" ID="2248417">
+                <layer rank="1" name="Target">
+                    <label cBy="361" end="47" start="41" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="2990" end="37" start="22" name="Cause"/>
+                    <label cBy="361" feID="2647" end="55" start="52" name="Liquid"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="37" start="22" name="Ext"/>
+                    <label end="55" start="52" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="37" start="22" name="NP"/>
+                    <label end="55" start="52" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other">
+                    <label end="37" start="22" name="Ant"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+                <layer rank="2" name="FE">
+                    <label cBy="361" feID="2648" end="37" start="22" name="Undergoer"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="5" paragNo="105" aPos="61782164" ID="1400283">
+            <text>After all , &quot; he continued , deftly manipulating half a loaf of garlic bread to sop up the tomato juice on his last platter , ` you never saw anybody fat come out of Auschwitz . &quot;</text>
+            <annotationSet cDate="08/30/2006 02:15:04 PDT Wed" status="UNANN" ID="2248418">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="in"/>
+                    <label end="8" start="6" name="dt"/>
+                    <label end="10" start="10" name=","/>
+                    <label end="15" start="14" name="PP"/>
+                    <label end="25" start="17" name="VVD"/>
+                    <label end="27" start="27" name=","/>
+                    <label end="34" start="29" name="rb"/>
+                    <label end="47" start="36" name="VVG"/>
+                    <label end="52" start="49" name="pdt"/>
+                    <label end="54" start="54" name="dt"/>
+                    <label end="59" start="56" name="nn"/>
+                    <label end="62" start="61" name="in"/>
+                    <label end="69" start="64" name="nn"/>
+                    <label end="75" start="71" name="nn"/>
+                    <label end="78" start="77" name="to"/>
+                    <label end="82" start="80" name="VV"/>
+                    <label end="85" start="84" name="rp"/>
+                    <label end="89" start="87" name="dt"/>
+                    <label end="96" start="91" name="nn"/>
+                    <label end="102" start="98" name="nn"/>
+                    <label end="105" start="104" name="in"/>
+                    <label end="109" start="107" name="PP$"/>
+                    <label end="114" start="111" name="jj"/>
+                    <label end="122" start="116" name="nn"/>
+                    <label end="124" start="124" name=","/>
+                    <label end="130" start="128" name="PP"/>
+                    <label end="136" start="132" name="rb"/>
+                    <label end="140" start="138" name="VVD"/>
+                    <label end="148" start="142" name="nn"/>
+                    <label end="152" start="150" name="nn"/>
+                    <label end="157" start="154" name="VVN"/>
+                    <label end="161" start="159" name="rp"/>
+                    <label end="164" start="163" name="in"/>
+                    <label end="174" start="166" name="NP"/>
+                    <label end="176" start="176" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="08/30/2006 02:15:04 PDT Wed" status="MANUAL" ID="2248419">
+                <layer rank="1" name="Target">
+                    <label cBy="361" end="82" start="80" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="2990" end="75" start="54" name="Cause"/>
+                    <label cBy="361" feID="2647" end="122" start="87" name="Liquid"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="75" start="54" name="Ext"/>
+                    <label end="122" start="87" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="75" start="54" name="NP"/>
+                    <label end="122" start="87" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+                <layer rank="2" name="FE">
+                    <label cBy="361" feID="2648" end="75" start="54" name="Undergoer"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-unmatched-(2)"/>
+</lexUnit>

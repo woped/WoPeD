@@ -12,8 +12,6 @@ import java.util.logging.Logger;
 
 import nodes.AttachedNode;
 import nodes.Cluster;
-import nodes.EdgeDocker;
-import nodes.FlowObject;
 import nodes.ProcessEdge;
 import nodes.ProcessNode;
 import nodes.ProcessObject;
@@ -1089,6 +1087,8 @@ public abstract class ProcessModel implements Cloneable {
      * Removes a process edge from the model.
      * @param f
      */
+
+    /*
     public synchronized void removeEdge(ProcessEdge f) {
         processEdges.remove(f);
         f.removeContext(this);
@@ -1115,6 +1115,7 @@ public abstract class ProcessModel implements Cloneable {
             removeNode(n);
         }
     }
+    */
     
     public List<ProcessEdge> getFlows() {
         return getEdges();

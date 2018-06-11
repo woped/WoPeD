@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="03/25/2003 04:06:13 PST Tue" name="Amounting_to" ID="602" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;The absolute &lt;fen&gt;Value&lt;/fen&gt; of a quantifiable &lt;fen&gt;Attribute&lt;/fen&gt;  of an item is determined by adding up the values for the &lt;fen&gt;Attribute&lt;/fen&gt; of the individuals or parts that make up the item. The item is not expressed as a separate constituent but it is presupposed by the concept of &lt;fen&gt;Attribute&lt;/fen&gt;.  Alternatively, the &lt;fen&gt;Numbers&lt;/fen&gt; form an implicit set whose sum is the &lt;fen&gt;Value&lt;/fen&gt; associated with the set.   In some cases what is reported is just the cardinality of the individuals that make up the item so that in effect the &lt;fen&gt;Value&lt;/fen&gt; is a count. In other cases the identity of the &lt;fen&gt;Attribute&lt;/fen&gt; can only be inferred from the &lt;fen&gt;Value&lt;/fen&gt;. 
+
+There is no cognizer on the scene in this frame. Instead, the frame focuses on the relationship between the &lt;fen&gt;Attribute&lt;/fen&gt; or &lt;fen&gt;Numbers&lt;/fen&gt; and the &lt;fen&gt;Value&lt;/fen&gt;, which is stable and unchanging regardless of who performs  the calculation.
+
+&lt;ex&gt;Defence is provided in West Germany by &lt;fex name="Attribute"&gt;armed forces whose number&lt;/fex&gt; &lt;t&gt;totals&lt;/t&gt; &lt;fex name="Value"&gt;close to half a million men and women&lt;/fex&gt; &lt;/ex&gt; .
+&lt;ex&gt; &lt;fex name="Attribute"&gt;Revenues&lt;/fex&gt; &lt;t&gt;totalled&lt;/t&gt; &lt;fex name="Value"&gt;568.86m pounds&lt;/fex&gt; &lt;/ex&gt;
+&lt;ex&gt;The WHO estimated that the cumulative &lt;t&gt;total&lt;/t&gt; &lt;fex name="Attribute"&gt;of AIDS cases&lt;/fex&gt; was &lt;fex name="Value"&gt;more than 1,500,000&lt;/fex&gt;. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="03/25/2003 04:06:56 PST Tue" abbrev="Val" name="Value" ID="4310">
+        <definition>&lt;def-root&gt;The value of an attribute.
+
+&lt;ex&gt;The final &lt;t&gt;tally&lt;/t&gt; for 1990 &lt;m&gt;was&lt;/m&gt; &lt;fex
+name="Value"&gt;199,000&lt;/fex&gt; . &lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="03/25/2003 04:09:12 PST Tue" abbrev="" name="Attribute" ID="4312">
+        <definition>&lt;def-root&gt;The scalar property of a concrete or abstract entity.
+
+&lt;ex&gt;During the first three years of drug squad work, &lt;fex name="Attribute"&gt;arrests&lt;/fex&gt; &lt;t&gt;totaled&lt;/t&gt; some sixty-four persons. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="000000" coreType="Peripheral" cBy="618" cDate="07/08/2003 09:37:19 PDT Tue" abbrev="TS" name="Time_span" ID="4739">
+        <definition>&lt;def-root&gt;The span of time when the &lt;fen&gt;Attribute&lt;/fen&gt; has the &lt;fen&gt;Value&lt;/fen&gt;.
+&lt;ex&gt;The &lt;t&gt;total&lt;/t&gt; &lt;fex name="TS"&gt;for last month&lt;/fex&gt; far exceeded expectations.&lt;/ex&gt;
+&lt;ex&gt;The &lt;fex name="TS"&gt;April&lt;/fex&gt; &lt;t&gt;total&lt;/t&gt; is 20,000.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="000000" coreType="Extra-Thematic" cBy="618" cDate="07/08/2003 10:02:52 PDT Tue" abbrev="" name="Frequency" ID="4740">
+        <definition>&lt;def-root&gt;This FE indicates the time span during which the total of the &lt;fen&gt;Attribute&lt;/fen&gt; is the &lt;fen&gt;Value&lt;/fen&gt;, with the added information that it is (somehow) calculated at a regular interval coinciding with the transition between spans of time.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A9A9A9" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="08/11/2004 02:24:53 PDT Wed" abbrev="num" name="Numbers" ID="7003">
+        <definition>&lt;def-root&gt;A set of numbers that add up to the &lt;fen&gt;Value&lt;/fen&gt;.
+
+&lt;ex&gt;Look, you turn those into numbers, and then &lt;fex name="num"&gt;592 and 74&lt;/fex&gt; &lt;t&gt;total&lt;/t&gt; 666, right?&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+        <excludesFE name="Attribute" ID="4312"/>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Attribute" ID="4312"/>
+        <memberFE name="Numbers" ID="7003"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Adding_up</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="total.v" ID="8460" lemmaID="40804" cBy="605" cDate="03/25/2003 04:36:33 PST Tue">
+        <definition>COD: amount in number to</definition>
+        <sentenceCount annotated="34" total="152"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="total"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="amount.v" ID="8461" lemmaID="47561" cBy="605" cDate="03/25/2003 04:38:04 PST Tue">
+        <definition>COD: come to be (a total) when added together</definition>
+        <sentenceCount annotated="40" total="214"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="amount"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Value" POS="N" name="total.n" ID="8507" lemmaID="40803" cBy="605" cDate="04/02/2003 08:17:05 PST Wed">
+        <definition>COD:  a total number or amount</definition>
+        <sentenceCount annotated="22" total="228"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="total"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="tally.n" ID="11102" lemmaID="39445" cBy="303" cDate="11/04/2004 06:46:29 PST Thu">
+        <definition>COD:  a current score or amount.</definition>
+        <sentenceCount annotated="1" total="112"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="tally"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="total.a" ID="13174" lemmaID="40805" cBy="303" cDate="03/30/2006 02:35:37 PST Thu">
+        <definition>COD: comprising the whole number or amount.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="total"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="number.v" ID="13463" lemmaID="26258" cBy="664" cDate="08/15/2006 12:20:26 PDT Tue">
+        <definition>COD: amount to. </definition>
+        <sentenceCount annotated="9" total="105"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="number"/>
+    </lexUnit>
+</frame>

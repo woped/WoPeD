@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="03/28/2002 06:54:32 PST Thu" name="Sentencing" ID="297" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;During a court appearance, a &lt;fen&gt;Sentence&lt;/fen&gt;, generally a punishment, is imposed on the &lt;fen&gt;Convict&lt;/fen&gt; by a &lt;fen&gt;Court&lt;/fen&gt;, usually represented by a judge. &lt;/def-root&gt;</definition>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="243" cDate="08/27/2002 12:28:07 PDT Tue" abbrev="Conv" name="Convict" ID="3629">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Convict&lt;/fen&gt; is given a &lt;fen&gt;Sentence&lt;/fen&gt; by the &lt;fen&gt;Court&lt;/fen&gt;.
+&lt;ex&gt;Judge Duncan &lt;t&gt;sentenced&lt;/t&gt; &lt;fex name="Convict"&gt;Marty&lt;/fex&gt; to five years under house detention.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="243" cDate="08/27/2002 12:29:00 PDT Tue" abbrev="Court" name="Court" ID="3630">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Court&lt;/fen&gt; imposes a &lt;fen&gt;Sentence&lt;/fen&gt; on a &lt;fen&gt;Convict&lt;/fen&gt;.
+&lt;ex&gt;&lt;fex name="Court"&gt;Judge Duncan&lt;/fex&gt; &lt;t&gt;sentenced&lt;/t&gt; Marty to five years under house detention.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Core" cBy="243" cDate="08/27/2002 12:29:40 PDT Tue" abbrev="Sent" name="Sentence" ID="3631">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Sentence&lt;/fen&gt; is imposed on the &lt;fen&gt;Convict&lt;/fen&gt; by the &lt;fen&gt;Court&lt;/fen&gt;.
+&lt;ex&gt;Judge Duncan &lt;t&gt;sentenced&lt;/t&gt; Marty &lt;fex name="Sentence"&gt;to five years under house detention&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Term_of_sentence" ID="4667"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="840" cDate="06/24/2003 03:20:43 PDT Tue" abbrev="" name="Type" ID="4666">
+        <definition>&lt;def-root&gt;This FE denotes the type of sentence.
+&lt;ex&gt;&lt;fex name="Convict"&gt;He&lt;/fex&gt; will receive a &lt;fex name="Type"&gt;prison&lt;/fex&gt; &lt;fex name="Sentence"&gt;&lt;t&gt;sentence&lt;/t&gt;&lt;/fex&gt; if convicted.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Core" cBy="840" cDate="06/24/2003 03:25:28 PDT Tue" abbrev="" name="Term_of_sentence" ID="4667">
+        <definition>&lt;def-root&gt;This FE denotes the duration of the sentence.
+&lt;ex&gt;&lt;fex name="Convict"&gt;Tom&lt;/fex&gt; will recieve a &lt;fex name="Sentence"&gt;&lt;t&gt;sentence&lt;/t&gt;&lt;/fex&gt; &lt;fex name="Term_of_sentence"&gt;of five years&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="05/13/2004 04:57:18 PDT Thu" abbrev="tim" name="Time" ID="6451">
+        <definition>&lt;def-root&gt;The Time when the &lt;fen&gt;Convict&lt;/fen&gt; is sentenced.
+
+&lt;ex&gt;He will be &lt;t&gt;sentenced&lt;/t&gt; &lt;fex name="tim"&gt;at a later date&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="05/13/2004 05:04:55 PDT Thu" abbrev="off" name="Offense" ID="6452">
+        <definition>&lt;def-root&gt;The illegal action of which the &lt;fen&gt;Convict&lt;/fen&gt; has been found guilty and for which they are punished.
+
+&lt;ex&gt;A pet store owner was &lt;t&gt;sentenced&lt;/t&gt; &lt;fex name="off"&gt;for illegaly smuggling protected reptiles&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="05/13/2004 05:09:17 PDT Thu" abbrev="pla" name="Place" ID="6453">
+        <definition>&lt;def-root&gt;The location of the sentencing &lt;fen&gt;Court&lt;/fen&gt;.
+
+&lt;ex&gt;Biancaniello will be &lt;t&gt;sentenced&lt;/t&gt; &lt;fex name="pla"&gt;in San Francisco&lt;/fex&gt; later this summer.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="7CCD7C" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="05/13/2004 05:42:55 PDT Thu" abbrev="dep" name="Depictive" ID="6454">
+        <definition>&lt;def-root&gt;The state that the &lt;fen&gt;Convict&lt;/fen&gt; is  in at the time of their sentencing.
+
+&lt;ex&gt;He was &lt;t&gt;sentenced&lt;/t&gt; &lt;fex name="dep"&gt;in absentia&lt;/fex&gt; during the mass trials.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Communication</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of">
+        <relatedFrame>Criminal_process</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by">
+        <relatedFrame>Trial</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="sentence.v" ID="5341" lemmaID="35099" cBy="664" cDate="03/28/2002 06:56:14 PST Thu">
+        <definition>COD: declare the punishment decided for (an offender). </definition>
+        <sentenceCount annotated="26" total="243"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="sentence"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="sentence.n" ID="5342" lemmaID="35098" cBy="664" cDate="03/28/2002 06:56:55 PST Thu">
+        <definition>COD: the punishment assigned to a defendant found guilty by a court. </definition>
+        <sentenceCount annotated="32" total="270"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="sentence"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="order.v" ID="8700" lemmaID="26908" cBy="840" cDate="05/21/2003 11:10:32 PDT Wed">
+        <definition>FN: force the convict to pay or serve in the prison as punishment  </definition>
+        <sentenceCount annotated="12" total="190"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="order"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="send up.v" ID="10524" lemmaID="49114" cBy="605" cDate="05/13/2004 04:42:57 PDT Thu">
+        <definition>COD: sentence someone to imprisonment</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="send"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="up"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="condemn.v" ID="13787" lemmaID="7659" cBy="361" cDate="02/23/2007 07:29:49 PST Fri">
+        <definition>COD: sentence to a punishment, especially death.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="condemn"/>
+    </lexUnit>
+</frame>

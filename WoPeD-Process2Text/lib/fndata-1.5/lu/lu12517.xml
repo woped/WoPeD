@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="A" name="actual.a" ID="12517" frame="Actually_occurring_entity" frameID="1580" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp=2716" ID="19184"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="ins" name="Instance"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core" abbrev="typ" name="Type"/>
+        </frame>
+    </header>
+    <definition>COD: existing in fact.</definition>
+    <lexeme POS="A" name="actual"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Instance"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="2nd" FE="Instance"/>
+                <annoSet ID="2589507"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Type"/>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="N" FE="Type"/>
+                <annoSet ID="2589507"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Instance"/>
+            <FE name="Type"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="2nd" FE="Instance"/>
+                <valenceUnit GF="Head" PT="N" FE="Type"/>
+                <annoSet ID="2589507"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-modifies-(1)">
+        <sentence corpID="111" docID="19184" sentNo="10" paragNo="895" aPos="0" ID="1577444">
+            <text>Finally , Meshkinpour 's figures were calculated on the basis of hospital charges for manometry , whereas our figure was derived from actual costs .</text>
+            <annotationSet cDate="07/15/2010 04:15:50 PDT Thu" status="UNANN" ID="2589506">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="0" name="rb"/>
+                    <label end="8" start="8" name=","/>
+                    <label end="20" start="10" name="NP"/>
+                    <label end="23" start="22" name="POS"/>
+                    <label end="31" start="25" name="nns"/>
+                    <label end="36" start="33" name="VBD"/>
+                    <label end="47" start="38" name="VVN"/>
+                    <label end="50" start="49" name="in"/>
+                    <label end="54" start="52" name="dt"/>
+                    <label end="60" start="56" name="nn"/>
+                    <label end="63" start="62" name="in"/>
+                    <label end="72" start="65" name="nn"/>
+                    <label end="80" start="74" name="nns"/>
+                    <label end="84" start="82" name="in"/>
+                    <label end="94" start="86" name="nn"/>
+                    <label end="96" start="96" name=","/>
+                    <label end="104" start="98" name="in"/>
+                    <label end="108" start="106" name="PP$"/>
+                    <label end="115" start="110" name="nn"/>
+                    <label end="119" start="117" name="VBD"/>
+                    <label end="127" start="121" name="VVN"/>
+                    <label end="132" start="129" name="in"/>
+                    <label end="139" start="134" name="jj"/>
+                    <label end="145" start="141" name="nns"/>
+                    <label end="147" start="147" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/15/2010 04:15:51 PDT Thu" status="MANUAL" ID="2589507">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="139" start="134" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="8675" end="145" start="141" name="Type"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="145" start="141" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="145" start="141" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+                <layer rank="2" name="FE">
+                    <label cBy="589" feID="8670" end="145" start="134" name="Instance"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-other-matched-(1)"/>
+    <subCorpus name="03-other-unmatched-(1)"/>
+</lexUnit>

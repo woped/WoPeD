@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="08/16/2001 04:47:24 PDT Thu" name="Arrest" ID="202" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;&lt;fen&gt;Authorities&lt;/fen&gt; charge a &lt;fen&gt;Suspect&lt;/fen&gt;, who is under suspicion of having committed a crime (the &lt;fen&gt;Charges&lt;/fen&gt;), and take him/her into custody.&lt;ex&gt;&lt;fex name="Authorities"&gt;The police&lt;/fex&gt; &lt;t&gt;arrested&lt;/t&gt; &lt;fex name="Suspect"&gt;Harry&lt;/fex&gt; &lt;fex name="Chrg"&gt;on charges of manslaughter&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="08/16/2001 04:50:07 PDT Thu" abbrev="Chrg" name="Charges" ID="1642">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Charges&lt;/fen&gt; identifies a category within the legal system; it is the crime with which the &lt;fen&gt;Suspect&lt;/fen&gt; is charged.&lt;ex&gt;The police &lt;t&gt;arrested&lt;/t&gt; Harry &lt;fex name="Chrg"&gt;on charges of manslaughter&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="08/16/2001 04:50:11 PDT Thu" abbrev="P" name="Place" ID="1643">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Place&lt;/fen&gt; where the arrest occurs.&lt;ex&gt;The police &lt;t&gt;arrested&lt;/t&gt; Harry &lt;fex name="Place"&gt;in front of his house&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="08/16/2001 04:50:13 PDT Thu" abbrev="T" name="Time" ID="1644">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Time&lt;/fen&gt; when the arrest occurs.
+&lt;ex&gt;The police &lt;t&gt;arrested&lt;/t&gt; Harry &lt;fex name="Time"&gt;on Wednesday afternoon&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="08/16/2001 04:54:11 PDT Thu" abbrev="Auth" name="Authorities" ID="1645">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Authorities&lt;/fen&gt; charge the &lt;fen&gt;Suspect&lt;/fen&gt; with commiting a crime, and take him/her into custody.&lt;ex&gt;&lt;fex name="Authorities"&gt;The police&lt;/fex&gt; &lt;t&gt;arrested&lt;/t&gt; Harry on charges of manslaughter.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="08/16/2001 04:56:01 PDT Thu" abbrev="Susp" name="Suspect" ID="1646">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Suspect&lt;/fen&gt; is taken into custody, under suspicion of having committed a crime.&lt;ex&gt;The police &lt;t&gt;arrested&lt;/t&gt; &lt;fex name="Suspect"&gt;Harry&lt;/fex&gt; on charges of manslaughter.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Peripheral" cBy="669" cDate="05/01/2002 02:26:12 PDT Wed" abbrev="Type" name="Type" ID="2726">
+        <definition>&lt;def-root&gt;This FE indicates the subtype of arrest under which the &lt;fen&gt;Suspect&lt;/fen&gt; is placed.
+&lt;ex&gt;The police placed Harry under &lt;fex name="Type"&gt;house&lt;/fex&gt; &lt;t&gt;arrest&lt;/t&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Core" cBy="243" cDate="05/09/2002 05:36:18 PDT Thu" abbrev="Off" name="Offense" ID="2756">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Offense&lt;/fen&gt; identifies the ordinary language use of the reason for which a &lt;fen&gt;Suspect&lt;/fen&gt; is arrested. 
+&lt;ex&gt;They arrested Harry &lt;fex name="Offense"&gt;for shoplifting&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="07/01/2002 04:36:29 PDT Mon" abbrev="Mnr" name="Manner" ID="3319">
+        <definition>&lt;def-root&gt;Any description of the arresting event which is not covered by more specific FEs, including secondary effects (&lt;ment&gt;quietly, loudly&lt;/ment&gt;), and general descriptions comparing events (&lt;ment&gt;the same way&lt;/ment&gt;). In addition, it may indicate salient characteristics of an &lt;fen&gt;Authorities&lt;/fen&gt; that also affect the action (&lt;ment&gt;presumptuously, coldly, deliberately, eagerly, carefully&lt;/ment&gt;). 
+&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="07/01/2002 04:36:31 PDT Mon" abbrev="Mns" name="Means" ID="3320">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Means&lt;/fen&gt; by which &lt;fen&gt;Authorities&lt;/fen&gt; arrest a &lt;fen&gt;Suspect&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="07/01/2002 04:36:33 PDT Mon" abbrev="Purp" name="Purpose" ID="3321">
+        <definition>&lt;def-root&gt;This FE identifies the purpose for which &lt;fen&gt;Authorities&lt;/fen&gt; arrest a &lt;fen&gt;Suspect&lt;/fen&gt;.
+&lt;ex&gt;The police &lt;t&gt;arrested&lt;/t&gt; Harry &lt;fex name="Purpose"&gt;to get him off the street&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="07/21/2003 10:00:56 PDT Mon" abbrev="" name="Source_of_legal_authority" ID="4800">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Source_of_legal_authority&lt;/fen&gt; describe the law which grants the power of arrest to the &lt;fen&gt;Authorities&lt;/fen&gt;.
+&lt;ex&gt;&lt;fex name="Authorities"&gt;The policeman&lt;/fex&gt; &lt;t&gt;arrested&lt;/t&gt; &lt;fex name="Suspect"&gt;him&lt;/fex&gt; &lt;fex name="Source_of_legal_authority"&gt;under the "suspected loitering with intent" power&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="d0d0d0" fgColor="FF0000" coreType="Extra-Thematic" cBy="664" cDate="08/04/2009 02:34:14 PDT Tue" abbrev="cop" name="Coparticipant" ID="13345">
+        <definition>&lt;def-root&gt;A person that participates in the event along with the &lt;fen&gt;Authorities&lt;/fen&gt; or the &lt;fen&gt;Suspect&lt;/fen&gt;.
+
+&lt;ex&gt;She was &lt;t&gt;arrested&lt;/t&gt; &lt;fex name="Coparticipant"&gt;with the Minister of Finance, Javier Soledad&lt;/fex&gt; .&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Charges" ID="1642"/>
+        <memberFE name="Offense" ID="2756"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Intentionally_affect</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Inhibit_movement</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Surrendering</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of">
+        <relatedFrame>Criminal_process</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes">
+        <relatedFrame>Arraignment</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="arrest.v" ID="4733" lemmaID="1979" cBy="664" cDate="01/23/2002 02:57:49 PST Wed">
+        <definition>COD: seize (someone) by legal authority and take them into custody. </definition>
+        <sentenceCount annotated="58" total="394"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="arrest"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="apprehend.v" ID="5673" lemmaID="1758" cBy="664" cDate="04/29/2002 03:51:06 PDT Mon">
+        <definition>COD: intercept (someone) in the course of harmful or illicit action, seize or arrest (someone).</definition>
+        <sentenceCount annotated="22" total="119"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="apprehend"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="bust.v" ID="5674" lemmaID="5039" cBy="664" cDate="04/29/2002 03:51:54 PDT Mon">
+        <definition>COD: arrest. </definition>
+        <sentenceCount annotated="9" total="115"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="bust"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="nab.v" ID="5675" lemmaID="25379" cBy="664" cDate="04/29/2002 03:52:46 PDT Mon">
+        <definition>COD: catch (someone) doing something wrong. </definition>
+        <sentenceCount annotated="6" total="35"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="nab"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="collar.v" ID="5676" lemmaID="7163" cBy="664" cDate="04/29/2002 03:54:33 PDT Mon">
+        <definition>COD: seize or apprehend (someone). </definition>
+        <sentenceCount annotated="5" total="33"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="collar"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="V" name="cop.v" ID="5677" lemmaID="8288" cBy="664" cDate="04/29/2002 03:55:49 PDT Mon">
+        <definition>COD: catch or arrest (an offender). </definition>
+        <sentenceCount annotated="2" total="56"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="cop"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="arrest.n" ID="5678" lemmaID="1978" cBy="664" cDate="04/29/2002 04:14:25 PDT Mon">
+        <definition>COD: the action of arresting</definition>
+        <sentenceCount annotated="38" total="287"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="arrest"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="N" name="bust.n" ID="5679" lemmaID="5038" cBy="664" cDate="04/29/2002 04:27:02 PDT Mon">
+        <definition>COD: a police raid. </definition>
+        <sentenceCount annotated="7" total="203"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="bust"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="apprehension.n" ID="5681" lemmaID="1760" cBy="664" cDate="04/29/2002 04:28:20 PDT Mon">
+        <definition>COD: the action of arresting someone. </definition>
+        <sentenceCount annotated="9" total="145"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="apprehension"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="book.v" ID="7900" lemmaID="4157" cBy="296" cDate="01/10/2003 01:21:57 PST Fri">
+        <definition>COD: make an official note of the details of (someone who has broken a law or rule).</definition>
+        <sentenceCount annotated="11" total="156"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="book"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="V" name="summons.v" ID="11865" lemmaID="38777" cBy="303" cDate="04/18/2005 04:44:14 PDT Mon">
+        <definition>FN: serve an order to appear in court</definition>
+        <sentenceCount annotated="6" total="25"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="summons"/>
+    </lexUnit>
+</frame>

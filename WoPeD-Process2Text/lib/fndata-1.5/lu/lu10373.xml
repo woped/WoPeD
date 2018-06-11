@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Add_Annotation" incorporatedFE="Degree" POS="N" name="scorcher.n" ID="10373" frame="Ambient_temperature" frameID="1052" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Core" abbrev="att" name="Attribute"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="con" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Core" abbrev="deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="pl" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="tem" name="Temperature"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Core" abbrev="tim" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="" name="Weather"/>
+        </frame>
+    </header>
+    <definition>COD: a day or period of very hot weather</definition>
+    <lexeme POS="N" name="scorcher"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Degree"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Degree"/>
+                <annoSet ID="1981455"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Time"/>
+                <annoSet ID="1981455"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Degree"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Degree"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Time"/>
+                <annoSet ID="1981455"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-Wit-Wbe-W-Wa-W-T-(1)"/>
+    <subCorpus name="02-Wwhat-Wa-T-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="671" aPos="0" ID="1267236">
+            <text>SUMMER is n't over yet -- and next week could well be a real scorcher .</text>
+            <annotationSet cDate="06/14/2004 06:17:13 PDT Mon" status="UNANN" ID="1981454">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="0" name="nn"/>
+                    <label end="8" start="7" name="VBZ"/>
+                    <label end="12" start="10" name="rb"/>
+                    <label end="17" start="14" name="rb"/>
+                    <label end="21" start="19" name="rb"/>
+                    <label end="24" start="23" name=":"/>
+                    <label end="28" start="26" name="cc"/>
+                    <label end="33" start="30" name="jj"/>
+                    <label end="38" start="35" name="nn"/>
+                    <label end="44" start="40" name="md"/>
+                    <label end="49" start="46" name="rb"/>
+                    <label end="52" start="51" name="vb"/>
+                    <label end="54" start="54" name="dt"/>
+                    <label end="59" start="56" name="jj"/>
+                    <label end="68" start="61" name="nn"/>
+                    <label end="70" start="70" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="06/14/2004 06:17:13 PDT Mon" status="MANUAL" ID="1981455">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="68" start="61" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="618" feID="6192" end="38" start="30" name="Time"/>
+                    <label cBy="618" feID="6191" end="59" start="56" name="Degree"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="38" start="30" name="Ext"/>
+                    <label end="59" start="56" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="38" start="30" name="NP"/>
+                    <label end="59" start="56" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="52" start="51" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="731" cDate="02/07/2001 04:12:00 PST Wed" name="Discussion" ID="34" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;Two (or more) people (the &lt;fen&gt;Interlocutors&lt;/fen&gt;, also encodable as &lt;fen&gt;Interlocutor_1&lt;/fen&gt; and &lt;fen&gt;Interlocutor_2&lt;/fen&gt;) talk to one another. No person is construed as only a speaker or only an addressee. Rather, it is understood that both (or all) participants do some speaking and some listening--the process is understood to be symmetrical or reciprocal.  This frame differs from the Chatting frame in that the &lt;fen&gt;Interlocutors&lt;/fen&gt; have a particular question that they are attempting to decide or understand.
+
+&lt;ex&gt;&lt;fex name="Interlocutor_1"&gt;I&lt;/fex&gt; would rather &lt;t&gt;discuss&lt;/t&gt; &lt;fex name="Topic"&gt;politics&lt;/fex&gt; &lt;fex name="Interlocutor_2"&gt;with anyone but him&lt;/fex&gt;.&lt;/ex&gt; 
+
+&lt;ex&gt;&lt;fex name="Interlocutors"&gt;World leaders&lt;/fex&gt; met to &lt;t&gt;discuss&lt;/t&gt; &lt;fex name="Topic"&gt;global warming&lt;/fex&gt; &lt;fex name="Time"&gt;on the coldest day of the year.&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:00 PST Wed" abbrev="Intlc_1" name="Interlocutor_1" ID="140">
+        <definition>&lt;def-root&gt;In cases where the &lt;fen&gt;Interlocutors&lt;/fen&gt; involved in a conversation are construed as two separate groups with different levels of volitionality or control, this FE identifies the conversational participant with greater semantic and syntactic prominence, as compared with &lt;fen&gt;Interlocutor_2&lt;/fen&gt;. That is, &lt;fen&gt;Interlocutor_1&lt;/fen&gt; is generally encoded as Subject, and peripheral FEs that do not make reference to the event itself generally make reference to &lt;fen&gt;Interlocutor_1&lt;/fen&gt;.  Thus a &lt;fen&gt;Purpose&lt;/fen&gt; (or &lt;fen&gt;Means&lt;/fen&gt;, &lt;fen&gt;Depictive&lt;/fen&gt;, or &lt;fen&gt;Manner&lt;/fen&gt;) is construed to be that of &lt;fen&gt;Interlocutor_1&lt;/fen&gt;, not necessarily that of &lt;fen&gt;Interlocutor_2&lt;/fen&gt; or the group of &lt;fen&gt;Interlocutors&lt;/fen&gt; as a whole.
+&lt;ex&gt;&lt;fex name="Interlocutor_1"&gt;The President&lt;/fex&gt; &lt;t&gt;conferred&lt;/t&gt; with his top advisor.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Interlocutor_1"&gt;I&lt;/fex&gt; &lt;t&gt;discussed&lt;/t&gt; evolution with Gould to prove he was wrong about it.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <requiresFE name="Interlocutor_2" ID="141"/>
+        <excludesFE name="Interlocutors" ID="142"/>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:00 PST Wed" abbrev="Intlc_2" name="Interlocutor_2" ID="141">
+        <definition>&lt;def-root&gt;In cases where the &lt;fen&gt;Interlocutors&lt;/fen&gt; involved in a conversation are construed as two separate groups with different levels of volitionality or control, &lt;fen&gt;Interlocutor_2&lt;/fen&gt; refers to the semantically and grammatically less prominent group.  It is generally encoded within a prepositional phrase (e.g. headed by &lt;ment&gt;with&lt;/ment&gt;).  Note that it is possible for a single role to correspond to multiple referents. For example, if the prepositional object in the example below were plural, we would still assign it the single role &lt;fen&gt;Interlocutor_2&lt;/fen&gt;.
+&lt;ex&gt;The President &lt;t&gt;debated&lt;/t&gt; &lt;fex name="Interlocutor_2"&gt;with his top advisor&lt;/fex&gt;. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <requiresFE name="Interlocutor_1" ID="140"/>
+        <excludesFE name="Interlocutors" ID="142"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:00 PST Wed" abbrev="Intlc_s" name="Interlocutors" ID="142">
+        <definition>&lt;def-root&gt;In some sentences both participants are expressed by the Subject, and there is no 'with'-phrase (cf example 1). In sentences like this, the Subject is assigned the FE role &lt;fen&gt;Interlocutors&lt;/fen&gt;. In such sentences, the Subject always denotes more than one person, and it is understood that the reciprocal communication takes place between these two (or more) people. The Subject may denote two or more people either through conjunction, as in example 1, or through plurality, as in example 2, or by denoting a group, as in example 3. In each of these cases the FE &lt;fen&gt;Interlocutors&lt;/fen&gt; is assigned. Notice that for nouns in the Discussion frame, it is possible for the &lt;fen&gt;Interlocutors&lt;/fen&gt; role to be expressed by a prepositional phrase as in example 4.
+ 
+&lt;ex&gt;(1) &lt;fex name="Interlocutors"&gt;The President and his advisor&lt;/fex&gt; &lt;t&gt;discussed&lt;/t&gt; the Venezuelan situation briefly before the summit.&lt;/ex&gt; 
+&lt;ex&gt;(2)&lt;fex name="Interlocutors"&gt; The lawyers&lt;/fex&gt; &lt;t&gt;conferred&lt;/t&gt; before the trial.&lt;/ex&gt;
+&lt;ex&gt;(3)&lt;fex name="Interlocutors"&gt;The committee&lt;/fex&gt; &lt;t&gt;debated&lt;/t&gt; the bill for only a few minutes.&lt;/ex&gt;
+&lt;ex&gt;(4) There was a brief &lt;t&gt;exchange&lt;/t&gt; &lt;fex name="Interlocutors"&gt;between the lawyers&lt;/fex&gt;.&lt;/ex&gt; &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:00 PST Wed" abbrev="Top" name="Topic" ID="143">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Topic&lt;/fen&gt; expresses the subject that the &lt;fen&gt;Interlocutors&lt;/fen&gt; are trying to come to some agreement about.  It may refer, for example, to an undesirable issue that the &lt;fen&gt;Interlocutors&lt;/fen&gt; want to have the proper response to, or it may refer more directly to an unresolved question.
+
+&lt;ex&gt;The President and his top advisors &lt;t&gt;discussed&lt;/t&gt; &lt;fex name="Topic"&gt;the scandal&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;They had a &lt;t&gt;discussion&lt;/t&gt; &lt;fex name="Topic"&gt;about the scandal&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;The participants &lt;t&gt;debated&lt;/t&gt; &lt;fex name="Topic"&gt;whether the US should soften its response&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Peripheral" cBy="731" cDate="02/07/2001 04:12:00 PST Wed" abbrev="Lang" name="Language" ID="144">
+        <definition>&lt;def-root&gt;The linguistic system(s) used by the &lt;fen&gt;Interlocutors&lt;/fen&gt; to discuss something.
+
+&lt;ex&gt;In our house everybody debated politics &lt;fex name="Language"&gt;in three different languages at once&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="07/17/2001 01:53:28 PDT Tue" abbrev="Amo" name="Amount_of_discussion" ID="1451">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Amount_of_discussion&lt;/fen&gt; applies to phrases expressing how thoroughly a &lt;fen&gt;Topic&lt;/fen&gt; has been discussed.
+
+&lt;ex&gt;This issue had been &lt;fex name="Amount_of_discussion"&gt;exhaustively&lt;/fex&gt; &lt;t&gt;discussed&lt;/t&gt;&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="296" cDate="07/17/2001 01:53:32 PDT Tue" abbrev="Depict" name="Depictive" ID="1452">
+        <definition>&lt;def-root&gt;This FE identifies a depictive phrase describing &lt;fen&gt;Interlocutor_1&lt;/fen&gt; or the pair of &lt;fen&gt;Interlocutors&lt;/fen&gt;.
+
+&lt;ex&gt;Jack and Jill &lt;t&gt;discussed&lt;/t&gt; the issue &lt;fex name="Depictive"&gt;unaware of its full import&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="07/17/2001 01:53:37 PDT Tue" abbrev="Manr" name="Manner" ID="1453">
+        <definition>&lt;def-root&gt;This frame element marks phrases that expresss the &lt;fen&gt;Manner&lt;/fen&gt; in which one or both of the &lt;fen&gt;Interlocutors&lt;/fen&gt; communicate.
+
+&lt;ex&gt;They &lt;t&gt;debated&lt;/t&gt; &lt;fex name="Manner"&gt;amicably&lt;/fex&gt; over who should pay the restaurant bill.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="07/17/2001 01:53:40 PDT Tue" abbrev="Mns" name="Means" ID="1454">
+        <definition>&lt;def-root&gt;This Frame Elememt marks constituents expressing the means the parties to the conversation use to talk to each other.
+
+&lt;ex&gt;Email allows people to &lt;t&gt;communicate&lt;/t&gt; &lt;fex name="Means"&gt;electronically&lt;/fex&gt;&lt;/ex&gt;
+&lt;ex&gt;They briefly &lt;t&gt;conferred&lt;/t&gt; with each other &lt;fex name="Means"&gt;via a quick series of eyebrow twitches and a quirk of the mouth&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="840" cDate="04/08/2003 04:01:49 PDT Tue" abbrev="Dur" name="Duration" ID="4360">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Duration&lt;/fen&gt; of the conversation.
+
+&lt;ex&gt;They had a &lt;fex name="Duration"&gt;short&lt;/fex&gt; &lt;t&gt;conference&lt;/t&gt; off by the stable.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="11/20/2003 02:24:20 PST Thu" abbrev="" name="Purpose" ID="5750">
+        <definition>&lt;def-root&gt;The goal that &lt;fen&gt;Interlocutor_1&lt;/fen&gt; or the &lt;fen&gt;Interlocutors&lt;/fen&gt; jointly have, i.e. the state of affairs that they wish to bring about by the conversation.
+
+&lt;ex&gt;You engage in such idle &lt;t&gt;debate&lt;/t&gt; &lt;fex name="Purpose"&gt;just to see how long I'll let it go&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="11/20/2003 02:54:02 PST Thu" abbrev="" name="Time" ID="5751">
+        <definition>&lt;def-root&gt;The time at which the discussion takes place.
+
+&lt;ex&gt;&lt;fex name="Time"&gt;Last year&lt;/fex&gt; the participants &lt;t&gt;discussed&lt;/t&gt; taking down the last trade barriers without consensus.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="11/20/2003 02:56:44 PST Thu" abbrev="" name="Place" ID="5752">
+        <definition>&lt;def-root&gt;The location at which a discussion takes place.
+
+&lt;ex&gt;We just &lt;t&gt;conferred&lt;/t&gt; for a couple of hours &lt;fex name="Place"&gt;up in her room&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="11/28/2003 07:38:40 PST Fri" abbrev="" name="Means_of_communication" ID="5795">
+        <definition>&lt;def-root&gt;The device or system that facilitates a discussion.
+
+&lt;ex&gt;If we held a &lt;t&gt;debate&lt;/t&gt; &lt;fex name="Means_of_communication"&gt;on the radio&lt;/fex&gt;, noone would be listening -- you could say whatever you wanted!&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="90876C" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="361" cDate="03/30/2007 10:19:54 PDT Fri" abbrev="" name="Period_of_iterations" ID="11554">
+        <definition>&lt;def-root&gt;The length of time from when the event denoted by the target began to be repeated to when it stopped.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="7CCD73" fgColor="000000" coreType="Extra-Thematic" cBy="618" cDate="08/16/2007 02:23:01 PDT Thu" abbrev="con_eve" name="Containing_event" ID="11962">
+        <definition>&lt;def-root&gt;This FE denotes an event that occurs or a state of affairs that holds at a time that includes the time during which the discussion takes place and of which it is taken to be part.
+
+&lt;ex&gt;Did you catch that &lt;fex name="con_eve"&gt;"Your Local News Now"&lt;/fex&gt; &lt;t&gt;discussion&lt;/t&gt; about rising crime in suburban areas?&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="618" cDate="08/16/2007 04:07:25 PDT Thu" abbrev="fre" name="Frequency" ID="11963">
+        <definition>&lt;def-root&gt;The number of times the discussion happens in a given period of time.
+
+&lt;ex&gt;I came to enjoy our &lt;fex name="fre"&gt;frequent&lt;/fex&gt; &lt;t&gt;discussions&lt;/t&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFD700" fgColor="000000" coreType="Extra-Thematic" cBy="618" cDate="08/16/2007 04:15:33 PDT Thu" abbrev="dom" name="Domain" ID="11964">
+        <definition>&lt;def-root&gt;The general field or area in which the discussion takes place, or which shapes the discussion or its topic.
+
+&lt;ex&gt;This prompted a rather &lt;fex name="dom"&gt;philosophical&lt;/fex&gt; &lt;t&gt;debate&lt;/t&gt; about the importance of having a purpose in life.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Chatting</relatedFrame>
+        <relatedFrame>Reciprocality</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Quarreling</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Communication</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Point_of_dispute</relatedFrame>
+        <relatedFrame>Jury_deliberation</relatedFrame>
+        <relatedFrame>Meet_with</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Problem" POS="V" name="communicate.v" ID="497" lemmaID="7398" cBy="731" cDate="02/08/2001 01:28:14 PST Thu">
+        <definition>COD: share or exchange information or ideas.</definition>
+        <sentenceCount annotated="25" total="138"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="communicate"/>
+    </lexUnit>
+    <lexUnit status="Problem" POS="N" name="communication.n" ID="498" lemmaID="7399" cBy="731" cDate="02/08/2001 01:28:14 PST Thu">
+        <definition>COD: the action of communicating</definition>
+        <sentenceCount annotated="44" total="531"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="communication"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="confer.v" ID="499" lemmaID="7708" cBy="731" cDate="02/08/2001 01:28:14 PST Thu">
+        <definition>COD: have discussions.</definition>
+        <sentenceCount annotated="20" total="110"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="confer"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="debate.n" ID="502" lemmaID="9714" cBy="731" cDate="02/08/2001 01:28:14 PST Thu">
+        <definition>COD:  a formal discussion in a public meeting or legislative assembly</definition>
+        <sentenceCount annotated="26" total="369"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="debate"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="debate.v" ID="503" lemmaID="9715" cBy="731" cDate="02/08/2001 01:28:15 PST Thu">
+        <definition>COD: discuss or argue about.</definition>
+        <sentenceCount annotated="23" total="291"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="debate"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="dialogue.n" ID="504" lemmaID="21" cBy="731" cDate="02/08/2001 01:28:15 PST Thu">
+        <definition>COD: discussion directed towards exploration of a subject or resolution of a problem.</definition>
+        <sentenceCount annotated="68" total="383"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="dialogue"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="discuss.v" ID="506" lemmaID="10922" cBy="731" cDate="02/08/2001 01:28:15 PST Thu">
+        <definition>FN: talk or write about (a topic) in detail</definition>
+        <sentenceCount annotated="60" total="253"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="discuss"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="discussion.n" ID="507" lemmaID="10923" cBy="731" cDate="02/08/2001 01:28:15 PST Thu">
+        <definition>FN: consideration of a question or issue in open debate</definition>
+        <sentenceCount annotated="106" total="552"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="discussion"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="exchange.n" ID="509" lemmaID="13365" cBy="731" cDate="02/08/2001 01:28:15 PST Thu">
+        <definition>COD: a short conversation or argument</definition>
+        <sentenceCount annotated="7" total="395"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="exchange"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="meeting.n" ID="514" lemmaID="23892" cBy="731" cDate="02/08/2001 01:28:15 PST Thu">
+        <definition>COD: an assembly of people for a particular purpose, especially for formal discussion.</definition>
+        <sentenceCount annotated="72" total="583"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="meeting"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="conference.n" ID="4007" lemmaID="7709" cBy="605" cDate="09/18/2001 02:07:45 PDT Tue">
+        <definition>COD: a formal meeting of people with a shared interest, typically taking place over several days. </definition>
+        <sentenceCount annotated="8" total="289"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="conference"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="parley.v" ID="4008" lemmaID="27855" cBy="605" cDate="09/18/2001 03:15:28 PDT Tue">
+        <definition>FN: hold a conference between opposing sides in a dispute, especially regarding an armistice</definition>
+        <sentenceCount annotated="4" total="13"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="parley"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="parley.n" ID="4009" lemmaID="27854" cBy="605" cDate="09/18/2001 03:16:29 PDT Tue">
+        <definition>COD: a conference between opposing sides in a dispute, especially regarding an armistice</definition>
+        <sentenceCount annotated="0" total="8"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="parley"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="interlocutor.n" ID="4012" lemmaID="20339" cBy="605" cDate="09/18/2001 03:26:25 PDT Tue">
+        <definition>COD: a person who takes part in a dialogue</definition>
+        <sentenceCount annotated="4" total="47"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="interlocutor"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="discussant.n" ID="4016" lemmaID="45199" cBy="605" cDate="09/18/2001 04:08:16 PDT Tue">
+        <definition>FN: somebody who participates in a formal discussion</definition>
+        <sentenceCount annotated="2" total="3"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="discussant"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="negotiation.n" ID="10648" lemmaID="25644" cBy="605" cDate="06/28/2004 11:53:36 PDT Mon">
+        <definition>FN: discussion with others to try to reach an agreement or compromise</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="negotiation"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="negotiate.v" ID="10649" lemmaID="25643" cBy="605" cDate="06/28/2004 11:54:19 PDT Mon">
+        <definition>COD: try to reach an agreement or compromise by discussion with others</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="negotiate"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="talk.n" ID="11454" lemmaID="39432" cBy="664" cDate="12/14/2004 11:38:43 PST Tue">
+        <definition>COD: formal discussions or negotiations over a period.</definition>
+        <sentenceCount annotated="57" total="395"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="talk"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="consultation.n" ID="14253" lemmaID="8001" cBy="361" cDate="03/30/2007 09:38:42 PDT Fri">
+        <definition>FN: a discussion between two parties in which advice or information is being shared. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="consultation"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="talk_(to).v" ID="14628" lemmaID="50764" cBy="361" cDate="11/06/2007 11:20:11 PST Tue">
+        <definition>FN: discuss or confer with another about something</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="talk_(to)"/>
+    </lexUnit>
+</frame>

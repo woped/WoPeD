@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="296" cDate="12/17/2001 05:29:51 PST Mon" name="Closure" ID="254" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Agent&lt;/fen&gt; manipulates a &lt;fen&gt;Fastener&lt;/fen&gt; to open or close a &lt;fen&gt;Containing_object&lt;/fen&gt; (e.g. coat, jar).  Sometimes an &lt;fen&gt;Enclosed_region&lt;/fen&gt; or a &lt;fen&gt;Container_portal&lt;/fen&gt; may be expressed. Since the &lt;fen&gt;Manipulator&lt;/fen&gt; is syntactically omissible, many verbs in this frame incorporate the &lt;fen&gt;Fastener&lt;/fen&gt;.
+
+&lt;ex&gt;&lt;fex name="Agent"&gt;Mary&lt;/fex&gt; &lt;t&gt;closed&lt;/t&gt; &lt;fex name="Containing_object"&gt;her coat&lt;/fex&gt; &lt;fex name="Fastener"&gt;with a belt&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Agent"&gt;Mary&lt;/fex&gt; &lt;t&gt;closed&lt;/t&gt; &lt;fex name="Containing_object"&gt;her coat&lt;/fex&gt; &lt;fex name="Manipulator"&gt;with one hand&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Agent"&gt;Mary&lt;/fex&gt; &lt;t&gt;buttoned&lt;/t&gt; &lt;fex name="Containing_object"&gt;her coat .&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="12/17/2001 05:31:14 PST Mon" abbrev="Cont_obj" name="Containing_object" ID="2198">
+        <definition>&lt;def-root&gt;This FE identifies the item that is closed by the agent with the fastener.
+&lt;fex name="Agent"&gt;Lee&lt;/fex&gt; &lt;t&gt;buttoned&lt;/t&gt; &lt;fex name="Containing_object"&gt;his coat&lt;/fex&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="12/17/2001 05:32:09 PST Mon" abbrev="Agt" name="Agent" ID="2199">
+        <definition>&lt;def-root&gt;The Agent opens/closes the Containing-object.
+&lt;ex&gt;&lt;fex name="Agent"&gt;Harry&lt;/fex&gt; &lt;t&gt;uncorked&lt;/t&gt; the champagne.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="12/17/2001 05:33:58 PST Mon" abbrev="Fastener" name="Fastener" ID="2200">
+        <definition>&lt;def-root&gt;This FE identifies the fastener that the agent manipulates.
+&lt;ex&gt;Marcus &lt;t&gt;tied&lt;/t&gt; his shoe &lt;fex name="Fastener"&gt;with the neon-green shoelaces&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="01/02/2002 03:12:36 PST Wed" abbrev="E_region" name="Enclosed_region" ID="2210">
+        <definition>&lt;def-root&gt;This FE identifies the region enclosed by the container-object that is closed.
+&lt;ex&gt;Harry &lt;t&gt;buckled&lt;/t&gt; his belt &lt;fex name="Enclosed_region"&gt;around his ample waist&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;Jeremy  &lt;t&gt;buttoned&lt;/t&gt; the shirt &lt;fex name="Enclosed_region"&gt;around her hypothermic body&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="01/02/2002 04:08:56 PST Wed" abbrev="Manp" name="Manipulator" ID="2211">
+        <definition>&lt;def-root&gt;This FE identifies the instrument or part of the body that manipulates  the Fastener.
+&lt;ex&gt;Lee &lt;t&gt;unbuckled&lt;/t&gt; his belt  &lt;fex name="Manipulator"&gt;with one hand&lt;/fex&gt;.&lt;/ex&gt;
+Note that this FE is syntactically omissible.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="01/07/2002 01:27:25 PST Mon" abbrev="C_portal" name="Container_portal" ID="2224">
+        <definition>&lt;def-root&gt;This FE identifies the active zone of the container that may be expressed as the direct object of the target verb.  
+&lt;ex&gt;We &lt;t&gt;zipped&lt;/t&gt; &lt;fex name="Container_portal"&gt;the tent flap&lt;/fex&gt;.&lt;/ex&gt;
+The sentence refers to the closure of the tent, hence is different from sentences where the action involves the manipulation of a fastener, e.g. We unscrewed the lid.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="309" cDate="10/02/2003 11:36:56 PDT Thu" abbrev="Degr" name="Degree" ID="5392">
+        <definition>&lt;def-root&gt;The degree to which the &lt;fen&gt;Container_portal&lt;/fen&gt;/&lt;fen&gt;Containing_object&lt;/fen&gt; ends up closed.
+
+&lt;ex&gt;Why did you only &lt;t&gt;lace&lt;/t&gt; it up &lt;fex name="Degr"&gt;partway&lt;/fex&gt;?&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Peripheral" cBy="309" cDate="10/02/2003 11:36:57 PDT Thu" abbrev="Ins" name="Instrument" ID="5393">
+        <definition>&lt;def-root&gt;An entity manipulated by the &lt;fen&gt;Agent&lt;/fen&gt; that accomplishes the closure of the &lt;fen&gt;Containing_object&lt;/fen&gt; or the &lt;fen&gt;Container_portal&lt;/fen&gt;.
+
+&lt;ex&gt;He &lt;t&gt;sealed&lt;/t&gt; the lid &lt;fex name="Ins"&gt;with wax&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Physical_entity" ID="70"/>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Peripheral" cBy="309" cDate="10/02/2003 11:36:57 PDT Thu" abbrev="Mnr" name="Manner" ID="5394">
+        <definition>&lt;def-root&gt;Any description of the closing event which is not covered by more specific FEs, including secondary effects (quietly, loudly), and general descriptions comparing events (the same way). It may also indicate salient characteristics of an &lt;fen&gt;Agent&lt;/fen&gt; that also affect the action (presumptuously, coldly, deliberately, eagerly, carefully). &lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="309" cDate="10/02/2003 11:36:57 PDT Thu" abbrev="Mns" name="Means" ID="5395">
+        <definition>&lt;def-root&gt;An action of the &lt;fen&gt;Agent&lt;/fen&gt; that accomplishes the closure of the &lt;fen&gt;Container_portal&lt;/fen&gt; or &lt;fen&gt;Containing_object&lt;/fen&gt;.
+
+&lt;ex&gt;He had to &lt;t&gt;button&lt;/t&gt; his sleeve &lt;fex name="Mns"&gt;by holding the cuff in his mouth&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="309" cDate="10/02/2003 11:36:57 PDT Thu" abbrev="Place" name="Place" ID="5396">
+        <definition>&lt;def-root&gt;The location where the closing event takes place.
+
+&lt;ex&gt;Shouldn't you have &lt;t&gt;buttoned&lt;/t&gt; that &lt;fex name="Place"&gt;in the bathroom&lt;/fex&gt;?&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="309" cDate="10/02/2003 11:36:57 PDT Thu" abbrev="Time" name="Time" ID="5397">
+        <definition>&lt;def-root&gt;The time at which the &lt;fen&gt;Agent&lt;/fen&gt; closes the &lt;fen&gt;Container_portal&lt;/fen&gt; or the &lt;fen&gt;Containing_object&lt;/fen&gt;.
+
+&lt;ex&gt;They &lt;t&gt;close&lt;/t&gt; the bank vault &lt;fex name="Time"&gt;at precisely 5:35PM&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="01/09/2007 01:39:03 PST Tue" abbrev="" name="Result" ID="10961">
+        <definition>&lt;def-root&gt;The resultant state of the Closure action. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="361" cDate="01/09/2007 02:13:55 PST Tue" abbrev="" name="Beneficiary" ID="10962">
+        <definition>&lt;def-root&gt;The person for whom the Closure event occurs.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="EEE8AA" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="01/09/2007 02:15:20 PST Tue" abbrev="" name="Circumstances" ID="10963">
+        <definition>&lt;def-root&gt;This FE describes the state of the world (at a particular time and place) which is specifically independent of the Closure event and any of its participants. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="7FFF00" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="01/09/2007 02:20:02 PST Tue" abbrev="" name="Depictive" ID="10964">
+        <definition>&lt;def-root&gt;This FE describes a participant of the state of affairs introduced by the target as being in some state during the action. &lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Container_portal" ID="2224"/>
+        <memberFE name="Containing_object" ID="2198"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Intentionally_affect</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Clothing</relatedFrame>
+        <relatedFrame>Fastener</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" incorporatedFE="Fastener" POS="V" name="button.v" ID="4544" lemmaID="5076" cBy="296" cDate="12/17/2001 05:35:00 PST Mon">
+        <definition>COD: with obj. 1. fasten or be fastened with buttons. </definition>
+        <sentenceCount annotated="5" total="24"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="button"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="open.v" ID="4545" lemmaID="26777" cBy="296" cDate="12/17/2001 05:36:41 PST Mon">
+        <definition>COD: undo or remove the cover or fastening of. </definition>
+        <sentenceCount annotated="0" total="1"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="open"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="close.v" ID="4546" lemmaID="6856" cBy="296" cDate="12/17/2001 05:42:47 PST Mon">
+        <definition>COD: with obj. bring two parts of (something) together.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="close"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Fastener" POS="V" name="buckle.v" ID="4547" lemmaID="4785" cBy="296" cDate="12/17/2001 05:44:14 PST Mon">
+        <definition>COD: with obj. fasten or decorate with a buckle. </definition>
+        <sentenceCount annotated="4" total="88"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="buckle"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="cap.v" ID="4550" lemmaID="5427" cBy="296" cDate="12/17/2001 05:51:56 PST Mon">
+        <definition>COD: a.put or form a lid or cover on. </definition>
+        <sentenceCount annotated="5" total="78"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="cap"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Fastener" POS="V" name="zip.v" ID="4551" lemmaID="44828" cBy="296" cDate="12/17/2001 05:53:57 PST Mon">
+        <definition>COD: with obj. fasten with a zip. </definition>
+        <sentenceCount annotated="7" total="150"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="zip"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="lace.v" ID="4552" lemmaID="21540" cBy="669" cDate="12/18/2001 02:08:12 PST Tue">
+        <definition>COD:  fasten or be fastened with a lace or laces. </definition>
+        <sentenceCount annotated="13" total="103"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="lace"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Fastener" POS="V" name="unzip.v" ID="4553" lemmaID="42444" cBy="669" cDate="12/18/2001 02:10:45 PST Tue">
+        <definition>COD: unfasten the zip of.</definition>
+        <sentenceCount annotated="12" total="75"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="unzip"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Fastener" POS="V" name="unbuckle.v" ID="4555" lemmaID="41838" cBy="669" cDate="12/18/2001 02:16:15 PST Tue">
+        <definition>COD: with obj. unfasten the buckle of. </definition>
+        <sentenceCount annotated="5" total="15"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="unbuckle"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Fastener" POS="V" name="uncork.v" ID="4556" lemmaID="41892" cBy="669" cDate="12/18/2001 02:18:53 PST Tue">
+        <definition>COD: pull the cork out of </definition>
+        <sentenceCount annotated="7" total="21"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="uncork"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Fastener" POS="V" name="unscrew.v" ID="4557" lemmaID="42353" cBy="669" cDate="12/18/2001 02:21:43 PST Tue">
+        <definition>COD: unfasten by twisting</definition>
+        <sentenceCount annotated="6" total="113"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="unscrew"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="seal.v" ID="4625" lemmaID="34686" cBy="296" cDate="01/07/2002 10:37:34 PST Mon">
+        <definition>COD: to fasten or close securely</definition>
+        <sentenceCount annotated="11" total="269"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="seal"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="fasten.v" ID="4677" lemmaID="13992" cBy="296" cDate="01/10/2002 04:39:08 PST Thu">
+        <definition>COD: close or do up securely</definition>
+        <sentenceCount annotated="25" total="231"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="fasten"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="unfasten.v" ID="4711" lemmaID="45404" cBy="296" cDate="01/15/2002 05:44:26 PST Tue">
+        <definition>COD: with obj. open the fastening of; undo. </definition>
+        <sentenceCount annotated="8" total="66"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="unfasten"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="tie.v" ID="4757" lemmaID="40394" cBy="664" cDate="01/25/2002 12:33:48 PST Fri">
+        <definition>FN: (of shoes or clothing) form a knot in the laces of in order to close.</definition>
+        <sentenceCount annotated="14" total="230"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="tie"/>
+    </lexUnit>
+</frame>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="03/15/2004 02:32:15 PST Mon" name="Remainder" ID="1030" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A &lt;fen&gt;Resource&lt;/fen&gt; is depleted by some process, resulting in there being only a &lt;fen&gt;Remainder&lt;/fen&gt; in existence some time into or after the process. The original &lt;fen&gt;Resource&lt;/fen&gt; may be indicated metonymically via reference to an &lt;fen&gt;Original_owner&lt;/fen&gt;. The &lt;fen&gt;Location&lt;/fen&gt; where the &lt;fen&gt;Resource&lt;/fen&gt; is found may be expressed.
+
+&lt;ex&gt;There are only &lt;fex name="rem"&gt;two poems&lt;/fex&gt; &lt;t&gt;left&lt;/t&gt; &lt;fex name="oo"&gt;from Quayle&lt;/fex&gt;&lt;/ex&gt;
+&lt;ex&gt;After the storm, &lt;fex name="Remainder"&gt;only two houses&lt;/fex&gt; were &lt;t&gt;left&lt;/t&gt;
+&lt;fex name="res"&gt;DNI&lt;/fex&gt;&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="rem"&gt;Not much&lt;/fex&gt; was &lt;t&gt;left&lt;/t&gt; &lt;fex name="loc"&gt;in the till&lt;/fex&gt;&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="rem"&gt;Nothing&lt;/fex&gt; &lt;t&gt;remained&lt;/t&gt; &lt;fex name="ben"&gt;for the youngest brother&lt;/fex&gt; &lt;fex name="res"&gt;from the inheritance&lt;/fex&gt;&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="rem"&gt;Only this school&lt;/fex&gt; is &lt;t&gt;left&lt;/t&gt; &lt;fex name="oc"&gt;from the 1970&lt;/fex&gt;s; all the other ones are newer.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="03/15/2004 02:32:49 PST Mon" abbrev="rem" name="Remainder" ID="6152">
+        <definition>&lt;def-root&gt;The part of the Resource that the Process has not yet applied to.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="03/15/2004 02:40:58 PST Mon" abbrev="res" name="Resource" ID="6153">
+        <definition>&lt;def-root&gt;The original set of items to which the Depletive_process applies one after the other.&lt;/def-root&gt;</definition>
+        <excludesFE name="Original_context" ID="6162"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="03/15/2004 02:42:21 PST Mon" abbrev="loc" name="Location" ID="6154">
+        <definition>&lt;def-root&gt;The place where the Resource is found.
+
+&lt;ex&gt;How much is &lt;t&gt;left&lt;/t&gt; &lt;fex name="loc"&gt;in the treasury&lt;/fex&gt;?&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Location" ID="54"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="03/15/2004 02:43:12 PST Mon" abbrev="oo" name="Original_owner" ID="6155">
+        <definition>&lt;def-root&gt;The individual who owned the Resource that is being depleted.
+
+&lt;ex&gt;Only two poems are &lt;t&gt;left&lt;/t&gt; &lt;fex name="oo"&gt;from Virgil Smithers&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Original_context" ID="6162"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="03/16/2004 12:05:37 PST Tue" abbrev="tm" name="Time" ID="6160">
+        <definition>&lt;def-root&gt;The Time when the amount of the Resource that is let is assessed.
+
+&lt;ex&gt;&lt;fex name="tm"&gt;In 1910&lt;/fex&gt;, only two of the Renaissance buildings &lt;t&gt;remained&lt;/t&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="03/16/2004 12:08:57 PST Tue" abbrev="ben" name="Beneficiary" ID="6161">
+        <definition>&lt;def-root&gt;An individual who may use the &lt;fen&gt;Remainder&lt;/fen&gt; for his benefit.
+
+&lt;ex&gt;Is there any food &lt;t&gt;left&lt;/t&gt; &lt;fex name="ben"&gt;for me&lt;/fex&gt;?&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="03/16/2004 12:12:32 PST Tue" abbrev="oc" name="Original_context" ID="6162">
+        <definition>&lt;def-root&gt;A temporal setting or event which metonymically stands for the entities that were in existence then. The &lt;fen&gt;Remainder&lt;/fen&gt; is part of the &lt;fen&gt;Original_context&lt;/fen&gt;. This FE occurs especially when abstract entities such as social institutions are seen as &lt;fen&gt;Resource&lt;/fen&gt;s.
+
+&lt;ex&gt;Only the Beaux Arts cinema is &lt;t&gt;left&lt;/t&gt; &lt;fex name="oc"&gt;from the golden era of the 1940s&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Resource" ID="6153"/>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Original_context" ID="6162"/>
+        <memberFE name="Resource" ID="6153"/>
+        <memberFE name="Original_owner" ID="6155"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Change_position_on_a_scale</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="N" name="remnant.n" ID="10320" lemmaID="32581" cBy="605" cDate="03/16/2004 12:21:10 PST Tue">
+        <definition>FN: a usually small remaining part of a larger original set of entities that has been much depleted </definition>
+        <sentenceCount annotated="61" total="139"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="remnant"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="left.a" ID="10321" lemmaID="22003" cBy="605" cDate="03/16/2004 12:23:35 PST Tue">
+        <definition>FN: remaining after  a process of depletion</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="left"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="remain.v" ID="10322" lemmaID="32545" cBy="605" cDate="03/16/2004 12:24:22 PST Tue">
+        <definition>FN: be left over after others or other parts have been used up or destroyed</definition>
+        <sentenceCount annotated="50" total="438"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="remain"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="remains.n" ID="13980" lemmaID="32548" cBy="361" cDate="03/14/2007 03:20:12 PDT Wed">
+        <definition>COD: things remaining.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="remains"/>
+    </lexUnit>
+</frame>

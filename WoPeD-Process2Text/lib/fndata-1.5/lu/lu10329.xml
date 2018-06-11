@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Rules_Defined" POS="V" name="there be.v" ID="10329" frame="Existence" frameID="660" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="Orwell" ID="3">
+            <document description="Orwell_1984_p1" ID="7"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="A9A9A9" type="Extra-Thematic" abbrev="Cause" name="Cause"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Extra-Thematic" abbrev="Circumstances" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Extra-Thematic" abbrev="" name="Concessive"/>
+            <FE fgColor="000000" bgColor="EEE8AA" type="Extra-Thematic" abbrev="" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Extra-Thematic" abbrev="Dur" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Ent" name="Entity"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="Use" name="Inherent_purpose"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="pov" name="Point_of_view"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Extra-Thematic" abbrev="" name="State"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: exist; be present</definition>
+    <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="there"/>
+    <lexeme order="2" headword="true" breakBefore="true" POS="V" name="be"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Entity"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Entity"/>
+                <annoSet ID="2600179"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Entity"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Entity"/>
+                <annoSet ID="2600179"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="manually-added">
+        <sentence corpID="3" docID="7" sentNo="4" paragNo="3" aPos="0" ID="312917">
+            <text>The instrument ( the telescreen , it was called ) could be dimmed , but there was no way of shutting it off completely .</text>
+            <annotationSet cDate="01/06/2003 10:55:07 PST Mon" status="UNANN" ID="269193">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="13" start="4" name="NN1"/>
+                    <label end="15" start="15" name="PUL"/>
+                    <label end="19" start="17" name="AT0"/>
+                    <label end="30" start="21" name="NN1"/>
+                    <label end="32" start="32" name="PUN"/>
+                    <label end="35" start="34" name="PNP"/>
+                    <label end="39" start="37" name="VBD"/>
+                    <label end="46" start="41" name="VVN"/>
+                    <label end="48" start="48" name="PUR"/>
+                    <label end="54" start="50" name="VM0"/>
+                    <label end="57" start="56" name="VBI"/>
+                    <label end="64" start="59" name="VVN"/>
+                    <label end="66" start="66" name="PUN"/>
+                    <label end="70" start="68" name="CJC"/>
+                    <label end="76" start="72" name="EX0"/>
+                    <label end="80" start="78" name="VBD"/>
+                    <label end="83" start="82" name="AT0"/>
+                    <label end="87" start="85" name="NN1"/>
+                    <label end="90" start="89" name="PRF"/>
+                    <label end="99" start="92" name="VVG"/>
+                    <label end="102" start="101" name="PNP"/>
+                    <label end="106" start="104" name="AVP"/>
+                    <label end="117" start="108" name="AV0"/>
+                    <label end="119" start="119" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/30/2010 02:19:32 PDT Fri" status="MANUAL" ID="2600179">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="80" start="78" name="Target"/>
+                    <label cBy="664" end="76" start="72" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="4381" end="117" start="82" name="Entity"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="117" start="82" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="117" start="82" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

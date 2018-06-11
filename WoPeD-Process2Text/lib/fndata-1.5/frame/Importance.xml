@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="09/27/2002 01:57:02 PDT Fri" name="Importance" ID="407" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A &lt;fen&gt;Factor&lt;/fen&gt; affects the outcome of an &lt;fen&gt;Undertaking&lt;/fen&gt;, which  can be a goal-oriented activity or the maintenance of a desirable state, the work in a &lt;fen&gt;Field&lt;/fen&gt;, or something portrayed as affecting an &lt;fen&gt;Interested_party&lt;/fen&gt;. A &lt;fen&gt;Reason&lt;/fen&gt; may be given for the importance of the &lt;fen&gt;Factor&lt;/fen&gt;. The &lt;fen&gt;Degree&lt;/fen&gt; of importance may also be specified.
+
+&lt;ex&gt;Temperature is the &lt;fex name="Degree"&gt;most&lt;/fex&gt; &lt;t&gt;critical&lt;/t&gt; &lt;fex name="Factor"&gt;factor&lt;/fex&gt; &lt;fex name="Undertaking"&gt;in successful storage&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt; &lt;fex name="Factor"&gt;Timing&lt;/fex&gt; will be &lt;t&gt;critical&lt;/t&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Factor"&gt;Heathcliff&lt;/fex&gt; &lt;m&gt;is&lt;/m&gt; &lt;fex name="Degree"&gt;more&lt;/fex&gt; &lt;t&gt;important&lt;/t&gt; &lt;fex name="Interested_party"&gt;to me&lt;/fex&gt; &lt;fex name="Degree"&gt;than myself&lt;/fex&gt; . &lt;/ex&gt;
+&lt;ex&gt; &lt;fex name="Factor"&gt;1992&lt;/fex&gt; &lt;m&gt;was&lt;/m&gt; &lt;m&gt;of&lt;/m&gt; &lt;fex name="Degree"&gt;great&lt;/fex&gt; &lt;t&gt;importance&lt;/t&gt; &lt;fex name="Interested_party"&gt;to the business community&lt;/fex&gt;. &lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="09/27/2002 02:01:34 PDT Fri" abbrev="Factor" name="Factor" ID="3749">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Factor&lt;/fen&gt; is used for the concrete or abstract entity whose importance is assessed.
+&lt;ex&gt; &lt;fex name="Factor"&gt;Being sure they are buying fresh food&lt;/fex&gt; &lt;m&gt;is&lt;/m&gt; &lt;t&gt;important&lt;/t&gt; &lt;fex name="Interested_party"&gt;to most people&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="09/27/2002 02:08:40 PDT Fri" abbrev="Degree" name="Degree" ID="3752">
+        <definition>&lt;def-root&gt;This FE marks expressions that indicate the &lt;fen&gt;Degree&lt;/fen&gt; to which the &lt;fen&gt;Factor&lt;/fen&gt; is important to the &lt;fen&gt;Undertaking&lt;/fen&gt;.
+&lt;ex&gt; &lt;fex name="Factor"&gt;1992&lt;/fex&gt; &lt;m&gt;is&lt;/m&gt; &lt;m&gt;of&lt;/m&gt; &lt;fex name="Degree"&gt;great&lt;/fex&gt; &lt;t&gt;importance&lt;/t&gt; &lt;fex name="Interested_party"&gt;to the business community&lt;/fex&gt;. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="09/27/2002 02:11:59 PDT Fri" abbrev="Undertaking" name="Undertaking" ID="3753">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Undertaking&lt;/fen&gt; is a process or state or field of activity in which the &lt;fen&gt;Interested_party&lt;/fen&gt; has a stake.
+&lt;ex&gt;Temperature is the &lt;fex name="Degree"&gt;most&lt;/fex&gt; &lt;t&gt;critical&lt;/t&gt; &lt;fex name="Factor"&gt;factor&lt;/fex&gt; &lt;fex name="Undertaking"&gt;in successful storage&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="09/27/2002 02:22:01 PDT Fri" abbrev="Reas" name="Reason" ID="3754">
+        <definition>&lt;def-root&gt;This FE  identifies the &lt;fen&gt;Reason&lt;/fen&gt; for which the &lt;fen&gt;Factor&lt;/fen&gt; is important to the &lt;fen&gt;Undertaking&lt;/fen&gt;.
+&lt;ex&gt;It 's &lt;t&gt;critical&lt;/t&gt; to get it right &lt;fex name="Reason"&gt;because there are situations  where if you don't, they will withhold some commission.&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="10/04/2002 12:35:23 PDT Fri" abbrev="Interested_party" name="Interested_party" ID="3771">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Interested_party&lt;/fen&gt; identifies the people who are affected by a particular &lt;fen&gt;Factor&lt;/fen&gt;.
+
+&lt;ex&gt; &lt;fex name="Factor"&gt;Being sure they are buying fresh food&lt;/fex&gt; &lt;m&gt;is&lt;/m&gt; &lt;t&gt;important&lt;/t&gt; &lt;fex name="Interested_party"&gt;to most people&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Field" ID="3772"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="10/04/2002 12:38:51 PDT Fri" abbrev="Field" name="Field" ID="3772">
+        <definition>&lt;def-root&gt;A &lt;fen&gt;Factor&lt;/fen&gt; may be generally important to the people or the activities in a field of endeavour.
+
+&lt;ex&gt; &lt;fex name="Factor"&gt;A successful GATT round&lt;/fex&gt; &lt;m&gt;is&lt;/m&gt; &lt;t&gt;important&lt;/t&gt; &lt;fex name="Field"&gt;for the world economy&lt;/fex&gt;. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFD700" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="05/23/2006 12:07:19 PDT Tue" abbrev="Tim" name="Time" ID="10106">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Time&lt;/fen&gt; at which the &lt;fen&gt;Factor&lt;/fen&gt; is important to the &lt;fen&gt;Undertaking&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="361" cDate="11/17/2006 03:36:20 PST Fri" abbrev="Fre" name="Frequency" ID="10840">
+        <definition>&lt;def-root&gt;This frame element is defined as the number of times an event occurs per some unit of time. A Frequency expression answers the question how often. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="225" cDate="06/05/2009 11:29:15 PDT Fri" abbrev="" name="Place" ID="13190">
+        <definition>&lt;def-root&gt;The location at which the &lt;fen&gt;Factor&lt;/fen&gt; is important. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="90876C" fgColor="000000" coreType="Extra-Thematic" cBy="589" cDate="06/08/2009 11:57:00 PDT Mon" abbrev="" name="Explanation" ID="13193">
+        <definition>&lt;def-root&gt;The Explanation denotes a proposition from which the main clause (headed by the target) logically follows.&lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Field" ID="3772"/>
+        <memberFE name="Interested_party" ID="3771"/>
+        <memberFE name="Undertaking" ID="3753"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Place_weight_on</relatedFrame>
+        <relatedFrame>Individual_history</relatedFrame>
+        <relatedFrame>Historic_event</relatedFrame>
+        <relatedFrame>Degree</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="A" name="crucial.a" ID="7506" lemmaID="9100" cBy="605" cDate="09/27/2002 02:12:33 PDT Fri">
+        <definition>COD:  decisive or critical, especially in the success or failure of something</definition>
+        <sentenceCount annotated="56" total="417"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="crucial"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="critical.a" ID="7507" lemmaID="8974" cBy="605" cDate="09/27/2002 02:13:47 PDT Fri">
+        <definition>COD: having a decisive importance in the success or failure of something.</definition>
+        <sentenceCount annotated="20" total="214"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="critical"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="key.a" ID="7508" lemmaID="46146" cBy="605" cDate="09/27/2002 02:14:43 PDT Fri">
+        <definition>COD:  of crucial importance</definition>
+        <sentenceCount annotated="35" total="272"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="key"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="decisive.a" ID="7512" lemmaID="9796" cBy="605" cDate="09/27/2002 02:40:28 PDT Fri">
+        <definition>COD: acting to settle an issue quickly and effectively</definition>
+        <sentenceCount annotated="25" total="220"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="decisive"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="pivotal.a" ID="7522" lemmaID="29185" cBy="605" cDate="10/03/2002 07:15:52 PDT Thu">
+        <definition>COD: of crucial or central importance</definition>
+        <sentenceCount annotated="17" total="84"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="pivotal"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="important.a" ID="7528" lemmaID="19208" cBy="605" cDate="10/04/2002 12:40:52 PDT Fri">
+        <definition>COD:  of great significance or value</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="important"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="significant.a" ID="7529" lemmaID="35883" cBy="605" cDate="10/04/2002 12:42:50 PDT Fri">
+        <definition>COD:  extensive or important enough to merit attention</definition>
+        <sentenceCount annotated="20" total="324"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="significant"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="importance.n" ID="7530" lemmaID="19207" cBy="605" cDate="10/04/2002 12:44:16 PDT Fri">
+        <definition>FN: the state or quality of being important</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="importance"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="significance.n" ID="7531" lemmaID="35882" cBy="605" cDate="10/04/2002 01:45:57 PDT Fri">
+        <definition>COD:  the quality of being significant; importance.</definition>
+        <sentenceCount annotated="57" total="324"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="significance"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="import.n" ID="7532" lemmaID="19205" cBy="605" cDate="10/04/2002 01:46:44 PDT Fri">
+        <definition>COD: importance</definition>
+        <sentenceCount annotated="14" total="156"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="import"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="major.a" ID="12252" lemmaID="23210" cBy="618" cDate="06/21/2005 03:08:12 PDT Tue">
+        <definition>COD: important, serious, or significant.</definition>
+        <sentenceCount annotated="20" total="251"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="major"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="instrumental.a" ID="13147" lemmaID="20200" cBy="618" cDate="03/28/2006 10:50:29 PST Tue">
+        <definition>FN: important or serving as a principle means in some undertaking.</definition>
+        <sentenceCount annotated="30" total="211"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="instrumental"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="vital.a" ID="13148" lemmaID="43139" cBy="618" cDate="03/28/2006 11:02:47 PST Tue">
+        <definition>COD: absolutely necessary; essential.</definition>
+        <sentenceCount annotated="20" total="200"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="vital"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="considerable.a" ID="13251" lemmaID="7907" cBy="303" cDate="06/19/2006 01:50:53 PDT Mon">
+        <definition>COD: having merit or distinction.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="considerable"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="fundamental.a" ID="13768" lemmaID="15687" cBy="361" cDate="02/23/2007 12:00:09 PST Fri">
+        <definition>COD: of or serving as a foundation or core; of central importance.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="fundamental"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="main.a" ID="13875" lemmaID="23187" cBy="361" cDate="02/26/2007 04:37:16 PST Mon">
+        <definition>FN: chief in importance.</definition>
+        <sentenceCount annotated="20" total="300"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="main"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="serious.a" ID="14313" lemmaID="35181" cBy="664" cDate="04/02/2007 03:17:13 PDT Mon">
+        <definition>COD: significant or worrying in terms of danger or risk.</definition>
+        <sentenceCount annotated="15" total="268"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="serious"/>
+        <semType name="Negative_judgment" ID="14"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="ADV" name="seriously.adv" ID="14314" lemmaID="35182" cBy="664" cDate="04/02/2007 03:18:12 PDT Mon">
+        <definition>FN: to a grave degree.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="seriously"/>
+        <semType name="Negative_judgment" ID="14"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="acute.a" ID="14861" lemmaID="429" cBy="361" cDate="03/13/2008 04:00:25 PDT Thu">
+        <definition>FN: critically important</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="acute"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="landmark.n" ID="14965" lemmaID="50872" cBy="597" cDate="04/25/2008 02:34:48 PDT Fri">
+        <definition>FN: of pivotal or decisive importance</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="landmark"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="epic.a" ID="15024" lemmaID="12942" cBy="361" cDate="06/02/2008 05:01:33 PDT Mon">
+        <definition>FN: impressive or major; hypothetically deserving of legendary status</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="epic"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="count.v" ID="15064" lemmaID="8564" cBy="597" cDate="06/06/2008 01:52:09 PDT Fri">
+        <definition>FN: be important</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="count"/>
+    </lexUnit>
+</frame>

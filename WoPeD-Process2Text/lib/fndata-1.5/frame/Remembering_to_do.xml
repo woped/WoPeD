@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="09/22/2004 05:12:47 PDT Wed" name="Remembering_to_do" ID="1221" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A &lt;fen&gt;Cognizer&lt;/fen&gt; thinks of and performs an &lt;fen&gt;Action&lt;/fen&gt; that is a self- or other-imposed task or some other kind of desirable behavior. The &lt;fen&gt;Action&lt;/fen&gt; may involve a &lt;fen&gt;Salient_entity&lt;/fen&gt; in some way affected by the &lt;fen&gt;Cognizer&lt;/fen&gt;. If a &lt;fen&gt;Salient_entity&lt;/fen&gt; is mentioned, the &lt;fen&gt;Action&lt;/fen&gt; is left unexpressed.
+
+
+&lt;ex&gt;You invited everybody but you &lt;t&gt;forgot&lt;/t&gt; &lt;fex name="sal"&gt;Harry&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;Thank God &lt;fex name="cog"&gt;Smithers&lt;/fex&gt; &lt;t&gt;remembered&lt;/t&gt; &lt;fex name="act"&gt;to return the video.&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;If you &lt;t&gt;forget&lt;/t&gt; &lt;fex name="sal"&gt;your textbook&lt;/fex&gt; and there is an assignment to be done, the highest grade you will receive on the work is aC (70%).&lt;/ex&gt;
+
+&lt;ex&gt;Did &lt;fex name="cog"&gt;you&lt;/fex&gt; &lt;t&gt;remember&lt;/t&gt; &lt;fex name="sal"&gt;about the letter&lt;/fex&gt;?&lt;/ex&gt;
+
+&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="09/22/2004 05:22:16 PDT Wed" abbrev="cog" name="Cognizer" ID="7104">
+        <definition>&lt;def-root&gt;The person who thinks of or fails to think of an obligatory or desireable &lt;fen&gt;Action&lt;/fen&gt;.
+
+&lt;ex&gt;.&lt;fex name="cog"&gt;Alex and Zach Swindle&lt;/fex&gt;, Centre, visited their brother in San Francisco in June and &lt;t&gt;remembered&lt;/t&gt; to take along a copy of The Post&gt;. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="09/22/2004 05:33:54 PDT Wed" abbrev="act" name="Action" ID="7105">
+        <definition>&lt;def-root&gt;An &lt;fen&gt;Action&lt;/fen&gt; that the &lt;fen&gt;Cognizer&lt;/fen&gt; is supposed to carry out. This may be a Task imposed specifically on the &lt;fen&gt;Cognizer&lt;/fen&gt; or it may be self- or socially imposed.
+
+&lt;ex&gt;This time we &lt;t&gt;remembered&lt;/t&gt; &lt;fex name="act"&gt;to turn the gas off before leaving&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="09/22/2004 05:36:11 PDT Wed" abbrev="tim" name="Time" ID="7106">
+        <definition>&lt;def-root&gt;A &lt;fen&gt;Time&lt;/fen&gt; when the &lt;fen&gt;Cognizer&lt;/fen&gt; remembers or fails to carry out an &lt;fen&gt;Action&lt;/fen&gt;.
+
+
+&lt;ex&gt;He &lt;t&gt;remembered&lt;/t&gt; &lt;fex name="tim"&gt;afterwards&lt;/fex&gt; to kiss her fingers.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="09/22/2004 05:40:38 PDT Wed" abbrev="sal" name="Salient_entity" ID="7107">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Salient_entity&lt;/fen&gt; is a person or thing that the &lt;fen&gt;Cognizer&lt;/fen&gt; needs to affect or effect when carrying out the &lt;fen&gt;Action&lt;/fen&gt;.
+
+&lt;ex&gt;We piled into the taxi and right when we were about to leave, I realized we &lt;t&gt;forgot&lt;/t&gt; &lt;fex name="sal"&gt;the video camera&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Action" ID="7105"/>
+    </FE>
+    <FE bgColor="7FFF00" fgColor="000000" coreType="Peripheral" cBy="571" cDate="08/18/2010 12:29:57 PDT Wed" abbrev="F" name="Frequency" ID="14162">
+        <definition>&lt;def-root&gt;This FE describes how often the Action is performed by the Cognizer. &lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Purpose</relatedFrame>
+        <relatedFrame>Intentionally_act</relatedFrame>
+        <relatedFrame>Remembering_information</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also">
+        <relatedFrame>Remembering_information</relatedFrame>
+    </frameRelation>
+    <lexUnit status="Created" POS="V" name="remember.v" ID="11023" lemmaID="32564" cBy="605" cDate="09/22/2004 07:52:30 PDT Wed">
+        <definition>COD: keep (something necessary or advisable) in mind.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="remember"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="forget.v" ID="11025" lemmaID="15109" cBy="605" cDate="09/22/2004 07:54:28 PDT Wed">
+        <definition>COD: inadvertently neglect to do</definition>
+        <sentenceCount annotated="45" total="45"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="forget"/>
+    </lexUnit>
+</frame>

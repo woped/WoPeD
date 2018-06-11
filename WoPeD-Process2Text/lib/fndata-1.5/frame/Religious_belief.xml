@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="03/05/2004 05:08:50 PST Fri" name="Religious_belief" ID="1019" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A &lt;fen&gt;Believer&lt;/fen&gt; has faith in a piece of &lt;fen&gt;Content&lt;/fen&gt; or an &lt;fen&gt;Element&lt;/fen&gt;  which fits into a religious belief system made up of many articles of faith. The &lt;fen&gt;Content&lt;/fen&gt; is not necessarily tied to direct sensory experience. The system of beliefs may be enshrined by the members of a social group
+
+&lt;ex&gt;Do &lt;fex name="Believer"&gt;Muslims&lt;/fex&gt; &lt;t&gt;believe&lt;/t&gt; &lt;fex name="el"&gt;in the virgin birth of Jesus?&lt;/fex&gt;&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Believer"&gt;Muslims&lt;/fex&gt; &lt;t&gt;believe&lt;/t&gt; &lt;fex name="el"&gt;in only One God, the same God that Jews and Christians believe in&lt;/fex&gt;, but some of the ideas about the nature of God are different&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Believer"&gt;Muslims&lt;/fex&gt; &lt;t&gt;believe&lt;/t&gt; &lt;fex name="Content"&gt;that the month of Ramadan is the holiest month of the year&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="03/05/2004 05:08:50 PST Fri" abbrev="Blv" name="Believer" ID="6060">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Believer&lt;/fen&gt; is the person whose religious beliefs are in question.&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="03/05/2004 05:08:50 PST Fri" abbrev="Cont" name="Content" ID="6061">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Content&lt;/fen&gt; is the object of the &lt;fen&gt;Believer&lt;/fen&gt;'s religious conviction. &lt;fen&gt;Content&lt;/fen&gt; can be expressed as a finite clause or in a in-PP Complement.
+
+
+&lt;ex&gt; A Christian &lt;t&gt;believes&lt;/t&gt; &lt;fex name="Cont"&gt;that Jesus of Nazareth was a prophet&lt;/fex&gt;. &lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+        <semType name="Content" ID="55"/>
+        <excludesFE name="Role" ID="6067"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="03/05/2004 05:08:50 PST Fri" abbrev="Degr" name="Degree" ID="6064">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Degree&lt;/fen&gt; to which the &lt;fen&gt;Believer&lt;/fen&gt; is convinced of the usefulness and validity of their religious beliefs .
+
+&lt;ex&gt;Christ the King Presbyterian Church therefore &lt;t&gt;believes&lt;/t&gt; &lt;fex name="Degr"&gt;fervently&lt;/fex&gt; in Christian civilization&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="03/05/2004 05:08:50 PST Fri" abbrev="Manr" name="Manner" ID="6065">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Manner&lt;/fen&gt; in which the &lt;fen&gt;Believer&lt;/fen&gt; knows or thinks something.
+
+&lt;ex&gt;All we have to do is &lt;t&gt;believe&lt;/t&gt; in Jesus &lt;fex name="Manr"&gt;like a child&lt;/fex&gt; and confess him&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="03/05/2004 05:08:50 PST Fri" abbrev="Role" name="Role" ID="6067">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Role&lt;/fen&gt; is a  function that an Element of the faith is believed to serve.
+
+&lt;ex&gt;If a person &lt;t&gt;believes&lt;/t&gt; in Jesus &lt;fex name="Role"&gt;as his Saviour&lt;/fex&gt;, he can he baptized.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <requiresFE name="Element" ID="6069"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="03/05/2004 06:21:30 PST Fri" abbrev="el" name="Element" ID="6069">
+        <definition>&lt;def-root&gt;A predefined, fixed idea to which reference is made throughout the belief system. 
+
+
+&lt;ex&gt;I believe &lt;fex name="Element"&gt;in Jesus&lt;/fex&gt;&lt;/ex&gt;
+&lt;ex&gt;To Clark, who infinitely &lt;t&gt;believes&lt;/t&gt; &lt;fex name="el"&gt;in angels&lt;/fex&gt; and celebrating the holidays with loved ones, Christmas means kids and family.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Content" ID="6061"/>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Element" ID="6069"/>
+        <memberFE name="Content" ID="6061"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Awareness</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by">
+        <relatedFrame>People_by_religion</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="believe.v" ID="10221" lemmaID="3292" cBy="605" cDate="03/05/2004 05:43:50 PST Fri">
+        <definition>FN: have religious faith (in the truth or existence of)</definition>
+        <sentenceCount annotated="19" total="281"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="believe"/>
+    </lexUnit>
+    <lexUnit status="Problem" POS="V" name="subscribe.v" ID="13333" lemmaID="38578" cBy="303" cDate="06/27/2006 02:35:15 PDT Tue">
+        <definition>COD: feel agreement with (an idea or proposal).</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="subscribe"/>
+    </lexUnit>
+    <lexUnit status="Problem" incorporatedFE="Believer" POS="N" name="subscriber.n" ID="13334" lemmaID="38579" cBy="303" cDate="06/27/2006 02:35:23 PDT Tue">
+        <definition>FN:  someone who believes in a particular religion's ideals. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="subscriber"/>
+    </lexUnit>
+</frame>

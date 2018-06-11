@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="618" cDate="07/01/2003 04:11:43 PDT Tue" name="Cognitive_connection" ID="720" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A concept, &lt;fen&gt;Concept_1&lt;/fen&gt;, is related causally or collocationally to another concept, &lt;fen&gt;Concept_2&lt;/fen&gt;, by means of some &lt;fen&gt;Evidence&lt;/fen&gt;.  They may be related only under certain &lt;fen&gt;Circumstances&lt;/fen&gt; or from a certain &lt;fen&gt;Point_of_view&lt;/fen&gt;.  The two concepts may be expressed collectively as associated &lt;fen&gt;Concepts&lt;/fen&gt;.  Any cognizer is deprofiled.&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="07/01/2003 04:14:55 PDT Tue" abbrev="C1" name="Concept_1" ID="4711">
+        <definition>&lt;def-root&gt;The concept which is linked to &lt;fen&gt;Concept_2&lt;/fen&gt;.  Generally expressed as the external argument.
+&lt;ex&gt;&lt;fex name="C1"&gt;Smoking&lt;/fex&gt; is &lt;t&gt;tied&lt;/t&gt; to cancer.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Concepts" ID="4716"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="07/01/2003 04:16:15 PDT Tue" abbrev="C2" name="Concept_2" ID="4712">
+        <definition>&lt;def-root&gt;The concept which is tied to &lt;fen&gt;Concept_1&lt;/fen&gt;.  Generally expressed as a PP complement.
+&lt;ex&gt;Smoking is &lt;t&gt;tied&lt;/t&gt; &lt;fex name="C2"&gt;Cancer&lt;/fex&gt;.&lt;/ex&gt;.&lt;/def-root&gt;</definition>
+        <excludesFE name="Concepts" ID="4716"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="07/01/2003 04:17:36 PDT Tue" abbrev="POV" name="Point_of_view" ID="4713">
+        <definition>&lt;def-root&gt;The point of view from which the connection exists.
+&lt;ex&gt;Smoking is &lt;t&gt;linked&lt;/t&gt; to cancer &lt;fex name="POV"&gt;in his mind&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="618" cDate="07/01/2003 04:21:30 PDT Tue" abbrev="cir" name="Circumstances" ID="4715">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Circumstances&lt;/fen&gt; under which the connection exists.
+
+&lt;ex&gt;&lt;fex name="Circumstances"&gt;In the lab&lt;/fex&gt;, a person's weight and life expectancy are strongly &lt;t&gt;connected&lt;/t&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="07/01/2003 04:23:34 PDT Tue" abbrev="Cs" name="Concepts" ID="4716">
+        <definition>&lt;def-root&gt;The two concepts expressed jointly.
+&lt;ex&gt;&lt;fex name="Cs"&gt;Smoking and weight gain&lt;/fex&gt; are &lt;t&gt;connected&lt;/t&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="07/10/2003 11:39:47 PDT Thu" abbrev="Deg" name="Degree" ID="4749">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Degree&lt;/fen&gt; of connection between the &lt;fen&gt;Concepts&lt;/fen&gt;.
+&lt;ex&gt;These two incidents are &lt;fex name="Deg"&gt;closely&lt;/fex&gt; &lt;t&gt;linked&lt;/t&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="07/10/2003 12:03:11 PDT Thu" abbrev="Spec" name="Specification" ID="4750">
+        <definition>&lt;def-root&gt;A further specification on the linkage.
+&lt;ex&gt;These two concepts are &lt;fex name="Spec"&gt;innately&lt;/fex&gt; &lt;t&gt;connected&lt;/t&gt;.&lt;/ex&gt;
+&lt;ex&gt;Smoking and lung cancer are &lt;t&gt;linked&lt;/t&gt; &lt;fex name="Spec"&gt;in some unknown way&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Relating_concepts</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Make_cognitive_connection</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="A" name="linked.a" ID="8989" lemmaID="48089" cBy="618" cDate="07/01/2003 04:34:49 PDT Tue">
+        <definition>FN: having a relationship or connection between people or things</definition>
+        <sentenceCount annotated="23" total="281"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="linked"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="tied.a" ID="8990" lemmaID="45627" cBy="618" cDate="07/01/2003 04:35:06 PDT Tue">
+        <definition>FN: related to in some respect.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="tied"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="connected.a" ID="8991" lemmaID="7851" cBy="618" cDate="07/01/2003 04:35:23 PDT Tue">
+        <definition>FN: being related in some respect</definition>
+        <sentenceCount annotated="12" total="118"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="connected"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="related.a" ID="11040" lemmaID="32487" cBy="664" cDate="09/24/2004 05:52:52 PDT Fri">
+        <definition>FN: connotated or connected; reminding of</definition>
+        <sentenceCount annotated="38" total="295"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="related"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="associated.a" ID="11706" lemmaID="49889" cBy="605" cDate="03/03/2005 07:16:03 PST Thu">
+        <definition>COD: closely related in the mind</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="associated"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="relationship.n" ID="11722" lemmaID="32492" cBy="664" cDate="03/03/2005 10:27:48 PST Thu">
+        <definition>COD: the way in which two or more people or things are connected, or the state of being connected.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="relationship"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="identify with.v" ID="13273" lemmaID="50380" cBy="303" cDate="06/19/2006 05:49:39 PDT Mon">
+        <definition>FN: Experience a mental connection with something.  </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="identify"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="PREP" name="with"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="have_to_do_(with).v" ID="15947" lemmaID="51182" cBy="664" cDate="07/27/2010 05:45:57 PDT Tue">
+        <definition>FN: be related (to).</definition>
+        <sentenceCount annotated="1" total="1"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="have"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="PREP" name="to"/>
+        <lexeme order="3" headword="false" breakBefore="false" POS="V" name="do"/>
+    </lexUnit>
+</frame>

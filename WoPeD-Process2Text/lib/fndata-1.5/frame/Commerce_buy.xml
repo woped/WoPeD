@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="243" cDate="07/12/2001 12:38:02 PDT Thu" name="Commerce_buy" ID="171" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;These are words describing a basic commercial transaction involving a buyer and a seller exchanging money and goods, taking the perspective of the buyer.  The words vary individually in the patterns of frame element realization they allow.  For example, the typical pattern for the verb BUY:
+BUYER buys GOODS from SELLER for MONEY.
+Abby bought a car from Robin for $5,000.&lt;/def-root&gt;</definition>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="07/16/2001 01:49:09 PDT Mon" abbrev="Byr" name="Buyer" ID="1389">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Buyer&lt;/fen&gt; wants the &lt;fen&gt;Goods&lt;/fen&gt; and offers &lt;fen&gt;Money&lt;/fen&gt; to a &lt;fen&gt;Seller&lt;/fen&gt; in exchange for them.
+&lt;ex&gt;&lt;fex name="Buyer"&gt;Jess&lt;/fex&gt; &lt;t&gt;bought&lt;/t&gt; a coat.&lt;/ex&gt;
+&lt;ex&gt;Lee &lt;t&gt;bought&lt;/t&gt; a textbook &lt;fex name="Buyer"&gt;from Abby&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="07/16/2001 01:49:09 PDT Mon" abbrev="Gds" name="Goods" ID="1390">
+        <definition>&lt;def-root&gt;The FE &lt;fen&gt;Goods&lt;/fen&gt; is anything (including labor or time, for example) which is exchanged for &lt;fen&gt;Money&lt;/fen&gt; in a transaction. 
+&lt;ex&gt; Only one winner &lt;t&gt;purchased&lt;/t&gt; &lt;fex name="Gds"&gt;the paintings&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="07/16/2001 01:49:09 PDT Mon" abbrev="Mns" name="Means" ID="1391">
+        <definition>&lt;def-root&gt;The means by which a commercial transaction occurs.
+&lt;ex&gt; Will they allow you to &lt;t&gt;purchase&lt;/t&gt; &lt;fex name="Mns"&gt;by check&lt;/fex&gt;? &lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="07/16/2001 01:49:09 PDT Mon" abbrev="Mny" name="Money" ID="1392">
+        <definition>&lt;def-root&gt;Money is the thing given in exchange for Goods in a transaction.
+&lt;ex&gt;Sam &lt;t&gt;bought&lt;/t&gt; the car &lt;fex name="Money"&gt;for $12,000&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="07/16/2001 01:49:09 PDT Mon" abbrev="Rate" name="Rate" ID="1393">
+        <definition>&lt;def-root&gt;In some cases, price or payment is described per unit of Goods.
+&lt;ex&gt; Jon &lt;t&gt;bought&lt;/t&gt; some expensive apples &lt;fex name="Rate"&gt;at five dollars a pound&lt;/fex&gt;! &lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="07/16/2001 01:49:09 PDT Mon" abbrev="Slr" name="Seller" ID="1394">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Seller&lt;/fen&gt; has possession of the &lt;fen&gt;Goods&lt;/fen&gt; and exchanges them for &lt;fen&gt;Money&lt;/fen&gt; from a &lt;fen&gt;Buyer&lt;/fen&gt;.
+&lt;ex&gt;Most of my audio equipment, I &lt;t&gt;purchased&lt;/t&gt; &lt;fex name="Seller"&gt;from a department store near my apartment&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Source" ID="151"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="07/16/2001 01:49:09 PDT Mon" abbrev="Unit" name="Unit" ID="1395">
+        <definition>&lt;def-root&gt;This FE is any unit in which goods or services can be measured.
+Generally, it occurs in a &lt;ment&gt;by&lt;/ment&gt;-PP. 
+&lt;ex&gt;Lee &lt;t&gt;buys&lt;/t&gt; potatoes &lt;fex name="Unit"&gt;by the pound&lt;/fex&gt;. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="7CCD73" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="08/21/2001 08:41:05 PDT Tue" abbrev="Place" name="Place" ID="1734">
+        <definition>&lt;def-root&gt;Where the event takes place.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="08/21/2001 08:41:05 PDT Tue" abbrev="Purp" name="Purpose" ID="1735">
+        <definition>&lt;def-root&gt;The purpose for which an intentional act is performed.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="08/21/2001 08:41:05 PDT Tue" abbrev="Reas" name="Reason" ID="1736">
+        <definition>&lt;def-root&gt;The Reason for which an event occurs.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="08/21/2001 08:41:05 PDT Tue" abbrev="Time" name="Time" ID="1737">
+        <definition>&lt;def-root&gt;When the event occurs.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="04/25/2003 11:43:08 PDT Fri" abbrev="" name="Manner" ID="4440">
+        <definition>&lt;def-root&gt;Any description of the purchasing event which is not covered by more specific FEs, including secondary effects (&lt;ment&gt;quietly, loudly&lt;/ment&gt;), and general descriptions comparing events (&lt;ment&gt;the same way&lt;/ment&gt;). It may also indicate salient characteristics of the &lt;fen&gt;Buyer&lt;/fen&gt;that affect the action (&lt;ment&gt;presumptuously, coldly, deliberately, eagerly, carefully&lt;/ment&gt;).
+&lt;ex&gt;She &lt;fex name="Manner"&gt;gleefully&lt;/fex&gt; &lt;t&gt;bought&lt;/t&gt; the rock.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="04/25/2003 01:09:06 PDT Fri" abbrev="" name="Recipient" ID="4445">
+        <definition>&lt;def-root&gt;The individual intended by the &lt;fen&gt;Buyer&lt;/fen&gt; to receive the &lt;fen&gt;Goods&lt;/fen&gt;.
+&lt;ex&gt;You &lt;t&gt;bought&lt;/t&gt; &lt;fex name="Recipient"&gt;me&lt;/fex&gt; three pairs already!&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="05/02/2003 04:35:00 PDT Fri" abbrev="iter" name="Period_of_iteration" ID="4470">
+        <definition>&lt;def-root&gt;The length of time from when the commerce event began to be repeated to when it stopped.
+&lt;ex&gt;I have been &lt;t&gt;buying&lt;/t&gt; from him &lt;fex name=""&gt;for over 10 years&lt;/fex&gt;.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="618" cDate="07/23/2003 02:45:23 PDT Wed" abbrev="POG" name="Purpose_of_goods" ID="4822">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Buyer&lt;/fen&gt;'s intended purpose for the &lt;fen&gt;Goods&lt;/fen&gt;.
+&lt;ex&gt;I &lt;t&gt;purchased&lt;/t&gt; the calculator&lt;fex name="POG"&gt;for easier calculation of my debts&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Getting</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Renting</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on">
+        <relatedFrame>Commerce_goods-transfer</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Importing</relatedFrame>
+        <relatedFrame>Shopping</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="buy.v" ID="2966" lemmaID="5087" cBy="243" cDate="07/12/2001 01:01:11 PDT Thu">
+        <definition>COD: obtain in exchange for payment</definition>
+        <sentenceCount annotated="82" total="511"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="buy"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="purchase.v" ID="2971" lemmaID="31200" cBy="296" cDate="07/12/2001 01:43:48 PDT Thu">
+        <definition>COD:  buy</definition>
+        <sentenceCount annotated="75" total="598"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="purchase"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="purchase_((act)).n" ID="2973" lemmaID="31199" cBy="296" cDate="07/12/2001 01:44:21 PDT Thu">
+        <definition>COD: the action of buying. </definition>
+        <sentenceCount annotated="38" total="523"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="purchase"/>
+    </lexUnit>
+</frame>

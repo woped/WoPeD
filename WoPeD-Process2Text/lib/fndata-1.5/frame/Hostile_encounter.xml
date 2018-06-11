@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="197" cDate="03/14/2001 05:28:35 PST Wed" name="Hostile_encounter" ID="93" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;This frame consists of words that describe a hostile encounter between opposing forces (&lt;fen&gt;Side_1&lt;/fen&gt; and &lt;fen&gt;Side_2&lt;/fen&gt;, collectively conceptualizable as &lt;fen&gt;Sides&lt;/fen&gt;) over a disputed &lt;fen&gt;Issue&lt;/fen&gt; and/or in order to reach a specific  &lt;fen&gt;Purpose&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="197" cDate="03/15/2001 02:31:38 PST Thu" abbrev="Side-1" name="Side_1" ID="439">
+        <definition>&lt;def-root&gt;One of two participants in a hostile encounter. 
+While &lt;fex name="Side_1"&gt;the U.S.'s&lt;/fex&gt; &lt;t&gt;battle&lt;/t&gt; with terrorist-harboring nations is far off ...&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+        <requiresFE name="Side_2" ID="440"/>
+        <excludesFE name="Sides" ID="441"/>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Core" cBy="197" cDate="03/15/2001 02:40:29 PST Thu" abbrev="Side-2" name="Side_2" ID="440">
+        <definition>&lt;def-root&gt;One of two participants in a hostile encounter, usually the second mentioned.
+&lt;ex&gt;While the U.S.'s &lt;t&gt;battle&lt;/t&gt; &lt;fex name="Side_2"&gt;with terrorist-harboring nations&lt;/fex&gt; is far off ...&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+        <requiresFE name="Side_1" ID="439"/>
+        <excludesFE name="Sides" ID="441"/>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Core" cBy="197" cDate="03/15/2001 02:44:52 PST Thu" abbrev="Sides" name="Sides" ID="441">
+        <definition>&lt;def-root&gt;The jointly expressed sides in a hostile encounter. &lt;fex name="Sides"&gt;They&lt;/fex&gt; &lt;t&gt;fought&lt;/t&gt; over the right to own land.&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Core" cBy="197" cDate="03/15/2001 02:51:26 PST Thu" abbrev="Iss" name="Issue" ID="442">
+        <definition>&lt;def-root&gt;An unresolved question over which the two sides of a hostile encounter are in disagreement. 
+
+&lt;ex&gt;They had a &lt;t&gt;dust-up&lt;/t&gt; &lt;fex name="Issue"&gt;over who was prettier&lt;/fex&gt; .&lt;/ex&gt;
+
+Quite often it takes the form of a covert question of various sorts. So in an example like:
+
+&lt;ex&gt;They &lt;t&gt;fought&lt;/t&gt; &lt;fex name="Issue"&gt;over the right to own land&lt;/fex&gt;.&lt;/ex&gt; 
+
+among many other possibilities, the covert question might be more explicitly phrased as follows:
+
+&lt;ex&gt;They &lt;t&gt;fought&lt;/t&gt; &lt;fex name="Issue"&gt;over what the right to own land means&lt;/fex&gt;.&lt;/ex&gt; &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core" cBy="197" cDate="03/15/2001 02:56:01 PST Thu" abbrev="Purpose" name="Purpose" ID="443">
+        <definition>&lt;def-root&gt;The desired result of the outcome of the hostile encounter for the &lt;fen&gt;Side_1&lt;/fen&gt; or for all the &lt;fen&gt;Sides&lt;/fen&gt; collectively.  It may either directly refer to the state of affairs that is desired, e.g.
+
+&lt;ex&gt;He &lt;t&gt;dueled&lt;/t&gt; with his former second &lt;fex name="Purpose"&gt;to defend the honour of the man he had killed&lt;/fex&gt; .&lt;/ex&gt;
+ 
+or it the state of affairs may be implicit in an (abstract or concrete) entity that they desire, e.g.
+
+&lt;ex&gt;Rival Democratic presidential candidates Mr Bill Clinton and Mr Jerry Brown taunted each other at the weekend as mudslinging in the &lt;t&gt;battle&lt;/t&gt; &lt;fex name="Purpose"&gt;for votes&lt;/fex&gt; in tomorrow's crucial New York primary reached a new low.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Peripheral" cBy="197" cDate="03/15/2001 03:01:09 PST Thu" abbrev="Mns" name="Means" ID="444">
+        <definition>&lt;def-root&gt;Means describes the way in which a side engages in a hostile encounter. President Corazon Aquino of the Philippines is bracing herself for a &lt;fex name="Means"&gt;legal&lt;/fex&gt; &lt;t&gt;battle&lt;/t&gt; over her decision to allow the remains of the former president, Ferdinand Marcos, to be returned home from Hawaii for burial.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="197" cDate="03/15/2001 03:04:10 PST Thu" abbrev="Manr" name="Manner" ID="445">
+        <definition>&lt;def-root&gt;Any expression which describes a property of the hostile encounter. Descriptions of the intensity count as Manner expressions. After Brundle's Jaguar took off like a scalded cat, it was Mass who hunted it down, an soon engaged it in a &lt;fex name="Manner"&gt;lurid&lt;/fex&gt; &lt;t&gt;battle&lt;/t&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Peripheral" cBy="197" cDate="03/15/2001 03:05:57 PST Thu" abbrev="pla" name="Place" ID="446">
+        <definition>&lt;def-root&gt;The location at which the hostile encounter takes place. 
+
+&lt;ex&gt;Following the &lt;t&gt;battle&lt;/t&gt; &lt;fex name="Place"&gt;of Naseby&lt;/fex&gt; in 1645 ...&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="197" cDate="03/15/2001 03:08:49 PST Thu" abbrev="Time" name="Time" ID="447">
+        <definition>&lt;def-root&gt;The time at which the hostile encounter occurs. 
+
+&lt;ex&gt;Following the &lt;t&gt;battle&lt;/t&gt; of Naseby &lt;fex name="Time"&gt;in 1645&lt;/fex&gt; he died.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="06/05/2001 11:18:33 PDT Tue" abbrev="Degr" name="Degree" ID="710">
+        <definition>&lt;def-root&gt;Degree to which event occurs&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="06/05/2001 11:18:33 PDT Tue" abbrev="Dep" name="Depictive" ID="711">
+        <definition>&lt;def-root&gt;Depictive phrase describing the actor of an action&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="06/05/2001 11:18:33 PDT Tue" abbrev="Result" name="Result" ID="716">
+        <definition>&lt;def-root&gt;Result of an event&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="7CCD73" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="06/05/2001 11:18:57 PDT Tue" abbrev="Dur" name="Duration" ID="718">
+        <definition>&lt;def-root&gt;The amount of time for which a state holds or a process is ongoing.&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="06/26/2001 06:07:27 PDT Tue" abbrev="Reas" name="Reason" ID="1097">
+        <definition>&lt;def-root&gt;The Reason for which an event occurs.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="07/17/2001 03:57:17 PDT Tue" abbrev="Ins" name="Instrument" ID="1523">
+        <definition>&lt;def-root&gt;The instrument with which an intentional act is performed.&lt;/def-root&gt;</definition>
+        <semType name="Physical_entity" ID="70"/>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="07/17/2001 06:42:48 PDT Tue" abbrev="ICause" name="Internal_cause" ID="1526">
+        <definition>&lt;def-root&gt;The body movement may be prompted by either some outside phenomenon or occurrence, or by an Internal Cause, the Agent's mental or emotional state.  Internal Cause is expressed in a PP Complement: Kim &lt;t&gt;frowned&lt;/t&gt; &lt;fex name="Internal_cause"&gt;in concentration&lt;/fex&gt;. Kim &lt;t&gt;threw&lt;/t&gt; her hands up &lt;fex name="Internal_cause"&gt;in despair&lt;/fex&gt;. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFD700" fgColor="000000" coreType="Extra-Thematic" cBy="589" cDate="07/24/2009 10:42:05 PDT Fri" abbrev="" name="Particular_iteration" ID="13320">
+        <definition>&lt;def-root&gt;Expressions marked with this extra-thematic FE modify a non-iterative use of the target, and indicate that it is conceived as embedded within an iterated series of similar events or states.&lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Issue" ID="442"/>
+        <memberFE name="Purpose" ID="443"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Intentionally_act</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Fighting_activity</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in">
+        <relatedFrame>Attack</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Fighting_activity</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="N" name="battle.n" ID="1909" lemmaID="3048" cBy="197" cDate="03/14/2001 05:29:18 PST Wed">
+        <definition>COD: a lengthy and difficult conflict or struggle</definition>
+        <sentenceCount annotated="39" total="203"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="battle"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="fight.n" ID="1910" lemmaID="14320" cBy="197" cDate="03/14/2001 06:09:26 PST Wed">
+        <definition>COD: an act of fighting</definition>
+        <sentenceCount annotated="33" total="197"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="fight"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="scuffle.n" ID="1911" lemmaID="34627" cBy="197" cDate="03/14/2001 06:10:21 PST Wed">
+        <definition>COD: a short, confused fight or struggle at close quarters</definition>
+        <sentenceCount annotated="10" total="64"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="scuffle"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="spat.n" ID="1912" lemmaID="37188" cBy="197" cDate="03/14/2001 06:10:39 PST Wed">
+        <definition>COD: a petty quarrel</definition>
+        <sentenceCount annotated="6" total="33"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="spat"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="altercation.n" ID="1913" lemmaID="1139" cBy="197" cDate="03/14/2001 06:13:08 PST Wed">
+        <definition>FN: an angry dispute</definition>
+        <sentenceCount annotated="12" total="47"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="altercation"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="duel.n" ID="1914" lemmaID="11918" cBy="197" cDate="03/14/2001 06:13:21 PST Wed">
+        <definition>COD: (chiefly historical) a pre-arranged contest with deadly weapons between two people to settle a point of honour</definition>
+        <sentenceCount annotated="16" total="85"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="duel"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="clash.n" ID="1916" lemmaID="6668" cBy="197" cDate="03/14/2001 06:14:32 PST Wed">
+        <definition>COD: have a forceful disagreement</definition>
+        <sentenceCount annotated="22" total="165"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="clash"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="confrontation.n" ID="1917" lemmaID="7761" cBy="197" cDate="03/14/2001 06:14:45 PST Wed">
+        <definition>FN: an open conflict of opposing groups, parties, or individuals</definition>
+        <sentenceCount annotated="28" total="122"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="confrontation"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="row.n" ID="1918" lemmaID="33648" cBy="197" cDate="03/14/2001 06:15:13 PST Wed">
+        <definition>COD: an acrimonious quarrel</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="row"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="fighting.n" ID="1919" lemmaID="14323" cBy="197" cDate="03/14/2001 06:16:05 PST Wed">
+        <definition>FN: a struggle for victory or mastery between two or more people, animals, or forces.</definition>
+        <sentenceCount annotated="19" total="126"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="fighting"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="bout.n" ID="1920" lemmaID="4325" cBy="197" cDate="03/14/2001 06:16:16 PST Wed">
+        <definition>FN: a contest between antagonists</definition>
+        <sentenceCount annotated="10" total="89"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="bout"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="struggle.n" ID="1921" lemmaID="38402" cBy="197" cDate="03/14/2001 06:16:32 PST Wed">
+        <definition>COD: an act of struggling</definition>
+        <sentenceCount annotated="51" total="205"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="struggle"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="hostility.n" ID="1922" lemmaID="18482" cBy="197" cDate="03/14/2001 06:16:52 PST Wed">
+        <definition>FN: the state of being at war</definition>
+        <sentenceCount annotated="11" total="149"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="hostility"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="skirmish.n" ID="1924" lemmaID="36169" cBy="197" cDate="03/14/2001 06:17:23 PST Wed">
+        <definition>COD: an episode of irrgular or unpremeditated fighting, especially between small or outlying parts of armies</definition>
+        <sentenceCount annotated="17" total="78"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="skirmish"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="combat.n" ID="1925" lemmaID="7259" cBy="197" cDate="03/14/2001 06:17:35 PST Wed">
+        <definition>COD: fighting, especially between armed forces</definition>
+        <sentenceCount annotated="16" total="81"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="combat"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="squabble.n" ID="1926" lemmaID="37593" cBy="197" cDate="03/14/2001 06:17:49 PST Wed">
+        <definition>COD: a trivial noisy quarrel</definition>
+        <sentenceCount annotated="13" total="52"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="squabble"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="stalemate.n" ID="1927" lemmaID="37747" cBy="197" cDate="03/14/2001 06:18:04 PST Wed">
+        <definition>COD: a situation in which further progress by opposing parties seems impossible</definition>
+        <sentenceCount annotated="9" total="56"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="stalemate"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="brawl.n" ID="1928" lemmaID="4462" cBy="197" cDate="03/14/2001 06:18:16 PST Wed">
+        <definition>COD: a rough or noisy fight or quarrel</definition>
+        <sentenceCount annotated="8" total="56"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="brawl"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="strife.n" ID="1929" lemmaID="38348" cBy="197" cDate="03/14/2001 06:18:28 PST Wed">
+        <definition>COD: angry or bitter disagreement; conflict</definition>
+        <sentenceCount annotated="13" total="59"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="strife"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="fight.v" ID="1930" lemmaID="14321" cBy="197" cDate="03/15/2001 03:14:26 PST Thu">
+        <definition>COD: take part in a violent struggle involving physical force or weapons.</definition>
+        <sentenceCount annotated="39" total="424"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="fight"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="battle.v" ID="1931" lemmaID="3049" cBy="197" cDate="03/15/2001 03:15:51 PST Thu">
+        <definition>COD: fight or struggle tenaciously with an enemy or to achieve something. </definition>
+        <sentenceCount annotated="36" total="219"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="battle"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="duel.v" ID="1932" lemmaID="11919" cBy="197" cDate="03/15/2001 03:16:46 PST Thu">
+        <definition>COD: fight a duel</definition>
+        <sentenceCount annotated="5" total="40"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="duel"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="clash.v" ID="1933" lemmaID="6669" cBy="197" cDate="03/15/2001 03:17:41 PST Thu">
+        <definition>COD:  (of two opposing groups) come abruptly into violent conflict. </definition>
+        <sentenceCount annotated="22" total="120"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="clash"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="brawl.v" ID="1935" lemmaID="4463" cBy="197" cDate="03/15/2001 03:19:53 PST Thu">
+        <definition>COD: take part in a brawl</definition>
+        <sentenceCount annotated="5" total="49"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="brawl"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="skirmish.v" ID="1936" lemmaID="36170" cBy="197" cDate="03/15/2001 03:25:41 PST Thu">
+        <definition>COD: engage in a minor conflict or fight</definition>
+        <sentenceCount annotated="4" total="20"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="skirmish"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="scuffle.v" ID="1937" lemmaID="34626" cBy="197" cDate="03/15/2001 04:19:01 PST Thu">
+        <definition>COD: engage in a scuffle</definition>
+        <sentenceCount annotated="5" total="40"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="scuffle"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="confront.v" ID="1938" lemmaID="7760" cBy="197" cDate="03/15/2001 04:23:08 PST Thu">
+        <definition>COD: stand or meet face to face with hostile intent. </definition>
+        <sentenceCount annotated="38" total="224"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="confront"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="war.n" ID="1939" lemmaID="43423" cBy="197" cDate="03/15/2001 04:26:57 PST Thu">
+        <definition>COD: a state of competition, conflict, or hostility</definition>
+        <sentenceCount annotated="11" total="223"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="war"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="war.v" ID="1940" lemmaID="43424" cBy="197" cDate="03/15/2001 04:27:27 PST Thu">
+        <definition>COD: engage in a war</definition>
+        <sentenceCount annotated="16" total="154"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="war"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="gunfight.n" ID="3803" lemmaID="45111" cBy="599" cDate="08/20/2001 12:40:43 PDT Mon">
+        <definition>COD: a fight involving an exchange of fire with guns. </definition>
+        <sentenceCount annotated="14" total="144"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="gunfight"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="shootout.n" ID="3804" lemmaID="45112" cBy="599" cDate="08/20/2001 12:54:00 PDT Mon">
+        <definition>COD: informal a decisive gun battle. </definition>
+        <sentenceCount annotated="4" total="11"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="shootout"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="N" name="standoff.n" ID="3805" lemmaID="45113" cBy="599" cDate="08/20/2001 12:55:10 PDT Mon">
+        <definition>COD: a deadlock between two equally matched opponents. </definition>
+        <sentenceCount annotated="2" total="9"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="standoff"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="showdown.n" ID="3806" lemmaID="45114" cBy="599" cDate="08/20/2001 12:57:14 PDT Mon">
+        <definition>COD: a final test or confrontation intended to settle a dispute. </definition>
+        <sentenceCount annotated="17" total="84"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="showdown"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="wrangling.n" ID="3807" lemmaID="45115" cBy="599" cDate="08/20/2001 01:05:35 PDT Mon">
+        <definition>FN: long and complicated arguing</definition>
+        <sentenceCount annotated="4" total="58"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="wrangling"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="tiff.n" ID="5149" lemmaID="40402" cBy="669" cDate="03/04/2002 05:01:43 PST Mon">
+        <definition>COD: informal a quarrel. </definition>
+        <sentenceCount annotated="7" total="67"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="tiff"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="fistfight.n" ID="10457" lemmaID="49048" cBy="605" cDate="04/29/2004 05:08:29 PDT Thu">
+        <definition>COD: a fight with the fists</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="fistfight"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="firefight.n" ID="10458" lemmaID="49049" cBy="605" cDate="04/29/2004 05:10:38 PDT Thu">
+        <definition>COD: a battle using guns rather than bombs or other weapons.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="firefight"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="conflict.n" ID="10638" lemmaID="7742" cBy="605" cDate="06/28/2004 10:17:56 PDT Mon">
+        <definition>COD: a prolonged armed struggle</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="conflict"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="dust-up.n" ID="10917" lemmaID="12007" cBy="664" cDate="08/19/2004 05:54:30 PDT Thu">
+        <definition>COD: a fight or quarrel.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="dust-up"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="warfare.n" ID="11600" lemmaID="43438" cBy="605" cDate="02/27/2005 11:35:47 PST Sun">
+        <definition>FN: violent military operations between combatants</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="warfare"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="cw.n" ID="11611" lemmaID="49860" cBy="605" cDate="02/28/2005 01:55:05 PST Mon">
+        <definition>FN: chemical warfare</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="cw"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="bw.n" ID="11623" lemmaID="49871" cBy="605" cDate="02/28/2005 06:34:46 PST Mon">
+        <definition>FN: biological warfare</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="bw"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="tussle.n" ID="13315" lemmaID="41558" cBy="303" cDate="06/23/2006 12:21:50 PDT Fri">
+        <definition>COD: a vigorous struggle or scuffle.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="tussle"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="struggle.v" ID="14676" lemmaID="38403" cBy="597" cDate="01/22/2008 02:15:04 PST Tue">
+        <definition>FN: to fight against an enemy or some kind of feature, esp. when the odds of victory are slim</definition>
+        <sentenceCount annotated="20" total="283"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="struggle"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="infighting.n" ID="14981" lemmaID="50878" cBy="597" cDate="04/29/2008 12:11:09 PDT Tue">
+        <definition>FN: fighting at close quarters</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="infighting"/>
+    </lexUnit>
+</frame>

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="01/17/2003 01:01:27 PST Fri" name="Purpose" ID="513" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Agent&lt;/fen&gt; wants to achieve a &lt;fen&gt;Goal&lt;/fen&gt;,  or an object, a &lt;fen&gt;Means&lt;/fen&gt; , has been created or is used to allow the creator or a  user to achieve a  &lt;fen&gt;Goal&lt;/fen&gt;. The &lt;fen&gt;Goal&lt;/fen&gt; is an state of the world that does not currently obtain but which the &lt;fen&gt;Agent&lt;/fen&gt; wants to realize and is planning and/or working towards. In some cases, it is difficult to decide whether a noun phrase metonymically stands for the &lt;fen&gt;Agent&lt;/fen&gt; or the &lt;fen&gt;Means&lt;/fen&gt; (e.g. The goal [of this paper/seminar/project] is to determine ...). We mark these phrases as &lt;fen&gt;Agent&lt;/fen&gt; on the first layer but also annotate them as &lt;fen&gt;Means&lt;/fen&gt; on a second annotation layer.
+
+In some cases a &lt;fen&gt;Restrictor&lt;/fen&gt; on the &lt;fen&gt;Goal&lt;/fen&gt; state of affairs can be given prominence as a separate constituent. Talk about &lt;fen&gt;Goal&lt;/fen&gt;s frequently includes the mention of a &lt;fen&gt;Domain&lt;/fen&gt; to which the &lt;fen&gt;Agent&lt;/fen&gt;'s &lt;fen&gt;Goal&lt;/fen&gt; is relevant.
+
+&lt;ex&gt;The modest &lt;fex name="Agent"&gt;American&lt;/fex&gt; &lt;t&gt;goal&lt;/t&gt; &lt;fex name="Goal"&gt;of a threefold increase in capacity&lt;/fex&gt; recognises this fact .&lt;/ex&gt;
+&lt;ex&gt;The &lt;t&gt;object&lt;/t&gt; &lt;fex name="Means"&gt;of the tutorial&lt;/fex&gt; &lt;m&gt;is&lt;/m&gt; &lt;fex name="Goal"&gt;to help a student concentrate on his writing skills&lt;/fex&gt; &lt;/ex&gt;
+&lt;ex&gt; The prime &lt;t&gt;goal&lt;/t&gt; &lt;fex name="Means"&gt;of the programme&lt;/fex&gt; &lt;m&gt;was&lt;/m&gt; &lt;fex name="Goal"&gt;to help develop processes of scientific thinking in children&lt;/fex&gt; .&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Agent"&gt;My&lt;/fex&gt; &lt;t&gt;goal&lt;/t&gt; &lt;fex name="Means"&gt;in this book&lt;/fex&gt; &lt;m&gt;is&lt;/m&gt; &lt;fex name="Goal"&gt;to introduce the reader to Web programming applications&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Agent"&gt;The president's&lt;/fex&gt; &lt;fex name="Domain"&gt;economic&lt;/fex&gt; &lt;t&gt;goal&lt;/t&gt; &lt;fex name="Restrictor"&gt;for the country &lt;/fex&gt;&lt;m&gt;was&lt;/m&gt; &lt;fex name="Goal"&gt;to overcome the recession&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="01/17/2003 03:47:35 PST Fri" abbrev="" name="Agent" ID="4085">
+        <definition>&lt;def-root&gt;The volitional actor who intends to achieve a goal.
+&lt;ex&gt; &lt;fex name="Agent"&gt;Microsoft 's&lt;/fex&gt; &lt;t&gt;goal&lt;/t&gt; of delivering a million copies in the first year is trifling compared to the 25 million copies of Windows it has shipped since May 1990.&lt;/ex&gt;
+
+&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="01/17/2003 03:50:23 PST Fri" abbrev="" name="Goal" ID="4086">
+        <definition>&lt;def-root&gt;The action or state of affairs that the Agent wants to achieve.
+
+&lt;ex&gt;The company missed its &lt;t&gt;goal&lt;/t&gt; &lt;fex name="Goal"&gt;of getting a thousand third-party software packages shipped&lt;/fex&gt;.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+        <semType name="Human_act" ID="69"/>
+        <excludesFE name="Attribute" ID="4410"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="01/17/2003 03:54:37 PST Fri" abbrev="" name="Means" ID="4087">
+        <definition>&lt;def-root&gt;A &lt;fen&gt;Means&lt;/fen&gt; is an object that is used or designed to achieve a particular &lt;fen&gt;Goal&lt;/fen&gt;.
+
+&lt;ex&gt; The &lt;t&gt;goal&lt;/t&gt; &lt;fex name="Means"&gt;of treatment&lt;/fex&gt; &lt;m&gt;was&lt;/m&gt; &lt;fex name="Goal"&gt;to lower diastolic blood pressure below 85 mm  Hg&lt;/fex&gt; .&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="04/17/2003 05:13:12 PDT Thu" abbrev="" name="Domain" ID="4386">
+        <definition>&lt;def-root&gt;This frame element expresses a sphere of activity within which an &lt;fen&gt;Agent&lt;/fen&gt; has a &lt;fen&gt;Goal&lt;/fen&gt;.
+
+&lt;ex&gt;His &lt;fex name="Domain"&gt;political&lt;/fex&gt; &lt;t&gt;goal&lt;/t&gt; is the restoration of the monarchy&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="04/17/2003 05:22:14 PDT Thu" abbrev="" name="Time" ID="4389">
+        <definition>&lt;def-root&gt;This Frame Element expresses a time period during which an &lt;fen&gt;Agent&lt;/fen&gt; had a particular &lt;fen&gt;Goal&lt;/fen&gt;.
+
+&lt;ex&gt;But the main &lt;t&gt;goal&lt;/t&gt; &lt;fex name="Time"&gt;of the 1990s&lt;/fex&gt; could be to transform a big , heavily armed standing army into a more flexible force &lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="04/18/2003 12:05:24 PDT Fri" abbrev="" name="Restrictor" ID="4400">
+        <definition>&lt;def-root&gt;This FE marks expressions that indicate a spatial or temporal or individual framework relative to  which the &lt;fen&gt;Goal&lt;/fen&gt; is said to hold. More than one &lt;fen&gt;Restrictor&lt;/fen&gt; can be mentioned.
+
+&lt;ex&gt;Our &lt;t&gt;goal&lt;/t&gt; &lt;fex name="Restrictor"&gt;for Japan&lt;/fex&gt; &lt;fex name="Restrictor"&gt;for next year&lt;/fex&gt;is to sell 2000 units&lt;/ex&gt;
+&lt;ex&gt;Our sales &lt;t&gt;target&lt;/t&gt; &lt;fex name="Restrictor"&gt;for that week&lt;/fex&gt; was 200 units&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="04/18/2003 05:18:47 PDT Fri" abbrev="" name="Attribute" ID="4410">
+        <definition>&lt;def-root&gt;This FE marks expressions that indicate an &lt;fen&gt;Attribute&lt;/fen&gt; for which it is the &lt;fen&gt;Agent&lt;/fen&gt;'s goal that it have or reach a particular &lt;fen&gt;Value&lt;/fen&gt; .
+
+&lt;ex&gt;We exceeded our &lt;fex name="Attribute"&gt;production&lt;/fex&gt; &lt;t&gt;target&lt;/t&gt; of 2000 units&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <requiresFE name="Value" ID="4411"/>
+    </FE>
+    <FE bgColor="90876C" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="04/18/2003 05:31:46 PDT Fri" abbrev="" name="Value" ID="4411">
+        <definition>&lt;def-root&gt;This FE marks expressions that indicate which &lt;fen&gt;Value&lt;/fen&gt; the &lt;fen&gt;Agent&lt;/fen&gt; wants the &lt;fen&gt;Attribute&lt;/fen&gt; to reach.
+
+&lt;ex&gt;GM has a production &lt;t&gt;target&lt;/t&gt; &lt;fex name="Value"&gt;of 2,000,000 units&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Goal" ID="4086"/>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Agent" ID="4085"/>
+        <memberFE name="Means" ID="4087"/>
+    </FEcoreSet>
+    <FEcoreSet>
+        <memberFE name="Goal" ID="4086"/>
+        <memberFE name="Value" ID="4411"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Desiring</relatedFrame>
+        <relatedFrame>Mental_activity</relatedFrame>
+        <relatedFrame>Means</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Project</relatedFrame>
+        <relatedFrame>Left_to_do</relatedFrame>
+        <relatedFrame>Remembering_to_do</relatedFrame>
+        <relatedFrame>Elusive_goal</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of">
+        <relatedFrame>Attempting_scenario</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="N" name="purpose.n" ID="8047" lemmaID="31241" cBy="605" cDate="01/17/2003 01:51:00 PST Fri">
+        <definition>COD: the reason for which something is done or for which something exists</definition>
+        <sentenceCount annotated="34" total="268"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="purpose"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="goal.n" ID="8048" lemmaID="16431" cBy="605" cDate="01/17/2003 01:52:09 PST Fri">
+        <definition>COD: an aim or desired result</definition>
+        <sentenceCount annotated="35" total="187"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="goal"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="aim.n" ID="8049" lemmaID="863" cBy="605" cDate="01/17/2003 01:53:16 PST Fri">
+        <definition>COD: a purpose or intention</definition>
+        <sentenceCount annotated="41" total="231"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="aim"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="objective.n" ID="8050" lemmaID="26379" cBy="605" cDate="01/17/2003 01:54:24 PST Fri">
+        <definition>COD: a goal or aim</definition>
+        <sentenceCount annotated="38" total="254"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="objective"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="object.n" ID="8052" lemmaID="26374" cBy="605" cDate="01/17/2003 01:58:07 PST Fri">
+        <definition>COD: a goal or purpose</definition>
+        <sentenceCount annotated="23" total="201"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="object"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="target.n" ID="8053" lemmaID="39547" cBy="605" cDate="01/17/2003 02:15:24 PST Fri">
+        <definition>COD: an objective or result towards which efforts are directed</definition>
+        <sentenceCount annotated="25" total="231"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="target"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="aim.v" ID="8236" lemmaID="864" cBy="605" cDate="01/28/2003 04:28:33 PST Tue">
+        <definition>FN: intend</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="aim"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="intend.v" ID="10717" lemmaID="20266" cBy="605" cDate="06/30/2004 12:13:25 PDT Wed">
+        <definition>COD: have as one's aim or plan</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="intend"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="intention.n" ID="10718" lemmaID="20277" cBy="605" cDate="06/30/2004 12:14:10 PDT Wed">
+        <definition>COD: an aim or plan.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="intention"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="use.n" ID="11692" lemmaID="42556" cBy="605" cDate="03/03/2005 11:40:20 PST Thu">
+        <definition>COD: a purpose for or way in which something can be used.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="use"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="application.n" ID="11700" lemmaID="1734" cBy="605" cDate="03/03/2005 01:50:22 PST Thu">
+        <definition>COD: practical use or relevance</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="application"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="plan.v" ID="12276" lemmaID="29243" cBy="664" cDate="06/21/2005 06:32:49 PDT Tue">
+        <definition>COD: decide on and arrange in advance.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="plan"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="ADV" name="in_order.adv" ID="12278" lemmaID="50095" cBy="664" cDate="06/21/2005 06:42:30 PDT Tue">
+        <definition>COD:  with the purpose of doing.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="PREP" name="in"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="order"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="plan.n" ID="12294" lemmaID="29242" cBy="664" cDate="06/21/2005 08:13:16 PDT Tue">
+        <definition>COD: an intention or decision about what one is going to do.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="plan"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="bent.a" ID="13805" lemmaID="3393" cBy="664" cDate="02/25/2007 12:10:21 PST Sun">
+        <definition>COD: determined to do or have.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="bent"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="intent.a" ID="13806" lemmaID="20276" cBy="664" cDate="02/25/2007 12:11:34 PST Sun">
+        <definition>COD: resolved or determined to do.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="intent"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="determined.a" ID="13807" lemmaID="10438" cBy="664" cDate="02/25/2007 12:13:18 PST Sun">
+        <definition>FN: having an unswerving aim (to).</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="determined"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="mean.v" ID="13808" lemmaID="23795" cBy="664" cDate="02/25/2007 12:16:28 PST Sun">
+        <definition>COD: intend to occur or be the case.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="mean"/>
+    </lexUnit>
+</frame>

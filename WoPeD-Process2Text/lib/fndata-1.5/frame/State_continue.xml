@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="06/30/2004 10:28:20 PDT Wed" name="State_continue" ID="1155" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;Despite some implication that a &lt;fen&gt;State&lt;/fen&gt; would be interrupted, the &lt;fen&gt;Entity&lt;/fen&gt; remains in the specified &lt;fen&gt;State&lt;/fen&gt;. Note that &lt;fen&gt;State&lt;/fen&gt; includes locative relations.
+
+&lt;ex&gt;&lt;fex name="ent"&gt;Online security&lt;/fex&gt; remains &lt;fex name="sta"&gt;elusive&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="06/30/2004 10:28:20 PDT Wed" abbrev="ent" name="Entity" ID="6677">
+        <definition>&lt;def-root&gt;Concrete or abstract &lt;fen&gt;Entity&lt;/fen&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core-Unexpressed" cBy="605" cDate="06/30/2004 10:28:21 PDT Wed" abbrev="sta" name="State" ID="6678">
+        <definition>&lt;def-root&gt;&lt;fen&gt;State&lt;/fen&gt; of an &lt;fen&gt;Entity&lt;/fen&gt;.  &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="06/30/2004 10:32:06 PDT Wed" abbrev="tim" name="Time" ID="6679">
+        <definition>&lt;def-root&gt;The time when the &lt;fen&gt;State&lt;/fen&gt; is found to still persist.
+
+&lt;ex&gt;Financial recovery &lt;t&gt;remains&lt;/t&gt; elusive &lt;fex name="tim"&gt;in 2002&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="06/30/2004 10:42:31 PDT Wed" abbrev="pla" name="Place" ID="6680">
+        <definition>&lt;def-root&gt;The location where the &lt;fen&gt;Entity&lt;/fen&gt; is in the &lt;fen&gt;State&lt;/fen&gt;.
+
+
+&lt;ex&gt;Martial law &lt;t&gt;remains&lt;/t&gt; in effect &lt;fex name="pla"&gt;in Absurdistan&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="06/30/2004 10:43:42 PDT Wed" abbrev="rea" name="Reason" ID="6681">
+        <definition>&lt;def-root&gt;The state of affairs that explains why the &lt;fen&gt;State&lt;/fen&gt; persists.
+
+&lt;ex&gt;Simandle ruled that the contract &lt;t&gt;remains&lt;/t&gt; in force &lt;fex name="rea"&gt;because the GTMUA accepted $400,000 in connection fees from the trust&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="618" cDate="11/08/2005 06:02:10 PST Tue" abbrev="dur" name="Duration" ID="9173">
+        <definition>&lt;def-root&gt;The time period over which the &lt;fen&gt;State&lt;/fen&gt; continues to hold of the &lt;fen&gt;Entity&lt;/fen&gt;.
+
+&lt;ex&gt;Our commitment to high-quality, distinctively Canadian programming has &lt;t&gt;remained&lt;/t&gt;
+constant &lt;fex name="dur"&gt;for more than six decades&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="618" cDate="11/10/2005 11:12:40 PST Thu" abbrev="cir" name="Circumstances" ID="9183">
+        <definition>&lt;def-root&gt;The circumstances under which the &lt;fen&gt;State&lt;/fen&gt; continues.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="618" cDate="11/10/2005 11:13:23 PST Thu" abbrev="exp" name="Explanation" ID="9184">
+        <definition>&lt;def-root&gt;The reason why the &lt;fen&gt;State&lt;/fen&gt; continues.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="361" cDate="02/23/2007 11:54:13 PST Fri" abbrev="dep" name="Depictive" ID="11090">
+        <definition>&lt;def-root&gt;This FE describes a participant of the state of affairs introduced by the target as being in some state during the action. &lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>State</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Continued_state_of_affairs</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="remain.v" ID="10695" lemmaID="32545" cBy="605" cDate="06/30/2004 10:30:48 PDT Wed">
+        <definition>FN: continue to be in a specified state or location</definition>
+        <sentenceCount annotated="27" total="255"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="remain"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="stay.v" ID="10913" lemmaID="37898" cBy="664" cDate="08/19/2004 05:38:49 PDT Thu">
+        <definition>COD: remain in the same place.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="stay"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="rest.v" ID="13514" lemmaID="32918" cBy="618" cDate="08/21/2006 02:26:58 PDT Mon">
+        <definition>FN: remain in a particular location, especially after having been placed there.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="rest"/>
+    </lexUnit>
+</frame>

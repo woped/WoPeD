@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="597" cDate="06/11/2008 01:40:41 PDT Wed" name="Passing" ID="2071" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Agent&lt;/fen&gt; physically transfers a &lt;fen&gt;Theme&lt;/fen&gt; to a &lt;fen&gt;Recipient&lt;/fen&gt;. The &lt;fen&gt;Agent&lt;/fen&gt; is not under control of the &lt;fen&gt;Theme&lt;/fen&gt;'s motion after the initial input of energy. 
+
+Compare with Bringing and Sending. In the former, the Carrier is in constant control (even physical contact) with the Theme. In the latter, the Sender plans the motion of the Theme and places it in circumstances such that it travels along the specified path (or to the specified goal), but under the power of a separate individual.&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="597" cDate="06/11/2008 01:40:41 PDT Wed" abbrev="Agt" name="Agent" ID="12757">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Agent&lt;/fen&gt; is the one who passes the &lt;fen&gt;Theme&lt;/fen&gt;.  The &lt;fen&gt;Agent&lt;/fen&gt; is generally realized as the External Argument.
+
+&lt;ex&gt;&lt;fex name="Agent"&gt;Pat&lt;/fex&gt; &lt;t&gt;passed&lt;/t&gt; me the ball.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="597" cDate="06/11/2008 01:40:41 PDT Wed" abbrev="Thm" name="Theme" ID="12758">
+        <definition>&lt;def-root&gt;The FE &lt;fen&gt;Theme&lt;/fen&gt; is generally an NP Object that is passed to the &lt;fen&gt;Recipient&lt;/fen&gt;.
+
+&lt;ex&gt;Pat &lt;t&gt;passed&lt;/t&gt; &lt;fex name="Theme"&gt;the ball&lt;/fex&gt; to the goalie.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Physical_object" ID="68"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Core" cBy="597" cDate="06/11/2008 01:40:41 PDT Wed" abbrev="Src" name="Source" ID="12759">
+        <definition>&lt;def-root&gt;The FE &lt;fen&gt;Source&lt;/fen&gt; is the starting point of the passing action
+
+&lt;ex&gt;Pat &lt;t&gt;passed&lt;/t&gt; the ball &lt;fex name="Source"&gt;from behind the defensemen&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Source" ID="151"/>
+        <excludesFE name="Area" ID="12763"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="597" cDate="06/11/2008 01:40:41 PDT Wed" abbrev="Path" name="Path" ID="12760">
+        <definition>&lt;def-root&gt;The FE &lt;fen&gt;Path&lt;/fen&gt; is any description of a trajectory of motion which is neither a &lt;fen&gt;Source&lt;/fen&gt; nor &lt;fen&gt;Goal&lt;/fen&gt;.
+
+&lt;ex&gt;I &lt;t&gt;passed&lt;/t&gt; him the ball &lt;fex name="Path"&gt;over the wall&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Area" ID="12763"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core" cBy="597" cDate="06/11/2008 01:40:41 PDT Wed" abbrev="Goal" name="Recipient" ID="12761">
+        <definition>&lt;def-root&gt;The FE &lt;fen&gt;Recipient&lt;/fen&gt; is the entity which possesses the &lt;fen&gt;Theme&lt;/fen&gt; as a result of the passing.
+
+&lt;ex&gt;Kim &lt;t&gt;passed&lt;/t&gt; the salt &lt;fex name="Recipient"&gt;to her mother&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Goal" ID="153"/>
+        <excludesFE name="Area" ID="12763"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Peripheral" cBy="597" cDate="06/11/2008 01:40:41 PDT Wed" abbrev="Dist" name="Distance" ID="12762">
+        <definition>&lt;def-root&gt;The FE &lt;fen&gt;Distance&lt;/fen&gt; is any expression characterizing the extent of motion of the &lt;fen&gt;Theme&lt;/fen&gt;.
+
+&lt;ex&gt;Pat &lt;t&gt;passed&lt;/t&gt; the ball &lt;fex name="Distance"&gt;50 meters&lt;/fex&gt; to me.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Core" cBy="597" cDate="06/11/2008 01:40:41 PDT Wed" abbrev="Area" name="Area" ID="12763">
+        <definition>&lt;def-root&gt;The FE &lt;fen&gt;Area&lt;/fen&gt; is used for expressions which describe a general area in which passing takes place when the passing is understood to be irregular or not to consist of a single, linear path. Locative setting adjuncts may also be assigned this frame element.
+
+&lt;ex&gt;The team &lt;t&gt;passed&lt;/t&gt; the ball &lt;fex name="Area"&gt;around the court&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="597" cDate="06/11/2008 01:40:41 PDT Wed" abbrev="Dep" name="Depictive" ID="12764">
+        <definition>&lt;def-root&gt;The state of a participant during the passing action.
+&lt;ex&gt;We &lt;t&gt;passed&lt;/t&gt; the ball around, &lt;fex name="Depictive"&gt;gleeful&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="597" cDate="06/11/2008 01:40:41 PDT Wed" abbrev="Mns" name="Means" ID="12766">
+        <definition>&lt;def-root&gt;The FE &lt;fen&gt;Means&lt;/fen&gt; indicates the action that is taken that results in the motion of the &lt;fen&gt;Theme&lt;/fen&gt;
+&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="597" cDate="06/11/2008 01:40:41 PDT Wed" abbrev="Manr" name="Manner" ID="12767">
+        <definition>&lt;def-root&gt;The FE &lt;fen&gt;Manner&lt;/fen&gt; is any expression which describes a property of the motion of the &lt;fen&gt;Theme&lt;/fen&gt; which is not directly related to the trajectory of motion. Descriptions of steadiness, grace, and other things count as &lt;fen&gt;Manner&lt;/fen&gt; expressions.  
+&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Peripheral" cBy="597" cDate="06/11/2008 01:40:41 PDT Wed" abbrev="Ins" name="Instrument" ID="12770">
+        <definition>&lt;def-root&gt;An entity saliently involved in the transmission of force from an &lt;fen&gt;Agent&lt;/fen&gt; to a &lt;fen&gt;Theme&lt;/fen&gt;.  It may be the &lt;fen&gt;Agent&lt;/fen&gt;'s bodypart, or some kind of device.
+
+&lt;ex&gt;When playing basketball, you should &lt;t&gt;pass&lt;/t&gt; &lt;fex name="Ins"&gt;with both hands&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;/def-root&gt;</definition>
+        <semType name="Physical_entity" ID="70"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="597" cDate="06/11/2008 01:40:41 PDT Wed" abbrev="Place" name="Place" ID="12771">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Place&lt;/fen&gt; is the general area that provides a setting for a specific motion (with &lt;fen&gt;Source&lt;/fen&gt;, &lt;fen&gt;Path&lt;/fen&gt;, or &lt;fen&gt;Goal&lt;/fen&gt;).
+
+&lt;ex&gt;The players &lt;t&gt;passed&lt;/t&gt; the ball to each other &lt;fex name="Place"&gt;at the park&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="597" cDate="06/11/2008 01:40:41 PDT Wed" abbrev="Time" name="Time" ID="12772">
+        <definition>&lt;def-root&gt;The time at which the passing of the &lt;fen&gt;Theme&lt;/fen&gt; occurs.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="d0d0d0" fgColor="0000FF" coreType="Core" cBy="597" cDate="06/11/2008 01:40:41 PDT Wed" abbrev="" name="Result" ID="12773">
+        <definition>&lt;def-root&gt;A resultant state that the &lt;fen&gt;Theme&lt;/fen&gt; is in at the end of its motion.
+
+
+&lt;ex&gt;The center &lt;t&gt;passed&lt;/t&gt; the ball &lt;fex name="Result"&gt;clear of the double-team&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Area" ID="12763"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Core" cBy="597" cDate="06/11/2008 01:40:41 PDT Wed" abbrev="Initial_State" name="Initial_State" ID="12775">
+        <definition>&lt;def-root&gt;A previous state that the &lt;fen&gt;Theme&lt;/fen&gt; was in before the beginning of its motion.
+
+&lt;ex&gt;Paul &lt;t&gt;passed&lt;/t&gt; the ball away &lt;fex name="Initial_State"&gt;from the danger of the double-team&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Area" ID="12763"/>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="000000" coreType="Extra-Thematic" cBy="597" cDate="06/11/2008 01:40:41 PDT Wed" abbrev="" name="Explanation" ID="12776">
+        <definition>&lt;def-root&gt;This FE denotes a proposition from which the main clause logically follows.&lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Recipient" ID="12761"/>
+        <memberFE name="Path" ID="12760"/>
+        <memberFE name="Initial_State" ID="12775"/>
+        <memberFE name="Source" ID="12759"/>
+        <memberFE name="Result" ID="12773"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Cause_motion</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also">
+        <relatedFrame>Bringing</relatedFrame>
+    </frameRelation>
+    <lexUnit status="Created" POS="V" name="pass.v" ID="15571" lemmaID="27946" cBy="618" cDate="01/19/2010 09:51:24 PST Tue">
+        <definition>FN: transfer, hand something to someone.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="pass"/>
+    </lexUnit>
+</frame>

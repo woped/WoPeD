@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="731" cDate="02/07/2001 04:11:54 PST Wed" name="Differentiation" ID="24" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;Words in this frame have to do with a &lt;fen&gt;Cognizer&lt;/fen&gt; being aware (or not being aware) of the difference between two &lt;fen&gt;Phenomena&lt;/fen&gt;, which may be expressed jointly or disjointly.    
+
+&lt;ex&gt;It is very difficult for &lt;fex name="Cognizer"&gt;people&lt;/fex&gt; to &lt;fex name="Means"&gt;visually&lt;/fex&gt; &lt;t&gt;distinguish&lt;/t&gt; &lt;fex name="Phenomena"&gt;between living and non-living things&lt;/fex&gt; &lt;fex name="Circumstances"&gt;from such a great distance&lt;/fex&gt; .&lt;/ex&gt;
+
+&lt;/def-root&gt;</definition>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:11:54 PST Wed" abbrev="Cog" name="Cognizer" ID="102">
+        <definition>&lt;def-root&gt;The cognizer is the person (or other sentient being) who potentially determines that two Phenomena are distinct from each other. It is normally expressed as an External Argument:
+&lt;ex&gt; &lt;fex name="Cognizer"&gt;The teacher&lt;/fex&gt; couldn't &lt;t&gt;distinguish&lt;/t&gt; one child from the other. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:11:55 PST Wed" abbrev="Phen-1" name="Phenomenon_1" ID="103">
+        <definition>&lt;def-root&gt;The phenomena that are potentially judged to be different from one another can be expressed as separate constituents. When they are, one is typically expressed as an NP Object, and the other as a PP Complement headed by &lt;ment&gt;from&lt;/ment&gt;:
+&lt;ex&gt; The teacher couldn't &lt;t&gt;distinguish&lt;/t&gt; Pat from Kim.&lt;/ex&gt;
+ In this case, the phenomenon expressed more prominently as an NP Object is called &lt;fen&gt;Phenomenon_1&lt;/fen&gt;: 
+&lt;ex&gt;The teacher couldn't &lt;t&gt;distinguish&lt;/t&gt; &lt;fex name="Phenomenon_1"&gt;Pat&lt;/fex&gt; from Kim. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <requiresFE name="Phenomenon_2" ID="104"/>
+        <excludesFE name="Phenomena" ID="105"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:11:55 PST Wed" abbrev="Phen-2" name="Phenomenon_2" ID="104">
+        <definition>&lt;def-root&gt;See Phenomenon_1, above. The phenomenon expressed less prominently as a PP complement is called &lt;fen&gt;Phenomenon_2&lt;/fen&gt;:
+&lt;ex&gt;The teacher couldn't &lt;t&gt;distinguish&lt;/t&gt; Pat &lt;fex name="Phenomenon_2"&gt;from Kim&lt;/fex&gt;. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <requiresFE name="Phenomenon_1" ID="103"/>
+        <excludesFE name="Phenomena" ID="105"/>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:11:55 PST Wed" abbrev="Phen-pl" name="Phenomena" ID="105">
+        <definition>&lt;def-root&gt;Both phenomena that are potentially judged to be different from one another can be expressed jointly by the same constituent: 
+&lt;ex&gt;The teacher couldn't &lt;t&gt;distinguish&lt;/t&gt; &lt;fex name="Phenomena"&gt;the twins&lt;/fex&gt;.&lt;/ex&gt;
+ Such constituents are assigned the FE &lt;fen&gt;Phenomena&lt;/fen&gt;. They are always plural, as in the above example, or involve conjunction: 
+&lt;ex&gt;The teacher couldn't &lt;t&gt;distinguish&lt;/t&gt; &lt;fex name="Phenomena"&gt;Pat and Kim&lt;/fex&gt;. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:11:55 PST Wed" abbrev="Qual" name="Quality" ID="106">
+        <definition>&lt;def-root&gt;This is a property that is potentially used by the Cognizer to distinguish one phenomenon from another. It is normally expressed as a PP headed by a preposition such as &lt;ment&gt;from&lt;/ment&gt;, &lt;ment&gt;by&lt;/ment&gt;, or &lt;ment&gt;on the basis of&lt;/ment&gt;: 
+&lt;ex&gt;The coach could &lt;t&gt;distinguish&lt;/t&gt; the twins &lt;fex name="Quality"&gt;by their hair&lt;/fex&gt;.&lt;/ex&gt; General Grammatical Observations: Verbs in this domain often occur with the modal auxiliary &lt;ment&gt;can&lt;/ment&gt;. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/23/2001 06:51:35 PDT Sat" abbrev="Degr" name="Degree" ID="1000">
+        <definition>&lt;def-root&gt;Degree to which event occurs&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="06/23/2001 06:51:35 PDT Sat" abbrev="Dep" name="Depictive" ID="1001">
+        <definition>&lt;def-root&gt;State of a participant while the action is ongoing.
+&lt;ex&gt;We &lt;t&gt;differentiated&lt;/t&gt; between the squid, &lt;fex name="Dep"&gt;certain that their characteristics put them in different species&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/23/2001 06:51:35 PDT Sat" abbrev="Manr" name="Manner" ID="1004">
+        <definition>&lt;def-root&gt;Manner of performing an action&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/23/2001 06:51:35 PDT Sat" abbrev="Mns" name="Means" ID="1005">
+        <definition>&lt;def-root&gt;An intentional action performed by the &lt;fen&gt;Cognizer&lt;/fen&gt; that allows them to differentiate the &lt;fen&gt;Phenomena&lt;/fen&gt;. &lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="296" cDate="06/05/2003 11:14:16 PDT Thu" abbrev="" name="Circumstances" ID="4534">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Circumstances&lt;/fen&gt; describe the situation in which the &lt;fen&gt;Cognizer&lt;/fen&gt; evaluates the &lt;fen&gt;Phenomena&lt;/fen&gt;.
+&lt;ex&gt;It is difficult to &lt;t&gt;distinguish&lt;/t&gt; &lt;fex name="Phenomena"&gt;contrasing figures&lt;/fex&gt; &lt;fex name="Circumstances"&gt;from a distance&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Cognizer" ID="102"/>
+        <memberFE name="Quality" ID="106"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Mental_activity</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="FN1_Sent" POS="V" name="differentiate.v" ID="234" lemmaID="10633" cBy="731" cDate="02/08/2001 01:27:48 PST Thu">
+        <definition>COD: find differences (between)</definition>
+        <sentenceCount annotated="46" total="227"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="differentiate"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="discriminate.v" ID="235" lemmaID="10913" cBy="731" cDate="02/08/2001 01:27:48 PST Thu">
+        <definition>COD: recognize a distinction.</definition>
+        <sentenceCount annotated="32" total="174"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="discriminate"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="discrimination.n" ID="236" lemmaID="10916" cBy="731" cDate="02/08/2001 01:27:48 PST Thu">
+        <definition>COD: recognition and understanding of the difference between one thing and another</definition>
+        <sentenceCount annotated="15" total="166"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="discrimination"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="distinguish.v" ID="237" lemmaID="11220" cBy="731" cDate="02/08/2001 01:27:49 PST Thu">
+        <definition>COD: see or point out the difference of</definition>
+        <sentenceCount annotated="42" total="350"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="distinguish"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="sort.v" ID="238" lemmaID="37003" cBy="731" cDate="02/08/2001 01:27:49 PST Thu">
+        <definition>FN: select  from a miscellaneous group</definition>
+        <sentenceCount annotated="18" total="230"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="sort"/>
+    </lexUnit>
+    <lexUnit status="Rules_Defined" POS="V" name="tell_apart.v" ID="13462" lemmaID="50420" cBy="618" cDate="08/14/2006 04:21:52 PDT Mon">
+        <definition>FN: distinguish.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="tell"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="A" name="apart"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="V" name="separate.v" ID="14532" lemmaID="35117" cBy="361" cDate="08/15/2007 04:17:31 PDT Wed">
+        <definition>FN: distinguish</definition>
+        <sentenceCount annotated="1" total="395"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="separate"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="V" name="know.v" ID="15395" lemmaID="21457" cBy="597" cDate="07/02/2009 02:07:45 PDT Thu">
+        <definition>FN: distinguish (usually of the form X knows Y from Z)</definition>
+        <sentenceCount annotated="4" total="140"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="know"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="V" name="tell_from.v" ID="15860" lemmaID="51150" cBy="589" cDate="07/13/2010 02:28:34 PDT Tue">
+        <definition>FN: distinguish some thing from another</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="tell"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="PREP" name="from"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="distinguishable.a" ID="15971" lemmaID="11221" cBy="664" cDate="07/30/2010 07:01:06 PDT Fri">
+        <definition>FN: able to be separated into separate identities.</definition>
+        <sentenceCount annotated="1" total="1"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="distinguishable"/>
+        <semType name="Tendency_grading_LU" ID="91"/>
+    </lexUnit>
+</frame>

@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="731" cDate="02/07/2001 04:12:14 PST Wed" name="Motion_noise" ID="60" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;This frame pertains to noise verbs used to characterize motion.  Motion_noise verbs take largely the same &lt;fen&gt;Source&lt;/fen&gt;, &lt;fen&gt;Path&lt;/fen&gt; and &lt;fen&gt;Goal&lt;/fen&gt; expressions as other types of Motion verbs.
+
+&lt;ex&gt;&lt;fex name="Thm"&gt;The reception doors&lt;/fex&gt; &lt;t&gt;banged&lt;/t&gt; &lt;fex name="Result"&gt;open&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Thm"&gt;Guillemots and razor bills&lt;/fex&gt; &lt;t&gt;whirred&lt;/t&gt; &lt;fex name="Spd"&gt;rapidly&lt;/fex&gt; &lt;fex name="Goal"&gt;out to sea&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Thm"&gt;The limousine&lt;/fex&gt; &lt;t&gt;purred&lt;/t&gt; &lt;fex name="Path"&gt;forwards&lt;/fex&gt; &lt;fex name="Goal"&gt;into the traffic&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Thm"&gt;Loose guns&lt;/fex&gt; &lt;t&gt;rumbled&lt;/t&gt; &lt;fex name="Area"&gt;all over the ship's deck&lt;/fex&gt; .&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Thm"&gt;The train&lt;/fex&gt; &lt;t&gt;clanged&lt;/t&gt; along &lt;fex name="Dist"&gt;for over a thousand miles&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Peripheral" cBy="731" cDate="02/07/2001 04:12:14 PST Wed" abbrev="Cause" name="Cause" ID="258">
+        <definition>&lt;def-root&gt;The&lt;fen&gt;Cause&lt;/fen&gt; describes the reason for the motion.
+&lt;ex&gt;The glasses &lt;t&gt;clinked&lt;/t&gt; across the table &lt;fex name="Cause"&gt;during the tornado&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:14 PST Wed" abbrev="Thm" name="Theme" ID="259">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Theme&lt;/fen&gt; is the entity that changes location.  In sentences containing a &lt;fen&gt;Cause&lt;/fen&gt;, the &lt;fen&gt;Theme&lt;/fen&gt; is typically the NP Object.  In other sentences, the &lt;fen&gt;Theme&lt;/fen&gt; is normally the External Argument.
+
+
+&lt;ex&gt;&lt;fex name="Theme"&gt;Pat&lt;/fex&gt; &lt;t&gt;crunched&lt;/t&gt; over the fresh snow.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Physical_object" ID="68"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:14 PST Wed" abbrev="Src" name="Source" ID="260">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Source&lt;/fen&gt; is any expression which implies a definite starting-point of Motion.
+
+&lt;ex&gt;The train &lt;t&gt;rumbled&lt;/t&gt; &lt;fex name="Source"&gt;out of the station&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Source" ID="151"/>
+        <excludesFE name="Area" ID="263"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:14 PST Wed" abbrev="Path" name="Path" ID="261">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Path&lt;/fen&gt; is any description of a trajectory of motion which is neither a &lt;fen&gt;Source&lt;/fen&gt; nor a &lt;fen&gt;Goal&lt;/fen&gt;.
+
+&lt;ex&gt;The truck &lt;t&gt;roared&lt;/t&gt; &lt;fex name="Path"&gt;through the tunnel&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Area" ID="263"/>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:14 PST Wed" abbrev="Goal" name="Goal" ID="262">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Goal&lt;/fen&gt; is any expression which tells where the &lt;fen&gt;Theme&lt;/fen&gt; ends up as a result of the Motion.
+
+&lt;ex&gt;The plates &lt;t&gt;clattered&lt;/t&gt; &lt;fex name="Goal"&gt;to the floor&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Goal" ID="153"/>
+        <excludesFE name="Area" ID="263"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:15 PST Wed" abbrev="Area" name="Area" ID="263">
+        <definition>&lt;def-root&gt;This FE identifies the general &lt;fen&gt;Area&lt;/fen&gt; in which motion takes place, used particularly if the motion is understood as following a complex or non-linear path.
+
+&lt;ex&gt;The fly &lt;t&gt;buzzed&lt;/t&gt; &lt;fex name="Area"&gt;about the room&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Peripheral" cBy="731" cDate="02/07/2001 04:12:15 PST Wed" abbrev="Dist" name="Distance" ID="264">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Distance&lt;/fen&gt; is any expression which characterizes the extent of Motion.  This frame element occurs very infrequently with Motion_noise verbs.
+
+&lt;ex&gt;The car &lt;t&gt;wheezed&lt;/t&gt; &lt;fex name="Dist"&gt;the two miles&lt;/fex&gt; into town.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="09/17/2001 04:54:17 PDT Mon" abbrev="Spd" name="Speed" ID="1896">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Speed&lt;/fen&gt; is the rate at which the motion occurs.
+
+&lt;ex&gt;My Saab &lt;t&gt;purrs&lt;/t&gt; along easily &lt;fex name="Speed"&gt;at 80 miles an hour&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Speed" ID="234"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="09/17/2001 04:56:14 PDT Mon" abbrev="Dep" name="Depictive" ID="1897">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Depictive&lt;/fen&gt; indicates the state of the &lt;fen&gt;Theme&lt;/fen&gt; during Motion.
+
+&lt;ex&gt;The car &lt;t&gt;chugged&lt;/t&gt; across the ruts, &lt;fex name="Dep"&gt;unstoppable&lt;/fex&gt;.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="09/17/2001 04:56:14 PDT Mon" abbrev="Manr" name="Manner" ID="1898">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Manner&lt;/fen&gt; is the way in which the Motion takes place.
+
+&lt;ex&gt;The drone &lt;t&gt;buzzed&lt;/t&gt; &lt;fex name="Manr"&gt;curiously&lt;/fex&gt; across the room and vanished behind the table.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="09/17/2001 04:56:14 PDT Mon" abbrev="Mns" name="Means" ID="1899">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Means&lt;/fen&gt; by which the &lt;fen&gt;Theme&lt;/fen&gt; moves in the specified way.
+
+&lt;ex&gt;The autochopper &lt;t&gt;whirred&lt;/t&gt; along&lt;fex name="Mns"&gt; by supplementing its onboard power with solar generators&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="09/17/2001 04:56:14 PDT Mon" abbrev="Result" name="Result" ID="1900">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Result&lt;/fen&gt; is the ultimate effect of the Motion.
+
+&lt;ex&gt;The door of the empty box &lt;t&gt;creaked&lt;/t&gt; &lt;fex name="Result"&gt;open&lt;/fex&gt; in the wind.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="09/17/2001 05:10:33 PDT Mon" abbrev="Degr" name="Degree" ID="1902">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Degree&lt;/fen&gt; to which the Motion occurs.
+
+&lt;ex&gt;Suddenly , the pole &lt;t&gt;thumped&lt;/t&gt; &lt;fex name="Degr"&gt;really hard&lt;/fex&gt; into an unseen object.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="07/28/2003 09:44:34 PDT Mon" abbrev="" name="Place" ID="4846">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Place&lt;/fen&gt; describes the location of a more specific motion (which has &lt;fen&gt;Source&lt;/fen&gt;, &lt;fen&gt;Path&lt;/fen&gt; or &lt;fen&gt;Goal&lt;/fen&gt;).&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Peripheral" cBy="309" cDate="10/02/2003 11:36:51 PDT Thu" abbrev="Dur" name="Duration" ID="5345">
+        <definition>&lt;def-root&gt;The period of time for which the &lt;fen&gt;Theme&lt;/fen&gt; moves under accompaniment of noise.
+
+&lt;ex&gt;From there they &lt;t&gt;roared&lt;/t&gt; northward &lt;fex name="Duration"&gt;for about 10 minutes&lt;/fex&gt; before turning up the beach approach onto A1.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="309" cDate="10/02/2003 11:36:51 PDT Thu" abbrev="Time" name="Time" ID="5346">
+        <definition>&lt;def-root&gt;The&lt;fen&gt;Time&lt;/fen&gt; when the motion event takes place.
+
+&lt;ex&gt;The train &lt;t&gt;screeched&lt;/t&gt; into the station &lt;fex name="Time"&gt;at half past seven&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Goal" ID="262"/>
+        <memberFE name="Source" ID="260"/>
+        <memberFE name="Path" ID="261"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Motion</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Motion</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also">
+        <relatedFrame>Make_noise</relatedFrame>
+    </frameRelation>
+    <lexUnit status="FN1_Sent" POS="V" name="bang.v" ID="1017" lemmaID="2807" cBy="731" cDate="02/08/2001 01:29:03 PST Thu">
+        <definition>FN: to move making a sharp noise or thump</definition>
+        <sentenceCount annotated="4" total="100"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="bang"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="buzz.v" ID="1018" lemmaID="5090" cBy="731" cDate="02/08/2001 01:29:03 PST Thu">
+        <definition>FN: to move making a low humming noise similar to that of a bee.</definition>
+        <sentenceCount annotated="26" total="210"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="buzz"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="chug.v" ID="1019" lemmaID="6482" cBy="731" cDate="02/08/2001 01:29:03 PST Thu">
+        <definition>FN: to move making a dull explosive sound as if by a laboring engine</definition>
+        <sentenceCount annotated="33" total="64"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="chug"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="V" name="clack.v" ID="1020" lemmaID="6608" cBy="731" cDate="02/08/2001 01:29:03 PST Thu">
+        <definition>FN: to move making a short striking noise.</definition>
+        <sentenceCount annotated="3" total="23"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="clack"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="clang.v" ID="1021" lemmaID="6637" cBy="731" cDate="02/08/2001 01:29:03 PST Thu">
+        <definition>FN: to move making a loud resounding metallic noise.</definition>
+        <sentenceCount annotated="9" total="55"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="clang"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="clank.v" ID="1022" lemmaID="6643" cBy="731" cDate="02/08/2001 01:29:03 PST Thu">
+        <definition>FN: to move making an abrupt metallic noise.</definition>
+        <sentenceCount annotated="14" total="48"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="clank"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="clatter.v" ID="1023" lemmaID="6697" cBy="731" cDate="02/08/2001 01:29:03 PST Thu">
+        <definition>FN: to move making a rattling noise.</definition>
+        <sentenceCount annotated="56" total="256"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="clatter"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="click.v" ID="1024" lemmaID="6772" cBy="731" cDate="02/08/2001 01:29:03 PST Thu">
+        <definition>FN: to move making a slight sharp sound.</definition>
+        <sentenceCount annotated="13" total="196"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="click"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="V" name="clink.v" ID="1025" lemmaID="6803" cBy="731" cDate="02/08/2001 01:29:04 PST Thu">
+        <definition>FN: to move making a slight metallic noise.</definition>
+        <sentenceCount annotated="3" total="57"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="clink"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="clump.v" ID="1026" lemmaID="6922" cBy="731" cDate="02/08/2001 01:29:04 PST Thu">
+        <definition>FN: to move making a dull heavy noise.</definition>
+        <sentenceCount annotated="12" total="60"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="clump"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="V" name="clunk.v" ID="1027" lemmaID="6926" cBy="731" cDate="02/08/2001 01:29:04 PST Thu">
+        <definition>COD: to move making a thumping noise.</definition>
+        <sentenceCount annotated="3" total="22"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="clunk"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="crackle.v" ID="1028" lemmaID="8752" cBy="731" cDate="02/08/2001 01:29:04 PST Thu">
+        <definition>FN: to move making soft sharp repeating sounds.</definition>
+        <sentenceCount annotated="4" total="69"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="crackle"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="crash.v" ID="1029" lemmaID="8803" cBy="731" cDate="02/08/2001 01:29:04 PST Thu">
+        <definition>FN: to move with a smashing noise</definition>
+        <sentenceCount annotated="30" total="404"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="crash"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="creak.v" ID="1030" lemmaID="8837" cBy="731" cDate="02/08/2001 01:29:04 PST Thu">
+        <definition>FN: to move making a harsh, high-pitched noise</definition>
+        <sentenceCount annotated="10" total="64"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="creak"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="crunch.v" ID="1031" lemmaID="9129" cBy="731" cDate="02/08/2001 01:29:04 PST Thu">
+        <definition>FN: to move making a grinding sound</definition>
+        <sentenceCount annotated="8" total="66"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="crunch"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="fizz.v" ID="1032" lemmaID="14556" cBy="731" cDate="02/08/2001 01:29:04 PST Thu">
+        <definition>FN: to move making a hissing or crackling sound.</definition>
+        <sentenceCount annotated="8" total="51"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="fizz"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="gurgle.v" ID="1033" lemmaID="17095" cBy="731" cDate="02/08/2001 01:29:05 PST Thu">
+        <definition>FN: to move making a hollow bubbling sound.</definition>
+        <sentenceCount annotated="8" total="52"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="gurgle"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="howl.v" ID="1034" lemmaID="18560" cBy="731" cDate="02/08/2001 01:29:05 PST Thu">
+        <definition>FN: move making a wailing, crying sound</definition>
+        <sentenceCount annotated="6" total="81"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="howl"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="patter.v" ID="1035" lemmaID="28092" cBy="731" cDate="02/08/2001 01:29:05 PST Thu">
+        <definition>FN: run making a light tapping sound.</definition>
+        <sentenceCount annotated="14" total="44"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="patter"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="V" name="ping.v" ID="1036" lemmaID="29057" cBy="731" cDate="02/08/2001 01:29:05 PST Thu">
+        <definition>FN: move making an abrupt high-pitched ringing sound.</definition>
+        <sentenceCount annotated="2" total="15"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="ping"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="purr.v" ID="1037" lemmaID="31252" cBy="731" cDate="02/08/2001 01:29:05 PST Thu">
+        <definition>FN: move making a low, continuous vibrating sound.</definition>
+        <sentenceCount annotated="10" total="70"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="purr"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="putter.v" ID="1038" lemmaID="31316" cBy="731" cDate="02/08/2001 01:29:05 PST Thu">
+        <definition>FN: move making a rapid intermittent sound, as of a small engine.</definition>
+        <sentenceCount annotated="8" total="9"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="putter"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="roar.v" ID="1039" lemmaID="33397" cBy="731" cDate="02/08/2001 01:29:06 PST Thu">
+        <definition>FN: to move with great noise or commotion</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="roar"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="rumble.v" ID="1040" lemmaID="33753" cBy="731" cDate="02/08/2001 01:29:06 PST Thu">
+        <definition>FN: move making a continuous, deep, resonant sound.</definition>
+        <sentenceCount annotated="17" total="91"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="rumble"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="rustle.v" ID="1041" lemmaID="33829" cBy="731" cDate="02/08/2001 01:29:06 PST Thu">
+        <definition>FN: move making a muffled crackling sound, like that of the movement of dry leaves or paper.</definition>
+        <sentenceCount annotated="5" total="74"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="rustle"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="screech.v" ID="1042" lemmaID="34557" cBy="731" cDate="02/08/2001 01:29:06 PST Thu">
+        <definition>FN: move making a loud, harsh, piercing sound.</definition>
+        <sentenceCount annotated="6" total="80"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="screech"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="splash.v" ID="1043" lemmaID="37389" cBy="731" cDate="02/08/2001 01:29:06 PST Thu">
+        <definition>COD: strike or move around in water, causing it to fly about. </definition>
+        <sentenceCount annotated="12" total="118"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="splash"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="splutter.v" ID="1044" lemmaID="37429" cBy="731" cDate="02/08/2001 01:29:06 PST Thu">
+        <definition>FN: move making short, explosive spitting or choking sounds.</definition>
+        <sentenceCount annotated="5" total="70"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="splutter"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="squelch.v" ID="1045" lemmaID="37649" cBy="731" cDate="02/08/2001 01:29:07 PST Thu">
+        <definition>COD: move with such a sound.</definition>
+        <sentenceCount annotated="13" total="46"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="squelch"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="swish.v" ID="1046" lemmaID="39186" cBy="731" cDate="02/08/2001 01:29:07 PST Thu">
+        <definition>COD: move with a hissing or rushing sound.</definition>
+        <sentenceCount annotated="16" total="58"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="swish"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="thud.v" ID="1047" lemmaID="40316" cBy="731" cDate="02/08/2001 01:29:07 PST Thu">
+        <definition>FN: move making a dull, leaden sound.</definition>
+        <sentenceCount annotated="11" total="87"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="thud"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="thump.v" ID="1048" lemmaID="40327" cBy="731" cDate="02/08/2001 01:29:07 PST Thu">
+        <definition>FN: move making a forceful, heavy sound.</definition>
+        <sentenceCount annotated="10" total="88"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="thump"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="thunder.v" ID="1049" lemmaID="40332" cBy="731" cDate="02/08/2001 01:29:07 PST Thu">
+        <definition>FN: move making a loud rumbling or crashing sound</definition>
+        <sentenceCount annotated="28" total="88"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="thunder"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="wheeze.v" ID="1050" lemmaID="43894" cBy="731" cDate="02/08/2001 01:29:07 PST Thu">
+        <definition>FN: move making an irregular rattling or spluttering sound</definition>
+        <sentenceCount annotated="4" total="56"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="wheeze"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="whine.v" ID="1051" lemmaID="43986" cBy="731" cDate="02/08/2001 01:29:07 PST Thu">
+        <definition>FN: move so as to make a continuous high-pitched sound</definition>
+        <sentenceCount annotated="6" total="65"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="whine"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="whir.v" ID="1052" lemmaID="44010" cBy="731" cDate="02/08/2001 01:29:08 PST Thu">
+        <definition>FN: move with a buzzing sound or an extended soft swish</definition>
+        <sentenceCount annotated="10" total="38"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="whir"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="V" name="zing.v" ID="1053" lemmaID="62" cBy="731" cDate="02/08/2001 01:29:08 PST Thu">
+        <definition>COD: move swiftly.</definition>
+        <sentenceCount annotated="3" total="17"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="zing"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="hiss.v" ID="9505" lemmaID="18141" cBy="605" cDate="09/22/2003 06:16:35 PDT Mon">
+        <definition>COD: make a sharp sibilant sound as of the letter</definition>
+        <sentenceCount annotated="4" total="4"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="hiss"/>
+    </lexUnit>
+</frame>

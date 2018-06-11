@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="06/13/2002 12:25:07 PDT Thu" name="Partiality" ID="349" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;This frame has to do with the bias or lack of bias of a &lt;fen&gt;Judge&lt;/fen&gt; making an assessment concerning two or more &lt;fen&gt;Sides&lt;/fen&gt;. The &lt;fen&gt;Sides&lt;/fen&gt; may stand opposed to each other in a dispute or be alternatives in a situation of choice. The &lt;fen&gt;Domain&lt;/fen&gt; in which the &lt;fen&gt;Judge&lt;/fen&gt; is partial or impartial may be expressed as well as the &lt;fen&gt;Degree&lt;/fen&gt; of bias or lack thereof.  In sentences in this frame one may also find expressions of &lt;fen&gt;Manifestation_of_bias&lt;/fen&gt;, i.e. expressions that tell us how the &lt;fen&gt;Judge&lt;/fen&gt;'s bias is realized.&lt;/def-root&gt;</definition>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="06/13/2002 01:06:36 PDT Thu" abbrev="Judge" name="Decision_maker" ID="3043">
+        <definition>&lt;def-root&gt;This Frame Element marks the person whose objectivity in making assesment is being evaluated.
+
+&lt;ex&gt;&lt;fex name="Decision_maker"&gt;The referee&lt;/fex&gt; was totally &lt;t&gt;biased&lt;/t&gt; against our team. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="06/13/2002 01:11:10 PDT Thu" abbrev="Sde-1" name="Side_1" ID="3044">
+        <definition>&lt;def-root&gt;This Frame Element marks one of the &lt;fen&gt;Sides&lt;/fen&gt; in a dispute or one of the alternatives in a situation of choice.&lt;ex&gt;The umpire was &lt;t&gt;partial&lt;/t&gt; &lt;fex name="Side_1"&gt;to the home team&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <requiresFE name="Side_2" ID="3047"/>
+        <excludesFE name="Sides" ID="3045"/>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="06/13/2002 01:12:16 PDT Thu" abbrev="" name="Sides" ID="3045">
+        <definition>&lt;def-root&gt;This Frame Element marks phrases jointly expressing both &lt;fen&gt;Sides&lt;/fen&gt; in a dispute or all of the alternatives in a situation of choice.&lt;ex&gt;The judge was &lt;t&gt;neutral&lt;/t&gt; &lt;fex name="Sides"&gt;between the parties&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="0000FF" coreType="Core" cBy="605" cDate="06/13/2002 01:16:56 PDT Thu" abbrev="Side-2" name="Side_2" ID="3047">
+        <definition>&lt;def-root&gt;The second-mentioned of the &lt;fen&gt;Sides&lt;/fen&gt; to a dispute or alternatives in a situation of choice.&lt;ex&gt;The judge &lt;t&gt;favored&lt;/t&gt; the defendant &lt;fex name="Side_2"&gt;over the plaintiff&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <requiresFE name="Side_1" ID="3044"/>
+        <excludesFE name="Sides" ID="3045"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="06/13/2002 01:20:11 PDT Thu" abbrev="Domain" name="Domain" ID="3055">
+        <definition>&lt;def-root&gt;This Frame Element marks expressions of a &lt;fen&gt;Domain&lt;/fen&gt; or parameter with respect to which the &lt;fen&gt;Judge&lt;/fen&gt; exhibits bias or lack thereof.&lt;ex&gt;The judge was &lt;fex name="Domain"&gt;politically&lt;/fex&gt; &lt;t&gt;biased&lt;/t&gt; against the defendant.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="06/13/2002 01:22:16 PDT Thu" abbrev="Degree" name="Degree" ID="3056">
+        <definition>&lt;def-root&gt;This Frame Element marks expressions that tell to what extent the &lt;fen&gt;Judge&lt;/fen&gt; exhibited or lacked bias.&lt;ex&gt;The referee was &lt;fex name="Degree"&gt;totally&lt;/fex&gt; &lt;t&gt;biased&lt;/t&gt; against the Giants.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="06/13/2002 01:38:40 PDT Thu" abbrev="" name="Manifestation_of_bias" ID="3060">
+        <definition>&lt;def-root&gt;This Frame Element marks expressions that indicate how the bias of the &lt;fen&gt;Judge&lt;/fen&gt; expresses itself in their behavior or actions.&lt;ex&gt;The judge made a &lt;t&gt;biased&lt;/t&gt; &lt;fex name="Manifestation_of_bias"&gt;decision&lt;/fex&gt;.&lt;/ex&gt;&lt;ex&gt;The referee was &lt;t&gt;partial&lt;/t&gt; &lt;fex name="Manifestation_of_bias"&gt;when he called all those fouls&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="07/31/2002 12:08:20 PDT Wed" abbrev="Mat" name="Dispute" ID="3468">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Dispute&lt;/fen&gt; is the situation in which there is some conflict between two sides. &lt;ex&gt; &lt;fex name="Judge"&gt;My sister&lt;/fex&gt; remained &lt;t&gt;neutral&lt;/t&gt; &lt;fex name="Dispute"&gt;in our disputes&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="7FFF00" fgColor="000000" coreType="Core-Unexpressed" cBy="303" cDate="06/07/2006 04:54:10 PDT Wed" abbrev="" name="Judge" ID="10264">
+        <definition>&lt;def-root&gt;The individual whose point of view is taken in assigning the judgment denoted by the target.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="361" cDate="06/05/2007 11:37:53 PDT Tue" abbrev="exp" name="Explanation" ID="11861">
+        <definition>&lt;def-root&gt;The reason for the partiality. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Peripheral" cBy="361" cDate="06/05/2007 11:40:37 PDT Tue" abbrev="Tim" name="Time" ID="11862">
+        <definition>&lt;def-root&gt;This FE denotes the time when the partiality occurs.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="06/08/2007 12:05:43 PDT Fri" abbrev="exp" name="Expressor" ID="11871">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Expressor&lt;/fen&gt; is the body part or action by a body part which indicates the character of the &lt;fen&gt;Decision_maker&lt;/fen&gt;.
+
+&lt;ex&gt;He had a &lt;t&gt;neutral&lt;/t&gt; &lt;fex name="exp"&gt;smile&lt;/fex&gt; on his face.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="06/08/2007 12:11:55 PDT Fri" abbrev="man" name="Manner" ID="11872">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Manner&lt;/fen&gt; is the way in which the &lt;fen&gt;Decision_maker&lt;/fen&gt; embodies the bias associated with him or her.
+
+&lt;ex&gt;He was &lt;fex name="man"&gt;cooly&lt;/fex&gt; &lt;t&gt;impartial&lt;/t&gt; towards the matter.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Sides" ID="3045"/>
+        <memberFE name="Side_1" ID="3044"/>
+        <memberFE name="Side_2" ID="3047"/>
+        <memberFE name="Dispute" ID="3468"/>
+    </FEcoreSet>
+    <FEcoreSet>
+        <memberFE name="Expressor" ID="11871"/>
+        <memberFE name="Decision_maker" ID="3043"/>
+        <memberFE name="Manifestation_of_bias" ID="3060"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Social_interaction_evaluation</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Taking_sides</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Created" POS="N" name="bias.n" ID="6095" lemmaID="3494" cBy="605" cDate="06/13/2002 12:31:27 PDT Thu">
+        <definition>COD: inclination or prejudice for or against one thing or person</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="bias"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="partial.a" ID="6096" lemmaID="27900" cBy="605" cDate="06/13/2002 12:31:42 PDT Thu">
+        <definition>COD: favouring one side in a dispute above the other;</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="partial"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="impartial.a" ID="6097" lemmaID="19101" cBy="605" cDate="06/13/2002 12:33:00 PDT Thu">
+        <definition>COD: treating all rivals or disputants equally. </definition>
+        <sentenceCount annotated="24" total="172"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="impartial"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="partiality.n" ID="6098" lemmaID="27901" cBy="605" cDate="06/13/2002 12:34:08 PDT Thu">
+        <definition>FN: the quality or state of being partial to one side in a dispute</definition>
+        <sentenceCount annotated="11" total="41"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="partiality"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="impartiality.n" ID="6099" lemmaID="19102" cBy="605" cDate="06/13/2002 12:34:23 PDT Thu">
+        <definition>FN: the state or quality of being impartial to both sides in a dispute</definition>
+        <sentenceCount annotated="15" total="32"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="impartiality"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="neutral.a" ID="6100" lemmaID="25737" cBy="605" cDate="06/13/2002 12:35:56 PDT Thu">
+        <definition>FN: impartial</definition>
+        <sentenceCount annotated="28" total="271"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="neutral"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="neutrality.n" ID="6101" lemmaID="25738" cBy="605" cDate="06/13/2002 12:36:38 PDT Thu">
+        <definition>FN: impartiality between two sides in a dispute</definition>
+        <sentenceCount annotated="12" total="218"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="neutrality"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="favor.v" ID="6102" lemmaID="14057" cBy="605" cDate="06/13/2002 12:38:38 PDT Thu">
+        <definition>FN: treat one side preferentially</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="favor"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="prefer.v" ID="6103" lemmaID="30170" cBy="605" cDate="06/13/2002 12:45:35 PDT Thu">
+        <definition>COD: like (someone or something) better than another or otherts; tend to choose</definition>
+        <sentenceCount annotated="23" total="206"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="prefer"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="V" name="bias.v" ID="11254" lemmaID="3495" cBy="303" cDate="11/19/2004 05:10:53 PST Fri">
+        <definition>COD: influence unfairly; prejudice.</definition>
+        <sentenceCount annotated="0" total="123"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="bias"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="biased.a" ID="11255" lemmaID="49722" cBy="303" cDate="11/19/2004 05:14:38 PST Fri">
+        <definition>FN: inclined for or against one side </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="biased"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="prejudiced.a" ID="13304" lemmaID="30194" cBy="303" cDate="06/21/2006 04:26:16 PDT Wed">
+        <definition>FN: Having a pre-formed bias about something.  </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="prejudiced"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="prejudice.n" ID="13305" lemmaID="30192" cBy="303" cDate="06/21/2006 04:30:03 PDT Wed">
+        <definition>COD: preconceived opinion that is not based on reason or actual experience.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="prejudice"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="prejudge.v" ID="13306" lemmaID="30190" cBy="303" cDate="06/21/2006 04:47:06 PDT Wed">
+        <definition>COD: form a judgement on (an issue or person) prematurely and without having adequate information.</definition>
+        <sentenceCount annotated="6" total="25"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="prejudge"/>
+    </lexUnit>
+</frame>

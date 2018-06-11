@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="memorization.n" ID="10591" frame="Memorization" frameID="1132" totalAnnotated="6" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <corpus name="AP" ID="113">
+            <document description="apwsE941129.0042" ID="5613"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="cog" name="Cognizer"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="com" name="Completeness"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="man" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="mea" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="pat" name="Pattern"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="pla" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Peripheral" abbrev="pur" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: the act of committing to memory</definition>
+    <lexeme POS="N" name="memorization"/>
+    <valences>
+        <governor type="Gov" lemma="aid">
+            <annoSet ID="2017369"/>
+        </governor>
+        <FERealization total="1">
+            <FE name="Completeness"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Completeness"/>
+                <annoSet ID="2017367"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Manner"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Manner"/>
+                <annoSet ID="2017379"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Pattern"/>
+            <pattern total="4">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Pattern"/>
+                <annoSet ID="2017367"/>
+                <annoSet ID="2017371"/>
+                <annoSet ID="2017375"/>
+                <annoSet ID="2017377"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Pattern"/>
+                <annoSet ID="2017379"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Completeness"/>
+            <FE name="Pattern"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Completeness"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Pattern"/>
+                <annoSet ID="2017367"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Manner"/>
+            <FE name="Pattern"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Manner"/>
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Pattern"/>
+                <annoSet ID="2017379"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="3">
+            <FE name="Pattern"/>
+            <pattern total="3">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Pattern"/>
+                <annoSet ID="2017371"/>
+                <annoSet ID="2017375"/>
+                <annoSet ID="2017377"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="144" aPos="115446711" ID="1284588">
+            <text>The approach to course design emphasises the development of understanding of key ideas rather than extensive memorisation of detailed factual information .</text>
+            <annotationSet cDate="10/29/2004 02:18:48 PDT Fri" status="UNANN" ID="2017366">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="11" start="4" name="nn"/>
+                    <label end="14" start="13" name="to"/>
+                    <label end="21" start="16" name="nn"/>
+                    <label end="28" start="23" name="nn"/>
+                    <label end="39" start="30" name="VVZ"/>
+                    <label end="43" start="41" name="dt"/>
+                    <label end="55" start="45" name="nn"/>
+                    <label end="58" start="57" name="in"/>
+                    <label end="72" start="60" name="nn"/>
+                    <label end="75" start="74" name="in"/>
+                    <label end="79" start="77" name="jj"/>
+                    <label end="85" start="81" name="nns"/>
+                    <label end="92" start="87" name="rb"/>
+                    <label end="97" start="94" name="in"/>
+                    <label end="107" start="99" name="jj"/>
+                    <label end="120" start="109" name="nn"/>
+                    <label end="123" start="122" name="in"/>
+                    <label end="132" start="125" name="jj"/>
+                    <label end="140" start="134" name="jj"/>
+                    <label end="152" start="142" name="nn"/>
+                    <label end="154" start="154" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/29/2004 02:19:02 PDT Fri" status="MANUAL" ID="2017367">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="120" start="109" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="6549" end="152" start="122" name="Pattern"/>
+                    <label cBy="395" feID="6554" end="107" start="99" name="Completeness"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="152" start="122" name="Dep"/>
+                    <label end="107" start="99" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="152" start="122" name="PP"/>
+                    <label end="107" start="99" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="455" aPos="65042201" ID="1284589">
+            <text>Both the actual process of creating such notes and the appropriateness and variety of the finished product will aid understanding and memorisation .</text>
+            <annotationSet cDate="10/29/2004 02:19:03 PDT Fri" status="UNANN" ID="2017368">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="pdt"/>
+                    <label end="7" start="5" name="dt"/>
+                    <label end="14" start="9" name="jj"/>
+                    <label end="22" start="16" name="nn"/>
+                    <label end="25" start="24" name="in"/>
+                    <label end="34" start="27" name="VVG"/>
+                    <label end="39" start="36" name="jj"/>
+                    <label end="45" start="41" name="nns"/>
+                    <label end="49" start="47" name="cc"/>
+                    <label end="53" start="51" name="dt"/>
+                    <label end="69" start="55" name="nn"/>
+                    <label end="73" start="71" name="cc"/>
+                    <label end="81" start="75" name="nn"/>
+                    <label end="84" start="83" name="in"/>
+                    <label end="88" start="86" name="dt"/>
+                    <label end="97" start="90" name="jj"/>
+                    <label end="105" start="99" name="nn"/>
+                    <label end="110" start="107" name="md"/>
+                    <label end="114" start="112" name="VV"/>
+                    <label end="128" start="116" name="nn"/>
+                    <label end="132" start="130" name="cc"/>
+                    <label end="145" start="134" name="nn"/>
+                    <label end="147" start="147" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/29/2004 02:19:04 PDT Fri" status="MANUAL" ID="2017369">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="145" start="134" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE"/>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="114" start="112" name="Gov"/>
+                    <label end="145" start="116" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="367" aPos="65039554" ID="1284590">
+            <text>Memorisation of material is also greatly helped by such a system .</text>
+            <annotationSet cDate="10/29/2004 02:19:16 PDT Fri" status="UNANN" ID="2017370">
+                <layer rank="1" name="PENN">
+                    <label end="11" start="0" name="nn"/>
+                    <label end="14" start="13" name="in"/>
+                    <label end="23" start="16" name="nn"/>
+                    <label end="26" start="25" name="VBZ"/>
+                    <label end="31" start="28" name="rb"/>
+                    <label end="39" start="33" name="rb"/>
+                    <label end="46" start="41" name="VVN"/>
+                    <label end="49" start="48" name="in"/>
+                    <label end="54" start="51" name="pdt"/>
+                    <label end="56" start="56" name="dt"/>
+                    <label end="63" start="58" name="nn"/>
+                    <label end="65" start="65" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/29/2004 02:19:16 PDT Fri" status="MANUAL" ID="2017371">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="11" start="0" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="6549" end="23" start="13" name="Pattern"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="23" start="13" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="23" start="13" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="61" aPos="78778424" ID="1284592">
+            <text>The memorisation of the textbook is often seen as an end in itself .</text>
+            <annotationSet cDate="10/29/2004 02:19:20 PDT Fri" status="UNANN" ID="2017374">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="15" start="4" name="nn"/>
+                    <label end="18" start="17" name="in"/>
+                    <label end="22" start="20" name="dt"/>
+                    <label end="31" start="24" name="nn"/>
+                    <label end="34" start="33" name="VBZ"/>
+                    <label end="40" start="36" name="rb"/>
+                    <label end="45" start="42" name="VVN"/>
+                    <label end="48" start="47" name="in"/>
+                    <label end="51" start="50" name="dt"/>
+                    <label end="55" start="53" name="nn"/>
+                    <label end="58" start="57" name="in"/>
+                    <label end="65" start="60" name="PP"/>
+                    <label end="67" start="67" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/29/2004 02:19:20 PDT Fri" status="MANUAL" ID="2017375">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="15" start="4" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="6549" end="31" start="17" name="Pattern"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="31" start="17" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="31" start="17" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="679" aPos="99580156" ID="1284593">
+            <text>So solving the difficulty involves a combination of understanding with memorisation of particular examples .</text>
+            <annotationSet cDate="10/29/2004 02:19:21 PDT Fri" status="UNANN" ID="2017376">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="rb"/>
+                    <label end="9" start="3" name="VVG"/>
+                    <label end="13" start="11" name="dt"/>
+                    <label end="24" start="15" name="nn"/>
+                    <label end="33" start="26" name="VVZ"/>
+                    <label end="35" start="35" name="dt"/>
+                    <label end="47" start="37" name="nn"/>
+                    <label end="50" start="49" name="in"/>
+                    <label end="64" start="52" name="nn"/>
+                    <label end="69" start="66" name="in"/>
+                    <label end="82" start="71" name="nn"/>
+                    <label end="85" start="84" name="in"/>
+                    <label end="96" start="87" name="jj"/>
+                    <label end="105" start="98" name="nns"/>
+                    <label end="107" start="107" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/29/2004 02:19:22 PDT Fri" status="MANUAL" ID="2017377">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="82" start="71" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="6549" end="105" start="84" name="Pattern"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="105" start="84" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="105" start="84" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+    <subCorpus name="01-T-(2)">
+        <sentence corpID="113" docID="5613" sentNo="1" paragNo="3" aPos="4094745" ID="1284594">
+            <text>The reforms are intended to reduce the emphasis on rote memorization for senior high school entrance exams , focusing on classes that will give students expertise and a sense of responsibility , the Xinhua News Agency reported .</text>
+            <annotationSet cDate="10/29/2004 02:22:40 PDT Fri" status="UNANN" ID="2017378">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="10" start="4" name="nns"/>
+                    <label end="14" start="12" name="vbp"/>
+                    <label end="23" start="16" name="VVN"/>
+                    <label end="26" start="25" name="to"/>
+                    <label end="33" start="28" name="VV"/>
+                    <label end="37" start="35" name="dt"/>
+                    <label end="46" start="39" name="nn"/>
+                    <label end="49" start="48" name="in"/>
+                    <label end="54" start="51" name="nn"/>
+                    <label end="67" start="56" name="nn"/>
+                    <label end="71" start="69" name="in"/>
+                    <label end="78" start="73" name="jj"/>
+                    <label end="83" start="80" name="jj"/>
+                    <label end="90" start="85" name="nn"/>
+                    <label end="99" start="92" name="nn"/>
+                    <label end="105" start="101" name="nns"/>
+                    <label end="107" start="107" name=","/>
+                    <label end="116" start="109" name="VVG"/>
+                    <label end="119" start="118" name="in"/>
+                    <label end="127" start="121" name="nns"/>
+                    <label end="132" start="129" name="wdt"/>
+                    <label end="137" start="134" name="md"/>
+                    <label end="142" start="139" name="VV"/>
+                    <label end="151" start="144" name="nns"/>
+                    <label end="161" start="153" name="nn"/>
+                    <label end="165" start="163" name="cc"/>
+                    <label end="167" start="167" name="dt"/>
+                    <label end="173" start="169" name="nn"/>
+                    <label end="176" start="175" name="in"/>
+                    <label end="191" start="178" name="nn"/>
+                    <label end="193" start="193" name=","/>
+                    <label end="197" start="195" name="dt"/>
+                    <label end="204" start="199" name="NP"/>
+                    <label end="209" start="206" name="NP"/>
+                    <label end="216" start="211" name="NP"/>
+                    <label end="225" start="218" name="VVD"/>
+                    <label end="227" start="227" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="10/29/2004 02:22:41 PDT Fri" status="MANUAL" ID="2017379">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="67" start="56" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="6549" end="105" start="69" name="Pattern"/>
+                    <label cBy="395" feID="6553" end="54" start="51" name="Manner"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="105" start="69" name="Dep"/>
+                    <label end="54" start="51" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="105" start="69" name="PP"/>
+                    <label end="54" start="51" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(2)"/>
+    <subCorpus name="other-unmatched-(2)"/>
+</lexUnit>

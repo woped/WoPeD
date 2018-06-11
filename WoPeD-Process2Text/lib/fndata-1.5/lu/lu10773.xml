@@ -1,0 +1,801 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="A" name="incumbent.a" ID="10773" frame="Being_obligatory" frameID="1164" totalAnnotated="12" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Extra-Thematic" abbrev="cond" name="Condition"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="cons" name="Consequence"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="dut" name="Duty"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Extra-Thematic" abbrev="exp" name="Explanation"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="pla" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="A9A9A9" type="Peripheral" abbrev="pur" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="res" name="Responsible_party"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: necessary for (someone) as duty or responsibility</definition>
+    <lexeme POS="A" name="incumbent"/>
+    <valences>
+        <FERealization total="12">
+            <FE name="Duty"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Duty"/>
+                <annoSet ID="1993159"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Duty"/>
+                <annoSet ID="1993183"/>
+            </pattern>
+            <pattern total="10">
+                <valenceUnit GF="Dep" PT="VPto" FE="Duty"/>
+                <annoSet ID="1993129"/>
+                <annoSet ID="1993131"/>
+                <annoSet ID="1993139"/>
+                <annoSet ID="1993143"/>
+                <annoSet ID="1993145"/>
+                <annoSet ID="1993149"/>
+                <annoSet ID="1993153"/>
+                <annoSet ID="1993155"/>
+                <annoSet ID="1993163"/>
+                <annoSet ID="1993191"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="12">
+            <FE name="Responsible_party"/>
+            <pattern total="6">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Responsible_party"/>
+                <annoSet ID="1993131"/>
+                <annoSet ID="1993139"/>
+                <annoSet ID="1993143"/>
+                <annoSet ID="1993159"/>
+                <annoSet ID="1993163"/>
+                <annoSet ID="1993191"/>
+            </pattern>
+            <pattern total="6">
+                <valenceUnit GF="Dep" PT="PP[upon]" FE="Responsible_party"/>
+                <annoSet ID="1993129"/>
+                <annoSet ID="1993145"/>
+                <annoSet ID="1993149"/>
+                <annoSet ID="1993153"/>
+                <annoSet ID="1993155"/>
+                <annoSet ID="1993183"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Time"/>
+                <annoSet ID="1993163"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="11">
+            <FE name="Duty"/>
+            <FE name="Responsible_party"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Duty"/>
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Responsible_party"/>
+                <annoSet ID="1993159"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Duty"/>
+                <valenceUnit GF="Dep" PT="PP[upon]" FE="Responsible_party"/>
+                <annoSet ID="1993183"/>
+            </pattern>
+            <pattern total="4">
+                <valenceUnit GF="Dep" PT="VPto" FE="Duty"/>
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Responsible_party"/>
+                <annoSet ID="1993131"/>
+                <annoSet ID="1993139"/>
+                <annoSet ID="1993143"/>
+                <annoSet ID="1993191"/>
+            </pattern>
+            <pattern total="5">
+                <valenceUnit GF="Dep" PT="VPto" FE="Duty"/>
+                <valenceUnit GF="Dep" PT="PP[upon]" FE="Responsible_party"/>
+                <annoSet ID="1993129"/>
+                <annoSet ID="1993145"/>
+                <annoSet ID="1993149"/>
+                <annoSet ID="1993153"/>
+                <annoSet ID="1993155"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Duty"/>
+            <FE name="Responsible_party"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="VPto" FE="Duty"/>
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Responsible_party"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Time"/>
+                <annoSet ID="1993163"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="05-Wit-W-W-Wbe,become-W-T-W-W-W-W-W-Wto-Wvv-W-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="8" aPos="0" ID="1273078">
+            <text>He continued , ` It is incumbent upon the government to refute them in the most absolute detail . &quot;</text>
+            <annotationSet cDate="07/21/2004 06:53:02 PDT Wed" status="UNANN" ID="1993128">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="11" start="3" name="VVD"/>
+                    <label end="13" start="13" name=","/>
+                    <label end="18" start="17" name="PP"/>
+                    <label end="21" start="20" name="VBZ"/>
+                    <label end="31" start="23" name="jj"/>
+                    <label end="36" start="33" name="in"/>
+                    <label end="40" start="38" name="dt"/>
+                    <label end="51" start="42" name="nn"/>
+                    <label end="54" start="53" name="to"/>
+                    <label end="61" start="56" name="VV"/>
+                    <label end="66" start="63" name="PP"/>
+                    <label end="69" start="68" name="in"/>
+                    <label end="73" start="71" name="dt"/>
+                    <label end="78" start="75" name="rbs"/>
+                    <label end="87" start="80" name="jj"/>
+                    <label end="94" start="89" name="nn"/>
+                    <label end="96" start="96" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/21/2004 06:53:02 PDT Wed" status="AUTO_EDITED" ID="1993129">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="31" start="23" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="6774" end="51" start="33" name="Responsible_party"/>
+                    <label cBy="605" feID="6773" end="94" start="53" name="Duty"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="51" start="33" name="Dep"/>
+                    <label end="94" start="53" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="51" start="33" name="PP"/>
+                    <label end="94" start="53" name="VPto"/>
+                </layer>
+                <layer rank="1" name="Other">
+                    <label end="18" start="17" name="Null"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj">
+                    <label end="21" start="20" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="33" aPos="0" ID="1273079">
+            <text>For example the most usual constraint we impose on ourselves is to believe that it is incumbent on us to carry out all the steps of a manufacturing process ourselves .</text>
+            <annotationSet cDate="07/21/2004 06:53:02 PDT Wed" status="UNANN" ID="1993130">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="in"/>
+                    <label end="10" start="4" name="nn"/>
+                    <label end="14" start="12" name="dt"/>
+                    <label end="19" start="16" name="rbs"/>
+                    <label end="25" start="21" name="jj"/>
+                    <label end="36" start="27" name="nn"/>
+                    <label end="39" start="38" name="PP"/>
+                    <label end="46" start="41" name="VV"/>
+                    <label end="49" start="48" name="in"/>
+                    <label end="59" start="51" name="PP"/>
+                    <label end="62" start="61" name="VBZ"/>
+                    <label end="65" start="64" name="to"/>
+                    <label end="73" start="67" name="VV"/>
+                    <label end="78" start="75" name="in"/>
+                    <label end="81" start="80" name="PP"/>
+                    <label end="84" start="83" name="VBZ"/>
+                    <label end="94" start="86" name="jj"/>
+                    <label end="97" start="96" name="in"/>
+                    <label end="100" start="99" name="PP"/>
+                    <label end="103" start="102" name="to"/>
+                    <label end="109" start="105" name="VV"/>
+                    <label end="113" start="111" name="rp"/>
+                    <label end="117" start="115" name="pdt"/>
+                    <label end="121" start="119" name="dt"/>
+                    <label end="127" start="123" name="nns"/>
+                    <label end="130" start="129" name="in"/>
+                    <label end="132" start="132" name="dt"/>
+                    <label end="146" start="134" name="nn"/>
+                    <label end="154" start="148" name="nn"/>
+                    <label end="164" start="156" name="PP"/>
+                    <label end="166" start="166" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/21/2004 06:53:03 PDT Wed" status="AUTO_EDITED" ID="1993131">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="94" start="86" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="6774" end="100" start="96" name="Responsible_party"/>
+                    <label cBy="605" feID="6773" end="164" start="102" name="Duty"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="100" start="96" name="Dep"/>
+                    <label end="164" start="102" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="100" start="96" name="PP"/>
+                    <label end="164" start="102" name="VPto"/>
+                </layer>
+                <layer rank="1" name="Other">
+                    <label end="81" start="80" name="Null"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj">
+                    <label end="84" start="83" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="5" paragNo="253" aPos="0" ID="1273083">
+            <text>Primary colleagues will have spent many hours compiling this information and it is incumbent on secondary teachers to use these to inform pupil progression .</text>
+            <annotationSet cDate="07/21/2004 06:53:05 PDT Wed" status="UNANN" ID="1993138">
+                <layer rank="1" name="PENN">
+                    <label end="6" start="0" name="jj"/>
+                    <label end="17" start="8" name="nns"/>
+                    <label end="22" start="19" name="md"/>
+                    <label end="27" start="24" name="VH"/>
+                    <label end="33" start="29" name="VVN"/>
+                    <label end="38" start="35" name="jj"/>
+                    <label end="44" start="40" name="nns"/>
+                    <label end="54" start="46" name="VVG"/>
+                    <label end="59" start="56" name="dt"/>
+                    <label end="71" start="61" name="nn"/>
+                    <label end="75" start="73" name="cc"/>
+                    <label end="78" start="77" name="PP"/>
+                    <label end="81" start="80" name="VBZ"/>
+                    <label end="91" start="83" name="jj"/>
+                    <label end="94" start="93" name="in"/>
+                    <label end="104" start="96" name="jj"/>
+                    <label end="113" start="106" name="nns"/>
+                    <label end="116" start="115" name="to"/>
+                    <label end="120" start="118" name="VV"/>
+                    <label end="126" start="122" name="dt"/>
+                    <label end="129" start="128" name="to"/>
+                    <label end="136" start="131" name="VV"/>
+                    <label end="142" start="138" name="nn"/>
+                    <label end="154" start="144" name="nn"/>
+                    <label end="156" start="156" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/21/2004 06:53:05 PDT Wed" status="AUTO_EDITED" ID="1993139">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="91" start="83" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="6773" end="154" start="115" name="Duty"/>
+                    <label cBy="605" feID="6774" end="113" start="93" name="Responsible_party"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="154" start="115" name="Dep"/>
+                    <label end="113" start="93" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="154" start="115" name="VPto"/>
+                    <label end="113" start="93" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other">
+                    <label end="78" start="77" name="Null"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj">
+                    <label end="81" start="80" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="157" aPos="0" ID="1273085">
+            <text>In the face of mounting pressure the British government at last sensed it was incumbent on them to act .</text>
+            <annotationSet cDate="07/21/2004 06:53:06 PDT Wed" status="UNANN" ID="1993142">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="in"/>
+                    <label end="5" start="3" name="dt"/>
+                    <label end="10" start="7" name="nn"/>
+                    <label end="13" start="12" name="in"/>
+                    <label end="22" start="15" name="VVG"/>
+                    <label end="31" start="24" name="nn"/>
+                    <label end="35" start="33" name="dt"/>
+                    <label end="43" start="37" name="jj"/>
+                    <label end="54" start="45" name="nn"/>
+                    <label end="57" start="56" name="in"/>
+                    <label end="62" start="59" name="jj"/>
+                    <label end="69" start="64" name="VVD"/>
+                    <label end="72" start="71" name="PP"/>
+                    <label end="76" start="74" name="VBD"/>
+                    <label end="86" start="78" name="jj"/>
+                    <label end="89" start="88" name="in"/>
+                    <label end="94" start="91" name="PP"/>
+                    <label end="97" start="96" name="to"/>
+                    <label end="101" start="99" name="VV"/>
+                    <label end="103" start="103" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/21/2004 06:53:07 PDT Wed" status="AUTO_EDITED" ID="1993143">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="86" start="78" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="6773" end="103" start="96" name="Duty"/>
+                    <label cBy="605" feID="6774" end="94" start="88" name="Responsible_party"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="103" start="96" name="Dep"/>
+                    <label end="94" start="88" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="103" start="96" name="VPto"/>
+                    <label end="94" start="88" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other">
+                    <label end="72" start="71" name="Null"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj">
+                    <label end="76" start="74" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="39" aPos="0" ID="1273086">
+            <text>It is therefore incumbent upon all humans to attempt to control our minds , to pursue some path of mind control , meditation , prayer , yoga or whatever -- according to one's inclinations .</text>
+            <annotationSet cDate="07/21/2004 06:53:07 PDT Wed" status="UNANN" ID="1993144">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="4" start="3" name="VBZ"/>
+                    <label end="14" start="6" name="rb"/>
+                    <label end="24" start="16" name="jj"/>
+                    <label end="29" start="26" name="in"/>
+                    <label end="33" start="31" name="dt"/>
+                    <label end="40" start="35" name="nns"/>
+                    <label end="43" start="42" name="to"/>
+                    <label end="51" start="45" name="VV"/>
+                    <label end="54" start="53" name="to"/>
+                    <label end="62" start="56" name="VV"/>
+                    <label end="66" start="64" name="PP$"/>
+                    <label end="72" start="68" name="nns"/>
+                    <label end="74" start="74" name=","/>
+                    <label end="77" start="76" name="to"/>
+                    <label end="84" start="79" name="VV"/>
+                    <label end="89" start="86" name="dt"/>
+                    <label end="94" start="91" name="nn"/>
+                    <label end="97" start="96" name="in"/>
+                    <label end="102" start="99" name="nn"/>
+                    <label end="110" start="104" name="nn"/>
+                    <label end="112" start="112" name=","/>
+                    <label end="123" start="114" name="nn"/>
+                    <label end="125" start="125" name=","/>
+                    <label end="132" start="127" name="nn"/>
+                    <label end="134" start="134" name=","/>
+                    <label end="139" start="136" name="nn"/>
+                    <label end="142" start="141" name="cc"/>
+                    <label end="151" start="144" name="wdt"/>
+                    <label end="154" start="153" name=":"/>
+                    <label end="164" start="156" name="VVG"/>
+                    <label end="167" start="166" name="to"/>
+                    <label end="173" start="169" name="jj"/>
+                    <label end="186" start="175" name="nns"/>
+                    <label end="188" start="188" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/21/2004 06:53:07 PDT Wed" status="AUTO_EDITED" ID="1993145">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="24" start="16" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="6773" end="188" start="42" name="Duty"/>
+                    <label cBy="605" feID="6774" end="40" start="26" name="Responsible_party"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="188" start="42" name="Dep"/>
+                    <label end="40" start="26" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="188" start="42" name="VPto"/>
+                    <label end="40" start="26" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other">
+                    <label end="1" start="0" name="Null"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj">
+                    <label end="4" start="3" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="5" paragNo="184" aPos="0" ID="1273088">
+            <text>It was therefore incumbent upon the AHA to plan alternative services .</text>
+            <annotationSet cDate="07/21/2004 06:53:08 PDT Wed" status="UNANN" ID="1993148">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="5" start="3" name="VBD"/>
+                    <label end="15" start="7" name="rb"/>
+                    <label end="25" start="17" name="jj"/>
+                    <label end="30" start="27" name="in"/>
+                    <label end="34" start="32" name="dt"/>
+                    <label end="38" start="36" name="NP"/>
+                    <label end="41" start="40" name="to"/>
+                    <label end="46" start="43" name="VV"/>
+                    <label end="58" start="48" name="jj"/>
+                    <label end="67" start="60" name="nns"/>
+                    <label end="69" start="69" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/21/2004 06:53:09 PDT Wed" status="AUTO_EDITED" ID="1993149">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="25" start="17" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="6773" end="69" start="40" name="Duty"/>
+                    <label cBy="605" feID="6774" end="38" start="27" name="Responsible_party"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="69" start="40" name="Dep"/>
+                    <label end="38" start="27" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="69" start="40" name="VPto"/>
+                    <label end="38" start="27" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other">
+                    <label end="1" start="0" name="Null"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj">
+                    <label end="5" start="3" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="06-T-PPupon-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="730" aPos="0" ID="1273090">
+            <text>But I feel it incumbent upon me ( I have been listening to chairmen 's speeches ) to bring up the subject for one last time because of a letter from a reader in Nigeria .</text>
+            <annotationSet cDate="07/21/2004 06:53:10 PDT Wed" status="UNANN" ID="1993152">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="cc"/>
+                    <label end="4" start="4" name="PP"/>
+                    <label end="9" start="6" name="VVP"/>
+                    <label end="12" start="11" name="PP"/>
+                    <label end="22" start="14" name="jj"/>
+                    <label end="27" start="24" name="in"/>
+                    <label end="30" start="29" name="PP"/>
+                    <label end="32" start="32" name="("/>
+                    <label end="34" start="34" name="PP"/>
+                    <label end="39" start="36" name="VHP"/>
+                    <label end="44" start="41" name="VBN"/>
+                    <label end="54" start="46" name="VVG"/>
+                    <label end="57" start="56" name="to"/>
+                    <label end="66" start="59" name="nns"/>
+                    <label end="69" start="68" name="POS"/>
+                    <label end="78" start="71" name="nns"/>
+                    <label end="80" start="80" name=")"/>
+                    <label end="83" start="82" name="to"/>
+                    <label end="89" start="85" name="VV"/>
+                    <label end="92" start="91" name="rp"/>
+                    <label end="96" start="94" name="dt"/>
+                    <label end="104" start="98" name="nn"/>
+                    <label end="108" start="106" name="in"/>
+                    <label end="112" start="110" name="cd"/>
+                    <label end="117" start="114" name="jj"/>
+                    <label end="122" start="119" name="nn"/>
+                    <label end="130" start="124" name="in"/>
+                    <label end="133" start="132" name="in"/>
+                    <label end="135" start="135" name="dt"/>
+                    <label end="142" start="137" name="nn"/>
+                    <label end="147" start="144" name="in"/>
+                    <label end="149" start="149" name="dt"/>
+                    <label end="156" start="151" name="nn"/>
+                    <label end="159" start="158" name="in"/>
+                    <label end="167" start="161" name="NP"/>
+                    <label end="169" start="169" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/21/2004 06:53:10 PDT Wed" status="AUTO_EDITED" ID="1993153">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="22" start="14" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="6774" end="30" start="24" name="Responsible_party"/>
+                    <label cBy="605" feID="6773" end="167" start="82" name="Duty"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="30" start="24" name="Dep"/>
+                    <label end="167" start="82" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="30" start="24" name="PP"/>
+                    <label end="167" start="82" name="VPto"/>
+                </layer>
+                <layer rank="1" name="Other">
+                    <label end="12" start="11" name="Null"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="318" aPos="0" ID="1273091">
+            <text>The older generation can ask the most awkward questions whilst giving less offence than younger members , who may feel it incumbent upon themselves to appear more reticent in giving advice .</text>
+            <annotationSet cDate="07/21/2004 06:53:10 PDT Wed" status="UNANN" ID="1993154">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="8" start="4" name="jjr"/>
+                    <label end="19" start="10" name="nn"/>
+                    <label end="23" start="21" name="md"/>
+                    <label end="27" start="25" name="VV"/>
+                    <label end="31" start="29" name="dt"/>
+                    <label end="36" start="33" name="rbs"/>
+                    <label end="44" start="38" name="jj"/>
+                    <label end="54" start="46" name="nns"/>
+                    <label end="61" start="56" name="in"/>
+                    <label end="68" start="63" name="VVG"/>
+                    <label end="73" start="70" name="jjr"/>
+                    <label end="81" start="75" name="nn"/>
+                    <label end="86" start="83" name="in"/>
+                    <label end="94" start="88" name="jjr"/>
+                    <label end="102" start="96" name="nns"/>
+                    <label end="104" start="104" name=","/>
+                    <label end="108" start="106" name="wp"/>
+                    <label end="112" start="110" name="md"/>
+                    <label end="117" start="114" name="VV"/>
+                    <label end="120" start="119" name="PP"/>
+                    <label end="130" start="122" name="jj"/>
+                    <label end="135" start="132" name="in"/>
+                    <label end="146" start="137" name="PP"/>
+                    <label end="149" start="148" name="to"/>
+                    <label end="156" start="151" name="VV"/>
+                    <label end="161" start="158" name="rbr"/>
+                    <label end="170" start="163" name="jj"/>
+                    <label end="173" start="172" name="in"/>
+                    <label end="180" start="175" name="VVG"/>
+                    <label end="187" start="182" name="nn"/>
+                    <label end="189" start="189" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/21/2004 06:53:11 PDT Wed" status="AUTO_EDITED" ID="1993155">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="130" start="122" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="6774" end="146" start="132" name="Responsible_party"/>
+                    <label cBy="605" feID="6773" end="187" start="148" name="Duty"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="146" start="132" name="Dep"/>
+                    <label end="187" start="148" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="146" start="132" name="PP"/>
+                    <label end="187" start="148" name="VPto"/>
+                </layer>
+                <layer rank="1" name="Other">
+                    <label end="120" start="119" name="Null"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="07-T-PPon-(1)">
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="173" aPos="0" ID="1273093">
+            <text>It is thought of as a requirement incumbent on citizens in virtue of the independently established authority of the state .</text>
+            <annotationSet cDate="07/21/2004 06:53:13 PDT Wed" status="UNANN" ID="1993158">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="4" start="3" name="VBZ"/>
+                    <label end="12" start="6" name="VVN"/>
+                    <label end="15" start="14" name="in"/>
+                    <label end="18" start="17" name="in"/>
+                    <label end="20" start="20" name="dt"/>
+                    <label end="32" start="22" name="nn"/>
+                    <label end="42" start="34" name="jj"/>
+                    <label end="45" start="44" name="in"/>
+                    <label end="54" start="47" name="nns"/>
+                    <label end="57" start="56" name="in"/>
+                    <label end="64" start="59" name="nn"/>
+                    <label end="67" start="66" name="in"/>
+                    <label end="71" start="69" name="dt"/>
+                    <label end="85" start="73" name="rb"/>
+                    <label end="97" start="87" name="VVN"/>
+                    <label end="107" start="99" name="nn"/>
+                    <label end="110" start="109" name="in"/>
+                    <label end="114" start="112" name="dt"/>
+                    <label end="120" start="116" name="nn"/>
+                    <label end="122" start="122" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/21/2004 06:53:14 PDT Wed" status="AUTO_EDITED" ID="1993159">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="42" start="34" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="6774" end="54" start="44" name="Responsible_party"/>
+                    <label cBy="605" feID="6773" end="32" start="20" name="Duty"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="54" start="44" name="Dep"/>
+                    <label end="32" start="20" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="54" start="44" name="PP"/>
+                    <label end="32" start="20" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="4618" aPos="0" ID="1273095">
+            <text>Is not it now incumbent on all decent men and women in both our countries to sink their party differences and concentrate on destroying this evil ?</text>
+            <annotationSet cDate="07/21/2004 06:53:14 PDT Wed" status="UNANN" ID="1993162">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="VBZ"/>
+                    <label end="5" start="3" name="rb"/>
+                    <label end="8" start="7" name="PP"/>
+                    <label end="12" start="10" name="rb"/>
+                    <label end="22" start="14" name="jj"/>
+                    <label end="25" start="24" name="in"/>
+                    <label end="29" start="27" name="dt"/>
+                    <label end="36" start="31" name="jj"/>
+                    <label end="40" start="38" name="nns"/>
+                    <label end="44" start="42" name="cc"/>
+                    <label end="50" start="46" name="nns"/>
+                    <label end="53" start="52" name="in"/>
+                    <label end="58" start="55" name="pdt"/>
+                    <label end="62" start="60" name="PP$"/>
+                    <label end="72" start="64" name="nns"/>
+                    <label end="75" start="74" name="to"/>
+                    <label end="80" start="77" name="VV"/>
+                    <label end="86" start="82" name="PP$"/>
+                    <label end="92" start="88" name="nn"/>
+                    <label end="104" start="94" name="nns"/>
+                    <label end="108" start="106" name="cc"/>
+                    <label end="120" start="110" name="VV"/>
+                    <label end="123" start="122" name="in"/>
+                    <label end="134" start="125" name="VVG"/>
+                    <label end="139" start="136" name="dt"/>
+                    <label end="144" start="141" name="nn"/>
+                    <label end="146" start="146" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/21/2004 06:53:15 PDT Wed" status="MANUAL" ID="1993163">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="22" start="14" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="6975" end="12" start="10" name="Time"/>
+                    <label cBy="605" feID="6774" end="72" start="24" name="Responsible_party"/>
+                    <label cBy="605" feID="6773" end="144" start="74" name="Duty"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="12" start="10" name="Dep"/>
+                    <label end="72" start="24" name="Dep"/>
+                    <label end="144" start="74" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="12" start="10" name="AVP"/>
+                    <label end="72" start="24" name="PP"/>
+                    <label end="144" start="74" name="VPto"/>
+                </layer>
+                <layer rank="1" name="Other">
+                    <label end="8" start="7" name="Null"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj">
+                    <label end="1" start="0" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-unmatched-(1)">
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="274" aPos="0" ID="1273105">
+            <text>It is incumbent upon you , should you choose to go there , at least to contemplate the idea of Risotto Barbarossa , or even the same gentleman 's kidneys .</text>
+            <annotationSet cDate="07/21/2004 06:53:19 PDT Wed" status="UNANN" ID="1993182">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="4" start="3" name="VBZ"/>
+                    <label end="14" start="6" name="jj"/>
+                    <label end="19" start="16" name="in"/>
+                    <label end="23" start="21" name="PP"/>
+                    <label end="25" start="25" name=","/>
+                    <label end="32" start="27" name="md"/>
+                    <label end="36" start="34" name="PP"/>
+                    <label end="43" start="38" name="VV"/>
+                    <label end="46" start="45" name="to"/>
+                    <label end="49" start="48" name="VV"/>
+                    <label end="55" start="51" name="rb"/>
+                    <label end="57" start="57" name=","/>
+                    <label end="60" start="59" name="in"/>
+                    <label end="66" start="62" name="jjs"/>
+                    <label end="69" start="68" name="to"/>
+                    <label end="81" start="71" name="VV"/>
+                    <label end="85" start="83" name="dt"/>
+                    <label end="90" start="87" name="nn"/>
+                    <label end="93" start="92" name="in"/>
+                    <label end="101" start="95" name="nn"/>
+                    <label end="112" start="103" name="NP"/>
+                    <label end="114" start="114" name=","/>
+                    <label end="117" start="116" name="cc"/>
+                    <label end="122" start="119" name="rb"/>
+                    <label end="126" start="124" name="dt"/>
+                    <label end="131" start="128" name="jj"/>
+                    <label end="141" start="133" name="nn"/>
+                    <label end="144" start="143" name="POS"/>
+                    <label end="152" start="146" name="nns"/>
+                    <label end="154" start="154" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/21/2004 06:53:19 PDT Wed" status="MANUAL" ID="1993183">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="14" start="6" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="6774" end="23" start="16" name="Responsible_party"/>
+                    <label cBy="605" feID="6773" end="152" start="59" name="Duty"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="23" start="16" name="Dep"/>
+                    <label end="152" start="59" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="23" start="16" name="PP"/>
+                    <label end="152" start="59" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other">
+                    <label end="1" start="0" name="Null"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj">
+                    <label end="4" start="3" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="65535" paragNo="392" aPos="0" ID="1273109">
+            <text>It is incumbent on us to be part of this assistance , whether it be financial , practical or political .</text>
+            <annotationSet cDate="07/21/2004 06:53:21 PDT Wed" status="UNANN" ID="1993190">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="4" start="3" name="VBZ"/>
+                    <label end="14" start="6" name="jj"/>
+                    <label end="17" start="16" name="in"/>
+                    <label end="20" start="19" name="PP"/>
+                    <label end="23" start="22" name="to"/>
+                    <label end="26" start="25" name="vb"/>
+                    <label end="31" start="28" name="nn"/>
+                    <label end="34" start="33" name="in"/>
+                    <label end="39" start="36" name="dt"/>
+                    <label end="50" start="41" name="nn"/>
+                    <label end="52" start="52" name=","/>
+                    <label end="60" start="54" name="in"/>
+                    <label end="63" start="62" name="PP"/>
+                    <label end="66" start="65" name="vb"/>
+                    <label end="76" start="68" name="jj"/>
+                    <label end="78" start="78" name=","/>
+                    <label end="88" start="80" name="jj"/>
+                    <label end="91" start="90" name="cc"/>
+                    <label end="101" start="93" name="jj"/>
+                    <label end="103" start="103" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/21/2004 06:53:21 PDT Wed" status="MANUAL" ID="1993191">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="14" start="6" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="6774" end="20" start="16" name="Responsible_party"/>
+                    <label cBy="605" feID="6773" end="101" start="22" name="Duty"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="20" start="16" name="Dep"/>
+                    <label end="101" start="22" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="20" start="16" name="PP"/>
+                    <label end="101" start="22" name="VPto"/>
+                </layer>
+                <layer rank="1" name="Other">
+                    <label end="1" start="0" name="Null"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adj">
+                    <label end="4" start="3" name="Cop"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

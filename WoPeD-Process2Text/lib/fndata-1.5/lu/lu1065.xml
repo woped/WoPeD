@@ -1,0 +1,712 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="meander.v" ID="1065" frame="Path_shape" frameID="61" totalAnnotated="10" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Area" name="Area"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Extra-Thematic" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Dep-Und" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Core" abbrev="dir" name="Direction"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Peripheral" abbrev="Dist" name="Distance"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="Goal" name="Goal"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Path" name="Path"/>
+            <FE fgColor="FFFFFF" bgColor="90876C" type="Core" abbrev="PS" name="Path_shape"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="" name="Place"/>
+            <FE fgColor="000000" bgColor="90876C" type="Extra-Thematic" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Extra-Thematic" abbrev="Result" name="Result"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Core" abbrev="Road" name="Road"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="Src" name="Source"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="Spd" name="Speed"/>
+            <FE fgColor="FFFFFF" bgColor="A9A9A9" type="Peripheral" abbrev="tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: follow a winding course, or wander aimlessly. </definition>
+    <lexeme POS="V" name="meander"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Area"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[round]" FE="Area"/>
+                <annoSet ID="893582"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Goal"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Goal"/>
+                <annoSet ID="893526"/>
+                <annoSet ID="893560"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="8">
+            <FE name="Path"/>
+            <pattern total="4">
+                <valenceUnit GF="Dep" PT="PP[through]" FE="Path"/>
+                <annoSet ID="893538"/>
+                <annoSet ID="893560"/>
+                <annoSet ID="893580"/>
+                <annoSet ID="893600"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[among]" FE="Path"/>
+                <annoSet ID="893518"/>
+                <annoSet ID="893550"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[over]" FE="Path"/>
+                <annoSet ID="893570"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[up]" FE="Path"/>
+                <annoSet ID="893530"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Path_shape"/>
+            <pattern total="4">
+                <valenceUnit GF="" PT="INI" FE="Path_shape"/>
+                <annoSet ID="893530"/>
+                <annoSet ID="893560"/>
+                <annoSet ID="893580"/>
+                <annoSet ID="893600"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Place"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Place"/>
+                <annoSet ID="893570"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="10">
+            <FE name="Road"/>
+            <pattern total="10">
+                <valenceUnit GF="Ext" PT="NP" FE="Road"/>
+                <annoSet ID="893518"/>
+                <annoSet ID="893526"/>
+                <annoSet ID="893530"/>
+                <annoSet ID="893538"/>
+                <annoSet ID="893550"/>
+                <annoSet ID="893560"/>
+                <annoSet ID="893570"/>
+                <annoSet ID="893580"/>
+                <annoSet ID="893582"/>
+                <annoSet ID="893600"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Source"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[from]" FE="Source"/>
+                <annoSet ID="893560"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Area"/>
+            <FE name="Road"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[round]" FE="Area"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Road"/>
+                <annoSet ID="893582"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Goal"/>
+            <FE name="Goal"/>
+            <FE name="Path"/>
+            <FE name="Path_shape"/>
+            <FE name="Road"/>
+            <FE name="Source"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Goal"/>
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Goal"/>
+                <valenceUnit GF="Dep" PT="PP[through]" FE="Path"/>
+                <valenceUnit GF="" PT="INI" FE="Path_shape"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Road"/>
+                <valenceUnit GF="Dep" PT="PP[from]" FE="Source"/>
+                <annoSet ID="893560"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Goal"/>
+            <FE name="Road"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Goal"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Road"/>
+                <annoSet ID="893526"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="3">
+            <FE name="Path"/>
+            <FE name="Path_shape"/>
+            <FE name="Road"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[through]" FE="Path"/>
+                <valenceUnit GF="" PT="INI" FE="Path_shape"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Road"/>
+                <annoSet ID="893580"/>
+                <annoSet ID="893600"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[up]" FE="Path"/>
+                <valenceUnit GF="" PT="INI" FE="Path_shape"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Road"/>
+                <annoSet ID="893530"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Path"/>
+            <FE name="Place"/>
+            <FE name="Road"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[over]" FE="Path"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Place"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Road"/>
+                <annoSet ID="893570"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="3">
+            <FE name="Path"/>
+            <FE name="Road"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[among]" FE="Path"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Road"/>
+                <annoSet ID="893518"/>
+                <annoSet ID="893550"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[through]" FE="Path"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Road"/>
+                <annoSet ID="893538"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="V-001-all">
+        <sentence sentNo="0" aPos="3564960" ID="714564">
+            <text>A pipeline meanders among the springs , collecting steam for distribution to rows of neat houses . </text>
+            <annotationSet cDate="01/07/2003 11:40:45 PST Tue" status="UNANN" ID="893517">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="AT0"/>
+                    <label end="9" start="2" name="NN1"/>
+                    <label end="18" start="11" name="NN2-VVZ"/>
+                    <label end="24" start="20" name="PRP"/>
+                    <label end="28" start="26" name="AT0"/>
+                    <label end="36" start="30" name="NN2"/>
+                    <label end="38" start="38" name="PUN"/>
+                    <label end="49" start="40" name="AJ0-VVG"/>
+                    <label end="55" start="51" name="NN1"/>
+                    <label end="59" start="57" name="PRP"/>
+                    <label end="72" start="61" name="NN1"/>
+                    <label end="75" start="74" name="PRP"/>
+                    <label end="80" start="77" name="NN2"/>
+                    <label end="83" start="82" name="PRF"/>
+                    <label end="88" start="85" name="AJ0"/>
+                    <label end="95" start="90" name="NN2"/>
+                    <label end="97" start="97" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 11:40:45 PST Tue" status="MANUAL" ID="893518">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="269" end="9" start="2" name="Road"/>
+                    <label cBy="669" feID="267" end="36" start="20" name="Path"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="36" start="20" name="Dep"/>
+                    <label end="9" start="2" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="36" start="20" name="PP"/>
+                    <label end="9" start="2" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="18" start="11" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="8797948" ID="714568">
+            <text>Beyond them , beyond this enclosure , the lush countryside meanders to its low horizon . </text>
+            <annotationSet cDate="01/07/2003 11:40:46 PST Tue" status="UNANN" ID="893525">
+                <layer rank="1" name="BNC">
+                    <label end="5" start="0" name="PRP"/>
+                    <label end="10" start="7" name="PNP"/>
+                    <label end="12" start="12" name="PUN"/>
+                    <label end="19" start="14" name="PRP"/>
+                    <label end="24" start="21" name="DT0"/>
+                    <label end="34" start="26" name="NN1"/>
+                    <label end="36" start="36" name="PUN"/>
+                    <label end="40" start="38" name="AT0"/>
+                    <label end="45" start="42" name="AJ0"/>
+                    <label end="57" start="47" name="NN1"/>
+                    <label end="66" start="59" name="NN2-VVZ"/>
+                    <label end="69" start="68" name="PRP"/>
+                    <label end="73" start="71" name="DPS"/>
+                    <label end="77" start="75" name="AJ0"/>
+                    <label end="85" start="79" name="NN1"/>
+                    <label end="87" start="87" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 11:40:46 PST Tue" status="MANUAL" ID="893526">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="269" end="57" start="38" name="Road"/>
+                    <label cBy="669" feID="268" end="85" start="68" name="Goal"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="57" start="38" name="Ext"/>
+                    <label end="85" start="68" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="57" start="38" name="NP"/>
+                    <label end="85" start="68" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="66" start="59" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="9860355" ID="714570">
+            <text>From the Outdoor Pursuits Centre at the end of a lane , several footpaths and sheep tracks meander up the rock-strewn hill , which was scattered with blooming thickets or scrambled egg-yellow gorse swaying in the wind . </text>
+            <annotationSet cDate="01/07/2003 11:40:46 PST Tue" status="UNANN" ID="893529">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="PRP"/>
+                    <label end="7" start="5" name="AT0"/>
+                    <label end="15" start="9" name="AJ0"/>
+                    <label end="24" start="17" name="NN2"/>
+                    <label end="31" start="26" name="NN1"/>
+                    <label end="34" start="33" name="PRP"/>
+                    <label end="38" start="36" name="AT0"/>
+                    <label end="42" start="40" name="NN1"/>
+                    <label end="45" start="44" name="PRF"/>
+                    <label end="47" start="47" name="AT0"/>
+                    <label end="52" start="49" name="NN1"/>
+                    <label end="54" start="54" name="PUN"/>
+                    <label end="62" start="56" name="DT0"/>
+                    <label end="72" start="64" name="NN2"/>
+                    <label end="76" start="74" name="CJC"/>
+                    <label end="82" start="78" name="NN0"/>
+                    <label end="89" start="84" name="NN2"/>
+                    <label end="97" start="91" name="VVB"/>
+                    <label end="100" start="99" name="AVP"/>
+                    <label end="104" start="102" name="AT0"/>
+                    <label end="116" start="106" name="AJ0"/>
+                    <label end="121" start="118" name="NN1"/>
+                    <label end="123" start="123" name="PUN"/>
+                    <label end="129" start="125" name="DTQ"/>
+                    <label end="133" start="131" name="VBD"/>
+                    <label end="143" start="135" name="VVN"/>
+                    <label end="148" start="145" name="PRP"/>
+                    <label end="157" start="150" name="AJ0-VVG"/>
+                    <label end="166" start="159" name="NN2"/>
+                    <label end="169" start="168" name="CJC"/>
+                    <label end="179" start="171" name="VVD"/>
+                    <label end="190" start="181" name="AJ0"/>
+                    <label end="196" start="192" name="NN1"/>
+                    <label end="204" start="198" name="VVG"/>
+                    <label end="207" start="206" name="PRP"/>
+                    <label end="211" start="209" name="AT0"/>
+                    <label end="216" start="213" name="NN1"/>
+                    <label end="218" start="218" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 11:40:46 PST Tue" status="MANUAL" ID="893530">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="269" end="89" start="56" name="Road"/>
+                    <label cBy="669" feID="267" end="121" start="99" name="Path"/>
+                    <label cBy="153" feID="4970" itype="INI" name="Path_shape"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="89" start="56" name="Ext"/>
+                    <label end="121" start="99" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="89" start="56" name="NP"/>
+                    <label end="121" start="99" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="97" start="91" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="22334795" ID="714574">
+            <text>The Knightley Way skirts its western edge and many footpaths meander through the trees . </text>
+            <annotationSet cDate="01/07/2003 11:40:47 PST Tue" status="UNANN" ID="893537">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="12" start="4" name="NP0"/>
+                    <label end="16" start="14" name="NP0"/>
+                    <label end="23" start="18" name="VVZ"/>
+                    <label end="27" start="25" name="DPS"/>
+                    <label end="35" start="29" name="AJ0"/>
+                    <label end="40" start="37" name="NN1"/>
+                    <label end="44" start="42" name="CJC"/>
+                    <label end="49" start="46" name="DT0"/>
+                    <label end="59" start="51" name="NN2"/>
+                    <label end="67" start="61" name="VVB"/>
+                    <label end="75" start="69" name="PRP"/>
+                    <label end="79" start="77" name="AT0"/>
+                    <label end="85" start="81" name="NN2"/>
+                    <label end="87" start="87" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 11:40:47 PST Tue" status="MANUAL" ID="893538">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="269" end="59" start="51" name="Road"/>
+                    <label cBy="669" feID="267" end="85" start="69" name="Path"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="85" start="69" name="Dep"/>
+                    <label end="59" start="51" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="85" start="69" name="PP"/>
+                    <label end="59" start="51" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="67" start="61" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="35385442" ID="714580">
+            <text>The scenery is breathtaking , the rugged coast path meanders among tall cliffs , high above the fine beaches and pale turquoise sea . </text>
+            <annotationSet cDate="01/07/2003 11:40:48 PST Tue" status="UNANN" ID="893549">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="10" start="4" name="NN1"/>
+                    <label end="13" start="12" name="VBZ"/>
+                    <label end="26" start="15" name="AJ0"/>
+                    <label end="28" start="28" name="PUN"/>
+                    <label end="32" start="30" name="AT0"/>
+                    <label end="39" start="34" name="AJ0"/>
+                    <label end="45" start="41" name="NN1"/>
+                    <label end="50" start="47" name="NN1"/>
+                    <label end="59" start="52" name="NN2-VVZ"/>
+                    <label end="65" start="61" name="PRP"/>
+                    <label end="70" start="67" name="AJ0"/>
+                    <label end="77" start="72" name="NN2"/>
+                    <label end="79" start="79" name="PUN"/>
+                    <label end="84" start="81" name="AJ0-AV0"/>
+                    <label end="90" start="86" name="PRP"/>
+                    <label end="94" start="92" name="AT0"/>
+                    <label end="99" start="96" name="AJ0"/>
+                    <label end="107" start="101" name="NN2"/>
+                    <label end="111" start="109" name="CJC"/>
+                    <label end="116" start="113" name="AJ0"/>
+                    <label end="126" start="118" name="AJ0-NN1"/>
+                    <label end="130" start="128" name="NN1"/>
+                    <label end="132" start="132" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 11:40:48 PST Tue" status="MANUAL" ID="893550">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="269" end="50" start="34" name="Road"/>
+                    <label cBy="669" feID="267" end="77" start="61" name="Path"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="50" start="34" name="Ext"/>
+                    <label end="77" start="61" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="50" start="34" name="NP"/>
+                    <label end="77" start="61" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="59" start="52" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="46267227" ID="714585">
+            <text>The Danube meanders through valley after beautiful valley from Germany to Austria to Hungary . </text>
+            <annotationSet cDate="01/07/2003 11:40:48 PST Tue" status="UNANN" ID="893559">
+                <layer rank="1" name="BNC">
+                    <label end="2" start="0" name="AT0"/>
+                    <label end="9" start="4" name="NN1-NP0"/>
+                    <label end="18" start="11" name="NN2-VVZ"/>
+                    <label end="26" start="20" name="PRP"/>
+                    <label end="33" start="28" name="NN1"/>
+                    <label end="39" start="35" name="CJS-PRP"/>
+                    <label end="49" start="41" name="AJ0"/>
+                    <label end="56" start="51" name="NN1"/>
+                    <label end="61" start="58" name="PRP"/>
+                    <label end="69" start="63" name="NP0"/>
+                    <label end="72" start="71" name="PRP"/>
+                    <label end="80" start="74" name="NP0"/>
+                    <label end="83" start="82" name="PRP"/>
+                    <label end="91" start="85" name="NP0"/>
+                    <label end="93" start="93" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 11:40:48 PST Tue" status="MANUAL" ID="893560">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="269" end="9" start="0" name="Road"/>
+                    <label cBy="669" feID="267" end="56" start="20" name="Path"/>
+                    <label cBy="669" feID="266" end="69" start="58" name="Source"/>
+                    <label cBy="669" feID="268" end="80" start="71" name="Goal"/>
+                    <label cBy="669" feID="268" end="91" start="82" name="Goal"/>
+                    <label cBy="153" feID="4970" itype="INI" name="Path_shape"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="9" start="0" name="Ext"/>
+                    <label end="56" start="20" name="Dep"/>
+                    <label end="69" start="58" name="Dep"/>
+                    <label end="80" start="71" name="Dep"/>
+                    <label end="91" start="82" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="9" start="0" name="NP"/>
+                    <label end="56" start="20" name="PP"/>
+                    <label end="69" start="58" name="PP"/>
+                    <label end="80" start="71" name="PP"/>
+                    <label end="91" start="82" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="18" start="11" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="48239834" ID="714590">
+            <text>In the garden a footbridge meanders over the Brook -- the only section remaining in its original course until it reaches the railway bridge . </text>
+            <annotationSet cDate="01/07/2003 11:40:49 PST Tue" status="UNANN" ID="893569">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PRP"/>
+                    <label end="5" start="3" name="AT0"/>
+                    <label end="12" start="7" name="NN1"/>
+                    <label end="14" start="14" name="AT0"/>
+                    <label end="25" start="16" name="NN1"/>
+                    <label end="34" start="27" name="NN2-VVZ"/>
+                    <label end="39" start="36" name="AVP-PRP"/>
+                    <label end="43" start="41" name="AT0"/>
+                    <label end="49" start="45" name="NN1-NP0"/>
+                    <label end="52" start="51" name="PUN"/>
+                    <label end="56" start="54" name="AT0"/>
+                    <label end="61" start="58" name="AJ0"/>
+                    <label end="69" start="63" name="NN1"/>
+                    <label end="79" start="71" name="VVG"/>
+                    <label end="82" start="81" name="PRP"/>
+                    <label end="86" start="84" name="DPS"/>
+                    <label end="95" start="88" name="AJ0"/>
+                    <label end="102" start="97" name="NN1"/>
+                    <label end="108" start="104" name="CJS"/>
+                    <label end="111" start="110" name="PNP"/>
+                    <label end="119" start="113" name="VVZ"/>
+                    <label end="123" start="121" name="AT0"/>
+                    <label end="131" start="125" name="NN1"/>
+                    <label end="138" start="133" name="NN1"/>
+                    <label end="140" start="140" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 11:40:49 PST Tue" status="MANUAL" ID="893570">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="4861" end="12" start="0" name="Place"/>
+                    <label cBy="669" feID="269" end="25" start="14" name="Road"/>
+                    <label cBy="669" feID="267" end="49" start="36" name="Path"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="12" start="0" name="Dep"/>
+                    <label end="25" start="14" name="Ext"/>
+                    <label end="49" start="36" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="12" start="0" name="PP"/>
+                    <label end="25" start="14" name="NP"/>
+                    <label end="49" start="36" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="34" start="27" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="65704565" ID="714595">
+            <text>Less known are the inland regions , where single-track roads meander through stark valleys where vines , planted singly and each surrounded by a protective wall of lava rock , struggle to produce the excellent local vintages . </text>
+            <annotationSet cDate="01/07/2003 11:40:49 PST Tue" status="UNANN" ID="893579">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="AV0"/>
+                    <label end="9" start="5" name="VVN"/>
+                    <label end="13" start="11" name="VBB"/>
+                    <label end="17" start="15" name="AT0"/>
+                    <label end="24" start="19" name="AJ0"/>
+                    <label end="32" start="26" name="NN2"/>
+                    <label end="34" start="34" name="PUN"/>
+                    <label end="40" start="36" name="AVQ-CJS"/>
+                    <label end="53" start="42" name="AJ0"/>
+                    <label end="59" start="55" name="NN2"/>
+                    <label end="67" start="61" name="VVB"/>
+                    <label end="75" start="69" name="PRP"/>
+                    <label end="81" start="77" name="AJ0"/>
+                    <label end="89" start="83" name="NN2"/>
+                    <label end="95" start="91" name="AVQ-CJS"/>
+                    <label end="101" start="97" name="NN2"/>
+                    <label end="103" start="103" name="PUN"/>
+                    <label end="111" start="105" name="VVD"/>
+                    <label end="118" start="113" name="AV0"/>
+                    <label end="122" start="120" name="CJC"/>
+                    <label end="127" start="124" name="DT0"/>
+                    <label end="138" start="129" name="VVD-VVN"/>
+                    <label end="141" start="140" name="PRP"/>
+                    <label end="143" start="143" name="AT0"/>
+                    <label end="154" start="145" name="AJ0"/>
+                    <label end="159" start="156" name="NN1"/>
+                    <label end="162" start="161" name="PRF"/>
+                    <label end="167" start="164" name="NN1"/>
+                    <label end="172" start="169" name="NN1"/>
+                    <label end="174" start="174" name="PUN"/>
+                    <label end="183" start="176" name="NN1-VVB"/>
+                    <label end="186" start="185" name="TO0"/>
+                    <label end="194" start="188" name="VVI"/>
+                    <label end="198" start="196" name="AT0"/>
+                    <label end="208" start="200" name="AJ0"/>
+                    <label end="214" start="210" name="AJ0"/>
+                    <label end="223" start="216" name="NN2"/>
+                    <label end="225" start="225" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 11:40:50 PST Tue" status="MANUAL" ID="893580">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="269" end="59" start="42" name="Road"/>
+                    <label cBy="669" feID="267" end="223" start="69" name="Path"/>
+                    <label cBy="153" feID="4970" itype="INI" name="Path_shape"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="59" start="42" name="Ext"/>
+                    <label end="223" start="69" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="59" start="42" name="NP"/>
+                    <label end="223" start="69" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="67" start="61" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="65865654" ID="714596">
+            <text>A four-mile path meanders round the lake in the centre of the park ; our project was to lay red shale on a popular and consequently very worn stretch along the north side . </text>
+            <annotationSet cDate="01/07/2003 11:40:50 PST Tue" status="UNANN" ID="893581">
+                <layer rank="1" name="BNC">
+                    <label end="0" start="0" name="AT0"/>
+                    <label end="10" start="2" name="AJ0"/>
+                    <label end="15" start="12" name="NN1"/>
+                    <label end="24" start="17" name="NN2-VVZ"/>
+                    <label end="30" start="26" name="AVP-PRP"/>
+                    <label end="34" start="32" name="AT0"/>
+                    <label end="39" start="36" name="NN1"/>
+                    <label end="42" start="41" name="PRP"/>
+                    <label end="46" start="44" name="AT0"/>
+                    <label end="53" start="48" name="NN1"/>
+                    <label end="56" start="55" name="PRF"/>
+                    <label end="60" start="58" name="AT0"/>
+                    <label end="65" start="62" name="NN1"/>
+                    <label end="67" start="67" name="PUN"/>
+                    <label end="71" start="69" name="DPS"/>
+                    <label end="79" start="73" name="NN1"/>
+                    <label end="83" start="81" name="VBD"/>
+                    <label end="86" start="85" name="TO0"/>
+                    <label end="90" start="88" name="VVI"/>
+                    <label end="94" start="92" name="AJ0"/>
+                    <label end="100" start="96" name="NN1"/>
+                    <label end="103" start="102" name="PRP"/>
+                    <label end="105" start="105" name="AT0"/>
+                    <label end="113" start="107" name="AJ0"/>
+                    <label end="117" start="115" name="CJC"/>
+                    <label end="130" start="119" name="AV0"/>
+                    <label end="135" start="132" name="AV0"/>
+                    <label end="140" start="137" name="AJ0-VVN"/>
+                    <label end="148" start="142" name="NN1-VVB"/>
+                    <label end="154" start="150" name="PRP"/>
+                    <label end="158" start="156" name="AT0"/>
+                    <label end="164" start="160" name="NN1"/>
+                    <label end="169" start="166" name="NN1"/>
+                    <label end="171" start="171" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 11:40:50 PST Tue" status="MANUAL" ID="893582">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="269" end="15" start="0" name="Road"/>
+                    <label cBy="664" feID="272" end="65" start="26" name="Area"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="15" start="0" name="Ext"/>
+                    <label end="65" start="26" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="15" start="0" name="NP"/>
+                    <label end="65" start="26" name="PP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="24" start="17" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence sentNo="0" aPos="89817430" ID="714605">
+            <text>Many miles of paths meander through beautiful woodland , parkland and alongside lochs and rivers . </text>
+            <annotationSet cDate="01/07/2003 11:40:51 PST Tue" status="UNANN" ID="893599">
+                <layer rank="1" name="BNC">
+                    <label end="3" start="0" name="DT0"/>
+                    <label end="9" start="5" name="NN2"/>
+                    <label end="12" start="11" name="PRF"/>
+                    <label end="18" start="14" name="NN2"/>
+                    <label end="26" start="20" name="VVB"/>
+                    <label end="34" start="28" name="PRP"/>
+                    <label end="44" start="36" name="AJ0"/>
+                    <label end="53" start="46" name="NN1"/>
+                    <label end="55" start="55" name="PUN"/>
+                    <label end="64" start="57" name="NN1"/>
+                    <label end="68" start="66" name="CJC"/>
+                    <label end="78" start="70" name="PRP"/>
+                    <label end="84" start="80" name="NN2"/>
+                    <label end="88" start="86" name="CJC"/>
+                    <label end="95" start="90" name="NN2"/>
+                    <label end="97" start="97" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="01/07/2003 11:40:51 PST Tue" status="MANUAL" ID="893600">
+                <layer rank="1" name="FE">
+                    <label cBy="669" feID="269" end="18" start="14" name="Road"/>
+                    <label cBy="669" feID="267" end="53" start="28" name="Path"/>
+                    <label cBy="153" feID="4970" itype="INI" name="Path_shape"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="53" start="28" name="Dep"/>
+                    <label end="18" start="14" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="53" start="28" name="PP"/>
+                    <label end="18" start="14" name="NP"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Target">
+                    <label cBy="103" end="26" start="20" name="Target"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

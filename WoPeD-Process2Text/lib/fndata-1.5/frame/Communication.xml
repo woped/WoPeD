@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="731" cDate="02/07/2001 04:11:41 PST Wed" name="Communication" ID="6" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A &lt;fen&gt;Communicator&lt;/fen&gt; conveys a &lt;fen&gt;Message&lt;/fen&gt; to an &lt;fen&gt;Addressee&lt;/fen&gt;; the &lt;fen&gt;Topic&lt;/fen&gt; and &lt;fen&gt;Medium&lt;/fen&gt; of the communication also may be expressed.  This frame includes no specification of the method of communication (speech, writing, gesture, etc.).  The frames that inherit the general Communication frame can add elaboration to the &lt;fen&gt;Medium&lt;/fen&gt; in a variety of ways (&lt;ment&gt;in French, on the radio program, in a letter&lt;/ment&gt;) or to the &lt;fen&gt;Manner&lt;/fen&gt; of communication (&lt;ment&gt;babble, rant, shout, whisper&lt;/ment&gt;). There are also frames that either do not inherit all of the FEs of this frame or do not inherit them in a straightforward manner (such as Conversation, in which &lt;fen&gt;Communicator&lt;/fen&gt; and &lt;fen&gt;Addressee&lt;/fen&gt; alternate roles, and are often expressed by a single, plural NP).
+
+&lt;ex&gt;Let's hope &lt;fex name="Communicator"&gt;it&lt;/fex&gt; did n't have time to &lt;t&gt;communicate&lt;/t&gt; &lt;fex name="Message"&gt;any of its findings&lt;/fex&gt; &lt;fex name="Addressee"&gt;to its overlords&lt;/fex&gt; .&lt;/ex&gt;
+
+NB:  For many words in this domain (those which do not inherently ascribe cognitive/social processes to a &lt;fen&gt;Communicator&lt;/fen&gt;, position a statement within a conversation, or specify &lt;fen&gt;Medium&lt;/fen&gt; in detail), there is a metaphorical usage which maps Communication onto an alternate POV of Becoming_aware, with corresponding maps for frames related to Communication.  This metaphor is most felicitous with Means or Medium subjects, which are mapped onto the Evidence FE of Becoming_aware.  In many cases this metaphor maps Communication onto the Evidence frame, but not always.  Some words from the Communication domain are listed in the Evidence frame since they are deemed to be lexicalized.
+
+&lt;ex&gt;&lt;fex name="Means"&gt;A flick of his gaze toward the doorway&lt;/fex&gt; &lt;t&gt;told&lt;/t&gt; &lt;fex name="Addressee"&gt;me&lt;/fex&gt; &lt;fex name="Message"&gt;what he really wanted&lt;/fex&gt; . MET&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Medium"&gt;This painting&lt;/fex&gt; really &lt;t&gt;speaks&lt;/t&gt; &lt;fex name="Addressee"&gt;to me&lt;/fex&gt; . &lt;fex name="Message"&gt;INI&lt;/fex&gt; MET &lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Means"&gt;Putting his arm around her protectively&lt;/fex&gt; achieved nothing but &lt;t&gt;announcing&lt;/t&gt; &lt;fex name="Addressee"&gt;to their captors&lt;/fex&gt; &lt;fex name="Message"&gt;their vulnerability&lt;/fex&gt; . MET&lt;/ex&gt;
+&lt;ex&gt;&lt;ment&gt;It&lt;/ment&gt; &lt;t&gt;says&lt;/t&gt; &lt;fex name="Message"&gt;a lot&lt;/fex&gt; &lt;fex name="Means"&gt;that he did n't come back&lt;/fex&gt; . &lt;fex name="Addressee"&gt;INI&lt;/fex&gt; MET  &lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:11:41 PST Wed" abbrev="Com" name="Communicator" ID="21">
+        <definition>&lt;def-root&gt;The sentient entity that uses language in the written or spoken modality to convey a Message to another person. 
+&lt;ex&gt;&lt;fex name="Communicator"&gt;He&lt;/fex&gt; finds it hard to &lt;t&gt;communicate&lt;/t&gt; with people, not least his separated parents . &lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="731" cDate="02/07/2001 04:11:41 PST Wed" abbrev="Add" name="Addressee" ID="22">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Addressee&lt;/fen&gt; receives a &lt;fen&gt;Message&lt;/fen&gt; from the &lt;fen&gt;Communicator&lt;/fen&gt;. 
+&lt;ex&gt;The company must be able to &lt;t&gt;communicate&lt;/t&gt; &lt;fex name="Addressee"&gt;to potential customers&lt;/fex&gt; the way in which its product would satisfy their needs, and provide competitive value. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:11:41 PST Wed" abbrev="Msg" name="Message" ID="23">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Message&lt;/fen&gt; A proposition or set of propositions that the &lt;fen&gt;Communicator&lt;/fen&gt; wants the Addressee to believe or take for granted. 
+&lt;ex&gt;How do you &lt;t&gt;communicate&lt;/t&gt; to them &lt;fex name="Message"&gt;that you really like them&lt;/fex&gt; ?  &lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Message" ID="56"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:11:41 PST Wed" abbrev="Top" name="Topic" ID="24">
+        <definition>&lt;def-root&gt;Topic is the entity that the proposition or propositions conveyed relate to, that they are about. 
+&lt;ex&gt;Had someone &lt;t&gt;communicated&lt;/t&gt; to the capital &lt;fex name="Topic"&gt;about the flagrant disregard of the religious law&lt;/fex&gt; ? &lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:11:41 PST Wed" abbrev="Medium" name="Medium" ID="25">
+        <definition>&lt;def-root&gt;The physical or abstract setting in which the Message is conveyed. 
+&lt;ex&gt;Opinions are usually &lt;t&gt;communicated&lt;/t&gt; &lt;fex name="Medium"&gt;over the telephone&lt;/fex&gt; and are often given within 24 hours. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="296" cDate="08/13/2002 11:59:28 PDT Tue" abbrev="Amo" name="Amount_of_information" ID="3535">
+        <definition>&lt;def-root&gt;The amount of information exchanged when communication occurs.
+&lt;ex&gt;He never really &lt;fex name="Amount_of_information"&gt;fully&lt;/fex&gt; &lt;t&gt;communicated&lt;/t&gt; his intentions.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="296" cDate="08/13/2002 11:59:31 PDT Tue" abbrev="Dep-Act" name="Depictive" ID="3536">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Depictive&lt;/fen&gt; describes the state of the &lt;fen&gt;Communicator&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="08/13/2002 11:59:33 PDT Tue" abbrev="Manr" name="Manner" ID="3537">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Manner&lt;/fen&gt; in which the &lt;fen&gt;Communicator&lt;/fen&gt; communicates.&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="08/13/2002 11:59:34 PDT Tue" abbrev="Mns" name="Means" ID="3538">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Means&lt;/fen&gt; by which the &lt;fen&gt;Communicator&lt;/fen&gt; communicates.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Peripheral" cBy="145" cDate="06/11/2003 11:11:30 PDT Wed" abbrev="" name="Time" ID="4613">
+        <definition>&lt;def-root&gt;The time at which the communication takes place.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="145" cDate="06/11/2003 11:19:01 PDT Wed" abbrev="" name="Duration" ID="4614">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Duration&lt;/fen&gt; is the length of time during which the communication takes place.&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="7FFF00" fgColor="000000" coreType="Extra-Thematic" cBy="597" cDate="11/11/2008 11:39:08 PST Tue" abbrev="" name="Frequency" ID="13094">
+        <definition>&lt;def-root&gt;This FE describes the number of times per unit of time that the &lt;fen&gt;Communicator&lt;/fen&gt; conveys a &lt;fen&gt;Message&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="7CCD73" fgColor="FFFFFF" coreType="Peripheral" cBy="589" cDate="08/12/2009 02:41:49 PDT Wed" abbrev="" name="Place" ID="13360">
+        <definition>&lt;def-root&gt;The location where the act of communication occurs.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="000000" coreType="Peripheral" cBy="589" cDate="08/12/2009 02:49:17 PDT Wed" abbrev="" name="Purpose" ID="13362">
+        <definition>&lt;def-root&gt;The purpose for which a &lt;fen&gt;Communicator&lt;/fen&gt; communicates.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Message" ID="23"/>
+        <memberFE name="Topic" ID="24"/>
+    </FEcoreSet>
+    <FEcoreSet>
+        <memberFE name="Communicator" ID="21"/>
+        <memberFE name="Medium" ID="25"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Cause_to_perceive</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Communication_noise</relatedFrame>
+        <relatedFrame>Reassuring</relatedFrame>
+        <relatedFrame>Gesture</relatedFrame>
+        <relatedFrame>Communication_manner</relatedFrame>
+        <relatedFrame>Communication_response</relatedFrame>
+        <relatedFrame>Summarizing</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in">
+        <relatedFrame>Mention</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Uses">
+        <relatedFrame>Topic</relatedFrame>
+        <relatedFrame>Information</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Reasoning</relatedFrame>
+        <relatedFrame>Contacting</relatedFrame>
+        <relatedFrame>Encoding</relatedFrame>
+        <relatedFrame>Volubility</relatedFrame>
+        <relatedFrame>Text_creation</relatedFrame>
+        <relatedFrame>Suasion</relatedFrame>
+        <relatedFrame>Attempt_suasion</relatedFrame>
+        <relatedFrame>Candidness</relatedFrame>
+        <relatedFrame>Bail_decision</relatedFrame>
+        <relatedFrame>Claim_ownership</relatedFrame>
+        <relatedFrame>Commitment</relatedFrame>
+        <relatedFrame>Communication_means</relatedFrame>
+        <relatedFrame>Discussion</relatedFrame>
+        <relatedFrame>Deny_permission</relatedFrame>
+        <relatedFrame>Entering_of_plea</relatedFrame>
+        <relatedFrame>Grant_permission</relatedFrame>
+        <relatedFrame>Justifying</relatedFrame>
+        <relatedFrame>Name_conferral</relatedFrame>
+        <relatedFrame>Notification_of_charges</relatedFrame>
+        <relatedFrame>Prevarication</relatedFrame>
+        <relatedFrame>Hear</relatedFrame>
+        <relatedFrame>Questioning</relatedFrame>
+        <relatedFrame>Reporting</relatedFrame>
+        <relatedFrame>Request</relatedFrame>
+        <relatedFrame>Sentencing</relatedFrame>
+        <relatedFrame>Speak_on_topic</relatedFrame>
+        <relatedFrame>Verdict</relatedFrame>
+        <relatedFrame>Convey_importance</relatedFrame>
+        <relatedFrame>Successfully_communicate_message</relatedFrame>
+        <relatedFrame>Expressing_publicly</relatedFrame>
+        <relatedFrame>Ruling_legally</relatedFrame>
+        <relatedFrame>Concessive</relatedFrame>
+        <relatedFrame>Statement</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="communicate.v" ID="5" lemmaID="7398" cBy="731" cDate="02/08/2001 01:27:25 PST Thu">
+        <definition>FN: convey  a message to someone verbally or non-verbally, e.g. He communicated his feelings mainly through his paintings.</definition>
+        <sentenceCount annotated="43" total="216"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="communicate"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="speech.n" ID="4630" lemmaID="45337" cBy="243" cDate="01/08/2002 11:51:52 PST Tue">
+        <definition>FN: the faculty of speech</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="speech"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="indicate.v" ID="10151" lemmaID="19625" cBy="445" cDate="03/01/2004 02:52:47 PST Mon">
+        <definition>COD: point out; show.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="indicate"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="signal.v" ID="10152" lemmaID="35871" cBy="445" cDate="03/01/2004 02:56:31 PST Mon">
+        <definition>COD: instruct or indicate by means of a signal.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="signal"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="communication_((act)).n" ID="13211" lemmaID="7399" cBy="618" cDate="06/06/2006 01:41:34 PDT Tue">
+        <definition>COD: the action of communicating.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="communication"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="communication_((entity)).n" ID="13212" lemmaID="7399" cBy="618" cDate="06/06/2006 01:46:39 PDT Tue">
+        <definition>COD: a letter or message containing information or news.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="communication"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="contact.n" ID="13270" lemmaID="45542" cBy="303" cDate="06/19/2006 05:22:25 PDT Mon">
+        <definition>COD: a communication or relationship.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="contact"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="codeword.n" ID="13272" lemmaID="50379" cBy="303" cDate="06/19/2006 05:43:29 PDT Mon">
+        <definition>FN: A word or phrase to protect secrecy.  </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="codeword"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="password.n" ID="13326" lemmaID="27981" cBy="303" cDate="06/27/2006 12:44:27 PDT Tue">
+        <definition>COD:  secret word or phrase used to gain admission to something.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="password"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="convey.v" ID="13698" lemmaID="8210" cBy="361" cDate="11/30/2006 05:01:24 PST Thu">
+        <definition>COD: communicate (an idea, impression, or feeling).</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="convey"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="say.v" ID="15315" lemmaID="34276" cBy="976" cDate="03/17/2009 04:00:30 PDT Tue">
+        <definition>FN: communicate a message nonverbally</definition>
+        <sentenceCount annotated="22" total="22"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="say"/>
+    </lexUnit>
+</frame>

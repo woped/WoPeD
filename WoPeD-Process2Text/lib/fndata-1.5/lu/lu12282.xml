@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="N" name="military.n" ID="12282" frame="Military" frameID="1514" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="des" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="dom" name="Domain"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="for" name="Force"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="goa" name="Goal"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="mem" name="Members"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="per" name="Period_of_existence"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core" abbrev="pos" name="Possessor"/>
+        </frame>
+    </header>
+    <definition>FN: the armed forces, particularly of a nation.</definition>
+    <lexeme POS="N" name="military"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Force"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Force"/>
+                <annoSet ID="2592751"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Possessor"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Possessor"/>
+                <annoSet ID="2592751"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Force"/>
+            <FE name="Possessor"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Force"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Possessor"/>
+                <annoSet ID="2592751"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-Wbritish,german,american-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="177" aPos="50016126" ID="1579066">
+            <text>MacArthur criticised the American military for wishing to ` scuttle the Pacific &quot; .</text>
+            <annotationSet cDate="07/16/2010 01:35:45 PDT Fri" status="UNANN" ID="2592750">
+                <layer rank="1" name="PENN">
+                    <label end="8" start="0" name="NP"/>
+                    <label end="19" start="10" name="VVD"/>
+                    <label end="23" start="21" name="dt"/>
+                    <label end="32" start="25" name="jj"/>
+                    <label end="41" start="34" name="nn"/>
+                    <label end="45" start="43" name="in"/>
+                    <label end="53" start="47" name="VVG"/>
+                    <label end="56" start="55" name="to"/>
+                    <label end="66" start="60" name="VV"/>
+                    <label end="70" start="68" name="dt"/>
+                    <label end="78" start="72" name="NP"/>
+                    <label end="82" start="82" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/16/2010 01:35:46 PDT Fri" status="MANUAL" ID="2592751">
+                <layer rank="1" name="Target">
+                    <label cBy="571" end="41" start="34" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="571" feID="8254" end="32" start="25" name="Possessor"/>
+                    <label cBy="571" feID="8253" end="41" start="34" name="Force"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="32" start="25" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="32" start="25" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-Wprivate-T-(1)"/>
+    <subCorpus name="03-Wfrench-T-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

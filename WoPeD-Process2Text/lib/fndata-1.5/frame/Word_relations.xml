@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="09/26/2002 05:39:36 PDT Thu" name="Word_relations" ID="404" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;One linguistic unit, &lt;fen&gt;Sign_1&lt;/fen&gt;, has a relation to another linguistic unit, &lt;fen&gt;Sign_2&lt;/fen&gt;. This relation may be semantic, phonological, orthographic, or distributional in nature. The parameter along which the two signs are set in relation to each other is incorporated in the meaning of the target words in this frame. When the relation is symmetrical, the two linguistic units can be expressed jointly, &lt;fen&gt;Signs&lt;/fen&gt;. Otherwise they have to be expressed disjointly. Ordinarily it is assumed that one linguistic unit has exactly one meaning but in cases where this is not so, a set of &lt;fen&gt;Circumstances&lt;/fen&gt; may be specified that helps pick out the relevant sense.
+
+&lt;ex&gt; &lt;fex name="Signs"&gt;Happy and sad&lt;/fex&gt; are &lt;t&gt;antonyms&lt;/t&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Circumstances"&gt;In one sense&lt;/fex&gt;, &lt;fex name="Sign_1"&gt;dog&lt;/fex&gt; is a &lt;t&gt;hyponym&lt;/t&gt; of &lt;fex name="Sign_2"&gt;itself&lt;/fex&gt;.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="09/26/2002 06:14:13 PDT Thu" abbrev="Sgn-1" name="Sign_1" ID="3732">
+        <definition>&lt;def-root&gt;FN: a linguistic unit that carries semantic, phonological or syntactic information.
+&lt;ex&gt; In one sense, &lt;fex name="Sign_1"&gt;dog&lt;/fex&gt; is a &lt;t&gt;hyponym&lt;/t&gt; of itself.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <requiresFE name="Sign_2" ID="3733"/>
+        <excludesFE name="Signs" ID="3734"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="09/26/2002 06:14:29 PDT Thu" abbrev="Sgn-2" name="Sign_2" ID="3733">
+        <definition>&lt;def-root&gt;FN: a linguistic unit
+
+&lt;ex&gt;In one sense, dog is a &lt;t&gt;hyponym&lt;/t&gt; of &lt;fex name="Sign_2"&gt;itself&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <requiresFE name="Sign_1" ID="3732"/>
+        <excludesFE name="Signs" ID="3734"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="09/26/2002 06:14:45 PDT Thu" abbrev="Sgns" name="Signs" ID="3734">
+        <definition>&lt;def-root&gt;FN: Linguistic units
+&lt;ex&gt; &lt;fex name="Signs"&gt;Happy and sad&lt;/fex&gt; are &lt;t&gt;antonyms&lt;/t&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="09/26/2002 06:54:43 PDT Thu" abbrev="cir" name="Circumstances" ID="3739">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Circumstances&lt;/fen&gt; are conditions under which the relationship holds between &lt;fen&gt;Sign_1&lt;/fen&gt; and &lt;fen&gt;Sign_2&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Linguistic_meaning</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="N" name="synonym.n" ID="7474" lemmaID="39290" cBy="605" cDate="09/26/2002 06:17:48 PDT Thu">
+        <definition>COD:   a word or phrase that means the same as another word or phrase in the same language, e.g. shut and close.</definition>
+        <sentenceCount annotated="13" total="121"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="synonym"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="antonym.n" ID="7475" lemmaID="1614" cBy="605" cDate="09/26/2002 06:57:52 PDT Thu">
+        <definition>COD:    a word opposite in meaning to another</definition>
+        <sentenceCount annotated="5" total="10"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="antonym"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="contrary.n" ID="7476" lemmaID="8129" cBy="605" cDate="09/26/2002 07:09:42 PDT Thu">
+        <definition>FN: a gradable antonym</definition>
+        <sentenceCount annotated="0" total="32"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="contrary"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="hyponym.n" ID="7477" lemmaID="46134" cBy="605" cDate="09/26/2002 07:17:40 PDT Thu">
+        <definition>FN: denoting a subtype of what another lexical unit denotes</definition>
+        <sentenceCount annotated="3" total="11"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="hyponym"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="hypernym.n" ID="7491" lemmaID="46142" cBy="605" cDate="09/27/2002 11:53:29 PDT Fri">
+        <definition>FN: a linguistic expression denoting a superordinate concept</definition>
+        <sentenceCount annotated="0" total="1"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="hypernym"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="synonymous.a" ID="7492" lemmaID="39291" cBy="605" cDate="09/27/2002 11:58:20 PDT Fri">
+        <definition>COD:  (of a word or phrase) having the same meaning as another word or phrase in the same language.</definition>
+        <sentenceCount annotated="9" total="95"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="synonymous"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="meronym.n" ID="7493" lemmaID="46143" cBy="605" cDate="09/27/2002 11:59:54 PDT Fri">
+        <definition>FN: a linguistic expression that names a part of a larger whole</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="meronym"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="holonym.n" ID="7494" lemmaID="46144" cBy="605" cDate="09/27/2002 12:00:46 PDT Fri">
+        <definition>FN: a linguistic expressions that names the whole of which a given linguistic expression is a part</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="holonym"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="homophone.n" ID="7495" lemmaID="18302" cBy="605" cDate="09/27/2002 12:04:12 PDT Fri">
+        <definition>COD:  each of two or more words having the same pronunciation but different meanings, origins, or spelling (e.g. new and knew).</definition>
+        <sentenceCount annotated="5" total="17"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="homophone"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="homograph.n" ID="7496" lemmaID="18300" cBy="605" cDate="09/27/2002 12:05:15 PDT Fri">
+        <definition>COD: each of two or more words spelled the same but having different meanings and origins.</definition>
+        <sentenceCount annotated="0" total="12"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="homograph"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="collocate.n" ID="7497" lemmaID="46145" cBy="605" cDate="09/27/2002 12:05:26 PDT Fri">
+        <definition>FN: a linguistic expression that fequently co-occurs with another linguistic expression</definition>
+        <sentenceCount annotated="2" total="6"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="collocate"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="V" name="collocate.v" ID="7498" lemmaID="7193" cBy="605" cDate="09/27/2002 12:07:27 PDT Fri">
+        <definition>FN: to frequently co-occur  with another linguistic expression</definition>
+        <sentenceCount annotated="1" total="2"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="collocate"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="homonym.n" ID="7517" lemmaID="18301" cBy="605" cDate="10/03/2002 05:37:25 PDT Thu">
+        <definition>COD:    each of two or more words having the same spelling and pronunciation but different meanings and origins (e.g. pole #1  and pole #2 ).</definition>
+        <sentenceCount annotated="0" total="14"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="homonym"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="homophonous.a" ID="7519" lemmaID="46151" cBy="605" cDate="10/03/2002 06:30:25 PDT Thu">
+        <definition>COD:     (of a word or words) having the same pronunciation as another but different meaning, origin, or spelling</definition>
+        <sentenceCount annotated="4" total="6"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="homophonous"/>
+    </lexUnit>
+</frame>

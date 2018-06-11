@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="06/21/2005 06:46:04 PDT Tue" name="Estimating" ID="1513" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A &lt;fen&gt;Cognizer&lt;/fen&gt; carries out an approximate calculation or considers some &lt;fen&gt;Evidence&lt;/fen&gt; so as to arrive at an approximate &lt;fen&gt;Value&lt;/fen&gt; for some &lt;fen&gt;Feature&lt;/fen&gt; of an &lt;fen&gt;Item&lt;/fen&gt;. 
+
+There are two alternative construals. In one, the &lt;fen&gt;Feature&lt;/fen&gt; is presented as a &lt;fen&gt;Question&lt;/fen&gt; about the &lt;fen&gt;Item&lt;/fen&gt; and the &lt;fen&gt;Value&lt;/fen&gt; is conceived as an answer to the &lt;fen&gt;Question&lt;/fen&gt;.
+
+In the second construal,  a fully propositional &lt;fen&gt;Estimation&lt;/fen&gt; by the &lt;fen&gt;Cognizer&lt;/fen&gt; is presented which expresses the result of the &lt;fen&gt;Cognizer&lt;/fen&gt;'s approximation.
+
+&lt;ex&gt;&lt;fex name="Time"&gt;Until 1971&lt;/fex&gt;, &lt;fex name="Question"&gt;dolphin mortality&lt;/fex&gt; could be &lt;t&gt;estimated&lt;/t&gt; &lt;fex name="Evidence"&gt;only from analyses of vessels ' logbooks&lt;/fex&gt; -- and the figures are probably underestimates. &lt;fex name="Cognizer"&gt;CNI&lt;/fex&gt;&lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="Cognizer"&gt;The UK government&lt;/fex&gt; &lt;t&gt;estimates&lt;/t&gt; &lt;fex name="Estimation"&gt;that there is sufficient gas in the UK sector to meet UK demand for some 17 to 35 years&lt;/fex&gt; .&lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="Cognizer"&gt;The astronomers&lt;/fex&gt; &lt;t&gt;estimated&lt;/t&gt; &lt;fex name="Question"&gt;how much energy was needed to create the cavities by calculating the density, temperature and pressure of the hot gas&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="Item"&gt;The banner&lt;/fex&gt; is &lt;t&gt;estimated&lt;/t&gt; &lt;fex name="Feature"&gt;in value&lt;/fex&gt; &lt;fex name="Value"&gt;at $500&lt;/fex&gt;. &lt;fex name="Cognizer"&gt;CNI&lt;/fex&gt;&lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="Time"&gt;When Congress passed the Medicare bill in late 2003&lt;/fex&gt;, &lt;fex name="Cognizer"&gt;the Congressional Budget Office&lt;/fex&gt; &lt;t&gt;estimated&lt;/t&gt; &lt;fex name="que"&gt;its cost&lt;/fex&gt; &lt;fex name="Value"&gt;at $395 billion over 10 years&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="Cognizer"&gt;We&lt;/fex&gt; estimated &lt;fex name="que"&gt;how much we had&lt;/fex&gt; &lt;fex name="Value"&gt;at around 12 thousand&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="06/21/2005 06:54:18 PDT Tue" abbrev="cog" name="Cognizer" ID="8235">
+        <definition>&lt;def-root&gt;The individual who considers evidence or performs calculations to arrive at an approximation.
+
+&lt;ex&gt;&lt;fex name="cog"&gt;The government&lt;/fex&gt; &lt;t&gt;estimated&lt;/t&gt; the cost of meeting EC water standards at £3-4 billion.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="06/21/2005 07:01:37 PDT Tue" abbrev="fea" name="Feature" ID="8236">
+        <definition>&lt;def-root&gt;The feature is a scalar property of the &lt;fen&gt;Item&lt;/fen&gt;.
+
+&lt;ex&gt;In one march from 42 Street down to Washington Square Park, the crowds were
+&lt;t&gt;estimated&lt;/t&gt; &lt;fex name="fea"&gt;in size&lt;/fex&gt; from 125000 (NYPD estimate) to over 200000 (march organizers).&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <requiresFE name="Item" ID="8238"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="06/21/2005 07:04:34 PDT Tue" abbrev="val" name="Value" ID="8237">
+        <definition>&lt;def-root&gt;The position or area  on the &lt;fen&gt;Feature&lt;/fen&gt; scale that the &lt;fen&gt;Cognizer&lt;/fen&gt; concludes the &lt;fen&gt;Item&lt;/fen&gt; occupies.
+
+&lt;ex&gt;Sotheby 's have &lt;t&gt;estimated&lt;/t&gt; its value &lt;fex name="val"&gt;at $10m-$14m&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Estimation" ID="8252"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="06/21/2005 07:06:47 PDT Tue" abbrev="ite" name="Item" ID="8238">
+        <definition>&lt;def-root&gt;The entity that possesses the &lt;fen&gt;Feature&lt;/fen&gt; whose &lt;fen&gt;Value&lt;/fen&gt; the &lt;fen&gt;Cognizer&lt;/fen&gt; seeks to approximate.
+
+&lt;ex&gt;I &lt;t&gt;estimated&lt;/t&gt; &lt;fex name="Item"&gt;the house&lt;/fex&gt; at about 60-65% full.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <requiresFE name="Value" ID="8237"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="06/21/2005 07:09:57 PDT Tue" abbrev="evi" name="Evidence" ID="8248">
+        <definition>&lt;def-root&gt;Some fact perceived by the &lt;fen&gt;Cognizer&lt;/fen&gt; which contributes to their estimation of the &lt;fen&gt;Feature&lt;/fen&gt;'s &lt;fen&gt;Value&lt;/fen&gt;.
+
+&lt;ex&gt;He then needs to &lt;t&gt;estimate&lt;/t&gt; the desired shelf stock size &lt;fex name="Evidence"&gt;on the basis of this record of use&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="06/21/2005 07:11:49 PDT Tue" abbrev="tim" name="Time" ID="8249">
+        <definition>&lt;def-root&gt;The time period during which the &lt;fen&gt;Cognizer&lt;/fen&gt; forms the estimate of the &lt;fen&gt;Feature&lt;/fen&gt;'s &lt;fen&gt;Value&lt;/fen&gt;.
+
+&lt;ex&gt;The US Forest Service &lt;t&gt;estimated&lt;/t&gt; &lt;fex name="Time"&gt;last year&lt;/fex&gt; that 45 million piñons have died so far in north-central New Mexico.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="06/21/2005 07:13:30 PDT Tue" abbrev="pla" name="Place" ID="8251">
+        <definition>&lt;def-root&gt;The location in which the &lt;fen&gt;Cognizer&lt;/fen&gt; forms their estimate.
+
+&lt;ex&gt;&lt;fex name="Place"&gt;At the London School of Economics&lt;/fex&gt; they &lt;t&gt;estimated&lt;/t&gt; that China would have to spend 2% of gross. domestic product on higher. education for 15 years&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="d0d0d0" fgColor="000000" coreType="Core" cBy="605" cDate="06/21/2005 07:18:57 PDT Tue" abbrev="est" name="Estimation" ID="8252">
+        <definition>&lt;def-root&gt;
+A proposition expressing the &lt;fen&gt;Cognizer&lt;/fen&gt;'s approximation of a &lt;fen&gt;Feature&lt;/fen&gt;'s &lt;fen&gt;Value&lt;/fen&gt;.
+
+&lt;ex&gt;At the time they &lt;t&gt;estimated&lt;/t&gt; &lt;fex name="est"&gt;there to be as many as four million to the acre&lt;/fex&gt;.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="06/21/2005 07:34:28 PDT Tue" abbrev="que" name="Question" ID="8256">
+        <definition>&lt;def-root&gt;An open proposition for which the &lt;fen&gt;Cognizer&lt;/fen&gt; seeks to approximate the &lt;fen&gt;Value&lt;/fen&gt; of a variable.
+
+&lt;ex&gt;Then Sandia &lt;t&gt;estimated&lt;/t&gt; &lt;fex name="que"&gt;how many people would die and be injured within the first year due to their radiation exposure&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt; He &lt;t&gt;estimated&lt;/t&gt; &lt;fex name="que"&gt;the length of his nose&lt;/fex&gt; at 6 inches but it was only 2 inches.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <requiresFE name="Value" ID="8237"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="303" cDate="06/30/2005 05:15:44 PDT Thu" abbrev="" name="Means" ID="8402">
+        <definition>&lt;def-root&gt;An intentional action performed by the &lt;fen&gt;Cognizer&lt;/fen&gt; enabling estimating. &lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="000000" coreType="Peripheral" cBy="303" cDate="07/05/2005 02:08:05 PDT Tue" abbrev="" name="Manner" ID="8403">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Manner&lt;/fen&gt; is used for any expression which describes a property of the activity of Estimating &lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="000000" coreType="Extra-Thematic" cBy="303" cDate="07/05/2005 02:16:22 PDT Tue" abbrev="" name="Circumstances" ID="8404">
+        <definition>&lt;def-root&gt;Some specification of the &lt;fen&gt;Circumstances&lt;/fen&gt; under which the Cognizer estimates.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="7FFF00" fgColor="000000" coreType="Extra-Thematic" cBy="303" cDate="07/05/2005 02:38:31 PDT Tue" abbrev="" name="Explanation" ID="8405">
+        <definition>&lt;def-root&gt;A state-of-affairs enabling the estimating to occur.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="361" cDate="08/18/2006 03:56:43 PDT Fri" abbrev="" name="Result" ID="10519">
+        <definition>&lt;def-root&gt;This FE describes how the &lt;fen&gt;Estimation&lt;/fen&gt; made by the &lt;fen&gt;Cognizer&lt;/fen&gt; corresponds to reality. This FE can be represented by "correctly" or "wrong." &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="EEE8AA" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="08/21/2006 10:20:19 PDT Mon" abbrev="" name="Frequency" ID="10521">
+        <definition>&lt;def-root&gt;This frame element is defined as the number of times an event occurs per some unit of time. &lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Question" ID="8256"/>
+        <memberFE name="Feature" ID="8236"/>
+        <memberFE name="Estimation" ID="8252"/>
+        <memberFE name="Item" ID="8238"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Mental_activity</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Estimated_value</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="estimate.v" ID="12288" lemmaID="13143" cBy="605" cDate="06/21/2005 07:20:50 PDT Tue">
+        <definition>COD: form an estimate of</definition>
+        <sentenceCount annotated="53" total="240"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="estimate"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="estimation.n" ID="12289" lemmaID="13144" cBy="605" cDate="06/21/2005 07:22:09 PDT Tue">
+        <definition>FN: the act of estimating (some feature's value)</definition>
+        <sentenceCount annotated="14" total="146"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="estimation"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="guess.v" ID="13464" lemmaID="17005" cBy="303" cDate="08/15/2006 01:04:31 PDT Tue">
+        <definition>COD: estimate or suppose (something) without sufficient information to be sure of being correct.</definition>
+        <sentenceCount annotated="31" total="295"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="guess"/>
+    </lexUnit>
+</frame>

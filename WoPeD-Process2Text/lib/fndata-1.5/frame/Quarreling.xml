@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="06/24/2003 12:50:12 PDT Tue" name="Quarreling" ID="710" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A group of &lt;fen&gt;Arguers&lt;/fen&gt; (also expressible as &lt;fen&gt;Arguer1&lt;/fen&gt; and &lt;fen&gt;Arguer2&lt;/fen&gt;) express incompatible opinions or beliefs about an &lt;fen&gt;Issue&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="06/24/2003 01:12:23 PDT Tue" abbrev="Args" name="Arguers" ID="4662">
+        <definition>&lt;def-root&gt;A group of people in an argument.
+
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="06/24/2003 01:14:50 PDT Tue" abbrev="Arg1" name="Arguer1" ID="4663">
+        <definition>&lt;def-root&gt;A person who is arguing with Arguer2.&lt;/def-root&gt;</definition>
+        <requiresFE name="Arguer2" ID="4664"/>
+        <excludesFE name="Arguers" ID="4662"/>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="06/24/2003 01:17:53 PDT Tue" abbrev="Arg2" name="Arguer2" ID="4664">
+        <definition>&lt;def-root&gt;The person who is being argued with by &lt;fen&gt;Arguer1&lt;/fen&gt;.
+
+&lt;ex&gt;Why are you &lt;t&gt;arguing&lt;/t&gt; &lt;fex name="Arg2"&gt;with us&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <requiresFE name="Arguer1" ID="4663"/>
+        <excludesFE name="Arguers" ID="4662"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="06/24/2003 01:20:01 PDT Tue" abbrev="Iss" name="Issue" ID="4665">
+        <definition>&lt;def-root&gt;The the thing the the &lt;fen&gt;Arguers&lt;/fen&gt; are arguing over or about.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="06/24/2003 04:16:24 PDT Tue" abbrev="Freq" name="Frequency" ID="4668">
+        <definition>&lt;def-root&gt;The frequency with which the &lt;fen&gt;Arguers&lt;/fen&gt; have a disagreement.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="06/24/2003 04:19:00 PDT Tue" abbrev="Dep" name="Depictive" ID="4669">
+        <definition>&lt;def-root&gt;A state of the &lt;fen&gt;Arguers&lt;/fen&gt;, &lt;fen&gt;Arguer1&lt;/fen&gt;, or &lt;fen&gt;Arguer2&lt;/fen&gt; which saliently affects the perception of the action.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/24/2003 04:23:00 PDT Tue" abbrev="Dur" name="Duration" ID="4670">
+        <definition>&lt;def-root&gt;The amount of time that the &lt;fen&gt;Arguers&lt;/fen&gt; spend in the altercation.&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/24/2003 04:24:36 PDT Tue" abbrev="Man" name="Manner" ID="4672">
+        <definition>&lt;def-root&gt;A description of the dispute which is not covered by more specific FEs, including secondary effects (&lt;ment&gt;quietly, loudly&lt;/ment&gt;), and general descriptions comparing events (&lt;ment&gt;the same way&lt;/ment&gt;). It may also indicate salient characteristics of the &lt;fen&gt;Arguers&lt;/fen&gt; that affect the action (&lt;ment&gt;presumptuously, coldly, deliberately, eagerly, carefully&lt;/ment&gt;).
+&lt;ex&gt;They &lt;t&gt;squabbled&lt;/t&gt; &lt;fex name="Manner"&gt;heatedly&lt;/fex&gt; long into the night.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/24/2003 04:31:47 PDT Tue" abbrev="Mns" name="Means" ID="4676">
+        <definition>&lt;def-root&gt;The action that the &lt;fen&gt;Arguers&lt;/fen&gt; perform in order to quarrel with each other.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/24/2003 04:36:55 PDT Tue" abbrev="Med" name="Medium" ID="4678">
+        <definition>&lt;def-root&gt;The equipment, language, or other entity that the &lt;fen&gt;Arguers&lt;/fen&gt; use to pursue their argument.
+
+&lt;ex&gt;When they couldn't get together, they &lt;t&gt;bickered&lt;/t&gt; &lt;fex name="Med"&gt;over the phone&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;Having them &lt;t&gt;squabble&lt;/t&gt; &lt;fex name="Med"&gt;in french&lt;/fex&gt; is better than if I understood it.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/08/2005 06:42:17 PST Thu" abbrev="amo" name="Amount_of_discussion" ID="9710">
+        <definition>&lt;def-root&gt;The degree to which the argument has been finished.
+
+&lt;ex&gt;If you don't believe me now, we'll just have to &lt;t&gt;argue&lt;/t&gt; it &lt;fex name="amo"&gt;out&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/08/2005 06:45:08 PST Thu" abbrev="pur" name="Purpose" ID="9711">
+        <definition>&lt;def-root&gt;The state-of-affairs that the &lt;fen&gt;Arguers&lt;/fen&gt; or &lt;fen&gt;Arguer1&lt;/fen&gt; hope to bring about.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/08/2005 06:46:28 PST Thu" abbrev="pla" name="Place" ID="9712">
+        <definition>&lt;def-root&gt;The location at which the &lt;fen&gt;Arguers&lt;/fen&gt; quarrel&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/08/2005 06:48:10 PST Thu" abbrev="tim" name="Time" ID="9713">
+        <definition>&lt;def-root&gt;The time when the argument takes place.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Discussion</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Be_in_agreement_on_assessment</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="FN1_Sent" POS="V" name="argue.v" ID="8921" lemmaID="1906" cBy="664" cDate="06/24/2003 04:02:31 PDT Tue">
+        <definition>COD: exchange diverging or opposite views heatedly. </definition>
+        <sentenceCount annotated="38" total="339"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="argue"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="quarrel.v" ID="8922" lemmaID="31429" cBy="664" cDate="06/24/2003 04:03:40 PDT Tue">
+        <definition>COD: an angry argument or disagreement.</definition>
+        <sentenceCount annotated="20" total="109"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="quarrel"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="bicker.v" ID="8923" lemmaID="3513" cBy="664" cDate="06/24/2003 04:05:05 PDT Tue">
+        <definition>COD: argue about petty and trivial matters.</definition>
+        <sentenceCount annotated="21" total="24"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="bicker"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="altercation.n" ID="8924" lemmaID="1139" cBy="664" cDate="06/24/2003 04:22:18 PDT Tue">
+        <definition>COD: a noisy argument or disagreement.</definition>
+        <sentenceCount annotated="9" total="48"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="altercation"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="argument.n" ID="8927" lemmaID="1907" cBy="664" cDate="06/24/2003 05:12:42 PDT Tue">
+        <definition>COD: a heated exchange of diverging or opposite views.</definition>
+        <sentenceCount annotated="23" total="396"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="argument"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="bickering.n" ID="8928" lemmaID="11" cBy="664" cDate="06/24/2003 05:14:04 PDT Tue">
+        <definition>FN: pointless argument.</definition>
+        <sentenceCount annotated="6" total="12"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="bickering"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="disagreement.n" ID="8929" lemmaID="10793" cBy="664" cDate="06/24/2003 05:15:27 PDT Tue">
+        <definition>FN: a quarrel.</definition>
+        <sentenceCount annotated="24" total="219"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="disagreement"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="dispute.n" ID="8930" lemmaID="11123" cBy="664" cDate="06/24/2003 05:16:15 PDT Tue">
+        <definition>COD: a disagreement or argument</definition>
+        <sentenceCount annotated="50" total="62"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="dispute"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="disputation.n" ID="8931" lemmaID="11120" cBy="664" cDate="06/24/2003 05:17:00 PDT Tue">
+        <definition>COD: debate or argument. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="disputation"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="fight.v" ID="8932" lemmaID="14321" cBy="664" cDate="06/24/2003 05:19:20 PDT Tue">
+        <definition>COD:  quarrel or argue</definition>
+        <sentenceCount annotated="12" total="306"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="fight"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="fight.n" ID="8933" lemmaID="14320" cBy="664" cDate="06/24/2003 05:20:02 PDT Tue">
+        <definition>FN: an argument.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="fight"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="quarrel.n" ID="8935" lemmaID="31428" cBy="664" cDate="06/24/2003 05:57:29 PDT Tue">
+        <definition>COD: an angry argument or disagreement.</definition>
+        <sentenceCount annotated="19" total="24"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="quarrel"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="V" name="quibble.v" ID="8936" lemmaID="31498" cBy="664" cDate="06/24/2003 05:58:18 PDT Tue">
+        <definition>COD: argue about a trivial matter. </definition>
+        <sentenceCount annotated="3" total="40"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="quibble"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="row.n" ID="8937" lemmaID="33648" cBy="664" cDate="06/24/2003 05:58:59 PDT Tue">
+        <definition>COD: an acrimonious quarrel.</definition>
+        <sentenceCount annotated="77" total="339"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="row"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="row.v" ID="8938" lemmaID="33650" cBy="664" cDate="06/24/2003 05:59:56 PDT Tue">
+        <definition>COD:  have a row.</definition>
+        <sentenceCount annotated="13" total="129"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="row"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="spat.n" ID="8939" lemmaID="37188" cBy="664" cDate="06/24/2003 06:00:50 PDT Tue">
+        <definition>COD: a petty quarrel.</definition>
+        <sentenceCount annotated="8" total="38"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="spat"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="squabble.v" ID="8940" lemmaID="37594" cBy="664" cDate="06/24/2003 06:01:36 PDT Tue">
+        <definition>COD: engage in a squabble. </definition>
+        <sentenceCount annotated="6" total="34"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="squabble"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="squabble.n" ID="8941" lemmaID="37593" cBy="664" cDate="06/24/2003 06:02:16 PDT Tue">
+        <definition>COD: a trivial noisy quarrel.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="squabble"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="tiff.n" ID="8942" lemmaID="40402" cBy="664" cDate="06/24/2003 06:03:19 PDT Tue">
+        <definition>COD: a quarrel. </definition>
+        <sentenceCount annotated="29" total="74"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="tiff"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="wrangle.v" ID="8943" lemmaID="44552" cBy="664" cDate="06/24/2003 06:03:55 PDT Tue">
+        <definition>COD: engage in a wrangle.</definition>
+        <sentenceCount annotated="5" total="40"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="wrangle"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="wrangling.n" ID="8956" lemmaID="45115" cBy="664" cDate="06/25/2003 01:36:49 PDT Wed">
+        <definition>FN: intense indecisive disagreement.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="wrangling"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="wrangle.n" ID="13993" lemmaID="44551" cBy="361" cDate="03/15/2007 04:34:07 PDT Thu">
+        <definition>COD: a long and complicated dispute or argument.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="wrangle"/>
+    </lexUnit>
+</frame>

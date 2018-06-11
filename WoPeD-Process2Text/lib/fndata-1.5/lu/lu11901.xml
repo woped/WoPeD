@@ -1,0 +1,792 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="abut.v" ID="11901" frame="Locative_relation" frameID="199" totalAnnotated="13" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Extra-Thematic" abbrev="Dir" name="Direction"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Dist" name="Distance"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Fig" name="Figure"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core-Unexpressed" abbrev="" name="Figures"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="Grnd" name="Ground"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: (of land or a building) be next to or have a common boundary with</definition>
+    <lexeme POS="V" name="abut"/>
+    <valences>
+        <FERealization total="13">
+            <FE name="Figure"/>
+            <pattern total="13">
+                <valenceUnit GF="Ext" PT="NP" FE="Figure"/>
+                <annoSet ID="2100289"/>
+                <annoSet ID="2100291"/>
+                <annoSet ID="2100293"/>
+                <annoSet ID="2100295"/>
+                <annoSet ID="2100299"/>
+                <annoSet ID="2100307"/>
+                <annoSet ID="2100323"/>
+                <annoSet ID="2100331"/>
+                <annoSet ID="2100339"/>
+                <annoSet ID="2100353"/>
+                <annoSet ID="2100367"/>
+                <annoSet ID="2100369"/>
+                <annoSet ID="2100373"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="13">
+            <FE name="Ground"/>
+            <pattern total="9">
+                <valenceUnit GF="Obj" PT="NP" FE="Ground"/>
+                <annoSet ID="2100289"/>
+                <annoSet ID="2100291"/>
+                <annoSet ID="2100293"/>
+                <annoSet ID="2100295"/>
+                <annoSet ID="2100299"/>
+                <annoSet ID="2100323"/>
+                <annoSet ID="2100339"/>
+                <annoSet ID="2100353"/>
+                <annoSet ID="2100373"/>
+            </pattern>
+            <pattern total="4">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Ground"/>
+                <annoSet ID="2100307"/>
+                <annoSet ID="2100331"/>
+                <annoSet ID="2100367"/>
+                <annoSet ID="2100369"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Figure"/>
+            <FE name="Figure"/>
+            <FE name="Ground"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Figure"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Figure"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Ground"/>
+                <annoSet ID="2100373"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Figure"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Figure"/>
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Ground"/>
+                <annoSet ID="2100331"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="11">
+            <FE name="Figure"/>
+            <FE name="Ground"/>
+            <pattern total="8">
+                <valenceUnit GF="Ext" PT="NP" FE="Figure"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Ground"/>
+                <annoSet ID="2100289"/>
+                <annoSet ID="2100291"/>
+                <annoSet ID="2100293"/>
+                <annoSet ID="2100295"/>
+                <annoSet ID="2100299"/>
+                <annoSet ID="2100323"/>
+                <annoSet ID="2100339"/>
+                <annoSet ID="2100353"/>
+            </pattern>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="NP" FE="Figure"/>
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Ground"/>
+                <annoSet ID="2100307"/>
+                <annoSet ID="2100367"/>
+                <annoSet ID="2100369"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-PPon-(1)"/>
+    <subCorpus name="02-NP-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="499" aPos="13346551" ID="1326094">
+            <text>Take a 15-storey building abutting a three-storey structure .</text>
+            <annotationSet cDate="05/05/2005 11:26:43 PDT Thu" status="UNANN" ID="2100288">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="VV"/>
+                    <label end="5" start="5" name="dt"/>
+                    <label end="15" start="7" name="nn"/>
+                    <label end="24" start="17" name="nn"/>
+                    <label end="33" start="26" name="VVG"/>
+                    <label end="35" start="35" name="dt"/>
+                    <label end="48" start="37" name="jj"/>
+                    <label end="58" start="50" name="nn"/>
+                    <label end="60" start="60" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/05/2005 11:26:44 PDT Thu" status="AUTO_EDITED" ID="2100289">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="33" start="26" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="1622" end="24" start="5" name="Figure"/>
+                    <label cBy="664" feID="1621" end="58" start="35" name="Ground"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="24" start="5" name="Ext"/>
+                    <label end="58" start="35" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="24" start="5" name="NP"/>
+                    <label end="58" start="35" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="125" aPos="27879880" ID="1326095">
+            <text>East of the towns of Biggleswade and Sandy , both of which lie on the A1 highway from London to the north , the county of Bedfordshire abuts Cambridgeshire .</text>
+            <annotationSet cDate="05/05/2005 11:26:46 PDT Thu" status="UNANN" ID="2100290">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="NP"/>
+                    <label end="6" start="5" name="in"/>
+                    <label end="10" start="8" name="dt"/>
+                    <label end="16" start="12" name="nns"/>
+                    <label end="19" start="18" name="in"/>
+                    <label end="31" start="21" name="NP"/>
+                    <label end="35" start="33" name="cc"/>
+                    <label end="41" start="37" name="NP"/>
+                    <label end="43" start="43" name=","/>
+                    <label end="48" start="45" name="dt"/>
+                    <label end="51" start="50" name="in"/>
+                    <label end="57" start="53" name="wdt"/>
+                    <label end="61" start="59" name="VVP"/>
+                    <label end="64" start="63" name="in"/>
+                    <label end="68" start="66" name="dt"/>
+                    <label end="71" start="70" name="jj"/>
+                    <label end="79" start="73" name="nn"/>
+                    <label end="84" start="81" name="in"/>
+                    <label end="91" start="86" name="NP"/>
+                    <label end="94" start="93" name="to"/>
+                    <label end="98" start="96" name="dt"/>
+                    <label end="104" start="100" name="nn"/>
+                    <label end="106" start="106" name=","/>
+                    <label end="110" start="108" name="dt"/>
+                    <label end="117" start="112" name="nn"/>
+                    <label end="120" start="119" name="in"/>
+                    <label end="133" start="122" name="NP"/>
+                    <label end="139" start="135" name="VVZ"/>
+                    <label end="154" start="141" name="NP"/>
+                    <label end="156" start="156" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/05/2005 11:26:48 PDT Thu" status="AUTO_EDITED" ID="2100291">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="139" start="135" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="1622" end="133" start="108" name="Figure"/>
+                    <label cBy="605" feID="1621" end="154" start="141" name="Ground"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="133" start="108" name="Ext"/>
+                    <label end="154" start="141" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="133" start="108" name="NP"/>
+                    <label end="154" start="141" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="947" aPos="75967658" ID="1326096">
+            <text>It is clear that the existing site already disturbs the pleasing pattern of enclosed grass fields abutting an attractive cliff slope of natural vegetation .</text>
+            <annotationSet cDate="05/05/2005 11:26:51 PDT Thu" status="UNANN" ID="2100292">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="4" start="3" name="VBZ"/>
+                    <label end="10" start="6" name="jj"/>
+                    <label end="15" start="12" name="in"/>
+                    <label end="19" start="17" name="dt"/>
+                    <label end="28" start="21" name="jj"/>
+                    <label end="33" start="30" name="nn"/>
+                    <label end="41" start="35" name="rb"/>
+                    <label end="50" start="43" name="VVZ"/>
+                    <label end="54" start="52" name="dt"/>
+                    <label end="63" start="56" name="jj"/>
+                    <label end="71" start="65" name="nn"/>
+                    <label end="74" start="73" name="in"/>
+                    <label end="83" start="76" name="VVN"/>
+                    <label end="89" start="85" name="nn"/>
+                    <label end="96" start="91" name="nns"/>
+                    <label end="105" start="98" name="VVG"/>
+                    <label end="108" start="107" name="dt"/>
+                    <label end="119" start="110" name="jj"/>
+                    <label end="125" start="121" name="nn"/>
+                    <label end="131" start="127" name="nn"/>
+                    <label end="134" start="133" name="in"/>
+                    <label end="142" start="136" name="jj"/>
+                    <label end="153" start="144" name="nn"/>
+                    <label end="155" start="155" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/05/2005 11:26:57 PDT Thu" status="MANUAL" ID="2100293">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="105" start="98" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="1622" end="96" start="76" name="Figure"/>
+                    <label cBy="605" feID="1621" end="153" start="107" name="Ground"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="96" start="76" name="Ext"/>
+                    <label end="153" start="107" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="96" start="76" name="NP"/>
+                    <label end="153" start="107" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="180" aPos="29672555" ID="1326097">
+            <text>Those on its northern side had ample yards or gardens abutting Great Prescott Street , which itself gave onto Goodman 's Fields .</text>
+            <annotationSet cDate="05/05/2005 11:26:58 PDT Thu" status="UNANN" ID="2100294">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="dt"/>
+                    <label end="7" start="6" name="in"/>
+                    <label end="11" start="9" name="PP$"/>
+                    <label end="20" start="13" name="jj"/>
+                    <label end="25" start="22" name="nn"/>
+                    <label end="29" start="27" name="VHD"/>
+                    <label end="35" start="31" name="jj"/>
+                    <label end="41" start="37" name="nns"/>
+                    <label end="44" start="43" name="cc"/>
+                    <label end="52" start="46" name="nns"/>
+                    <label end="61" start="54" name="VVG"/>
+                    <label end="67" start="63" name="NP"/>
+                    <label end="76" start="69" name="NP"/>
+                    <label end="83" start="78" name="NP"/>
+                    <label end="85" start="85" name=","/>
+                    <label end="91" start="87" name="wdt"/>
+                    <label end="98" start="93" name="PP"/>
+                    <label end="103" start="100" name="VVD"/>
+                    <label end="108" start="105" name="in"/>
+                    <label end="116" start="110" name="NP"/>
+                    <label end="119" start="118" name="POS"/>
+                    <label end="126" start="121" name="NPS"/>
+                    <label end="128" start="128" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/05/2005 11:27:02 PDT Thu" status="AUTO_EDITED" ID="2100295">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="61" start="54" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="1622" end="52" start="31" name="Figure"/>
+                    <label cBy="605" feID="1621" end="126" start="63" name="Ground"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="52" start="31" name="Ext"/>
+                    <label end="126" start="63" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="52" start="31" name="NP"/>
+                    <label end="126" start="63" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="382" aPos="22721877" ID="1326099">
+            <text>As a matter of fact , one of my pastures abuts your garden … ”</text>
+            <annotationSet cDate="05/05/2005 11:27:03 PDT Thu" status="UNANN" ID="2100298">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="in"/>
+                    <label end="3" start="3" name="dt"/>
+                    <label end="10" start="5" name="nn"/>
+                    <label end="13" start="12" name="in"/>
+                    <label end="18" start="15" name="nn"/>
+                    <label end="20" start="20" name=","/>
+                    <label end="24" start="22" name="cd"/>
+                    <label end="27" start="26" name="in"/>
+                    <label end="30" start="29" name="PP$"/>
+                    <label end="39" start="32" name="nns"/>
+                    <label end="45" start="41" name="VVZ"/>
+                    <label end="50" start="47" name="PP$"/>
+                    <label end="57" start="52" name="nn"/>
+                    <label end="59" start="59" name="nn"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/05/2005 11:27:03 PDT Thu" status="AUTO_EDITED" ID="2100299">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="45" start="41" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="1622" end="39" start="22" name="Figure"/>
+                    <label cBy="605" feID="1621" end="57" start="47" name="Ground"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="39" start="22" name="Ext"/>
+                    <label end="57" start="47" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="39" start="22" name="NP"/>
+                    <label end="57" start="47" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="132" aPos="38166958" ID="1326103">
+            <text>It is a collection of those countries which generally have two things in common : they abut on to the ocean , and they are in some positive -- always positive -- way economically or politically vibrant .</text>
+            <annotationSet cDate="05/05/2005 11:27:11 PDT Thu" status="UNANN" ID="2100306">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="4" start="3" name="VBZ"/>
+                    <label end="6" start="6" name="dt"/>
+                    <label end="17" start="8" name="nn"/>
+                    <label end="20" start="19" name="in"/>
+                    <label end="26" start="22" name="dt"/>
+                    <label end="36" start="28" name="nns"/>
+                    <label end="42" start="38" name="wdt"/>
+                    <label end="52" start="44" name="rb"/>
+                    <label end="57" start="54" name="VHP"/>
+                    <label end="61" start="59" name="cd"/>
+                    <label end="68" start="63" name="nns"/>
+                    <label end="71" start="70" name="in"/>
+                    <label end="78" start="73" name="jj"/>
+                    <label end="80" start="80" name=":"/>
+                    <label end="85" start="82" name="PP"/>
+                    <label end="90" start="87" name="VV"/>
+                    <label end="93" start="92" name="in"/>
+                    <label end="96" start="95" name="to"/>
+                    <label end="100" start="98" name="dt"/>
+                    <label end="106" start="102" name="nn"/>
+                    <label end="108" start="108" name=","/>
+                    <label end="112" start="110" name="cc"/>
+                    <label end="117" start="114" name="PP"/>
+                    <label end="121" start="119" name="vbp"/>
+                    <label end="124" start="123" name="in"/>
+                    <label end="129" start="126" name="dt"/>
+                    <label end="138" start="131" name="jj"/>
+                    <label end="141" start="140" name=":"/>
+                    <label end="148" start="143" name="rb"/>
+                    <label end="157" start="150" name="jj"/>
+                    <label end="160" start="159" name=":"/>
+                    <label end="164" start="162" name="nn"/>
+                    <label end="177" start="166" name="rb"/>
+                    <label end="180" start="179" name="cc"/>
+                    <label end="192" start="182" name="rb"/>
+                    <label end="200" start="194" name="jj"/>
+                    <label end="202" start="202" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/05/2005 11:27:11 PDT Thu" status="AUTO_EDITED" ID="2100307">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="90" start="87" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="1622" end="85" start="82" name="Figure"/>
+                    <label cBy="605" feID="1621" end="106" start="92" name="Ground"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="85" start="82" name="Ext"/>
+                    <label end="106" start="92" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="85" start="82" name="NP"/>
+                    <label end="106" start="92" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="334" aPos="73594610" ID="1326111">
+            <text>Davide took his usual place in the shade of the circolo 's front room , on the cathedral piazza abutting the wharf , overlooking the scene outside through the coarse cotton lace jalousy .</text>
+            <annotationSet cDate="05/05/2005 11:27:18 PDT Thu" status="UNANN" ID="2100322">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="0" name="NP"/>
+                    <label end="10" start="7" name="VVD"/>
+                    <label end="14" start="12" name="PP$"/>
+                    <label end="20" start="16" name="jj"/>
+                    <label end="26" start="22" name="nn"/>
+                    <label end="29" start="28" name="in"/>
+                    <label end="33" start="31" name="dt"/>
+                    <label end="39" start="35" name="nn"/>
+                    <label end="42" start="41" name="in"/>
+                    <label end="46" start="44" name="dt"/>
+                    <label end="54" start="48" name="nn"/>
+                    <label end="57" start="56" name="POS"/>
+                    <label end="63" start="59" name="jj"/>
+                    <label end="68" start="65" name="nn"/>
+                    <label end="70" start="70" name=","/>
+                    <label end="73" start="72" name="in"/>
+                    <label end="77" start="75" name="dt"/>
+                    <label end="87" start="79" name="nn"/>
+                    <label end="94" start="89" name="nn"/>
+                    <label end="103" start="96" name="VVG"/>
+                    <label end="107" start="105" name="dt"/>
+                    <label end="113" start="109" name="nn"/>
+                    <label end="115" start="115" name=","/>
+                    <label end="127" start="117" name="VVG"/>
+                    <label end="131" start="129" name="dt"/>
+                    <label end="137" start="133" name="nn"/>
+                    <label end="145" start="139" name="in"/>
+                    <label end="153" start="147" name="in"/>
+                    <label end="157" start="155" name="dt"/>
+                    <label end="164" start="159" name="jj"/>
+                    <label end="171" start="166" name="nn"/>
+                    <label end="176" start="173" name="nn"/>
+                    <label end="184" start="178" name="nn"/>
+                    <label end="186" start="186" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/05/2005 11:27:18 PDT Thu" status="AUTO_EDITED" ID="2100323">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="103" start="96" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="1622" end="94" start="75" name="Figure"/>
+                    <label cBy="605" feID="1621" end="113" start="105" name="Ground"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="94" start="75" name="Ext"/>
+                    <label end="113" start="105" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="94" start="75" name="NP"/>
+                    <label end="113" start="105" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="03-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="5" paragNo="101" aPos="93651772" ID="1326115">
+            <text>The choir arm was short , ending in three parallel apses which abutted directly on to the transepts .</text>
+            <annotationSet cDate="05/05/2005 11:27:22 PDT Thu" status="UNANN" ID="2100330">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="8" start="4" name="nn"/>
+                    <label end="12" start="10" name="nn"/>
+                    <label end="16" start="14" name="VBD"/>
+                    <label end="22" start="18" name="jj"/>
+                    <label end="24" start="24" name=","/>
+                    <label end="31" start="26" name="VVG"/>
+                    <label end="34" start="33" name="in"/>
+                    <label end="40" start="36" name="cd"/>
+                    <label end="49" start="42" name="jj"/>
+                    <label end="55" start="51" name="nns"/>
+                    <label end="61" start="57" name="wdt"/>
+                    <label end="69" start="63" name="VVD"/>
+                    <label end="78" start="71" name="rb"/>
+                    <label end="81" start="80" name="in"/>
+                    <label end="84" start="83" name="to"/>
+                    <label end="88" start="86" name="dt"/>
+                    <label end="98" start="90" name="nns"/>
+                    <label end="100" start="100" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/05/2005 11:27:22 PDT Thu" status="MANUAL" ID="2100331">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="69" start="63" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="1622" end="61" start="57" name="Figure"/>
+                    <label cBy="605" feID="1622" end="55" start="36" name="Figure"/>
+                    <label cBy="605" feID="1621" end="98" start="80" name="Ground"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="61" start="57" name="Ext"/>
+                    <label end="55" start="36" name="Ext"/>
+                    <label end="98" start="80" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="61" start="57" name="NP"/>
+                    <label end="55" start="36" name="NP"/>
+                    <label end="98" start="80" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other">
+                    <label end="55" start="36" name="Ant"/>
+                    <label end="61" start="57" name="Rel"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="895" aPos="60040362" ID="1326119">
+            <text>The back end of the truck should end up just abutting the door of the bay .</text>
+            <annotationSet cDate="05/05/2005 11:27:25 PDT Thu" status="UNANN" ID="2100338">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="7" start="4" name="jj"/>
+                    <label end="11" start="9" name="nn"/>
+                    <label end="14" start="13" name="in"/>
+                    <label end="18" start="16" name="dt"/>
+                    <label end="24" start="20" name="nn"/>
+                    <label end="31" start="26" name="md"/>
+                    <label end="35" start="33" name="VV"/>
+                    <label end="38" start="37" name="rp"/>
+                    <label end="43" start="40" name="rb"/>
+                    <label end="52" start="45" name="VVG"/>
+                    <label end="56" start="54" name="dt"/>
+                    <label end="61" start="58" name="nn"/>
+                    <label end="64" start="63" name="in"/>
+                    <label end="68" start="66" name="dt"/>
+                    <label end="72" start="70" name="nn"/>
+                    <label end="74" start="74" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/05/2005 11:27:25 PDT Thu" status="MANUAL" ID="2100339">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="52" start="45" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="1622" end="24" start="0" name="Figure"/>
+                    <label cBy="605" feID="1621" end="72" start="54" name="Ground"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="24" start="0" name="Ext"/>
+                    <label end="72" start="54" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="24" start="0" name="NP"/>
+                    <label end="72" start="54" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="296" aPos="102427547" ID="1326126">
+            <text>The Governors of the eight US states abutting the Great Lakes have agreed on a series of voluntary pollution controls .</text>
+            <annotationSet cDate="05/05/2005 11:27:29 PDT Thu" status="UNANN" ID="2100352">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="12" start="4" name="nns"/>
+                    <label end="15" start="14" name="in"/>
+                    <label end="19" start="17" name="dt"/>
+                    <label end="25" start="21" name="cd"/>
+                    <label end="28" start="27" name="NP"/>
+                    <label end="35" start="30" name="nns"/>
+                    <label end="44" start="37" name="VVG"/>
+                    <label end="48" start="46" name="dt"/>
+                    <label end="54" start="50" name="NP"/>
+                    <label end="60" start="56" name="NPS"/>
+                    <label end="65" start="62" name="VHP"/>
+                    <label end="72" start="67" name="VVN"/>
+                    <label end="75" start="74" name="in"/>
+                    <label end="77" start="77" name="dt"/>
+                    <label end="84" start="79" name="nn"/>
+                    <label end="87" start="86" name="in"/>
+                    <label end="97" start="89" name="jj"/>
+                    <label end="107" start="99" name="nn"/>
+                    <label end="116" start="109" name="nns"/>
+                    <label end="118" start="118" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/05/2005 11:27:30 PDT Thu" status="AUTO_EDITED" ID="2100353">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="44" start="37" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="1621" end="60" start="46" name="Ground"/>
+                    <label cBy="605" feID="1622" end="35" start="17" name="Figure"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="60" start="46" name="Obj"/>
+                    <label end="35" start="17" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="60" start="46" name="NP"/>
+                    <label end="35" start="17" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="313" aPos="99865687" ID="1326133">
+            <text>It abuts on to what is now a road running along the frontage of a number of houses .</text>
+            <annotationSet cDate="05/05/2005 11:27:36 PDT Thu" status="UNANN" ID="2100366">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="7" start="3" name="VVZ"/>
+                    <label end="10" start="9" name="in"/>
+                    <label end="13" start="12" name="to"/>
+                    <label end="18" start="15" name="wp"/>
+                    <label end="21" start="20" name="VBZ"/>
+                    <label end="25" start="23" name="rb"/>
+                    <label end="27" start="27" name="dt"/>
+                    <label end="32" start="29" name="nn"/>
+                    <label end="40" start="34" name="VVG"/>
+                    <label end="46" start="42" name="in"/>
+                    <label end="50" start="48" name="dt"/>
+                    <label end="59" start="52" name="nn"/>
+                    <label end="62" start="61" name="in"/>
+                    <label end="64" start="64" name="dt"/>
+                    <label end="71" start="66" name="nn"/>
+                    <label end="74" start="73" name="in"/>
+                    <label end="81" start="76" name="nns"/>
+                    <label end="83" start="83" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/05/2005 11:27:36 PDT Thu" status="AUTO_EDITED" ID="2100367">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="7" start="3" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="1622" end="1" start="0" name="Figure"/>
+                    <label cBy="605" feID="1621" end="81" start="9" name="Ground"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="1" start="0" name="Ext"/>
+                    <label end="81" start="9" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="1" start="0" name="NP"/>
+                    <label end="81" start="9" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="544" aPos="17749765" ID="1326134">
+            <text>This originally stood in Warwick Lane , east London , and abutted on to the eastern side of Newgate Prison .</text>
+            <annotationSet cDate="05/05/2005 11:27:36 PDT Thu" status="UNANN" ID="2100368">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="dt"/>
+                    <label end="14" start="5" name="rb"/>
+                    <label end="20" start="16" name="VVN"/>
+                    <label end="23" start="22" name="in"/>
+                    <label end="31" start="25" name="NP"/>
+                    <label end="36" start="33" name="NP"/>
+                    <label end="38" start="38" name=","/>
+                    <label end="43" start="40" name="jj"/>
+                    <label end="50" start="45" name="NP"/>
+                    <label end="52" start="52" name=","/>
+                    <label end="56" start="54" name="cc"/>
+                    <label end="64" start="58" name="VVD"/>
+                    <label end="67" start="66" name="in"/>
+                    <label end="70" start="69" name="to"/>
+                    <label end="74" start="72" name="dt"/>
+                    <label end="82" start="76" name="jj"/>
+                    <label end="87" start="84" name="nn"/>
+                    <label end="90" start="89" name="in"/>
+                    <label end="98" start="92" name="NP"/>
+                    <label end="105" start="100" name="nn"/>
+                    <label end="107" start="107" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/05/2005 11:27:36 PDT Thu" status="MANUAL" ID="2100369">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="64" start="58" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="1622" end="3" start="0" name="Figure"/>
+                    <label cBy="605" feID="1621" end="105" start="66" name="Ground"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="3" start="0" name="Ext"/>
+                    <label end="105" start="66" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="3" start="0" name="NP"/>
+                    <label end="105" start="66" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="755" aPos="66739698" ID="1326136">
+            <text>There was a yard at the back of the bungalow which abutted farm fields which themselves led across to school playing fields .</text>
+            <annotationSet cDate="05/05/2005 11:27:39 PDT Thu" status="UNANN" ID="2100372">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="ex"/>
+                    <label end="8" start="6" name="VBD"/>
+                    <label end="10" start="10" name="dt"/>
+                    <label end="15" start="12" name="nn"/>
+                    <label end="18" start="17" name="in"/>
+                    <label end="22" start="20" name="dt"/>
+                    <label end="27" start="24" name="nn"/>
+                    <label end="30" start="29" name="in"/>
+                    <label end="34" start="32" name="dt"/>
+                    <label end="43" start="36" name="nn"/>
+                    <label end="49" start="45" name="wdt"/>
+                    <label end="57" start="51" name="VVD"/>
+                    <label end="62" start="59" name="nn"/>
+                    <label end="69" start="64" name="nns"/>
+                    <label end="75" start="71" name="wdt"/>
+                    <label end="86" start="77" name="PP"/>
+                    <label end="90" start="88" name="VVD"/>
+                    <label end="97" start="92" name="rp"/>
+                    <label end="100" start="99" name="to"/>
+                    <label end="107" start="102" name="VV"/>
+                    <label end="115" start="109" name="VVG"/>
+                    <label end="122" start="117" name="nns"/>
+                    <label end="124" start="124" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/05/2005 11:27:39 PDT Thu" status="MANUAL" ID="2100373">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="57" start="51" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="605" feID="1622" end="43" start="10" name="Figure"/>
+                    <label cBy="605" feID="1622" end="49" start="45" name="Figure"/>
+                    <label cBy="605" feID="1621" end="122" start="59" name="Ground"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="43" start="10" name="Ext"/>
+                    <label end="49" start="45" name="Ext"/>
+                    <label end="122" start="59" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="43" start="10" name="NP"/>
+                    <label end="49" start="45" name="NP"/>
+                    <label end="122" start="59" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other">
+                    <label end="49" start="45" name="Rel"/>
+                    <label end="43" start="10" name="Ant"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="03/10/2004 05:33:04 PST Wed" name="Identicality" ID="1029" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A &lt;fen&gt;Current_instance&lt;/fen&gt; of a certain &lt;fen&gt;Type&lt;/fen&gt; is under discussion. This instance  is evaluated as being the same instance or a different instance from a &lt;fen&gt;Previous_instance&lt;/fen&gt; encountered in a &lt;fen&gt;Previous_context&lt;/fen&gt;.
+
+&lt;ex&gt;Kim has a &lt;t&gt;different&lt;/t&gt; &lt;fex name="tp"&gt;hair color&lt;/fex&gt; every week&lt;/ex&gt;
+&lt;ex&gt;Kim has &lt;fex name="ci"&gt;a different hair color&lt;/fex&gt; every week&lt;/ex&gt;
+
+&lt;ex&gt;Is this the &lt;t&gt;same&lt;/t&gt; &lt;fex name="tp"&gt;sofa&lt;/fex&gt; &lt;fex name="pi"&gt;as the one that used to be in the lobby&lt;/fex&gt;?&lt;/ex&gt;
+&lt;ex&gt;Is this &lt;fex name="ci"&gt;the same sofa as the one that used to be in the lobby&lt;/fex&gt;?&lt;/ex&gt;
+
+
+&lt;ex&gt;Dracula and your neighbor are &lt;t&gt;different&lt;/t&gt; &lt;fex name="Type"&gt;people&lt;/fex&gt;&lt;/ex&gt;
+&lt;ex&gt;Dracula and your neighbor are &lt;t&gt;different&lt;/t&gt; &lt;fex name="soi"&gt;people&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="03/10/2004 05:34:44 PST Wed" abbrev="tp" name="Type" ID="6127">
+        <definition>&lt;def-root&gt;The kind of thing of which instances are under discussion.
+
+
+&lt;ex&gt;Smithers works in a &lt;t&gt;different&lt;/t&gt; &lt;fex name="tp"&gt;office&lt;/fex&gt; now&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="03/10/2004 05:36:52 PST Wed" abbrev="ci" name="Current_instance" ID="6128">
+        <definition>&lt;def-root&gt;The instance of the &lt;fen&gt;Type&lt;/fen&gt; that is currently under discussion.&lt;/def-root&gt;</definition>
+        <excludesFE name="Set_of_instances" ID="6141"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="03/10/2004 05:37:52 PST Wed" abbrev="pi" name="Previous_instance" ID="6129">
+        <definition>&lt;def-root&gt;An instance of the &lt;fen&gt;Type&lt;/fen&gt; that was encountered previously and which is now compared for identity with the &lt;fen&gt;Current_instance&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <excludesFE name="Set_of_instances" ID="6141"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="03/10/2004 05:40:06 PST Wed" abbrev="pc" name="Previous_context" ID="6130">
+        <definition>&lt;def-root&gt;The situation in which another instance of the &lt;fen&gt;Type&lt;/fen&gt; was encountered earlier.
+
+&lt;ex&gt;This is a &lt;t&gt;different&lt;/t&gt; car &lt;fex name="pc"&gt;than last week&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Set_of_instances" ID="6141"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="03/11/2004 04:13:29 PST Thu" abbrev="soi" name="Set_of_instances" ID="6141">
+        <definition>&lt;def-root&gt;The complete set of instances of the &lt;fen&gt;Type&lt;/fen&gt; involved in the mentioned contexts.
+
+
+&lt;ex&gt;Kent Clark and Superman are the &lt;t&gt;same&lt;/t&gt; &lt;fex name="Type"&gt;person&lt;/fex&gt;&lt;/ex&gt;
+&lt;ex&gt;Kent Clark and Superman are the &lt;t&gt;same&lt;/t&gt; &lt;fex name="soi"&gt;person&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="361" cDate="07/30/2007 01:11:38 PDT Mon" abbrev="" name="Time" ID="11942">
+        <definition>&lt;def-root&gt;The Time when the Current_instance is the same or different. &lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Instance</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Needs_SCs" POS="A" name="same.a" ID="10293" lemmaID="48903" cBy="605" cDate="03/10/2004 05:54:57 PST Wed">
+        <definition>COD:  referring to a person or thing just mentioned</definition>
+        <sentenceCount annotated="1" total="79"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="same"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="different.a" ID="10294" lemmaID="10630" cBy="605" cDate="03/10/2004 05:55:22 PST Wed">
+        <definition>COD: distinct; separate.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="different"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="identical.a" ID="10309" lemmaID="18877" cBy="605" cDate="03/11/2004 04:28:39 PST Thu">
+        <definition>FN: the very same (instance)  (often accompanied by "same" or " very")</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="identical"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="distinct.a" ID="10851" lemmaID="11213" cBy="605" cDate="08/17/2004 05:13:37 PDT Tue">
+        <definition>FN: individual or separate of identity</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="distinct"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="identity.n" ID="13252" lemmaID="18882" cBy="303" cDate="06/19/2006 01:51:31 PDT Mon">
+        <definition>FN: characteristics determining what something is. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="identity"/>
+    </lexUnit>
+</frame>

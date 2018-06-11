@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Add_Annotation" POS="V" name="guide.v" ID="10428" frame="Influence_of_event_on_cognizer" frameID="97" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp=1538" ID="18904"/>
+            <document description="bncp=1991" ID="19860"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="act" name="Action"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="tiv" name="Activity"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="cog" name="Cognizer"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="man" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="pro" name="Protagonist"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Core" abbrev="sit" name="Situation"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: to influence towards a specific action</definition>
+    <lexeme POS="V" name="guide"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Action"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="VPto" FE="Action"/>
+                <annoSet ID="2610850"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Activity"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Activity"/>
+                <annoSet ID="2610918"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Cognizer"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Cognizer"/>
+                <annoSet ID="2610850"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="2nd" FE="Cognizer"/>
+                <annoSet ID="2610918"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Manner"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <annoSet ID="2610918"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Protagonist"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Protagonist"/>
+                <annoSet ID="2610918"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Situation"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Situation"/>
+                <annoSet ID="2610850"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Action"/>
+            <FE name="Cognizer"/>
+            <FE name="Situation"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="VPto" FE="Action"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Cognizer"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Situation"/>
+                <annoSet ID="2610850"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Activity"/>
+            <FE name="Cognizer"/>
+            <FE name="Manner"/>
+            <FE name="Protagonist"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Activity"/>
+                <valenceUnit GF="" PT="2nd" FE="Cognizer"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Protagonist"/>
+                <annoSet ID="2610918"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-object-(1)"/>
+    <subCorpus name="02-Wlearner+Wdestiny-(1)">
+        <sentence corpID="111" docID="19860" sentNo="2" paragNo="591" aPos="0" ID="1587350">
+            <text>It should guide the learner to concentrate on the main points and help him/her follow the argument or the plot step by step .</text>
+            <annotationSet cDate="08/27/2010 10:56:54 PDT Fri" status="UNANN" ID="2610849">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="8" start="3" name="md"/>
+                    <label end="14" start="10" name="VV"/>
+                    <label end="18" start="16" name="dt"/>
+                    <label end="26" start="20" name="nn"/>
+                    <label end="29" start="28" name="to"/>
+                    <label end="41" start="31" name="VV"/>
+                    <label end="44" start="43" name="in"/>
+                    <label end="48" start="46" name="dt"/>
+                    <label end="53" start="50" name="jj"/>
+                    <label end="60" start="55" name="nns"/>
+                    <label end="64" start="62" name="cc"/>
+                    <label end="69" start="66" name="VVP"/>
+                    <label end="77" start="71" name="rb"/>
+                    <label end="84" start="79" name="VV"/>
+                    <label end="88" start="86" name="dt"/>
+                    <label end="97" start="90" name="nn"/>
+                    <label end="100" start="99" name="cc"/>
+                    <label end="104" start="102" name="dt"/>
+                    <label end="109" start="106" name="nn"/>
+                    <label end="114" start="111" name="nn"/>
+                    <label end="117" start="116" name="in"/>
+                    <label end="122" start="119" name="nn"/>
+                    <label end="124" start="124" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="08/27/2010 10:56:54 PDT Fri" status="MANUAL" ID="2610850">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="14" start="10" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="468" end="1" start="0" name="Situation"/>
+                    <label cBy="589" feID="470" end="26" start="16" name="Cognizer"/>
+                    <label cBy="589" feID="6305" end="60" start="28" name="Action"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="1" start="0" name="Ext"/>
+                    <label end="26" start="16" name="Obj"/>
+                    <label end="60" start="28" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="1" start="0" name="NP"/>
+                    <label end="26" start="16" name="NP"/>
+                    <label end="60" start="28" name="VPto"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="03-Wparadigm-(1)"/>
+    <subCorpus name="04-subject-(1)"/>
+    <subCorpus name="05-skilfully+gently-(1)">
+        <sentence corpID="111" docID="18904" sentNo="3" paragNo="9" aPos="0" ID="1587384">
+            <text>For the most part she was portrayed as a frivolous ingenue whose emotional and intellectual development was gently guided by her serious-minded husband .</text>
+            <annotationSet cDate="08/27/2010 10:57:02 PDT Fri" status="UNANN" ID="2610917">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="in"/>
+                    <label end="6" start="4" name="dt"/>
+                    <label end="11" start="8" name="jjs"/>
+                    <label end="16" start="13" name="nn"/>
+                    <label end="20" start="18" name="PP"/>
+                    <label end="24" start="22" name="VBD"/>
+                    <label end="34" start="26" name="VVN"/>
+                    <label end="37" start="36" name="in"/>
+                    <label end="39" start="39" name="dt"/>
+                    <label end="49" start="41" name="jj"/>
+                    <label end="57" start="51" name="nn"/>
+                    <label end="63" start="59" name="wp$"/>
+                    <label end="73" start="65" name="jj"/>
+                    <label end="77" start="75" name="cc"/>
+                    <label end="90" start="79" name="jj"/>
+                    <label end="102" start="92" name="nn"/>
+                    <label end="106" start="104" name="VBD"/>
+                    <label end="113" start="108" name="rb"/>
+                    <label end="120" start="115" name="VVN"/>
+                    <label end="123" start="122" name="in"/>
+                    <label end="127" start="125" name="PP$"/>
+                    <label end="142" start="129" name="jj"/>
+                    <label end="150" start="144" name="nn"/>
+                    <label end="152" start="152" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="08/27/2010 10:57:03 PDT Fri" status="MANUAL" ID="2610918">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="120" start="115" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="6307" end="113" start="108" name="Manner"/>
+                    <label cBy="589" feID="469" end="150" start="122" name="Protagonist"/>
+                    <label cBy="589" feID="6308" end="102" start="59" name="Activity"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="113" start="108" name="Dep"/>
+                    <label end="150" start="122" name="Dep"/>
+                    <label end="102" start="59" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="113" start="108" name="AVP"/>
+                    <label end="150" start="122" name="PP"/>
+                    <label end="102" start="59" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+                <layer rank="2" name="FE">
+                    <label cBy="589" feID="470" end="63" start="59" name="Cognizer"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="06-modifier-(1)"/>
+    <subCorpus name="07-pp_in-p-(1)"/>
+    <subCorpus name="08-pp_by-p-(1)"/>
+    <subCorpus name="09-other-matched-(1)"/>
+    <subCorpus name="10-other-unmatched-(1)"/>
+</lexUnit>

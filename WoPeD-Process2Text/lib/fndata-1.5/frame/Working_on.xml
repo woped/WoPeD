@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="618" cDate="03/16/2007 03:55:49 PDT Fri" name="Working_on" ID="1892" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Agent&lt;/fen&gt; expends effort towards achieving a &lt;fen&gt;Goal&lt;/fen&gt;. Alternatively, a &lt;fen&gt;Salient_entity&lt;/fen&gt; involved in the &lt;fen&gt;Goal&lt;/fen&gt; can be expressed in place of a &lt;fen&gt;Goal&lt;/fen&gt; expression.
+
+&lt;ex&gt;In addition, &lt;fex name="Agent"&gt;our organization&lt;/fex&gt; will &lt;t&gt;work&lt;/t&gt; &lt;fex name="Goal"&gt;on improving accountability in every department&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;If &lt;fex name="Agent"&gt;somebody&lt;/fex&gt; is &lt;t&gt;working&lt;/t&gt; &lt;fex name="sal_ent"&gt;on the pipes of your house&lt;/fex&gt; and you turn on the faucet hard, you get sand, junk.&lt;/ex&gt;
+
+&lt;ex&gt;You could see &lt;fex name="Agent"&gt;several students&lt;/fex&gt; &lt;t&gt;plugging away&lt;/t&gt; &lt;fex name="Goal"&gt;at the problem&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;We have benefited greatly from &lt;fex name="Agent"&gt;their&lt;/fex&gt; &lt;t&gt;work&lt;/t&gt; &lt;fex name="sal_ent"&gt;on this problem&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="03/16/2007 03:55:49 PDT Fri" abbrev="Agt" name="Agent" ID="11220">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Agent&lt;/fen&gt; puts effort into reaching &lt;fen&gt;Goal&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="03/16/2007 03:55:49 PDT Fri" abbrev="Goal" name="Goal" ID="11221">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Goal&lt;/fen&gt; is what the &lt;fen&gt;Agent&lt;/fen&gt; expends effort to achieve.&lt;/def-root&gt;</definition>
+        <excludesFE name="Salient_entity" ID="11234"/>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="03/16/2007 03:55:49 PDT Fri" abbrev="Otcm" name="Outcome" ID="11222">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Outcome&lt;/fen&gt; is the failure or success of an attempt to achieve a &lt;fen&gt;Goal&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="03/16/2007 03:55:49 PDT Fri" abbrev="Means" name="Means" ID="11223">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Means&lt;/fen&gt; by which the effort is done.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="03/16/2007 03:55:49 PDT Fri" abbrev="Degr" name="Degree" ID="11224">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Degree&lt;/fen&gt; to which an attempt occurs.&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="03/16/2007 03:55:49 PDT Fri" abbrev="Time" name="Time" ID="11225">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Time&lt;/fen&gt; when the effort occurs.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="618" cDate="03/16/2007 03:55:49 PDT Fri" abbrev="Dep" name="Depictive" ID="11226">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Depictive&lt;/fen&gt; is a phrase which describes the &lt;fen&gt;Agent&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="03/16/2007 03:55:49 PDT Fri" abbrev="Place" name="Place" ID="11227">
+        <definition>&lt;def-root&gt;The place where the work is done.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="03/16/2007 03:55:49 PDT Fri" abbrev="man" name="Manner" ID="11228">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Manner&lt;/fen&gt; in which the &lt;fen&gt;Agent&lt;/fen&gt; puts in effort in acheiving the &lt;fen&gt;Goal&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="618" cDate="03/16/2007 03:55:49 PDT Fri" abbrev="dur" name="Duration" ID="11229">
+        <definition>&lt;def-root&gt;The time peiod over which the work takes place.&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="90876C" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="03/16/2007 03:55:49 PDT Fri" abbrev="" name="Purpose" ID="11230">
+        <definition>&lt;def-root&gt;The reason for which the &lt;fen&gt;Agent&lt;/fen&gt; puts effort into achieving the &lt;fen&gt;Goal&lt;/fen&gt;. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="EEE8AA" fgColor="000000" coreType="Extra-Thematic" cBy="618" cDate="03/16/2007 03:55:49 PDT Fri" abbrev="par_itr" name="Particular_iteration" ID="11231">
+        <definition>&lt;def-root&gt;Expressions marked with this extra-thematic FE modify a non-iterative use of the target, and indicate that it is conceived as embedded within an iterated series of similar events or states. In addition, most expressions of Particular_iteration indicate which instance of the series is being referred to.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="000000" coreType="Extra-Thematic" cBy="618" cDate="03/16/2007 03:55:49 PDT Fri" abbrev="" name="Circumstances" ID="11232">
+        <definition>&lt;def-root&gt;The state of the world (at a particular time and place) which is independent of the the attempt of the &lt;fen&gt;Agent&lt;/fen&gt; to achieve the &lt;fen&gt;Goal&lt;/fen&gt;. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="618" cDate="03/16/2007 03:55:49 PDT Fri" abbrev="Dom" name="Domain" ID="11233">
+        <definition>&lt;def-root&gt;The domain or area within which the work towards the &lt;fen&gt;Goal&lt;/fen&gt; belongs. 
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="03/16/2007 04:02:30 PDT Fri" abbrev="sal_ent" name="Salient_entity" ID="11234">
+        <definition>&lt;def-root&gt;An entity that is centrally involved in the &lt;fen&gt;Goal&lt;/fen&gt; that the &lt;fen&gt;Agent&lt;/fen&gt; is attempting to acheive.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="00008B" coreType="Extra-Thematic" cBy="361" cDate="07/17/2007 12:51:51 PDT Tue" abbrev="fre" name="Frequency" ID="11906">
+        <definition>&lt;def-root&gt;How often the &lt;fen&gt;Agent&lt;/fen&gt; works. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="00008B" coreType="Extra-Thematic" cBy="361" cDate="08/05/2008 01:48:22 PDT Tue" abbrev="" name="Event_description" ID="13061">
+        <definition>&lt;def-root&gt;This FE applies to appraisals of the event, typically a judgment of its expectedness. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="589" cDate="10/21/2009 03:00:51 PDT Wed" abbrev="" name="Descriptor" ID="13460">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Descriptor&lt;/fen&gt; covers any characterization or description of the target that is not covered by another more specific FE.&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Attempt</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Seeking_to_achieve</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="work.v" ID="14000" lemmaID="44462" cBy="618" cDate="03/16/2007 04:36:56 PDT Fri">
+        <definition>FN: exert effort towards acheiving a goal.</definition>
+        <sentenceCount annotated="25" total="248"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="work"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="work.n" ID="14001" lemmaID="45680" cBy="618" cDate="03/16/2007 04:38:21 PDT Fri">
+        <definition>COD: activity involving mental or physical effort done in order to achieve a result.</definition>
+        <sentenceCount annotated="64" total="259"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="work"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="plug away.v" ID="14003" lemmaID="50555" cBy="618" cDate="03/19/2007 10:45:26 PDT Mon">
+        <definition>COD: proceed steadily and laboriously with a task.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="plug"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="away"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="peg away.v" ID="14005" lemmaID="50557" cBy="618" cDate="03/19/2007 11:01:28 PDT Mon">
+        <definition>COD: work hard over a long period.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="peg"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="away"/>
+    </lexUnit>
+</frame>

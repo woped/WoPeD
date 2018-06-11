@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="197" cDate="03/21/2001 02:47:25 PST Wed" name="Theft" ID="94" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;These are words describing situations in which a &lt;fen&gt;Perpetrator&lt;/fen&gt; takes &lt;fen&gt;Goods&lt;/fen&gt; from a  &lt;fen&gt;Victim&lt;/fen&gt; or a &lt;fen&gt;Source&lt;/fen&gt;. The &lt;fen&gt;Means&lt;/fen&gt; by which this is accomplished may also be expressed.
+
+&lt;ex&gt;I can't believe &lt;fex name="Perpetrator"&gt;he&lt;/fex&gt; &lt;t&gt;pickpocketed&lt;/t&gt; &lt;fex name="Goods"&gt;my gold watch&lt;/fex&gt; !&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Perpetrator"&gt;I&lt;/fex&gt; had to &lt;t&gt;pilfer&lt;/t&gt; &lt;fex name="Victim"&gt;from the office&lt;/fex&gt; &lt;fex name="Purpose"&gt;just to get by&lt;/fex&gt; . &lt;fex name="Goods"&gt;INI&lt;/fex&gt;&lt;/ex&gt;
+&lt;ex&gt;&lt;t&gt;Snatching&lt;/t&gt; &lt;fex name="Goods"&gt;purses&lt;/fex&gt; &lt;fex name="Source"&gt;from little old ladies&lt;/fex&gt; is not a living . &lt;fex name="Perpetrator"&gt;CNI&lt;/fex&gt;&lt;/ex&gt;
+
+
+&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="197" cDate="03/23/2001 03:19:58 PST Fri" abbrev="Perp" name="Perpetrator" ID="451">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Perpetrator&lt;/fen&gt; is the person (or other agent) that takes the goods away. 
+
+&lt;ex&gt;&lt;fex name="Perp"&gt;Leslie&lt;/fex&gt; &lt;t&gt;stole&lt;/t&gt; the watch from Kim.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="197" cDate="03/23/2001 03:25:37 PST Fri" abbrev="Vict" name="Victim" ID="452">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Victim&lt;/fen&gt; is the person (or other sentient being or group) that owns the goods before they are taken away by the perpetrator.
+&lt;ex&gt;Leslie &lt;t&gt;stole&lt;/t&gt; the watch &lt;fex name="Victim"&gt;from Kim&lt;/fex&gt;. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Core" cBy="197" cDate="03/23/2001 03:28:50 PST Fri" abbrev="Goods" name="Goods" ID="453">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Goods&lt;/fen&gt; is anything (including labor, time, or legal rights) that can be taken away. 
+
+&lt;ex&gt;Leslie &lt;t&gt;STOLE&lt;/t&gt; &lt;fex name="Goods"&gt;the watch&lt;/fex&gt; from Kim.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Core" cBy="197" cDate="03/23/2001 03:54:34 PST Fri" abbrev="Src" name="Source" ID="454">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Source&lt;/fen&gt; is the initial location of the goods, before they change location.
+
+&lt;ex&gt;Leslie &lt;t&gt;stole&lt;/t&gt; the watch &lt;fex name="Src"&gt;from the table&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Source" ID="151"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="197" cDate="04/13/2001 02:41:01 PDT Fri" abbrev="Mnr" name="Manner" ID="472">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Manner&lt;/fen&gt; in which the theft occurs.
+
+&lt;ex&gt;Leslie &lt;fex name="Manner"&gt;swiftly&lt;/fex&gt; &lt;t&gt;STOLE&lt;/t&gt; the watch from Kim.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="7FFF00" fgColor="000000" coreType="Peripheral" cBy="197" cDate="04/13/2001 02:41:53 PDT Fri" abbrev="Mns" name="Means" ID="473">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Means&lt;/fen&gt; by which a &lt;fen&gt;Perpetrator&lt;/fen&gt; takes the &lt;fen&gt;Victim&lt;/fen&gt;'s &lt;fen&gt;Goods&lt;/fen&gt;.
+
+&lt;ex&gt;Leslie &lt;t&gt;STOLE&lt;/t&gt; the watch from Kim &lt;fex name="Means"&gt;by following her home after work&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="08/21/2001 08:56:47 PDT Tue" abbrev="Place" name="Place" ID="1744">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Place&lt;/fen&gt; where the theft occurs.
+&lt;ex&gt;Leslie &lt;t&gt;STOLE&lt;/t&gt; the watch from Kim &lt;fex name="Place"&gt;in the park&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="08/21/2001 08:56:47 PDT Tue" abbrev="Purp" name="Purpose" ID="1745">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Purpose&lt;/fen&gt; for which a theft occurs.
+&lt;ex&gt;Leslie &lt;t&gt;STOLE&lt;/t&gt; the watch from Kim &lt;fex name="Purpose"&gt;in order to sell it on Ebay&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="08/21/2001 08:56:47 PDT Tue" abbrev="Reas" name="Reason" ID="1746">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Reason&lt;/fen&gt; for which a theft occurs.
+
+&lt;ex&gt;Leslie &lt;t&gt;STOLE&lt;/t&gt; the watch from Kim &lt;fex name="Reason"&gt;because she'd always wanted a Gucci&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="08/21/2001 08:56:47 PDT Tue" abbrev="Time" name="Time" ID="1747">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Time&lt;/fen&gt; when the theft occurs.
+
+&lt;ex&gt;Leslie &lt;t&gt;STOLE&lt;/t&gt; the watch from Kim &lt;fex name="Time"&gt;at dusk&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="309" cDate="10/02/2003 11:37:01 PDT Thu" abbrev="Inst" name="Instrument" ID="5426">
+        <definition>&lt;def-root&gt;An object used by the &lt;fen&gt;Perpetrator&lt;/fen&gt; in taking possession of the &lt;fen&gt;Goods&lt;/fen&gt;.
+
+&lt;ex&gt;Chis &lt;t&gt;stole&lt;/t&gt; it &lt;fex name="Instrument"&gt;with a long bamboo pole&lt;/fex&gt; through the fence&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Physical_entity" ID="70"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="000000" coreType="Extra-Thematic" cBy="309" cDate="10/02/2003 11:40:55 PDT Thu" abbrev="Freq" name="Frequency" ID="5461">
+        <definition>&lt;def-root&gt;The number of times that a theft occurs.
+
+&lt;ex&gt;Thieves &lt;fex name="Frequency"&gt;twice&lt;/fex&gt; &lt;t&gt;stole&lt;/t&gt; my Dodge Dart in the last two weeks&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Source" ID="454"/>
+        <memberFE name="Victim" ID="452"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Committing_crime</relatedFrame>
+        <relatedFrame>Taking</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Robbery</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="steal.v" ID="1960" lemmaID="37916" cBy="197" cDate="03/21/2001 02:48:41 PST Wed">
+        <definition>COD: take (something) without permission or legal right and without intending to return it.</definition>
+        <sentenceCount annotated="57" total="283"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="steal"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="purloin.v" ID="1961" lemmaID="31235" cBy="197" cDate="03/21/2001 02:51:24 PST Wed">
+        <definition>FN: to steal, often in violation of trust</definition>
+        <sentenceCount annotated="9" total="15"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="purloin"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="filch.v" ID="1962" lemmaID="14339" cBy="197" cDate="03/21/2001 02:54:33 PST Wed">
+        <definition>FN: to take something (esp. of little value) in a furtive manner.</definition>
+        <sentenceCount annotated="10" total="25"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="filch"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="V" name="snitch.v" ID="1963" lemmaID="36656" cBy="197" cDate="03/21/2001 02:58:10 PST Wed">
+        <definition>FN: to take something (usually of little value) away illegally.</definition>
+        <sentenceCount annotated="3" total="15"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="snitch"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="pilfer.v" ID="1964" lemmaID="29001" cBy="197" cDate="03/21/2001 02:59:11 PST Wed">
+        <definition>COD: steal (things of little value).</definition>
+        <sentenceCount annotated="10" total="20"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="pilfer"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="swipe.v" ID="1965" lemmaID="39182" cBy="197" cDate="03/21/2001 03:01:30 PST Wed">
+        <definition>COD: steal.</definition>
+        <sentenceCount annotated="7" total="44"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="swipe"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="lift.v" ID="1966" lemmaID="22289" cBy="197" cDate="03/21/2001 03:03:02 PST Wed">
+        <definition>COD: (informal) steal.</definition>
+        <sentenceCount annotated="7" total="302"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="lift"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="pinch.v" ID="1967" lemmaID="29043" cBy="197" cDate="03/21/2001 03:04:16 PST Wed">
+        <definition>COD: (informal) steal.</definition>
+        <sentenceCount annotated="17" total="161"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="pinch"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="thieve.v" ID="1968" lemmaID="40136" cBy="197" cDate="03/21/2001 03:06:57 PST Wed">
+        <definition>COD: steal things.</definition>
+        <sentenceCount annotated="6" total="35"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="thieve"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="thief.n" ID="1969" lemmaID="40135" cBy="197" cDate="03/22/2001 04:08:26 PST Thu">
+        <definition>COD: a person who steals another person's property.</definition>
+        <sentenceCount annotated="15" total="95"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="thief"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="pickpocket.n" ID="1970" lemmaID="28909" cBy="197" cDate="03/22/2001 04:09:39 PST Thu">
+        <definition>COD: a person who steals from people's pockets</definition>
+        <sentenceCount annotated="8" total="25"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="pickpocket"/>
+    </lexUnit>
+    <lexUnit status="Problem" POS="N" name="kleptomaniac.n" ID="1971" lemmaID="21390" cBy="197" cDate="03/22/2001 04:11:13 PST Thu">
+        <definition>FN: a person who has uncontrollable impulses to steal.</definition>
+        <sentenceCount annotated="2" total="4"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="kleptomaniac"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="cutpurse.n" ID="1972" lemmaID="9376" cBy="197" cDate="03/22/2001 04:13:21 PST Thu">
+        <definition>COD: archaic term for pickpocket</definition>
+        <sentenceCount annotated="3" total="5"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="cutpurse"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="pilferer.n" ID="1973" lemmaID="29003" cBy="197" cDate="03/22/2001 04:16:37 PST Thu">
+        <definition>FN: person who steals small amounts or items.</definition>
+        <sentenceCount annotated="2" total="3"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="pilferer"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="snatcher.n" ID="1974" lemmaID="36614" cBy="197" cDate="03/22/2001 04:18:16 PST Thu">
+        <definition>FN: a person who steals or kidnaps.</definition>
+        <sentenceCount annotated="5" total="16"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="snatcher"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="theft.n" ID="1975" lemmaID="40030" cBy="197" cDate="03/22/2001 04:19:01 PST Thu">
+        <definition>COD: the action or crime of stealing.</definition>
+        <sentenceCount annotated="27" total="122"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="theft"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="thieving.n" ID="1976" lemmaID="40138" cBy="197" cDate="03/22/2001 04:26:02 PST Thu">
+        <definition>FN: the act of stealing.</definition>
+        <sentenceCount annotated="5" total="28"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="thieving"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="pilferage.n" ID="1977" lemmaID="29002" cBy="197" cDate="03/22/2001 04:28:01 PST Thu">
+        <definition>FN: the act of stealing, especially in small amounts, again and again</definition>
+        <sentenceCount annotated="7" total="11"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="pilferage"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="light-fingered.a" ID="1978" lemmaID="22308" cBy="197" cDate="03/22/2001 04:31:52 PST Thu">
+        <definition>FN: skilled at or given to petty thievery.</definition>
+        <sentenceCount annotated="4" total="8"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="light-fingered"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="A" name="thieving.a" ID="1979" lemmaID="40139" cBy="197" cDate="03/22/2001 04:35:39 PST Thu">
+        <definition>FN: skilled at commiting theft.</definition>
+        <sentenceCount annotated="0" total="18"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="thieving"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="snatch.v" ID="2060" lemmaID="36613" cBy="197" cDate="05/01/2001 09:15:06 PDT Tue">
+        <definition>COD: steal or kidnap by seizing suddenly</definition>
+        <sentenceCount annotated="23" total="262"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="snatch"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="nick.v" ID="2061" lemmaID="25811" cBy="197" cDate="05/01/2001 09:22:06 PDT Tue">
+        <definition>COD: (informal) steal</definition>
+        <sentenceCount annotated="62" total="181"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="nick"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="embezzle.v" ID="2062" lemmaID="12545" cBy="197" cDate="05/01/2001 09:22:26 PDT Tue">
+        <definition>COD: steal or misapproriate (money placed in one's trust or under one's control).</definition>
+        <sentenceCount annotated="8" total="24"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="embezzle"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="misappropriate.v" ID="2063" lemmaID="24458" cBy="197" cDate="05/01/2001 09:22:43 PDT Tue">
+        <definition>COD: dishonestly or unfairly take for one's own use.</definition>
+        <sentenceCount annotated="8" total="25"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="misappropriate"/>
+        <semType name="Negative_judgment" ID="14"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Source" POS="V" name="shoplift.v" ID="2064" lemmaID="44872" cBy="197" cDate="05/01/2001 09:34:12 PDT Tue">
+        <definition>FN: to steal goods from a store while pretending to be a customer.</definition>
+        <sentenceCount annotated="11" total="81"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="shoplift"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="stealer.n" ID="2065" lemmaID="44873" cBy="197" cDate="05/01/2001 09:39:10 PDT Tue">
+        <definition>FN: a person taking something that does not belong to him.</definition>
+        <sentenceCount annotated="6" total="37"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="stealer"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="shoplifter.n" ID="2066" lemmaID="44874" cBy="197" cDate="05/01/2001 09:44:22 PDT Tue">
+        <definition>FN: a person stealing goods from a store while pretending to be a customer.</definition>
+        <sentenceCount annotated="5" total="15"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="shoplifter"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="shoplifting.n" ID="2067" lemmaID="44875" cBy="197" cDate="05/01/2001 09:47:14 PDT Tue">
+        <definition>FN: the act of stealing goods from a store while pretending to be a customer</definition>
+        <sentenceCount annotated="5" total="33"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="shoplifting"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="pilfering.n" ID="2068" lemmaID="44876" cBy="197" cDate="05/01/2001 09:52:11 PDT Tue">
+        <definition>FN: the act of stealing a small amount or item, often over and over again</definition>
+        <sentenceCount annotated="6" total="10"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="pilfering"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="stolen.a" ID="2069" lemmaID="44877" cBy="197" cDate="05/01/2001 09:58:45 PDT Tue">
+        <definition>FN: having been illegally taken away.</definition>
+        <sentenceCount annotated="17" total="77"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="stolen"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="embezzlement.n" ID="2070" lemmaID="12546" cBy="197" cDate="05/01/2001 10:12:24 PDT Tue">
+        <definition>FN: the act of stealing by putting to one's own use (money held in trust for some other person or group of persons).</definition>
+        <sentenceCount annotated="10" total="36"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="embezzlement"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="embezzler.n" ID="2071" lemmaID="12547" cBy="197" cDate="05/01/2001 10:13:31 PDT Tue">
+        <definition>FN: a person who steals by putting to his own use (money held in trust for some other person or group of persons).</definition>
+        <sentenceCount annotated="3" total="10"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="embezzler"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="peculation.n" ID="2072" lemmaID="28201" cBy="197" cDate="05/01/2001 10:14:16 PDT Tue">
+        <definition>COD: the embezzlement of public funds.</definition>
+        <sentenceCount annotated="4" total="4"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="peculation"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="misappropriation.n" ID="2073" lemmaID="24459" cBy="197" cDate="05/01/2001 10:16:34 PDT Tue">
+        <definition>FN: a dishonest use of something as one's own.</definition>
+        <sentenceCount annotated="8" total="45"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="misappropriation"/>
+        <semType name="Negative_judgment" ID="14"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="larceny.n" ID="2074" lemmaID="21715" cBy="197" cDate="05/01/2001 10:17:23 PDT Tue">
+        <definition>COD: theft of personal property.</definition>
+        <sentenceCount annotated="5" total="40"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="larceny"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="snatch.n" ID="2075" lemmaID="36612" cBy="197" cDate="05/01/2001 10:18:05 PDT Tue">
+        <definition>COD: an act of snatching.</definition>
+        <sentenceCount annotated="5" total="56"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="snatch"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="stealing.n" ID="2076" lemmaID="44878" cBy="197" cDate="05/01/2001 10:23:06 PDT Tue">
+        <definition>FN: the act of taking something away illegally.</definition>
+        <sentenceCount annotated="16" total="47"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="stealing"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="V" name="pickpocket.v" ID="5610" lemmaID="45650" cBy="664" cDate="04/22/2002 06:00:26 PDT Mon">
+        <definition>FN: steal from people's pockets</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="pickpocket"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="heist.n" ID="8423" lemmaID="47414" cBy="605" cDate="03/18/2003 03:18:53 PST Tue">
+        <definition>COD: a robbery.</definition>
+        <sentenceCount annotated="12" total="81"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="heist"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="flog.v" ID="15116" lemmaID="14750" cBy="597" cDate="06/13/2008 11:17:37 PDT Fri">
+        <definition>FN: steal</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="flog"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="abstract.v" ID="15615" lemmaID="214" cBy="618" cDate="02/08/2010 01:32:57 PST Mon">
+        <definition>FN: steal.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="abstract"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="cop.v" ID="15634" lemmaID="8288" cBy="618" cDate="02/17/2010 12:01:46 PST Wed">
+        <definition>FN: steal, nab.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="cop"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="rustle.v" ID="15635" lemmaID="33829" cBy="618" cDate="02/17/2010 12:06:31 PST Wed">
+        <definition>FN: steal (esp cattle).</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="rustle"/>
+    </lexUnit>
+</frame>

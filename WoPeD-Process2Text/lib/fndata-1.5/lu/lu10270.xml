@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Created" POS="N" name="lift.n" ID="10270" frame="Connecting_architecture" frameID="1025" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="Orwell" ID="3">
+            <document description="Orwell_1984_p1" ID="7"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="cl" name="Connected_locations"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="" name="Creator"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Dsc" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="drc" name="Direction"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="gl" name="Goal"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Peripheral" abbrev="" name="Material"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Orientation" name="Orientation"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Prt" name="Part"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Peripheral" abbrev="src" name="Source"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Peripheral" abbrev="" name="Whole"/>
+        </frame>
+    </header>
+    <definition>COD: a platform or compartment housed in a shaft for raising and lowering people or things</definition>
+    <lexeme POS="N" name="lift"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Part"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Part"/>
+                <annoSet ID="2598440"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Part"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Part"/>
+                <annoSet ID="2598440"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="manually-added">
+        <sentence corpID="3" docID="7" sentNo="5" paragNo="2" aPos="0" ID="312907">
+            <text>It was no use trying the lift .</text>
+            <annotationSet cDate="01/06/2003 10:55:06 PST Mon" status="UNANN" ID="269183">
+                <layer rank="1" name="BNC">
+                    <label end="1" start="0" name="PNP"/>
+                    <label end="5" start="3" name="VBD"/>
+                    <label end="8" start="7" name="AT0"/>
+                    <label end="12" start="10" name="NN1"/>
+                    <label end="19" start="14" name="VVG"/>
+                    <label end="23" start="21" name="AT0"/>
+                    <label end="28" start="25" name="NN1"/>
+                    <label end="30" start="30" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/23/2010 06:55:14 PDT Fri" status="MANUAL" ID="2598440">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="28" start="25" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="6107" end="28" start="25" name="Part"/>
+                </layer>
+                <layer rank="1" name="GF"/>
+                <layer rank="1" name="PT"/>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

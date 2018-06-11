@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="V" name="prefer.v" ID="12764" frame="Preference" frameID="1626" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Core" abbrev="con" name="Contrast"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="Dur" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core" abbrev="Evnt" name="Event"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Exp" name="Experiencer"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="exp" name="Explanation"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Foc" name="Focal_participant"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="PEv" name="Location_of_Event"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Purp" name="Purpose_of_Event"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="FFD700" type="Peripheral" abbrev="EvT" name="Time_of_Event"/>
+        </frame>
+    </header>
+    <definition>COD: like (someone or something) better than another or others; tend to choose.</definition>
+    <lexeme POS="V" name="prefer"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Contrast"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Contrast"/>
+                <annoSet ID="2586181"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Experiencer"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Experiencer"/>
+                <annoSet ID="2586181"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Focal_participant"/>
+            <pattern total="1">
+                <valenceUnit GF="Obj" PT="NP" FE="Focal_participant"/>
+                <annoSet ID="2586181"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Contrast"/>
+            <FE name="Experiencer"/>
+            <FE name="Focal_participant"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[to]" FE="Contrast"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Experiencer"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Focal_participant"/>
+                <annoSet ID="2586181"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-NP-T-(1)"/>
+    <subCorpus name="other-matched-(1)">
+        <sentence corpID="111" docID="421" sentNo="6" paragNo="394" aPos="75251799" ID="1575781">
+            <text>She knew Angel Clare preferred her to the others .</text>
+            <annotationSet cDate="07/15/2010 01:54:34 PDT Thu" status="UNANN" ID="2586180">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="PP"/>
+                    <label end="7" start="4" name="VVD"/>
+                    <label end="13" start="9" name="NP"/>
+                    <label end="19" start="15" name="NP"/>
+                    <label end="29" start="21" name="VVD"/>
+                    <label end="33" start="31" name="PP"/>
+                    <label end="36" start="35" name="to"/>
+                    <label end="40" start="38" name="dt"/>
+                    <label end="47" start="42" name="nns"/>
+                    <label end="49" start="49" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/15/2010 01:54:34 PDT Thu" status="MANUAL" ID="2586181">
+                <layer rank="1" name="Target">
+                    <label cBy="571" end="29" start="21" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="571" feID="9062" end="19" start="9" name="Experiencer"/>
+                    <label cBy="571" feID="9064" end="33" start="31" name="Focal_participant"/>
+                    <label cBy="571" feID="9075" end="47" start="35" name="Contrast"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="19" start="9" name="Ext"/>
+                    <label end="33" start="31" name="Obj"/>
+                    <label end="47" start="35" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="19" start="9" name="NP"/>
+                    <label end="33" start="31" name="NP"/>
+                    <label end="47" start="35" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

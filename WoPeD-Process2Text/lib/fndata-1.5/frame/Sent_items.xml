@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="08/16/2005 12:42:57 PDT Tue" name="Sent_items" ID="1609" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A &lt;fen&gt;Sent_item&lt;/fen&gt; is prepared for, received after, or involved in a process of Sending, which may involve a particular kind of &lt;fen&gt;Transport_means&lt;/fen&gt;. The &lt;fen&gt;Sent_item&lt;/fen&gt; has an (intended or actual) &lt;fen&gt;Sender&lt;/fen&gt; and &lt;fen&gt;Recipient&lt;/fen&gt; (or a &lt;fen&gt;Source&lt;/fen&gt; and &lt;fen&gt;Goal&lt;/fen&gt;). As a physical object, the &lt;fen&gt;Sent_item&lt;/fen&gt; can be located in a &lt;fen&gt;Place&lt;/fen&gt;.
+
+&lt;ex&gt;The &lt;fex name="sen"&gt;&lt;t&gt;shipment&lt;/t&gt;&lt;/fex&gt; &lt;fex name="Source"&gt;from Romania&lt;/fex&gt; is destined for the Iraqi Police Forces.&lt;/ex&gt;
+
+&lt;ex&gt;Postage became more affordable and &lt;fex name="Sent_item"&gt;&lt;t&gt;mail&lt;/t&gt;&lt;/fex&gt; &lt;fex name="Recipient"&gt;to the President&lt;/fex&gt; gradually increased.&lt;/ex&gt;
+
+&lt;ex&gt;I 'll arrange for her to collect &lt;fex name="Recipient"&gt;Bertha 's&lt;/fex&gt; &lt;fex name="sen"&gt;&lt;t&gt;mail&lt;/t&gt;&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;i am looking for a penpal for email or &lt;fex name="tra"&gt;snail&lt;/fex&gt; &lt;fex name="Sent_item"&gt;&lt;t&gt;mail&lt;/t&gt;&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;He had plenty of time to read all &lt;fex name="Recipient"&gt;his&lt;/fex&gt; &lt;fex name="Sender"&gt;fan&lt;/fex&gt; &lt;fex name="Sent_item"&gt;&lt;t&gt;mail&lt;/t&gt;&lt;/fex&gt; &lt;fex name="Source"&gt;from Australia&lt;/fex&gt; while there.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="08/16/2005 12:42:57 PDT Tue" abbrev="snd" name="Sender" ID="8858">
+        <definition>&lt;def-root&gt;This is the person or organization who initiates the movement of the &lt;fen&gt;Sent_item&lt;/fen&gt; and, unlike in the case of Carrying, does not accompany it.
+
+&lt;ex&gt;Today's &lt;t&gt;mail&lt;/t&gt; &lt;fex name="Sender"&gt;from eBay&lt;/fex&gt; brought me a copy of this book.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="08/16/2005 12:42:57 PDT Tue" abbrev="Goal" name="Goal" ID="8860">
+        <definition>&lt;def-root&gt;The end of the path and intended goal of the sending.
+
+&lt;ex&gt;My &lt;t&gt;shipment&lt;/t&gt; &lt;fex name="Goal"&gt;to Australia&lt;/fex&gt; was received in 10 days.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Goal" ID="153"/>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="08/16/2005 12:42:57 PDT Tue" abbrev="Source" name="Source" ID="8861">
+        <definition>&lt;def-root&gt;The beginning of the path, similar to source except that it serves to define the path.
+
+&lt;ex&gt;&lt;t&gt;Mail&lt;/t&gt; &lt;fex name="Source"&gt;from England&lt;/fex&gt; to our office is sent registered mail.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Source" ID="151"/>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="08/16/2005 12:42:57 PDT Tue" abbrev="sen" name="Sent_item" ID="8862">
+        <definition>&lt;def-root&gt;The objects being sent.
+
+
+&lt;ex&gt;Today the &lt;fex name="sen"&gt;&lt;t&gt;post&lt;/t&gt;&lt;/fex&gt; contained a pair of brand new tyres from Continental.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="08/16/2005 12:42:57 PDT Tue" abbrev="tra" name="Transport_means" ID="8863">
+        <definition>&lt;def-root&gt;The mode of sending employed.
+
+&lt;ex&gt;We promise to expedite your &lt;fex name="tra"&gt;air&lt;/fex&gt; &lt;t&gt;mail&lt;/t&gt; as agreed.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="08/16/2005 12:42:57 PDT Tue" abbrev="Rec" name="Recipient" ID="8868">
+        <definition>&lt;def-root&gt;This is the recipient of the sent &lt;fen&gt;Sent_item&lt;/fen&gt;
+
+&lt;ex&gt;He went to the study and examined &lt;fex name="Recipient"&gt;his&lt;/fex&gt; mail&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="08/16/2005 12:42:57 PDT Tue" abbrev="Time" name="Time" ID="8871">
+        <definition>&lt;def-root&gt;When an interaction with the &lt;fen&gt;Sent_item&lt;/fen&gt; occurs.
+
+&lt;ex&gt;Finally, &lt;fex name="Time"&gt;today's&lt;/fex&gt; &lt;t&gt;mail&lt;/t&gt; contained yet another book by the same author.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="08/16/2005 12:42:58 PDT Tue" abbrev="Place" name="Place" ID="8874">
+        <definition>&lt;def-root&gt;The  place in which the Sent_item is located.
+
+&lt;ex&gt;After that, I notice the &lt;t&gt;mail&lt;/t&gt; &lt;fex name="Place"&gt;on the table&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="08/16/2005 12:56:50 PDT Tue" abbrev="des" name="Descriptor" ID="8875">
+        <definition>&lt;def-root&gt;Any characterizations or evaluations of the the &lt;fen&gt;Sent_item&lt;/fen&gt; that introduce another frame, in which the &lt;fen&gt;Sent_item&lt;/fen&gt; figures.
+
+&lt;ex&gt;A cat could have kittens before the &lt;fex name="des"&gt;stupid&lt;/fex&gt; &lt;t&gt;shipment&lt;/t&gt; rolled in.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Sending</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Needs_SCs" POS="N" name="mail.n" ID="12634" lemmaID="50215" cBy="605" cDate="08/16/2005 12:58:59 PDT Tue">
+        <definition>COD:  letters and parcels sent by post.</definition>
+        <sentenceCount annotated="1" total="160"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="mail"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="post.n" ID="12635" lemmaID="50216" cBy="605" cDate="08/16/2005 01:00:05 PDT Tue">
+        <definition>COD: letters and parcels delivered.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="post"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="shipment.n" ID="12636" lemmaID="35549" cBy="605" cDate="08/16/2005 01:00:28 PDT Tue">
+        <definition>COD: a consignment of goods shipped.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="shipment"/>
+    </lexUnit>
+</frame>

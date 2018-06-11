@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="04/15/2002 05:51:21 PDT Mon" name="Being_attached" ID="307" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Item&lt;/fen&gt; is attached by a &lt;fen&gt;Handle&lt;/fen&gt;, via a &lt;fen&gt;Connector&lt;/fen&gt;, to a &lt;fen&gt;Goal&lt;/fen&gt;, or &lt;fen&gt;Items&lt;/fen&gt; are attached to each other.  There may be a &lt;fen&gt;Dependent_state&lt;/fen&gt;, which depends crucially on &lt;fen&gt;Item&lt;/fen&gt;(s) being attached.
+
+&lt;ex&gt;&lt;fex name="Item"&gt;My thumb&lt;/fex&gt; &lt;m&gt;was&lt;/m&gt; &lt;t&gt;stuck&lt;/t&gt; &lt;fex name="Goal"&gt;to the tube of glue&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="Items"&gt;The prisoner's legs&lt;/fex&gt; were &lt;t&gt;shackled&lt;/t&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="7CCD73" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="04/15/2002 05:51:55 PDT Mon" abbrev="Conn" name="Connector" ID="2629">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Connector&lt;/fen&gt; identifies the instrument used to attach and is usually expressed in a &lt;ment&gt;with&lt;/ment&gt;-PP.
+
+&lt;ex&gt;The tarp is  &lt;t&gt;tied&lt;/t&gt; down &lt;fex name="Conn"&gt;with a rope&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="04/15/2002 05:51:55 PDT Mon" abbrev="Handle" name="Handle" ID="2630">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Handle&lt;/fen&gt; identifies the point of attachment on the &lt;fen&gt;Item&lt;/fen&gt;.
+
+&lt;ex&gt;Harry was &lt;t&gt;tied&lt;/t&gt; &lt;fex name="Handle"&gt;by the neck&lt;/fex&gt; to the tree.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="04/15/2002 05:51:55 PDT Mon" abbrev="Item" name="Item" ID="2631">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Item&lt;/fen&gt; identifies the entity that comes to be attached to the &lt;fen&gt;Goal&lt;/fen&gt;.
+
+&lt;ex&gt;&lt;fex name="Item"&gt;A handle&lt;/fex&gt;  was &lt;t&gt;affixed&lt;/t&gt; to the door.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <requiresFE name="Goal" ID="2633"/>
+        <excludesFE name="Items" ID="2632"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="04/15/2002 05:51:55 PDT Mon" abbrev="Items" name="Items" ID="2632">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Items&lt;/fen&gt; identifies the plural items that are tied together, resulting in their mutual attachment.
+
+&lt;ex&gt;&lt;fex name="Items"&gt;The boats&lt;/fex&gt; remained &lt;t&gt;tied&lt;/t&gt; together.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="04/15/2002 05:51:55 PDT Mon" abbrev="Goal" name="Goal" ID="2633">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Goal&lt;/fen&gt; identifies the location to which the &lt;fen&gt;Item&lt;/fen&gt;(s) is attached.
+
+&lt;ex&gt;The boat remained &lt;t&gt;anchored&lt;/t&gt; &lt;fex name="Goal"&gt;to the coastline&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Goal" ID="153"/>
+        <requiresFE name="Item" ID="2631"/>
+        <excludesFE name="Items" ID="2632"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="04/16/2002 11:17:41 PDT Tue" abbrev="State" name="Dependent_state" ID="2634">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Dependent_state&lt;/fen&gt; identifies the state of the &lt;fen&gt;Item&lt;/fen&gt; or &lt;fen&gt;Items&lt;/fen&gt;which depends on the existence of the attachment.
+
+&lt;ex&gt;The tarp is &lt;t&gt;tied&lt;/t&gt; &lt;fex name="State"&gt;down&lt;/fex&gt; with a cord.&lt;/ex&gt;
+&lt;ex&gt;Harry's hands are &lt;t&gt;tied&lt;/t&gt; &lt;fex name="State"&gt;down&lt;/fex&gt;with cords.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="243" cDate="03/15/2004 12:27:19 PST Mon" abbrev="Mnr" name="Manner" ID="6150">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Manner&lt;/fen&gt; in which an &lt;fen&gt;Item&lt;/fen&gt; is in an attached state to a &lt;fen&gt;Goal&lt;/fen&gt;, or two &lt;fen&gt;Items&lt;/fen&gt; are attached to each other.
+
+&lt;ex&gt;The tiny stick  was &lt;t&gt;fastened&lt;/t&gt; &lt;fex name="Manner"&gt;tightly&lt;/fex&gt; to his wrist.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Reciprocality</relatedFrame>
+        <relatedFrame>State</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Being_detached</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="A" name="attached.a" ID="5554" lemmaID="45626" cBy="664" cDate="04/15/2002 05:54:35 PDT Mon">
+        <definition>FN: the state of being fastened or joined</definition>
+        <sentenceCount annotated="29" total="270"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="attached"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="tied.a" ID="5555" lemmaID="45627" cBy="664" cDate="04/15/2002 05:55:04 PDT Mon">
+        <definition>FN: the state of being fastened to something else with a rope-like instrument</definition>
+        <sentenceCount annotated="8" total="296"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="tied"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Connector" POS="A" name="bolted.a" ID="5556" lemmaID="45628" cBy="664" cDate="04/15/2002 05:55:39 PDT Mon">
+        <definition>FN: the state of being fastened to something else with a bolt</definition>
+        <sentenceCount annotated="8" total="141"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="bolted"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Connector" POS="A" name="glued.a" ID="5557" lemmaID="45629" cBy="664" cDate="04/15/2002 05:56:10 PDT Mon">
+        <definition>FN: the state of being attached to something else with glue</definition>
+        <sentenceCount annotated="6" total="122"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="glued"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="affixed.a" ID="5558" lemmaID="45630" cBy="664" cDate="04/15/2002 05:56:43 PDT Mon">
+        <definition>FN: the state of being fastened to something else</definition>
+        <sentenceCount annotated="5" total="38"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="affixed"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="anchored.a" ID="5559" lemmaID="45631" cBy="664" cDate="04/15/2002 05:57:12 PDT Mon">
+        <definition>FN: the state of being secured firmly in position</definition>
+        <sentenceCount annotated="5" total="130"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="anchored"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="bound.a" ID="5560" lemmaID="4304" cBy="664" cDate="04/15/2002 05:57:39 PDT Mon">
+        <definition>FN: the state of being fastened to something else</definition>
+        <sentenceCount annotated="4" total="90"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="bound"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Connector" POS="A" name="chained.a" ID="5561" lemmaID="45632" cBy="664" cDate="04/15/2002 05:58:10 PDT Mon">
+        <definition>FN: The state of being attached to something else with a chain</definition>
+        <sentenceCount annotated="16" total="119"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="chained"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="fastened.a" ID="5562" lemmaID="45633" cBy="664" cDate="04/15/2002 05:58:42 PDT Mon">
+        <definition>FN: the state of being attached to something else</definition>
+        <sentenceCount annotated="10" total="174"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="fastened"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="fused.a" ID="5563" lemmaID="15746" cBy="664" cDate="04/15/2002 05:59:02 PDT Mon">
+        <definition>FN: the state of being attached to something else in that the two items have been joined to form one</definition>
+        <sentenceCount annotated="6" total="137"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="fused"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Connector" POS="A" name="handcuffed.a" ID="5564" lemmaID="45634" cBy="664" cDate="04/15/2002 05:59:30 PDT Mon">
+        <definition>FN: the state of bieng attached to something else with handcuffs</definition>
+        <sentenceCount annotated="8" total="83"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="handcuffed"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Connector" POS="A" name="lashed.a" ID="5565" lemmaID="45635" cBy="664" cDate="04/15/2002 05:59:52 PDT Mon">
+        <definition>FN: the state of being fastened to something else with a cord or rope</definition>
+        <sentenceCount annotated="7" total="87"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="lashed"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Connector" POS="A" name="manacled.a" ID="5566" lemmaID="45636" cBy="664" cDate="04/15/2002 06:00:22 PDT Mon">
+        <definition>FN: the state of being attached to something else with manacles</definition>
+        <sentenceCount annotated="5" total="18"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="manacled"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="moored.a" ID="5567" lemmaID="45637" cBy="664" cDate="04/15/2002 06:00:47 PDT Mon">
+        <definition>FN: the state of a boat being attached to a shore or anchor with a rope or cable</definition>
+        <sentenceCount annotated="14" total="133"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="moored"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Connector" POS="A" name="nailed.a" ID="5568" lemmaID="45638" cBy="664" cDate="04/15/2002 06:01:18 PDT Mon">
+        <definition>FN: the state of being fastened to something else with nails</definition>
+        <sentenceCount annotated="10" total="83"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="nailed"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Connector" POS="A" name="pasted.a" ID="5569" lemmaID="45639" cBy="664" cDate="04/15/2002 06:01:52 PDT Mon">
+        <definition>FN: the state of being fastened to something else with paste</definition>
+        <sentenceCount annotated="5" total="33"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="pasted"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Connector" POS="A" name="pinned.a" ID="5570" lemmaID="45640" cBy="664" cDate="04/15/2002 06:02:15 PDT Mon">
+        <definition>FN: the state of being attached to something else with a pin or pins</definition>
+        <sentenceCount annotated="7" total="174"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="pinned"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Connector" POS="A" name="riveted.a" ID="5571" lemmaID="45641" cBy="664" cDate="04/15/2002 06:02:58 PDT Mon">
+        <definition>FN: the state of being fastened to something else with a rivet or rivets</definition>
+        <sentenceCount annotated="6" total="97"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="riveted"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="sewn.a" ID="5572" lemmaID="45642" cBy="664" cDate="04/15/2002 06:03:37 PDT Mon">
+        <definition>FN: the state of being attached to something else with stiches made with a needle and thread</definition>
+        <sentenceCount annotated="6" total="105"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="sewn"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Connector" POS="A" name="shackled.a" ID="5573" lemmaID="45643" cBy="664" cDate="04/15/2002 06:03:58 PDT Mon">
+        <definition>FN: the state of being attached to something else with shackles</definition>
+        <sentenceCount annotated="5" total="37"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="shackled"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Connector" POS="A" name="stapled.a" ID="5574" lemmaID="45644" cBy="664" cDate="04/15/2002 06:04:38 PDT Mon">
+        <definition>FN: the state of being fastened to something else with staples</definition>
+        <sentenceCount annotated="5" total="20"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="stapled"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="stuck.a" ID="5575" lemmaID="45645" cBy="664" cDate="04/15/2002 06:05:05 PDT Mon">
+        <definition>FN: being caused to adhere</definition>
+        <sentenceCount annotated="8" total="162"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="stuck"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Connector" POS="A" name="tethered.a" ID="5577" lemmaID="45647" cBy="664" cDate="04/15/2002 06:05:53 PDT Mon">
+        <definition>FN: the state of being fastened to something else with a tether</definition>
+        <sentenceCount annotated="11" total="107"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="tethered"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="welded.a" ID="5578" lemmaID="45648" cBy="664" cDate="04/15/2002 06:06:29 PDT Mon">
+        <definition>FN: the state of a metal part being attached to another metal part with the use of heat to melt the metal </definition>
+        <sentenceCount annotated="7" total="45"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="welded"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="stick.v" ID="5759" lemmaID="45303" cBy="664" cDate="05/08/2002 06:47:44 PDT Wed">
+        <definition>COD: adhere or cause to adhere.</definition>
+        <sentenceCount annotated="8" total="280"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="stick"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Connector" POS="A" name="taped.a" ID="6936" lemmaID="45646" cBy="296" cDate="08/01/2002 10:10:22 PDT Thu">
+        <definition>FN: the state of being attached to something else with tape</definition>
+        <sentenceCount annotated="12" total="110"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="taped"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Connector" POS="A" name="plastered.a" ID="6971" lemmaID="29275" cBy="296" cDate="08/01/2002 04:23:39 PDT Thu">
+        <definition>FN: firmly attached</definition>
+        <sentenceCount annotated="14" total="170"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="plastered"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="adhere.v" ID="12699" lemmaID="482" cBy="605" cDate="08/23/2005 04:31:29 PDT Tue">
+        <definition>COD: stick fast to.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="adhere"/>
+    </lexUnit>
+    <lexUnit status="New" POS="N" name="adhesion.n" ID="12700" lemmaID="486" cBy="605" cDate="08/23/2005 04:32:36 PDT Tue">
+        <definition>FN: the state of adhering.</definition>
+        <sentenceCount annotated="5" total="140"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="adhesion"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="connected.a" ID="13664" lemmaID="7851" cBy="618" cDate="11/08/2006 01:16:49 PST Wed">
+        <definition>FN: linked together.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="connected"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="linked.a" ID="13665" lemmaID="48089" cBy="618" cDate="11/08/2006 01:18:34 PST Wed">
+        <definition>FN: connected as by a link.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="linked"/>
+    </lexUnit>
+</frame>

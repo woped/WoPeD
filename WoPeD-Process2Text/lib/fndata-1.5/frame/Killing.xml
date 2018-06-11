@@ -1,0 +1,460 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="03/19/2003 04:20:05 PST Wed" name="Killing" ID="590" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A &lt;fen&gt;Killer&lt;/fen&gt; or &lt;fen&gt;Cause&lt;/fen&gt; causes the death of the &lt;fen&gt;Victim&lt;/fen&gt;.
+&lt;ex&gt;&lt;fex name="Killer"&gt;John&lt;/fex&gt; &lt;t&gt;drowned&lt;/t&gt; &lt;fex name="Victim"&gt;Martha&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="04/28/2003 12:29:31 PDT Mon" abbrev="Kill" name="Killer" ID="4450">
+        <definition>&lt;def-root&gt;The person or sentient entity that causes the death of the&lt;fen&gt;Victim&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <excludesFE name="Cause" ID="4452"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="04/28/2003 12:30:54 PDT Mon" abbrev="" name="Victim" ID="4451">
+        <definition>&lt;def-root&gt;The living entity that dies as a result of the killing.&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="04/28/2003 12:32:55 PDT Mon" abbrev="" name="Cause" ID="4452">
+        <definition>&lt;def-root&gt;An inanimate entity or process that causes the death of the &lt;fen&gt;Victim&lt;/fen&gt;.
+
+&lt;ex&gt;&lt;fex name="Cause"&gt;The rockslide&lt;/fex&gt; &lt;t&gt;killed&lt;/t&gt; nearly half of the climbers.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Killer" ID="4450"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="04/28/2003 12:35:37 PDT Mon" abbrev="Purp" name="Purpose" ID="4453">
+        <definition>&lt;def-root&gt;The state of affairs that the &lt;fen&gt;Killer&lt;/fen&gt; is trying to bring about by killing.
+
+&lt;ex&gt;It's simple:  he &lt;t&gt;killed&lt;/t&gt; her &lt;fex name="Purp"&gt;to get the inheritance&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="04/28/2003 12:38:16 PDT Mon" abbrev="" name="Means" ID="4454">
+        <definition>&lt;def-root&gt;The method or action that the &lt;fen&gt;Killer&lt;/fen&gt; or &lt;fen&gt;Cause&lt;/fen&gt; performs resulting in the death of the &lt;fen&gt;Victim&lt;/fen&gt;.
+
+&lt;ex&gt;The flood &lt;t&gt;exterminated&lt;/t&gt; the rats &lt;fex name="Means"&gt;by cutting off access to food&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+        <excludesFE name="Cause" ID="4452"/>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="04/28/2003 12:45:25 PDT Mon" abbrev="" name="Reason" ID="4455">
+        <definition>&lt;def-root&gt;The preexisting state of affairs that the &lt;fen&gt;Killer&lt;/fen&gt; is responding to.
+
+&lt;ex&gt;She &lt;t&gt;drowned&lt;/t&gt; him &lt;fex name="Reason"&gt;for lying&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="04/28/2003 12:48:43 PDT Mon" abbrev="Loc" name="Place" ID="4456">
+        <definition>&lt;def-root&gt;The location where the death took place.
+
+&lt;ex&gt;Apparently there were two &lt;t&gt;murders&lt;/t&gt; &lt;fex name="Place"&gt;in Atherton&lt;/fex&gt; in one week.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="04/28/2003 12:59:44 PDT Mon" abbrev="" name="Time" ID="4457">
+        <definition>&lt;def-root&gt;The point or period of time within which the &lt;fen&gt;Victim&lt;/fen&gt; is killed.
+
+&lt;ex&gt;There is no evidence that the royal family was &lt;t&gt;killed&lt;/t&gt; &lt;fex name="Time"&gt;during the destruction&lt;/fex&gt; at this site.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="04/28/2003 03:27:36 PDT Mon" abbrev="Dep" name="Depictive" ID="4458">
+        <definition>&lt;def-root&gt;The state of the &lt;fen&gt;Killer&lt;/fen&gt; or &lt;fen&gt;Victim&lt;/fen&gt; during the killing.
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="04/29/2003 04:07:41 PDT Tue" abbrev="" name="Result" ID="4460">
+        <definition>&lt;def-root&gt;The state of the &lt;fen&gt;Victim&lt;/fen&gt; that results from being killed.  (Normally this is somewhat redundant.)
+
+&lt;ex&gt;Two men ... &lt;t&gt;smothered&lt;/t&gt; her &lt;fex name="Result"&gt;to death&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="05/08/2003 04:04:24 PDT Thu" abbrev="Instr" name="Instrument" ID="4480">
+        <definition>&lt;def-root&gt;The device used by the &lt;fen&gt;Killer&lt;/fen&gt; to bring about the death of the &lt;fen&gt;Victim&lt;/fen&gt;.
+&lt;ex&gt;It's difficult to &lt;t&gt;suicide&lt;/t&gt; &lt;fex name="Instr"&gt;with only a pocketknife&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Physical_entity" ID="70"/>
+        <excludesFE name="Cause" ID="4452"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="05/09/2003 06:27:28 PDT Fri" abbrev="Man" name="Manner" ID="4482">
+        <definition>&lt;def-root&gt;Any description of the event which is not covered by more specific FEs, including force (hard, softly), secondary effects (quietly, loudly), and general descriptions comparing events (the same way). It may indicate salient characteristics of a &lt;fen&gt;Killer&lt;/fen&gt; that also affect the action (presumptuously, coldly, deliberately, eagerly, carefully).
+&lt;ex&gt;&lt;t&gt;Kill&lt;/t&gt; them &lt;fex name="Manner"&gt;quietly&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;A true professional , he &lt;t&gt;beheaded&lt;/t&gt; his victims &lt;fex name="Man"&gt;with unhurried expertise&lt;/fex&gt;, a credit to his calling.&lt;/ex&gt;
+&lt;ex&gt;A gunman &lt;t&gt;slaughtered&lt;/t&gt; six people &lt;fex name="Man"&gt;in cold blood&lt;/fex&gt; because he had been evicted.&lt;/ex&gt;
+
+&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="07/10/2003 12:08:01 PDT Thu" abbrev="" name="Degree" ID="4752">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Degree&lt;/fen&gt; appears with adjectives to describe the killing potential of an object or with nouns to describe how widespread the killing is.
+&lt;ex&gt;The Nazis engaged in &lt;fex name="Degree"&gt;mass&lt;/fex&gt; &lt;t&gt;genocide&lt;/t&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="361" cDate="05/08/2007 05:26:58 PDT Tue" abbrev="ben" name="Beneficiary" ID="11725">
+        <definition>&lt;def-root&gt;This extra-thematic FE applies to participants that derive a benefit from the occurrence of the event specified by the target predicate. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="90876C" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="05/08/2007 05:29:36 PDT Tue" abbrev="" name="Circumstances" ID="11726">
+        <definition>&lt;def-root&gt;Circumstances describe the state of the world (at a particular time and place) which is specifically independent of the event itself and any of its participants. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="05/08/2007 05:31:38 PDT Tue" abbrev="" name="Explanation" ID="11727">
+        <definition>&lt;def-root&gt;The Explanation denotes a proposition from which the main clause (headed by the target) logically follows.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="7CCD73" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="05/08/2007 05:51:30 PDT Tue" abbrev="" name="Period_of_iterations" ID="11728">
+        <definition>&lt;def-root&gt;The length of time from when the event denoted by the target began to be repeated to when it stopped.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="000000" coreType="Extra-Thematic" cBy="225" cDate="05/26/2009 10:27:02 PDT Tue" abbrev="" name="Frequency" ID="13175">
+        <definition>&lt;def-root&gt;This frame element is defined as the number of times an event occurs per some unit of time. A Frequency expression answers the question how often.&lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Means" ID="4454"/>
+        <memberFE name="Killer" ID="4450"/>
+        <memberFE name="Instrument" ID="4480"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Transitive_action</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Execution</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of">
+        <relatedFrame>Death</relatedFrame>
+    </frameRelation>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="kill.v" ID="8630" lemmaID="21304" cBy="664" cDate="04/28/2003 12:27:58 PDT Mon">
+        <definition>COD:  cause the death of.</definition>
+        <sentenceCount annotated="41" total="300"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="kill"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="annihilate.v" ID="8631" lemmaID="1457" cBy="664" cDate="04/28/2003 01:04:45 PDT Mon">
+        <definition>FN: to kill, esp. a large proportion of a group</definition>
+        <sentenceCount annotated="26" total="90"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="annihilate"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="assassinate.v" ID="8632" lemmaID="2128" cBy="664" cDate="04/28/2003 01:05:07 PDT Mon">
+        <definition>FN: to kill (a powerful person) for political motives</definition>
+        <sentenceCount annotated="24" total="110"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="assassinate"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="behead.v" ID="8633" lemmaID="3255" cBy="664" cDate="04/28/2003 02:01:44 PDT Mon">
+        <definition>FN: to kill by chopping off the head</definition>
+        <sentenceCount annotated="23" total="65"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="behead"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="eliminate.v" ID="8634" lemmaID="12473" cBy="664" cDate="04/28/2003 02:02:10 PDT Mon">
+        <definition>FN: to murder (used as a euphemism)</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="eliminate"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="exterminate.v" ID="8635" lemmaID="13647" cBy="664" cDate="04/28/2003 02:02:24 PDT Mon">
+        <definition>FN: to kill in large numbers or completely. "We have to exterminate the termites in the garage."</definition>
+        <sentenceCount annotated="21" total="53"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="exterminate"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="drown.v" ID="8636" lemmaID="11838" cBy="664" cDate="04/28/2003 02:02:39 PDT Mon">
+        <definition>FN: to kill by forcing underwater until death occurs</definition>
+        <sentenceCount annotated="15" total="300"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="drown"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="liquidate.v" ID="8638" lemmaID="22474" cBy="664" cDate="04/28/2003 02:04:46 PDT Mon">
+        <definition>FN: to kill people in large numbers, esp. for ideological reasons (used as a euphemism)</definition>
+        <sentenceCount annotated="4" total="80"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="liquidate"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="murder.v" ID="8639" lemmaID="25238" cBy="664" cDate="04/28/2003 02:05:25 PDT Mon">
+        <definition>COD: the unlawful premeditated killing of one person by another.</definition>
+        <sentenceCount annotated="23" total="196"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="murder"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="slay.v" ID="8640" lemmaID="36284" cBy="664" cDate="04/28/2003 02:06:00 PDT Mon">
+        <definition>FN: to kill violently. "They vowed to slay their enemies and recapture their land."</definition>
+        <sentenceCount annotated="29" total="171"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="slay"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="terminate.v" ID="8641" lemmaID="39904" cBy="664" cDate="04/28/2003 02:06:16 PDT Mon">
+        <definition>FN: to murder (used as a euphemism)</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="terminate"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="suffocate.v" ID="8642" lemmaID="38693" cBy="664" cDate="04/28/2003 02:06:54 PDT Mon">
+        <definition>FN: to cause to die due to lack of oxygen</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="suffocate"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="smother.v" ID="8643" lemmaID="36565" cBy="664" cDate="04/28/2003 02:07:09 PDT Mon">
+        <definition>FN: to kill by covering the mouth and nose so that the victim cannot breathe</definition>
+        <sentenceCount annotated="6" total="174"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="smother"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="starve.v" ID="8644" lemmaID="37848" cBy="664" cDate="04/28/2003 02:07:23 PDT Mon">
+        <definition>FN: to kill someone by depriving them of food</definition>
+        <sentenceCount annotated="6" total="175"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="starve"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="asphyxiate.v" ID="8645" lemmaID="2113" cBy="664" cDate="04/28/2003 02:08:28 PDT Mon">
+        <definition>FN: to cause to die due to a lowered level of oxygen in the body</definition>
+        <sentenceCount annotated="8" total="22"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="asphyxiate"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="suicide.v" ID="8646" lemmaID="47746" cBy="664" cDate="04/28/2003 02:09:34 PDT Mon">
+        <definition>FN: to delibreately kill oneself </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="suicide"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="homicide.n" ID="8647" lemmaID="18284" cBy="664" cDate="04/28/2003 02:09:48 PDT Mon">
+        <definition>FN: the killing of a human being</definition>
+        <sentenceCount annotated="6" total="6"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="homicide"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="suicide.n" ID="8648" lemmaID="38719" cBy="664" cDate="04/28/2003 02:10:04 PDT Mon">
+        <definition>FN: to kill oneself deliberately</definition>
+        <sentenceCount annotated="18" total="138"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="suicide"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="V" name="euthanize.v" ID="8650" lemmaID="45252" cBy="664" cDate="04/28/2003 03:26:02 PDT Mon">
+        <definition>COD:  put (an animal) to death humanely.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="euthanize"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="euthanasia.n" ID="8651" lemmaID="13224" cBy="664" cDate="04/28/2003 03:27:24 PDT Mon">
+        <definition>FN: the killing of a person performed with the intention of helping them avoid a more unpleasant or painful manner of death</definition>
+        <sentenceCount annotated="7" total="77"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="euthanasia"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="dispatch.v" ID="8906" lemmaID="11079" cBy="664" cDate="06/19/2003 03:12:39 PDT Thu">
+        <definition>COD: kill</definition>
+        <sentenceCount annotated="9" total="58"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="dispatch"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="lethal.a" ID="8907" lemmaID="22123" cBy="664" cDate="06/19/2003 03:19:29 PDT Thu">
+        <definition>COD:  sufficient to cause death.</definition>
+        <sentenceCount annotated="53" total="197"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="lethal"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="annihilation.n" ID="8914" lemmaID="1458" cBy="664" cDate="06/20/2003 03:26:23 PDT Fri">
+        <definition>FN: killing, esp. of people</definition>
+        <sentenceCount annotated="12" total="45"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="annihilation"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="liquidation.n" ID="9042" lemmaID="22475" cBy="296" cDate="07/10/2003 09:51:07 PDT Thu">
+        <definition>FN: elimination; killing</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="liquidation"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="crucify.v" ID="9043" lemmaID="9107" cBy="296" cDate="07/10/2003 09:56:27 PDT Thu">
+        <definition>COD: put (someone) to death by nailing or binding them to a cross.</definition>
+        <sentenceCount annotated="14" total="168"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="crucify"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="crucifixion.n" ID="9044" lemmaID="9104" cBy="296" cDate="07/10/2003 09:57:45 PDT Thu">
+        <definition>FN: the act of crucifying or being crucified.</definition>
+        <sentenceCount annotated="7" total="51"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="crucifixion"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="decapitate.v" ID="9045" lemmaID="9750" cBy="296" cDate="07/10/2003 09:58:58 PDT Thu">
+        <definition>COD: cut off the head of</definition>
+        <sentenceCount annotated="6" total="34"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="decapitate"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="massacre.v" ID="9047" lemmaID="23614" cBy="296" cDate="07/10/2003 10:06:35 PDT Thu">
+        <definition>COD: deliberately and violently kill (a large number of people)</definition>
+        <sentenceCount annotated="17" total="110"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="massacre"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="slaughter.v" ID="9048" lemmaID="36266" cBy="296" cDate="07/10/2003 10:07:32 PDT Thu">
+        <definition>COD: kill (animals) for food or kill (people) in a cruel or violent way.</definition>
+        <sentenceCount annotated="26" total="124"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="slaughter"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="lynch.v" ID="9049" lemmaID="23030" cBy="296" cDate="07/10/2003 10:10:47 PDT Thu">
+        <definition>COD: (of a group) kill (someone) for an alleged offence without a legal trial, especially by hanging. </definition>
+        <sentenceCount annotated="10" total="32"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="lynch"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="liquidator.n" ID="9050" lemmaID="22476" cBy="296" cDate="07/10/2003 10:15:30 PDT Thu">
+        <definition>FN: a person who gets rid of another person, especially by killing.</definition>
+        <sentenceCount annotated="0" total="63"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="liquidator"/>
+        <semType name="Agentive_noun" ID="102"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="killing.n" ID="9051" lemmaID="21306" cBy="296" cDate="07/10/2003 10:16:49 PDT Thu">
+        <definition>COD: an act of causing death.</definition>
+        <sentenceCount annotated="19" total="131"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="killing"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="killing"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="murder.n" ID="9052" lemmaID="25237" cBy="296" cDate="07/10/2003 10:18:16 PDT Thu">
+        <definition>COD: unlawful and premeditated killing</definition>
+        <sentenceCount annotated="22" total="141"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="murder"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="slaughter.n" ID="9053" lemmaID="36265" cBy="296" cDate="07/10/2003 10:28:35 PDT Thu">
+        <definition>COD: the killing of a large number of people in a cruel or violent way.</definition>
+        <sentenceCount annotated="21" total="90"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="slaughter"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="killer.n" ID="9055" lemmaID="21305" cBy="296" cDate="07/10/2003 10:30:27 PDT Thu">
+        <definition>COD: a person or thing that kills.</definition>
+        <sentenceCount annotated="33" total="110"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="killer"/>
+        <semType name="Agentive_noun" ID="102"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="massacre.n" ID="9056" lemmaID="23613" cBy="296" cDate="07/10/2003 10:39:41 PDT Thu">
+        <definition>COD: an indiscriminate and brutal slaughter of people</definition>
+        <sentenceCount annotated="17" total="101"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="massacre"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="infanticide.n" ID="9057" lemmaID="19816" cBy="296" cDate="07/10/2003 10:40:18 PDT Thu">
+        <definition>COD: the killing of an infant.</definition>
+        <sentenceCount annotated="7" total="26"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="infanticide"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="smothering.n" ID="9058" lemmaID="48158" cBy="296" cDate="07/10/2003 10:41:40 PDT Thu">
+        <definition>FN: suffocation by covering the mouth and nose</definition>
+        <sentenceCount annotated="0" total="5"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="smothering"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="slaying.n" ID="9059" lemmaID="48159" cBy="296" cDate="07/10/2003 10:42:39 PDT Thu">
+        <definition>FN: the act of killing with violence, especially in battle.</definition>
+        <sentenceCount annotated="7" total="20"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="slaying"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="regicide.n" ID="9060" lemmaID="32393" cBy="296" cDate="07/10/2003 12:02:40 PDT Thu">
+        <definition>COD: the killing of a king. </definition>
+        <sentenceCount annotated="2" total="13"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="regicide"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="pogrom.n" ID="9061" lemmaID="29527" cBy="296" cDate="07/10/2003 12:03:24 PDT Thu">
+        <definition>COD: an organized massacre of a particular ethnic group, originally that of Jews in Russia or eastern Europe. </definition>
+        <sentenceCount annotated="10" total="36"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="pogrom"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="shooting.n" ID="9062" lemmaID="35616" cBy="296" cDate="07/10/2003 12:04:10 PDT Thu">
+        <definition>FN: the act of killing somebody with a gun.</definition>
+        <sentenceCount annotated="18" total="157"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="shooting"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="holocaust.n" ID="9063" lemmaID="18243" cBy="296" cDate="07/10/2003 12:05:39 PDT Thu">
+        <definition>COD: destruction or slaughter on  a large scale. </definition>
+        <sentenceCount annotated="9" total="50"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="holocaust"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="matricide.n" ID="9064" lemmaID="23703" cBy="296" cDate="07/10/2003 12:06:16 PDT Thu">
+        <definition>COD: the killing of one's mother</definition>
+        <sentenceCount annotated="1" total="2"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="matricide"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="genocide.n" ID="9065" lemmaID="16095" cBy="296" cDate="07/10/2003 12:06:53 PDT Thu">
+        <definition>COD: the deliberate killing of a very large number of people from a particular ethnic group or nation.</definition>
+        <sentenceCount annotated="12" total="50"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="genocide"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="butcher.v" ID="9066" lemmaID="5059" cBy="296" cDate="07/10/2003 12:43:49 PDT Thu">
+        <definition>COD: kill (someone) brutally.</definition>
+        <sentenceCount annotated="10" total="48"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="butcher"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="beheading.n" ID="9067" lemmaID="44885" cBy="296" cDate="07/10/2003 12:44:26 PDT Thu">
+        <definition>FN: the act of cutting off the head of somebody.</definition>
+        <sentenceCount annotated="8" total="14"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="beheading"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="assassination.n" ID="9068" lemmaID="2129" cBy="296" cDate="07/10/2003 12:45:53 PDT Thu">
+        <definition>FN: the fact of murdering (a political or religious leader)</definition>
+        <sentenceCount annotated="13" total="74"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="assassination"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="butchery.n" ID="9069" lemmaID="5060" cBy="296" cDate="07/10/2003 12:46:46 PDT Thu">
+        <definition>FN: brutal or wholesale killing or murder.</definition>
+        <sentenceCount annotated="5" total="33"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="butchery"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="carnage.n" ID="9070" lemmaID="5573" cBy="296" cDate="07/10/2003 12:53:03 PDT Thu">
+        <definition>COD: the killing of a large number of people. </definition>
+        <sentenceCount annotated="9" total="68"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="carnage"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="suffocation.n" ID="9073" lemmaID="38694" cBy="296" cDate="07/10/2003 01:08:43 PDT Thu">
+        <definition>FN: the act of causing someone to suffocate</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="suffocation"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="assassin.n" ID="9074" lemmaID="2127" cBy="296" cDate="07/10/2003 01:25:31 PDT Thu">
+        <definition>COD: a person who assassinates</definition>
+        <sentenceCount annotated="8" total="92"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="assassin"/>
+        <semType name="Agentive_noun" ID="102"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="blood-bath.n" ID="9075" lemmaID="3885" cBy="296" cDate="07/10/2003 01:27:05 PDT Thu">
+        <definition>COD: an event in which many people are killed violently.</definition>
+        <sentenceCount annotated="4" total="8"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="blood-bath"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="decapitation.n" ID="9076" lemmaID="9751" cBy="296" cDate="07/10/2003 01:27:39 PDT Thu">
+        <definition>FN: the cutting off of somebody's head</definition>
+        <sentenceCount annotated="5" total="20"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="decapitation"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="extermination.n" ID="9077" lemmaID="13648" cBy="296" cDate="07/10/2003 01:28:23 PDT Thu">
+        <definition>FN: the act of wiping out a group by killing all its members</definition>
+        <sentenceCount annotated="14" total="40"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="extermination"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="fratricide.n" ID="9080" lemmaID="15342" cBy="296" cDate="07/10/2003 01:36:47 PDT Thu">
+        <definition>COD: the killing of one's brother or sister. </definition>
+        <sentenceCount annotated="5" total="14"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="fratricide"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="garrotte.v" ID="9086" lemmaID="15939" cBy="296" cDate="07/10/2003 04:19:36 PDT Thu">
+        <definition>COD: kill by strangulation, especially with an iron collar or a length of wire or cord</definition>
+        <sentenceCount annotated="5" total="15"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="garrotte"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="murderer.n" ID="9087" lemmaID="25239" cBy="296" cDate="07/10/2003 04:20:39 PDT Thu">
+        <definition>FN: somebody who has committed murder</definition>
+        <sentenceCount annotated="22" total="121"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="murderer"/>
+        <semType name="Agentive_noun" ID="102"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="slaughterer.n" ID="9088" lemmaID="36267" cBy="296" cDate="07/10/2003 04:23:11 PDT Thu">
+        <definition>FN: somebody who kills in a violent manner and/or  kills large numbers of people</definition>
+        <sentenceCount annotated="2" total="13"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="slaughterer"/>
+        <semType name="Agentive_noun" ID="102"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="slayer.n" ID="9090" lemmaID="36285" cBy="296" cDate="07/10/2003 04:46:25 PDT Thu">
+        <definition>COD: person that kills with violence, especially in battle.</definition>
+        <sentenceCount annotated="8" total="27"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="slayer"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="immolation.n" ID="9091" lemmaID="19071" cBy="296" cDate="07/10/2003 04:47:01 PDT Thu">
+        <definition>FN: the act of killing or offering as a sacrifice, especially by burning.</definition>
+        <sentenceCount annotated="3" total="12"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="immolation"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="patricide.n" ID="9092" lemmaID="28072" cBy="296" cDate="07/10/2003 04:47:44 PDT Thu">
+        <definition>COD: the killing of one's father</definition>
+        <sentenceCount annotated="0" total="2"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="patricide"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="silence.v" ID="9093" lemmaID="35899" cBy="296" cDate="07/10/2003 04:48:38 PDT Thu">
+        <definition>FN: (slang) to kill.</definition>
+        <sentenceCount annotated="4" total="244"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="silence"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="deadly.a" ID="9097" lemmaID="9670" cBy="296" cDate="07/11/2003 02:17:04 PDT Fri">
+        <definition>COD: causing or able to cause death.</definition>
+        <sentenceCount annotated="39" total="148"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="deadly"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="fatal.a" ID="9098" lemmaID="14002" cBy="296" cDate="07/11/2003 02:24:53 PDT Fri">
+        <definition>COD: causing death</definition>
+        <sentenceCount annotated="49" total="296"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="fatal"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="fatality.n" ID="9099" lemmaID="14006" cBy="296" cDate="07/11/2003 02:25:25 PDT Fri">
+        <definition>COD: an occurrence of death by accident, in war, or from disease</definition>
+        <sentenceCount annotated="5" total="132"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="fatality"/>
+    </lexUnit>
+    <lexUnit status="New" POS="V" name="destroy.v" ID="14610" lemmaID="10396" cBy="361" cDate="10/29/2007 02:55:17 PDT Mon">
+        <definition>FN: euthanize or put down</definition>
+        <sentenceCount annotated="0" total="160"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="destroy"/>
+    </lexUnit>
+</frame>

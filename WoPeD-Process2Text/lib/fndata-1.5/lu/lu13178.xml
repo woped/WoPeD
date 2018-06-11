@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" POS="V" name="front.v" ID="13178" frame="Front_for" frameID="1734" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="ANC_r" ID="164">
+            <document description="written_1%journal%slate%35%ArticleIP_2320" ID="22338"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="fro" name="Front"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Core" abbrev="ill_act" name="Illicit_activity"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="ill_org" name="Illicit_organization"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="man" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="mea" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="pla" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="pur" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: act legitimately so as to to conceal an organization or their activities.</definition>
+    <lexeme POS="V" name="front"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Front"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Front"/>
+                <annoSet ID="2607308"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Illicit_organization"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Illicit_organization"/>
+                <annoSet ID="2607308"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Front"/>
+            <FE name="Illicit_organization"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Front"/>
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Illicit_organization"/>
+                <annoSet ID="2607308"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-ANC_pp_for-p-(1)">
+        <sentence corpID="164" docID="22338" sentNo="3" paragNo="4" aPos="0" ID="1585702">
+            <text>Yet in Salon this week is a column by Joe Conason , one of those reporters frequently accused of fronting for Clinton by folks on the right .</text>
+            <annotationSet cDate="08/16/2010 04:57:14 PDT Mon" status="UNANN" ID="2607307">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="rb"/>
+                    <label end="5" start="4" name="in"/>
+                    <label end="11" start="7" name="NNP"/>
+                    <label end="16" start="13" name="dt"/>
+                    <label end="21" start="18" name="nn"/>
+                    <label end="24" start="23" name="VBZ"/>
+                    <label end="26" start="26" name="dt"/>
+                    <label end="33" start="28" name="nn"/>
+                    <label end="36" start="35" name="in"/>
+                    <label end="40" start="38" name="NNP"/>
+                    <label end="48" start="42" name="NNP"/>
+                    <label end="50" start="50" name=","/>
+                    <label end="54" start="52" name="cd"/>
+                    <label end="57" start="56" name="in"/>
+                    <label end="63" start="59" name="dt"/>
+                    <label end="73" start="65" name="nns"/>
+                    <label end="84" start="75" name="rb"/>
+                    <label end="92" start="86" name="VBN"/>
+                    <label end="95" start="94" name="in"/>
+                    <label end="104" start="97" name="VBG"/>
+                    <label end="108" start="106" name="in"/>
+                    <label end="116" start="110" name="NNP"/>
+                    <label end="119" start="118" name="in"/>
+                    <label end="125" start="121" name="nns"/>
+                    <label end="128" start="127" name="in"/>
+                    <label end="132" start="130" name="dt"/>
+                    <label end="138" start="134" name="jj"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="08/16/2010 04:57:15 PDT Mon" status="MANUAL" ID="2607308">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="104" start="97" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="10046" end="73" start="52" name="Front"/>
+                    <label cBy="589" feID="10047" end="116" start="106" name="Illicit_organization"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="73" start="52" name="Ext"/>
+                    <label end="116" start="106" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="73" start="52" name="NP"/>
+                    <label end="116" start="106" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other">
+                    <label end="73" start="52" name="Ant"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-ANC_object-(1)"/>
+    <subCorpus name="03-ANC_modifier-(1)"/>
+    <subCorpus name="04-ANC_pp_of-p-(1)"/>
+    <subCorpus name="05-ANC_pp_onto-p-(1)"/>
+    <subCorpus name="06-ANC_pro_object-(1)"/>
+    <subCorpus name="07-other-matched-(1)"/>
+    <subCorpus name="08-other-unmatched-(1)"/>
+</lexUnit>

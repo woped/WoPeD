@@ -1,0 +1,637 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="731" cDate="02/07/2001 04:12:22 PST Wed" name="Make_noise" ID="69" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A physical entity, construed as a point-&lt;fen&gt;Sound_source&lt;/fen&gt;, emits a &lt;fen&gt;Sound&lt;/fen&gt;.  This includes animals and people making noise with their vocal tracts. Sometimes the sound itself is referred to with a nominal expression, in which case it is called the &lt;fen&gt;Sound&lt;/fen&gt;. &lt;fen&gt;Manner&lt;/fen&gt; expressions may also be relevant in this frame, if they describe properties of the sound as such.  A path-schema can be overlaid on the simple noise-making scene, adding a &lt;fen&gt;Location_of_source&lt;/fen&gt; and/or a &lt;fen&gt;Path&lt;/fen&gt;. 
+&lt;ex&gt;&lt;/ex&gt;
+
+
+This frame does not cover scenarios where objects create sound by coming into forceful contact with one another or rubbing against each other. Such scenarios are covered by the Impact and Friction frames. The current frame also does not cover cases where an animate Agent or a natural Force or Cause causes a single Source or several Sources (moving or rubbing against each other) to make noise. Such scenarios are  covered by the Cause_to_make_noise, Cause_impact and Cause_friction frames (the latter of which is not yet existent). Cases where the major emphasis of the portrayed scene is on the motion of a Theme, with sound emission only an accompaniment, are covered by the Motion_noise frame. Likewise, cases where the Sound itself is portrayed as moving through space are not covered in this frame but rather in Sound_movement. Finally, all nouns used to evoke Sounds have been placed in the Sounds frame. We have done this because these nouns do  not denote sound emission/production events but only the Sound itself (*The siren's blare occurred right on time).&lt;/def-root&gt;</definition>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:22 PST Wed" abbrev="Src-p" name="Sound_source" ID="323">
+        <definition>&lt;def-root&gt;The frame element &lt;fen&gt;Sound_source&lt;/fen&gt; is assigned to a constituent referring to a physical entity which emits a sound. Such an entity must have an appropriately complex internal structure such that it can create a sound. For example, a machine or some other thing with moving parts can create sound by itself.  
+
+&lt;ex&gt;&lt;fex name="Sound_source"&gt;The wind&lt;/fex&gt; &lt;t&gt;howled&lt;/t&gt;.&lt;/ex&gt;
+
+
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Peripheral" cBy="731" cDate="02/07/2001 04:12:22 PST Wed" abbrev="Rsn" name="Reason" ID="326">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Reason&lt;/fen&gt; that the &lt;fen&gt;Sound_source&lt;/fen&gt; produces the sound.  Generally, this is some external stimulus that prompts the &lt;fen&gt;Sound_source&lt;/fen&gt; to make noise.
+
+&lt;ex&gt;The planks above him &lt;t&gt;creaked&lt;/t&gt; &lt;fex name="Reason"&gt; as Simon hoisted himself inside&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:22 PST Wed" abbrev="Sound" name="Sound" ID="328">
+        <definition>&lt;def-root&gt;The frame element &lt;fen&gt;Sound&lt;/fen&gt; is incorporated in the meaning of the verbs of this frame. Otherwise, this FE is assigned to NPs which actually refer to a sound in the presence of the target. This typically occurs when the target is a verb used as a modifier in its &lt;ment&gt;-ing&lt;/ment&gt; form, e.g.: 
+
+&lt;ex&gt;The branches made a &lt;t&gt;rattling&lt;/t&gt; &lt;fex name="Sound"&gt;sound&lt;/fex&gt;.&lt;/ex&gt;
+
+In this example, the frame element &lt;fen&gt;Sound&lt;/fen&gt; is actually expressed by the word &lt;ment&gt;sound&lt;/ment&gt;.  
+Sometimes, &lt;fen&gt;Sound&lt;/fen&gt; just occurs as an NP argument of a tensed verb form.
+&lt;ex&gt;&lt;fex name="Sound"&gt;Heavy music&lt;/fex&gt; &lt;t&gt;thundered&lt;/t&gt; from leather-curtained basements&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="731" cDate="02/07/2001 04:12:22 PST Wed" abbrev="Manr" name="Manner" ID="329">
+        <definition>&lt;def-root&gt;Manner expressions may be of lexicographic interest if they describe properties of a sounds as such: &lt;ment&gt;loudly&lt;/ment&gt;, &lt;ment&gt;shrilly&lt;/ment&gt;, etc. 
+
+&lt;ex&gt;Jocelyn &lt;t&gt;sobbed&lt;/t&gt; &lt;fex name="Manner"&gt;loudly&lt;/fex&gt;. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="731" cDate="02/07/2001 04:12:22 PST Wed" abbrev="Loc-Src" name="Location_of_source" ID="330">
+        <definition>&lt;def-root&gt;The location of the &lt;fen&gt;Sound_source&lt;/fen&gt; by which the &lt;fen&gt;Sound&lt;/fen&gt; is emitted.
+
+&lt;ex&gt; A radio &lt;t&gt;blasted&lt;/t&gt; music &lt;fex name="Location_of_source"&gt;from the balcony&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="07/17/2001 02:50:34 PDT Tue" abbrev="Degr" name="Degree" ID="1501">
+        <definition>&lt;def-root&gt;Degree to which event occurs&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="07/17/2001 02:50:34 PDT Tue" abbrev="Dep" name="Depictive" ID="1502">
+        <definition>&lt;def-root&gt;State of the &lt;fen&gt;Sound_source&lt;/fen&gt; during the action.
+&lt;ex&gt;Cicadas &lt;t&gt;screech&lt;/t&gt; &lt;fex name="Depictive"&gt;unseen from within&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="07/17/2001 02:51:46 PDT Tue" abbrev="ICause" name="Internal_cause" ID="1505">
+        <definition>&lt;def-root&gt;The noise-making may be prompted by either some outside phenomenon or occurrence, or by an &lt;fen&gt;Internal_cause&lt;/fen&gt;, the mental or emotional state of an animate &lt;fen&gt;Sound_source&lt;/fen&gt;.  &lt;fen&gt;Internal_cause&lt;/fen&gt; is expressed in a PP Complement: 
+
+&lt;ex&gt;Kim &lt;t&gt;hmmmed&lt;/t&gt; &lt;t&gt;and&lt;/t&gt; &lt;t&gt;haaed&lt;/t&gt; &lt;fex name="Internal_cause"&gt;in concentration&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;Kim &lt;t&gt;wailed&lt;/t&gt; &lt;fex name="Internal_cause"&gt;in despair&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="296" cDate="06/02/2003 03:37:51 PDT Mon" abbrev="Sub" name="Subregion" ID="4521">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Subregion&lt;/fen&gt; is the sulocation of the &lt;fen&gt;Sound_source&lt;/fen&gt; from which the sound is emitting.
+
+&lt;ex&gt;Manville &lt;t&gt;whistled&lt;/t&gt; &lt;fex name="Sub"&gt;through his teeth&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="09/10/2003 02:55:44 PDT Wed" abbrev="" name="Addressee" ID="5051">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Addressee&lt;/fen&gt; identifies the intended audience of an event of making a noise as a communicative signal. 
+
+&lt;ex&gt; Our new puppy has taken to &lt;t&gt;growling&lt;/t&gt; &lt;fex name="Addressee"&gt;at other dogs&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="09/10/2003 03:48:01 PDT Wed" abbrev="" name="Noisy_event" ID="5052">
+        <definition>&lt;def-root&gt;An event in which one or more &lt;fen&gt;Sound_source&lt;/fen&gt;s participate and which is accompanied by &lt;fen&gt;Sound&lt;/fen&gt;. 
+
+&lt;ex&gt;&lt;fex name="Noisy_event"&gt;The conversations&lt;/fex&gt; &lt;t&gt;droned&lt;/t&gt; on&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="09/10/2003 04:19:48 PDT Wed" abbrev="" name="Path" ID="5053">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Path&lt;/fen&gt; along which the &lt;fen&gt;Sound&lt;/fen&gt; travels away from the &lt;fen&gt;Sound_source&lt;/fen&gt;.
+
+&lt;ex&gt;The radio &lt;t&gt;blared&lt;/t&gt; &lt;fex name="Path"&gt;across the room&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="000000" coreType="Peripheral" cBy="605" cDate="09/16/2003 03:14:42 PDT Tue" abbrev="" name="Place" ID="5080">
+        <definition>&lt;def-root&gt;The location of the &lt;fen&gt;Sound_source&lt;/fen&gt;. This FE differs from &lt;fen&gt;Location_of_source&lt;/fen&gt; only in terms of point of view; the latter FE implies a point of view that is not on the &lt;fen&gt;Sound_source&lt;/fen&gt;. 
+
+&lt;ex&gt;A bat &lt;t&gt;squeaked&lt;/t&gt; &lt;fex name="Place"&gt;over our heads&lt;/fex&gt;. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="d0d0d0" fgColor="00008B" coreType="Extra-Thematic" cBy="605" cDate="09/30/2003 08:49:03 PDT Tue" abbrev="cir" name="Circumstances" ID="5290">
+        <definition>&lt;def-root&gt;A state or  location of the &lt;fen&gt;Sound_source&lt;/fen&gt; which contributes to the &lt;fen&gt;Sound_source&lt;/fen&gt;'s making noise.
+
+&lt;ex&gt;Leaves &lt;t&gt;crunched&lt;/t&gt; &lt;fex name="cir"&gt;underfoot&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="04/23/2004 02:58:31 PDT Fri" abbrev="" name="Time" ID="6327">
+        <definition>&lt;def-root&gt;The time when the &lt;fen&gt;Noisy_event&lt;/fen&gt; occurs.
+
+&lt;ex&gt;It's going to &lt;t&gt;beep&lt;/t&gt; again &lt;fex name="Time"&gt;in two minutes&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="000000" coreType="Extra-Thematic" cBy="618" cDate="08/22/2006 02:42:09 PDT Tue" abbrev="ite" name="Iterations" ID="10563">
+        <definition>&lt;def-root&gt;The number of times the noise-making event takes place.
+
+&lt;ex&gt;&lt;fex name="Sound_source"&gt;The raven&lt;/fex&gt; &lt;t&gt;cawed&lt;/t&gt; &lt;fex name="ite"&gt;twice&lt;/fex&gt; and flew on a short distance, then sat down again in front of her and cawed again twice. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFD700" fgColor="000000" coreType="Extra-Thematic" cBy="618" cDate="08/22/2006 02:55:05 PDT Tue" abbrev="par" name="Particular_iteration" ID="10564">
+        <definition>&lt;def-root&gt;This FE indicates that the noise-making event is embedded within a series of similar events.&lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Noisy_event" ID="5052"/>
+        <memberFE name="Sound_source" ID="323"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Perception</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Communication_noise</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Insufficient_Attestations" incorporatedFE="Sound" POS="V" name="babble.v" ID="1340" lemmaID="2563" cBy="731" cDate="02/08/2001 01:29:42 PST Thu">
+        <definition>COD: (of a stream) make a continuous murmur as the water flows over stones.</definition>
+        <sentenceCount annotated="1" total="12"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="babble"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="bark.v" ID="1342" lemmaID="2913" cBy="731" cDate="02/08/2001 01:29:42 PST Thu">
+        <definition>COD: (of a dog, fox, or seal) give a bark</definition>
+        <sentenceCount annotated="23" total="200"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="bark"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="bellow.v" ID="1344" lemmaID="3317" cBy="731" cDate="02/08/2001 01:29:42 PST Thu">
+        <definition>COD: emit a loud, deep roar, typically in pain or anger.</definition>
+        <sentenceCount annotated="21" total="200"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="bellow"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="blare.v" ID="1346" lemmaID="3770" cBy="731" cDate="02/08/2001 01:29:43 PST Thu">
+        <definition>COD: sound loudly and harshly.</definition>
+        <sentenceCount annotated="17" total="78"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="blare"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="blast.v" ID="1348" lemmaID="3779" cBy="731" cDate="02/08/2001 01:29:43 PST Thu">
+        <definition>COD: produce loud continuous music or noise.</definition>
+        <sentenceCount annotated="5" total="163"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="blast"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="bleat.v" ID="1350" lemmaID="3807" cBy="731" cDate="02/08/2001 01:29:43 PST Thu">
+        <definition>COD: (of a sheep or goat) make a characteristic weak, wavering cry.</definition>
+        <sentenceCount annotated="12" total="51"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="bleat"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="bray.v" ID="1354" lemmaID="4469" cBy="731" cDate="02/08/2001 01:29:43 PST Thu">
+        <definition>FN: to utter the loud harsh cry characteristic of a donkey</definition>
+        <sentenceCount annotated="17" total="30"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="bray"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="burble.v" ID="1356" lemmaID="4951" cBy="731" cDate="02/08/2001 01:29:44 PST Thu">
+        <definition>COD: make a continuous murmuring noise.</definition>
+        <sentenceCount annotated="6" total="31"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="burble"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="cackle.v" ID="1359" lemmaID="5148" cBy="731" cDate="02/08/2001 01:29:44 PST Thu">
+        <definition>COD: (of a hen or goose) give a raucous clucking cry.</definition>
+        <sentenceCount annotated="23" total="59"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="cackle"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" incorporatedFE="Sound" POS="V" name="caterwaul.v" ID="1360" lemmaID="5757" cBy="731" cDate="02/08/2001 01:29:44 PST Thu">
+        <definition>COD: make a shrill howling or wailing noise.</definition>
+        <sentenceCount annotated="2" total="2"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="caterwaul"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Sound" POS="V" name="caw.v" ID="1362" lemmaID="5840" cBy="731" cDate="02/08/2001 01:29:44 PST Thu">
+        <definition>FN: (for a rook or crow) to utter their characteristic harsh cry</definition>
+        <sentenceCount annotated="5" total="11"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="caw"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="chatter.v" ID="1366" lemmaID="6148" cBy="731" cDate="02/08/2001 01:29:44 PST Thu">
+        <definition>FN: (of a person's teeth) click repeatedly together from cold or fear</definition>
+        <sentenceCount annotated="5" total="189"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="chatter"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="cheep.v" ID="1368" lemmaID="6198" cBy="731" cDate="02/08/2001 01:29:45 PST Thu">
+        <definition>FN: make a shrill squeaky sound like that of a young bird</definition>
+        <sentenceCount annotated="5" total="6"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="cheep"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="chirp.v" ID="1370" lemmaID="6364" cBy="731" cDate="02/08/2001 01:29:45 PST Thu">
+        <definition>COD: (of a small bird or a grasshopper) utter a short, sharp, high-pitched sound.</definition>
+        <sentenceCount annotated="11" total="39"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="chirp"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="chuckle.v" ID="1374" lemmaID="6480" cBy="731" cDate="02/08/2001 01:29:45 PST Thu">
+        <definition>COD: laugh quietly or inwardly.</definition>
+        <sentenceCount annotated="21" total="199"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="chuckle"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="clang.v" ID="1376" lemmaID="6637" cBy="731" cDate="02/08/2001 01:29:45 PST Thu">
+        <definition>COD: make or cause to make a clang.</definition>
+        <sentenceCount annotated="10" total="33"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="clang"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" incorporatedFE="Sound" POS="V" name="clash.v" ID="1378" lemmaID="6669" cBy="731" cDate="02/08/2001 01:29:45 PST Thu">
+        <definition>FN: to produce a loud discordant sound when striking against something</definition>
+        <sentenceCount annotated="3" total="190"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="clash"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="clatter.v" ID="1380" lemmaID="6697" cBy="731" cDate="02/08/2001 01:29:46 PST Thu">
+        <definition>FN: make a loud rattling sound</definition>
+        <sentenceCount annotated="7" total="165"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="clatter"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="click.v" ID="1382" lemmaID="6772" cBy="731" cDate="02/08/2001 01:29:46 PST Thu">
+        <definition>FN: make a click</definition>
+        <sentenceCount annotated="11" total="133"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="click"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="coo.v" ID="1386" lemmaID="8243" cBy="731" cDate="02/08/2001 01:29:46 PST Thu">
+        <definition>COD: (of a pigeon or dove) make a soft murmuring sound.</definition>
+        <sentenceCount annotated="6" total="66"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="coo"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="cough.v" ID="1388" lemmaID="8551" cBy="731" cDate="02/08/2001 01:29:46 PST Thu">
+        <definition>COD: expel air from the lungs with a sudden sharp sound.</definition>
+        <sentenceCount annotated="24" total="200"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="cough"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="creak.v" ID="1390" lemmaID="8837" cBy="731" cDate="02/08/2001 01:29:47 PST Thu">
+        <definition>COD: make a harsh high-pitched sound when being moved or when pressure is applied.</definition>
+        <sentenceCount annotated="45" total="187"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="creak"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="croak.v" ID="1392" lemmaID="8981" cBy="731" cDate="02/08/2001 01:29:47 PST Thu">
+        <definition>COD: (of a frog or crow) utter a croak.</definition>
+        <sentenceCount annotated="7" total="170"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="croak"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="croon.v" ID="1393" lemmaID="9004" cBy="731" cDate="02/08/2001 01:29:47 PST Thu">
+        <definition>COD: hum, sing, or speak in a soft, low voice.</definition>
+        <sentenceCount annotated="4" total="65"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="croon"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Sound" POS="V" name="crunch.v" ID="1395" lemmaID="9129" cBy="731" cDate="02/08/2001 01:29:47 PST Thu">
+        <definition>FN: make a crushing, grinding sound</definition>
+        <sentenceCount annotated="7" total="183"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="crunch"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="drone.v" ID="1397" lemmaID="11815" cBy="731" cDate="02/08/2001 01:29:47 PST Thu">
+        <definition>COD: make a continuous low humming sound.</definition>
+        <sentenceCount annotated="9" total="83"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="drone"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" incorporatedFE="Sound" POS="V" name="fizzle.v" ID="1398" lemmaID="14557" cBy="731" cDate="02/08/2001 01:29:47 PST Thu">
+        <definition>COD: make a feeble hissing or spluttering sound.</definition>
+        <sentenceCount annotated="2" total="55"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="fizzle"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="gasp.v" ID="1400" lemmaID="15966" cBy="731" cDate="02/08/2001 01:29:48 PST Thu">
+        <definition>FN: catch one's breath with an open mouth, owing to pain or astonishment</definition>
+        <sentenceCount annotated="20" total="200"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="gasp"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="giggle.v" ID="1402" lemmaID="16223" cBy="731" cDate="02/08/2001 01:29:48 PST Thu">
+        <definition>COD: laugh lightly in a nervous, affected, or silly manner.</definition>
+        <sentenceCount annotated="6" total="200"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="giggle"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" incorporatedFE="Sound" POS="V" name="gobble.v" ID="1403" lemmaID="16445" cBy="731" cDate="02/08/2001 01:29:48 PST Thu">
+        <definition>COD: eat hurriedly and noisily.</definition>
+        <sentenceCount annotated="3" total="96"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="gobble"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="growl.v" ID="1407" lemmaID="16941" cBy="731" cDate="02/08/2001 01:29:48 PST Thu">
+        <definition>COD: make a low or harsh rumbling sound</definition>
+        <sentenceCount annotated="14" total="200"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="growl"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="grunt.v" ID="1409" lemmaID="16975" cBy="731" cDate="02/08/2001 01:29:48 PST Thu">
+        <definition>COD: (of an animal, especially a pig) make a low, short guttural sound.</definition>
+        <sentenceCount annotated="18" total="200"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="grunt"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="guffaw.v" ID="1411" lemmaID="17013" cBy="731" cDate="02/08/2001 01:29:48 PST Thu">
+        <definition>FN: laugh loudly and boisterously</definition>
+        <sentenceCount annotated="13" total="24"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="guffaw"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="gurgle.v" ID="1413" lemmaID="17095" cBy="731" cDate="02/08/2001 01:29:49 PST Thu">
+        <definition>COD: make a hollow bubbling sound</definition>
+        <sentenceCount annotated="16" total="62"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="gurgle"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="hawk.v" ID="1414" lemmaID="17591" cBy="731" cDate="02/08/2001 01:29:49 PST Thu">
+        <definition>FN: to utter a harsh, gutteral sound as if trying to clear (plegm from) one's throat</definition>
+        <sentenceCount annotated="6" total="38"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="hawk"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="hiss.v" ID="1416" lemmaID="18141" cBy="731" cDate="02/08/2001 01:29:49 PST Thu">
+        <definition>COD: make a sharp sibilant sound as of the letter</definition>
+        <sentenceCount annotated="27" total="193"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="hiss"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="hoot.v" ID="1418" lemmaID="18369" cBy="731" cDate="02/08/2001 01:29:49 PST Thu">
+        <definition>FN: (of owls) to make their natural throat noise</definition>
+        <sentenceCount annotated="23" total="88"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="hoot"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="howl.v" ID="1420" lemmaID="18560" cBy="731" cDate="02/08/2001 01:29:49 PST Thu">
+        <definition>COD: make a howling sound.</definition>
+        <sentenceCount annotated="36" total="200"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="howl"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Sound" POS="V" name="hum.v" ID="1422" lemmaID="18614" cBy="731" cDate="02/08/2001 01:29:49 PST Thu">
+        <definition>COD: make a low, steady continuous sound like that of a bee or sing with closed lips. </definition>
+        <sentenceCount annotated="7" total="58"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="hum"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" incorporatedFE="Sound" POS="V" name="keen.v" ID="1423" lemmaID="21229" cBy="731" cDate="02/08/2001 01:29:50 PST Thu">
+        <definition>COD: wail in grief for a dead person or make an eerie wailing sound. </definition>
+        <sentenceCount annotated="2" total="23"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="keen"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="mew.v" ID="1425" lemmaID="24149" cBy="731" cDate="02/08/2001 01:29:50 PST Thu">
+        <definition>FN: (of a cat)  make a characteristic high-pitched crying noise.</definition>
+        <sentenceCount annotated="6" total="24"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="mew"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" incorporatedFE="Sound" POS="V" name="mewl.v" ID="1426" lemmaID="36" cBy="731" cDate="02/08/2001 01:29:50 PST Thu">
+        <definition>COD: cry feebly or querulously.</definition>
+        <sentenceCount annotated="1" total="2"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="mewl"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="moan.v" ID="1428" lemmaID="24633" cBy="731" cDate="02/08/2001 01:29:50 PST Thu">
+        <definition>COD: utter or make a moan.</definition>
+        <sentenceCount annotated="19" total="200"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="moan"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="moo.v" ID="1429" lemmaID="24863" cBy="731" cDate="02/08/2001 01:29:50 PST Thu">
+        <definition>COD: make the characteristic deep resonant vocal sound of cattle.</definition>
+        <sentenceCount annotated="5" total="8"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="moo"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="neigh.v" ID="1431" lemmaID="25653" cBy="731" cDate="02/08/2001 01:29:50 PST Thu">
+        <definition>COD: (of a horse) utter a neigh.</definition>
+        <sentenceCount annotated="7" total="19"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="neigh"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" incorporatedFE="Sound" POS="V" name="patter.v" ID="1433" lemmaID="28092" cBy="731" cDate="02/08/2001 01:29:50 PST Thu">
+        <definition>COD: make a repeated light tapping sound.</definition>
+        <sentenceCount annotated="1" total="22"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="patter"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="peal.v" ID="1435" lemmaID="28168" cBy="731" cDate="02/08/2001 01:29:50 PST Thu">
+        <definition>COD: ring loudly or in a peal.</definition>
+        <sentenceCount annotated="5" total="12"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="peal"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" incorporatedFE="Sound" POS="V" name="peep.v" ID="1437" lemmaID="28247" cBy="731" cDate="02/08/2001 01:29:51 PST Thu">
+        <definition>COD: make a peep.</definition>
+        <sentenceCount annotated="0" total="41"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="peep"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" incorporatedFE="Sound" POS="V" name="plash.v" ID="1439" lemmaID="29269" cBy="731" cDate="02/08/2001 01:29:51 PST Thu">
+        <definition>COD: make or hit with a splash.</definition>
+        <sentenceCount annotated="2" total="4"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="plash"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" incorporatedFE="Sound" POS="V" name="plonk.v" ID="1440" lemmaID="29407" cBy="731" cDate="02/08/2001 01:29:51 PST Thu">
+        <definition>FN: produce a quick, hollow, metallic or harsh sound due to being dropped or set down suddenly</definition>
+        <sentenceCount annotated="0" total="43"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="plonk"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" incorporatedFE="Sound" POS="V" name="plop.v" ID="1442" lemmaID="29410" cBy="731" cDate="02/08/2001 01:29:51 PST Thu">
+        <definition>COD: fall or drop with such a sound.</definition>
+        <sentenceCount annotated="1" total="21"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="plop"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="purr.v" ID="1446" lemmaID="31252" cBy="731" cDate="02/08/2001 01:29:51 PST Thu">
+        <definition>COD: (of a cat) make a low continuous vibratory sound expressing contentment.</definition>
+        <sentenceCount annotated="22" total="155"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="purr"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="quack.v" ID="1448" lemmaID="31368" cBy="731" cDate="02/08/2001 01:29:51 PST Thu">
+        <definition>FN: to utter the characteristic sound of the duck</definition>
+        <sentenceCount annotated="7" total="39"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="quack"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="rasp.v" ID="1452" lemmaID="31854" cBy="731" cDate="02/08/2001 01:29:52 PST Thu">
+        <definition>COD: make a harsh, grating noise.</definition>
+        <sentenceCount annotated="5" total="168"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="rasp"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="rattle.v" ID="1453" lemmaID="31897" cBy="731" cDate="02/08/2001 01:29:52 PST Thu">
+        <definition>FN: make a rapid succession of short, sharp knocking or clinking sounds</definition>
+        <sentenceCount annotated="14" total="20"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="rattle"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="roar.v" ID="1455" lemmaID="33397" cBy="731" cDate="02/08/2001 01:29:52 PST Thu">
+        <definition>COD: make or utter a full, deep, prolonged sound as made by a lion, natural force, or engine</definition>
+        <sentenceCount annotated="19" total="25"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="roar"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="rustle.v" ID="1459" lemmaID="33829" cBy="731" cDate="02/08/2001 01:29:52 PST Thu">
+        <definition>COD: make a soft, muffled crackling sound like that caused by the movement of dry leaves or paper.</definition>
+        <sentenceCount annotated="33" total="57"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="rustle"/>
+    </lexUnit>
+    <lexUnit status="Add_Annotation" incorporatedFE="Sound" POS="V" name="scrape.v" ID="1461" lemmaID="34535" cBy="731" cDate="02/08/2001 01:29:53 PST Thu">
+        <definition>FN: make a sound as if rubbing against a rough surface.</definition>
+        <sentenceCount annotated="1" total="186"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="scrape"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="screech.v" ID="1463" lemmaID="34557" cBy="731" cDate="02/08/2001 01:29:53 PST Thu">
+        <definition>FN: make a high-pitched, shrill sound</definition>
+        <sentenceCount annotated="32" total="161"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="screech"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" incorporatedFE="Sound" POS="V" name="scrunch.v" ID="1465" lemmaID="34612" cBy="731" cDate="02/08/2001 01:29:53 PST Thu">
+        <definition>COD: a loud crunching noise.</definition>
+        <sentenceCount annotated="1" total="34"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="scrunch"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" incorporatedFE="Sound" POS="V" name="sizzle.v" ID="1467" lemmaID="36095" cBy="731" cDate="02/08/2001 01:29:53 PST Thu">
+        <definition>FN: make a hissing sound as when food is frying or roasting</definition>
+        <sentenceCount annotated="3" total="35"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="sizzle"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="snarl.v" ID="1474" lemmaID="36610" cBy="731" cDate="02/08/2001 01:29:54 PST Thu">
+        <definition>COD: growl with bared teeth</definition>
+        <sentenceCount annotated="6" total="200"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="snarl"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="snicker.v" ID="1475" lemmaID="36633" cBy="731" cDate="02/08/2001 01:29:54 PST Thu">
+        <definition>COD: snigger</definition>
+        <sentenceCount annotated="6" total="7"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="snicker"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="snigger.v" ID="1477" lemmaID="36647" cBy="731" cDate="02/08/2001 01:29:54 PST Thu">
+        <definition>COD: give such a laugh.</definition>
+        <sentenceCount annotated="8" total="10"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="snigger"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="snore.v" ID="1479" lemmaID="36682" cBy="731" cDate="02/08/2001 01:29:54 PST Thu">
+        <definition>COD: make such a sound while asleep.</definition>
+        <sentenceCount annotated="9" total="145"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="snore"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="snort.v" ID="1481" lemmaID="36686" cBy="731" cDate="02/08/2001 01:29:54 PST Thu">
+        <definition>FN: make a noise by inhaling forcefully through a constricted nasal passage.</definition>
+        <sentenceCount annotated="20" total="200"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="snort"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="sob.v" ID="1483" lemmaID="36755" cBy="731" cDate="02/08/2001 01:29:55 PST Thu">
+        <definition>COD: cry making loud, convulsive gasps.</definition>
+        <sentenceCount annotated="20" total="200"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="sob"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Sound" POS="V" name="sough.v" ID="1485" lemmaID="37022" cBy="731" cDate="02/08/2001 01:29:55 PST Thu">
+        <definition>COD: (of the wind, sea, etc.) make a moaning, whistling, or rushing sound.</definition>
+        <sentenceCount annotated="5" total="6"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="sough"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="squawk.v" ID="1487" lemmaID="37631" cBy="731" cDate="02/08/2001 01:29:55 PST Thu">
+        <definition>COD: (of a bird) make a loud, harsh noise.</definition>
+        <sentenceCount annotated="11" total="73"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="squawk"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="squeak.v" ID="1489" lemmaID="37634" cBy="731" cDate="02/08/2001 01:29:55 PST Thu">
+        <definition>COD: make a short, high-pitched sound or cry</definition>
+        <sentenceCount annotated="25" total="135"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="squeak"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="squeal.v" ID="1491" lemmaID="37638" cBy="731" cDate="02/08/2001 01:29:55 PST Thu">
+        <definition>COD: to make or utter a long, high-pitched cry or noise</definition>
+        <sentenceCount annotated="27" total="149"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="squeal"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" incorporatedFE="Sound" POS="V" name="thump.v" ID="1493" lemmaID="40327" cBy="731" cDate="02/08/2001 01:29:56 PST Thu">
+        <definition>FN: (of a person's heart or pulse) beat or pulsate strongly</definition>
+        <sentenceCount annotated="3" total="173"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="thump"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="thunder.v" ID="1495" lemmaID="40332" cBy="731" cDate="02/08/2001 01:29:56 PST Thu">
+        <definition>FN: make a resounding loud deep noise</definition>
+        <sentenceCount annotated="15" total="200"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="thunder"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="tinkle.v" ID="1497" lemmaID="40495" cBy="731" cDate="02/08/2001 01:29:56 PST Thu">
+        <definition>COD: make or cause to make a light, clear ringing sound.</definition>
+        <sentenceCount annotated="9" total="43"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="tinkle"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="titter.v" ID="1499" lemmaID="40558" cBy="731" cDate="02/08/2001 01:29:56 PST Thu">
+        <definition>COD: to give a short, half-suppressed laugh</definition>
+        <sentenceCount annotated="10" total="26"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="titter"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Sound" POS="V" name="toll.v" ID="1501" lemmaID="40638" cBy="731" cDate="02/08/2001 01:29:57 PST Thu">
+        <definition>COD: (with reference to a bell) sound or cause to sound with a slow, uniform succession of strokes.</definition>
+        <sentenceCount annotated="16" total="53"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="toll"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="trumpet.v" ID="1503" lemmaID="41383" cBy="731" cDate="02/08/2001 01:29:57 PST Thu">
+        <definition>FN: make a loud, trumpetlike sound (eg, by blowing one's nose or by elephants making their cries)</definition>
+        <sentenceCount annotated="4" total="69"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="trumpet"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" incorporatedFE="Sound" POS="V" name="tweet.v" ID="1505" lemmaID="41593" cBy="731" cDate="02/08/2001 01:29:57 PST Thu">
+        <definition>COD: make a chirping noise.</definition>
+        <sentenceCount annotated="1" total="2"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="tweet"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="twitter.v" ID="1507" lemmaID="41647" cBy="731" cDate="02/08/2001 01:29:57 PST Thu">
+        <definition>COD: (of a bird) make a series of light tremulous sounds.</definition>
+        <sentenceCount annotated="10" total="28"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="twitter"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Sound" POS="V" name="ululate.v" ID="1508" lemmaID="41752" cBy="731" cDate="02/08/2001 01:29:57 PST Thu">
+        <definition>COD: howl or wail, typically to express grief. </definition>
+        <sentenceCount annotated="12" total="66"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="ululate"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="wail.v" ID="1510" lemmaID="43335" cBy="731" cDate="02/08/2001 01:29:58 PST Thu">
+        <definition>FN: to utter an extended high-pitched cry</definition>
+        <sentenceCount annotated="19" total="200"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="wail"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="whimper.v" ID="1512" lemmaID="43979" cBy="731" cDate="02/08/2001 01:29:58 PST Thu">
+        <definition>FN: to cry or sob softly and intermittently</definition>
+        <sentenceCount annotated="24" total="130"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="whimper"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="whine.v" ID="1514" lemmaID="43986" cBy="731" cDate="02/08/2001 01:29:58 PST Thu">
+        <definition>COD: give or make a whine.</definition>
+        <sentenceCount annotated="30" total="187"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="whine"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="whinny.v" ID="1516" lemmaID="43989" cBy="731" cDate="02/08/2001 01:29:58 PST Thu">
+        <definition>FN: for a horse to make a gentle, high-pitched neighing sound</definition>
+        <sentenceCount annotated="11" total="24"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="whinny"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Sound" POS="V" name="whisper.v" ID="1517" lemmaID="44018" cBy="731" cDate="02/08/2001 01:29:58 PST Thu">
+        <definition>COD:  rustle or murmur softly.</definition>
+        <sentenceCount annotated="4" total="55"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="whisper"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="whistle.v" ID="1519" lemmaID="44023" cBy="731" cDate="02/08/2001 01:29:59 PST Thu">
+        <definition>FN: emit or produce a whistle</definition>
+        <sentenceCount annotated="22" total="200"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="whistle"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" incorporatedFE="Sound" POS="V" name="yammer.v" ID="1521" lemmaID="44650" cBy="731" cDate="02/08/2001 01:29:59 PST Thu">
+        <definition>COD: talk loudly and incessantly.</definition>
+        <sentenceCount annotated="0" total="2"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="yammer"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="yap.v" ID="1523" lemmaID="44657" cBy="731" cDate="02/08/2001 01:30:00 PST Thu">
+        <definition>COD:  give a sharp, shrill bark</definition>
+        <sentenceCount annotated="10" total="23"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="yap"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="yelp.v" ID="1525" lemmaID="44701" cBy="731" cDate="02/08/2001 01:30:00 PST Thu">
+        <definition>COD: utter a yelp or yelps.</definition>
+        <sentenceCount annotated="22" total="71"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="yelp"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" incorporatedFE="Sound" POS="V" name="yodel.v" ID="1527" lemmaID="44732" cBy="731" cDate="02/08/2001 01:30:00 PST Thu">
+        <definition>COD: practise a form of singing or calling marked by rapid alternation between the normal voice and falsetto.</definition>
+        <sentenceCount annotated="2" total="2"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="yodel"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" incorporatedFE="Sound" POS="V" name="yowl.v" ID="1529" lemmaID="44772" cBy="731" cDate="02/08/2001 01:30:00 PST Thu">
+        <definition>COD: to make a loud wailing cry of pain or distress</definition>
+        <sentenceCount annotated="6" total="12"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="yowl"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" incorporatedFE="Sound" POS="V" name="crepitate.v" ID="6435" lemmaID="8904" cBy="605" cDate="07/05/2002 03:15:30 PDT Fri">
+        <definition>COD: make a crackling sound.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="crepitate"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Sound" POS="V" name="laugh.v" ID="8720" lemmaID="21820" cBy="296" cDate="06/02/2003 03:08:53 PDT Mon">
+        <definition>COD: make the sounds and movements that express lively amusement and sometimes also derision. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="laugh"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Sound" POS="V" name="clack.v" ID="9162" lemmaID="6608" cBy="664" cDate="07/25/2003 02:42:34 PDT Fri">
+        <definition>COD: make or cause to make a sharp sound as of a hard object striking another.</definition>
+        <sentenceCount annotated="6" total="37"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="clack"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" incorporatedFE="Sound" POS="V" name="sploosh.v" ID="9163" lemmaID="48243" cBy="664" cDate="07/25/2003 03:19:16 PDT Fri">
+        <definition>FN: make a deep sound, as of a large object falling forcefully into water. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="sploosh"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Sound" POS="V" name="scream.v" ID="9174" lemmaID="34553" cBy="296" cDate="07/30/2003 11:01:31 PDT Wed">
+        <definition>COD: make a long, loud, piercing cry or sound, especially expressing extreme emotion or pain.</definition>
+        <sentenceCount annotated="75" total="222"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="scream"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Sound" POS="V" name="ring.v" ID="9292" lemmaID="33295" cBy="664" cDate="08/18/2003 07:32:25 PDT Mon">
+        <definition>FN: make a clear noise, as from a bell.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="ring"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Sound" POS="V" name="beep.v" ID="9423" lemmaID="48240" cBy="605" cDate="09/09/2003 06:27:44 PDT Tue">
+        <definition>FN: make a high-pitched electronic noise</definition>
+        <sentenceCount annotated="9" total="25"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="beep"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="hem and haw.v" ID="11234" lemmaID="49712" cBy="303" cDate="11/19/2004 03:07:49 PST Fri">
+        <definition>FN: to make noises indicating indecision</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="hem"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="C" name="and"/>
+        <lexeme order="3" headword="false" breakBefore="false" POS="V" name="haw"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="boom.v" ID="13541" lemmaID="50440" cBy="618" cDate="08/23/2006 11:22:23 PDT Wed">
+        <definition>FN: make a loud, deep sound.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="boom"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="cry.v" ID="15062" lemmaID="9151" cBy="597" cDate="06/06/2008 01:43:47 PDT Fri">
+        <definition>FN: utter a sound characteristic of emotions such as sadness, rage, etc.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="cry"/>
+    </lexUnit>
+    <lexUnit status="New" POS="V" name="sound.v" ID="15357" lemmaID="37036" cBy="225" cDate="06/16/2009 10:26:37 PDT Tue">
+        <definition>FN: to make an object emit phonons of compression and rarefaction.</definition>
+        <sentenceCount annotated="0" total="180"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="sound"/>
+    </lexUnit>
+</frame>

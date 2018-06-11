@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="trade.v" ID="10785" frame="Exchange" frameID="1170" totalAnnotated="6" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="9400D3" bgColor="d0d0d0" type="Extra-Thematic" abbrev="dep" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Core" abbrev="exs" name="Exchangers"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="ex1" name="Exchanger_1"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD7C" type="Core" abbrev="ex2" name="Exchanger_2"/>
+            <FE fgColor="000000" bgColor="7FFF00" type="Extra-Thematic" abbrev="" name="Frequency"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="man" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Means" name="Means"/>
+            <FE fgColor="000000" bgColor="FFFF00" type="Extra-Thematic" abbrev="" name="Period_of_iterations"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Core" abbrev="thms" name="Themes"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="thm1" name="Theme_1"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Core" abbrev="thm2" name="Theme_2"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: exchange</definition>
+    <lexeme POS="V" name="trade"/>
+    <valences>
+        <FERealization total="6">
+            <FE name="Exchanger_1"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Exchanger_1"/>
+                <annoSet ID="2399126"/>
+            </pattern>
+            <pattern total="5">
+                <valenceUnit GF="Ext" PT="NP" FE="Exchanger_1"/>
+                <annoSet ID="2398974"/>
+                <annoSet ID="2398986"/>
+                <annoSet ID="2399000"/>
+                <annoSet ID="2399058"/>
+                <annoSet ID="2399092"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="6">
+            <FE name="Exchanger_2"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[from]" FE="Exchanger_2"/>
+                <annoSet ID="2399126"/>
+            </pattern>
+            <pattern total="5">
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Exchanger_2"/>
+                <annoSet ID="2398974"/>
+                <annoSet ID="2398986"/>
+                <annoSet ID="2399000"/>
+                <annoSet ID="2399058"/>
+                <annoSet ID="2399092"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Frequency"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Frequency"/>
+                <annoSet ID="2398986"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Manner"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <annoSet ID="2399000"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Period_of_iterations"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Period_of_iterations"/>
+                <annoSet ID="2399092"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Theme_1"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Theme_1"/>
+                <annoSet ID="2399126"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Theme_1"/>
+                <annoSet ID="2399000"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Theme_2"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Theme_2"/>
+                <annoSet ID="2399000"/>
+                <annoSet ID="2399126"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Themes"/>
+            <pattern total="2">
+                <valenceUnit GF="Obj" PT="NP" FE="Themes"/>
+                <annoSet ID="2398974"/>
+                <annoSet ID="2398986"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="" PT="INI" FE="Themes"/>
+                <annoSet ID="2399092"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Themes"/>
+                <annoSet ID="2399058"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Time"/>
+                <annoSet ID="2399126"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Exchanger_1"/>
+            <FE name="Exchanger_2"/>
+            <FE name="Frequency"/>
+            <FE name="Themes"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Exchanger_1"/>
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Exchanger_2"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Frequency"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Themes"/>
+                <annoSet ID="2398986"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Exchanger_1"/>
+            <FE name="Exchanger_2"/>
+            <FE name="Manner"/>
+            <FE name="Theme_1"/>
+            <FE name="Theme_2"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Exchanger_1"/>
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Exchanger_2"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Manner"/>
+                <valenceUnit GF="" PT="DNI" FE="Theme_1"/>
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Theme_2"/>
+                <annoSet ID="2399000"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Exchanger_1"/>
+            <FE name="Exchanger_2"/>
+            <FE name="Period_of_iterations"/>
+            <FE name="Themes"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Exchanger_1"/>
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Exchanger_2"/>
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Period_of_iterations"/>
+                <valenceUnit GF="" PT="INI" FE="Themes"/>
+                <annoSet ID="2399092"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Exchanger_1"/>
+            <FE name="Exchanger_2"/>
+            <FE name="Theme_1"/>
+            <FE name="Theme_2"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="CNI" FE="Exchanger_1"/>
+                <valenceUnit GF="Dep" PT="PP[from]" FE="Exchanger_2"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Theme_1"/>
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Theme_2"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Time"/>
+                <annoSet ID="2399126"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Exchanger_1"/>
+            <FE name="Exchanger_2"/>
+            <FE name="Themes"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Exchanger_1"/>
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Exchanger_2"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Themes"/>
+                <annoSet ID="2398974"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Exchanger_1"/>
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Exchanger_2"/>
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Themes"/>
+                <annoSet ID="2399058"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="05-T-PPwith-(1)">
+        <sentence corpID="111" docID="421" sentNo="7" paragNo="326" aPos="82117116" ID="1475984">
+            <text>He was more than prepared to trade blows with the former circus act Benichou .</text>
+            <annotationSet cDate="05/09/2008 02:09:47 PDT Fri" status="UNANN" ID="2398973">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="5" start="3" name="VBD"/>
+                    <label end="10" start="7" name="rbr"/>
+                    <label end="15" start="12" name="in"/>
+                    <label end="24" start="17" name="VVN"/>
+                    <label end="27" start="26" name="to"/>
+                    <label end="33" start="29" name="VV"/>
+                    <label end="39" start="35" name="nns"/>
+                    <label end="44" start="41" name="in"/>
+                    <label end="48" start="46" name="dt"/>
+                    <label end="55" start="50" name="jj"/>
+                    <label end="62" start="57" name="nn"/>
+                    <label end="66" start="64" name="nn"/>
+                    <label end="75" start="68" name="NP"/>
+                    <label end="77" start="77" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/09/2008 02:09:47 PDT Fri" status="MANUAL" ID="2398974">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="33" start="29" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="6782" end="1" start="0" name="Exchanger_1"/>
+                    <label cBy="597" feID="6793" end="39" start="35" name="Themes"/>
+                    <label cBy="597" feID="6788" end="75" start="41" name="Exchanger_2"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="1" start="0" name="Ext"/>
+                    <label end="39" start="35" name="Obj"/>
+                    <label end="75" start="41" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="1" start="0" name="NP"/>
+                    <label end="39" start="35" name="NP"/>
+                    <label end="75" start="41" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="7" paragNo="587" aPos="6241453" ID="1475990">
+            <text>This is close to what GM and Ford already practise in Europe , with one difference : the American firms ' subsidiaries rarely trade cars or parts with their parent .</text>
+            <annotationSet cDate="05/09/2008 02:09:48 PDT Fri" status="UNANN" ID="2398985">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="dt"/>
+                    <label end="6" start="5" name="VBZ"/>
+                    <label end="12" start="8" name="jj"/>
+                    <label end="15" start="14" name="to"/>
+                    <label end="20" start="17" name="wp"/>
+                    <label end="23" start="22" name="NP"/>
+                    <label end="27" start="25" name="cc"/>
+                    <label end="32" start="29" name="NP"/>
+                    <label end="40" start="34" name="rb"/>
+                    <label end="49" start="42" name="VV"/>
+                    <label end="52" start="51" name="in"/>
+                    <label end="59" start="54" name="NP"/>
+                    <label end="61" start="61" name=","/>
+                    <label end="66" start="63" name="in"/>
+                    <label end="70" start="68" name="cd"/>
+                    <label end="81" start="72" name="nn"/>
+                    <label end="83" start="83" name=":"/>
+                    <label end="87" start="85" name="dt"/>
+                    <label end="96" start="89" name="jj"/>
+                    <label end="102" start="98" name="nns"/>
+                    <label end="104" start="104" name="POS"/>
+                    <label end="117" start="106" name="nns"/>
+                    <label end="124" start="119" name="rb"/>
+                    <label end="130" start="126" name="VVP"/>
+                    <label end="135" start="132" name="nns"/>
+                    <label end="138" start="137" name="cc"/>
+                    <label end="144" start="140" name="nns"/>
+                    <label end="149" start="146" name="in"/>
+                    <label end="155" start="151" name="PP$"/>
+                    <label end="162" start="157" name="nn"/>
+                    <label end="164" start="164" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/09/2008 02:09:48 PDT Fri" status="MANUAL" ID="2398986">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="130" start="126" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="6782" end="117" start="85" name="Exchanger_1"/>
+                    <label cBy="597" feID="12630" end="124" start="119" name="Frequency"/>
+                    <label cBy="597" feID="6793" end="144" start="132" name="Themes"/>
+                    <label cBy="597" feID="6788" end="162" start="146" name="Exchanger_2"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="117" start="85" name="Ext"/>
+                    <label end="124" start="119" name="Dep"/>
+                    <label end="144" start="132" name="Obj"/>
+                    <label end="162" start="146" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="117" start="85" name="NP"/>
+                    <label end="124" start="119" name="AVP"/>
+                    <label end="144" start="132" name="NP"/>
+                    <label end="162" start="146" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="335" aPos="51644666" ID="1475997">
+            <text>Early explorers traded directly with Indians for furs , but the white trappers eventually evicted the native Americans so that they could control the precious resource themselves .</text>
+            <annotationSet cDate="05/09/2008 02:09:49 PDT Fri" status="UNANN" ID="2398999">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="jj"/>
+                    <label end="14" start="6" name="nns"/>
+                    <label end="21" start="16" name="VVN"/>
+                    <label end="30" start="23" name="rb"/>
+                    <label end="35" start="32" name="in"/>
+                    <label end="43" start="37" name="NPS"/>
+                    <label end="47" start="45" name="in"/>
+                    <label end="52" start="49" name="nns"/>
+                    <label end="54" start="54" name=","/>
+                    <label end="58" start="56" name="cc"/>
+                    <label end="62" start="60" name="dt"/>
+                    <label end="68" start="64" name="jj"/>
+                    <label end="77" start="70" name="nns"/>
+                    <label end="88" start="79" name="rb"/>
+                    <label end="96" start="90" name="VVD"/>
+                    <label end="100" start="98" name="dt"/>
+                    <label end="107" start="102" name="jj"/>
+                    <label end="117" start="109" name="nns"/>
+                    <label end="120" start="119" name="rb"/>
+                    <label end="125" start="122" name="in"/>
+                    <label end="130" start="127" name="PP"/>
+                    <label end="136" start="132" name="md"/>
+                    <label end="144" start="138" name="VV"/>
+                    <label end="148" start="146" name="dt"/>
+                    <label end="157" start="150" name="jj"/>
+                    <label end="166" start="159" name="nn"/>
+                    <label end="177" start="168" name="PP"/>
+                    <label end="179" start="179" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/09/2008 02:09:49 PDT Fri" status="MANUAL" ID="2399000">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="21" start="16" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="6782" end="14" start="0" name="Exchanger_1"/>
+                    <label cBy="597" feID="6787" end="30" start="23" name="Manner"/>
+                    <label cBy="597" feID="6788" end="43" start="32" name="Exchanger_2"/>
+                    <label cBy="597" feID="6792" end="52" start="45" name="Theme_2"/>
+                    <label cBy="597" feID="6791" itype="DNI" name="Theme_1"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="14" start="0" name="Ext"/>
+                    <label end="30" start="23" name="Dep"/>
+                    <label end="43" start="32" name="Dep"/>
+                    <label end="52" start="45" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="14" start="0" name="NP"/>
+                    <label end="30" start="23" name="AVP"/>
+                    <label end="43" start="32" name="PP"/>
+                    <label end="52" start="45" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="07-T-PPin-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="81" aPos="71844696" ID="1476026">
+            <text>He traded with France in salt and cloth , and had landed and farming interests in the Vale of Berkeley and Forest of Dean .</text>
+            <annotationSet cDate="05/09/2008 02:09:56 PDT Fri" status="UNANN" ID="2399057">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="8" start="3" name="VVD"/>
+                    <label end="13" start="10" name="in"/>
+                    <label end="20" start="15" name="NP"/>
+                    <label end="23" start="22" name="in"/>
+                    <label end="28" start="25" name="nn"/>
+                    <label end="32" start="30" name="cc"/>
+                    <label end="38" start="34" name="nn"/>
+                    <label end="40" start="40" name=","/>
+                    <label end="44" start="42" name="cc"/>
+                    <label end="48" start="46" name="VHD"/>
+                    <label end="55" start="50" name="VVN"/>
+                    <label end="59" start="57" name="cc"/>
+                    <label end="67" start="61" name="nn"/>
+                    <label end="77" start="69" name="nns"/>
+                    <label end="80" start="79" name="in"/>
+                    <label end="84" start="82" name="dt"/>
+                    <label end="89" start="86" name="NP"/>
+                    <label end="92" start="91" name="in"/>
+                    <label end="101" start="94" name="NP"/>
+                    <label end="105" start="103" name="cc"/>
+                    <label end="112" start="107" name="NP"/>
+                    <label end="115" start="114" name="in"/>
+                    <label end="120" start="117" name="NP"/>
+                    <label end="122" start="122" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/09/2008 02:09:56 PDT Fri" status="MANUAL" ID="2399058">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="8" start="3" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="6782" end="1" start="0" name="Exchanger_1"/>
+                    <label cBy="597" feID="6788" end="20" start="10" name="Exchanger_2"/>
+                    <label cBy="597" feID="6793" end="38" start="22" name="Themes"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="1" start="0" name="Ext"/>
+                    <label end="20" start="10" name="Dep"/>
+                    <label end="38" start="22" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="1" start="0" name="NP"/>
+                    <label end="20" start="10" name="PP"/>
+                    <label end="38" start="22" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="09-T-PPfor-(1)">
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="871" aPos="68707166" ID="1476043">
+            <text>They say he has traded with the Soul Eaters for centuries , although I do n't know why .</text>
+            <annotationSet cDate="05/09/2008 02:10:01 PDT Fri" status="UNANN" ID="2399091">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="PP"/>
+                    <label end="7" start="5" name="VVP"/>
+                    <label end="10" start="9" name="PP"/>
+                    <label end="14" start="12" name="VHZ"/>
+                    <label end="21" start="16" name="VVN"/>
+                    <label end="26" start="23" name="in"/>
+                    <label end="30" start="28" name="dt"/>
+                    <label end="35" start="32" name="nn"/>
+                    <label end="42" start="37" name="nns"/>
+                    <label end="46" start="44" name="in"/>
+                    <label end="56" start="48" name="nns"/>
+                    <label end="58" start="58" name=","/>
+                    <label end="67" start="60" name="in"/>
+                    <label end="69" start="69" name="PP"/>
+                    <label end="72" start="71" name="VVP"/>
+                    <label end="76" start="74" name="rb"/>
+                    <label end="81" start="78" name="VV"/>
+                    <label end="85" start="83" name="wrb"/>
+                    <label end="87" start="87" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/09/2008 02:10:01 PDT Fri" status="MANUAL" ID="2399092">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="21" start="16" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="6782" end="10" start="9" name="Exchanger_1"/>
+                    <label cBy="597" feID="6788" end="42" start="23" name="Exchanger_2"/>
+                    <label cBy="597" feID="6793" itype="INI" name="Themes"/>
+                    <label cBy="597" feID="12631" end="56" start="44" name="Period_of_iterations"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="10" start="9" name="Ext"/>
+                    <label end="42" start="23" name="Dep"/>
+                    <label end="56" start="44" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="10" start="9" name="NP"/>
+                    <label end="42" start="23" name="PP"/>
+                    <label end="56" start="44" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="10-T-PPfrom-(1)">
+        <sentence corpID="111" docID="421" sentNo="5" paragNo="182" aPos="54863849" ID="1476060">
+            <text>In times of shortage the cattle were traded for grain from cereal farmers based in the more fertile regions to the south .</text>
+            <annotationSet cDate="05/09/2008 02:10:05 PDT Fri" status="UNANN" ID="2399125">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="in"/>
+                    <label end="7" start="3" name="nns"/>
+                    <label end="10" start="9" name="in"/>
+                    <label end="19" start="12" name="nn"/>
+                    <label end="23" start="21" name="dt"/>
+                    <label end="30" start="25" name="nns"/>
+                    <label end="35" start="32" name="VBD"/>
+                    <label end="42" start="37" name="VVN"/>
+                    <label end="46" start="44" name="in"/>
+                    <label end="52" start="48" name="nn"/>
+                    <label end="57" start="54" name="in"/>
+                    <label end="64" start="59" name="nn"/>
+                    <label end="72" start="66" name="nns"/>
+                    <label end="78" start="74" name="VVN"/>
+                    <label end="81" start="80" name="in"/>
+                    <label end="85" start="83" name="dt"/>
+                    <label end="90" start="87" name="jjr"/>
+                    <label end="98" start="92" name="jj"/>
+                    <label end="106" start="100" name="nns"/>
+                    <label end="109" start="108" name="to"/>
+                    <label end="113" start="111" name="dt"/>
+                    <label end="119" start="115" name="nn"/>
+                    <label end="121" start="121" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="05/09/2008 02:10:05 PDT Fri" status="MANUAL" ID="2399126">
+                <layer rank="1" name="Target">
+                    <label cBy="597" end="42" start="37" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="6785" end="19" start="0" name="Time"/>
+                    <label cBy="597" feID="6791" end="30" start="21" name="Theme_1"/>
+                    <label cBy="597" feID="6792" end="52" start="44" name="Theme_2"/>
+                    <label cBy="597" feID="6782" itype="CNI" name="Exchanger_1"/>
+                    <label cBy="597" feID="6788" end="119" start="54" name="Exchanger_2"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="19" start="0" name="Dep"/>
+                    <label end="30" start="21" name="Ext"/>
+                    <label end="52" start="44" name="Dep"/>
+                    <label end="119" start="54" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="19" start="0" name="PP"/>
+                    <label end="30" start="21" name="NP"/>
+                    <label end="52" start="44" name="PP"/>
+                    <label end="119" start="54" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

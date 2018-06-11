@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="296" cDate="07/16/2001 01:29:36 PDT Mon" name="Commercial_transaction" ID="177" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;These are words that describe basic commercial transactions involving a &lt;fen&gt;Buyer&lt;/fen&gt; and a &lt;fen&gt;Seller&lt;/fen&gt; who exchange &lt;fen&gt;Money&lt;/fen&gt; and &lt;fen&gt;Goods&lt;/fen&gt;.  The individual words vary in the frame element realization patterns.
+For example, the typical patterns for the verbs buy and sell are:
+BUYER buys GOODS from the SELLER for MONEY.
+SELLER sells GOODS to the BUYER for MONEY.&lt;/def-root&gt;</definition>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="07/16/2001 01:38:11 PDT Mon" abbrev="Byr" name="Buyer" ID="1380">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Buyer&lt;/fen&gt; wants the &lt;fen&gt;Goods&lt;/fen&gt; and offers &lt;fen&gt;Money&lt;/fen&gt; to a &lt;fen&gt;Seller&lt;/fen&gt; in exchange for them.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="07/16/2001 01:38:11 PDT Mon" abbrev="Gds" name="Goods" ID="1381">
+        <definition>&lt;def-root&gt;The FE Goods is anything (including labor or time, for example) which is exchanged for Money in a transaction.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="07/16/2001 01:38:11 PDT Mon" abbrev="Mns" name="Means" ID="1382">
+        <definition>&lt;def-root&gt;The means by which a commercial transaction occurs.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="07/16/2001 01:38:11 PDT Mon" abbrev="Mny" name="Money" ID="1383">
+        <definition>&lt;def-root&gt;Money is the thing given in exchange for Goods in a transaction.
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="07/16/2001 01:38:11 PDT Mon" abbrev="Rate" name="Rate" ID="1384">
+        <definition>&lt;def-root&gt;Price or payment per unit of Goods.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="07/16/2001 01:38:11 PDT Mon" abbrev="Slr" name="Seller" ID="1385">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Seller&lt;/fen&gt; has possession of the &lt;fen&gt;Goods&lt;/fen&gt; and exchanges them for &lt;fen&gt;Money&lt;/fen&gt; from a &lt;fen&gt;Buyer&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="07/16/2001 01:38:11 PDT Mon" abbrev="Unit" name="Unit" ID="1386">
+        <definition>&lt;def-root&gt;The Unit of measure of the Goods according to which the exchange value of the Goods (or services) is set.
+Generally, it occurs in a &lt;ment&gt;by&lt;/ment&gt;-PP. &lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Reciprocality</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of">
+        <relatedFrame>Commerce_scenario</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Has Subframe(s)">
+        <relatedFrame>Commerce_money-transfer</relatedFrame>
+        <relatedFrame>Commerce_goods-transfer</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Add_Annotation" POS="N" name="transaction.n" ID="11459" lemmaID="40976" cBy="605" cDate="12/15/2004 06:58:43 PST Wed">
+        <definition>COD: an instance of buying or selling.</definition>
+        <sentenceCount annotated="1" total="214"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="transaction"/>
+    </lexUnit>
+</frame>

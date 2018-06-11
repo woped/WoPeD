@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="06/29/2001 04:55:22 PDT Fri" name="Process_resume" ID="148" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An event resumes at a certain &lt;fen&gt;Place&lt;/fen&gt; and &lt;fen&gt;Time&lt;/fen&gt;.  NB:  Refer to Event frame.&lt;/def-root&gt;</definition>
+    <FE bgColor="FFFF00" fgColor="000000" coreType="Peripheral" cBy="664" cDate="06/29/2001 05:16:26 PDT Fri" abbrev="Dur" name="Duration" ID="1174">
+        <definition>&lt;def-root&gt;The amount of &lt;fen&gt;Time&lt;/fen&gt; for which a state holds or a process is ongoing.&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="06/29/2001 05:16:26 PDT Fri" abbrev="Process" name="Process" ID="1175">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Process&lt;/fen&gt; which is being resumed.&lt;ex&gt;&lt;fex name="Process"&gt;The meeting&lt;/fex&gt; &lt;t&gt;resumed&lt;/t&gt; after the bomb threat passed.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/29/2001 05:16:26 PDT Fri" abbrev="Place" name="Place" ID="1176">
+        <definition>&lt;def-root&gt;Where the event takes place.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="06/29/2001 05:16:26 PDT Fri" abbrev="Reas" name="Reason" ID="1177">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Reason&lt;/fen&gt; for which an event occurs.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/29/2001 05:16:26 PDT Fri" abbrev="Time" name="Time" ID="1178">
+        <definition>&lt;def-root&gt;When the event occurs.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="309" cDate="10/02/2003 11:36:51 PDT Thu" abbrev="Freq" name="Frequency" ID="5343">
+        <definition>&lt;def-root&gt;The number of times that the Process resumes.
+
+&lt;ex&gt;The tenth emergency special session &lt;t&gt;resumed&lt;/t&gt; &lt;fex name="Frequency"&gt;twice more&lt;/fex&gt; to address ongoing violations against the security council resolution &lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="d0d0d0" fgColor="000000" coreType="Peripheral" cBy="309" cDate="10/02/2003 11:36:51 PDT Thu" abbrev="Mnr" name="Manner" ID="5344">
+        <definition>&lt;def-root&gt;Any description of the event (or state) which is not covered by more specific FEs, including epistemic modification (probably, presumably, mysteriously), secondary effects (quietly, loudly), and general descriptions comparing events (the same way).
+
+&lt;ex&gt;Trading resumed &lt;fex name="Manner"&gt;in an orderly fashion&lt;/fex&gt; on Monday&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Event</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Activity_resume</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of">
+        <relatedFrame>Process</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes">
+        <relatedFrame>Process_continue</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Preceded by">
+        <relatedFrame>Process_stopped_state</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Needs_SCs" POS="V" name="resume.v" ID="4434" lemmaID="32958" cBy="664" cDate="11/09/2001 06:52:18 PST Fri">
+        <definition>COD: begin again or continue after a pause or interruption. NB:  The action is not usually resumed at the beginning with this verb, but rather at the point in the Ongoing process where it was interrupted.</definition>
+        <sentenceCount annotated="2" total="50"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="resume"/>
+    </lexUnit>
+</frame>

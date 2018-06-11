@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="731" cDate="02/07/2001 04:11:41 PST Wed" name="Motion" ID="7" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;Some entity (&lt;fen&gt;Theme&lt;/fen&gt;) starts out in one place (&lt;fen&gt;Source&lt;/fen&gt;) and ends up in some other place (&lt;fen&gt;Goal&lt;/fen&gt;), having covered some space between the two (&lt;fen&gt;Path&lt;/fen&gt;). Alternatively, the &lt;fen&gt;Area&lt;/fen&gt; or &lt;fen&gt;Direction&lt;/fen&gt;in which the &lt;fen&gt;Theme&lt;/fen&gt; moves or the &lt;fen&gt;Distance&lt;/fen&gt; of the movement may be mentioned.
+
+&lt;ex&gt;&lt;fex name="Theme"&gt;That kite you see just to the right of his head&lt;/fex&gt; was &lt;t&gt;moving&lt;/t&gt; &lt;fex name="Area"&gt;around&lt;/fex&gt; &lt;fex name="Speed"&gt;pretty fast&lt;/fex&gt; but the camera seemed to catch it ok.&lt;/ex&gt;
+
+&lt;ex&gt;There are several accounts of &lt;fex name="Theme"&gt;the stench&lt;/fex&gt; &lt;t&gt;drifting&lt;/t&gt; &lt;fex name="Goal"&gt;to shore&lt;/fex&gt; &lt;fex name="Source"&gt;from the ships in the middle of the river&lt;/fex&gt;&lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="Theme"&gt;Dust particles&lt;/fex&gt; &lt;t&gt;floating&lt;/t&gt; &lt;fex name="Area"&gt;about&lt;/fex&gt; made him sneeze uncontrollably.&lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="Theme"&gt;The grill&lt;/fex&gt;, unsecured, &lt;t&gt;rolled&lt;/t&gt; &lt;fex name="Distance"&gt;a few feet&lt;/fex&gt; &lt;fex name="Path"&gt;across the yard&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="Theme"&gt;The swarm&lt;/fex&gt; &lt;t&gt;went&lt;/t&gt; &lt;fex name="Direction"&gt;away&lt;/fex&gt; &lt;fex name="Goal"&gt;to the end of the hall&lt;/fex&gt;.&lt;/ex&gt;
+
+The frames that inherit the general Motion frame add some elaboration to this simple idea.  Inheriting frames can add Goal-profiling (&lt;ment&gt;arrive, reach&lt;/ment&gt;), Source-profiling (&lt;ment&gt;leave, depart&lt;/ment&gt;), or Path-profiling (&lt;ment&gt;traverse, cross&lt;/ment&gt;), or aspects of the manner of motion (&lt;ment&gt;run, jog&lt;/ment&gt;) or assumptions about the shape-properties, etc., of any of the places involved (&lt;ment&gt;insert, extract&lt;/ment&gt;).
+A particularly complex area in the vocabulary of Motion is the depiction of the relation of Vehicles to the Theme.  In some cases, no separate Theme is expressed:
+
+&lt;ex&gt;The plane &lt;t&gt;flew&lt;/t&gt; over the city.&lt;/ex&gt; 
+
+In this case, the sentence is annotated in Self_motion.  When the Vehicle is profiled as being operated by a Driver, the sentence is annotated in the Operate_vehicles frame:
+
+&lt;ex&gt;Don't try to &lt;t&gt;fly&lt;/t&gt; an F-16 without training!&lt;/ex&gt;
+
+This is very similar to the Bringing frame which covers cases where the Vehicle is necessarily involved, but the movement of the &lt;fen&gt;Theme&lt;/fen&gt; (something carried by the Vehicle) is profiled:
+
+&lt;ex&gt;It's scary &lt;t&gt;flying&lt;/t&gt; hundreds of people over thousands of miles of ocean every day.&lt;/ex&gt;
+
+Some of the same vocabulary is also used to describe the situation where Passengers Ride_vehicle or Operate_vehicle (each of these a perspective on Use_vehicles):
+
+&lt;ex&gt;I &lt;t&gt;flew&lt;/t&gt; to Chicago on the red-eye.&lt;/ex&gt;
+&lt;ex&gt;I &lt;t&gt;flew&lt;/t&gt; my plane across the Canadian border&lt;/ex&gt; 
+
+Finally, there are cases where, despite the use of similar vocabulary, there is no self-propelled Vehicle involved at all:
+
+&lt;ex&gt;The ball &lt;t&gt;flew&lt;/t&gt; over the fence.&lt;/ex&gt;
+
+This last type is annotated in the simple Motion frame.&lt;/def-root&gt;</definition>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:11:41 PST Wed" abbrev="Thm" name="Theme" ID="26">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Theme&lt;/fen&gt; is the entity that changes location. Note that it is not necessarily a self-mover.
+&lt;ex&gt;The explosion made &lt;fex name="Thm"&gt;me&lt;/fex&gt; &lt;t&gt;move&lt;/t&gt; in a hurry.&lt;/ex&gt; &lt;/def-root&gt;</definition>
+        <semType name="Physical_object" ID="68"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:11:41 PST Wed" abbrev="Src" name="Source" ID="27">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Source&lt;/fen&gt; is the location the &lt;fen&gt;Theme&lt;/fen&gt; occupies initially before its change of location.
+
+&lt;ex&gt;The policeman &lt;t&gt;moved&lt;/t&gt; &lt;fex name="Src"&gt;away from the door&lt;/fex&gt;.&lt;/ex&gt; &lt;/def-root&gt;</definition>
+        <semType name="Source" ID="151"/>
+        <excludesFE name="Area" ID="30"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:11:41 PST Wed" abbrev="Path" name="Path" ID="28">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Path&lt;/fen&gt; refers to (a part of) the ground over which the &lt;fen&gt;Theme&lt;/fen&gt; travels  or to a landmark by which the &lt;fen&gt;Theme&lt;/fen&gt; travels.
+
+&lt;ex&gt;Jo &lt;t&gt;moved&lt;/t&gt; &lt;fex name="Path"&gt;past Dad&lt;/fex&gt; into the hall.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Area" ID="30"/>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:11:42 PST Wed" abbrev="Goal" name="Goal" ID="29">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Goal&lt;/fen&gt; is the location the &lt;fen&gt;Theme&lt;/fen&gt; ends up in.
+
+&lt;ex&gt;The car &lt;t&gt;moved&lt;/t&gt; &lt;fex name="Goal"&gt;into the slow lane&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Goal" ID="153"/>
+        <excludesFE name="Area" ID="30"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:11:42 PST Wed" abbrev="Area" name="Area" ID="30">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Area&lt;/fen&gt; identifies the setting in which the &lt;fen&gt;Theme&lt;/fen&gt;'s movement takes place without a specified &lt;fen&gt;Path&lt;/fen&gt;.
+
+&lt;ex&gt;Emily &lt;t&gt;moved&lt;/t&gt; restlessly &lt;fex name="Area"&gt;around the room&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="09/18/2001 05:03:41 PDT Tue" abbrev="Dist" name="Distance" ID="1965">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Distance&lt;/fen&gt; is any expression which characterizes the extent of the Motion. 
+&lt;ex&gt;The twig &lt;t&gt;floated&lt;/t&gt; atop the water &lt;fex name="Dist"&gt;for about 100 yards&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Area" ID="30"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="09/18/2001 05:04:06 PDT Tue" abbrev="Spd" name="Speed" ID="1966">
+        <definition>&lt;def-root&gt;This FE is used for the &lt;fen&gt;Speed&lt;/fen&gt; at which the &lt;fen&gt;Theme&lt;/fen&gt; moves.
+
+&lt;ex&gt;The ash cloud &lt;t&gt;drifted&lt;/t&gt; &lt;fex name="Spd"&gt;at twenty-five kilometres per hour&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Speed" ID="234"/>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="09/18/2001 05:06:02 PDT Tue" abbrev="Car" name="Carrier" ID="1968">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Carrier&lt;/fen&gt; is the means of conveyance of the &lt;fen&gt;Theme&lt;/fen&gt;.
+
+&lt;ex&gt;The nest &lt;t&gt;blew&lt;/t&gt; from its tree &lt;fex name="Car"&gt;in a gale&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="09/18/2001 05:06:29 PDT Tue" abbrev="Dur" name="Duration" ID="1969">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Duration&lt;/fen&gt; of  time for which the Motion takes place.
+
+&lt;ex&gt;The balloon &lt;t&gt;floated&lt;/t&gt; &lt;fex name="Dur"&gt;for  hours&lt;/fex&gt;.&lt;/ex&gt;
+ 
+&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="09/18/2001 05:06:35 PDT Tue" abbrev="Time" name="Time" ID="1970">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Time&lt;/fen&gt; when the Motion occurs.
+
+&lt;ex&gt;A radioactive cloud &lt;t&gt;drifted&lt;/t&gt; across Britain &lt;fex name="Time"&gt;after the fire at the Windscale nuclear factory&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="06/18/2002 12:13:02 PDT Tue" abbrev="Manr" name="Manner" ID="3092">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Manner&lt;/fen&gt; in which the Motion takes place.
+&lt;ex&gt;A naval airship &lt;t&gt;drifted&lt;/t&gt; &lt;fex name="Manr"&gt;wildy&lt;/fex&gt; in the stormy sea.&lt;/ex&gt;
+
+&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="296" cDate="06/27/2002 03:17:42 PDT Thu" abbrev="Result" name="Result" ID="3284">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Result&lt;/fen&gt; identifies the ultimate effect of the Motion.
+&lt;ex&gt;The feathers &lt;t&gt;floated&lt;/t&gt; &lt;fex name="Result"&gt;together&lt;/fex&gt; on the water's surface.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="296" cDate="07/01/2002 02:59:42 PDT Mon" abbrev="Dep" name="Depictive" ID="3317">
+        <definition>&lt;def-root&gt;This FE is used for any &lt;fen&gt;Depictive&lt;/fen&gt; phrase describing the state of the &lt;fen&gt;Theme&lt;/fen&gt; while the motion is occuring.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="07/25/2003 12:53:03 PDT Fri" abbrev="" name="Place" ID="4840">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Place&lt;/fen&gt; is the general area in which a specific motion (with &lt;fen&gt;Source&lt;/fen&gt;, &lt;fen&gt;Path&lt;/fen&gt;, or &lt;fen&gt;Goal&lt;/fen&gt;) occurs.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="309" cDate="10/02/2003 11:40:49 PDT Thu" abbrev="Degr" name="Degree" ID="5443">
+        <definition>&lt;def-root&gt;The extent to which the &lt;fen&gt;Theme&lt;/fen&gt; cross a boundary as it moves away from a &lt;fen&gt;Source&lt;/fen&gt; region or into a &lt;fen&gt;Goal&lt;/fen&gt; region.
+
+&lt;ex&gt;Pluto has &lt;t&gt;moved&lt;/t&gt; &lt;fex name="Degree"&gt;fully&lt;/fex&gt;into Sagittarius&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="A9A9A9" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="05/21/2004 05:20:22 PDT Fri" abbrev="" name="Direction" ID="6470">
+        <definition>&lt;def-root&gt;This FE is used for expressions that indicate motion along a line from the deitic center towards a reference point (which may be implicit) that is neither the &lt;fen&gt;Goal&lt;/fen&gt; of the posture change nor a landmark along the way of the moving part of the body.  Often &lt;fen&gt;Direction&lt;/fen&gt; is defined with reference to the canonical orientation of the Protagonist, or the orientation imposed by an implicit observer.&lt;/def-root&gt;</definition>
+        <excludesFE name="Area" ID="30"/>
+    </FE>
+    <FE bgColor="7CCD7C" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="07/19/2004 05:37:15 PDT Mon" abbrev="pur" name="Purpose" ID="6969">
+        <definition>&lt;def-root&gt;In cases wherein the &lt;fen&gt;Theme&lt;/fen&gt; is construed as a sentient entity, this FE denotes the state of affairs that the entity wishes to bring about by moving.
+
+&lt;ex&gt;Johnny &lt;t&gt;went&lt;/t&gt; to Langley  &lt;fex name="pur"&gt;to turn himself in&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="000000" coreType="Extra-Thematic" cBy="664" cDate="11/21/2005 06:41:05 PST Mon" abbrev="sha" name="Path_shape" ID="9449">
+        <definition>&lt;def-root&gt;The shape of the overall &lt;fen&gt;Path&lt;/fen&gt; travelled by the &lt;fen&gt;Theme&lt;/fen&gt;.
+
+&lt;ex&gt;They &lt;t&gt;drifted&lt;/t&gt; &lt;fex name="sha"&gt;in circles&lt;/fex&gt; for weeks before rescue .&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="000000" coreType="Extra-Thematic" cBy="664" cDate="11/21/2005 06:56:15 PST Mon" abbrev="con" name="Containing_event" ID="9450">
+        <definition>&lt;def-root&gt;An event that the described motion forms an integral part of.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="EEE8AA" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="11/17/2006 04:09:03 PST Fri" abbrev="" name="Frequency" ID="10841">
+        <definition>&lt;def-root&gt;This frame element is defined as the number of times an event occurs per some unit of time. A Frequency expression answers the question how often. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="00008B" coreType="Extra-Thematic" cBy="361" cDate="10/09/2007 12:37:24 PDT Tue" abbrev="" name="Iteration" ID="11986">
+        <definition>&lt;def-root&gt;The frame element Iteration is used for expressions that indicate the number of times an event or state (of the kind denoted by the target in its clause) has taken place or held.&lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Direction" ID="6470"/>
+        <memberFE name="Distance" ID="1965"/>
+        <memberFE name="Source" ID="27"/>
+        <memberFE name="Goal" ID="29"/>
+        <memberFE name="Path" ID="28"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Mass_motion</relatedFrame>
+        <relatedFrame>Motion_directional</relatedFrame>
+        <relatedFrame>Traversing</relatedFrame>
+        <relatedFrame>Self_motion</relatedFrame>
+        <relatedFrame>Motion_noise</relatedFrame>
+        <relatedFrame>Fluidic_motion</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on">
+        <relatedFrame>Motion_scenario</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Operate_vehicle</relatedFrame>
+        <relatedFrame>Body_movement</relatedFrame>
+        <relatedFrame>Motion_noise</relatedFrame>
+        <relatedFrame>Fluidic_motion</relatedFrame>
+        <relatedFrame>Bringing</relatedFrame>
+        <relatedFrame>Cotheme</relatedFrame>
+        <relatedFrame>Departing</relatedFrame>
+        <relatedFrame>Evading</relatedFrame>
+        <relatedFrame>Excreting</relatedFrame>
+        <relatedFrame>Removing</relatedFrame>
+        <relatedFrame>Placing</relatedFrame>
+        <relatedFrame>Emanating</relatedFrame>
+        <relatedFrame>Light_movement</relatedFrame>
+        <relatedFrame>Redirecting</relatedFrame>
+        <relatedFrame>Path_traveled</relatedFrame>
+        <relatedFrame>Change_direction</relatedFrame>
+        <relatedFrame>Roadways</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)">
+        <relatedFrame>Getting_underway</relatedFrame>
+        <relatedFrame>Halt</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="move.v" ID="6" lemmaID="25100" cBy="731" cDate="02/08/2001 01:27:25 PST Thu">
+        <definition>FN: go in a specified direction or manner</definition>
+        <sentenceCount annotated="60" total="603"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="move"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="go.v" ID="4345" lemmaID="16426" cBy="664" cDate="10/25/2001 07:53:01 PDT Thu">
+        <definition>COD: move from one place to another; travel. </definition>
+        <sentenceCount annotated="27" total="269"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="go"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="drift.v" ID="6164" lemmaID="11772" cBy="296" cDate="06/17/2002 04:11:04 PDT Mon">
+        <definition>COD: be carried slowly by a current of air or water. </definition>
+        <sentenceCount annotated="38" total="257"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="drift"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="glide.v" ID="6166" lemmaID="16335" cBy="296" cDate="06/17/2002 04:31:35 PDT Mon">
+        <definition>COD: move with a smooth, quiet, continuous motion. </definition>
+        <sentenceCount annotated="13" total="119"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="glide"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="blow.v" ID="6168" lemmaID="3925" cBy="296" cDate="06/17/2002 04:34:35 PDT Mon">
+        <definition>COD: be carried or driven by the wind. </definition>
+        <sentenceCount annotated="30" total="301"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="blow"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="float.v" ID="6261" lemmaID="14744" cBy="296" cDate="06/26/2002 12:51:49 PDT Wed">
+        <definition>COD: move slowly or hover in a liquid or the air</definition>
+        <sentenceCount annotated="43" total="238"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="float"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="coast.v" ID="6262" lemmaID="6969" cBy="296" cDate="06/27/2002 10:56:54 PDT Thu">
+        <definition>COD: move easily without using power. </definition>
+        <sentenceCount annotated="6" total="78"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="coast"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="roll.v" ID="6263" lemmaID="33454" cBy="296" cDate="06/27/2002 11:32:54 PDT Thu">
+        <definition>COD: move by turning over and over on an axis. </definition>
+        <sentenceCount annotated="32" total="442"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="roll"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="soar.v" ID="6265" lemmaID="36753" cBy="296" cDate="06/27/2002 11:42:08 PDT Thu">
+        <definition>COD: glide high in the air. </definition>
+        <sentenceCount annotated="8" total="184"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="soar"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="fly.v" ID="6268" lemmaID="14858" cBy="296" cDate="06/27/2002 03:20:02 PDT Thu">
+        <definition>COD: move or be hurled quickly through the air. </definition>
+        <sentenceCount annotated="9" total="157"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="fly"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="slide.v" ID="10922" lemmaID="36336" cBy="605" cDate="08/20/2004 02:40:26 PDT Fri">
+        <definition>COD: move along a smooth surface, especially downwards, while maintaining continuous contact with it.</definition>
+        <sentenceCount annotated="20" total="304"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="slide"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="swerve.v" ID="12971" lemmaID="39149" cBy="664" cDate="11/21/2005 06:40:19 PST Mon">
+        <definition>COD: abruptly diverge or from a straight course</definition>
+        <sentenceCount annotated="27" total="27"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="swerve"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="snake.v" ID="12972" lemmaID="36591" cBy="664" cDate="11/21/2005 07:03:43 PST Mon">
+        <definition>COD: extend with the twisting motion of a snake</definition>
+        <sentenceCount annotated="11" total="11"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="snake"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Path_shape" POS="V" name="meander.v" ID="12973" lemmaID="23797" cBy="664" cDate="11/21/2005 07:26:27 PST Mon">
+        <definition>COD: follow a winding course, or wander aimlessly. </definition>
+        <sentenceCount annotated="11" total="194"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="meander"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="undulate.v" ID="12974" lemmaID="42057" cBy="664" cDate="11/21/2005 07:27:48 PST Mon">
+        <definition>COD: move with a smooth wave-like motion</definition>
+        <sentenceCount annotated="1" total="2"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="undulate"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="weave.v" ID="12975" lemmaID="43657" cBy="664" cDate="11/21/2005 07:27:56 PST Mon">
+        <definition>COD: move from side to side to progress around obstructions.</definition>
+        <sentenceCount annotated="28" total="28"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="weave"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="wind.v" ID="12976" lemmaID="44207" cBy="664" cDate="11/21/2005 07:28:07 PST Mon">
+        <definition>COD: move in or take a twisting or spiral course.</definition>
+        <sentenceCount annotated="8" total="8"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="wind"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="zigzag.v" ID="12977" lemmaID="44816" cBy="664" cDate="11/21/2005 07:28:46 PST Mon">
+        <definition>COD: take a zigzag course.</definition>
+        <sentenceCount annotated="14" total="14"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="zigzag"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="circle.v" ID="12980" lemmaID="6546" cBy="664" cDate="11/22/2005 11:20:57 PST Tue">
+        <definition>FN: move in a circle</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="circle"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="spiral.v" ID="12981" lemmaID="37350" cBy="664" cDate="11/22/2005 11:22:00 PST Tue">
+        <definition>FN: go in a spiral course.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="spiral"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="swing.v" ID="12991" lemmaID="39170" cBy="664" cDate="11/22/2005 08:20:38 PST Tue">
+        <definition>FN: move quickly changing direction</definition>
+        <sentenceCount annotated="3" total="3"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="swing"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="travel.v" ID="15450" lemmaID="41096" cBy="618" cDate="07/30/2009 01:07:52 PDT Thu">
+        <definition>FN: move.</definition>
+        <sentenceCount annotated="1" total="1"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="travel"/>
+    </lexUnit>
+</frame>

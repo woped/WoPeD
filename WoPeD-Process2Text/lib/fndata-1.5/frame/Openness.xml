@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="02/09/2007 06:06:07 PST Fri" name="Openness" ID="1872" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A &lt;fen&gt;Useful_location&lt;/fen&gt; is accessible to some (possibly generic) &lt;fen&gt;Theme&lt;/fen&gt; despite a potential &lt;fen&gt;Barrier&lt;/fen&gt;, or is not accessible because of the &lt;fen&gt;Barrier&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="02/09/2007 06:06:07 PST Fri" abbrev="Ent" name="Theme" ID="11029">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Theme&lt;/fen&gt; whose motion is blocked or free.
+
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="02/09/2007 06:06:07 PST Fri" abbrev="loc" name="Useful_location" ID="11030">
+        <definition>&lt;def-root&gt;The place or thing that the &lt;fen&gt;Theme&lt;/fen&gt; is headed towards, despite a potential or actual &lt;fen&gt;Barrier&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="02/09/2007 06:06:07 PST Fri" abbrev="" name="Barrier" ID="11031">
+        <definition>&lt;def-root&gt;An entity that (at least potentially) prevents the &lt;fen&gt;Theme&lt;/fen&gt; from getting to the &lt;fen&gt;Useful_location&lt;/fen&gt;.
+&lt;/def-root&gt;</definition>
+        <excludesFE name="Useful_location" ID="11030"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="02/09/2007 06:09:41 PST Fri" abbrev="" name="Degree" ID="11032">
+        <definition>&lt;def-root&gt;The extent to which a Theme can easily access the &lt;fen&gt;Useful_location&lt;/fen&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on">
+        <relatedFrame>Access_scenario</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Traversing</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Created" POS="A" name="open.a" ID="13722" lemmaID="26778" cBy="664" cDate="02/09/2007 06:10:32 PST Fri">
+        <definition>COD: allowing access, passage, or view; not closed, fastened, or restricted.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="open"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="A" name="closed.a" ID="13723" lemmaID="6861" cBy="664" cDate="02/09/2007 06:13:36 PST Fri">
+        <definition>COD: not open or allowing access.</definition>
+        <sentenceCount annotated="1" total="50"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="closed"/>
+    </lexUnit>
+</frame>

@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="N" name="system.n" ID="12637" frame="System" frameID="1610" totalAnnotated="3" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="plx" name="Complex"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="com" name="Component_entities"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Extra-Thematic" abbrev="des" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="fun" name="Function"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Extra-Thematic" abbrev="pos" name="Possessor"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="sal" name="Salient_entity"/>
+        </frame>
+    </header>
+    <definition>COD: a complex whole; a set of things working together as a mechanism or interconnecting network.</definition>
+    <lexeme POS="N" name="system"/>
+    <valences>
+        <FERealization total="2">
+            <FE name="Complex"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="DEN" FE="Complex"/>
+                <annoSet ID="2579015"/>
+                <annoSet ID="2579027"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Function"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="A" FE="Function"/>
+                <annoSet ID="2579015"/>
+                <annoSet ID="2579017"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Salient_entity"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Salient_entity"/>
+                <annoSet ID="2579027"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Complex"/>
+            <FE name="Function"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Complex"/>
+                <valenceUnit GF="Dep" PT="A" FE="Function"/>
+                <annoSet ID="2579015"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Complex"/>
+            <FE name="Salient_entity"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Complex"/>
+                <valenceUnit GF="Dep" PT="N" FE="Salient_entity"/>
+                <annoSet ID="2579027"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Function"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="A" FE="Function"/>
+                <annoSet ID="2579017"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-Wimmune-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="126" aPos="102677346" ID="1572197">
+            <text>Evidence is emerging of widespread deaths among whales and dolphins due to the collapse of their immune systems .</text>
+            <annotationSet cDate="07/14/2010 01:45:21 PDT Wed" status="UNANN" ID="2579014">
+                <layer rank="1" name="PENN">
+                    <label end="7" start="0" name="nn"/>
+                    <label end="10" start="9" name="VBZ"/>
+                    <label end="19" start="12" name="VVG"/>
+                    <label end="22" start="21" name="in"/>
+                    <label end="33" start="24" name="jj"/>
+                    <label end="40" start="35" name="nns"/>
+                    <label end="46" start="42" name="in"/>
+                    <label end="53" start="48" name="nns"/>
+                    <label end="57" start="55" name="cc"/>
+                    <label end="66" start="59" name="nns"/>
+                    <label end="70" start="68" name="jj"/>
+                    <label end="73" start="72" name="to"/>
+                    <label end="77" start="75" name="dt"/>
+                    <label end="86" start="79" name="nn"/>
+                    <label end="89" start="88" name="in"/>
+                    <label end="95" start="91" name="PP$"/>
+                    <label end="102" start="97" name="jj"/>
+                    <label end="110" start="104" name="nns"/>
+                    <label end="112" start="112" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/14/2010 01:45:22 PDT Wed" status="MANUAL" ID="2579015">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="110" start="104" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="8914" end="102" start="97" name="Function"/>
+                    <label cBy="589" feID="8913" end="110" start="104" name="Complex"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="102" start="97" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="102" start="97" name="A"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="347" aPos="32774130" ID="1572198">
+            <text>Martin ( 1987 ) suggests a link between psychology and the immune system , based on the idea ` that the brain influences the immune system and , therefore , our resistance to disease &quot; .</text>
+            <annotationSet cDate="07/14/2010 01:45:22 PDT Wed" status="UNANN" ID="2579016">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="0" name="NP"/>
+                    <label end="7" start="7" name="("/>
+                    <label end="12" start="9" name="cd"/>
+                    <label end="14" start="14" name=")"/>
+                    <label end="23" start="16" name="VVZ"/>
+                    <label end="25" start="25" name="dt"/>
+                    <label end="30" start="27" name="nn"/>
+                    <label end="38" start="32" name="in"/>
+                    <label end="49" start="40" name="nn"/>
+                    <label end="53" start="51" name="cc"/>
+                    <label end="57" start="55" name="dt"/>
+                    <label end="64" start="59" name="jj"/>
+                    <label end="71" start="66" name="nn"/>
+                    <label end="73" start="73" name=","/>
+                    <label end="79" start="75" name="VVN"/>
+                    <label end="82" start="81" name="in"/>
+                    <label end="86" start="84" name="dt"/>
+                    <label end="91" start="88" name="nn"/>
+                    <label end="98" start="95" name="in"/>
+                    <label end="102" start="100" name="dt"/>
+                    <label end="108" start="104" name="nn"/>
+                    <label end="119" start="110" name="VVZ"/>
+                    <label end="123" start="121" name="dt"/>
+                    <label end="130" start="125" name="jj"/>
+                    <label end="137" start="132" name="nn"/>
+                    <label end="141" start="139" name="cc"/>
+                    <label end="143" start="143" name=","/>
+                    <label end="153" start="145" name="rb"/>
+                    <label end="155" start="155" name=","/>
+                    <label end="159" start="157" name="PP$"/>
+                    <label end="170" start="161" name="nn"/>
+                    <label end="173" start="172" name="to"/>
+                    <label end="181" start="175" name="nn"/>
+                    <label end="185" start="185" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/14/2010 01:45:22 PDT Wed" status="MANUAL" ID="2579017">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="137" start="132" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="773" feID="8914" end="130" start="121" name="Function"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="130" start="121" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="130" start="121" name="A"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-Wsewer-(1)"/>
+    <subCorpus name="03-Wsewage-(1)">
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="105" aPos="90254341" ID="1572203">
+            <text>The report expressed serious concerns over the lack of medicines , food , fuel , transport , clean water supplies and operating sewage systems .</text>
+            <annotationSet cDate="07/14/2010 01:45:23 PDT Wed" status="UNANN" ID="2579026">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="9" start="4" name="nn"/>
+                    <label end="19" start="11" name="VVD"/>
+                    <label end="27" start="21" name="jj"/>
+                    <label end="36" start="29" name="nns"/>
+                    <label end="41" start="38" name="in"/>
+                    <label end="45" start="43" name="dt"/>
+                    <label end="50" start="47" name="nn"/>
+                    <label end="53" start="52" name="in"/>
+                    <label end="63" start="55" name="nns"/>
+                    <label end="65" start="65" name=","/>
+                    <label end="70" start="67" name="nn"/>
+                    <label end="72" start="72" name=","/>
+                    <label end="77" start="74" name="VV"/>
+                    <label end="79" start="79" name=","/>
+                    <label end="89" start="81" name="VV"/>
+                    <label end="91" start="91" name=","/>
+                    <label end="97" start="93" name="VV"/>
+                    <label end="103" start="99" name="nn"/>
+                    <label end="112" start="105" name="nns"/>
+                    <label end="116" start="114" name="cc"/>
+                    <label end="126" start="118" name="VVG"/>
+                    <label end="133" start="128" name="nn"/>
+                    <label end="141" start="135" name="nns"/>
+                    <label end="143" start="143" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/14/2010 01:45:23 PDT Wed" status="MANUAL" ID="2579027">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="141" start="135" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="8926" end="133" start="128" name="Salient_entity"/>
+                    <label cBy="589" feID="8913" end="141" start="135" name="Complex"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="133" start="128" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="133" start="128" name="N"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

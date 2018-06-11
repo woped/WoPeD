@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="05/22/2001 09:51:11 PDT Tue" name="Residence" ID="110" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;This frame has to do with people (the &lt;fen&gt;Resident&lt;/fen&gt;s) residing in &lt;fen&gt;Location&lt;/fen&gt;s, sometimes with a &lt;fen&gt;Co-resident&lt;/fen&gt;.
+
+&lt;ex&gt;&lt;fex name="Resident"&gt;Peter&lt;/fex&gt; &lt;t&gt;lives&lt;/t&gt; &lt;fex name="Location"&gt;in New York&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Resident"&gt;Sue&lt;/fex&gt; &lt;m&gt;is&lt;/m&gt; an &lt;t&gt;inhabitant&lt;/t&gt; &lt;fex name="Location"&gt;of Los Angeles&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="05/22/2001 10:01:10 PDT Tue" abbrev="Res" name="Resident" ID="535">
+        <definition>&lt;def-root&gt;The individual(s) that reside at the &lt;fen&gt;Location&lt;/fen&gt;.
+
+&lt;ex&gt;&lt;fex name="Res"&gt;Hannah&lt;/fex&gt; &lt;t&gt;lives&lt;/t&gt; in San Francisco.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="05/22/2001 10:01:39 PDT Tue" abbrev="Location" name="Location" ID="536">
+        <definition>&lt;def-root&gt;The place in which somebody resides.
+
+&lt;ex&gt;&lt;fex name="Res"&gt;Sue&lt;/fex&gt;  &lt;t&gt;lives&lt;/t&gt; &lt;fex name="Location"&gt;in Berkeley&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Location" ID="54"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="05/22/2001 11:11:00 PDT Tue" abbrev="Co-resident" name="Co_resident" ID="537">
+        <definition>&lt;def-root&gt;A person or group of people that the resident is staying with or among.
+
+&lt;ex&gt;&lt;fex name="Res"&gt;Boris&lt;/fex&gt; still &lt;t&gt;lives&lt;/t&gt; &lt;fex name="Co_resident"&gt;with his parents&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="05/25/2001 01:17:44 PDT Fri" abbrev="fre" name="Frequency" ID="603">
+        <definition>&lt;def-root&gt;Frequency at which event occurs.&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="05/25/2001 01:17:44 PDT Fri" abbrev="Dep" name="Depictive" ID="604">
+        <definition>&lt;def-root&gt;The state of a &lt;fen&gt;Resident&lt;/fen&gt; during their residence.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="05/25/2001 01:17:44 PDT Fri" abbrev="Manr" name="Manner" ID="607">
+        <definition>&lt;def-root&gt;Manner of performing an action&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="05/25/2001 01:17:45 PDT Fri" abbrev="Means" name="Means" ID="608">
+        <definition>&lt;def-root&gt;An act of the &lt;fen&gt;Resident&lt;/fen&gt; that enables them to reside in the &lt;fen&gt;Location&lt;/fen&gt;.
+
+&lt;ex&gt;He &lt;t&gt;dwelt&lt;/t&gt; in the wild for years &lt;fex name="Means"&gt;by foraging nuts and berries and occasionally stealing&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="361" cDate="03/15/2007 11:46:42 PDT Thu" abbrev="tim" name="Time" ID="11199">
+        <definition>&lt;def-root&gt;This FE refers to the &lt;fen&gt;Time&lt;/fen&gt; when the &lt;fen&gt;Resident&lt;/fen&gt; resides.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="90876C" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="361" cDate="03/15/2007 11:48:51 PDT Thu" abbrev="cir" name="Circumstances" ID="11200">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Circumstances&lt;/fen&gt; describe the state of the world (at a particular time and place) which is specifically independent of the event itself and any of its participants. &lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Co_resident" ID="537"/>
+        <memberFE name="Location" ID="536"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Temporary_stay</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by">
+        <relatedFrame>People_by_residence</relatedFrame>
+        <relatedFrame>Colonization</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="reside.v" ID="2213" lemmaID="32834" cBy="605" cDate="05/22/2001 09:55:56 PDT Tue">
+        <definition>COD: have one's permanent home in a particular place. </definition>
+        <sentenceCount annotated="31" total="145"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="reside"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="resident.n" ID="2214" lemmaID="32837" cBy="605" cDate="05/22/2001 09:56:07 PDT Tue">
+        <definition>COD: a person who lives somewhere on a long-term basis</definition>
+        <sentenceCount annotated="22" total="182"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="resident"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="dwell.v" ID="2215" lemmaID="12025" cBy="605" cDate="05/22/2001 09:56:17 PDT Tue">
+        <definition>COD: live in or at a place.</definition>
+        <sentenceCount annotated="17" total="103"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="dwell"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="stay.v" ID="2216" lemmaID="37898" cBy="605" cDate="05/22/2001 09:56:28 PDT Tue">
+        <definition>COD: stay for the night at someone's home or a hotel.</definition>
+        <sentenceCount annotated="42" total="262"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="stay"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="lodge.v" ID="2217" lemmaID="22647" cBy="605" cDate="05/22/2001 09:56:37 PDT Tue">
+        <definition>COD: rent accommodation in another person's house. </definition>
+        <sentenceCount annotated="27" total="165"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="lodge"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="inhabit.v" ID="2218" lemmaID="19938" cBy="605" cDate="05/22/2001 09:56:49 PDT Tue">
+        <definition>COD:  live in or occupy. </definition>
+        <sentenceCount annotated="23" total="105"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="inhabit"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="inhabitant.n" ID="2219" lemmaID="19940" cBy="605" cDate="05/22/2001 09:57:01 PDT Tue">
+        <definition>COD: a person or animal that lives in or occupies a place. </definition>
+        <sentenceCount annotated="24" total="111"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="inhabitant"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="live.v" ID="2220" lemmaID="22551" cBy="605" cDate="05/22/2001 09:57:17 PDT Tue">
+        <definition>COD: make one's home in a particular place or with a particular person</definition>
+        <sentenceCount annotated="65" total="348"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="live"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="camp.v" ID="2221" lemmaID="5300" cBy="605" cDate="05/22/2001 09:57:54 PDT Tue">
+        <definition>COD: lodge temporarily, especially in a tent or caravan while on holiday. </definition>
+        <sentenceCount annotated="26" total="153"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="camp"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="squat.v" ID="2222" lemmaID="37625" cBy="605" cDate="05/22/2001 09:58:08 PDT Tue">
+        <definition>COD: unlawfully occupy an uninhabited building or area of land. </definition>
+        <sentenceCount annotated="8" total="121"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="squat"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="camp.n" ID="2353" lemmaID="5299" cBy="605" cDate="05/25/2001 12:01:04 PDT Fri">
+        <definition>COD: a place with temporary accommodation used by soldiers, refugees, or travelling people</definition>
+        <sentenceCount annotated="56" total="399"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="camp"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="camped.a" ID="2354" lemmaID="44907" cBy="605" cDate="05/25/2001 12:05:07 PDT Fri">
+        <definition>FN: be in camp at a location</definition>
+        <sentenceCount annotated="14" total="124"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="camped"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="room-mate.n" ID="2363" lemmaID="33514" cBy="605" cDate="05/25/2001 12:48:05 PDT Fri">
+        <definition>FN: A person with whom one shares a room or rooms in a house</definition>
+        <sentenceCount annotated="10" total="19"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="room-mate"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="squatter.n" ID="2364" lemmaID="37628" cBy="605" cDate="05/25/2001 12:49:50 PDT Fri">
+        <definition>FN: somebody who occupies property without right or title or without paying rent</definition>
+        <sentenceCount annotated="11" total="57"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="squatter"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="occupy.v" ID="2365" lemmaID="26497" cBy="605" cDate="05/25/2001 12:52:11 PDT Fri">
+        <definition>FN: to reside in as an owner or tenant</definition>
+        <sentenceCount annotated="41" total="285"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="occupy"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="dweller.n" ID="2366" lemmaID="12026" cBy="605" cDate="05/25/2001 12:53:27 PDT Fri">
+        <definition>FN: somebody who lives in some location</definition>
+        <sentenceCount annotated="42" total="146"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="dweller"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="camper.n" ID="2368" lemmaID="5309" cBy="605" cDate="05/25/2001 12:54:02 PDT Fri">
+        <definition>COD: a person who spends a holiday in a tent or holiday camp. 
+
+
+</definition>
+        <sentenceCount annotated="6" total="58"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="camper"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="occupant.n" ID="2369" lemmaID="26492" cBy="605" cDate="05/25/2001 12:54:52 PDT Fri">
+        <definition>COD: somebody who occupies a particular place at a given time.</definition>
+        <sentenceCount annotated="16" total="92"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="occupant"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="room.v" ID="2372" lemmaID="33509" cBy="605" cDate="05/25/2001 01:07:45 PDT Fri">
+        <definition>COD: share lodgings, especially at a college or similar institution</definition>
+        <sentenceCount annotated="6" total="26"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="room"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="shack up.v" ID="2416" lemmaID="44909" cBy="605" cDate="05/25/2001 02:32:37 PDT Fri">
+        <definition>FN: stay or reside with (especially unmarried couples)</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="shack"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="PREP" name="up"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="bivouac.v" ID="14241" lemmaID="3702" cBy="664" cDate="03/29/2007 12:22:50 PDT Thu">
+        <definition>FN: stay in a camp without shelter.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="bivouac"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="bivouac.n" ID="14242" lemmaID="3701" cBy="664" cDate="03/29/2007 12:23:31 PDT Thu">
+        <definition>COD: a temporary camp without tents or cover.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="bivouac"/>
+    </lexUnit>
+</frame>

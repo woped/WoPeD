@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="prejudge.v" ID="13306" frame="Partiality" frameID="349" totalAnnotated="6" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Core" abbrev="Judge" name="Decision_maker"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degree" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Core" abbrev="Mat" name="Dispute"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Peripheral" abbrev="Domain" name="Domain"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Extra-Thematic" abbrev="exp" name="Explanation"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Core" abbrev="exp" name="Expressor"/>
+            <FE fgColor="000000" bgColor="7FFF00" type="Core-Unexpressed" abbrev="" name="Judge"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Core" abbrev="" name="Manifestation_of_bias"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="man" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="" name="Sides"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core" abbrev="Sde-1" name="Side_1"/>
+            <FE fgColor="0000FF" bgColor="FFFF00" type="Core" abbrev="Side-2" name="Side_2"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="Tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: form a judgement on (an issue or person) prematurely and without having adequate information.</definition>
+    <lexeme POS="V" name="prejudge"/>
+    <valences>
+        <FERealization total="6">
+            <FE name="Decision_maker"/>
+            <pattern total="6">
+                <valenceUnit GF="Ext" PT="NP" FE="Decision_maker"/>
+                <annoSet ID="2200602"/>
+                <annoSet ID="2200606"/>
+                <annoSet ID="2200608"/>
+                <annoSet ID="2200610"/>
+                <annoSet ID="2200620"/>
+                <annoSet ID="2200642"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Dispute"/>
+            <pattern total="3">
+                <valenceUnit GF="Obj" PT="NP" FE="Dispute"/>
+                <annoSet ID="2200602"/>
+                <annoSet ID="2200608"/>
+                <annoSet ID="2200620"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Manifestation_of_bias"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Manifestation_of_bias"/>
+                <annoSet ID="2200602"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Side_1"/>
+            <pattern total="3">
+                <valenceUnit GF="Obj" PT="NP" FE="Side_1"/>
+                <annoSet ID="2200606"/>
+                <annoSet ID="2200610"/>
+                <annoSet ID="2200642"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Side_2"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Side_2"/>
+                <annoSet ID="2200610"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="" PT="INI" FE="Side_2"/>
+                <annoSet ID="2200606"/>
+                <annoSet ID="2200642"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[before]" FE="Time"/>
+                <annoSet ID="2200642"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="2">
+            <FE name="Decision_maker"/>
+            <FE name="Dispute"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Decision_maker"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Dispute"/>
+                <annoSet ID="2200608"/>
+                <annoSet ID="2200620"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Decision_maker"/>
+            <FE name="Dispute"/>
+            <FE name="Manifestation_of_bias"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Decision_maker"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Dispute"/>
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Manifestation_of_bias"/>
+                <annoSet ID="2200602"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Decision_maker"/>
+            <FE name="Side_1"/>
+            <FE name="Side_2"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Decision_maker"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Side_1"/>
+                <valenceUnit GF="" PT="DNI" FE="Side_2"/>
+                <annoSet ID="2200610"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Decision_maker"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Side_1"/>
+                <valenceUnit GF="" PT="INI" FE="Side_2"/>
+                <annoSet ID="2200606"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Decision_maker"/>
+            <FE name="Side_1"/>
+            <FE name="Side_2"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Decision_maker"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Side_1"/>
+                <valenceUnit GF="" PT="INI" FE="Side_2"/>
+                <valenceUnit GF="Dep" PT="PP[before]" FE="Time"/>
+                <annoSet ID="2200642"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-NP-PP-(1)"/>
+    <subCorpus name="02-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="5" paragNo="133" aPos="103036778" ID="1376367">
+            <text>We sha n't prejudge the issue by building-in specific animal pictures to start with .</text>
+            <annotationSet cDate="06/29/2006 04:22:36 PDT Thu" status="UNANN" ID="2200601">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="5" start="3" name="NP"/>
+                    <label end="9" start="7" name="rb"/>
+                    <label end="18" start="11" name="VV"/>
+                    <label end="22" start="20" name="dt"/>
+                    <label end="28" start="24" name="nn"/>
+                    <label end="31" start="30" name="in"/>
+                    <label end="43" start="33" name="in"/>
+                    <label end="52" start="45" name="jj"/>
+                    <label end="59" start="54" name="nn"/>
+                    <label end="68" start="61" name="nns"/>
+                    <label end="71" start="70" name="to"/>
+                    <label end="77" start="73" name="VV"/>
+                    <label end="82" start="79" name="in"/>
+                    <label end="84" start="84" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="06/29/2006 04:22:36 PDT Thu" status="MANUAL" ID="2200602">
+                <layer rank="1" name="Target">
+                    <label cBy="303" end="18" start="11" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="3043" end="1" start="0" name="Decision_maker"/>
+                    <label cBy="597" feID="3468" end="28" start="20" name="Dispute"/>
+                    <label cBy="597" feID="3060" end="82" start="30" name="Manifestation_of_bias"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="1" start="0" name="Ext"/>
+                    <label end="28" start="20" name="Obj"/>
+                    <label end="82" start="30" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="1" start="0" name="NP"/>
+                    <label end="28" start="20" name="NP"/>
+                    <label end="82" start="30" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="856" aPos="66745938" ID="1376369">
+            <text>I 'm not prejudging Thorpe , of course , and I think the whole affair stinks of a bungle and a vendetta and a silly witch hunt but there it is .</text>
+            <annotationSet cDate="06/29/2006 04:22:36 PDT Thu" status="UNANN" ID="2200605">
+                <layer rank="1" name="PENN">
+                    <label end="0" start="0" name="PP"/>
+                    <label end="3" start="2" name="vbp"/>
+                    <label end="7" start="5" name="rb"/>
+                    <label end="18" start="9" name="VVG"/>
+                    <label end="25" start="20" name="NP"/>
+                    <label end="27" start="27" name=","/>
+                    <label end="30" start="29" name="in"/>
+                    <label end="37" start="32" name="nn"/>
+                    <label end="39" start="39" name=","/>
+                    <label end="43" start="41" name="cc"/>
+                    <label end="45" start="45" name="PP"/>
+                    <label end="51" start="47" name="VVP"/>
+                    <label end="55" start="53" name="dt"/>
+                    <label end="61" start="57" name="jj"/>
+                    <label end="68" start="63" name="nn"/>
+                    <label end="75" start="70" name="nns"/>
+                    <label end="78" start="77" name="in"/>
+                    <label end="80" start="80" name="dt"/>
+                    <label end="87" start="82" name="nn"/>
+                    <label end="91" start="89" name="cc"/>
+                    <label end="93" start="93" name="dt"/>
+                    <label end="102" start="95" name="nn"/>
+                    <label end="106" start="104" name="cc"/>
+                    <label end="108" start="108" name="dt"/>
+                    <label end="114" start="110" name="jj"/>
+                    <label end="120" start="116" name="nn"/>
+                    <label end="125" start="122" name="nn"/>
+                    <label end="129" start="127" name="cc"/>
+                    <label end="135" start="131" name="rb"/>
+                    <label end="138" start="137" name="PP"/>
+                    <label end="141" start="140" name="VBZ"/>
+                    <label end="143" start="143" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="06/29/2006 04:22:36 PDT Thu" status="MANUAL" ID="2200606">
+                <layer rank="1" name="Target">
+                    <label cBy="303" end="18" start="9" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="3043" end="0" start="0" name="Decision_maker"/>
+                    <label cBy="597" feID="3044" end="25" start="20" name="Side_1"/>
+                    <label cBy="597" feID="3047" itype="INI" name="Side_2"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="0" start="0" name="Ext"/>
+                    <label end="25" start="20" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="0" start="0" name="NP"/>
+                    <label end="25" start="20" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="25" aPos="100265751" ID="1376370">
+            <text>For the moment , however , the United States should not prejudge the future .</text>
+            <annotationSet cDate="06/29/2006 04:22:36 PDT Thu" status="UNANN" ID="2200607">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="in"/>
+                    <label end="6" start="4" name="dt"/>
+                    <label end="13" start="8" name="nn"/>
+                    <label end="15" start="15" name=","/>
+                    <label end="23" start="17" name="rb"/>
+                    <label end="25" start="25" name=","/>
+                    <label end="29" start="27" name="dt"/>
+                    <label end="36" start="31" name="NP"/>
+                    <label end="43" start="38" name="NPS"/>
+                    <label end="50" start="45" name="md"/>
+                    <label end="54" start="52" name="rb"/>
+                    <label end="63" start="56" name="VV"/>
+                    <label end="67" start="65" name="dt"/>
+                    <label end="74" start="69" name="nn"/>
+                    <label end="76" start="76" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="06/29/2006 04:22:36 PDT Thu" status="MANUAL" ID="2200608">
+                <layer rank="1" name="Target">
+                    <label cBy="303" end="63" start="56" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="3043" end="43" start="27" name="Decision_maker"/>
+                    <label cBy="597" feID="3468" end="74" start="65" name="Dispute"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="43" start="27" name="Ext"/>
+                    <label end="74" start="65" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="43" start="27" name="NP"/>
+                    <label end="74" start="65" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="89" aPos="58673212" ID="1376371">
+            <text>This court is in no way prejudging any defence of justification which may hereafter be raised in those libel proceedings .</text>
+            <annotationSet cDate="06/29/2006 04:22:37 PDT Thu" status="UNANN" ID="2200609">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="dt"/>
+                    <label end="9" start="5" name="nn"/>
+                    <label end="12" start="11" name="VBZ"/>
+                    <label end="15" start="14" name="in"/>
+                    <label end="18" start="17" name="dt"/>
+                    <label end="22" start="20" name="nn"/>
+                    <label end="33" start="24" name="VVG"/>
+                    <label end="37" start="35" name="dt"/>
+                    <label end="45" start="39" name="nn"/>
+                    <label end="48" start="47" name="in"/>
+                    <label end="62" start="50" name="nn"/>
+                    <label end="68" start="64" name="wdt"/>
+                    <label end="72" start="70" name="md"/>
+                    <label end="82" start="74" name="rb"/>
+                    <label end="85" start="84" name="vb"/>
+                    <label end="92" start="87" name="VVN"/>
+                    <label end="95" start="94" name="in"/>
+                    <label end="101" start="97" name="dt"/>
+                    <label end="107" start="103" name="nn"/>
+                    <label end="119" start="109" name="nns"/>
+                    <label end="121" start="121" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="06/29/2006 04:22:37 PDT Thu" status="MANUAL" ID="2200610">
+                <layer rank="1" name="Target">
+                    <label cBy="303" end="33" start="24" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="3043" end="9" start="0" name="Decision_maker"/>
+                    <label cBy="597" feID="3044" end="119" start="35" name="Side_1"/>
+                    <label cBy="597" feID="3047" itype="DNI" name="Side_2"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="9" start="0" name="Ext"/>
+                    <label end="119" start="35" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="9" start="0" name="NP"/>
+                    <label end="119" start="35" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="94" aPos="20565151" ID="1376376">
+            <text>` When DoI grant schemes require detailed proof that applications for grants are soundly based , they prejudge the conclusions to which the R &amp; D is directed and this can be self-defeating . &quot;</text>
+            <annotationSet cDate="06/29/2006 04:22:38 PDT Thu" status="UNANN" ID="2200619">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="2" name="wrb"/>
+                    <label end="9" start="7" name="NP"/>
+                    <label end="15" start="11" name="nn"/>
+                    <label end="23" start="17" name="nns"/>
+                    <label end="31" start="25" name="VVP"/>
+                    <label end="40" start="33" name="jj"/>
+                    <label end="46" start="42" name="nn"/>
+                    <label end="51" start="48" name="in"/>
+                    <label end="64" start="53" name="nns"/>
+                    <label end="68" start="66" name="in"/>
+                    <label end="75" start="70" name="nns"/>
+                    <label end="79" start="77" name="vbp"/>
+                    <label end="87" start="81" name="rb"/>
+                    <label end="93" start="89" name="VVN"/>
+                    <label end="95" start="95" name=","/>
+                    <label end="100" start="97" name="PP"/>
+                    <label end="109" start="102" name="VV"/>
+                    <label end="113" start="111" name="dt"/>
+                    <label end="125" start="115" name="nns"/>
+                    <label end="128" start="127" name="to"/>
+                    <label end="134" start="130" name="wdt"/>
+                    <label end="138" start="136" name="dt"/>
+                    <label end="140" start="140" name="NP"/>
+                    <label end="146" start="142" name="nn"/>
+                    <label end="148" start="148" name="NP"/>
+                    <label end="147" start="146" name="VBZ"/>
+                    <label end="156" start="149" name="VVN"/>
+                    <label end="160" start="158" name="cc"/>
+                    <label end="165" start="162" name="dt"/>
+                    <label end="169" start="167" name="md"/>
+                    <label end="172" start="171" name="vb"/>
+                    <label end="187" start="174" name="VVG"/>
+                    <label end="189" start="189" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="06/29/2006 04:22:38 PDT Thu" status="MANUAL" ID="2200620">
+                <layer rank="1" name="Target">
+                    <label cBy="303" end="109" start="102" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="3043" end="100" start="97" name="Decision_maker"/>
+                    <label cBy="597" feID="3468" end="156" start="111" name="Dispute"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="100" start="97" name="Ext"/>
+                    <label end="156" start="111" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="100" start="97" name="NP"/>
+                    <label end="156" start="111" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)">
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="601" aPos="84484595" ID="1376387">
+            <text>When Justine Moritz was in this prison , the world outside had prejudged her before her trial .</text>
+            <annotationSet cDate="06/29/2006 04:22:41 PDT Thu" status="UNANN" ID="2200641">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="wrb"/>
+                    <label end="11" start="5" name="NP"/>
+                    <label end="18" start="13" name="NP"/>
+                    <label end="22" start="20" name="VBD"/>
+                    <label end="25" start="24" name="in"/>
+                    <label end="30" start="27" name="dt"/>
+                    <label end="37" start="32" name="nn"/>
+                    <label end="39" start="39" name=","/>
+                    <label end="43" start="41" name="dt"/>
+                    <label end="49" start="45" name="nn"/>
+                    <label end="57" start="51" name="nn"/>
+                    <label end="61" start="59" name="VHD"/>
+                    <label end="71" start="63" name="VVN"/>
+                    <label end="75" start="73" name="PP"/>
+                    <label end="82" start="77" name="in"/>
+                    <label end="86" start="84" name="PP$"/>
+                    <label end="92" start="88" name="nn"/>
+                    <label end="94" start="94" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="06/29/2006 04:22:41 PDT Thu" status="MANUAL" ID="2200642">
+                <layer rank="1" name="Target">
+                    <label cBy="303" end="71" start="63" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="597" feID="3043" end="57" start="41" name="Decision_maker"/>
+                    <label cBy="597" feID="3044" end="75" start="73" name="Side_1"/>
+                    <label cBy="597" feID="11862" end="92" start="77" name="Time"/>
+                    <label cBy="597" feID="3047" itype="INI" name="Side_2"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="57" start="41" name="Ext"/>
+                    <label end="75" start="73" name="Obj"/>
+                    <label end="92" start="77" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="57" start="41" name="NP"/>
+                    <label end="75" start="73" name="NP"/>
+                    <label end="92" start="77" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

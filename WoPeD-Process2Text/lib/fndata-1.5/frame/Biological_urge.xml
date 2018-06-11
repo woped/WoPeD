@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="296" cDate="08/08/2002 04:43:38 PDT Thu" name="Biological_urge" ID="394" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Experiencer&lt;/fen&gt; is in a &lt;fen&gt;State&lt;/fen&gt; where a biological urge is signaling the need to perform a certain action such as eating, drinking, stopping exertion, sleeping, regurgitating, or having sex.
+The &lt;fen&gt;Duration&lt;/fen&gt;, &lt;fen&gt;Time&lt;/fen&gt;, &lt;fen&gt;Place&lt;/fen&gt;, or &lt;fen&gt;Degree&lt;/fen&gt; of intensity associated with the occurrence of the urge may also be indicated.  In this frame, the &lt;fen&gt;Experiencer&lt;/fen&gt; does not necessarily want to perform the action that would fulfill the urge, and there is no specific focus associated with the urge.
+
+&lt;ex&gt;&lt;fex name="Experiencer"&gt;Mike&lt;/fex&gt; &lt;m&gt;feels&lt;/m&gt; &lt;t&gt;hungry&lt;/t&gt;.&lt;/ex&gt; 
+&lt;ex&gt;&lt;fex name="Experiencer"&gt;Sam&lt;/fex&gt; &lt;m&gt;was&lt;/m&gt; &lt;t&gt;thirsty&lt;/t&gt; &lt;fex name="Time"&gt;after dinner&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="08/08/2002 04:49:12 PDT Thu" abbrev="Deg" name="Degree" ID="3519">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Degree&lt;/fen&gt; identifies the extent to which the &lt;fen&gt;Experiencer&lt;/fen&gt; receives the biological signal.&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="08/08/2002 04:50:00 PDT Thu" abbrev="Exp" name="Experiencer" ID="3520">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Experiencer&lt;/fen&gt; receives the biological signal and possesses the internal experience which is a reaction to the phsyical signal.
+&lt;ex&gt;&lt;fex name="Exp"&gt;Mr. Burns&lt;/fex&gt; &lt;m&gt;was&lt;/m&gt; sexually &lt;t&gt;aroused&lt;/t&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+        <excludesFE name="Expressor" ID="3526"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="08/08/2002 04:50:43 PDT Thu" abbrev="Time" name="Time" ID="3521">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Time&lt;/fen&gt; when the &lt;fen&gt;Experiencer&lt;/fen&gt; feels the biological signal. &lt;fen&gt;Time&lt;/fen&gt; may also allow inference about the &lt;fen&gt;Reason&lt;/fen&gt; for the biological urge. 
+&lt;ex&gt;&lt;fex name="Experiencer"&gt;I&lt;/fex&gt; &lt;m&gt;am&lt;/m&gt; &lt;t&gt;exhausted&lt;/t&gt; &lt;fex name="Time"&gt;when I babysit&lt;/fex&gt;.&lt;/ex&gt;
+In such cases, we tag &lt;fen&gt;Reason&lt;/fen&gt; on the second layer.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="08/08/2002 04:51:12 PDT Thu" abbrev="Place" name="Place" ID="3522">
+        <definition>&lt;def-root&gt;This FE identifies the  &lt;fen&gt;Place&lt;/fen&gt; is where the &lt;fen&gt;Experiencer&lt;/fen&gt; feels the biological signal.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="08/09/2002 11:26:37 PDT Fri" abbrev="Expressor" name="Expressor" ID="3526">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Expressor&lt;/fen&gt; is used for a gesture, expression, or body part indicating that the &lt;fen&gt;Experiencer&lt;/fen&gt; is feeling a certain urge.
+
+&lt;ex&gt;He gave me a &lt;t&gt;tired&lt;/t&gt; &lt;fex name="Expressor"&gt;shrug&lt;/fex&gt; and then looked down again.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="State" ID="3531"/>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="08/09/2002 03:48:53 PDT Fri" abbrev="Dur" name="Duration" ID="3527">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Duration&lt;/fen&gt; identifies the amount of time for which the &lt;fen&gt;Experiencer&lt;/fen&gt; feels the urge.&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="296" cDate="08/12/2002 09:53:06 PDT Mon" abbrev="Rea" name="Reason" ID="3530">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Reason&lt;/fen&gt; for which the &lt;fen&gt;Experiencer&lt;/fen&gt; has the biological urge. 
+&lt;ex&gt;&lt;fex name="Experiencer"&gt;Jen&lt;/fex&gt; &lt;m&gt;is&lt;/m&gt; &lt;t&gt;tired&lt;/t&gt; &lt;fex name = "Reason"&gt;because she gave birth last night.&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="08/12/2002 10:13:27 PDT Mon" abbrev="Stat" name="State" ID="3531">
+        <definition>&lt;def-root&gt;&lt;fen&gt;State&lt;/fen&gt; identifies the &lt;fen&gt;Experiencer&lt;/fen&gt;'s state of being. 
+&lt;ex&gt;She was alarmed by John's &lt;t&gt;hungry&lt;/t&gt; &lt;fex  name = "State"&gt;state&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Experiencer" ID="3520"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="08/13/2002 10:11:58 PDT Tue" abbrev="Par" name="Parameter" ID="3534">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Parameter&lt;/fen&gt; is the particular biological realm in which the &lt;fen&gt;Experiencer&lt;/fen&gt; feels the urge.
+&lt;ex&gt;Mr. Burns &lt;m&gt;was&lt;/m&gt; &lt;fex name = "Parameter"&gt;sexually&lt;/fex&gt; &lt;t&gt;aroused&lt;/t&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Expressor" ID="3526"/>
+        <memberFE name="Experiencer" ID="3520"/>
+        <memberFE name="State" ID="3531"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Gradable_attributes</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="A" name="tired.a" ID="7170" lemmaID="40532" cBy="664" cDate="08/09/2002 11:17:36 PDT Fri">
+        <definition>FN: in need of rest or sleep.</definition>
+        <sentenceCount annotated="50" total="313"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="tired"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="sleepy.a" ID="7171" lemmaID="36309" cBy="664" cDate="08/09/2002 11:17:48 PDT Fri">
+        <definition>COD: needing or ready for sleep. </definition>
+        <sentenceCount annotated="24" total="158"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="sleepy"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="randy.a" ID="7172" lemmaID="31789" cBy="664" cDate="08/09/2002 11:18:00 PDT Fri">
+        <definition>COD: sexually aroused or excited.</definition>
+        <sentenceCount annotated="18" total="49"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="randy"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="hungry.a" ID="7173" lemmaID="18680" cBy="664" cDate="08/09/2002 11:18:11 PDT Fri">
+        <definition>FN: feeling a sensation of the body which (generally) signals the need for more food.</definition>
+        <sentenceCount annotated="48" total="243"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="hungry"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="thirsty.a" ID="7174" lemmaID="40177" cBy="664" cDate="08/09/2002 11:18:54 PDT Fri">
+        <definition>COD: feeling thirst. </definition>
+        <sentenceCount annotated="19" total="101"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="thirsty"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="horny.a" ID="7175" lemmaID="18406" cBy="664" cDate="08/09/2002 11:19:45 PDT Fri">
+        <definition>COD: sexually aroused</definition>
+        <sentenceCount annotated="10" total="61"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="horny"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="turned on.a" ID="7176" lemmaID="46075" cBy="664" cDate="08/09/2002 11:22:28 PDT Fri">
+        <definition>FN: feeling willing to engage in sexual activity.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="turned"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="on"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="in the mood.a" ID="7177" lemmaID="46076" cBy="664" cDate="08/09/2002 11:23:53 PDT Fri">
+        <definition>FN: sexually aroused.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="in"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ART" name="the"/>
+        <lexeme order="3" headword="false" breakBefore="false" POS="N" name="mood"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="exhausted.a" ID="7178" lemmaID="46077" cBy="664" cDate="08/09/2002 11:24:45 PDT Fri">
+        <definition>FN: feeling unable or disinclined to perform further exertion.</definition>
+        <sentenceCount annotated="28" total="188"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="exhausted"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="A" name="bushed.a" ID="7179" lemmaID="5023" cBy="664" cDate="08/09/2002 11:25:10 PDT Fri">
+        <definition>COD: completely exhausted.</definition>
+        <sentenceCount annotated="3" total="4"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="bushed"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="weary.a" ID="7180" lemmaID="43640" cBy="664" cDate="08/09/2002 11:34:03 PDT Fri">
+        <definition>COD: tired. </definition>
+        <sentenceCount annotated="38" total="246"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="weary"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="A" name="beat.a" ID="7181" lemmaID="3126" cBy="664" cDate="08/09/2002 11:34:27 PDT Fri">
+        <definition>COD: completely exhausted.</definition>
+        <sentenceCount annotated="2" total="177"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="beat"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="A" name="bone-weary.a" ID="7182" lemmaID="46078" cBy="664" cDate="08/09/2002 11:50:15 PDT Fri">
+        <definition>FN: tired, as if felt throughout the muscles and into the bones.</definition>
+        <sentenceCount annotated="3" total="3"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="bone-weary"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="fatigued.a" ID="7183" lemmaID="46079" cBy="664" cDate="08/09/2002 11:51:30 PDT Fri">
+        <definition>FN: feeling a reduced capacity to exert due to depletion of bodily resources.</definition>
+        <sentenceCount annotated="6" total="12"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="fatigued"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="dog-tired.a" ID="7184" lemmaID="11426" cBy="664" cDate="08/09/2002 01:15:32 PDT Fri">
+        <definition>COD: extremely tired. </definition>
+        <sentenceCount annotated="7" total="15"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="dog-tired"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="A" name="pooped.a" ID="7192" lemmaID="29731" cBy="664" cDate="08/09/2002 03:50:56 PDT Fri">
+        <definition>COD: exhausted. </definition>
+        <sentenceCount annotated="1" total="1"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="pooped"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="A" name="tuckered out.a" ID="7193" lemmaID="46083" cBy="664" cDate="08/09/2002 03:51:54 PDT Fri">
+        <definition>FN: ready to sleep</definition>
+        <sentenceCount annotated="1" total="1"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="tuckered"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="out"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="A" name="tuckered.a" ID="7194" lemmaID="46084" cBy="664" cDate="08/09/2002 03:53:06 PDT Fri">
+        <definition>FN: ready to sleep.</definition>
+        <sentenceCount annotated="2" total="2"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="tuckered"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="worn out.a" ID="7195" lemmaID="46085" cBy="664" cDate="08/09/2002 03:59:44 PDT Fri">
+        <definition>FN: exhausted</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="worn"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="out"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="knackered.a" ID="7203" lemmaID="21394" cBy="296" cDate="08/12/2002 10:21:54 PDT Mon">
+        <definition>FN: extremely tired</definition>
+        <sentenceCount annotated="11" total="51"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="knackered"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="fatigue.n" ID="7207" lemmaID="46088" cBy="664" cDate="08/12/2002 03:51:31 PDT Mon">
+        <definition>COD: extreme tiredness, especially resulting from mental or physical exertion or illness. </definition>
+        <sentenceCount annotated="29" total="186"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="fatigue"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="exhaustion.n" ID="7208" lemmaID="13445" cBy="664" cDate="08/12/2002 03:53:59 PDT Mon">
+        <definition>FN: state of being (virtually) incapable of further exertion.</definition>
+        <sentenceCount annotated="30" total="182"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="exhaustion"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="tiredness.n" ID="7209" lemmaID="40534" cBy="664" cDate="08/12/2002 03:54:22 PDT Mon">
+        <definition>FN: fatigue.</definition>
+        <sentenceCount annotated="31" total="136"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="tiredness"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="weariness.n" ID="7210" lemmaID="43636" cBy="664" cDate="08/12/2002 03:58:50 PDT Mon">
+        <definition>FN: a state of being ill-disposed toward further exertion</definition>
+        <sentenceCount annotated="22" total="126"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="weariness"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="thirst.n" ID="7211" lemmaID="40174" cBy="664" cDate="08/12/2002 05:20:11 PDT Mon">
+        <definition>COD: a feeling of needing or wanting to drink. </definition>
+        <sentenceCount annotated="18" total="138"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="thirst"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="aroused.a" ID="7212" lemmaID="46089" cBy="664" cDate="08/12/2002 05:47:09 PDT Mon">
+        <definition>FN: feeling the urge to engage in sexual activity.</definition>
+        <sentenceCount annotated="16" total="83"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="aroused"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="arousal.n" ID="7213" lemmaID="46090" cBy="664" cDate="08/12/2002 05:48:53 PDT Mon">
+        <definition>FN: the state of feeling the urge to copulate.</definition>
+        <sentenceCount annotated="20" total="147"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="arousal"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="drowsy.a" ID="7235" lemmaID="11843" cBy="296" cDate="08/14/2002 04:10:01 PDT Wed">
+        <definition>COD: sleepy and lethargic. </definition>
+        <sentenceCount annotated="25" total="111"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="drowsy"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="A" name="enervated.a" ID="7236" lemmaID="46093" cBy="296" cDate="08/14/2002 04:11:22 PDT Wed">
+        <definition>FN: drained of energy</definition>
+        <sentenceCount annotated="1" total="4"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="enervated"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="famished.a" ID="7237" lemmaID="13906" cBy="296" cDate="08/14/2002 04:13:44 PDT Wed">
+        <definition>COD: extremely hungry</definition>
+        <sentenceCount annotated="4" total="14"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="famished"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="peckish.a" ID="7238" lemmaID="28196" cBy="296" cDate="08/14/2002 04:14:24 PDT Wed">
+        <definition>COD: hungry</definition>
+        <sentenceCount annotated="11" total="14"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="peckish"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="ravenous.a" ID="7239" lemmaID="31920" cBy="296" cDate="08/14/2002 04:15:51 PDT Wed">
+        <definition>COD: voraciously hungry</definition>
+        <sentenceCount annotated="15" total="61"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="ravenous"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="nauseous.a" ID="7240" lemmaID="25517" cBy="296" cDate="08/14/2002 04:18:47 PDT Wed">
+        <definition>FN: affected with a feeling of sickness and an urge to vomit</definition>
+        <sentenceCount annotated="6" total="57"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="nauseous"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="queasy.a" ID="7241" lemmaID="31465" cBy="296" cDate="08/14/2002 04:20:19 PDT Wed">
+        <definition>COD:  nauseous</definition>
+        <sentenceCount annotated="5" total="59"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="queasy"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="parched.a" ID="7243" lemmaID="45720" cBy="296" cDate="08/15/2002 09:33:12 PDT Thu">
+        <definition>COD: extremely thirsty. </definition>
+        <sentenceCount annotated="7" total="73"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="parched"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="nausea.n" ID="7244" lemmaID="25515" cBy="296" cDate="08/15/2002 09:37:59 PDT Thu">
+        <definition>COD: a feeling of sickness with an inclination to vomit.</definition>
+        <sentenceCount annotated="17" total="118"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="nausea"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="queasiness.n" ID="7245" lemmaID="31464" cBy="296" cDate="08/15/2002 09:47:05 PDT Thu">
+        <definition>FN: nausea</definition>
+        <sentenceCount annotated="8" total="15"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="queasiness"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="hunger.n" ID="7246" lemmaID="18677" cBy="296" cDate="08/15/2002 09:48:00 PDT Thu">
+        <definition>COD: a feeling of discomfort or weakness caused by lack of food, coupled with the desire to eat. </definition>
+        <sentenceCount annotated="34" total="209"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="hunger"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="drowsiness.n" ID="7247" lemmaID="11842" cBy="296" cDate="08/15/2002 09:53:01 PDT Thu">
+        <definition>FN: tiredness</definition>
+        <sentenceCount annotated="12" total="49"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="drowsiness"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="sleepiness.n" ID="7248" lemmaID="36301" cBy="296" cDate="08/15/2002 09:54:36 PDT Thu">
+        <definition>FN: the state of desring to sleep</definition>
+        <sentenceCount annotated="12" total="21"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="sleepiness"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="nauseated.a" ID="7249" lemmaID="46094" cBy="296" cDate="08/15/2002 09:56:53 PDT Thu">
+        <definition>FN: feel nausesous</definition>
+        <sentenceCount annotated="6" total="7"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="nauseated"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="sick.a" ID="7250" lemmaID="35786" cBy="296" cDate="08/15/2002 10:02:11 PDT Thu">
+        <definition>COD: feeling nauseous and wanting to vomit. </definition>
+        <sentenceCount annotated="21" total="166"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="sick"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="bilious.a" ID="7306" lemmaID="3570" cBy="296" cDate="08/19/2002 02:15:24 PDT Mon">
+        <definition>COD: affected by or associated with nausea or vomiting. </definition>
+        <sentenceCount annotated="7" total="36"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="bilious"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="somnolent.a" ID="7307" lemmaID="36934" cBy="296" cDate="08/19/2002 02:18:32 PDT Mon">
+        <definition>COD: sleepy; drowsy. </definition>
+        <sentenceCount annotated="6" total="18"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="somnolent"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="soporific.a" ID="7308" lemmaID="36972" cBy="296" cDate="08/19/2002 02:25:51 PDT Mon">
+        <definition>COD: sleepy</definition>
+        <sentenceCount annotated="4" total="29"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="soporific"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="somnolence.n" ID="7309" lemmaID="36933" cBy="296" cDate="08/19/2002 02:34:38 PDT Mon">
+        <definition>FN: sleepiness</definition>
+        <sentenceCount annotated="4" total="9"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="somnolence"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="amorous.a" ID="7310" lemmaID="1267" cBy="296" cDate="08/19/2002 02:36:36 PDT Mon">
+        <definition>COD: showing or feeling sexual desire. </definition>
+        <sentenceCount annotated="13" total="63"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="amorous"/>
+    </lexUnit>
+</frame>

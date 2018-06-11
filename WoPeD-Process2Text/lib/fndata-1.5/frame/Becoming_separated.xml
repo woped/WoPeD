@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="618" cDate="12/04/2006 02:31:09 PST Mon" name="Becoming_separated" ID="1863" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A &lt;fen&gt;Whole&lt;/fen&gt; separates into &lt;fen&gt;Parts&lt;/fen&gt;, or one part of a whole, called &lt;fen&gt;Part_1&lt;/fen&gt;, becomes separate from the remaining portion, &lt;fen&gt;Part_2&lt;/fen&gt;.
+
+&lt;ex&gt;&lt;fex name="Whole"&gt;This small channel&lt;/fex&gt; meanders through marsh and wetland, &lt;t&gt;splitting&lt;/t&gt; &lt;fex name="Parts"&gt;into several smaller channels that empty into Lake St. Clair&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;Just crack one open and if &lt;fex name="Part_1"&gt;the yoke&lt;/fex&gt; &lt;fex name="Manner"&gt;quickly&lt;/fex&gt; &lt;t&gt;separates&lt;/t&gt; &lt;fex name="Part_2"&gt;from the whites&lt;/fex&gt;, they are probably bad.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="12/04/2006 02:31:09 PST Mon" abbrev="Whole" name="Whole" ID="10907">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Whole&lt;/fen&gt; is a single entity or an aggregate of entities which separates into &lt;fen&gt;Parts&lt;/fen&gt;.
+
+&lt;ex&gt;&lt;fex name="Whole"&gt;Metalworkers' union&lt;/fex&gt; to &lt;t&gt;split&lt;/t&gt; into regional divisions&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="12/04/2006 02:31:09 PST Mon" abbrev="Parts" name="Parts" ID="10908">
+        <definition>&lt;def-root&gt;This refers collectively to the Parts resulting from separation of a Whole:
+
+&lt;ex&gt;These daughter chromosomes then begin to &lt;t&gt;separate&lt;/t&gt; &lt;fex name="Parts"&gt;from each other&lt;/fex&gt;, each moving away from the metaphase plate and toward one of the two spindle pole regions.&lt;/ex&gt;
+&lt;ex&gt;Watch as they &lt;t&gt;split&lt;/t&gt; &lt;fex name="Parts"&gt;into many differently-shaped bits&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="12/04/2006 02:31:09 PST Mon" abbrev="Part-1" name="Part_1" ID="10909">
+        <definition>&lt;def-root&gt;Part-1 is the first of two Parts mentioned.
+
+&lt;ex&gt;Initially, &lt;fex name="Part_1"&gt;the front part&lt;/fex&gt; &lt;t&gt;separated&lt;/t&gt; from the rest of the body.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <requiresFE name="Part_2" ID="10910"/>
+        <excludesFE name="Parts" ID="10908"/>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="12/04/2006 02:31:09 PST Mon" abbrev="Part-2" name="Part_2" ID="10910">
+        <definition>&lt;def-root&gt;Part_2 is the second of two Parts mentioned. This is usually a PP Complement. 
+
+&lt;ex&gt;Initially the front &lt;t&gt;split&lt;/t&gt; &lt;fex name="Part_2"&gt;from the rest of the body&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <requiresFE name="Part_1" ID="10909"/>
+        <excludesFE name="Parts" ID="10908"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="12/04/2006 02:31:09 PST Mon" abbrev="Crit" name="Criterion" ID="10912">
+        <definition>&lt;def-root&gt;This frame element expresses a property of the Parts or components of the Whole which correlates with the separation. Criterion is typically expressed as a PP headed by &lt;ment&gt;by&lt;/ment&gt;, or as a complex PP of the form &lt;ment&gt;on the basis of&lt;/ment&gt;.... 
+&lt;ex&gt;Particles will therefore only &lt;t&gt;separate&lt;/t&gt; &lt;fex name="Crit"&gt;on the basis of contact angle&lt;/fex&gt; as long as their mass is between an upper and lower critical value.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="618" cDate="12/04/2006 02:31:09 PST Mon" abbrev="Dep" name="Depictive" ID="10913">
+        <definition>&lt;def-root&gt;This FE identifies any &lt;fen&gt;Depictive&lt;/fen&gt; phrase describing the undergoers of the separation.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="12/04/2006 02:31:09 PST Mon" abbrev="Manr" name="Manner" ID="10914">
+        <definition>&lt;def-root&gt;Manner of performing an action&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="12/04/2006 02:31:09 PST Mon" abbrev="Degr" name="Degree" ID="10915">
+        <definition>&lt;def-root&gt;Degree to which event occurs&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="12/04/2006 02:31:09 PST Mon" abbrev="Mns" name="Means" ID="10916">
+        <definition>&lt;def-root&gt;An intermediate action or event that enables the separation.
+
+&lt;ex&gt;Explore how cells &lt;t&gt;divide&lt;/t&gt; &lt;fex name="Mns"&gt;by undergoing mitosis&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="618" cDate="12/04/2006 02:31:09 PST Mon" abbrev="Result" name="Result" ID="10917">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Result&lt;/fen&gt; of an event.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="12/04/2006 02:31:09 PST Mon" abbrev="tim" name="Time" ID="10920">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Time&lt;/fen&gt; when the separation occurs.
+
+&lt;ex&gt;However it is believed they &lt;t&gt;separated&lt;/t&gt; &lt;fex name="Time"&gt;at least 2 if not 3 million years ago&lt;/fex&gt;.&lt;/ex&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="12/04/2006 02:31:09 PST Mon" abbrev="" name="Place" ID="10921">
+        <definition>&lt;def-root&gt;Where the separation occurs.
+
+&lt;ex&gt;The two parts likely &lt;t&gt;separated&lt;/t&gt; &lt;fex name="Place"&gt;above the Atlantic&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Fragmentation_scenario</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="separate.v" ID="13702" lemmaID="35117" cBy="618" cDate="12/04/2006 03:20:13 PST Mon">
+        <definition>FN: come apart.</definition>
+        <sentenceCount annotated="23" total="124"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="separate"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="split.v" ID="13703" lemmaID="37416" cBy="618" cDate="12/04/2006 03:20:50 PST Mon">
+        <definition>FN: come into pieces, especially violently.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="split"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="divide.v" ID="13704" lemmaID="11302" cBy="618" cDate="12/04/2006 03:21:06 PST Mon">
+        <definition>FN: separate into parts.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="divide"/>
+    </lexUnit>
+</frame>

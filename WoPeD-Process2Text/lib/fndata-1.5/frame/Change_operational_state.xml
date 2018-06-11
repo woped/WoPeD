@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="12/08/2005 04:31:33 PST Thu" name="Change_operational_state" ID="1688" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A &lt;fen&gt;Device&lt;/fen&gt; or machine is put in (or out of) service either by a volitional &lt;fen&gt;Agent&lt;/fen&gt; or by a &lt;fen&gt;Cause&lt;/fen&gt; event or force acting on the &lt;fen&gt;Device&lt;/fen&gt;. The &lt;fen&gt;Time&lt;/fen&gt; when and the &lt;fen&gt;Place&lt;/fen&gt; where the &lt;fen&gt;Device&lt;/fen&gt; is put in or out of use may be specified, as may be the &lt;fen&gt;Purpose&lt;/fen&gt; of the human &lt;fen&gt;Agent&lt;/fen&gt; in changing the operational state of the &lt;fen&gt;Device&lt;/fen&gt;.
+
+&lt;ex&gt;The laborer realized that &lt;fex name="age"&gt;he&lt;/fex&gt; &lt;t&gt;activated&lt;/t&gt; &lt;fex name="Device"&gt;the machine&lt;/fex&gt; but did not know how to stop it.&lt;/ex&gt;
+
+&lt;/def-root&gt;</definition>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="12/08/2005 04:31:33 PST Thu" abbrev="" name="Device" ID="9699">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Device&lt;/fen&gt; or machine that is in or out of operation.
+
+&lt;ex&gt;&lt;fex name="Device"&gt;The night lights&lt;/fex&gt; were &lt;t&gt;turned&lt;/t&gt; &lt;t&gt;on&lt;/t&gt; in the secondary school.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="12/08/2005 04:31:33 PST Thu" abbrev="" name="Time" ID="9700">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Time&lt;/fen&gt; when a &lt;fen&gt;Device&lt;/fen&gt; is put into or out of operation.
+
+&lt;ex&gt;My dad &lt;t&gt;turned&lt;/t&gt; the lights &lt;t&gt;on&lt;/t&gt; for me &lt;fex name="Time"&gt;at 10 o'clock&lt;/fex&gt; &lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="12/08/2005 04:31:33 PST Thu" abbrev="" name="Place" ID="9701">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Place&lt;/fen&gt; in which the &lt;fen&gt;Device&lt;/fen&gt; is put into or out of operation.
+
+&lt;ex&gt;Suddenly, the lights &lt;m&gt;got&lt;/m&gt; &lt;t&gt;turned&lt;/t&gt; &lt;t&gt;on&lt;/t&gt; &lt;fex name="Place"&gt;on the Jamaica road bridge&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="12/08/2005 04:32:15 PST Thu" abbrev="age" name="Agent" ID="9702">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Agent&lt;/fen&gt; is the person who changes the operational state of the &lt;fen&gt;Device&lt;/fen&gt;.
+
+
+&lt;ex&gt;Instantly &lt;fex name="age"&gt;Sue&lt;/fex&gt; &lt;t&gt;activated&lt;/t&gt; the commlink on the wall.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="12/08/2005 04:33:03 PST Thu" abbrev="cau" name="Cause" ID="9703">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Cause&lt;/fen&gt; identifies the non-agentive force that causes the &lt;fen&gt;Device&lt;/fen&gt; to begin to operate.
+
+&lt;ex&gt;He was in his stocking feet while standing in the bayou that formed when &lt;fex name="Cause"&gt;the wind&lt;/fex&gt; &lt;t&gt;turned&lt;/t&gt; the shower &lt;t&gt;on&lt;/t&gt; in that one upstairs bathroom.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Agent" ID="9702"/>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="12/08/2005 04:34:43 PST Thu" abbrev="pur" name="Purpose" ID="9704">
+        <definition>&lt;def-root&gt;The FE &lt;fen&gt;Purpose&lt;/fen&gt; denotes a state of affairs that the &lt;fen&gt;Agent&lt;/fen&gt; wants to bring about by putting the &lt;fen&gt;Device&lt;/fen&gt; into operation.
+
+&lt;ex&gt;They then &lt;t&gt;activated&lt;/t&gt; the beacon &lt;fex name="pur"&gt;in order to inform the International coastguard of their position&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="12/08/2005 04:36:12 PST Thu" abbrev="exp" name="Explanation" ID="9705">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Explanation&lt;/fen&gt; denotes a proposition from which the event of the &lt;fen&gt;Device&lt;/fen&gt;'s being caused to operate or cease to operate logically follows. 
+
+
+&lt;ex&gt;It works great for this price, I haven't &lt;t&gt;activated&lt;/t&gt; the cable box &lt;fex name="Explanation"&gt;because analog cable works like any TV tuner would&lt;/fex&gt;. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="12/08/2005 04:38:31 PST Thu" abbrev="man" name="Manner" ID="9706">
+        <definition>&lt;def-root&gt;Any description of the event (or state) which is not covered by more specific FEs, including force (&lt;ment&gt;hard&lt;/ment&gt;, &lt;ment&gt;softly&lt;/ment&gt;), secondary effects (&lt;ment&gt;quietly&lt;/ment&gt;, &lt;ment&gt;loudly&lt;/ment&gt;), and general descriptions comparing events (&lt;ment&gt;the same way&lt;/ment&gt;). In agentive uses, it may indicate salient characteristics of an &lt;fen&gt;Agent&lt;/fen&gt; that also affect the action (&lt;ment&gt;deliberately&lt;/ment&gt;, &lt;ment&gt;eagerly&lt;/ment&gt;, &lt;ment&gt;carefully&lt;/ment&gt;). 
+
+&lt;ex&gt;I &lt;fex name="Manner"&gt;carefully&lt;/fex&gt; &lt;t&gt;turned&lt;/t&gt; &lt;t&gt;off&lt;/t&gt; the computers, turned off the lights, locked that back
+door, and went to my office to do the paper work.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="07/30/2010 02:20:59 PDT Fri" abbrev="" name="Degree" ID="14094">
+        <definition>&lt;def-root&gt;The degree to which the &lt;fen&gt;Device&lt;/fen&gt; is active after the action.&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of">
+        <relatedFrame>Being_in_operation</relatedFrame>
+    </frameRelation>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="activate.v" ID="13064" lemmaID="410" cBy="605" cDate="12/08/2005 04:39:54 PST Thu">
+        <definition>COD: make active or operative.</definition>
+        <sentenceCount annotated="24" total="281"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="activate"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="turn on.v" ID="13065" lemmaID="48546" cBy="605" cDate="12/08/2005 04:40:40 PST Thu">
+        <definition>COD: start the operation of something by means of a tap, switch, or button.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="turn"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="on"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="turn off.v" ID="13066" lemmaID="50321" cBy="605" cDate="12/08/2005 04:42:19 PST Thu">
+        <definition>COD: stop the operation of something by means of a tap, switch, or button.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="turn"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="off"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="boot.v" ID="13432" lemmaID="4197" cBy="618" cDate="08/09/2006 01:10:53 PDT Wed">
+        <definition>COD: start (a computer) and put it into a state of readiness for operation.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="boot"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="shut off.a" ID="14596" lemmaID="50753" cBy="361" cDate="10/26/2007 12:25:48 PDT Fri">
+        <definition>FN: turning off, making non-operational</definition>
+        <sentenceCount annotated="1" total="1"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="shut"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="off"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="deactivate.v" ID="14638" lemmaID="50767" cBy="361" cDate="11/21/2007 04:59:41 PST Wed">
+        <definition>COD: make (technical equipment or a virus) inactive by disconnecting or destroying it.</definition>
+        <sentenceCount annotated="10" total="21"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="deactivate"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="cut.v" ID="14764" lemmaID="9360" cBy="664" cDate="02/04/2008 12:41:19 PST Mon">
+        <definition>FN: deactivate, esp. a motor or device driven by a motor.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="cut"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="cut off.v" ID="15931" lemmaID="51174" cBy="664" cDate="07/23/2010 07:01:49 PDT Fri">
+        <definition>FN: cause to stop being in operational.</definition>
+        <sentenceCount annotated="1" total="1"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="cut"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="off"/>
+    </lexUnit>
+</frame>

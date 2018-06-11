@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="145" cDate="06/11/2001 04:11:17 PDT Mon" name="Entering_of_plea" ID="130" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;The Accused enters a Plea in answer to the Charges.  In most jurisdictions, the possible pleas are innocent, guilty, or nolo contendere.  Accused persons may stand mute, in which case, the court usually enters a plea on their behalf.&lt;/def-root&gt;</definition>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Core" cBy="145" cDate="06/11/2001 04:12:16 PDT Mon" abbrev="judge" name="Judge" ID="813">
+        <definition>&lt;def-root&gt;The judge of the court in which the accused enters a plea.&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="145" cDate="06/11/2001 04:13:14 PDT Mon" abbrev="acc" name="Accused" ID="814">
+        <definition>&lt;def-root&gt;The person entering the plea in court.
+&lt;ex&gt;&lt;fex name="Accused"&gt;Joy Peterson&lt;/fex&gt; &lt;t&gt;pleaded&lt;/t&gt; &lt;fex name="Plea"&gt;innocent&lt;/fex&gt; &lt;fex name="Charges"&gt;to the murder of his son&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="08/16/2001 04:35:38 PDT Thu" abbrev="Chrg" name="Charges" ID="1636">
+        <definition>&lt;def-root&gt;The crime with which the Accused is charged
+&lt;ex&gt;&lt;fex name="Accused"&gt;Simpson&lt;/fex&gt; &lt;t&gt;pleaded&lt;/t&gt; &lt;fex name="Plea"&gt;not guilty&lt;/fex&gt; &lt;fex name="Charges"&gt;to the murder of his wife&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="08/16/2001 04:36:42 PDT Thu" abbrev="Plea" name="Plea" ID="1637">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Plea&lt;/fen&gt; that a defendant makes.
+&lt;ex&gt;&lt;fex name="Accused"&gt;The student&lt;/fex&gt; &lt;t&gt;pleaded&lt;/t&gt; &lt;fex name="Plea"&gt;guilty&lt;/fex&gt;&lt;fex name="Charges"&gt; to stealing a bike&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="08/16/2001 04:43:57 PDT Thu" abbrev="Time" name="Time" ID="1640">
+        <definition>&lt;def-root&gt;When the event occurs.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="08/16/2001 04:43:59 PDT Thu" abbrev="Place" name="Place" ID="1641">
+        <definition>&lt;def-root&gt;Where the event takes place.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="06/20/2003 11:51:57 PDT Fri" abbrev="" name="Court" ID="4650">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Court&lt;/fen&gt; is the institution before which the plea is entered.&lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Judge" ID="813"/>
+        <memberFE name="Court" ID="4650"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Communication</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of">
+        <relatedFrame>Arraignment</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes">
+        <relatedFrame>Bail_decision</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Preceded by">
+        <relatedFrame>Notification_of_charges</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="plead.v" ID="2603" lemmaID="29341" cBy="145" cDate="06/11/2001 04:14:14 PDT Mon">
+        <definition>FN: enter a plea, usually "innocent' or "guilty".</definition>
+        <sentenceCount annotated="11" total="105"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="plead"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="plea.n" ID="8973" lemmaID="29339" cBy="618" cDate="06/27/2003 09:56:22 PDT Fri">
+        <definition>COD: a formal statement by or on behalf of a defendant or prisoner, stating guilt or innocence in response to a charge, offering an allegation of fact, or claiming that a point of law should apply.</definition>
+        <sentenceCount annotated="20" total="376"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="plea"/>
+    </lexUnit>
+</frame>

@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Insufficient_Attestations" POS="V" name="revive.v" ID="12099" frame="Waking_up" frameID="295" totalAnnotated="4" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="7CCD73" type="Extra-Thematic" abbrev="" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Extra-Thematic" abbrev="" name="Explanation"/>
+            <FE fgColor="00008B" bgColor="7FFF00" type="Extra-Thematic" abbrev="" name="Frequency"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Man" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="" name="Particular_iteration"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Slpr" name="Sleeper"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Core" abbrev="Sleep_state" name="Sleep_state"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Time" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Extra-Thematic" abbrev="W-state" name="World_state"/>
+        </frame>
+    </header>
+    <definition>FN: to return to consciousness</definition>
+    <lexeme POS="V" name="revive"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Circumstances"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Circumstances"/>
+                <annoSet ID="2216567"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Explanation"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="2nd" FE="Explanation"/>
+                <annoSet ID="2216509"/>
+                <annoSet ID="2216571"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Particular_iteration"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="AVP" FE="Particular_iteration"/>
+                <annoSet ID="2216571"/>
+                <annoSet ID="2216601"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Sleep_state"/>
+            <pattern total="3">
+                <valenceUnit GF="" PT="INI" FE="Sleep_state"/>
+                <annoSet ID="2216509"/>
+                <annoSet ID="2216567"/>
+                <annoSet ID="2216601"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Sleeper"/>
+            <pattern total="4">
+                <valenceUnit GF="Ext" PT="NP" FE="Sleeper"/>
+                <annoSet ID="2216509"/>
+                <annoSet ID="2216567"/>
+                <annoSet ID="2216571"/>
+                <annoSet ID="2216601"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="Sub" FE="Time"/>
+                <annoSet ID="2216509"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="World_state"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="World_state"/>
+                <annoSet ID="2216571"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Circumstances"/>
+            <FE name="Sleep_state"/>
+            <FE name="Sleeper"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[with]" FE="Circumstances"/>
+                <valenceUnit GF="" PT="INI" FE="Sleep_state"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Sleeper"/>
+                <annoSet ID="2216567"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Explanation"/>
+            <FE name="Particular_iteration"/>
+            <FE name="Sleeper"/>
+            <FE name="World_state"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="2nd" FE="Explanation"/>
+                <valenceUnit GF="Dep" PT="AVP" FE="Particular_iteration"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Sleeper"/>
+                <valenceUnit GF="Dep" PT="PP[on]" FE="World_state"/>
+                <annoSet ID="2216571"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Explanation"/>
+            <FE name="Sleep_state"/>
+            <FE name="Sleeper"/>
+            <FE name="Time"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="2nd" FE="Explanation"/>
+                <valenceUnit GF="" PT="INI" FE="Sleep_state"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Sleeper"/>
+                <valenceUnit GF="Dep" PT="Sub" FE="Time"/>
+                <annoSet ID="2216509"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Particular_iteration"/>
+            <FE name="Sleep_state"/>
+            <FE name="Sleeper"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Particular_iteration"/>
+                <valenceUnit GF="" PT="INI" FE="Sleep_state"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Sleeper"/>
+                <annoSet ID="2216601"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-Wby-(1)"/>
+    <subCorpus name="02-T-Wvvg-(1)"/>
+    <subCorpus name="03-T-PP-(1)"/>
+    <subCorpus name="04-AVP-T-(1)"/>
+    <subCorpus name="05-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="4274" aPos="113281424" ID="1384324">
+            <text>When it is off she revives , laughs again , looks relaxed .</text>
+            <annotationSet cDate="07/19/2006 05:48:54 PDT Wed" status="UNANN" ID="2216508">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="wrb"/>
+                    <label end="6" start="5" name="PP"/>
+                    <label end="9" start="8" name="VBZ"/>
+                    <label end="13" start="11" name="in"/>
+                    <label end="17" start="15" name="PP"/>
+                    <label end="25" start="19" name="VVZ"/>
+                    <label end="27" start="27" name=","/>
+                    <label end="34" start="29" name="VVZ"/>
+                    <label end="40" start="36" name="rb"/>
+                    <label end="42" start="42" name=","/>
+                    <label end="48" start="44" name="nns"/>
+                    <label end="56" start="50" name="VVD"/>
+                    <label end="58" start="58" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/19/2006 05:48:54 PDT Wed" status="MANUAL" ID="2216509">
+                <layer rank="1" name="Target">
+                    <label cBy="303" end="25" start="19" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="2529" end="13" start="0" name="Time"/>
+                    <label cBy="361" feID="2528" end="17" start="15" name="Sleeper"/>
+                    <label cBy="361" feID="3471" itype="INI" name="Sleep_state"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="13" start="0" name="Dep"/>
+                    <label end="17" start="15" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="13" start="0" name="Sub"/>
+                    <label end="17" start="15" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+                <layer rank="2" name="FE">
+                    <label cBy="361" feID="10459" end="13" start="0" name="Explanation"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="82" aPos="22768075" ID="1384353">
+            <text>They had declined and revived with their districts ; each was closely dependent on its contado ; their leading citizens were the warrior lords of the castles of the region .</text>
+            <annotationSet cDate="07/19/2006 05:49:03 PDT Wed" status="UNANN" ID="2216566">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="PP"/>
+                    <label end="7" start="5" name="VHD"/>
+                    <label end="16" start="9" name="VVN"/>
+                    <label end="20" start="18" name="cc"/>
+                    <label end="28" start="22" name="VVN"/>
+                    <label end="33" start="30" name="in"/>
+                    <label end="39" start="35" name="PP$"/>
+                    <label end="49" start="41" name="nns"/>
+                    <label end="51" start="51" name=":"/>
+                    <label end="56" start="53" name="dt"/>
+                    <label end="60" start="58" name="VBD"/>
+                    <label end="68" start="62" name="rb"/>
+                    <label end="78" start="70" name="jj"/>
+                    <label end="81" start="80" name="in"/>
+                    <label end="85" start="83" name="PP$"/>
+                    <label end="93" start="87" name="nn"/>
+                    <label end="95" start="95" name=":"/>
+                    <label end="101" start="97" name="PP$"/>
+                    <label end="109" start="103" name="jj"/>
+                    <label end="118" start="111" name="nns"/>
+                    <label end="123" start="120" name="VBD"/>
+                    <label end="127" start="125" name="dt"/>
+                    <label end="135" start="129" name="nn"/>
+                    <label end="141" start="137" name="nns"/>
+                    <label end="144" start="143" name="in"/>
+                    <label end="148" start="146" name="dt"/>
+                    <label end="156" start="150" name="nns"/>
+                    <label end="159" start="158" name="in"/>
+                    <label end="163" start="161" name="dt"/>
+                    <label end="170" start="165" name="nn"/>
+                    <label end="172" start="172" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/19/2006 05:49:03 PDT Wed" status="MANUAL" ID="2216567">
+                <layer rank="1" name="Target">
+                    <label cBy="303" end="28" start="22" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="2528" end="3" start="0" name="Sleeper"/>
+                    <label cBy="361" feID="10457" end="49" start="30" name="Circumstances"/>
+                    <label cBy="361" feID="3471" itype="INI" name="Sleep_state"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="3" start="0" name="Ext"/>
+                    <label end="49" start="30" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="3" start="0" name="NP"/>
+                    <label end="49" start="30" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent">
+                    <label end="0" start="0" name="Metaphor"/>
+                </layer>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="6" paragNo="14" aPos="15640868" ID="1384355">
+            <text>After the Nile had receded the land eventually appeared to die , but on the reappearance of the waters it revived again .</text>
+            <annotationSet cDate="07/19/2006 05:49:03 PDT Wed" status="UNANN" ID="2216570">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="in"/>
+                    <label end="8" start="6" name="dt"/>
+                    <label end="13" start="10" name="NP"/>
+                    <label end="17" start="15" name="VHD"/>
+                    <label end="25" start="19" name="VVN"/>
+                    <label end="29" start="27" name="dt"/>
+                    <label end="34" start="31" name="nn"/>
+                    <label end="45" start="36" name="rb"/>
+                    <label end="54" start="47" name="VVD"/>
+                    <label end="57" start="56" name="to"/>
+                    <label end="61" start="59" name="VV"/>
+                    <label end="63" start="63" name=","/>
+                    <label end="67" start="65" name="cc"/>
+                    <label end="70" start="69" name="in"/>
+                    <label end="74" start="72" name="dt"/>
+                    <label end="87" start="76" name="nn"/>
+                    <label end="90" start="89" name="in"/>
+                    <label end="94" start="92" name="dt"/>
+                    <label end="101" start="96" name="nns"/>
+                    <label end="104" start="103" name="PP"/>
+                    <label end="112" start="106" name="VVN"/>
+                    <label end="118" start="114" name="rb"/>
+                    <label end="120" start="120" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/19/2006 05:49:04 PDT Wed" status="MANUAL" ID="2216571">
+                <layer rank="1" name="Target">
+                    <label cBy="303" end="112" start="106" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="3474" end="101" start="69" name="World_state"/>
+                    <label cBy="361" feID="2528" end="104" start="103" name="Sleeper"/>
+                    <label cBy="361" feID="10458" end="118" start="114" name="Particular_iteration"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="101" start="69" name="Dep"/>
+                    <label end="104" start="103" name="Ext"/>
+                    <label end="118" start="114" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="101" start="69" name="PP"/>
+                    <label end="104" start="103" name="NP"/>
+                    <label end="118" start="114" name="AVP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+                <layer rank="2" name="FE">
+                    <label cBy="361" feID="10459" end="101" start="69" name="Explanation"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="515" aPos="61657802" ID="1384370">
+            <text>` When Postine next revives , her brain activity should have returned to normal . &quot;</text>
+            <annotationSet cDate="07/19/2006 05:49:08 PDT Wed" status="UNANN" ID="2216600">
+                <layer rank="1" name="PENN">
+                    <label end="5" start="2" name="wrb"/>
+                    <label end="13" start="7" name="NP"/>
+                    <label end="18" start="15" name="rb"/>
+                    <label end="26" start="20" name="VVZ"/>
+                    <label end="28" start="28" name=","/>
+                    <label end="32" start="30" name="PP$"/>
+                    <label end="38" start="34" name="nn"/>
+                    <label end="47" start="40" name="nn"/>
+                    <label end="54" start="49" name="md"/>
+                    <label end="59" start="56" name="VH"/>
+                    <label end="68" start="61" name="VVN"/>
+                    <label end="71" start="70" name="to"/>
+                    <label end="78" start="73" name="jj"/>
+                    <label end="80" start="80" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/19/2006 05:49:08 PDT Wed" status="MANUAL" ID="2216601">
+                <layer rank="1" name="Target">
+                    <label cBy="303" end="26" start="20" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="2528" end="13" start="7" name="Sleeper"/>
+                    <label cBy="361" feID="10458" end="18" start="15" name="Particular_iteration"/>
+                    <label cBy="361" feID="3471" itype="INI" name="Sleep_state"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="13" start="7" name="Ext"/>
+                    <label end="18" start="15" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="13" start="7" name="NP"/>
+                    <label end="18" start="15" name="AVP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="01-T-W.-(2)"/>
+    <subCorpus name="other-matched-(2)"/>
+    <subCorpus name="other-unmatched-(2)"/>
+    <subCorpus name="other-unmatched-(3)"/>
+</lexUnit>

@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Add_Annotation" POS="V" name="head out.v" ID="12892" frame="Getting_underway" frameID="1641" totalAnnotated="2" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="Dep" name="Depictive"/>
+            <FE fgColor="000000" bgColor="7FFF00" type="Peripheral" abbrev="dir" name="Direction"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Extra-Thematic" abbrev="dur" name="Duration_of_final_state"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="Goal" name="Goal"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="jou" name="Journey"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="Mns" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Peripheral" abbrev="mot" name="Mode_of_transportation"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Peripheral" abbrev="Path" name="Path"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="sel" name="Self_mover"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Core" abbrev="Src" name="Source"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: to begin motion away from a location</definition>
+    <lexeme order="1" headword="true" breakBefore="false" POS="V" name="head"/>
+    <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="out"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Direction"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Direction"/>
+                <annoSet ID="2608154"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Goal"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="VPto" FE="Goal"/>
+                <annoSet ID="2608200"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Path"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Path"/>
+                <annoSet ID="2608154"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Self_mover"/>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Self_mover"/>
+                <annoSet ID="2608154"/>
+                <annoSet ID="2608200"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Source"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="INI" FE="Source"/>
+                <annoSet ID="2608154"/>
+                <annoSet ID="2608200"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Direction"/>
+            <FE name="Path"/>
+            <FE name="Self_mover"/>
+            <FE name="Source"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AVP" FE="Direction"/>
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Path"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Self_mover"/>
+                <valenceUnit GF="" PT="INI" FE="Source"/>
+                <annoSet ID="2608154"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Goal"/>
+            <FE name="Self_mover"/>
+            <FE name="Source"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="VPto" FE="Goal"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Self_mover"/>
+                <valenceUnit GF="" PT="INI" FE="Source"/>
+                <annoSet ID="2608200"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-PPon-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="1138" aPos="51401957" ID="1586120">
+            <text>I smiled and headed out on the road northwards .</text>
+            <annotationSet cDate="08/18/2010 05:21:54 PDT Wed" status="UNANN" ID="2608153">
+                <layer rank="1" name="PENN">
+                    <label end="0" start="0" name="PP"/>
+                    <label end="7" start="2" name="VVD"/>
+                    <label end="11" start="9" name="cc"/>
+                    <label end="18" start="13" name="VVD"/>
+                    <label end="22" start="20" name="rp"/>
+                    <label end="25" start="24" name="in"/>
+                    <label end="29" start="27" name="dt"/>
+                    <label end="34" start="31" name="nn"/>
+                    <label end="45" start="36" name="nns"/>
+                    <label end="47" start="47" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="08/18/2010 05:21:54 PDT Wed" status="MANUAL" ID="2608154">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="22" start="13" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="9185" end="0" start="0" name="Self_mover"/>
+                    <label cBy="589" feID="9187" end="34" start="24" name="Path"/>
+                    <label cBy="589" feID="14164" end="45" start="36" name="Direction"/>
+                    <label cBy="589" feID="9186" itype="INI" name="Source"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="0" start="0" name="Ext"/>
+                    <label end="34" start="24" name="Dep"/>
+                    <label end="45" start="36" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="0" start="0" name="NP"/>
+                    <label end="34" start="24" name="PP"/>
+                    <label end="45" start="36" name="AVP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-T-PPfor-(1)"/>
+    <subCorpus name="03-T-PPto-(1)"/>
+    <subCorpus name="04-T-Wto-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="1384" aPos="110145228" ID="1586143">
+            <text>FIVE British tourists to Egypt , including one from Mold , were injured when a bomb was dropped from a bridge in Cairo as their tour bus headed out to see the pyramids at Giza .</text>
+            <annotationSet cDate="08/18/2010 05:21:59 PDT Wed" status="UNANN" ID="2608199">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="cd"/>
+                    <label end="11" start="5" name="jj"/>
+                    <label end="20" start="13" name="nns"/>
+                    <label end="23" start="22" name="to"/>
+                    <label end="29" start="25" name="NP"/>
+                    <label end="31" start="31" name=","/>
+                    <label end="41" start="33" name="VVG"/>
+                    <label end="45" start="43" name="cd"/>
+                    <label end="50" start="47" name="in"/>
+                    <label end="55" start="52" name="NP"/>
+                    <label end="57" start="57" name=","/>
+                    <label end="62" start="59" name="VBD"/>
+                    <label end="70" start="64" name="VVN"/>
+                    <label end="75" start="72" name="wrb"/>
+                    <label end="77" start="77" name="dt"/>
+                    <label end="82" start="79" name="nn"/>
+                    <label end="86" start="84" name="VBD"/>
+                    <label end="94" start="88" name="VVN"/>
+                    <label end="99" start="96" name="in"/>
+                    <label end="101" start="101" name="dt"/>
+                    <label end="108" start="103" name="nn"/>
+                    <label end="111" start="110" name="in"/>
+                    <label end="117" start="113" name="NP"/>
+                    <label end="120" start="119" name="in"/>
+                    <label end="126" start="122" name="PP$"/>
+                    <label end="131" start="128" name="nn"/>
+                    <label end="135" start="133" name="nn"/>
+                    <label end="142" start="137" name="VVN"/>
+                    <label end="146" start="144" name="rp"/>
+                    <label end="149" start="148" name="to"/>
+                    <label end="153" start="151" name="VV"/>
+                    <label end="157" start="155" name="dt"/>
+                    <label end="166" start="159" name="nns"/>
+                    <label end="169" start="168" name="in"/>
+                    <label end="174" start="171" name="NP"/>
+                    <label end="176" start="176" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="08/18/2010 05:21:59 PDT Wed" status="MANUAL" ID="2608200">
+                <layer rank="1" name="Target">
+                    <label cBy="589" end="146" start="137" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="589" feID="9185" end="135" start="122" name="Self_mover"/>
+                    <label cBy="589" feID="9188" end="174" start="148" name="Goal"/>
+                    <label cBy="589" feID="9186" itype="INI" name="Source"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="135" start="122" name="Ext"/>
+                    <label end="174" start="148" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="135" start="122" name="NP"/>
+                    <label end="174" start="148" name="VPto"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="05-T-PPtoward-(1)"/>
+    <subCorpus name="06-T-PPat-(1)"/>
+    <subCorpus name="07-T-PP-(1)"/>
+    <subCorpus name="08-AVP-T-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

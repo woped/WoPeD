@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Rules_Defined" POS="ADV" name="allegedly.adv" ID="10693" frame="Unattributed_information" frameID="1154" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="Pickett" ID="2">
+            <document description="cjf001" ID="6"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Extra-Thematic" abbrev="" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Extra-Thematic" abbrev="" name="Explanation"/>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="rep" name="Reported_fact"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: according to unspecified sources</definition>
+    <lexeme POS="ADV" name="allegedly"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Reported_fact"/>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="VPing" FE="Reported_fact"/>
+                <annoSet ID="2600227"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Reported_fact"/>
+            <pattern total="1">
+                <valenceUnit GF="Head" PT="VPing" FE="Reported_fact"/>
+                <annoSet ID="2600227"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="manually-added">
+        <sentence corpID="2" docID="6" sentNo="1" paragNo="4" aPos="0" ID="239741">
+            <text>Pickett , who was shot in the knee by the Secret Service after allegedly firing two shots outside the White House , used crutches to walk into the court .</text>
+            <annotationSet cDate="01/06/2003 08:08:39 PST Mon" status="UNANN" ID="125960">
+                <layer rank="1" name="BNC">
+                    <label end="6" start="0" name="VVB"/>
+                    <label end="8" start="8" name="PUN"/>
+                    <label end="12" start="10" name="PNQ"/>
+                    <label end="16" start="14" name="VBD"/>
+                    <label end="21" start="18" name="VVN"/>
+                    <label end="24" start="23" name="PRP"/>
+                    <label end="28" start="26" name="AT0"/>
+                    <label end="33" start="30" name="NN1"/>
+                    <label end="36" start="35" name="PRP"/>
+                    <label end="40" start="38" name="AT0"/>
+                    <label end="47" start="42" name="AJ0"/>
+                    <label end="55" start="49" name="NN1"/>
+                    <label end="61" start="57" name="CJS"/>
+                    <label end="71" start="63" name="AV0"/>
+                    <label end="78" start="73" name="VVG"/>
+                    <label end="82" start="80" name="CRD"/>
+                    <label end="88" start="84" name="NN2"/>
+                    <label end="96" start="90" name="PRP"/>
+                    <label end="100" start="98" name="AT0"/>
+                    <label end="106" start="102" name="NP0"/>
+                    <label end="112" start="108" name="NN1"/>
+                    <label end="114" start="114" name="PUN"/>
+                    <label end="119" start="116" name="AJ0"/>
+                    <label end="128" start="121" name="NN2"/>
+                    <label end="131" start="130" name="TO0"/>
+                    <label end="136" start="133" name="VVI"/>
+                    <label end="141" start="138" name="PRP"/>
+                    <label end="145" start="143" name="AT0"/>
+                    <label end="151" start="147" name="NN1"/>
+                    <label end="153" start="153" name="PUN"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="07/30/2010 07:37:32 PDT Fri" status="MANUAL" ID="2600227">
+                <layer rank="1" name="Target">
+                    <label cBy="664" end="71" start="63" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="664" feID="6676" end="112" start="73" name="Reported_fact"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="112" start="73" name="Head"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="112" start="73" name="VPing"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Adv"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="05/13/2002 01:42:04 PDT Mon" name="Employment_scenario" ID="321" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Employee&lt;/fen&gt; and &lt;fen&gt;Employer&lt;/fen&gt; enter into an employment relation, wherein the &lt;fen&gt;Employee&lt;/fen&gt; remains employed for some &lt;fen&gt;Duration&lt;/fen&gt; of time, and finally the relationship ends either by the &lt;fen&gt;Employee&lt;/fen&gt; leaving the job or the &lt;fen&gt;Employer&lt;/fen&gt; letting go (or firing) the &lt;fen&gt;Employee&lt;/fen&gt;.  To each of these events there are concomitants, such as agreeing to/signing a contract for entering employment, compensation and performance of a service for the employment period itself, and severance for the dissolution of the relationship.  There are several other events involved, including preparatory actions on the part of the &lt;fen&gt;Employer&lt;/fen&gt; (posting the &lt;fen&gt;Position&lt;/fen&gt;), the prospective &lt;fen&gt;Employee&lt;/fen&gt;'s part (looking for a job), or both (job interviews).  In addition, there is the possibility of change in the relationship of &lt;fen&gt;Employer&lt;/fen&gt; and &lt;fen&gt;Employee&lt;/fen&gt; during the employment period, such as a change in &lt;fen&gt;Position&lt;/fen&gt; (e.g. promotion, demotion) and a change in &lt;fen&gt;Compensation&lt;/fen&gt; (e.g. raise, paycut).&lt;/def-root&gt;</definition>
+    <semType name="Non-Lexical Frame" ID="16"/>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="05/14/2002 12:19:21 PDT Tue" abbrev="Compense" name="Compensation" ID="2786">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Compensation&lt;/fen&gt; is the payment that the &lt;fen&gt;Employee&lt;/fen&gt; receives for performing a &lt;fen&gt;Task&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="05/14/2002 12:19:21 PDT Tue" abbrev="Empee" name="Employee" ID="2787">
+        <definition>&lt;def-root&gt;The person who is obligated to perform some &lt;fen&gt;Task&lt;/fen&gt; in order to receive &lt;fen&gt;Compensation&lt;/fen&gt;.
+
+&lt;ex&gt;&lt;fex name="Empee"&gt;I&lt;/fex&gt; was just &lt;t&gt;hired&lt;/t&gt; yesterday!&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Human" ID="80"/>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="05/14/2002 12:19:21 PDT Tue" abbrev="Emper" name="Employer" ID="2788">
+        <definition>&lt;def-root&gt;The person (or institution) that gives &lt;fen&gt;Compensation&lt;/fen&gt; to an &lt;fen&gt;Employee&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="05/14/2002 12:19:21 PDT Tue" abbrev="Posit" name="Position" ID="2791">
+        <definition>&lt;def-root&gt;The label given to a particular type of employment.
+&lt;ex&gt;Look, I wasn't &lt;t&gt;hired&lt;/t&gt; &lt;fex name="Position"&gt;as your waitress&lt;/fex&gt;!&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="05/14/2002 12:19:21 PDT Tue" abbrev="Task" name="Task" ID="2793">
+        <definition>&lt;def-root&gt;Task identifies the action that the &lt;fen&gt;Employee&lt;/fen&gt; is obligated to do for the &lt;fen&gt;Employer&lt;/fen&gt;.
+
+&lt;ex&gt;I was &lt;t&gt;hired&lt;/t&gt; &lt;fex name="Task"&gt;just to empty the trash cans&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="05/14/2002 04:33:52 PDT Tue" abbrev="Field" name="Field" ID="2827">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Field&lt;/fen&gt; in which one works.
+&lt;ex&gt;He has been &lt;t&gt;working&lt;/t&gt; &lt;fex name="Field"&gt;in finance&lt;/fex&gt; for years.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="05/14/2002 04:34:02 PDT Tue" abbrev="Dur" name="Duration" ID="2828">
+        <definition>&lt;def-root&gt;This FE identifies the amount of time for which the &lt;fen&gt;Employee&lt;/fen&gt; continues in employ.&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in">
+        <relatedFrame>Employee's_scenario</relatedFrame>
+        <relatedFrame>Employer's_scenario</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Fields</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)">
+        <relatedFrame>Employment_start</relatedFrame>
+        <relatedFrame>Employment_continue</relatedFrame>
+        <relatedFrame>Employment_end</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+</frame>

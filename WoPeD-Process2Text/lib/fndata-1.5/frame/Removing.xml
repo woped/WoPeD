@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="731" cDate="02/07/2001 04:12:16 PST Wed" name="Removing" ID="63" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Agent&lt;/fen&gt; causes a &lt;fen&gt;Theme&lt;/fen&gt; to move away from a location, the &lt;fen&gt;Source&lt;/fen&gt;.  The &lt;fen&gt;Source&lt;/fen&gt;is profiled by the words in this frame, just as the &lt;fen&gt;Goal&lt;/fen&gt; is profiled in the Placing frame.
+
+&lt;ex&gt;I saw that &lt;fex name="Agent"&gt;several men in dark suits&lt;/fex&gt; had &lt;t&gt;removed&lt;/t&gt; &lt;fex name="Theme"&gt;all of the evidence&lt;/fex&gt; &lt;fex name="Source"&gt;from the scene&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Means"&gt;With your index finger&lt;/fex&gt; &lt;t&gt;prise&lt;/t&gt; &lt;fex name="Theme"&gt;the meat&lt;/fex&gt; &lt;fex name="Source"&gt;out of the shell&lt;/fex&gt;&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Cause"&gt;The torrential winds&lt;/fex&gt; &lt;t&gt;dislodged&lt;/t&gt; &lt;fex name="Theme"&gt;most of the roof tiles&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:16 PST Wed" abbrev="Agt" name="Agent" ID="279">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Agent&lt;/fen&gt; is the person (or other force) that causes the &lt;fen&gt;Theme&lt;/fen&gt; to move. 
+
+&lt;ex&gt;&lt;fex name="Agent"&gt;The waiter&lt;/fex&gt; &lt;t&gt;removed&lt;/t&gt; the dishes from the table.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:17 PST Wed" abbrev="Thm" name="Theme" ID="280">
+        <definition>&lt;def-root&gt;Theme is the object that changes location. 
+
+&lt;ex&gt;The waiter &lt;t&gt;removed&lt;/t&gt; &lt;fex name="Theme"&gt;the dishes&lt;/fex&gt; from the table. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Physical_object" ID="68"/>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:12:17 PST Wed" abbrev="Src" name="Source" ID="281">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Source&lt;/fen&gt; is the initial location of the &lt;fen&gt;Theme&lt;/fen&gt;, before it changes location.
+
+&lt;ex&gt;The waiter &lt;t&gt;removed&lt;/t&gt; the dishes &lt;fex name="Source"&gt;from the table&lt;/fex&gt;.&lt;/ex&gt;
+
+A few of the words in this frame participate in an alternation between a &lt;fen&gt;Theme&lt;/fen&gt; object and a &lt;fen&gt;Source&lt;/fen&gt; object.
+
+&lt;ex&gt;The waiter &lt;t&gt;cleared&lt;/t&gt; &lt;fex name="Thm"&gt;the dishes&lt;/fex&gt; &lt;fex name="Src"&gt;from the table&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;The waiter &lt;t&gt;cleared&lt;/t&gt; &lt;fex name="Src"&gt;the table&lt;/fex&gt; &lt;fex name="Thm"&gt;of dishes&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;The plumber &lt;t&gt;drained&lt;/t&gt; &lt;fex name="Thm"&gt;the water&lt;/fex&gt; &lt;fex name="Src"&gt;from the sink&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;The plumber &lt;t&gt;drained&lt;/t&gt; &lt;fex name="Src"&gt; the sink&lt;/fex&gt; &lt;fex name="Thm"&gt;of water&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;The gardener &lt;t&gt;emptied&lt;/t&gt; &lt;fex name="Thm"&gt;the soil&lt;/fex&gt; &lt;fex name="Src"&gt;from the bucket&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;The gardener &lt;t&gt;emptied&lt;/t&gt; &lt;fex name="Src"&gt;the bucket&lt;/fex&gt; &lt;fex name="Thm"&gt;of soil&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;The army &lt;t&gt;evacuated&lt;/t&gt; &lt;fex name="Thm"&gt;the people&lt;/fex&gt; &lt;fex name="Src"&gt;from the town&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;The army &lt;t&gt;evacuated&lt;/t&gt; &lt;fex name="Src"&gt;the town&lt;/fex&gt;.&lt;/ex&gt;
+
+Sentences with a &lt;fen&gt;Source&lt;/fen&gt; object belong in the frame Motion_Emptying. The frames Motion_Emptying and Motion_Removing differ in terms of which frame element, the &lt;fen&gt;Source&lt;/fen&gt; or the &lt;fen&gt;Theme&lt;/fen&gt;, is construed as being more highly affected. &lt;/def-root&gt;</definition>
+        <semType name="Source" ID="151"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="731" cDate="02/07/2001 04:12:17 PST Wed" abbrev="Path" name="Path" ID="282">
+        <definition>&lt;def-root&gt;Any description of a trajectory of motion which is neither a &lt;fen&gt;Source&lt;/fen&gt; nor a &lt;fen&gt;Goal&lt;/fen&gt; expresses the frame element &lt;fen&gt;Path&lt;/fen&gt;. In this frame, &lt;fen&gt;Path&lt;/fen&gt; expressions almost always have a &lt;ment&gt;via&lt;/ment&gt;-sense. 
+
+&lt;ex&gt;The army &lt;t&gt;evacuated&lt;/t&gt; the townspeople &lt;fex name="Path"&gt;through the tunnel&lt;/fex&gt;. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Peripheral" cBy="731" cDate="02/07/2001 04:12:17 PST Wed" abbrev="Goal" name="Goal" ID="283">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Goal&lt;/fen&gt; is the location where the &lt;fen&gt;Theme&lt;/fen&gt; ends up. This Frame Element is not profiled by words in this frame, though it may occasionally be expressed, as with the word &lt;ment&gt;remove&lt;/ment&gt;.
+
+&lt;ex&gt;Grandmother &lt;t&gt;removed&lt;/t&gt; the fine china &lt;fex name="Goal"&gt;to a safe place&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Goal" ID="153"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="731" cDate="02/07/2001 04:12:17 PST Wed" abbrev="Manr" name="Manner" ID="284">
+        <definition>&lt;def-root&gt;Any expression which describes a property of motion which is not directly related to the trajectory of motion expresses the frame element &lt;fen&gt;Manner&lt;/fen&gt;. Descriptions of speed, steadiness, grace, means of motion, and other things count as Manner expressions.
+
+&lt;ex&gt;The army &lt;t&gt;evacuated&lt;/t&gt; the townspeople &lt;fex name="Manner"&gt;efficiently&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="09/17/2001 06:05:48 PDT Mon" abbrev="Mns" name="Means" ID="1922">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Means&lt;/fen&gt; is an act whereby the &lt;fen&gt;Agent&lt;/fen&gt; achieves the removal.
+
+&lt;ex&gt;You'll have to &lt;t&gt;eject&lt;/t&gt; it &lt;fex name="Mns"&gt;by sticking an unfolded paperclip into that little hole&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="09/17/2001 06:05:48 PDT Mon" abbrev="Result" name="Result" ID="1923">
+        <definition>&lt;def-root&gt;Result of an event&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="09/17/2001 06:06:01 PDT Mon" abbrev="Degr" name="Degree" ID="1925">
+        <definition>&lt;def-root&gt;Degree to which event occurs&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="09/17/2001 06:06:49 PDT Mon" abbrev="Cause" name="Cause" ID="1926">
+        <definition>&lt;def-root&gt;The non-Agentive cause of the removing event.
+
+&lt;ex&gt;&lt;fex name="Cause"&gt;The raging fire&lt;/fex&gt; quickly &lt;t&gt;emptied&lt;/t&gt; the square of all people.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Cause"&gt;Magnetic storms on the sun&lt;/fex&gt; sometimes &lt;t&gt;eject&lt;/t&gt; hot gas from beneath the surface.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Agent" ID="279"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="09/17/2001 06:06:54 PDT Mon" abbrev="Dist" name="Distance" ID="1927">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Distance&lt;/fen&gt; is any expression which characterizes the extent of motion.  This frame element occurs throughout the motion domain but is very infrequent in Motion_Noise. 
+
+&lt;ex&gt;John &lt;t&gt;withdrew&lt;/t&gt; the gun &lt;fex name="Distance"&gt;a few feet&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="09/17/2001 06:07:05 PDT Mon" abbrev="Veh" name="Vehicle" ID="1928">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Vehicle&lt;/fen&gt; expresses the conveyance with which the &lt;fen&gt;Agent&lt;/fen&gt; effects the motion of the &lt;fen&gt;Theme&lt;/fen&gt;. The &lt;fen&gt;Vehicle&lt;/fen&gt; holds and conveys the &lt;fen&gt;Theme&lt;/fen&gt;. &lt;fen&gt;Vehicle&lt;/fen&gt;s can move in any way and in any medium. They are usually expressed obliquely with 'in' or 'by'.
+
+&lt;ex&gt;We&lt;t&gt;evacuated&lt;/t&gt; the population &lt;fex name="Vehicle"&gt;by helicopter&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="09/17/2001 06:07:48 PDT Mon" abbrev="cot" name="Cotheme" ID="1929">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Cotheme&lt;/fen&gt; is the second moving object, expressed as a direct object or an oblique.
+
+&lt;ex&gt;Pat &lt;t&gt;removed&lt;/t&gt; the jam from the fridge &lt;fex name="Cotheme"&gt;along with the cheese&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="01/30/2006 05:55:45 PST Mon" abbrev="Tim" name="Time" ID="9893">
+        <definition>&lt;def-root&gt;The time at which the removal takes place.
+
+&lt;ex&gt;&lt;fex name="Time"&gt;That year&lt;/fex&gt; they drained the swamp-water out of Higgs' bottomland.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="01/30/2006 05:58:45 PST Mon" abbrev="pla" name="Place" ID="9894">
+        <definition>&lt;def-root&gt;The location where the removal takes place.
+
+&lt;ex&gt;You just take the dishes and &lt;t&gt;rinse&lt;/t&gt; them &lt;fex name="pla"&gt;in the kitchen&lt;/fex&gt;, okay?&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="00008B" coreType="Extra-Thematic" cBy="361" cDate="07/01/2008 04:17:37 PDT Tue" abbrev="Exp" name="Explanation" ID="12938">
+        <definition>&lt;def-root&gt;The Explanation denotes a proposition from which the main clause (headed by the target) logically follows. This often means that the Explanation causes the state of affairs expressed by the target, but not in all cases. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A9A9A9" fgColor="FFFFFF" coreType="Peripheral" cBy="361" cDate="07/01/2008 04:24:16 PDT Tue" abbrev="Ins" name="Instrument" ID="12939">
+        <definition>&lt;def-root&gt;The tool the &lt;fen&gt;Agent&lt;/fen&gt; uses to remove the &lt;fen&gt;Theme&lt;/fen&gt; from its &lt;fen&gt;Source&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="EEE8AA" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="07/01/2008 04:40:27 PDT Tue" abbrev="Dep" name="Depictive" ID="12940">
+        <definition>&lt;def-root&gt;This FE describes a participant of the state of affairs introduced by the target as being in some state during the action.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="7CCD73" fgColor="800080" coreType="Extra-Thematic" cBy="361" cDate="07/02/2008 03:04:09 PDT Wed" abbrev="Sub" name="Subevent" ID="12941">
+        <definition>&lt;def-root&gt;An event the punctuates the larger Removing event.
+
+&lt;ex&gt;&lt;fex name="Subevent"&gt;With a laugh&lt;/fex&gt;, she &lt;t&gt;tore&lt;/t&gt; a page from his diary.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="7FFF00" fgColor="00008B" coreType="Extra-Thematic" cBy="361" cDate="07/02/2008 04:05:45 PDT Wed" abbrev="Cir" name="Circumstances" ID="12942">
+        <definition>&lt;def-root&gt;The state of the world when the &lt;fen&gt;Agent&lt;/fen&gt; or &lt;fen&gt;Cause&lt;/fen&gt; removes the &lt;fen&gt;Theme&lt;/fen&gt; from the &lt;fen&gt;Source&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="000000" coreType="Peripheral" cBy="361" cDate="07/02/2008 04:11:41 PDT Wed" abbrev="Pur" name="Purpose" ID="12943">
+        <definition>&lt;def-root&gt;To what end the &lt;fen&gt;Agent&lt;/fen&gt; or &lt;fen&gt;Cause&lt;/fen&gt; removes the &lt;fen&gt;Theme&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="000000" coreType="Extra-Thematic" cBy="589" cDate="07/24/2009 04:10:38 PDT Fri" abbrev="" name="Particular_iteration" ID="13330">
+        <definition>&lt;def-root&gt;Expressions marked with this extra-thematic FE modify a non-iterative use of the target, and indicate that it is conceived as embedded within an iterated series of similar events or states.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="000000" coreType="Peripheral" cBy="589" cDate="11/09/2009 02:59:05 PST Mon" abbrev="" name="Direction" ID="13468">
+        <definition>&lt;def-root&gt;This FE is used to indicate the &lt;fen&gt;Direction&lt;/fen&gt; that the &lt;fen&gt;Theme&lt;/fen&gt; travels when it is removed.&lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Cause" ID="1926"/>
+        <memberFE name="Agent" ID="279"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Transitive_action</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on">
+        <relatedFrame>Removing_scenario</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Motion</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Undressing</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of">
+        <relatedFrame>Cause_motion</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes">
+        <relatedFrame>Placing</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also">
+        <relatedFrame>Placing</relatedFrame>
+    </frameRelation>
+    <lexUnit status="FN1_Sent" POS="V" name="clear.v" ID="1118" lemmaID="6729" cBy="731" cDate="02/08/2001 01:29:17 PST Thu">
+        <definition>FN: to remove unwanted objects or obstructions from a surface</definition>
+        <sentenceCount annotated="15" total="434"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="clear"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="confiscate.v" ID="1119" lemmaID="7736" cBy="731" cDate="02/08/2001 01:29:17 PST Thu">
+        <definition>COD:  take or seize (property) with authority</definition>
+        <sentenceCount annotated="30" total="115"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="confiscate"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="discard.v" ID="1121" lemmaID="10833" cBy="731" cDate="02/08/2001 01:29:17 PST Thu">
+        <definition>COD: get rid of as no longer useful or desirable</definition>
+        <sentenceCount annotated="35" total="174"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="discard"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="dislodge.v" ID="1122" lemmaID="11034" cBy="731" cDate="02/08/2001 01:29:17 PST Thu">
+        <definition>COD: remove from an established or fixed position.</definition>
+        <sentenceCount annotated="38" total="128"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="dislodge"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="drain.v" ID="1123" lemmaID="11688" cBy="731" cDate="02/08/2001 01:29:17 PST Thu">
+        <definition>FN: cause liquid to go out of, empty from</definition>
+        <sentenceCount annotated="15" total="335"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="drain"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="eject.v" ID="1124" lemmaID="12368" cBy="731" cDate="02/08/2001 01:29:17 PST Thu">
+        <definition>FN: remove with some force</definition>
+        <sentenceCount annotated="18" total="145"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="eject"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="ejection.n" ID="1125" lemmaID="12369" cBy="731" cDate="02/08/2001 01:29:17 PST Thu">
+        <definition>COD: ejection is a derivative of eject</definition>
+        <sentenceCount annotated="18" total="44"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="ejection"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="eliminate.v" ID="1126" lemmaID="12473" cBy="731" cDate="02/08/2001 01:29:17 PST Thu">
+        <definition>COD: completely remove or get rid of.</definition>
+        <sentenceCount annotated="36" total="224"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="eliminate"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="elimination.n" ID="1127" lemmaID="12474" cBy="731" cDate="02/08/2001 01:29:17 PST Thu">
+        <definition>FN: flushing or excretion of waste from the body</definition>
+        <sentenceCount annotated="28" total="64"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="elimination"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="empty.v" ID="1128" lemmaID="12643" cBy="731" cDate="02/08/2001 01:29:18 PST Thu">
+        <definition>COD: discharge (the contents) from a container.</definition>
+        <sentenceCount annotated="16" total="276"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="empty"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="evacuate.v" ID="1129" lemmaID="13225" cBy="731" cDate="02/08/2001 01:29:18 PST Thu">
+        <definition>COD: remove from a place of danger to a safer place</definition>
+        <sentenceCount annotated="6" total="70"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="evacuate"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="evacuation.n" ID="1130" lemmaID="13226" cBy="731" cDate="02/08/2001 01:29:18 PST Thu">
+        <definition>COD: evacuation is a derivative of evacuate</definition>
+        <sentenceCount annotated="38" total="99"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="evacuation"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="evict.v" ID="1131" lemmaID="13286" cBy="731" cDate="02/08/2001 01:29:18 PST Thu">
+        <definition>FN: remove a tenant from a dwelling for violation of the lease, esp. non-payment</definition>
+        <sentenceCount annotated="20" total="125"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="evict"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="eviction.n" ID="1132" lemmaID="13287" cBy="731" cDate="02/08/2001 01:29:19 PST Thu">
+        <definition>COD: eviction is a derivative of evict</definition>
+        <sentenceCount annotated="25" total="74"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="eviction"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="excise.v" ID="1133" lemmaID="13371" cBy="731" cDate="02/08/2001 01:29:19 PST Thu">
+        <definition>FN: cut out, remove</definition>
+        <sentenceCount annotated="10" total="140"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="excise"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="expel.v" ID="1134" lemmaID="13529" cBy="731" cDate="02/08/2001 01:29:19 PST Thu">
+        <definition>COD: force or drive out</definition>
+        <sentenceCount annotated="16" total="182"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="expel"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="expulsion.n" ID="1135" lemmaID="13615" cBy="731" cDate="02/08/2001 01:29:19 PST Thu">
+        <definition>COD: the action of expelling.</definition>
+        <sentenceCount annotated="28" total="102"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="expulsion"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="expunge.v" ID="1136" lemmaID="13616" cBy="731" cDate="02/08/2001 01:29:19 PST Thu">
+        <definition>COD: obliterate or remove completely.</definition>
+        <sentenceCount annotated="12" total="37"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="expunge"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="extract.v" ID="1137" lemmaID="13673" cBy="731" cDate="02/08/2001 01:29:19 PST Thu">
+        <definition>COD: remove, especially by effort or force.</definition>
+        <sentenceCount annotated="34" total="263"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="extract"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="oust.v" ID="1138" lemmaID="27043" cBy="731" cDate="02/08/2001 01:29:19 PST Thu">
+        <definition>COD: drive out or expel from a position or place</definition>
+        <sentenceCount annotated="13" total="147"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="oust"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="pluck.v" ID="1139" lemmaID="29428" cBy="731" cDate="02/08/2001 01:29:20 PST Thu">
+        <definition>COD: take hold of (something) and quickly remove it from its place.</definition>
+        <sentenceCount annotated="42" total="266"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="pluck"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="prise.v" ID="1140" lemmaID="30508" cBy="731" cDate="02/08/2001 01:29:20 PST Thu">
+        <definition>COD: obtain something from (someone) with effort or difficulty.</definition>
+        <sentenceCount annotated="32" total="189"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="prise"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="purge.n" ID="1141" lemmaID="31217" cBy="731" cDate="02/08/2001 01:29:20 PST Thu">
+        <definition>COD: an act of purging people from an organization or place.</definition>
+        <sentenceCount annotated="25" total="70"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="purge"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="purge.v" ID="1142" lemmaID="31218" cBy="731" cDate="02/08/2001 01:29:20 PST Thu">
+        <definition>COD: remove by a cleansing process.</definition>
+        <sentenceCount annotated="14" total="115"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="purge"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="removal.n" ID="1143" lemmaID="32600" cBy="731" cDate="02/08/2001 01:29:20 PST Thu">
+        <definition>COD: the action of removing.</definition>
+        <sentenceCount annotated="43" total="172"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="removal"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="remove.v" ID="1144" lemmaID="32602" cBy="731" cDate="02/08/2001 01:29:20 PST Thu">
+        <definition>COD: take off or away from the position occupied</definition>
+        <sentenceCount annotated="46" total="314"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="remove"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="skim.v" ID="1145" lemmaID="36147" cBy="731" cDate="02/08/2001 01:29:21 PST Thu">
+        <definition>COD:  remove (a substance) from the surface of a liquid</definition>
+        <sentenceCount annotated="6" total="270"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="skim"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="snatch.v" ID="1146" lemmaID="36613" cBy="731" cDate="02/08/2001 01:29:21 PST Thu">
+        <definition>COD: seize quickly and deftly.</definition>
+        <sentenceCount annotated="37" total="291"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="snatch"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="strip.v" ID="1147" lemmaID="38367" cBy="731" cDate="02/08/2001 01:29:21 PST Thu">
+        <definition>FN: to remove attachments, furnishings, additions, outer layers from</definition>
+        <sentenceCount annotated="48" total="492"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="strip"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="swipe.v" ID="1148" lemmaID="39182" cBy="731" cDate="02/08/2001 01:29:21 PST Thu">
+        <definition>COD: steal</definition>
+        <sentenceCount annotated="13" total="44"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="swipe"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="take.v" ID="1149" lemmaID="39414" cBy="731" cDate="02/08/2001 01:29:21 PST Thu">
+        <definition>COD: remove from a place</definition>
+        <sentenceCount annotated="51" total="991"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="take"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="withdraw.v" ID="1150" lemmaID="44321" cBy="731" cDate="02/08/2001 01:29:21 PST Thu">
+        <definition>COD: remove or take away.</definition>
+        <sentenceCount annotated="50" total="467"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="withdraw"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="N" name="withdrawal.n" ID="1151" lemmaID="44322" cBy="731" cDate="02/08/2001 01:29:22 PST Thu">
+        <definition>FN: the act of withdrawing or removing something from a place</definition>
+        <sentenceCount annotated="19" total="175"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="withdrawal"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="unload.v" ID="4150" lemmaID="42247" cBy="605" cDate="10/03/2001 02:49:57 PDT Wed">
+        <definition>COD: remove (goods) from a vehicle, ship, etc. NB: there is a closely related sense of unload in the Emptying frame</definition>
+        <sentenceCount annotated="23" total="189"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="unload"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="V" name="expurgate.v" ID="4153" lemmaID="13617" cBy="605" cDate="10/03/2001 03:25:38 PDT Wed">
+        <definition>COD: remove matter regarded as obscene or unsuitable from (a text or account)</definition>
+        <sentenceCount annotated="1" total="3"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="expurgate"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="wash.v" ID="5373" lemmaID="43485" cBy="296" cDate="04/01/2002 04:50:42 PST Mon">
+        <definition>COD: remove (a stain or dirt) in a washing manner. </definition>
+        <sentenceCount annotated="6" total="225"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="wash"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="shave.v" ID="5425" lemmaID="35422" cBy="296" cDate="04/04/2002 12:19:37 PST Thu">
+        <definition>FN: Remove something from a surface using a razor or sharp knife</definition>
+        <sentenceCount annotated="6" total="196"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="shave"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="rinse.v" ID="5428" lemmaID="33310" cBy="296" cDate="04/05/2002 09:06:39 PST Fri">
+        <definition>COD: often rinse something off/out with obj. and adverbial remove (soap or dirt) by rinsing. </definition>
+        <sentenceCount annotated="10" total="93"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="rinse"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="roust.v" ID="8521" lemmaID="47621" cBy="605" cDate="04/04/2003 04:37:44 PST Fri">
+        <definition>COD: cause to get up or start moving; rouse</definition>
+        <sentenceCount annotated="5" total="9"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="roust"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="dust.v" ID="9371" lemmaID="11997" cBy="618" cDate="09/03/2003 10:38:39 PDT Wed">
+        <definition>COD: remove dust from the surface of.</definition>
+        <sentenceCount annotated="7" total="20"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="dust"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="extraction.n" ID="13762" lemmaID="13674" cBy="361" cDate="02/23/2007 09:54:04 PST Fri">
+        <definition>COD: the action of extracting.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="extraction"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="scrape.v" ID="15073" lemmaID="34535" cBy="597" cDate="06/06/2008 03:25:12 PDT Fri">
+        <definition>FN: remove something using a sharp instrument like a fingernail or knife</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="scrape"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="rip.v" ID="15161" lemmaID="33318" cBy="361" cDate="07/01/2008 03:55:43 PDT Tue">
+        <definition>FN: take away a piece from a larger piece by ripping</definition>
+        <sentenceCount annotated="40" total="423"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="rip"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="tear.v" ID="15162" lemmaID="39664" cBy="361" cDate="07/01/2008 05:25:38 PDT Tue">
+        <definition>FN: FN: take away a piece from a larger piece by tearing</definition>
+        <sentenceCount annotated="14" total="131"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="tear"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="cut.v" ID="15163" lemmaID="9360" cBy="361" cDate="07/02/2008 03:14:31 PDT Wed">
+        <definition>FN: to remove a piece from a larger piece by cutting.</definition>
+        <sentenceCount annotated="12" total="148"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="cut"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="file.v" ID="15596" lemmaID="14341" cBy="618" cDate="02/01/2010 11:57:31 PST Mon">
+        <definition>FN: remove by rubbing with a rough metal surface. (not for Themes which are "created," e.g., filings, shavings, powder from the Source).</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="file"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="disgorge.v" ID="15616" lemmaID="10960" cBy="618" cDate="02/08/2010 01:36:15 PST Mon">
+        <definition>FN: remove from the mouth or throat.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="disgorge"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="flush.v" ID="15632" lemmaID="14841" cBy="618" cDate="02/17/2010 10:49:44 PST Wed">
+        <definition>FN: remove dirt, debris, etc. from something by running a fluid through it.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="flush"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Theme" POS="V" name="weed.v" ID="15781" lemmaID="43686" cBy="618" cDate="04/19/2010 11:24:24 PDT Mon">
+        <definition>FN: remove (weeds, or other undesirable elements).</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="weed"/>
+    </lexUnit>
+</frame>

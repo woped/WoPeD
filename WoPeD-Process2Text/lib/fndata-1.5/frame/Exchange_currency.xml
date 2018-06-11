@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="07/16/2004 10:29:33 PDT Fri" name="Exchange_currency" ID="1184" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A &lt;fen&gt;Money_owner&lt;/fen&gt; exchanges &lt;fen&gt;Sum_1&lt;/fen&gt; in the  &lt;fen&gt;Source_currency&lt;/fen&gt; for &lt;fen&gt;Sum_2&lt;/fen&gt; in the &lt;fen&gt;Target_currency&lt;/fen&gt; at some &lt;fen&gt;Exchange_service&lt;/fen&gt;.
+
+&lt;ex&gt;&lt;fex name="Time"&gt;After checking into the Intourist-operated $30-a-day Hotel Zerafshon&lt;/fex&gt;, &lt;fex name="Money_owner"&gt;we&lt;/fex&gt; each &lt;t&gt;exchanged&lt;/t&gt; &lt;fex name="sm1"&gt;$50&lt;/fex&gt; &lt;fex name="Target_currency"&gt;for Uzbek currency&lt;/fex&gt; &lt;fex name="exs"&gt;with a shifty loiterer&lt;/fex&gt; &lt;fex name="Place"&gt;in the lobby&lt;/fex&gt; &lt;fex name="exr"&gt;at the rate&lt;/fex&gt; .&lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="mon"&gt;We&lt;/fex&gt; &lt;fex name="tim"&gt;recently&lt;/fex&gt; &lt;t&gt;exchanged&lt;/t&gt; &lt;fex name="sm1"&gt;$100&lt;/fex&gt; &lt;fex name="sm2"&gt;for £64.00 UK pounds&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;If &lt;fex name="mon"&gt;he&lt;/fex&gt; &lt;t&gt;exchanged&lt;/t&gt; &lt;fex name="sm1"&gt;the money&lt;/fex&gt; &lt;fex name="tar"&gt;into Deutsch-marks&lt;/fex&gt;, his 18 marks in Germany can just barely obtain four Big Macs.&lt;/ex&gt;
+
+&lt;ex&gt;He said the most crucial evidence was that of &lt;fex name="mon"&gt;former police reservist, Simo Petersen-Jessen,
+now in Australia, who&lt;/fex&gt; had &lt;t&gt;converted&lt;/t&gt; &lt;fex name="sm1"&gt;the money&lt;/fex&gt; &lt;fex name="tar"&gt;into rands&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="07/16/2004 10:34:36 PDT Fri" abbrev="mon" name="Money_owner" ID="6893">
+        <definition>&lt;def-root&gt;The person who exchanges &lt;fen&gt;Sum_1&lt;/fen&gt; for &lt;fen&gt;Sum_2&lt;/fen&gt;.
+
+&lt;ex&gt; &lt;fex name="mon"&gt;Kornfeldt&lt;/fex&gt; hurried through customs, grabbed a city map at a tourist information desk, &lt;t&gt;changed&lt;/t&gt; $40 USD into about 300 Hong Kong dollars before leaving the airport&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="07/16/2004 10:38:27 PDT Fri" abbrev="sm1" name="Sum_1" ID="6894">
+        <definition>&lt;def-root&gt;An amount of money in the &lt;fen&gt;Source_currency&lt;/fen&gt; that the &lt;fen&gt;Money_owner&lt;/fen&gt; exchanges for an amount in the &lt;fen&gt;Target_currency&lt;/fen&gt;.
+
+&lt;ex&gt;I said forget it and just &lt;t&gt;exchanged&lt;/t&gt; &lt;fex name="sm1"&gt;$40 US cash&lt;/fex&gt; into $47 and change in Canadian. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Source_currency" ID="6895"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="07/16/2004 10:50:25 PDT Fri" abbrev="src" name="Source_currency" ID="6895">
+        <definition>&lt;def-root&gt;The kind of currency of the &lt;fen&gt;Money_owner&lt;/fen&gt; has before the exchange.
+
+&lt;ex&gt;We stopped at a bank were we &lt;t&gt;exchanged&lt;/t&gt; &lt;fex name="src"&gt;Euros&lt;/fex&gt; for Danish money.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="07/16/2004 10:53:27 PDT Fri" abbrev="sm2" name="Sum_2" ID="6896">
+        <definition>&lt;def-root&gt;The amount of money in the &lt;fen&gt;Target_currency&lt;/fen&gt; that the &lt;fen&gt;Money_owner&lt;/fen&gt; receives in exchange for &lt;fen&gt;Sum_1&lt;/fen&gt;.
+
+&lt;ex&gt;On the bus we &lt;t&gt;exchanged&lt;/t&gt; $50 &lt;fex name="sm2"&gt;for 1410 rubles&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Target_currency" ID="6898"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="07/16/2004 10:57:12 PDT Fri" abbrev="exs" name="Exchange_service" ID="6897">
+        <definition>&lt;def-root&gt;The individual or institution which changes the &lt;fen&gt;Money_owner&lt;/fen&gt;'s money into the &lt;fen&gt;Target_currency&lt;/fen&gt;.
+
+&lt;ex&gt;Bill &lt;t&gt;exchanged&lt;/t&gt; $100 &lt;fex name="exs"&gt;at a bank&lt;/fex&gt;, before hitting the bike path for Krems.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="07/16/2004 10:58:58 PDT Fri" abbrev="tar" name="Target_currency" ID="6898">
+        <definition>&lt;def-root&gt;The kind of currency that the &lt;fen&gt;Money_owner&lt;/fen&gt; receives as part of the exchange.
+
+&lt;ex&gt; We had &lt;t&gt;exchanged&lt;/t&gt; $100 &lt;fex name="tar"&gt;into francs&lt;/fex&gt; in LAX to be able to pay for the cab ride upon arrival. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="07/16/2004 11:01:24 PDT Fri" abbrev="pla" name="Place" ID="6899">
+        <definition>&lt;def-root&gt;The location where the money is exchanged.
+
+&lt;ex&gt;I &lt;t&gt;exchanged&lt;/t&gt; $100 &lt;fex name="pla"&gt;in Croatia&lt;/fex&gt; because i needed a round trip bus ticket to sarajevo.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="07/16/2004 11:03:31 PDT Fri" abbrev="tim" name="Time" ID="6900">
+        <definition>&lt;def-root&gt;The time when the currency is exchanged.
+
+&lt;ex&gt;We walked around Eyre Square and &lt;t&gt;exchanged&lt;/t&gt; money &lt;fex name="tim"&gt;before walking into Taaffes pub and grabbing my first draught pint of Guinness of the trip&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="07/16/2004 11:05:31 PDT Fri" abbrev="man" name="Manner" ID="6901">
+        <definition>&lt;def-root&gt;Any description of the exchange event which is not covered by more specific FEs, including epistemic modification (probably, presumably, mysteriously), force (hard, softly), secondary effects (quietly, loudly), and general descriptions comparing events (the same way). In addition, it may indicate salient characteristics of the &lt;fen&gt;Money_owner&lt;/fen&gt; that also affect the action (deliberately, eagerly, carefully).
+
+&lt;ex&gt;He &lt;fex name="man"&gt;carefully&lt;/fex&gt; &lt;t&gt;exchanged&lt;/t&gt; his dollars for roubles.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="07/16/2004 11:08:56 PDT Fri" abbrev="exr" name="Exchange_rate" ID="6902">
+        <definition>&lt;def-root&gt;
+
+&lt;ex&gt;I &lt;t&gt;exchanged&lt;/t&gt; $100 in $20 bills &lt;fex name="exr"&gt;at an exchange rate of 24.4 to 1&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/07/2005 10:50:04 PST Wed" abbrev="mea" name="Means" ID="9652">
+        <definition>&lt;def-root&gt;The action of the &lt;fen&gt;Money_owner&lt;/fen&gt; whereby the exchange is acheived.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/07/2005 10:52:23 PST Wed" abbrev="pur" name="Purpose" ID="9653">
+        <definition>&lt;def-root&gt;The action that the &lt;fen&gt;Money_owner&lt;/fen&gt; is attempting to accomplish with the exchange.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Core" cBy="976" cDate="09/09/2009 03:49:13 PDT Wed" abbrev="ney" name="Money" ID="13451">
+        <definition>&lt;def-root&gt;Currency that is being exchanged by the &lt;fen&gt;Money_owner&lt;/fen&gt;.
+
+&lt;ex&gt; &lt;fex name="Money_owner"&gt;I&lt;/fex&gt; &lt;t&gt;exchanged&lt;/t&gt; &lt;fex name="Sum_1"&gt;$1000&lt;/fex&gt; &lt;fex name="Money"&gt;of my money&lt;/fex&gt; &lt;fex name="exs"&gt;at the bank&lt;/fex&gt;. &lt;/ex&gt;
+
+&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Cause_change</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Commerce_scenario</relatedFrame>
+        <relatedFrame>Exchange</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="exchange.v" ID="10814" lemmaID="13366" cBy="605" cDate="07/16/2004 11:33:07 PDT Fri">
+        <definition>FN: to have money in one currency replaced with money in another</definition>
+        <sentenceCount annotated="9" total="158"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="exchange"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="V" name="change.v" ID="10815" lemmaID="6040" cBy="605" cDate="07/16/2004 11:35:49 PDT Fri">
+        <definition>FN: to exchange into another currency</definition>
+        <sentenceCount annotated="1" total="103"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="change"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="convert.v" ID="10816" lemmaID="8201" cBy="605" cDate="07/16/2004 11:37:52 PDT Fri">
+        <definition>COD: change (money, stocks, or units in which a quantity is expressed) into others of a different kind.</definition>
+        <sentenceCount annotated="8" total="128"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="convert"/>
+    </lexUnit>
+</frame>

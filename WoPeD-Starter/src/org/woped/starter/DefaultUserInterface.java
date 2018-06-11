@@ -158,6 +158,7 @@ public class DefaultUserInterface extends MainFrame implements IUserInterface, I
              super.addEditor(frame.getEditor());
 
              try {
+                 frame.setMaximum(true);
                  frame.setSelected(true);
              } catch (Exception e) {
                  LoggerManager.error(Constants.GUI_LOGGER, "VetoException Could not Select Frame");

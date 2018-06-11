@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="05/21/2001 03:46:32 PDT Mon" name="Dimension" ID="108" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;This frame concerns  words that express an &lt;fen&gt;Object&lt;/fen&gt;'s position on a scale, its &lt;fen&gt;Measurement&lt;/fen&gt;, with respect to some attribute, its &lt;fen&gt;Dimension&lt;/fen&gt;.  &lt;fen&gt;Location&lt;/fen&gt;,  identifying the sub-region of the &lt;fen&gt;Object&lt;/fen&gt; where the &lt;fen&gt;Dimension&lt;/fen&gt; is measured, may also be expressed.
+
+&lt;ex&gt;&lt;fex name="Object"&gt;The tower&lt;/fex&gt; is &lt;fex name="Measurement"&gt;10 feet&lt;/fex&gt; &lt;t&gt;tall&lt;/t&gt;.&lt;/ex&gt; 
+
+&lt;ex&gt;&lt;fex name="Object"&gt;The  new vase&lt;/fex&gt; is &lt;fex name="Measurement"&gt;5 cm&lt;/fex&gt; in &lt;t&gt;circumference&lt;/t&gt; &lt;fex name="Location"&gt;at the top&lt;/fex&gt;.&lt;/ex&gt;
+
+Adjectives in this frame &lt;ment&gt;must&lt;/ment&gt; appear with a measurement expression like &lt;ment&gt;5 cm&lt;/ment&gt;.
+
+Note the tagging of  &lt;ment&gt;six feet&lt;/ment&gt; on the GF and PT layers in the following sentence.
+
+&lt;ex&gt;&lt;fex name="Object"&gt;The woman&lt;/fex&gt; was &lt;fex name="Measurement"&gt;six feet&lt;/fex&gt; &lt;t&gt;tall&lt;/t&gt;.&lt;/ex&gt;
+
+The GF of &lt;ment&gt;six feet&lt;/ment&gt; is Dep and the PT is NP.&lt;/def-root&gt;</definition>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="05/21/2001 03:55:17 PDT Mon" abbrev="Dimen" name="Dimension" ID="519">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Dimension&lt;/fen&gt; which is measured.  Most LUs in this frame incorporate the &lt;fen&gt;Dimension&lt;/fen&gt;.
+
+&lt;ex&gt;The  new vase is 5 cm in &lt;t&gt;circumference&lt;/t&gt; at the top.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="05/21/2001 03:56:06 PDT Mon" abbrev="Object" name="Object" ID="520">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Object&lt;/fen&gt; identifies the item which is measured along one of its &lt;fen&gt;Dimension&lt;/fen&gt;s.
+
+&lt;ex&gt;&lt;fex name="Object"&gt;The  new vase&lt;/fex&gt; is 5 cm in &lt;t&gt;circumference&lt;/t&gt; at the top.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="05/21/2001 03:57:16 PDT Mon" abbrev="Measur" name="Measurement" ID="521">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Measurement&lt;/fen&gt; identifies the extent of the &lt;fen&gt;Object&lt;/fen&gt; along the specified &lt;fen&gt;Dimension&lt;/fen&gt;.
+
+&lt;ex&gt;The  new vase is &lt;fex name="Measurement"&gt;5 cm&lt;/fex&gt; in &lt;t&gt;circumference&lt;/t&gt; at the top.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="08/03/2001 02:41:35 PDT Fri" abbrev="Loc" name="Location" ID="1562">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Location&lt;/fen&gt; identifies the sub-region of the &lt;fen&gt;Object&lt;/fen&gt; where the &lt;fen&gt;Dimension&lt;/fen&gt; is measured.
+&lt;ex&gt;The  new vase is 5 cm in &lt;t&gt;circumference&lt;/t&gt; &lt;fex name="Location"&gt;at the top&lt;/fex&gt;.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+        <semType name="Location" ID="54"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="361" cDate="06/19/2007 01:21:38 PDT Tue" abbrev="" name="Domain" ID="11891">
+        <definition>&lt;def-root&gt;The relevant dimension of development.&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on">
+        <relatedFrame>Measure_scenario</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also">
+        <relatedFrame>Measurable_attributes</relatedFrame>
+    </frameRelation>
+    <lexUnit status="Finished_Initial" incorporatedFE="Dimension" POS="A" name="tall.a" ID="2187" lemmaID="39440" cBy="605" cDate="05/21/2001 03:51:19 PDT Mon">
+        <definition>COD: of great or more than average height. </definition>
+        <sentenceCount annotated="27" total="207"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="tall"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Dimension" POS="A" name="high.a" ID="2188" lemmaID="18025" cBy="605" cDate="05/21/2001 03:51:35 PDT Mon">
+        <definition>FN: (of a measurement) vertically upward from some baseline</definition>
+        <sentenceCount annotated="20" total="642"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="high"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Dimension" POS="A" name="wide.a" ID="2189" lemmaID="44129" cBy="605" cDate="05/21/2001 03:51:46 PDT Mon">
+        <definition>COD: of great or more than average width. </definition>
+        <sentenceCount annotated="37" total="225"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="wide"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Dimension" POS="A" name="broad.a" ID="2190" lemmaID="4652" cBy="605" cDate="05/21/2001 03:51:59 PDT Mon">
+        <definition>COD: of a specified distance wide</definition>
+        <sentenceCount annotated="4" total="196"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="broad"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Dimension" POS="A" name="thick.a" ID="2191" lemmaID="40123" cBy="605" cDate="05/21/2001 03:52:11 PDT Mon">
+        <definition>COD: with opposite sides or surfaces relatively far apart. </definition>
+        <sentenceCount annotated="17" total="209"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="thick"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Dimension" POS="A" name="deep.a" ID="2192" lemmaID="9871" cBy="605" cDate="05/21/2001 03:52:25 PDT Mon">
+        <definition>COD: extending far down or in from the top or surface. </definition>
+        <sentenceCount annotated="18" total="186"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="deep"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Dimension" POS="A" name="long.a" ID="2193" lemmaID="22697" cBy="605" cDate="05/21/2001 03:52:43 PDT Mon">
+        <definition>FN: in length. </definition>
+        <sentenceCount annotated="27" total="273"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="long"/>
+    </lexUnit>
+    <lexUnit status="Problem" incorporatedFE="Dimension" POS="A" name="short.a" ID="2194" lemmaID="35638" cBy="605" cDate="05/21/2001 03:52:57 PDT Mon">
+        <definition>COD: of a small length or duration. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="short"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Dimension" POS="N" name="breadth.n" ID="2195" lemmaID="4489" cBy="605" cDate="05/21/2001 03:53:16 PDT Mon">
+        <definition>COD: the distance or measurement from side to side of something</definition>
+        <sentenceCount annotated="5" total="111"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="breadth"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Dimension" POS="N" name="depth.n" ID="2196" lemmaID="10265" cBy="605" cDate="05/21/2001 03:53:28 PDT Mon">
+        <definition>COD: the distance from the top or surface to the bottom of something or to a specified point within it</definition>
+        <sentenceCount annotated="34" total="309"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="depth"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Dimension" POS="N" name="length.n" ID="2197" lemmaID="22075" cBy="605" cDate="05/21/2001 03:54:08 PDT Mon">
+        <definition>COD: the measurement or extent of something from end to end; the greater or greatest of two or more dimensions of a body.</definition>
+        <sentenceCount annotated="21" total="574"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="length"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Dimension" POS="N" name="width.n" ID="2198" lemmaID="44143" cBy="605" cDate="05/21/2001 03:54:22 PDT Mon">
+        <definition>COD: the measurement or extent of something from side to side; the lesser of two or the least of three dimensions of a body</definition>
+        <sentenceCount annotated="36" total="230"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="width"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Dimension" POS="N" name="height.n" ID="2199" lemmaID="17798" cBy="605" cDate="05/21/2001 03:54:32 PDT Mon">
+        <definition>COD: the measurement of someone or something from head to foot or from base to top. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="height"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Dimension" POS="V" name="weigh.v" ID="2201" lemmaID="43708" cBy="605" cDate="05/21/2001 04:24:55 PDT Mon">
+        <definition>FN: (of an entity) have a weight of (a specific measure). </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="weigh"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="measure.v" ID="2202" lemmaID="23823" cBy="605" cDate="05/21/2001 04:32:03 PDT Mon">
+        <definition>FN: (of an entity) have a size, width, length, etc. specified as (a particular quantity).</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="measure"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Dimension" POS="N" name="weight.n" ID="2204" lemmaID="43711" cBy="605" cDate="05/21/2001 04:44:01 PDT Mon">
+        <definition>COD: a body's relative mass or the quantity of matter contained by it, giving rise to a downward force; heaviness. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="weight"/>
+    </lexUnit>
+    <lexUnit status="Problem" incorporatedFE="Dimension" POS="A" name="large.a" ID="2235" lemmaID="21720" cBy="605" cDate="05/22/2001 06:52:44 PDT Tue">
+        <definition>COD: of considerable or relatively great size, extent, or capacity. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="large"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Dimension" POS="N" name="area.n" ID="2236" lemmaID="1889" cBy="605" cDate="05/22/2001 06:52:55 PDT Tue">
+        <definition>COD: the extent or measurement of a surface</definition>
+        <sentenceCount annotated="12" total="412"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="area"/>
+    </lexUnit>
+    <lexUnit status="Problem" POS="A" name="heavy.a" ID="2237" lemmaID="17743" cBy="605" cDate="05/22/2001 06:53:16 PDT Tue">
+        <definition>COD: of great weight; difficult to lift or move. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="heavy"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Dimension" POS="N" name="circumference.n" ID="5475" lemmaID="45608" cBy="664" cDate="04/11/2002 11:42:00 PDT Thu">
+        <definition>COD: the enclosing boundary of a circle.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="circumference"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Dimension" POS="ADV" name="around.adv" ID="5476" lemmaID="1962" cBy="664" cDate="04/11/2002 11:44:55 PDT Thu">
+        <definition>FN: indicating that a measurement pertains to a circumference or perimeter.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="around"/>
+    </lexUnit>
+    <lexUnit status="Problem" incorporatedFE="Dimension" POS="A" name="small.a" ID="12254" lemmaID="36475" cBy="618" cDate="06/21/2005 03:13:05 PDT Tue">
+        <definition>COD: of a size that is less than normal or usual.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="small"/>
+    </lexUnit>
+    <lexUnit status="Problem" incorporatedFE="Dimension" POS="A" name="grand.a" ID="13831" lemmaID="16661" cBy="664" cDate="02/25/2007 02:36:09 PST Sun">
+        <definition>COD: large, ambitious, or impressive in scope or scale.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="grand"/>
+        <semType name="Positive_judgment" ID="13"/>
+    </lexUnit>
+    <lexUnit status="Problem" incorporatedFE="Dimension" POS="A" name="light((weight)).a" ID="13877" lemmaID="22298" cBy="361" cDate="02/26/2007 04:47:14 PST Mon">
+        <definition>FN: not heavy. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="light"/>
+    </lexUnit>
+    <lexUnit status="Problem" incorporatedFE="Dimension" POS="A" name="massive.a" ID="13981" lemmaID="23621" cBy="361" cDate="03/14/2007 04:25:12 PDT Wed">
+        <definition>COD: exceptionally large</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="massive"/>
+    </lexUnit>
+    <lexUnit status="Problem" incorporatedFE="Dimension" POS="A" name="narrow.a" ID="14007" lemmaID="25446" cBy="361" cDate="03/19/2007 01:51:04 PDT Mon">
+        <definition>COD: of small width in comparison to length.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="narrow"/>
+    </lexUnit>
+    <lexUnit status="Problem" incorporatedFE="Dimension" POS="A" name="light((illumination)).a" ID="14246" lemmaID="22298" cBy="361" cDate="03/29/2007 02:01:24 PDT Thu">
+        <definition>COD: having a considerable or sufficient amount of light.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="light"/>
+    </lexUnit>
+    <lexUnit status="Problem" incorporatedFE="Dimension" POS="A" name="dark.a" ID="14247" lemmaID="9576" cBy="361" cDate="03/29/2007 02:03:11 PDT Thu">
+        <definition>COD: with little or no light.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="dark"/>
+    </lexUnit>
+    <lexUnit status="Problem" incorporatedFE="Dimension" POS="A" name="thin.a" ID="14737" lemmaID="40148" cBy="597" cDate="01/28/2008 03:07:25 PST Mon">
+        <definition>FN: of a relatively small distance from one side to the other</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="thin"/>
+    </lexUnit>
+    <lexUnit status="Problem" incorporatedFE="Dimension" POS="A" name="big.a" ID="15280" lemmaID="3537" cBy="976" cDate="01/22/2009 11:38:10 PST Thu">
+        <definition></definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="big"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Dimension" POS="N" name="work.n" ID="15535" lemmaID="45680" cBy="976" cDate="10/07/2009 05:07:31 PDT Wed">
+        <definition>COD: the exertion of force overcoming resistance or producing molecular change</definition>
+        <sentenceCount annotated="4" total="4"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="work"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Dimension" POS="ADV" name="across.adv" ID="15784" lemmaID="397" cBy="664" cDate="04/19/2010 03:37:22 PDT Mon">
+        <definition>FN: indicating that a measurement of length from one side of an object to the other pertains to a horizontal dimension perpendicular to the longest axis.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="ADV" name="across"/>
+    </lexUnit>
+</frame>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="V" name="freak out.v" ID="11134" frame="Losing_it" frameID="978" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="006400" type="Core" abbrev="act" name="Action"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Extra-Thematic" abbrev="Aff_par" name="Affected_party"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Degr" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Prot" name="Protagonist"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Peripheral" abbrev="rea" name="Reason"/>
+        </frame>
+    </header>
+    <definition>FN: behave in an irrational fashion due to excessive fear</definition>
+    <lexeme order="1" headword="true" breakBefore="false" POS="V" name="freak"/>
+    <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="out"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Action"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Action"/>
+                <annoSet ID="2593831"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Protagonist"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Protagonist"/>
+                <annoSet ID="2593831"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Action"/>
+            <FE name="Protagonist"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Action"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Protagonist"/>
+                <annoSet ID="2593831"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-NP-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="1125" aPos="22654656" ID="1579606">
+            <text>I freaked out .</text>
+            <annotationSet cDate="07/16/2010 03:55:16 PDT Fri" status="UNANN" ID="2593830">
+                <layer rank="1" name="PENN">
+                    <label end="0" start="0" name="PP"/>
+                    <label end="8" start="2" name="VVN"/>
+                    <label end="12" start="10" name="rp"/>
+                    <label end="14" start="14" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/16/2010 03:55:16 PDT Fri" status="MANUAL" ID="2593831">
+                <layer rank="1" name="Target">
+                    <label cBy="571" end="8" start="2" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="571" feID="5952" end="0" start="0" name="Protagonist"/>
+                    <label cBy="571" feID="5953" itype="DNI" name="Action"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="0" start="0" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="0" start="0" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-T-PPabout-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="02/17/2004 02:57:03 PST Tue" name="Practice" ID="962" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Agent&lt;/fen&gt; enacts an &lt;fen&gt;Action&lt;/fen&gt; that is intended to be performed again at one or more later &lt;fen&gt;Occasion&lt;/fen&gt;s.  The goal of practicing is to ensure that the action at the later &lt;fen&gt;Occasion&lt;/fen&gt;(s) comes off flawlessly. &lt;/def-root&gt;</definition>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="02/17/2004 02:57:03 PST Tue" abbrev="Act" name="Action" ID="5883">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Action&lt;/fen&gt; that the &lt;fen&gt;Agent&lt;/fen&gt; performs intentionally in order to prepare for a later &lt;fen&gt;Occasion&lt;/fen&gt;.
+
+&lt;ex&gt;Little Dieter &lt;t&gt;practiced&lt;/t&gt; &lt;fex name="Action"&gt;playing the piano&lt;/fex&gt; all day.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="02/17/2004 02:57:03 PST Tue" abbrev="Agt" name="Agent" ID="5884">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Agent&lt;/fen&gt; performs the &lt;fen&gt;Action&lt;/fen&gt; in preparation for later performances of the same type.&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="02/17/2004 02:57:03 PST Tue" abbrev="Place" name="Place" ID="5885">
+        <definition>&lt;def-root&gt;This FE identifies the place where the practicing occurs.
+
+&lt;ex&gt;Our band &lt;t&gt;practices&lt;/t&gt; &lt;fex name="Place"&gt;on the football field&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="02/17/2004 02:57:03 PST Tue" abbrev="Purp" name="Purpose" ID="5886">
+        <definition>&lt;def-root&gt;This FE identifies the purpose for which an &lt;fen&gt;Agent&lt;/fen&gt; performs an intentional act.
+&lt;ex&gt;John &lt;t&gt;practiced&lt;/t&gt; typing &lt;fex name="Purpose"&gt;to receive a raise&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="02/17/2004 02:57:03 PST Tue" abbrev="Time" name="Time" ID="5887">
+        <definition>&lt;def-root&gt;This FE identifies the time when the &lt;fen&gt;Agent&lt;/fen&gt; practices.
+
+&lt;ex&gt;We &lt;t&gt;practiced&lt;/t&gt; the play &lt;fex name="Time"&gt;on Tuesday&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="02/17/2004 02:57:03 PST Tue" abbrev="Means" name="Means" ID="5888">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Means&lt;/fen&gt; by which an &lt;fen&gt;Agent&lt;/fen&gt;  practices.
+
+&lt;ex&gt;We &lt;t&gt;practiced&lt;/t&gt; the slam dunk &lt;fex name="Means"&gt;by bouncing on a trampoline&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="02/17/2004 02:57:03 PST Tue" abbrev="Mnr" name="Manner" ID="5889">
+        <definition>&lt;def-root&gt;Any description of the practicing which is not covered by more specific FEs, including secondary effects (&lt;ment&gt;quietly, loudly&lt;/ment&gt;), and general descriptions comparing events (&lt;ment&gt;the same way&lt;/ment&gt;). In addition, it may indicate salient characteristics of an &lt;fen&gt;Agent&lt;/fen&gt; that also affect the &lt;fen&gt;Action&lt;/fen&gt; (&lt;ment&gt;presumptuously, coldly, deliberately, eagerly, carefully&lt;/ment&gt;). 
+
+&lt;ex&gt;We &lt;t&gt;ran&lt;/t&gt; through the song &lt;fex name="Manner"&gt;at quarter speed&lt;/fex&gt;.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="02/17/2004 03:48:04 PST Tue" abbrev="" name="Occasion" ID="5890">
+        <definition>&lt;def-root&gt;The later enactment or enactments that the &lt;fen&gt;Agent&lt;/fen&gt; expects to perform. Note that the &lt;fen&gt;Agent&lt;/fen&gt; does not have to have specific &lt;fen&gt;Occasion&lt;/fen&gt;s in mind.
+
+&lt;ex&gt;&lt;fex name="Occasion"&gt;For our brother's wedding&lt;/fex&gt; we had to &lt;t&gt;rehearse&lt;/t&gt; the dinner twenty times.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="05/27/2004 02:57:08 PDT Thu" abbrev="dur" name="Duration" ID="6474">
+        <definition>&lt;def-root&gt;The period of time during which an &lt;fen&gt;Action&lt;/fen&gt; is repeatedly practiced.
+
+&lt;ex&gt;The troupe &lt;t&gt;rehearsed&lt;/t&gt; the ballet &lt;fex name="dur"&gt;for 4 months&lt;/fex&gt; before going on tour.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="05/27/2004 02:59:42 PDT Thu" abbrev="iter" name="Iteration" ID="6475">
+        <definition>&lt;def-root&gt;The number of times that the Action is practiced.
+
+&lt;ex&gt;We &lt;t&gt;practice&lt;/t&gt; this scene &lt;fex name="iter"&gt;daily&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="06/21/2004 05:33:02 PDT Mon" abbrev="cop" name="Co_participant" ID="6522">
+        <definition>&lt;def-root&gt;A person who participates in a practice event along with the &lt;fen&gt;Agent&lt;/fen&gt;.
+
+&lt;ex&gt; Then I went back to &lt;t&gt;rehearsing&lt;/t&gt; &lt;fex name="cop"&gt;with the band&lt;/fex&gt; while she sat around listening &lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Intentionally_act</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="practice.v" ID="10029" lemmaID="48649" cBy="605" cDate="02/17/2004 04:11:17 PST Tue">
+        <definition>COD: perform (an activity) or exercise (a skill) repeatedly or regularly in order to acquire, maintain, or improve proficiency in it</definition>
+        <sentenceCount annotated="26" total="380"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="practice"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="practice.n" ID="10030" lemmaID="30013" cBy="605" cDate="02/17/2004 04:11:48 PST Tue">
+        <definition>FN: a session of practising</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="practice"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="practice_((mass)).n" ID="10031" lemmaID="48651" cBy="605" cDate="02/17/2004 04:15:12 PST Tue">
+        <definition>COD:  the action or process of practising</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="practice_((mass))"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="rehearse.v" ID="10032" lemmaID="32444" cBy="605" cDate="02/17/2004 04:17:45 PST Tue">
+        <definition>COD:  practise (a play, piece of music, or other work) for later public performance</definition>
+        <sentenceCount annotated="58" total="253"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="rehearse"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="rehearsal.n" ID="10033" lemmaID="32443" cBy="605" cDate="02/17/2004 04:19:03 PST Tue">
+        <definition>COD:  a trial performance of a play or other work for later public performance</definition>
+        <sentenceCount annotated="25" total="308"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="rehearsal"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="rehearsal_((mass)).n" ID="10034" lemmaID="48654" cBy="605" cDate="02/17/2004 04:20:34 PST Tue">
+        <definition>COD: the action or process of rehearsing. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="rehearsal_((mass))"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="run_through.v" ID="10035" lemmaID="33776" cBy="605" cDate="02/17/2004 04:23:20 PST Tue">
+        <definition>FN: to discuss and/or enact the pieces of a performance in order</definition>
+        <sentenceCount annotated="7" total="108"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="run"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="run-through.n" ID="10036" lemmaID="33797" cBy="605" cDate="02/17/2004 04:26:06 PST Tue">
+        <definition>FN: discussing or enacting the pieces of a performance in order</definition>
+        <sentenceCount annotated="10" total="22"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="run-through"/>
+    </lexUnit>
+    <lexUnit status="Needs_SCs" POS="N" name="dry run.n" ID="10548" lemmaID="49138" cBy="605" cDate="05/27/2004 02:35:34 PDT Thu">
+        <definition>COD: a rehearsal of a performance or procedure</definition>
+        <sentenceCount annotated="3" total="8"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="dry"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="run"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="exercise.n" ID="11717" lemmaID="13435" cBy="605" cDate="03/03/2005 09:52:08 PST Thu">
+        <definition>COD: a task set to practise or test a skill.</definition>
+        <sentenceCount annotated="15" total="16"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="exercise"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="drill.n" ID="13341" lemmaID="11777" cBy="618" cDate="07/06/2006 05:33:48 PDT Thu">
+        <definition>COD: instruction by means of repeated exercises.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="drill"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="mock.a" ID="13444" lemmaID="24649" cBy="303" cDate="08/11/2006 01:29:00 PDT Fri">
+        <definition>COD: imitation; pretended.</definition>
+        <sentenceCount annotated="6" total="163"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="mock"/>
+    </lexUnit>
+</frame>

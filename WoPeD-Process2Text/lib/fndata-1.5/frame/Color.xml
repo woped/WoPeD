@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="11/19/2002 03:10:50 PST Tue" name="Color" ID="423" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A &lt;fen&gt;Color&lt;/fen&gt; serves as a landmark in color-space, either a point-like landmark (e.g. &lt;ment&gt;burnt sienna&lt;/ment&gt;) or a broader region (e.g. &lt;ment&gt;blue&lt;/ment&gt;).  Especially when the &lt;fen&gt;Color&lt;/fen&gt; designates a broad region in color-space, it may be defined with a specific &lt;fen&gt;Type&lt;/fen&gt;, further specified by comparison to the color of a &lt;fen&gt;Comparand&lt;/fen&gt;, modified by a &lt;fen&gt;Color_qualifier&lt;/fen&gt;, or evaluated with a &lt;fen&gt;Descriptor&lt;/fen&gt;.  All color words are generally used to specify the color of some (physical) &lt;fen&gt;Entity&lt;/fen&gt;.
+&lt;ex&gt;I really like that shade of &lt;fex name="Color"&gt;&lt;t&gt;blue&lt;/t&gt;&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Entity"&gt;The welts on his side&lt;/fex&gt; had already &lt;m&gt;turned&lt;/m&gt; an &lt;fex name="Descriptor"&gt;angry&lt;/fex&gt; &lt;fex name="Color"&gt;&lt;t&gt;red&lt;/t&gt;&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;The room was bathed in a soft &lt;fex name="Color"&gt;&lt;t&gt;pink&lt;/t&gt;&lt;/fex&gt; &lt;fex name="Entity"&gt;light&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;They promptly set up a zillion &lt;fex name="Color_qualifier"&gt;bright&lt;/fex&gt; &lt;fex name="Color"&gt;&lt;t&gt;vermilion&lt;/t&gt;&lt;/fex&gt; &lt;fex name="Entity"&gt;pavilions&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Entity"&gt;His face and hands&lt;/fex&gt; &lt;m&gt;were&lt;/m&gt; &lt;fex name="Color"&gt;&lt;t&gt;brown&lt;/t&gt;&lt;/fex&gt; &lt;fex name="Cause"&gt;from a life spent in the bright sun of the fields&lt;/fex&gt;.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="11/19/2002 03:16:34 PST Tue" abbrev="Entity" name="Entity" ID="3899">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Entity&lt;/fen&gt; described by the &lt;fen&gt;Color&lt;/fen&gt;.
+&lt;ex&gt;&lt;fex name="Entity"&gt;His jacket&lt;/fex&gt; was absolutely &lt;t&gt;green&lt;/t&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="11/19/2002 03:19:14 PST Tue" abbrev="Col" name="Color" ID="3900">
+        <definition>&lt;def-root&gt;A position in color-space, generally used to describe the quality of some &lt;fen&gt;Entity&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="11/19/2002 03:21:45 PST Tue" abbrev="Typ" name="Type" ID="3901">
+        <definition>&lt;def-root&gt;This FE indicates what subtype of the general category of a &lt;fen&gt;Color&lt;/fen&gt; is indicated.
+&lt;ex&gt;It is said that the eyes of the prophet will be of the deepest &lt;fex name="Type"&gt;azure&lt;/fex&gt; &lt;t&gt;blue&lt;/t&gt;.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="11/19/2002 03:31:25 PST Tue" abbrev="Comp" name="Comparand" ID="3902">
+        <definition>&lt;def-root&gt;A physical entity (or type of physical entity) whose color is similar to the designated color.  When this FE occurs with adjective targets, (a relatively rare circumstance) the &lt;fen&gt;Comparand&lt;/fen&gt; also serves to specify a &lt;fen&gt;Type&lt;/fen&gt;, which should be labeled on the second FE layer.
+&lt;ex&gt;Her lips looked &lt;fex name="Comp"&gt;sunset&lt;/fex&gt; &lt;t&gt;red&lt;/t&gt; in the light of the single lamp.&lt;/ex&gt;
+&lt;ex&gt;The ents stared out at us with eyes the deep &lt;t&gt;green&lt;/t&gt; &lt;fex name="Comp"&gt;of the forest&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="11/19/2002 03:35:06 PST Tue" abbrev="Qual" name="Color_qualifier" ID="3903">
+        <definition>&lt;def-root&gt;A phrase that indicates the direction in color-space from the center of the region designated by the Color.
+&lt;ex&gt;Its gill-flaps turn a sort of &lt;fex name="Qual"&gt;reddish&lt;/fex&gt; &lt;t&gt;orange&lt;/t&gt; when it has the disease.&lt;/ex&gt;
+&lt;ex&gt;I told him not to use the &lt;fex name="Qual"&gt;dark&lt;/fex&gt; &lt;t&gt;brown&lt;/t&gt;, but he didn't listen.&lt;/ex&gt;
+&lt;ex&gt;For a moment the whole sky turned &lt;fex name="Qual"&gt;bright&lt;/fex&gt; &lt;t&gt;pink&lt;/t&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="11/19/2002 03:38:20 PST Tue" abbrev="Desc" name="Descriptor" ID="3904">
+        <definition>&lt;def-root&gt;Some characteristic or judgment of a &lt;fen&gt;Color&lt;/fen&gt; implicitly imposed by a speaker.
+&lt;ex&gt;Her feathers were dyed a &lt;fex name="Desc"&gt;lovely&lt;/fex&gt; &lt;t&gt;purple&lt;/t&gt; for the occasion.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="11/27/2002 06:09:16 PST Wed" abbrev="Cause" name="Cause" ID="3945">
+        <definition>&lt;def-root&gt;The state of affairs that the &lt;fen&gt;Color&lt;/fen&gt; is dependent on.
+&lt;ex&gt;His face was &lt;t&gt;red&lt;/t&gt; &lt;fex name="Cause"&gt;with anger&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="12/04/2002 07:07:02 PST Wed" abbrev="Degr" name="Degree" ID="3952">
+        <definition>&lt;def-root&gt;The closeness of the &lt;fen&gt;Entity&lt;/fen&gt; 's color to the center of a &lt;fen&gt;Color&lt;/fen&gt; prototype.
+
+&lt;ex&gt;The plums are &lt;fex name="Degr"&gt;very&lt;/fex&gt; &lt;t&gt;red&lt;/t&gt;, and very ripe.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="618" cDate="06/11/2003 04:04:07 PDT Wed" abbrev="" name="Sub-region" ID="4622">
+        <definition>&lt;def-root&gt;The part of the &lt;fen&gt;Entity&lt;/fen&gt; that has the indicated &lt;fen&gt;Color&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="05/20/2005 04:30:30 PDT Fri" abbrev="att" name="Attribute" ID="8018">
+        <definition>&lt;def-root&gt;The aspect of the &lt;fen&gt;Entity&lt;/fen&gt; which is under discussion, namely color.
+
+&lt;ex&gt; The wine is bright &lt;t&gt;red&lt;/t&gt; &lt;fex name="att"&gt;in color&lt;/fex&gt; with aromas of red fruits, toasted almond, clove and orange peel. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Gradable_attributes</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Created" incorporatedFE="Attribute" POS="A" name="red.a" ID="7721" lemmaID="32225" cBy="664" cDate="11/19/2002 03:42:34 PST Tue">
+        <definition>COD: of a colour at the end of the spectrum next to orange and opposite violet, as of blood, fire, or rubies. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="red"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Attribute" POS="N" name="green.n" ID="7725" lemmaID="16783" cBy="664" cDate="11/21/2002 07:57:22 PST Thu">
+        <definition>COD: of the colour between blue and yellow in the spectrum; coloured like grass. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="green"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Attribute" POS="N" name="color.n" ID="7726" lemmaID="7229" cBy="664" cDate="11/21/2002 07:57:42 PST Thu">
+        <definition>COD: the property possessed by an object of producing different sensations on the eye as a result of the way it reflects or emits light. </definition>
+        <sentenceCount annotated="43" total="43"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="color"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Attribute" POS="A" name="vermilion.a" ID="7727" lemmaID="42887" cBy="664" cDate="11/21/2002 07:57:53 PST Thu">
+        <definition>FN: of a bright red color.</definition>
+        <sentenceCount annotated="6" total="26"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="vermilion"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Attribute" POS="A" name="ebony.a" ID="7728" lemmaID="12155" cBy="664" cDate="11/21/2002 07:59:28 PST Thu">
+        <definition>FN: of a black or  very dark brown color.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="ebony"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Attribute" POS="A" name="purple.a" ID="7729" lemmaID="31237" cBy="664" cDate="11/21/2002 07:59:45 PST Thu">
+        <definition>COD: of a color between red and blue. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="purple"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Attribute" POS="A" name="blue.a" ID="7730" lemmaID="3948" cBy="664" cDate="11/21/2002 08:00:28 PST Thu">
+        <definition>COD: of a colour intermediate between green and violet, as of the sky or sea on a sunny day. </definition>
+        <sentenceCount annotated="1" total="1"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="blue"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Attribute" POS="A" name="orange.a" ID="7731" lemmaID="26883" cBy="664" cDate="11/21/2002 08:00:45 PST Thu">
+        <definition>COD: reddish yellow. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="orange"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Attribute" POS="A" name="yellow.a" ID="7732" lemmaID="44696" cBy="664" cDate="11/21/2002 08:01:02 PST Thu">
+        <definition>COD: of the colour between green and orange in the spectrum, a primary subtractive colour complementary to blue; coloured like ripe lemons or egg yolks. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="yellow"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Attribute" POS="N" name="indigo.n" ID="7733" lemmaID="19649" cBy="664" cDate="11/21/2002 08:01:34 PST Thu">
+        <definition>FN: of a colour between violet and blue.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="indigo"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Attribute" POS="A" name="violet.a" ID="7734" lemmaID="43073" cBy="664" cDate="11/21/2002 08:01:48 PST Thu">
+        <definition>FN: of a bluish-purple color at the end of the spectrum.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="violet"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Attribute" POS="A" name="brown.a" ID="7735" lemmaID="4731" cBy="664" cDate="11/21/2002 08:02:12 PST Thu">
+        <definition>COD: of a colour produced by mixing red, yellow, and blue, as of dark wood or rich soil. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="brown"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Attribute" POS="A" name="gray.a" ID="7736" lemmaID="16819" cBy="664" cDate="11/21/2002 08:02:26 PST Thu">
+        <definition>COD: of a colour intermediate between black and white, as of ashes or lead. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="gray"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Attribute" POS="A" name="black.a" ID="7737" lemmaID="3714" cBy="664" cDate="11/21/2002 08:02:41 PST Thu">
+        <definition>COD: of the very darkest colour due to the absence of or complete absorption of light.</definition>
+        <sentenceCount annotated="51" total="639"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="black"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Attribute" POS="A" name="white.a" ID="7738" lemmaID="44028" cBy="664" cDate="11/21/2002 08:03:00 PST Thu">
+        <definition>COD: of the colour of milk or fresh snow, due to the reflection of all visible rays of light. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="white"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Attribute" POS="N" name="puce.n" ID="7756" lemmaID="31054" cBy="664" cDate="11/25/2002 02:01:44 PST Mon">
+        <definition>FN: of a dark brown-purple or red color. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="puce"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Attribute" POS="A" name="pink.a" ID="7757" lemmaID="29064" cBy="664" cDate="11/25/2002 02:02:42 PST Mon">
+        <definition>COD: of a colour intermediate between red and white, as of coral or salmon. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="pink"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Attribute" POS="A" name="crimson.a" ID="8073" lemmaID="8949" cBy="296" cDate="01/20/2003 03:26:47 PST Mon">
+        <definition>FN: of a rich deep red color </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="crimson"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Attribute" POS="A" name="maroon.a" ID="8074" lemmaID="23534" cBy="296" cDate="01/20/2003 03:37:41 PST Mon">
+        <definition>FN: of a dark purple-red color. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="maroon"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Attribute" POS="A" name="turquoise.a" ID="8075" lemmaID="41549" cBy="296" cDate="01/20/2003 03:39:36 PST Mon">
+        <definition>FN: of a greenish-blue color like the turquoise stone.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="turquoise"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Attribute" POS="A" name="azure.a" ID="8076" lemmaID="2553" cBy="296" cDate="01/20/2003 03:52:22 PST Mon">
+        <definition>FN: of a bright blue color.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="azure"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Attribute" POS="A" name="beige.a" ID="8139" lemmaID="3269" cBy="296" cDate="01/23/2003 09:24:30 PST Thu">
+        <definition>FN: of a pale sandy color. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="beige"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Attribute" POS="A" name="mauve.a" ID="8170" lemmaID="23739" cBy="296" cDate="01/23/2003 10:40:38 PST Thu">
+        <definition>FN: of a light puprlish-pink color</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="mauve"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Attribute" POS="A" name="tan.a" ID="8171" lemmaID="39474" cBy="296" cDate="01/23/2003 10:43:55 PST Thu">
+        <definition>FN: of a a light orangish-brown color</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="tan"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Attribute" POS="A" name="buff.a" ID="8172" lemmaID="4812" cBy="296" cDate="01/23/2003 10:45:06 PST Thu">
+        <definition>FN: of a beige color tinted with yellow.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="buff"/>
+    </lexUnit>
+    <lexUnit status="Created" incorporatedFE="Attribute" POS="A" name="scarlet.a" ID="8173" lemmaID="34353" cBy="296" cDate="01/23/2003 10:49:21 PST Thu">
+        <definition>FN: of a brilliant red. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="scarlet"/>
+    </lexUnit>
+</frame>

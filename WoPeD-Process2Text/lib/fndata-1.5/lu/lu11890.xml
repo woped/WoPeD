@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="N" name="regard.n" ID="11890" frame="Regard" frameID="1400" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="cog" name="Cognizer"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="dep" name="Depictive"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Core" abbrev="eva" name="Evaluee"/>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Peripheral" abbrev="ext" name="Extent_of_acclaim"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Core" abbrev="jud" name="Judgment"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="man" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Peripheral" abbrev="rea" name="Reason"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Extra-Thematic" abbrev="rol" name="Role"/>
+        </frame>
+    </header>
+    <definition>FN: esteem</definition>
+    <lexeme POS="N" name="regard"/>
+    <valences>
+        <governor type="Ctrlr" lemma="have">
+            <annoSet ID="2588759"/>
+        </governor>
+        <FERealization total="1">
+            <FE name="Cognizer"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Cognizer"/>
+                <annoSet ID="2588759"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Evaluee"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Evaluee"/>
+                <annoSet ID="2588759"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Judgment"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Judgment"/>
+                <annoSet ID="2588759"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Cognizer"/>
+            <FE name="Evaluee"/>
+            <FE name="Judgment"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Cognizer"/>
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Evaluee"/>
+                <valenceUnit GF="Dep" PT="AJP" FE="Judgment"/>
+                <annoSet ID="2588759"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-Whighest,low,high-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="162" aPos="110076065" ID="1577070">
+            <text>Chief executive Derek Hunt said : ` We have a high regard for Carpertright and a good commercial relationship with the company , which we expect to continue . &quot;</text>
+            <annotationSet cDate="07/15/2010 03:44:29 PDT Thu" status="UNANN" ID="2588758">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="jj"/>
+                    <label end="14" start="6" name="nn"/>
+                    <label end="20" start="16" name="NP"/>
+                    <label end="25" start="22" name="NP"/>
+                    <label end="30" start="27" name="VVD"/>
+                    <label end="32" start="32" name=":"/>
+                    <label end="37" start="36" name="PP"/>
+                    <label end="42" start="39" name="VHP"/>
+                    <label end="44" start="44" name="dt"/>
+                    <label end="49" start="46" name="jj"/>
+                    <label end="56" start="51" name="nn"/>
+                    <label end="60" start="58" name="in"/>
+                    <label end="73" start="62" name="NP"/>
+                    <label end="77" start="75" name="cc"/>
+                    <label end="79" start="79" name="dt"/>
+                    <label end="84" start="81" name="jj"/>
+                    <label end="95" start="86" name="jj"/>
+                    <label end="108" start="97" name="nn"/>
+                    <label end="113" start="110" name="in"/>
+                    <label end="117" start="115" name="dt"/>
+                    <label end="125" start="119" name="nn"/>
+                    <label end="127" start="127" name=","/>
+                    <label end="133" start="129" name="wdt"/>
+                    <label end="136" start="135" name="PP"/>
+                    <label end="143" start="138" name="VVP"/>
+                    <label end="146" start="145" name="to"/>
+                    <label end="155" start="148" name="VV"/>
+                    <label end="157" start="157" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/15/2010 03:44:29 PDT Thu" status="MANUAL" ID="2588759">
+                <layer rank="1" name="Target">
+                    <label cBy="571" end="56" start="51" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="571" feID="7840" end="37" start="36" name="Cognizer"/>
+                    <label cBy="571" feID="7841" end="73" start="58" name="Evaluee"/>
+                    <label cBy="571" feID="7851" end="49" start="46" name="Judgment"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="37" start="36" name="Ext"/>
+                    <label end="73" start="58" name="Dep"/>
+                    <label end="49" start="46" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="37" start="36" name="NP"/>
+                    <label end="73" start="58" name="PP"/>
+                    <label end="49" start="46" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="42" start="39" name="Ctrlr"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-PPin-T-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

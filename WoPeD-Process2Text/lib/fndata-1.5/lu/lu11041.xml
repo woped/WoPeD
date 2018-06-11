@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="V" name="confirm.v" ID="11041" frame="Verification" frameID="1230" totalAnnotated="5" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="2E8B57" type="Extra-Thematic" abbrev="Con" name="Condition"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Extra-Thematic" abbrev="" name="Descriptor"/>
+            <FE fgColor="FFFFFF" bgColor="9F79EE" type="Extra-Thematic" abbrev="" name="Epistemic_stance"/>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Extra-Thematic" abbrev="" name="Explanation"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="ins" name="Inspector"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Peripheral" abbrev="inst" name="Instrument"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Manr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="mea" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Core" abbrev="med" name="Medium"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="pur" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Tim" name="Time"/>
+            <FE fgColor="FFFFFF" bgColor="7CCD7C" type="Core" abbrev="unc" name="Unconfirmed_content"/>
+        </frame>
+    </header>
+    <definition>COD: establish the truth or correctness of.</definition>
+    <lexeme POS="V" name="confirm"/>
+    <valences>
+        <FERealization total="1">
+            <FE name="Condition"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Condition"/>
+                <annoSet ID="2190941"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="4">
+            <FE name="Inspector"/>
+            <pattern total="3">
+                <valenceUnit GF="Ext" PT="NP" FE="Inspector"/>
+                <annoSet ID="2190781"/>
+                <annoSet ID="2190941"/>
+                <annoSet ID="2190965"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Inspector"/>
+                <annoSet ID="2190935"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Medium"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Medium"/>
+                <annoSet ID="2190765"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="5">
+            <FE name="Unconfirmed_content"/>
+            <pattern total="2">
+                <valenceUnit GF="Obj" PT="NP" FE="Unconfirmed_content"/>
+                <annoSet ID="2190941"/>
+                <annoSet ID="2190965"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="Sfin" FE="Unconfirmed_content"/>
+                <annoSet ID="2190765"/>
+                <annoSet ID="2190781"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Unconfirmed_content"/>
+                <annoSet ID="2190935"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Condition"/>
+            <FE name="Inspector"/>
+            <FE name="Unconfirmed_content"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Condition"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Inspector"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Unconfirmed_content"/>
+                <annoSet ID="2190941"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="3">
+            <FE name="Inspector"/>
+            <FE name="Unconfirmed_content"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Inspector"/>
+                <valenceUnit GF="Obj" PT="NP" FE="Unconfirmed_content"/>
+                <annoSet ID="2190965"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Inspector"/>
+                <valenceUnit GF="Dep" PT="Sfin" FE="Unconfirmed_content"/>
+                <annoSet ID="2190781"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[by]" FE="Inspector"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Unconfirmed_content"/>
+                <annoSet ID="2190935"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Medium"/>
+            <FE name="Unconfirmed_content"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Medium"/>
+                <valenceUnit GF="Dep" PT="Sfin" FE="Unconfirmed_content"/>
+                <annoSet ID="2190765"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-Wthat-(1)">
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="414" aPos="83092030" ID="1371451">
+            <text>A phone call will always be made to confirm that you would still be willing to come to any particular meeting .</text>
+            <annotationSet cDate="06/12/2006 02:29:43 PDT Mon" status="UNANN" ID="2190764">
+                <layer rank="1" name="PENN">
+                    <label end="0" start="0" name="dt"/>
+                    <label end="6" start="2" name="nn"/>
+                    <label end="11" start="8" name="nn"/>
+                    <label end="16" start="13" name="md"/>
+                    <label end="23" start="18" name="rb"/>
+                    <label end="26" start="25" name="vb"/>
+                    <label end="31" start="28" name="VVN"/>
+                    <label end="34" start="33" name="to"/>
+                    <label end="42" start="36" name="VV"/>
+                    <label end="47" start="44" name="in"/>
+                    <label end="51" start="49" name="PP"/>
+                    <label end="57" start="53" name="md"/>
+                    <label end="63" start="59" name="rb"/>
+                    <label end="66" start="65" name="vb"/>
+                    <label end="74" start="68" name="jj"/>
+                    <label end="77" start="76" name="to"/>
+                    <label end="82" start="79" name="VV"/>
+                    <label end="85" start="84" name="to"/>
+                    <label end="89" start="87" name="dt"/>
+                    <label end="100" start="91" name="jj"/>
+                    <label end="108" start="102" name="nn"/>
+                    <label end="110" start="110" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="06/12/2006 02:29:44 PDT Mon" status="MANUAL" ID="2190765">
+                <layer rank="1" name="Target">
+                    <label cBy="303" end="42" start="36" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="7128" end="11" start="0" name="Medium"/>
+                    <label cBy="361" feID="7121" end="108" start="44" name="Unconfirmed_content"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="11" start="0" name="Ext"/>
+                    <label end="108" start="44" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="11" start="0" name="NP"/>
+                    <label end="108" start="44" name="Sfin"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="261" aPos="5165258" ID="1371459">
+            <text>Rival managers have been relieved to confirm that the away dugout does actually face the pitch .</text>
+            <annotationSet cDate="06/12/2006 02:29:46 PDT Mon" status="UNANN" ID="2190780">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="jj"/>
+                    <label end="13" start="6" name="nns"/>
+                    <label end="18" start="15" name="VHP"/>
+                    <label end="23" start="20" name="VBN"/>
+                    <label end="32" start="25" name="VVN"/>
+                    <label end="35" start="34" name="to"/>
+                    <label end="43" start="37" name="VV"/>
+                    <label end="48" start="45" name="in"/>
+                    <label end="52" start="50" name="dt"/>
+                    <label end="57" start="54" name="rb"/>
+                    <label end="64" start="59" name="nn"/>
+                    <label end="69" start="66" name="VVZ"/>
+                    <label end="78" start="71" name="rb"/>
+                    <label end="83" start="80" name="VV"/>
+                    <label end="87" start="85" name="dt"/>
+                    <label end="93" start="89" name="nn"/>
+                    <label end="95" start="95" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="06/12/2006 02:29:46 PDT Mon" status="MANUAL" ID="2190781">
+                <layer rank="1" name="Target">
+                    <label cBy="303" end="43" start="37" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="7120" end="13" start="0" name="Inspector"/>
+                    <label cBy="361" feID="7121" end="93" start="45" name="Unconfirmed_content"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="13" start="0" name="Ext"/>
+                    <label end="93" start="45" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="13" start="0" name="NP"/>
+                    <label end="93" start="45" name="Sfin"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-T-PPby-Wvvg-(1)"/>
+    <subCorpus name="03-T-PPto-(1)"/>
+    <subCorpus name="04-T-PPin-(1)"/>
+    <subCorpus name="05-T-PPby-(1)">
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="703" aPos="10220722" ID="1371536">
+            <text>His attendance has been confirmed by Disney but , as one organiser admitted , ` I ca n't see him eating a burger . &quot;</text>
+            <annotationSet cDate="06/12/2006 02:30:14 PDT Mon" status="UNANN" ID="2190934">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="PP$"/>
+                    <label end="13" start="4" name="nn"/>
+                    <label end="17" start="15" name="VHZ"/>
+                    <label end="22" start="19" name="VBN"/>
+                    <label end="32" start="24" name="VVN"/>
+                    <label end="35" start="34" name="in"/>
+                    <label end="42" start="37" name="NP"/>
+                    <label end="46" start="44" name="cc"/>
+                    <label end="48" start="48" name=","/>
+                    <label end="51" start="50" name="in"/>
+                    <label end="55" start="53" name="cd"/>
+                    <label end="65" start="57" name="nn"/>
+                    <label end="74" start="67" name="VVD"/>
+                    <label end="76" start="76" name=","/>
+                    <label end="80" start="80" name="PP"/>
+                    <label end="83" start="82" name="md"/>
+                    <label end="87" start="85" name="rb"/>
+                    <label end="91" start="89" name="VV"/>
+                    <label end="95" start="93" name="PP"/>
+                    <label end="102" start="97" name="VVG"/>
+                    <label end="104" start="104" name="dt"/>
+                    <label end="111" start="106" name="nn"/>
+                    <label end="113" start="113" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="06/12/2006 02:30:14 PDT Mon" status="MANUAL" ID="2190935">
+                <layer rank="1" name="Target">
+                    <label cBy="303" end="32" start="24" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="7121" end="13" start="0" name="Unconfirmed_content"/>
+                    <label cBy="361" feID="7120" end="42" start="34" name="Inspector"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="13" start="0" name="Ext"/>
+                    <label end="42" start="34" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="13" start="0" name="NP"/>
+                    <label end="42" start="34" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="06-T-PPon,at-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="333" aPos="95321816" ID="1371539">
+            <text>The University will confirm receipt on request to the Registry .</text>
+            <annotationSet cDate="06/12/2006 02:30:15 PDT Mon" status="UNANN" ID="2190940">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="13" start="4" name="NP"/>
+                    <label end="18" start="15" name="md"/>
+                    <label end="26" start="20" name="VV"/>
+                    <label end="34" start="28" name="nn"/>
+                    <label end="37" start="36" name="in"/>
+                    <label end="45" start="39" name="nn"/>
+                    <label end="48" start="47" name="to"/>
+                    <label end="52" start="50" name="dt"/>
+                    <label end="61" start="54" name="nn"/>
+                    <label end="63" start="63" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="06/12/2006 02:30:15 PDT Mon" status="MANUAL" ID="2190941">
+                <layer rank="1" name="Target">
+                    <label cBy="303" end="26" start="20" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="7120" end="13" start="0" name="Inspector"/>
+                    <label cBy="361" feID="7121" end="34" start="28" name="Unconfirmed_content"/>
+                    <label cBy="361" feID="10606" end="61" start="36" name="Condition"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="13" start="0" name="Ext"/>
+                    <label end="34" start="28" name="Obj"/>
+                    <label end="61" start="36" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="13" start="0" name="NP"/>
+                    <label end="34" start="28" name="NP"/>
+                    <label end="61" start="36" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="1258" aPos="93070659" ID="1371551">
+            <text>I write to confirm the arrangements made by phone on Friday 14th May .</text>
+            <annotationSet cDate="06/12/2006 02:30:19 PDT Mon" status="UNANN" ID="2190964">
+                <layer rank="1" name="PENN">
+                    <label end="0" start="0" name="PP"/>
+                    <label end="6" start="2" name="VVP"/>
+                    <label end="9" start="8" name="to"/>
+                    <label end="17" start="11" name="VV"/>
+                    <label end="21" start="19" name="dt"/>
+                    <label end="34" start="23" name="nns"/>
+                    <label end="39" start="36" name="VVN"/>
+                    <label end="42" start="41" name="in"/>
+                    <label end="48" start="44" name="nn"/>
+                    <label end="51" start="50" name="in"/>
+                    <label end="58" start="53" name="NP"/>
+                    <label end="63" start="60" name="jj"/>
+                    <label end="67" start="65" name="NP"/>
+                    <label end="69" start="69" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="06/12/2006 02:30:20 PDT Mon" status="MANUAL" ID="2190965">
+                <layer rank="1" name="Target">
+                    <label cBy="303" end="17" start="11" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="361" feID="7120" end="0" start="0" name="Inspector"/>
+                    <label cBy="361" feID="7121" end="67" start="19" name="Unconfirmed_content"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="0" start="0" name="Ext"/>
+                    <label end="67" start="19" name="Obj"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="0" start="0" name="NP"/>
+                    <label end="67" start="19" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Verb"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="07-AVP-T-(1)"/>
+    <subCorpus name="08-T-AVP-(1)"/>
+    <subCorpus name="09-T-AP-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

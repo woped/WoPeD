@@ -1,0 +1,772 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Finished_Initial" POS="N" name="effect.n" ID="10450" frame="Objective_influence" frameID="1084" totalAnnotated="10" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="00008B" type="Extra-Thematic" abbrev="" name="Circumstances"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Core-Unexpressed" abbrev="deg" name="Degree"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Core" abbrev="depe" name="Dependent_entity"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Core-Unexpressed" abbrev="deps" name="Dependent_situation"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Core-Unexpressed" abbrev="depv" name="Dependent_variable"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="infe" name="Influencing_entity"/>
+            <FE fgColor="FFFFFF" bgColor="1E90FF" type="Core" abbrev="infs" name="Influencing_situation"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core-Unexpressed" abbrev="infv" name="Influencing_variable"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Peripheral" abbrev="man" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Peripheral" abbrev="pla" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="tim" name="Time"/>
+        </frame>
+    </header>
+    <definition>FN: an influence</definition>
+    <lexeme POS="N" name="effect"/>
+    <valences>
+        <governor type="Sup" lemma="have">
+            <annoSet ID="2017919"/>
+            <annoSet ID="2017957"/>
+        </governor>
+        <governor type="Gov" lemma="assess">
+            <annoSet ID="2018127"/>
+        </governor>
+        <governor type="Gov" lemma="exert">
+            <annoSet ID="2018105"/>
+        </governor>
+        <FERealization total="4">
+            <FE name="Degree"/>
+            <pattern total="4">
+                <valenceUnit GF="Dep" PT="AJP" FE="Degree"/>
+                <annoSet ID="2017873"/>
+                <annoSet ID="2017919"/>
+                <annoSet ID="2017957"/>
+                <annoSet ID="2018039"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Dependent_entity"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Dependent_entity"/>
+                <annoSet ID="2018105"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="8">
+            <FE name="Dependent_situation"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Dependent_situation"/>
+                <annoSet ID="2017919"/>
+            </pattern>
+            <pattern total="6">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Dependent_situation"/>
+                <annoSet ID="2017865"/>
+                <annoSet ID="2017869"/>
+                <annoSet ID="2017873"/>
+                <annoSet ID="2017907"/>
+                <annoSet ID="2018039"/>
+                <annoSet ID="2018127"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[upon]" FE="Dependent_situation"/>
+                <annoSet ID="2017957"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Dependent_variable"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Dependent_variable"/>
+                <annoSet ID="2017919"/>
+                <annoSet ID="2018031"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Influencing_entity"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="N" FE="Influencing_entity"/>
+                <annoSet ID="2017873"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Gen" PT="Poss" FE="Influencing_entity"/>
+                <annoSet ID="2018031"/>
+                <annoSet ID="2018105"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="6">
+            <FE name="Influencing_situation"/>
+            <pattern total="3">
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Influencing_situation"/>
+                <annoSet ID="2017865"/>
+                <annoSet ID="2018039"/>
+                <annoSet ID="2018127"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Influencing_situation"/>
+                <annoSet ID="2017869"/>
+                <annoSet ID="2017957"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Gen" PT="Poss" FE="Influencing_situation"/>
+                <annoSet ID="2017907"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Degree"/>
+            <FE name="Dependent_situation"/>
+            <FE name="Dependent_variable"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Degree"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Dependent_situation"/>
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Dependent_variable"/>
+                <annoSet ID="2017919"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Degree"/>
+            <FE name="Dependent_situation"/>
+            <FE name="Influencing_entity"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Degree"/>
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Dependent_situation"/>
+                <valenceUnit GF="Dep" PT="N" FE="Influencing_entity"/>
+                <annoSet ID="2017873"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="2">
+            <FE name="Degree"/>
+            <FE name="Dependent_situation"/>
+            <FE name="Influencing_situation"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Degree"/>
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Dependent_situation"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Influencing_situation"/>
+                <annoSet ID="2018039"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="AJP" FE="Degree"/>
+                <valenceUnit GF="Dep" PT="PP[upon]" FE="Dependent_situation"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Influencing_situation"/>
+                <annoSet ID="2017957"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Dependent_entity"/>
+            <FE name="Influencing_entity"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[in]" FE="Dependent_entity"/>
+                <valenceUnit GF="Gen" PT="Poss" FE="Influencing_entity"/>
+                <annoSet ID="2018105"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="3">
+            <FE name="Dependent_situation"/>
+            <FE name="Influencing_situation"/>
+            <pattern total="2">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Dependent_situation"/>
+                <valenceUnit GF="Dep" PT="PP[of]" FE="Influencing_situation"/>
+                <annoSet ID="2017865"/>
+                <annoSet ID="2018127"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Dependent_situation"/>
+                <valenceUnit GF="Gen" PT="Poss" FE="Influencing_situation"/>
+                <annoSet ID="2017907"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Dependent_situation"/>
+            <FE name="Influencing_situation"/>
+            <FE name="Influencing_situation"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Dependent_situation"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Influencing_situation"/>
+                <valenceUnit GF="Ext" PT="NP" FE="Influencing_situation"/>
+                <annoSet ID="2017869"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Dependent_variable"/>
+            <FE name="Influencing_entity"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[on]" FE="Dependent_variable"/>
+                <valenceUnit GF="Gen" PT="Poss" FE="Influencing_entity"/>
+                <annoSet ID="2018031"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="07-T-Whealth,people,life-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="142" aPos="66572981" ID="1284837">
+            <text>In association with this trend , there was renewed attention to longstanding evidence on the effects of poverty on health , in association with government restrictions on the growth of Health Service spending .</text>
+            <annotationSet cDate="11/01/2004 04:42:30 PST Mon" status="UNANN" ID="2017864">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="in"/>
+                    <label end="13" start="3" name="nn"/>
+                    <label end="18" start="15" name="in"/>
+                    <label end="23" start="20" name="dt"/>
+                    <label end="29" start="25" name="nn"/>
+                    <label end="31" start="31" name=","/>
+                    <label end="37" start="33" name="ex"/>
+                    <label end="41" start="39" name="VBD"/>
+                    <label end="49" start="43" name="jj"/>
+                    <label end="59" start="51" name="nn"/>
+                    <label end="62" start="61" name="to"/>
+                    <label end="75" start="64" name="jj"/>
+                    <label end="84" start="77" name="nn"/>
+                    <label end="87" start="86" name="in"/>
+                    <label end="91" start="89" name="dt"/>
+                    <label end="99" start="93" name="nns"/>
+                    <label end="102" start="101" name="in"/>
+                    <label end="110" start="104" name="nn"/>
+                    <label end="113" start="112" name="in"/>
+                    <label end="120" start="115" name="nn"/>
+                    <label end="122" start="122" name=","/>
+                    <label end="125" start="124" name="in"/>
+                    <label end="137" start="127" name="nn"/>
+                    <label end="142" start="139" name="in"/>
+                    <label end="153" start="144" name="nn"/>
+                    <label end="166" start="155" name="nns"/>
+                    <label end="169" start="168" name="in"/>
+                    <label end="173" start="171" name="dt"/>
+                    <label end="180" start="175" name="nn"/>
+                    <label end="183" start="182" name="in"/>
+                    <label end="190" start="185" name="NP"/>
+                    <label end="198" start="192" name="NP"/>
+                    <label end="207" start="200" name="nn"/>
+                    <label end="209" start="209" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="11/01/2004 04:42:30 PST Mon" status="MANUAL" ID="2017865">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="99" start="93" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="6326" end="110" start="101" name="Influencing_situation"/>
+                    <label cBy="395" feID="6324" end="120" start="112" name="Dependent_situation"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="110" start="101" name="Dep"/>
+                    <label end="120" start="112" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="110" start="101" name="PP"/>
+                    <label end="120" start="112" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="5" paragNo="27" aPos="32387521" ID="1284839">
+            <text>It hangs around in the system as toxic waste , a condition whose detrimental effect on our health is accepted but not yet fully explored .</text>
+            <annotationSet cDate="11/01/2004 04:42:31 PST Mon" status="UNANN" ID="2017868">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="7" start="3" name="VVZ"/>
+                    <label end="14" start="9" name="rp"/>
+                    <label end="17" start="16" name="in"/>
+                    <label end="21" start="19" name="dt"/>
+                    <label end="28" start="23" name="nn"/>
+                    <label end="31" start="30" name="in"/>
+                    <label end="37" start="33" name="jj"/>
+                    <label end="43" start="39" name="nn"/>
+                    <label end="45" start="45" name=","/>
+                    <label end="47" start="47" name="dt"/>
+                    <label end="57" start="49" name="nn"/>
+                    <label end="63" start="59" name="wp$"/>
+                    <label end="75" start="65" name="jj"/>
+                    <label end="82" start="77" name="nn"/>
+                    <label end="85" start="84" name="in"/>
+                    <label end="89" start="87" name="PP$"/>
+                    <label end="96" start="91" name="nn"/>
+                    <label end="99" start="98" name="VBZ"/>
+                    <label end="108" start="101" name="VVN"/>
+                    <label end="112" start="110" name="cc"/>
+                    <label end="116" start="114" name="rb"/>
+                    <label end="120" start="118" name="rb"/>
+                    <label end="126" start="122" name="rb"/>
+                    <label end="135" start="128" name="VVN"/>
+                    <label end="137" start="137" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="11/01/2004 04:42:31 PST Mon" status="MANUAL" ID="2017869">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="82" start="77" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="6326" end="57" start="47" name="Influencing_situation"/>
+                    <label cBy="395" feID="6324" end="96" start="84" name="Dependent_situation"/>
+                    <label cBy="309" feID="6326" end="63" start="59" name="Influencing_situation"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="57" start="47" name="Ext"/>
+                    <label end="96" start="84" name="Dep"/>
+                    <label end="63" start="59" name="Ext"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="57" start="47" name="NP"/>
+                    <label end="96" start="84" name="PP"/>
+                    <label end="63" start="59" name="NP"/>
+                </layer>
+                <layer rank="1" name="Other">
+                    <label end="57" start="47" name="Ant"/>
+                    <label end="63" start="59" name="Rel"/>
+                </layer>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="3" paragNo="204" aPos="102440653" ID="1284841">
+            <text>Its main conclusion is that there has been no measurable radiological effects on the health of local people , and that the only significant problems resulted from psychological factors , notably stress .</text>
+            <annotationSet cDate="11/01/2004 04:42:32 PST Mon" status="UNANN" ID="2017872">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="PP$"/>
+                    <label end="7" start="4" name="jj"/>
+                    <label end="18" start="9" name="nn"/>
+                    <label end="21" start="20" name="VBZ"/>
+                    <label end="26" start="23" name="in"/>
+                    <label end="32" start="28" name="ex"/>
+                    <label end="36" start="34" name="VHZ"/>
+                    <label end="41" start="38" name="VBN"/>
+                    <label end="44" start="43" name="dt"/>
+                    <label end="55" start="46" name="jj"/>
+                    <label end="68" start="57" name="jj"/>
+                    <label end="76" start="70" name="nns"/>
+                    <label end="79" start="78" name="in"/>
+                    <label end="83" start="81" name="dt"/>
+                    <label end="90" start="85" name="nn"/>
+                    <label end="93" start="92" name="in"/>
+                    <label end="99" start="95" name="jj"/>
+                    <label end="106" start="101" name="nns"/>
+                    <label end="108" start="108" name=","/>
+                    <label end="112" start="110" name="cc"/>
+                    <label end="117" start="114" name="in"/>
+                    <label end="121" start="119" name="dt"/>
+                    <label end="126" start="123" name="jj"/>
+                    <label end="138" start="128" name="jj"/>
+                    <label end="147" start="140" name="nns"/>
+                    <label end="156" start="149" name="VVN"/>
+                    <label end="161" start="158" name="in"/>
+                    <label end="175" start="163" name="jj"/>
+                    <label end="183" start="177" name="nns"/>
+                    <label end="185" start="185" name=","/>
+                    <label end="193" start="187" name="rb"/>
+                    <label end="200" start="195" name="nn"/>
+                    <label end="202" start="202" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="11/01/2004 04:42:33 PST Mon" status="MANUAL" ID="2017873">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="76" start="70" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="6964" end="55" start="46" name="Degree"/>
+                    <label cBy="395" feID="6321" end="68" start="57" name="Influencing_entity"/>
+                    <label cBy="395" feID="6324" end="106" start="78" name="Dependent_situation"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="55" start="46" name="Dep"/>
+                    <label end="68" start="57" name="Dep"/>
+                    <label end="106" start="78" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="55" start="46" name="AJP"/>
+                    <label end="68" start="57" name="N"/>
+                    <label end="106" start="78" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="1271" aPos="87522243" ID="1284858">
+            <text>Its aim is to provide fresh evidence and new insights into the way policy was conducted , and its effects on the economy .</text>
+            <annotationSet cDate="11/01/2004 04:42:42 PST Mon" status="UNANN" ID="2017906">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="PP$"/>
+                    <label end="6" start="4" name="nn"/>
+                    <label end="9" start="8" name="VBZ"/>
+                    <label end="12" start="11" name="to"/>
+                    <label end="20" start="14" name="VV"/>
+                    <label end="26" start="22" name="jj"/>
+                    <label end="35" start="28" name="nn"/>
+                    <label end="39" start="37" name="cc"/>
+                    <label end="43" start="41" name="jj"/>
+                    <label end="52" start="45" name="nns"/>
+                    <label end="57" start="54" name="in"/>
+                    <label end="61" start="59" name="dt"/>
+                    <label end="65" start="63" name="nn"/>
+                    <label end="72" start="67" name="nn"/>
+                    <label end="76" start="74" name="VBD"/>
+                    <label end="86" start="78" name="VVN"/>
+                    <label end="88" start="88" name=","/>
+                    <label end="92" start="90" name="cc"/>
+                    <label end="96" start="94" name="PP$"/>
+                    <label end="104" start="98" name="nns"/>
+                    <label end="107" start="106" name="in"/>
+                    <label end="111" start="109" name="dt"/>
+                    <label end="119" start="113" name="nn"/>
+                    <label end="121" start="121" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="11/01/2004 04:42:42 PST Mon" status="MANUAL" ID="2017907">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="104" start="98" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="6326" end="96" start="94" name="Influencing_situation"/>
+                    <label cBy="395" feID="6324" end="119" start="106" name="Dependent_situation"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="96" start="94" name="Gen"/>
+                    <label end="119" start="106" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="96" start="94" name="Poss"/>
+                    <label end="119" start="106" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="48" aPos="94908038" ID="1284864">
+            <text>These policies had little effect on the Italian birth rate in the period 1930 -1932 , and between 1933 and 1937 not a single department showed a rise in fertility ( Glass ) .</text>
+            <annotationSet cDate="11/01/2004 04:42:45 PST Mon" status="UNANN" ID="2017918">
+                <layer rank="1" name="PENN">
+                    <label end="4" start="0" name="dt"/>
+                    <label end="13" start="6" name="nns"/>
+                    <label end="17" start="15" name="VHD"/>
+                    <label end="24" start="19" name="jj"/>
+                    <label end="31" start="26" name="nn"/>
+                    <label end="34" start="33" name="in"/>
+                    <label end="38" start="36" name="dt"/>
+                    <label end="46" start="40" name="jj"/>
+                    <label end="52" start="48" name="nn"/>
+                    <label end="57" start="54" name="nn"/>
+                    <label end="60" start="59" name="in"/>
+                    <label end="64" start="62" name="dt"/>
+                    <label end="71" start="66" name="nn"/>
+                    <label end="76" start="73" name="cd"/>
+                    <label end="82" start="78" name=","/>
+                    <label end="84" start="84" name="cc"/>
+                    <label end="88" start="86" name="in"/>
+                    <label end="96" start="90" name="cd"/>
+                    <label end="101" start="98" name="cc"/>
+                    <label end="105" start="103" name="cd"/>
+                    <label end="110" start="107" name="rb"/>
+                    <label end="114" start="112" name="dt"/>
+                    <label end="116" start="116" name="jj"/>
+                    <label end="123" start="118" name="nn"/>
+                    <label end="134" start="125" name="VVD"/>
+                    <label end="141" start="136" name="dt"/>
+                    <label end="143" start="143" name="nn"/>
+                    <label end="148" start="145" name="in"/>
+                    <label end="151" start="150" name="nn"/>
+                    <label end="161" start="153" name="("/>
+                    <label end="163" start="163" name="NP"/>
+                    <label end="169" start="165" name=")"/>
+                    <label end="171" start="171" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="11/01/2004 04:42:45 PST Mon" status="MANUAL" ID="2017919">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="31" start="26" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="6324" end="13" start="0" name="Dependent_situation"/>
+                    <label cBy="395" feID="6964" end="24" start="19" name="Degree"/>
+                    <label cBy="395" feID="6325" end="57" start="33" name="Dependent_variable"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="13" start="0" name="Ext"/>
+                    <label end="24" start="19" name="Dep"/>
+                    <label end="57" start="33" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="13" start="0" name="NP"/>
+                    <label end="24" start="19" name="AJP"/>
+                    <label end="57" start="33" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="17" start="15" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="08-Wstudy,magnitude,susceptible-T-(1)"/>
+    <subCorpus name="09-T-Wupon-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="336" aPos="16643739" ID="1284883">
+            <text>The early life of a child and the attitudes of those around him can have a dramatic effect upon his adult emotional state .</text>
+            <annotationSet cDate="11/01/2004 04:42:58 PST Mon" status="UNANN" ID="2017956">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="8" start="4" name="jj"/>
+                    <label end="13" start="10" name="nn"/>
+                    <label end="16" start="15" name="in"/>
+                    <label end="18" start="18" name="dt"/>
+                    <label end="24" start="20" name="nn"/>
+                    <label end="28" start="26" name="cc"/>
+                    <label end="32" start="30" name="dt"/>
+                    <label end="42" start="34" name="nns"/>
+                    <label end="45" start="44" name="in"/>
+                    <label end="51" start="47" name="dt"/>
+                    <label end="58" start="53" name="in"/>
+                    <label end="62" start="60" name="PP"/>
+                    <label end="66" start="64" name="md"/>
+                    <label end="71" start="68" name="VH"/>
+                    <label end="73" start="73" name="dt"/>
+                    <label end="82" start="75" name="jj"/>
+                    <label end="89" start="84" name="nn"/>
+                    <label end="94" start="91" name="in"/>
+                    <label end="98" start="96" name="PP$"/>
+                    <label end="104" start="100" name="jj"/>
+                    <label end="114" start="106" name="jj"/>
+                    <label end="120" start="116" name="nn"/>
+                    <label end="122" start="122" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="11/01/2004 04:42:58 PST Mon" status="MANUAL" ID="2017957">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="89" start="84" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="6326" end="62" start="0" name="Influencing_situation"/>
+                    <label cBy="395" feID="6964" end="82" start="75" name="Degree"/>
+                    <label cBy="395" feID="6324" end="120" start="91" name="Dependent_situation"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="62" start="0" name="Ext"/>
+                    <label end="82" start="75" name="Dep"/>
+                    <label end="120" start="91" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="62" start="0" name="NP"/>
+                    <label end="82" start="75" name="AJP"/>
+                    <label end="120" start="91" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="71" start="68" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="10-T-Won-Wvvg-(1)">
+        <sentence corpID="111" docID="421" sentNo="9" paragNo="92" aPos="67930474" ID="1284920">
+            <text>The inhibitors might therefore be causing amnesia not because they prevent protein synthesis but because of their effect on increasing amino acid levels .</text>
+            <annotationSet cDate="11/01/2004 04:43:24 PST Mon" status="UNANN" ID="2018030">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="dt"/>
+                    <label end="13" start="4" name="nns"/>
+                    <label end="19" start="15" name="md"/>
+                    <label end="29" start="21" name="rb"/>
+                    <label end="32" start="31" name="vb"/>
+                    <label end="40" start="34" name="VVG"/>
+                    <label end="48" start="42" name="nn"/>
+                    <label end="52" start="50" name="rb"/>
+                    <label end="60" start="54" name="in"/>
+                    <label end="65" start="62" name="PP"/>
+                    <label end="73" start="67" name="VVP"/>
+                    <label end="81" start="75" name="nn"/>
+                    <label end="91" start="83" name="nn"/>
+                    <label end="95" start="93" name="cc"/>
+                    <label end="103" start="97" name="in"/>
+                    <label end="106" start="105" name="in"/>
+                    <label end="112" start="108" name="PP$"/>
+                    <label end="119" start="114" name="nn"/>
+                    <label end="122" start="121" name="in"/>
+                    <label end="133" start="124" name="VVG"/>
+                    <label end="139" start="135" name="nn"/>
+                    <label end="144" start="141" name="nn"/>
+                    <label end="151" start="146" name="nns"/>
+                    <label end="153" start="153" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="11/01/2004 04:43:24 PST Mon" status="MANUAL" ID="2018031">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="119" start="114" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="6321" end="112" start="108" name="Influencing_entity"/>
+                    <label cBy="395" feID="6325" end="151" start="121" name="Dependent_variable"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="112" start="108" name="Gen"/>
+                    <label end="151" start="121" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="112" start="108" name="Poss"/>
+                    <label end="151" start="121" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="11-Wbeneficial,adverse,detrimental-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="18" aPos="77031578" ID="1284924">
+            <text>With respect to morbidity and mortality , the 1984 Conference adopted recommendations concerning the beneficial effect of healthful childbearing patterns on the health of mothers and their children .</text>
+            <annotationSet cDate="11/01/2004 04:43:26 PST Mon" status="UNANN" ID="2018038">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="in"/>
+                    <label end="11" start="5" name="nn"/>
+                    <label end="14" start="13" name="to"/>
+                    <label end="24" start="16" name="nn"/>
+                    <label end="28" start="26" name="cc"/>
+                    <label end="38" start="30" name="nn"/>
+                    <label end="40" start="40" name=","/>
+                    <label end="44" start="42" name="dt"/>
+                    <label end="49" start="46" name="cd"/>
+                    <label end="60" start="51" name="nn"/>
+                    <label end="68" start="62" name="VVD"/>
+                    <label end="84" start="70" name="nns"/>
+                    <label end="95" start="86" name="VVG"/>
+                    <label end="99" start="97" name="dt"/>
+                    <label end="110" start="101" name="jj"/>
+                    <label end="117" start="112" name="nn"/>
+                    <label end="120" start="119" name="in"/>
+                    <label end="130" start="122" name="jj"/>
+                    <label end="143" start="132" name="nn"/>
+                    <label end="152" start="145" name="nns"/>
+                    <label end="155" start="154" name="in"/>
+                    <label end="159" start="157" name="dt"/>
+                    <label end="166" start="161" name="nn"/>
+                    <label end="169" start="168" name="in"/>
+                    <label end="177" start="171" name="nns"/>
+                    <label end="181" start="179" name="cc"/>
+                    <label end="187" start="183" name="PP$"/>
+                    <label end="196" start="189" name="nns"/>
+                    <label end="198" start="198" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="11/01/2004 04:43:27 PST Mon" status="MANUAL" ID="2018039">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="117" start="112" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="6326" end="152" start="119" name="Influencing_situation"/>
+                    <label cBy="395" feID="6324" end="196" start="154" name="Dependent_situation"/>
+                    <label cBy="395" feID="6964" end="110" start="101" name="Degree"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="152" start="119" name="Dep"/>
+                    <label end="196" start="154" name="Dep"/>
+                    <label end="110" start="101" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="152" start="119" name="PP"/>
+                    <label end="196" start="154" name="PP"/>
+                    <label end="110" start="101" name="AJP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="12-Wexert,mitigate,assess-T-(1)">
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="500" aPos="98923940" ID="1284957">
+            <text>It has been assumed that inhaled NO exerts its effects in the lung and that there are no extrapulmonary effects .</text>
+            <annotationSet cDate="11/01/2004 04:43:46 PST Mon" status="UNANN" ID="2018104">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="5" start="3" name="VHZ"/>
+                    <label end="10" start="7" name="VBN"/>
+                    <label end="18" start="12" name="VVN"/>
+                    <label end="23" start="20" name="wdt"/>
+                    <label end="31" start="25" name="VVN"/>
+                    <label end="34" start="33" name="uh"/>
+                    <label end="41" start="36" name="VVZ"/>
+                    <label end="45" start="43" name="PP$"/>
+                    <label end="53" start="47" name="nns"/>
+                    <label end="56" start="55" name="in"/>
+                    <label end="60" start="58" name="dt"/>
+                    <label end="65" start="62" name="nn"/>
+                    <label end="69" start="67" name="cc"/>
+                    <label end="74" start="71" name="in"/>
+                    <label end="80" start="76" name="ex"/>
+                    <label end="84" start="82" name="vbp"/>
+                    <label end="87" start="86" name="dt"/>
+                    <label end="102" start="89" name="jj"/>
+                    <label end="110" start="104" name="nns"/>
+                    <label end="112" start="112" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="11/01/2004 04:43:46 PST Mon" status="MANUAL" ID="2018105">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="53" start="47" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="6322" end="65" start="55" name="Dependent_entity"/>
+                    <label cBy="395" feID="6321" end="45" start="43" name="Influencing_entity"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="65" start="55" name="Dep"/>
+                    <label end="45" start="43" name="Gen"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="65" start="55" name="PP"/>
+                    <label end="45" start="43" name="Poss"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="41" start="36" name="Gov"/>
+                    <label end="65" start="43" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="1409" aPos="96662224" ID="1284968">
+            <text>Few studies have been carried out assessing the effect of vitamin supplementation on adenomatous polyps or colorectal cancer .</text>
+            <annotationSet cDate="11/01/2004 04:43:52 PST Mon" status="UNANN" ID="2018126">
+                <layer rank="1" name="PENN">
+                    <label end="2" start="0" name="jj"/>
+                    <label end="10" start="4" name="nns"/>
+                    <label end="15" start="12" name="VHP"/>
+                    <label end="20" start="17" name="VBN"/>
+                    <label end="28" start="22" name="VVN"/>
+                    <label end="32" start="30" name="in"/>
+                    <label end="42" start="34" name="VVG"/>
+                    <label end="46" start="44" name="dt"/>
+                    <label end="53" start="48" name="nn"/>
+                    <label end="56" start="55" name="in"/>
+                    <label end="64" start="58" name="nn"/>
+                    <label end="80" start="66" name="nn"/>
+                    <label end="83" start="82" name="in"/>
+                    <label end="95" start="85" name="jj"/>
+                    <label end="102" start="97" name="nns"/>
+                    <label end="105" start="104" name="cc"/>
+                    <label end="116" start="107" name="jj"/>
+                    <label end="123" start="118" name="nn"/>
+                    <label end="125" start="125" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="11/01/2004 04:43:52 PST Mon" status="MANUAL" ID="2018127">
+                <layer rank="1" name="Target">
+                    <label cBy="618" end="53" start="48" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="395" feID="6326" end="80" start="55" name="Influencing_situation"/>
+                    <label cBy="395" feID="6324" end="123" start="82" name="Dependent_situation"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="80" start="55" name="Dep"/>
+                    <label end="123" start="82" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="80" start="55" name="PP"/>
+                    <label end="123" start="82" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="42" start="34" name="Gov"/>
+                    <label end="123" start="44" name="X"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

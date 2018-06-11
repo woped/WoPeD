@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="731" cDate="02/07/2001 04:11:49 PST Wed" name="Body_movement" ID="16" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;This frame contains words for motions or actions an &lt;fen&gt;Agent&lt;/fen&gt; performs using some part of his/her body. 
+
+A number of words in this frame occur as blends with Communication, in which the action has an &lt;fen&gt;Addressee&lt;/fen&gt;.  For example, 
+
+&lt;ex&gt;Pat &lt;t&gt;nodded&lt;/t&gt; &lt;fex name="Addressee"&gt;at Kim&lt;/fex&gt;.&lt;/ex&gt;
+
+These examples differ from Communication.Gesture in that no specific message need be expressed, as in 
+&lt;ex&gt;She &lt;t&gt;nodded&lt;/t&gt; to him to sit down.&lt;/ex&gt;
+
+Since this frame involves a particular type of motion, it contains the frame elements &lt;fen&gt;Source&lt;/fen&gt;, &lt;fen&gt;Path&lt;/fen&gt;, &lt;fen&gt;Goal&lt;/fen&gt; and &lt;fen&gt;Area&lt;/fen&gt;, which originate in the motion frame.  All of these frame elements are generally expressed in PP Complements. 
+&lt;ex&gt;The boy &lt;t&gt;swung&lt;/t&gt; his legs &lt;fex name="Source"&gt;from under the table&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:11:49 PST Wed" abbrev="Agt" name="Agent" ID="68">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Agent&lt;/fen&gt; uses some part of his/her body to perform the action. &lt;fen&gt;Agent&lt;/fen&gt; occurs as the External Argument.
+&lt;ex&gt;&lt;fex name="Agent"&gt;The boy&lt;/fex&gt; &lt;t&gt;swung&lt;/t&gt; his legs.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="7CCD73" fgColor="FFFFFF" coreType="Core" cBy="731" cDate="02/07/2001 04:11:49 PST Wed" abbrev="BodP" name="Body_part" ID="69">
+        <definition>&lt;def-root&gt;With some verbs in this frame, the &lt;fen&gt;Body_part&lt;/fen&gt; involved in the action is specified by the meaning of the verb and cannot be expressed separately.  For example, 
+&lt;ex&gt;Pat &lt;t&gt;yawned&lt;/t&gt; (*his mouth).&lt;/ex&gt; 
+With others, the &lt;fen&gt;Body_part&lt;/fen&gt; is specified by the verb but can optionally be expressed separately, although its presence is generally redundant, as in
+&lt;ex&gt;Pat &lt;t&gt;nodded&lt;/t&gt; &lt;fex name="BodP"&gt;(his head)&lt;/fex&gt;.&lt;/ex&gt;
+ A few verbs have a default &lt;fen&gt;Body_part&lt;/fen&gt; which need not be expressed, but can be overridden by the expression of some other &lt;fen&gt;Body_part&lt;/fen&gt;.
+&lt;ex&gt;Pat &lt;t&gt;waved&lt;/t&gt; &lt;fex name="BodP"&gt;(his arms)&lt;/fex&gt;.&lt;/ex&gt;
+(The objectless version of the sentence, &lt;ment&gt;Pat waved&lt;/ment&gt;, is a blend with communication.) The remainder of the verbs require a &lt;fen&gt;Body_part&lt;/fen&gt; to be expressed in a separate constituent: 
+&lt;ex&gt;Pat &lt;t&gt;rolled&lt;/t&gt; &lt;fex name="BodP"&gt;his eyes&lt;/fex&gt;.&lt;/ex&gt;
+&lt;fen&gt;Body_part&lt;/fen&gt; generally occurs as the direct object. &lt;/def-root&gt;</definition>
+        <semType name="Body_part" ID="10"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="731" cDate="02/07/2001 04:11:49 PST Wed" abbrev="ICause" name="Internal_cause" ID="70">
+        <definition>&lt;def-root&gt;Body movement may be prompted by either some outside phenomenon or occurrence, or by an &lt;fen&gt;Internal_cause&lt;/fen&gt;, the &lt;fen&gt;Agent&lt;/fen&gt;'s mental or emotional state. &lt;fen&gt;Internal_cause&lt;/fen&gt; is expressed in a PP Complement.
+&lt;ex&gt;Kim  &lt;t&gt;bent&lt;/t&gt; her head &lt;fex name="ICause"&gt;in concentration&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;Kim &lt;t&gt;threw&lt;/t&gt; her hands up &lt;fex name="ICause"&gt;in despair&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="731" cDate="02/07/2001 04:11:49 PST Wed" abbrev="Cause" name="External_cause" ID="71">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Cause&lt;/fen&gt; is something in the external environment that causes the &lt;fen&gt;Agent&lt;/fen&gt; to move part of his/her body.  &lt;fen&gt;Cause&lt;/fen&gt; is usually expressed in a PP Complement:.
+&lt;ex&gt;Pat &lt;t&gt;jerked&lt;/t&gt; her head &lt;fex name="Cause"&gt;at the sudden noise&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;Kim's nose &lt;t&gt;wrinkled&lt;/t&gt; &lt;fex name="Cause"&gt;at the smell&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;/ex&gt;
+&lt;fen&gt;Cause&lt;/fen&gt; does not include any physical force moving the &lt;fen&gt;Agent&lt;/fen&gt;'s &lt;fen&gt;Body_part&lt;/fen&gt;.  This type of situation is described by the frame Motion.Cause-to-move. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="731" cDate="02/07/2001 04:11:50 PST Wed" abbrev="Add" name="Addressee" ID="72">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Addressee&lt;/fen&gt; only occurs in the Body-movement frame in sentences which are blends with Communication.  Where it occurs, it is typically a PP Complement: 
+&lt;ex&gt;Pat &lt;t&gt;fluttered&lt;/t&gt; his eyelashes &lt;fex name="Add"&gt;at me&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="731" cDate="02/07/2001 04:11:50 PST Wed" abbrev="Src" name="Source" ID="73">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Source&lt;/fen&gt; is the place from which the &lt;fen&gt;Body_part&lt;/fen&gt; is moved.
+&lt;ex&gt;The boy &lt;t&gt;swung&lt;/t&gt; his legs &lt;fex name="Source"&gt;from under the table&lt;/fex&gt;.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+        <semType name="Source" ID="151"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Peripheral" cBy="731" cDate="02/07/2001 04:11:50 PST Wed" abbrev="Path" name="Path" ID="74">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Path&lt;/fen&gt; identifies the trajectory of motion of the &lt;fen&gt;Body_part&lt;/fen&gt; without specifying a start or end point.
+&lt;ex&gt;Pat &lt;t&gt;flung&lt;/t&gt; his arms &lt;fex name="Path"&gt;up&lt;/fex&gt;. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Peripheral" cBy="731" cDate="02/07/2001 04:11:50 PST Wed" abbrev="Goal" name="Goal" ID="75">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Goal&lt;/fen&gt; is any expression that identifies the endpoint of movement. 
+
+&lt;ex&gt;Pat &lt;t&gt;dropped&lt;/t&gt; her hands &lt;fex name="Goal"&gt;to her lap&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Goal" ID="153"/>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Peripheral" cBy="731" cDate="02/07/2001 04:11:50 PST Wed" abbrev="Area" name="Area" ID="76">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Area&lt;/fen&gt; identifies any expression describing a region in which the motion takes place when the motion is understood to be irregular and not to consist of a single linear path.  (This FE should be contrasted with &lt;fen&gt;Place&lt;/fen&gt;.)
+
+&lt;ex&gt;Pat &lt;t&gt;waved&lt;/t&gt; her arms &lt;fex name="Area"&gt;about her head&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/21/2001 07:38:05 PDT Thu" abbrev="Degr" name="Degree" ID="914">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Degree&lt;/fen&gt; to which the event occurs.&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="06/21/2001 07:38:05 PDT Thu" abbrev="Depict" name="Depictive" ID="915">
+        <definition>&lt;def-root&gt;This FE identifies any &lt;fen&gt;Depictive&lt;/fen&gt; phrase describing the actor of an action.
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/21/2001 07:38:05 PDT Thu" abbrev="Manr" name="Manner" ID="918">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Manner&lt;/fen&gt; in which the body movement occurs.&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="06/21/2001 07:38:05 PDT Thu" abbrev="Result" name="Result" ID="920">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Result&lt;/fen&gt; of an event.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="06/21/2001 08:44:46 PDT Thu" abbrev="Msg" name="Message" ID="928">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Message&lt;/fen&gt; that the body movement conveys.&lt;/def-root&gt;</definition>
+        <semType name="Message" ID="56"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="11/05/2001 04:07:18 PST Mon" abbrev="Time" name="Time" ID="2098">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Time&lt;/fen&gt; when the body movement occurs.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="7FFF00" fgColor="000000" coreType="Extra-Thematic" cBy="840" cDate="05/29/2003 01:40:01 PDT Thu" abbrev="" name="Sub-region" ID="4508">
+        <definition>&lt;def-root&gt;This FE specifies the subregion of the body that is involved with movement.
+&lt;ex&gt;&lt;fex name="Agent"&gt;He&lt;/fex&gt; &lt;t&gt;bent&lt;/t&gt; &lt;fex name="Body_part"&gt;his legs&lt;/fex&gt; &lt;fex name="Sub-region"&gt;at his knees&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="840" cDate="05/29/2003 02:02:16 PDT Thu" abbrev="" name="Purpose" ID="4509">
+        <definition>&lt;def-root&gt;The purpose of the body movement.
+&lt;ex&gt;He winked his eye &lt;fex name="Purpose"&gt;to give her a hint&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="EEE8AA" fgColor="000000" coreType="Peripheral" cBy="840" cDate="05/29/2003 02:51:02 PDT Thu" abbrev="" name="Cognate_event" ID="4510">
+        <definition>&lt;def-root&gt;This FE identifies the event noun of the verb.
+&lt;ex&gt;He &lt;t&gt;clapped&lt;/t&gt; &lt;fex name="Cognate_event"&gt;his loudest clap&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/10/2004 05:39:12 PDT Thu" abbrev="dur" name="Duration" ID="6503">
+        <definition>&lt;def-root&gt;The period of time during which the movement of a &lt;fen&gt;Body_part&lt;/fen&gt; occurs.
+
+&lt;ex&gt;It seemed like we were clapping our hands &lt;fex name="dur"&gt;for hours&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="d0d0d0" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="06/10/2004 05:44:27 PDT Thu" abbrev="pla" name="Place" ID="6504">
+        <definition>&lt;def-root&gt;The location within which the movement of a &lt;fen&gt;Body_part&lt;/fen&gt; takes place.
+
+&lt;ex&gt;There was singing for joy in the streets, and &lt;fex name="pla"&gt;everywhere&lt;/fex&gt; people lifting their arms into the air. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="000000" coreType="Extra-Thematic" cBy="277" cDate="06/21/2004 12:18:31 PDT Mon" abbrev="ree" name="Re_encoding" ID="6516">
+        <definition>&lt;def-root&gt;An alternative description of the Body_movement.
+
+&lt;ex&gt;&lt;fex name="ree"&gt;In a bid to reenter the conversation&lt;/fex&gt; , he kept &lt;t&gt;waving&lt;/t&gt; his hand towards the rest of them.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="d0d0d0" fgColor="000000" coreType="Extra-Thematic" cBy="664" cDate="11/08/2004 04:54:10 PST Mon" abbrev="coo" name="Coordinated_event" ID="7213">
+        <definition>&lt;def-root&gt;An event that the &lt;fen&gt;Agent&lt;/fen&gt; perceives and responds to by moving in coordination with it.
+
+&lt;ex&gt;They &lt;t&gt;bobbed&lt;/t&gt; their heads &lt;fex name="coo"&gt;to the beat&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Agent" ID="68"/>
+        <memberFE name="Body_part" ID="69"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Motion</relatedFrame>
+        <relatedFrame>Observable_body_parts</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Facial_expression</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="FN1_Sent" POS="V" name="arch.v" ID="65" lemmaID="1846" cBy="731" cDate="02/08/2001 01:27:31 PST Thu">
+        <definition>FN: To from or cause a curved structure.</definition>
+        <sentenceCount annotated="23" total="104"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="arch"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="bat.v" ID="66" lemmaID="3016" cBy="731" cDate="02/08/2001 01:27:32 PST Thu">
+        <definition>COD: flutter (one's eyelashes).</definition>
+        <sentenceCount annotated="13" total="122"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="bat"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="bend.v" ID="67" lemmaID="3348" cBy="731" cDate="02/08/2001 01:27:32 PST Thu">
+        <definition>FN: to move a body part (usu the head or the extremities) so it forms a curve or angle with the body part it is attached to</definition>
+        <sentenceCount annotated="51" total="383"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="bend"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="blink.v" ID="68" lemmaID="3844" cBy="731" cDate="02/08/2001 01:27:32 PST Thu">
+        <definition>COD: shut and open the eyes quickly.</definition>
+        <sentenceCount annotated="50" total="252"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="blink"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="bob.v" ID="69" lemmaID="4019" cBy="731" cDate="02/08/2001 01:27:32 PST Thu">
+        <definition>COD: make or cause to make a quick, short movement up and down. </definition>
+        <sentenceCount annotated="19" total="122"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="bob"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="clap.v" ID="70" lemmaID="6649" cBy="731" cDate="02/08/2001 01:27:32 PST Thu">
+        <definition>FN: strike the palms of (one's hands) together repeatedly</definition>
+        <sentenceCount annotated="20" total="155"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="clap"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="cock.v" ID="71" lemmaID="7004" cBy="731" cDate="02/08/2001 01:27:32 PST Thu">
+        <definition>COD: bend a (limb or joint) at an angle.</definition>
+        <sentenceCount annotated="27" total="146"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="cock"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="crane.v" ID="72" lemmaID="8784" cBy="731" cDate="02/08/2001 01:27:32 PST Thu">
+        <definition>COD: stretch out (one's neck) in order to see something.</definition>
+        <sentenceCount annotated="25" total="161"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="crane"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="cross.v" ID="73" lemmaID="9016" cBy="731" cDate="02/08/2001 01:27:32 PST Thu">
+        <definition>FN: to place a pair of extremities across each other</definition>
+        <sentenceCount annotated="22" total="274"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="cross"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="drop.v" ID="74" lemmaID="11821" cBy="731" cDate="02/08/2001 01:27:32 PST Thu">
+        <definition>FN: to move lower, to cause to sink</definition>
+        <sentenceCount annotated="20" total="145"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="drop"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="flap.v" ID="75" lemmaID="14611" cBy="731" cDate="02/08/2001 01:27:33 PST Thu">
+        <definition>FN: (for a body part) to move or be moved up and down or from side to side</definition>
+        <sentenceCount annotated="36" total="156"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="flap"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="flex.v" ID="76" lemmaID="14695" cBy="731" cDate="02/08/2001 01:27:33 PST Thu">
+        <definition>FN: contract a muscle (often in order to bend a joint)</definition>
+        <sentenceCount annotated="30" total="144"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="flex"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="fling.v" ID="77" lemmaID="14718" cBy="731" cDate="02/08/2001 01:27:33 PST Thu">
+        <definition>COD: throw forcefully; hurl.</definition>
+        <sentenceCount annotated="25" total="266"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="fling"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="flutter.v" ID="78" lemmaID="14854" cBy="731" cDate="02/08/2001 01:27:33 PST Thu">
+        <definition>FN: (usu for a straight, long body part) to move with a light irregular motion</definition>
+        <sentenceCount annotated="18" total="107"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="flutter"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="gnash.v" ID="80" lemmaID="16416" cBy="731" cDate="02/08/2001 01:27:33 PST Thu">
+        <definition>COD: grind (one's teeth) together, especially as a sign of anger.</definition>
+        <sentenceCount annotated="8" total="30"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="gnash"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="grind.v" ID="83" lemmaID="16852" cBy="731" cDate="02/08/2001 01:27:33 PST Thu">
+        <definition>COD: rub together gratingly.</definition>
+        <sentenceCount annotated="9" total="156"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="grind"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="hang.v" ID="84" lemmaID="17383" cBy="731" cDate="02/08/2001 01:27:33 PST Thu">
+        <definition>FN: to allow (one's head) to fall, droop</definition>
+        <sentenceCount annotated="17" total="297"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="hang"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="jerk.v" ID="85" lemmaID="20904" cBy="731" cDate="02/08/2001 01:27:33 PST Thu">
+        <definition>COD: move quickly, sharply, suddenly</definition>
+        <sentenceCount annotated="70" total="274"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="jerk"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="lift.v" ID="86" lemmaID="22289" cBy="731" cDate="02/08/2001 01:27:34 PST Thu">
+        <definition>COD: raise to a higher position or level</definition>
+        <sentenceCount annotated="61" total="373"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="lift"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="nod.v" ID="87" lemmaID="25964" cBy="731" cDate="02/08/2001 01:27:34 PST Thu">
+        <definition>FN: to allow (one's head) to fall, droop</definition>
+        <sentenceCount annotated="47" total="278"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="nod"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="pout.v" ID="88" lemmaID="29979" cBy="731" cDate="02/08/2001 01:27:34 PST Thu">
+        <definition>COD: push one's lips or bottom lip forward as an expression of petulant annoyance or in order to make oneself look sexually attractive. </definition>
+        <sentenceCount annotated="7" total="26"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="pout"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="pucker.v" ID="89" lemmaID="31058" cBy="731" cDate="02/08/2001 01:27:34 PST Thu">
+        <definition>COD: tightly gather or contract into wrinkles or small folds.</definition>
+        <sentenceCount annotated="21" total="68"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="pucker"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="purse.v" ID="90" lemmaID="31254" cBy="731" cDate="02/08/2001 01:27:34 PST Thu">
+        <definition>COD: (with reference to the lips) pucker or contract.</definition>
+        <sentenceCount annotated="23" total="101"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="purse"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="roll.v" ID="91" lemmaID="33454" cBy="731" cDate="02/08/2001 01:27:34 PST Thu">
+        <definition>FN: move a body part on an axis, rotate</definition>
+        <sentenceCount annotated="36" total="249"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="roll"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="shake.v" ID="93" lemmaID="35335" cBy="731" cDate="02/08/2001 01:27:34 PST Thu">
+        <definition>COD: move forcefully or quickly up and down or to and fro.</definition>
+        <sentenceCount annotated="48" total="352"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="shake"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="shrug.v" ID="94" lemmaID="35740" cBy="731" cDate="02/08/2001 01:27:34 PST Thu">
+        <definition>COD: raise (one's shoulders) slightly and momentarily to express doubt, ignorance, or indifference.</definition>
+        <sentenceCount annotated="31" total="199"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="shrug"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="shuffle.v" ID="95" lemmaID="35747" cBy="731" cDate="02/08/2001 01:27:35 PST Thu">
+        <definition>COD: restlessly shift one's position.</definition>
+        <sentenceCount annotated="13" total="149"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="shuffle"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="stretch.v" ID="98" lemmaID="38324" cBy="731" cDate="02/08/2001 01:27:35 PST Thu">
+        <definition>COD: straighten or extend one's body or a part of one's body to its full length.</definition>
+        <sentenceCount annotated="52" total="445"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="stretch"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="swing.v" ID="99" lemmaID="39170" cBy="731" cDate="02/08/2001 01:27:35 PST Thu">
+        <definition>FN: move or cause to move back and forth or from side to side</definition>
+        <sentenceCount annotated="42" total="274"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="swing"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="throw.v" ID="100" lemmaID="40303" cBy="731" cDate="02/08/2001 01:27:35 PST Thu">
+        <definition>COD: move quickly, hurriedly, or roughly</definition>
+        <sentenceCount annotated="34" total="294"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="throw"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="toss.v" ID="101" lemmaID="40800" cBy="731" cDate="02/08/2001 01:27:35 PST Thu">
+        <definition>COD: jerk (one's head or hair) sharply backwards</definition>
+        <sentenceCount annotated="19" total="273"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="toss"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="twitch.v" ID="102" lemmaID="41644" cBy="731" cDate="02/08/2001 01:27:35 PST Thu">
+        <definition>COD: make or cause to make a short, sudden jerking movement.</definition>
+        <sentenceCount annotated="40" total="132"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="twitch"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="wag.v" ID="103" lemmaID="43315" cBy="731" cDate="02/08/2001 01:27:35 PST Thu">
+        <definition>COD: (especially with reference to an animal's tail) move rapidly to and fro.</definition>
+        <sentenceCount annotated="38" total="128"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="wag"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="waggle.v" ID="104" lemmaID="43326" cBy="731" cDate="02/08/2001 01:27:35 PST Thu">
+        <definition>COD: move with short quick movements from side to side or up and down.</definition>
+        <sentenceCount annotated="28" total="81"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="waggle"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="wave.v" ID="105" lemmaID="43588" cBy="731" cDate="02/08/2001 01:27:36 PST Thu">
+        <definition>COD: move (one's hand or arm, or something held in one's hand) to and fro.</definition>
+        <sentenceCount annotated="38" total="293"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="wave"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="wiggle.v" ID="106" lemmaID="44154" cBy="731" cDate="02/08/2001 01:27:36 PST Thu">
+        <definition>COD: move or cause to move with short movements up and down or from side to side.</definition>
+        <sentenceCount annotated="25" total="65"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="wiggle"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="wink.v" ID="107" lemmaID="44255" cBy="731" cDate="02/08/2001 01:27:36 PST Thu">
+        <definition>COD: close and open one eye quickly, typically as a signal of affection or greeting or to convey a message.</definition>
+        <sentenceCount annotated="27" total="129"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="wink"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="wrinkle.v" ID="108" lemmaID="44587" cBy="731" cDate="02/08/2001 01:27:36 PST Thu">
+        <definition>COD: make or become wrinkled.</definition>
+        <sentenceCount annotated="29" total="132"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="wrinkle"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="curtsy.n" ID="3975" lemmaID="45193" cBy="669" cDate="09/14/2001 04:24:47 PDT Fri">
+        <definition>COD: a woman's or girl's formal greeting made by bending the knees with one foot in front of the other.</definition>
+        <sentenceCount annotated="10" total="67"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="curtsy"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="kneel.v" ID="3976" lemmaID="21411" cBy="669" cDate="09/14/2001 04:39:46 PDT Fri">
+        <definition>COD: fall or rest on a knee or the knees.</definition>
+        <sentenceCount annotated="27" total="290"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="kneel"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="writhe.v" ID="3978" lemmaID="44600" cBy="605" cDate="09/17/2001 12:09:58 PDT Mon">
+        <definition>COD: twist or squirm in pain or as if in pain</definition>
+        <sentenceCount annotated="16" total="150"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="writhe"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="wriggle.v" ID="3979" lemmaID="44580" cBy="605" cDate="09/17/2001 12:15:59 PDT Mon">
+        <definition>COD: twist and turn with quick writhing movements</definition>
+        <sentenceCount annotated="33" total="235"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="wriggle"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="shudder.v" ID="3980" lemmaID="35745" cBy="605" cDate="09/17/2001 12:30:22 PDT Mon">
+        <definition>COD: tremble or shake convulsively, especially as a result of fear or repugnance. </definition>
+        <sentenceCount annotated="22" total="197"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="shudder"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="fidget.v" ID="3981" lemmaID="14280" cBy="605" cDate="09/17/2001 12:37:31 PDT Mon">
+        <definition>COD: make small movements through nervousness or impatience. </definition>
+        <sentenceCount annotated="17" total="95"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="fidget"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="yawn.v" ID="4003" lemmaID="44671" cBy="669" cDate="09/17/2001 06:23:47 PDT Mon">
+        <definition>COD: involuntarily open one's mouth wide and inhale deeply due to tiredness or boredom.</definition>
+        <sentenceCount annotated="12" total="131"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="yawn"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="jiggle.v" ID="4083" lemmaID="20955" cBy="605" cDate="09/21/2001 04:55:58 PDT Fri">
+        <definition>COD: move lightly and quickly from side to side or up and down. "The car jiggled on its springs."</definition>
+        <sentenceCount annotated="4" total="42"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="jiggle"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="shiver.v" ID="4084" lemmaID="35581" cBy="605" cDate="09/21/2001 04:59:24 PDT Fri">
+        <definition>COD: shake slightly and uncontrollably as a result of being cold, frightened, or excited.</definition>
+        <sentenceCount annotated="34" total="246"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="shiver"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="curtsy.v" ID="4085" lemmaID="45218" cBy="605" cDate="09/21/2001 05:20:46 PDT Fri">
+        <definition>COD: perform a curtsy</definition>
+        <sentenceCount annotated="5" total="21"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="curtsy"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="duck.v" ID="4990" lemmaID="11895" cBy="664" cDate="02/21/2002 03:19:55 PST Thu">
+        <definition>COD: lower the head or body quickly to avoid a blow or missile or so as not to be seen.</definition>
+        <sentenceCount annotated="12" total="270"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="duck"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="crease.v" ID="6171" lemmaID="8849" cBy="296" cDate="06/18/2002 10:10:51 PDT Tue">
+        <definition>COD: make a crease in the skin, especially the face </definition>
+        <sentenceCount annotated="5" total="161"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="crease"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="smack.v" ID="9717" lemmaID="36469" cBy="605" cDate="10/06/2003 05:51:58 PDT Mon">
+        <definition>COD: part (one's lips) noisily</definition>
+        <sentenceCount annotated="9" total="143"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="smack"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="open.v" ID="10986" lemmaID="26777" cBy="664" cDate="09/20/2004 06:26:40 PDT Mon">
+        <definition>FN: to move (a bodypart) so that it is open.</definition>
+        <sentenceCount annotated="7" total="7"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="open"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="close.v" ID="10987" lemmaID="6856" cBy="664" cDate="09/20/2004 06:27:17 PDT Mon">
+        <definition>FN: to move (a bodypart) so that it is closed.</definition>
+        <sentenceCount annotated="8" total="8"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="close"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="shut.v" ID="10992" lemmaID="35756" cBy="664" cDate="09/20/2004 06:49:10 PDT Mon">
+        <definition>FN: to move (a bodypart) such that it is closed.</definition>
+        <sentenceCount annotated="6" total="6"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="shut"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="V" name="twiddle.v" ID="11011" lemmaID="41614" cBy="664" cDate="09/21/2004 12:37:44 PDT Tue">
+        <definition>FN: move (one's thumbs), generally as a humorously pointless way to spend time.</definition>
+        <sentenceCount annotated="2" total="2"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="twiddle"/>
+    </lexUnit>
+    <lexUnit status="FN1_Sent" POS="V" name="stamp.v" ID="11148" lemmaID="37771" cBy="605" cDate="11/12/2004 06:53:03 PST Fri">
+        <definition>FN: bring down (one's foot) heavily on the ground or an object, perhaps crushing, or flattening it.</definition>
+        <sentenceCount annotated="81" total="367"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="stamp"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="crinkle.v" ID="11954" lemmaID="8952" cBy="303" cDate="04/25/2005 06:24:46 PDT Mon">
+        <definition>COD: form or cause to form small creases or wrinkles.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="crinkle"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="crumple.v" ID="11955" lemmaID="9127" cBy="303" cDate="04/25/2005 06:29:23 PDT Mon">
+        <definition>FN: crease or wrinkle</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="crumple"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="scrunch.v" ID="11962" lemmaID="34612" cBy="303" cDate="04/27/2005 05:37:56 PDT Wed">
+        <definition>FN: squeeze together </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="scrunch"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="move.v" ID="15305" lemmaID="25100" cBy="597" cDate="02/26/2009 02:03:57 PST Thu">
+        <definition>FN: change the position/location of a body part </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="move"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="twist.v" ID="15376" lemmaID="41638" cBy="618" cDate="06/18/2009 03:00:30 PDT Thu">
+        <definition>FN: move part of one's body around; writhe, wriggle.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="twist"/>
+    </lexUnit>
+</frame>

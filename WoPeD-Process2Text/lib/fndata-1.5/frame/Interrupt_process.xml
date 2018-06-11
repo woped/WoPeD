@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="618" cDate="03/23/2007 09:21:38 PDT Fri" name="Interrupt_process" ID="1894" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A &lt;fen&gt;Cause&lt;/fen&gt; (or associated &lt;fen&gt;Actor&lt;/fen&gt;) causes an ongoing &lt;fen&gt;Process&lt;/fen&gt; to temporarily stop.&lt;/def-root&gt;</definition>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="03/23/2007 09:21:38 PDT Fri" abbrev="Cause" name="Cause" ID="11253">
+        <definition>&lt;def-root&gt;A force, process, or event that produces the interruption.
+
+&lt;ex&gt;&lt;fex name="Cause"&gt;Leaving the page after you've clicked "Download"&lt;/fex&gt; will &lt;t&gt;interrupt&lt;/t&gt; the transfer.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="03/23/2007 09:21:38 PDT Fri" abbrev="pro" name="Process" ID="11254">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Process&lt;/fen&gt; goes into a paused state due to the &lt;fen&gt;Cause&lt;/fen&gt; or &lt;fen&gt;Actor&lt;/fen&gt;.
+
+&lt;ex&gt;Leaving the page after you've clicked "Download" will &lt;t&gt;interrupt&lt;/t&gt; &lt;fex name="Process"&gt;the transfer&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="03/23/2007 09:21:38 PDT Fri" abbrev="Place" name="Place" ID="11256">
+        <definition>&lt;def-root&gt;Where the interruption takes place.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="03/23/2007 09:21:38 PDT Fri" abbrev="Reas" name="Reason" ID="11257">
+        <definition>&lt;def-root&gt;The Reason for which the interruption occurs.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="03/23/2007 09:21:38 PDT Fri" abbrev="Time" name="Time" ID="11258">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Time&lt;/fen&gt; when the interruption occurs.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="03/23/2007 09:21:38 PDT Fri" abbrev="act" name="Actor" ID="11259">
+        <definition>&lt;def-root&gt;An entity which participates in a &lt;fen&gt;Cause&lt;/fen&gt;, perhaps volitionally and perhaps not, but effectively causing the interruption.
+
+&lt;ex&gt;In such cases &lt;fex name="Actor"&gt;the server&lt;/fex&gt; will automatically &lt;t&gt;interrupt&lt;/t&gt; the process.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="000000" coreType="Extra-Thematic" cBy="618" cDate="03/23/2007 09:21:39 PDT Fri" abbrev="" name="Circumstances" ID="11260">
+        <definition>&lt;def-root&gt;Circumstances describe the state of the world (at a particular time and place) which is specifically independent of the event itself and any of its participants. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="03/23/2007 09:21:39 PDT Fri" abbrev="man" name="Manner" ID="11261">
+        <definition>&lt;def-root&gt;Any holistic description of the event, including overall depictions (&lt;ment&gt;the same way&lt;/ment&gt;) and descriptions pertaining to the &lt;fen&gt;Actor&lt;/fen&gt; or &lt;fen&gt;Cause&lt;/fen&gt;'s influence on the character of the event.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="7CCD73" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="618" cDate="03/23/2007 09:21:39 PDT Fri" abbrev="" name="Explanation" ID="11262">
+        <definition>&lt;def-root&gt;The natural reason for which the interruption occurs. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="03/23/2007 09:21:39 PDT Fri" abbrev="" name="Means" ID="11263">
+        <definition>&lt;def-root&gt;An action or sub-event through which the &lt;fen&gt;Actor&lt;/fen&gt; or &lt;fen&gt;Cause&lt;/fen&gt; interrupts the Process.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="618" cDate="03/23/2007 09:21:39 PDT Fri" abbrev="" name="Frequency" ID="11264">
+        <definition>&lt;def-root&gt;How often the interruption occurs.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="90876C" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="618" cDate="03/23/2007 09:21:39 PDT Fri" abbrev="con" name="Concessive" ID="11265">
+        <definition>&lt;def-root&gt;This FE signifies that the state of affairs expressed by the main clause (containing the target) occurs or holds, and something other than that state of affairs would be expected given the state of affairs in the concessive clause. &lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Transitive_action</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of">
+        <relatedFrame>Process_pause</relatedFrame>
+    </frameRelation>
+    <frameRelation type="See also"/>
+    <lexUnit status="Created" POS="A" name="uninterrupted.a" ID="14074" lemmaID="42198" cBy="618" cDate="03/23/2007 10:02:41 PDT Fri">
+        <definition>FN: without interruption.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="uninterrupted"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="interrupt.v" ID="14075" lemmaID="20408" cBy="618" cDate="03/23/2007 11:15:11 PDT Fri">
+        <definition>COD: stop the continuous progress of.</definition>
+        <sentenceCount annotated="20" total="190"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="interrupt"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="interruption.n" ID="14076" lemmaID="20410" cBy="618" cDate="03/23/2007 11:15:42 PDT Fri">
+        <definition>FN: the ceasing of a process by an event.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="interruption"/>
+    </lexUnit>
+</frame>

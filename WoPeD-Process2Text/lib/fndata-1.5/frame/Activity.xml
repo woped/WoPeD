@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="243" cDate="06/01/2001 04:23:25 PDT Fri" name="Activity" ID="124" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;This is an abstract frame for durative activities, in which the &lt;fen&gt;Agent&lt;/fen&gt; enters an ongoing state of the &lt;fen&gt;Activity&lt;/fen&gt;, remains in this state for some &lt;fen&gt;Duration&lt;/fen&gt; of &lt;fen&gt;Time&lt;/fen&gt;, and leaves this state either by finishing or by stopping.   The &lt;fen&gt;Agent&lt;/fen&gt;'s &lt;fen&gt;Activity&lt;/fen&gt; should be intentional.
+  
+This frame is intended mostly for the inheritance of common FEs, and to provide the frame structure for the beginning, ongoing, finish, or stop stage of an &lt;fen&gt;Activity&lt;/fen&gt;, each of which constitutes a subframe of this frame. This frame should be compared to the Process frame.&lt;/def-root&gt;</definition>
+    <semType name="Non-Lexical Frame" ID="16"/>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core-Unexpressed" cBy="243" cDate="06/01/2001 04:26:15 PDT Fri" abbrev="Act" name="Activity" ID="695">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Activity&lt;/fen&gt; in which the  &lt;fen&gt;Agent&lt;/fen&gt;  is engaged.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="07/16/2001 06:48:50 PDT Mon" abbrev="Dur" name="Duration" ID="1430">
+        <definition>&lt;def-root&gt;This FE identifies the amount of &lt;fen&gt;Time&lt;/fen&gt; an &lt;fen&gt;Activity&lt;/fen&gt; takes.&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="07/16/2001 06:48:50 PDT Mon" abbrev="Place" name="Place" ID="1431">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Place&lt;/fen&gt; where the &lt;fen&gt;Activity&lt;/fen&gt; occurs.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="07/16/2001 06:48:50 PDT Mon" abbrev="Time" name="Time" ID="1432">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Time&lt;/fen&gt; when the &lt;fen&gt;Activity&lt;/fen&gt; occurs.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="08/14/2001 06:21:19 PDT Tue" abbrev="Agent" name="Agent" ID="1617">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Agent&lt;/fen&gt; is engaged in the &lt;fen&gt;Activity&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="309" cDate="10/02/2003 11:36:51 PDT Thu" abbrev="Manr" name="Manner" ID="5351">
+        <definition>&lt;def-root&gt;Any description of the activity which is not covered by more specific FEs, including secondary effects (quietly, loudly), and general descriptions comparing events (the same way). It may also indicate salient characteristics of an &lt;fen&gt;Agent&lt;/fen&gt; that also affect the action (presumptuously, coldly, deliberately, eagerly, carefully).&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Process</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Apply_heat</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)">
+        <relatedFrame>Activity_finish</relatedFrame>
+        <relatedFrame>Activity_ongoing</relatedFrame>
+        <relatedFrame>Activity_ready_state</relatedFrame>
+        <relatedFrame>Activity_prepare</relatedFrame>
+        <relatedFrame>Activity_pause</relatedFrame>
+        <relatedFrame>Activity_stop</relatedFrame>
+        <relatedFrame>Activity_abandoned_state</relatedFrame>
+        <relatedFrame>Activity_done_state</relatedFrame>
+        <relatedFrame>Activity_paused_state</relatedFrame>
+        <relatedFrame>Activity_start</relatedFrame>
+        <relatedFrame>Activity_resume</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+</frame>

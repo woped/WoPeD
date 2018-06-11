@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="04/01/2004 03:18:43 PST Thu" name="Employer's_scenario" ID="1062" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;The sequence of events in which the &lt;fen&gt;Employer&lt;/fen&gt; hires an &lt;fen&gt;Employee&lt;/fen&gt;, employs them in a &lt;fen&gt;Position&lt;/fen&gt; for some &lt;fen&gt;Duration&lt;/fen&gt;, and finally lets them go from the &lt;fen&gt;Position&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    <semType name="Non-Lexical Frame" ID="16"/>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="04/01/2004 03:18:43 PST Thu" abbrev="Compense" name="Compensation" ID="6229">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Compensation&lt;/fen&gt; is the payment that the &lt;fen&gt;Employee&lt;/fen&gt; receives for performing a &lt;fen&gt;Task&lt;/fen&gt;.
+
+&lt;ex&gt;I think you should &lt;t&gt;hire&lt;/t&gt; him &lt;fex name="Compense"&gt;at $15 an hour&lt;/fex&gt;, not a penny more.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="04/01/2004 03:18:43 PST Thu" abbrev="Empee" name="Employee" ID="6230">
+        <definition>&lt;def-root&gt;The person who is obligated to perform some &lt;fen&gt;Task&lt;/fen&gt; in order to receive &lt;fen&gt;Compensation&lt;/fen&gt;.
+
+&lt;ex&gt;&lt;fex name="Empee"&gt;I&lt;/fex&gt; was just &lt;t&gt;hired&lt;/t&gt; yesterday!&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Human" ID="80"/>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="04/01/2004 03:18:43 PST Thu" abbrev="Emper" name="Employer" ID="6231">
+        <definition>&lt;def-root&gt;The person (or institution) that gives &lt;fen&gt;Compensation&lt;/fen&gt; to an &lt;fen&gt;Employee&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="04/01/2004 03:18:43 PST Thu" abbrev="Posit" name="Position" ID="6232">
+        <definition>&lt;def-root&gt;The label given to a particular type of employment.
+&lt;ex&gt;Look, I wasn't &lt;t&gt;hired&lt;/t&gt; &lt;fex name="Position"&gt;as your waitress&lt;/fex&gt;!&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="04/01/2004 03:18:43 PST Thu" abbrev="Task" name="Task" ID="6233">
+        <definition>&lt;def-root&gt;Task identifies the action that the &lt;fen&gt;Employee&lt;/fen&gt; is obligated to do for the &lt;fen&gt;Employer&lt;/fen&gt;.
+
+&lt;ex&gt;I was &lt;t&gt;hired&lt;/t&gt; &lt;fex name="Task"&gt;just to empty the trash cans&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="04/01/2004 03:18:43 PST Thu" abbrev="Field" name="Field" ID="6234">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Field&lt;/fen&gt; in which one works.
+&lt;ex&gt;We &lt;t&gt;hired&lt;/t&gt; only five &lt;fex name="Field"&gt;in finance&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="04/01/2004 03:18:43 PST Thu" abbrev="Dur" name="Duration" ID="6235">
+        <definition>&lt;def-root&gt;This FE identifies the amount of time for which the &lt;fen&gt;Employee&lt;/fen&gt; continues in employ.&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on">
+        <relatedFrame>Employment_scenario</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)">
+        <relatedFrame>Hiring</relatedFrame>
+        <relatedFrame>Employing</relatedFrame>
+        <relatedFrame>Firing</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+</frame>

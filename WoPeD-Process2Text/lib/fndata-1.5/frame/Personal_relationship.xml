@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="04/30/2001 12:55:11 PDT Mon" name="Personal_relationship" ID="102" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;The words in this frame have to do with people and the personal &lt;fen&gt;Relationship&lt;/fen&gt;s they are or can be a part of.  Some of the words denote people engaged in a particular kind of &lt;fen&gt;Relationship&lt;/fen&gt;, others denote the &lt;fen&gt;Relationship&lt;/fen&gt;, yet others the events bringing about or ending the &lt;fen&gt;Relationship&lt;/fen&gt;s. Many of the words presuppose an understanding of states and events that must have occurred before another event takes place or before a person can be classified in a certain way.&lt;/def-root&gt;</definition>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="04/30/2001 01:09:30 PDT Mon" abbrev="Partner_1" name="Partner_1" ID="487">
+        <definition>&lt;def-root&gt;That partner in the &lt;fen&gt;Relationship&lt;/fen&gt; who is realized as the subject of verbs in active form sentences, or of adjectives in predicative uses.
+&lt;ex&gt;&lt;fex name="Partner_1"&gt;John&lt;/fex&gt; is &lt;t&gt;married&lt;/t&gt; &lt;fex name="Partner_2"&gt;to Sue&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Partner_1"&gt;John&lt;/fex&gt; is &lt;fex name="Partner_2"&gt;Sue's&lt;/fex&gt; &lt;t&gt;husband&lt;/t&gt;.&lt;/ex&gt;
+When the target word is a noun (e.g. mistress, lover, bachelor), that noun is annotated  as &lt;fen&gt;Partner_1&lt;/fen&gt; and, if there is one, the other member of the &lt;fen&gt;Relationship&lt;/fen&gt; is &lt;fen&gt;Partner_2&lt;/fen&gt;.
+&lt;ex&gt;&lt;fex name="Partner_1"&gt;George&lt;/fex&gt; is a &lt;t&gt;bachelor&lt;/t&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Partner_2"&gt;George's&lt;/fex&gt; &lt;fex name="Partner_1"&gt;&lt;t&gt;mistress&lt;/t&gt;&lt;/fex&gt; left the party.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Partner_2"&gt;George&lt;/fex&gt; has  a &lt;fex name="Partner_1"&gt; &lt;t&gt;mistress&lt;/t&gt;&lt;/fex&gt;.&lt;/ex&gt;
+When there is a word other than the target that refers to &lt;fen&gt;Partner_1&lt;/fen&gt;, that word is tagged rather than the target.
+&lt;ex&gt;&lt;fex name="Partner_1"&gt;George&lt;/fex&gt; is &lt;fex name="Partner_2"&gt;Laura's&lt;/fex&gt; &lt;t&gt;lover&lt;/t&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <requiresFE name="Partner_2" ID="488"/>
+        <excludesFE name="Partners" ID="489"/>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="04/30/2001 01:11:44 PDT Mon" abbrev="Partner_2" name="Partner_2" ID="488">
+        <definition>&lt;def-root&gt;That partner in the &lt;fen&gt;Relationship&lt;/fen&gt; who is not expressed as the external argument.
+&lt;ex&gt;&lt;fex name="Partner_1"&gt;John&lt;/fex&gt; is &lt;fex name="Partner_2"&gt;Sue's&lt;/fex&gt; &lt;t&gt;husband&lt;/t&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Partner_1"&gt;John&lt;/fex&gt; is &lt;t&gt;engaged&lt;/t&gt; &lt;fex name="Partner_2"&gt;to Joan&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <requiresFE name="Partner_1" ID="487"/>
+        <excludesFE name="Partners" ID="489"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="04/30/2001 01:14:10 PDT Mon" abbrev="" name="Partners" ID="489">
+        <definition>&lt;def-root&gt;The joint construal of both &lt;fen&gt;Partners&lt;/fen&gt; in the &lt;fen&gt;Relationship&lt;/fen&gt;.
+&lt;ex&gt;&lt;fex name="Partners"&gt;John and Sue&lt;/fex&gt; are &lt;t&gt;married&lt;/t&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Partners"&gt;They&lt;/fex&gt; are &lt;t&gt;engaged&lt;/t&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="145" cDate="05/11/2001 09:44:46 PDT Fri" abbrev="Degr" name="Degree" ID="508">
+        <definition>&lt;def-root&gt;Degree to which event occurs&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="145" cDate="05/11/2001 09:44:46 PDT Fri" abbrev="Dep" name="Depictive" ID="509">
+        <definition>&lt;def-root&gt;Depictive phrase describing the &lt;fen&gt;Partners&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="145" cDate="05/11/2001 09:44:47 PDT Fri" abbrev="Manr" name="Manner" ID="512">
+        <definition>&lt;def-root&gt;Manner of performing an action&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Peripheral" cBy="145" cDate="05/11/2001 09:44:47 PDT Fri" abbrev="Means" name="Means" ID="513">
+        <definition>&lt;def-root&gt;An act whereby a focal participant achieves an action indicated by the target.
+&lt;ex&gt;He &lt;t&gt;befriended&lt;/t&gt; her &lt;fex name="Means"&gt;by staying after to talk every day&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="05/22/2001 05:58:31 PDT Tue" abbrev="rel" name="Relationship" ID="540">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Relationship&lt;/fen&gt; between &lt;fen&gt;Partners&lt;/fen&gt;.
+&lt;ex&gt;His wanderings caused the &lt;t&gt;break-up&lt;/t&gt; &lt;fex name="Relationship"&gt;of their marriage&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="000000" coreType="Peripheral" cBy="618" cDate="05/12/2003 10:11:53 PDT Mon" abbrev="" name="Duration" ID="4483">
+        <definition>&lt;def-root&gt;The length of the relationship.
+&lt;ex&gt;I'd like you to meet my &lt;fex name="Duration"&gt;long-time&lt;/fex&gt; &lt;t&gt;friend&lt;/t&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="000000" coreType="Peripheral" cBy="618" cDate="05/12/2003 10:13:39 PDT Mon" abbrev="Src" name="Source_of_relationship" ID="4484">
+        <definition>&lt;def-root&gt;The source of the relationship.
+&lt;ex&gt;Have you seen my old &lt;fex name="Src"&gt;High School&lt;/fex&gt; &lt;t&gt;buddy&lt;/t&gt; Johnathan Rich lately?&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Relation_between_individuals</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="N" name="husband.n" ID="2025" lemmaID="18713" cBy="605" cDate="04/30/2001 01:05:58 PDT Mon">
+        <definition>COD: a married man considered in relation to his wife</definition>
+        <sentenceCount annotated="30" total="180"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="husband"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="wife.n" ID="2026" lemmaID="44146" cBy="605" cDate="04/30/2001 01:16:33 PDT Mon">
+        <definition>COD: a married woman considered in relation to her husband</definition>
+        <sentenceCount annotated="52" total="180"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="wife"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="widow.n" ID="2027" lemmaID="44139" cBy="605" cDate="04/30/2001 01:18:16 PDT Mon">
+        <definition>COD: a woman who has lost her husband by death and has not married again</definition>
+        <sentenceCount annotated="20" total="121"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="widow"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="widower.n" ID="2028" lemmaID="44141" cBy="605" cDate="04/30/2001 01:18:47 PDT Mon">
+        <definition>COD: a man who has lost his wife by death and has not married again</definition>
+        <sentenceCount annotated="12" total="44"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="widower"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="widowed.a" ID="2029" lemmaID="44140" cBy="605" cDate="04/30/2001 01:19:55 PDT Mon">
+        <definition>FN: having lost a spouse by death (without re-marrying)</definition>
+        <sentenceCount annotated="14" total="53"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="widowed"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="spouse.n" ID="2030" lemmaID="37507" cBy="605" cDate="04/30/2001 01:20:40 PDT Mon">
+        <definition>COD: a husband or wife</definition>
+        <sentenceCount annotated="27" total="115"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="spouse"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="couple.n" ID="2031" lemmaID="8635" cBy="605" cDate="04/30/2001 01:22:20 PDT Mon">
+        <definition>COD: two people who are married or otherwise closely associated romantically or sexually</definition>
+        <sentenceCount annotated="17" total="80"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="couple"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="companion.n" ID="2032" lemmaID="7426" cBy="605" cDate="04/30/2001 01:23:27 PDT Mon">
+        <definition>FN: Person with whom one spends time.</definition>
+        <sentenceCount annotated="32" total="157"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="companion"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="divorcee.n" ID="2033" lemmaID="11324" cBy="605" cDate="04/30/2001 01:24:38 PDT Mon">
+        <definition>COD:  a divorced person</definition>
+        <sentenceCount annotated="11" total="30"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="divorcee"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="married.a" ID="2036" lemmaID="23543" cBy="605" cDate="04/30/2001 01:27:11 PDT Mon">
+        <definition>FN: the marital status of a husband or wife</definition>
+        <sentenceCount annotated="45" total="228"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="married"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="betrothed.n" ID="2037" lemmaID="3463" cBy="605" cDate="04/30/2001 01:29:06 PDT Mon">
+        <definition>COD:  the person to whom one is engaged.</definition>
+        <sentenceCount annotated="11" total="43"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="betrothed"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="bachelor.n" ID="2038" lemmaID="2586" cBy="605" cDate="04/30/2001 01:32:08 PDT Mon">
+        <definition>COD: a man who is not and has never been married</definition>
+        <sentenceCount annotated="9" total="52"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="bachelor"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="engaged.a" ID="2039" lemmaID="12759" cBy="605" cDate="04/30/2001 01:32:55 PDT Mon">
+        <definition>COD: having formally agreed to marry</definition>
+        <sentenceCount annotated="20" total="142"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="engaged"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="engagement.n" ID="2040" lemmaID="12760" cBy="605" cDate="04/30/2001 01:33:42 PDT Mon">
+        <definition>COD: a formal agreement to get married</definition>
+        <sentenceCount annotated="12" total="181"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="engagement"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="marriage.n" ID="2041" lemmaID="23540" cBy="605" cDate="04/30/2001 01:34:40 PDT Mon">
+        <definition>COD: the formal union of a man and a woman, typically as recognized by law, by which they become husband a</definition>
+        <sentenceCount annotated="32" total="140"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="marriage"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="boyfriend.n" ID="2042" lemmaID="4377" cBy="605" cDate="04/30/2001 01:37:06 PDT Mon">
+        <definition>COD: a person's regular male companion in a romantic or sexual relationship</definition>
+        <sentenceCount annotated="28" total="123"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="boyfriend"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="girlfriend.n" ID="2043" lemmaID="16260" cBy="605" cDate="04/30/2001 01:37:45 PDT Mon">
+        <definition>COD: a person's regular female companion in a romantic or sexual relationship</definition>
+        <sentenceCount annotated="25" total="137"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="girlfriend"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="single.a" ID="2044" lemmaID="35994" cBy="605" cDate="04/30/2001 01:38:57 PDT Mon">
+        <definition>COD: not involved in a stable romantic or sexual relationship</definition>
+        <sentenceCount annotated="20" total="162"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="single"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="date.v" ID="2046" lemmaID="9605" cBy="605" cDate="04/30/2001 01:42:07 PDT Mon">
+        <definition>COD: go on a date with</definition>
+        <sentenceCount annotated="16" total="297"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="date"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="break-up.n" ID="2049" lemmaID="4510" cBy="605" cDate="04/30/2001 01:49:01 PDT Mon">
+        <definition>FN: the ending of a personal relationship.</definition>
+        <sentenceCount annotated="20" total="68"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="break-up"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="lover.n" ID="2050" lemmaID="22846" cBy="605" cDate="04/30/2001 01:50:00 PDT Mon">
+        <definition>COD: a person having a sexual or romantic relationship with another</definition>
+        <sentenceCount annotated="28" total="143"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="lover"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="partner.n" ID="2051" lemmaID="27929" cBy="605" cDate="04/30/2001 01:50:56 PDT Mon">
+        <definition>COD: either member of a married couple or of an established unmarried couple</definition>
+        <sentenceCount annotated="16" total="180"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="partner"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="mistress.n" ID="2052" lemmaID="24591" cBy="605" cDate="04/30/2001 01:52:15 PDT Mon">
+        <definition>COD: a woman (other than a wife) having a sexual relationship with a married man</definition>
+        <sentenceCount annotated="29" total="138"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="mistress"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="suitor.n" ID="2054" lemmaID="38729" cBy="605" cDate="04/30/2001 01:53:58 PDT Mon">
+        <definition>COD: a man who pursues a relationship with a woman with a view to marriage</definition>
+        <sentenceCount annotated="14" total="83"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="suitor"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="court.v" ID="2055" lemmaID="8651" cBy="605" cDate="04/30/2001 01:55:50 PDT Mon">
+        <definition>COD: be involved with romantically, typically with the intention of marrying</definition>
+        <sentenceCount annotated="9" total="65"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="court"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="spinster.n" ID="2059" lemmaID="37346" cBy="605" cDate="04/30/2001 02:01:26 PDT Mon">
+        <definition>COD: (chiefly derogatory) an unmarried woman, typically an older woman beyond the usual age for marriage.</definition>
+        <sentenceCount annotated="9" total="44"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="spinster"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="estranged.a" ID="2107" lemmaID="44889" cBy="605" cDate="05/07/2001 12:28:01 PDT Mon">
+        <definition>FN: feeling indifference or hostility towards one's partner</definition>
+        <sentenceCount annotated="16" total="51"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="estranged"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="friend.n" ID="2177" lemmaID="15470" cBy="605" cDate="05/18/2001 12:17:07 PDT Fri">
+        <definition>COD: a person with whom one has a bond of mutual affection, typically one exclusive of sexual or family relations</definition>
+        <sentenceCount annotated="42" total="220"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="friend"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="betrothed.a" ID="2223" lemmaID="44897" cBy="664" cDate="05/22/2001 10:16:11 PDT Tue">
+        <definition>COD: formally engaged to be married</definition>
+        <sentenceCount annotated="5" total="23"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="betrothed"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="cohabit.v" ID="2224" lemmaID="7099" cBy="664" cDate="05/22/2001 11:28:22 PDT Tue">
+        <definition>COD: live together and have a sexual relationship without being married</definition>
+        <sentenceCount annotated="18" total="48"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="cohabit"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="cohabitation.n" ID="2225" lemmaID="7100" cBy="664" cDate="05/22/2001 12:19:31 PDT Tue">
+        <definition>FN: the act or state of living together, generally with a sexual relationship</definition>
+        <sentenceCount annotated="17" total="40"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="cohabitation"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="seeing.v" ID="2226" lemmaID="34852" cBy="664" cDate="05/22/2001 03:11:07 PDT Tue">
+        <definition>COD: meet regularly as a boyfriend or girlfriend</definition>
+        <sentenceCount annotated="5" total="190"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="seeing"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="widow.v" ID="2241" lemmaID="44903" cBy="664" cDate="05/22/2001 07:46:06 PDT Tue">
+        <definition>COD:  (passive only) to become a widow or widower</definition>
+        <sentenceCount annotated="7" total="40"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="widow"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="divorced.a" ID="2242" lemmaID="44904" cBy="664" cDate="05/22/2001 08:07:10 PDT Tue">
+        <definition>FN: having legally dissolved one's marriage</definition>
+        <sentenceCount annotated="18" total="105"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="divorced"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="buddy.n" ID="5546" lemmaID="4803" cBy="669" cDate="04/15/2002 02:17:00 PDT Mon">
+        <definition>COD: a close friend. </definition>
+        <sentenceCount annotated="20" total="128"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="buddy"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="moll.n" ID="6084" lemmaID="24730" cBy="605" cDate="06/11/2002 03:31:41 PDT Tue">
+        <definition>COD: a gangster's female companion.</definition>
+        <sentenceCount annotated="5" total="18"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="moll"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="paramour.n" ID="6085" lemmaID="27783" cBy="605" cDate="06/11/2002 03:33:25 PDT Tue">
+        <definition>COD: a lover, especially the illicit partner of a married person.</definition>
+        <sentenceCount annotated="5" total="17"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="paramour"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="inamorata.n" ID="6086" lemmaID="19322" cBy="605" cDate="06/11/2002 03:35:15 PDT Tue">
+        <definition>FN: a woman with whom one is in love</definition>
+        <sentenceCount annotated="5" total="7"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="inamorata"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="beau.n" ID="6087" lemmaID="3136" cBy="605" cDate="06/11/2002 03:36:35 PDT Tue">
+        <definition>COD: a boyfriend or male admirer</definition>
+        <sentenceCount annotated="8" total="53"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="beau"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="sugar_daddy.n" ID="6091" lemmaID="45742" cBy="605" cDate="06/11/2002 06:25:59 PDT Tue">
+        <definition>COD: a rich older man who lavishes gifts on a young woman in return for her company or sexual favours.</definition>
+        <sentenceCount annotated="5" total="10"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="sugar"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="daddy"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="significant other.n" ID="6092" lemmaID="45743" cBy="605" cDate="06/11/2002 06:31:57 PDT Tue">
+        <definition>COD: a person with whom someone has an established romantic or sexual relationship. </definition>
+        <sentenceCount annotated="4" total="14"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="significant"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="N" name="other"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="chum.n" ID="7598" lemmaID="6485" cBy="605" cDate="10/17/2002 05:11:38 PDT Thu">
+        <definition>COD: a close friend.</definition>
+        <sentenceCount annotated="15" total="152"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="chum"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="pal.n" ID="7601" lemmaID="27554" cBy="605" cDate="10/17/2002 05:23:15 PDT Thu">
+        <definition>COD:  a friend.</definition>
+        <sentenceCount annotated="15" total="208"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="pal"/>
+    </lexUnit>
+    <lexUnit status="Insufficient_Attestations" POS="N" name="cobber.n" ID="7602" lemmaID="6986" cBy="605" cDate="10/17/2002 05:45:44 PDT Thu">
+        <definition>COD: a companion or friend.</definition>
+        <sentenceCount annotated="0" total="3"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="cobber"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="mate.n" ID="7604" lemmaID="23674" cBy="605" cDate="10/17/2002 05:53:37 PDT Thu">
+        <definition>COD: a friend or companion. </definition>
+        <sentenceCount annotated="14" total="246"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="mate"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="crush.n" ID="8250" lemmaID="9136" cBy="840" cDate="01/30/2003 04:21:04 PST Thu">
+        <definition>COD: an intense infatuation</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="crush"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="affair.n" ID="8252" lemmaID="668" cBy="840" cDate="01/30/2003 04:28:22 PST Thu">
+        <definition>COD: a love affair</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="affair"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="adultery.n" ID="8398" lemmaID="581" cBy="840" cDate="03/04/2003 01:49:45 PST Tue">
+        <definition>COD: voluntary sexual intercourse between a married person and a person who is not their spouse</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="adultery"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="amigo.n" ID="8441" lemmaID="46166" cBy="618" cDate="03/21/2003 07:19:27 PST Fri">
+        <definition>COD: (especially in Spanish-speaking areas) a friend</definition>
+        <sentenceCount annotated="5" total="30"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="amigo"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="sleep_(with).v" ID="8999" lemmaID="36298" cBy="664" cDate="07/08/2003 05:27:17 PDT Tue">
+        <definition>COD:  have sexual intercourse or be involved in a sexual relationship</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="sleep"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="spousal.a" ID="9036" lemmaID="48136" cBy="664" cDate="07/09/2003 06:29:19 PDT Wed">
+        <definition>FN: pertaining to one's spouse.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="spousal"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="marital.a" ID="9037" lemmaID="23498" cBy="664" cDate="07/09/2003 06:30:56 PDT Wed">
+        <definition>FN: pertaining to marriage</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="marital"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="affianced.a" ID="9038" lemmaID="48138" cBy="664" cDate="07/09/2003 06:31:43 PDT Wed">
+        <definition>FN: engaged to marry.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="affianced"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="friendship.n" ID="9040" lemmaID="15478" cBy="664" cDate="07/09/2003 07:01:56 PDT Wed">
+        <definition>FN: the relationship between friends</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="friendship"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="romance.n" ID="9041" lemmaID="33468" cBy="664" cDate="07/09/2003 07:03:39 PDT Wed">
+        <definition>COD: a love affair, especially a relatively brief and lighthearted one. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="romance"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="befriend.v" ID="11296" lemmaID="3222" cBy="303" cDate="11/23/2004 02:03:18 PST Tue">
+        <definition>COD: act as or become a friend to.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="befriend"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="familiar.a" ID="15560" lemmaID="13899" cBy="589" cDate="12/01/2009 05:13:56 PST Tue">
+        <definition>FN: in close friendship, usually intimate and personal</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="familiar"/>
+    </lexUnit>
+</frame>

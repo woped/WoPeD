@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="N" name="intelligence.n" ID="12538" frame="Information" frameID="1591" totalAnnotated="1" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="cog" name="Cognizer"/>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="inf" name="Information"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Mea" name="Means_of_Gathering"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="sou" name="Source"/>
+            <FE fgColor="FFFFFF" bgColor="A52A2A" type="Core" abbrev="top" name="Topic"/>
+        </frame>
+    </header>
+    <definition>FN: politically or militarily valuable information, often gathered by covert means.</definition>
+    <lexeme POS="N" name="intelligence"/>
+    <valences>
+        <governor type="Sup" lemma="have">
+            <annoSet ID="2594881"/>
+        </governor>
+        <FERealization total="1">
+            <FE name="Cognizer"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Cognizer"/>
+                <annoSet ID="2594881"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Information"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DEN" FE="Information"/>
+                <annoSet ID="2594881"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Topic"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[about]" FE="Topic"/>
+                <annoSet ID="2594881"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Cognizer"/>
+            <FE name="Information"/>
+            <FE name="Topic"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Cognizer"/>
+                <valenceUnit GF="" PT="DEN" FE="Information"/>
+                <valenceUnit GF="Dep" PT="PP[about]" FE="Topic"/>
+                <annoSet ID="2594881"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-T-PPabout-(1)">
+        <sentence corpID="111" docID="421" sentNo="2" paragNo="201" aPos="11371635" ID="1580130">
+            <text>Similarly , if an international organisation such as the UN or Interpol has intelligence about a suspicious chemical plant , the liaison system allows the CIA to alert its members .</text>
+            <annotationSet cDate="07/16/2010 04:48:31 PDT Fri" status="UNANN" ID="2594880">
+                <layer rank="1" name="PENN">
+                    <label end="8" start="0" name="rb"/>
+                    <label end="10" start="10" name=","/>
+                    <label end="13" start="12" name="in"/>
+                    <label end="16" start="15" name="dt"/>
+                    <label end="30" start="18" name="jj"/>
+                    <label end="43" start="32" name="nn"/>
+                    <label end="48" start="45" name="jj"/>
+                    <label end="51" start="50" name="in"/>
+                    <label end="55" start="53" name="dt"/>
+                    <label end="58" start="57" name="NP"/>
+                    <label end="61" start="60" name="cc"/>
+                    <label end="70" start="63" name="NP"/>
+                    <label end="74" start="72" name="VHZ"/>
+                    <label end="87" start="76" name="nn"/>
+                    <label end="93" start="89" name="in"/>
+                    <label end="95" start="95" name="dt"/>
+                    <label end="106" start="97" name="jj"/>
+                    <label end="115" start="108" name="nn"/>
+                    <label end="121" start="117" name="nn"/>
+                    <label end="123" start="123" name=","/>
+                    <label end="127" start="125" name="dt"/>
+                    <label end="135" start="129" name="nn"/>
+                    <label end="142" start="137" name="nn"/>
+                    <label end="149" start="144" name="VVZ"/>
+                    <label end="153" start="151" name="dt"/>
+                    <label end="157" start="155" name="NP"/>
+                    <label end="160" start="159" name="to"/>
+                    <label end="166" start="162" name="VV"/>
+                    <label end="170" start="168" name="PP$"/>
+                    <label end="178" start="172" name="nns"/>
+                    <label end="180" start="180" name="sent"/>
+                </layer>
+                <layer rank="1" name="NER"/>
+                <layer rank="1" name="WSL"/>
+            </annotationSet>
+            <annotationSet cDate="07/16/2010 04:48:31 PDT Fri" status="MANUAL" ID="2594881">
+                <layer rank="1" name="Target">
+                    <label cBy="571" end="87" start="76" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="571" feID="8691" end="70" start="15" name="Cognizer"/>
+                    <label cBy="571" feID="8690" end="87" start="76" name="Information"/>
+                    <label cBy="571" feID="8692" end="121" start="89" name="Topic"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="70" start="15" name="Ext"/>
+                    <label end="121" start="89" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="70" start="15" name="NP"/>
+                    <label end="121" start="89" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="74" start="72" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="02-T-PPon-(1)"/>
+    <subCorpus name="03-T-Wconcerning-(1)"/>
+    <subCorpus name="04-T-PPin-(1)"/>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)"/>
+</lexUnit>

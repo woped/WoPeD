@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="296" cDate="06/04/2002 09:58:25 PDT Tue" name="Travel" ID="343" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;In this frame a &lt;fen&gt;Traveler&lt;/fen&gt; goes on a journey, an activity, generally planned in advance, in which the &lt;fen&gt;Traveler&lt;/fen&gt; moves from a &lt;fen&gt;Source&lt;/fen&gt; location to a &lt;fen&gt;Goal&lt;/fen&gt; along a &lt;fen&gt;Path&lt;/fen&gt; or within an &lt;fen&gt;Area&lt;/fen&gt;.  The journey can be accompanied by &lt;fen&gt;Co_participant&lt;/fen&gt;s and &lt;fen&gt;Baggage&lt;/fen&gt;.  The &lt;fen&gt;Duration&lt;/fen&gt; or &lt;fen&gt;Distance&lt;/fen&gt; of the journey, both generally long, may also be described as may be the &lt;fen&gt;Mode_of_transportation&lt;/fen&gt;.  Words in this frame emphasize the whole process of getting from one place to another, rather than profiling merely the beginning or the end of the journey.
+&lt;ex&gt;&lt;fex name="Traveler"&gt;Ellen&lt;/fex&gt; &lt;t&gt;journeyed&lt;/t&gt; &lt;fex name="Goal"&gt;to Europe&lt;/fex&gt; &lt;fex name="Baggage"&gt;with five suitcases&lt;/fex&gt;.&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="Traveler"&gt;Samantha&lt;/fex&gt; &lt;t&gt;journeyed&lt;/t&gt; &lt;fex name="Distance"&gt;2500 miles&lt;/fex&gt; &lt;fex name="Co_participant"&gt;with her family&lt;/fex&gt; &lt;fex name="Path"&gt;by sea&lt;/fex&gt; &lt;fex name="Goal"&gt;to China&lt;/fex&gt;.&lt;/ex&gt;&lt;ex&gt;&lt;fex name="Traveler"&gt;The Osbournes&lt;/fex&gt; &lt;m&gt;took&lt;/m&gt; a &lt;t&gt;trip&lt;/t&gt; &lt;fex name="Source"&gt;from Beverly Hills&lt;/fex&gt; &lt;fex name="Goal"&gt;to London&lt;/fex&gt; &lt;fex name="Mode_of_transportation"&gt;on the Concorde&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="06/04/2002 10:04:09 PDT Tue" abbrev="Area" name="Area" ID="2941">
+        <definition>&lt;def-root&gt;This is the &lt;fen&gt;Area&lt;/fen&gt; in which the traveling takes place. This frame element describes the enclosed area inside which travelling, of unspecified &lt;fen&gt;Source&lt;/fen&gt;, &lt;fen&gt;Path&lt;/fen&gt; or &lt;fen&gt;Goal&lt;/fen&gt; takes place.
+&lt;ex&gt;We &lt;t&gt;travelled&lt;/t&gt; in Europe.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Location" ID="54"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="296" cDate="06/04/2002 10:04:12 PDT Tue" abbrev="cop" name="Co_participant" ID="2942">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Co_participant&lt;/fen&gt; is the person or persons who accompany the &lt;fen&gt;Traveler&lt;/fen&gt; on the journey.&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="06/04/2002 10:04:37 PDT Tue" abbrev="Dist" name="Distance" ID="2943">
+        <definition>&lt;def-root&gt;This FE dientifies the &lt;fen&gt;Distance&lt;/fen&gt; traveled.&lt;/def-root&gt;</definition>
+        <semType name="Quantity" ID="59"/>
+    </FE>
+    <FE bgColor="FFFF00" fgColor="000000" coreType="Peripheral" cBy="296" cDate="06/04/2002 10:04:39 PDT Tue" abbrev="Dur" name="Duration" ID="2944">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Duration&lt;/fen&gt; of  time during which the trip occurs.&lt;/def-root&gt;</definition>
+        <semType name="Duration" ID="142"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="06/04/2002 10:04:41 PDT Tue" abbrev="Goal" name="Goal" ID="2945">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Goal&lt;/fen&gt; is the location where the travelers end up.
+&lt;/def-root&gt;</definition>
+        <semType name="Goal" ID="153"/>
+        <excludesFE name="Area" ID="2941"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="06/04/2002 10:04:43 PDT Tue" abbrev="Manr" name="Manner" ID="2946">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Manner&lt;/fen&gt; in which the traveling takes place.
+&lt;ex&gt;The Brownie troop &lt;t&gt;travelled&lt;/t&gt; &lt;fex name="Manner"&gt;hurriedly&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="06/04/2002 10:04:44 PDT Tue" abbrev="Mns" name="Means" ID="2947">
+        <definition>&lt;def-root&gt;The action done by the &lt;fen&gt;Traveler&lt;/fen&gt; by which the traveling is accomplished.
+&lt;ex&gt;I &lt;t&gt;traveled&lt;/t&gt; to London &lt;fex name="Mns"&gt;by hitchhiking and walking&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Human_act" ID="69"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="06/04/2002 10:04:46 PDT Tue" abbrev="Path" name="Path" ID="2948">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Path&lt;/fen&gt; is the route along which the travel takes place.&lt;/def-root&gt;</definition>
+        <semType name="Path" ID="152"/>
+        <excludesFE name="Area" ID="2941"/>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="06/04/2002 10:04:57 PDT Tue" abbrev="Trav" name="Traveler" ID="2949">
+        <definition>&lt;def-root&gt;This is the living being which travels. Normally, the &lt;fen&gt;Traveler&lt;/fen&gt; is expressed as an external argument.&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="006400" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="06/04/2002 10:04:58 PDT Tue" abbrev="Src" name="Source" ID="2950">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Source&lt;/fen&gt; is the starting point of the trip.&lt;/def-root&gt;</definition>
+        <semType name="Source" ID="151"/>
+        <excludesFE name="Area" ID="2941"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="06/04/2002 10:05:04 PDT Tue" abbrev="Spd" name="Speed" ID="2951">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Speed&lt;/fen&gt; is the rate at which the travel takes place.
+&lt;ex&gt;The Simpsons &lt;t&gt;travelled&lt;/t&gt; &lt;fex name="Speed"&gt;at 60 km per hour&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Speed" ID="234"/>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Core" cBy="296" cDate="06/04/2002 10:05:09 PDT Tue" abbrev="MoT" name="Mode_of_transportation" ID="2952">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Mode_of_transportation&lt;/fen&gt; expresses how the motion of the &lt;fen&gt;Traveler&lt;/fen&gt; is effected, by their body or by a vehicle which holds and conveys the &lt;fen&gt;Traveler&lt;/fen&gt;. Vehicles can move in any way and in any medium. They are usually expressed obliquely with 'in' or 'by'.
+
+&lt;ex&gt;Barney used to &lt;t&gt;travel&lt;/t&gt; &lt;fex name="Mode_of_transportation"&gt;by bus &lt;/fex&gt; a lot&lt;/ex&gt;
+&lt;ex&gt;Strom  &lt;t&gt;travelled&lt;/t&gt; &lt;fex name="Mode_of_transportation"&gt;on foot &lt;/fex&gt; to see the Pope&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="06/04/2002 10:05:14 PDT Tue" abbrev="Time" name="Time" ID="2953">
+        <definition>&lt;def-root&gt;When the traveling occurs.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="7CCD7C" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="296" cDate="06/04/2002 10:06:48 PDT Tue" abbrev="Reason" name="Reason" ID="2954">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Reason&lt;/fen&gt; for which the travel is undertaken.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="06/04/2002 10:09:30 PDT Tue" abbrev="Bag" name="Baggage" ID="2955">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Baggage&lt;/fen&gt; are the items necessary for travel that accompany the &lt;fen&gt;Traveler&lt;/fen&gt;.
+&lt;ex&gt;Ellen &lt;t&gt;journeyed&lt;/t&gt; to Europe &lt;fex name="Baggage"&gt;with five suitcases&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="296" cDate="06/04/2002 11:29:24 PDT Tue" abbrev="Freq" name="Frequency" ID="2956">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Frequency&lt;/fen&gt; with which the &lt;fen&gt;Traveler&lt;/fen&gt; makes the journey.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="06/10/2002 02:13:25 PDT Mon" abbrev="Purp" name="Purpose" ID="3002">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Purpose&lt;/fen&gt; for which the &lt;fen&gt;Traveler&lt;/fen&gt; travels, i.e. the future state of affairs that will hopefully come about.&lt;/def-root&gt;</definition>
+        <semType name="Human_act" ID="69"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="296" cDate="06/10/2002 02:25:47 PDT Mon" abbrev="Iter" name="Iterations" ID="3006">
+        <definition>&lt;def-root&gt;The number of times the trip is traveled by the &lt;fen&gt;Traveler&lt;/fen&gt;s.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="000000" coreType="Extra-Thematic" cBy="296" cDate="06/10/2002 02:26:40 PDT Mon" abbrev="P_it" name="Period_of_Iterations" ID="3007">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Time&lt;/fen&gt; throughout which the traveling repeatedly takes place.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="06/19/2002 03:03:11 PDT Wed" abbrev="Trvl_mns" name="Travel_means" ID="3134">
+        <definition>&lt;def-root&gt;This FE applies to expressions that indicate documents, money, tickets, etc. which allow people to engage in travel.
+&lt;ex&gt;He &lt;t&gt;traveled&lt;/t&gt; to San Diego &lt;fex name="Travel_means"&gt;on a standby ticket&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="08/28/2002 03:44:56 PDT Wed" abbrev="Depict" name="Depictive" ID="3660">
+        <definition>&lt;def-root&gt;The state of the &lt;fen&gt;Traveler&lt;/fen&gt; during the journey.
+&lt;ex&gt;We &lt;t&gt;traveled&lt;/t&gt; around &lt;fex name="Depictive"&gt;unencumbered&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State" ID="77"/>
+    </FE>
+    <FE bgColor="A9A9A9" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="06/06/2003 03:44:08 PDT Fri" abbrev="Res" name="Result" ID="4550">
+        <definition>&lt;def-root&gt;The affect of travel on a &lt;fen&gt;Traveler&lt;/fen&gt;.
+&lt;ex&gt;We &lt;t&gt;journeyed&lt;/t&gt; &lt;fex name="Res"&gt;to exhaustion&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Event" ID="75"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Peripheral" cBy="296" cDate="07/28/2003 09:29:35 PDT Mon" abbrev="" name="Place" ID="4845">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Place&lt;/fen&gt; is the location of the motion. It describes the area in which motion (with a specified &lt;fen&gt;Source&lt;/fen&gt;, &lt;fen&gt;Path&lt;/fen&gt; or &lt;fen&gt;Goal&lt;/fen&gt;) takes place.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="d0d0d0" fgColor="000000" coreType="Core" cBy="618" cDate="12/16/2005 10:40:12 PST Fri" abbrev="dir" name="Direction" ID="9786">
+        <definition>&lt;def-root&gt;The direction in which the &lt;fen&gt;Traveler&lt;/fen&gt; goes.
+
+&lt;ex&gt;They began their &lt;t&gt;odyssey&lt;/t&gt; &lt;fex name="Direction"&gt;north&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Area" ID="2941"/>
+    </FE>
+    <FE bgColor="EEE8AA" fgColor="000000" coreType="Extra-Thematic" cBy="361" cDate="11/21/2006 04:28:29 PST Tue" abbrev="" name="Descriptor" ID="10846">
+        <definition>&lt;def-root&gt;A characterisitic of the traveling event. &lt;/def-root&gt;</definition>
+    </FE>
+    <FEcoreSet>
+        <memberFE name="Direction" ID="9786"/>
+        <memberFE name="Source" ID="2950"/>
+        <memberFE name="Path" ID="2948"/>
+        <memberFE name="Goal" ID="2945"/>
+    </FEcoreSet>
+    <FEcoreSet>
+        <memberFE name="Mode_of_transportation" ID="2952"/>
+        <memberFE name="Traveler" ID="2949"/>
+    </FEcoreSet>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Self_motion</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)">
+        <relatedFrame>Setting_out</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="travel.v" ID="5957" lemmaID="41096" cBy="296" cDate="06/04/2002 10:26:38 PDT Tue">
+        <definition>COD: make a journey or journey along (a road) or through (a region). </definition>
+        <sentenceCount annotated="84" total="433"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="travel"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="travel.n" ID="5958" lemmaID="41095" cBy="296" cDate="06/04/2002 10:30:45 PDT Tue">
+        <definition>COD: journeys, especially abroad</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="travel"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="voyage.n" ID="5959" lemmaID="43263" cBy="296" cDate="06/04/2002 10:34:09 PDT Tue">
+        <definition>COD: a long journey involving travel by sea or in space. </definition>
+        <sentenceCount annotated="41" total="290"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="voyage"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="voyage.v" ID="5960" lemmaID="43264" cBy="296" cDate="06/04/2002 10:34:51 PDT Tue">
+        <definition>COD: go on a voyage. </definition>
+        <sentenceCount annotated="5" total="15"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="voyage"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="journey.v" ID="5961" lemmaID="21064" cBy="296" cDate="06/04/2002 10:36:17 PDT Tue">
+        <definition>COD: travel</definition>
+        <sentenceCount annotated="23" total="113"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="journey"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="journey.n" ID="5962" lemmaID="21063" cBy="296" cDate="06/04/2002 10:36:46 PDT Tue">
+        <definition>COD: an act of travelling from one place to another. </definition>
+        <sentenceCount annotated="97" total="546"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="journey"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="excursion.n" ID="5963" lemmaID="13409" cBy="296" cDate="06/04/2002 10:37:45 PDT Tue">
+        <definition>COD: a short journey or trip, especially one taken for leisure. </definition>
+        <sentenceCount annotated="44" total="289"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="excursion"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="odyssey.n" ID="5964" lemmaID="26539" cBy="296" cDate="06/04/2002 10:38:25 PDT Tue">
+        <definition>COD: a long and eventful or adventurous journey</definition>
+        <sentenceCount annotated="4" total="56"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="odyssey"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="expedition.n" ID="5965" lemmaID="13525" cBy="296" cDate="06/04/2002 10:40:58 PDT Tue">
+        <definition>COD: a journey undertaken by a group of people with a particular purpose</definition>
+        <sentenceCount annotated="64" total="318"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="expedition"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="commute.v" ID="5966" lemmaID="7418" cBy="296" cDate="06/04/2002 11:28:57 PDT Tue">
+        <definition>COD: travel some distance between one's home and place of work on a regular basis. </definition>
+        <sentenceCount annotated="30" total="161"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="commute"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="peregrination.n" ID="6059" lemmaID="28418" cBy="296" cDate="06/10/2002 04:09:56 PDT Mon">
+        <definition>COD: travel from place to place</definition>
+        <sentenceCount annotated="4" total="8"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="peregrination"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="pilgrimage.n" ID="6060" lemmaID="29005" cBy="296" cDate="06/10/2002 04:10:48 PDT Mon">
+        <definition>COD: a pilgrim's journey</definition>
+        <sentenceCount annotated="38" total="200"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="pilgrimage"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="tour.v" ID="6061" lemmaID="40843" cBy="296" cDate="06/10/2002 04:11:53 PDT Mon">
+        <definition>FN: make a journey for pleasure to several locations</definition>
+        <sentenceCount annotated="11" total="157"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="tour"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="tour.n" ID="6062" lemmaID="40842" cBy="296" cDate="06/10/2002 04:12:17 PDT Mon">
+        <definition>COD: a journey for pleasure in which several different places are visited. </definition>
+        <sentenceCount annotated="41" total="638"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="tour"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="safari.n" ID="6063" lemmaID="33922" cBy="296" cDate="06/10/2002 04:12:55 PDT Mon">
+        <definition>COD: an expedition to observe or hunt animals in their natural habitat, especially in East Africa. </definition>
+        <sentenceCount annotated="13" total="97"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="safari"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="trip.n" ID="6064" lemmaID="41258" cBy="296" cDate="06/10/2002 04:16:23 PDT Mon">
+        <definition>COD: a journey or excursion, especially for pleasure.</definition>
+        <sentenceCount annotated="101" total="414"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="trip"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="junket.n" ID="7527" lemmaID="21159" cBy="605" cDate="10/04/2002 12:20:56 PDT Fri">
+        <definition>COD:  an extravagant trip, especially one by an official at public expense</definition>
+        <sentenceCount annotated="5" total="30"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="junket"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="traveler.n" ID="13976" lemmaID="41098" cBy="361" cDate="03/14/2007 11:31:18 PDT Wed">
+        <definition>FN: A person who travels or makes a journey. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="traveler"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="getaway.n" ID="15204" lemmaID="50930" cBy="361" cDate="07/24/2008 02:42:38 PDT Thu">
+        <definition>FN: a pleasant vacation</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="getaway"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="jaunt.n" ID="15212" lemmaID="20852" cBy="145" cDate="07/29/2008 05:38:48 PDT Tue">
+        <definition>FN: a trip, usually for pleasure and usually relatively short.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="jaunt"/>
+        <semType name="Activity" ID="8"/>
+    </lexUnit>
+</frame>

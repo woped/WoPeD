@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="03/17/2004 04:27:51 PST Wed" name="Temperature" ID="1050" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Entity&lt;/fen&gt; has a &lt;fen&gt;Temperature&lt;/fen&gt; characterized by the target.  The &lt;fen&gt;Temperature&lt;/fen&gt; is a value of the temperature &lt;fen&gt;Attribute&lt;/fen&gt;. 
+&lt;ex&gt;&lt;fex name="Entity"&gt;The pan&lt;/fex&gt; is already &lt;fex name="Degree"&gt;too&lt;/fex&gt; &lt;t&gt;hot&lt;/t&gt; &lt;fex name="Degree"&gt;to touch&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="Entity"&gt;The walk-in&lt;/fex&gt; was &lt;t&gt;freezing&lt;/t&gt;, but it was better than hanging out in the kitchen.&lt;/ex&gt;
+&lt;ex&gt;&lt;/ex&gt;
+Note that in this  frame, the &lt;fen&gt;Entity&lt;/fen&gt; does not experience the temperature, but is merely described as being in a certain externally verifiable state.  
+Thus &lt;ex&gt;Open a window; I'm too &lt;t&gt;hot&lt;/t&gt;.&lt;/ex&gt; is not in frame but rather in Subjective_temperature.
+&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="03/17/2004 04:27:51 PST Wed" abbrev="ent" name="Entity" ID="6180">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Entity&lt;/fen&gt; for which the temperature &lt;fen&gt;Attribute&lt;/fen&gt; is under consideration.
+
+
+&lt;ex&gt;&lt;fex name="ent"&gt;The soup&lt;/fex&gt;'s too &lt;t&gt;hot&lt;/t&gt;.&lt;/ex&gt;
+
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="03/17/2004 04:27:51 PST Wed" abbrev="att" name="Attribute" ID="6181">
+        <definition>&lt;def-root&gt;The feature of an &lt;fen&gt;Entity&lt;/fen&gt; which is under discussion.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="03/17/2004 04:27:52 PST Wed" abbrev="tem" name="Temperature" ID="6182">
+        <definition>&lt;def-root&gt;A quantity or other characterization of the &lt;fen&gt;Entity&lt;/fen&gt;'s state with respect to the temperature &lt;fen&gt;Attribute&lt;/fen&gt;.
+
+&lt;ex&gt;The skillet had a &lt;t&gt;temperature&lt;/t&gt; &lt;fex name="tem"&gt;of 230 F&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Temperature" ID="233"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="03/17/2004 04:27:52 PST Wed" abbrev="deg" name="Degree" ID="6183">
+        <definition>&lt;def-root&gt;A modifier expressing  the deviation of the &lt;fen&gt;Temperature&lt;/fen&gt; from the norm.&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+        <excludesFE name="Temperature" ID="6182"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="03/17/2004 04:27:52 PST Wed" abbrev="tim" name="Time" ID="6184">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Time&lt;/fen&gt; during which the &lt;fen&gt;Entity&lt;/fen&gt; is in the state of having  a particular &lt;fen&gt;Degree&lt;/fen&gt; for the temperature &lt;fen&gt;Attribute&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="03/17/2004 04:27:52 PST Wed" abbrev="cir" name="Circumstances" ID="6185">
+        <definition>&lt;def-root&gt;Some specification of the &lt;fen&gt;Circumstances&lt;/fen&gt; under which the &lt;fen&gt;Entity&lt;/fen&gt; has a particular &lt;fen&gt;Temperature&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="03/17/2004 04:38:28 PST Wed" abbrev="sub" name="Subregion" ID="6186">
+        <definition>&lt;def-root&gt;A part of the &lt;fen&gt;Entity&lt;/fen&gt; that has the specified &lt;fen&gt;Temperature&lt;/fen&gt; value.
+
+
+&lt;ex&gt;The pan is &lt;t&gt;hot&lt;/t&gt; &lt;fex name="sub"&gt;on the handle&lt;/fex&gt;&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Measurable_attributes</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Ambient_temperature</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Add_Annotation" POS="N" name="temperature.n" ID="10344" lemmaID="39795" cBy="605" cDate="03/17/2004 05:23:21 PST Wed">
+        <definition>COD: the degree or intensity of heat present in a substance or object</definition>
+        <sentenceCount annotated="2" total="219"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="temperature"/>
+    </lexUnit>
+    <lexUnit status="Add_Annotation" incorporatedFE="Attribute" POS="A" name="hot.a" ID="10345" lemmaID="18483" cBy="605" cDate="03/17/2004 05:24:20 PST Wed">
+        <definition>COD: having a high temperature</definition>
+        <sentenceCount annotated="0" total="94"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="hot"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" incorporatedFE="Attribute" POS="A" name="cool.a" ID="10346" lemmaID="8256" cBy="605" cDate="03/17/2004 05:24:58 PST Wed">
+        <definition>COD: of or at a fairly low temperature</definition>
+        <sentenceCount annotated="34" total="156"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="cool"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="freezing.a" ID="11200" lemmaID="49703" cBy="618" cDate="11/18/2004 10:49:40 PST Thu">
+        <definition>COD: very cold.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="freezing"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="cold.a" ID="13223" lemmaID="48952" cBy="303" cDate="06/19/2006 11:16:03 PDT Mon">
+        <definition>COD: of or at a low or relatively low temperature.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="cold"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="lukewarm.a" ID="14441" lemmaID="22938" cBy="618" cDate="05/22/2007 04:46:12 PDT Tue">
+        <definition>FN: moderately warm.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="lukewarm"/>
+    </lexUnit>
+    <lexUnit status="Add_Annotation" incorporatedFE="Attribute" POS="A" name="tepid.a" ID="14442" lemmaID="39886" cBy="618" cDate="05/22/2007 04:46:58 PDT Tue">
+        <definition>FN: moderately warm.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="tepid"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="frigid.a" ID="14443" lemmaID="15493" cBy="618" cDate="05/22/2007 04:47:49 PDT Tue">
+        <definition>FN: extremely cold.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="frigid"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="scalding.a" ID="14444" lemmaID="34295" cBy="618" cDate="05/22/2007 04:48:23 PDT Tue">
+        <definition>FN: hot, often enough to burn.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="scalding"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="warm.a" ID="15750" lemmaID="43448" cBy="976" cDate="03/31/2010 11:37:18 PDT Wed">
+        <definition>FN: having a degree of heat that is subjectively higher than a neutral temperature</definition>
+        <sentenceCount annotated="31" total="170"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="warm"/>
+    </lexUnit>
+</frame>

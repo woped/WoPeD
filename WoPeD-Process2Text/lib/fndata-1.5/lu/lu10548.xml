@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="lexUnit.xsl"?>
+<lexUnit status="Needs_SCs" POS="N" name="dry run.n" ID="10548" frame="Practice" frameID="962" totalAnnotated="3" xsi:schemaLocation="../schema/lexUnit.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <header>
+        <corpus name="BNC2" ID="111">
+            <document description="bncp" ID="421"/>
+        </corpus>
+        <frame>
+            <FE fgColor="FFFFFF" bgColor="0000FF" type="Core" abbrev="Act" name="Action"/>
+            <FE fgColor="FFFFFF" bgColor="FF0000" type="Core" abbrev="Agt" name="Agent"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Extra-Thematic" abbrev="cop" name="Co_participant"/>
+            <FE fgColor="FFFFFF" bgColor="00BFFF" type="Extra-Thematic" abbrev="dur" name="Duration"/>
+            <FE fgColor="FFFFFF" bgColor="9400D3" type="Extra-Thematic" abbrev="iter" name="Iteration"/>
+            <FE fgColor="FFFFFF" bgColor="FF00FF" type="Peripheral" abbrev="Mnr" name="Manner"/>
+            <FE fgColor="FFFFFF" bgColor="FF69B4" type="Peripheral" abbrev="Means" name="Means"/>
+            <FE fgColor="FFFFFF" bgColor="808080" type="Core" abbrev="" name="Occasion"/>
+            <FE fgColor="FFFFFF" bgColor="008000" type="Peripheral" abbrev="Place" name="Place"/>
+            <FE fgColor="FFFFFF" bgColor="800080" type="Peripheral" abbrev="Purp" name="Purpose"/>
+            <FE fgColor="FFFFFF" bgColor="FFA500" type="Peripheral" abbrev="Time" name="Time"/>
+        </frame>
+    </header>
+    <definition>COD: a rehearsal of a performance or procedure</definition>
+    <lexeme order="1" headword="false" breakBefore="false" POS="A" name="dry"/>
+    <lexeme order="2" headword="true" breakBefore="false" POS="N" name="run"/>
+    <valences>
+        <governor type="Sup" lemma="give">
+            <annoSet ID="1966546"/>
+        </governor>
+        <FERealization total="3">
+            <FE name="Action"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Action"/>
+                <annoSet ID="1966552"/>
+            </pattern>
+            <pattern total="2">
+                <valenceUnit GF="Ext" PT="NP" FE="Action"/>
+                <annoSet ID="1966542"/>
+                <annoSet ID="1966546"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="2">
+            <FE name="Agent"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <annoSet ID="1966546"/>
+                <annoSet ID="1966552"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="3">
+            <FE name="Occasion"/>
+            <pattern total="2">
+                <valenceUnit GF="" PT="DNI" FE="Occasion"/>
+                <annoSet ID="1966546"/>
+                <annoSet ID="1966552"/>
+            </pattern>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Occasion"/>
+                <annoSet ID="1966542"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Place"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Place"/>
+                <annoSet ID="1966546"/>
+            </pattern>
+        </FERealization>
+        <FERealization total="1">
+            <FE name="Purpose"/>
+            <pattern total="1">
+                <valenceUnit GF="Dep" PT="VPto" FE="Purpose"/>
+                <annoSet ID="1966552"/>
+            </pattern>
+        </FERealization>
+        <FEGroupRealization total="1">
+            <FE name="Action"/>
+            <FE name="Agent"/>
+            <FE name="Occasion"/>
+            <FE name="Place"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Action"/>
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <valenceUnit GF="" PT="DNI" FE="Occasion"/>
+                <valenceUnit GF="Dep" PT="PP[at]" FE="Place"/>
+                <annoSet ID="1966546"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Action"/>
+            <FE name="Agent"/>
+            <FE name="Occasion"/>
+            <FE name="Purpose"/>
+            <pattern total="1">
+                <valenceUnit GF="" PT="DNI" FE="Action"/>
+                <valenceUnit GF="" PT="CNI" FE="Agent"/>
+                <valenceUnit GF="" PT="DNI" FE="Occasion"/>
+                <valenceUnit GF="Dep" PT="VPto" FE="Purpose"/>
+                <annoSet ID="1966552"/>
+            </pattern>
+        </FEGroupRealization>
+        <FEGroupRealization total="1">
+            <FE name="Action"/>
+            <FE name="Occasion"/>
+            <pattern total="1">
+                <valenceUnit GF="Ext" PT="NP" FE="Action"/>
+                <valenceUnit GF="Dep" PT="PP[for]" FE="Occasion"/>
+                <annoSet ID="1966542"/>
+            </pattern>
+        </FEGroupRealization>
+    </valences>
+    <subCorpus name="01-Wdo-T-(1)"/>
+    <subCorpus name="02-T-PPfor-(1)">
+        <sentence corpID="111" docID="421" sentNo="1" paragNo="60" aPos="0" ID="1259778">
+            <text>It was meant to be a dry run for a much bigger event in September .</text>
+            <annotationSet cDate="05/27/2004 02:38:27 PDT Thu" status="UNANN" ID="1966541">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="PP"/>
+                    <label end="5" start="3" name="VBD"/>
+                    <label end="11" start="7" name="VVN"/>
+                    <label end="14" start="13" name="to"/>
+                    <label end="17" start="16" name="vb"/>
+                    <label end="19" start="19" name="dt"/>
+                    <label end="23" start="21" name="jj"/>
+                    <label end="27" start="25" name="nn"/>
+                    <label end="31" start="29" name="in"/>
+                    <label end="33" start="33" name="dt"/>
+                    <label end="38" start="35" name="rb"/>
+                    <label end="45" start="40" name="jjr"/>
+                    <label end="51" start="47" name="nn"/>
+                    <label end="54" start="53" name="in"/>
+                    <label end="64" start="56" name="NP"/>
+                    <label end="66" start="66" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="05/27/2004 02:38:28 PDT Thu" status="AUTO_EDITED" ID="1966542">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="27" start="21" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="445" feID="5883" end="1" start="0" name="Action"/>
+                    <label cBy="445" feID="5890" end="64" start="29" name="Occasion"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="1" start="0" name="Ext"/>
+                    <label end="64" start="29" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="1" start="0" name="NP"/>
+                    <label end="64" start="29" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun"/>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+    <subCorpus name="other-matched-(1)"/>
+    <subCorpus name="other-unmatched-(1)">
+        <sentence corpID="111" docID="421" sentNo="4" paragNo="76" aPos="0" ID="1259780">
+            <text>Like previous Lloyd Webber productions , the show was given a dry run at Lloyd Webber 's annual Sydmonton Festival , held at his 1,200-acre Berkshire estate .</text>
+            <annotationSet cDate="05/27/2004 02:38:32 PDT Thu" status="UNANN" ID="1966545">
+                <layer rank="1" name="PENN">
+                    <label end="3" start="0" name="in"/>
+                    <label end="12" start="5" name="jj"/>
+                    <label end="18" start="14" name="NP"/>
+                    <label end="25" start="20" name="NP"/>
+                    <label end="37" start="27" name="nns"/>
+                    <label end="39" start="39" name=","/>
+                    <label end="43" start="41" name="dt"/>
+                    <label end="48" start="45" name="nn"/>
+                    <label end="52" start="50" name="VBD"/>
+                    <label end="58" start="54" name="VVN"/>
+                    <label end="60" start="60" name="dt"/>
+                    <label end="64" start="62" name="jj"/>
+                    <label end="68" start="66" name="nn"/>
+                    <label end="71" start="70" name="in"/>
+                    <label end="77" start="73" name="NP"/>
+                    <label end="84" start="79" name="NP"/>
+                    <label end="87" start="86" name="POS"/>
+                    <label end="94" start="89" name="jj"/>
+                    <label end="104" start="96" name="NP"/>
+                    <label end="113" start="106" name="NP"/>
+                    <label end="115" start="115" name=","/>
+                    <label end="120" start="117" name="VVN"/>
+                    <label end="123" start="122" name="in"/>
+                    <label end="127" start="125" name="PP$"/>
+                    <label end="138" start="129" name="nn"/>
+                    <label end="148" start="140" name="NP"/>
+                    <label end="155" start="150" name="nn"/>
+                    <label end="157" start="157" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="05/27/2004 02:38:33 PDT Thu" status="MANUAL" ID="1966546">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="68" start="62" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="445" feID="5883" end="48" start="41" name="Action"/>
+                    <label cBy="445" feID="5885" end="155" start="70" name="Place"/>
+                    <label cBy="445" feID="5884" itype="CNI" name="Agent"/>
+                    <label cBy="445" feID="5890" itype="DNI" name="Occasion"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="48" start="41" name="Ext"/>
+                    <label end="155" start="70" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="48" start="41" name="NP"/>
+                    <label end="155" start="70" name="PP"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="58" start="54" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+        <sentence corpID="111" docID="421" sentNo="7" paragNo="350" aPos="0" ID="1259783">
+            <text>To glue them up , arrange your heaviest cramps with blocks and , to save time later , go through a dry run .</text>
+            <annotationSet cDate="05/27/2004 02:38:38 PDT Thu" status="UNANN" ID="1966551">
+                <layer rank="1" name="PENN">
+                    <label end="1" start="0" name="to"/>
+                    <label end="6" start="3" name="VV"/>
+                    <label end="11" start="8" name="PP"/>
+                    <label end="14" start="13" name="rp"/>
+                    <label end="16" start="16" name=","/>
+                    <label end="24" start="18" name="VV"/>
+                    <label end="29" start="26" name="PP$"/>
+                    <label end="38" start="31" name="jjs"/>
+                    <label end="45" start="40" name="nns"/>
+                    <label end="50" start="47" name="in"/>
+                    <label end="57" start="52" name="nns"/>
+                    <label end="61" start="59" name="cc"/>
+                    <label end="63" start="63" name=","/>
+                    <label end="66" start="65" name="to"/>
+                    <label end="71" start="68" name="VV"/>
+                    <label end="76" start="73" name="nn"/>
+                    <label end="82" start="78" name="rb"/>
+                    <label end="84" start="84" name=","/>
+                    <label end="87" start="86" name="VVP"/>
+                    <label end="95" start="89" name="in"/>
+                    <label end="97" start="97" name="dt"/>
+                    <label end="101" start="99" name="jj"/>
+                    <label end="105" start="103" name="nn"/>
+                    <label end="107" start="107" name="sent"/>
+                </layer>
+            </annotationSet>
+            <annotationSet cDate="05/27/2004 02:38:39 PDT Thu" status="MANUAL" ID="1966552">
+                <layer rank="1" name="Target">
+                    <label cBy="605" end="105" start="99" name="Target"/>
+                </layer>
+                <layer rank="1" name="FE">
+                    <label cBy="445" feID="5886" end="82" start="65" name="Purpose"/>
+                    <label cBy="445" feID="5884" itype="CNI" name="Agent"/>
+                    <label cBy="445" feID="5883" itype="DNI" name="Action"/>
+                    <label cBy="445" feID="5890" itype="DNI" name="Occasion"/>
+                </layer>
+                <layer rank="1" name="GF">
+                    <label end="82" start="65" name="Dep"/>
+                </layer>
+                <layer rank="1" name="PT">
+                    <label end="82" start="65" name="VPto"/>
+                </layer>
+                <layer rank="1" name="Other"/>
+                <layer rank="1" name="Sent"/>
+                <layer rank="1" name="Noun">
+                    <label end="87" start="86" name="Supp"/>
+                    <label end="95" start="89" name="Supp"/>
+                </layer>
+            </annotationSet>
+        </sentence>
+    </subCorpus>
+</lexUnit>

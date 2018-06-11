@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="12/15/2001 10:54:58 PST Sat" name="Social_connection" ID="253" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;A mutual social and personal relationship that keeps people involved in each other's lives comprises a &lt;fen&gt;Connection&lt;/fen&gt; of &lt;fen&gt;Individual1&lt;/fen&gt; to &lt;fen&gt;Individual2&lt;/fen&gt; or between &lt;fen&gt;Individuals&lt;/fen&gt;.
+
+&lt;ex&gt;They wanted to strengthen &lt;fex name="Individuals"&gt;their&lt;/fex&gt; &lt;fex name="Typ"&gt;family&lt;/fex&gt; &lt;fex name="Connection"&gt;&lt;t&gt;ties&lt;/t&gt;&lt;/fex&gt;.&lt;/ex&gt;
+
+&lt;/def-root&gt;</definition>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="08/27/2002 04:27:03 PDT Tue" abbrev="Indiv" name="Individuals" ID="3649">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Individuals&lt;/fen&gt; have a &lt;fen&gt;Connection&lt;/fen&gt; with each other.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="08/27/2002 04:27:34 PDT Tue" abbrev="Ind1" name="Individual1" ID="3650">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Individual1&lt;/fen&gt; has a social &lt;fen&gt;Connection&lt;/fen&gt; to &lt;fen&gt;Individual2&lt;/fen&gt;.
+
+&lt;/def-root&gt;</definition>
+        <requiresFE name="Individual2" ID="3651"/>
+        <excludesFE name="Individuals" ID="3649"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="08/27/2002 04:28:13 PDT Tue" abbrev="Ind2" name="Individual2" ID="3651">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Individual2&lt;/fen&gt; has a relationship to &lt;fen&gt;Individual1&lt;/fen&gt;.
+
+&lt;/def-root&gt;</definition>
+        <requiresFE name="Individual1" ID="3650"/>
+        <excludesFE name="Individuals" ID="3649"/>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="08/27/2002 04:34:59 PDT Tue" abbrev="Cnx" name="Connection" ID="3653">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Connection&lt;/fen&gt; is the personal relationship between &lt;fen&gt;Individuals&lt;/fen&gt; that keeps them involved in each other's lives.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="08/27/2002 04:48:05 PDT Tue" abbrev="Typ" name="Type" ID="3654">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Type&lt;/fen&gt; is the sub-category to which the &lt;fen&gt;Connection&lt;/fen&gt; belongs.
+&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="08/27/2002 04:58:33 PDT Tue" abbrev="Degr" name="Degree" ID="3655">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Degree&lt;/fen&gt; (strength or closeness) of the &lt;fen&gt;Connection&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Relation_between_individuals</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Needs_SCs" POS="N" name="tie.n" ID="4524" lemmaID="40393" cBy="664" cDate="12/15/2001 10:55:53 PST Sat">
+        <definition>FN: something that serves as a connecting link in a relationship (as a bond of kinship or affection)</definition>
+        <sentenceCount annotated="1" total="69"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="tie"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="connection.n" ID="4525" lemmaID="7852" cBy="664" cDate="12/15/2001 10:56:22 PST Sat">
+        <definition>COD:  link or relationship between people or things. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="connection"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="connected.a" ID="4526" lemmaID="7851" cBy="664" cDate="12/15/2001 10:56:39 PST Sat">
+        <definition>FN: having a social relationship with</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="connected"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="bond.n" ID="7339" lemmaID="4112" cBy="664" cDate="08/27/2002 04:38:29 PDT Tue">
+        <definition>COD: a force or feeling that unites people. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="bond"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="close.a" ID="7340" lemmaID="6857" cBy="664" cDate="08/27/2002 05:03:43 PDT Tue">
+        <definition>COD: (of a relationship or the people conducting it) very affectionate or intimate.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="close"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="closeness.n" ID="7341" lemmaID="6870" cBy="664" cDate="08/27/2002 05:03:54 PDT Tue">
+        <definition>FN: degree of mutual concern and fondness in a relationship.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="closeness"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="linked.a" ID="13230" lemmaID="48089" cBy="303" cDate="06/19/2006 12:14:19 PDT Mon">
+        <definition>FN: having a social connection</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="linked"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="intimate.a" ID="13837" lemmaID="20433" cBy="664" cDate="02/25/2007 03:19:35 PST Sun">
+        <definition>COD: closely acquainted; familiar.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="intimate"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="intimate_((setting)).a" ID="13907" lemmaID="20433" cBy="618" cDate="03/02/2007 11:10:58 PST Fri">
+        <definition>FN: promoting or having a friendly atmosphere.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="intimate"/>
+        <semType name="Tendency_grading_LU" ID="91"/>
+    </lexUnit>
+</frame>

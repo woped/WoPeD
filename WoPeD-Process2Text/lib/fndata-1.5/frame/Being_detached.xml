@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="605" cDate="04/24/2005 10:30:15 PDT Sun" name="Being_detached" ID="1411" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Item&lt;/fen&gt; is detached from a &lt;fen&gt;Source&lt;/fen&gt;, or &lt;fen&gt;Items&lt;/fen&gt; are detached from each other. 
+
+&lt;ex&gt;When &lt;fex name="itm"&gt;the snow plow&lt;/fex&gt; is &lt;t&gt;disconnected&lt;/t&gt; &lt;fex name="src"&gt;from the vehicle&lt;/fex&gt;, extend the lift cylinder to the end of its stroke and coat the chrome rod with a light grease.&lt;/ex&gt;
+
+&lt;ex&gt;&lt;fex name="itm"&gt;The gold leaves that&lt;/fex&gt; are &lt;t&gt;unattached&lt;/t&gt; &lt;fex name="src"&gt;to the engraved surfaces&lt;/fex&gt; fall off.&lt;/ex&gt;
+&lt;ex&gt;By 5:00 to 5:30 (depending on the time of year) &lt;fex name="itm"&gt;the boat&lt;/fex&gt; is &lt;t&gt;unmoored&lt;/t&gt; and loaded.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="04/24/2005 10:30:17 PDT Sun" abbrev="itm" name="Item" ID="7862">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Item&lt;/fen&gt; identifies the entity that is detached from a &lt;fen&gt;Source&lt;/fen&gt;.
+
+
+&lt;ex&gt;I feel like &lt;fex name="itm"&gt;my head&lt;/fex&gt; is &lt;t&gt;detached&lt;/t&gt; from the rest of my body.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Items" ID="7863"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="04/24/2005 10:30:17 PDT Sun" abbrev="ite" name="Items" ID="7863">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Items&lt;/fen&gt; identifies the plural items that are detached from each other.
+
+&lt;ex&gt;&lt;fex name="Items"&gt;The neck vertebrae&lt;/fex&gt; are &lt;t&gt;unfused&lt;/t&gt; in rorquals and gray whales, which allows for some flexibility at the head and neck.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Core" cBy="605" cDate="04/24/2005 10:30:17 PDT Sun" abbrev="src" name="Source" ID="7864">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Source&lt;/fen&gt; identifies the location from which the &lt;fen&gt;Item&lt;/fen&gt;(s) is detached.
+
+
+&lt;ex&gt;The toilet is &lt;t&gt;loose&lt;/t&gt; &lt;fex name="src"&gt;from the floor&lt;/fex&gt; and must be repaired.&lt;/ex&gt;
+
+&lt;/def-root&gt;</definition>
+        <semType name="Source" ID="151"/>
+        <excludesFE name="Items" ID="7863"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="605" cDate="04/24/2005 10:30:17 PDT Sun" abbrev="man" name="Manner" ID="7866">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Manner&lt;/fen&gt; in which an &lt;fen&gt;Item&lt;/fen&gt; is in an detached state relative to a &lt;fen&gt;Source&lt;/fen&gt;, or two &lt;fen&gt;Items&lt;/fen&gt; are detached from each other.
+
+&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses">
+        <relatedFrame>Being_attached</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Created" POS="A" name="detached.a" ID="11925" lemmaID="10410" cBy="605" cDate="04/24/2005 10:36:04 PDT Sun">
+        <definition>COD: separate or disconnected.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="detached"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="disconnected.a" ID="11926" lemmaID="10864" cBy="605" cDate="04/24/2005 10:39:50 PDT Sun">
+        <definition>FN: not having a connection to</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="disconnected"/>
+    </lexUnit>
+    <lexUnit status="Add_Annotation" POS="A" name="loose.a" ID="11927" lemmaID="49969" cBy="605" cDate="04/24/2005 10:53:44 PDT Sun">
+        <definition>COD: not bound or tethered.</definition>
+        <sentenceCount annotated="2" total="288"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="loose"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="unfused.a" ID="11928" lemmaID="49970" cBy="605" cDate="04/24/2005 11:08:37 PDT Sun">
+        <definition>FN: not fused to something</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="unfused"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="unmoored.a" ID="11929" lemmaID="49971" cBy="605" cDate="04/24/2005 11:21:24 PDT Sun">
+        <definition>FN: (of a boat) not attached by cable or rope to the shore or to an anchor</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="unmoored"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="unattached.a" ID="12844" lemmaID="41798" cBy="995" cDate="10/19/2005 04:16:12 PDT Wed">
+        <definition>FN: not attached.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="unattached"/>
+    </lexUnit>
+</frame>

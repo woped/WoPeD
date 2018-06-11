@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="618" cDate="11/30/2004 04:18:19 PST Tue" name="Cause_to_be_sharp" ID="1291" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Agent&lt;/fen&gt; or Cause makes a &lt;fen&gt;Patient&lt;/fen&gt; sharper or duller.  An &lt;fen&gt;Instrument&lt;/fen&gt; or &lt;fen&gt;Means&lt;/fen&gt; may be mentioned.
+
+&lt;ex&gt;&lt;fex name="Agent"&gt;John&lt;/fex&gt; is in the basement &lt;t&gt;sharpening&lt;/t&gt; &lt;fex name="Patient"&gt;his axe&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="11/30/2004 04:18:19 PST Tue" abbrev="Mns" name="Means" ID="7330">
+        <definition>&lt;def-root&gt;An intentional action performed by the &lt;fen&gt;Agent&lt;/fen&gt; that accomplishes the sharpening (or dulling) action.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+        <excludesFE name="Cause" ID="7344"/>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="11/30/2004 04:18:20 PST Tue" abbrev="Agt" name="Agent" ID="7332">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Agent&lt;/fen&gt; causes the &lt;fen&gt;Patient&lt;/fen&gt; to become more or less sharp.
+&lt;ex&gt;&lt;fex name="Agent"&gt;The smith&lt;/fex&gt; &lt;t&gt;sharpened&lt;/t&gt; many knives in the days before the war.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="808080" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="11/30/2004 04:18:20 PST Tue" abbrev="Ins" name="Instrument" ID="7333">
+        <definition>&lt;def-root&gt;An entity directed by the &lt;fen&gt;Agent&lt;/fen&gt; that interacts with an &lt;fen&gt;Patient&lt;/fen&gt;, causing it to change in sharpness.
+&lt;ex&gt;Never &lt;t&gt;sharpen&lt;/t&gt; your knives &lt;fex name="Ins"&gt;with my whetstone&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Physical_entity" ID="70"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="11/30/2004 04:18:20 PST Tue" abbrev="Place" name="Place" ID="7334">
+        <definition>&lt;def-root&gt;This FE identifies the place where the &lt;fen&gt;Agent&lt;/fen&gt; sharpens the &lt;fen&gt;Patient&lt;/fen&gt;.
+&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="618" cDate="11/30/2004 04:18:20 PST Tue" abbrev="Purp" name="Purpose" ID="7335">
+        <definition>&lt;def-root&gt;This FE identifies the purpose for which the &lt;fen&gt;Agent&lt;/fen&gt; sharpens the &lt;fen&gt;Patient&lt;/fen&gt;.
+&lt;ex&gt;George &lt;t&gt;sharpened&lt;/t&gt; the bayonet &lt;fex name="Purpose"&gt;to please the sergeant&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="11/30/2004 04:18:20 PST Tue" abbrev="Time" name="Time" ID="7336">
+        <definition>&lt;def-root&gt;This FE identifies the time when the &lt;fen&gt;Agent&lt;/fen&gt; sharpens &lt;fen&gt;Patient&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="11/30/2004 04:18:20 PST Tue" abbrev="Pat" name="Patient" ID="7337">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Patient&lt;/fen&gt; is the entity that is sharpened.
+&lt;ex&gt;Several cuts into the log had &lt;t&gt;dulled&lt;/t&gt; &lt;fex name="Patient"&gt;the blade&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="11/30/2004 04:18:20 PST Tue" abbrev="Mnr" name="Manner" ID="7338">
+        <definition>&lt;def-root&gt;The manner in which the &lt;fen&gt;Agent&lt;/fen&gt; changes the sharpness of the &lt;fen&gt;Patient&lt;/fen&gt;.
+&lt;ex&gt;He &lt;t&gt;sharpened&lt;/t&gt; the knife &lt;fex name="Mnr"&gt;silently&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="9F79EE" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="618" cDate="11/30/2004 04:18:20 PST Tue" abbrev="Reason" name="Reason" ID="7339">
+        <definition>&lt;def-root&gt;The state of affairs that the &lt;fen&gt;Agent&lt;/fen&gt; is responding to by executing the sharpening act.
+&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="618" cDate="11/30/2004 04:18:20 PST Tue" abbrev="Degr" name="Degree" ID="7340">
+        <definition>&lt;def-root&gt;The extent to which the &lt;fen&gt;Patient&lt;/fen&gt;'s sharpness is affected by the &lt;fen&gt;Agent&lt;/fen&gt;.
+&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="11/30/2004 08:15:24 PST Tue" abbrev="Cse" name="Cause" ID="7344">
+        <definition>&lt;def-root&gt;An animate or inanimate entity, a force, or event that produces the state of sharpness.  Volitionality is not a necessary characteristic of &lt;fen&gt;Cause&lt;/fen&gt;s.
+&lt;ex&gt;&lt;fex name="Cause"&gt;The relentless impacts against the wood&lt;/fex&gt; gradually &lt;t&gt;blunted&lt;/t&gt; the edge of this axe.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Agent" ID="7332"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="000000" coreType="Extra-Thematic" cBy="618" cDate="11/30/2004 08:18:57 PST Tue" abbrev="Res" name="Result" ID="7345">
+        <definition>&lt;def-root&gt;The resulting configuration of the &lt;fen&gt;Patient&lt;/fen&gt;.
+
+&lt;ex&gt;&lt;t&gt;Sharpen&lt;/t&gt; this knife &lt;fex name="Result"&gt;to a nice point&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Transitive_action</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="sharpen.v" ID="11361" lemmaID="35409" cBy="618" cDate="11/30/2004 04:39:22 PST Tue">
+        <definition>FN: to make something sharp.</definition>
+        <sentenceCount annotated="24" total="291"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="sharpen"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="dull.v" ID="11362" lemmaID="11936" cBy="618" cDate="12/01/2004 12:25:20 PST Wed">
+        <definition>FN: to make or cause to become less sharp.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="dull"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="blunt.v" ID="12845" lemmaID="3979" cBy="995" cDate="10/19/2005 04:31:07 PDT Wed">
+        <definition>FN: to make or cause to be less sharp.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="blunt"/>
+    </lexUnit>
+</frame>

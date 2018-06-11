@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="618" cDate="02/17/2010 01:13:56 PST Wed" name="Exhaust_resource" ID="2220" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Agent&lt;/fen&gt; exhausts a &lt;fen&gt;Resource&lt;/fen&gt;.
+
+&lt;ex&gt;&lt;fex name="Agent"&gt;We&lt;/fex&gt; &lt;t&gt;exhausted&lt;/t&gt; &lt;fex name="Resource"&gt;our supply of oil&lt;/fex&gt; &lt;fex name="Time"&gt;long ago&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="02/17/2010 01:25:55 PST Wed" abbrev="res" name="Resource" ID="13572">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Resource&lt;/fen&gt; is exhausted over time by being used.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="618" cDate="02/17/2010 01:38:03 PST Wed" abbrev="age" name="Agent" ID="13573">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Agent&lt;/fen&gt; uses the &lt;fen&gt;Resource&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="800080" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="02/17/2010 01:49:49 PST Wed" abbrev="pur" name="Purpose" ID="13574">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Agent&lt;/fen&gt; uses the &lt;fen&gt;Resource&lt;/fen&gt; for a &lt;fen&gt;Purpose&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="02/17/2010 01:51:04 PST Wed" abbrev="man" name="Manner" ID="13575">
+        <definition>&lt;def-root&gt;Any description of the intentional act which is not covered by more specific FEs, including secondary effects (&lt;ment&gt;quietly, loudly&lt;/ment&gt;), and general descriptions comparing events (&lt;ment&gt;the same way&lt;/ment&gt;). In addition, it may indicate salient characteristics of an &lt;fen&gt;Agent&lt;/fen&gt; that also affect the action (&lt;ment&gt; deliberately, eagerly, carefully&lt;/ment&gt;). 
+&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="02/17/2010 01:52:26 PST Wed" abbrev="pla" name="Place" ID="13576">
+        <definition>&lt;def-root&gt;This FE identifies the place where the &lt;fen&gt;Agent&lt;/fen&gt; exhausts the &lt;fen&gt;Resource&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="02/17/2010 01:53:04 PST Wed" abbrev="mea" name="Means" ID="13577">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Means&lt;/fen&gt; by which an &lt;fen&gt;Agent&lt;/fen&gt; exhausts the &lt;fen&gt;Resource&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="618" cDate="02/17/2010 01:54:57 PST Wed" abbrev="tim" name="Time" ID="13578">
+        <definition>&lt;def-root&gt;This FE identifies the time when the &lt;fen&gt;Agent&lt;/fen&gt; exhausts the &lt;fen&gt;Resource&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <frameRelation type="Inherits from">
+        <relatedFrame>Using</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inherited by"/>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by"/>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of">
+        <relatedFrame>Used_up</relatedFrame>
+    </frameRelation>
+    <frameRelation type="See also"/>
+    <lexUnit status="Needs_SCs" POS="V" name="exhaust.v" ID="15636" lemmaID="13444" cBy="618" cDate="02/17/2010 01:39:13 PST Wed">
+        <definition>FN: use up or deplete a resource entirely.</definition>
+        <sentenceCount annotated="2" total="140"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="exhaust"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="use up.v" ID="15637" lemmaID="51070" cBy="618" cDate="02/17/2010 01:40:12 PST Wed">
+        <definition>FN: make use of a resource.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="use"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="up"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="expend.v" ID="15638" lemmaID="13530" cBy="618" cDate="02/17/2010 01:49:20 PST Wed">
+        <definition>FN: use up.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="expend"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="devour.v" ID="15639" lemmaID="10517" cBy="618" cDate="02/17/2010 01:59:03 PST Wed">
+        <definition>FN: quickly use up large quantities of.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="devour"/>
+    </lexUnit>
+</frame>

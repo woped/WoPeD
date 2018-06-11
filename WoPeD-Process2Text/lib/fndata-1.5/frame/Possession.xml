@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="05/25/2001 12:14:14 PDT Fri" name="Possession" ID="118" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Owner&lt;/fen&gt; has (or lacks) a &lt;fen&gt;Possession&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="05/25/2001 12:19:32 PDT Fri" abbrev="Own" name="Owner" ID="573">
+        <definition>&lt;def-root&gt;The entity that owns a posession.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="0000FF" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="05/25/2001 12:21:40 PDT Fri" abbrev="Pos" name="Possession" ID="582">
+        <definition>&lt;def-root&gt;The thing which is owned by the Owner.
+Ex.:  I &lt;t&gt;have&lt;/t&gt; &lt;fex name="Possession"&gt;twenty bucks&lt;/fex&gt;.
+(This does not include bodyparts or medical conditions, but does include intellectual property, etc.)&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="05/25/2001 12:23:19 PDT Fri" abbrev="Dep" name="Depictive" ID="584">
+        <definition>&lt;def-root&gt;State of the &lt;fen&gt;Owner&lt;/fen&gt; or &lt;fen&gt;Possession&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FF00FF" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="05/25/2001 12:23:19 PDT Fri" abbrev="Manr" name="Manner" ID="587">
+        <definition>&lt;def-root&gt;The way that the &lt;fen&gt;Owner&lt;/fen&gt; possesses the &lt;fen&gt;Possession&lt;/fen&gt;.
+
+&lt;/def-root&gt;</definition>
+        <semType name="Manner" ID="173"/>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="361" cDate="11/22/2006 12:48:48 PST Wed" abbrev="" name="Duration" ID="10847">
+        <definition>&lt;def-root&gt;Duration denotes the length of time from the beginning of a continuous situation (the one denoted by the target) to its end. In many cases, the continuous situation is a dynamic action which is ongoing, while in others it is simply an undifferentiated state.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Peripheral" cBy="361" cDate="02/22/2007 11:43:59 PST Thu" abbrev="Tim" name="Time" ID="11066">
+        <definition>&lt;def-root&gt;This FE indicates the &lt;fen&gt;Time&lt;/fen&gt; interval during which the &lt;fen&gt;Owner&lt;/fen&gt; has a possession. &lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="361" cDate="10/30/2007 12:11:30 PDT Tue" abbrev="" name="Explanation" ID="12034">
+        <definition>&lt;def-root&gt;The reason for which the &lt;fen&gt;Owner&lt;/fen&gt; has the &lt;fen&gt;Possession&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Pre_lose_possession</relatedFrame>
+        <relatedFrame>Post_lose_possession</relatedFrame>
+        <relatedFrame>Pre_getting</relatedFrame>
+        <relatedFrame>Post_getting</relatedFrame>
+        <relatedFrame>Pre_transfer</relatedFrame>
+        <relatedFrame>Post_transfer</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on"/>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Wealthiness</relatedFrame>
+        <relatedFrame>Prevent_from_having</relatedFrame>
+        <relatedFrame>Locale_by_ownership</relatedFrame>
+        <relatedFrame>Change_of_quantity_of_possession</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of"/>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by"/>
+    <frameRelation type="Is Inchoative of">
+        <relatedFrame>Getting</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="own.v" ID="2358" lemmaID="27428" cBy="664" cDate="05/25/2001 12:25:02 PDT Fri">
+        <definition>COD: possess</definition>
+        <sentenceCount annotated="30" total="246"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="own"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="have.v" ID="2378" lemmaID="17576" cBy="664" cDate="05/25/2001 01:57:09 PDT Fri">
+        <definition>COD: posess, own, or hold</definition>
+        <sentenceCount annotated="16" total="397"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="have"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="lack.v" ID="2417" lemmaID="21546" cBy="664" cDate="05/25/2001 04:27:20 PDT Fri">
+        <definition>COD: be without or deficient in</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="lack"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="possess.v" ID="2418" lemmaID="29854" cBy="664" cDate="05/25/2001 06:02:24 PDT Fri">
+        <definition>COD: have as belonging to one</definition>
+        <sentenceCount annotated="31" total="372"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="possess"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="possession.n" ID="2419" lemmaID="29856" cBy="664" cDate="05/25/2001 06:47:28 PDT Fri">
+        <definition>COD: a thing owned or possessed</definition>
+        <sentenceCount annotated="11" total="107"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="possession"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="ownership.n" ID="2423" lemmaID="27436" cBy="664" cDate="05/25/2001 08:58:21 PDT Fri">
+        <definition>FN: the state of owning s.t.</definition>
+        <sentenceCount annotated="32" total="255"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="ownership"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="owner.n" ID="2431" lemmaID="27430" cBy="664" cDate="05/29/2001 02:38:24 PDT Tue">
+        <definition>FN: one who owns s.t.</definition>
+        <sentenceCount annotated="26" total="216"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="owner"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="possessor.n" ID="2432" lemmaID="29861" cBy="664" cDate="05/29/2001 03:35:16 PDT Tue">
+        <definition>FN: one who possesses s.t.</definition>
+        <sentenceCount annotated="11" total="64"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="possessor"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="A" name="lacking.a" ID="2436" lemmaID="21550" cBy="664" cDate="05/29/2001 04:30:44 PDT Tue">
+        <definition>COD: absent or deficient</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="lacking"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="lack.n" ID="2437" lemmaID="21545" cBy="664" cDate="05/29/2001 04:34:23 PDT Tue">
+        <definition>COD: absence or deficiency of something</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="lack"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="wanting.a" ID="2439" lemmaID="43415" cBy="664" cDate="05/29/2001 04:37:33 PDT Tue">
+        <definition>COD: lacking in something required, necessary, or usual</definition>
+        <sentenceCount annotated="23" total="200"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="wanting"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="want.n" ID="2446" lemmaID="43412" cBy="664" cDate="05/29/2001 08:06:59 PDT Tue">
+        <definition>COD: a desire for something. </definition>
+        <sentenceCount annotated="21" total="189"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="want"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="want.v" ID="2450" lemmaID="43413" cBy="664" cDate="05/29/2001 08:44:02 PDT Tue">
+        <definition>COD: have a desire to possess or do (something); wish for. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="want"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="belong.v" ID="2492" lemmaID="3328" cBy="664" cDate="06/03/2001 03:28:12 PDT Sun">
+        <definition>COD: be the property of</definition>
+        <sentenceCount annotated="10" total="293"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="belong"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="belongings.n" ID="2494" lemmaID="3329" cBy="664" cDate="06/03/2001 03:47:14 PDT Sun">
+        <definition>FN: things (generally small and portable) owned by s.o.</definition>
+        <sentenceCount annotated="26" total="84"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="belongings"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="assets.n" ID="2495" lemmaID="44927" cBy="664" cDate="06/03/2001 04:10:03 PDT Sun">
+        <definition>COD: property owned by a person or company, regarded as having value and being available to meet debts, commitments, or legacies.</definition>
+        <sentenceCount annotated="28" total="191"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="assets"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="property.n" ID="2498" lemmaID="30754" cBy="664" cDate="06/03/2001 04:24:58 PDT Sun">
+        <definition>COD: a thing or things belonging to someone</definition>
+        <sentenceCount annotated="35" total="324"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="property"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="definite_possession.n" ID="5300" lemmaID="45561" cBy="664" cDate="03/21/2002 03:22:22 PST Thu">
+        <definition>FN: the state of someone owning something</definition>
+        <sentenceCount annotated="6" total="180"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="possession"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="N" name="possession_of_goods.n" ID="5301" lemmaID="45561" cBy="664" cDate="03/21/2002 03:30:14 PST Thu">
+        <definition>FN: having control or possession of valuable or important property or goods</definition>
+        <sentenceCount annotated="26" total="285"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="possession"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="effects.n" ID="8621" lemmaID="12265" cBy="664" cDate="04/23/2003 05:34:09 PDT Wed">
+        <definition>COD: personal belongings. </definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="effects"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="have got.v" ID="11073" lemmaID="49651" cBy="664" cDate="10/21/2004 01:54:36 PDT Thu">
+        <definition>COD:  possess, own, or hold.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="have"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="V" name="got"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="custody.n" ID="13983" lemmaID="9349" cBy="361" cDate="03/15/2007 09:42:30 PDT Thu">
+        <definition>COD: the protective care or guardianship of someone or something.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="custody"/>
+    </lexUnit>
+</frame>

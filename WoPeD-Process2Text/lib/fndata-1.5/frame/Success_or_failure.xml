@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="frame.xsl"?>
+<frame cBy="664" cDate="04/14/2005 07:30:16 PDT Thu" name="Success_or_failure" ID="1388" xsi:schemaLocation="../schema/frame.xsd" xmlns="http://framenet.icsi.berkeley.edu" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <definition>&lt;def-root&gt;An &lt;fen&gt;Agent&lt;/fen&gt; has attempted to achieve a &lt;fen&gt;Goal&lt;/fen&gt;, and the actual outcome of the &lt;fen&gt;Agent&lt;/fen&gt;'s action has been resolved, so that it either specifically matches the &lt;fen&gt;Agent&lt;/fen&gt;'s intent (e.g. &lt;ment&gt;success&lt;/ment&gt;) or does not match it (e.g. &lt;ment&gt;failure&lt;/ment&gt;).
+
+&lt;ex&gt;&lt;fex name="age"&gt;He&lt;/fex&gt; &lt;t&gt;pulled&lt;/t&gt; &lt;t&gt;off&lt;/t&gt; &lt;fex name="goa"&gt;his April Fool's Day prank&lt;/fex&gt; &lt;fex name="deg"&gt;by the barest of margins&lt;/fex&gt; .&lt;/ex&gt;
+&lt;ex&gt;Unfortunately, &lt;fex name="age"&gt;we&lt;/fex&gt; &lt;m&gt;were&lt;/m&gt; n't &lt;t&gt;successful&lt;/t&gt;. &lt;fex name="goa"&gt;DNI&lt;/fex&gt;&lt;/ex&gt;
+&lt;ex&gt;&lt;fex name="age"&gt;We&lt;/fex&gt; &lt;t&gt;failed&lt;/t&gt; &lt;fex name="deg"&gt;miserably&lt;/fex&gt; &lt;fex name="goa"&gt;at getting the gay rights bill passed&lt;/fex&gt; .&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    <FE bgColor="FF0000" fgColor="FFFFFF" coreType="Core" cBy="664" cDate="04/14/2005 07:30:16 PDT Thu" abbrev="age" name="Agent" ID="7788">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Agent&lt;/fen&gt; makes an attempt to achieve a &lt;fen&gt;Goal&lt;/fen&gt;.
+&lt;ex&gt;&lt;fex name="Agent"&gt;John&lt;/fex&gt; &lt;t&gt;managed&lt;/t&gt; a feeble smile.&lt;/ex&gt;
+&lt;/def-root&gt;</definition>
+        <semType name="Sentient" ID="5"/>
+    </FE>
+    <FE bgColor="00BFFF" fgColor="FFFFFF" coreType="Core-Unexpressed" cBy="664" cDate="04/14/2005 07:30:17 PDT Thu" abbrev="goa" name="Goal" ID="7789">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Goal&lt;/fen&gt; is what the &lt;fen&gt;Agent&lt;/fen&gt; attempts to achieve.
+
+&lt;ex&gt;If you don't &lt;t&gt;succeed&lt;/t&gt; &lt;fex name="goa"&gt;in your subterfuge&lt;/fex&gt;, then report back for further orders.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Goal" ID="153"/>
+    </FE>
+    <FE bgColor="A52A2A" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="04/14/2005 07:30:17 PDT Thu" abbrev="Means" name="Means" ID="7791">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Means&lt;/fen&gt; by which the &lt;fen&gt;Goal&lt;/fen&gt; is achieved (or not).&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="FF69B4" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="04/14/2005 07:30:17 PDT Thu" abbrev="deg" name="Degree" ID="7792">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Degree&lt;/fen&gt; to which an attempt occurs.
+
+&lt;ex&gt;Your attempt at convincing me has &lt;fex name="deg"&gt;utterly&lt;/fex&gt; &lt;t&gt;failed&lt;/t&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Degree" ID="172"/>
+    </FE>
+    <FE bgColor="00008B" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="04/14/2005 07:30:17 PDT Thu" abbrev="Time" name="Time" ID="7793">
+        <definition>&lt;def-root&gt;This FE identifies the &lt;fen&gt;Time&lt;/fen&gt; when the attempt succeeds or fails.&lt;/def-root&gt;</definition>
+        <semType name="Time" ID="141"/>
+    </FE>
+    <FE bgColor="FFA500" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="664" cDate="04/14/2005 07:30:17 PDT Thu" abbrev="Dep" name="Depictive" ID="7794">
+        <definition>&lt;def-root&gt;The &lt;fen&gt;Depictive&lt;/fen&gt; is a phrase which describes the &lt;fen&gt;Agent&lt;/fen&gt;.&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="008000" fgColor="FFFFFF" coreType="Peripheral" cBy="664" cDate="04/14/2005 07:30:17 PDT Thu" abbrev="Place" name="Place" ID="7795">
+        <definition>&lt;def-root&gt;The place where an attempt succeeds or fails.
+
+&lt;ex&gt;&lt;fex name="Place"&gt;On the bridge&lt;/fex&gt; he &lt;t&gt;succeeded&lt;/t&gt; in putting the wig on the corpse.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="Locative_relation" ID="182"/>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Core-Unexpressed" cBy="605" cDate="05/23/2005 11:16:24 PDT Mon" abbrev="rol" name="Role" ID="8020">
+        <definition>&lt;def-root&gt;A participant function in a particular event or in events of a particular kind.
+
+&lt;ex&gt;Benedikt was &lt;t&gt;successful&lt;/t&gt; &lt;fex name="rol"&gt;as a master brewer of beer&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <excludesFE name="Goal" ID="7789"/>
+    </FE>
+    <FE bgColor="1E90FF" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="05/24/2005 02:36:46 PDT Tue" abbrev="cir" name="Circumstances" ID="8035">
+        <definition>&lt;def-root&gt;This FE is applied to expressions which indicate the prevailing physical conditions for the event, or some concurrent states of affairs.
+
+&lt;ex&gt;And could anybody have &lt;t&gt;succeeded&lt;/t&gt; &lt;fex name="Circumstances"&gt;under those conditions&lt;/fex&gt;, using other methods?&lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="9400D3" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="05/26/2005 10:57:07 PDT Thu" abbrev="exp" name="Explanation" ID="8040">
+        <definition>&lt;def-root&gt; The &lt;fen&gt;Explanation&lt;/fen&gt; denotes a proposition from which the success or failure logically follows. This often means that the &lt;fen&gt;Explanation&lt;/fen&gt; causes the success or  failure, but not in all cases.
+
+
+&lt;ex&gt; Kerry &lt;t&gt;failed&lt;/t&gt; &lt;fex name="exp"&gt;because of his inability to tell his own story&lt;/fex&gt;.&lt;/ex&gt;&lt;/def-root&gt;</definition>
+        <semType name="State_of_affairs" ID="177"/>
+    </FE>
+    <FE bgColor="2E8B57" fgColor="FFFFFF" coreType="Extra-Thematic" cBy="605" cDate="05/27/2005 01:48:05 PDT Fri" abbrev="con" name="Containing_event" ID="8052">
+        <definition>&lt;def-root&gt;This FE denotes an event or state of affairs that occurs or holds at a time that includes the time during which the success or failure reported by the target occurs and of which the success or failure is taken to be a part
+
+&lt;ex&gt;He was &lt;t&gt;successful&lt;/t&gt; &lt;fex name="con"&gt;in the Smithers v Burns case&lt;/fex&gt;. &lt;/ex&gt;&lt;/def-root&gt;</definition>
+    </FE>
+    <FE bgColor="7FFF00" fgColor="000000" coreType="Extra-Thematic" cBy="589" cDate="08/18/2010 04:33:52 PDT Wed" abbrev="re" name="Re_enconding" ID="14163">
+        <definition>&lt;def-root&gt;&lt;fen&gt;Re_encoding&lt;/fen&gt; presents the success or failure event as an integral part of a larger conceptualization expressed by another frame.&lt;/def-root&gt;</definition>
+    </FE>
+    <frameRelation type="Inherits from"/>
+    <frameRelation type="Is Inherited by">
+        <relatedFrame>Surviving</relatedFrame>
+        <relatedFrame>Hit_or_miss</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Perspective on">
+        <relatedFrame>Resolve_attempt_scenario</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Perspectivized in"/>
+    <frameRelation type="Uses"/>
+    <frameRelation type="Is Used by">
+        <relatedFrame>Finish_competition</relatedFrame>
+        <relatedFrame>Accuracy</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Subframe of">
+        <relatedFrame>Attempting_scenario</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Has Subframe(s)"/>
+    <frameRelation type="Precedes"/>
+    <frameRelation type="Is Preceded by">
+        <relatedFrame>Attempt</relatedFrame>
+    </frameRelation>
+    <frameRelation type="Is Inchoative of"/>
+    <frameRelation type="Is Causative of"/>
+    <frameRelation type="See also"/>
+    <lexUnit status="Finished_Initial" POS="V" name="succeed.v" ID="11831" lemmaID="38643" cBy="664" cDate="04/14/2005 07:59:19 PDT Thu">
+        <definition>COD: achieve an aim or purpose.</definition>
+        <sentenceCount annotated="80" total="375"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="succeed"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="fail.v" ID="11832" lemmaID="13824" cBy="605" cDate="04/15/2005 11:06:00 PDT Fri">
+        <definition>COD: be unsuccessful in an undertaking</definition>
+        <sentenceCount annotated="35" total="345"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="fail"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="successful.a" ID="11833" lemmaID="38645" cBy="605" cDate="04/15/2005 11:06:40 PDT Fri">
+        <definition>COD: accomplishing an aim or purpose.</definition>
+        <sentenceCount annotated="22" total="253"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="successful"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="V" name="pull off.v" ID="12137" lemmaID="49579" cBy="605" cDate="05/23/2005 05:50:30 PDT Mon">
+        <definition>COD: succeed in achieving or winning something difficult.</definition>
+        <sentenceCount annotated="25" total="263"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="pull"/>
+        <lexeme order="2" headword="false" breakBefore="false" POS="ADV" name="off"/>
+    </lexUnit>
+    <lexUnit status="Finished_Initial" POS="A" name="unsuccessful.a" ID="12150" lemmaID="50040" cBy="605" cDate="05/27/2005 01:32:41 PDT Fri">
+        <definition>COD: not successful</definition>
+        <sentenceCount annotated="15" total="81"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="A" name="unsuccessful"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="success.n" ID="12598" lemmaID="38644" cBy="605" cDate="08/03/2005 03:58:26 PDT Wed">
+        <definition>COD: the accomplishment of an aim or purpose.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="success"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="manage.v" ID="12830" lemmaID="23317" cBy="605" cDate="10/19/2005 11:50:52 PDT Wed">
+        <definition>FN: succeed in attaining a goal</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="manage"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="V" name="miss.v" ID="13801" lemmaID="24557" cBy="664" cDate="02/24/2007 11:39:21 PST Sat">
+        <definition>COD: fail to attend, watch, or participate in.</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="V" name="miss"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="failure.n" ID="14564" lemmaID="13829" cBy="361" cDate="10/24/2007 01:06:47 PDT Wed">
+        <definition>FN: an endeavor that does not succeed</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="failure"/>
+    </lexUnit>
+    <lexUnit status="Created" POS="N" name="failing.n" ID="14959" lemmaID="13825" cBy="361" cDate="04/21/2008 03:20:37 PDT Mon">
+        <definition>FN: characteristic failure or shortcoming</definition>
+        <sentenceCount annotated="0" total="0"/>
+        <lexeme order="1" headword="false" breakBefore="false" POS="N" name="failing"/>
+    </lexUnit>
+</frame>
