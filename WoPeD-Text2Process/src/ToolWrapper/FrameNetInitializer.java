@@ -46,6 +46,7 @@ public class FrameNetInitializer {
             synchronized (FrameNetInitializer.class) {
                 if(fni == null){
                     fni = new FrameNetInitializer();
+                    init();
                 }
             }
         }
