@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import transform.DummyAction;
+import TextToWorldModel.transform.DummyAction;
 import worldModel.*;
 import worldModel.Flow.FlowDirection;
 import worldModel.Flow.FlowType;

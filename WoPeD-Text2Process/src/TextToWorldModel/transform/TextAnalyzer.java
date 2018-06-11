@@ -1,7 +1,7 @@
 /**
  * modified taken from https://github.com/FabianFriedrich/Text2Process
  */
-package transform;
+package TextToWorldModel.transform;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -16,12 +16,12 @@ import edu.mit.jwi.item.POS;
 
 import TextToWorldModel.Constants;
 import TextToWorldModel.SentenceWordID;
-import processing.ProcessingUtils;
+import TextToWorldModel.processing.ProcessingUtils;
 
 import ToolWrapper.FrameNetFunctionality.PhraseType;
-import text.T2PSentence;
-import text.Text;
-import transform.ConjunctionElement.ConjunctionType;
+import worldModel.T2PSentence;
+import worldModel.Text;
+import TextToWorldModel.transform.ConjunctionElement.ConjunctionType;
 import worldModel.Action;
 import worldModel.Actor;
 import worldModel.DetermineConjResult;

@@ -5,7 +5,6 @@ package worldModel;
 
 import java.util.List;
 
-import text.T2PSentence;
 import worldModel.Specifier.SpecifierType;
 
 /**

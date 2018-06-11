@@ -6,8 +6,6 @@ package worldModel;
 import java.util.ArrayList;
 import java.util.List;
 
-import text.T2PSentence;
-
 /**
  * The super-structure which holds all elements
  * which were extracted during the transformation phase

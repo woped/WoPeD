@@ -5,10 +5,10 @@ import ToolWrapper.FrameNetInitializer;
 import ToolWrapper.StanfordParserFunctionality;
 import ToolWrapper.WordNetInitializer;
 import edu.stanford.nlp.ling.Word;
-import text.T2PSentence;
-import text.Text;
-import transform.DummyAction;
-import transform.TextAnalyzer;
+import worldModel.T2PSentence;
+import worldModel.Text;
+import TextToWorldModel.transform.DummyAction;
+import TextToWorldModel.transform.TextAnalyzer;
 import worldModel.*;
 
 import java.util.ArrayList;

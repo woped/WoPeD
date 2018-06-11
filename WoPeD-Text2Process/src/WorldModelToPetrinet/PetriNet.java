@@ -1,7 +1,6 @@
 package WorldModelToPetrinet;
 
-import transform.DummyAction;
-import worldModel.Action;
+import TextToWorldModel.transform.DummyAction;
 
 import java.util.ArrayList;
 import java.util.Iterator;

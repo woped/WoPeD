@@ -1,7 +1,7 @@
 /**
  * modified taken from https://github.com/FabianFriedrich/Text2Process
  */
-package processing;
+package TextToWorldModel.processing;
 
 import TextToWorldModel.Constants;
 import ToolWrapper.WordNetFunctionality;

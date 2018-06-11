@@ -3,8 +3,6 @@
  */
 package worldModel;
 
-import text.T2PSentence;
-
 public class Actor extends ExtractedObject{
 	
 	

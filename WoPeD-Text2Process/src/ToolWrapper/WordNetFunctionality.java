@@ -1,14 +1,12 @@
 package ToolWrapper;
 
-import TextToWorldModel.WorldModelBuilder;
 import edu.mit.jwi.IRAMDictionary;
 import edu.mit.jwi.item.*;
 import TextToWorldModel.Constants;
 import org.apache.commons.lang3.StringUtils;
-import processing.ProcessingUtils;
-import transform.ListUtils;
+import TextToWorldModel.processing.ProcessingUtils;
+import TextToWorldModel.transform.ListUtils;
 import worldModel.Action;
-import worldModel.WorldModel;
 
 import java.util.LinkedList;
 import java.util.List;
