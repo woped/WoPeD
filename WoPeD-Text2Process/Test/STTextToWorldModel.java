@@ -1,27 +1,25 @@
 import TextToWorldModel.WorldModelBuilder;
+import javafx.scene.chart.Axis;
 import org.junit.Test;
-import org.w3c.dom.Document;
-import org.w3c.dom.NodeList;
+import org.w3c.dom.*;
 import org.xml.sax.SAXException;
-import worldModel.Action;
-import worldModel.Actor;
-import worldModel.WorldModel;
+import sun.reflect.generics.scope.MethodScope;
+import worldModel.*;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.xpath.XPath;
+import javax.xml.xpath.XPathFactory;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 import static org.junit.Assert.assertEquals;
 
-public class STTextToWorldModel {
-    private static String [] TestExamples = {"ST_Resource_Lemon_Chicken_Recipe.xml"}; //, "ST_Resource_Bike_Manufacturing.xml","ST_Ressource_Computer_Repair.xml"};
+public class STTextToWorldModel extends T2PScenarioTest {
+    private static String [] TestExamples = {"ST_Resource_Lemon_Chicken_Recipe.xml", "ST_Resource_Bike_Manufacturing.xml","ST_Ressource_Computer_Repair.xml"};
     private static String filePath;
     private static Document doc;
     private final static double acceptanceThreshold=0.1;
@@ -30,34 +28,84 @@ public class STTextToWorldModel {
     private static final String [] ELEMENT_TYPE_RESOURCES ={"Resources","Resource"};
     private static final String [] ELEMENT_TYPE_FLOWS ={"Flows","Flow"};
 
+
     @Test
     public void evaluateWorldModelBuild() {
         filePath = System.getProperty("user.dir");
         filePath=filePath+"/TestData/";
         WorldModelBuilder WMbuilder;
         for(int i=0;i<TestExamples.length;i++){
-            printInfo(i);
+            printInfo(i,TestExamples[i]);
             parseTestFile(TestExamples[i]);
+
+            startPerformanceTrace();
             WMbuilder= new WorldModelBuilder(sanitizeText(getPlainTextDescription()));
             WorldModel wm = WMbuilder.buildWorldModel(false);
-            Double score=calculateSimilarityScore(wm,i);
+            double performance = endPerformanceTrace();
+
+            System.out.println("WorldModel for Testexample "+(i+1)+" "+TestExamples[i]+" was generated in "+(int) performance+" milliseconds.");
+            Double score=compareResults(wm,i);
             assertEquals("Generated WorldModel for Testexample "+(i+1)+" "+TestExamples[i]+" fails the Requirements based on its Metadata.",true,score>acceptanceThreshold);
         }
     }
 
-    private double calculateSimilarityScore(WorldModel wm, int currentTestcase){
+    private void printComparison(List<? extends SpecifiedElement> elements, ArrayList<String> testElements ){
+        //elements=getDisjointList(elements);
+        Iterator i = elements.iterator();
+       int listSize;
+       if(elements.size()>testElements.size()){
+            listSize= elements.size();
+       }else{
+           listSize= testElements.size();
+       }
+       String [][] x= new String[3][listSize+1];
+       x[0][0]="";
+       x[1][0]="Calculated";
+       x[2][0]="Testcase";
+       for(int j=0;j<listSize;j++){
+           x[0][j+1]=(j+1)+".";
+
+           //Balance the two possibly differently sized Lists
+           if((j+1)<=elements.size()){
+               x[1][j+1]=elements.get(j).getName();
+           }else{
+               x[1][j+1]="-";
+           }
+
+           if((j+1)<=testElements.size()){
+               x[2][j+1]=testElements.get(j);
+           }else{
+               x[2][j+1]="-";
+           }
+       }
+       prinComparisonTable(x);
+    }
+
+    private double compareResults(WorldModel wm, int currentTestcase){
         HashMap<String, Double> elementDeltaScores = new HashMap<String, Double>();
 
         elementDeltaScores.put("actionDelta",(double)calculateActionDelta(wm));
+        System.out.println("\n--------- Actions ---------");
+        printComparison(wm.getActions(),getWorldModelElementList(ELEMENT_TYPE_ACTIONS));
+        printScore("Similarity Score for Actions ",elementDeltaScores.get("actionDelta"));
+
+        System.out.println("\n--------- Actors ---------");
+        printComparison(wm.getActors(),getWorldModelElementList(ELEMENT_TYPE_ACTORS));
         elementDeltaScores.put("actorDelta",(double)calculateActorDelta(wm));
+        printScore("Similarity Score for Actors ",elementDeltaScores.get("actorDelta"));
+
+        System.out.println("\n--------- Resources ---------");
+        printComparison(wm.getResources(),getWorldModelElementList(ELEMENT_TYPE_RESOURCES));
         elementDeltaScores.put("ResourceDelta",(double)calculateResourceDelta(wm));
-        elementDeltaScores.put("FlowDelta",(double)calculateFlowDelta(wm));
+        printScore("Similarity Score for resources ",elementDeltaScores.get("ResourceDelta"));
+
+        //elementDeltaScores.put("FlowDelta",(double)calculateFlowDelta(wm));
         double deltasum = 0.0;
         for (double d : elementDeltaScores.values()) {
             deltasum += d;
         }
         double score = deltasum/elementDeltaScores.size();
-        System.out.printf("\n\nScore for Test "+(currentTestcase+1)+" "+TestExamples[currentTestcase]+" in Percent: %.2f%%%n", score*100);
+        printScore("\n Overall Score for Test "+(currentTestcase+1)+" "+TestExamples[currentTestcase],score);
         return score;
     }
 
@@ -93,11 +141,43 @@ public class STTextToWorldModel {
     }
 
     private static double calculateResourceDelta(WorldModel wm){
-        //TODO implement Deep Delta Calc
         int resourceCount= wm.getResources().size();
         return calculateDeltaScore(resourceCount,getWorldModelElementTypeCount(ELEMENT_TYPE_RESOURCES));
     }
 
+    private static List<? extends SpecifiedElement> getInterpretedElementList(List<? extends SpecifiedElement> elements, String [] elementType){
+        if(elementType==ELEMENT_TYPE_ACTORS || elementType==ELEMENT_TYPE_RESOURCES){
+            elements=getDisjointList(elements);
+        }
+       for(int i=0;i<elements.size();i++){
+           if (elementType==ELEMENT_TYPE_ACTIONS){
+
+           }
+           if (elementType==ELEMENT_TYPE_ACTORS){
+
+           }
+           if (elementType==ELEMENT_TYPE_RESOURCES){
+               elements=getDisjointList(elements);
+           }
+       }
+        return elements;
+    }
+
+    private static boolean analyzeActor(){
+        return false;
+    }
+
+    private static double calculateDeltaScore(int actualElementsCount, int exscpectedElementsCount){
+        double actual = (double)actualElementsCount;
+        double excspected= (double)exscpectedElementsCount;
+        double delta = Math.abs( actual - excspected);
+        double relativeDelta = delta/actual;
+        return 1-relativeDelta;
+    }
+
+    /*
+    XML Parsing Methods
+    */
     private static void parseTestFile(String fileName){
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         try {
@@ -117,6 +197,10 @@ public class STTextToWorldModel {
         }
     }
 
+    private static String getPlainTextDescription(){
+        return doc.getElementsByTagName("PlainTextDescription").item(0).getChildNodes().item(0).getNodeValue().toString();
+    }
+
     private static int getWorldModelElementTypeCount(String [] elementName){
         int elementCount=0;
         NodeList n = doc.getElementsByTagName(elementName[0]).item(0).getChildNodes();
@@ -127,34 +211,23 @@ public class STTextToWorldModel {
         return elementCount;
     }
 
-    private static String getPlainTextDescription(){
-        return doc.getElementsByTagName("PlainTextDescription").item(0).getChildNodes().item(0).getNodeValue().toString();
-    }
-
-    private static String sanitizeText(String text){
-        //get rid of tabs and newlines
-        text = text.replace("\t", "");
-        text = text.replace("\n", "");
-        //deal with x*space based tabs
-        while (text.contains("  ")){
-            text=text.replace("  "," ");
+    public ArrayList<String> getWorldModelElementList(String [] elementType){
+        ArrayList<String> elementList= new ArrayList<String>();
+        XPathFactory xpf = XPathFactory.newInstance();
+        XPath xp = xpf.newXPath();
+        int elementCount = getWorldModelElementTypeCount(elementType);
+        for(int i=0;i<elementCount;i++){
+            //String id = xp.evaluate("//"+elementType[0]+"/"+elementType[1]+"["+(i+1)+"][@id]",
+            //        doc.getDocumentElement());
+            try {
+                String text = xp.evaluate("//"+elementType[0]+"/"+elementType[1]+"["+(i+1)+"]/Name", doc.getDocumentElement());
+                text=sanitizeText(text);
+                elementList.add(text);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
-        return text;
-    }
-
-    private static void printInfo(int currentTestcase){
-        System.out.println("--------------------------------------------------------------");
-        System.out.println("    Test "+(currentTestcase+1)+": "+TestExamples[currentTestcase]);
-        System.out.println("--------------------------------------------------------------");
-    }
-
-    private static double calculateDeltaScore(int actualElementsCount, int exscpectedElementsCount){
-        double actual = (double)actualElementsCount;
-        double excspected= (double)exscpectedElementsCount;
-
-        double delta = Math.abs( actual - excspected);
-        double relativeDelta = delta/actual;
-        return 1-relativeDelta;
+        return elementList;
     }
 
 }

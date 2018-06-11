@@ -10,47 +10,31 @@
     </PlainTextDescription>
     <WorldModel>
        <Actions>
-           <Action id="1">
-               <Name>bring</Name>
-           </Action>
-           <Action id="2">
-               <Name>check</Name>
-           </Action>
-           <Action id="3">
-               <Name>hand out</Name>
-           </Action>
-           <Action id="4">
-               <Name>decide</Name>
-           </Action>
-           <Action id="5">
-               <Name>take home</Name>
-           </Action>
+           <Action id="1"><Name>bring</Name></Action>
+           <Action id="2"><Name>check</Name></Action>
+           <Action id="3"><Name>hand out</Name></Action>
+           <Action id="4"><Name>decide</Name></Action>
+           <Action id="5"><Name>take home</Name></Action>
+           <Action id="6"><Name>check and repair</Name></Action>
+           <Action id="7"><Name>check and configure</Name></Action>
+           <Action id="8"><Name>test</Name></Action>
+           <Action id="9"><Name>repair</Name></Action>
        </Actions>
         <Actors>
-            <Actor id="1">
-                <name>Customer</name>
-                <executesAction>1</executesAction>
-            </Actor>
-            <Actor id="2">
-
-            </Actor>
+            <Actor id="1"><Name>Customer</Name></Actor>
+            <Actor id="2"><Name>CRS</Name></Actor>
         </Actors>
         <Resources>
-            <Resource id="1">
-               <name></name>
-                <isPartOfAction>1</isPartOfAction>
-            </Resource>
+            <Resource id="1"><Name></Name></Resource>
         </Resources>
         <Flows>
             <Flow>
-                <previousAction></previousAction>
+                <previousAction>0</previousAction>
                 <followingActions>
-                    <followingAction>
-
-                    </followingAction>
+                    <followingAction>1</followingAction>
                 </followingActions>
-                <direction></direction>
-                <type></type>
+                <direction>split</direction>
+                <type>sequence</type>
             </Flow>
         </Flows>
     </WorldModel>
